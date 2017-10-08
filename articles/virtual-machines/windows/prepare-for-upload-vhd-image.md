@@ -1,6 +1,6 @@
 ---
-title: "Příprava virtuálního pevného disku Windows nahrát do Azure | Microsoft Docs"
-description: "Postup přípravy Windows VHD nebo VHDX před nahráním do Azure"
+title: "aaaPrepare tooAzure tooupload virtuálního pevného disku Windows | Microsoft Docs"
+description: "Jak tooprepare Windows VHD nebo VHDX před nahráním tooAzure"
 services: virtual-machines-windows
 documentationcenter: 
 author: glimoli
@@ -15,90 +15,90 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: genli
-ms.openlocfilehash: aa1cec2ef11da6aa8a8c4089be36994ab5f61682
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 530390e4c6a4f66ddfd4da23338f9bb3708c299f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava systému Windows VHD nebo VHDX, který chcete nahrát do Azure
-Před nahráním Windows virtuální počítače (VM) z místní do služby Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje jenom virtuální počítače generace 1, které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z je disk VHDX souborů systému na virtuální pevný disk a z dynamicky se zvětšující disk do pevnou velikostí. Ale generaci Virtuálního počítače nelze změnit. Další informace najdete v tématu [měli vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+# <a name="prepare-a-windows-vhd-or-vhdx-tooupload-tooazure"></a>Příprava tooAzure tooupload Windows VHD nebo VHDX
+Před nahráním Windows virtuálních počítačů (VM) z místní tooMicrosoft Azure, musíte připravit hello virtuální pevný disk (VHD nebo VHDX). Azure podporuje jenom virtuální počítače generace 1, které jsou ve formátu souboru VHD hello a mají pevnou velikostí disku. virtuální pevný disk je 1,023 GB Hello maximální velikost povolená pro hello. Generace 1 virtuální počítač z hello VHDX souborů tooVHD systému a z dynamicky se zvětšující disku, velikost toofixed můžete převést. Ale generaci Virtuálního počítače nelze změnit. Další informace najdete v tématu [měli vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
-Další informace o zásadách podpory pro virtuální počítač Azure, najdete v části [podporu serveru softwaru společnosti Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
+Další informace o zásadách hello podpory pro virtuální počítač Azure, najdete v části [podporu serveru softwaru společnosti Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
 > [!Note]
-> Pokyny v tomto článku platí pro 64bitovou verzi Windows Server 2008 R2 a novější operační systém Windows server. Informace o spuštěných 32bitovou verzi operačního systému v Azure najdete v tématu [podpora pro 32bitové operační systémy ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
+> Hello pokyny v tomto článku platí toohello 64bitovou verzi Windows Server 2008 R2 a novější operační systém Windows server. Informace o spuštěných 32bitovou verzi operačního systému v Azure najdete v tématu [podpora pro 32bitové operační systémy ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 
-## <a name="convert-the-virtual-disk-to-vhd-and-fixed-size-disk"></a>Převést virtuální disk na virtuální pevný disk a disk pevné velikosti 
-Pokud potřebujete převést virtuální disk na požadovaný formát pro Azure, použijte jednu z metod v této části. Zálohování virtuálního počítače před spuštěním procesu převodu virtuálního disku a ujistěte se, že virtuální pevný disk systému Windows správně funguje na místním serveru. Vyřešte všechny chyby v rámci virtuální počítač, než se pokusíte převést nebo ho nahrát do Azure.
+## <a name="convert-hello-virtual-disk-toovhd-and-fixed-size-disk"></a>Převést virtuální disk tooVHD hello a disk pevné velikosti 
+Pokud potřebujete tooconvert vyžaduje vaše virtuální disk toohello formát pro Azure, použijte jednu z metod hello v této části. Zálohujte hello virtuálních počítačů před spuštěním procesu převodu hello virtuální disk a ujistěte se, že hello virtuálního pevného disku Windows na místním serveru hello správně funguje. Vyřešte všechny chyby v rámci hello virtuální počítač před zkuste tooconvert nebo nahrajte ho tooAzure.
 
-Převedete-li disk, vytvořte virtuální počítač, který používá převedený disk. Spuštění a přihlášení do virtuálního počítače na dokončení Příprava virtuálního počítače pro odesílání.
+Převedete-li hello disk, vytvořte virtuální počítač, který používá hello převést disk. Spuštění a přihlášení toofinish virtuálních počítačů toohello Příprava hello virtuálních počítačů pro nahrávání.
 
 ### <a name="convert-disk-using-hyper-v-manager"></a>Převedení disku pomocí Správce technologie Hyper-V
-1. Otevřete Správce technologie Hyper-V a vyberte místního počítače na levé straně. V nabídce nahoře seznamu počítačů, klikněte na tlačítko **akce** > **upravit Disk**.
-2. Na **najít virtuální pevný Disk** obrazovky, vyhledejte a vyberte virtuální disk.
-3. Na **zvolit akci** obrazovky a pak vyberte **převést** a **Další**.
-4. Pokud musíte převést z VHDX, vyberte **virtuálního pevného disku** a pak klikněte na tlačítko **další**
-5. Pokud musíte převést z dynamicky se zvětšující disku, vyberte **pevnou velikost** a pak klikněte na tlačítko **další**
-6. Vyhledejte a vyberte cestu pro uložení nového souboru virtuálního pevného disku.
+1. Otevřete Správce technologie Hyper-V a vyberte místního počítače na levé straně hello. V nabídce hello výše hello seznamu počítačů, klikněte na tlačítko **akce** > **upravit Disk**.
+2. Na hello **najít virtuální pevný Disk** obrazovky, vyhledejte a vyberte virtuální disk.
+3. Na hello **zvolit akci** obrazovky a pak vyberte **převést** a **Další**.
+4. Pokud potřebujete tooconvert z VHDX, vyberte **virtuálního pevného disku** a pak klikněte na tlačítko **další**
+5. Pokud potřebujete tooconvert z dynamicky se zvětšující disku, vyberte **pevnou velikost** a pak klikněte na tlačítko **další**
+6. Vyhledejte a vyberte cestu toosave hello nový soubor virtuálního pevného disku do.
 7. Klikněte na **Dokončit**.
 
 >[!NOTE]
->Příkazy v tomto článku se musí spustit v relaci prostředí PowerShell zvýšenými oprávněními.
+>Hello příkazy v tomto článku se musí spustit v relaci prostředí PowerShell zvýšenými oprávněními.
 
 ### <a name="convert-disk-by-using-powershell"></a>Převést disk pomocí prostředí PowerShell
-Můžete převést virtuální disk pomocí [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) příkazu v prostředí Windows PowerShell. Vyberte **spustit jako správce** při spuštění prostředí PowerShell. 
+Můžete převést virtuální disk s použitím hello [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) příkazu v prostředí Windows PowerShell. Vyberte **spustit jako správce** při spuštění prostředí PowerShell. 
 
-Následující ukázkový příkaz převede z VHDX na virtuální pevný disk a z dynamicky se zvětšující disk do pevné velikosti:
+Hello následující ukázkový příkaz převede z VHDX tooVHD a z dynamicky se zvětšující toofixed – velikost disku:
 
 ```Powershell
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
-V tomto příkazu nahraďte hodnotu pro "-cestu" cestou k virtuální pevný disk, který chcete převést a hodnota "-DestinationPath" s novou cestu a název převedený disku.
+V tomto příkazu nahraďte hello hodnota pro "-cestu" s hello cesta toohello virtuální pevný disk, který chcete tooconvert a hello hodnota pro "-DestinationPath" s hello novou cestu a název hello převést disk.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Převod z formátu VMware VMDK disku
-Pokud máte bitovou kopii virtuálního počítače s Windows [formát souboru VMDK](https://en.wikipedia.org/wiki/VMDK), ho převést na virtuální pevný disk pomocí [převaděč virtuálních počítačů Microsoft](https://www.microsoft.com/download/details.aspx?id=42497). Další informace najdete v článku na blogu [jak převést VMware VMDK na VHD Hyper-V](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
+Pokud obsahuje bitovou kopii virtuálního počítače s Windows hello [formát souboru VMDK](https://en.wikipedia.org/wiki/VMDK), převeďte ho tooa virtuální pevný disk pomocí hello [převaděč virtuálních počítačů Microsoft](https://www.microsoft.com/download/details.aspx?id=42497). Další informace najdete v článku blog hello [jak tooConvert virtuální pevný disk tooHyper V VMware VMDK](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
 ## <a name="set-windows-configurations-for-azure"></a>Nastavení konfigurace systému Windows Azure
 
-Na virtuálním počítači, který chcete nahrát do Azure, spusťte v následujících krocích z všechny příkazy [okno příkazového řádku se zvýšenými oprávněními](https://technet.microsoft.com/library/cc947813.aspx):
+Pro hello virtuální počítač, který máte v plánu tooupload tooAzure, spusťte všechny příkazy v hello následující kroky z [okno příkazového řádku se zvýšenými oprávněními](https://technet.microsoft.com/library/cc947813.aspx):
 
-1. Odeberte všechny statické trasy trvalé ve směrovací tabulce:
+1. Odeberte všechny statické trvalé trasy v tabulce směrování hello:
    
-   * Chcete-li zobrazit směrovací tabulka, spusťte `route print` na příkazovém řádku.
-   * Zkontrolujte **trvalost trasy** oddíly. Pokud je trvalé trasy, použijte [trasy odstranění](https://technet.microsoft.com/library/cc739598.apx) jeho odebrání.
-2. Odebrání proxy serveru WinHTTP:
+   * Tabulka směrování tooview hello spustit `route print` hello příkazového řádku.
+   * Zkontrolujte hello **trvalost trasy** oddíly. Pokud je trvalé trasy, použijte [trasy odstranění](https://technet.microsoft.com/library/cc739598.apx) tooremove ho.
+2. Odebrání proxy serveru WinHTTP hello:
    
     ```PowerShell
     netsh winhttp reset proxy
     ```
-3. Nastavte zásady sítě SAN disku na [Onlineall](https://technet.microsoft.com/library/gg252636.aspx). 
+3. Nastavit zásady sítě SAN hello disku příliš[Onlineall](https://technet.microsoft.com/library/gg252636.aspx). 
    
     ```PowerShell
     diskpart 
     ```
-    V otevřené okno příkazového řádku zadejte následující příkazy:
+    V hello otevřete okno příkazového řádku zadejte hello následující příkazy:
 
      ```DISKPART
     san policy=onlineall
     exit   
     ```
 
-4. Nastavit čas koordinovaný světový čas (UTC) pro systém Windows a typ spouštění služby Systémový čas (w32time) **automaticky**:
+4. Nastavit čas koordinovaný světový čas (UTC) pro systém Windows a hello nastaven typ spouštění služby Systémový čas (w32time) hello příliš**automaticky**:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
 
     Set-Service -Name w32time -StartupType Auto
     ```
-5. Nastavte profil spotřeby na **vysoký výkon**:
+5. Nastavit hello power profil toohello **vysoký výkon**:
 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
 
-## <a name="check-the-windows-services"></a>Zkontrolujte služby systému Windows
-Ujistěte se, že každý z následujících služeb systému Windows je nastavena na **Windows výchozí hodnoty**. Toto jsou minimální čísla služeb, které musí nastavit tak, abyste měli jistotu, že virtuální počítač má připojení. Chcete-li obnovit nastavení při spuštění, spusťte následující příkazy:
+## <a name="check-hello-windows-services"></a>Zkontrolujte služby systému Windows hello
+Ujistěte se, že každý z následujících služeb Windows hello je nastavená toohello **Windows výchozí hodnoty**. Toto jsou minimální čísla hello služeb, které musí být nastaven toomake se, že tento hello virtuálních počítačů má připojení. tooreset hello spuštění nastavení, spusťte následující příkazy hello:
    
 ```PowerShell
 Set-Service -Name bfe -StartupType Auto
@@ -115,10 +115,10 @@ Set-Service -Name RemoteRegistry -StartupType Auto
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>Aktualizace nastavení registru vzdálené plochy
-Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro připojení ke vzdálené ploše:
+Ujistěte se, že hello následující nastavení jsou správně nakonfigurované pro připojení ke vzdálené ploše:
 
 >[!Note] 
->Při spuštění, může se zobrazit chybová zpráva **Set-ItemProperty-cesta ' HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal služby - název &lt;název objektu&gt; &lt;hodnotu&gt;**  v těchto krocích. Chybová zpráva můžete bezpečně ignorovat. Znamená jen, že doména není vkládání tato konfigurace prostřednictvím objektu zásad skupiny.
+>Může se zobrazit chybová zpráva, když spustíte hello **Set-ItemProperty-cesta ' HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal služby - název &lt;název objektu&gt; &lt;hodnotu&gt;** v těchto krocích. Hello chybovou zprávu můžete bezpečně ignorovat. Znamená to, že pouze hello domény není vkládání tato konfigurace prostřednictvím objektu zásad skupiny.
 >
 >
 
@@ -130,19 +130,19 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord
     ```
    
-2. Správné nastavení portu RDP (výchozí port 3389):
+2. nastavená Hello portu RDP (výchozí port 3389):
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" 3389 -Type DWord
     ```
-    Při nasazení virtuálního počítače, výchozí pravidla vytvářejí proti portu 3389. Pokud chcete změnit číslo portu, udělat po nasazení virtuálního počítače v Azure.
+    Při nasazení virtuálního počítače, hello výchozí pravidla se vytvářejí na portu 3389. Pokud chcete, aby číslo portu hello toochange, udělat po nasazení hello virtuálních počítačů v Azure.
 
-3. V každé síťové rozhraní naslouchá naslouchací proces:
+3. naslouchací proces Hello naslouchá v každé síťové rozhraní:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" 0 -Type DWord
    ```
-4. Konfigurace režimu ověřování na úrovni sítě pro připojení RDP:
+4. Konfigurace režimu hello ověřování na úrovni sítě pro připojení RDP hello:
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" 1 -Type DWord
@@ -152,7 +152,7 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "fAllowSecProtocolNegotiation" 1 -Type DWord
      ```
 
-5. Udržování hodnotu:
+5. Nastavte hodnotu udržování hello:
     
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveEnable" 1 -Type DWord
@@ -166,25 +166,25 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fInheritReconnectSame" 1 -Type DWord
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fReconnectSame" 0 -Type DWord
     ```
-7. Omezte počet souběžných připojení:
+7. Omezit hello počet souběžných připojení:
     
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" 4294967295 -Type DWord
     ```
-8. Pokud jsou všechny certifikáty podepsané svým držitelem svázané s naslouchací proces protokolu RDP, odeberte je:
+8. Pokud jsou všechny certifikáty podepsané svým držitelem vázáno RDP toohello naslouchací proces, odeberte je:
     
     ```PowerShell
     Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash"
     ```
-    Toto je zajistit, že se můžete připojit na začátku při nasazení virtuálního počítače. Můžete také zkontrolovat to v pozdější fázi po nasazení virtuálního počítače v Azure v případě potřeby.
+    Toto je toomake se, zda se můžete připojit od začátku hello při nasazování hello virtuálních počítačů. Také to můžete zkontrolovat po hello virtuální počítač nasazen v Azure, v případě potřeby v pozdější fázi.
 
-9. Pokud virtuální počítač bude součástí domény, zkontrolujte všechny následující nastavení a ujistěte se, že předchozí nastavení se nevrátí. Zásady, které se musí kontrolovat jsou následující:
+9. Pokud hello virtuálních počítačů bude součástí domény, zkontrolujte, že všechny hello následující nastavení toomake jistotu, že hello předchozí nastavení se nevrátí. Hello zásady, které se musí kontrolovat jsou hello následující:
     
     - Je povolen protokol RDP:
 
          Počítač Konfigurace uživatele\Zásady\Nastavení systému Settings\Administrative Templates\ Windows\Vzdálená plocha\Hostitel relace vzdálené plochy\Připojení:
          
-         **Povolit uživatelům vzdálené připojení pomocí vzdálené plochy**
+         **Povolit uživatelům tooconnect vzdáleně pomocí vzdálené plochy**
 
     - NLA zásad skupiny:
 
@@ -204,14 +204,14 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
         
         **Automatické obnovení připojení**
 
-    - Omezení počtu připojení nastavení:
+    - Omezit počet hello nastavení připojení:
 
         Počítač Konfigurace uživatele\Zásady\Nastavení systému Settings\Administrative pro správu\Součásti systému Windows\Vzdálená plocha\Hostitel relace vzdálené plochy\Připojení: 
         
         **Omezení počtu připojení**
 
 ## <a name="configure-windows-firewall-rules"></a>Konfigurace pravidel brány Windows Firewall
-1. Zapněte bránu Windows Firewall na tři profily (domény, Standard a veřejný):
+1. Zapněte bránu Windows Firewall na hello tři profily (domény, Standard a veřejný):
 
    ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile' -name "EnableFirewall" -Value 1 -Type DWord
@@ -219,26 +219,26 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 1 -Type DWord
    ```
 
-2. V prostředí PowerShell povolit WinRM pomocí tří profilů brány firewall (Domain, Private a Public) a povolte službu vzdáleného prostředí PowerShell, spusťte následující příkaz:
+2. Spusťte následující příkaz v prostředí PowerShell tooallow WinRM prostřednictvím hello tří profilů brány firewall (Domain, Private a Public) hello a povolte hello vzdáleného prostředí PowerShell služby:
    
    ```PowerShell
     Enable-PSRemoting -force
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
    ```
-3. Povolte následující pravidla brány firewall umožňuje provoz protokolu RDP 
+3. Povolte následující pravidla brány firewall, tooallow provoz protokolu RDP hello hello 
 
    ```PowerShell
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
    ```   
-4. Povolení sdílení souborů a tiskáren pravidla, aby virtuální počítač mohli odpovídat na příkaz ping uvnitř virtuální sítě:
+4. Povolení hello souboru a sdílení tiskáren pravidla, aby hello virtuálních počítačů může odpovídat příkazu ping tooa uvnitř hello virtuální sítě:
 
    ```PowerShell
     netsh advfirewall firewall set rule dir=in name="File and Printer Sharing (Echo Request - ICMPv4-In)" new enable=yes
    ``` 
-5. Pokud virtuální počítač bude součástí domény, zkontrolujte následující nastavení a ujistěte se, že předchozí nastavení se nevrátí. AD zásady, které se musí kontrolovat jsou následující:
+5. Pokud hello virtuálních počítačů bude součástí domény, zkontrolujte následující nastavení toomake jistotu, že hello předchozí nastavení se nevrátí hello. Hello AD zásady, které se musí kontrolovat jsou hello následující:
 
-    - Povolení profilů brány Windows Firewall
+    - Povolení profilů brány Firewall systému Windows hello
 
         Počítač Konfigurace uživatele\Zásady\Nastavení systému Settings\Administrative správu\Síť\Síťová Connection\Windows Firewall\Domain Profile\Windows brány Firewall: **chránit všechna síťová připojení**
 
@@ -257,14 +257,14 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
         Počítač Konfigurace uživatele\Zásady\Nastavení systému Settings\Administrative správu\Síť\Síťová Connection\Windows Firewall\Standard Profile\Windows brány Firewall: **povolit výjimky protokolu ICMP**
 
 ## <a name="verify-vm-is-healthy-secure-and-accessible-with-rdp"></a>Ověřte, zda že virtuální počítač je v pořádku, zabezpečenou a přístupné pomocí protokolu RDP 
-1. Pokud chcete mít jistotu, že disk je v pořádku a konzistentní, spusťte disková operace kontroly v dalším restartování virtuálního počítače:
+1. toomake zda hello disku je v pořádku a konzistentní, spustit operaci kontroly disku v dalším restartování virtuálního počítače hello:
 
     ```PowerShell
     Chkdsk /f
     ```
-    Ujistěte se, že tato sestava zobrazuje v pořádku a vyčištění disku.
+    Ujistěte se, že hello sestava zobrazí v pořádku a vyčištění disku.
 
-2. Nastavení konfiguračních dat spouštění (BCD). 
+2. Nastavení konfiguračních dat spouštění (BCD) hello. 
 
     > [!Note]
     > Zajistěte, aby spuštění těchto příkazů v okně CMD se zvýšenými oprávněními a **není** na prostředí PowerShell:
@@ -282,44 +282,44 @@ Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro 
    
    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
    ```
-3. Ověřte, že úložiště Windows Management Instrumentations konzistentní. Chcete-li to provést, spusťte následující příkaz:
+3. Ověřte, zda že je konzistentní tohoto úložiště Instrumentations správy Windows hello. tooperform se spuštění hello následující příkaz:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Pokud úložiště je poškozený, přečtěte si téma [rozhraní WMI: poškození úložiště, nebo Ne](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
+    Pokud je poškozený hello úložiště, najdete v části [rozhraní WMI: poškození úložiště, nebo Ne](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-4. Ujistěte se, že není jiná aplikace pomocí portu 3389. Tento port se používá pro službu protokolu RDP v Azure. Můžete spustit **netstat - anob** zobrazíte v používaných portů ve virtuálním počítači:
+4. Ujistěte se, že nepoužívá jiná aplikace hello portu 3389. Tento port se používá pro hello RDP služby v Azure. Můžete spustit **netstat - anob** toosee v používaných portů na hello virtuálních počítačů:
 
     ```PowerShell
     netstat -anob
     ```
 
-5. Pokud virtuální pevný disk systému Windows, který chcete nahrát je řadič domény, postupujte podle těchto kroků:
+5. Pokud má tooupload virtuálního pevného disku Windows hello je řadič domény, postupujte podle těchto kroků:
 
-    A. Postupujte podle [tyto další kroky](https://support.microsoft.com/kb/2904015) Příprava disku.
+    A. Postupujte podle [tyto další kroky](https://support.microsoft.com/kb/2904015) tooprepare hello disku.
 
-    B. Zajistěte, aby v případě, že budete muset spustit virtuální počítač v režimu obnovení adresářových služeb v určitém okamžiku znát heslo režimu obnovení adresářových služeb. Můžete chtít odkazovat na tento odkaz nastavit [heslo režimu obnovení adresářových služeb](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+    B. Ujistěte se, že znáte hello heslo režimu obnovení adresářových služeb v případě, že máte toostart hello virtuálního počítače v režimu obnovení adresářových služeb v určitém okamžiku. Může být vhodné propojit toorefer toothis tooset hello [heslo režimu obnovení adresářových služeb](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-6. Ujistěte se, že jsou pro vás známé předdefinovaného účtu Administrator a heslo. Můžete obnovit aktuální heslo místního správce a ujistěte se, že můžete tento účet pro přihlášení k systému Windows přes připojení RDP. Objekt zásad skupiny "Povolit přihlášení prostřednictvím vzdálené plochy" řídí toto oprávnění přístupu. Tento objekt můžete zobrazit v editoru zásad skupiny místní v části:
+6. Ujistěte se, že hello předdefinovaného účtu Administrator a heslo jsou známé tooyou. Možná chcete tooreset hello aktuální heslo místního správce a ujistěte se, že můžete použít tento účet toosign v tooWindows prostřednictvím hello připojení RDP. Objekt zásad skupiny "Povolit přihlášení prostřednictvím vzdálené plochy" hello řídí toto oprávnění přístupu. Tento objekt můžete zobrazit v hello Editor místních zásad skupiny v části:
 
     Počítač Konfigurace počítače\Nastavení systému Windows\Nastavení Settings\Local přiřazení uživatelských práv
 
-7. Zkontrolujte následující AD zásady a ujistěte se, že nejsou blokuje přístup RDP prostřednictvím protokolu RDP ani ze sítě:
+7. Zkontrolujte, že hello následující AD zásady toomake jistotu, že nejsou blokuje přístup RDP prostřednictvím protokolu RDP ani z hello sítě:
 
-    - Konfigurace počítače\Nastavení systému Windows\Nastavení Settings\Local Policies\User Rights Assignment\Deny přístup počítačů k tomuto počítači ze sítě.
+    - Počítač Konfigurace počítače\Nastavení systému Windows\Nastavení Settings\Local Policies\User Rights Assignment\Deny přístup toothis počítači ze sítě hello
 
     - Počítač Konfigurace počítače\Nastavení systému Windows\Nastavení Settings\Local Policies\User Rights Assignment\Deny přihlášení prostřednictvím vzdálené plochy
 
 
-8. Restartování virtuálního počítače a ujistěte se, že je stále v pořádku Windows jsou dostupné přes připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští úplně pak otestovat, zda je dostupný protokolu RDP.
+8. Pomocí připojení RDP hello dosažitelný restartování hello virtuálních počítačů toomake se, že Windows je stále v pořádku. V tomto okamžiku můžete má toocreate virtuálního počítače ve vaší místní technologie Hyper-V toomake zda hello, které je zcela spouštění virtuálních počítačů a potom otestovat, zda je dostupný protokolu RDP.
 
-9. Odeberte všechny filtry navíc rozhraní TDI, jako je například software, která analyzuje TCP paketů nebo další brány firewall. Můžete také zkontrolovat to v pozdější fázi po nasazení virtuálního počítače v Azure v případě potřeby.
+9. Odeberte všechny filtry navíc rozhraní TDI, jako je například software, která analyzuje TCP paketů nebo další brány firewall. Také to můžete zkontrolovat po hello virtuální počítač nasazen v Azure, v případě potřeby v pozdější fázi.
 
-10. Odinstalujte všechny ostatní software třetích stran a ovladač, který se vztahuje k fyzické komponenty nebo jakoukoli jinou technologii virtualizace.
+10. Odinstalujte všechny ostatní software třetích stran a ovladač, který je součástí související toophysical nebo jakoukoli jinou technologii virtualizace.
 
 ### <a name="install-windows-updates"></a>Instalace aktualizací systému Windows
-Ideální konfigurace **mít počítač na nejnovější úroveň opravy**. Pokud to není možné, ujistěte se, zda jsou nainstalovány následující aktualizace:
+Konfigurace ideální Hello je příliš**mají úroveň oprav hello hello počítače na nejnovější hello**. Pokud to není možné, ujistěte se, že hello následující aktualizace jsou nainstalované:
 
 |                       |                   |           |                                       Minimální verze x64       |                                      |                                      |                            |
 |-------------------------|-------------------|------------------------------------|---------------------------------------------|--------------------------------------|--------------------------------------|----------------------------|
@@ -352,51 +352,51 @@ Ideální konfigurace **mít počítač na nejnovější úroveň opravy**. Poku
 |                         | Win32k.sys        | 6.1.7601.23807 - KB4022719         | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726           | 10.0.14393.594 - KB4022715           | -                          |
 |                         | rdpdd.dll         | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | -                          |
 |                         | Rdpwd.sys         | 6.1.7601.23403 - KB3125574         | -                                           | -                                    | -                                    | -                          |
-| Zabezpečení                | Z důvodu WannaCrypt | KB4012212                          | KB4012213                                   | KB4012213                            | KB4012606                            | KB4012606                  |
+| Zabezpečení                | Kvůli tooWannaCrypt | KB4012212                          | KB4012213                                   | KB4012213                            | KB4012606                            | KB4012606                  |
 |                         |                   |                                    | KB4012216                                   |                                      | KB4013198                            | KB4013198                  |
 |                         |                   | KB4012215                          | KB4012214                                   | KB4012216                            | KB4013429                            | KB4013429                  |
 |                         |                   |                                    | KB4012217                                   |                                      | KB4013429                            | KB4013429                  |
        
-### Kdy použít nástroj sysprep<a id="step23"></a>    
+### Když toouse sysprep<a id="step23"></a>    
 
-Nástroj Sysprep je proces, který můžete spustit do instalace systému windows, který resetuje instalace systému a budou tak poskytovat "ihned prostředí" odebráním všechna osobní data a resetování několik komponent. Obvykle to uděláte Pokud chcete vytvořit šablonu, ze kterého můžete nasadit několik ostatních virtuálních počítačů, které mají určitou konfiguraci. Tento postup se nazývá **zobecněn image**.
+Nástroj Sysprep je proces, který můžete spustit do instalace systému windows, který obnoví hello instalace systému hello a budou tak poskytovat "předinstalované hello prostředí" odebráním všechna osobní data a resetování několik komponent. Obvykle to uděláte Pokud chcete, aby toocreate šablony, ze kterého můžete nasadit několik ostatních virtuálních počítačů, které mají určitou konfiguraci. Tento postup se nazývá **zobecněn image**.
 
-Pokud místo toho chcete jenom pro účely vytvoření jeden virtuální počítač z jednoho disku, nemáte pomocí nástroje sysprep. V takovém případě můžete pouze vytvořit virtuální počítač z, která se označuje jako **specializované image**.
+Pokud místo toho chcete pouze toocreate jeden virtuální počítač z jednoho disku nemáte toouse nástroje sysprep. V této situaci můžete pouze vytvořit virtuální počítač z co se označuje jako hello **specializované image**.
 
-Další informace o tom, jak vytvořit virtuální počítač z specializované disku najdete v tématu:
+Další informace o tom, jak toocreate virtuálního počítače z specializované disku, najdete v části:
 
 - [Vytvoření virtuálního počítače z specializované disku](create-vm-specialized.md)
 - [Vytvoření virtuálního počítače z specializované disku VHD](https://azure.microsoft.com/resources/templates/201-vm-specialized-vhd/)
 
-Pokud chcete vytvořit bitovou kopii zobecněný, budete muset spustit nástroj sysprep. Další informace o nástroji Sysprep najdete v tématu [postup použití nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx). 
+Pokud chcete, aby toocreate zobecněný bitové kopie, musíte toorun nástroje sysprep. Další informace o nástroji Sysprep najdete v tématu [jak tooUse nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx). 
 
-Ne každý role nebo aplikace, který je nainstalován na počítači se systémem Windows podporuje tento generalizace. Proto před spuštěním tohoto postupu, naleznete v následujícím článku, abyste měli jistotu, že role tento počítač podporuje nástroj sysprep. Další informace najdete [podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Ne každý role nebo aplikace, který je nainstalován na počítači se systémem Windows podporuje tento generalizace. Před použitím tohoto postupu, získáte následující článek toomake opravdu toohello dané role hello daný počítač podporuje nástroj sysprep. Další informace najdete [podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
-### <a name="steps-to-generalize-a-vhd"></a>Postup generalize virtuální pevný disk
+### <a name="steps-toogeneralize-a-vhd"></a>Kroky toogeneralize virtuální pevný disk
 
 >[!NOTE]
-> Po spuštění sysprep.exe uvedeného v následujících krocích vypněte virtuální počítač a není znovu zapnout až do vytvoření bitové kopie z něj v Azure.
+> Po spuštění sysprep.exe jako zadaný v hello následující kroky, vypněte hello virtuálních počítačů a nejsou znovu zapnout až do vytvoření bitové kopie z něj v Azure.
 
-1. Přihlaste se k systému Windows virtuálního počítače.
+1. Přihlaste se toohello virtuální počítač s Windows.
 2. Spustit **příkazového řádku** jako správce. 
-3. Změňte adresář na: **%windir%\system32\sysprep**a poté spusťte **sysprep.exe**.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. Změnit adresář hello: **%windir%\system32\sysprep**a poté spusťte **sysprep.exe**.
+3. V hello **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že hello **generalizace** je zaškrtnuté políčko.
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)
 4. V **možnosti vypnutí**, vyberte **vypnutí**.
 5. Klikněte na **OK**.
-6. Po dokončení nástroj Sysprep, vypněte virtuální počítač. Nepoužívejte **restartujte** vypnutí virtuálního počítače.
-7. Virtuální pevný disk je nyní připraven k odeslání. Další informace o tom, jak vytvořit virtuální počítač z zobecněný disku najdete v tématu [nahrát zobecněný virtuální pevný disk a použít ho k vytvoření nové virtuální počítače v Azure](sa-upload-generalized.md).
+6. Po dokončení nástroj Sysprep, vypněte hello virtuálních počítačů. Nepoužívejte **restartujte** tooshut dolů hello virtuálních počítačů.
+7. Hello virtuálního pevného disku je nyní připraven toobe nahrát. Další informace o tom, jak toocreate virtuální počítač z zobecněný disk, najdete v části [nahrát zobecněný virtuální pevný disk a použít ho toocreate nové virtuální počítače v Azure](sa-upload-generalized.md).
 
 
 ## <a name="complete-recommended-configurations"></a>Dokončete doporučené konfigurace
-Následující nastavení neovlivní odesílání virtuálního pevného disku. Ale důrazně doporučujeme nakonfigurovat je.
+Hello následující nastavení neovlivní odesílání virtuálního pevného disku. Ale důrazně doporučujeme nakonfigurovat je.
 
-* Nainstalujte [virtuální počítače Azure agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potom můžete povolit rozšíření virtuálního počítače. Rozšíření virtuálního počítače implementovat většinu důležitých funkcí, které může používat s virtuální počítače jako je resetování hesla, konfigurace RDP a tak dále. Další informace naleznete v tématu:
+* Nainstalujte hello [agenta virtuální počítače Azure](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potom můžete povolit rozšíření virtuálního počítače. rozšíření virtuálního počítače Hello implementovat většinu hello důležité funkce, může být vhodné toouse pomocí vašich virtuálních počítačů jako je resetování hesla, konfigurace RDP a tak dále. Další informace naleznete v tématu:
 
     - [Agent virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [Agent virtuálního počítače a rozšíření – část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-* Výpis protokolu může být užitečné při řešení problémů s havárií systému Windows. Povolení protokolu kolekce výpisu stavu:
+* Hello výpisu protokolu může být užitečné při řešení problémů s havárií systému Windows. Povolte hello výpisu protokolu kolekce:
   
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
@@ -408,7 +408,7 @@ Následující nastavení neovlivní odesílání virtuálního pevného disku. 
     New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
     Set-Service -Name WerSvc -StartupType Manual
     ```
-    Pokud se zobrazí všechny chyby během procedurální kroků v tomto článku, znamená to, že klíče registru již existuje. V takovém případě použijte následující příkazy:
+    Pokud se zobrazí všechny chyby během žádné procedurální hello kroky v tomto článku, to znamená, že klíče registru hello již existuje. V takovém případě použijte hello místo následující příkazy:
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
@@ -418,13 +418,13 @@ Následující nastavení neovlivní odesílání virtuálního pevného disku. 
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
     Set-Service -Name WerSvc -StartupType Manual
     ```
-*  Po vytvoření virtuálního počítače v Azure doporučujeme umístit stránkovací soubor na svazek "Dočasné jednotka" ke zlepšení výkonu. Můžete nastavit to následujícím způsobem:
+*  Po vytvoření hello virtuálních počítačů v Azure doporučujeme umístit hello stránkovacího souboru na výkon tooimprove svazku "Jednotka dočasné" hello. Můžete nastavit to následujícím způsobem:
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile"
     ```
-Pokud je datový disk, který je připojen k virtuálnímu počítači, písmeno jednotky svazku dočasné jednotky je obvykle "D." Toto označení se může lišit v závislosti na počtu dostupných jednotek a nastavení, které provedete.
+Pokud je datový disk, který je připojený toohello virtuálních počítačů, písmeno jednotky svazku hello dočasné jednotky je obvykle "D." Toto označení se může lišit v závislosti na počtu hello dostupných jednotek a hello nastavení, které provedete.
 
 ## <a name="next-steps"></a>Další kroky
-* [Nahrajte image virtuálního počítače Windows Azure pro nasazení Resource Manager](upload-generalized-managed.md)
+* [Nahrát tooAzure bitové kopie virtuální počítač s Windows pro nasazení Resource Manager](upload-generalized-managed.md)
 

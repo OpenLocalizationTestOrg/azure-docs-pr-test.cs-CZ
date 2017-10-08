@@ -1,6 +1,6 @@
 ---
-title: "Nastavit možnosti přidávání virtuálních počítačích Azure do existující dostupnosti | Microsoft Docs"
-description: "Možnosti podpory přidávání virtuálních počítačích Azure do stávající sadu dostupnosti."
+title: "aaaSupportability přidávání stávající sadu dostupnosti virtuálních počítačů Azure tooan | Microsoft Docs"
+description: "Možnosti podpory přidávání virtuálních počítačích Azure tooan stávající sadu dostupnosti."
 services: virtual-machines-linux
 documentationcenter: 
 author: Deland-Han
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/15/2017
 ms.author: delhan
-ms.openlocfilehash: 3ce9b8a79108cb9e57df14bcb3354cc637193233
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: dc2bd86b916f1d1a0a0d4c9e870df829434c96b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Možnosti podpory přidávání virtuálních počítačích Azure do stávající sadu dostupnosti
+# <a name="supportability-of-adding-azure-vms-tooan-existing-availability-set"></a>Možnosti podpory přidávání virtuálních počítačích Azure tooan stávající sadu dostupnosti
 
-Někdy můžete setkat s omezení při přidání nových virtuálních počítačů (VM) do stávající sady dostupnosti. Následující graf zobrazuje podrobnosti o které řady virtuálních počítačů je možné kombinovat ve stejné sadě dostupnosti.
+Někdy můžete setkat s omezení při přidání nové virtuální počítače (VM) tooan stávající sady dostupnosti. Následující Hello grafu podrobnosti hello které řady virtuálních počítačů je možné kombinovat ve stejné skupině dostupnosti.
 
-Tady je podpoře matice do kombinovat různé typy virtuálních počítačů:
+Tady je hello sahat matice toomix různé typy virtuálních počítačů:
 
 Ná & sady dostupnosti.|Druhý virtuální počítač|A|Av2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
@@ -35,4 +35,4 @@ Ná & sady dostupnosti.|Druhý virtuální počítač|A|Av2|D|Dv2|Dv3|
 |Dv2||OK|OK|OK|OK|OK|
 |Dv3||OK|OK|OK|OK|OK|
 
-Všechny ostatní řady nemůže být ve stejné dostupnosti nastavit, protože vyžadují konkrétní hardware.
+Všechny ostatní řady nelze v hello stejné dostupnosti nastavit, protože vyžadují konkrétní hardware.

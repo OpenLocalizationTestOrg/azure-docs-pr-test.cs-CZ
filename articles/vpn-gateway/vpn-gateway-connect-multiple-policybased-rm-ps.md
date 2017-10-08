@@ -1,6 +1,6 @@
 ---
-title: "Připojit k více místně na základě zásad zařízení VPN Azure VPN Gateway: Azure Resource Manager: prostředí PowerShell | Microsoft Docs"
-description: "Tento článek vás provede konfigurací Azure brány sítě VPN založené na směrování pro více na základě zásad zařízení VPN pomocí Azure Resource Manageru a prostředí PowerShell."
+title: "Připojení na základě zásad zařízení VPN serveru Azure VPN Gateway toomultiple místní: Azure Resource Manager: prostředí PowerShell | Microsoft Docs"
+description: "Tento článek vás provede konfigurací Azure založené na trasách zařízení brány VPN toomultiple na základě zásad sítě VPN pomocí Azure Resource Manageru a prostředí PowerShell."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
-ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 866c78d96305207106a66cc3300c355e4b6bfbb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení brány Azure VPN k více místně na základě zásad zařízení VPN pomocí prostředí PowerShell
+# <a name="connect-azure-vpn-gateways-toomultiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení Azure VPN Gateway toomultiple místně na základě zásad zařízení VPN pomocí prostředí PowerShell
 
-Tento článek vám pomůže nakonfigurovat služby Azure na základě trasy VPN gateway se připojit k více místně na základě zásad zařízení VPN využívat vlastní zásady protokolu IPsec/IKE na připojení k síti S2S VPN.
+Tento článek vám pomůže nakonfigurovat Azure založené na trasách zařízení brány VPN tooconnect toomultiple místně na základě zásad VPN využívat vlastní zásady protokolu IPsec/IKE na připojení k síti S2S VPN.
 
 ## <a name="about-policy-based-and-route-based-vpn-gateways"></a>O zásadové a trasové brány VPN
 
-Zásady - *oproti* zařízení VPN založené na směrování se liší v jak selektory provoz protokolu IPsec jsou nastaveny na připojení:
+Zásady - *oproti* založené na trasách zařízení VPN se liší v jak selektory provoz protokolu IPsec hello jsou nastaveny na připojení:
 
-* **Na základě zásad** zařízení VPN použijte kombinace předpon z obou sítí můžete definovat, jak provoz je zašifrovaná nebo dešifrovat do tunelových propojení IPsec. Obvykle je založen na zařízení brány firewall, které provádějí filtrování paketů. Protokol IPsec tunel šifrování a dešifrování se přidají do paketu filtrování a zpracování modulu.
-* **Založené na trasách** zařízení VPN použijte selektory provoz any-to-any (zástupný znak) a umožní směrování/předávání tabulky přímý provoz na jiné tunelových propojení IPsec. Obvykle je založen na platformách směrovače, kde je každý tunelu IPsec modelován jako síťové rozhraní nebo VTI (virtuální tunel rozhraní).
+* **Na základě zásad** zařízení VPN použijte hello kombinace předpon z obou sítě toodefine jak provoz je zašifrovaná nebo dešifrovat do tunelových propojení IPsec. Obvykle je založen na zařízení brány firewall, které provádějí filtrování paketů. Protokol IPsec tunel šifrování a dešifrování se přidají filtrování paketů toohello a modul zpracování.
+* **Založené na trasách** zařízení VPN použijte selektory provoz any-to-any (zástupný znak) a umožňují směrování/předávání tabulky tunelových propojení IPsec toodifferent přímé přenosy. Obvykle je založen na platformách směrovače, kde je každý tunelu IPsec modelován jako síťové rozhraní nebo VTI (virtuální tunel rozhraní).
 
-Následující diagramy zvýrazněte dva modely:
+Hello následující diagramy zvýrazněte dva modely hello:
 
 ### <a name="policy-based-vpn-example"></a>Příklad sítě VPN založené na zásadách
 ![na základě zásad](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
@@ -50,39 +50,39 @@ V současné době Azure podporuje oba režimy brány sítě VPN: brány sítě 
 | **Max. Připojení S2S** | **1**                       | Basic nebo Standard: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |
 
-Pomocí vlastních zásad protokolu IPsec/IKE, teď můžete konfigurovat Azure brány sítě VPN založené na směrování a použít na základě předpony provoz selektory spolu s možností "**PolicyBasedTrafficSelectors**", pro připojení k místní zařízení VPN na základě zásad. Díky této funkci můžete pro připojení z virtuální sítě Azure a brány VPN k více místně na základě zásad zařízení VPN nebo brány firewall odebrání limit jednoho připojení z aktuální Azure na základě zásad VPN Gateway.
+Pomocí vlastních zásad protokolu IPsec/IKE hello teď můžete konfigurovat Azure založené na směrování VPN Gateway toouse provozu na základě předpony selektory s možností "**PolicyBasedTrafficSelectors**", zařízení sítě VPN založené na zásadách místní tooon tooconnect. Díky této funkci můžete tooconnect z virtuální sítě Azure a toomultiple brány VPN místně na základě zásad zařízení VPN nebo brány firewall hello jednoho připojení limit odebráním hello aktuální Azure na základě zásad brány sítě VPN.
 
 > [!IMPORTANT]
-> 1. Pokud chcete povolit toto připojení, musí podporovat zařízení sítě VPN založené na zásadách místní **IKEv2** pro připojení k Azure brány sítě VPN založené na trasách. Zkontrolujte dokumentaci sítě VPN.
-> 2. Místní sítě, připojení prostřednictvím zařízení VPN založené na zásadách s Tento mechanismus lze připojit pouze k virtuální síti Azure; **nelze přenosu do jiných sítích na pracovišti nebo virtuální sítě prostřednictvím tutéž bránu Azure VPN**.
-> 3. Možnost konfigurace je součástí vlastní zásady protokolu IPsec/IKE připojení. Pokud povolíte možnost selektoru provozu na základě zásad, musíte zadat dokončení zásady (algoritmy šifrování a integrity protokolu IPsec/IKE, klíče síly a životnost přidružení zabezpečení).
+> 1. tooenable toto připojení, musí podporovat zařízení sítě VPN založené na zásadách místní **IKEv2** tooconnect toohello Azure brány sítě VPN založené na trasách. Zkontrolujte dokumentaci sítě VPN.
+> 2. připojení prostřednictvím zařízení VPN založené na zásadách s Tento mechanismus Hello místní sítě lze připojit pouze toohello virtuální síť Azure; **jejich nelze přenosu tooother místní sítě nebo virtuální sítě prostřednictvím hello tutéž bránu Azure VPN**.
+> 3. možnost konfigurace Hello je součástí hello vlastní zásady protokolu IPsec/IKE připojení. Pokud povolíte možnost selektoru hello provozu na základě zásad, musíte zadat dokončení zásad hello (algoritmy šifrování a integrity protokolu IPsec/IKE, klíče síly a životnost přidružení zabezpečení).
 
-Následující diagram ukazuje proč směrování přenosu prostřednictvím brány Azure VPN nefunguje s možností na základě zásad:
+Hello následující diagram znázorňuje, proč směrování přenosu prostřednictvím brány Azure VPN nefunguje s možností na základě zásad hello:
 
 ![na základě zásad přenosu](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
 
-Jak je vidět v diagramu, má bránu Azure VPN selektory provoz z virtuální sítě pro každé předpony místní sítě, ale není předpony křížové připojení. Například místní lokality 2, 3 lokality a lokality 4 můžete každý sdělit VNet1 v uvedeném pořadí, ale nemůže připojit prostřednictvím brány Azure VPN k sobě navzájem. Diagram znázorňuje selektory cross-connect přenosy, které nejsou k dispozici ve službě Azure VPN gateway v této konfiguraci.
+Jak je vidět v diagramu hello, má hello Azure VPN gateway selektory provoz z virtuální sítě tooeach hello předpony hello místní sítě, ale není hello křížové připojení předpony. Například na místní lokalitu 2, 3 lokality a lokality 4 může každý komunikovat tooVNet1 v uvedeném pořadí, ale nemůže připojit prostřednictvím hello Azure VPN gateway tooeach jiné. Hello diagram znázorňuje hello provoz selektory, které nejsou k dispozici v bráně Azure VPN hello v této konfiguraci připojení mezi.
 
 ## <a name="configure-policy-based-traffic-selectors-on-a-connection"></a>Konfigurace založená na zásadách provoz selektory na připojení
 
-Podle pokynů v tomto článku podle stejné příklad, jak je popsáno v [zásady Konfigurace protokolu IPsec/IKE pro připojení S2S nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) k navázání připojení S2S VPN. To je ukázáno v následujícím diagramu:
+Hello pokyny v této postupujte podle článku hello stejné příklad, jak je popsáno v [zásady Konfigurace protokolu IPsec/IKE pro připojení S2S nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) tooestablish připojení S2S VPN. To je ukázáno v následujícím diagramu hello:
 
 ![zásady s2s](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
-V pracovním postupu povolte tyto možnosti připojení:
-1. Vytvoření virtuální sítě, brána sítě VPN a bránu místní sítě pro připojení mezi různými místy
+Hello pracovního postupu tooenable tyto možnosti připojení:
+1. Vytvoření virtuální sítě hello, brána sítě VPN a bránu místní sítě pro připojení mezi různými místy
 2. Vytvoření zásady protokolu IPsec/IKE
-3. Použít zásady při vytváření připojení S2S nebo VNet-to-VNet a **povolit provoz na základě zásad selektory** k připojení
-4. Pokud je již vytvořili připojení, můžete použít nebo aktualizaci zásad na existující připojení
+3. Použít zásady hello při vytváření připojení S2S nebo VNet-to-VNet a **povolit hello provozu na základě zásad selektory** hello připojení
+4. Pokud hello připojení je již vytvořený, můžete použít nebo aktualizovat existující připojení tooan hello zásad
 
 ## <a name="enable-policy-based-traffic-selectors-on-a-connection"></a>Povolit provoz na základě zásad selektory na připojení
 
-Ujistěte se, když jste dokončili [část 3 zásady článku Konfigurace protokolu IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md) pro tento oddíl. Následující příklad používá stejné parametry a kroky:
+Ujistěte se, když jste dokončili [část 3 článku zásady Konfigurace protokolu IPsec/IKE hello](vpn-gateway-ipsecikepolicy-rm-powershell.md) pro tento oddíl. Následující příklad používá Hello hello stejné parametry a kroky:
 
-### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Krok 1 – vytvoření virtuální sítě, brána sítě VPN a bránu místní sítě
+### <a name="step-1---create-hello-virtual-network-vpn-gateway-and-local-network-gateway"></a>Krok 1 – Vytvoření hello virtuální sítě, brána sítě VPN a bránu místní sítě
 
-#### <a name="1-declare-your-variables--connect-to-your-subscription"></a>1. Deklarace proměnných a připojení k vašemu předplatnému
-Pro toto cvičení začneme deklarací proměnných. Při konfiguraci pro ostrý provoz nezapomeňte nahradit hodnoty vlastními.
+#### <a name="1-declare-your-variables--connect-tooyour-subscription"></a>1. Deklarace proměnných & připojení tooyour odběru
+Pro toto cvičení začneme deklarací proměnných. Zda tooreplace hello hodnoty vlastními být při konfiguraci pro produkční prostředí.
 
 ```powershell
 $Sub1          = "<YourSubscriptionName>"
@@ -108,9 +108,9 @@ $LNGPrefix61   = "10.61.0.0/16"
 $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
-Pokud chcete používat rutiny Resource Manageru, ujistěte se, že jste přešli do režimu prostředí PowerShell. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
+toouse hello rutiny Resource Manager, ujistěte se, že jste přešli tooPowerShell režimu. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
-Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+Otevřete konzolu prostředí PowerShell a připojte tooyour účtu. Použijte následující ukázka toohelp, ke kterým se připojujete hello:
 
 ```powershell
 Login-AzureRmAccount
@@ -118,8 +118,8 @@ Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2. Vytvoření virtuální sítě, brána sítě VPN a bránu místní sítě
-Následující příklad vytvoří virtuální síť, virtuální sítě TestVNet1 s tři podsítě a bránu VPN. Při nahrazování hodnot je důležité vždy pojmenovat podsítě brány konkrétně GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
+#### <a name="2-create-hello-virtual-network-vpn-gateway-and-local-network-gateway"></a>2. Vytvoření virtuální sítě hello, brána sítě VPN a bránu místní sítě
+Hello následující ukázka vytvoří hello virtuální sítě, virtuální sítě TestVNet1 s tři podsítě a brány VPN hello. Při nahrazování hodnot je důležité vždy pojmenovat podsítě brány konkrétně GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -143,9 +143,9 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 #### <a name="1-create-an-ipsecike-policy"></a>1. Vytvoření zásady protokolu IPsec/IKE
 
 > [!IMPORTANT]
-> Musíte vytvořit zásady protokolu IPsec/IKE. Chcete-li povolit možnost "UsePolicyBasedTrafficSelectors" k připojení.
+> Je nutné toocreate zásady protokolu IPsec/IKE v pořadí tooenable možnost "UsePolicyBasedTrafficSelectors" hello připojení.
 
-Následující příklad vytvoří zásadu protokolu IPsec/IKE se tyto algoritmy a parametry:
+Hello následující příklad vytvoří zásady protokolu IPsec/IKE s tyto algoritmy a parametry:
 * IKEv2: DHGroup24 AES256, SHA384
 * Protokol IPsec: AES256, SHA256, PFS24 SA životnost 3600 sekund & 2048KB
 
@@ -153,8 +153,8 @@ Následující příklad vytvoří zásadu protokolu IPsec/IKE se tyto algoritmy
 $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
 ```
 
-#### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Vytvoření připojení k síti VPN S2S s selektory provozu na základě zásad a zásad protokolu IPsec/IKE
-Vytvoření připojení k síti VPN S2S a použití zásady protokolu IPsec/IKE vytvořili v předchozím kroku. Mějte na paměti další parametru "-UsePolicyBasedTrafficSelectors $True" což umožňuje na základě zásad provoz selektory pro připojení.
+#### <a name="2-create-hello-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Vytvoření připojení S2S VPN hello s selektory provozu na základě zásad a zásad protokolu IPsec/IKE
+Vytvoření připojení k síti VPN S2S a použití zásady protokolu IPsec/IKE hello vytvořili v předchozím kroku hello. Mějte na paměti další parametru hello "-UsePolicyBasedTrafficSelectors $True" což umožňuje na základě zásad provoz selektory hello připojení.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -163,13 +163,13 @@ $lng6 = Get-AzureRmLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
 ```
 
-Po dokončení těchto kroků, připojení k síti S2S VPN používat definované zásady protokolu IPsec/IKE a povolit provoz na základě zásad selektory pro připojení. Stejný postup pro přidání více připojení do dalších místních zařízení VPN založené na zásadách ze tutéž bránu Azure VPN, můžete opakovat.
+Po dokončení kroků hello hello připojení S2S VPN používat hello definované zásady protokolu IPsec/IKE a povolit provoz na základě zásad selektory hello připojení. Můžete opakovat hello stejné kroky tooadd další připojení tooadditional místně na základě zásad zařízení VPN z hello tutéž bránu Azure VPN.
 
 ## <a name="update-policy-based-traffic-selectors-for-a-connection"></a>Aktualizace na základě zásad provoz selektory pro připojení
-Poslední části se dozvíte, jak aktualizovat možnost selektory provozu na základě zásad pro existující připojení S2S VPN.
+poslední část Hello ukazuje, jak tooupdate hello provozu na základě zásad selektory možnost pro existující připojení S2S VPN.
 
-### <a name="1-get-the-connection"></a>1. Získání připojení
-Získáte prostředek připojení.
+### <a name="1-get-hello-connection"></a>1. Získání připojení hello
+Získáte prostředek připojení hello.
 
 ```powershell
 $RG1          = "TestPolicyRG1"
@@ -177,20 +177,20 @@ $Connection16 = "VNet1toSite6"
 $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 ```
 
-### <a name="2-check-the-policy-based-traffic-selectors-option"></a>2. Zaškrtněte možnost selektory provozu na základě zásad
-Následující řádek ukazuje, zda na základě zásad provoz selektory se používají pro připojení:
+### <a name="2-check-hello-policy-based-traffic-selectors-option"></a>2. Zkontrolujte možnost selektory hello provozu na základě zásad
+Hello následující řádek ukazuje, zda hello provozu na základě zásad selektory se používají pro připojení hello:
 
 ```powershell
 $connection6.UsePolicyBasedTrafficSelectors
 ```
 
-Pokud vrátí řádek "**True**", pak selektory založené na zásadách provozu se konfigurují na připojení; jinak vrátí hodnotu "**False**."
+Pokud vrátí řádek hello "**True**", pak selektory založené na zásadách provozu se konfigurují na hello připojení; jinak vrátí hodnotu "**False**."
 
-### <a name="3-update-the-policy-based-traffic-selectors-on-a-connection"></a>3. Aktualizovat selektory provozu na základě zásad v připojení
-Jakmile je získat prostředek připojení, můžete povolit nebo zakázat možnost.
+### <a name="3-update-hello-policy-based-traffic-selectors-on-a-connection"></a>3. Aktualizovat hello selektory provozu na základě zásad v připojení
+Po získání hello připojení prostředků můžete povolit nebo zakázat možnost hello.
 
 #### <a name="disable-usepolicybasedtrafficselectors"></a>Zakázat UsePolicyBasedTrafficSelectors
-Následující příklad zakáže možnost selektory provozu na základě zásad, ale ponechá zásad protokolu IPsec/IKE beze změny:
+Hello následující příklad zakazuje možnost selektory hello provozu na základě zásad, ale nechá hello zásad protokolu IPsec/IKE beze změny:
 
 ```powershell
 $RG1          = "TestPolicyRG1"
@@ -201,7 +201,7 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 ```
 
 #### <a name="enable-usepolicybasedtrafficselectors"></a>Povolit UsePolicyBasedTrafficSelectors
-Následující příklad umožňuje selektory provozu na základě zásad, ale ponechá zásad protokolu IPsec/IKE beze změny:
+Hello následující příklad povolí možnost selektory hello provozu na základě zásad, ale nechá hello zásad protokolu IPsec/IKE beze změny:
 
 ```powershell
 $RG1          = "TestPolicyRG1"
@@ -212,6 +212,6 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Po dokončení připojení můžete přidat virtuální počítače tooyour virtuální sítě. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Také zkontrolujte [zásady Konfigurace protokolu IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) Další informace o vlastních zásad protokolu IPsec/IKE.

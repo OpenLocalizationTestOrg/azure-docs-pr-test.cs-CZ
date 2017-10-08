@@ -1,6 +1,6 @@
 ---
-title: "Spravovat výpočetní uzly clusteru HPC Pack | Microsoft Docs"
-description: "Další informace o nástroje skript prostředí PowerShell pro přidání, odebrání, spuštění a zastavení výpočetní uzly clusteru HPC Pack 2012 R2 v Azure"
+title: "výpočetní uzly clusteru HPC Pack aaaManage | Microsoft Docs"
+description: "Další informace o tooadd nástroje skript prostředí PowerShell, odebrat, spuštění a zastavení výpočetní uzly clusteru HPC Pack 2012 R2 v Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5ac1142cc5da984020779434fbb7cba5ad7c14bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Správa počtu a dostupnosti výpočetních uzlů v clusteru HPC Pack v Azure
-Pokud jste vytvořili clusteru HPC Pack 2012 R2 ve virtuálních počítačích Azure, můžete chtít způsoby, jak snadno přidat, odebrat, (zřídit) spuštění nebo zastavení (deprovision) některé výpočetní uzel virtuální počítače v clusteru. Chcete-li provést tyto úlohy, spusťte prostředí Azure PowerShell skripty, které jsou nainstalované na hlavního uzlu virtuálního počítače. Tyto skripty vám pomůžou usnadnit řízení číslo a dostupnost prostředků clusteru HPC Pack, můžete řídit náklady.
+# <a name="manage-hello-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Správa hello číslo a dostupnosti výpočetních uzlů v clusteru služby HPC Pack v Azure
+Pokud jste vytvořili clusteru HPC Pack 2012 R2 ve virtuálních počítačích Azure, můžete chtít, že výpočetní způsoby tooeasily přidat, odebrat, (zřídit) spuštění nebo zastavení (deprovision) některé virtuální počítače uzlu v clusteru. toodo tyto úlohy spouštět skripty prostředí Azure PowerShell, které jsou nainstalovány na hello hlavního uzlu virtuálního počítače. Tyto skripty pomáhá řídit hello číslo a dostupnost prostředků clusteru HPC Pack, můžete řídit náklady.
 
 > [!IMPORTANT] 
-> Tento článek se týká pouze do clusterů HPC Pack 2012 R2 v Azure vytvořit pomocí modelu nasazení classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
-> Kromě toho nejsou k dispozici v prostředí HPC Pack 2016 skriptů prostředí PowerShell popsaných v tomto článku.
+> Tento článek se týká pouze clustery tooHPC Pack 2012 R2 v Azure vytvořit pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
+> Kromě toho nejsou k dispozici v prostředí HPC Pack 2016 hello skriptů prostředí PowerShell popsaných v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Cluster HPC Pack 2012 R2 ve virtuálních počítačích Azure**: vytvoření clusteru HPC Pack 2012 R2 v modelu nasazení classic. Například můžete automatizovat nasazení s použitím bitové kopie prostředí HPC Pack 2012 R2 virtuálních počítačů v Azure Marketplace a skript Azure PowerShell. Informace a požadavky najdete v tématu [vytvoření clusteru prostředí HPC pomocí skriptu pro nasazení HPC Pack IaaS](hpcpack-cluster-powershell-script.md).
+* **Cluster HPC Pack 2012 R2 ve virtuálních počítačích Azure**: vytvoření clusteru HPC Pack 2012 R2 v modelu nasazení classic hello. Například můžete automatizovat nasazení hello pomocí bitové kopie virtuálních počítačů HPC Pack 2012 R2 hello v hello Azure Marketplace a skript Azure PowerShell. Informace a požadavky najdete v tématu [vytvoření clusteru prostředí HPC s hello skript nasazení HPC Pack IaaS](hpcpack-cluster-powershell-script.md).
   
-    Po nasazení se najít uzel správy skripty ve složce % CCP\_DOMOVSKÉ složky bin % z hlavního uzlu. Všechny tyto skripty spusťte jako správce.
-* **Certifikát správy nebo soubor nastavení publikování Azure**: je třeba provést jednu z následujících postupů z hlavního uzlu:
+    Po nasazení najít hello uzlu správy skripty v hello % CCP\_DOMOVSKÉ složky bin % hello hlavního uzlu. Spuštění každého ze hello skripty jako správce.
+* **Certifikát správy nebo soubor nastavení publikování Azure**: budete potřebovat toodo jedna z následujících hello hello hlavního uzlu:
   
-  * **Soubor nastavení publikování import Azure**. Chcete-li to provést, spusťte následující rutiny prostředí Azure PowerShell z hlavního uzlu:
+  * **Soubor nastavení publikování import hello Azure**. toodo se spuštění hello následující rutiny prostředí Azure PowerShell hello hlavního uzlu:
     
     ```PowerShell
     Get-AzurePublishSettingsFile
     
     Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
     ```
-  * **Konfigurace certifikátu pro správu Azure z hlavního uzlu**. Pokud máte soubor .cer, importujte ji do úložiště certifikátů CurrentUser\My a pak spusťte následující rutiny Azure Powershellu pro prostředí Azure (AzureCloud nebo AzureChinaCloud):
+  * **Konfigurovat certifikát pro správu Azure hello hello hlavního uzlu**. Pokud máte soubor .cer hello, importujte ji do úložiště certifikátů CurrentUser\My hello a pak spusťte následující rutiny Azure Powershellu pro prostředí Azure (AzureCloud nebo AzureChinaCloud) hello:
     
     ```PowerShell
     Set-AzureSubscription -SubscriptionName <Sub Name> -SubscriptionId <Sub ID> -Certificate (Get-Item Cert:\CurrentUser\My\<Cert Thrumbprint>) -Environment <AzureCloud | AzureChinaCloud>
     ```
 
 ## <a name="add-compute-node-vms"></a>Přidat výpočetním uzlu virtuální počítače
-Přidat výpočetní uzly s **přidat HpcIaaSNode.ps1** skriptu.
+Přidat výpočetní uzly s hello **přidat HpcIaaSNode.ps1** skriptu.
 
 ### <a name="syntax"></a>Syntaxe
 ```PowerShell
@@ -58,20 +58,20 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
 ```
 ### <a name="parameters"></a>Parametry
-* **ServiceName**: název cloudové služby, která nový výpočet uzlu virtuální počítače jsou přidány do.
-* **ImageName**: název bitové kopie virtuálního počítače Azure, který můžete získat prostřednictvím portálu Azure classic nebo rutiny Azure Powershellu **Get-AzureVMImage**. Obrázek musí splňovat následující požadavky:
+* **ServiceName**: název hello Cloudová služba, která nový výpočet uzlu virtuální počítače jsou přidány do.
+* **ImageName**: název bitové kopie virtuálního počítače Azure, který můžete získat prostřednictvím hello portál Azure classic nebo rutiny Azure Powershellu **Get-AzureVMImage**. Obrázek Hello musí splňovat následující požadavky hello:
   
   1. Musí být nainstalován operační systém Windows.
-  2. HPC Pack musí být nainstalován v uzlu výpočetní roli.
-  3. Obrázek musí být privátní bitové kopie v kategorii uživatelů, není veřejný image virtuálního počítače Azure.
-* **Množství**: počet výpočetním uzlu virtuální počítače, který se má přidat.
-* **InstanceSize**: velikost výpočetním uzlu virtuálních počítačů.
-* **DomainUserName**: uživatelské jméno domény, který se používá k připojení k nové virtuální počítače k doméně.
-* **DomainUserPassword**: heslo uživatele domény.
-* **NodeNameSeries** (volitelné): pojmenování vzor pro výpočetní uzly. Musí být ve formátu &lt; *kořenové\_název*&gt;&lt;*spustit\_číslo*&gt;%. Například MyCN % 10 % prostředků a řadu od MyCN11 názvy výpočetního uzlu. Pokud není zadaný, skript používá uzlu nakonfigurované pojmenování řady v clusteru HPC.
+  2. HPC Pack musí být nainstalován v hello výpočetní uzel roli.
+  3. Obrázek Hello musí být privátní bitové kopie v kategorii uživatelů hello, není veřejný image virtuálního počítače Azure.
+* **Množství**: počet výpočetních uzlů virtuální počítače toobe přidat.
+* **InstanceSize**: velikost hello výpočetní uzel virtuálních počítačů.
+* **DomainUserName**: uživatelské jméno domény, který je použité toojoin hello nové virtuální počítače toohello domény.
+* **DomainUserPassword**: heslo uživatele domény hello.
+* **NodeNameSeries** (volitelné): pojmenování vzor pro hello výpočetních uzlů. musí být ve formátu Hello &lt; *kořenové\_název*&gt;&lt;*spustit\_číslo*&gt;%. Například MyCN % 10 % znamená řadu hello výpočetní uzel názvy od MyCN11. Pokud není zadaný, nakonfigurovat hello používá skript hello pojmenování řady uzlu v clusteru HPC hello.
 
 ### <a name="example"></a>Příklad
-Následující příklad přidá 20 velikost velké výpočetním uzlu virtuální počítače v cloudové službě *hpcservice1*, na bitovou kopii virtuálního počítače na bázi *hpccnimage1*.
+Hello následující příklad přidá 20 velikost velké výpočetním uzlu virtuální počítače v cloudové službě hello *hpcservice1*, podle image virtuálního počítače hello *hpccnimage1*.
 
 ```PowerShell
 Add-HPCIaaSNode.ps1 –ServiceName hpcservice1 –ImageName hpccniamge1
@@ -81,7 +81,7 @@ Add-HPCIaaSNode.ps1 –ServiceName hpcservice1 –ImageName hpccniamge1
 
 
 ## <a name="remove-compute-node-vms"></a>Odebrat výpočetním uzlu virtuální počítače
-Odebrat výpočetní uzly s **odebrat HpcIaaSNode.ps1** skriptu.
+Odebrat výpočetní uzly s hello **odebrat HpcIaaSNode.ps1** skriptu.
 
 ### <a name="syntax"></a>Syntaxe
 ```PowerShell
@@ -91,22 +91,22 @@ Remove-HPCIaaSNode.ps1 -Node <Object> [-DeleteVHD] [-Force] [-Confirm] [<CommonP
 ```
 
 ### <a name="parameters"></a>Parametry
-* **Název**: názvy uzlů clusteru k odebrání. Jsou podporovány zástupné znaky. Název parametru sada je název. Nejde zadat oba seznamy **název** a **uzlu** parametry.
-* **Uzel**: objekt HpcNode pro uzly odebrány, které lze získat pomocí rutiny prostředí HPC PowerShell [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název parametru sada je uzel. Nejde zadat oba seznamy **název** a **uzlu** parametry.
-* **DeleteVHD** (volitelné): nastavení, které chcete odstranit související disky pro virtuální počítače, které jsou odebrány.
-* **Vynutit** (volitelné): nastavení přinutit HPC uzly offline před jejich odebráním.
-* **Potvrďte** (volitelné): výzva k potvrzení před provedením příkazu.
-* **WhatIf**: nastavení popisují, co by mohlo dojít, pokud se příkaz provedl, aniž by příkaz skutečně proveden.
+* **Název**: názvy toobe uzly clusteru odstraněny. Jsou podporovány zástupné znaky. Název sady parametr Hello je název. Nelze zadat obě hello **název** a **uzlu** parametry.
+* **Uzel**: hello objekt HpcNode pro toobe hello uzly odebrány, který lze získat pomocí rutiny prostředí HPC PowerShell hello [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název sady parametr Hello je uzel. Nelze zadat obě hello **název** a **uzlu** parametry.
+* **DeleteVHD** (volitelné): nastavení toodelete hello přidružené disky pro virtuální počítače, které jsou odebrány hello.
+* **Platnost** (volitelné): nastavení tooforce offline HPC uzly před jejich odebráním.
+* **Potvrďte** (volitelné): výzva k potvrzení před provedením příkazu hello.
+* **WhatIf**: nastavení toodescribe, co by se stalo, pokud proveden příkaz hello bez hello příkaz skutečně proveden.
 
 ### <a name="example"></a>Příklad
-Následující příklad vynutí offline uzly s názvy od *HPCNode-CN -* a jejich odebere uzlů a jejich přidružené disky.
+Hello následující příklad vynutí offline hello uzly s názvy od *HPCNode-CN -* a jejich odebere hello uzlů a jejich přidružené disky.
 
 ```PowerShell
 Remove-HPCIaaSNode.ps1 –Name HPCNodeCN-* –DeleteVHD -Force
 ```
 
 ## <a name="start-compute-node-vms"></a>Spuštění výpočetního uzlu virtuální počítače
-Spuštění výpočetní uzly se **Start-HpcIaaSNode.ps1** skriptu.
+Spuštění výpočetní uzly s hello **Start-HpcIaaSNode.ps1** skriptu.
 
 ### <a name="syntax"></a>Syntaxe
 ```PowerShell
@@ -115,18 +115,18 @@ Start-HPCIaaSNode.ps1 -Name <String[]> [<CommonParameters>]
 Start-HPCIaaSNode.ps1 -Node <Object> [<CommonParameters>]
 ```
 ### <a name="parameters"></a>Parametry
-* **Název**: názvy uzlů clusteru spustit. Jsou podporovány zástupné znaky. Název parametru sada je název. Nejde zadat oba seznamy **název** a **uzlu** parametry.
-* **Uzel**-HpcNode objektu pro uzly má být spuštěn, které lze získat pomocí rutiny prostředí HPC PowerShell [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název parametru sada je uzel. Nejde zadat oba seznamy **název** a **uzlu** parametry.
+* **Název**: názvy toobe uzly clusteru hello spuštěna. Jsou podporovány zástupné znaky. Název sady parametr Hello je název. Nelze zadat obě hello **název** a **uzlu** parametry.
+* **Uzel**-hello objekt HpcNode pro toobe uzly hello spustili, který lze získat pomocí rutiny prostředí HPC PowerShell hello [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název sady parametr Hello je uzel. Nelze zadat obě hello **název** a **uzlu** parametry.
 
 ### <a name="example"></a>Příklad
-Následující příklad spustí uzly s názvy od *HPCNode-CN -*.
+Hello následující příklad spustí uzly s názvy od *HPCNode-CN -*.
 
 ```PowerShell
 Start-HPCIaaSNode.ps1 –Name HPCNodeCN-*
 ```
 
 ## <a name="stop-compute-node-vms"></a>Zastavit výpočetním uzlu virtuální počítače
-Zastavit výpočetní uzly s **Stop-HpcIaaSNode.ps1** skriptu.
+Zastavit výpočetní uzly s hello **Stop-HpcIaaSNode.ps1** skriptu.
 
 ### <a name="syntax"></a>Syntaxe
 ```PowerShell
@@ -136,17 +136,17 @@ Stop-HPCIaaSNode.ps1 -Node <Object> [-Force] [<CommonParameters>]
 ```
 
 ### <a name="parameters"></a>Parametry
-* **Název**-názvy uzlů clusteru, který má být zastaven. Jsou podporovány zástupné znaky. Název parametru sada je název. Nejde zadat oba seznamy **název** a **uzlu** parametry.
-* **Uzel**: objekt HpcNode pro uzly zastavení, které lze získat pomocí rutiny prostředí HPC PowerShell [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název parametru sada je uzel. Nejde zadat oba seznamy **název** a **uzlu** parametry.
-* **Vynutit** (volitelné): nastavení přinutit HPC uzly do offline režimu před zastavením je.
+* **Název**-názvy toobe uzly clusteru hello zastavena. Jsou podporovány zástupné znaky. Název sady parametr Hello je název. Nelze zadat obě hello **název** a **uzlu** parametry.
+* **Uzel**: hello objekt HpcNode pro toobe uzly hello zastavená, který lze získat pomocí rutiny prostředí HPC PowerShell hello [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název sady parametr Hello je uzel. Nelze zadat obě hello **název** a **uzlu** parametry.
+* **Platnost** (volitelné): nastavení tooforce offline HPC uzly před zastavením je.
 
 ### <a name="example"></a>Příklad
-Následující příklad vynutí offline uzly s názvy od *HPCNode-CN -* a poté se zastaví uzly.
+Hello následující příklad vynutí offline uzly s názvy od *HPCNode-CN -* a pak zastaví hello uzly.
 
 ```PowerShell
 Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Automaticky zvětšovat a zmenšovat uzly v clusteru podle aktuální zatížení úloh a úloh v clusteru, najdete v tématu [automaticky zvýšit nebo snížit prostředků clusteru HPC Pack v Azure podle zatížení clusteru](hpcpack-cluster-node-autogrowshrink.md).
+* tooautomatically zvětšit nebo zmenšit hello uzly clusteru podle aktuální zatížení hello úloh a úloh v hello clusteru najdete v tématu [automaticky zvětšovat a zmenšovat prostředky clusteru HPC Pack hello v Azure podle toohello zatížení clusteru](hpcpack-cluster-node-autogrowshrink.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace IP adres pro rozhraní sítě Azure | Microsoft Docs"
-description: "Naučte se přidávat, měnit a odebírat privátní a veřejné IP adresy pro síťové rozhraní."
+title: "aaaConfigure IP adresy pro rozhraní sítě Azure | Microsoft Docs"
+description: "Zjistěte, jak změnit tooadd a odebírat privátní a veřejné IP adresy pro síťové rozhraní."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1e5ea6c65d93be9b1fda5d807500a0823c94c89c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidat, změnit nebo odebrat IP adresy pro rozhraní sítě Azure
 
-Naučte se přidávat, měnit a odebírat veřejné a privátní IP adresy pro síťové rozhraní. Povolit privátní IP adresy přiřazené k síťovému rozhraní virtuálního počítače ke komunikaci s další prostředky ve virtuální sítě Azure a připojených sítí. Privátní IP adresy, taky umožňuje odchozí komunikaci k Internetu pomocí nepředvídatelným IP adresy. A [veřejnou IP adresu](virtual-network-public-ip-address.md) přiřazené na síťové rozhraní povolí příchozí komunikaci na virtuální počítač z Internetu. Adresu taky umožňuje odchozí komunikaci z virtuálního počítače k Internetu pomocí předvídatelný IP adresy. Podrobnosti najdete v tématu [pochopení odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+Zjistěte, jak změnit tooadd a odebírat veřejné a privátní IP adresy pro síťové rozhraní. Privátní IP adresy přiřazené tooa síťové rozhraní povolit toocommunicate virtuální počítač s další prostředky ve virtuální sítě Azure a připojených sítí. Privátní IP adresy, taky umožňuje odchozí komunikaci toohello Internetu pomocí nepředvídatelným IP adresu. A [veřejnou IP adresu](virtual-network-public-ip-address.md) přiřazené tooa síťové rozhraní povolí příchozí komunikaci tooa virtuální počítač z hello Internetu. Hello adres taky umožňuje odchozí komunikaci z virtuálního počítače toohello hello Internetu pomocí předvídatelný IP adresu. Podrobnosti najdete v tématu [pochopení odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
-Pokud třeba chcete vytvořit, změnit nebo odstranit síťové rozhraní, přečtěte si [spravovat síťové rozhraní](virtual-network-network-interface.md) článku. Pokud potřebujete síťová rozhraní pro přidání nebo odebrání síťová rozhraní z virtuálního počítače, přečtěte si [přidat nebo odebrat síťových rozhraní](virtual-network-network-interface-vm.md) článku. 
+Pokud potřebujete toocreate, měnit a odstraňovat síťového rozhraní, přečtěte si hello [spravovat síťové rozhraní](virtual-network-network-interface.md) článku. Potřebujete-li tooadd síťové rozhraní tooor odebrat síťová rozhraní z virtuálního počítače, přečtěte si hello [přidat nebo odebrat síťových rozhraní](virtual-network-network-interface-vm.md) článku. 
 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před dokončením všech kroků v žádné části tohoto článku dokončete následující úlohy:
+Dokončení hello následující úkoly před dokončením všechny kroky v žádné části tohoto článku:
 
-- Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku se dozvíte o omezeních pro veřejné a privátní IP adresy.
-- Přihlaste se k Azure [portál](https://portal.azure.com), rozhraní příkazového řádku Azure (CLI) nebo Azure PowerShell s účet Azure. Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku [instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Ujistěte se, že máte nejnovější verzi rutin prostředí Azure PowerShell nainstalovaný. Chcete-li získat nápovědu pro příkazy prostředí PowerShell s příklady, zadejte `get-help <command> -full`.
-- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku [instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Zajistěte, že abyste měli nejnovější verzi rozhraní příkazového řádku Azure, který je nainstalovaný. Chcete-li získat nápovědu pro příkazy rozhraní příkazového řádku, zadejte `az <command> --help`. Místo instalace rozhraní příkazového řádku a jeho požadavky, můžete použít prostředí cloudové služby Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Chcete-li použít cloudové prostředí, klikněte na tlačítko prostředí cloudu **> _** tlačítka v horní části [portál](https://portal.azure.com).
+- Zkontrolujte hello [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) toolearn článek o omezeních pro veřejné a privátní IP adresy.
+- Přihlaste se toohello Azure [portál](https://portal.azure.com), rozhraní příkazového řádku Azure (CLI) nebo Azure PowerShell s účet Azure. Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
+- Pokud pomocí prostředí PowerShell příkazy toocomplete úlohy v tomto článku [instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Zajistěte, že abyste měli nejnovější verzi rutin prostředí Azure PowerShell hello nainstalován hello. Zadejte tooget nápovědy pro příkazy prostředí PowerShell s příklady, `get-help <command> -full`.
+- Pokud pomocí rozhraní příkazového řádku Azure (CLI) příkazy toocomplete úlohy v tomto článku [instalace a konfigurace rozhraní příkazového řádku Azure hello](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Ujistěte se, že máte nejnovější verzi hello hello nainstalované rozhraní příkazového řádku Azure. tooget nápovědy pro příkazy rozhraní příkazového řádku, zadejte `az <command> --help`. Namísto instalaci hello rozhraní příkazového řádku a jeho požadavky můžete použít hello prostředí cloudu Azure. Hello cloudové prostředí Azure je bezplatná prostředí Bash, který můžete spustit přímo v rámci hello portálu Azure. Má hello rozhraní příkazového řádku Azure předinstalována a nakonfigurované toouse s vaším účtem. toouse hello cloudové prostředí, klikněte na tlačítko hello cloudové prostředí **> _** tlačítko hello horní části hello [portál](https://portal.azure.com).
 
 ## <a name="add-ip-addresses"></a>Přidání IP adres
 
-Můžete přidat jako mnoho [privátní](#private) a [veřejné](#public) [IPv4](#ipv4) adres podle potřeby k síťovému rozhraní, v rámci omezení uvedené v [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku. Přidat adresu IPv6 do existujícího síťového rozhraní (i když na portálu můžete přidat k síťovému rozhraní s privátní adresou IPv6, při vytváření rozhraní sítě) nelze použít na portálu. Můžete použít PowerShell nebo rozhraní příkazového řádku přidání s privátní adresou IPv6 do jedné [sekundární konfiguraci IP adresy](#secondary) (za předpokladu, nejsou žádné existující sekundární konfigurace IP) pro síťové rozhraní, který není připojen k virtuálnímu počítači. Jakýkoli nástroj nelze použít pro přidání veřejnou adresu IPv6 k síťovému rozhraní. V tématu [IPv6](#ipv6) podrobnosti o použití adresy IPv6. 
+Můžete přidat jako mnoho [privátní](#private) a [veřejné](#public) [IPv4](#ipv4) adresy jako nezbytné tooa síťového rozhraní, v rámci omezení hello uvedené v hello [Azure omezení ](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku. Nelze použít hello portálu tooadd IPv6 adres tooan existující rozhraní sítě (i když při vytváření hello síťové rozhraní, můžete použít hello portálu tooadd privátní tooa síťové rozhraní adresy IPv6). Můžete použít PowerShell nebo rozhraní příkazového řádku tooadd privátní IPv6 adres tooone hello [sekundární konfiguraci IP adresy](#secondary) (za předpokladu, nejsou žádné existující sekundární konfigurace IP) pro existující síť rozhraní, které není připojené tooa virtuální počítač. Nelze použít žádné nástroj tooadd veřejné tooa síťové rozhraní adresu IPv6. V tématu [IPv6](#ipv6) podrobnosti o použití adresy IPv6. 
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Pro čtení [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku Další informace o přiřazování rolí a oprávnění k účtům.
-2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání klikněte na něj.
-3. V **síťových rozhraní** okno, které se zobrazí, klikněte na síťové rozhraní, které chcete přidat adresu IPv4 pro.
-4. Klikněte na tlačítko **konfigurace protokolu IP** v **nastavení** části okna pro síťové rozhraní, které jste vybrali.
-5. Klikněte na tlačítko **+ přidat** v okně, které se otevře pro konfigurace protokolu IP.
-6. Zadejte následující a pak klikněte na **OK** zavřete **přidat IP konfigurace** okno:
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě hello pro vaše předplatné. Čtení hello [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku toolearn informace o přiřazení role a oprávnění tooaccounts.
+2. V poli hello, který obsahuje hello text *vyhledávání prostředků* hello horní části hello portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání hello, klikněte na něj.
+3. V hello **síťových rozhraní** okno, které se zobrazí, klikněte na tlačítko hello síťové rozhraní chcete tooadd IPv4 adresu.
+4. Klikněte na tlačítko **konfigurace protokolu IP** v hello **nastavení** části hello okna pro síťové rozhraní hello jste vybrali.
+5. Klikněte na tlačítko **+ přidat** v okně hello, které se otevře pro konfigurace protokolu IP.
+6. Zadejte následující hello a pak klikněte na **OK** tooclose hello **přidat IP konfigurace** okno:
 
-    |Nastavení|Vyžaduje?|Podrobnosti|
+    |Nastavení|Povinné?|Podrobnosti|
     |---|---|---|
-    |Name (Název)|Ano|Musí být jedinečný pro síťové rozhraní|
-    |Typ|Ano|Vzhledem k tomu, že přidáváte konfiguraci IP adres do existujícího síťového rozhraní, a musí mít každé síťové rozhraní [primární](#primary) je jedinou možností konfigurace protokolu IP, **sekundární**.|
-    |Způsob přiřazení privátní IP adresy|Ano|[**Dynamické** ](#dynamic) adresy se mohou změnit, pokud restartování virtuálního počítače poté, co bylo v zastaveném stavu (deallocated). Azure přiřadí dostupnou adresu z adresního prostoru podsítě síťové rozhraní je připojený k. [**Statické** ](#static) adresy nejsou vydané až do odstranění síťové rozhraní. Zadejte IP adresu z rozsahu adres místo podsítě, který aktuálně není používán jinou konfiguraci protokolu IP.|
-    |Veřejná IP adresa|Ne|**Zakázáno:** žádný prostředek veřejné IP adresy je aktuálně přidružené ke konfiguraci IP adresy. **Povoleno:** vyberte existující veřejnou IP adresu IPv4 adresu, nebo vytvořte novou. Naučte se vytvořit veřejnou IP adresu, přečtěte si téma [veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address) článku.|
-7. Ručně pomocí pokynů v přidat sekundární soukromé IP adresy do operačního systému virtuálního počítače [přiřadit více IP adres pro virtuální počítač operační systémy](virtual-network-multiple-ip-addresses-portal.md#os-config) článku. V tématu [privátní](#private) IP adresy pro zvláštní situace před ruční přidání IP adres do operačního systému virtuálního počítače. Všechny veřejné IP adresy, nepřidávejte do operačního systému virtuálního počítače.
+    |Name (Název)|Ano|Musí být jedinečný pro síťové rozhraní hello|
+    |Typ|Ano|Vzhledem k tomu, že chcete přidat IP konfigurace tooan existující rozhraní sítě, a musí mít každé síťové rozhraní [primární](#primary) je jedinou možností konfigurace protokolu IP, **sekundární**.|
+    |Způsob přiřazení privátní IP adresy|Ano|[**Dynamické** ](#dynamic) adresy se mohou změnit, pokud restartování hello virtuálního počítače, po které byly v hello zastavení (deallocated) stavu. Azure přiřadí dostupnou adresu z adresního prostoru hello hello podsíť hello síťového rozhraní je připojeno k. [**Statické** ](#static) adresy nejsou vydané až do odstranění hello síťové rozhraní. Zadejte IP adresu z hello podsíť adres místo rozsah, který aktuálně není používán jinou konfiguraci protokolu IP.|
+    |Veřejná IP adresa|Ne|**Zakázáno:** žádný prostředek veřejné IP adresy je aktuálně přidružené toohello konfigurace protokolu IP. **Povoleno:** vyberte existující veřejnou IP adresu IPv4 adresu, nebo vytvořte novou. jak toocreate veřejnou IP adresu, číst toolearn hello [veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address) článku.|
+7. Ručně přidat sekundární privátní IP adresy toohello operačního systému virtuálního počítače provedením hello pokyny v hello [přiřadit více IP adres toovirtual počítač operační systémy](virtual-network-multiple-ip-addresses-portal.md#os-config) článku. V tématu [privátní](#private) IP adresy pro zvláštní situace před ručně přidáním operačního systému tooa virtuálního počítače IP adresy. Nepřidávejte všechny veřejné IP adresy toohello operačního systému virtuálního počítače.
 
 **Příkazy**
 
@@ -65,17 +65,17 @@ Můžete přidat jako mnoho [privátní](#private) a [veřejné](#public) [IPv4]
 
 ## <a name="change-ip-address-settings"></a>Změňte nastavení IP adresy
 
-Můžete třeba změnit metodu přiřazení adresy IPv4 změňte statickou IPv4 adresu, nebo změna veřejné IP adresy přiřazené k síťovému rozhraní. Pokud chcete změnit privátní IPv4 adresu sekundární konfiguraci IP adresy přidružené k sekundární síťové rozhraní ve virtuálním počítači (Další informace o [primární a sekundární síťová rozhraní](virtual-network-network-interface-vm.md#about)), umístěte virtuální počítač do stavu ukončeno (deallocated) před dokončením následujících kroků: 
+Může být nutné toochange hello přiřazení metoda adresy IPv4, změna hello statická adresa IPv4, nebo změnu hello veřejnou IP adresu přiřadit tooa síťové rozhraní. Pokud chcete změnit hello privátní IPv4 adresu sekundární konfiguraci IP adresy přidružené k sekundární síťové rozhraní ve virtuálním počítači (Další informace o [primární a sekundární síťová rozhraní](virtual-network-network-interface-vm.md#about)), virtuální místní hello (deallocated) stavu zastavení počítače do hello před dokončením hello následující kroky: 
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Pro čtení [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku Další informace o přiřazování rolí a oprávnění k účtům.
-2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání klikněte na něj.
-3. V **síťových rozhraní** okno, které se zobrazí, klikněte na tlačítko chcete zobrazit nebo změnit nastavení IP adresy pro síťové rozhraní.
-4. Klikněte na tlačítko **konfigurace protokolu IP** v **nastavení** části okna pro síťové rozhraní, které jste vybrali.
-5. Klikněte na konfiguraci protokolu IP, kterou chcete upravit ze seznamu, ve které se otevře okno Konfigurace protokolu IP.
-6. Změňte nastavení podle potřeby, pomocí informací o nastavení v kroku 6 [Přidat konfiguraci IP adres](#create-ip-config) tohoto článku. Klikněte na tlačítko **Uložit** zavřete okno pro konfiguraci protokolu IP můžete změnit.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě hello pro vaše předplatné. Čtení hello [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku toolearn informace o přiřazení role a oprávnění tooaccounts.
+2. V poli hello, který obsahuje hello text *vyhledávání prostředků* hello horní části hello portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání hello, klikněte na něj.
+3. V hello **síťových rozhraní** hello síťové rozhraní mají být tooview nebo změnit nastavení IP adresy pro okno, které se zobrazí, klikněte na tlačítko.
+4. Klikněte na tlačítko **konfigurace protokolu IP** v hello **nastavení** části hello okna pro síťové rozhraní hello jste vybrali.
+5. Klikněte na možnost konfigurace protokolu IP hello chcete toomodify hello seznamu hello okno, které se otevře pro konfigurace protokolu IP.
+6. Dobrý den, podle potřeby změňte nastavení, pomocí hello informace o nastavení hello v kroku 6 hello [Přidat konfiguraci IP adres](#create-ip-config) tohoto článku. Klikněte na tlačítko **Uložit** tooclose hello okna pro konfiguraci protokolu IP hello jste změnili.
 
 >[!NOTE]
->Pokud primární síťové rozhraní má víc konfigurací IP adres a změníte privátní IP adresa primární konfiguraci IP adresy, je třeba přiřadit ručně IP adresy primární a sekundární rozhraní sítě v systému Windows (není potřeba pro Linux) . Chcete-li přiřadit ručně IP adresy síťového rozhraní v rámci operačního systému, přečtěte si [přiřadit více IP adres k virtuálním počítačům](virtual-network-multiple-ip-addresses-portal.md#os-config) článku. V tématu [privátní](#private) IP adresy pro zvláštní situace před ruční přidání IP adres do operačního systému virtuálního počítače. Všechny veřejné IP adresy, nepřidávejte do operačního systému virtuálního počítače.
+>Pokud hello primární síťové rozhraní má víc konfigurací IP adres a změňte hello privátní IP adresu hello primární konfiguraci IP adresy, je třeba přiřadit ručně hello primární a sekundární IP adresy toohello rozhraní sítě v systému Windows (ne vyžaduje se pro Linux). toomanually přiřadit IP adresy tooa síťového rozhraní v rámci operačního systému, přečtěte si hello [přiřadit více IP adres počítačů toovirtual](virtual-network-multiple-ip-addresses-portal.md#os-config) článku. V tématu [privátní](#private) IP adresy pro zvláštní situace před ručně přidáním operačního systému tooa virtuálního počítače IP adresy. Nepřidávejte všechny veřejné IP adresy toohello operačního systému virtuálního počítače.
 
 **Příkazy**
 
@@ -86,14 +86,14 @@ Můžete třeba změnit metodu přiřazení adresy IPv4 změňte statickou IPv4 
 
 ## <a name="remove-ip-addresses"></a>Odebírat IP adresy
 
-Můžete odebrat [privátní](#private) a [veřejné](#public) IP adres ze síťového rozhraní, ale síťové rozhraní musí být vždy alespoň jeden privátní IPv4 adresu přiřazen.
+Můžete odebrat [privátní](#private) a [veřejné](#public) IP adres ze síťového rozhraní, ale síťové rozhraní musí být vždy alespoň jeden privátní IPv4 adresu přiřazenou tooit.
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Pro čtení [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku Další informace o přiřazování rolí a oprávnění k účtům.
-2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání klikněte na něj.
-3. V **síťových rozhraní** okno, které se zobrazí, klikněte na rozhraní sítě, kterou chcete odebrat IP adresy z.
-4. Klikněte na tlačítko **konfigurace protokolu IP** v **nastavení** části okna pro síťové rozhraní, které jste vybrali.
-5. Klikněte pravým tlačítkem myši [sekundární](#secondary) konfigurace protokolu IP (nelze odstranit, [primární](#primary) konfigurace) chcete odstranit, klikněte na **odstranit**, pak klikněte na tlačítko **Ano** potvrďte odstranění. Konfigurace měli prostředek veřejné IP adresy přidružené k němu, prostředek je oddělen od konfiguraci protokolu IP, ale prostředek se neodstraní.
-6. Zavřít **konfigurace protokolu IP** okno.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě hello pro vaše předplatné. Čtení hello [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku toolearn informace o přiřazení role a oprávnění tooaccounts.
+2. V poli hello, který obsahuje hello text *vyhledávání prostředků* hello horní části hello portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání hello, klikněte na něj.
+3. V hello **síťových rozhraní** okno, které se zobrazí, klikněte na tlačítko hello síťové rozhraní chcete tooremove z IP adres.
+4. Klikněte na tlačítko **konfigurace protokolu IP** v hello **nastavení** části hello okna pro síťové rozhraní hello jste vybrali.
+5. Klikněte pravým tlačítkem myši [sekundární](#secondary) konfigurace protokolu IP (nelze odstranit hello [primární](#primary) konfigurace) má toodelete, klikněte na tlačítko **odstranit**, pak klikněte na tlačítko **Ano**  tooconfirm hello odstranění. Pokud konfigurace hello obsahovala prostředek veřejné IP adresy přidružené tooit, hello prostředků je oddělen od hello konfiguraci IP adresy, ale neodstraní hello prostředků.
+6. Zavřít hello **konfigurace protokolu IP** okno.
 
 **Příkazy**
 
@@ -104,76 +104,76 @@ Můžete odebrat [privátní](#private) a [veřejné](#public) IP adres ze síť
 
 ## <a name="ip-configurations"></a>Konfigurace protokolu IP
 
-[Privátní](#private) a (volitelně) [veřejné](#public) IP adresy přiřazené k jedné nebo více konfigurací IP adres, které jsou přiřazené k síťovému rozhraní. Existují dva typy konfigurace protokolu IP:
+[Privátní](#private) a (volitelně) [veřejné](#public) tooone budou přiřazovat IP adresy nebo víc konfigurací IP adres přiřazené tooa síťové rozhraní. Existují dva typy konfigurace protokolu IP:
 
 ### <a name="primary"></a>Primární
 
 Každé síťové rozhraní je přiřazen jednu primární konfiguraci IP adresy. Primární konfigurace IP adresy:
 
-- Má [privátní](#private) [IPv4](#ipv4) adresu přiřazenou k němu. Nelze přiřadit privátního [IPv6](#ipv6) adresu primární konfiguraci IP adresy.
-- Mohou mít i [veřejné](#public) přiřazenu adresu IPv4. Nelze přiřadit veřejnou adresu IPv6 na primární nebo sekundární konfiguraci IP. Ale můžete přiřadit veřejnou adresu IPv6 pro vyrovnávání zatížení Azure, které můžete načíst vyrovnávání přenosů virtuálního počítače privátního IPv6 adresu. Další informace najdete v tématu [podrobnosti a omezení pro protokol IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations).
+- Má [privátní](#private) [IPv4](#ipv4) tooit adresu přiřazenou. Nelze přiřadit privátního [IPv6](#ipv6) primární konfiguraci IP adresy tooa.
+- Mohou mít i [veřejné](#public) tooit přiřazená adresa IPv4. Nelze přiřadit na veřejné IPv6 adres tooa primární nebo sekundární konfiguraci protokolu IP. Můžete ale, přiřazení veřejné IPv6 adres pro vyrovnávání zatížení Azure tooan, které můžete načíst vyvážit privátní adresa IPv6 provoz tooa virtuální počítače. Další informace najdete v tématu [podrobnosti a omezení pro protokol IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations).
 
 ### <a name="secondary"></a>Sekundární
 
-Kromě primární konfiguraci IP adresy rozhraní sítě může obsahovat nula nebo více sekundární IP konfigurace přiřazen. Sekundární konfiguraci IP adresy:
+Kromě toho tooa primární konfiguraci IP adresy, rozhraní sítě může obsahovat nula nebo více sekundární IP konfigurace přiřazené tooit. Sekundární konfiguraci IP adresy:
 
-- Musí mít privátní adresa IPv4 nebo IPv6 přiřazená k němu. Pokud je adresa IPv6, rozhraní sítě může mít pouze jednu sekundární konfiguraci IP adresy. Pokud je adresa IPv4, rozhraní sítě může mít několik sekundární konfigurace IP přiřazen. Další informace o tom, kolik privátní a veřejné IPv4 adresy lze přiřadit k síťovému rozhraní, najdete v článku [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku.  
-- Může také veřejnou adresu IPv4 přiřadili, pokud je privátní IP adresa IPv4. Pokud je privátní IP adresu IPv6, nelze přiřadit veřejnou adresu IPv4 nebo IPv6 ke konfiguraci IP adresy. Přiřazení více IP adres k síťovému rozhraní je užitečné v situacích, jako:
+- Musí mít privátní tooit přiřazená adresa IPv4 nebo IPv6. Pokud hello adresu IPv6, hello síťové rozhraní může mít pouze jednu sekundární konfiguraci IP adresy. Pokud hello adresa IPv4, hello síťové rozhraní může mít víc sekundární konfigurací IP adres přiřazené tooit. toolearn Další informace o tom, kolik privátní a veřejné IPv4 adresy lze přiřadit tooa síťového rozhraní, najdete v části hello [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku.  
+- Může také mít veřejnou IPv4 adresu přiřazenou tooit, pokud hello privátní IP adresa IPv4. Pokud hello privátní IP adresu IPv6, nelze přiřadit na veřejnou IPv4 nebo IPv6 adresa toohello konfiguraci protokolu IP. Přiřazení více IP adres tooa síťové rozhraní je užitečné v situacích, jako:
     - Hostovat několik webů nebo služeb s různými IP adresami a certifikáty SSL na jednom serveru.
     - Virtuální počítač, který slouží jako virtuální zařízení sítě, jako je například brány firewall nebo službu Vyrovnávání zatížení.
-    - Možnost přidat kterýkoliv privátní adresy IPv4 v žádném z rozhraní sítě na fond back-end pro vyrovnávání zatížení Azure. V minulosti pouze primární adresu IPv4 pro primární síťové rozhraní nebylo možné přidat do fondu back-end. Další informace o tom, jak Vyrovnávání zatížení konfigurací s více IPv4, najdete v článku [víc konfigurací IP adres Vyrovnávání zatížení](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. 
-    - Umožňuje načíst vyrovnávat jedna adresa IPv6, které jsou přiřazené k síťovému rozhraní. Další informace o tom, jak pro privátní adresa IPv6 Vyrovnávání zatížení, najdete v článku [IPv6 adresy Vyrovnávání zatížení](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.
+    - Hello možnost tooadd žádné hello privátní IPv4 adresy pro některý z fondu hello síťových rozhraní tooan nástroj pro vyrovnávání zatížení Azure back-end. V posledních hello nebylo možné pouze hello primární adresu IPv4 pro hello primární síťové rozhraní přidat tooa fond back-end. toolearn Další informace o tom, jak tooload vyrovnávat víc konfigurací protokolu IPv4, najdete v části hello [víc konfigurací IP adres služby Vyrovnávání zatížení](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. 
+    - možnost tooload Hello vyrovnávat jedno síťové rozhraní přiřazené tooa IPv6 adresu. toolearn Další informace o tom, jak tooload vyvážit tooa privátní adresu IPv6, najdete v části hello [IPv6 adresy Vyrovnávání zatížení](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.
 
 
 ## <a name="address-types"></a>Typy adres
 
-Následující typy IP adresy, které můžete přiřadit [konfigurace protokolu IP](#ip-configurations):
+Můžete přiřadit hello následující typy IP adresy tooan [konfigurace protokolu IP](#ip-configurations):
 
 ### <a name="private"></a>Privátní
 
-Privátní [IPv4](#ipv4) adresy povolit virtuální počítač ke komunikaci s další prostředky ve virtuální síti nebo jiné připojených sítích. Virtuální počítač nelze oznamovat příchozí k ani může virtuální počítač komunikovat s privátního odchozí [IPv6](#ipv6) adresu s jednou výjimkou. Virtuální počítač může komunikovat s nástrojem pro vyrovnávání zatížení Azure pomocí adresy IPv6. Další informace najdete v tématu [podrobnosti a omezení pro protokol IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
+Privátní [IPv4](#ipv4) adresy povolit toocommunicate virtuální počítač s další prostředky ve virtuální síti nebo jiné připojených sítích. Virtuální počítač nelze oznamovat příchozí k ani může hello virtuální počítač komunikovat s privátního odchozí [IPv6](#ipv6) adresu s jednou výjimkou. Virtuální počítač může komunikovat s nástroje pro vyrovnávání zatížení Azure hello pomocí adresy IPv6. Další informace najdete v tématu [podrobnosti a omezení pro protokol IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
 
-Ve výchozím nastavení, servery Azure DHCP přiřadit privátní adresa IPv4 pro [primární konfiguraci IP adresy](#primary) síťového rozhraní na rozhraní sítě v rámci operačního systému virtuálního počítače. Pokud není nezbytné, měli byste nastavit nikdy ručně IP adresu síťového rozhraní v rámci operačního systému virtuálního počítače. 
+Ve výchozím nastavení, servery Azure DHCP hello přiřadit hello privátní IPv4 adresu pro hello [primární konfiguraci IP adresy](#primary) hello síťové rozhraní toohello síťového rozhraní v rámci operačního systému virtuálního počítače hello. Pokud není nezbytné, měli byste nastavit nikdy ručně hello IP adresa síťového rozhraní v rámci operačního systému hello virtuálního počítače. 
 
 > [!WARNING]
-> Pokud adresu IPv4 nastavit jako primární IP adresa síťového rozhraní v rámci operačního systému virtuálního počítače je někdy liší od privátní adresa IPv4, které jsou přiřazené k primární konfiguraci IP primární síťové rozhraní připojen k virtuálnímu počítači v rámci Azure ztratíte připojení k virtuálnímu počítači.
+> Pokud sada hello IPv4 adres jako hello primární IP adresu síťového rozhraní v rámci operačního systému virtuálního počítače je někdy jiné než hello privátní IPv4 adresu přiřazenou toohello primární konfiguraci IP hello primární síťové rozhraní připojené tooa virtuální počítač v rámci Azure, ztratíte připojení k toohello virtuálního počítače.
 
-Existují scénáře, kdy je nutné ručně nastavit IP adresu síťového rozhraní v rámci operačního systému virtuálního počítače. Při přidávání více IP adres pro virtuální počítač Azure například musí nastavit ručně primární a sekundární IP adresy operačního systému Windows. Pro virtuální počítač s Linuxem jenom musíte ručně nastavit sekundární IP adresy. V tématu [přidat IP adresy na operační systém virtuálního počítače](virtual-network-multiple-ip-addresses-portal.md#os-config) podrobnosti. Když nastavíte ručně IP adresu v operačním systému, doporučujeme vždy přiřadit adresy ke konfiguraci IP adresy pro síťové rozhraní metodou přiřazení statických (nikoli dynamické). Přiřazení adresy pomocí statickou metodu zajistí, že adresu nezmění v rámci Azure. Pokud byste někdy potřebovali změnit přiřazené ke konfiguraci IP adresu, se doporučuje, můžete:
+Existují scénáře, kdy je nutné toomanually sadu hello IP adresu síťového rozhraní v rámci operačního systému hello virtuálního počítače. Při přidávání více IP adres tooan virtuální počítač Azure například musíte nastavit ručně hello primární a sekundární IP adresy operačního systému Windows. Pro virtuální počítač s Linuxem musíte pouze toomanually sadu hello sekundární IP adresy. V tématu [přidání IP adres pro operační systém virtuálního počítače tooa](virtual-network-multiple-ip-addresses-portal.md#os-config) podrobnosti. Když nastavíte ručně hello IP adres v rámci hello operačního systému, doporučujeme vždy přiřadit konfigurace protokolu IP toohello hello adresy pro síťové rozhraní, pomocí metody hello přiřazení statických (nikoli dynamické). Přiřazení adresy hello pomocí hello statickou metodu zajistí, že hello adres nezmění v rámci Azure. Pokud byste někdy potřebovali toochange hello adresu přiřazenou tooan konfigurace protokolu IP, se doporučuje, můžete:
 
-1. Chcete-li zajistěte, aby byl že virtuální počítač je přijetí adresy ze serverů Azure DHCP, změnit přiřazení IP adresy zpět na serveru DHCP v operačním systému a restartování virtuálního počítače.
-2. Zastavit (zrušit přidělení) virtuálního počítače.
-3. Změna IP adresy pro konfiguraci protokolu IP v rámci Azure.
-4. Umožňuje spustit virtuální počítač.
-5. [Ruční konfigurace](virtual-network-multiple-ip-addresses-portal.md#os-config) sekundární IP adresy v rámci operačního systému (a také primární IP adresu v systému Windows) tak, aby odpovídaly nastavení v rámci Azure.
+1. tooensure hello virtuálního počítače je přijetí adresy ze serverů Azure DHCP hello, změňte hello přiřazení back tooDHCP hello IP adres v rámci hello operačního systému a restartování hello virtuálního počítače.
+2. Zastavit (zrušit přidělení) hello virtuálního počítače.
+3. Změna hello IP adresy pro konfiguraci protokolu IP hello v rámci Azure.
+4. Spusťte virtuální počítač hello.
+5. [Ruční konfigurace](virtual-network-multiple-ip-addresses-portal.md#os-config) hello sekundární toomatch IP adresy v rámci hello operačního systému (a také hello primární IP adresu v systému Windows), nastavte v rámci Azure.
  
-Podle předchozího postupu, přiřazené k síťovému rozhraní v rámci Azure a v rámci operačního systému virtuálního počítače, privátní IP adresy zůstávají stejné. Ke sledování virtuálních počítačů v rámci vašeho předplatného, které jste nastavili ručně IP adresy v rámci operačního systému pro, zvažte přidání Azure [značky](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) k virtuálním počítačům. Můžete použít "přiřazení IP adresy: statické", např. Tímto způsobem, budete moci snadno najít virtuální počítače v rámci vašeho předplatného, které jste ručně nastavení IP adresy v operačním systému.
+Podle předchozích kroků hello hello privátní IP adresu přiřazenou toohello síťové rozhraní v rámci Azure a v rámci operačního systému virtuálního počítače, zůstávají stejné hello. které virtuální počítače v rámci vašeho předplatného, které jste nastavili ručně IP adresy v rámci operačního systému, zvažte přidání Azure sledovat tookeep [značka](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) toohello virtuálních počítačů. Můžete použít "přiřazení IP adresy: statické", např. Tímto způsobem, budete moci snadno najít hello virtuálních počítačů v rámci vašeho předplatného, které jste nastavili ručně hello IP adresu pro hello operačního systému.
 
-Kromě povolení komunikovat s jiným prostředkům v rámci stejné, nebo připojené virtuální sítě virtuálního počítače, privátní IP adresu taky umožňuje virtuálnímu počítači komunikovat odchozí k Internetu. Odchozí připojení se zdrojovou adresu sítě přeložit v Azure nepředvídatelným veřejné IP adresy. Další informace o Azure odchozí připojení k Internetu, přečtěte si [Azure odchozí připojení k Internetu](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. Nemůžete komunikovat příchozí privátní IP adresu virtuálního počítače z Internetu.
+Kromě tooenabling toocommunicate virtuální počítač s jiným prostředkům v rámci hello stejné, nebo připojené virtuální sítě, privátní IP adres taky umožňuje odchozí toohello virtuální počítač toocommunicate Internetu. Odchozí připojení jsou zdroj síťová adresa přeložen Azure tooan nepředvídatelným veřejnou IP adresu. Další informace o Azure odchozí připojení k Internetu, přečtěte si hello toolearn [Azure odchozí připojení k Internetu](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. Nelze komunikovat příchozí tooa virtuálního počítače privátní IP adresu z hello Internetu.
 
 ### <a name="public"></a>Veřejné
 
-Veřejné IP adresy povolit příchozí připojení k virtuálnímu počítači z Internetu. Odchozí připojení k Internetu používat předvídatelný IP adresu. V tématu [pochopení odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) podrobnosti. Může přiřadit konfiguraci IP adres veřejnou IP adresu, ale nejsou potřeba. Pokud nepřiřadíte veřejnou IP adresu pro virtuální počítač, může stále komunikovat odchozí k Internetu pomocí jeho privátní IP adresy. Další informace o veřejné IP adresy, přečtěte si [veřejnou IP adresu](virtual-network-public-ip-address.md) článku.
+Veřejné IP adresy povolit příchozí připojení tooa virtuální počítač z hello Internetu. Odchozí připojení toohello Internetu používat předvídatelný IP adresu. V tématu [pochopení odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) podrobnosti. Může přiřadit na veřejnou IP adresu tooan konfiguraci protokolu IP, ale nejsou potřeba. Pokud nepřiřadíte veřejnou IP adresu tooa virtuálního počítače, může stále komunikovat odchozí toohello Internetu pomocí privátní IP adresu. Další informace o veřejné IP adresy, přečtěte si hello toolearn [veřejnou IP adresu](virtual-network-public-ip-address.md) článku.
 
-Existují omezení počtu privátní a veřejné IP adresy, které můžete přiřadit k síťovému rozhraní. Informace najdete [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku.
+Existují omezení počtu toohello privátní a veřejné IP adresy, které můžete přiřazovat tooa síťové rozhraní. Podrobnosti najdete v tématu hello [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku.
 
 > [!NOTE]
-> Azure znamená, že virtuální počítač privátní IP adresu na veřejnou IP adresu. V důsledku toho je operační systém ne všechny veřejné IP adresy přiřazené, a proto není nutné někdy ručně přiřadit veřejnou IP adresu v operačním systému.
+> Azure znamená, že virtuální počítač privátní IP adresu tooa veřejnou IP adresu. V důsledku toho ne všechny veřejné IP adresy přiřazené tooit hello operačního systému, takže není žádná tooever nutné ručně přiřadit veřejnou IP adresu v rámci hello operačního systému.
 
 ## <a name="assignment-methods"></a>Přiřazení metody
 
-Veřejné a privátní IP adresy se přiřazují pomocí následujících metod přiřazení:
+Veřejné a privátní IP adresy se přiřazují pomocí hello následující metody přiřazení:
 
 ### <a name="dynamic"></a>Dynamická
 
-Dynamické privátní IPv4 a IPv6 (volitelně) adresy přiřazené ve výchozím nastavení. Dynamické adresy se mohou změnit, pokud virtuální počítač je uvést do stavu ukončeno (deallocated) a pak spustit. Pokud nechcete, aby adresy IPv4, chcete-li změnit dobu životnosti virtuálního počítače, přiřaďte mu statickou metodou adresy. Lze přiřadit pouze s privátní adresou IPv6 pomocí metody dynamického přiřazení. Nelze přiřadit veřejnou adresu IPv6 pro konfiguraci IP adres pomocí obou těchto metod.
+Dynamické privátní IPv4 a IPv6 (volitelně) adresy přiřazené ve výchozím nastavení. Dynamické adresy se mohou změnit, pokud hello virtuální počítač uveden do hello (deallocated) stavu Zastaveno a začít. Pokud nechcete, aby toochange adresy IPv4 dobu životnosti hello hello virtuálního počítače, přiřadíte adresy hello pomocí statickou metodu hello. Lze přiřadit pouze s privátní adresou IPv6 pomocí metody dynamického přidělování hello. Nelze přiřadit na veřejné IPv6 adres tooan konfiguraci protokolu IP pomocí obou těchto metod.
 
 ### <a name="static"></a>Statická
 
-Adresy přiřazené statické způsobem neměňte až do odstranění virtuálního počítače. Ručně přiřadit statickou privátní IPv4 adresu, na konfiguraci IP adres z adresního prostoru podsítě síťové rozhraní je v. Veřejné nebo soukromé statickou IPv4 adresu (volitelně) můžete přiřadit konfiguraci IP adres. Nelze přiřadit statická adresa IPv6 veřejných nebo privátních pro konfiguraci IP adres. Další informace o tom, jak Azure přiřadí statické veřejné adresy IPv4, najdete v článku [veřejnou IP adresu](virtual-network-public-ip-address.md) článku.
+Adresy přiřazené statické metodou hello neměňte až do odstranění virtuálního počítače. Ručně zařadíte privátních IPv4 adres tooan konfiguraci statické IP adresy z hello adresního prostoru pro hello podsíť hello síťové rozhraní. (Volitelně) můžete přiřadit veřejných nebo privátních IPv4 adres tooan konfiguraci statické IP adresy. Nelze přiřadit veřejných nebo privátních IPv6 adres tooan konfiguraci statické IP adresy. toolearn Další informace o tom, jak Azure přiřadí statické veřejné adresy IPv4, najdete v části hello [veřejnou IP adresu](virtual-network-public-ip-address.md) článku.
 
 ## <a name="ip-address-versions"></a>Verze IP adres
 
-Při přiřazování adresy můžete zadat následující verze:
+Můžete určit hello při přiřazování adresy následující verze:
 
 ### <a name="ipv4"></a>IPv4
 
@@ -181,15 +181,15 @@ Každé síťové rozhraní musí mít jeden [primární](#primary) konfigurace 
 
 ### <a name="ipv6"></a>IPv6
 
-Můžete přiřadit žádnou nebo jednu privátní [IPv6](#ipv6) adresu jednu sekundární konfiguraci IP adresy síťového rozhraní. Síťové rozhraní nemůže mít všechny existující sekundární konfigurace IP. Nelze přidat konfiguraci IP adres s IPv6 adresu pomocí portálu. Pomocí prostředí PowerShell nebo rozhraní příkazového řádku přidejte konfiguraci IP adres s privátní adresou IPv6 do existujícího síťového rozhraní. Síťové rozhraní nelze připojit k existující virtuální počítač.
+Můžete přiřadit žádnou nebo jednu privátní [IPv6](#ipv6) adresu tooone sekundární konfiguraci IP adresy síťového rozhraní. Hello síťového rozhraní nemůže mít všechny existující sekundární konfigurace IP. Nelze přidat konfiguraci IP adres s IPv6 adresu pomocí portálu hello. Pomocí prostředí PowerShell nebo hello rozhraní příkazového řádku tooadd konfiguraci IP adres s privátní IPv6 adres tooan existující rozhraní sítě. Hello síťového rozhraní nemůže být připojené tooan existující virtuální počítač.
 
 > [!NOTE]
-> Když vytvoříte síťového rozhraní IPv6 adresu pomocí portálu nelze přidat existující rozhraní sítě do nového nebo existujícího virtuálního počítače pomocí portálu. Pomocí prostředí PowerShell nebo 2.0 rozhraní příkazového řádku Azure k vytvoření síťového rozhraní s privátní adresou IPv6 a potom připojit síťové rozhraní, při vytváření virtuálního počítače. Nelze připojit síťové rozhraní s privátní adresou IPv6 přiřazená k existující virtuální počítač. Pro konfiguraci IP adres pro všechny síťové rozhraní, který je připojen k virtuálnímu počítači pomocí libovolné nástroje (portál, rozhraní příkazového řádku nebo prostředí PowerShell) nelze přidat s privátní adresou IPv6.
+> Když vytvoříte síťového rozhraní IPv6 adresu pomocí portálu hello nelze přidat existující síťové rozhraní tooa nový nebo existující virtuální počítač, pomocí portálu hello. Pomocí prostředí PowerShell nebo hello Azure CLI 2.0 toocreate síťové rozhraní s privátní adresou IPv6 a potom připojit hello síťové rozhraní, při vytváření virtuálního počítače. Nelze připojit síťové rozhraní s privátní adresou IPv6 přiřazená tooit tooan existující virtuální počítač. Nelze přidat na privátní IPv6 adres tooan konfiguraci protokolu IP pro všechny síťové rozhraní, které jsou připojené tooa virtuálního počítače pomocí žádné nástroje (portálu, rozhraní příkazového řádku nebo prostředí PowerShell).
 
-Nelze přiřadit veřejnou adresu IPv6 na primární nebo sekundární konfiguraci IP.
+Nelze přiřadit na veřejné IPv6 adres tooa primární nebo sekundární konfiguraci protokolu IP.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete vytvořit virtuální počítač s různými konfiguracemi protokolu IP, přečtěte si v následujících článcích:
+toocreate virtuálního počítače s různými konfiguracemi protokolu IP, přečtěte si hello následující články:
 
 |Úkol|Nástroj|
 |---|---|

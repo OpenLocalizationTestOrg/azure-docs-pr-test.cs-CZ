@@ -1,5 +1,5 @@
 ---
-title: "Začínáme s SAP na virtuálních počítačích Azure | Microsoft Docs"
+title: "aaaGetting začít s SAP na virtuálních počítačích Azure | Microsoft Docs"
 description: "Další informace o řešení SAP běžících na virtuálních počítačích (VM) v Microsoft Azure"
 services: virtual-machines-linux
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7a7768862defb4ab3dec65dfad3eacb985940af
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0ac390f8e1c802505b8f9304a12868364fa60f80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Pomocí Azure pro hostování a spuštění úlohy scénáře SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -293,57 +293,57 @@ ms.lasthandoff: 08/29/2017
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
-Výběrem Microsoft Azure jako váš partner připravené cloudu SAP, budete moci spolehlivě spuštění scénáře a kritické úlohy SAP na platformě škálovatelnou, kompatibilní a prokázanou enterprise.  Získejte škálovatelnost, flexibilitu a snížení nákladů, které poskytuje Azure. S rozšířené spolupráci mezi společností Microsoft a SAP můžete spustit aplikace SAP napříč scénáře vývoje/testování a provozním ve službě Azure - a plně podporovat. Ze SAP NetWeaver SAP S4/HANA, SAP BI, Linux do systému Windows, SAP HANA do SQL máme je zahrnuté. 
+Výběrem Microsoft Azure jako váš partner připravené cloudu SAP jsou možné tooreliably spustit scénáře a kritické úlohy SAP na platformě škálovatelnou, kompatibilní a prokázanou enterprise.  Získejte hello škálovatelnost, flexibilitu a finanční úspoře Azure. S hello rozšířit spolupráci mezi společností Microsoft a SAP můžete spustit aplikace SAP napříč scénáře vývoje/testování a provozním ve službě Azure - a plně podporovat. Ze SAP NetWeaver tooSAP S4/HANA, SAP BI Linux tooWindows, SAP HANA tooSQL máme je zahrnuté. 
 
-Kromě hostování SAP NetWeaver scénáře s jinou databázového systému na platformě Azure můžete hostovat různé scénáře zatížení SAP jako SAP BI v Azure. Dokumentace týkající se nasazení SAP NetWeaver na virtuálních počítačích Azure nativní naleznete v části "SAP NetWeaver na virtuálních počítačích Azure." 
+Kromě hostování SAP NetWeaver scénáře s hello různých databázového systému v Azure, můžete hostovat různé scénáře zatížení SAP jako SAP BI v Azure. Dokumentace týkající se nasazení SAP NetWeaver na virtuálních počítačích Azure nativní naleznete v části hello "SAP NetWeaver na virtuálních počítačích Azure." 
 
-Azure má nativní nabízí virtuální počítač Azure, které jsou neustále rozšiřující velikostí prostředků procesoru a paměti tak, aby pokrývalo SAP zatížení, která využívá SAP HANA. Další informace v tomto tématu najdete pod heslem dokumenty části SAP HANA ve virtuálních počítačích Azure."
+Azure má nativní nabízí virtuální počítač Azure, které jsou neustále rozšiřující velikost procesoru a paměti úlohy SAP toocover prostředky, které využívá SAP HANA. Další informace v tomto tématu najdete pod heslem hello dokumenty části hello SAP HANA ve virtuálních počítačích Azure."
 
-Jedinečnost Azure pro SAP HANA je jedinečný nabídka, která nastaví Azure kromě konfliktům. Chcete-li povolit, hostování více paměti a procesoru prostředků vyhrazené náročné SAP scénáře zahrnující SAP HANA, Azure nabízí použití zákazníka holého hardwaru pro účely probíhá nasazení SAP HANA, které vyžadují až 20 TB (škálovatelnou 60 TB) paměti pro S nebo 4HANA nebo jiných úloh SAP HANA. Tento jedinečný Azure řešení SAP HANA v Azure (velké instance) umožňuje spustit SAP HANA na vyhrazeném hardwaru holých počítačů s vrstvy aplikace SAP nebo zatížení VMware střední vrstvy hostované v nativní Azure Virtual Machines. Toto řešení je popsána v několika dokumentů v části "SAP HANA v Azure (velké instance)."   
+jedinečnost Hello Azure pro SAP HANA je jedinečný nabídka, která nastaví Azure kromě konfliktům. V pořadí tooenable hostování více paměti a procesoru prostředků náročné SAP scénáře zahrnující SAP HANA, Azure nabízí hello využití zákazníka vyhrazené holého hardwaru probíhá nasazení SAP HANA, které vyžadují až too20 TB (60 TB Škálováním na více systémů) za účelem hello paměť S nebo 4HANA nebo jiných úloh SAP HANA. Tento jedinečný Azure řešení SAP HANA v Azure (velké instance) vám umožní toorun SAP HANA na hello vyhrazené holého hardwaru pomocí hello SAP aplikace vrstvy nebo zatížení střední VMware hostované v nativní Azure Virtual Machines. Toto řešení je popsána v několika dokumentů v části hello "SAP HANA v Azure (velké instance)."   
 
-Hostování SAP scénáře zatížení v Azure můžete vytvořit požadavky Identity integrace a jednotné přihlášení pomocí Azure Directory aktivity pro různé součásti SAP a SAP SaaS nebo PaaS nabízí. Seznam těchto integrace a scénáře jednotného přihlašování s Azure Active Directory (AAD) a SAP entity je popsané a popsané v části "integrace identit AAD SAP a jednotného přihlašování."
+Hostování SAP scénáře zatížení v Azure můžete vytvořit požadavky Identity integrace a jednotné přihlášení pomocí Azure Directory aktivity toodifferent SAP součásti a SAP SaaS nebo PaaS nabízí. Seznam těchto integrace a scénáře jednotného přihlašování s Azure Active Directory (AAD) a SAP entity je popsané a popsané v části hello "integraci služby AAD SAP Identity a jednotného přihlašování."
 
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA na SAP HANA v Azure (velké instance)
 
 ### <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Přehled a architektura SAP HANA v Azure (velké instance)
-Název: Přehled a architektura SAP HANA v Azure (velké instance)
+Title: aaaOverview a architektura SAP HANA v Azure (velké instance)
 
-Souhrn: Této architektury a technické Deployment Guide poskytuje informace, které vám pomohou při nasazení SAP na nové SAP HANA v Azure (velké instance) v Azure. Rozhraní není určeno jako komplexní pokyny týkající se konkrétních nastavení řešení SAP, ale spíš užitečné informace v probíhající operace a počáteční nasazení. Se nesmí nahraďte SAP dokumentaci týkající se instalace SAP HANA (nebo mnoho poznámek podporu SAP, které se týkají tématu). To poskytuje přehled a poskytuje další podrobnosti instalace SAP HANA na Azure (velké instance).
+Souhrn: Této architektury a technické Deployment Guide poskytuje informace o toohelp nasazení SAP na hello nové SAP HANA v Azure (velké instance) v Azure. Není určený toobe konkrétní instalace komplexního Průvodce zahrnut SAP řešení, ale spíš užitečné informace v probíhající operace a počáteční nasazení. Se nesmí nahradit SAP dokumentace související s toohello instalaci SAP HANA (nebo hello mnoho poznámek podporu SAP, které se týkají hello tématu). To poskytuje přehled a poskytuje hello podrobnější informace o instalaci SAP HANA v Azure (velké instance).
 
 Aktualizované: 2017 července
 
 [Tato příručka naleznete zde](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-### <a name="infrastructure-and-connectivity-to-sap-hana-on-azure-large-instances"></a>Infrastruktury a připojení k SAP HANA v Azure (velké instance)
-Název: Infrastruktury a připojení k SAP HANA v Azure (velké instance)
+### <a name="infrastructure-and-connectivity-toosap-hana-on-azure-large-instances"></a>Infrastruktury a připojení tooSAP HANA v Azure (velké instance)
+Title: aaaInfrastructure a připojení tooSAP HANA v Azure (velké instance)
 
-Souhrn: Po nákupu SAP HANA v Azure (velké instance) je dokončené mezi vámi a týmu účtů Microsoft enterprise, jsou různé konfigurace sítě nutné k zajištění správné připojení.  Tento dokument popisuje informace, které má být sdílen s následující informace jsou nezbytné. Tento dokument popisuje, jaké informace musí být shromážděných a konfigurační skripty mají ke spuštění. 
+Souhrn: Po nákupu hello SAP HANA v Azure (velké instance) je dokončené mezi vámi a hello týmu účtů Microsoft enterprise, jsou různé konfigurace sítě požadované pořadí tooensure správné připojení.  Tyto informace hello jsou podrobněji popsány dále dokumentu, který má toobe sdílet s hello následující informace jsou nezbytné. Tento dokument popisuje, jaké informace obsahuje toobe shromážděných a jaké konfigurační skripty mají toobe spustit. 
 
 Aktualizované: 2017 července
 
 [Tato příručka naleznete zde](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="install-sap-hana-in-sap-hana-on-azure-large-instances"></a>Nainstalovat SAP HANA SAP HANA v Azure (velké instance)
-Title: Nainstalujte SAP HANA SAP HANA v Azure (velké instance)
+Title: aaaInstall SAP HANA na SAP HANA v Azure (velké instance)
 
-Souhrn: Tento dokument popisuje postupy instalace pro instalaci SAP HANA ve vaší instanci Azure velké. 
+Souhrn: Tento dokument popisuje postupy hello nastavení pro instalaci ve vaší instanci Azure velké SAP HANA. 
 
 Aktualizované: 2017 července
 
 [Tato příručka naleznete zde](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>Vysoká dostupnost a zotavení po havárii systému SAP HANA v Azure (velké instance)
-Název: Vysoká dostupnost a zotavení po havárii SAP HANA v Azure (velké instance)
+Title: aaaHigh dostupnost a zotavení po havárii z SAP HANA v Azure (velké instance)
 
-Souhrn: Vysoké dostupnosti (HA) a obnovení po havárii (DR) jsou velmi důležité aspekty spuštěných vaše důležité SAP HANA na servery Azure (velké instance). To je import pro práci s SAP, vaše systémový integrátor, a do společnosti Microsoft správně architektury a implementovat právo HA/DR strategie pro vás. Důležité informace jako cíl bodu obnovení (RPO) a obnovení čas cíl (RTO), specifické pro vaše prostředí, je třeba zvážit.  Tento dokument popisuje možnosti pro povolení odpovídající úrovni vašeho upřednostňované HA a zotavení po Havárii.
+Souhrn: Vysoké dostupnosti (HA) a obnovení po havárii (DR) jsou velmi důležité aspekty spuštěných vaše důležité SAP HANA na servery Azure (velké instance). Jeho import toowork s SAP, vaše systémový Integrátor nebo Microsoft tooproperly architektury a implementovat hello vpravo HA/DR strategie pro vás. Důležité informace jako cíl bodu obnovení (RPO) a obnovení čas cíl (RTO), konkrétní tooyour prostředí, je třeba zvážit.  Tento dokument popisuje možnosti pro povolení odpovídající úrovni vašeho upřednostňované HA a zotavení po Havárii.
 
 Aktualizované: Prosinec 2016
 
 [Tento dokument naleznete zde](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>Řešení potíží a monitorování SAP HANA v Azure (velké instance)
-Title: Řešení potíží a monitorování SAP HANA v Azure (velké instance)
+Title: aaaTroubleshooting a monitorování systému SAP HANA v Azure (velké instance)
 
 Souhrn: Tento průvodce popisuje informace, které jsou užitečné při vytvoření monitorování vaší SAP HANA v prostředí Azure a také další informace o odstraňování potíží. 
 
@@ -354,34 +354,34 @@ Aktualizované: Prosinec 2016
 ## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA ve službě Azure Virtual Machines
 
 ### <a name="getting-started-with-sap-hana-on-azure"></a>Začínáme s SAP HANA v Azure
-Title: Průvodce rychlým zahájením pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
+Title: aaaQuickstart Průvodce pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
 
-Souhrn: Tento průvodce rychlým zahájením pomáhá vytvořit jednoduchou SAP HANA systém na virtuálních počítačích Azure při ruční instalaci SAP NetWeaver 7.5 a SAP HANA SP12. V Průvodci se předpokládá, že je čtečka seznámili se základy Azure IaaS, jako je nasazení virtuálních počítačů nebo virtuální sítě prostřednictvím portálu Azure nebo Powershell nebo rozhraní příkazového řádku včetně možnost použít šablony json. Kromě toho se očekává, že čtečka je obeznámeni s SAP HANA, SAP NetWeaver a jak ji nainstalovat místně.
+Souhrn: Tento průvodce rychlým zahájením pomáhá tooset až jedné instance SAP HANA systém na virtuálních počítačích Azure při ruční instalaci SAP NetWeaver 7.5 a SAP HANA SP12. Hello Příručka předpokládá, že čtečka hello je seznámili se základy Azure IaaS jako jak toodeploy virtuální počítače nebo virtuální sítě prostřednictvím hello portál Azure nebo Powershell nebo rozhraní příkazového řádku včetně hello možnost toouse json šablony. Kromě toho se očekává, že čtečka hello je obeznámeni s SAP HANA, SAP NetWeaver a jak tooinstall ho místně.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="s4hana-sap-cal-deployment-on-azure"></a>S nebo 4HANA nasazení SAP CAL na Azure
-Title: Nasazení SAP S nebo 4HANA nebo BW/4HANA v Azure
+Title: aaaDeploy SAP S nebo 4HANA nebo BW/4HANA v Azure
 
-Souhrn: Tento průvodce pomáhá k předvedení nasazení SAP S nebo 4HANA v Azure pomocí knihovny zařízení SAP cloudu. Knihovna zařízení SAP cloudu je služba ve SAP, která umožňuje nasazení SAP aplikací v Azure. V Průvodci popisuje podrobný nasazení.
+Souhrn: Tento průvodce pomáhá toodemonstrate hello nasazení SAP S nebo 4HANA v Azure pomocí knihovny zařízení SAP cloudu. Knihovna zařízení SAP cloudu je služba ve SAP, který umožňuje aplikacím SAP toodeploy na Azure. Hello příručka popisuje krok za krokem hello nasazení.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde](cal-s4h.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="high-availability-of-sap-hana-in-azure-virtual-machines"></a>Vysoká dostupnost SAP HANA ve virtuálních počítačích Azure
-Title: Vysokou dostupnost SAP HANA na virtuálních počítačích Azure
+Title: aaaHigh dostupnosti SAP HANA ve virtuálních počítačích Azure
 
-Souhrn: Tento průvodce vás provede konfiguraci vysoké dostupnosti operačního systému SUSE 12 a SAP HANA zohlednit replikaci HANA systému se automatické převzetí služeb při selhání. V průvodci je specifický pro SUSE a virtuální počítače Azure. V Průvodci se nevztahuje ještě pro Red Hat nebo holých počítačů nebo privátní cloud nebo jiné mimo Azure veřejného cloudu nasazení.
+Souhrn: Vede tento průvodce vás provede konfiguraci vysoké dostupnosti hello hello operačního systému SUSE 12 a replikaci HANA systému SAP HANA tooaccommodate se automatické převzetí služeb při selhání. Průvodce Hello je specifický pro SUSE a virtuální počítače Azure. Hello příručka nevztahuje ještě pro Red Hat nebo holých počítačů nebo privátní cloud nebo jiné mimo Azure veřejného cloudu nasazení.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde](sap-hana-high-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="sap-hana-backup-overview-on-azure-vms"></a>Přehled zálohování SAP HANA na virtuálních počítačích Azure
-Title: Zálohování Průvodce pro SAP HANA ve virtuálních počítačích Azure
+Title: aaaBackup Průvodce pro SAP HANA ve virtuálních počítačích Azure
 
 Souhrn: Tato příručka obsahuje základní informace o zálohování možnosti spuštění SAP HANA ve virtuálních počítačích Azure.
 
@@ -390,7 +390,7 @@ Aktualizované: 2017 března
 [Tato příručka naleznete zde](sap-hana-backup-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="sap-hana-file-level-backup-on-azure-vms"></a>SAP HANA úrovně zálohování souborů na virtuálních počítačích Azure
-Title: SAP HANA zálohování podle úložiště snímků
+Title: aaaSAP HANA zálohování podle úložiště snímků
 
 Souhrn: Tato příručka obsahuje informace o používání zálohy založené na snímku na virtuálních počítačích Azure při spuštění SAP HANA ve virtuálních počítačích Azure.
 
@@ -400,7 +400,7 @@ Aktualizované: 2017 března
 
 
 ### <a name="sap-hana-snapshot-based-backups-on-azure-vms"></a>SAP HANA zálohy snímků, které jsou založené na virtuálních počítačích Azure
-Title: SAP HANA Azure Backup na úrovni souborů
+Title: aaaSAP HANA Azure Backup na úrovni souborů
 
 Souhrn: Tento průvodce obsahuje informace o používání SAP HANA soubor zálohování na úrovni systémem SAP HANA ve virtuálních počítačích Azure
 
@@ -412,9 +412,9 @@ Aktualizované: 2017 března
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver nasazené ve virtuálních počítačích Azure
 
 ### <a name="deploy-sap-ides-system-on-windows-and-sql-server-through-sap-cal-on-azure"></a>Nasazení SAP integrovaného vývojového prostředí systému na systém Windows a SQL Server prostřednictvím SAP CAL na Azure
-Title: Testování SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux 
+Title: aaaTesting SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux 
 
-Souhrn: Tento dokument popisuje nasazení SAP integrovaného vývojového prostředí systému na základě systému Windows a SQL Server v Azure pomocí knihovny zařízení SAP cloudu. SAP cloudu zařízení knihovna je služba SAP, která umožňuje nasazení SAP produktů v Azure. Tento dokument krok za krokem projde nasazení SAP integrovaného vývojového prostředí systému. Systém integrovaného vývojového prostředí je jenom jako příklad pro několik dalších desítek aplikací, které můžou být nasazené prostřednictvím cloudu SAP zařízení v Microsoft Azure.
+Souhrn: Tento dokument popisuje nasazení hello systému SAP integrovaného vývojového prostředí na základě systému Windows a SQL Server v Azure pomocí knihovny zařízení SAP cloudu. SAP cloudu zařízení knihovna je služba SAP, která umožňuje hello nasazení SAP produktů v Azure. Tento dokument krok za krokem projde hello nasazení SAP integrovaného vývojového prostředí systému. Hello integrovaného vývojového prostředí systému je jenom jako příklad pro několik dalších desítek aplikací, které můžou být nasazené prostřednictvím cloudu SAP zařízení v Microsoft Azure.
 
 Aktualizované: Červen 2017
 
@@ -422,63 +422,63 @@ Aktualizované: Červen 2017
 
 
 ### <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Průvodce rychlým zahájením pro NetWeaver na SUSE Linux na Azure
-Title: Testování SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux 
+Title: aaaTesting SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux 
 
-Souhrn: Tento článek popisuje různé co je třeba zvážit při spuštěné SAP NetWeaver v Microsoft Azure SUSE Linux virtuální počítače (VM). SAP NetWeaver je oficiálně podporované na virtuálních počítačích SUSE Linux v Azure. Všechny podrobnosti týkající se verze Linux, verze SAP jádra a další podrobnosti naleznete v 1928533 Poznámka SAP "SAP aplikace v Azure: podporované produkty a typy virtuálních počítačů Azure".
+Souhrn: Tento článek popisuje různé věci tooconsider při spuštěné SAP NetWeaver v Microsoft Azure SUSE Linux virtuální počítače (VM). SAP NetWeaver je oficiálně podporované na virtuálních počítačích SUSE Linux v Azure. Všechny podrobnosti týkající se verze Linux, verze SAP jádra a další podrobnosti naleznete v 1928533 Poznámka SAP "SAP aplikace v Azure: podporované produkty a typy virtuálních počítačů Azure".
 
 Aktualizované: Září 2016
 
 [Tato příručka naleznete zde](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>Plánování a implementace
-Název: Virtuální počítače Azure plánování a implementace pro SAP NetWeaver
+Title: aaaAzure virtuální počítače plánování a implementace pro SAP NetWeaver
 
-Souhrn: Tento dokument je v Průvodci začínat Pokud uvažujete o spuštění SAP NetWeaver v Azure Virtual Machines. Tato příručka plánování a implementace umožňuje vyhodnotit, jestli se existující nebo plánované SAP NetWeaver systém lze nasadit do prostředí virtuálních počítačů Azure. Popisuje různé scénáře nasazení systému SAP NetWeaver a zahrnuje konfigurace SAP specifické pro Azure. Dokument uvádí a popisuje všechny informace související s konfigurací, které potřebujete na straně SAP/Azure k vytvoření hybridního prostředí SAP. Popsána jsou také opatření, které můžete provést k zajištění vysoké dostupnosti systému SAP NetWeaver na IaaS.
+Souhrn: Tento dokument je toostart Průvodce hello s Pokud uvažujete o spuštění SAP NetWeaver v Azure Virtual Machines. Tato příručka plánování a implementace umožňuje vyhodnotit, jestli se existující nebo plánované SAP NetWeaver systém může být prostředí tooan nasazené virtuální počítače Azure. Popisuje různé scénáře nasazení SAP NetWeaver a zahrnuje SAP konfigurace, které jsou specifické tooAzure. Hello dokumentu uvádí a popisuje všechny hello potřebné informace o konfiguraci, které budete potřebovat v hello SAP nebo Azure straně toorun hybridní SAP na šířku. Míry na IaaS může trvat tooensure vysokou dostupnost systémy na bázi SAP NetWeaver jsou také zahrnuté.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde][planning-guide]
 
 ### <a name="high-availability-configurations-of-sap-netweaver-in-azure-vms"></a>Konfigurace vysoké dostupnosti SAP NetWeaver ve virtuálních počítačích Azure
-Title: Virtuální počítače Azure vysoká dostupnost pro SAP NetWeaver
+Title: aaaAzure vysoké dostupnosti virtuálních počítačů pro SAP NetWeaver
 
-Souhrn: V tomto dokumentu nabídneme kroky, které můžete provést nasazení SAP systémů s vysokou dostupností v Azure pomocí modelu nasazení Azure Resource Manager. Můžeme vás provedou tyto hlavní úlohy. V dokumentu, jsme popisují, jak jeden bod z – selhání součásti jako Advanced obchodní aplikace programování (ABAP) SAP centrální služby (ASC) / SAP centrální služby (SCS) a databázové systémy (databázového systému) a redundantní komponenty, jako jsou aplikace serveru SAP se chystáte chránit při spuštění ve virtuálních počítačích Azure. Podrobný příklad k instalaci a konfiguraci systému SAP vysoké dostupnosti v clusteru Windows Server Failover Clustering v Azure je ukázán a v tomto dokumentu.
+Souhrn: V tomto dokumentu jsme zahrnují hello kroky můžete podniknout toodeploy SAP systémů s vysokou dostupností v Azure pomocí modelu nasazení Azure Resource Manager hello. Můžeme vás provedou tyto hlavní úlohy. V dokumentu hello jsme popisují, jak jeden bod z – selhání součásti jako Advanced obchodní aplikace programování (ABAP) SAP centrální služby (ASC) / SAP centrální služby (SCS) a databázové systémy (databázového systému) a redundantní komponenty, například SAP Aplikační Server se bude toobe chráněné při spuštění ve virtuálních počítačích Azure. Podrobný příklad k instalaci a konfiguraci systému SAP vysoké dostupnosti v clusteru Windows Server Failover Clustering v Azure je ukázán a v tomto dokumentu.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde](high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="realizing-multi-sid-deployments-of-sap-netweaver-in-azure-vms"></a>Porozumění více SID nasazení SAP NetWeaver ve virtuálních počítačích Azure
-Title: Vytvoření konfigurace aplikace SAP NetWeaver více SID 
+Title: aaaCreate konfigurace aplikace SAP NetWeaver více SID 
 
-Souhrn: Tento dokument je doplňkem k dokumentu vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure. Z důvodu nových funkcí v Azure, které byly zavedeny v září 2016 je možné nasadit několik instancí SAP NetWeaver ASC nebo SCS v dvojice virtuálních počítačích Azure. S konfigurací můžete snížit počet virtuálních počítačů nezbytné pro nasazení si uvědomí, vysoce dostupné SAP NetWeaver konfigurace. V Průvodci popisuje nastavení takové konfigurace více SID.
+Souhrn: Tento dokument je dokument toohello přidání vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure. Z důvodu toonew funkce v Azure, které byly zavedeny v září 2016 je možné toodeploy více SAP NetWeaver ASC nebo SCS instancí v dvojice virtuálních počítačích Azure. S konfigurací můžete snížit počet hello virtuální počítače nezbytné toodeploy toorealize vysoce dostupné SAP NetWeaver konfigurace. Hello příručka popisuje hello nastavení takové konfigurace více SID.
 
 Aktualizované: Prosinec 2016
 
 [Tato příručka naleznete zde](high-availability-multi-sid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>Nasazení SAP NetWeaver ve virtuálních počítačích Azure
-Title: Nasazení virtuálních počítačů Azure pro SAP NetWeaver
+Title: aaaAzure nasazení virtuálních počítačů pro SAP NetWeaver
 
-Shrnutí: Tento dokument poskytuje postupy a pokyny pro nasazení softwaru SAP NetWeaver na virtuální počítače v prostředí Azure. Zaměřuje se na tři konkrétní scénáře nasazení s důrazem na použití rozšíření Azure Monitoring Extensions pro SAP, včetně doporučení pro řešení potíží s tímto rozšířením. Tento dokument předpokládá, že jste se seznámili s Příručkou pro plánování a implementaci.
+Souhrn: Tento dokument poskytuje procedurální pokyny pro nasazení SAP NetWeaver softwaru toovirtual počítačů v Azure. Tento dokument se zaměřuje na třech scénářích konkrétní nasazení, s důrazem na povolení rozšíření monitorování hello Azure pro SAP, včetně řešení potíží s doporučení pro hello rozšíření monitorování Azure pro SAP. Tento dokument předpokládá, že jste si přečetli hello plánování a implementace průvodce.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde][deployment-guide]
 
 ### <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>Průvodce nasazením databázového systému
-Title: Azure databázového systému virtuální počítače nasazení pro SAP NetWeaver
+Title: aaaAzure nasazení databázového systému virtuálních počítačů pro SAP NetWeaver
 
-Shrnutí: Tento dokument popisuje důležité aspekty plánování a implementace systémů DBMS, které by měly běžet spolu se systémem SAP. V první části jsou uvedeny obecné pokyny. Další části se pak týkají nasazení různých DBMS v Azure, které SAP podporuje. Různé databázového systému uvedené jsou systému SQL Server a App Service Environment SAP, Oracle. V těchto konkrétní části jsou popsány důležité informace, které máte k účtu pro až nebudou spuštěny systémy SAP v Azure ve spojení s těmito databázového systému. Jsou popsány oblasti jako metody zálohování nebo zvýšení dostupnosti, podporované jednotlivými systémy DBMS v Azure, které je možné s aplikacemi SAP použít.
+Souhrn: Tento dokument popisuje aspekty plánování a implementace pro systémy hello databázového systému, které měly být spuštěny ve spojení s SAP. Obecné aspekty v první části hello, jsou uvedena v seznamu a zobrazí. Hello následujících částí hello dokumentu se týkají toodeployments databázového různých systému v Azure, které podporuje SAP. Různé databázového systému uvedené jsou systému SQL Server a App Service Environment SAP, Oracle. V těchto konkrétní části jsou popsány aspekty máte tooaccount pro až nebudou spuštěny systémy SAP v Azure ve spojení s těmito databázového systému. Témata jako metody zálohování a vysoké dostupnosti, které podporuje různé databázového systému v Azure jsou uvedené pro použití hello se aplikace SAP hello.
 
 Aktualizované: Červen 2017
 
 [Tato příručka naleznete zde][dbms-guide]
 
 ### <a name="using-azure-site-recovery-for-sap-workload"></a>Pomocí Azure Site Recovery pro pracovní vytížení SAP
-Title: SAP NetWeaver: vytváření řešení zotavení po havárii s Azure Site Recovery 
+Title: aaaSAP NetWeaver: vytváření řešení zotavení po havárii s Azure Site Recovery 
 
-Souhrn: Tento dokument popisuje způsob použití služby Azure Site Recovery za účelem zpracování scénářů zotavení po havárii. Případy, kdy se Azure používá jako umístění pro obnovení po havárii pro šířku SAP místní pomocí služeb Azure Site Recovery. Další možností, které jsou popsané v dokumentu je případ zotavení po havárii Azure do Azure (A2A) a jak se spravuje pomocí Azure Site Recovery.  
+Souhrn: Tento dokument popisuje hello způsob použití služby Azure Site Recovery hello za účelem zpracování scénářů zotavení po havárii. Případy, kdy se Azure používá jako umístění pro obnovení po havárii pro šířku SAP místní pomocí služeb Azure Site Recovery. Další možností, které jsou popsané v dokumentu hello je případ zotavení po havárii Azure do Azure (A2A) hello a jak se spravuje pomocí Azure Site Recovery.  
 
 Aktualizované: 2017 srpen
 

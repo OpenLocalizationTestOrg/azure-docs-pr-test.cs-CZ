@@ -1,6 +1,6 @@
 ---
-title: "Ukázková konfigurace - zařízení Cisco ASA připojení k Azure VPN Gateway | Microsoft Docs"
-description: "Tento článek obsahuje ukázková konfigurace pro zařízení Cisco ASA připojení k Azure VPN Gateway."
+title: "Konfigurace aaaSample – zařízení Cisco ASA připojení brány VPN tooAzure | Microsoft Docs"
+description: "Tento článek obsahuje ukázková konfigurace pro zařízení Cisco ASA připojení brány VPN tooAzure."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 10466b8928e2cd687f7961a2956b6d60823b82be
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dad13e02afe8dad2379db750eb09602e08e8ea99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: Cisco ASA zařízení (BGP IKEv2/ne)
-Tento článek obsahuje ukázkové konfigurace pro zařízení Cisco ASA připojující se k Azure VPN Gateway.
+Tento článek obsahuje ukázkové konfigurace pro zařízení Cisco ASA připojení brány VPN tooAzure.
 
 ## <a name="device-at-a-glance"></a>Zařízení na první pohled
 
@@ -39,22 +39,22 @@ Tento článek obsahuje ukázkové konfigurace pro zařízení Cisco ASA připoj
 |                        |                                   |
 
 > [!NOTE]
-> 1. Konfigurace níže se připojuje k Azure zařízení Cisco ASA **založené na trasách** VPN gateway pomocí vlastních zásad protokolu IPsec/IKE s možností "UserPolicyBasedTrafficSelectors", jak je popsáno v [v tomto článku](vpn-gateway-connect-multiple-policybased-rm-ps.md).
-> 2. Vyžaduje ASA zařízení používat **IKEv2** s konfigurací na základě přístup k seznamu není na základě VTI.
-> 3. Obraťte se na dokumentaci VPN dodavatele k a ujistěte se, že zásady se podporuje na vaše místní zařízení VPN.
+> 1. Hello konfigurace níže se připojuje tooan zařízení Cisco ASA Azure **založené na trasách** VPN gateway pomocí vlastních zásad protokolu IPsec/IKE s možností "UserPolicyBasedTrafficSelectors", jak je popsáno v [v tomto článku](vpn-gateway-connect-multiple-policybased-rm-ps.md).
+> 2. Vyžaduje ASA zařízení toouse **IKEv2** s konfigurací na základě přístup k seznamu není na základě VTI.
+> 3. Přečtěte si vaše specifikace dodavatele zařízení VPN, které zásady tooensure hello je podporované na vaše místní zařízení VPN.
 
 ## <a name="vpn-device-requirements"></a>Požadavky na zařízení VPN
-Azure VPN Gateway pomocí standardní sady protokolu IPsec/IKE vytvořit tunelů S2S VPN. Odkazovat na [informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md) pro podrobné parametry protokolu IPsec/IKE a výchozí kryptografické algoritmy pro Azure VPN Gateway. Volitelně můžete zadat přesný kombinace kryptografické algoritmy a klíče síly pro konkrétní připojení jak je popsáno v [o požadavcích na kryptografických](vpn-gateway-about-compliance-crypto.md). Pokud vyberete konkrétní kombinaci kryptografické algoritmy a klíče síly, Zkontrolujte prosím, že používáte odpovídající specifikace na vaše zařízení VPN.
+Azure VPN Gateway pomocí standardního protokolu IPsec/IKE protokol sady tooestablish S2S VPN tunely. Odkazovat příliš[informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md) hello podrobné parametry protokolu IPsec/IKE a výchozí kryptografické algoritmy pro Azure VPN Gateway. Volitelně můžete zadat přesný kombinace hello kryptografické algoritmy a klíče síly pro konkrétní připojení jak je popsáno v [o požadavcích na kryptografických](vpn-gateway-about-compliance-crypto.md). Pokud vyberete konkrétní kombinaci kryptografické algoritmy a klíče síly, Zkontrolujte prosím, že používáte odpovídající specifikace hello na vaše zařízení VPN.
 
 ## <a name="single-vpn-tunnel"></a>Jedno tunelové propojení sítě VPN
-Tato topologie se skládá z jednoho tunelu S2S VPN mezi bránu VPN Azure VPN a vaše místní zařízení VPN. Volitelně můžete nakonfigurovat protokol BGP mezi tunelového připojení sítě VPN.
+Tato topologie se skládá z jednoho tunelu S2S VPN mezi bránu VPN Azure VPN a vaše místní zařízení VPN. Volitelně můžete nakonfigurovat protokol BGP mezi hello tunelového připojení sítě VPN.
 
 ![jedno tunelové propojení](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Odkazovat na [jedním tunelem instalace](vpn-gateway-3rdparty-device-config-overview.md#singletunnel) podrobné pokyny týkající se Azure konfigurace sestavení.
+Odkazovat příliš[jedním tunelem instalace](vpn-gateway-3rdparty-device-config-overview.md#singletunnel) podrobné naleznete podrobné pokyny toobuild hello konfigurace Azure.
 
 ### <a name="network-and-vpn-gateway-information"></a>Informace o bráně sítě a sítě VPN
-V této části Seznam parametrů pro toto ukázka.
+V této části seznamu hello parametry pro hello této ukázce.
 
 | **Parametr**                | **Hodnota**                    |
 | ---                          | ---                          |
@@ -72,7 +72,7 @@ V této části Seznam parametrů pro toto ukázka.
 
 ### <a name="ipsecike-policy--parameters"></a>Zásady protokolu IPsec/IKE a parametry
 
-Následující tabulka uvádí algoritmy protokolu IPsec/IKE a parametry použité v ukázce. Přečtěte si dokumentaci VPN a ujistěte se, že všechny algoritmy, které jsou uvedené výše jsou podporována modely zařízení VPN a verzí firmwaru.
+Následující tabulka Hello uvádí algoritmy hello protokolu IPsec/IKE a parametry použité v ukázce hello. Přečtěte si vaše se, že všechny algoritmy, které jsou uvedené výše jsou podporována modely zařízení VPN a verzí firmwaru VPN toomake specifikace zařízení.
 
 | **IPsec/IKEv2**  | **Hodnota**                            |
 | ---              | ---                                  |
@@ -95,12 +95,12 @@ Následující tabulka uvádí algoritmy protokolu IPsec/IKE a parametry použit
 >
 > 1. Má podporu protokolu IKEv2 vyžaduje ASA verze 8.4 a vyšší.
 > 2. Podpora skupiny DH vyšší a PFS (kromě skupiny 5) vyžaduje verzi ASA 9.x.
-> 3. Šifrování pomocí protokolu IPsec s AES-GCM a protokolu IPsec integrita s SHA-256, SHA-384 a SHA-512 podporu vyžaduje verzi ASA 9.x na novější ASA hardwaru; 5505 ASA, 5510, 5520, 5540, 5550, jsou 5580 **není** podporována. (Zkontrolujte specifikace dodavatele pro potvrzení.)
+> 3. Šifrování pomocí protokolu IPsec s AES-GCM a protokolu IPsec integrita s SHA-256, SHA-384 a SHA-512 podporu vyžaduje verzi ASA 9.x na novější ASA hardwaru; 5505 ASA, 5510, 5520, 5540, 5550, jsou 5580 **není** podporována. (Zkontrolujte hello dodavatele specifikace tooconfirm.)
 >
 
 
 ### <a name="sample-device-configurations"></a>Ukázka konfigurace zařízení
-Následující skript poskytuje ukázkové konfiguraci na základě topologie a parametry uvedené výše. Konfigurace tunel S2S VPN se skládá z následujících částí:
+níže uvedený skript Hello poskytuje ukázkové konfiguraci podle hello topologie a parametry uvedené výše. Konfigurace tunel S2S VPN Hello se skládá z hello následující části:
 
 1. Rozhraní & trasy
 2. Seznamy přístupu
@@ -109,13 +109,13 @@ Následující skript poskytuje ukázkové konfiguraci na základě topologie a 
 5. Další parametry (upínací MSS protokolu TCP, atd.)
 
 >[!IMPORTANT] 
->Zkontrolujte prosím, že dokončení další konfigurace uvedené níže a nahraďte zástupné symboly skutečnými hodnotami:
+>Zkontrolujte prosím, že dokončení hello níže uvedené další konfigurace a nahraďte zástupné symboly hello hello skutečnými hodnotami:
 > 
 > - Konfigurace rozhraní pro i mimo ně rozhraní
 > - Trasy pro vaše uvnitř a privátního a mimo nebo veřejné sítě
-> - Zajistěte, všechny názvy a zásad čísla jedinečná na zařízení
-> - Ujistěte se, že kryptografické algoritmy jsou podporovány ve vašem zařízení
-> - Následující zástupného nahraďte skutečnými hodnotami
+> - Zajistěte, všechny názvy a zásad čísla jedinečná na zařízení hello
+> - Ujistěte se, že hello kryptografické algoritmy jsou podporovány ve vašem zařízení
+> - Nahraďte hello následující zástupného skutečnými hodnotami hello
 >   - Mimo název rozhraní: "mimo"
 >   - Azure_Gateway_Public_IP
 >   - OnPrem_Device_Public_IP
@@ -127,30 +127,30 @@ Následující skript poskytuje ukázkové konfiguraci na základě topologie a 
 #### <a name="sample-configuration"></a>Ukázková konfigurace
 
 ```
-! Sample ASA configuration for connecting to Azure VPN gateway
+! Sample ASA configuration for connecting tooAzure VPN gateway
 !
 ! Tested hardware: ASA 5505
 ! Tested version:  ASA version 9.2(4)
 !
-! Replace the following place holders with your actual values:
+! Replace hello following place holders with your actual values:
 !   - Interface names - default are "outside" and "inside"
 !   - <Azure_Gateway_Public_IP>
 !   - <OnPrem_Device_Public_IP>
 !   - <Pre_Shared_Key>
 !   - <VNetName>*
-!   - <LNGName>* ==> LocalNetworkGateway - the Azure resource that represents the
+!   - <LNGName>* ==> LocalNetworkGateway - hello Azure resource that represents the
 !     on-premises network, specifies network prefixes, device public IP, BGP info, etc.
 !   - <PrivateIPAddress> ==> Replace it with a private IP address if applicable
 !   - <Netmask> ==> Replace it with appropriate netmasks
-!   - <Nexthop> ==> Replace it with the actual nexthop IP address
+!   - <Nexthop> ==> Replace it with hello actual nexthop IP address
 !
-! (*) Must be unique names in the device configuration
+! (*) Must be unique names in hello device configuration
 !
 ! ==> Interface & route configurations
 !
-!     > <OnPrem_Device_Public_IP> address on the outside interface or vlan
-!     > <PrivateIPAddress> on the inside interface or vlan; e.g., 10.51.0.1/24
-!     > Route to connect to <Azure_Gateway_Public_IP> address
+!     > <OnPrem_Device_Public_IP> address on hello outside interface or vlan
+!     > <PrivateIPAddress> on hello inside interface or vlan; e.g., 10.51.0.1/24
+!     > Route tooconnect too<Azure_Gateway_Public_IP> address
 !
 !     > Example:
 !
@@ -175,7 +175,7 @@ Následující skript poskytuje ukázkové konfiguraci na základě topologie a 
 ! ==> Access lists
 !
 !     > Most firewall devices deny all traffic by default. Create access lists to
-!       (1) Allow S2S VPN tunnels between the ASA and the Azure gateway public IP address
+!       (1) Allow S2S VPN tunnels between hello ASA and hello Azure gateway public IP address
 !       (2) Construct traffic selectors as part of IPsec policy or proposal
 !
 access-list outside_access_in extended permit ip host <Azure_Gateway_Public_IP> host <OnPrem_Device_Public_IP>
@@ -189,9 +189,9 @@ object-group network Azure-<VNetName>
  network-object 10.12.0.0 255.255.0.0
 exit
 !
-!     > Object group that corresponding to the <LNGName> prefixes.
+!     > Object group that corresponding toohello <LNGName> prefixes.
 !       E.g., 10.51.0.0/16 and 10.52.0.0/16. Note that LNG = "local network gateway".
-!       In Azure network resource, a local network gateway defines the on-premises
+!       In Azure network resource, a local network gateway defines hello on-premises
 !       network properties (address prefixes, VPN device IP, BGP ASN, etc.)
 !
 object-group network <LNGName>
@@ -200,12 +200,12 @@ object-group network <LNGName>
  network-object 10.52.0.0 255.255.0.0
 exit
 !
-!     > Specify the access-list between the Azure VNet and your on-premises network.
-!       This access list defines the IPsec SA traffic selectors.
+!     > Specify hello access-list between hello Azure VNet and your on-premises network.
+!       This access list defines hello IPsec SA traffic selectors.
 !
 access-list Azure-<VNetName>-acl extended permit ip object-group <LNGName> object-group Azure-<VNetName>
 !
-!     > No NAT required between the on-premises network and Azure VNet
+!     > No NAT required between hello on-premises network and Azure VNet
 !
 nat (inside,outside) source static <LNGName> <LNGName> destination static Azure-<VNetName> Azure-<VNetName>
 !
@@ -221,8 +221,8 @@ crypto isakmp identity address
 crypto ikev2 enable outside
 !
 !     > Define IKEv2 Phase 1/Main Mode policy
-!       - Make sure the policy number is not used
-!       - integrity and prf must be the same
+!       - Make sure hello policy number is not used
+!       - integrity and prf must be hello same
 !       - DH group 14 and above require ASA version 9.x.
 !
 crypto ikev2 policy 1
@@ -254,14 +254,14 @@ crypto ipsec ikev2 ipsec-proposal AES-256
 exit
 !
 !     > Set access list & traffic selectors, PFS, IPsec protposal, SA lifetime
-!       - This sample uses "Azure-<VNetName>-map" as the crypto map name
+!       - This sample uses "Azure-<VNetName>-map" as hello crypto map name
 !       - ASA supports only one crypto map per interface, if you already have
-!         an existing crypto map assigned to your outside interface, you must use
-!         the same crypto map name, but with a different sequence number for
+!         an existing crypto map assigned tooyour outside interface, you must use
+!         hello same crypto map name, but with a different sequence number for
 !         this policy
-!       - "match address" policy uses the access-list "Azure-<VNetName>-acl" defined 
+!       - "match address" policy uses hello access-list "Azure-<VNetName>-acl" defined 
 !         previously
-!       - "ipsec-proposal" uses the proposal "AES-256" defined previously 
+!       - "ipsec-proposal" uses hello proposal "AES-256" defined previously 
 !       - PFS groups 14 and beyond requires ASA version 9.x.
 !
 crypto map Azure-<VNetName>-map 1 match address Azure-<VNetName>-acl
@@ -271,7 +271,7 @@ crypto map Azure-<VNetName>-map 1 set ikev2 ipsec-proposal AES-256
 crypto map Azure-<VNetName>-map 1 set security-association lifetime seconds 7200
 crypto map Azure-<VNetName>-map interface outside
 !
-! ==> Set TCP MSS to 1350
+! ==> Set TCP MSS too1350
 !
 sysopt connection tcpmss 1350
 !
@@ -281,16 +281,16 @@ sysopt connection tcpmss 1350
 
 Zde jsou některé příkazy ASA pro účely ladění:
 
-1. Zobrazit protokolu IPsec a přidružení zabezpečení protokolu IKE
+1. Zobrazit hello IPsec a přidružení zabezpečení protokolu IKE
     - "Zobrazit kryptografických ipsec sa"
     - "Zobrazit šifrování sa protokolu ikev2"
-2. Vstup režim ladění – to můžete získat na konzole velmi aktivní
+2. Vstup režim ladění – to můžete získat v konzole hello velmi aktivní
     - "ladění kryptografických ikev2 platformy <level>"
     - "ladění protokolu ikev2 kryptografických <level>"
 3. Aktuální konfigurace seznamu
-    - "Zobrazit spustit" – ukazuje aktuální konfigurace na zařízení; můžete použít různé dílčí příkazy na konkrétní části seznamu konfigurace. Například "Zobrazit spustit kryptografických", "spustit zobrazit seznam přístupu", "Zobrazit spustit tunel skupina", atd.
+    - "spuštění zobrazit" – ukazuje hello aktuální konfigurace na hello zařízení; můžete použít různé dílčí příkazy toolist konkrétní části hello konfigurace hello. Například "Zobrazit spustit kryptografických", "spustit zobrazit seznam přístupu", "Zobrazit spustit tunel skupina", atd.
 
 
 ## <a name="next-steps"></a>Další kroky
-V tématu [Konfigurace bran VPN typu aktivní–aktivní pro spojení mezi jednotlivými místy a VNet-to-VNet](vpn-gateway-activeactive-rm-powershell.md) najdete postupy pro vytvoření konfigurace aktivní–aktivní pro spojení VPN VNet-to-VNet a spojení mezi místy.
+V tématu [konfiguraci brány VPN aktivní-aktivní pro mezi různými místy a připojení VNet-to-VNet](vpn-gateway-activeactive-rm-powershell.md) kroky tooconfigure aktivní aktivní mezi různými místy a připojení VNet-to-VNet.
 

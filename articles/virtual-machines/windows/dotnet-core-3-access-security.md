@@ -1,5 +1,5 @@
 ---
-title: "Přístup a zabezpečení v šablonách Azure pro virtuální počítače Windows | Microsoft Docs"
+title: "aaaAccess a zabezpečení v šablonách Azure pro virtuální počítače Windows | Microsoft Docs"
 description: "Virtuální počítač Azure DotNet základní kurz"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1b5c4763cf56f681a50bb1bccc825311bbfdf5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b8227ae745b3b0a22d136e98d18479f8b1504c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="access-and-security-in-azure-resource-manager-templates-for-windows-vms"></a>Přístup a zabezpečení v šablonách Azure Resource Manageru pro virtuální počítače Windows
 
-Aplikace hostované v Azure pravděpodobně muset být přístup přes internet nebo síť VPN nebo připojení Express Route s Azure. Pomocí aplikace Ukázky hudby úložiště je webový server k dispozici na Internetu s veřejnou IP adresu. S přístupem k vytvoření by měly být zabezpečeny připojení k aplikaci a přístup k prostředkům virtuálního počítače, sami. Tento přístup zabezpečení je součástí skupinu zabezpečení sítě. 
+Aplikace hostované v Azure pravděpodobně nutné toobe přístup přes hello internet nebo síť VPN nebo připojení Express Route s Azure. S ukázkou aplikace hello Hudba úložiště, je k dispozici na webu hello hello internet s veřejnou IP adresu. S přístupem k vytvoření by měly být zabezpečeny připojení toohello aplikací a přístupu toohello prostředky virtuálního počítače sami. Tento přístup zabezpečení je součástí skupinu zabezpečení sítě. 
 
-Tento dokument podrobně popisuje, jak jsou zabezpečená aplikaci Store Hudba v ukázkové šablony Azure Resource Manager. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Pro dosažení co nejlepších výsledků, předem nasaďte instanci řešení, aby vaše předplatné Azure a pracovní společně s šablony Azure Resource Manageru. Úplnou šablonu naleznete zde – [Hudba nasazení úložiště v systému Windows](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+Tento dokument podrobně popisuje, jak jsou zabezpečená hello aplikaci Store Hudba v šablony Azure Resource Manageru ukázkový hello. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Nejvhodnější hello předem nasaďte instanci hello řešení tooyour předplatného Azure a pracovní společně s hello šablony Azure Resource Manageru. úplnou šablonu Hello naleznete zde – [Hudba nasazení úložiště v systému Windows](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
 ## <a name="public-ip-address"></a>Veřejná IP adresa
-Pokud chcete zadat veřejný přístup k prostředku Azure, lze prostředek veřejné IP adresy. Veřejnou IP adresu můžete nakonfigurovat statickou nebo dynamickou adresu IP. Pokud se používá s dynamickou adresou a virtuální počítač je zastaven a navrácena, odeberou se adresy. Když se počítač spustí znovu, může přiřadit jinou veřejnou IP adresu. Abyste zabránili změna IP adresy, lze použít vyhrazenou IP adresu. 
+tooprovide veřejný přístup tooan prostředků Azure, prostředek veřejné IP adresy lze použít. Veřejnou IP adresu můžete nakonfigurovat statickou nebo dynamickou adresu IP. Pokud se používá s dynamickou adresou a hello virtuální počítač je zastaven a navrácena, odeberou se hello adresy. Když se počítač hello znovu spustí, může přiřadit jinou veřejnou IP adresu. tooprevent na IP adresu z změna, můžete použít vyhrazenou IP adresu. 
 
-Veřejnou IP adresu lze přidat do šablony Azure Resource Manager pomocí Visual Studio nový Průvodce přidáním prostředku nebo vložením platný kód JSON do šablony. 
+Šablony Azure Resource Manageru tooan pomocí hello Visual Studio nový Průvodce přidáním prostředku, lze přidat na veřejnou IP adresu nebo vložením platný kód JSON do šablony. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [veřejnou IP adresu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L110).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [veřejnou IP adresu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L110).
 
 ```json
 {
@@ -54,9 +54,9 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [veřejnou IP 
 }
 ```
 
-Veřejnou IP adresu lze přidružit k virtuální síťový adaptér, nebo nástroj pro vyrovnávání zatížení. V tomto příkladu protože web Hudba úložiště je vyrovnáváno zatížení napříč několika virtuálních počítačů, je veřejná IP adresa připojený k vyrovnávání zatížení.
+Veřejnou IP adresu lze přidružit k virtuální síťový adaptér, nebo nástroj pro vyrovnávání zatížení. V tomto příkladu protože hello Hudba úložiště webu vyrovnáváno zatížení napříč několika virtuálních počítačů, je hello veřejnou IP adresu připojené toohello Vyrovnávání zatížení.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [přidružení veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L211).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [přidružení veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L211).
 
 ```json
 "frontendIPConfigurations": [
@@ -71,16 +71,16 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [přidružení
 ]
 ```
 
-Veřejnou IP adresu jako zaznamenané z portálu Azure. Všimněte si, že veřejná IP adresa je přidružená k vyrovnávání zatížení a není virtuální počítač. Nástroje pro vyrovnávání zatížení sítě jsou podrobně popsané v další dokument Tato řada.
+Hello veřejnou IP adresu jako z pohledu hello portálu Azure. Všimněte si, že hello veřejná IP adresa je přidružená tooa nástroj pro vyrovnávání zatížení a není virtuální počítač. Nástroje pro vyrovnávání zatížení sítě jsou podrobně popsané v dokumentu další hello této řady.
 
 ![Veřejná IP adresa](./media/dotnet-core-3-access-security/pubip-win.png)
 
 Další informace o Azure veřejné IP adresy najdete v tématu [IP adresách v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
 ## <a name="network-security-group"></a>Skupina zabezpečení sítě
-Po vytvoření přístup k prostředkům Azure tento přístup by měla být omezená. Pro virtuální počítače Azure se provádí zabezpečený přístup pomocí skupiny zabezpečení sítě. Pomocí aplikace Ukázky hudby úložiště je veškerý přístup k virtuálnímu počítači s omezeným přístupem, s výjimkou přes port 80 pro přístup protokolu http a port 3389 pro přístup k protokolu RDP. Skupina zabezpečení sítě lze přidat do šablony Azure Resource Manager pomocí Visual Studio nový Průvodce přidáním prostředku nebo vložením platný kód JSON do šablony.
+Jakmile přístup zavedených tooAzure prostředky, už musí být tento přístup omezený. Pro virtuální počítače Azure se provádí zabezpečený přístup pomocí skupiny zabezpečení sítě. S ukázkou aplikace hello úložiště Hudba všechny přístup toohello virtuální počítač je omezena kromě přes port 80 pro přístup protokolu http a port 3389 pro přístup k protokolu RDP. Šablony Azure Resource Manageru tooan pomocí hello Visual Studio nový Průvodce přidáním prostředku, lze přidat skupinu zabezpečení sítě, nebo vložením platný kód JSON do šablony.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [skupinu zabezpečení sítě](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L57).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [skupinu zabezpečení sítě](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L57).
 
 ```json
 {
@@ -113,9 +113,9 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [skupinu zabez
 },
 ```
 
-Skupina zabezpečení sítě v tomto příkladu je spojený s objektu podsítě, které jsou deklarované v rámci virtuální sítě prostředku. 
+V tomto příkladu je skupina zabezpečení sítě hello spojený s objektu podsítě hello deklarované v prostředku hello virtuální sítě. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [přidružení skupiny zabezpečení sítě pomocí virtuální sítě](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L143).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [přidružení skupiny zabezpečení sítě pomocí virtuální sítě](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L143).
 
 ```json
 "subnets": [
@@ -131,7 +131,7 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [přidružení
 ]
 ```
 
-Zde je, jak skupinu zabezpečení sítě vypadá z portálu Azure. Všimněte si, že skupina NSG můžete přidružit podsítě a / nebo síťové rozhraní. V takovém případě je přidružena k podsíti NSG. V této konfiguraci příchozích pravidel platí pro všechny virtuální počítače připojené k podsíti.
+Zde je, jakou skupinu zabezpečení sítě hello vypadá z hello portálu Azure. Všimněte si, že skupina NSG můžete přidružit podsítě a / nebo síťové rozhraní. V takovém případě je hello NSG přidružené tooa podsíť. V této konfiguraci hello příchozí pravidla použít tooall virtuální počítače připojené toohello podsítě.
 
 ![Skupina zabezpečení sítě](./media/dotnet-core-3-access-security/nsg-win.png)
 

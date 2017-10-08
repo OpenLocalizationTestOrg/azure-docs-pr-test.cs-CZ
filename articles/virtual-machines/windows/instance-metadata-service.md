@@ -1,6 +1,6 @@
 ---
-title: "Služba Azure Instance Metadata pro systém Windows | Microsoft Docs"
-description: "Rozhraní rESTful získat informace o výpočetní, síťové a události nadcházející údržby systému Windows Virtuálního počítače."
+title: "aaaAzure Instance Metadata služby pro Windows | Microsoft Docs"
+description: "Rozhraní rESTful tooget informace o výpočetní, síťové a události nadcházející údržby systému Windows Virtuálního počítače."
 services: virtual-machines-windows
 documentationcenter: 
 author: harijay
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: harijay
-ms.openlocfilehash: 55b97b89cb297dc08dc73f6714c5159d4565a97c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a33c26b5e9ed650be639598cdb6895fc19ccb605
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-instance-metadata-service-for-windows-vms"></a>Instance Metadata služby, které jsou pro virtuální počítače Windows Azure
 
 
-Služba Azure Instance metadat poskytuje informace o spuštěných instancí virtuálního počítače, které lze použít ke správě nebo konfiguraci virtuálních počítačů.
+Hello služby metadat instanci Azure poskytuje informace o spuštěných instancí virtuálního počítače, které se dají použít toomanage a konfigurovat virtuální počítače.
 To zahrnuje informace, jako je SKU, konfigurace sítě a události nadcházející údržby. Další informace o jaké typy informací je k dispozici, najdete v části [metadata kategorie](#instance-metadata-data-categories).
 
-Služba Metadata Instance Azure a je přístupný pro všechny virtuální počítače IaaS vytvořené prostřednictvím koncový bod REST [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Koncový bod je k dispozici na dobře známé směrovat IP adresu (`169.254.169.254`), můžete přistupovat pouze z virtuálního počítače.
+Služba Azure Instance metadat je koncový bod REST tooall dostupné virtuální počítače IaaS vytvořené prostřednictvím hello [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). koncový bod Hello je dostupný v dobře známé směrovat IP adresu (`169.254.169.254`), můžete přistupovat pouze z v rámci hello virtuálních počítačů.
 
 
 
 > [!IMPORTANT]
-> Tato služba je **všeobecně dostupná** v globální oblastech Azure. Je ve verzi Public preview pro státní, Čína a Cloud Azure němčina. Pravidelně obdrží aktualizace ke zveřejnění nové informace o instancí virtuálního počítače. Tato stránka zobrazuje aktuální [kategorie dat](#instance-metadata-data-categories) k dispozici.
+> Tato služba je **všeobecně dostupná** v globální oblastech Azure. Je ve verzi Public preview pro státní, Čína a Cloud Azure němčina. Pravidelně obdrží aktualizace tooexpose nové informace o instancí virtuálního počítače. Tato stránka se vztahuje k hello aktuální [kategorie dat](#instance-metadata-data-categories) k dispozici.
 
 
 
 ## <a name="service-availability"></a>Dostupnost služby
-Služba je k dispozici ve všech oblastech všeobecně dostupná globální Azure. Služba není ve verzi public preview v oblastech Government, Čína nebo Německu.
+Služba Hello je k dispozici ve všech oblastech všeobecně dostupná globální Azure. Služba Hello je ve verzi public preview v oblastech Government, Čína nebo Německo hello.
 
 Oblasti                                        | Dostupnost?
 -----------------------------------------------|-----------------------------------------------
@@ -45,26 +45,26 @@ Oblasti                                        | Dostupnost?
 [Azure Čína](https://www.azure.cn/)                                                           | Ve verzi Preview
 [Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Ve verzi Preview
 
-Tato tabulka je aktualizována při služba k dispozici v ostatních cloudů Azure.
+Tato tabulka je aktualizována při hello služby k dispozici v ostatních cloudů Azure.
 
-Můžete vyzkoušet na služby metadat Instance, vytvoření virtuálního počítače z [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) nebo [portál Azure](http://portal.azure.com) v oblastech výše a postupujte podle níže uvedených příkladech.
+tootry out hello Instance služby metadat, vytvoření virtuálního počítače z [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) nebo hello [portál Azure](http://portal.azure.com) v hello nad oblasti a postupujte podle níže uvedených příkladech hello.
 
 ## <a name="usage"></a>Využití
 
 ### <a name="versioning"></a>Správa verzí
-Služba Instance metadat je verzí. Verze jsou povinné a aktuální verze je `2017-04-02`.
+Hello Instance služby metadat je verzí. Verze jsou povinné a hello aktuální verze je `2017-04-02`.
 
 > [!NOTE] 
-> Předchozí verze preview naplánované událostí podporovaných {nejnovější} jako verze rozhraní api. Tento formát se už nepodporuje a bude v budoucnu zastaralá.
+> Předchozí verze preview naplánované událostí podporovaných {nejnovější} jako hello api-version. Tento formát se už nepodporuje a bude v budoucí hello nepoužívá.
 
-Jako přidáme novější verze, starší verze se dá dál dostat z důvodu kompatibility Pokud skripty mají závislosti na konkrétní data formátů. Všimněte si však, že aktuální version(2017-03-01) preview nemusí být k dispozici, jakmile služba všeobecně dostupná.
+Jako přidáme novější verze, starší verze se dá dál dostat z důvodu kompatibility Pokud skripty mají závislosti na konkrétní data formátů. Uvědomte si však, že tento hello aktuální preview version(2017-03-01) nemusí být k dispozici, jakmile služba hello je obecně dostupná.
 
 ### <a name="using-headers"></a>Používání hlaviček
-Když dotazujete Metadata Instance služby, je nutné zadat hlavičku `Metadata: true` zajistit požadavek nebyl přesměrován náhodně.
+Když dotazujete hello Instance Metadata služby, je nutné zadat hello záhlaví `Metadata: true` tooensure hello požadavek nebyl přesměrován náhodně.
 
 ### <a name="retrieving-metadata"></a>Načítání metadat
 
-Instance metadata jsou k dispozici pro spouštění virtuálních počítačů vytvořena nebo spravovat pomocí [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Všechny kategorie dat pro instanci virtuálního počítače pomocí následující žádosti o přístup:
+Instance metadata jsou k dispozici pro spouštění virtuálních počítačů vytvořena nebo spravovat pomocí [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Přístup k všechny kategorie dat pro instanci virtuálního počítače pomocí hello následující požadavek:
 
 ```
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
@@ -74,34 +74,34 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Všechny dotazy metadat instance rozlišují velká a malá písmena.
 
 ### <a name="data-output"></a>Výstup dat
-Ve výchozím nastavení, Instance služby metadat vrací data ve formátu JSON (`Content-Type: application/json`). Rozhraní API pro různé však může vrátit data v různých formátech Pokud požadovaný.
-V následující tabulce je odkazem na jiných formátů dat, které můžou podporovat rozhraní API.
+Ve výchozím nastavení, hello Instance Metadata služby vrací data ve formátu JSON (`Content-Type: application/json`). Rozhraní API pro různé však může vrátit data v různých formátech Pokud požadovaný.
+Hello následující tabulce je odkazem na jiných formátů dat, které můžou podporovat rozhraní API.
 
 Rozhraní API | Výchozí formát dat | Ostatní formáty
 --------|---------------------|--------------
 /instance | JSON | Text
 /scheduledevents | JSON | None
 
-Pro přístup k odpovědi jiné než výchozí formát, zadejte požadovaný formát jako parametr řetězce dotazu v žádosti. Například:
+tooaccess odpovědi jiné než výchozí formát, zadejte požadovaný formát hello jako parametr řetězce dotazu v žádosti o hello. Například:
 
 ```
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
 ```
 
 ### <a name="security"></a>Zabezpečení
-Koncový bod služby Metadata Instance je dostupné pouze v aplikaci spuštěnou instanci virtuálního počítače na směrovat IP adresu. Kromě toho každá žádost s `X-Forwarded-For` záhlaví byl odmítnut službou.
-Je také nutné požadavky tak, aby obsahovala `Metadata: true` záhlaví zajistit, že skutečné žádost byla přímo určený a není součástí neúmyslnému přesměrování. 
+koncový bod služby Metadata Instance Hello je dostupné pouze v aplikaci hello spuštěna instance virtuálního počítače na směrovat IP adresu. Kromě toho každá žádost s `X-Forwarded-For` záhlaví byl odmítnut službou hello.
+Je také nutné toocontain požadavky `Metadata: true` tooensure hlavičky, která hello skutečné žádosti byl přímo určený a není součástí neúmyslnému přesměrování. 
 
 ### <a name="error"></a>Chyba
-Pokud je datový prvek nebyl nalezen nebo chybně vytvořený požadavek, Instance služby metadat vrátí standardní chyby protokolu HTTP. Například:
+Pokud je datový prvek nebyl nalezen nebo chybně vytvořený požadavek, vrátí hello Instance Metadata služby standardní chyby protokolu HTTP. Například:
 
 Kód stavu HTTP | Důvod
 ----------------|-------
 200 OK |
 400 – Chybný požadavek | Chybí `Metadata: true` záhlaví
-404 – Nenalezeno | Položka hierarchyinfoguid požadovaný element neexistuje 
+404 – Nenalezeno | Existují technologie Hello položka hierarchyinfoguid požadovaný element 
 405 – Metoda není povoleno | Pouze `GET` a `POST` jsou podporovány požadavky
-429 příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu
+429 příliš mnoho požadavků | Hello rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu
 Chyba 500 služby     | Po určité době opakujte
 
 ### <a name="examples"></a>Příklady
@@ -120,7 +120,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 **Odpověď**
 
 > [!NOTE] 
-> Odpověď je řetězec formátu JSON. Následující příklad odpověď je pretty vytisknout čitelnější.
+> odpověď Hello je řetězec formátu JSON. Následující příklad odpovědi Hello je pretty vytisknout čitelnější.
 
 ```
 {
@@ -167,7 +167,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 **Odpověď**
 
 > [!NOTE] 
-> Odpověď je řetězec formátu JSON. Následující příklad odpověď je pretty vytisknout čitelnější.
+> odpověď Hello je řetězec formátu JSON. Následující příklad odpovědi Hello je pretty vytisknout čitelnější.
 
 ```
 {
@@ -215,13 +215,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 **Požadavek**
 
-Nejde načíst instance metadata v systému Windows pomocí nástroje PowerShell `curl`: 
+Nejde načíst instance metadata v systému Windows prostřednictvím hello nástroj PowerShell `curl`: 
 
 ```
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
 ```
 
-Nebo pomocí `Invoke-RestMethod` rutiny:
+Nebo prostřednictvím hello `Invoke-RestMethod` rutiny:
     
 ```
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
@@ -230,7 +230,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 **Odpověď**
 
 > [!NOTE] 
-> Odpověď je řetězec formátu JSON. Následující příklad odpověď je pretty vytisknout čitelnější.
+> odpověď Hello je řetězec formátu JSON. Následující příklad odpovědi Hello je pretty vytisknout čitelnější.
 
 ```
 {
@@ -277,26 +277,26 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```
 
 ## <a name="instance-metadata-data-categories"></a>Kategorie dat instance metadat
-Následující kategorie dat jsou k dispozici prostřednictvím služby Instance metadat:
+Hello následující kategorie dat jsou k dispozici prostřednictvím hello Instance Metadata služby:
 
 Data | Popis
 -----|------------
-location | Oblast Azure virtuální počítač běží v
-jméno | Název virtuálního počítače 
-Nabídka | Nabízí informace o image virtuálního počítače. Tato hodnota je jenom pro Image nasadit z Galerie obrázků Azure k dispozici.
-Vydavatele | Vydavatel image virtuálního počítače
-SKU | Konkrétní SKU pro bitovou kopii virtuálního počítače  
-Verze | Verze bitové kopie virtuálního počítače 
+location | Azure oblast hello virtuální počítač spuštěný
+jméno | Název hello virtuálních počítačů 
+Nabídka | Nabízí informace o hello image virtuálního počítače. Tato hodnota je jenom pro Image nasadit z Galerie obrázků Azure k dispozici.
+Vydavatele | Vydavatel hello image virtuálního počítače
+SKU | Konkrétní SKU pro hello image virtuálního počítače  
+Verze | Verze bitové kopie virtuálních počítačů hello 
 osType | Linux nebo Windows 
-platformUpdateDomain |  [Aktualizace domény](manage-availability.md) je virtuální počítač spuštěný
-platformFaultDomain | [Doména selhání](manage-availability.md) je virtuální počítač spuštěný
-vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač.
+platformUpdateDomain |  [Aktualizace domény](manage-availability.md) hello virtuální počítač spuštěný v
+platformFaultDomain | [Doména selhání](manage-availability.md) hello virtuální počítač spuštěný v
+vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro hello virtuálních počítačů
 vmSize | [Velikost virtuálního počítače](sizes.md)
-IPv4/privateIpAddress | Místní adresu IPv4 virtuálního počítače 
-IPv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače
-Adresa podsítě / | Adresa podsítě virtuálního počítače
+IPv4/privateIpAddress | Místní adresa IPv4 hello virtuálních počítačů 
+IPv4/publicIpAddress | Veřejnou IPv4 adresu hello virtuálních počítačů
+Adresa podsítě / | Adresa podsítě hello virtuálních počítačů
 Předpona podsítě / | Předpona podsítě, například 24
-IPv6 nebo adresa IP | Místní adresu IPv6 virtuálního počítače
+IPv6 nebo adresa IP | Místní adresa IPv6 hello virtuálních počítačů
 MacAddress | Adresa mac virtuálního počítače 
 scheduledevents | Aktuálně ve veřejné verzi Preview najdete [scheduledevents](scheduled-events.md)
 
@@ -304,7 +304,7 @@ scheduledevents | Aktuálně ve veřejné verzi Preview najdete [scheduledevents
 
 ### <a name="tracking-vm-running-on-azure"></a>Sledování virtuálního počítače v Azure
 
-Jako poskytovatele služeb může vyžadovat sledovat počet virtuálních počítačů spuštěných váš software nebo agenty, kteří potřebují ke sledování jedinečnosti virtuálního počítače. Abyste mohli získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z Instance Metadata služby.
+Jako poskytovatele služeb může vyžadovat tootrack hello počet virtuálních počítačů spuštěných váš software nebo agenty, kteří potřebují tootrack jedinečnosti hello virtuálních počítačů. možnost tooget toobe jedinečné ID pro virtuální počítač, použijte hello `vmId` pole z Instance Metadata služby.
 
 **Požadavek**
 
@@ -320,8 +320,8 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Umístění kontejnery, oddíly dat na základě domény selhání nebo aktualizovat 
 
-Pro určité scénáře, umístění repliky různých datových je důležité. Například [umístění repliky HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru prostřednictvím [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) může vyžadovat vědět `platformFaultDomain` a `platformUpdateDomain` virtuální počítač běží na.
-Tato data přímo přes službu Metadata Instance se můžete dotazovat.
+Pro určité scénáře, umístění repliky různých datových je důležité. Například [umístění repliky HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru prostřednictvím [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) může vyžadovat tooknow hello `platformFaultDomain` a `platformUpdateDomain` hello běží virtuální počítač.
+Tato data přímo prostřednictvím hello Instance Metadata služby se můžete dotazovat.
 
 **Požadavek**
 
@@ -335,9 +335,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 0
 ```
 
-### <a name="getting-more-information-about-the-vm-during-support-case"></a>Další informace o virtuálním počítači během případu podpory pro získávání 
+### <a name="getting-more-information-about-hello-vm-during-support-case"></a>Další informace o hello virtuálních počítačů během případu podpory pro získávání 
 
-Jako poskytovatele služeb může získat volání podpory kde chcete vědět, další informace o virtuálním počítači. S dotazem, zákazník sdílet metadata výpočetní poskytuje základní informace pro odborníky v oblasti vědět o druh virtuálního počítače na platformě Azure podporu. 
+Jako poskytovatele služeb může se zobrazit žádost o podporu kam chcete tooknow Další informace o hello virtuálních počítačů. S dotazem, tooshare zákazníka hello hello výpočetní metadat poskytuje základní informace pro odborníky v oblasti tooknow hello podpory o hello druh virtuálních počítačů v Azure. 
 
 **Požadavek**
 
@@ -348,7 +348,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 **Odpověď**
 
 > [!NOTE] 
-> Odpověď je řetězec formátu JSON. Následující příklad odpověď je pretty vytisknout čitelnější.
+> odpověď Hello je řetězec formátu JSON. Následující příklad odpovědi Hello je pretty vytisknout čitelnější.
 
 ```
 {
@@ -368,7 +368,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
-### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků ve virtuálním počítači 
+### <a name="examples-of-calling-metadata-service-using-different-languages-inside-hello-vm"></a>Příklady volání služby metadat pomocí různých jazyků uvnitř hello virtuálních počítačů 
 
 Jazyk | Příklad 
 ---------|----------------
@@ -383,23 +383,23 @@ Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
     
 
 ## <a name="faq"></a>Nejčastější dotazy
-1. Vyskytla se chyba `400 Bad Request, Required metadata header not specified`. Co to znamená?
-   * Instance Metadata služba vyžaduje, aby záhlaví `Metadata: true` předávané v požadavku. Předávání tuto hlavičku ve volání REST umožňuje přístup ke službě Instance metadat. 
+1. Vyskytla se chyba hello `400 Bad Request, Required metadata header not specified`. Co to znamená?
+   * Hello Instance Metadata služby vyžaduje hlavičku hello `Metadata: true` toobe předaná hello požadavku. Předávání tuto hlavičku v volání REST hello umožňuje přístup toohello Instance služby metadat. 
 2. Proč není zobrazuje informace o výpočetní pro virtuální počítač?
-   * Instance služby Metadata aktuálně podporuje jenom instancích vytvořených pomocí Azure Resource Manageru. V budoucnu jsme může přidat podporu pro virtuální počítače cloudové služby.
+   * Hello Instance Metadata služby aktuálně podporuje jenom instancích vytvořených pomocí Azure Resource Manageru. V budoucích hello jsme může přidat podporu pro virtuální počítače cloudové služby.
 3. Delší dobou vytvořený virtuální počítač prostřednictvím Správce Azure Resource Manager. Proč není najdete informace o metadatech výpočetní?
-   * Pro všechny virtuální počítače vytvořené po září 2016, přidejte [značky](../../azure-resource-manager/resource-group-using-tags.md) zahájíte zobrazuje výpočetní metadat. Pro starší virtuální počítače (vytvořených před září 2016) přidat nebo odebrat rozšíření nebo data disky na virtuální počítač aktualizujte metadata.
-4. Proč se zobrazuje chyba `500 Internal Server Error`?
-   * Opakujte žádost podle exponenciální regrese systému. Pokud potíže potrvají, kontaktujte podporu Azure.
+   * Pro všechny virtuální počítače vytvořené po září 2016, přidejte [značka](../../azure-resource-manager/resource-group-using-tags.md) toostart vidět výpočetní metadat. Pro starší virtuální počítače (vytvořených před září 2016) přidat nebo odebrat rozšíření nebo data toorefresh metadata disky toohello virtuálních počítačů.
+4. Proč se zobrazuje chyba hello `500 Internal Server Error`?
+   * Opakujte žádost podle exponenciální regrese systému. Pokud hello problém přetrvávat, kontaktujte podporu Azure.
 5. Kde mohu sdílet další dotazy nebo připomínky?
    * Odešlete komentáře k http://feedback.azure.com.
 7. To funguje pro instanci nastavení škálování virtuálního počítače?
    * Ano je k dispozici pro škálování nastavení instance služby metadat. 
-6. Jak získat podporu pro službu?
-   * Získat podporu pro službu, vytvořte problém podpory na portálu Azure pro virtuální počítač, kde není možné získat metadata odpověď po dlouhou opakování 
+6. Jak získat podporu pro službu hello?
+   * tooget podporu služby hello, vytvořit problém podpory na portálu Azure pro hello virtuálního počítače, kde se není možné tooget metadat odpovědi po dlouhou opakování 
 
    ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)
     
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [naplánované události](scheduled-events.md) rozhraní API **ve verzi public preview** poskytovaný službou Instance metadat.
+- Další informace o hello [naplánované události](scheduled-events.md) rozhraní API **ve verzi public preview** poskytované hello Instance Metadata služby.

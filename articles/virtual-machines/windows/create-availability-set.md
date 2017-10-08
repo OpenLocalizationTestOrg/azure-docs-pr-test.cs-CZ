@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření dostupnosti virtuálních počítačů v Azure | Microsoft Docs"
-description: "Naučte se vytvořit skupinu dostupnosti spravované nebo nespravované sadu dostupnosti pro virtuální počítače pomocí prostředí Azure PowerShell nebo portálu v modelu nasazení Resource Manager."
+title: "nastavit aaaCreate dostupnosti virtuálních počítačů v Azure | Microsoft Docs"
+description: "Zjistěte, jak nastavit toocreate spravované dostupnosti nebo nespravované dostupnosti pro virtuální počítače pomocí prostředí Azure PowerShell nastavit nebo hello portálu v modelu nasazení Resource Manager hello."
 keywords: Sady dostupnosti.
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,56 +17,56 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e813ade8e105169f21138ed8a8eafda1ff39f42e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eadcdfcd28bb2fa21a4647f207b390c33e022ef1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>Zvýšení dostupnosti virtuálních počítačů tak, že vytvoříte skupinu dostupnosti Azure 
-Skupiny dostupnosti poskytnout redundanci do vaší aplikace. Doporučujeme seskupit dva nebo více virtuálních počítačů v nastavení dostupnosti. Tato konfigurace zajistí, že během buď plánované i neplánované údržby alespoň jeden virtuální počítač bude k dispozici a splňují podmínku 99.95 % smlouva Azure SLA. Další informace najdete v tématu [SLA pro virtuální počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
+Skupiny dostupnosti poskytují redundanci tooyour aplikace. Doporučujeme seskupit dva nebo více virtuálních počítačů v nastavení dostupnosti. Tato konfigurace zajistí, že během buď plánované i neplánované údržby alespoň jeden virtuální počítač bude k dispozici a plnění hello 99,95 % smlouva Azure SLA. Další informace najdete v tématu hello [SLA pro virtuální počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Virtuální počítače musí být vytvořeny ve stejné skupině prostředků jako skupiny dostupnosti.
+> Virtuální počítače musí být vytvořen v hello stejné skupině prostředků jako skupinu dostupnosti hello.
 > 
 
-Pokud chcete virtuální počítač jako součást skupiny dostupnosti, je nutné vytvořit skupinu dostupnosti nejprve nebo při vytváření vašeho prvního virtuálního počítače v sadě. Pokud virtuální počítač bude používat spravované disky, je nutné vytvořit skupinu dostupnosti jako sadu spravovaných dostupnosti.
+Pokud chcete, aby váš virtuální počítač toobe součástí skupiny dostupnosti, je třeba toocreate hello dostupnosti nastavit první nebo při vytváření vašeho prvního virtuálního počítače v sadě hello. Pokud virtuální počítač bude používat spravované disků, musí být vytvořeny skupinu dostupnosti hello jako sadu spravovaných dostupnosti.
 
-Další informace o vytváření a použití skupiny dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o vytváření a použití skupiny dostupnosti najdete v tématu [spravovat hello dostupnosti virtuálních počítačů](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="use-the-portal-to-create-an-availability-set-before-creating-your-vms"></a>Vytvořit sadu před vytvořením virtuálních počítačů dostupnosti pomocí portálu
-1. V nabídce centra klikněte na **Procházet** a vyberte **sady dostupnosti**.
-2. Na **sady dostupnosti okno**, klikněte na tlačítko **přidat**.
+## <a name="use-hello-portal-toocreate-an-availability-set-before-creating-your-vms"></a>Použití portálu toocreate hello před vytvořením virtuálních počítačů sadu dostupnosti
+1. V nabídce centra hello, klikněte na **Procházet** a vyberte **sady dostupnosti**.
+2. Na hello **sady dostupnosti okno**, klikněte na tlačítko **přidat**.
    
-    ![Snímek obrazovky, který ukazuje na tlačítko Přidat pro vytvoření nové dostupnosti nastavit.](./media/create-availability-set/add-availability-set.png)
-3. Na **vytvořit skupinu dostupnosti** okno, zadejte informace o vaší sady.
+    ![Snímek obrazovky zobrazující hello přidat tlačítko pro vytvoření nové sady dostupnosti.](./media/create-availability-set/add-availability-set.png)
+3. Na hello **vytvořit skupinu dostupnosti** okno, informace o dokončení hello vaší sady.
    
-    ![Snímek obrazovky s informacemi, budete muset zadat pro vytvoření sady dostupnosti.](./media/create-availability-set/create-availability-set.png)
+    ![Snímek obrazovky, ukazuje hello informace tooenter toocreate hello dostupnosti je potřeba nastavit.](./media/create-availability-set/create-availability-set.png)
    
-   * **Název** -název musí být 1-80 znaků skládá z čísla, písmena, tečky, podtržítka a pomlčky. První znak musí být písmeno nebo číslice. Poslední znak musí být písmeno, číslo nebo podtržítko.
-   * **Poruch domén** -domén selhání definování skupiny virtuálních počítačů, které sdílejí společné přepínač zdroje a sítě power. Ve výchozím nastavení virtuální počítače jsou oddělené v rámci až tři domén selhání a můžete změnit tak, aby mezi 1 a 3.
-   * **Aktualizovat domén** – ve výchozím nastavení jsou přiřazeny pět domén aktualizace, a to může být nastaven na 1 až 20. Aktualizace domén označují skupiny virtuálních počítačů a základní fyzický hardware, který může být restartován ve stejnou dobu. Například pokud bychom zadat, že pět aktualizovat domén, když více než pět virtuální počítače jsou nastaveny v rámci jedné skupiny dostupnosti, šesté virtuální počítač se umístí do jedné aktualizační doméně jako první virtuální počítač, sedmý ve stejné UD jako druhý virtuální počítač a tak dále. Pořadí restartování počítače nemusí být po sobě jdoucích, ale bude restartován pouze jednu aktualizační doménu najednou.
-   * **Předplatné** -vyberte odběr, který má použít, pokud máte více než jeden.
-   * **Skupina prostředků** – klikněte na šipku a výběrem skupiny prostředků v rozevíracím seznamu vyberte existující skupinu prostředků. Můžete také vytvořit novou skupinu prostředků tak, že zadáte v názvu. Název může obsahovat následující znaky: písmena, číslice, tečky, pomlčky, podtržítka a otevírání nebo kulaté závorky. Název nemůže končit tečkou. Všechny virtuální počítače ve skupině dostupnosti potřeba vytvořit ve stejné skupině prostředků jako skupiny dostupnosti.
-   * **Umístění** – z rozevíracího seznamu vyberte umístění.
-   * **Spravované** – vyberte *Ano* k vytvoření spravovaného dostupnosti nastavení aplikaci virtuálních počítačů, které používají spravovaný disků pro úložiště. Vyberte **ne** Pokud virtuální počítače, které budou v sadě používat nespravované disky v účtu úložiště.
+   * **Název** -hello název by měl být 1-80 znaků skládá z čísla, písmena, tečky, podtržítka a pomlčky. Hello první znak musí být písmeno nebo číslice. Hello poslední znak musí být písmeno, číslo nebo podtržítko.
+   * **Poruch domén** -domén selhání definovat hello skupinu virtuálních počítačů, které sdílejí společné přepínač zdroje a sítě power. Ve výchozím nastavení hello virtuální počítače jsou oddělené v rámci až toothree domén selhání a může být změněné toobetween 1 a 3.
+   * **Aktualizovat domén** – ve výchozím nastavení jsou přiřazeny pět domén aktualizace, a to je možné nastavit toobetween 1 až 20. Aktualizace domén označují skupiny virtuálních počítačů a základní fyzický hardware, který může být restartován v hello stejnou dobu. Například pokud bychom zadat pět aktualizace, které domény, když je více než pět virtuální počítače jsou nastaveny v rámci jedné dostupnosti sadě, hello šesté virtuální počítač se umístí do hello jedné aktualizační doméně jako hello první virtuální počítač hello sedmá v hello, stejné UD jako hello druhý virtuální počítač a tak dále. Hello pořadí hello restartování nemusí být po sobě jdoucích, ale bude restartován pouze jednu aktualizační doménu najednou.
+   * **Předplatné** -vyberte hello toouse předplatné, pokud máte více než jednou.
+   * **Skupina prostředků** -vyberte existující skupinu prostředků, klikněte na šipku hello a výběrem skupinu prostředků z hello rozevírací nabídku. Můžete také vytvořit novou skupinu prostředků tak, že zadáte v názvu. Hello název může obsahovat jakýkoli z hello následující znaky: písmena, číslice, tečky, pomlčky, podtržítka a otevírání nebo kulaté závorky. Hello název nemůže končit tečkou. Všechny hello virtuální počítače ve skupině dostupnosti hello musí toobe vytvořené v hello stejné skupině prostředků jako skupinu dostupnosti hello.
+   * **Umístění** -vyberte z rozevíracího seznamu hello umístění.
+   * **Spravované** – vyberte *Ano* toocreate spravované dostupnosti nastavit toouse s virtuálními počítači, které používají spravovaný disků pro úložiště. Vyberte **ne** Pokud hello virtuálních počítačů, které budou v sadě hello použijte nespravované disky v účtu úložiště.
    
-4. Po dokončení zadáváte informace, klikněte na tlačítko **vytvořit**. 
+4. Při zadávání informací hello skončíte, klikněte na tlačítko **vytvořit**. 
 
-## <a name="use-the-portal-to-create-a-virtual-machine-and-an-availability-set-at-the-same-time"></a>Použití portálu k vytvoření virtuálního počítače a současně sadu dostupnosti
-Při vytváření nového virtuálního počítače pomocí portálu, můžete také vytvořit novou sadu dostupnosti pro virtuální počítač při vytváření první virtuální počítač v sadě. Pokud se rozhodnete používat spravované disky pro virtuální počítač, bude vytvořen sadu spravovaných dostupnosti.
+## <a name="use-hello-portal-toocreate-a-virtual-machine-and-an-availability-set-at-hello-same-time"></a>Použití portálu toocreate hello virtuální počítač a dostupnosti nastavit na hello stejný čas
+Pokud vytváříte nový virtuální počítač pomocí hello portálu, můžete také vytvořit novou sadu dostupnosti pro hello virtuálních počítačů při vytváření hello první virtuální počítač v sadě hello. Pokud si zvolíte toouse spravované disky pro virtuální počítač, bude vytvořen sadu spravovaných dostupnosti.
 
-![Snímek obrazovky, který ukazuje postup pro vytvoření nové dostupnosti nastavit při vytváření virtuálního počítače.](./media/create-availability-set/new-vm-avail-set.png)
+![Snímek obrazovky zobrazující hello proces vytvoření nového dostupnosti nastavit při vytváření hello virtuálních počítačů.](./media/create-availability-set/new-vm-avail-set.png)
 
-## <a name="add-a-new-vm-to-an-existing-availability-set-in-the-portal"></a>Přidat nový virtuální počítač do existující dostupnosti nastaveným na portálu
-Každý další virtuální počítač, který vytvoříte, by měly patřit v sadě, je nutné vytvořit ve stejné **skupiny prostředků** a potom vyberte existující sadu v kroku 3 dostupnosti. 
+## <a name="add-a-new-vm-tooan-existing-availability-set-in-hello-portal"></a>Přidat nový virtuální počítač tooan stávající sadu dostupnosti hello portálu
+Pro každý další virtuální počítač, který vytvoříte, by měl patřit sady hello, ujistěte se, vytvořte ji v hello stejné **skupiny prostředků** a pak vyberte hello existující dostupnosti v kroku 3. 
 
-![Snímek obrazovky ukazující, jak vybrat existující sadu používat pro virtuální počítač dostupnosti.](./media/create-availability-set/add-vm-to-set.png)
+![Snímek obrazovky ukazující, jak nastavit tooselect existující dostupnosti toouse pro virtuální počítač.](./media/create-availability-set/add-vm-to-set.png)
 
-## <a name="use-powershell-to-create-an-availability-set"></a>Použití prostředí PowerShell vytvořit skupinu dostupnosti
-Tento příklad vytvoří sadu s názvem dostupnosti **myAvailabilitySet** v **myResourceGroup** skupinu prostředků **západní USA** umístění. To je potřeba provést před vytvořením první virtuální počítač, který bude v sadě.
+## <a name="use-powershell-toocreate-an-availability-set"></a>Pomocí prostředí PowerShell toocreate dostupnosti nastavit
+Tento příklad vytvoří sadu s názvem dostupnosti **myAvailabilitySet** v hello **myResourceGroup** skupiny prostředků v hello **západní USA** umístění. Tento krok je nutné provést před vytvořením hello toobe první virtuální počítač, který bude v sadě hello.
 
-Než začnete, ujistěte se, že máte nejnovější verzi modulu AzureRM.Compute prostředí PowerShell. Spusťte následující příkaz k její instalaci.
+Než začnete, ujistěte se, že máte nejnovější verzi hello modulu AzureRM.Compute PowerShell hello. Spustit hello následující příkaz tooinstall.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -91,8 +91,8 @@ Pokud používáte vlastní účty úložiště pro virtuální počítače, zad
 Další informace najdete v tématu [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset).
 
 ## <a name="troubleshooting"></a>Řešení potíží
-* Při vytváření virtuálního počítače, není-li skupinu dostupnosti, které chcete v rozevíracím seznamu v portálu pravděpodobně jste vytvořili ho v jiné skupině prostředků. Pokud si nejste jisti, skupinu prostředků pro vaše dostupnosti nastavit, přejděte do nabídky rozbočovače a klikněte na tlačítko Procházet > sady dostupnosti zobrazte seznam skupiny dostupnosti a který patří do skupiny prostředků.
+* Při vytváření virtuálního počítače, pokud skupina dostupnosti hello, které chcete není v rozevíracím seznamu hello portálu hello pravděpodobně vytvořena ho v jiné skupině prostředků. Pokud si nejste jisti hello skupinu prostředků pro vaše dostupnosti nastavit, přejděte v nabídce centra toohello a klikněte na tlačítko Procházet > toosee nastaví seznam vaší dostupnosti a které skupiny prostředků, které patří do sady dostupnosti.
 
 ## <a name="next-steps"></a>Další kroky
-Přidejte další úložiště k virtuálnímu počítači tak, že přidáte další [datový disk](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Přidejte další úložiště tooyour virtuálních počítačů tak, že přidáte další [datový disk](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

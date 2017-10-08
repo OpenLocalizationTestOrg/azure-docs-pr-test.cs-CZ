@@ -1,5 +1,5 @@
 ---
-title: "Ukázka skriptu rozhraní příkazového řádku Azure – instalace služby IIS | Microsoft Docs"
+title: "aaaAzure ukázka skriptu rozhraní příkazového řádku - instalace služby IIS | Microsoft Docs"
 description: "Ukázka skriptu rozhraní příkazového řádku Azure – instalace služby IIS"
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: nepeters
-ms.openlocfilehash: 426418c01b23845372443af5b8f4e826fb321f7d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2fabc9522f424cab4c672084ba8bedfd623c87cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Rychlé vytvoření virtuálního počítače pomocí rozhraní příkazového řádku Azure
+# <a name="quick-create-a-virtual-machine-with-hello-azure-cli"></a>Rychlé vytvoření virtuálního počítače pomocí hello rozhraní příkazového řádku Azure
 
-Tento skript vytvoří virtuální počítač Azure systémem Windows Server 2016 a používá k instalaci IIS rozšíření vlastních skriptů virtuálního počítače Azure. Po spuštění skriptu, můžete přejít na výchozí web služby IIS na veřejnou IP adresu virtuálního počítače.
+Tento skript vytvoří virtuální počítač Azure systémem Windows Server 2016 a používá hello rozšíření vlastních skriptů Azure virtuálního počítače tooinstall služby IIS. Po spuštění skriptu hello, budete mít přístup hello výchozí web služby IIS na hello veřejnou IP adresu hello virtuálního počítače.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -31,11 +31,11 @@ Tento skript vytvoří virtuální počítač Azure systémem Windows Server 201
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/virtual-machine/create-vm-windows-iis/create-vm-windows-iis.sh "rychlé vytvoření virtuálního počítače")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-windows-iis/create-vm-windows-iis.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spusťte následující příkaz tooremove hello prostředků skupiny virtuálních počítačů a všechny související prostředky hello.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -43,18 +43,18 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální počítač a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy toocreate skupinu prostředků, virtuální počítač, a všechny související prostředky. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
 | [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm#create) | Vytvoří virtuální počítač a připojí jej k síťové karty, virtuální sítě, podsítě a skupinu zabezpečení sítě. Tento příkaz také určuje image virtuálního počítače jako přihlašovací údaje použité a správu.  |
-| [virtuální počítač az open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | Vytvoří pravidlo skupiny zabezpečení sítě chcete povolit příchozí přenosy. V této ukázce je otevřen port 80 pro přenosy protokolu HTTP. |
-| [sada rozšíření virtuálního počítače Azure](https://docs.microsoft.com/cli/azure/vm/extension#set) | Přidá a spustí rozšíření virtuálního počítače k virtuálnímu počítači. V této ukázce se používá rozšíření vlastních skriptů instalace služby IIS.|
+| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm#create) | Vytvoří hello virtuální počítač a připojí ho toohello síťové karty, virtuální sítě, podsítě a skupinu zabezpečení sítě. Tento příkaz také určuje toobe bitové kopie virtuálního počítače hello používá a pověření pro správu.  |
+| [virtuální počítač az open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | Vytvoří tooallow pravidla skupiny zabezpečení sítě příchozí přenosy. V této ukázce je otevřen port 80 pro přenosy protokolu HTTP. |
+| [sada rozšíření virtuálního počítače Azure](https://docs.microsoft.com/cli/azure/vm/extension#set) | Přidá a běží virtuálním počítači rozšíření tooa virtuálních počítačů. V této ukázce je rozšíření vlastních skriptů hello použité tooinstall služby IIS.|
 | [Odstranění skupiny az](https://docs.microsoft.com/cli/azure/vm/extension#set) | Odstraní skupinu prostředků, včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v hello [virtuálního počítače Windows Azure dokumentaci](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

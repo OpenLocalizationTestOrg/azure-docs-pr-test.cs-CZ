@@ -1,6 +1,6 @@
 ---
-title: Aktualizovat Azure Linux Agent z webu GitHub | Microsoft Docs
-description: "Zjistěte, jak aktualizovat Azure Linux Agent pro váš virtuální počítač s Linuxem v Azure na nejnovější verzi z webu GitHub"
+title: aaaUpdate hello Azure Linux Agent z webu GitHub | Microsoft Docs
+description: "Zjistěte, jak tooupdate Azure Linux Agent pro váš virtuální počítač s Linuxem v Azure toohello nejnovější verzi z webu GitHub"
 services: virtual-machines-linux
 documentationcenter: 
 author: SuperScottz
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mingzhan
-ms.openlocfilehash: c79e37976a58ae5384b5856e0f7f258a773ef0fd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4ce7c56efc1e6563e6415f7687573f9fb9e7b4c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Postup aktualizace Azure Linux Agent na virtuálním počítači
+# <a name="how-tooupdate-hello-azure-linux-agent-on-a-vm"></a>Jak tooupdate hello Azure Linux Agent na virtuálním počítači
 
-Chcete-li aktualizovat vaše [Azure Linux Agent](https://github.com/Azure/WALinuxAgent) na virtuální počítač s Linuxem v Azure, musíte už mít:
+tooupdate vaše [Azure Linux Agent](https://github.com/Azure/WALinuxAgent) na virtuální počítač s Linuxem v Azure, musíte už mít:
 
 - Spuštěného virtuálního počítače s Linuxem v Azure.
-- Připojení k této virtuální počítač s Linuxem pomocí protokolu SSH.
+- Toothat připojení virtuálního počítače s Linuxem pomocí protokolu SSH.
 
-Vždy zkontrolujte pro balíček v úložišti distro Linux nejdřív. Je možné, k dispozici balíček nemusí být, že na nejnovější verzi, ale povolení automatických aktualizací se ujistěte se, že Linux Agent bude vždy získat nejnovější aktualizace. Budete mít problémy instalace ze Správce balíčku, byste se měli obrátit dodavatele distro podpory.
+Vždy zkontrolujte pro balíček v úložišti distro Linux hello nejdřív. Je možné hello balíčku k dispozici nemusí být hello nejnovější verzi, ale povolení automatických aktualizací zajistí hello agenta systému Linux bude vždycky získat nejnovější aktualizace hello. Budete mít problémy instalace z hello balíček správci, byste se měli obrátit podporu od dodavatele distro hello.
 
-## <a name="updating-the-azure-linux-agent"></a>Aktualizace Azure Linux Agent
+## <a name="updating-hello-azure-linux-agent"></a>Aktualizace hello Azure Linux Agent
 
 ## <a name="ubuntu"></a>Ubuntu
 
@@ -46,7 +46,7 @@ apt list --installed | grep walinuxagent
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo apt-get install walinuxagent
@@ -54,7 +54,7 @@ sudo apt-get install walinuxagent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -67,13 +67,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu příkaz waagent
+### <a name="restart-hello-waagent-service"></a>Restartujte službu příkaz waagent hello
 
 #### <a name="restart-agent-for-1404"></a>Restartovat agenta 14.04
 
@@ -103,14 +103,14 @@ dpkg -l | grep waagent
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo apt-get install waagent
 ```
 
 #### <a name="enable-agent-auto-update"></a>Povolit automatické aktualizace agenta
-Tato verze Debian nemá na verzi > = 2.0.16, proto není k dispozici pro něj automatických aktualizací. Výstup z výše uvedeném příkazu se zobrazí, pokud tento balíček je aktuální.
+Tato verze Debian nemá na verzi > = 2.0.16, proto není k dispozici pro něj automatických aktualizací. výstup Hello hello výše příkazu se zobrazí, pokud balíček hello je aktuální.
 
 ### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Klára" / Debian 9 "Stretch"
 
@@ -126,14 +126,14 @@ apt list --installed | grep walinuxagent
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo apt-get install waagent
 ```
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace 
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -146,13 +146,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu příkaz waagent
+### <a name="restart-hello-waagent-service"></a>Restartujte službu příkaz waagent hello
 
 ```
 sudo systemctl restart walinuxagent.service
@@ -174,7 +174,7 @@ sudo yum list WALinuxAgent
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo yum install WALinuxAgent
@@ -182,7 +182,7 @@ sudo yum install WALinuxAgent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace 
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -195,13 +195,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu příkaz waagent
+### <a name="restart-hello-waagent-service"></a>Restartujte službu příkaz waagent hello
 
 ```
 sudo service waagent restart
@@ -221,7 +221,7 @@ sudo yum list WALinuxAgent
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo yum install WALinuxAgent  
@@ -229,7 +229,7 @@ sudo yum install WALinuxAgent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace 
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -242,13 +242,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu příkaz waagent
+### <a name="restart-hello-waagent-service"></a>Restartujte službu příkaz waagent hello
 
 ```bash
 sudo systemctl restart waagent.service
@@ -266,9 +266,9 @@ zypper info python-azure-agent
 
 #### <a name="check-available-updates"></a>Zkontrolujte dostupné aktualizace
 
-Výše uvedené výstup se zobrazí, pokud tento balíček je aktuální.
+Hello výše výstupu se zobrazí, pokud je balíček hello až toodate.
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo zypper install python-azure-agent
@@ -276,7 +276,7 @@ sudo zypper install python-azure-agent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace 
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -289,13 +289,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu příkaz waagent
+### <a name="restart-hello-waagent-service"></a>Restartujte službu příkaz waagent hello
 
 ```bash
 sudo /etc/init.d/waagent restart
@@ -311,9 +311,9 @@ zypper info python-azure-agent
 
 #### <a name="check-available-updates"></a>Zkontrolujte dostupné aktualizace
 
-Ve výstupu výše to vám ukáže, pokud je balíček maximálně datum.
+Ve výstupu hello z výše uvedených hello to vám ukáže, pokud je balíček hello maximálně datum.
 
-#### <a name="install-the-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku
+#### <a name="install-hello-latest-package-version"></a>Nainstalujte nejnovější verzi balíčku hello
 
 ```bash
 sudo zypper install python-azure-agent
@@ -321,7 +321,7 @@ sudo zypper install python-azure-agent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace 
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -334,13 +334,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu příkaz waagent
+### <a name="restart-hello-waagent-service"></a>Restartujte službu příkaz waagent hello
 
 ```bash
 sudo systemctl restart waagent.service
@@ -348,15 +348,15 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 a 7
 
-Pro Oracle Linux, ujistěte se, že `Addons` je povoleno úložiště. Vyberte, chcete-li upravit soubor `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) a změňte řádek `enabled=0` k `enabled=1` pod **[ol6_addons]** nebo **[ol7_addons]** v tomto soubor.
+Pro Oracle Linux, ujistěte se, že hello `Addons` je povoleno úložiště. Vybrat soubor hello tooedit `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) a změňte řádek hello `enabled=0` příliš`enabled=1` pod **[ol6_addons]** nebo **[ol7_addons]** v tomto souboru.
 
-Poté nainstalujte nejnovější verzi Azure Linux Agent, zadejte:
+Potom tooinstall hello nejnovější verzi hello Azure Linux Agent, typ:
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-Pokud nenajdete rozšíření úložiště můžete jednoduše přidat tyto řádky na konci souboru .repo podle vaší verze Oracle Linux:
+Pokud nenajdete hello rozšíření úložiště můžete jednoduše přidat tyto řádky na konci hello .repo souboru podle verze tooyour Oracle Linux:
 
 Pro virtuální počítače, Oracle Linux 6:
 
@@ -386,15 +386,15 @@ Poté zadejte:
 sudo yum update WALinuxAgent
 ```
 
-Obvykle to je vše, potřebujete, ale pokud z nějakého důvodu je třeba ji nainstalovat z https://github.com přímo, použijte následující postup.
+Obvykle to je všechno, co potřebujete, ale pokud z nějakého důvodu že potřebujete tooinstall z https://github.com přímo, hello použijte následující kroky.
 
 
-## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Aktualizovat agenta systému Linux, pokud žádný balíček agenta existuje pro distribuci
+## <a name="update-hello-linux-agent-when-no-agent-package-exists-for-distribution"></a>Hello aktualizace agenta systému Linux při žádný balíček agenta existuje pro distribuci
 
-Nainstalujte wget (existují zde některých distribucích, který nemusíte instalovat ve výchozím nastavení, jako je například Redhat a CentOS, Oracle Linux verze 6.4 a 6.5) tak, že zadáte `sudo yum install wget` na příkazovém řádku.
+Nainstalujte wget (existují zde některých distribucích, který nemusíte instalovat ve výchozím nastavení, jako je například Redhat a CentOS, Oracle Linux verze 6.4 a 6.5) tak, že zadáte `sudo yum install wget` na příkazovém řádku hello.
 
-### <a name="1-download-the-latest-version"></a>1. Stáhnout nejnovější verzi
-Otevřete [verzi Azure Linux Agent v Githubu](https://github.com/Azure/WALinuxAgent/releases) ve webové stránky a zjistěte nejnovější číslo verze. (Vaší aktuální verzí můžete vyhledat zadáním `waagent --version`.)
+### <a name="1-download-hello-latest-version"></a>1. Stažení nejnovější verze hello
+Otevřete [hello verzi Azure Linux Agent v Githubu](https://github.com/Azure/WALinuxAgent/releases) ve webové stránky a zjistěte hello nejnovější číslo verze. (Vaší aktuální verzí můžete vyhledat zadáním `waagent --version`.)
 
 #### <a name="for-version-22x-or-later-type"></a>Pro verzi 2.2.x nebo novější, zadejte:
 ```bash
@@ -403,7 +403,7 @@ unzip v2.2.x.zip.zip
 cd WALinuxAgent-2.2.x
 ```
 
-Následující řádek používá verzi 2.2.0 jako příklad:
+Hello následující řádek používá verzi 2.2.0 jako příklad:
 
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.14.zip
@@ -411,10 +411,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2. Nainstalujte agenta Azure Linux
+### <a name="2-install-hello-azure-linux-agent"></a>2. Nainstalujte hello Azure Linux Agent
 
 #### <a name="for-version-22x-use"></a>Pro verzi 2.2.x, použijte:
-Budete muset nainstalovat balíček `setuptools` nejprve – Viz [zde](https://pypi.python.org/pypi/setuptools). Potom spusťte:
+Může být nutné balíček hello tooinstall `setuptools` nejprve – Viz [zde](https://pypi.python.org/pypi/setuptools). Potom spusťte:
 
 ```bash
 sudo python setup.py install
@@ -422,7 +422,7 @@ sudo python setup.py install
 
 #### <a name="ensure-auto-update-is-enabled"></a>Ujistěte se, že je povolena automatická aktualizace
 
-Nejdřív zkontrolujte, zda je povolena:
+Nejdřív zkontrolujte toosee, je-li aktivní:
 
 ```bash
 cat /etc/waagent.conf
@@ -435,13 +435,13 @@ Najít 'AutoUpdate.Enabled'. Pokud se zobrazí tento výstup, je povoleno:
 AutoUpdate.Enabled=y
 ```
 
-Chcete-li povolit spuštění:
+tooenable spustit:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. Restartujte službu příkaz waagent
+### <a name="3-restart-hello-waagent-service"></a>3. Restartujte službu příkaz waagent hello
 Pro většinu distribucích systému Linux:
 
 ```bash
@@ -460,14 +460,14 @@ Pro jádro operačního systému použijte:
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Ověřit verzi Azure Linux Agent
+### <a name="4-confirm-hello-azure-linux-agent-version"></a>4. Ověřit verzi Azure Linux Agent hello
     
 ```bash
 waagent -version
 ```
 
-Pro jádro operačního systému nemusí fungovat výše uvedeném příkazu.
+Pro jádro operačního systému nemusí fungovat hello výše příkaz.
 
-Zobrazí se, že verze Azure Linux Agent je aktualizovaná na novou verzi.
+Uvidíte, že tento hello Azure Linux Agent byla aktualizována toohello novou verzi.
 
-Další informace týkající se Azure Linux Agent najdete v tématu [Azure Linux Agent README](https://github.com/Azure/WALinuxAgent).
+Další informace týkající se hello Azure Linux Agent najdete v tématu [Azure Linux Agent README](https://github.com/Azure/WALinuxAgent).

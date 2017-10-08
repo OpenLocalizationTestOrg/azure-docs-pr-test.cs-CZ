@@ -1,6 +1,6 @@
 ---
 title: "Generování a exportování certifikátů pro Point-to-Site: prostředí PowerShell: Azure | Microsoft Docs"
-description: "Tento článek obsahuje kroky k vytvoření certifikátu podepsaného svým držitelem kořenové, exportujte veřejný klíč a generovat klientské certifikáty pomocí prostředí PowerShell ve Windows 10."
+description: "Tento článek obsahuje kroky toocreate certifikát podepsaný svým držitelem kořenové, export veřejného klíče hello a generovat klientské certifikáty pomocí prostředí PowerShell ve Windows 10."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
-ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 11dda015368cda5ce9799fcc4f01d7c542b84fe8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Generování a exportování certifikátů pro připojení Point-to-Site pomocí prostředí PowerShell ve Windows 10
 
-Připojení point-to-Site používají certifikáty k ověření. Tento článek ukazuje, jak vytvořit certifikát podepsaný svým držitelem kořenové a generovat klientské certifikáty pomocí prostředí PowerShell ve Windows 10. Pokud hledáte kroků konfigurace Point-to-Site, například jak nahrát kořenových certifikátů, vyberte jeden z článků ' konfigurace Point-to-Site, z následujícího seznamu:
+Připojení point-to-Site pomocí tooauthenticate certifikáty. Tento článek ukazuje, jak toocreate a podepsaný svým držitelem kořenový certifikát a generovat klientské certifikáty pomocí prostředí PowerShell ve Windows 10. Pokud hledáte kroků konfigurace Point-to-Site, například jak tooupload kořenové certifikáty, vyberte jeden z článků hello ' konfigurace Point-to-Site, z hello následující seznamu:
 
 > [!div class="op_single_selector"]
 > * [Vytvořit certifikáty podepsané svým držitelem – prostředí PowerShell](vpn-gateway-certificates-point-to-site.md)
@@ -35,16 +35,16 @@ Připojení point-to-Site používají certifikáty k ověření. Tento článek
 > 
 
 
-Musíte provést kroky v tomto článku v počítači se systémem Windows 10. Rutiny prostředí PowerShell, které používáte pro generování certifikátů jsou součástí operačního systému Windows 10 a nefungují v jiných verzích Windows. Počítače Windows 10 je potřeba jenom pro generování certifikátů. Po vygenerování certifikátů jsou můžete odešlete, nebo je nainstalovat pro všechny podporované klientské operační systémy. 
+Je třeba provést hello kroky v tomto článku v počítači se systémem Windows 10. rutiny prostředí PowerShell Hello použít toogenerate certifikáty jsou součástí operačního systému hello Windows 10 a nefungují v jiných verzích Windows. počítač Hello Windows 10 je jenom certifikáty potřebné toogenerate hello. Po vygenerování hello certifikáty jsou můžete odešlete, nebo je nainstalovat pro všechny podporované klientské operační systémy. 
 
-Pokud nemáte přístup k počítači s Windows 10, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) pro generování certifikátů. Certifikáty, které můžete vygenerovat pomocí obou těchto metod se dá nainstalovat na všechny [podporované](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientský operační systém.
+Pokud nemáte přístup k počítači tooa Windows 10, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) toogenerate certifikáty. Hello certifikáty, které generují pomocí obou těchto metod se dá nainstalovat na všechny [podporované](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientský operační systém.
 
 ## <a name="rootcert"></a>Vytvořit certifikát podepsaný svým držitelem kořenové
 
-Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým držitelem kořenové. Parametr Další informace najdete v tématu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Použijte toocreate rutiny New-SelfSignedCertificate hello certifikát podepsaný svým držitelem kořenové. Parametr Další informace najdete v tématu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 1. Z počítače se systémem Windows 10 otevřete konzolu prostředí Windows PowerShell se zvýšenými oprávněními.
-2. Použijte následující příklad k vytvoření certifikátu podepsaného svým držitelem kořenové. Následující příklad vytvoří certifikát podepsaný svým držitelem kořenové s názvem 'P2SRootCert', který je automaticky nainstalován v 'Certifikáty – aktuální User\Personal\Certificates'. Certifikát můžete zobrazit tak, že otevřete *certmgr.msc*, nebo *Správa uživatelských certifikátů*.
+2. Použijte následující příklad toocreate hello podepsaný svým držitelem kořenový certifikát hello. Hello následující příklad vytvoří certifikát podepsaný svým držitelem kořenové s názvem 'P2SRootCert', který je automaticky nainstalován v 'Certifikáty – aktuální User\Personal\Certificates'. Můžete zobrazit certifikát hello otevřením *certmgr.msc*, nebo *Správa uživatelských certifikátů*.
 
   ```powershell
   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -53,29 +53,29 @@ Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým 
   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
   ```
 
-### <a name="cer"></a>Export veřejného klíče (.cer)
+### <a name="cer"></a>Export hello veřejného klíče (.cer)
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-Soubor exported.cer musí být nahrán do Azure. Pokyny najdete v tématu [konfigurace připojení typu Point-to-Site](vpn-gateway-howto-point-to-site-rm-ps.md#upload). Chcete-li přidat další důvěryhodný kořenový certifikát [v této části](vpn-gateway-howto-point-to-site-rm-ps.md#addremovecert) článku.
+nahrané tooAzure musí být soubor exported.cer Hello. Pokyny najdete v tématu [konfigurace připojení typu Point-to-Site](vpn-gateway-howto-point-to-site-rm-ps.md#upload). tooadd další důvěryhodný kořenový certifikát [v této části](vpn-gateway-howto-point-to-site-rm-ps.md#addremovecert) hello článku.
 
-### <a name="export-the-self-signed-root-certificate-and-public-key-to-store-it-optional"></a>Exportovat certifikát podepsaný svým držitelem kořenové a veřejný klíč uložit (volitelné)
+### <a name="export-hello-self-signed-root-certificate-and-public-key-toostore-it-optional"></a>Exportovat certifikát podepsaný svým držitelem kořenové hello a veřejného klíče toostore ho (volitelné)
 
-Můžete chtít exportovat certifikát podepsaný svým držitelem kořenové a bezpečně uložit. Pokud třeba, můžete později jej nainstalovat na jiný počítač a generovat další klientské certifikáty nebo exportovat jiný soubor .cer. Pokud chcete exportovat certifikát podepsaný svým držitelem kořenové jako .pfx, vyberte kořenový certifikát a použít stejný postup, jak je popsáno v [exportovat certifikát klienta](#clientexport).
+Můžete chtít tooexport hello kořenového certifikátu podepsaného svým držitelem a bezpečně uložit. Pokud třeba, můžete později jej nainstalovat na jiný počítač a generovat další klientské certifikáty nebo exportovat jiný soubor .cer. tooexport hello certifikátu podepsaného svým držitelem kořenové jako PFX, vyberte hello kořenový certifikát a použití hello stejný postup, jak je popsáno v [exportovat certifikát klienta](#clientexport).
 
 ## <a name="clientcert"></a>Vygenerování klientského certifikátu
 
-Každý klientský počítač, který se připojuje k virtuální síti pomocí připojení Point-to-Site, musí mít nainstalovaný klientský certifikát. Vygenerujte certifikát klienta z podepsaného svým držitelem kořenový certifikát a pak je exportovat a nainstalovat certifikát klienta. Pokud není nainstalován klientský certifikát, ověření se nezdaří. 
+Každý klientský počítač, který se připojuje tooa Point-to-Site pomocí virtuální síť musí mít nainstalovaný certifikát klienta. Vygenerujte certifikát klienta z hello podepsaný svým držitelem kořenový certifikát a pak je exportovat a nainstalovat certifikát klienta hello. Pokud hello klientský certifikát není nainstalovaná, ověření se nezdaří. 
 
-Následující kroky vás provedou vygenerování klientského certifikátu z certifikát podepsaný svým držitelem kořenové. Z se stejným kořenovým certifikátem může generovat více klientských certifikátů. Při generování klientské certifikáty pomocí následujícího postupu klientský certifikát se automaticky nainstaluje na počítači, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat certifikát klienta v jiném počítači klienta, můžete exportovat certifikát.
+Hello následující kroky vás provedou vygenerování klientského certifikátu z certifikát podepsaný svým držitelem kořenové. Více klientských certifikátů může vygenerovat z hello stejným kořenovým certifikátem. Při generování klientských certifikátů pomocí následujících kroků hello hello klientský certifikát je automaticky nainstaluje na počítač hello použitá toogenerate hello certifikátu. Pokud chcete tooinstall klientský certifikát na jiném počítači klienta, můžete exportovat certifikát hello.
 
-Příklady pomocí rutiny New-SelfSignedCertificate pro vytvoření klientského certifikátu, který vyprší za jeden rok. Dalším parametr informace, například nastavení hodnoty různých vypršení platnosti certifikátu klienta najdete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Příklady Hello pomocí toogenerate rutiny New-SelfSignedCertificate hello klientský certifikát, který vyprší za jeden rok. Dalším parametr informace, například nastavení hodnoty různých vypršení platnosti certifikátu klienta se hello, najdete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1"></a>Příklad 1
 
-Tento příklad používá proměnnou deklarované '$cert' z předchozí části. Pokud po vytvoření certifikátu podepsaného svým držitelem kořenové uzavřít konzolu PowerShell nebo vytváření dalších klientských certifikátů v nové relaci konzoly prostředí PowerShell, použijte kroky v [příklad 2](#ex2).
+Tento příklad používá hello deklarovat proměnnou '$cert' z předchozí části hello. Pokud jste zavřeli konzole PowerShell hello po vytvoření hello certifikát podepsaný svým držitelem kořenové, nebo vytváříte další klientské certifikáty v nové relaci konzoly prostředí PowerShell, použijte kroky hello v [příklad 2](#ex2).
 
-Upravit a spustit v příkladu pro vytvoření klientského certifikátu. Pokud spustíte následující příklad beze změny jeho, výsledkem je klientský certifikát s názvem 'P2SChildCert'.  Pokud chcete název certifikátu podřízené něco jiného, změňte hodnotu CN. Neměňte TextExtension při spuštění v tomto příkladu. Certifikát klienta, který je generovat se automaticky nainstaluje v 'Certifikáty – aktuální User\Personal\Certificates' ve vašem počítači.
+Upravit a spustit toogenerate příklad hello klientský certifikát. Pokud spustíte hello následující příklad beze změny jeho, výsledkem hello je klientský certifikát s názvem 'P2SChildCert'.  Pokud chcete certifikát podřízené hello tooname něco jiného, upravte hodnotu CN hello. Neměňte hello TextExtension při spuštění v tomto příkladu. Hello klientský certifikát, který je generovat se automaticky nainstaluje v 'Certifikáty – aktuální User\Personal\Certificates' ve vašem počítači.
 
 ```powershell
 New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -87,14 +87,14 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 
 ### <a name="ex2"></a>Příklad 2
 
-Pokud vytváříte další klientské certifikáty, nebo nejsou pomocí stejné relace prostředí PowerShell, který jste použili k vytvoření vašeho certifikátu podepsaného svým držitelem kořenové, použijte následující postup:
+Pokud vytváříte další klientské certifikáty, nebo jsou nepoužíváte hello stejné relace prostředí PowerShell, kterou jste použili toocreate certifikát podepsaný svým držitelem kořenové, hello použijte následující kroky:
 
-1. Identifikujte podepsaný svým držitelem kořenový certifikát, který je nainstalován v počítači. Tato rutina vrátí seznam certifikátů, které jsou nainstalovány ve vašem počítači.
+1. Identifikujte hello podepsaný svým držitelem kořenový certifikát, který je nainstalován na počítači hello. Tato rutina vrátí seznam certifikátů, které jsou nainstalovány ve vašem počítači.
 
   ```powershell
   Get-ChildItem -Path “Cert:\CurrentUser\My”
   ```
-2. Vyhledejte název subjektu z vráceném seznamu, a poté zkopírujte kryptografický otisk, který je umístěný vedle ho do textového souboru. V následujícím příkladu jsou dva certifikáty. Název CN je název certifikátu podepsaného svým držitelem kořenové ze kterého chcete generovat certifikát podřízené. V tomto případě 'P2SRootCert'.
+2. Najděte název subjektu hello z hello vrátí seznam, pak kryptografický otisk hello kopie, který je umístěn další text tooa tooit souboru. V následujícím příkladu hello existují dva certifikáty. Název CN Hello je název hello hello podepsaný svým držitelem kořenového certifikátu, ze kterého mají být toogenerate certifikát podřízené. V tomto případě 'P2SRootCert'.
 
   ```
   Thumbprint                                Subject
@@ -102,18 +102,18 @@ Pokud vytváříte další klientské certifikáty, nebo nejsou pomocí stejné 
   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
   ```
-3. Deklarujte proměnnou pro kořenový certifikát pomocí kryptografického otisku z předchozího kroku. Nahraďte OTISK kryptografický otisk kořenového certifikátu, ze kterého chcete generovat certifikát podřízené.
+3. Deklarujte proměnnou pro hello kořenový certifikát pomocí kryptografického otisku hello hello v předchozím kroku. Nahraďte OTISK hello kryptografický otisk hello kořenový certifikát, ze kterého mají být toogenerate certifikát podřízené.
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
   ```
 
-  Například pomocí kryptografického otisku pro P2SRootCert v předchozím kroku, proměnná vypadá takto:
+  Například pomocí hello kryptografický otisk pro P2SRootCert v předchozím kroku hello, proměnná hello vypadá takto:
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
   ```
-4.  Upravit a spustit v příkladu pro vytvoření klientského certifikátu. Pokud spustíte následující příklad beze změny jeho, výsledkem je klientský certifikát s názvem 'P2SChildCert'. Pokud chcete název certifikátu podřízené něco jiného, změňte hodnotu CN. Neměňte TextExtension při spuštění v tomto příkladu. Certifikát klienta, který je generovat se automaticky nainstaluje v 'Certifikáty – aktuální User\Personal\Certificates' ve vašem počítači.
+4.  Upravit a spustit toogenerate příklad hello klientský certifikát. Pokud spustíte hello následující příklad beze změny jeho, výsledkem hello je klientský certifikát s názvem 'P2SChildCert'. Pokud chcete certifikát podřízené hello tooname něco jiného, upravte hodnotu CN hello. Neměňte hello TextExtension při spuštění v tomto příkladu. Hello klientský certifikát, který je generovat se automaticky nainstaluje v 'Certifikáty – aktuální User\Personal\Certificates' ve vašem počítači.
 
   ```powershell
   New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -135,5 +135,5 @@ Pokud vytváříte další klientské certifikáty, nebo nejsou pomocí stejné 
 
 V konfiguraci Point-to-Site pokračujte. 
 
-* Pro **Resource Manager** postup nasazení modelu najdete v tématu [konfigurace připojení typu Point-to-Site k virtuální síti](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
-* Pro **classic** postup nasazení modelu najdete v tématu [konfigurace připojení typu Point-to-Site VPN do virtuální sítě (klasické)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* Pro **Resource Manager** postup nasazení modelu najdete v tématu [konfigurace tooa připojení Point-to-Site VNet](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
+* Pro **classic** postup nasazení modelu najdete v tématu [konfigurace tooa připojení Point-to-Site VPN virtuální sítě (klasické)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).

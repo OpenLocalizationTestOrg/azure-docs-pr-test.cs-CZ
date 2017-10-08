@@ -1,6 +1,6 @@
 ---
-title: "Výpočetní - rozšíření diagnostiky Linux | Microsoft Docs"
-description: "Postup konfigurace Azure Linux diagnostiky rozšíření (LAD) pro shromažďování metrik a protokolování událostí z virtuálních počítačů Linux běží v Azure."
+title: "Výpočetní aaaAzure - rozšíření diagnostiky Linux | Microsoft Docs"
+description: "Jak tooconfigure hello Azure Linux diagnostiky rozšíření (LAD) toocollect metrik a protokolování událostí, z virtuálních počítačů Linux běží v Azure."
 services: virtual-machines-linux
 author: jasonzio
 manager: anandram
@@ -9,57 +9,57 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2b27ec00a876ded359a75170b407e28c40d8445d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití rozšíření diagnostiky Linux ke sledování metrik a protokoly
+# <a name="use-linux-diagnostic-extension-toomonitor-metrics-and-logs"></a>Pomocí rozšíření diagnostiky Linux toomonitor metriky a protokoly
 
-Tento dokument popisuje verze 3.0 a novějších rozšíření diagnostiky Linux.
+Tento dokument popisuje verze 3.0 a novějších systému hello rozšíření diagnostiky Linux.
 
 > [!IMPORTANT]
 > Informace o 2.3 a starší verze najdete v tématu [tento dokument](./classic/diagnostic-extension-v2.md).
 
 ## <a name="introduction"></a>Úvod
 
-Rozšíření diagnostiky Linux pomáhá uživatele monitorování stavu virtuálního počítače s Linuxem systémem Microsoft Azure. Má následující funkce:
+Hello rozšíření diagnostiky Linux pomáhá monitorování hello stav uživatele z virtuálního počítače s Linuxem systémem Microsoft Azure. Má hello následující možnosti:
 
-* Shromažďuje metriky výkonu systému z virtuálního počítače a ukládá je do určité tabulky v účtu úložiště určený.
-* Načte události protokolu z syslog a ukládá je do určité tabulky v účtu úložiště určený.
-* Umožňuje uživatelům umožnit přizpůsobení metriky dat, které jsou shromažďovány a nahrát.
-* Umožňuje uživatelům umožnit přizpůsobení syslog zařízení a úrovně závažnosti události, které jsou shromažďovány a nahrát.
-* Umožňuje uživatelům odesílat zadané soubory protokolu do tabulky určené úložiště.
-* Podporuje odesílání metriky a protokolu událostí na libovolný EventHub koncových bodů a formátu JSON BLOB v účtu úložiště určený.
+* Shromažďuje metriky výkonu systému z hello virtuálních počítačů a ukládá je do určité tabulky v účtu úložiště určený.
+* Načte události protokolu z syslog a ukládá je do určité tabulky v hello určený účet úložiště.
+* Umožňuje uživatelům toocustomize hello data metriky, které jsou shromažďovány a nahrát.
+* Umožňuje uživatelům toocustomize hello syslog zařízení a úrovně závažnosti události, které jsou shromažďovány a nahrát.
+* Umožňuje uživatelům tooupload protokol příslušné soubory tooa určené úložiště tabulky.
+* Podporuje odesílání metriky a protokolu událostí tooarbitrary EventHub koncových bodů a objekty BLOB ve formátu JSON v hello určený účet úložiště.
 
 Toto rozšíření pracuje s obou modelech nasazení Azure.
 
-## <a name="installing-the-extension-in-your-vm"></a>Instalaci rozšíření ve vašem virtuálním počítači
+## <a name="installing-hello-extension-in-your-vm"></a>Instaluje se rozšíření hello virtuálního počítače
 
-Toto rozšíření můžete povolit pomocí rutin prostředí Azure PowerShell, rozhraní příkazového řádku Azure skripty nebo šablony nasazení Azure. Další informace najdete v tématu [rozšíření funkce](./extensions-features.md).
+Toto rozšíření můžete povolit pomocí rutin prostředí Azure PowerShell text hello, skripty rozhraní příkazového řádku Azure nebo Azure nasazení šablony. Další informace najdete v tématu [rozšíření funkce](./extensions-features.md).
 
-Povolit nebo konfigurovat LAD 3.0 nelze použít na portálu Azure. Místo toho nainstaluje a nakonfiguruje verze 2.3. Výstrahy a portálu Azure grafy pracovat s daty z obě verze rozšíření.
+Hello portál Azure nelze použít tooenable nebo nakonfigurovat LAD 3.0. Místo toho nainstaluje a nakonfiguruje verze 2.3. Výstrahy a portálu Azure grafy pracovat s daty v obou verzích hello rozšíření.
 
 Tyto pokyny k instalaci a [ke stažení ukázkové konfiguraci](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) konfigurace LAD 3.0 na:
 
-* zaznamenání a uložení metriku stejné jako byly poskytované LAD 2.3;
-* zaznamenat užitečné sadu metriky systému souborů, nový LAD 3.0;
-* zachycení výchozí kolekci syslog ve LAD 2.3; povolené
-* Povolte Azure portálu prostředí pro vytváření grafů a výstrahy na metriky virtuálního počítače.
+* zachycení a úložiště hello metriky stejné jako byly poskytované LAD 2.3;
+* zaznamenat užitečné sadu metriky systému souborů, nové tooLAD 3.0;
+* zaznamenat hello výchozí syslog kolekci povoleno podle LAD 2.3;
+* Povolte hello Azure portálu prostředí pro vytváření grafů a výstrahy na metriky virtuálního počítače.
 
-Zaváděná konfigurace je jenom jako příklad; upravte tak, aby vyhovovaly potřebám vaší vlastní.
+zaváděná konfigurace Hello je jenom jako příklad; Upravit toosuit vašich potřeb.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* **Azure Linux Agent verze 2.2.0 nebo novější**. Většina virtuálních počítačů Linux Azure Galerie Image zahrnují verze 2.2.7 nebo novější. Spustit `/usr/sbin/waagent -version` chcete ověřit verzi nainstalovaný na Virtuálním počítači. Pokud virtuální počítač běží starší verze agenta hosta, postupujte podle [tyto pokyny](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent) jej aktualizovat.
-* **Rozhraní příkazového řádku Azure**. [Nastavení Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) prostředí na váš počítač.
-* Příkaz wget, pokud ji nemáte: Spusťte `sudo apt-get install wget`.
-* Stávající předplatné Azure a v něm k uložení dat stávající účet úložiště.
+* **Azure Linux Agent verze 2.2.0 nebo novější**. Většina virtuálních počítačů Linux Azure Galerie Image zahrnují verze 2.2.7 nebo novější. Spustit `/usr/sbin/waagent -version` tooconfirm hello verze nainstalované v hello virtuálních počítačů. Pokud hello virtuální počítač běží starší verze agenta hosta hello, postupujte podle [tyto pokyny](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent) tooupdate ho.
+* **Azure CLI**. [Nastavit hello Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) prostředí na váš počítač.
+* Hello wget příkazu, pokud ji nemáte: Spusťte `sudo apt-get install wget`.
+* Stávající předplatné Azure a existující úložiště účtu v něm toostore hello data.
 
 ### <a name="sample-installation"></a>Ukázka instalace
 
-Zadejte správné parametry na první tři řádky, a poté spusťte tento skript jako kořenového adresáře:
+Zadejte správné parametry hello na hello první tři řádky, a poté spusťte tento skript jako kořenového adresáře:
 
 ```bash
 # Set your Azure VM diagnostic parameters correctly below
@@ -67,60 +67,60 @@ my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Should login tooAzure first before anything else
 az login
 
-# Select the subscription containing the storage account
+# Select hello subscription containing hello storage account
 az account set --subscription <your_azure_subscription_id>
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download hello sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VM resource ID. Replace storage account name and resource ID in the public settings.
+# Build hello VM resource ID. Replace storage account name and resource ID in hello public settings.
 my_vm_resource_id=$(az vm show -g $my_resource_group -n $my_linux_vm --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build hello protected settings (storage account SAS token)
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 9999-12-31T23:59Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finallly tell Azure to install and enable the extension
+# Finallly tell Azure tooinstall and enable hello extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-Adresa URL pro ukázkové konfiguraci a její obsah se mohou změnit. Stáhněte si kopii souboru JSON nastavení portálu a přizpůsobit pro své potřeby. Všechny šablony nebo automatizace, které vytvoříte měli používat vlastní kopie místo stahování pokaždé, když tuto adresu URL.
+Adresa URL Hello hello Ukázková konfigurace a její obsah, jsou toochange subjektu. Stáhněte si kopii souboru JSON hello nastavení portálu a přizpůsobit pro své potřeby. Všechny šablony nebo automatizace, které vytvoříte měli používat vlastní kopie místo stahování pokaždé, když tuto adresu URL.
 
-### <a name="updating-the-extension-settings"></a>Aktualizuje se nastavení rozšíření
+### <a name="updating-hello-extension-settings"></a>Aktualizuje se nastavení rozšíření hello
 
-Po změně chráněné nebo nastavení veřejných, nasaďte do virtuálního počítače tak, že spuštění stejného příkazu. Pokud nic změnit v nastavení, rozšíření jsou odesílány aktualizovaným nastavením. LAD znovu načte konfiguraci a restartuje sám sebe.
+Po změně chráněné nebo veřejné nastavení, je nasadit toohello virtuálních počítačů tak, že spustíte hello stejný příkaz. Pokud nic změnit v nastavení hello, odešlou hello aktualizovat nastavení toohello rozšíření. LAD hello konfigurace znovu načte a restartuje sám sebe.
 
-### <a name="migration-from-previous-versions-of-the-extension"></a>Migrace z předchozích verzí rozšíření
+### <a name="migration-from-previous-versions-of-hello-extension"></a>Migrace z předchozích verzí rozšíření hello
 
-Nejnovější verze rozšíření je **3.0**. **Všechny starší verze (2.x) jsou zastaralé a může být publikování na nebo po 31. července 2018**.
+nejnovější verze rozšíření hello Hello je **3.0**. **Všechny starší verze (2.x) jsou zastaralé a může být publikování na nebo po 31. července 2018**.
 
 > [!IMPORTANT]
-> Toto rozšíření zavádí nejnovější změny v konfiguraci rozšíření. Pro zlepšení zabezpečení rozšíření; provedla jeden taková změna v důsledku toho zpětné kompatibility s 2.x nebylo možné udržovat. Navíc se liší od vydavatele pro verze 2.x vydavatel rozšíření pro tuto příponu.
+> Toto rozšíření zavádí narušující změny toohello konfigurace rozšíření hello. Jedna taková změna byla provedená tooimprove hello zabezpečení hello rozšíření; v důsledku toho zpětné kompatibility s 2.x nebylo možné udržovat. Navíc se liší od vydavatele hello verze 2.x hello hello vydavatel rozšíření pro tuto příponu.
 >
-> Při migraci z 2.x do této nové verzi rozšíření, je nutné odinstalovat původní rozšíření (pod původním názvem vydavatele) a potom nainstalovat verzi 3 rozšíření.
+> toomigrate z 2.x toothis novou verzi hello rozšíření, je nutné odinstalovat původní rozšíření hello (pod původním názvem vydavatele hello) a potom nainstalovat verzi 3 hello rozšíření.
 
 Doporučení:
 
-* Nainstalujte rozšíření automatické podverze upgradu povolena.
-  * V modelu nasazení classic virtuální počítače zadejte '3.*, jako je verze při instalaci rozšíření prostřednictvím příkazového řádku Azure XPLAT nebo Powershellu.
-  * Při nasazení Azure Resource Manager modelu virtuálních počítačů, zahrnují ' "autoUpgradeMinorVersion": true, v nasazení šablony virtuálního počítače.
+* Nainstalujte rozšíření hello automatické podverze upgradu povolena.
+  * V modelu nasazení classic virtuální počítače zadejte '3.*' jako verze hello při instalaci rozšíření hello prostřednictvím příkazového řádku Azure XPLAT nebo Powershellu.
+  * Při nasazení Azure Resource Manager modelu virtuálních počítačů, zahrnují ' "autoUpgradeMinorVersion": true, v hello šablony nasazení virtuálního počítače.
 * Použijte nový nebo jiný účet úložiště pro LAD 3.0. Existuje několik malých nekompatibility mezi LAD 2.3 a LAD 3.0, které usnadňují sdílení problémových účet:
   * LAD 3.0 ukládá události procesu syslog v tabulce s jiným názvem.
-  * CounterSpecifier řetězce pro `builtin` metriky rozdílnou LAD 3.0.
+  * Hello counterSpecifier řetězce pro `builtin` metriky rozdílnou LAD 3.0.
 
 ## <a name="protected-settings"></a>Chráněné nastavení
 
-Tato sada informace o konfiguraci obsahuje citlivé informace, které by měly být chráněné z veřejného zobrazení, například přihlašovací údaje úložiště. Tato nastavení jsou předávány a uložená rozšíření v šifrovaném tvaru.
+Tato sada informace o konfiguraci obsahuje citlivé informace, které by měly být chráněné z veřejného zobrazení, například přihlašovací údaje úložiště. Tato nastavení jsou přenášená tooand uložené hello rozšíření v šifrovaném tvaru.
 
 ```json
 {
-    "storageAccountName" : "the storage account to receive data",
-    "storageAccountEndPoint": "the hostname suffix for the cloud for this account",
+    "storageAccountName" : "hello storage account tooreceive data",
+    "storageAccountEndPoint": "hello hostname suffix for hello cloud for this account",
     "storageAccountSasToken": "SAS access token",
     "mdsdHttpProxy": "HTTP proxy settings",
     "sinksConfig": { ... }
@@ -129,22 +129,22 @@ Tato sada informace o konfiguraci obsahuje citlivé informace, které by měly b
 
 Name (Název) | Hodnota
 ---- | -----
-storageAccountName | Název účtu úložiště, ve kterém je rozšíření zapisovat data.
-storageAccountEndPoint | (volitelné) Koncový bod identifikace cloudu, ve kterém existuje účet úložiště. Chybí-li toto nastavení, LAD výchozí veřejného cloudu Azure `https://core.windows.net`. Pokud chcete používat účet úložiště v Azure v Německu, Azure Government nebo Azure China, tato hodnota odpovídajícím způsobem nastavte.
-storageAccountSasToken | [Tokenu SAS účtu](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) pro služby objektů Blob a tabulky (`ss='bt'`), platí pro kontejnery a objekty (`srt='co'`), která uděluje přidat, vytvářet, seznam, aktualizovat a oprávnění k zápisu (`sp='acluw'`). Proveďte *není* zahrnují na úvodní otazník (?).
-mdsdHttpProxy | (volitelné) Informace o proxy serveru HTTP potřebnými k povolení rozšíření pro připojení k zadaný účet úložiště a koncového bodu.
-sinksConfig | (volitelné) Podrobnosti o alternativní umístění, do kterých mohou být zajišťovány metriky a události. Konkrétní podrobnosti o každém jímku dat nepodporuje rozšíření jsou popsané v následujících částech.
+storageAccountName | Hello název účtu úložiště hello, ve kterém je rozšířením hello zapisovat data.
+storageAccountEndPoint | koncový bod (volitelné) hello identifikace hello cloudu, ve které hello existuje účet úložiště. Chybí-li toto nastavení, LAD výchozí toohello veřejného cloudu Azure, `https://core.windows.net`. Tuto hodnotu nastavit toouse účet úložiště v Azure v Německu, Azure Government nebo Azure China odpovídajícím způsobem.
+storageAccountSasToken | [Tokenu SAS účtu](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) pro služby objektů Blob a tabulky (`ss='bt'`), použít toocontainers a objekty (`srt='co'`), která uděluje přidat, vytvářet, seznam, aktualizovat a oprávnění k zápisu (`sp='acluw'`). Proveďte *není* zahrnují hello úvodní otazník (?).
+mdsdHttpProxy | (volitelné) HTTP proxy informace potřebné tooenable hello rozšíření tooconnect toohello zadaný účet úložiště a koncového bodu.
+sinksConfig | (volitelné) Podrobnosti o alternativní cíle toowhich metriky a události mohou být zajišťovány. Hello konkrétní podrobnosti o každém jímku dat nepodporuje hello rozšíření jsou popsané v následujících hello částech.
 
-Můžete snadno vytvořit požadovaný token SAS prostřednictvím portálu Azure.
+Můžete snadno vytvořit token SAS hello požadované prostřednictvím hello portálu Azure.
 
-1. Vyberte účet úložiště pro obecné účely, u kterého chcete rozšíření pro zápis
-1. Vyberte "Sdílený přístupový podpis" z nastavení součástí v levé nabídce
-1. Ujistěte se, jak se popisuje výš příslušné části
-1. Klikněte na tlačítko "Generovat SAS".
+1. Vyberte toowhich účet úložiště pro obecné účely hello chcete toowrite rozšíření hello
+1. Vyberte "Sdílený přístupový podpis" z hello nastavení součástí levé nabídce hello
+1. Ujistěte se, jak už bylo popsáno příslušné části hello
+1. Klikněte na tlačítko "Generovat SAS" hello.
 
 ![Bitové kopie](./media/diagnostic-extension/make_sas.png)
 
-Zkopírujte vygenerovaný SAS do pole storageAccountSasToken; odebrat úvodní otazník ("?").
+Kopírování hello vygeneruje SAS do pole storageAccountSasToken hello; odebrat hello úvodní otazník ("?").
 
 ### <a name="sinksconfig"></a>sinksConfig
 
@@ -161,16 +161,16 @@ Zkopírujte vygenerovaný SAS do pole storageAccountSasToken; odebrat úvodní o
 },
 ```
 
-Tento volitelný oddíl definuje další cílových míst, na které rozšíření odešle informace, které shromáždí. Pole "podřízený" obsahuje objekt pro každý další data jímky. Atributu "typ" Určuje atributy v objektu.
+Tento volitelný oddíl definuje další cíle, které toowhich hello rozšíření odesílá hello informace, které shromáždí. pole "podřízený" Hello obsahuje objekt pro každý další data jímky. Hello atributu "typ" Určuje hello další atributy v objektu hello.
 
 Element | Hodnota
 ------- | -----
-jméno | Řetězec se používá k odkazování na tento podřízený jinde v konfiguraci rozšíření.
-type | Typ jímky definovaný. Určuje ostatní hodnoty (pokud existuje) v instance tohoto typu.
+jméno | Řetězec se používá podřízený toothis toorefer jinde v konfiguraci rozšíření hello.
+type | Hello typ jímky definovaný. Určuje instance tohoto typu hello ostatní hodnoty (pokud existuje).
 
-Verze 3.0 rozšíření diagnostiky Linux podporuje dva typy podřízený: EventHub a JsonBlob.
+Verze 3.0 hello rozšíření diagnostiky Linux podporuje dva typy podřízený: EventHub a JsonBlob.
 
-#### <a name="the-eventhub-sink"></a>Podřízený EventHub
+#### <a name="hello-eventhub-sink"></a>podřízený EventHub Hello
 
 ```json
 "sink": [
@@ -183,13 +183,13 @@ Verze 3.0 rozšíření diagnostiky Linux podporuje dva typy podřízený: Event
 ]
 ```
 
-Položka "sasURL" obsahuje úplnou adresu URL, včetně tokenu SAS pro centra událostí, ke které je nutné ji publikovat data. LAD vyžaduje SAS pojmenování zásadu, která umožňuje odesílání deklarace identity. Příklad:
+zadání "sasURL" Hello obsahuje hello úplnou adresu URL, včetně tokenu SAS pro hello centra událostí toowhich data by měla být zveřejněny. LAD vyžaduje SAS pojmenování zásadu, která umožňuje odesílání hello deklarace identity. Příklad:
 
 * Vytvořit obor názvů Event Hubs s názvem`contosohub`
-* Vytvoření centra událostí v oboru názvů názvem`syslogmsgs`
-* Vytvoření zásady sdíleného přístupu v Centru událostí s názvem `writer` umožňující odesílat deklarace identity
+* Vytvoření centra událostí v oboru názvů hello názvem`syslogmsgs`
+* Vytvoření zásady sdíleného přístupu na hello centra událostí s názvem `writer` , umožňuje hello odesílat deklarace identity
 
-Pokud jste vytvořili SAS funkční až půlnoci času UTC na 1. ledna 2018, hodnota sasURL může být:
+Pokud jste vytvořili SAS funkční až půlnoci času UTC na 1. ledna 2018 hello sasURL hodnota může být:
 
 ```url
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
@@ -197,7 +197,7 @@ https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.wi
 
 Další informace o generování tokeny SAS pro Event Hubs naleznete v tématu [této webové stránce](../../event-hubs/event-hubs-authentication-and-security-model-overview.md).
 
-#### <a name="the-jsonblob-sink"></a>Podřízený JsonBlob
+#### <a name="hello-jsonblob-sink"></a>podřízený JsonBlob Hello
 
 ```json
 "sink": [
@@ -209,28 +209,28 @@ Další informace o generování tokeny SAS pro Event Hubs naleznete v tématu [
 ]
 ```
 
-Data směrované podřízený JsonBlob se ukládají do objektů BLOB v úložišti Azure. Každá instance LAD vytvoří každou hodinu pro každý název podřízený objekt blob. Každý objekt blob vždy obsahuje syntakticky pole JSON objektu. Do pole jsou atomicky přidány nové položky. Objekty BLOB jsou uloženy v kontejneru se stejným názvem jako jímky. Úložiště Azure pravidla pro názvy kontejneru objektů blob platí pro názvy JsonBlob jímky: mezi 3 a 63 malé alfanumerické znaky ASCII nebo pomlčky.
+Data směrované podřízený JsonBlob tooa se ukládají do objektů BLOB v úložišti Azure. Každá instance LAD vytvoří každou hodinu pro každý název podřízený objekt blob. Každý objekt blob vždy obsahuje syntakticky pole JSON objektu. Nové položky se přidají atomicky toohello pole. Objekty BLOB jsou uloženy v kontejneru s hello stejný název jako jímku hello. Hello pravidla úložiště Azure pro názvy objektů blob kontejneru použít názvy toohello JsonBlob jímky: mezi 3 a 63 malé alfanumerické znaky ASCII nebo pomlčky.
 
 ## <a name="public-settings"></a>Nastavení veřejné
 
-Tato struktura obsahuje různé bloky nastavení, které řídí údaje shromážděné pomocí rozšíření. Každé nastavení je volitelné. Pokud zadáte `ladCfg`, musíte zadat také `StorageAccount`.
+Tato struktura obsahuje různé bloky nastavení, které řídí hello shromažďované nástrojem hello rozšíření. Každé nastavení je volitelné. Pokud zadáte `ladCfg`, musíte zadat také `StorageAccount`.
 
 ```json
 {
     "ladCfg":  { ... },
     "perfCfg": { ... },
     "fileLogs": { ... },
-    "StorageAccount": "the storage account to receive data",
+    "StorageAccount": "hello storage account tooreceive data",
     "mdsdHttpProxy" : ""
 }
 ```
 
 Element | Hodnota
 ------- | -----
-StorageAccount | Název účtu úložiště, ve kterém je rozšíření zapisovat data. Musí být stejný jako název, jako jsou zadány v [chráněné nastavení](#protected-settings).
-mdsdHttpProxy | (volitelné) Stejné jako v [chráněné nastavení](#protected-settings). Hodnota veřejného je přepsat privátní hodnotou, pokud nastavení. Nastavení proxy serveru, které obsahují tajného klíče, jako jsou hesla, v umístit [chráněné nastavení](#protected-settings).
+StorageAccount | Hello název účtu úložiště hello, ve kterém je rozšířením hello zapisovat data. Musí být stejný název, jako jsou zadány v hello hello [chráněné nastavení](#protected-settings).
+mdsdHttpProxy | (volitelné) Stejné jako hello [chráněné nastavení](#protected-settings). hodnota veřejného Hello je přepsat privátní hodnotou hello, pokud nastavení. Umístěte nastavení proxy serveru, které obsahují tajného klíče, jako jsou hesla, v hello [chráněné nastavení](#protected-settings).
 
-Zbývající prvky jsou podrobně popsané v v následujících částech.
+Hello zbývající prvky jsou podrobně popsané v v následující části hello.
 
 ### <a name="ladcfg"></a>ladCfg
 
@@ -246,12 +246,12 @@ Zbývající prvky jsou podrobně popsané v v následujících částech.
 }
 ```
 
-Ovládací prvky této volitelné struktura jímky shromažďování metrik a protokoly pro doručení ke službě Azure metriky a další data. Je nutné zadat buď `performanceCounters` nebo `syslogEvents` nebo obojí. Je nutné zadat `metrics` struktura.
+Tento volitelný struktura ovládací prvky hello shromažďování metrik a protokoly pro doručení toohello dat služby a tooother metrik Azure jímky. Je nutné zadat buď `performanceCounters` nebo `syslogEvents` nebo obojí. Je nutné zadat hello `metrics` struktura.
 
 Element | Hodnota
 ------- | -----
-eventVolume | (volitelné) Určuje počet oddílů vytvořit v tabulce úložiště. Musí mít jednu z `"Large"`, `"Medium"`, nebo `"Small"`. Pokud není zadáno, výchozí hodnota je `"Medium"`.
-sampleRateInSeconds | (volitelné) Výchozí interval mezi kolekce nezpracovaná (neagregovaným) metrik. Nejmenší podporované vzorkovací frekvence je 15 sekund. Pokud není zadáno, výchozí hodnota je `15`.
+eventVolume | (volitelné) Ovládací prvky hello počet oddílů v rámci tabulku úložiště hello vytvořili. Musí mít jednu z `"Large"`, `"Medium"`, nebo `"Small"`. Pokud není zadaný, hello výchozí hodnota je `"Medium"`.
+sampleRateInSeconds | (volitelné) hello výchozí interval mezi kolekce nezpracovaná (neagregovaným) metrik. Hello nejmenší podporované vzorkovací frekvence je 15 sekund. Pokud není zadaný, hello výchozí hodnota je `15`.
 
 #### <a name="metrics"></a>Průzkumníku metrik
 
@@ -267,10 +267,10 @@ sampleRateInSeconds | (volitelné) Výchozí interval mezi kolekce nezpracovaná
 
 Element | Hodnota
 ------- | -----
-resourceId | Nastavit ID prostředku Azure Resource Manager virtuálního počítače nebo virtuálního počítače měřítka, ke které patří virtuální počítač. Toto nastavení musí být zadaná také pokud žádné podřízený JsonBlob se používá v konfiguraci.
-scheduledTransferPeriod | Frekvence, kdy jsou agregovaná metrika počítaný a přenést do Azure metriky, vyjádřené jako interval času je 8601. V nejmenší období je 60 sekund, který je PT1M. Je nutné zadat alespoň jeden scheduledTransferPeriod.
+resourceId | ID prostředku Azure Resource Manager Hello hello virtuálního počítače nebo škálování virtuálních počítačů hello nastavit hello toowhich, ke které patří virtuální počítač. Toto nastavení musí být zadaná také pokud žádné podřízený JsonBlob se používá v konfiguraci hello.
+scheduledTransferPeriod | frekvence Hello, kdy jsou agregovaná metrika toobe počítaný a přenést tooAzure metriky, vyjádřené jako interval času je 8601. doba přenosu nejmenší Hello je 60 sekund, který je PT1M. Je nutné zadat alespoň jeden scheduledTransferPeriod.
 
-Ukázky metrik zadané v části čítače výkonu se shromažďují každých 15 sekund nebo v ukázce míra explicitně definované čítače. Pokud se zobrazí více scheduledTransferPeriod frekvence (jako v příkladu), každé agregace se počítá samostatně.
+Ukázky hello metriky uvedený v oddílu hello čítače výkonu jsou shromažďována každých 15 sekund nebo na hello vzorkovací frekvence explicitně definován čítače hello. Pokud se zobrazí více scheduledTransferPeriod frekvence (jako třeba hello), každé agregace se počítá samostatně.
 
 #### <a name="performancecounters"></a>čítače výkonu
 
@@ -297,40 +297,40 @@ Ukázky metrik zadané v části čítače výkonu se shromažďují každých 1
 }
 ```
 
-Tento volitelný oddíl pod kontrolou shromažďování metrik. Nezpracovaná ukázky jsou agregována pro každou [scheduledTransferPeriod](#metrics) k vytvoření tyto hodnoty:
+Tento volitelný oddíl ovládací prvky kolekce hello metrik. Nezpracovaná ukázky jsou agregována pro každou [scheduledTransferPeriod](#metrics) tooproduce tyto hodnoty:
 
 * střední
 * minimální
 * Maximální počet
 * shromážděné poslední hodnota
-* počet nezpracovaných ukázky slouží k výpočtu agregace
+* počet nezpracovaných vzorků, které se používá toocompute hello agregace
 
 Element | Hodnota
 ------- | -----
-jímky | (volitelné) Seznam názvů jímky, do které LAD zasílá agregovat metriky výsledky oddělených čárkami. Všechna agregovaná metrika se publikují do jednotlivých uvedených jímky. V tématu [sinksConfig](#sinksconfig). Příklad: `"EHsink1, myjsonsink"`.
-type | Identifikuje skutečné zprostředkovatele metriky.
-– Třída | Společně s "čítač" jsou uvedeny konkrétní metriky v rámci oboru názvů poskytovatele.
-Čítač | Společně s "class" jsou uvedeny konkrétní metriky v rámci oboru názvů poskytovatele.
-counterSpecifier | Identifikuje určité metriky v rámci oboru názvů metrik Azure.
-Podmínka | (volitelné) Vybere konkrétní instanci objektu do které metriku platí nebo vybere agregace napříč všemi instancemi tohoto objektu. Další informace najdete v tématu [ `builtin` definice metrik](#metrics-supported-by-builtin).
-sampleRate | Interval 8601, která nastavuje rychlost, jakou jsou shromažďovány nezpracovaná ukázky pro tato metrika je. Pokud není nastavena, je kolekce interval nastaven hodnotou [sampleRateInSeconds](#ladcfg). Nejkratší podporované vzorkovací frekvence je 15 sekund (PT15S).
-jednotka | By měl být jeden z těchto řetězců: "Count", "Bajtů", "Seconds", "Procenta", "CountPerSecond", "BytesPerSecond", "Milisekundu". Definuje jednotky pro metriku. Příjemci shromážděná data očekávat shromážděná data hodnoty tak, aby odpovídaly tuto jednotku. LAD ignoruje toto pole.
-displayName | Popisek (v jazyce určeném nastavením přidružené národní prostředí) být připojené k těmto datům v Azure metriky. LAD ignoruje toto pole.
+jímky | (volitelné) Čárkami oddělený seznam názvy jímky toowhich LAD odesílá agregované výsledky metriky. Všechny agregovaných metrik jsou publikované tooeach uvedené jímky. V tématu [sinksConfig](#sinksconfig). Příklad: `"EHsink1, myjsonsink"`.
+type | Identifikuje hello skutečné zprostředkovatele hello metriky.
+– Třída | Společně s "čítač" identifikuje hello určité metriky v rámci obor názvů zprostředkovatele hello.
+Čítač | Společně s "class" identifikuje hello určité metriky v rámci obor názvů zprostředkovatele hello.
+counterSpecifier | Identifikuje hello určité metriky v rámci oboru názvů hello metrik Azure.
+Podmínka | (volitelné) Použije konkrétní instanci hello objekt toowhich hello metrika vybere nebo vybere hello agregace napříč všemi instancemi tohoto objektu. Další informace najdete v tématu hello [ `builtin` definice metrik](#metrics-supported-by-builtin).
+sampleRate | JE 8601 interval, který nastaví četnost Dobrý den, kdy se shromažďují nezpracovaná ukázky pro tuto metriku. Pokud není nastavená, interval sběru hello se nastavuje hodnotu hello [sampleRateInSeconds](#ladcfg). Hello nejkratší podporované vzorkovací frekvence je 15 sekund (PT15S).
+jednotka | By měl být jeden z těchto řetězců: "Count", "Bajtů", "Seconds", "Procenta", "CountPerSecond", "BytesPerSecond", "Milisekundu". Definuje hello jednotky pro metriku hello. Spotřebitelé dat shromážděných hello očekávat, že hello shromažďují data hodnoty toomatch tuto jednotku. LAD ignoruje toto pole.
+displayName | Popisek (v jazyce hello určeného přidružené nastavení národního prostředí v hello) toobe Hello připojit toothis data v Azure metriky. LAD ignoruje toto pole.
 
-CounterSpecifier je libovolný identifikátor. Příjemci metrik, Azure portálu grafů, jako a výstrahy funkce, použijte counterSpecifier jako "klíč", který identifikuje metriky nebo instanci metriky. Pro `builtin` metriky, doporučujeme použít counterSpecifier hodnoty, které začínají `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme, abyste že na hodnotu counterSpecifier připojíte identifikátor instance. Příklady:
+Hello counterSpecifier je libovolný identifikátor. Příjemci metrik, jako jsou hello grafů, portálu Azure a výstrah funkce, použijte counterSpecifier jako hello "klíč", který identifikuje metriky nebo instanci metriky. Pro `builtin` metriky, doporučujeme použít counterSpecifier hodnoty, které začínají `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme, abyste že připojení hello identifikátor hello instance toohello counterSpecifier hodnoty. Příklady:
 
 * `/builtin/Processor/PercentIdleTime`-Doba nečinnosti, po průměrem všech jader
-* `/builtin/Disk/FreeSpace(/mnt)`-Volného místa pro systém souborů /mnt
+* `/builtin/Disk/FreeSpace(/mnt)`-Volného místa pro systém souborů /mnt hello
 * `/builtin/Disk/FreeSpace`-Volného místa průměrem všech připojené systémy
 
-LAD ani portálu Azure očekává, že hodnota counterSpecifier odpovídat žádnému vzoru. Být konzistentní v tom, jak vytvořit counterSpecifier hodnoty.
+LAD ani hello portál Azure očekává hello counterSpecifier hodnotu toomatch žádnému vzoru. Být konzistentní v tom, jak vytvořit counterSpecifier hodnoty.
 
-Pokud zadáte `performanceCounters`, LAD vždy zapisuje data do tabulky v úložišti Azure. Může mít stejné dat zapsaných na objekty BLOB JSON nebo Event Hubs, ale nelze zakázat ukládání dat do tabulky. Všechny instance rozšíření diagnostiky nakonfigurovaný tak, aby používají stejný název účtu úložiště a koncový bod přidejte protokoly a metriky do stejné tabulky. Pokud jsou moc velký počet virtuálních počítačů zápis do stejného oddílu tabulky, Azure může omezit zápisy do tohoto oddílu. Nastavení eventVolume způsobí, že položky šíření mezi 1 (malé), 10 (střední), nebo 100 různých oddílů (velká). Obvykle je dostačující Ujistěte se, že není omezen provoz "Střední". K vytvoření grafy nebo výstrahy aktivovat funkci Azure metriky na portálu Azure používá data v této tabulce. Název tabulky je zřetězení tyto řetězce:
+Pokud zadáte `performanceCounters`, LAD vždy zapíše data tooa tabulky v úložišti Azure. Vám může mít hello stejná data zapsaná tooJSON objekty BLOB a/nebo Event Hubs, ale nelze zakázat ukládání dat tooa tabulky. Všechny instance hello nakonfigurované rozšíření diagnostiky toouse hello stejný účet úložiště, název a koncový bod přidat jejich metriky a protokoly toohello stejné tabulky. Pokud jsou příliš mnoho virtuálních počítačů zápis toohello, který může omezit stejného oddílu tabulky, Azure zapíše toothat oddílu. nastavení příčiny položky toobe eventVolume Hello rozloženy 1 (malá), 10 (střední) nebo 100 různých oddílů (velká). "Střední" je obvykle dostatečná není omezen tooensure provoz. Funkce Azure metriky Hello hello portál Azure používá hello data v této tabulce tooproduce grafy nebo tootrigger výstrahy. Název tabulky Hello je hello zřetězení tyto řetězce:
 
 * `WADMetrics`
-* "ScheduledTransferPeriod" pro agregované hodnoty, které jsou uložené v tabulce
+* Hello "scheduledTransferPeriod" pro hello agregovat hodnoty, které jsou uložené v tabulce hello
 * `P10DV2S`
-* Datum ve formátu "RRRRMMDD", který změní každých 10 dní
+* Datum, v podobě hello "RRRRMMDD", který změní každých 10 dní
 
 Mezi příklady patří `WADMetricsPT1HP10DV2S20170410` a `WADMetricsPT1MP10DV2S20170609`.
 
@@ -347,20 +347,20 @@ Mezi příklady patří `WADMetricsPT1HP10DV2S20170410` a `WADMetricsPT1MP10DV2S
 }
 ```
 
-Tento volitelný oddíl ovládací prvky kolekce protokolu událostí z syslog. Pokud je vynechán části, nejsou vůbec zachytit události procesu syslog.
+Tento volitelný oddíl ovládací prvky kolekce hello protokolu událostí z syslog. Pokud je vynechán části hello, nejsou vůbec zachytit události procesu syslog.
 
-Kolekce syslogEventConfiguration má jeden záznam pro každý mechanismus syslog, které vás zajímají. Pokud minSeverity "Žádný" je pro konkrétní zařízení, nebo pokud tohoto zařízení nezobrazí v elementu vůbec, jsou zachyceny žádné události z tohoto zařízení.
+kolekce syslogEventConfiguration Hello má jeden záznam pro každý mechanismus syslog, které vás zajímají. Pokud minSeverity je "Žádný" pro konkrétní zařízení, nebo pokud tohoto zařízení nezobrazí v elementu hello vůbec, jsou zachyceny žádné události z tohoto zařízení.
 
 Element | Hodnota
 ------- | -----
-jímky | Seznam názvů jímky, na které jsou publikovány jednotlivých protokolu událostí oddělených čárkami. Všechny události protokolu odpovídající omezení v syslogEventConfiguration se publikují do jednotlivých uvedených jímky. Příklad: "EHforsyslog"
-facilityName | Název zařízení syslog (například "protokolu\_uživatele" nebo "protokolu\_LOCAL0"). Najdete v části "zařízení" [syslog man stránky](http://man7.org/linux/man-pages/man3/syslog.3.html) pro úplný seznam.
-minSeverity | Úroveň závažnosti syslog (například "protokolu\_chyba" nebo "protokolu\_informace"). Najdete v části "úroveň" [syslog man stránky](http://man7.org/linux/man-pages/man3/syslog.3.html) pro úplný seznam. Přípona zachytí událostí odeslaných do zařízení nebo vyšší úrovni zadané.
+jímky | Čárkami oddělený seznam názvy jímky toowhich jednotlivých protokolů, které se události publikují. Všechny události protokolu odpovídající omezení hello v syslogEventConfiguration jsou publikované tooeach uvedené jímky. Příklad: "EHforsyslog"
+facilityName | Název zařízení syslog (například "protokolu\_uživatele" nebo "protokolu\_LOCAL0"). Najdete v části "zařízení" hello hello [syslog man stránky](http://man7.org/linux/man-pages/man3/syslog.3.html) pro úplný seznam hello.
+minSeverity | Úroveň závažnosti syslog (například "protokolu\_chyba" nebo "protokolu\_informace"). Najdete v části "úroveň" hello hello [syslog man stránky](http://man7.org/linux/man-pages/man3/syslog.3.html) pro úplný seznam hello. rozšíření Hello zaznamená zařízení toohello událostí odeslaných na nebo výše hello zadané úrovně.
 
-Pokud zadáte `syslogEvents`, LAD vždy zapisuje data do tabulky v úložišti Azure. Může mít stejné dat zapsaných na objekty BLOB JSON nebo Event Hubs, ale nelze zakázat ukládání dat do tabulky. Rozdělení chování pro tuto tabulku je stejný jako popsané pro `performanceCounters`. Název tabulky je zřetězení tyto řetězce:
+Pokud zadáte `syslogEvents`, LAD vždy zapíše data tooa tabulky v úložišti Azure. Vám může mít hello stejná data zapsaná tooJSON objekty BLOB a/nebo Event Hubs, ale nelze zakázat ukládání dat tooa tabulky. Hello dělení chování pro tuto tabulku je hello stejné popsané pro `performanceCounters`. Název tabulky Hello je hello zřetězení tyto řetězce:
 
 * `LinuxSyslog`
-* Datum ve formátu "RRRRMMDD", který změní každých 10 dní
+* Datum, v podobě hello "RRRRMMDD", který změní každých 10 dní
 
 Mezi příklady patří `LinuxSyslog20170410` a `LinuxSyslog20170609`.
 
@@ -382,17 +382,17 @@ Spuštění libovolné ovládací prvky této volitelné části [OMI](https://g
 
 Element | Hodnota
 ------- | -----
-obor názvů | (volitelné) OMI obor názvů, ve kterém se má provést dotaz. Pokud tento parametr nezadáte, výchozí hodnota je "kořenový/scx", implementované [System Center a platformy zprostředkovatelé](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
-query | OMI dotaz, který má být proveden.
-Tabulka | (volitelné) Tabulky úložiště Azure, v účtu úložiště určený (viz [chráněné nastavení](#protected-settings)).
-frekvence | (volitelné) Počet sekund mezi provádění dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
-jímky | (volitelné) Seznam názvy další jímky, na které je nutné ji publikovat metriky výsledky nezpracovaná ukázkový textový soubor s oddělovači. Žádné agregace ukázek nezpracovaná se počítá rozšíření nebo metrik Azure.
+obor názvů | obor názvů OMI hello (volitelné) v rámci které hello se má provést dotaz. Pokud tento parametr nezadáte, hello výchozí hodnota je "kořenový/scx", implementované hello [System Center a platformy zprostředkovatelé](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
+query | Hello OMI toobe dotaz spustit.
+Tabulka | (volitelné) hello tabulky úložiště Azure, v hello určený účet úložiště (viz [chráněné nastavení](#protected-settings)).
+frequency | (volitelné) hello počet sekund mezi spuštění dotazu hello. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
+jímky | (volitelné) Čárkami oddělený seznam názvů další jímky toowhich nezpracovaná ukázka metriky výsledků je nutné ji publikovat. Žádné agregace ukázek nezpracovaná se počítá pomocí přípony hello nebo metrik Azure.
 
 Musí být zadán buď "tabulka" nebo "jímky" nebo obojí.
 
 ### <a name="filelogs"></a>fileLogs
 
-Řídí zaznamenávání souborů protokolu. LAD zaznamená nové řádky textu, jako jsou zapsané do souboru a zapíše na řádky tabulky a všechny zadané jímky (JsonBlob nebo EventHub).
+Ovládací prvky hello zaznamenání souborů protokolu. LAD zaznamená nové řádky textu, jako jsou zapsané toohello soubor a zapíše tootable řádků nebo všechny zadané jímky (JsonBlob nebo EventHub).
 
 ```json
 "fileLogs": [
@@ -406,15 +406,15 @@ Musí být zadán buď "tabulka" nebo "jímky" nebo obojí.
 
 Element | Hodnota
 ------- | -----
-Soubor | Úplná cesta souboru protokolu bude sledovaná a zachycení. Název musí být názvu cesty jeden soubor; nemůže název adresáře nebo obsahovat zástupné znaky.
-Tabulka | (volitelné) Tabulka úložiště Azure v účtu úložiště určený (jako je zadaný v konfiguraci chráněného), do které se zapisují nové řádky "zadní" část souboru.
-jímky | (volitelné) Seznam dalších jímky do protokolu linky, které odeslaných názvy oddělených čárkami.
+Soubor | Úplná cesta toobe souboru protokolu hello Hello sledovaná a zachycení. Název musí být Hello pathname jeden soubor; nemůže název adresáře nebo obsahovat zástupné znaky.
+Tabulka | tabulky (volitelné) hello úložiště Azure, v úložišti hello určené účtu (jako je zadaný v konfiguraci hello chráněné), do které nové řádky z hello "tail" hello souboru se zapisují.
+jímky | (volitelné) Čárkami oddělený seznam názvů další jímky toowhich protokolu řádky odeslána.
 
 Musí být zadán buď "tabulka" nebo "jímky" nebo obojí.
 
-## <a name="metrics-supported-by-the-builtin-provider"></a>Zprostředkovatel předdefinované metriky
+## <a name="metrics-supported-by-hello-builtin-provider"></a>Metriky podporované poskytovatelem builtin hello
 
-Zprostředkovatel metriky builtin je zdroj metriky nejvíce zajímavé pro širokou škálu uživatele. Tyto metriky spadají do pěti široký třídy:
+Zprostředkovatel metriky builtin Hello je zdroj metriky nejvíce zajímavé tooa širokou škálu uživatele. Tyto metriky spadají do pěti široký třídy:
 
 * Procesor
 * Memory (Paměť)
@@ -422,27 +422,27 @@ Zprostředkovatel metriky builtin je zdroj metriky nejvíce zajímavé pro širo
 * Systém souborů
 * Disk
 
-### <a name="builtin-metrics-for-the-processor-class"></a>předdefinované metriky pro procesor – třída
+### <a name="builtin-metrics-for-hello-processor-class"></a>předdefinované metriky pro hello procesoru – třída
 
-Třída procesoru metrik poskytuje informace o využití procesoru ve virtuálním počítači. Při agregování procenta, výsledkem je průměr mezi všechny procesory. V dva základní virtuální počítač Pokud jednoho jádra bylo 100 % zaneprázdněn a dalších 100 % nečinnosti, bude hlášené PercentIdleTime 50. Pokud každý jádra byla 50 % zaneprázdněn stejnou dobu, by také hlášené výsledek 50. V čtyři základní virtuální počítač, pomocí jednoho jádra 100 % zaneprázdněn a ostatní nečinnosti bude hlášené PercentIdleTime 75.
+Hello procesoru třída metrik poskytuje informace o využití procesoru v hello virtuálních počítačů. Při agregování procenta, výsledkem hello je hello průměr mezi všechny procesory. V dva základní virtuální počítač Pokud jednoho jádra bylo 100 % zaneprázdněn a hello dalších 100 % nečinnosti, hello uvádět, že PercentIdleTime by bylo 50. Pokud byl 50 % zaneprázdněn pro každý základní hello stejné období, hello hlášené výsledek by také bylo 50. V čtyři základní virtuální počítač, pomocí jednoho jádra 100 % zaneprázdněn a hello ostatní nečinnosti, hello oznámilo že percentidletime by 75.
 
 Čítač | Význam
 ------- | -------
-PercentIdleTime | Procento času během časového období agregace, procesory byly provádění jádra nečinné smyčky
+PercentIdleTime | Procento času období hello agregace, procesory byly provádění hello jádra nečinné smyčky
 percentProcessorTime | Procento doby provádění jiných než nečinných vláken
-PercentIOWaitTime | Procento doby čekání na dokončení operací vstupně-výstupní operace
+PercentIOWaitTime | Procento doby čekání na vstupně-výstupní operace toocomplete
 PercentInterruptTime | Procento doby provádění hardware a software přerušení a DPC (odložených volání procedur)
-PercentUserTime | Jiných než nečinných dobu, během časového období agregace procento času stráveného v uživatele více se střední důležitostí
-PercentNiceTime | Jiných než nečinných času stráveného procento snížený (dobrý) důležitostí
-PercentPrivilegedTime | Jiných než nečinných času stráveného procento v privilegovaném režimu režimu (jádra)
+PercentUserTime | Jiných než nečinných času období agregace hello hello procento času stráveného v uživatele více se střední důležitostí
+PercentNiceTime | Jiných než nečinných času stráví hello procento snížený (dobrý) důležitostí
+PercentPrivilegedTime | Jiných než nečinných času stráví hello procento v privilegovaném režimu režimu (jádra)
 
-První čtyři čítače by měl součet, kterou se 100 %. Poslední tři čítače také součet na 100 %; jejich rozdělit součet PercentProcessorTime, PercentIOWaitTime a PercentInterruptTime.
+Hello první čtyři čítače by měl součet too100 %. Hello poslední tři čítače také součet too100 %; jejich rozdělit hello součet PercentProcessorTime, PercentIOWaitTime a PercentInterruptTime.
 
-Chcete-li získat jeden metrika agregovat do všech procesorů, nastavte `"condition": "IsAggregate=TRUE"`. Chcete-li získat metriky pro specifické procesory, jako je druhý logický procesor čtyři základní virtuální počítač, nastavte `"condition": "Name=\\"1\\""`. Logický procesor čísla jsou v rozsahu `[0..n-1]`.
+nastavit tooobtain jednu metriku agregovat do všech procesorů `"condition": "IsAggregate=TRUE"`. tooobtain metriky pro specifické procesory, například hello druhý logický procesor čtyři základní virtuální počítač, nastavte `"condition": "Name=\\"1\\""`. Logický procesor čísla jsou v rozsahu hello `[0..n-1]`.
 
-### <a name="builtin-metrics-for-the-memory-class"></a>předdefinované metriky pro třídu paměti
+### <a name="builtin-metrics-for-hello-memory-class"></a>předdefinované metriky pro hello paměti – třída
 
-Třída paměti metrik poskytuje informace o využití paměti, stránkování a vzájemná záměna.
+Hello paměti třída metrik poskytuje informace o využití paměti, stránkování a vzájemná záměna.
 
 Čítač | Význam
 ------- | -------
@@ -452,17 +452,17 @@ UsedMemory | Použití fyzické paměti (MiB)
 PercentUsedMemory | Fyzické paměti používané jako procento celkové paměti
 PagesPerSec | Celkový počet stránkování (čtení a zápis)
 PagesReadPerSec | Čtení stránek ze záložního úložiště (odkládacího souboru, soubor programu, mapovaný soubor, atd.)
-PagesWrittenPerSec | Stránek zapsaných k záložnímu úložišti (odkládací soubor, mapovaný soubor, atd.)
+PagesWrittenPerSec | Uložení stránek zapsaných toobacking (odkládací soubor, mapovaný soubor, atd.)
 AvailableSwap | Nepoužívané odkládacího prostoru (MiB)
 PercentAvailableSwap | Nepoužívané odkládacího souboru jako procentuální hodnotu celkové velikosti odkládacího souboru
 UsedSwap | Využití odkládacího souboru (MiB)
 PercentUsedSwap | Používané místo odkládacího souboru jako procentuální hodnotu celkové velikosti odkládacího souboru
 
-Tato třída metrik obsahuje pouze jednu instanci. Atribut "podmínky" neexistuje užitečné nastavení a by měl být vynechán.
+Tato třída metrik obsahuje pouze jednu instanci. atribut "podmínky" Hello neexistuje užitečné nastavení a by měl být vynechán.
 
-### <a name="builtin-metrics-for-the-network-class"></a>předdefinované metriky pro sítě – třída
+### <a name="builtin-metrics-for-hello-network-class"></a>předdefinované metriky pro hello sítě – třída
 
-Třída sítě metrik poskytuje informace o síťové aktivity na rozhraní jednotlivým síťovým od spuštění počítače. LAD nevystavuje metriky šířky pásma, které je možné načíst z hostitele metriky.
+Hello sítě třída metrik poskytuje informace o síťové aktivity na rozhraní jednotlivým síťovým od spuštění počítače. LAD nevystavuje metriky šířky pásma, které je možné načíst z hostitele metriky.
 
 Čítač | Význam
 ------- | -------
@@ -473,13 +473,13 @@ PacketsTransmitted | Celkový počet paketů odeslaných od spuštění
 PacketsReceived | Celkový počet paketů přijatých od spuštění
 TotalRxErrors | Počet chyb, obdrží od spuštění počítače
 TotalTxErrors | Počet chyb přenosu od spuštění počítače
-TotalCollisions | Počet kolizí hlášené síťové porty od spuštění počítače
+TotalCollisions | Počet kolizí hlášené hello síťové porty od spuštění počítače
 
- I když tato třída je instance, nepodporuje LAD zaznamenávání metriky sítě s agregovat přes všechna síťová zařízení. Chcete-li získat metriky pro určité rozhraní, jako je například eth0, nastavte `"condition": "InstanceID=\\"eth0\\""`.
+ I když tato třída je instance, nepodporuje LAD zaznamenávání metriky sítě s agregovat přes všechna síťová zařízení. nastavení metriky hello tooobtain pro určité rozhraní, jako je například eth0, `"condition": "InstanceID=\\"eth0\\""`.
 
-### <a name="builtin-metrics-for-the-filesystem-class"></a>předdefinované metriky pro třídy systému souborů
+### <a name="builtin-metrics-for-hello-filesystem-class"></a>předdefinované metriky pro hello Filesystem – třída
 
-Třída Filesystem metrik poskytuje informace o použití systému souborů. Absolutní a procentuální hodnoty jsou hlášeny, jako by se zobrazit běžného uživatele (není uživatel root).
+Hello třída Filesystem metrik poskytuje informace o použití systému souborů. Absolutní a procentuální hodnoty jsou hlášeny, jako by byly zobrazené tooan obyčejnou uživatel (není uživatel root).
 
 Čítač | Význam
 ------- | -------
@@ -498,9 +498,9 @@ TransfersPerSecond | Operace čtení nebo zápisu za sekundu
 
 Agregované hodnoty mezi všechny systémy souborů je možné získat nastavení `"condition": "IsAggregate=True"`. Hodnoty pro konkrétní připojeného souboru systém, například "/ mnt", je možné získat nastavení `"condition": 'Name="/mnt"'`.
 
-### <a name="builtin-metrics-for-the-disk-class"></a>předdefinované metriky pro třídu disku
+### <a name="builtin-metrics-for-hello-disk-class"></a>předdefinované metriky pro hello disku – třída
 
-Třída disku metrik poskytuje informace o využití disku zařízení. Tyto statistické údaje se vztahují na celou jednotku. Pokud existují více systémy souborů na zařízení, čítačů pro toto zařízení se prakticky agregovat přes všechny z nich.
+Hello disku třída metrik poskytuje informace o využití disku zařízení. Ve statistikách použít toohello celé jednotky. Pokud existují více systémy souborů na zařízení, hello čítače pro toto zařízení jsou, efektivně, agregovat přes všechny z nich.
 
 Čítač | Význam
 ------- | -------
@@ -515,21 +515,21 @@ ReadBytesPerSecond | Počet bajtů přečtených za sekundu
 WriteBytesPerSecond | Počet bajtů zapsaných za sekundu
 BytesPerSecond | Počet bajtů přečtených nebo zapsaných za sekundu
 
-Agregované hodnoty všech disků je možné získat nastavení `"condition": "IsAggregate=True"`. Chcete-li získat informace pro konkrétní zařízení (například/dev/sdf1), nastavte `"condition": "Name=\\"/dev/sdf1\\""`.
+Agregované hodnoty všech disků je možné získat nastavení `"condition": "IsAggregate=True"`. nastavit tooget informace pro konkrétní zařízení (například/dev/sdf1), `"condition": "Name=\\"/dev/sdf1\\""`.
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>Instalace a konfigurace LAD 3.0 prostřednictvím rozhraní příkazového řádku
 
-Za předpokladu, že jsou chráněný nastavení v souboru PrivateConfig.json a veřejné konfigurační informace v PublicConfig.json, spusťte tento příkaz:
+Za předpokladu, že jsou chráněný nastavení v souboru hello PrivateConfig.json a veřejné konfigurační informace v PublicConfig.json, spusťte tento příkaz:
 
 ```azurecli
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
 ```
 
-Příkaz předpokládá, že používáte správu prostředků Azure režim rozhraní příkazového řádku Azure (arm). Konfigurace pro nasazení classic LAD modelu virtuálních počítačů (ASM), přepněte do režimu "asm" (`azure config mode asm`) a název skupiny prostředků v příkazu vynechat. Další informace najdete v tématu [dokumentaci rozhraní příkazového řádku a platformy](https://docs.microsoft.com/azure/xplat-cli-connect).
+příkaz Hello předpokládá, že používáte hello Správa prostředků Azure režim (arm) hello rozhraní příkazového řádku Azure. tooconfigure LAD pro nasazení classic modelu virtuálních počítačů (ASM), přepínače příliš "asm" režimu (`azure config mode asm`) a název skupiny prostředků hello v příkazu hello vynechat. Další informace najdete v tématu hello [dokumentaci rozhraní příkazového řádku a platformy](https://docs.microsoft.com/azure/xplat-cli-connect).
 
 ## <a name="an-example-lad-30-configuration"></a>Příklad LAD 3.0 konfigurace
 
-Podle definice předchozí, zde je ukázka konfigurace rozšíření LAD 3.0 s vysvětlení. Tuto ukázku použít pro váš případ, měli byste použít vlastní název účtu úložiště, token SAS účtu a tokeny EventHubs SAS.
+Podle předchozích definice, zde je ukázka konfigurace rozšíření LAD 3.0 s vysvětlení hello. tooapply případě tohohle vzorku tooyour, by měli používat svůj vlastní název účtu úložiště, účet tokenu SAS a tokeny EventHubs SAS.
 
 ### <a name="privateconfigjson"></a>PrivateConfig.json
 
@@ -585,15 +585,15 @@ Tato nastavení privátní konfigurace:
 
 Tato nastavení veřejných způsobit LAD na:
 
-* Nahrát procentuální hodnoty času procesoru a použitého místa disku metrik `WADMetrics*` tabulky
-* Odeslání zprávy z syslog budovy "user" a závažnost "informace" k `LinuxSyslog*` tabulky
-* Nahrát nezpracovaná OMI výsledků dotazu (PercentProcessorTime a PercentIdleTime) na zadaný `LinuxCPU` tabulky
-* Nahrát připojením řádků v souboru `/var/log/myladtestlog` k `MyLadTestLog` tabulky
+* Nahrát procentuální hodnoty času procesoru a použitého místa disku metriky toohello `WADMetrics*` tabulky
+* Odeslání zprávy syslog budovy "user" a závažnost "informace" toohello `LinuxSyslog*` tabulky
+* Nahrát nezpracovaná OMI dotazu výsledky (PercentProcessorTime a PercentIdleTime) toohello s názvem `LinuxCPU` tabulky
+* Nahrát připojením řádků v souboru `/var/log/myladtestlog` toohello `MyLadTestLog` tabulky
 
 Data jsou v každém případě také odeslána a:
 
-* Azure Blob storage (název kontejneru je definovaný v jímce JsonBlob)
-* Koncový bod EventHubs (jak je uvedeno v jímce EventHubs)
+* Azure Blob storage (název kontejneru je definovaný v hello JsonBlob jímky)
+* Koncový bod EventHubs (jak je uvedeno v hello EventHubs jímky)
 
 ```json
 {
@@ -672,35 +672,35 @@ Data jsou v každém případě také odeslána a:
 }
 ```
 
-`resourceId` v konfiguraci se musí shodovat, virtuální počítač nebo virtuální počítač měřítka nastavit.
+Hello `resourceId` v hello konfigurace shodovat, že z škálování virtuálních počítačů virtuálního počítače nebo hello hello nastavená.
 
-* Metriky platformy Azure grafů a výstrah zná resourceId pracujete virtuálního počítače. Se očekává, že chcete najít data pro virtuální počítač pomocí resourceId klíč vyhledávání.
-* Pokud používáte Azure škálování, resourceId v konfiguraci automatického škálování se musí shodovat resourceId používané LAD.
-* ResourceId je integrovaná do názvy JsonBlobs zapsaných správcem LAD.
+* Metriky platformy Azure grafů a výstrah zná hello resourceId Dobrý den pracujete na virtuální počítač. Se očekává, že toofind hello data pro virtuální počítač pomocí hello resourceId hello vyhledávání klíče.
+* Pokud používáte Azure škálování, musí odpovídat hello resourceId v konfiguraci automatického škálování hello používá LAD resourceId hello.
+* Hello resourceId je integrovaná do hello názvy JsonBlobs zapsaných správcem LAD.
 
 ## <a name="view-your-data"></a>Zobrazení dat
 
-Pomocí portálu Azure do zobrazení dat výkonu nebo nastavit výstrahy:
+Informace o výkonu Azure portálu tooview hello nebo nastavit výstrahy:
 
 ![Bitové kopie](./media/diagnostic-extension/graph_metrics.png)
 
-`performanceCounters` Dat byly vždy uloženy v tabulce Azure Storage. Rozhraní API Azure úložiště jsou k dispozici pro mnoho jazyky a platformy.
+Hello `performanceCounters` dat byly vždy uloženy v tabulce Azure Storage. Rozhraní API Azure úložiště jsou k dispozici pro mnoho jazyky a platformy.
 
-Data odeslaná jímky JsonBlob se ukládají do objektů BLOB v účtu úložiště s názvem v [chráněné nastavení](#protected-settings). Můžete využívat data objektů blob s využitím jakékoli rozhraní API úložiště objektů Blob Azure.
+Data odeslaná jímky tooJsonBlob se ukládají do objektů BLOB v účtu úložiště hello s názvem v hello [chráněné nastavení](#protected-settings). Můžete využívat data objektu blob hello pomocí všechny rozhraní API úložiště objektů Blob Azure.
 
-Kromě toho můžete tyto nástroje uživatelského rozhraní pro přístup k datům ve službě Azure Storage:
+Kromě toho můžete tyto uživatelského rozhraní nástroje tooaccess hello dat ve službě Azure Storage:
 
 * Průzkumníka serveru Visual Studio.
 * [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
-Tento snímek relaci Microsoft Azure Storage Explorer zobrazuje generovaného tabulky služby Azure Storage a kontejnery z správně nakonfigurována rozšíření LAD 3.0 na testovací virtuální počítač. Obrázek neodpovídá přesně [Ukázková konfigurace LAD 3.0](#an-example-lad-30-configuration).
+Tento snímek relaci Microsoft Azure Storage Explorer zobrazuje hello vygenerovat tabulky služby Azure Storage a kontejnery z správně nakonfigurována rozšíření LAD 3.0 na testovací virtuální počítač. Obrázek Hello neodpovídá přesně hello [Ukázková konfigurace LAD 3.0](#an-example-lad-30-configuration).
 
 ![Bitové kopie](./media/diagnostic-extension/stg_explorer.png)
 
-V tématu odpovídajícího [EventHubs dokumentace](../../event-hubs/event-hubs-what-is-event-hubs.md) se dozvíte, jak využívat zpráv publikovaných do EventHubs koncový bod.
+V tématu hello relevantní [EventHubs dokumentace](../../event-hubs/event-hubs-what-is-event-hubs.md) toolearn jak tooconsume zprávy publikované tooan EventHubs koncový bod.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vytvoření metriky výstrahy v [Azure monitorování](../../monitoring-and-diagnostics/insights-alerts-portal.md) podle metrik, které shromažďujete.
+* Vytvoření metriky výstrahy v [Azure monitorování](../../monitoring-and-diagnostics/insights-alerts-portal.md) pro shromažďování metrik hello.
 * Vytvoření [tabulek sledování](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) pro vaše metriky.
-* Zjistěte, jak [vytvořit škálovací sadu virtuálních počítačů](/azure/virtual-machines/linux/tutorial-create-vmss) pomocí vaše metriky pro řízení automatické škálování.
+* Zjistěte, jak příliš[vytvořit škálovací sadu virtuálních počítačů](/azure/virtual-machines/linux/tutorial-create-vmss) pomocí vaší automatické škálování toocontrol metriky.

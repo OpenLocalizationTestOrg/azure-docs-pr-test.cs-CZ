@@ -1,5 +1,5 @@
 ---
-title: "Začínáme s SAP na virtuálních počítačích Windows v Azure | Microsoft Docs"
+title: "aaaGetting začít s SAP na virtuálních počítačích Windows v Azure | Microsoft Docs"
 description: "Další informace o řešení SAP běžících na virtuálních počítačích (VM) v Microsoft Azure"
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebe420ea5105fb15e42ff32ad7e8d9d8b27d8b06
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 678770955ecc78bf1d39c193c833ae4e11912fe4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-sap-on-azure-windows-virtual-machines-vms"></a>Pomocí SAP na virtuálních počítačích s Azure Windows (VM)
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -304,14 +304,14 @@ ms.lasthandoff: 07/11/2017
 [xplat-cli]:../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../xplat-cli-azure-resource-manager.md
 
-Výběrem Microsoft Azure jako váš partner připravené cloudu SAP, bude možné spolehlivě spuštění kritické SAP úlohy na scaaleable předpisy a platformy prokázanou enterprise.  Získejte scaleability, flexability a finanční úspoře Azure. S rozšířené spolupráci mezi společností Microsoft a SAP můžete spustit aplikace SAP napříč scénáře vývoje/testování a provozním ve službě azure - a plně podporovat. Máme všechno, co potřebujete, od SAP NetWeaveru po SAP S4/HANA, od Linuxu po Windows, od SAP HANA po SQL. 
+Výběrem Microsoft Azure jako váš partner připravené cloudu SAP, bude možné tooreliably spouštět kritické SAP úlohy na scaaleable předpisy a platformy prokázanou enterprise.  Získejte hello scaleability, flexability a finanční úspoře Azure. S hello rozšířit spolupráci mezi společností Microsoft a SAP můžete spustit aplikace SAP napříč scénáře vývoje/testování a provozním ve službě azure - a plně podporovat. Ze SAP NetWeaver tooSAP S4/HANA, Linux tooWindows, SAP HANA tooSQL máme je zahrnuté. 
 
-Služby virtuálního počítače Microsoft Azure, a SAP HANA s instancemi Azure velký společnost Microsoft nabízí komplexní platformu infrastruktura jako služba (IaaS). Protože řešení široké rozsahu SAP jsou podporovány v Azure, a to "získávání Začínáme dokumentu bude sloužit jako obsah pro naše aktuální sadu SAP dokumenty. Jako další produkty se přidají do našich knihovny dokumentů - zobrazí se zde přidat. 
+Služby virtuálního počítače Microsoft Azure, a SAP HANA s instancemi Azure velký společnost Microsoft nabízí komplexní platformu infrastruktura jako služba (IaaS). Protože řešení široké rozsahu SAP jsou podporovány v Azure, a to "získávání Začínáme dokumentu bude sloužit jako obsah pro naše aktuální sadu SAP dokumenty. Jako další produkty se přidají knihovny dokumentů tooour - zobrazí se zde přidat. 
 
 ## <a name="sap-hana-certifications-on-microsoft-azure"></a>SAP HANA certifikátů v Microsoft Azure
 | Produkt SAP | Podporovaný operační systém | Nabídky Azure |
 | --- | --- | --- |
-| SAP HANA Developer Edition (včetně klientský software HANA skládá z SQLODBC, pouze ODBO – Windows, rozhraní ODBC, ovladače JDBC, HANA studio a HANA databáze) |Red Hat Enterprise Linux operačního systému SUSE Linux Enterprise |A7, A8 |
+| SAP HANA Developer Edition (včetně hello HANA klientský software skládá z SQLODBC, pouze ODBO – Windows, rozhraní ODBC, ovladače JDBC, HANA studio a HANA databáze) |Red Hat Enterprise Linux operačního systému SUSE Linux Enterprise |A7, A8 |
 | MHANA jeden |Red Hat Enterprise Linux operačního systému SUSE Linux Enterprise |DS14_v2 (při všeobecné dostupnosti) |
 | SAP S/4HANA |Red Hat Enterprise Linux operačního systému SUSE Linux Enterprise |Řízené dostupnost pro GS5, SAP HANA v Azure (velké instance) |
 | Suite on HANA, OLTP |Red Hat Enterprise Linux operačního systému SUSE Linux Enterprise |SAP HANA v Azure (velké instance) |
@@ -319,73 +319,73 @@ Služby virtuálního počítače Microsoft Azure, a SAP HANA s instancemi Azure
 | SAP BW/4HANA |Red Hat Enterprise Linux operačního systému SUSE Linux Enterprise |GS5 pro jeden uzel nasazení SAP HANA v Azure (velké instance) |
 
 ## <a name="sap-netweaver-certifications"></a>SAP NetWeaver certifikace
-Microsoft Azure má certifikaci pro následující produkty SAP, se zárukou plné podpory od Microsoftu i SAPu.
+Microsoft Azure je certifikované pro hello následující produkty SAP, s plnou podporu od společnosti Microsoft a SAP.
 
 | Produkt SAP | Hostovaného operačního systému | RDBMS | Typy virtuálních počítačů |
 | --- | --- | --- | --- |
-| SAP Business Suite Software |Windows, operačního systému SUSE Linux Enterprise, Red Hat Enterprise Linux |SQL Server, Oracle (jenom Windows), DB2, SAP App Service Environment |A5 až A11, D11 až D14, DS11 až DS14, GS1 až GS5 |
-| SAP Business All-in-One |Windows, operačního systému SUSE Linux Enterprise, Red Hat Enterprise Linux |SQL Server, Oracle (jenom Windows), DB2, SAP App Service Environment |A5 až A11, D11 až D14, DS11 až DS14, GS1 až GS5 |
-| SAP BusinessObjects BI |Windows |Není k dispozici |A5 až A11, D11 až D14, DS11 až DS14, GS1 až GS5 |
-| SAP NetWeaver |Windows, operačního systému SUSE Linux Enterprise, Red Hat Enterprise Linux |SQL Server, Oracle (jenom Windows), DB2, SAP App Service Environment |A5 až A11, D11 až D14, DS11 až DS14, GS1 až GS5 |
+| SAP Business Suite Software |Windows, operačního systému SUSE Linux Enterprise, Red Hat Enterprise Linux |SQL Server, Oracle (jenom Windows), DB2, SAP App Service Environment |A5 tooA11, D11 tooD14, DS11 tooDS14, spravuje organizace GS1 tooGS5 |
+| SAP Business All-in-One |Windows, operačního systému SUSE Linux Enterprise, Red Hat Enterprise Linux |SQL Server, Oracle (jenom Windows), DB2, SAP App Service Environment |A5 tooA11, D11 tooD14, DS11 tooDS14, spravuje organizace GS1 tooGS5 |
+| SAP BusinessObjects BI |Windows |Není k dispozici |A5 tooA11, D11 tooD14, DS11 tooDS14, spravuje organizace GS1 tooGS5 |
+| SAP NetWeaver |Windows, operačního systému SUSE Linux Enterprise, Red Hat Enterprise Linux |SQL Server, Oracle (jenom Windows), DB2, SAP App Service Environment |A5 tooA11, D11 tooD14, DS11 tooDS14, spravuje organizace GS1 tooGS5 |
 
 ## <a name="getting-started-with-sap-hana-on-azure"></a>Začínáme s SAP HANA v Azure
-Title: Průvodce rychlým zahájením pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
+Title: aaaQuickstart Průvodce pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
 
-Souhrn: Tento průvodce rychlým zahájením pomůže vytvořit jednoduchou SAP HANA prototypu nebo ukázku systém na virtuálních počítačích Azure při ruční instalaci SAP NetWeaver 7.5 a SAP HANA SP12. V Průvodci se předpokládá, že je čtečka seznámili se základy Azure IaaS, jako je nasazení virtuálních počítačů nebo virtuální sítě prostřednictvím portálu Azure nebo Powershell nebo rozhraní příkazového řádku včetně možnost použít šablony json. Kromě toho se očekává, že čtečka je obeznámeni s SAP HANA, SAP NetWeaver a jak ji nainstalovat místně.
+Souhrn: Tento rychlý start Průvodce vám pomůže tooset jedné instance SAP HANA prototypu nebo ukázku systém na virtuálních počítačích Azure při ruční instalaci SAP NetWeaver 7.5 a SAP HANA SP12. Hello Příručka předpokládá, že čtečka hello je seznámili se základy Azure IaaS jako jak toodeploy virtuální počítače nebo virtuální sítě prostřednictvím hello portál Azure nebo Powershell nebo rozhraní příkazového řádku včetně hello možnost toouse json šablony. Kromě toho se očekává, že čtečka hello je obeznámeni s SAP HANA, SAP NetWeaver a jak tooinstall ho místně.
 
 Aktualizované: Září 2016
 
 [Tato příručka naleznete zde](../virtual-machines-linux-sap-hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Průvodce rychlým zahájením pro NetWeaver na SUSE Linux na Azure
-Title: Testování SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux 
+Title: aaaTesting SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux 
 
-Souhrn: Tento článek popisuje různé co je třeba zvážit při spuštěné SAP NetWeaver v Microsoft Azure SUSE Linux virtuální počítače (VM). Od 19 2016 může SAP NetWeaver oficiálně podporované v SUSE virtuální počítače s Linuxem v Azure. Všechny podrobnosti týkající se verze Linux, verze SAP jádra a tak dále najdete v 1928533 Poznámka SAP "SAP aplikace v Azure: podporované produkty a typy virtuálních počítačů Azure".
+Souhrn: Tento článek popisuje různé věci tooconsider při spuštěné SAP NetWeaver v Microsoft Azure SUSE Linux virtuální počítače (VM). Od 19 2016 může SAP NetWeaver oficiálně podporované v SUSE virtuální počítače s Linuxem v Azure. Všechny podrobnosti týkající se verze Linux, verze SAP jádra a tak dále najdete v 1928533 Poznámka SAP "SAP aplikace v Azure: podporované produkty a typy virtuálních počítačů Azure".
 
 Aktualizované: Září 2016
 
 [Tato příručka naleznete zde](../virtual-machines-linux-sap-on-suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="deploying-sap-ides-ehp7-sp3-for-sap-erp-60-on-microsoft-azure"></a>Nasazení SAP integrovaného vývojového prostředí EHP7 SP3 pro SAP ERP 6.0 na platformě Microsoft Azure
-Title: Průvodce rychlým zahájením pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
+Title: aaaQuickstart Průvodce pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
 
-Souhrn: Tento článek popisuje postup nasazení SAP integrovaného vývojového prostředí s SQL Server a operačního systému Windows v Microsoft Azure prostřednictvím SAP cloudu zařízení knihovna 3.0. 
+Souhrn: Tento článek popisuje, jak toodeploy SAP integrovaného vývojového prostředí s SQL Server a operačního systému Windows v Microsoft Azure prostřednictvím SAP cloudu zařízení knihovna 3.0. 
 
 Aktualizované: Září 2016
 
 [Tato příručka naleznete zde](sap-cal-ides-erp6-ehp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>Plánování a implementace
-Title: SAP NetWeaver na virtuálních počítačích Azure (VM) – plánování a implementace Průvodce
+Title: aaaSAP NetWeaver ve virtuálních počítačích Azure (VM) – plánování a implementace Průvodce
 
-Shrnutí: Toto je první dokument, po kterém byste měli sáhnout, pokud zvažujete používání systému SAP NetWeaver ve službě Azure Virtual Machines. Tato příručka pro plánování a implementaci vám pomůže vyhodnotit, jestli je možné existující nebo plánovaný systém SAP NetWeaver nasadit v prostředí Azure Virtual Machines. Popisuje různé scénáře nasazení systému SAP NetWeaver a zahrnuje konfigurace SAP specifické pro Azure. Dokument uvádí a popisuje všechny informace související s konfigurací, které potřebujete na straně SAP/Azure k vytvoření hybridního prostředí SAP. Popsána jsou také opatření, které můžete provést k zajištění vysoké dostupnosti systému SAP NetWeaver na IaaS.
+Souhrn: Jde hello dokumentu toostart s Pokud uvažujete o spuštění SAP NetWeaver v Azure Virtual Machines. Tato příručka plánování a implementaci vám pomůže vyhodnotit, jestli existující nebo plánované systému SAP NetWeaver může být nasazený tooan prostředí virtuálních počítačů Azure. Popisuje různé scénáře nasazení SAP NetWeaver a zahrnuje SAP konfigurace, které jsou specifické tooAzure. Hello dokumentu uvádí a popisuje všechny hello potřebné informace o konfiguraci, které budete potřebovat v hello SAP nebo Azure straně toorun hybridní SAP na šířku. Míry na IaaS může trvat tooensure vysokou dostupnost systémy na bázi SAP NetWeaver jsou také zahrnuté.
 
 Aktualizované: Srpna 2016
 
 [Tato příručka naleznete zde][planning-guide]
 
 ## <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>Nasazení
-Title: SAP NetWeaver na virtuálních počítačích Azure (VM) – Příručka pro nasazení
+Title: aaaSAP NetWeaver ve virtuálních počítačích Azure (VM) – Příručka pro nasazení
 
-Shrnutí: Tento dokument poskytuje postupy a pokyny pro nasazení softwaru SAP NetWeaver na virtuální počítače v prostředí Azure. Zaměřuje se na tři konkrétní scénáře nasazení s důrazem na použití rozšíření Azure Monitoring Extensions pro SAP, včetně doporučení pro řešení potíží s tímto rozšířením. Tento dokument předpokládá, že jste se seznámili s Příručkou pro plánování a implementaci.
+Souhrn: Tento dokument poskytuje procedurální pokyny pro nasazení SAP NetWeaver softwaru toovirtual počítačů v Azure. Tento dokument se zaměřuje na třech scénářích konkrétní nasazení, s důrazem na povolení rozšíření monitorování hello Azure pro SAP, včetně řešení potíží s doporučení pro hello rozšíření monitorování Azure pro SAP. Tento dokument předpokládá, že jste si přečetli hello plánování a implementace průvodce.
 
 Aktualizované: Prosinec 2016
 
 [Tato příručka naleznete zde][deployment-guide]
 
 ## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>Průvodce nasazením databázového systému
-Title: SAP NetWeaver na virtuálních počítačích Azure (VM) – Průvodce nasazením databázového systému
+Title: aaaSAP NetWeaver ve virtuálních počítačích Azure (VM) – Průvodce nasazením databázového systému
 
-Shrnutí: Tento dokument popisuje důležité aspekty plánování a implementace systémů DBMS, které by měly běžet spolu se systémem SAP. V první části jsou uvedeny obecné pokyny. Další části se pak týkají nasazení různých DBMS v Azure, které SAP podporuje. Dostupné systémy DBMS jsou SQL Server, SAP ASE a Oracle. V těchto specifických částech jsou probrány aspekty, které byste měli vzít v úvahu při použití systému SAP v prostředí Azure spolu s jednotlivými systémy DBMS. Jsou popsány oblasti jako metody zálohování nebo zvýšení dostupnosti, podporované jednotlivými systémy DBMS v Azure, které je možné s aplikacemi SAP použít.
+Souhrn: Tento dokument popisuje aspekty plánování a implementace pro systémy hello databázového systému, které měly být spuštěny ve spojení s SAP. Obecné aspekty v první části hello, jsou uvedena v seznamu a zobrazí. Hello následujících částí hello dokumentu se týkají toodeployments databázového různých systému v Azure, které podporuje SAP. Dostupné systémy DBMS jsou SQL Server, SAP ASE a Oracle. V těchto konkrétní části jsou popsány aspekty máte tooaccount pro až nebudou spuštěny systémy SAP v Azure ve spojení s těmito databázového systému. Témata jako metody zálohování a vysoké dostupnosti, které podporuje různé databázového systému v Azure jsou uvedené pro použití hello se aplikace SAP hello.
 
 Aktualizované: Srpna 2016
 
 [Tato příručka naleznete zde][dbms-guide]
 
 ## <a name="63dab028-2c4f-4636-8f99-90bbb264eaba"></a>Příručka pro nasazení vysoké dostupnosti
-Title: SAP NetWeaver na virtuálních počítačích Azure (VM) – Příručka pro nasazení vysoké dostupnosti
+Title: aaaSAP NetWeaver ve virtuálních počítačích Azure (VM) – Příručka pro nasazení vysoké dostupnosti
 
-Souhrn: Tento dokument popisuje, jak se dají jediný bod selhání součásti jako SAP ASC nebo SCS a databázového systému SAP chránit v Azure. Součásti SAP ASC nebo SCS, databázového systému a aplikací je nezbytné pro funkci SAP NetWeaver systémů, například SAP NetWeaver ABAP, SAP NetWeaver Java, SAP NetWeaver ABAP + Java systémy serverů. Proto musí funkce vysoké dostupnosti zavede a ujistěte se, že tyto součásti tolerovat selhání serveru nebo na virtuální počítač, protože dokončení konfigurace clusteru se systémem Windows pro úplné obnovení a prostředí Hyper-V.
+Souhrn: Tento dokument popisuje, jak se dají jediný bod selhání komponenty, jako jsou hello SAP ASC nebo SCS a databázového systému SAP chránit v Azure. Součásti hello SAP ASC nebo SCS, databázového systému a aplikací, je nezbytné pro funkci hello SAP NetWeaver systémů, například SAP NetWeaver ABAP, SAP NetWeaver Java, systémy SAP NetWeaver ABAP + Java servery. Proto potřebám funkce vysoké dostupnosti, kterou toobe vložit umístit toomake, že tyto součásti tolerovat selhání serveru nebo na virtuální počítač jako dokončení konfigurace clusteru se systémem Windows pro úplné obnovení a prostředí Hyper-V.
 
 Aktualizované: Prosinec 2016
 

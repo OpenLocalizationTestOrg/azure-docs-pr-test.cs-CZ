@@ -1,5 +1,5 @@
 ---
-title: "Ukázka skriptu rozhraní příkazového řádku Azure – virtuální počítače restartovat | Microsoft Docs"
+title: "aaaAzure ukázka skriptu rozhraní příkazového řádku - restartovat virtuální počítače | Microsoft Docs"
 description: "Ukázka skriptu Azure CLI - restartování virtuálních počítačů, značky a ID"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 4d0fe95287c91a4b656904f9007ceaaf866e155f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a1ae07bd1d2be906553bef817385a4a333a10eca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restart-vms"></a>Restartujte virtuální počítače
 
@@ -28,53 +28,53 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Tento příklad ukazuje několik způsobů, jak získat některé virtuální počítače a je restartovat.
+Tato ukázka zobrazuje několika způsoby tooget některé virtuální počítače a je restartovat.
 
-První restartování všech virtuálních počítačů ve skupině prostředků.
+Hello nejprve restartuje všechny hello virtuální počítače ve skupině prostředků hello.
 
 ```bash
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
-Získá druhý s příznakem virtuálních počítačů pomocí `az resouce list` a filtrů prostředky, které jsou virtuální počítače a znovu tyto virtuální počítače.
+Hello druhý hello získá označené virtuálních počítačů pomocí `az resouce list` a filtry toohello prostředky, které jsou virtuální počítače a znovu tyto virtuální počítače.
 
 ```bash
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
-Tato ukázka funguje v prostředí Bash. Možnosti na spouštění skriptů rozhraní příkazového řádku Azure v klientovi Windows najdete v tématu [běžící ve Windows Azure CLI](../windows/cli-options.md).
+Tato ukázka funguje v prostředí Bash. Možnosti na spouštění skriptů rozhraní příkazového řádku Azure v klientovi Windows najdete v tématu [běžící ve Windows hello rozhraní příkazového řádku Azure](../windows/cli-options.md).
 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Ukázka má tři skripty.
-První z nich zřídí virtuálních počítačů.
-Takže příkaz vrátí bez čekání na jednotlivé virtuální počítače, které se má zřídit používá možnost Ne čekání.
-Druhý čeká kompletní zřízení virtuálních počítačů.
-Třetí skript restartování všech virtuálních počítačů, které byly zřízené, pak jenom s příznakem virtuálních počítačů.
+Ukázka Hello má tři skripty.
+Hello první z nich zřizuje hello virtuálních počítačů.
+Možnost Ne čekání hello používá tak hello příkaz vrátí bez čekání na každý počítač toobe zřízený.
+Hello druhý čeká toobe virtuální počítače hello plně zřízený.
+třetí skriptu Hello restartuje všechny hello virtuální počítače, které byly zřízeny, a pak jenom hello označené virtuálních počítačů.
 
-### <a name="provision-the-vms"></a>Zřizování virtuálních počítačů
+### <a name="provision-hello-vms"></a>Hello zřizování virtuálních počítačů
 
-Tento skript vytvoří skupinu prostředků a vytvoří tři virtuální počítače restartovat.
+Tento skript vytvoří skupinu prostředků a vytvoří tři toorestart virtuálních počítačů.
 Dvě z nich jsou označené.
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "zřizovat virtuální počítače")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "Provision hello VMs")]
 
 ### <a name="wait"></a>Wait
 
-Tento skript kontroluje stav zřizování každých 20 sekund, dokud všechny tři virtuální počítače jsou zřízené nebo jeden z nich selže zřídit.
+Tento skript kontroluje na stav zřizování každých 20 sekund, dokud se zřizují všechny tři virtuální počítače, nebo jeden z nich selže tooprovision hello.
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "čekat na virtuální počítače, které se mají zřídit")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "Wait for hello VMs toobe provisioned")]
 
-### <a name="restart-the-vms"></a>Restartujte virtuální počítače
+### <a name="restart-hello-vms"></a>Restartujte virtuální počítače hello
 
-Tento skript restartuje všechny virtuální počítače ve skupině prostředků, a pak znovu právě s příznakem virtuálních počítačů.
+Tento skript restartuje všechny virtuální počítače hello ve skupině prostředků hello, a poté znovu spustí jenom virtuální počítače s příznakem hello.
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "restartovat virtuální počítače podle značky")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "Restart VMs by tag")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, virtuální počítače a všechny související prostředky.
+Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello, virtuální počítače a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete -n myResourceGroup --no-wait --yes
@@ -82,19 +82,19 @@ az group delete -n myResourceGroup --no-wait --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální počítač, skupina dostupnosti, nástroj pro vyrovnávání zatížení a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy toocreate skupinu prostředků, virtuální počítač, skupinu dostupnosti, nástroj pro vyrovnávání zatížení a všechny související prostředky. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
 | [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Vytvoří virtuální počítače.  |
-| [Seznam virtuálních počítačů az](https://docs.microsoft.com/cli/azure/vm#list) | Použít s `--query` , aby se před restartováním, jsou zřizovat virtuální počítače a potom získat ID virtuálních počítačů se je znovu spustit. |
-| [Seznam zdrojů az](https://docs.microsoft.com/cli/azure/vm#list) | Použít s `--query` získat ID virtuálních počítačů pomocí značky. |
-| [AZ restartování virtuálního počítače](https://docs.microsoft.com/cli/azure/vm#list) | Restartování virtuálních počítačů. |
+| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Vytvoří hello virtuální počítače.  |
+| [Seznam virtuálních počítačů az](https://docs.microsoft.com/cli/azure/vm#list) | Použít s `--query` tooensure hello virtuálních počítačů, které jsou zřízené před restartováním je a pak tooget hello ID toorestart hello virtuálních počítačů je. |
+| [Seznam zdrojů az](https://docs.microsoft.com/cli/azure/vm#list) | Použít s `--query` tooget hello ID hello virtuálních počítačů pomocí hello značky. |
+| [AZ restartování virtuálního počítače](https://docs.microsoft.com/cli/azure/vm#list) | Restartuje hello virtuálních počítačů. |
 | [Odstranění skupiny az](https://docs.microsoft.com/cli/azure/vm/extension#set) | Odstraní skupinu prostředků, včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v [virtuální počítač Azure s Linuxem dokumentaci](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v hello [virtuální počítač Azure s Linuxem dokumentaci](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

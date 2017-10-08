@@ -1,6 +1,6 @@
 ---
-title: "Rozbalte datový disk připojen k virtuálnímu počítači Windows v Azure | Microsoft Docs"
-description: "Zvětšení velikosti datový disk, který je připojen k virtuálního počítače s Windows pomocí prostředí PowerShell."
+title: "aaaExpand datový disk připojen tooa virtuální počítač s Windows v Azure | Microsoft Docs"
+description: "Rozbalte hello velikost datový disk, který je připojený tooa Windows virtuálního počítače pomocí prostředí PowerShell."
 services: virtual-machines-windows
 documentationcenter: na
 author: cynthn
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: cynthn
-ms.openlocfilehash: 5529856c2ffcd2942fe3fc2b438f7e3fd16a67b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b16ad0da9cff9dfffc9dc9ec7dd72891e7ddd745
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="increase-the-size-of-a-data-disk-attached-to-a-windows-vm"></a>Zvětšete velikost datový disk připojen k virtuálnímu počítači Windows
+# <a name="increase-hello-size-of-a-data-disk-attached-tooa-windows-vm"></a>Zvýšení velikosti hello datový disk připojen tooa virtuální počítač s Windows
 
-Pokud je potřeba zvýšit velikost datový disk připojen k virtuálnímu počítači, můžete zvýšit velikost pomocí prostředí PowerShell. Jakmile zvýšíte velikost datového disku v nastavení virtuálního počítače Azure, musíte také přidělit nový diskový prostor v rámci virtuálního počítače.
+Pokud potřebujete tooincrease hello velikost hello datový disk připojený tooyour virtuálního počítače, můžete zvýšit velikost hello pomocí prostředí PowerShell. Jakmile zvýšíte hello velikost hello datový disk v nastavení virtuálního počítače Azure hello, musíte taky tooallocate hello nový diskový prostor v rámci hello virtuálních počítačů.
 
 
-## <a name="use-powershell-to-increase-the-size-of-a-managed-data-disk"></a>Zvětšete velikost spravované datový disk pomocí prostředí Powershell
+## <a name="use-powershell-tooincrease-hello-size-of-a-managed-data-disk"></a>Pomocí prostředí Powershell tooincrease hello velikost disku spravovaná data
 
-Chcete-li zvýšit velikost spravované datový disk, použijte následující rutiny prostředí PowerShell:
+velikost hello tooincrease spravované datový disk, hello pomocí následující rutiny prostředí PowerShell:
 
 |                                                                    |                                                            |
 |--------------------------------------------------------------------|------------------------------------------------------------|
@@ -37,18 +37,18 @@ Chcete-li zvýšit velikost spravované datový disk, použijte následující r
  | [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm)             |
 <br>
 
-Následující skript provede vás získávání informací o virtuálních počítačů, výběrem datový disk a určení nové velikosti.
+Hello následující skript vás provede procesem získávání hello informace o virtuálních počítačů, výběrem hello datový disk a určení hello nové velikosti.
 
 ```powershell
 # Select resource group
 
     $rg = Get-AzureRMResourceGroup | Out-GridView `
-        -Title "Select the resource group" `
+        -Title "Select hello resource group" `
         -PassThru
 
     $rgName = $rg.ResourceGroupName
 
-# Select the VM
+# Select hello VM
 
     $vm = Get-AzureRMVM -ResourceGroupName $rgName `
         | Out-GridView `
@@ -61,32 +61,32 @@ Následující skript provede vás získávání informací o virtuálních poč
         -Title "Select a data disk" `
         -PassThru
 
-# Specify a larger size for the data disk
+# Specify a larger size for hello data disk
 
     $size =  Read-Host `
         -Prompt "New size in GB"
 
-# Stop and Deallocate VM prior to resizing data disk
+# Stop and Deallocate VM prior tooresizing data disk
 
     $vm | Stop-AzureRMVM -Force
 
-# Set the new disk size
+# Set hello new disk size
 
     $diskUpdateConfig = New-AzureRmDiskUpdateConfig -DiskSizeGB $size
 
-# Update the configuration in Azure
+# Update hello configuration in Azure
 
     $managedDisk = Get-AzureRmResource -ResourceId $disk.ManagedDisk.Id
     Update-AzureRmDisk -DiskName $managedDisk.ResourceName -ResourceGroupName $managedDisk.ResourceGroupName -DiskUpdate $diskUpdateConfig
 
-# Start the VM
+# Start hello VM
 
     Start-AzureRmVM -ResourceGroupName $rgName -VMName $vm.name
 ```
 
-## <a name="use-powershell-to-increase-the-size-of-an-unmanaged-data-disk"></a>Rozšiřte disk pro nespravovaná data pomocí prostředí PowerShell
+## <a name="use-powershell-tooincrease-hello-size-of-an-unmanaged-data-disk"></a>Pomocí prostředí PowerShell tooincrease hello velikost disku nespravovaná data
 
-Chcete-li zvýšit velikost nespravované datové disky v účtu úložiště, použijte následující rutiny prostředí PowerShell:
+velikost hello tooincrease nespravované datové disky v účtu úložiště, hello pomocí následující rutiny prostředí PowerShell:
 
 |                                                                    |                                                            |
 |--------------------------------------------------------------------|------------------------------------------------------------|
@@ -96,7 +96,7 @@ Chcete-li zvýšit velikost nespravované datové disky v účtu úložiště, p
 
 <br>
 
-Následující skript vás provede získávání virtuálních počítačů a úložiště informací o účtu, vyberte datový disk a určení nové velikosti.
+Hello následující skript vás provede procesem získávání informací o účtu hello virtuálních počítačů a úložiště, výběrem hello datový disk a určení hello nové velikosti.
 
 ```powershell
 
@@ -109,18 +109,18 @@ Následující skript vás provede získávání virtuálních počítačů a ú
 
     $rgName = $storageAccount.ResourceGroupName
 
-# Select the VM
+# Select hello VM
 
     $vm = Get-AzureRMVM `
     -ResourceGroupName $rgName | Out-GridView `
             -Title "Select a VM …" `
             -PassThru
 
-# Select Data Disk to resize
+# Select Data Disk tooresize
 
     $disk =
         $vm.DataDiskNames | Out-GridView `
-            -Title "Select a data disk to resize" `
+            -Title "Select a data disk tooresize" `
             -PassThru
 
 
@@ -129,28 +129,28 @@ Následující skript vás provede získávání virtuálních počítačů a ú
     $size =  Read-Host `
         -Prompt "New size in GB"
 
-# Stop and Deallocate VM prior to resizing data disk
+# Stop and Deallocate VM prior tooresizing data disk
 
     $vm | Stop-AzureRMVM -Force
 
-# Set the new disk size
+# Set hello new disk size
 
     Set-AzureRmVMDataDisk -VM $vm -Name "$disk" `
         -DiskSizeInGB $size
 
-# Update the configuration in Azure
+# Update hello configuration in Azure
 
     Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
-# Start the VM
+# Start hello VM
     Start-AzureRmVM -ResourceGroupName $rgName `
     -VMName $vm.name
 
 ```
 
-## <a name="allocate-the-unallocated-disk-space"></a>Přidělit volné místo na disku
+## <a name="allocate-hello-unallocated-disk-space"></a>Přidělit hello volné místo na disku
 
-Po provedení jednotku větší, musíte přidělit nový nepřidělené místo z virtuálního počítače. Přidělit prostor, můžete připojit k používání virtuálních počítačů správu disků (diskmgmt.msc). Nebo, pokud jste povolili WinRM a certifikát ve virtuálním počítači, když jste ho vytvářeli, vzdáleného prostředí PowerShell můžete inicializovat disk. Můžete také použít rozšíření vlastních skriptů:
+Po provedení hello jednotky větší, bude třeba tooallocate hello nové volného místa z v rámci hello virtuálních počítačů. tooallocate hello místa, můžete připojit toohello virtuálních počítačů pomocí nástroje Správa disků (diskmgmt.msc). Nebo, pokud jste povolili WinRM a certifikát na hello virtuálních počítačů, když jste ho vytvářeli, můžete použít vzdálený disk hello tooinitialize prostředí PowerShell. Můžete také použít rozšíření vlastních skriptů:
 
 ```powershell
     $location = "location-name"
@@ -159,7 +159,7 @@ Po provedení jednotku větší, musíte přidělit nový nepřidělené místo 
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
 
-Soubor skriptu něco podobného jako tento kód a zvyšte tak přidělení disku pro maximální velikost může obsahovat disky:
+soubor skriptu Hello může obsahovat něco podobného jako tento kód tooincrease hello jednotky přidělení toohello maximální velikost hello disky:
 
 ```powershell
 $driveLetter= "F"

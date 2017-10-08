@@ -1,6 +1,6 @@
 ---
-title: "Instalace služby IIS na vaše první virtuální počítač s Windows | Microsoft Docs"
-description: "Experimentujte s prvním virtuálním počítači Windows pomocí instalace služby IIS a otevírání portu 80 pomocí portálu Azure."
+title: "aaaInstall IIS na vaše první virtuální počítač s Windows | Microsoft Docs"
+description: "Experimentujte s první virtuální počítač s Windows pomocí instalace služby IIS a otevření portu 80 pomocí hello portálu Azure."
 keywords: 
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,94 +16,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: cynthn
-ms.openlocfilehash: b11ce1eab0c26a802c31bc418cdf725cbc4fba30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7cfed6197df058c4569d111ee88961da7c6fe0b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="experiment-with-installing-a-role-on-your-windows-vm"></a>Experimentujte s instalaci role na vašem virtuálním počítači Windows
-Až budete mít první virtuální počítač (VM) fungovaly, můžete přesunout instalaci softwaru a služeb. V tomto kurzu přidáme nainstalovat službu IIS pomocí Správce serverů na virtuální počítač Windows serveru. Poté vytvoříme skupinu zabezpečení sítě (NSG) pomocí portálu Azure otevřete port 80 k provozu služby IIS. 
+Až budete mít první virtuální počítač (VM) nahoru a spuštěna, můžete přesunout na tooinstalling softwaru a služeb. V tomto kurzu budeme toouse správce serveru na virtuální počítač Windows serveru tooinstall hello služby IIS. Poté vytvoříme skupinu zabezpečení sítě (NSG) pomocí hello Azure portálu tooopen port 80 tooIIS provoz. 
 
-Pokud jste ještě nevytvořili vaše první virtuální počítač, by měl přejdete zpět do [vytvořit svůj první virtuální počítač Windows v portálu Azure](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) před pokračováním v tomto kurzu.
+Pokud jste ještě nevytvořili vaše první virtuální počítač, přejděte zpět příliš[vytvořit svůj první virtuální počítač Windows v hello portál Azure](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) před pokračováním v tomto kurzu.
 
-## <a name="make-sure-the-vm-is-running"></a>Ujistěte se, že je virtuální počítač spuštěný.
-1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. V nabídce centra klikněte na **Virtual Machines**. Ze seznamu vyberte virtuální počítač.
-3. Pokud je stav **zastaveno (Deallocated)**, klikněte na tlačítko **spustit** tlačítko **Essentials** okno virtuálního počítače. Pokud je stav **systémem**, můžete přesunout další krok.
+## <a name="make-sure-hello-vm-is-running"></a>Ujistěte se, zda text hello, který je spuštěný virtuální počítač
+1. Otevřete hello [portál Azure](https://portal.azure.com).
+2. V nabídce centra hello, klikněte na tlačítko **virtuální počítače**. Vyberte virtuální počítač hello hello seznamu.
+3. Pokud je stav hello **zastaveno (Deallocated)**, klikněte na tlačítko hello **spustit** na hello tlačítko **Essentials** okno hello virtuálních počítačů. Pokud je stav hello **systémem**, můžete přesunout na další krok toohello.
 
-## <a name="connect-to-the-virtual-machine-and-sign-in"></a>Připojit k virtuálnímu počítači a přihlášení
-1. V nabídce centra klikněte na **Virtual Machines**. Ze seznamu vyberte virtuální počítač.
-2. V okně pro virtuální počítač klikněte na **Připojit**. Tím se vytvoří a stáhne soubor .rdp (Remote Desktop Protocol), který představuje zástupce připojení k vašemu počítači. Můžete si ho uložit na plochu, abyste k němu měli snadno přístup. **Otevřením** tohoto souboru se připojíte ke svému virtuálnímu počítači.
+## <a name="connect-toohello-virtual-machine-and-sign-in"></a>Připojit toohello virtuálního počítače a přihlášení
+1. V nabídce centra hello, klikněte na tlačítko **virtuální počítače**. Vyberte virtuální počítač hello hello seznamu.
+2. V okně hello hello virtuálního počítače, klikněte na tlačítko **Connect**. Tím se vytvoří a stáhne soubor Remote Desktop Protocol (soubor .rdp), který je třeba na počítači tooyour tooconnect zástupce. Můžete chtít toosave hello souboru tooyour desktop pro snadný přístup. **Otevřete** tooyour tooconnect tento soubor virtuálního počítače.
    
-    ![Snímek obrazovky webu Azure Portal znázorňující způsob připojení k virtuálnímu počítači](./media/hero-role/connect.png)
-3. Zobrazí se upozornění, že soubor .rdp je od neznámého vydavatele. To je normální. Pokračujte kliknutím na **Připojit** v okně Připojení ke vzdálené ploše.
+    ![Snímek obrazovky portálu Azure znázorňující hello jak tooconnect tooyour virtuálních počítačů](./media/hero-role/connect.png)
+3. Se zobrazí upozornění, že hello RDP je od neznámého vydavatele. To je normální. V okně hello vzdálené plochy, klikněte na tlačítko **připojit** toocontinue.
    
     ![Snímek obrazovky s upozorněním na neznámého vydavatele](./media/hero-role/rdp-warn.png)
-4. V okně zabezpečení systému Windows zadejte uživatelské jméno a heslo pro místní účet, který jste vytvořili při vytváření virtuálního počítače. Zadejte uživatelské jméno v této podobě: *název_virtuálního_počítače*&#92;*uživatelské_jméno* a pak klikněte na **OK**.
+4. V okně zabezpečení systému Windows hello hello typ hello uživatelské jméno a heslo pro hello místní účet, který jste vytvořili při vytváření virtuálního počítače. uživatelské jméno Hello je zadán jako *vmname*&#92; *uživatelské jméno*, pak klikněte na tlačítko **OK**.
    
-    ![Snímek obrazovky zadání názvu virtuálního počítače, uživatelské jméno a heslo](./media/hero-role/credentials.png)
-5. Zobrazí se upozornění, že certifikát nelze ověřit. To je normální. Kliknutím na **Ano** ověřte identitu virtuálního počítače a dokončete přihlášení.
+    ![Snímek obrazovky zadání hello název virtuálního počítače, uživatelské jméno a heslo](./media/hero-role/credentials.png)
+5. Zobrazí se upozornění certifikátu hello nelze ověřit. To je normální. Klikněte na tlačítko **Ano** tooverify hello identity hello virtuální počítač a dokončete přihlášení.
    
-   ![Snímek obrazovky zobrazující zprávu o ověření identity virtuálního počítače](./media/hero-role/cert-warning.png)
+   ![Snímek obrazovky zobrazující zprávu o ověření identity hello hello virtuálních počítačů](./media/hero-role/cert-warning.png)
 
-Pokud budete mít s připojením problémy, projděte si téma [Poradce při potížích s připojením k virtuálnímu počítači s Windows v Azure pomocí Vzdálené plochy](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud spustíte tootrouble při pokusu o tooconnect, najdete v části [tooa připojení řešení Vzdálená plocha systému Windows virtuálního počítače Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="install-iis-on-your-vm"></a>Instalace služby IIS na vašem virtuálním počítači
-Teď jste přihlášení k virtuálnímu počítači a můžeme nainstalovat role serveru, abyste mohli více experimentovat.
+Teď, když jste přihlášení toohello virtuálních počítačů, se nainstaluje role serveru, aby můžete experimentovat více.
 
-1. Otevřete **Správce serveru**, pokud ještě není otevřený. Klikněte na tlačítko **spustit** nabídce a pak klikněte na tlačítko **správce serveru**.
-2. V okně **Správce serveru** vyberte v levém podokně **Místní server**. 
-3. V nabídce vyberte **Spravovat** > **Přidat role a funkce**.
-4. Přidat role a funkce Průvodce na **typ instalace** vyberte **instalace na základě rolí nebo na základě funkcí**a potom klikněte na **Další**.
+1. Otevřete **Správce serveru**, pokud ještě není otevřený. Klikněte na tlačítko hello **spustit** nabídce a pak klikněte na tlačítko **správce serveru**.
+2. V **správce serveru**, vyberte **místní Server** v levém podokně hello. 
+3. V nabídce hello vyberte **spravovat** > **přidat role a funkce**.
+4. V hello přidat role a funkce Průvodce hello **typ instalace** vyberte **instalace na základě rolí nebo na základě funkcí**a potom klikněte na **Další**.
    
-    ![Snímek obrazovky ukazující na kartě Průvodce přidáním rolí a funkcí pro typ instalace](./media/hero-role/role-wizard.png)
-5. Vyberte virtuální počítač ve fondu serverů a klikněte na **Další**.
-6. Na stránce **Role serveru** vyberte **Webový server (IIS)**.
+    ![Snímek obrazovky znázorňující hello Průvodce přidáním rolí a funkcí kartu pro typ instalace](./media/hero-role/role-wizard.png)
+5. Vyberte hello virtuálních počítačů z fondu serverů hello a klikněte na **Další**.
+6. Na hello **role serveru** vyberte **webového serveru (IIS)**.
    
-    ![Snímek obrazovky ukazující na kartě Průvodce přidáním rolí a funkcí pro role serveru](./media/hero-role/add-iis.png)
-7. V místním okně pro přidávání funkcí potřebných pro službu IIS ověřte, že je zaškrtnuté **Zahrnout nástroje pro správu** , a potom klikněte na **Přidat funkce**. Po zavření místního okna klikněte v průvodci na **Další**.
+    ![Snímek obrazovky znázorňující hello Průvodce přidáním rolí a funkcí kartu pro role serveru](./media/hero-role/add-iis.png)
+7. V hello automaticky otevírané okno o přidávání funkcí, které jsou potřebné pro službu IIS, ujistěte se, že **zahrnout nástroje pro správu** je vybrána a potom klikněte na **přidat funkce**. Po hello automaticky otevírané okno se zavře a klikněte na tlačítko **Další** v Průvodci hello.
    
-    ![Snímek obrazovky ukazující, automaticky otevírané okno pro potvrzení přidání role služby IIS](./media/hero-role/confirm-add-feature.png)
-8. Na stránce funkcí klikněte na **Další**.
-9. Na stránce **Web Server Role (IIS)** klikněte na **Další**. 
-10. Na stránce **Služby rolí** klikněte na **Další**. 
-11. Na stránce **Potvrzení** klikněte na **Instalovat**. 
-12. Po dokončení instalace klikněte v průvodci na **Zavřít**.
+    ![Snímek obrazovky ukazující, automaticky otevírané okno tooconfirm přidání hello IIS role](./media/hero-role/confirm-add-feature.png)
+8. Na stránce funkce hello, klikněte na **Další**.
+9. Na hello **Role webového serveru (IIS)** klikněte na tlačítko **Další**. 
+10. Na hello **služby rolí** klikněte na tlačítko **Další**. 
+11. Na hello **potvrzení** klikněte na tlačítko **nainstalovat**. 
+12. Po dokončení instalace hello klikněte na tlačítko **Zavřít** v Průvodci hello.
 
 ## <a name="open-port-80"></a>Otevření portu 80
-Aby váš virtuální počítač přijímal příchozí přenos přes port 80, musíte do skupiny zabezpečení sítě přidat příchozí pravidlo. 
+V pořadí pro váš počítač tooaccept příchozí provoz přes port 80, je třeba tooadd skupinu zabezpečení sítě toohello příchozí pravidlo. 
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. V **virtuální počítače** vyberte virtuální počítač, který jste vytvořili.
-3. V nastavení virtuálního počítače, vyberte **síťových rozhraní** a pak vyberte do existujícího síťového rozhraní.
+1. Otevřete hello [portál Azure](https://portal.azure.com).
+2. V **virtuální počítače** hello vyberte virtuální počítač, který jste vytvořili.
+3. V nastavení hello virtuální počítače, vyberte **síťových rozhraní** a pak vyberte hello existujícího síťového rozhraní.
    
-    ![Snímek obrazovky nastavení virtuálního počítače pro rozhraní sítě](./media/hero-role/network-interface.png)
-4. V **Essentials** síťového rozhraní, klikněte na **skupinu zabezpečení sítě**.
+    ![Snímek obrazovky zobrazující hello nastavení virtuálního počítače pro hello síťová rozhraní](./media/hero-role/network-interface.png)
+4. V **Essentials** hello síťového rozhraní, klikněte na hello **skupinu zabezpečení sítě**.
    
-    ![Snímek obrazovky zobrazující části základní údaje pro síťové rozhraní](./media/hero-role/select-nsg.png)
-5. V okně **Základní údaje** pro NSG by mělo být jedno výchozí příchozí rule pro **default-allow-rdp**, které umožňuje přihlásit se k virtuálnímu počítači. Teď přidáte další pravidlo, které povolí provoz IIS. Klikněte na **Příchozí pravidla zabezpečení**.
+    ![Snímek obrazovky zobrazující hello Essentials části pro síťové rozhraní hello](./media/hero-role/select-nsg.png)
+5. V hello **Essentials** okně hello NSG, měli byste mít jeden existující výchozí pravidlo pro příchozí **výchozí povolit rdp** který vám umožní toolog v toohello virtuálních počítačů. Přidejte jiný příchozí pravidlo tooallow IIS provoz. Klikněte na **Příchozí pravidla zabezpečení**.
    
-    ![Snímek obrazovky zobrazující části základní údaje skupiny nsg](./media/hero-role/inbound.png)
+    ![Snímek obrazovky zobrazující hello Essentials části hello NSG](./media/hero-role/inbound.png)
 6. V části **Příchozí pravidla zabezpečení** klikněte na **Přidat**.
    
-    ![Snímek obrazovky tlačítka Přidat pravidlo zabezpečení](./media/hero-role/add-rule.png)
-7. V části **Příchozí pravidla zabezpečení** klikněte na **Přidat**. Do pole pro rozsah portů zadejte **80** a zkontrolujte, že **Povolit** je zaškrtnuté. Až to budete mít, klikněte na **OK**.
+    ![Snímek obrazovky zobrazující hello tlačítko tooadd pravidlo zabezpečení](./media/hero-role/add-rule.png)
+7. V části **Příchozí pravidla zabezpečení** klikněte na **Přidat**. Typ **80** v hello rozsah portů a zajistěte, aby **povolit** je vybrána. Až to budete mít, klikněte na **OK**.
    
-    ![Snímek obrazovky tlačítka Přidat pravidlo zabezpečení](./media/hero-role/port-80.png)
+    ![Snímek obrazovky zobrazující hello tlačítko tooadd pravidlo zabezpečení](./media/hero-role/port-80.png)
 
-Další informace o skupinách NSG a příchozích a odchozích pravidlech najdete v tématu [Povolení externího přístupu k virtuálnímu počítači pomocí webu Azure Portal](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Další informace o skupinách Nsg, příchozí a odchozí pravidla, najdete v části [povolit externí přístup tooyour virtuální počítač pomocí hello portálu Azure](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="connect-to-the-default-iis-website"></a>Připojení k výchozímu webu IIS
-1. Na webu Azure Portal klikněte na **Virtuální počítače** a vyberte svůj virtuální počítač.
-2. V okně **Základní údaje** zkopírujte **veřejnou IP adresu**.
+## <a name="connect-toohello-default-iis-website"></a>Připojit toohello výchozí web služby IIS
+1. V hello portálu Azure, klikněte na **virtuální počítače** a potom vyberte virtuální počítač.
+2. V hello **Essentials** zkopírujte vaše **veřejnou IP adresu**.
    
-    ![Snímek obrazovky ukazující, kde najít veřejnou IP adresu vašeho virtuálního počítače](./media/hero-role/ipaddress.png)
-3. Otevřete prohlížeč, do adresního řádku zadejte svou veřejnou IP adresu, která vypadá takto: http://<publicIPaddress>, a kliknutím na **Enter** přejděte na tuto adresu.
-4. Váš prohlížeč by měla otevřít výchozí webové stránky služby IIS. Vypadá přibližně takto:
+    ![Snímek obrazovky ukazující, kde toofind hello veřejnou IP adresu vašeho virtuálního počítače](./media/hero-role/ipaddress.png)
+3. Otevřete prohlížeč a v panelu Adresa hello, zadejte svoji veřejnou IP adresu takto: http://<publicIPaddress> a klikněte na tlačítko **Enter** toogo toothat adresu.
+4. Váš prohlížeč by měla otevřít hello výchozí IIS webové stránky. Vypadá přibližně takto:
    
-    ![Snímek obrazovky ukazující, jak výchozí stránka služby IIS vypadá v prohlížeči](./media/hero-role/iis-default.png)
+    ![Snímek obrazovky se stránkou jaké hello výchozí IIS vypadá v prohlížeči](./media/hero-role/iis-default.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Také můžete experimentovat s [připojením datového disku](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k vašemu virtuálnímu počítači. Pomocí datových disků si můžete rozšířit úložiště pro virtuální počítač.
+* Také můžete experimentovat s [připojením datového disku](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tooyour virtuálního počítače. Pomocí datových disků si můžete rozšířit úložiště pro virtuální počítač.
 

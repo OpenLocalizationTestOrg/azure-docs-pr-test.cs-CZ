@@ -1,5 +1,5 @@
 ---
-title: "Automatizace nasazení aplikací pomocí rozšíření virtuálního počítače | Microsoft Docs"
+title: "Nasazení aplikací pomocí rozšíření virtuálního počítače aaaAutomating | Microsoft Docs"
 description: "Virtuální počítač Azure DotNet základní kurz"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,22 +16,22 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2996eef71b39c6240fac5484854f72d3e657d0f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d52537fbd4e935f19d3864def11484f519f8598
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-deployment-with-azure-resource-manager-templates-for-windows-vms"></a>Nasazení aplikací pomocí šablon Azure Resource Manageru pro virtuální počítače Windows
 
-Po zjištění a přeložit na šablonu nasazení máte všechny požadavky pro Azure infrastruktury, nasazení skutečné aplikace, které musí vzít v úvahu. Nasazení aplikace v tomto poli odkazuje na instalaci binárních souborů skutečné aplikace do prostředků Azure. Pro ukázku Hudba úložiště, rozhraní .net Core a IIS musí být nainstalovaná a nakonfigurovaná na každém virtuálním počítači. Binární soubory Hudba úložiště je potřeba nainstalovat na virtuální počítač a předem vytvořené databáze hudba úložiště.
+Po zjištění a přeložit na šablonu nasazení máte všechny požadavky pro Azure infrastruktury, musí nasazení skutečné aplikace hello toobe řešit. Nasazení aplikace zde odkazuje tooinstalling hello skutečné aplikačních binárních souborů do prostředků Azure. Pro ukázku hello Hudba úložiště, rozhraní .net Core a IIS potřebovat toobe nainstalovaná a nakonfigurovaná na každém virtuálním počítači. Hello Hudba úložiště binární soubory nutné toobe nainstaluje do hello virtuálního počítače a hello Hudba úložiště databáze předem vytvořené.
 
-Tento dokument podrobně popisuje, jak rozšíření virtuálního počítače můžete automatizovat nasazení aplikace a konfigurace virtuálních počítačů Azure. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Pro dosažení co nejlepších výsledků, předem nasaďte instanci řešení, aby vaše předplatné Azure a pracovní společně s šablony Azure Resource Manageru. Úplnou šablonu naleznete zde – [Hudba nasazení úložiště v systému Windows](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+Tento dokument podrobně popisuje, jak rozšíření virtuálního počítače můžete automatizovat aplikace nasazení a konfigurace tooAzure virtuálních počítačů. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Nejvhodnější hello předem nasaďte instanci hello řešení tooyour předplatného Azure a pracovní společně s hello šablony Azure Resource Manageru. úplnou šablonu Hello naleznete zde – [Hudba nasazení úložiště v systému Windows](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
 ## <a name="configuration-script"></a>Konfigurační skript
-Rozšíření virtuálního počítače jsou specializované programy, které provést před virtuálními počítači poskytnout automatizace konfigurace. Rozšíření jsou k dispozici pro mnoho specifické účely, například Ochrana proti virům, konfigurace protokolování a Docker konfigurace. Rozšíření vlastních skriptů slouží ke spouštění všech skriptů na virtuálním počítači. Pomocí ukázky hudby úložiště je rozšíření vlastních skriptů konfigurovat virtuální počítače s Windows a nainstalovat aplikaci Store Hudba.
+Rozšíření virtuálního počítače jsou specializované programy, které spuštění u virtuálních počítačů tooprovide konfigurace automatizace. Rozšíření jsou k dispozici pro mnoho specifické účely, například Ochrana proti virům, konfigurace protokolování a Docker konfigurace. použít toorun žádný skript pro virtuální počítač může být Hello rozšíření vlastních skriptů. Pomocí hello Ukázky hudby úložiště je až toohello vlastní skript rozšíření tooconfigure hello virtuální počítače s Windows a nainstalovat aplikaci Store Hudba hello.
 
-Před s podrobnostmi o tom, jak rozšíření virtuálního počítače jsou deklarované v šablonu Azure Resource Manager, zkontrolujte skript, který je spuštěn. Tento skript nakonfiguruje virtuálního počítače s Windows, který bude hostovat aplikaci Hudba úložiště. Při spuštění skriptu nainstaluje všechny, potřebný software, nainstalujte aplikaci store hudba od správy zdrojového kódu a Příprava databáze. 
+Před s podrobnostmi o tom, jak rozšíření virtuálního počítače jsou deklarované v šablonu Azure Resource Manager, zkontrolujte hello skript, který je spuštěn. Tento skript nakonfiguruje hello Windows virtuální počítač toohost hello aplikace Hudba úložiště. Při spuštění skriptu hello nainstaluje všechny potřebné software, nainstalujte aplikaci store Hudba hello od správy zdrojového kódu a příprava hello databáze. 
 
 > Tato ukázka je pro demonstrační účely.
 
@@ -84,11 +84,11 @@ New-Website -Name "MusicStore" -Port 80 -PhysicalPath C:\music\ -ApplicationPool
 ```
 
 ## <a name="vm-script-extension"></a>Skript rozšíření virtuálního počítače
-Rozšíření virtuálního počítače lze spustit na virtuálním počítači v čase vytvoření buildu, přiložením rozšíření prostředků do šablony Azure Resource Manageru. Rozšíření můžete přidat pomocí Průvodce přidáním prostředku Visual Studio, nebo vložením platný kód JSON do šablony. Skript rozšíření prostředků je vnořit prostředek virtuálního počítače; To můžete vidět v následujícím příkladu.
+Rozšíření virtuálního počítače lze spustit na virtuálním počítači v čase vytvoření buildu včetně hello rozšíření prostředků v hello šablony Azure Resource Manageru. rozšíření Hello lze přidat pomocí Průvodce přidáním prostředku Visual Studio hello nebo vložením platný kód JSON do šablony hello. Hello skriptu rozšíření prostředků je vnořit hello prostředek virtuálního počítače; To si můžete prohlédnout ve hello následující ukázka.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [rozšíření virtuálního počítače skriptu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L339). 
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [rozšíření virtuálního počítače skriptu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L339). 
 
-Všimněte si v níže JSON, aby tento skript je uložený na webu GitHub. Tento skript by také může být uložený v úložišti objektů Blob Azure. Šablony Azure Resource Manager umožnit řetězec provádění skriptu, který má být vytvořený tak, aby hodnoty parametrů šablony lze použít jako parametry pro spuštění skriptu. V takovém případě se data zadaná při nasazování šablony a tyto hodnoty lze při provádění skriptu.
+Všimněte si v hello níže formátu JSON, který hello skript je uložený na webu GitHub. Tento skript by také může být uložený v úložišti objektů Blob Azure. Šablony Azure Resource Manager umožnit hello skriptu provádění řetězec toobe vytvořený tak, aby hodnoty parametrů šablony lze použít jako parametry pro spuštění skriptu. V takovém případě se data poskytuje při nasazování šablony hello a tyto hodnoty lze při provádění skriptu hello.
 
 ```json
 {
@@ -120,11 +120,11 @@ Všimněte si v níže JSON, aby tento skript je uložený na webu GitHub. Tento
 }
 ```
 
-Jak je uvedeno nahoře, je také možné uložit vlastní skripty v Azure Blob storage. Existují dvě možnosti pro ukládání prostředků skriptu v úložišti objektů blob; buď zveřejnit kontejneru nebo skript a postupujte podle stejné jako vyšší přístupu, nebo můžete také uchovává v privátní blob storage, který vyžaduje, abyste zadejte storageAccountName a storageAccountKey CustomScriptExtension definici zdrojů.
+Jak je uvedeno nahoře, je také možné toostore vaše vlastní skripty v Azure Blob storage. Existují dvě možnosti pro ukládání hello skriptu prostředků v úložišti objektů blob; buď zajistěte hello veřejného kontejneru nebo skript a postupujte podle pokynů hello stejné přístupu, jak je uvedeno výše, nebo můžete také nacházet v privátní blob storage, který vyžaduje, abyste tooprovide hello storageAccountName a storageAccountKey toohello CustomScriptExtension definice prostředků.
 
-V následujícím příkladu jsme další došli krok. I když je možné zadat název účtu úložiště a klíč jako parametr nebo proměnná během nasazení, Resource Manager šablony poskytují `listKeys` funkce, která můžete získat klíč účtu úložiště prostřednictvím kódu programu a jeho vložení do šablony pro můžete v době nasazení.
+V následujícím příkladu hello jsme další došli krok. I když je možné tooprovide hello název účtu úložiště a klíč jako parametr nebo proměnná během nasazení, Resource Manager šablony poskytují hello `listKeys` funkce, která můžete získat účet úložiště hello prostřednictvím kódu programu klíče a vložte ho do toohello Šablona pro vás v době nasazení.
 
-V příkladu níže definice prostředků CustomScriptExtension již byl odeslán naše vlastní skript k účtu úložiště Azure, názvem `mystorageaccount9999` který existuje v jiné skupině prostředků s názvem `mysa999rgname`. Když jsme nasazení šablony obsahující tento prostředek `listKeys` funkce prostřednictvím kódu programu získá klíč účtu úložiště pro účet úložiště `mystorageaccount9999` ve skupině prostředků `mysa999rgname` a vloží ho do šablony pro nás.
+V příkladu hello CustomScriptExtension definice prostředků níže, naše vlastních skriptů je už nahraný tooan účet úložiště Azure s názvem `mystorageaccount9999` který existuje v jiné skupině prostředků s názvem `mysa999rgname`. Když jsme nasadit šablonu, která obsahuje tento prostředek, hello `listKeys` funkce získává prostřednictvím kódu programu hello klíč účtu úložiště pro účet úložiště hello `mystorageaccount9999` v hello skupiny prostředků `mysa999rgname` a vloží je v šabloně toohello pro nás.
 
 ```json
 {
@@ -158,9 +158,9 @@ V příkladu níže definice prostředků CustomScriptExtension již byl odeslá
 }
 ```
 
-Hlavní výhodou tohoto přístupu je, že nevyžaduje měnit parametry šablony nebo nasazení v případě úložiště účet klíče změnit.
+Hello hlavní výhody tohoto přístupu je, že není nutné je toochange šablony nebo parametry nasazení v události hello hello Změna klíče účtu úložiště.
 
-Další informace o použití rozšíření vlastních skriptů, najdete v části [vlastní skript rozšíření pomocí šablony Resource Manageru](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o použití rozšíření vlastních skriptů hello najdete v tématu [vlastní skript rozšíření pomocí šablony Resource Manageru](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-step"></a>Další krok
 <hr>

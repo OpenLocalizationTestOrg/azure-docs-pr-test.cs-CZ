@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuální sítě Azure (klasické) s několika podsítěmi | Microsoft Docs"
-description: "Naučte se vytvořit virtuální síť s více podsítěmi v Azure (klasické)."
+title: "aaaCreate virtuální sítě Azure (klasické) s několika podsítěmi | Microsoft Docs"
+description: "Zjistěte, jak toocreate virtuální sítě (klasické) s několika podsítěmi v Azure."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,33 +16,33 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 95c2f4fe40590a8d809f634fb5b2c92d07421bb0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cc7b9ad08d5c26dba09584762bedf614d2847032
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Vytvoření virtuální sítě (klasické) s několika podsítěmi
 
 > [!IMPORTANT]
-> Azure má dva [různé modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s prostředky: Resource Manager a Klasický model. Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje vytvoření většina nové virtuální sítě prostřednictvím [Resource Manager](virtual-networks-create-vnet-arm-pportal.md) modelu nasazení.
+> Azure má dva [různé modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s prostředky: Resource Manager a Klasický model. Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje vytvoření většina nové virtuální sítě prostřednictvím hello [Resource Manager](virtual-networks-create-vnet-arm-pportal.md) modelu nasazení.
 
-V tomto kurzu zjistěte, jak vytvořit základní virtuální síť Azure (klasické) s oddělené veřejné a privátní podsítě. Můžete vytvořit prostředky Azure, jako jsou virtuální počítače a cloudové služby v podsíti. Prostředky vytvořené ve virtuální sítě (klasické) mohou komunikovat navzájem a s prostředky v jiných sítích připojené k virtuální síti.
+V tomto kurzu zjistěte, jak toocreate základní virtuální síť Azure (klasický) s oddělit veřejné a privátní podsítě. Můžete vytvořit prostředky Azure, jako jsou virtuální počítače a cloudové služby v podsíti. Prostředky vytvořené ve virtuální sítě (klasické) mohou komunikovat navzájem a s prostředky v jiných sítích připojených tooa virtuální sítě.
 
 Další informace o všech [virtuální sítě](virtual-network-manage-network.md) a [podsíť](virtual-network-manage-subnet.md) nastavení.
 
 > [!WARNING]
-> Virtuální sítě (klasické) se okamžitě odstraní Azure při [předplatné je zakázané](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Bez ohledu na to, jestli existují prostředky ve virtuální síti, se odstraní virtuální sítě (klasické). Pokud později znovu povolíte předplatné, je nutné znovu vytvořit prostředky, které existovaly ve virtuální síti.
+> Virtuální sítě (klasické) se okamžitě odstraní Azure při [předplatné je zakázané](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Bez ohledu na to, jestli existují prostředky ve virtuální síti hello se odstraní virtuální sítě (klasické). Pokud později znovu povolíte hello předplatné, je nutné znovu vytvořit prostředky, které existovaly ve virtuální síti hello.
 
-Vytvoříte virtuální sítě (klasické) pomocí [portál Azure](#portal), [rozhraní příkazového řádku Azure (CLI) 1.0](#azure-cli), nebo [prostředí PowerShell](#powershell).
+Virtuální síť (klasická) můžete vytvořit pomocí hello [portál Azure](#portal), hello [rozhraní příkazového řádku Azure (CLI) 1.0](#azure-cli), nebo [prostředí PowerShell](#powershell).
 
 ## <a name="portal"></a>Portál
 
-1. V internetovém prohlížeči, přejděte na [portál Azure](https://portal.azure.com). Přihlaste se pomocí vaší [účet Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Pokud nemáte účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. Klikněte na tlačítko **+ nový** na portálu.
-3. Zadejte *virtuální síť* v **vyhledávání na webu Marketplace** pole v horní části **nový** okno, které se zobrazí.  Klikněte na tlačítko **virtuální síť** při zobrazí ve výsledcích hledání.
-4. Vyberte **Classic** v **vybrat model nasazení** pole **virtuální sítě** okno, které se zobrazí, pak klikněte na tlačítko **vytvořit**. 
-5. Zadejte následující hodnoty **vytvořit virtuální síť (klasická)** okna a potom klikněte na **vytvořit**:
+1. V internetovém prohlížeči, přejděte toohello [portál Azure](https://portal.azure.com). Přihlaste se pomocí vaší [účet Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Pokud nemáte účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/offers/ms-azr-0044p).
+2. Klikněte na tlačítko **+ nový** hello portálu.
+3. Zadejte *virtuální síť* v hello **vyhledávání hello Marketplace** pole hello horní části hello **nový** okno, které se zobrazí.  Klikněte na tlačítko **virtuální síť** při zobrazí ve výsledcích hledání hello.
+4. Vyberte **Classic** v hello **vybrat model nasazení** pole v hello **virtuální sítě** okno, které se zobrazí, pak klikněte na tlačítko **vytvořit**. 
+5. Zadejte následující hodnoty na hello hello **vytvořit virtuální síť (klasická)** okna a pak klikněte na tlačítko **vytvořit**:
 
     |Nastavení|Hodnota|
     |---|---|
@@ -53,27 +53,27 @@ Vytvoříte virtuální sítě (klasické) pomocí [portál Azure](#portal), [ro
     |Skupina prostředků|Nechte **vytvořit nový** vybrané a potom zadejte **myResourceGroup**.|
     |Předplatné a umístění|Vyberte vaše předplatné a umístění.
 
-    Pokud jste Azure ještě nepoužívali, další informace o [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [odběry](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), a [umístění](https://azure.microsoft.com/regions) (také označuje jako *oblasti*).
-4. Na portálu můžete vytvořit jenom jednu podsíť, když vytvoříte virtuální síť. V tomto kurzu vytvoříte druhou podsíť po vytvoření virtuální sítě. Můžete vytvořit později přístupné z Internetu prostředky v **veřejné** podsítě. Můžete také vytvořit prostředky, které nejsou přístupné z Internetu v **privátní** podsítě. Chcete-li vytvořit druhou podsíť, zadejte **myVnet** v **vyhledávání prostředků** pole v horní části stránky. Klikněte na tlačítko **myVnet** při zobrazí ve výsledcích hledání.
-5. Klikněte na tlačítko **podsítě** (v **nastavení** část) na **vytvořit virtuální síť (klasická)** okno, které se zobrazí.
-6. Klikněte na tlačítko **+ přidat** na **myVnet - podsítě** okno, které se zobrazí.
-7. Zadejte **privátní** pro **název** na **přidat podsíť** okno. Zadejte **10.0.1.0/24** pro **rozsahu adres**.  Klikněte na **OK**.
-8. Na **myVnet - podsítě** okně uvidíte **veřejné** a **privátní** podsítě, které jste vytvořili.
-9. **Volitelné**: Po dokončení tohoto kurzu můžete chtít odstranit prostředky, které jste vytvořili, tak, aby vám zbytečně nenabíhaly poplatky za používání:
-    - Klikněte na tlačítko **přehled** na **myVnet** okno.
-    - Klikněte **odstranit** ikonu na **myVnet** okno.
-    - Potvrďte odstranění, klikněte na tlačítko **Ano** v **virtuální sítě odstranit** pole.
+    Pokud jste nový tooAzure, další informace o [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [odběry](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), a [umístění](https://azure.microsoft.com/regions) (nazývaná také jen tooas *oblasti*).
+4. Hello portálu můžete vytvořit pouze jednu podsíť při vytváření virtuální sítě. V tomto kurzu vytvoříte druhou podsíť po vytvoření virtuální sítě hello. Můžete vytvořit prostředky přístupné z Internetu později v hello **veřejné** podsítě. Můžete také vytvořit prostředky, které nejsou přístupné z Internetu hello v hello **privátní** podsítě. toocreate hello druhou podsíť, zadejte **myVnet** v hello **vyhledávání prostředků** pole v horní části hello hello stránky. Klikněte na tlačítko **myVnet** při zobrazí ve výsledcích hledání hello.
+5. Klikněte na tlačítko **podsítě** (v hello **nastavení** část) na hello **vytvořit virtuální síť (klasická)** okno, které se zobrazí.
+6. Klikněte na tlačítko **+ přidat** na hello **myVnet - podsítě** okno, které se zobrazí.
+7. Zadejte **privátní** pro **název** na hello **přidat podsíť** okno. Zadejte **10.0.1.0/24** pro **rozsahu adres**.  Klikněte na **OK**.
+8. Na hello **myVnet - podsítě** okně uvidíte hello **veřejné** a **privátní** podsítě, které jste vytvořili.
+9. **Volitelné**: Po dokončení tohoto kurzu můžete toodelete hello prostředky, které jste vytvořili, tak, aby vám zbytečně nenabíhaly poplatky za používání:
+    - Klikněte na tlačítko **přehled** na hello **myVnet** okno.
+    - Klikněte na tlačítko hello **odstranit** ikonu na hello **myVnet** okno.
+    - tooconfirm hello odstranění, klikněte na tlačítko **Ano** v hello **virtuální sítě odstranit** pole.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-1. Můžete buď [instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo pomocí rozhraní příkazového řádku v prostředí cloudu Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Chcete-li získat nápovědu pro příkazy rozhraní příkazového řádku, zadejte `azure <command> --help`. 
-2. V relaci příkazového řádku přihlaste se do Azure pomocí příkazu, který následuje dále. Pokud kliknete na tlačítko **vyzkoušet** do pole níže, otevře se prostředí cloudu. K předplatnému Azure, se můžete přihlásit bez zadáte následující příkaz:
+1. Můžete buď [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo použijte hello rozhraní příkazového řádku v rámci hello prostředí cloudu Azure. Hello cloudové prostředí Azure je bezplatná prostředí Bash, který můžete spustit přímo v rámci hello portálu Azure. Má hello rozhraní příkazového řádku Azure předinstalována a nakonfigurované toouse s vaším účtem. tooget nápovědy pro příkazy rozhraní příkazového řádku, zadejte `azure <command> --help`. 
+2. V relaci příkazového řádku přihlaste se tooAzure s hello příkaz, který následuje. Pokud kliknete na tlačítko **vyzkoušet** pole hello: otevře prostředí cloudu. Tooyour předplatné, můžete přihlásit bez zadávání hello následující příkaz:
 
     ```azurecli-interactive
     azure login
     ```
 
-3. K zajištění, že rozhraní příkazového řádku je v režimu správy služby, zadejte následující příkaz:
+3. hello tooensure, rozhraní příkazového řádku je v režimu správy služby, zadejte následující příkaz hello:
 
     ```azurecli-interactive
     azure config mode asm
@@ -85,39 +85,39 @@ Vytvoříte virtuální sítě (klasické) pomocí [portál Azure](#portal), [ro
     azure network vnet create --vnet myVnet --address-space 10.0.0.0 --cidr 16  --subnet-name Private --subnet-start-ip 10.0.0.0 --subnet-cidr 24 --location "East US"
     ```
 
-5. Vytvoření veřejné podsítě v rámci virtuální sítě:
+5. Vytvoření veřejné podsítě v rámci virtuální sítě hello:
 
     ```azurecli-interactive
     azure network vnet subnet create --name Public --vnet-name myVnet --address-prefix 10.0.1.0/24
     ```    
     
-6. Zkontrolujte virtuální sítě a podsítě:
+6. Projděte si hello virtuální sítě a podsítě:
 
     ```azurecli-interactive
     azure network vnet show --vnet myVnet
     ```
 
-7. **Volitelné**: můžete chtít odstranit prostředky, které jste vytvořili po dokončení tohoto kurzu, tak, aby vám zbytečně nenabíhaly poplatky za používání:
+7. **Volitelné**: můžete chtít toodelete hello prostředky, které jste vytvořili po dokončení tohoto kurzu, tak, aby vám zbytečně nenabíhaly poplatky za používání:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
     ```
 
 > [!NOTE]
-> I když nelze zadat skupinu prostředků pro vytvoření virtuální sítě (klasické) pomocí rozhraní příkazového řádku, Azure vytvoří virtuální síť ve skupině prostředků s názvem *výchozí sítě*.
+> I když toocreate skupiny prostředků virtuální sítě (klasické) nelze zadat pomocí hello CLI, Azure vytvoří hello virtuální sítě ve skupině prostředků s názvem *výchozí sítě*.
 
 ## <a name="powershell"></a>PowerShell
 
-1. Nainstalujte nejnovější verzi prostředí PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) modulu. Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+1. Nainstalujte nejnovější verzi hello prostředí PowerShell hello [Azure](https://www.powershellgallery.com/packages/Azure) modulu. Pokud jste nový tooAzure prostředí PowerShell, najdete v části [Přehled prostředí Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Spusťte relaci prostředí PowerShell.
-3. V PowerShellu se přihlaste k Azure zadáním příkazu `Add-AzureAccount`.
-4. Změnit následující cestu a název souboru, podle potřeby, a poté exportovat existující konfigurační soubor sítě:
+3. V prostředí PowerShell přihlásit tooAzure zadáním hello `Add-AzureAccount` příkaz.
+4. Změnit hello následující cestu a název souboru, podle potřeby, exportovat pak existující konfigurační soubor sítě:
 
     ```powershell
     Get-AzureVNetConfig -ExportToFile c:\azure\NetworkConfig.xml
     ```
 
-5. Pokud chcete vytvořit virtuální síť s veřejné a privátní podsítě, pomocí libovolného textového editoru přidejte **VirtualNetworkSite** prvek, který následuje do konfiguračního souboru sítě.
+5. toocreate virtuální síť s podsítí veřejné a privátní, použijte všechny textového editoru tooadd hello **VirtualNetworkSite** prvek, který následuje toohello sítě konfigurační soubor.
 
     ```xml
     <VirtualNetworkSite name="myVnet" Location="East US">
@@ -135,34 +135,34 @@ Vytvoříte virtuální sítě (klasické) pomocí [portál Azure](#portal), [ro
       </VirtualNetworkSite>
     ```
 
-    Přečtěte si celý [schéma konfiguračního souboru sítě](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+    Úplná kontrola hello [schéma konfiguračního souboru sítě](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
-6. Import konfiguračního souboru sítě:
+6. Importujte konfigurační soubor hello sítě:
 
     ```powershell
     Set-AzureVNetConfig -ConfigurationPath c:\azure\NetworkConfig.xml
     ```
 
     > [!WARNING]
-    > Import konfiguračního souboru změněné sítě může způsobit změny existující virtuální sítě (klasické) v rámci vašeho předplatného. Ujistěte se, můžete přidat pouze předchozí virtuální sítě a změníte nebo odeberte všechny existující virtuální sítě ze svého předplatného. 
+    > Import konfiguračního souboru změněné sítě může způsobit změny tooexisting virtuální sítě (klasické) v rámci vašeho předplatného. Ujistěte se, můžete přidat pouze hello předchozí virtuální sítě a změníte nebo odeberte všechny existující virtuální sítě ze svého předplatného. 
 
-7. Zkontrolujte virtuální sítě a podsítě:
+7. Projděte si hello virtuální sítě a podsítě:
 
     ```powershell
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Volitelné**: můžete chtít odstranit prostředky, které jste vytvořili po dokončení tohoto kurzu, tak, aby vám zbytečně nenabíhaly poplatky za používání. Pokud chcete odstranit virtuální síť, dokončení kroky 4 až 6 znovu, tento čas odebrání **VirtualNetworkSite** elementu, které jste přidali v kroku 5.
+8. **Volitelné**: můžete chtít toodelete hello prostředky, které jste vytvořili po dokončení tohoto kurzu, tak, aby vám zbytečně nenabíhaly poplatky za používání. toodelete hello virtuální sítě, dokončení kroky 4 až 6 znovu, tento čas odebírání hello **VirtualNetworkSite** elementu, které jste přidali v kroku 5.
  
 > [!NOTE]
-> I když nelze zadat skupinu prostředků pro vytvoření virtuální sítě (klasické) pomocí prostředí PowerShell, Azure vytvoří virtuální síť ve skupině prostředků s názvem *výchozí sítě*.
+> Když toocreate skupiny prostředků virtuální sítě (klasické) nelze zadat pomocí prostředí PowerShell, Azure vytvoří hello virtuální síť ve skupině prostředků s názvem *výchozí sítě*.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o všech virtuální síť a podsíť nastavení najdete v tématu [spravovat virtuální sítě](virtual-network-manage-network.md) a [spravovat podsítě virtuální sítě](virtual-network-manage-subnet.md). Máte různé možnosti pro splňují odlišné požadavky pomocí virtuální sítě a podsítě v produkčním prostředí.
-- Filtrovat podsíť příchozí a odchozí provoz, vytvoření a použití [skupin zabezpečení sítě](virtual-networks-nsg.md) k podsítím.
-- Vytvoření [Windows](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače a připojte ho k existující virtuální síť.
-- Pro připojení dvou virtuálních sítí ve stejné oblasti Azure, vytvořte [partnerský vztah virtuální sítě](create-peering-different-deployment-models.md) mezi virtuálními sítěmi. Virtuální síť (Resource Manager) může rovnocenných počítačů k virtuální síti (klasické), ale nemůžete vytvořit partnerský vztah mezi dvěma virtuálními sítěmi (klasické).
-- Připojit virtuální síť k místní síti pomocí [brány VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) okruh.
+- toolearn o všechny virtuální sítě a podsítě nastavení, najdete v části [spravovat virtuální sítě](virtual-network-manage-network.md) a [spravovat podsítě virtuální sítě](virtual-network-manage-subnet.md). Máte různé možnosti pro použití virtuálními sítěmi a podsítěmi v jiné požadavky produkční prostředí toomeet.
+- toofilter příchozí a odchozí přenosy podsítěmi, vytvoření a použití [skupin zabezpečení sítě](virtual-networks-nsg.md) toosubnets.
+- Vytvoření [Windows](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače a připojte ho tooan existující virtuální síť.
+- tooconnect dvou virtuálních sítí v hello stejného umístění Azure, vytvořte [partnerský vztah virtuální sítě](create-peering-different-deployment-models.md) mezi virtuálními sítěmi hello. Mohou párově virtuální sítě (Resource Manager) tooa virtuální sítě (klasické), ale nemůžete vytvořit partnerský vztah mezi dvěma virtuálními sítěmi (klasické).
+- Připojit pomocí hello virtuální sítě tooan do místní sítě [brány VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) okruh.

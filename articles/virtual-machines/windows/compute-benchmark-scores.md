@@ -1,5 +1,5 @@
 ---
-title: "Výpočetní srovnávacího testu skóre pro virtuální počítače Windows | Microsoft Docs"
+title: "srovnávací test aaaCompute skóre pro virtuální počítače Windows | Microsoft Docs"
 description: "Porovnání SPECint výpočetní srovnávacího testu skóre pro virtuální počítače Azure se systémem Windows Server"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: dc715a9bf4e5366e1719de7c649feb06b0c4bee7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3037d69790cb193161122b902e85fb838285cf81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Výpočetní srovnávacího testu skóre pro virtuální počítače Windows
-Následující skóre srovnávacího testu SPECInt zobrazit výpočetní výkon pro Azure a vysoce výkonných virtuálních počítačů řazení systémem Windows Server. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Hello následující SPECInt srovnávacího testu skóre zobrazit výpočetní výkon pro Azure a vysoce výkonných virtuálních počítačů řazení systémem Windows Server. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="a-series---compute-intensive"></a>A-series - náročné na výkon
 | Velikost | Vcpu | Uzly NUMA | Procesor | Spustí | Základní míra průměr | StdDev |
@@ -65,7 +65,7 @@ Následující skóre srovnávacího testu SPECInt zobrazit výpočetní výkon 
 | Standard_H16mr |16 |2 |Intel Xeon E5-. 2667 v3 @ 3,2 GHz |7 |569.6 |2.8 |
 
 ## <a name="about-specint"></a>O SPECint
-Čísla systému Windows byly počítaný spuštěním [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) v systému Windows Server. SPECint byl spuštěn pomocí možnosti základní rychlost (výsledcích SPECint_rate2006), s jedna kopie za jádra. SPECint se skládá z 12 samostatné testy, každý spustit třikrát, trvá Medián z každého testu a je k vytvoření složeného skóre vážení. Tyto testy byly spusťte napříč více virtuálními počítači poskytnout průměrné skóre vidět.
+Čísla systému Windows byly počítaný spuštěním [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) v systému Windows Server. SPECint byl spuštěn pomocí možnosti základní míra hello (výsledcích SPECint_rate2006), s jedna kopie za jádra. SPECint se skládá z 12 samostatné testy, každý spustit třikrát, trvá hello Medián z každého testu a vážení je tooform složené skóre. Tyto testy byly spusťte napříč více virtuálních počítačů tooprovide hello průměrné skóre vidět.
 
 ## <a name="next-steps"></a>Další kroky
 * Kapacity úložiště, podrobnosti o disku a další důležité informace pro výběr mezi velikosti virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,5 +1,5 @@
 ---
-title: "Partnerské vztahy virtuálních sítí v Azure | Dokumentace Microsoftu"
+title: "partnerský vztah aaaAzure virtuální sítě | Microsoft Docs"
 description: "Seznamte se s partnerskými vztahy virtuálních sítí v Azure."
 services: virtual-network
 documentationcenter: na
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2017
 ms.author: narayan
-ms.openlocfilehash: 393557074db2ddbeb53ca20873a33d06874c4dc8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 46a14b416a7d4389f79a3cd7c55e388b5d312577
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
-Partnerský vztah virtuálních sít umožňuje propojit dvě virtuální sítě ve stejné oblasti prostřednictvím páteřní sítě Azure. Po navázání partnerského vztahu se tyto dvě virtuální sítě pro účely připojení jeví jako jedna síť. Jsou i nadále spravované jako samostatné prostředky, ale virtuální počítače v partnerských virtuálních sítích spolu můžou komunikovat přímo pomocí privátních IP adres.
+Virtuální sítě můžete tooconnect dvou virtuálních sítí v hello stejné oblasti prostřednictvím partnerského vztahu umožňuje hello Azure páteřní síti. Po peered, hello dvě virtuální sítě se zobrazí jako jedna pro účely připojení. Hello dvě virtuální sítě se pořád spravují jako samostatné prostředky, ale virtuální počítače v hello peered virtuální sítě může komunikovat s navzájem přímo, pomocí privátních IP adres.
 
-Přenos dat mezi virtuálními počítači ve virtuálních sítích spojených v partnerském vztahu je směrován přes infrastrukturu Azure v zásadě stejně jako mezi virtuálními počítači ve stejné virtuální síti. Mezi výhody použití partnerských vztahů virtuálních sítí patří:
+Hello provoz mezi virtuálními počítači v hello peered virtuální sítě směrován přes hello infrastrukturu Azure, jako je směrovat provoz mezi virtuálními počítači v hello stejné virtuální síti. Mezi výhody hello použití partnerský vztah virtuální sítě, patří:
 
 * Nízká latence a velká šířka pásma při propojení prostředků v různých virtuálních sítích.
-* Možnost používat prostředky, například síťová zařízení a VPN Gateway, jako přenosové body ve virtuální síti s navázaným partnerským vztahem.
-* Možnost navázání partnerského vztahu mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím modelu nasazení Azure Resource Manager, nebo mezi jednou virtuální sítí vytvořenou prostřednictvím modelu nasazení Resource Manager a druhou vytvořenou prostřednictvím modelu nasazení Classic. Další informace o rozdílech mezi těmito dvěma modely nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* možnost Hello toouse prostředkům, například síťových zařízení a bran VPN jako body přenosu v peered virtuální sítě.
+* Hello možnost toopeer dvě virtuální sítě vytvořené pomocí modelu nasazení Azure Resource Manager hello nebo toopeer jednu virtuální síť vytvořili pomocí Správce prostředků tooa virtuální sítě vytvořené pomocí modelu nasazení classic hello. Čtení hello [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku toolearn více informací o hello rozdíly mezi hello dvou modelech nasazení Azure.
 
 ## <a name="requirements-constraints"></a>Požadavky a omezení
 
-* Partnerské virtuální sítě musí existovat ve stejné oblasti Azure. Pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) můžete propojit virtuální sítě v různých oblastech Azure.
-* Adresní prostory IP adres partnerských virtuálních sítí se nesmí překrývat.
+* Hello peered virtuální sítě, musí existovat v hello stejné oblasti Azure. Pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) můžete propojit virtuální sítě v různých oblastech Azure.
+* Hello peered virtuální sítě musí mít-překrývající se adresní prostory IP adres.
 * Adresní prostory nelze do virtuálních sítí přidávat ani je z nich odstraňovat, jakmile je mezi dvěma virtuálními sítěmi vytvořen partnerský vztah.
-* Partnerský vztah virtuálních sítí se navazuje mezi dvěma virtuálními sítěmi. Nevzniká žádný odvozený tranzitivní vztah přes partnerské vztahy. Pokud je například virtuální síť A v partnerském vztahu s virtuální sítí B a virtuální síť B v partnerském vztahu s virtuální sítí C, pak virtuální síť A *není* v partnerském vztahu s virtuální sítí C.
-* Partnerský vztah lze navázat mezi virtuálními sítěmi ve dvou různých předplatných za předpokladu, že navázání tohoto vztahu u obou předplatných autorizuje uživatel s oprávněním správce (viz [konkrétní oprávnění](create-peering-different-deployment-models-subscriptions.md#permissions)) a že předplatná jsou přidružená ke stejnému tenantovi Azure Active Directory. K propojení virtuálních sítí v předplatných přidružených k různým tenantům Active Directory můžete použít [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
-* Mezi virtuálními sítěmi lze navázat partnerský vztah, pokud jsou obě vytvořené prostřednictvím modelu nasazení Resource Manager, nebo pokud je jedna virtuální síť vytvořena prostřednictvím modelu nasazení Resource Manager a druhá prostřednictvím modelu nasazení Classic. Nejde ale navázat partnerský vztah mezi dvěma virtuálními sítěmi, které obě používají model nasazení Classic. K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
-* Ačkoli komunikace mezi virtuálními počítači ve virtuálních sítích propojených partnerským vztahem nemá žádná další omezení šířky pásma, stále platí omezení šířky pásma na základě velikosti virtuálního počítače. Další informace o maximální šířce pásma pro různé velikosti virtuálních počítačů najdete v článcích o velikosti virtuálních počítačů pro [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Interní překlad názvů DNS služby Azure pro virtuální počítače nebude fungovat mezi partnerskými virtuálními sítěmi fungovat. Virtuální počítače mají interní názvy DNS, které jsou přeložitelné pouze v rámci místní virtuální sítě. Virtuální počítače připojené k partnerským virtuálním sítím ale můžete nakonfigurovat jako servery DNS pro virtuální síť. Další podrobnosti najdete v článku s popisem [překladu názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+* Partnerský vztah virtuálních sítí se navazuje mezi dvěma virtuálními sítěmi. Nevzniká žádný odvozený tranzitivní vztah přes partnerské vztahy. Například pokud je s virtualNetworkB peered virtualNetworkA a virtualNetworkB je peered s virtualNetworkC, virtualNetworkA je *není* peered toovirtualNetworkC.
+* Mohou párově virtuální sítě, které existují ve dvou různých předplatných, jako dlouho privilegovaných uživatelů (v tématu [konkrétní oprávnění](create-peering-different-deployment-models-subscriptions.md#permissions)) i odběry autorizuje hello partnerský vztah a hello odběry jsou přidružené toohello stejné Klienta Azure Active Directory. Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) tooconnect virtuální sítě v rámci předplatných přidružené toodifferent klientech služby Active Directory.
+* Virtuální sítě můžete peered, pokud obě jsou vytvořeny pomocí modelu nasazení Resource Manager hello nebo pokud je vytvořena jedna virtuální síť pomocí modelu nasazení Resource Manager hello a hello jiných je vytvořen pomocí modelu nasazení classic hello. Dvě virtuální sítě vytvořené pomocí modelu nasazení classic hello nemůže být peered tooeach jiných, ale. Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) tooconnect dvě virtuální sítě vytvořené pomocí modelu nasazení classic hello.
+* I když hello komunikace mezi virtuálními počítači ve virtuálních sítích, peered neexistují žádná omezení. Další šířka pásma, je maximální šířku pásma sítě, v závislosti na velikosti hello virtuální počítač, který stále platí. Další informace o maximální šířku pásma sítě pro jiný virtuální počítač velikostí, přečtěte si hello toolearn [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) články velikostí virtuálního počítače.
+* Interní překlad názvů DNS služby Azure pro virtuální počítače nebude fungovat mezi partnerskými virtuálními sítěmi fungovat. Virtuální počítače mají interní názvy DNS, které jsou přeložit pouze v rámci hello místní virtuální síť. Ale můžete konfigurovat virtuální sítě virtuálních počítačů připojený toopeered jako servery DNS pro virtuální síť. Další informace najdete v hello [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) článku.
 
 ![Základní partnerské vztahy virtuálních sítí](./media/virtual-networks-peering-overview/figure01.png)
 
 ## <a name="connectivity"></a>Připojení
-Po navázání partnerského vztahu mezi dvěma virtuálními sítěmi se prostředky v některé z virtuálních sítí můžou přímo připojit k prostředkům v partnerské virtuální síti. Mezi těmito dvěma virtuálními sítěmi existuje plné propojení na úrovni protokolu IP.
+Po kterými mají partnerský dvě virtuální sítě, prostředky ve buď virtuální síti mohou připojovat přímo s prostředky v hello peered virtuální sítě. Hello dvě virtuální sítě mít úplná IP-úroveň připojení.
 
-Síťová latence doby odezvy komunikace mezi dvěma virtuálními počítači ve virtuálních sítích s navázaným partnerským vztahem je stejná jako latence v rámci jedné virtuální sítě. Propustnost sítě závisí na šířce pásma, která je pro daný virtuální počítač povolená na základě jeho velikosti. S partnerským vztahem zde nejsou žádná další omezení týkající se šířky pásma.
+latence sítě Hello pro výměnu zpráv mezi dvěma virtuálními počítači ve virtuálních sítích, peered je hello stejné jako u dobu odezvy v rámci jedné virtuální sítě. propustnost sítě Hello je založena na hello šířky pásma, který je povolen pro hello virtuální počítač, hlavně tooits velikost. Není k dispozici žádné další omezení šířky pásma v rámci hello partnerský vztah.
 
-Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přímo přes back-end infrastrukturu Azure, ne prostřednictvím brány.
+Hello provoz mezi virtuálními počítači v peered virtuální sítě se směruje přímo přes hello Azure back endovou infrastrukturu, nejsou prostřednictvím brány.
 
-Virtuální počítače připojené k virtuální síti mají přístup ke koncovým bodům s interním nástrojem na vyrovnávání zatížení v partnerské virtuální síti. Skupiny zabezpečení sítě je možné v obou virtuálních sítích v případě potřeby použít k blokování přístupu do jiných virtuálních sítí nebo podsítí.
+Virtuální počítače připojené tooa virtuální síti mohly přistupovat k hello interní Vyrovnávání zatížení sítě koncových bodů v hello peered virtuální sítě. Skupiny zabezpečení sítě může být pro virtuální síť tooblock přístup tooother virtuální sítě nebo podsítě, v případě potřeby.
 
-Při konfiguraci partnerského vztahu virtuálních sítí můžete otevřít nebo zavřít pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné propojení mezi partnerskými virtuálními sítěmi (výchozí volba), můžete pomocí skupin zabezpečení sítě u konkrétních podsítí nebo virtuálních počítačů blokovat nebo odepřít specifický přístup. Další informace o skupinách zabezpečení sítě najdete v článku [Přehled skupin zabezpečení sítě](virtual-networks-nsg.md).
+Při konfiguraci partnerského vztahu virtuální sítě, můžete otevřít nebo zavřít pravidel skupiny zabezpečení sítě hello mezi virtuálními sítěmi hello. Pokud otevřete úplné připojení mezi peered virtuální sítě (což je výchozí možnost hello), můžete použít sítě zabezpečení skupiny toospecific podsítě nebo virtuální počítače tooblock nebo odepření přístupu konkrétním. Další informace o toolearn sítě skupin zabezpečení, přečtěte si hello [přehled skupin zabezpečení sítě](virtual-networks-nsg.md) článku.
 
 ## <a name="service-chaining"></a>Řetězení služeb
-Můžete nakonfigurovat uživatelsky definované trasy, které jsou směrované na virtuální počítače v partnerských virtuálních sítích jako na IP adresy pro další směrování, a povolit tak řetězení služeb. Řetězení služeb vám umožní směrovat přenos dat z jedné virtuální sítě do virtuálního zařízení v partnerské virtuální síti s použitím uživatelsky definovaných tras.
+Můžete nakonfigurovat trasy definované uživatelem tohoto počítače toovirtual bodu ve virtuálních sítích, peered jako hello "dalšího směrování" IP adresu tooenable služby řetězení. Služba řetězení umožňuje vám toodirect provoz z jedné virtuální sítě tooa virtuální zařízení v peered virtuální sítě prostřednictvím trasy definované uživatelem.
 
-Můžete také fakticky vytvářet prostředí hvězdicovitého typu, kde centrální síť může být hostitelem komponent infrastruktury, například síťového virtuálního zařízení. Všechny uvedené virtuální sítě pak můžou vytvořit partnerský vztah s centrální virtuální sítí. Provoz může probíhat přes virtuální síťová zařízení, která běží v centrální virtuální síti. Partnerské vztahy virtuálních sítí tedy umožňují, aby IP adresou dalšího směrování v uživatelsky definované trase byla IP adresa virtuálního počítače v partnerské virtuální síti. Další informace o trasách definovaných uživatelem najdete v článku s [přehledem tras definovaných uživatelem](virtual-networks-udr-overview.md).
+Můžete vytvořit také efektivně střed a paprsek typu prostředí, kde hello hub může hostovat komponent infrastruktury, jako je například virtuální síťové zařízení. Všechny hello ramenem virtuální sítě můžete pak partnerský vztah hello rozbočovače virtuální sítě. Můžete přenos přes síť virtuální zařízení, které běží ve virtuální síti hello rozbočovače. Stručně řečeno partnerský vztah virtuální sítě umožňuje hello IP adresa dalšího směrování na hello uživatelem definované trasy toobe hello IP adresu virtuálního počítače ve virtuální síti hello peered. Další informace o trasy definované uživatelem, přečtěte si hello toolearn [trasy definované uživatelem přehled](virtual-networks-udr-overview.md) článku.
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Brány a místní připojení
-Každá virtuální síť, bez ohledu na to, jestli má navázaný partnerský vztah s jinou virtuální sítí, může mít stále svou vlastní bránu a používat ji pro připojení k místní síti. Můžete také nakonfigurovat [připojení mezi virtuálními sítěmi](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pomocí bran, a to i v situaci, kdy jsou tyto virtuální sítě v partnerském vztahu.
+Každá virtuální síť, bez ohledu na to, jestli je peered s jinou virtuální sítí, můžete stále mít svůj vlastní bránu a použít ho tooconnect tooan do místní sítě. Můžete také nakonfigurovat [připojení virtuální sítě pro virtuální sítě](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pomocí brány, i když kterými mají partnerský hello virtuální sítě.
 
-Když jsou nakonfigurovány obě možnosti pro propojení virtuálních sítí, přenos dat mezi těmito sítěmi probíhá s použitím konfigurace partnerského vztahu (t.j. přes páteřní síť Azure).
+Pokud jsou obě možnosti pro propojení virtuální sítě nakonfigurována, hello provoz mezi virtuálními sítěmi hello toků prostřednictvím konfigurace partnerského vztahu hello (tedy až hello Azure páteřní).
 
-Když je mezi virtuálními sítěmi navázán partnerský vztah, můžete také v partnerské virtuální síti nakonfigurovat bránu, která bude sloužit jako tranzitní bod pro místní síť. V tomto případě virtuální síť, která používá vzdálenou bránu, nemůže mít svou vlastní bránu. Virtuální síť může mít pouze jednu bránu. Může jí být buď místní brána, nebo vzdálená brána (v partnerské virtuální síti), jak ukazuje následující obrázek:
+Když virtuální sítě se kterými mají partnerský, lze také nakonfigurovat hello brány v hello peered virtuální sítě jako místní síť tooan bodu přenosu. V takovém případě hello virtuální síť, která používá Brána vzdálené nemůže mít vlastní brány. Virtuální síť může mít pouze jednu bránu. Hello brány může být místní nebo vzdálené brány (v hello peered virtuální sítě), jak je znázorněno v následujícím obrázku hello:
 
 ![Přenos dat při partnerských vztazích virtuálních sítí](./media/virtual-networks-peering-overview/figure02.png)
 
-Průchod branou není podporován v případě, že jde o partnerský vztah mezi virtuálními sítěmi vytvořenými pomocí různých modelů nasazení. Pokud chcete používat průchod branou, je nutné, aby byly obě partnerské virtuální sítě vytvořené pomocí modelu nasazení Resource Manager.
+Přenosu brány není podporována v relaci partnerského vztahu hello mezi virtuální sítě vytvořené pomocí různé modely nasazení. Obě virtuální sítě v relaci partnerského vztahu hello musí být vytvořen pomocí Resource Manageru pro toowork přenosu brány.
 
-Po nastavení partnerského vztahu mezi virtuálními sítěmi sdílejícími jedno připojení Azure ExpressRoute přenos dat prochází skrze partnerský vztah (tj. prostřednictvím páteřní sítě Azure). K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. Alternativním postupem je použití sdílené brány a konfigurace průchodu pro místní připojení.
+Při kterými mají partnerský hello virtuální sítě, které sdílejí jedno připojení k Azure ExpressRoute, hello provoz mezi nimi prochází hello partnerského vztahu relace (tedy až hello Azure páteřní síti). V každé virtuální sítě tooconnect toohello místní okruhu můžete dál používat místní brány. Alternativním postupem je použití sdílené brány a konfigurace průchodu pro místní připojení.
 
 ## <a name="provisioning"></a>Zřizování
-Navázání partnerského vztahu virtuální sítě je privilegovaná operace. Jde o samostatnou funkci v rámci oboru názvů VirtualNetworks. Uživatel může dostat specifická práva k autorizaci partnerských vztahů. Uživatel, který má přístup pro čtení a zápis do virtuální sítě, zdědí tato práva automaticky.
+Navázání partnerského vztahu virtuální sítě je privilegovaná operace. Je samostatný funkce pod oborem názvů VirtualNetworks hello. Uživatel může dostat partnerský vztah tooauthorize konkrétní práva. Uživatel, který má přístup pro čtení a zápis toohello virtuální sítě automaticky zdědí tato práva.
 
-Uživatel, který je buď správcem nebo privilegovaným uživatelem pro navázání partnerských vztahů, může iniciovat operaci navázání partnerství s jinou virtuální sítí. Pokud i na druhé straně existuje odpovídající požadavek a jsou splněny i další podmínky, partnerský vztah bude navázán.
+Uživatel, který je buď správce nebo privilegované uživateli možnost hello partnerského vztahu můžete zahájit partnerského vztahu operace s jinou virtuální sítí. Pokud existuje odpovídající požadavku pro partnerský vztah na druhé straně hello, a pokud jsou splněny další požadavky, se naváže partnerský vztah hello.
 
 ## <a name="limits"></a>Omezení
-Existují omezení týkající se počtu partnerských vztahů, které lze vytvořit pro jednu virtuální síť. Další informace najdete v tématu [Omezení pro sítě v Azure](../azure-subscription-service-limits.md#networking-limits).
+Existují omezení počtu hello partnerských vztahů, které jsou povoleny pro jedné virtuální sítě. Další informace najdete v tématu hello [Azure síťové omezení](../azure-subscription-service-limits.md#networking-limits).
 
 ## <a name="pricing"></a>Ceny
-Za příchozí a výchozí přenos dat využívající partnerský vztah virtuálních sítí se účtuje nominální poplatek. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
+Za příchozí a výchozí přenos dat využívající partnerský vztah virtuálních sítí se účtuje nominální poplatek. Další informace najdete v tématu hello [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dokončete kurz o partnerském vztahu virtuálních sítí. Partnerský vztah virtuálních sítí se vytváří mezi virtuálními sítěmi vytvořenými prostřednictvím stejného modelu nebo různých modelů nasazení, které existují ve stejném předplatném nebo různých předplatných. Dokončete kurz pro jeden z následujících scénářů:
+* Dokončete kurz o partnerském vztahu virtuálních sítí. Partnerský vztah virtuální sítě se vytvoří mezi virtuální sítě vytvořené pomocí hello stejné nebo jiné nasazení modely, které existují v hello stejné nebo různých předplatných. Dokončení kurzu pro jednu hello následující scénáře:
  
     |Model nasazení Azure  | Předplatné  |
     |---------|---------|
@@ -93,5 +93,5 @@ Za příchozí a výchozí přenos dat využívající partnerský vztah virtuá
     |Jedna Resource Manager, druhá Classic     |[Stejné](create-peering-different-deployment-models.md)|
     | |[Různé](create-peering-different-deployment-models-subscriptions.md)|
 
-* Zjistěte, jak vytvořit [rozbočovač a uvedenou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering). 
-* Prostudujte si všechna [nastavení partnerského vztahu virtuálních sítí a jejich změny](virtual-network-manage-peering.md).
+* Zjistěte, jak toocreate [hvězdicové topologie sítě](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) 
+* Další informace o všech [partnerského vztahu nastavení virtuální sítě a jak toochange je](virtual-network-manage-peering.md)

@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobení systému Windows virtuálního počítače v Azure | Microsoft Docs"
-description: "Další informace o použití rozšíření vlastních skriptů a Key Vault pro přizpůsobení systému Windows virtuálních počítačů v Azure"
+title: "aaaCustomize virtuální počítač s Windows v Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello rozšíření vlastních skriptů a toocustomize Key Vault Windows virtuálních počítačů v Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,45 +16,45 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3be58bf8afbcff018b2b0d69a0e08c2c9ab1fca7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c03b2bb6d70875134c63ea2fe4c2e2c1777c2188
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Přizpůsobení virtuálního počítače s Windows v Azure
-Ke konfiguraci virtuálních počítačů (VM) rychlé a konzistentním způsobem, je obvykle potřeby nějaký způsob automatizace. Běžný postup přizpůsobení virtuální počítač s Windows je použití [vlastní skript rozšíření pro Windows](extensions-customscript.md). V tomto kurzu se naučíte:
+# <a name="how-toocustomize-a-windows-virtual-machine-in-azure"></a>Jak toocustomize virtuálního počítače s Windows v Azure
+Obvykle se požaduje tooconfigure virtuální počítače (VM) rychlé a konzistentním způsobem, nějaký způsob automatizace. Běžné toocustomize přístup virtuální počítač s Windows je toouse [vlastní skript rozšíření pro Windows](extensions-customscript.md). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Použití rozšíření vlastních skriptů instalace služby IIS
-> * Vytvoření virtuálního počítače, který používá rozšíření vlastních skriptů
-> * Po rozšíření platí zobrazit spuštěné webu IIS
+> * Použít tooinstall hello rozšíření vlastních skriptů služby IIS
+> * Vytvoření virtuálního počítače, který používá hello rozšíření vlastních skriptů
+> * Po rozšíření hello platí zobrazit spuštěné webu IIS
 
-Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud je třeba upgradovat, přečtěte si téma [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento kurz vyžaduje hello prostředí Azure PowerShell verze modulu 3,6 nebo novější. Spustit ` Get-Module -ListAvailable AzureRM` toofind hello verze. Pokud potřebujete tooupgrade, přečtěte si [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 ## <a name="custom-script-extension-overview"></a>Přehled rozšíření vlastních skriptů
-Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci nasazení post, instalace softwaru nebo jakoukoli jinou konfiguraci, nebo úlohu správy. Skripty můžete stáhnout z úložiště Azure nebo GitHub nebo zadat na portál Azure na dobu běhu rozšíření.
+Hello rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci nasazení post, instalace softwaru nebo jakoukoli jinou konfiguraci, nebo úlohu správy. Skripty můžete stáhnout z úložiště Azure nebo GitHub nebo zadat toohello portál Azure na dobu běhu rozšíření.
 
-Rozšíření vlastních skriptů se integruje s šablon Azure Resource Manageru a můžete také spustit pomocí rozhraní příkazového řádku Azure, PowerShell, portálu Azure nebo REST API pro virtuální počítač Azure.
+Hello rozšíření vlastních skriptů se integruje s šablon Azure Resource Manageru a můžete také spustit pomocí hello rozhraní příkazového řádku Azure, PowerShell, portálu Azure nebo hello REST API pro virtuální počítač Azure.
 
-S Windows a virtuální počítače s Linuxem můžete použít rozšíření vlastních skriptů.
+S Windows a virtuální počítače s Linuxem můžete hello rozšíření vlastních skriptů.
 
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Před vytvořením virtuálního počítače, vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAutomate* v *EastUS* umístění:
+Před vytvořením virtuálního počítače, vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAutomate* v hello *EastUS* umístění:
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupAutomate -Location EastUS
 ```
 
-Nastavte správce uživatelské jméno a heslo pro virtuální počítače s [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Nastavte uživatelské jméno a heslo správce pro virtuální počítače hello s [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítač s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální sítě požadované součásti, konfigurace operačního systému a poté vytvoří virtuální počítač s názvem *Můjvp*:
+Nyní můžete vytvořit virtuální počítač s hello [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Hello následující příklad vytvoří hello požadované součásti virtuální sítě, konfiguraci hello operačního systému a poté vytvoří virtuální počítač s názvem *Můjvp*:
 
 ```powershell
 # Create a subnet configuration
@@ -128,11 +128,11 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName myResourceGroupAutomate -Location EastUS -VM $vmConfig
 ```
 
-Trvá několik minut na zdroje a virtuální počítač, který se má vytvořit.
+Trvá několik minut, než hello prostředky a toobe virtuálních počítačů vytvořena.
 
 
 ## <a name="automate-iis-install"></a>Automatizaci instalace služby IIS
-Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) k instalaci rozšíření vlastních skriptů. Spustí rozšíření `powershell Add-WindowsFeature Web-Server` nainstalovat webový server služby IIS a aktualizací *Default.htm* stránku a zobrazit název hostitele virtuálního počítače:
+Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) tooinstall hello rozšíření vlastních skriptů. Hello rozšíření spustí `powershell Add-WindowsFeature Web-Server` tooinstall hello webový server služby IIS a poté aktualizace hello *Default.htm* stránky tooshow hello název hostitele hello virtuálních počítačů:
 
 ```powershell
 Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
@@ -147,7 +147,7 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
 
 
 ## <a name="test-web-site"></a>Test webu
-Získat veřejnou IP adresu nástroj pro vyrovnávání zatížení s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad, získá IP adresu pro *myPublicIP* vytvořili dříve:
+Získat hello veřejnou IP adresu nástroj pro vyrovnávání zatížení s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Hello následující příklad získá hello IP adresu pro *myPublicIP* vytvořili dříve:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -155,21 +155,21 @@ Get-AzureRmPublicIPAddress `
     -Name myPublicIP | select IpAddress
 ```
 
-Potom můžete zadat veřejnou IP adresu v do webového prohlížeče. Zobrazí se na webu, včetně názvu hostitele virtuálního počítače, který nástroje pro vyrovnávání zatížení distribuován provoz jako v následujícím příkladu:
+Potom můžete zadat hello veřejnou IP adresu ve webovém prohlížeči tooa. Hello web se zobrazuje, včetně hello název hostitele virtuálního počítače hello tento nástroj pro vyrovnávání zatížení hello distribuované tooas provoz v hello následující ukázka:
 
 ![Spuštění webu IIS](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu automatizované instalace služby IIS na virtuálním počítači. Jste se dozvěděli, jak na:
+V tomto kurzu automatizované hello, který služba IIS nainstalovat na virtuálním počítači. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Použití rozšíření vlastních skriptů instalace služby IIS
-> * Vytvoření virtuálního počítače, který používá rozšíření vlastních skriptů
-> * Po rozšíření platí zobrazit spuštěné webu IIS
+> * Použít tooinstall hello rozšíření vlastních skriptů služby IIS
+> * Vytvoření virtuálního počítače, který používá hello rozšíření vlastních skriptů
+> * Po rozšíření hello platí zobrazit spuštěné webu IIS
 
-Přechodu na v dalším kurzu se dozvíte, jak vytvořit vlastní Image virtuálních počítačů.
+Jak zálohy další kurz toolearn toohello toocreate vlastní Image virtuálních počítačů.
 
 > [!div class="nextstepaction"]
 > [Vytváření vlastních imagí virtuálních počítačů](./tutorial-custom-images.md)

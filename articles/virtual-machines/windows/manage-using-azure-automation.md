@@ -1,6 +1,6 @@
 ---
-title: "Správa virtuálních počítačů pomocí Azure Automation | Microsoft Docs"
-description: "Další informace o používání služby Azure Automation ke správě virtuálních počítačů Azure ve velkém měřítku."
+title: "aaaManage virtuálních počítačů pomocí Azure Automation | Microsoft Docs"
+description: "Další informace o jak hello služby Azure Automation lze použít toomanage virtuálních počítačů Azure ve velkém měřítku."
 services: virtual-machines-windows, automation
 documentationcenter: 
 author: jodoglevy
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2016
 ms.author: timlt
-ms.openlocfilehash: 15653c5d653ae538bdb66eaf0daee12c35858b45
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bfe7b3a51b6e82bd7cd5b0a83df7226476ed4f36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-azure-virtual-machines-using-azure-automation"></a>Správa virtuálních počítačů Azure pomocí Azure Automation
-Tento průvodce vás seznámí s služba Azure Automation a jak ji můžete použít k zjednodušení správy virtuální počítače Azure.
+Tento průvodce vás seznámí toohello služba Azure Automation a jak může sloužit toosimplify spravovat virtuální počítače Azure.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
-[Služby Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, dlouhotrvajících, ruční, problematických a často se opakujících úloh je možné automatizovat zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
+[Služby Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, může být časově náročné, ruční, problematických a často se opakujících úloh automatizované tooincrease spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
 
-Azure Automation nabízí modul provádění vysoce spolehlivé a vysoce dostupné pracovního postupu, který rozšiřuje podle vašich potřeb podle růstu vaší organizace. Ve službě Azure Automation procesů může být spuštěna ručně, systémy třetích stran nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
+Azure Automation nabízí modulu provádění vysoce spolehlivé a vysoce dostupné pracovního postupu, který přizpůsobí vašim potřebám toomeet podle růstu vaší organizace. Ve službě Azure Automation procesů může být spuštěna ručně, systémy třetích stran nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
 
-Můžete snížit provozní režie a uvolněte IT a zaměstnanci DevOps a zaměřit se na práci, kterou přidá obchodní hodnotu spuštěním cloudu úlohy správy automaticky pomocí Azure Automation.
+Můžete snížit provozní režie a uvolněte IT a DevOps služební toofocus na práci, kterou přidá obchodní hodnotu spuštěním cloudu úlohy správy automaticky pomocí Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-virtual-machines"></a>Jak Azure Automation pomoci spravovat virtuální počítače Azure?
-Virtuální počítače lze spravovat ve službě Azure Automation pomocí [prostředí Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Služby Azure Automation zahrnuje rutiny prostředí Azure PowerShell, můžete provést všechny úkoly správy virtuálního počítače v rámci služby. Může také párovat rutiny ve službě Azure Automation pomocí rutin pro jinými službami Azure, na automatizují komplexní úlohy napříč službami Azure a systémech třetích stran.
+Virtuální počítače lze spravovat ve službě Azure Automation pomocí [prostředí Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Služby Azure Automation zahrnuje rutin prostředí Azure PowerShell text hello, takže můžete provádět všechny úkoly správy virtuálního počítače v rámci služby hello. Hello rutin ve službě Azure Automation s hello rutiny pro ostatní služby Azure, tooautomate složité úlohy může také párovat napříč službami Azure a systémech třetích stran.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy Azure Automation a jak může sloužit ke správě virtuálních počítačích Azure, další informace:
+Teď, když jste se naučili základy hello Azure Automation a jak může být použité toomanage virtuální počítače Azure, další informace:
 
 * [Přehled služby Azure Automation](../../automation/automation-intro.md)
 * [Můj první runbook](../../automation/automation-first-runbook-graphical.md)

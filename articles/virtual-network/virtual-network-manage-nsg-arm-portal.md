@@ -1,6 +1,6 @@
 ---
-title: "Správa skupin Nsg pomocí portálu Azure | Microsoft Docs"
-description: "Naučte se spravovat existující skupiny Nsg pomocí portálu Azure."
+title: "skupiny Nsg aaaManage pomocí hello portálu Azure | Microsoft Docs"
+description: "Zjistěte, jak toomanage existující skupiny Nsg pomocí hello portálu Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
-ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad9a4060bd81bae4597ad5a4f59622e10cd214cf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-nsgs-using-the-portal"></a>Správa skupin Nsg pomocí portálu
+# <a name="manage-nsgs-using-hello-portal"></a>Správa skupin Nsg pomocí portálu hello
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-network-manage-nsg-arm-portal.md)
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Resource Manager, které společnost Microsoft doporučuje pro většinu nových nasazení místo modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello modelu nasazení classic.
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -42,158 +42,158 @@ Můžete zobrazit stávající skupiny Nsg, načíst pravidla pro existující s
 
 ### <a name="view-existing-nsgs"></a>Zobrazit existující skupiny Nsg
 
-Chcete-li zobrazit všechny existující skupiny Nsg v předplatném, proveďte následující kroky:
+tooview všechny existující skupiny Nsg v předplatném, dokončení hello následující kroky:
 
-1. V prohlížeči přejděte na http://portal.azure.com a v případě potřeby se přihlaste pomocí účtu Azure.
+1. V prohlížeči přejděte toohttp://portal.azure.com a, v případě potřeby se přihlaste pomocí účtu Azure.
 
 2. Klikněte na tlačítko **procházet >** > **skupin zabezpečení sítě**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure1.png)
 
-3. Zkontrolujte seznam skupin Nsg v **skupin zabezpečení sítě** okno.
+3. Zkontrolujte hello seznam skupin Nsg v hello **skupin zabezpečení sítě** okno.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure2.png)
 
 ### <a name="view-nsgs-in-a-resource-group"></a>Zobrazení skupiny Nsg ve skupině prostředků
 
-Chcete-li zobrazit seznam skupin Nsg v **RG NSG** prostředků skupiny, proveďte následující kroky:
+tooview hello seznam skupin Nsg v hello **RG NSG** skupinu prostředků, dokončení hello následující kroky:
 
 1. Klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...** .
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure3.png)
 
-2. V seznamu prostředků, vyhledejte položky zobrazení na ikonu NSG, jak je znázorněno v **prostředky** okno níže.
+2. V seznamu hello prostředků, vyhledejte položky zobrazení hello NSG ikonu, jak je znázorněno v hello **prostředky** okno níže.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure4.png)
 
 ### <a name="list-all-rules-for-an-nsg"></a>Seznam všech pravidel pro skupiny NSG
 
-Chcete-li zobrazit pravidla s názvem skupiny NSG **NSG front-endu**, proveďte následující kroky:
+pravidla hello tooview skupinu NSG s názvem **NSG front-endu**, dokončení hello následující kroky:
 
-1. Z **skupin zabezpečení sítě** okno, nebo **prostředky** uvedené výše, klikněte na **NSG front-endu**.
+1. Z hello **skupin zabezpečení sítě** okno nebo hello **prostředky** uvedené výše, klikněte na **NSG front-endu**.
 
-2. V **nastavení** , klikněte na **příchozí pravidla zabezpečení**.
+2. V hello **nastavení** , klikněte na **příchozí pravidla zabezpečení**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure5.png)
 
-3. **Příchozí pravidla zabezpečení** jak je uvedeno níže, zobrazí se okno.
+3. Hello **příchozí pravidla zabezpečení** jak je uvedeno níže, zobrazí se okno.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure6.png)
 
-4. V **nastavení** , klikněte na **odchozí pravidla zabezpečení** zobrazíte odchozí pravidla.
+4. V hello **nastavení** , klikněte na **odchozí pravidla zabezpečení** toosee hello odchozí pravidla.
 
     > [!NOTE]
-    > Chcete-li zobrazit výchozí pravidla, klikněte na tlačítko **výchozí pravidla** ikonu v horní části okna, která zobrazuje pravidla.
+    > tooview výchozích pravidel, klikněte na tlačítko hello **výchozí pravidla** ikonu hello horní části okna hello, který zobrazuje hello pravidla.
     >
 
 ### <a name="view-nsgs-associations"></a>Zobrazte přidružení skupiny Nsg
 
-Chcete-li zobrazit prostředky **NSG front-endu** NSG je spojený s, proveďte následující kroky:
+tooview jaké prostředky hello **NSG front-endu** NSG je spojený s, dokončení hello následující kroky:
 
-1. Z **skupin zabezpečení sítě** okno, nebo **prostředky** uvedené výše, klikněte na **NSG front-endu**.
+1. Z hello **skupin zabezpečení sítě** okno nebo hello **prostředky** uvedené výše, klikněte na **NSG front-endu**.
 
-2. V **nastavení** , klikněte na **podsítě** Chcete-li zobrazit, jaké podsítě jsou přidružené k této skupině.
+2. V hello **nastavení** , klikněte na **podsítě** tooview podsítě, které jsou přidružené toohello NSG.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure7.png)
 
-3. V **nastavení** , klikněte na **síťových rozhraní** Chcete-li zobrazit, co jsou přidružené k této skupině síťových adaptérů.
+3. V hello **nastavení** , klikněte na **síťových rozhraní** tooview jaké jsou síťové adaptéry přidružené toohello NSG.
 
 ## <a name="manage-rules"></a>Spravovat pravidla
-Můžete přidat pravidla do existující skupiny NSG, upravit stávající pravidla a odstranit pravidla.
+Můžete přidat pravidla tooan existující skupina NSG, upravit stávající pravidla a odstranit pravidla.
 
 ### <a name="add-a-rule"></a>Přidání pravidla
-Chcete-li přidat pravidlo, které povoluje **příchozí** přenosy na portu **443** z libovolného počítače k **NSG front-endu** NSG, proveďte následující kroky:
+pravidlo, které povoluje tooadd **příchozí** provoz tooport **443** z toohello všechny počítače **NSG front-endu** NSG, dokončení hello následující kroky:
 
-1. Z **skupin zabezpečení sítě** okno, nebo **prostředky** uvedené výše, klikněte na **NSG front-endu**.
-2. V **nastavení** , klikněte na **příchozí pravidla zabezpečení**.
-3. V **příchozí pravidla zabezpečení** okně klikněte na tlačítko **přidat**. Pak na **přidat příchozí pravidlo zabezpečení** okno, zadejte hodnoty, jak je uvedeno níže a potom klikněte na **OK**.
+1. Z hello **skupin zabezpečení sítě** okno nebo hello **prostředky** uvedené výše, klikněte na **NSG front-endu**.
+2. V hello **nastavení** , klikněte na **příchozí pravidla zabezpečení**.
+3. V hello **příchozí pravidla zabezpečení** okně klikněte na tlačítko **přidat**. Potom v hello **přidat příchozí pravidlo zabezpečení** okno, zadejte hodnoty hello, jak je uvedeno níže a potom klikněte na **OK**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure8.png)
 
-    Za několik sekund, Všimněte si nové pravidlo v **příchozí pravidla zabezpečení** okno.
+    Za několik sekund, Všimněte si hello nové pravidlo v hello **příchozí pravidla zabezpečení** okno.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure9.png)
 
 ### <a name="change-a-rule"></a>Změna pravidla
-Chcete-li změnit pravidlo vytvořili výše, které pokud chcete povolit příchozí přenosy z **Internet** pouze, proveďte následující kroky:
+pravidlo hello toochange vytvořili výše tooallow příchozí provoz z hello **Internet** pouze, dokončení hello následující kroky:
 
-1. Z **skupin zabezpečení sítě** okno, nebo **prostředky** uvedené výše, klikněte na **NSG front-endu**.
-2. V **nastavení** , klikněte na pravidlo vytvořili výše.
-3. V **povolit https** okně změnu **zdroj** vlastnost, jak je uvedeno níže a pak klikněte na **Uložit**.
+1. Z hello **skupin zabezpečení sítě** okno nebo hello **prostředky** uvedené výše, klikněte na **NSG front-endu**.
+2. V hello **nastavení** , klikněte na pravidlo hello vytvořili výše.
+3. V hello **povolit https** okno, změna hello **zdroj** vlastnost, jak je uvedeno níže a pak klikněte na **Uložit**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure10.png)
 
 ### <a name="delete-a-rule"></a>Odstranění pravidla
 
-Pokud chcete odstranit pravidlo vytvořili výše, proveďte následující kroky:
+toodelete hello pravidlo vytvořené výše, dokončení hello následující kroky:
 
-1. Z **skupin zabezpečení sítě** okno, nebo **prostředky** uvedené výše, klikněte na **NSG front-endu**.
-2. V **nastavení** , klikněte na pravidlo vytvořili výše.
-3. V **povolit https** okně klikněte na tlačítko **odstranit**a potom klikněte na **Ano**.
+1. Z hello **skupin zabezpečení sítě** okno nebo hello **prostředky** uvedené výše, klikněte na **NSG front-endu**.
+2. V hello **nastavení** , klikněte na pravidlo hello vytvořili výše.
+3. V hello **povolit https** okně klikněte na tlačítko **odstranit**a potom klikněte na **Ano**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure11.png)
 
 ## <a name="manage-associations"></a>Správa přidružení
-Můžete přidružit skupiny NSG k podsítí a síťových karet. Můžete také zrušit přidružení skupiny NSG ze všech prostředků, které je přidružené k.
+Můžete přidružit toosubnets NSG a síťových karet. Můžete také zrušit přidružení skupiny NSG ze všech prostředků, které je přidružené k.
 
-### <a name="associate-an-nsg-to-a-nic"></a>Přidružení skupiny NSG k síťové karty
-Pro přidružení **NSG front-endu** NSG k **TestNICWeb1** síťovou kartu, proveďte následující kroky:
+### <a name="associate-an-nsg-tooa-nic"></a>Přidružit NSG tooa síťový adaptér
+tooassociate hello **NSG front-endu** NSG toohello **TestNICWeb1** síťového adaptéru, dokončení hello následující kroky:
 
-1. Z **skupin zabezpečení sítě** okno, nebo **prostředky** uvedené výše, klikněte na **NSG front-endu**.
-2. V **nastavení** , klikněte na **síťových rozhraní** > **přidružit** > **TestNICWeb1**.
+1. Z hello **skupin zabezpečení sítě** okno nebo hello **prostředky** uvedené výše, klikněte na **NSG front-endu**.
+2. V hello **nastavení** , klikněte na **síťových rozhraní** > **přidružit** > **TestNICWeb1**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure12.png)
 
 ### <a name="dissociate-an-nsg-from-a-nic"></a>Zrušit přidružení skupiny NSG z síťový adaptér
 
-Zrušení přidružení **NSG front-endu** NSG z **TestNICWeb1** síťovou kartu, proveďte následující kroky:
+toodissociate hello **NSG front-endu** NSG z hello **TestNICWeb1** síťového adaptéru, dokončení hello následující kroky:
 
-1. Z portálu Azure klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **TestNICWeb1**.
+1. Z hello portálu Azure, klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **TestNICWeb1**.
 
-2. V **TestNICWeb1** okně klikněte na tlačítko **změnit zabezpečení...**   >  **Žádné**.
+2. V hello **TestNICWeb1** okně klikněte na tlačítko **změnit zabezpečení...**   >  **Žádné**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure13.png)
 
 > [!NOTE]
-> Toto okno můžete taky přidružit síťovou kartu k žádné existující skupina NSG.
+> Můžete také použít toto okno tooassociate hello seskupování tooany existující skupina NSG.
 >
 
 ### <a name="dissociate-an-nsg-from-a-subnet"></a>Zrušit přidružení skupiny NSG z podsítě
 
-Zrušení přidružení **NSG front-endu** NSG z **front-endu** podsíť, proveďte následující kroky:
+toodissociate hello **NSG front-endu** NSG z hello **front-endu** podsíť, dokončení hello následující kroky:
 
-1. Z portálu Azure klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **TestVNet**.
+1. Z hello portálu Azure, klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **TestVNet**.
 
-2. V **nastavení** okně klikněte na tlačítko **podsítě** > **front-endu** > **skupinu zabezpečení sítě**  >  **Žádné**.
+2. V hello **nastavení** okně klikněte na tlačítko **podsítě** > **front-endu** > **skupinu zabezpečení sítě**  >  **Žádné**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure14.png)
 
-3. V **front-endu** okně klikněte na tlačítko **Uložit**.
+3. V hello **front-endu** okně klikněte na tlačítko **Uložit**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure15.png)
 
-### <a name="associate-an-nsg-to-a-subnet"></a>Přidružení skupiny NSG k podsíti
+### <a name="associate-an-nsg-tooa-subnet"></a>Přidružení podsíť tooa NSG
 
-Pro přidružení **NSG front-endu** NSG k **FronEnd** podsíť znovu, proveďte následující kroky:
+tooassociate hello **NSG front-endu** NSG toohello **FronEnd** znovu podsíť, dokončení hello následující kroky:
 
-1. Z portálu Azure klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **TestVNet**.
-2. V **nastavení** okně klikněte na tlačítko **podsítě** > **front-endu** > **skupinu zabezpečení sítě** > **NSG front-endu**.
-3. V **front-endu** okně klikněte na tlačítko **Uložit**.
+1. Z hello portálu Azure, klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **TestVNet**.
+2. V hello **nastavení** okně klikněte na tlačítko **podsítě** > **front-endu** > **skupinu zabezpečení sítě**  >  **NSG front-endu**.
+3. V hello **front-endu** okně klikněte na tlačítko **Uložit**.
 
 > [!NOTE]
-> Můžete také přidružíte skupinu NSG k podsíti z thh NSG na **nastavení** okno.
+> Můžete také přidružit podsíť NSG tooa z thh NSG na **nastavení** okno.
 >
 
 ## <a name="delete-an-nsg"></a>Odstranit skupinu NSG
-Skupinu NSG můžete odstranit, pouze pokud má není přidružen k žádnému prostředku. Chcete-li odstranit skupinu NSG, proveďte následující kroky:.
+Skupinu NSG můžete odstranit, pouze pokud je tooany prostředku není přiřazen. toodelete skupinu NSG dokončení hello následující kroky:.
 
-1. Z portálu Azure klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **NSG front-endu**.
-2. V **nastavení** okně klikněte na tlačítko **síťových rozhraní**.
-3. Pokud nejsou žádné síťové adaptéry uvedené, klikněte na síťový adaptér a postupujte podle kroku 2 v [zrušit přidružení skupiny NSG z síťový adaptér](#Dissociate-an-NSG-from-a-NIC).
+1. Z hello portálu Azure, klikněte na tlačítko **skupiny prostředků >** > **RG NSG** > **...**   >  **NSG front-endu**.
+2. V hello **nastavení** okně klikněte na tlačítko **síťových rozhraní**.
+3. Pokud nejsou žádné síťové adaptéry uvedené, klikněte na tlačítko hello síťový adaptér a postupujte podle kroku 2 v [zrušit přidružení skupiny NSG z síťový adaptér](#Dissociate-an-NSG-from-a-NIC).
 4. Opakujte krok 3 pro každý síťový adaptér.
-5. V **nastavení** okně klikněte na tlačítko **podsítě**.
-6. Pokud neexistují žádné podsítě uvedena, klikněte na podsíť a postupujte podle kroků 2 a 3 v [zrušit přidružení skupiny NSG z podsítě](#Dissociate-an-NSG-from-a-subnet).
-7. Posune zleva **NSG front-endu** okno, pak klikněte na tlačítko **odstranit** > **Ano**.
+5. V hello **nastavení** okně klikněte na tlačítko **podsítě**.
+6. Pokud neexistují žádné podsítě uvedena, klikněte na hello podsítě a postupujte podle kroků 2 a 3 v [zrušit přidružení skupiny NSG z podsítě](#Dissociate-an-NSG-from-a-subnet).
+7. Posune levém toohello **NSG front-endu** okno, pak klikněte na tlačítko **odstranit** > **Ano**.
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 

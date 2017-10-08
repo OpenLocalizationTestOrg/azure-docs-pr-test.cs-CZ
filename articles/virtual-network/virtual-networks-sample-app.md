@@ -1,6 +1,6 @@
 ---
-title: "Azure ukázkovou aplikaci pro použití s zóny DMZ | Microsoft Docs"
-description: "Nasazení této jednoduché webové aplikace po vytvoření DMZ k otestování scénářů tok provozu"
+title: "aaaAzure ukázkovou aplikaci pro použití s zóny DMZ | Microsoft Docs"
+description: "Nasazení této jednoduché webové aplikace po vytvoření DMZ tootest scénáře tok provozu"
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e0d9cf14590f75b50c64b677efce2c5425b83ec6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Ukázková aplikace pro použití s zóny DMZ
-[Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
+[Vrátí toohello stránku osvědčené postupy zabezpečení hranic][HOME]
 
-Tyto skripty prostředí PowerShell můžete spustit místně na serveru IIS01 a AppVM01 nainstalovat a nastavit jednoduché webové aplikace, který zobrazí stránku html z front-endu IIS01 server s obsahem ze serveru back-end AppVM01.
+Tyto skripty prostředí PowerShell můžete spustit místně na servery tooinstall hello IIS01 a AppVM01 a nastavit jednoduché webové aplikace, který zobrazí stránku html z hello front-end IIS01 server s obsahem ze serveru AppVM01 hello back-end.
 
-Tuto aplikaci poskytuje jednoduché testovacím prostředí pro mnoho příkladů DMZ a jak změny na koncové body, skupiny Nsg, UDR a brány Firewall pravidla může ovlivnit tok provozu.
+Tuto aplikaci poskytuje jednoduché testovacím prostředí pro řadu příklady hello DMZ a jak hello změny koncových bodů, skupin Nsg, UDR a pravidla brány Firewall může ovlivnit tok provozu.
 
-## <a name="firewall-rule-to-allow-icmp"></a>Pravidlo brány firewall, které povolí protokol ICMP
-Tento jednoduchý příkaz prostředí PowerShell můžete spustit na jakékoli virtuální počítač s Windows povolit provoz protokolu ICMP (Ping). Tato aktualizace brány firewall umožňuje snazší testování a řešení potíží s tím, že protokol ping přes bránu firewall systému windows (pro většinu distribucích systému Linux, ve které ICMP ve výchozím nastavení).
+## <a name="firewall-rule-tooallow-icmp"></a>Tooallow pravidlo brány firewall ICMP
+Tento jednoduchý příkaz prostředí PowerShell můžete spustit na jakékoli provoz protokolu ICMP (Ping) tooallow virtuální počítač s Windows. Tato aktualizace brány firewall umožňuje snazší testování a řešení potíží s tím, že hello příkazu ping protokolu toopass přes bránu firewall systému windows hello (pro většinu distribucích systému Linux, ve které ICMP ve výchozím nastavení).
 
 ```PowerShell
 # Turn On ICMPv4
@@ -36,25 +36,25 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 ```
 
-Pokud chcete použít následující skripty, přidání pravidla brány firewall je první příkaz.
+Pokud používáte hello následující skripty, přidání pravidla brány firewall je první příkaz hello.
 
 ## <a name="iis01---web-application-installation-script"></a>IIS01 - skript instalace webové aplikace
 Bude se tento skript:
 
-1. Otevřete IMCPv4 (Ping) na místním serveru brány windows firewall pro snazší testování
-2. Instalace IIS a .net Framework v4.5
+1. Otevřete IMCPv4 (Ping) bránu firewall systému windows hello místního serveru pro snazší testování
+2. Instalace služby IIS a hello rozhraní .net Framework v4.5
 3. Vytvořit webovou stránku ASP.NET a v souboru Web.config
-4. Změna fondu aplikací výchozí usnadnění přístupu k souborům
-5. Nastavit pomocí účtu anonymního uživatele na váš účet správce a heslo
+4. Změnit hello výchozí aplikace fondu toomake přístup k souborům jednodušší
+5. Nastavte účet správce tooyour hello anonymního uživatele a heslo
 
 Tento skript prostředí PowerShell by měl být spuštěn místně při RDP měl do IIS01.
 
 ```PowerShell
 # IIS Server Post Build Config Script
 # Get Admin Account and Password
-    Write-Host "Please enter the admin account information used to create this VM:" -ForegroundColor Cyan
-    $theAdmin = Read-Host -Prompt "The Admin Account Name (no domain or machine name)"
-    $thePassword = Read-Host -Prompt "The Admin Password"
+    Write-Host "Please enter hello admin account information used toocreate this VM:" -ForegroundColor Cyan
+    $theAdmin = Read-Host -Prompt "hello Admin Account Name (no domain or machine name)"
+    $thePassword = Read-Host -Prompt "hello Admin Password"
 
 # Turn On ICMPv4
     Write-Host "Creating ICMP Rule in Windows Firewall" -ForegroundColor Cyan
@@ -89,21 +89,21 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
       <form id="frmMain" runat="server">
         <div>
           <h1>Looks like you made it!</h1>
-          This is a page from the inside (a web server on a private network),<br />
-          and it is making its way to the outside! (If you are viewing this from the internet)<br />
+          This is a page from hello inside (a web server on a private network),<br />
+          and it is making its way toohello outside! (If you are viewing this from hello internet)<br />
           <br />
-          The following sections show:
+          hello following sections show:
           <ul style="margin-top: 0px;">
             <li> Local Server Time - Shows if this page is or isnt cached anywhere</li>
-            <li> File Output - Shows that the web server is reaching AppVM01 on the backend subnet and successfully returning content</li>
-            <li> Image from the Internet - Doesnt really show anything, but it made me happy to see this when the app worked</li>
+            <li> File Output - Shows that hello web server is reaching AppVM01 on hello backend subnet and successfully returning content</li>
+            <li> Image from hello Internet - Doesnt really show anything, but it made me happy toosee this when hello app worked</li>
           </ul>
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Local Web Server Time</b>: <asp:Label runat="server" ID="lblTime" /></div>
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>File Output from AppVM01</b>: <asp:Label runat="server" ID="lblOutput" /></div>
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
-            <b>Image File Linked from the Internet</b>:<br />
+            <b>Image File Linked from hello Internet</b>:<br />
             <br />
             <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
         </div>
@@ -131,13 +131,13 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
     $MainPage | Out-File -FilePath "C:\inetpub\wwwroot\Home.aspx" -Encoding ascii
     $WebConfig | Out-File -FilePath "C:\inetpub\wwwroot\Web.config" -Encoding ascii
 
-# Set App Pool to Clasic Pipeline to remote file access will work easier
+# Set App Pool tooClasic Pipeline tooremote file access will work easier
     Write-Host "Updaing IIS Settings" -ForegroundColor Cyan
     c:\windows\system32\inetsrv\appcmd.exe set app "Default Web Site/" /applicationPool:".NET v4.5 Classic"
     c:\windows\system32\inetsrv\appcmd.exe set config "Default Web Site/" /section:system.webServer/security/authentication/anonymousAuthentication /userName:$theAdmin /password:$thePassword /commit:apphost
 
-# Make sure the IIS settings take
-    Write-Host "Restarting the W3SVC" -ForegroundColor Cyan
+# Make sure hello IIS settings take
+    Write-Host "Restarting hello W3SVC" -ForegroundColor Cyan
     Restart-Service -Name W3SVC
 
     Write-Host
@@ -146,24 +146,24 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
 ```
 
 ## <a name="appvm01---file-server-installation-script"></a>AppVM01 - soubor skriptu instalace serveru
-Tento skript nastaví back-end pro tuto aplikaci jednoduché. Bude se tento skript:
+Tento skript nastaví hello back-end pro tento jednoduchou aplikaci. Bude se tento skript:
 
-1. Otevřete IMCPv4 (Ping) v bráně firewall pro snazší testování
-2. Vytvořte adresář pro web
-3. Vytvořte textový soubor být vzdáleně přístup webové stránky
-4. Nastavení oprávnění pro adresáře a souboru pro anonymní přístup
-5. Vypněte rozšířené zabezpečení Internet Exploreru umožňuje snazší procházení z tohoto serveru 
+1. Otevřete IMCPv4 (Ping) v bráně firewall hello pro snazší testování
+2. Vytvořte adresář pro webový server hello
+3. Textového souboru toobe vytvořit vzdáleně přístup hello webová stránka
+4. Nastavení oprávnění pro adresáře a souboru tooAnonymous hello tooallow přístup
+5. Snazší procházení z tohoto serveru vypnout rozšířené zabezpečení Internet Exploreru tooallow 
 
 > [!IMPORTANT]
-> **Nejvhodnější**: nikdy vypněte rozšířené zabezpečení Internet Exploreru na provozním serveru a obecně je vhodné procházení webu, z provozním serveru. Otevírání do sdílené složky pro anonymní přístup je také vhodné, ale done sem pro jednoduchost.
+> **Nejvhodnější**: nikdy vypněte rozšířené zabezpečení Internet Exploreru na provozním serveru a obecně je vhodné toosurf hello webu z provozním serveru. Otevírání do sdílené složky pro anonymní přístup je také vhodné, ale done sem pro jednoduchost.
 > 
 > 
 
-Tento skript prostředí PowerShell by měl být spuštěn místně při RDP měl do AppVM01. PowerShell je nutné spustit jako správce k zajištění úspěšné provedení.
+Tento skript prostředí PowerShell by měl být spuštěn místně při RDP měl do AppVM01. PowerShell je požadovaná toobe spustit jako správce tooensure úspěšné provedení.
 
 ```PowerShell
 # AppVM01 Server Post Build Config Script
-# PowerShell must be run as Administrator for Net Share commands to work
+# PowerShell must be run as Administrator for Net Share commands toowork
 
 # Turn On ICMPv4
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
@@ -172,7 +172,7 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
     New-Item "C:\WebShare" -ItemType Directory
 
 # Write out Rand.txt
-    $FileContent = "Hello, I'm the contents of a remote file on AppVM01."
+    $FileContent = "Hello, I'm hello contents of a remote file on AppVM01."
     $FileContent | Out-File -FilePath "C:\WebShare\Rand.txt" -Encoding ascii
 
 # Set Permissions on share
@@ -193,12 +193,12 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
 ```
 
 ## <a name="dns01---dns-server-installation-script"></a>DNS01 - skript instalace serveru DNS
-Neexistuje žádný skript zahrnuté v této ukázkové aplikaci nastavení serveru DNS. Pokud testování pravidel brány firewall, NSG nebo UDR musí obsahovat přenosy DNS, DNS01 server musí ručně nastavit. Soubor xml konfigurace sítě a šablonou Resource Manageru pro oba příklady zahrnuje DNS01 jako primární server DNS a veřejný server DNS hostitelem úroveň 3 jako záložní server DNS. Server DNS 3 úrovně bude server DNS použitý pro jiné než místní provoz a DNS01 není nastavit, v místní síti, který by tomu bylo DNS.
+Neexistuje žádný skript zahrnuté v této ukázkové aplikaci tooset hello server DNS. Pokud testování pravidel brány firewall hello, NSG nebo UDR potřebuje tooinclude přenosy DNS, musí server hello DNS01 toobe nastavit ručně. soubor xml Hello konfigurace sítě a šablony Resource Manageru pro oba příklady zahrnuje DNS01 jako primární server DNS hello a veřejný server DNS hello hostované úroveň 3 jako záložní server DNS hello. server DNS 3 úrovně Hello bude hello skutečné používat pro přenos jiné než místní pro server DNS a DNS01 není nastavit, v místní síti, který by tomu bylo DNS.
 
 ## <a name="next-steps"></a>Další kroky
-* Spuštění skriptu IIS01 na server služby IIS
+* Spusťte skript IIS01 hello na server služby IIS
 * Spusťte skript souborového serveru na AppVM01
-* Přejděte do veřejné IP adresy na IIS01 k ověření vaší sestavení
+* Procházet toohello veřejnou IP adresu na IIS01 toovalidate buildu
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md

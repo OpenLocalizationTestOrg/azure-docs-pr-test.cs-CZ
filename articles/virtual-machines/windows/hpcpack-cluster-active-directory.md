@@ -1,6 +1,6 @@
 ---
-title: Cluster HPC Pack s Azure Active Directory | Microsoft Docs
-description: "Zjistěte, jak integrovat clusteru služby HPC Pack 2016 v Azure s Azure Active Directory"
+title: aaaHPC Pack cluster s Azure Active Directory | Microsoft Docs
+description: "Zjistěte, jak toointegrate HPC Pack 2016 cluster v Azure s Azure Active Directory"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -13,66 +13,66 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 11/14/2016
 ms.author: danlep
-ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0806e544a468e27ca0567e18c55554811584fbc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>Spravovat cluster služby HPC Pack v Azure pomocí Azure Active Directory
 [Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) podporuje integraci se službou [Azure Active Directory](../../active-directory/index.md) (Azure AD) pro správce, kteří nasazení clusteru HPC Pack v Azure.
 
 
 
-Postupujte podle kroků v tomto článku pro následující úlohy vysoké úrovně: 
+Postupujte podle kroků hello v tomto článku hello následující úlohy vysoké úrovně: 
 * Cluster HPC Pack ručně integrate klientovi Azure AD
 * Spravovat a plánování úloh v clusteru HPC Pack v Azure 
 
-Integrace s Azure AD řešení clusteru prostředí HPC Pack postupuje standardní integrovat dalšími aplikacemi a službami. Tento článek předpokládá, že jste se seznámili s základní uživatel správy ve službě Azure AD. Další informace a pozadí, najdete v článku [dokumentaci služby Azure Active Directory](../../active-directory/index.md) a v následující části.
+Integrace s Azure AD řešení clusteru prostředí HPC Pack následuje toointegrate standardní kroky, ostatní aplikace a služby. Tento článek předpokládá, že jste se seznámili s základní uživatel správy ve službě Azure AD. Další informace a pozadí, najdete v části hello [dokumentaci služby Azure Active Directory](../../active-directory/index.md) a hello následující části.
 
 ## <a name="benefits-of-integration"></a>Výhody integrace
 
 
-Azure Active Directory (Azure AD) je víceklientské cloudové adresáře a identity management služba, která poskytuje jednotné přihlašování (SSO) přístup k cloudové řešení.
+Azure Active Directory (Azure AD) je víceklientské cloudové adresáře a identity management služba, která poskytuje jednotné přihlašování (SSO) přístup toocloud řešení.
 
-Integrace clusteru HPC Pack s Azure AD můžete dosáhnout sledovat tyto cíle:
+Integrace clusteru HPC Pack s Azure AD můžete dosáhnout hello následující cíle:
 
-* Odeberte z clusteru HPC Pack tradiční řadič domény služby Active Directory. To může pomoct snížit náklady na údržbu clusteru, pokud to není nezbytné pro své firmy a zrychlit procesu nasazení.
-* Využívejte následující výhody, které jsou uvedeny ve službě Azure AD:
+* Odeberte z clusteru HPC Pack hello hello tradiční řadič domény služby Active Directory. To může pomoct snížit náklady na hello Správa clusteru hello, pokud to není nezbytné pro své firmy a proces nasazení hello zrychlit.
+* Využít hello následující výhody, které jsou uvedeny ve službě Azure AD:
     *   Jednotné přihlašování 
-    *   Pomocí místní AD identity pro cluster HPC Pack v Azure 
+    *   Pomocí místní AD identity pro cluster HPC Pack hello v Azure 
 
     ![Prostředí Azure Active Directory](./media/hpcpack-cluster-active-directory/aad.png)
 
 
 ## <a name="prerequisites"></a>Požadavky
-* **Cluster HPC Pack 2016 nasazené ve virtuálních počítačích Azure** – pokyny najdete v tématu [nasazení clusteru HPC Pack 2016 v Azure](hpcpack-2016-cluster.md). Potřebujete název DNS hlavního uzlu a přihlašovací údaje Správce clusteru k dokončení kroků v tomto článku.
+* **Cluster HPC Pack 2016 nasazené ve virtuálních počítačích Azure** – pokyny najdete v tématu [nasazení clusteru HPC Pack 2016 v Azure](hpcpack-2016-cluster.md). Potřebujete název DNS hello hello hlavního uzlu a hello přihlašovací údaje Správce clusteru dokončit hello kroky v tomto článku.
 
   > [!NOTE]
   > Integrace se službou Azure Active Directory není podporováno ve verzích sady HPC Pack před HPC Pack 2016.
 
 
 
-* **Klientský počítač** -potřebují klientský počítač Windows nebo Windows Server ke spuštění nástroje HPC Pack klienta. Pokud chcete používat k odesílání úloh HPC Pack webový portál nebo REST API, můžete použít libovolného klientského počítače podle svého výběru.
+* **Klientský počítač** -je nutné Windows nebo Windows Server klientské počítače příliš spustit HPC Pack klienta nástroje. Pokud chcete pouze toouse hello HPC Pack webový portál nebo REST API toosubmit úloh, můžete použít libovolného klientského počítače podle svého výběru.
 
-* **HPC Pack klienta nástroje** -nainstalujte nástroje HPC Pack klienta v klientském počítači, pomocí dostupné volné instalační balíček z webu Microsoft Download Center.
+* **HPC Pack klienta nástroje** -nainstalujte na hello klientského počítače, pomocí hello volné instalačního balíčku k dispozici z hello Microsoft Download Center hello HPC Pack klienta nástroje.
 
 
-## <a name="step-1-register-the-hpc-cluster-server-with-your-azure-ad-tenant"></a>Krok 1: Zaregistrujte server clusteru HPC s klientovi Azure AD
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Klikněte na tlačítko **služby Active Directory** v levé nabídce a pak klikněte na požadovaný adresář ve vašem předplatném. Musíte mít oprávnění k přístupu k prostředkům v adresáři.
+## <a name="step-1-register-hello-hpc-cluster-server-with-your-azure-ad-tenant"></a>Krok 1: Zaregistrujte server clusteru HPC hello se klientovi služby Azure AD
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Klikněte na tlačítko **služby Active Directory** v levé nabídce text hello a potom klikněte na hello požadovaného adresáře v rámci vašeho předplatného. V adresáři hello musí mít oprávnění tooaccess prostředky.
 3. Klikněte na tlačítko **uživatelé**a ověřte, zda uživatelských účtů již vytvořené nebo nakonfigurovaná.
-4. Klikněte na tlačítko **aplikace** > **přidat**a potom klikněte na **přidat aplikaci, kterou vyvíjí Moje organizace**. V průvodci zadejte následující informace:
+4. Klikněte na tlačítko **aplikace** > **přidat**a potom klikněte na **přidat aplikaci, kterou vyvíjí Moje organizace**. Zadejte následující informace v Průvodci hello hello:
     * **Název** -HPCPackClusterServer
     * **Typ** – vyberte **webové aplikace nebo webové rozhraní API**
-    * **Adresa URL přihlašování**– základní adresu URL pro vzorku, který je ve výchozím nastavení`https://hpcserver`
-    * **Identifikátor ID URI aplikace** - `https://<Directory_name>/<application_name>`. Nahraďte `<Directory_name`> s úplným názvem klientovi Azure AD, například `hpclocal.onmicrosoft.com`a nahraďte `<application_name>` s názvem, který jste vybrali dříve.
+    * **Adresa URL přihlašování**– hello základní adresu URL pro hello vzorku, který je ve výchozím nastavení`https://hpcserver`
+    * **Identifikátor ID URI aplikace** - `https://<Directory_name>/<application_name>`. Nahraďte `<Directory_name`> s hello celý název klienta služby Azure AD například `hpclocal.onmicrosoft.com`a nahraďte `<application_name>` s názvem hello dříve vybrané.
 
-5. Po přidání aplikace, klikněte na tlačítko **konfigurace**. Nakonfigurujte následující vlastnosti:
+5. Po přidání aplikace hello klikněte na tlačítko **konfigurace**. Nakonfigurujte hello následující vlastnosti:
     * Vyberte **Ano** pro **aplikace je více klientů**
-    * Vyberte **Ano** pro **přiřazení uživatelských požadovaná pro přístup k aplikaci**.
+    * Vyberte **Ano** pro **uživatele přiřazení požadované tooaccess aplikace**.
 
-6. Klikněte na **Uložit**. Po dokončení ukládání, klikněte na tlačítko **spravovat Manifest**. Tato akce stáhne vaší aplikace manifestu JavaScript object notation (JSON) souboru. Upravit stažené manifest tím, že se `appRoles` nastavení a přidání roli následující aplikace:
+6. Klikněte na **Uložit**. Po dokončení ukládání, klikněte na tlačítko **spravovat Manifest**. Tato akce stáhne vaší aplikace manifestu JavaScript object notation (JSON) souboru. Upravit hello stáhnout manifest vyhledáním hello `appRoles` nastavení a přidání hello následující aplikační role:
     ```json
     "appRoles": [
         {
@@ -99,38 +99,38 @@ Integrace clusteru HPC Pack s Azure AD můžete dosáhnout sledovat tyto cíle:
         }
     ],
     ```
-7. Uložte soubor. Na portálu, klikněte na tlačítko **spravovat Manifest** > **nahrát Manifest**. Potom můžete nahrát upravená manifestu.
-8. Klikněte na tlačítko **uživatelé**, vyberte uživatele a pak klikněte na tlačítko **přiřadit**. Přiřadíte jeden z dostupných rolí (HpcUsers nebo HpcAdminMirror) pro uživatele. Opakujte tento krok s dalším uživatelům v adresáři. Základní informace o uživatelích, clusteru, najdete v části [Správa uživatelů clusteru](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx).
+7. Uložte soubor hello. Hello portálu, klikněte na tlačítko **spravovat Manifest** > **nahrát Manifest**. Potom můžete nahrát hello upravená manifestu.
+8. Klikněte na tlačítko **uživatelé**, vyberte uživatele a pak klikněte na tlačítko **přiřadit**. Přiřadíte jeden hello dostupných rolí (HpcUsers nebo HpcAdminMirror) toohello uživatele. Opakujte tento krok s dalším uživatelům v adresáři hello. Základní informace o uživatelích, clusteru, najdete v části [Správa uživatelů clusteru](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx).
 
    > [!NOTE] 
-   > Pokud chcete spravovat uživatele, doporučujeme použít okno preview služby Azure Active Directory v [portál Azure](https://portal.azure.com).
+   > toomanage uživatele, doporučujeme použít okno preview služby Azure Active Directory hello v hello [portál Azure](https://portal.azure.com).
    >
 
 
-## <a name="step-2-register-the-hpc-cluster-client-with-your-azure-ad-tenant"></a>Krok 2: Registrace klienta clusteru HPC s klientovi Azure AD
+## <a name="step-2-register-hello-hpc-cluster-client-with-your-azure-ad-tenant"></a>Krok 2: Registrace klienta clusteru HPC hello se klientovi služby Azure AD
 
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Klikněte na tlačítko **služby Active Directory** v levé nabídce a pak klikněte na požadovaný adresář ve vašem předplatném. Musíte mít oprávnění k přístupu k prostředkům v adresáři.
-3. Klikněte na tlačítko **aplikace** > **přidat**a potom klikněte na **přidat aplikaci, kterou vyvíjí Moje organizace**. V průvodci zadejte následující informace:
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Klikněte na tlačítko **služby Active Directory** v levé nabídce text hello a potom klikněte na hello požadovaného adresáře v rámci vašeho předplatného. V adresáři hello musí mít oprávnění tooaccess prostředky.
+3. Klikněte na tlačítko **aplikace** > **přidat**a potom klikněte na **přidat aplikaci, kterou vyvíjí Moje organizace**. Zadejte následující informace v Průvodci hello hello:
 
     * **Název** -HPCPackClusterClient
     * **Typ** – vyberte **nativní klientskou aplikaci**
     * **Identifikátor URI pro přesměrování** - `http://hpcclient`
 
-4. Po přidání aplikace, klikněte na tlačítko **konfigurace**. Kopírování **ID klienta** hodnotu a uložte ho. Budete potřebovat později při konfiguraci aplikace.
+4. Po přidání aplikace hello klikněte na tlačítko **konfigurace**. Kopírování hello **ID klienta** hodnotu a uložte ho. Budete potřebovat později při konfiguraci aplikace.
 
-5. V **oprávnění k ostatním aplikacím**, klikněte na tlačítko **přidat aplikaci**. Vyhledat a přidat aplikaci HpcPackClusterServer (vytvořený v kroku 1).
+5. V **oprávnění tooother aplikace**, klikněte na tlačítko **přidat aplikaci**. Vyhledat a přidat aplikaci HpcPackClusterServer hello (vytvořený v kroku 1).
 
-6. V **delegovaná oprávnění** rozevíracího seznamu vyberte **přístup HpcClusterServer**. Potom klikněte na **Uložit**.
+6. V hello **delegovaná oprávnění** rozevíracího seznamu vyberte **přístup HpcClusterServer**. Potom klikněte na **Uložit**.
 
 
-## <a name="step-3-configure-the-hpc-cluster"></a>Krok 3: Konfigurace clusteru HPC
+## <a name="step-3-configure-hello-hpc-cluster"></a>Krok 3: Konfigurace clusteru HPC hello
 
-1. Připojení k hlavnímu uzlu HPC Pack 2016 v Azure.
+1. Připojte toohello HPC Pack 2016 hlavního uzlu v Azure.
 
 2. Spusťte prostředí HPC PowerShell.
 
-3. Spusťte následující příkaz:
+3. Spusťte následující příkaz hello:
 
     ```powershell
 
@@ -138,12 +138,12 @@ Integrace clusteru HPC Pack s Azure AD můžete dosáhnout sledovat tyto cíle:
     ```
     kde
 
-    * `AADTenant`Určuje název klienta Azure AD, jako například`hpclocal.onmicrosoft.com`
-    * `AADClientAppId`Určuje ID klienta pro aplikaci vytvořili v kroku 2.
+    * `AADTenant`Určuje název klienta Azure AD hello, jako například`hpclocal.onmicrosoft.com`
+    * `AADClientAppId`Určuje ID hello klienta pro aplikaci hello vytvořili v kroku 2.
 
-4. Restartujte službu HpcSchedulerStateful.
+4. Restartujte službu HpcSchedulerStateful hello.
 
-    V clusteru s více hlavních uzlech můžete spustit následující příkazy prostředí PowerShell z hlavního uzlu přepnout primární repliky pro službu HpcSchedulerStateful:
+    V clusteru s více hlavních uzlech můžete spustit následující příkazy prostředí PowerShell na hello hlavního uzlu tooswitch hello primární repliky pro službu HpcSchedulerStateful hello hello:
 
     ```powershell
     Connect-ServiceFabricCluster
@@ -152,19 +152,19 @@ Integrace clusteru HPC Pack s Azure AD můžete dosáhnout sledovat tyto cíle:
 
     ```
 
-## <a name="step-4-manage-and-submit-jobs-from-the-client"></a>Krok 4: Správa a odesílání úloh z klienta
+## <a name="step-4-manage-and-submit-jobs-from-hello-client"></a>Krok 4: Správa a odesílání úloh z klienta hello
 
-Pokud chcete nainstalovat klienta nástroje HPC Pack ve vašem počítači, stáhněte instalační soubory HPC Pack 2016 (úplná instalace) z webu Microsoft Download Center. Abyste před zahájením instalace, zvolte možnost instalační program **HPC Pack klienta nástroje**.
+tooinstall hello HPC Pack klienta nástroje do počítače stáhnout instalační soubory HPC Pack 2016 (úplná instalace) z hello Microsoft Download Center. Když zahájíte instalaci hello, zvolte možnost instalace hello pro hello **HPC Pack klienta nástroje**.
 
-Příprava klientského počítače, nainstalujte certifikát použitý během [nastavení clusteru HPC](hpcpack-2016-cluster.md) v klientském počítači. Použijte standardní postupy správy certifikátu Windows veřejný certifikát, který chcete nainstalovat **certifikáty – aktuální uživatel** > **důvěryhodné kořenové certifikační autority** uložit. 
+tooprepare hello klientský počítač, nainstalujte certifikát hello používá během [nastavení clusteru HPC](hpcpack-2016-cluster.md) na klientském počítači hello. Standardní Windows pomocí certifikátu správy postupy tooinstall hello veřejný certifikát toohello **certifikáty – aktuální uživatel** > **důvěryhodné kořenové certifikační autority** uložit. 
 
-Nyní můžete spustit příkazy HPC Pack nebo pomocí Správce úloh HPC Pack grafickým uživatelským rozhraním odesílat a spravovat úlohy clusteru pomocí účtu Azure AD. Možnosti pro odeslání úlohy najdete v tématu [clusteru HPC odeslání úlohy HPC Pack v Azure](hpcpack-cluster-submit-jobs.md#step-3-run-test-jobs-on-the-cluster).
+Teď můžete spustit příkazy hello HPC Pack nebo použít hello grafického uživatelského rozhraní Správce úloh HPC Pack toosubmit a spravovat úlohy clusteru pomocí účtu hello Azure AD. Možnosti pro odeslání úlohy najdete v tématu [tooan HPC odeslání úlohy HPC Pack clusteru v Azure](hpcpack-cluster-submit-jobs.md#step-3-run-test-jobs-on-the-cluster).
 
 > [!NOTE]
-> Při pokusu o připojení ke clusteru HPC Pack v Azure poprvé, zobrazí se místní windows. Zadejte přihlašovací údaje Azure AD k přihlášení. Token se pak uloží do mezipaměti. Novější připojení do clusteru v Azure používat token v mezipaměti, pokud není zaškrtnuté změny v ověřování, nebo v mezipaměti.
+> Když zkusíte tooconnect clusteru toohello HPC Pack v Azure pro hello poprvé, zobrazí se místní windows. Zadejte vaše přihlašovací údaje toolog Azure AD v. Hello token se pak uloží do mezipaměti. Novější clusteru toohello připojení v Azure pomocí hello do mezipaměti token, pokud není zaškrtnuté změny ověřování nebo hello do mezipaměti.
 >
   
-Například po dokončení předchozích kroků se můžete dotazovat pro úlohy z lokálního klienta následujícím způsobem:
+Například po dokončení předchozích kroků hello se můžete dotazovat pro úlohy z lokálního klienta následujícím způsobem:
 
 ```powershell 
 Get-HpcJob –State All –Scheduler https://<Azure load balancer DNS name> -Owner <Azure AD account>
@@ -172,9 +172,9 @@ Get-HpcJob –State All –Scheduler https://<Azure load balancer DNS name> -Own
 
 ## <a name="useful-cmdlets-for-job-submission-with-azure-ad-integration"></a>Užitečné rutiny pro odeslání úlohy s integrací služby Azure AD 
 
-### <a name="manage-the-local-token-cache"></a>Spravovat místní mezipaměti tokenu
+### <a name="manage-hello-local-token-cache"></a>Spravovat místní mezipaměti tokenu hello
 
-HPC Pack 2016 poskytuje dvě nové rutiny prostředí HPC PowerShell ke správě místního mezipamětí tokenů. Tyto rutiny jsou užitečné pro odesílání úloh interaktivně. Podívejte se na následující příklad:
+HPC Pack 2016 poskytuje dvě nové rutiny prostředí HPC PowerShell toomanage hello místní tokenu mezipaměti. Tyto rutiny jsou užitečné pro odesílání úloh interaktivně. Viz následující ukázka hello:
 
 ```powershell
 Remove-HpcTokenCache
@@ -184,11 +184,11 @@ $SecurePassword = "<password>" | ConvertTo-SecureString -AsPlainText -Force
 Set-HpcTokenCache -UserName <AADUsername> -Password $SecurePassword -scheduler https://<Azure load balancer DNS name> 
 ```
 
-### <a name="set-the-credentials-for-submitting-jobs-using-the-azure-ad-account"></a>Nastavte přihlašovací údaje pro odesílání úloh pomocí účtu Azure AD 
+### <a name="set-hello-credentials-for-submitting-jobs-using-hello-azure-ad-account"></a>Nastavte hello přihlašovací údaje pro odesílání úloh, pomocí účtu hello Azure AD 
 
-V některých případech můžete chtít spustit úlohu uživatele clusteru prostředí HPC (pro připojené k doméně clusteru HPC, spusťte jako jednu doménu uživatele; pro domény nepřipojená cluster prostředí HPC, spustit jako jeden místní uživatel z hlavního uzlu).
+V některých případech můžete chtít úlohy hello toorun pod uživatelským clusteru HPC hello (pro připojené k doméně clusteru HPC, spustit jako uživatele domény jeden; pro domény nepřipojená clusteru HPC, spustit jako jeden místní uživatel hello hlavního uzlu).
 
-1. Pomocí následujících příkazů nastavit přihlašovací údaje:
+1. Použijte následující příkazy tooset hello pověření hello:
 
     ```powershell
     $localUser = “<username>”
@@ -202,7 +202,7 @@ V některých případech můžete chtít spustit úlohu uživatele clusteru pro
     Set-HpcJobCredential -Credential $mycreds -Scheduler https://<Azure load balancer DNS name>
     ```
 
-2. Potom takto odeslání úlohy. Úloh se spouští v části $localUser výpočetní uzly.
+2. Pak odešlete úlohu hello následujícím způsobem. Hello úkol se spustí v části $localUser hello výpočetních uzlů.
 
     ```powershell
     $emptycreds = New-Object System.Management.Automation.PSCredential ($localUser, (new-object System.Security.SecureString))
@@ -214,11 +214,11 @@ V některých případech můžete chtít spustit úlohu uživatele clusteru pro
     Submit-HpcJob -Job $job -Scheduler https://<Azure load balancer DNS name> -Credential $emptycreds
     ```
     
-   Pokud `–Credential` není zadaný s `Submit-HpcJob`, úlohy nebo úkolu spouští pod místním uživatelským namapované jako účet Azure AD. (Clusteru HPC vytvoří místní uživatele se stejným názvem jako účet služby Azure AD, který chcete spustit úlohu.)
+   Pokud `–Credential` není zadaný s `Submit-HpcJob`, hello úlohy nebo úkolu spouští pod místním uživatelským namapované jako hello účet Azure AD. (clusteru HPC hello vytvoří místního uživatele s hello stejný název jako hello úloh hello toorun účet Azure AD.)
     
-3. Nastavit rozšířená data pro účet Azure AD. To je užitečné, pokud se používá úlohu MPI na Linuxových uzlů pomocí účtu Azure AD.
+3. Nastavit rozšířená data pro hello účet Azure AD. To je užitečné, pokud se používá úlohu MPI na Linuxových uzlů pomocí účtu hello Azure AD.
 
-   * Nastavit rozšířená data pro samotné účet Azure AD
+   * Nastavit rozšířená data pro hello přímo účet Azure AD
 
       ```powershell
       Set-HpcJobCredential -Scheduler https://<Azure load balancer DNS name> -ExtendedData <data> -AadUser

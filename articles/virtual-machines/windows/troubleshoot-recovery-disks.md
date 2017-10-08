@@ -1,6 +1,6 @@
 ---
-title: "Použití Windows řešení potíží s virtuálních počítačů v prostředí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak k řešení potíží virtuální počítač s Windows v Azure připojením disk operačního systému k obnovení virtuálního počítače pomocí prostředí Azure PowerShell"
+title: "aaaUse a řešení potíží s virtuálních počítačů v prostředí Azure PowerShell systému Windows | Microsoft Docs"
+description: "Zjistěte, jak problémy tootroubleshoot virtuální počítač s Windows v Azure připojením obnovení tooa disku hello operačního systému virtuálního počítače pomocí prostředí Azure PowerShell"
 services: virtual-machines-windows
 documentationCenter: 
 authors: genlin
@@ -13,55 +13,55 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/26/2017
 ms.author: genli
-ms.openlocfilehash: 8b7821b4285e73d461af426bfdfb3fdcc4454517
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7a6a76f64824fe5d06dc4286cb1d87ab8bb794e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Řešení potíží s virtuální počítač s Windows pomocí disk operačního systému se připojuje k obnovení virtuálního počítače pomocí prostředí Azure PowerShell
-Pokud Windows virtuálního počítače (VM) v prostředí Azure dojde k chybě spouštěcí nebo disk, musíte provést na virtuálním pevném disku, sám sebe pro řešení potíží. Běžným příkladem bude aplikaci, která selhala aktualizace, která brání virtuálního počítače nebudou moct úspěšně spustil. Tento článek podrobné informace o tom, jak pomocí prostředí Azure PowerShell pro připojení k jiným virtuálním Počítačem Windows opravte případné chyby a pak znovu vytvořte původní virtuální počítač virtuální pevný disk.
+# <a name="troubleshoot-a-windows-vm-by-attaching-hello-os-disk-tooa-recovery-vm-using-azure-powershell"></a>Řešení potíží s virtuální počítač s Windows připojením obnovení tooa disku hello operačního systému virtuálního počítače pomocí prostředí Azure PowerShell
+Pokud Windows virtuálního počítače (VM) v prostředí Azure dojde k chybě spouštěcí nebo disk, může být nutné tooperform řešení potíží s kroky hello virtuální pevný disk sám sebe. Běžným příkladem bude aplikaci, která selhala aktualizace, která brání hello virtuální počítač schopný tooboot úspěšně. Tento článek podrobnosti o tom, jak tooconnect toouse prostředí Azure PowerShell vaše virtuální pevný disk tooanother virtuální počítač s Windows toofix všechny chyby, potom je znovu vytvořit původní virtuální počítač.
 
 
 ## <a name="recovery-process-overview"></a>Přehled procesu obnovení
-Proces řešení potíží je následující:
+řešení potíží s procesem Hello vypadá takto:
 
-1. Odstraňte virtuální počítač, na zjištění problémy, zachovat virtuální pevné disky.
-2. Připojte a připojit virtuální pevný disk na jiný virtuální počítač s Windows pro účely odstraňování potíží.
-3. Připojení k virtuálnímu počítači pro řešení potíží. Úpravy souborů nebo spustit žádné nástroje na opravte problémy v původní virtuální pevný disk.
-4. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
-5. Vytvoření virtuálního počítače pomocí původní virtuální pevný disk.
+1. Odstraňte hello virtuálních počítačů zjištění problémy, udržování hello virtuální pevné disky.
+2. Připojení a připojte tooanother hello virtuální pevný disk virtuálního počítače s Windows pro účely odstraňování potíží.
+3. Připojte toohello řešení potíží s virtuálních počítačů. Úpravy souborů nebo spuštěním žádné nástroje toofix problémy v hello původní virtuální pevný disk.
+4. Odpojte Image a odpojte hello virtuální pevný disk z hello řešení potíží s virtuálních počítačů.
+5. Vytvoření virtuálního počítače pomocí hello původní virtuální pevný disk.
 
-Ujistěte se, že máte [nejnovější prostředí Azure PowerShell](/powershell/azure/overview) nainstalován a přihlášení k vašemu předplatnému:
+Ujistěte se, že máte [hello nejnovější prostředí Azure PowerShell](/powershell/azure/overview) nainstalován a přihlášení tooyour předplatného:
 
 ```powershell
 Login-AzureRMAccount
 ```
 
-V následujících příkladech nahraďte názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
+V hello následujících příkladech nahraďte vlastními hodnotami názvy parametrů. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
 
 
 ## <a name="determine-boot-issues"></a>Určení spouštěcí problémy
-Zobrazí se snímek virtuálního počítače v Azure k řešení potíží spouštěcí. Tento snímek obrazovky může pomoct identifikovat, proč virtuální počítač se nepodaří spustit. Následující příklad získá na snímku obrazovky z virtuálního počítače Windows s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+Zobrazí se snímek virtuálního počítače v Azure toohelp potíží při spouštění systému. Tento snímek obrazovky může pomoct identifikovat, proč tooboot selže virtuálního počítače. Hello následující příklad načte hello – snímek obrazovky ze hello virtuální počítač s Windows s názvem `myVM` v hello skupinu prostředků s názvem `myResourceGroup`:
 
 ```powershell
 Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-Zkontrolujte na snímku obrazovky, chcete-li zjistit, proč se nedaří spustit virtuální počítač. Poznámka: všechny specifické chybové zprávy nebo kódy chyb, které jsou dispozici.
+Zkontrolujte toodetermine – snímek obrazovky hello proč hello virtuálního počítače selhává tooboot. Poznámka: všechny specifické chybové zprávy nebo kódy chyb, které jsou dispozici.
 
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Zobrazení podrobností existující virtuální pevný disk
-Než k jiným virtuálním Počítačem můžete připojit virtuální pevný disk, musíte určit název virtuálního pevného disku (VHD).
+Než můžete připojit vaše tooanother virtuální pevný disk virtuálního počítače, je třeba název hello tooidentify hello virtuálního pevného disku (VHD).
 
-Následující příklad načte informace pro virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+Hello následující příklad načte informace o hello virtuálního počítače s názvem `myVM` v hello skupinu prostředků s názvem `myResourceGroup`:
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Vyhledejte `Vhd URI` v rámci `StorageProfile` části z výstupu předchozí příkaz. Zkrácená následující příklad ukazuje výstup `Vhd URI` na konci bloku kódu:
+Vyhledejte `Vhd URI` v rámci hello `StorageProfile` části z výstupu hello hello předcházející příkaz. Hello následující zkrácený příklad výstupu zobrazuje následující stavy hello `Vhd URI` hello konci hello blok kódu:
 
 ```powershell
 RequestId                     : 8a134642-2f01-4e08-bb12-d89b5b81a0a0
@@ -88,23 +88,23 @@ StorageProfile                :
 
 
 ## <a name="delete-existing-vm"></a>Odstraňte existující virtuální počítač
-Virtuální pevné disky a virtuální počítače jsou v Azure dva různé prostředky. Virtuální pevný disk je, kde jsou uloženy samotného operačního systému, aplikace a konfigurace. Virtuální počítač je jenom metadata, která definuje velikosti či umístění a odkazuje na prostředky, jako je virtuální pevný disk nebo virtuální síťová karta (NIC). Každý virtuální pevný disk má zapůjčení přiřazen při připojen k virtuálnímu počítači. Přestože datové disky je možné připojovat a odpojovat dokonce i za běhu virtuálního počítače, disk s operačním systémem není možné odpojit, dokud se neodstraní prostředek virtuálního počítače. Zapůjčení i nadále i v případě, že tento virtuální počítač je ve stavu Zastaveno a deallocated přidružení disk operačního systému virtuálního počítače.
+Virtuální pevné disky a virtuální počítače jsou v Azure dva různé prostředky. Virtuální pevný disk je, kde jsou uloženy hello operačního systému, samotné, aplikace a konfigurace. Hello virtuální počítač je jenom metadata, která definuje hello velikosti nebo umístění a odkazuje na prostředky, jako je virtuální pevný disk nebo virtuální síťová karta (NIC). Každý virtuální pevný disk má zapůjčení přiřazen při připojené tooa virtuálních počítačů. I když datových disků můžete připojit a odpojit i hello virtuálních počítačů se systémem, disk operačního systému hello nejde odpojit, pokud se odstraní hello prostředků virtuálního počítače. Hello zapůjčení pokračuje tooassociate hello operačního systému disku v případě virtuálních počítačů i v případě, že tento virtuální počítač je ve stavu Zastaveno a deallocated.
 
-Prvním krokem k obnovení virtuálního počítače je odstranit samotné prostředků virtuálního počítače. Když odstraníte virtuální počítač, virtuální pevné disky zůstanou ve vašem účtu úložiště. Po odstranění virtuálního počítače připojit virtuální pevný disk k jiným virtuálním Počítačem vyřešit chyby.
+první krok toorecover Hello virtuálního počítače je prostředků virtuálního počítače hello toodelete sám sebe. Odstraňování hello virtuálního počítače zůstane hello virtuální pevné disky ve vašem účtu úložiště. Po hello je odstranit virtuální počítač připojte hello virtuálního pevného disku tooanother virtuálních počítačů tootroubleshoot a vyřešte chyby hello.
 
-Následující příklad odstraní virtuální počítač s názvem `myVM` ze skupiny prostředků s názvem `myResourceGroup`:
+Následující příklad odstranění Hello hello virtuálního počítače s názvem `myVM` z hello skupinu prostředků s názvem `myResourceGroup`:
 
 ```powershell
 Remove-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Počkejte, dokud je virtuální počítač dokončí odstraňování před připojit virtuální pevný disk k jiným virtuálním Počítačem. Zapůjčení na virtuální pevný disk, který přidruží k němu virtuální počítač je nutné uvolnit předtím, než k jiným virtuálním Počítačem můžete připojit virtuální pevný disk.
+Počkejte, dokud hello virtuálních počítačů dokončí odstraňování před připojením tooanother hello virtuální pevný disk virtuálního počítače. Hello zapůjčení na hello virtuální pevný disk, který přidruží k němu hello virtuálních počítačů musí toobe vydán dříve, než je možné připojit virtuální pevný disk tooanother hello virtuálních počítačů.
 
 
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Připojit existující virtuální pevný disk k jiným virtuálním Počítačem
-Pro několika dalších krocích použijete jiný počítač pro účely odstraňování potíží. Existující virtuální pevný disk se připojit k řešení potíží VM na Procházet a upravovat obsah na disk. Tento proces umožňuje opravte všechny chyby konfigurace nebo zkontrolujte další aplikace nebo systému souborů protokolu, např. Vyberte nebo vytvořte jiným virtuálním Počítačem používat pro účely odstraňování potíží.
+## <a name="attach-existing-virtual-hard-disk-tooanother-vm"></a>Připojit existující virtuální pevný disk tooanother virtuálních počítačů
+Pro hello vedle několik kroků, použijte jiný počítač pro účely odstraňování potíží. Připojte hello existující virtuální pevný disk toothis řešení potíží s toobrowse virtuálních počítačů a upravit obsah hello disku. Tento proces vám umožní toocorrect všechny chyby konfigurace nebo zkontrolujte další aplikace nebo systému souborů, například protokolu. Vyberte nebo vytvořte jinou toouse virtuálních počítačů pro účely odstraňování potíží.
 
-Když připojíte existující virtuální pevný disk, zadejte adresu URL na disk získaných v předchozím `Get-AzureRmVM` příkaz. Následující příklad připojí k řešení potíží virtuální počítač s názvem existujícího virtuálního pevného disku `myVMRecovery` ve skupině prostředků s názvem `myResourceGroup`:
+Když připojíte hello existující virtuální pevný disk, zadejte hello URL toohello disk získaných v předchozím hello `Get-AzureRmVM` příkaz. Hello následující příklad připojí existující virtuální pevný disk toohello řešení potíží s virtuálním počítačem s názvem `myVMRecovery` v hello skupinu prostředků s názvem `myResourceGroup`:
 
 ```powershell
 $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMRecovery"
@@ -114,25 +114,25 @@ Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 > [!NOTE]
-> Přidání disku vyžaduje, abyste zadejte velikost disku. Jak jsme připojit stávající disk, `-DiskSizeInGB` je zadán jako `$null`. Tato hodnota zajistí datový disk je správně připojený a bez nutnosti určit true velikost datový disk.
+> Přidání disku vyžaduje toospecify hello velikost disku hello. Jak jsme připojit stávající disk, hello `-DiskSizeInGB` je zadán jako `$null`. Tato hodnota zajistí hello datový disk je správně připojena a bez hello potřebovat toodetermine hello true velikost datového disku.
 
 
-## <a name="mount-the-attached-data-disk"></a>Připojit disk připojená data
+## <a name="mount-hello-attached-data-disk"></a>Připojte disk připojená data hello
 
-1. K řešení potíží virtuální počítač příslušná pověření pomocí protokolu RDP. Následující příklad soubory ke stažení souboru připojení RDP pro virtuální počítač s názvem `myVMRecovery` ve skupině prostředků s názvem `myResourceGroup`a stáhne jeho `C:\Users\ops\Documents`"
+1. Řešení potíží s virtuálního počítače pomocí příslušných přihlašovacích údajů hello tooyour protokolu RDP. Hello následující příklad soubory ke stažení souboru připojení hello RDP pro virtuální počítač s názvem hello `myVMRecovery` v hello skupinu prostředků s názvem `myResourceGroup`a stáhne je příliš`C:\Users\ops\Documents`"
 
     ```powershell
     Get-AzureRMRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "myVMRecovery" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
-2. Datový disk je automaticky zjistil a připojené. Zobrazení seznamu připojených svazků určit písmeno jednotky následujícím způsobem:
+2. Hello datový disk je automaticky zjistil a připojené. Zobrazte seznam hello podle písmene jednotky hello toodetermine připojené svazky následujícím způsobem:
 
     ```powershell
     Get-Disk
     ```
 
-    Následující příklad výstupu zobrazuje virtuální pevný disk připojený disk **2**. (Můžete také použít `Get-Volume` zobrazíte písmeno jednotky):
+    Hello následující příklad výstupu zobrazuje hello virtuální pevný disk připojený disk **2**. (Můžete také použít `Get-Volume` písmeno jednotky tooview hello):
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -144,19 +144,19 @@ Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Vyřešte problémy na původní virtuální pevný disk
-S existující virtuální pevný disk připojit teď můžete dělat žádné údržby a řešení potíží s kroky, podle potřeby. Jakmile vyřešíte problémy, pokračujte následujícími kroky.
+S hello existující virtuální pevný disk připojit teď můžete dělat žádné údržby a řešení potíží s kroky, podle potřeby. Jakmile jste vyřešili problémy hello, pokračujte hello následující kroky.
 
 
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Odpojte Image a odpojit původní virtuální pevný disk
-Jakmile jsou vaše chyby vyřešeny, odpojte Image a odpojit existující virtuální pevný disk z virtuálního počítače řešení potíží. Virtuální pevný disk s jiných virtuálních počítačů nelze používat, dokud vydání zapůjčení virtuální pevný disk se připojuje k řešení potíží virtuální počítač.
+Jakmile jsou vaše chyby vyřešeny, odpojte Image a odpojit hello existující virtuální pevný disk z virtuálního počítače řešení potíží. Virtuální pevný disk s jiných virtuálních počítačů nelze používat, dokud vydání hello zapůjčení připojení hello virtuálního pevného disku toohello řešení potíží s virtuálních počítačů.
 
-1. Z v rámci relace RDP, odpojte datový disk na váš virtuální počítač pro obnovení. Je třeba číslo disku z předchozí `Get-Disk` rutiny. Poté použijte `Set-Disk` nastavit jako v režimu offline:
+1. Z v rámci relace RDP, odpojte hello datový disk na váš virtuální počítač pro obnovení. Je třeba číslo disku hello z hello předchozí `Get-Disk` rutiny. Poté použijte `Set-Disk` tooset hello jako v režimu offline disku:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Zkontrolujte disk je teď nastavená jako offline pomocí `Get-Disk` znovu. Následující příklad výstupu zobrazuje, že disk je teď nastavená jako offline:
+    Potvrďte hello disk je teď nastavená jako offline pomocí `Get-Disk` znovu. Hello následující příklad výstupu zobrazuje hello disk je teď nastavená jako offline:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -167,7 +167,7 @@ Jakmile jsou vaše chyby vyřešeny, odpojte Image a odpojit existující virtu�
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. Ukončete relaci protokolu RDP. Z relace prostředí Azure PowerShell odeberte virtuální pevný disk z virtuálního počítače, řešení potíží.
+2. Ukončete relaci protokolu RDP. Z relace prostředí Azure PowerShell odeberte hello virtuální pevný disk z hello řešení potíží s virtuálních počítačů.
 
     ```powershell
     $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMRecovery"
@@ -177,23 +177,23 @@ Jakmile jsou vaše chyby vyřešeny, odpojte Image a odpojit existující virtu�
 
 
 ## <a name="create-vm-from-original-hard-disk"></a>Vytvoření virtuálního počítače z původního pevného disku
-Chcete-li vytvořit virtuální počítač z původní virtuální pevný disk, použijte [této šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet). Skutečné šablona JSON je na následující odkaz:
+použijte virtuální počítač z původní virtuální pevný disk, toocreate [této šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet). Šablona JSON skutečné Hello je na hello následující odkaz:
 
 - https://RAW.githubusercontent.com/Azure/Azure-QuickStart-Templates/Master/201-VM-Specialized-VHD-Existing-vnet/azuredeploy.JSON
 
-Šablona nasadí virtuální počítač do existující virtuální síť pomocí adresy URL virtuálního pevného disku z dřívějších příkazu. Následující příklad nasadí šablony do skupiny prostředků s názvem `myResourceGroup`:
+Šablona Hello nasadí virtuální počítač do existující virtuální síť pomocí hello adresu URL VHD z hello dříve příkaz. Hello následující příklad nasadí hello šablony toohello skupinu prostředků s názvem `myResourceGroup`:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName myResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd-existing-vnet/azuredeploy.json
 ```
 
-Odpovězte pokynů pro šablonu, například název virtuálního počítače, typ operačního systému a velikost virtuálního počítače. `osDiskVhdUri` Je stejný jako použil při připojení existujícího virtuálního pevného disku k řešení potíží virtuální počítač.
+Odpověď hello vyzve k zadání šablony hello například název virtuálního počítače, typ operačního systému a velikost virtuálního počítače. Hello `osDiskVhdUri` hello je stejný jako použil při připojení hello existující virtuální pevný disk toohello řešení potíží s virtuálních počítačů.
 
 
 ## <a name="re-enable-boot-diagnostics"></a>Opětovné povolení Diagnostika spouštění
 
-Při vytváření virtuálního počítače z existujícího virtuálního pevného disku, nemusí být Diagnostika spouštění automaticky povolené. Následující příklad povolí diagnostiky rozšíření ve virtuálním počítači s názvem `myVMDeployed` ve skupině prostředků s názvem `myResourceGroup`:
+Při vytváření virtuálního počítače z hello existující virtuální pevný disk, Diagnostika spouštění není automaticky povolené. Hello následující příklad povolí rozšíření diagnostiky hello na hello virtuálního počítače s názvem `myVMDeployed` v hello skupinu prostředků s názvem `myResourceGroup`:
 
 ```powershell
 $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -202,6 +202,6 @@ Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte problémy s připojením k virtuálnímu počítači, přečtěte si téma [připojení řešení potíží s RDP na virtuální počítač Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete v tématu [problémů s připojením aplikace na virtuálním počítači Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud máte problémy s připojením tooyour virtuálních počítačů, přečtěte si téma [tooan řešení potíží s RDP připojení virtuálního počítače Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete v tématu [problémů s připojením aplikace na virtuálním počítači Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Další informace o používání správce prostředků najdete v tématu [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

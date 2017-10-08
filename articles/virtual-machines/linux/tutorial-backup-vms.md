@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d0cbf7883a8737bcb10e9dd251c9792a12993f77
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7c00392d5185a2f067f2ee2717529dcbde1e71f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>Zálohovat virtuální počítače s Linuxem v Azure
 
-Svá data můžete chránit prováděním záloh v pravidelných intervalech. Zálohování Azure vytvoří body obnovení, které jsou uložené v geograficky redundantní obnovení trezorů. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jenom určité soubory. Tento článek vysvětluje, jak k obnovení virtuálního počítače s Linuxem systémem nginx jeden soubor. Pokud ještě nemáte virtuální počítač používat, můžete vytvořit jeden pomocí [rychlý start Linux](quick-create-cli.md). V tomto kurzu se naučíte:
+Svá data můžete chránit prováděním záloh v pravidelných intervalech. Zálohování Azure vytvoří body obnovení, které jsou uložené v geograficky redundantní obnovení trezorů. Při obnovení z bodu obnovení můžete obnovit hello celý virtuální počítač nebo jenom určité soubory. Tento článek vysvětluje, jak toorestore jednoho souboru tooa nginx spuštěného virtuálního počítače s Linuxem. Pokud ještě nemáte toouse virtuálních počítačů, můžete jeden vytvořit pomocí hello [rychlý start Linux](quick-create-cli.md). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření zálohy virtuálního počítače
@@ -35,43 +35,43 @@ Svá data můžete chránit prováděním záloh v pravidelných intervalech. Z�
 
 ## <a name="backup-overview"></a>Přehled služby Backup
 
-Když služba Azure Backup zahájí zálohu, aktivuje rozšíření zálohování k pořízení snímku v daném okamžiku. Použití služby Azure Backup _VMSnapshotLinux_ rozšíření v systému Linux. Rozšíření je nainstalován během první zálohování virtuálních počítačů, pokud je virtuální počítač spuštěný. Pokud virtuální počítač není spuštěný, služba zálohování pořídí snímek podkladové úložiště (protože žádné aplikace zápisy dojít při zastavení virtuálního počítače).
+V případě hello služba Azure Backup zahájí zálohu, aktivuje hello rozšíření zálohování tootake snímku v daném okamžiku. Hello služby Azure Backup používá hello _VMSnapshotLinux_ rozšíření v systému Linux. rozšíření Hello je nainstalován během hello první zálohování virtuálních počítačů, pokud běží hello virtuálních počítačů. Pokud hello virtuální počítač není spuštěný, hello služby zálohování pořídí snímek hello základní úložiště (protože žádné zápisy aplikace dochází při hello zastavení virtuálního počítače).
 
-Ve výchozím nastavení, zálohování Azure trvá konzistentní zálohu systému souborů pro virtuální počítač s Linuxem ale dá se provést [aplikace konzistentní zálohování pomocí skriptů před a po skript rozhraní](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Jakmile služba Azure Backup používá snímku, data se přenáší do trezoru. Pokud chcete maximalizovat efektivitu, služba identifikuje a přenáší pouze bloky dat, které se změnily od předchozí zálohy.
+Ve výchozím nastavení, zálohování Azure přebírá konzistentní zálohu systému souborů pro virtuální počítač s Linuxem, ale může být nakonfigurované tootake [aplikace konzistentní zálohování pomocí skriptů před a po skript rozhraní](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Jakmile hello služby Azure Backup používá hello snímku, je hello data přenášená toohello trezoru. toomaximize efektivitu, služba hello identifikuje a přenáší pouze hello bloky dat, které se změnily od hello předchozí zálohy.
 
-Po dokončení přenosu dat se odebere snímku a vytvoří bod obnovení.
+Po dokončení přenosu dat hello hello snímek odebrán a vytvoří bod obnovení.
 
 
 ## <a name="create-a-backup"></a>Vytvoření zálohy
-Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services. 
+Vytvořte jednoduchý naplánované denní zálohování tooa trezoru služeb zotavení. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce na levé straně vyberte **Virtuální počítače**. 
-3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
-4. V okně virtuálního počítače v **nastavení** klikněte na tlačítko **zálohování**. **Povolit zálohování** otevře se okno.
-5. V **trezor služeb zotavení**, klikněte na tlačítko **vytvořit nový** a zadejte název pro nový trezor. Nový trezor se vytvoří ve stejné skupině prostředků a umístění jako virtuální počítač.
-6. Klikněte na tlačítko **zálohování zásad**. V tomto příkladu ponechejte výchozí hodnoty a klikněte na tlačítko **OK**.
-7. Na **povolit zálohování** okně klikněte na tlačítko **povolit zálohování**. Tím se vytvoří denní zálohování podle plánu, výchozí.
-10. Vytvořit bod obnovení počáteční na **zálohování** okně klikněte na tlačítko **zálohovat nyní**.
-11. Na **zálohovat nyní** okně klikněte na ikonu Kalendář, pomocí ovládacího prvku Kalendář vyberte poslední den tohoto bodu obnovení se zachovává a klikněte na tlačítko **zálohování**.
-12. V **zálohování** okno pro virtuální počítač, zobrazí se počet bodů obnovení, které jsou dokončeny.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. V nabídce hello na levé straně hello vyberte **virtuální počítače**. 
+3. Hello seznamu vyberte virtuální počítač tooback nahoru.
+4. V okně hello virtuálních počítačů, v hello **nastavení** klikněte na tlačítko **zálohování**. Hello **povolit zálohování** otevře se okno.
+5. V **trezor služeb zotavení**, klikněte na tlačítko **vytvořit nový** a zadejte název hello hello nový trezor. Nový trezor se vytvoří v hello stejnou skupinu prostředků a umístění jako virtuální počítač hello.
+6. Klikněte na tlačítko **zálohování zásad**. V tomto příkladu zachovat hello výchozí hodnoty a klikněte na tlačítko **OK**.
+7. Na hello **povolit zálohování** okně klikněte na tlačítko **povolit zálohování**. Tím se vytvoří denní zálohování podle plánu výchozí hello.
+10. toocreate bod počáteční obnovení na hello **zálohování** okně klikněte na tlačítko **zálohovat nyní**.
+11. Na hello **zálohovat nyní** okně klikněte na ikonu hello kalendáře, použijte hello kalendáře řízení tooselect hello poslední den tohoto bodu obnovení se zachovává a klikněte na tlačítko **zálohování**.
+12. V hello **zálohování** okno pro virtuální počítač, zobrazí se hello počet bodů obnovení, které jsou dokončeny.
 
     ![Body obnovení](./media/tutorial-backup-vms/backup-complete.png)
 
-První zálohování trvá asi 20 minut. Po dokončení zálohování, přejděte k další části tohoto kurzu.
+první zálohy Hello trvá asi 20 minut. Po dokončení zálohování, pokračujte toohello další části tohoto kurzu.
 
 ## <a name="restore-a-file"></a>Obnovit soubor
 
-Pokud omylem odstraníte nebo provést změny do souboru, můžete obnovit soubor z trezoru zálohování obnovení souborů. Obnovení souborů používá skript, který běží na virtuální počítač, přípojný bod obnovení jako místní disk. Tyto disky zůstanou připojené 12 hodin, aby mohli zkopírovat soubory z bodu obnovení a obnovit je do virtuálního počítače.  
+Pokud omylem odstraníte nebo aby se změny tooa soubor, můžete použít soubor hello toorecover obnovení souborů z trezoru záloh. Obnovení souborů používá skript, který běží na hello virtuálních počítačů, bod obnovení hello toomount jako místní disk. Tyto disky zůstanou připojené 12 hodin, aby mohli zkopírovat soubory z bodu obnovení hello a obnovit je toohello virtuálních počítačů.  
 
-V tomto příkladu ukážeme, jak obnovit /var/www/html/index.nginx-debian.html výchozí nginx webové stránky. Veřejná IP adresa naše virtuálního počítače v tomto příkladu je *13.69.75.209*. Můžete najít IP adresu virtuální počítač pomocí:
+V tomto příkladu ukážeme, jak toorecover hello výchozí nginx webové stránky /var/www/html/index.nginx-debian.html. Hello veřejnou IP adresu naše virtuálního počítače v tomto příkladu je *13.69.75.209*. Můžete najít hello IP adresu virtuální počítač pomocí:
 
  ```bash 
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
  
-1. V místním počítači otevřete prohlížeč a zadejte veřejnou IP adresu vašeho virtuálního počítače zobrazíte výchozí nginx webové stránky.
+1. V místním počítači otevřete prohlížeč a zadejte v hello veřejnou IP adresu virtuálního počítače toosee hello výchozí nginx webové stránky.
 
     ![Výchozí nginx webové stránky](./media/tutorial-backup-vms/nginx-working.png)
 
@@ -86,78 +86,78 @@ V tomto příkladu ukážeme, jak obnovit /var/www/html/index.nginx-debian.html 
     sudo rm /var/www/html/index.nginx-debian.html
     ```
     
-4. V místním počítači aktualizujte stránku prohlížeče zasažení kombinaci kláves CTRL + F5 zobrazíte této stránce nginx výchozí je pryč.
+4. V místním počítači, aktualizujte hello prohlížeče zasažení CTRL + F5 toosee, která výchozí stránka nginx je pryč.
 
     ![Výchozí nginx webové stránky](./media/tutorial-backup-vms/nginx-broken.png)
     
-1. V místním počítači, přihlaste se k [portál Azure](https://portal.azure.com/).
-6. V nabídce na levé straně vyberte **Virtuální počítače**. 
-7. V seznamu vyberte virtuální počítač.
-8. V okně virtuálního počítače v **nastavení** klikněte na tlačítko **zálohování**. **Zálohování** otevře se okno. 
-9. V nabídce v horní části okna vyberte **obnovení souboru**. **Obnovení souboru** otevře se okno.
-10. V **krok 1: Vyberte bod obnovení**, vyberte bod obnovení z rozevíracího seznamu.
-11. V **krok 2: stáhnout skript a procházet a obnovit soubory**, klikněte **spustitelný soubor stáhnout** tlačítko. Uložte stažený soubor do místního počítače.
-7. Klikněte na tlačítko **stáhnout skript** ke stažení souboru skriptu místně.
-8. Otevřete Bash řádku a zadejte následující příkaz, nahraďte *Linux_myVM_05-05-2017.sh* se správnou cestu a název souboru pro skript, který jste stáhli, *azureuser* s uživatelským jménem pro virtuální počítač a *13.69.75.209* s veřejnou IP adresu pro virtuální počítač.
+1. V místním počítači, přihlášení toohello [portál Azure](https://portal.azure.com/).
+6. V nabídce hello na levé straně hello vyberte **virtuální počítače**. 
+7. Hello seznamu vyberte hello virtuálních počítačů.
+8. V okně hello virtuálních počítačů, v hello **nastavení** klikněte na tlačítko **zálohování**. Hello **zálohování** otevře se okno. 
+9. V nabídce hello hello horní části okna hello vyberte **obnovení souboru**. Hello **obnovení souboru** otevře se okno.
+10. V **krok 1: Vyberte bod obnovení**, vyberte bod obnovení z rozevíracího seznamu hello.
+11. V **krok 2: stáhnout skript toobrowse a obnovit soubory**, klikněte na tlačítko hello **spustitelný soubor stáhnout** tlačítko. Uložte hello stažený soubor tooyour místního počítače.
+7. Klikněte na tlačítko **stáhnout skript** toodownload hello soubor skriptu místně.
+8. Otevřete Bash řádku a zadejte hello následující, nahraďte *Linux_myVM_05-05-2017.sh* s hello opravte cestu a název souboru hello skript, který jste stáhli, *azureuser* s hello uživatelské jméno pro hello virtuálních počítačů a *13.69.75.209* s hello veřejnou IP adresu pro virtuální počítač.
     
     ```bash
     scp Linux_myVM_05-05-2017.sh azureuser@13.69.75.209:
     ```
     
-9. V místním počítači otevřete připojení SSH pro virtuální počítač.
+9. V místním počítači otevřete toohello připojení SSH virtuálních počítačů.
 
     ```bash
     ssh 13.69.75.209
     ```
     
-10. Na virtuální počítač, přidejte oprávnění k souboru skriptu ke spouštění.
+10. Na virtuální počítač, přidejte provést soubor skriptu toohello oprávnění.
 
     ```bash
     chmod +x Linux_myVM_05-05-2017.sh
     ```
     
-11. Na vašem virtuálním počítači spusťte skript pro přípojný bod obnovení jako systému souborů.
+11. Na vašem virtuálním počítači spusťte bod obnovení hello skriptu toomount hello jako systému souborů.
 
     ```bash
     ./Linux_myVM_05-05-2017.sh
     ```
     
-12. Výstup ze skriptu vám cestu pro přípojného bodu. Výstup vypadá podobně jako tento:
+12. Hello výstupu z hello skriptu poskytuje že Hello cestu pro hello přípojného bodu. výstup Hello vypadá podobně jako toothis:
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
-    Connecting to recovery point using ISCSI service...
+    Connecting toorecovery point using ISCSI service...
     
     Connection succeeded!
     
-    Please wait while we attach volumes of the recovery point to this machine...
+    Please wait while we attach volumes of hello recovery point toothis machine...
                          
-    ************ Volumes of the recovery point and their mount paths on this machine ************
+    ************ Volumes of hello recovery point and their mount paths on this machine ************
 
     Sr.No.  |  Disk  |  Volume  |  MountPath 
 
     1)  | /dev/sdc  |  /dev/sdc1  |  /home/azureuser/myVM-20170505191055/Volume1
 
-    ************ Open File Explorer to browse for files. ************
+    ************ Open File Explorer toobrowse for files. ************
 
-    After recovery, to remove the disks and close the connection to the recovery point, please click 'Unmount Disks' in step 3 of the portal.
+    After recovery, tooremove hello disks and close hello connection toohello recovery point, please click 'Unmount Disks' in step 3 of hello portal.
 
-    Please enter 'q/Q' to exit...
+    Please enter 'q/Q' tooexit...
     ```
 
-12. Na virtuální počítač zkopírujte z přípojného bodu zpět do které jste odstranili soubor nginx výchozí webové stránky.
+12. Na virtuální počítač, zkopírujte hello nginx výchozí webové stránky z hello přípojného bodu back toowhere odstranit soubor hello.
 
     ```bash
     sudo cp ~/myVM-20170505191055/Volume1/var/www/html/index.nginx-debian.html /var/www/html/
     ```
     
-17. V místním počítači otevřete kartu prohlížeče, kde jste připojeni k IP adresu virtuálního počítače výchozí stránkou nginx. Stisknutím kláves CTRL + F5 aktualizujte stránku prohlížeče. Teď byste měli vidět, že výchozí stránky znovu funguje.
+17. V místním počítači, otevřete kartu hello prohlížeče, kde jste připojeni toohello IP adresu hello virtuálních počítačů hello nginx výchozí stránkou. Stiskněte kombinaci kláves CTRL + F5 toorefresh hello prohlížeči stránky. Teď byste měli vidět tento hello znovu funguje výchozí stránky.
 
     ![Výchozí nginx webové stránky](./media/tutorial-backup-vms/nginx-working.png)
 
-18. V místním počítači, přejděte zpět na záložce prohlížeče pro portál Azure a v **krok 3: odpojení disky po obnovení** klikněte na tlačítko **odpojit disky** tlačítko. Pokud zapomenete tento krok, připojení k přípojný bod je automaticky zavřít po 12 hodinách. Po těchto 12 hodin budete muset stáhnout nový skript pro vytvoření nové přípojný bod.
+18. V místním počítači, přejděte zpět toohello kartu prohlížeče pro hello portál Azure a v **krok 3: odpojení hello disky po obnovení** klikněte na tlačítko hello **odpojit disky** tlačítko. Pokud zapomenete toodo tento krok, se po 12 hodinách automaticky zavřít hello připojení toohello přípojný bod. Po těchto 12 hodin je třeba toodownload nový skript toocreate nové přípojný bod.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -169,7 +169,7 @@ V tomto kurzu jste se naučili:
 > * Naplánovat denní zálohování
 > * Obnovte soubor ze zálohy
 
-Přechodu na v dalším kurzu se dozvíte o monitorování virtuálních počítačů.
+Posunutí další kurz toolearn toohello o monitorování virtuálních počítačů.
 
 > [!div class="nextstepaction"]
 > [Monitorování virtuálních počítačů](tutorial-monitoring.md)
