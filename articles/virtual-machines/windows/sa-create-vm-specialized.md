@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače z disku specializované v Azure | Microsoft Docs"
-description: "Vytvoření nového virtuálního počítače připojením specializované nespravované disku, v modelu nasazení Resource Manager."
+title: "aaaCreate virtuálních počítačů z specializované disku v Azure | Microsoft Docs"
+description: "Vytvoření nového virtuálního počítače připojením specializované nespravované disku, v modelu nasazení Resource Manager hello."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c88f213b6629a6c1d6ff5845e76c2f7719672714
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače z specializované virtuálního pevného disku v účtu úložiště
 
-Vytvoření nového virtuálního počítače připojením specializované nespravované disk jako disk operačního systému pomocí prostředí Powershell. Specializované disk je kopie virtuálního pevného disku z existující virtuální počítač, který uchovává uživatelské účty, aplikace a další data o stavu z vašeho původního virtuálního počítače. 
+Vytvoření nového virtuálního počítače připojením specializované nespravované disk jako disk s operačním systémem hello pomocí prostředí Powershell. Specializované disk je kopie virtuálního pevného disku z existující virtuální počítač, který udržuje hello uživatelské účty, aplikace a další data o stavu z vašeho původního virtuálního počítače. 
 
 Máte dvě možnosti:
 * [Nahrání virtuálního pevného disku](create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [Zkopírujte virtuální pevný disk existující virtuální počítač Azure](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [Zkopírujte hello virtuální pevný disk existující virtuální počítač Azure](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud používáte prostředí PowerShell, ujistěte se, že máte nejnovější verzi modulu prostředí AzureRM.Compute PowerShell. Spusťte následující příkaz k její instalaci.
+Pokud používáte prostředí PowerShell, ujistěte se, že máte nejnovější verzi hello modulu AzureRM.Compute PowerShell hello. Spustit hello následující příkaz tooinstall.
 
 ```powershell
 Install-Module AzureRM.Compute 
@@ -40,50 +40,50 @@ Další informace najdete v tématu [Azure PowerShell verze](/powershell/azure/o
 
 ## <a name="option-1-upload-a-specialized-vhd"></a>Možnost 1: Nahrát specializované virtuálního pevného disku
 
-Můžete nahrát virtuální pevný disk z virtuálního počítače specializované vytvořené pomocí místní virtualizace nástroje, jako je technologie Hyper-V nebo na virtuální počítač exportovat z jiného cloudu.
+Můžete nahrát hello virtuální pevný disk z virtuálního počítače se specializovanou vytvořené nástrojem místní virtualizace, jako je technologie Hyper-V nebo na virtuální počítač exportovat z jiného cloudu.
 
-### <a name="prepare-the-vm"></a>Příprava virtuálního počítače
-Můžete nahrát specializované VHD, který byl vytvořen pomocí místní počítač nebo virtuální pevný disk exportovaný z jiného cloudu. Specializované virtuálního pevného disku uchovává uživatelské účty, aplikace a další data o stavu z vašeho původního virtuálního počítače. Pokud máte v úmyslu použít virtuální pevný disk jako-je chcete vytvořit nový virtuální počítač, zkontrolujte následující kroky. 
+### <a name="prepare-hello-vm"></a>Příprava hello virtuálních počítačů
+Můžete nahrát specializované VHD, který byl vytvořen pomocí místní počítač nebo virtuální pevný disk exportovaný z jiného cloudu. Specializované virtuálního pevného disku udržuje hello uživatelské účty, aplikace a další data o stavu z vašeho původního virtuálního počítače. Pokud máte v úmyslu toouse hello virtuálního pevného disku jako-je toocreate nový virtuální počítač, je doplnit hello následující kroky. 
   
-  * [Příprava virtuálního pevného disku Windows nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Nechcete** generalize virtuální počítač pomocí nástroje Sysprep.
-  * Odeberte všechny hosta virtualizačních nástrojů a agentů, které jsou nainstalovány do virtuálního počítače (tj. nástroje VMware).
-  * Zajistěte, aby že virtuální počítač nakonfigurovaný tak, aby jeho IP adresu a nastavení DNS pomocí protokolu DHCP pro vyžádání obsahu. To zajistí, že server získá IP adresu v rámci virtuální sítě, při spuštění. 
+  * [Příprava virtuální pevný disk Windows tooupload tooAzure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Nechcete** generalize hello virtuálního počítače pomocí nástroje Sysprep.
+  * Odeberte všechny hosta virtualizačních nástrojů a agentů, které jsou nainstalované na hello virtuálního počítače (tj. nástroje VMware).
+  * Ujistěte se, hello virtuální počítač je nakonfigurovaný toopull jeho IP adresu a nastavení DNS pomocí protokolu DHCP. Tím se zajistí, že tento server hello získá IP adresu v rámci hello virtuální síť při spuštění. 
 
 
-### <a name="get-the-storage-account"></a>Získat účet úložiště
-Potřebujete účet úložiště v Azure k ukládání nahrané image virtuálního počítače. Můžete použít existující účet úložiště, nebo vytvořte novou. 
+### <a name="get-hello-storage-account"></a>Získat účet úložiště hello
+Je nutné účet úložiště na image virtuálního počítače Azure toostore hello nahrát. Můžete použít existující účet úložiště, nebo vytvořte novou. 
 
-Chcete-li zobrazit účty úložiště k dispozici, zadejte:
+účty úložiště k dispozici hello tooshow, zadejte:
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-Pokud chcete použít existující účet úložiště, pokračujte [nahrajte image virtuálního počítače](#upload-the-vm-vhd-to-your-storage-account) části.
+Pokud chcete toouse stávající účet úložiště, pokračovat toohello [image virtuálního počítače hello nahrávání](#upload-the-vm-vhd-to-your-storage-account) části.
 
-Pokud potřebujete vytvořit účet úložiště, postupujte takto:
+Pokud potřebujete toocreate účet úložiště, postupujte takto:
 
-1. Je třeba na název skupiny prostředků, kde by měl být vytvořen účet úložiště. Chcete-li zjistit všechny skupiny prostředků, které jsou v rámci vašeho předplatného, zadejte:
+1. Je nutné hello název skupiny prostředků hello, kde se vytvořit účet úložiště hello. toofind se všechny skupiny zdrojů hello, které jsou v rámci vašeho předplatného, typ:
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Chcete-li vytvořit skupinu prostředků s názvem **myResourceGroup** v **západní USA** oblast, zadejte:
+    skupinu prostředků s názvem toocreate **myResourceGroup** v hello **západní USA** oblast, zadejte:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Vytvořit účet úložiště s názvem **můj_účet_úložiště** v této skupině prostředků s použitím [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny:
+2. Vytvořit účet úložiště s názvem **můj_účet_úložiště** v této skupině prostředků s použitím hello [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny:
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
         -SkuName "Standard_LRS" -Kind "Storage"
     ```
    
-### <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště
-Použití [přidat AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) rutiny Odeslat bitovou kopii do kontejneru v účtu úložiště. Tento příklad nahrávání souboru **myVHD.vhd** z `"C:\Users\Public\Documents\Virtual hard disks\"` na účet úložiště s názvem **můj_účet_úložiště** v **myResourceGroup** skupinu prostředků. Soubor se umístí do kontejner s názvem **můj_kontejner** a nový název souboru bude **myUploadedVHD.vhd**.
+### <a name="upload-hello-vhd-tooyour-storage-account"></a>Nahrát účet úložiště tooyour hello virtuálního pevného disku
+Použití hello [přidat AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) rutiny tooupload hello image tooa kontejneru v účtu úložiště. Tento příklad nahrávání hello souboru **myVHD.vhd** z `"C:\Users\Public\Documents\Virtual hard disks\"` tooa účet úložiště s názvem **můj_účet_úložiště** v hello **myResourceGroup** skupinu prostředků. soubor Hello budou umístěny do hello kontejner s názvem **můj_kontejner** a bude nový název souboru hello **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -93,12 +93,12 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-Pokud bylo úspěšné, můžete získat odpovědi, která vypadá podobně jako tento:
+Pokud bylo úspěšné, můžete získat odpovědi, která vypadá podobně jako toothis:
 
 ```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
+MD5 hash is being calculated for hello file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
 MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
+Elapsed time for hello operation: 00:03:35
 Creating new page blob of size 53687091712...
 Elapsed time for upload: 01:12:49
 
@@ -107,59 +107,59 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tento příkaz může trvat nějakou dobu pro dokončení.
+V závislosti na vašem síťovém připojení a hello velikost vašeho souboru virtuálního pevného disku, tento příkaz může chvíli trvat toocomplete.
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Možnost 2: Zkopírujte virtuální pevný disk z existujícího virtuálního počítače Azure
+## <a name="option-2-copy-hello-vhd-from-an-existing-azure-vm"></a>Možnost 2: Kopírování hello virtuálního pevného disku z existující virtuální počítač Azure
 
-Virtuální pevný disk můžete zkopírovat na jiný účet úložiště pro použití při vytvoření nového virtuálního počítače duplicitní.
+Při vytváření nového virtuálního počítače duplicitní můžete zkopírovat toouse účet úložiště tooanother virtuální pevný disk.
 
 ### <a name="before-you-begin"></a>Než začnete
 Ujistěte se, že jste:
 
-* Neobsahuje informace o **zdrojové a cílové účty úložiště**. Pro zdrojový virtuální počítač je potřeba mít názvy účtů a kontejner úložiště. Obvykle bude název kontejneru **virtuální pevné disky**. Také musíte mít cílový účet úložiště. Pokud jste již nemáte, můžete vytvořit pomocí buď na portálu (**více služeb** > účty úložiště > Přidat) nebo pomocí [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny. 
-* Stáhli a nainstalovali [nástroj AzCopy](../../storage/common/storage-use-azcopy.md). 
+* Neobsahuje informace o hello **zdrojové a cílové účty úložiště**. Pro hello zdrojového virtuálního počítače budete potřebovat názvy toohave hello úložiště účtu a kontejneru. Obvykle bude název kontejneru hello **virtuální pevné disky**. Budete také potřebovat toohave cílový účet úložiště. Pokud jste již nemáte, můžete vytvořit pomocí portálu buď hello (**více služeb** > účty úložiště > Přidat) nebo pomocí hello [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny. 
+* Stáhli a nainstalovali hello [nástroj AzCopy](../../storage/common/storage-use-azcopy.md). 
 
-### <a name="deallocate-the-vm"></a>Zrušit přidělení virtuálního počítače
-Zrušit přidělení virtuálního počítače, což uvolní virtuální pevný disk, který se má zkopírovat. 
+### <a name="deallocate-hello-vm"></a>Deallocate hello virtuálních počítačů
+Deallocate hello virtuálních počítačů, což uvolní toobe hello virtuální pevný disk zkopírovali. 
 
 * **Portál**: klikněte na tlačítko **virtuální počítače** > **Můjvp** > Zastavit
-* **Prostředí PowerShell**: použití [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) zastavit (zrušit přidělení) virtuálního počítače s názvem **Můjvp** ve skupině prostředků **myResourceGroup**.
+* **Prostředí PowerShell**: použití [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) toostop (zrušit přidělení) hello virtuálního počítače s názvem **Můjvp** ve skupině prostředků **myResourceGroup**.
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-**Stav** pro virtuální počítač ve službě Azure portal změní z **Zastaveno** k **zastaveném (nepřiřazeném)**.
+Hello **stav** pro hello virtuálních počítačů v hello Azure portal změní z **Zastaveno** příliš**zastaveném (nepřiřazeném)**.
 
-### <a name="get-the-storage-account-urls"></a>Získání adres URL účtu úložiště
-Je třeba účty úložiště zdrojové a cílové adresy URL. Jako adresy URL vzhledu: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Pokud znáte název účtu a kontejneru úložiště, můžete nahradit pouze informace k vytvoření adresu URL do závorek. 
+### <a name="get-hello-storage-account-urls"></a>Získání adres URL účtu úložiště hello
+Je nutné adresy URL hello hello zdrojové a cílové úložiště účtů. Hello adresy URL vypadat: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Pokud už znáte hello název účtu a kontejneru úložiště, můžete právě nahradit hello informací mezi hello závorky toocreate adresu URL. 
 
-Portál Azure nebo Azure Powershell můžete použít k získání adresy URL:
+Můžete použít hello portál Azure nebo Azure Powershell tooget hello adresa URL:
 
-* **Portál**: klikněte  **>**  pro **další služby** > **účty úložiště**  >   *účet úložiště* > **objekty BLOB** a váš zdrojový soubor virtuálního pevného disku je pravděpodobně v **virtuální pevné disky** kontejneru. Klikněte na tlačítko **vlastnosti** kontejneru a zkopírujte text s názvem bez přípony **URL**. Budete potřebovat adresy URL zdrojového a cílového kontejnery. 
-* **Prostředí PowerShell**: použití [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) získání informací o pro virtuální počítač s názvem **Můjvp** ve skupině prostředků **myResourceGroup**. Ve výsledcích vyhledejte v **profilu úložiště** část **Uri virtuálního pevného disku**. První část identifikátoru Uri je adresa URL ke kontejneru a poslední část je název virtuálního pevného disku operačního systému pro virtuální počítač.
+* **Portál**: klikněte na tlačítko hello  **>**  pro **další služby** > **účty úložiště**  >   *účet úložiště* > **objekty BLOB** a váš zdrojový soubor virtuálního pevného disku je pravděpodobně v hello **virtuální pevné disky** kontejneru. Klikněte na tlačítko **vlastnosti** hello kontejneru a kopírovat text hello s názvem bez přípony **URL**. Budete potřebovat kontejnery obou hello zdrojové a cílové adresy URL hello. 
+* **Prostředí PowerShell**: použití [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) tooget hello informace pro virtuální počítač s názvem **Můjvp** ve skupině prostředků hello **myResourceGroup**. Ve výsledcích hello Hledat v hello **profilu úložiště** části hello **Uri virtuálního pevného disku**. první část Hello hello identifikátor Uri je hello URL toohello kontejneru a poslední část hello hello název virtuálního pevného disku operačního systému pro hello virtuálních počítačů.
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
-## <a name="get-the-storage-access-keys"></a>Získat přístupové klíče k úložišti
-Najděte přístupové klíče pro zdrojové a cílové účty úložiště. Další informace o přístupových klíčů najdete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md).
+## <a name="get-hello-storage-access-keys"></a>Získání přístupových klíčů k úložišti hello
+Najít hello přístupové klíče pro hello zdrojové a cílové účty úložiště. Další informace o přístupových klíčů najdete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md).
 
-* **Portál**: klikněte na tlačítko **další služby** > **účty úložiště** > *účet úložiště*  >  **Přístupové klíče**. Zkopírujte klíč označený jako **key1**.
-* **Prostředí PowerShell**: použití [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) k získání klíče úložiště pro účet úložiště **můj_účet_úložiště** ve skupině prostředků **myResourceGroup**. Zkopírujte klíč s názvem bez přípony **key1**.
+* **Portál**: klikněte na tlačítko **další služby** > **účty úložiště** > *účet úložiště*  >  **Přístupové klíče**. Kopírování hello klíč označený jako **key1**.
+* **Prostředí PowerShell**: použití [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) tooget hello úložiště klíč pro účet úložiště hello **můj_účet_úložiště** ve skupině prostředků hello  **myResourceGroup**. Kopírování hello klíč s názvem bez přípony **key1**.
 
 ```powershell
 Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
 ```
 
-### <a name="copy-the-vhd"></a>Zkopírujte virtuální pevný disk
-Můžete zkopírovat soubory mezi účty úložiště pomocí nástroje AzCopy. Pro cílový kontejner Pokud zadaný kontejner neexistuje, bude vytvořena pro vás. 
+### <a name="copy-hello-vhd"></a>Zkopírujte hello virtuálního pevného disku
+Můžete zkopírovat soubory mezi účty úložiště pomocí nástroje AzCopy. Pro cílový kontejner hello Pokud hello zadaný kontejner neexistuje, bude vytvořena pro vás. 
 
-Pokud chcete použít AzCopy, otevřete příkazový řádek na místním počítači a přejděte do složky, kde je nainstalován nástroj AzCopy. Je podobná *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
+toouse AzCopy, otevřete příkazový řádek na místním počítači a přejděte toohello složku, kde je nainstalován nástroj AzCopy. Je podobné příliš*C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
 
-Zkopírujte všechny soubory v rámci kontejneru, můžete použít **/S** přepínače. Tímto lze kopírovat virtuální pevný disk operačního systému a všech datových disků, pokud jsou ve stejném kontejneru. Tento příklad ukazuje, jak zkopírovat všechny soubory v kontejneru **mysourcecontainer** v účtu úložiště **mysourcestorageaccount** ke kontejneru **mydestinationcontainer**v **mydestinationstorageaccount** účet úložiště. Nahraďte názvy účtů úložiště a kontejnery vlastními. Nahraďte `<sourceStorageAccountKey1>` a `<destinationStorageAccountKey1>` s vlastními klíči.
+toocopy všechny hello souborů v rámci kontejneru, použijte hello **/S** přepínače. To může být použité toocopy hello virtuálního pevného disku operačního systému a všechny hello datových disků, pokud jsou ve stejném kontejneru hello. Tento příklad ukazuje, jak toocopy všechny hello soubory v kontejneru hello **mysourcecontainer** v účtu úložiště **mysourcestorageaccount** toohello kontejneru **mydestinationcontainer**  v hello **mydestinationstorageaccount** účet úložiště. Nahraďte hello názvy účtů úložiště hello a kontejnery vlastními. Nahraďte `<sourceStorageAccountKey1>` a `<destinationStorageAccountKey1>` s vlastními klíči.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -167,7 +167,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
     /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
 ```
 
-Pokud chcete zkopírovat konkrétní virtuální pevný disk v kontejneru s více soubory, můžete také zadat název souboru pomocí přepínače /Pattern. V tomto příkladu pouze soubor s názvem **myFileName.vhd** budou zkopírovány.
+Pokud chcete pouze toocopy konkrétní virtuální pevný disk v kontejneru s více soubory, můžete také zadat název souboru hello pomocí přepínače /Pattern hello. V tomto příkladu pouze hello soubor s názvem **myFileName.vhd** budou zkopírovány.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -191,24 +191,24 @@ Elapsed time:            00.00:13:07
 ```
 
 ### <a name="troubleshooting"></a>Řešení potíží
-* Při použití nástroje AZCopy, pokud se zobrazí chyba "Serveru se nepodařilo ověřit žádost", zajistěte, aby hodnotu hlavičky autorizace je vytvořen. správně včetně podpis. Pokud používáte 2 klíč nebo klíč sekundární úložiště, zkuste použít primární nebo 1. úložiště klíč.
+* Při použití nástroje AZCopy, pokud se zobrazí chyba hello "Serveru se nezdařilo požadavek tooauthenticate hello", zkontrolujte, zda je hodnota hello hello autorizační hlavičky formátu správně včetně hello podpis. Pokud používáte 2 klíč nebo klíč hello sekundární úložiště, zkuste použít klíč hello primární nebo 1. úložiště.
 
-## <a name="create-the-new-vm"></a>Vytvoření nového virtuálního počítače 
+## <a name="create-hello-new-vm"></a>Vytvoření nového virtuálního počítače hello 
 
-Budete muset vytvořit sítě a další prostředky virtuálních počítačů, které má být používána nového virtuálního počítače.
+Budete potřebovat toocreate sítě a jiných toobe prostředky virtuálních počítačů používané hello nového virtuálního počítače.
 
-### <a name="create-the-subnet-and-vnet"></a>Vytvoření podsítě a sítě vNet
+### <a name="create-hello-subnet-and-vnet"></a>Vytvoření podsítě hello a virtuální sítě
 
-Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
+Vytvoření hello virtuální síť a podsíť hello [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
 
-1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem **mySubNet**, ve skupině prostředků **myResourceGroup**a nastaví předpona adresy podsítě **10.0.0.0/24**.
+1. Vytvořte podsíť hello. Tento příklad vytvoří podsíť s názvem **mySubNet**, ve skupině prostředků hello **myResourceGroup**, a nastaví hello předpona adresy podsítě příliš**10.0.0.0/24**.
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubNet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Vytvořte síť vNet. Tento příklad nastaví název virtuální sítě, který se má **myVnetName**, umístění, do **západní USA**a předponu adresy virtuální sítě, abyste **10.0.0.0/16**. 
+2. Vytvoření sítě vNet hello. Tento příklad sady hello toobe název virtuální sítě **myVnetName**, hello umístění příliš**západní USA**, a příliš hello předpona adresy pro virtuální síť hello**10.0.0.0/16**. 
    
     ```powershell
     $location = "West US"
@@ -218,16 +218,16 @@ Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-networ
     ```    
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Vytvoření veřejné IP adresy a síťové karty
-Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou adresu IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
+tooenable komunikaci s hello virtuálním počítačem ve virtuální síti hello, musíte [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
 
-1. Vytvoření veřejné IP adresy. V tomto příkladu je název veřejné IP adresy nastavena **myIP**.
+1. Vytvoření veřejné IP adresy hello. V tomto příkladu je název hello veřejné IP adresy nastavit příliš**myIP**.
    
     ```powershell
     $ipName = "myIP"
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Vytvořit síťovou kartu. V tomto příkladu je síťový adaptér je nastavit název **myNicName**.
+2. Vytvoření hello síťový adaptér. V tomto příkladu název hello síťový adaptér se nastaví příliš**myNicName**.
    
     ```powershell
     $nicName = "myNicName"
@@ -235,9 +235,9 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
     -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě a pravidlo protokolu RDP
-Abyste mohli přihlásit k virtuálnímu počítači pomocí protokolu RDP, musíte mít pravidlo zabezpečení, která umožňuje přístup RDP na portu 3389. Protože byl vytvořen virtuální pevný disk pro nový virtuální počítač ze stávajícího specializované virtuálního počítače, po vytvoření virtuálního počítače je můžete použít existující účet ze zdrojového virtuálního počítače, který měl oprávnění k přihlášení pomocí protokolu RDP.
-Tento příklad nastaví název skupiny NSG na **myNsg** a název pravidla protokolu RDP na **myRdpRule**.
+### <a name="create-hello-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě hello a pravidlo protokolu RDP
+možnost toolog toobe v tooyour virtuálního počítače pomocí protokolu RDP, je nutné toohave pravidlo zabezpečení, která umožňuje přístup RDP na portu 3389. Protože specializuje hello virtuálního pevného disku pro dobrý den, kdy byl vytvořen nový virtuální počítač ze stávajícího virtuálního počítače, po vytvoření hello virtuálního počítače je můžete použít existující účet z hello zdrojový virtuální počítač, který měl oprávnění toolog na použití protokolu RDP.
+Tento příklad sady hello NSG název příliš**myNsg** a hello RDP název pravidla příliš**myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"
@@ -251,53 +251,53 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
     
 ```
 
-Další informace o koncových bodů a pravidla NSG najdete v tématu [otevřít porty pro virtuální počítač v Azure pomocí prostředí PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o koncových bodů a pravidla NSG najdete v tématu [otevřít porty tooa virtuálních počítačů v Azure pomocí prostředí PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-### <a name="set-the-vm-name-and-size"></a>Nastavte název virtuálního počítače a velikosti
+### <a name="set-hello-vm-name-and-size"></a>Nastavte název virtuálního počítače hello a velikosti
 
-Tento příklad nastaví název virtuálního počítače na "Můjvp" a "Standard_A2" na velikost virtuálního počítače.
+Tento příklad sady hello název virtuálního počítače příliš "Můjvp" a hello virtuálních počítačů velikost příliš "Standard_A2".
 ```powershell
 $vmName = "myVM"
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
 ```
 
-### <a name="add-the-nic"></a>Přidání síťového adaptéru
+### <a name="add-hello-nic"></a>Přidat hello síťový adaptér
     
 ```powershell
 $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
     
-### <a name="configure-the-os-disk"></a>Konfigurace disku operačního systému
+### <a name="configure-hello-os-disk"></a>Konfigurace disku hello operačního systému
 
-1. Nastavte identifikátor URI pro disk VHD, který jste nahráli nebo zkopírovali. V tomto příkladu soubor virtuálního pevného disku s názvem **myOsDisk.vhd** je uložen v účtu úložiště s názvem **Můj_účet_úložiště** v kontejneru nazvaném **Můj_kontejner**.
+1. Nastavte hello identifikátor URI pro hello virtuálního pevného disku, který jste nahráli nebo zkopírovat. V tomto příkladu hello soubor virtuálního pevného disku s názvem **myOsDisk.vhd** je uložen v účtu úložiště s názvem **Můj_účet_úložiště** v kontejneru nazvaném **Můj_kontejner**.
 
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. Přidejte disk operačního systému. V tomto příkladu když je vytvořen disk operačního systému, je termín "osDisk" appened na název virtuálního počítače. Chcete-li vytvořit název disku operačního systému. Tento příklad také určuje, že tento virtuální pevný disk systému Windows by měl být připojen virtuální počítač jako disk operačního systému.
+2. Přidání disku hello operačního systému. V tomto příkladu když je vytvořen hello disk operačního systému, hello termín "osDisk" je appened toohello virtuálních počítačů název toocreate hello operačního systému disku název. Tento příklad také určuje, že tento virtuální pevný disk systému Windows musí být připojené toohello virtuální počítač jako disk hello operačního systému.
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
     $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
     ```
 
-Volitelné: Pokud máte datových disků, které musí být připojené k virtuálnímu počítači, přidejte datových disků pomocí adresy URL dat virtuálních pevných disků a odpovídající logické jednotky (LUN).
+Volitelné: Pokud máte datových disků tohoto toobe nutné připojit toohello virtuálních počítačů, přidejte hello datových disků pomocí adres URL hello dat virtuální pevné disky a hello odpovídající logické jednotky (LUN).
 
 ```powershell
 $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-Pokud používáte účet úložiště, data a adresy URL disku operačního systému vypadat přibližně takto: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. To můžete najít na portálu procházení, aby cílový kontejner úložiště, klepnutím na operačního systému nebo data virtuálního pevného disku, který jste zkopírovali, a pak kopírování obsah adresy URL.
+Pokud používáte účet úložiště, hello data a adresy URL disku operačního systému vypadat přibližně takto: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. To můžete najít na portálu hello procházení toohello cílového úložiště kontejneru, kliknutím na tlačítko hello operačního systému nebo data virtuálního pevného disku, který jste zkopírovali, a pak kopírování hello obsah adresy URL hello.
 
 
-### <a name="complete-the-vm"></a>Dokončení virtuálního počítače 
+### <a name="complete-hello-vm"></a>Dokončení hello virtuálních počítačů 
 
-Vytvoření virtuálního počítače pomocí konfigurace, které jsme právě vytvořili.
+Vytvoření hello virtuálního počítače pomocí hello konfigurace, které jsme právě vytvořili.
 
 ```powershell
-#Create the new VM
+#Create hello new VM
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
@@ -310,8 +310,8 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Zkontrolujte, zda byl vytvořen virtuální počítač
-Měli byste vidět nově vytvořený virtuální počítač buď v [portál Azure](https://portal.azure.com)v části **Procházet** > **virtuální počítače**, nebo pomocí následujících příkazů prostředí PowerShell:
+### <a name="verify-that-hello-vm-was-created"></a>Ověřte, že hello, ke které byl virtuální počítač vytvořen
+Měli byste vidět hello nově vytvořený virtuální počítač buď v hello [portál Azure](https://portal.azure.com)v části **Procházet** > **virtuální počítače**, nebo pomocí prostředí PowerShell následující hello příkazy:
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -319,5 +319,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>Další kroky
-K přihlášení do nového virtuálního počítače, přejděte do virtuálního počítače v [portál](https://portal.azure.com), klikněte na tlačítko **Connect**a otevřete soubor Remote Desktop RDP. Pomocí přihlašovacích údajů účtu původní virtuálního počítače pro přihlášení do nového virtuálního počítače. Další informace najdete v tématu [jak se připojit a přihlásit se na virtuálním počítači Azure s Windows](connect-logon.md).
+toosign v tooyour nový virtuální počítač, procházet toohello virtuálních počítačů v hello [portál](https://portal.azure.com), klikněte na tlačítko **Connect**a soubor Remote Desktop RDP otevřete hello. Pomocí přihlašovacích údajů účtu hello z vašeho původního toosign virtuálního počítače v tooyour nového virtuálního počítače. Další informace najdete v tématu [jak se tooconnect a protokol na tooan Azure virtuální počítač, systém Windows spuštěný](connect-logon.md).
 

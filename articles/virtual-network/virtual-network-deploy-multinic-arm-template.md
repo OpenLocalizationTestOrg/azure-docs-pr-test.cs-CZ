@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření virtuálního počítače s více síťovými kartami - šablony Azure Resource Manageru | Microsoft Docs"
+title: "aaaCreate virtuálního počítače s více síťovými kartami - šablony Azure Resource Manageru | Microsoft Docs"
 description: "Vytvoření virtuálního počítače s více síťovými kartami pomocí šablony Azure Resource Manager."
 services: virtual-network
 documentationcenter: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 85bfa264c6cf2b0586816a47b3ab72f3aee8ec96
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f5d9ffcbd40c72dc18ae6de38e739eb5e45bf669
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-a-template"></a>Vytvoření virtuálního počítače s více síťovými kartami pomocí šablony
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
@@ -28,30 +28,30 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](virtual-network-deploy-multinic-classic-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).  Tento článek popisuje použití modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello [modelu nasazení classic](virtual-network-deploy-multinic-classic-ps.md).
 > 
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Následující postup použijte skupinu prostředků s názvem *IaaSStory* pro webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery DB.
+Hello následující postup použijte skupinu prostředků s názvem *IaaSStory* pro hello webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery hello DB.
 
 ## <a name="prerequisites"></a>Požadavky
-Před vytvořením servery DB, je potřeba vytvořit *IaaSStory* skupina prostředků se všechny potřebné prostředky pro tento scénář. Pokud chcete vytvořit tyto prostředky, proveďte následující kroky:
+Před vytvořením hello servery DB, musíte toocreate hello *IaaSStory* skupina prostředků se všechny hello potřebné prostředky pro tento scénář. dokončení těchto prostředků, toocreate hello následující kroky:
 
-1. Přejděte na [na stránku šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
-2. Na stránce šablony napravo od **nadřazené skupiny prostředků**, klikněte na tlačítko **nasadit do Azure**.
-3. V případě potřeby změňte hodnoty parametrů a potom postupujte podle kroků v portálu Azure preview nasazení skupiny prostředků.
+1. Přejděte příliš[stránku hello šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
+2. V stránku hello šablony, toohello napravo od **nadřazené skupiny prostředků**, klikněte na tlačítko **nasazení tooAzure**.
+3. V případě potřeby změňte hodnoty parametrů hello a potom postupujte podle kroků hello ve skupině prostředků hello toodeploy portálu Azure preview hello.
 
 > [!IMPORTANT]
 > Ujistěte se, že vaše názvy účtů úložiště jsou jedinečné. Názvy účtů úložiště duplicitní nemůže mít v Azure.
 > 
 
-## <a name="understand-the-deployment-template"></a>Pochopení šablony nasazení
-Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že chápete, jak funguje. Následující kroky poskytují dobrý přehled o šabloně:
+## <a name="understand-hello-deployment-template"></a>Pochopení hello nasazení šablony
+Před nasazením hello šablony aplikace této dokumentace, ujistěte se, že chápete, co dělá. Následující kroky Hello poskytují dobrý přehled o hello šablony:
 
-1. Přejděte na [na stránku šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
-2. Klikněte na tlačítko **azuredeploy.json** otevřete soubor šablony.
-3. Upozornění *osType* parametr uvedené níže. Tento parametr slouží k výběru jaké image virtuálního počítače používat pro databázový server, společně s více operačního systému související nastavení.
+1. Přejděte příliš[stránku hello šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
+2. Klikněte na tlačítko **azuredeploy.json** soubor šablony tooopen hello.
+3. Všimněte si hello *osType* parametr uvedené níže. Tento parametr je použité tooselect co toouse bitové kopie virtuálního počítače pro server databáze hello, společně s více operačního systému související nastavení.
 
     ```json
     "osType": {
@@ -62,18 +62,18 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
         "Ubuntu"
       ],
       "metadata": {
-      "description": "Type of OS to use for VMs: Windows or Ubuntu."
+      "description": "Type of OS toouse for VMs: Windows or Ubuntu."
       }
     },
     ```
 
-4. Posuňte se dolů a seznam proměnných a zkontrolujte definici **dbVMSetting** proměnné, které jsou uvedeny níže. Obdrží jeden prvků pole, které jsou součástí **dbVMSettings** proměnné. Pokud jste obeznámeni s terminologie vývoj softwaru, můžete zobrazit **dbVMSettings** proměnné jako zatřiďovací tabulku nebo slovník.
+4. Posuňte se dolů toohello seznam proměnných a zkontrolujte hello Definice hello **dbVMSetting** proměnné, které jsou uvedeny níže. Jeden z elementů pole hello obsažené v hello obdrží **dbVMSettings** proměnné. Pokud jste obeznámeni s terminologie vývoj softwaru, můžete si prohlédnout hello **dbVMSettings** proměnné jako zatřiďovací tabulku nebo slovník.
 
     ```json
     "dbVMSetting": "[variables('dbVMSettings')[parameters('osType')]]"
     ```
 
-5. Předpokládejme, že se rozhodnete nasadit virtuální počítače Windows se systémem SQL v back-end. Pak hodnota **osType** by *Windows*a **dbVMSetting** proměnná by obsahovat element uvedené níže, který představuje první hodnota v **dbVMSettings** proměnné.
+5. Předpokládejme, že se že rozhodnete toodeploy Windows virtuální počítače se systémem SQL v hello back-end. Potom hello hodnotu **osType** by *Windows*a hello **dbVMSetting** proměnná by obsahovat element hello uvedené níže, který představuje první hodnota hello v hello **dbVMSettings** proměnné.
 
     ```json
     "Windows": {
@@ -94,9 +94,9 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     },
     ```
 
-6. Upozornění **vmSize** obsahuje hodnotu *Standard_DS3*. Povolit jenom určité velikosti virtuálních počítačů použít několik síťových adaptérů. Můžete ověřit, které velikosti virtuálních počítačů ve čtení podporovat několik síťových adaptérů [velikosti virtuálních počítačů Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) články.
+6. Všimněte si hello **vmSize** obsahuje hodnotu hello *Standard_DS3*. Pouze určité velikosti virtuálních počítačů povolit pro použití hello několik síťových adaptérů. Můžete ověřit, které velikosti virtuálních počítačů podporují několik síťových adaptérů a čtení hello [velikosti virtuálních počítačů Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) články.
 
-7. Přejděte dolů k položce **prostředky** a Všimněte si první prvek. Popisuje účet úložiště. Tento účet úložiště se použije k udržování datové disky používané každou databázi virtuálních počítačů. V tomto scénáři každou databázi virtuálních počítačů má disk s operačním systémem, který je uložen v pravidelných úložiště a dvě datové disky uložené v úložiště SSD (premium).
+7. Posuňte se dolů příliš**prostředky** a Všimněte si hello první prvek. Popisuje účet úložiště. Tento účet úložiště bude použité toomaintain hello datové disky používané každou databázi virtuálních počítačů. V tomto scénáři každou databázi virtuálních počítačů má disk s operačním systémem, který je uložen v pravidelných úložiště a dvě datové disky uložené v úložiště SSD (premium).
 
     ```json
     {
@@ -113,7 +113,7 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     },
     ```
 
-8. Posuňte se dolů a další zdroje, jak je uvedeno dále. Tento prostředek představuje síťová karta použitá pro přístup k databázi v každé databázi virtuálních počítačů. Všimněte si použití **kopie** funkce v tento prostředek. Šablona umožňuje nasadit jako hodně virtuálních počítačů tak, jak chcete, založené na **dbCount** parametr. Proto musíte vytvořit stejnou úroveň síťové karty pro přístup k databázi, jednu pro každý virtuální počítač.
+8. Posuňte se dolů toohello další prostředků, jak je uvedeno dále. Tento prostředek představuje hello síťový adaptér používá pro přístup k databázi v každé databázi virtuálních počítačů. Všimněte si použití hello hello **kopie** funkce v tento prostředek. Hello šablona vám umožní toodeploy jako hodně virtuálních počítačů tak, jak chcete, podle hello **dbCount** parametr. Proto je nutné toocreate hello stejnou úroveň síťové karty pro přístup k databázi, jednu pro každý virtuální počítač.
 
     ```json
     {
@@ -145,7 +145,7 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     },
     ```
 
-9. Posuňte se dolů a další zdroje, jak je uvedeno dále. Tento prostředek představuje síťový adaptér používá pro správu v každé databázi virtuálních počítačů. Znovu budete potřebovat jeden z tyto síťové adaptéry pro každou databázi virtuálních počítačů. Upozornění **skupinu zabezpečení sítě** elementu, skupinu NSG, které umožňuje přístup k protokolu RDP/SSH pro tuto síťovou kartu pouze propojení.
+9. Posuňte se dolů toohello další prostředků, jak je uvedeno dále. Tento prostředek představuje hello síťový adaptér používá pro správu v každé databázi virtuálních počítačů. Znovu budete potřebovat jeden z tyto síťové adaptéry pro každou databázi virtuálních počítačů. Všimněte si hello **skupinu zabezpečení sítě** elementu propojení skupinu NSG, který umožňuje přístup toothis tooRDP/SSH seskupování jenom.
 
     ```json
     {
@@ -180,7 +180,7 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     },
 ```
 
-10. Posuňte se dolů a další zdroje, jak je uvedeno dále. Tento prostředek představuje sadu ke sdílení všechny virtuální počítače databáze dostupnosti. Tímto způsobem můžete zaručit, že bude vždy jeden virtuální počítač v sadě během údržby.
+10. Posuňte se dolů toohello další prostředků, jak je uvedeno dále. Tento prostředek představuje toobe sadu dostupnosti sdílí všechny virtuální počítače databáze. Tímto způsobem můžete zaručit, že bude vždy jeden virtuální počítač v hello nastavit během údržby.
 
     ```json
     {
@@ -194,7 +194,7 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     },
     ```
 
-11. Posuňte se dolů a další prostředků. Tento prostředek představuje databázi virtuálních počítačů, tak v prvním několika řádků, které jsou uvedeny níže. Všimněte si použití **kopie** funkce znovu, zajistíte, že se vytvářejí na základě několika virtuálními počítači **dbCount** parametr. Všimněte si také **dependsOn** kolekce. Zobrazí se seznam dva síťové adaptéry je nutné vytvořit před nasazením virtuálního počítače, společně s skupiny dostupnosti a účet úložiště.
+11. Posuňte se dolů toohello další prostředků. Tento prostředek představuje hello databáze virtuálních počítačů, jak je vidět v hello nejprve několika řádků, které jsou uvedeny níže. Všimněte si použití hello hello **kopie** znovu fungovat, zajistíte, že jsou vytvořeny víc virtuálních počítačů podle hello **dbCount** parametr. Všimněte si také hello **dependsOn** kolekce. Zobrazí se seznam dva síťové adaptéry je nutné toobe vytvořil před hello virtuální počítač nasazen, společně s hello skupinu dostupnosti a účet úložiště hello.
 
     ```json
     "apiVersion": "2015-06-15",
@@ -216,7 +216,7 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     },
     ```
 
-12. Přejděte dolů v prostředek virtuálního počítače, který **networkProfile** elementu, jak je uvedeno dále. Všimněte si, že existují dva síťové adaptéry se referenční informace pro každý virtuální počítač. Když vytvoříte několik síťových adaptérů pro virtuální počítač, je nutné nastavit **primární** vlastnost jedné síťové karty na *true*a zbytek na *false*.
+12. Přejděte dolů v toohello prostředků virtuálních počítačů hello **networkProfile** elementu, jak je uvedeno dále. Všimněte si, že existují dva síťové adaptéry se referenční informace pro každý virtuální počítač. Když vytvoříte několik síťových adaptérů pro virtuální počítač, je nutné nastavit hello **primární** vlastnost hello síťové adaptéry příliš*true*, a příliš hello rest*false*.
 
     ```json
     "networkProfile": {
@@ -233,22 +233,22 @@ Před nasazením šablony dodávané s tuto dokumentaci, ujistěte se, že cháp
     }
     ```
 
-## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>Nasazení šablony ARM pomocí metody Click to Deploy
+## <a name="deploy-hello-arm-template-by-using-click-toodeploy"></a>Nasazení šablony ARM hello pomocí klikněte na tlačítko toodeploy
 
 > [!IMPORTANT]
-> Použijte [předpoklady](#Pre-requisites) kroky před níže uvedených pokynů.
+> Ujistěte se, postupujte hello [předpoklady](#Pre-requisites) kroky před hello pokynů níže.
 > 
 
-Ukázková šablona, která je k dispozici ve veřejném úložišti, používá soubor parametrů obsahující výchozí hodnoty, které se použijí k vygenerování výše popsaného scénáře. K nasazení této šablony metody click to deploy, postupujte podle [tento odkaz](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC), napravo od **skupina prostředků back-end (viz dokumentace)** klikněte na tlačítko **nasadit do Azure**, nahradí výchozí hodnoty parametrů v případě potřeby a postupujte podle pokynů v portálu.
+Hello Ukázka šablony k dispozici v úložišti na veřejné hello používá parametr souboru, který obsahuje hello výchozí hodnoty používané toogenerate hello scénář popsaný výše. toodeploy pomocí této šablony, klikněte na toodeploy, postupujte podle [tento odkaz](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC), toohello napravo od **skupina prostředků back-end (viz dokumentace)** klikněte na tlačítko **nasazení tooAzure**, nahraďte výchozí hodnoty parametrů v případě potřeby Hello a postupujte podle pokynů hello hello portálu.
 
-Následující obrázek znázorňuje obsah novou skupinu prostředků, po nasazení.
+Hello obrázek níže ukazuje hello obsah hello novou skupinu prostředků, po nasazení.
 
 ![Skupina prostředků back-end](./media/virtual-network-deploy-multinic-arm-template/Figure2.png)
 
-## <a name="deploy-the-template-by-using-powershell"></a>Nasazení šablony pomocí prostředí PowerShell
-Pokud chcete nasadit šablonu stáhnout pomocí prostředí PowerShell, instalace a konfigurace prostředí PowerShell pomocí kroků v [instalace a konfigurace prostředí PowerShell](/powershell/azure/overview) článku a potom proveďte následující kroky:
+## <a name="deploy-hello-template-by-using-powershell"></a>Nasazení šablony hello pomocí prostředí PowerShell
+Šablona hello toodeploy jste stáhli pomocí prostředí PowerShell, instalace a konfigurace prostředí PowerShell pomocí kroků hello v hello [instalace a konfigurace prostředí PowerShell](/powershell/azure/overview) článek a pak dokončete hello následující kroky:
 
-Spustit  **`New-AzureRmResourceGroup`**  vytvořte skupinu prostředků pomocí šablony.
+Spustit hello  **`New-AzureRmResourceGroup`**  hello rutiny toocreate skupinu prostředků pomocí šablony.
 
 ```powershell
 New-AzureRmResourceGroup -Name IaaSStory-Backend -Location uswest `
@@ -279,22 +279,22 @@ Očekávaný výstup:
                         wtestvnetstorageprm  Microsoft.Storage/storageAccounts    westus  
     ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Nasazení šablony pomocí rozhraní příkazového řádku Azure
-Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, použijte následující postup.
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Nasazení šablony hello pomocí hello rozhraní příkazového řádku Azure
+šablony hello toodeploy pomocí hello rozhraní příkazového řádku Azure, postupujte podle kroků hello níže.
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
-2. Spuštěním příkazu **`azure config mode`** přepněte do režimu Resource Manager, jak vidíte níže.
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) a postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
+2. Spustit hello  **`azure config mode`**  příkaz tooswitch tooResource Manager režimu, jak je uvedeno níže.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Očekávaný výstup zahrnuje:
+    Hello očekávaný výstup následovně:
 
         info:    New mode is arm
 
-3. Otevřete [soubor parametrů](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json), vyberte svůj obsah a uložte je do souboru v počítači. V tomto příkladu jsme uložili soubor parametrů do souboru *parameters.json*.
-4. Spuštěním rutiny **`azure group deployment create`** nasadíte novou síť VNet pomocí šablony a souborů parametrů, které jste stáhli a upravili v předchozích krocích. Seznam uvedený za výstupem vysvětluje použité parametry.
+3. Otevřete hello [soubor parametrů](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json), vyberte její obsah a uložte ji tooa soubor v počítači. V tomto příkladu jsme příliš uložili soubor parametrů hello*Parameters.JSON tímto kódem*.
+4. Spustit hello  **`azure group deployment create`**  rutiny toodeploy hello nové sítě VNet pomocí šablony hello a parametr soubory jste stáhli a upravili v předchozích krocích. Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.
 
     ```azurecli
     azure group create -n IaaSStory-Backend -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json -e parameters.json

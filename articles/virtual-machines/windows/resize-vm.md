@@ -1,6 +1,6 @@
 ---
-title: "Změnit velikost virtuální počítač s Windows v Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Změňte velikost virtuálního počítače s Windows vytvořené v modelu nasazení Resource Manager pomocí Azure Powershell."
+title: "aaaUse prostředí PowerShell tooresize virtuální počítač s Windows v Azure | Microsoft Docs"
+description: "Změňte velikost virtuálního počítače s Windows vytvořené v modelu nasazení Resource Manager hello, pomocí Azure Powershell."
 services: virtual-machines-windows
 documentationcenter: 
 author: Drewm3
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-ms.openlocfilehash: 742efd1496de9ce76b1e5636297ef30f546bd108
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a4a80f3bc99911e4f1a095f0ce63aca00fa50694
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resize-a-windows-vm"></a>Změnit velikost virtuálního počítače systému Windows
-Tento článek ukazuje, jak změnit velikost virtuálního počítače Windows, vytvořené v modelu nasazení Resource Manager pomocí Azure Powershell.
+Tento článek ukazuje, jak tooresize virtuální počítač s Windows, vytvořené v modelu nasazení Resource Manager hello pomocí Azure Powershell.
 
-Po vytvoření virtuálního počítače (VM), je možné škálovat virtuální počítač nahoru nebo dolů změnou velikosti virtuálního počítače. V některých případech se musí nejprve navrácení virtuálního počítače. To může dojít, pokud nová velikost není k dispozici na hardwaru clusteru, který je aktuálně hostuje virtuální počítač.
+Po vytvoření virtuálního počítače (VM), je možné škálovat hello virtuálních počítačů nahoru nebo dolů tak, že změníte velikost virtuálního počítače hello. V některých případech se musí nejprve navrácení hello virtuálních počítačů. To může dojít, pokud hello novou velikost není k dispozici v clusteru hello hardwaru, která je aktuálně hostitelem hello virtuálních počítačů.
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Změnit velikost virtuálního počítače Windows není v nastavení dostupnosti
-1. Zobrazí seznam velikosti virtuálních počítačů, které jsou k dispozici na hardwaru clusteru je hostitelem virtuálního počítače. 
+1. Zobrazí seznam hello velikosti virtuálních počítačů, které jsou k dispozici v clusteru hardwaru hello je hostitelem hello virtuálních počítačů. 
    
     ```powershell
     Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName> 
     ```
-2. Pokud požadovaná velikost je uveden, spusťte následující příkazy ke změně velikosti virtuálního počítače. Pokud není uvedené požadované velikosti, přejděte ke kroku 3.
+2. V případě, že je uvedena velikost potřeby hello spusťte následující příkazy tooresize hello virtuálních počítačů hello. V případě potřeby hello velikost není uvedený, přejděte na toostep 3.
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -VMName <vmName>
     $vm.HardwareProfile.VmSize = "<newVMsize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
-3. Pokud není uvedené požadované velikosti, spusťte následující příkazy se zrušit přidělení virtuálního počítače, jeho velikost a restartujte virtuální počítač.
+3. V případě potřeby hello není uvedena velikost spusťte hello následující příkazy toodeallocate hello virtuálního počítače, jeho velikost a restartujte hello virtuálních počítačů.
    
     ```powershell
     $rgname = "<resourceGroupName>"
@@ -52,27 +52,27 @@ Po vytvoření virtuálního počítače (VM), je možné škálovat virtuální
     ```
 
 > [!WARNING]
-> Rušení přidělení virtuálního počítače uvolní všechny dynamické IP adresy přiřazené k virtuálnímu počítači. Ovlivněné nejsou disky operačního systému a data. 
+> Rušení přidělení hello virtuálních počítačů uvolní všechny dynamické IP adresy přiřazené toohello virtuálních počítačů. ovlivněné nejsou Hello operačního systému a datové disky. 
 > 
 > 
 
 ## <a name="resize-a-windows-vm-in-an-availability-set"></a>Změnit velikost virtuální počítač s Windows v nastavení dostupnosti
-Pokud velikost nového virtuálního počítače v nastavení dostupnosti není k dispozici na hardwaru cluster aktuálně hostuje virtuální počítač, všechny virtuální počítače v sadě dostupnosti bude muset být navrácena ke změně velikosti virtuálního počítače. Také může musíte aktualizovat velikost ostatních virtuálních počítačů ve skupině po změně velikosti jeden virtuální počítač dostupnosti. Ke změně velikosti virtuálních počítačů v nastavení dostupnosti, proveďte následující kroky.
+Pokud hello novou velikost virtuálního počítače v nastavení dostupnosti není k dispozici na hello hardwaru clusteru hello aktuálně hostuje virtuální počítač, pak všechny virtuální počítače ve skupině dostupnosti hello bude nutné toobe navrácena tooresize hello virtuálních počítačů. Můžete také potřebovat tooupdate hello velikost ostatních virtuálních počítačů ve skupině po změně velikosti jeden virtuální počítač dostupnosti hello. tooresize virtuálního počítače v nastavení dostupnosti, proveďte následující kroky hello.
 
-1. Zobrazí seznam velikosti virtuálních počítačů, které jsou k dispozici na hardwaru clusteru je hostitelem virtuálního počítače.
+1. Zobrazí seznam hello velikosti virtuálních počítačů, které jsou k dispozici v clusteru hardwaru hello je hostitelem hello virtuálních počítačů.
    
     ```powershell
     Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName>
     ```
-2. Pokud požadovaná velikost je uveden, spusťte následující příkazy ke změně velikosti virtuálního počítače. Pokud není v seznamu uvedena, přejděte ke kroku 3.
+2. V případě, že je uvedena velikost potřeby hello spusťte následující příkazy tooresize hello virtuálních počítačů hello. Pokud ne, přejděte toostep 3.
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -VMName <vmName>
     $vm.HardwareProfile.VmSize = "<newVmSize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
-3. Pokud není uvedené požadované velikosti, pokračujte následujícími kroky k navrácení všechny virtuální počítače v sadě dostupnosti, změně velikosti virtuálních počítačů a je restartovat.
-4. Zastavte všechny virtuální počítače v sadě dostupnosti.
+3. V případě potřeby hello není uvedena velikost pokračovat hello následující kroky toodeallocate všechny virtuální počítače ve skupině dostupnosti hello, změně velikosti virtuálních počítačů a je restartovat.
+4. Zastavte všechny virtuální počítače ve skupině dostupnosti hello.
    
    ```powershell
    $rg = "<resourceGroupName>"
@@ -84,7 +84,7 @@ Pokud velikost nového virtuálního počítače v nastavení dostupnosti není 
      Stop-AzureRmVM -ResourceGroupName $rg -Name $vmName -Force
    } 
    ```
-5. Změní velikost a restartovat virtuální počítače v sadě dostupnosti.
+5. Změnit velikost a restartujte hello virtuální počítače v sadě dostupnosti hello.
    
    ```powershell
    $rg = "<resourceGroupName>"

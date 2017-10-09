@@ -1,6 +1,6 @@
 ---
 title: "Datové připojení: Data stream vstupy z datového proudu událostí | Microsoft Docs"
-description: "Další informace o nastavení připojení dat do služby Stream Analytics s názvem \"vstupy\". Vstupy zahrnout datový proud z událostí a také referenční data."
+description: "Informace o nastavení data připojení tooStream Analytics názvem \"vstupy\". Vstupy zahrnout datový proud z událostí a také referenční data."
 keywords: "datový proud, datové připojení, datového proudu událostí"
 services: stream-analytics
 documentationcenter: 
@@ -15,57 +15,57 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
-ms.openlocfilehash: 6f7f01165c0f0d6f8478a8c53d74d3ce32c5df9f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: be2008f159061c5c9be9d0314c27fa67193e3269
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datové připojení: Další informace o datech vstupy datového proudu z událostí do služby Stream Analytics
-Datové připojení do úlohy Stream Analytics je datový proud událostí ze zdroje dat, který se označuje jako úlohy *vstupní*. Stream Analytics obsahuje prvotřídní integrace s datového proudu zdrojů dat Azure, včetně [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), a [úložiště objektů Azure Blob](https://azure.microsoft.com/services/storage/blobs/). Tyto vstupního zdroje může být ze stejného předplatného Azure jako vaše úloha analýzy nebo z jiného předplatného.
+# <a name="data-connection-learn-about-data-stream-inputs-from-events-toostream-analytics"></a>Datové připojení: Další informace o data vstupy datového proudu z události tooStream Analytics
+Hello úlohy Stream Analytics tooa datového připojení je datový proud událostí ze zdroje dat, což je úloha hello odkazované tooas *vstupní*. Stream Analytics obsahuje prvotřídní integrace s datového proudu zdrojů dat Azure, včetně [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), a [úložiště objektů Azure Blob](https://azure.microsoft.com/services/storage/blobs/). Tyto vstupních zdrojů může být z hello stejné předplatné jako váš úlohy analytics nebo z jiného předplatného.
 
 ## <a name="data-input-types-data-stream-and-reference-data"></a>Vstupní typy dat: Data streamu a referenčních dat
-Jako data odesílána ke zdroji dat, má spotřebovávají úlohu služby Stream Analytics a zpracovány v reálném čase. Vstupy se dál dělí na dva typy: stream vstupy a referenční data vstupy dat.
+Jako data odesílána tooa zdroj dat, má spotřebovávají úlohy služby Stream Analytics hello a zpracovány v reálném čase. Vstupy se dál dělí na dva typy: stream vstupy a referenční data vstupy dat.
 
 ### <a name="data-stream-inputs"></a>Vstupy datový proud dat
-Datový proud je už bez vazby pořadí událostí v čase. Úlohy Stream Analytics musí obsahovat alespoň jeden vstup datového streamu. Služba Event Hubs, IoT Hub a úložiště objektů Blob jsou podporovány jako vstupní zdroje dat datového proudu. Služba Event hubs slouží ke shromažďování streamů událostí z více zařízení a služeb. Tyto datové proudy mohou zahrnovat sociálních médií o aktivitách, informace o uložených obchodní nebo dat ze senzorů. Centra IoT jsou optimalizované pro shromažďování dat z připojených zařízení v scénáře Internetu věcí (IoT).  Úložiště objektů BLOB můžete použít jako vstupní zdroj pro příjem dat hromadné jako datový proud, jako jsou například soubory protokolu.  
+Datový proud je už bez vazby pořadí událostí v čase. Úlohy Stream Analytics musí obsahovat alespoň jeden vstup datového streamu. Služba Event Hubs, IoT Hub a úložiště objektů Blob jsou podporovány jako vstupní zdroje dat datového proudu. Centra událostí jsou použité toocollect streamů událostí z více zařízení a služeb. Tyto datové proudy mohou zahrnovat sociálních médií o aktivitách, informace o uložených obchodní nebo dat ze senzorů. Centra IoT jsou optimalizované toocollect data z připojených zařízení v scénáře Internetu věcí (IoT).  Úložiště objektů BLOB můžete použít jako vstupní zdroj pro příjem dat hromadné jako datový proud, jako jsou například soubory protokolu.  
 
 ### <a name="reference-data"></a>Referenční data
-Stream Analytics podporuje také označuje jako vstup *referenční data*. Toto je pomocná data, která je buď statickou nebo který změny pomalu. Se obvykle používá k provedení korelaci a vyhledávání. Například můžete spojit data vstup datového streamu k datům v referenční data tak, jak můžete provést připojení SQL k vyhledání statické hodnoty. Azure Blob storage je aktuálně podporované pouze vstupní zdroj pro referenční data. Referenční data zdroje BLOB jsou omezeny na 100 MB velikost.
+Stream Analytics podporuje také označuje jako vstup *referenční data*. Toto je pomocná data, která je buď statickou nebo který změny pomalu. Se obvykle používá k provedení korelaci a vyhledávání. Například můžete spojit data hello data datového proudu vstupní toodata v hello referenční data, tak, jak můžete provést toolook připojení k SQL statických hodnot. Azure Blob storage je aktuálně podporuje jenom hello vstupní zdroj pro referenční data. Referenční data zdroje BLOB jsou omezené velikost too100 MB.
 
-Naučte se vytvořit odkaz na vstupy data, najdete v tématu [použití referenčních dat](stream-analytics-use-reference-data.md).  
+jak zjistit, toocreate referenční data vstupy, toolearn [použití referenčních dat](stream-analytics-use-reference-data.md).  
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>Vytvoření vstupní datový proud dat ze služby Event Hubs
 
-Azure Event Hubs poskytuje vysoce škálovatelné publikování a odběru ingestors událostí. Centra událostí můžete shromáždit miliony událostí za sekundu, takže umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikací. Služba Event Hubs a Stream Analytics společně poskytují-komplexní řešení pro analýzu v reálném čase – Event Hubs umožňují kanálu události do Azure v reálném čase a úlohy Stream Analytics může zpracovat události v reálném čase. Například odeslat klikne na web, odečty snímačů nebo online protokolu událostí do centra událostí. Potom můžete vytvořit úlohy Stream Analytics používat služby Event Hubs jako vstupní datové proudy v reálném čase filtrování, agregace a korelace.
+Azure Event Hubs poskytuje vysoce škálovatelné publikování a odběru ingestors událostí. Centra událostí můžete shromáždit miliony událostí za sekundu, takže umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikace hello. Služba Event Hubs a Stream Analytics společně poskytují-komplexní řešení pro analýzu v reálném čase – Event Hubs umožňují kanálu události do Azure v reálném čase a úlohy Stream Analytics může zpracovat události v reálném čase. Například může odesílat klikne na web, odečty snímačů nebo online protokolu události tooEvent rozbočovače. Potom můžete vytvořit toouse úlohy Stream Analytics Event Hubs jako vstupní datové proudy hello v reálném čase filtrování, agregace a korelace.
 
-Výchozí časové razítko události pocházející ze služby Event Hubs v Stream Analytics je časové razítko, které události byly přijaty události rozbočovače, který je `EventEnqueuedUtcTime`. Zpracování dat jako použití časového razítka v případě, že datové části, je nutné použít datový proud [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
+Hello výchozí časové razítko události pocházející ze služby Event Hubs v Stream Analytics je hello časové razítko, které hello událostí byly přijaty ve hello centra událostí, což je `EventEnqueuedUtcTime`. tooprocess hello data jako datový proud použití časového razítka v datové části události hello, je nutné použít hello [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
 
 ### <a name="consumer-groups"></a>Skupiny příjemců
-Měli byste nakonfigurovat každý centra událostí Stream Analytics vstup do mají svůj vlastní skupiny příjemců. Pokud úloha obsahuje vlastní spojení nebo pokud obsahuje více vstupů, může číst některé vstup za více než jeden čtečky. Situace má dopad na počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu služby Event Hubs pět čtečky za skupiny příjemců na oddíl, je osvědčeným postupem určit skupinu uživatelů pro každou úlohu služby Stream Analytics. Je také maximální počet 20 skupiny příjemců za centra událostí. Další informace najdete v tématu [Průvodce programováním centra událostí](../event-hubs/event-hubs-programming-guide.md).
+Vstupní toohave každý Stream Analytics události rozbočovače byste měli nakonfigurovat vlastní skupiny příjemců. Pokud úloha obsahuje vlastní spojení nebo pokud obsahuje více vstupů, může číst některé vstup za více než jeden čtečky. Situace má dopad na hello počet čtenářů v skupinu jednoho příjemce. tooavoid přesahující hello Event Hubs limitu pěti čtečky za skupiny příjemců na oddíl, je nejlepší postup toodesignate příjemce skupiny pro každou úlohu služby Stream Analytics. Je také maximální počet 20 skupiny příjemců za centra událostí. Další informace najdete v tématu [Průvodce programováním centra událostí](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="configure-an-event-hub-as-a-data-stream-input"></a>Konfigurace centra událostí jako vstupní datový proud
-Následující tabulka popisuje každou vlastnost v **nové vstup** okno na portálu Azure při konfiguraci centra událostí jako vstup.
+Hello následující tabulka popisuje každou vlastnost v hello **nové vstup** okno v hello portálu Azure při konfiguraci centra událostí jako vstup.
 
 | Vlastnost | Popis |
 | --- | --- |
-| **Vstupní alias** |Popisný název, který používáte v dotazu úlohy odkazovat tento vstup. |
+| **Vstupní alias** |Popisný název, který používáte v tooreference dotazu úlohy hello tento vstup. |
 | **Obor názvů sběrnice** |Názvů Azure Service Bus, který je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí vytvořit taky obor názvů sběrnice. |
-| **Název centra událostí** |Název centra událostí, a použít jako vstup. |
-| **Název zásady centra událostí** |Zásada sdíleného přístupu, která poskytuje přístup k Centru událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
-| **Skupina uživatelů centra událostí** (volitelné) |Skupinu uživatelů, který se má použít pro načítání dat z centra událostí. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá výchozí skupina příjemců. Doporučujeme vám, že používáte skupinu odlišné příjemce pro každou úlohu služby Stream Analytics. |
-| **Formát serializace událostí** |Formát serializace (JSON, CSV nebo Avro) příchozí datový proud. |
-| **Kódování** | Znakové sady UTF-8 je aktuálně jediným podporovaným formátem kódování. |
+| **Název centra událostí** |Název Hello toouse centra událostí hello jako vstup. |
+| **Název zásady centra událostí** |Hello zásady sdíleného přístupu, která poskytuje přístup k Centru událostí toohello. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
+| **Skupina uživatelů centra událostí** (volitelné) |data tooingest Hello příjemce skupiny toouse z centra událostí hello. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics hello používá hello výchozí skupina příjemců. Doporučujeme vám, že používáte skupinu odlišné příjemce pro každou úlohu služby Stream Analytics. |
+| **Formát serializace událostí** |Hello formát serializace (JSON, CSV nebo Avro) hello příchozí datový proud. |
+| **Kódování** | Znakové sady UTF-8 je aktuálně hello podporuje jenom kódování formátu. |
 
-Pokud vaše data pochází z centra událostí, máte přístup k následující pole metadat v dotazu Stream Analytics:
+Pokud vaše data pochází z centra událostí, máte přístup toohello následující pole metadat v dotazu Stream Analytics:
 
 | Vlastnost | Popis |
 | --- | --- |
-| **EventProcessedUtcTime** |Datum a čas zpracování události Stream Analytics. |
-| **EventEnqueuedUtcTime** |Datum a čas, který událost přijala Event Hubs. |
-| **ID oddílu** |ID oddílu nulovým základem pro vstupní adaptér. |
+| **EventProcessedUtcTime** |Hello datum a čas, že událost hello zpracování Stream Analytics. |
+| **EventEnqueuedUtcTime** |Hello datum a čas, že událost hello přijala Event Hubs. |
+| **ID oddílu** |ID Hello nule oddílu pro vstupní adaptér hello. |
 
-Například pomocí těchto polí, které můžete vytvořit dotaz, jako v následujícím příkladu:
+Například pomocí těchto polí, které můžete vytvořit dotaz, jako hello následující ukázka:
 
 ````
 SELECT
@@ -78,7 +78,7 @@ FROM Input
 ## <a name="create-data-stream-input-from-iot-hub"></a>Vytvoření vstupní datový proud dat ze služby IoT Hub
 Azure Iot Hub je vysoce škálovatelná publikování a odběru na přijímač událostí optimalizovaných pro scénáře IoT.
 
-Výchozí časové razítko události pocházející ze služby IoT hub v Stream Analytics je časové razítko, které byly přijaty události ve službě IoT hub, která je `EventEnqueuedUtcTime`. Zpracování dat jako použití časového razítka v případě, že datové části, je nutné použít datový proud [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
+Hello výchozí časové razítko události pocházející ze služby IoT hub v Stream Analytics je hello časové razítko, které hello událostí byly přijaty ve hello IoT hub, což je `EventEnqueuedUtcTime`. tooprocess hello data jako datový proud použití časového razítka v datové části události hello, je nutné použít hello [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
 
 > [!NOTE]
 > Pouze zprávy odeslané s `DeviceClient` vlastnost může být zpracována.
@@ -86,74 +86,74 @@ Výchozí časové razítko události pocházející ze služby IoT hub v Stream
 > 
 
 ### <a name="consumer-groups"></a>Skupiny příjemců
-Měli byste nakonfigurovat každý Stream Analytics IoT hub vstup do mají svůj vlastní skupiny příjemců. Pokud úloha obsahuje vlastní spojení nebo pokud obsahuje více vstupů, může číst některé vstup za více než jeden čtečky. Situace má dopad na počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu Azure IoT Hub pět čtečky za skupiny příjemců na oddíl, je osvědčeným postupem určit skupinu uživatelů pro každou úlohu služby Stream Analytics.
+Každý Stream Analytics IoT hub vstupní toohave byste měli nakonfigurovat vlastní skupiny příjemců. Pokud úloha obsahuje vlastní spojení nebo pokud obsahuje více vstupů, může číst některé vstup za více než jeden čtečky. Situace má dopad na hello počet čtenářů v skupinu jednoho příjemce. tooavoid přesahující hello Azure IoT Hub limitu pěti čtečky za skupiny příjemců na oddíl, je nejlepší postup toodesignate příjemce skupiny pro každou úlohu služby Stream Analytics.
 
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>Konfigurace služby IoT hub jako vstupní datový proud
-Následující tabulka popisuje každou vlastnost v **nové vstup** okno na portálu Azure při konfiguraci služby IoT hub jako vstup.
+Hello následující tabulka popisuje každou vlastnost v hello **nové vstup** okno v hello portálu Azure při konfiguraci služby IoT hub jako vstup.
 
 | Vlastnost | Popis |
 | --- | --- |
-| **Vstupní alias** |Popisný název, který používáte v dotazu úlohy odkazovat tento vstup.|
-| **Centrum IoT** |Název centra IoT, které chcete použít jako vstup. |
-| **Koncový bod** |Koncový bod pro službu IoT hub.|
-| **Název zásady sdíleného přístupu** |Zásada sdíleného přístupu, který poskytuje přístup ke službě IoT hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
-| **Sdílený přístupový klíč zásad** |Sdílený přístupový klíč použitý k autorizaci přístupu ke službě IoT hub. |
-| **Skupiny příjemců** (volitelné) |Skupinu uživatelů, který se má použít pro načítání dat ze služby IoT hub. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá výchozí skupina příjemců. Doporučujeme vám, že používáte skupinu jiný příjemce pro každou úlohu služby Stream Analytics. |
-| **Formát serializace událostí** |Formát serializace (JSON, CSV nebo Avro) příchozí datový proud. |
-| **Kódování** |Znakové sady UTF-8 je aktuálně jediným podporovaným formátem kódování. |
+| **Vstupní alias** |Popisný název, který používáte v tooreference dotazu úlohy hello tento vstup.|
+| **Centrum IoT** |Název Hello hello IoT hub toouse jako vstup. |
+| **Koncový bod** |Hello koncový bod centra IoT hello.|
+| **Název zásady sdíleného přístupu** |Hello sdílené zásady přístupu, který poskytuje přístup toohello IoT hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
+| **Sdílený přístupový klíč zásad** |sdílený přístupový klíč Hello používá tooauthorize přístup toohello IoT hub. |
+| **Skupiny příjemců** (volitelné) |data tooingest Hello příjemce skupiny toouse ze služby IoT hub hello. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá hello výchozí skupina příjemců. Doporučujeme vám, že používáte skupinu jiný příjemce pro každou úlohu služby Stream Analytics. |
+| **Formát serializace událostí** |Hello formát serializace (JSON, CSV nebo Avro) hello příchozí datový proud. |
+| **Kódování** |Znakové sady UTF-8 je aktuálně hello podporuje jenom kódování formátu. |
 
-Pokud vaše data pochází ze služby IoT hub, máte přístup k následující pole metadat v dotazu Stream Analytics:
+Vaše data vycházejí ze služby IoT hub, máte přístup toohello následující pole metadat v dotazu Stream Analytics:
 
 | Vlastnost | Popis |
 | --- | --- |
-| **EventProcessedUtcTime** |Datum a čas, který byl zpracován události. |
-| **EventEnqueuedUtcTime** |Datum a čas, který událost byla přijata službou IoT hub. |
-| **ID oddílu** |ID oddílu nulovým základem pro vstupní adaptér. |
-| **IoTHub.MessageId** | ID, které slouží ke sladění obousměrné komunikace ve IoT hub. |
+| **EventProcessedUtcTime** |Hello datum a čas, že událost hello byl zpracován. |
+| **EventEnqueuedUtcTime** |Hello datum a čas, že událost hello byl přijat službou hello IoT hub. |
+| **ID oddílu** |ID Hello nule oddílu pro vstupní adaptér hello. |
+| **IoTHub.MessageId** | ID, které se používá toocorrelate obousměrné komunikace ve IoT hub. |
 | **IoTHub.CorrelationId** |ID, které se používá v odpovědi na zprávy a zpětnou vazbu týkající se služby IoT hub. |
-| **IoTHub.ConnectionDeviceId** |ID ověřování používaný k odesílání této zprávy. Tato hodnota je označený na servicebound zpráv ve službě IoT hub. |
-| **IoTHub.ConnectionDeviceGenerationId** |Ověřené zařízení, která byla použita pro tuto zprávu odešlete identifikátor ID generování. Tato hodnota je označený na servicebound zpráv ve službě IoT hub. |
-| **IoTHub.EnqueuedTime** |Čas, kdy se zpráva byla přijata službou IoT hub. |
-| **IoTHub.StreamId** |Vlastní události vlastnost přidal zařízení odesílatele. |
+| **IoTHub.ConnectionDeviceId** |ID ověření Hello používá toosend tuto zprávu. Tato hodnota je označený na servicebound zprávy službou hello IoT hub. |
+| **IoTHub.ConnectionDeviceGenerationId** |ID generování Hello hello ověření zařízení, která byla použité toosend tuto zprávu. Tato hodnota je označený na servicebound zprávy službou hello IoT hub. |
+| **IoTHub.EnqueuedTime** |Hello čas, kdy byla zpráva hello přijal službou hello IoT hub. |
+| **IoTHub.StreamId** |Vlastní události vlastnost přidal hello odesílatele zařízení. |
 
 
 ## <a name="create-data-stream-input-from-blob-storage"></a>Vytvoření vstupní datový proud dat z úložiště objektů Blob
-Pro scénáře s velkým množstvím nestrukturovaných dat pro uložení v cloudu úložiště objektů Azure Blob nabízí cenově výhodné a škálovatelné řešení. Data v úložišti objektů Blob se obvykle považuje dat v klidovém stavu. Však může být zpracována jako datový proud podle Stream Analytics. Typický scénář v nástroji vstupy úložiště objektů Blob s Stream Analytics je zpracování protokolu. V tomto scénáři telemetrická data byla zachycena ze systému a je třeba analyzovat a zpracovat extrahovat smysluplný data.
+Pro scénáře s velkým množstvím nestrukturovaných dat toostore v cloudu hello úložiště objektů Azure Blob nabízí cenově výhodné a škálovatelné řešení. Data v úložišti objektů Blob se obvykle považuje dat v klidovém stavu. Však může být zpracována jako datový proud podle Stream Analytics. Typický scénář v nástroji vstupy úložiště objektů Blob s Stream Analytics je zpracování protokolu. V tomto scénáři zachycení telemetrická data ze systému a musí toobe analyzovat a zpracovaná tooextract smysluplný data.
 
-Výchozí časové razítko události úložiště objektů Blob v Stream Analytics je časové razítko, aby bylo naposledy změněno objektu blob, což je `BlobLastModifiedUtcTime`. Zpracování dat jako použití časového razítka v případě, že datové části, je nutné použít datový proud [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
+Hello výchozí časové razítko událostí úložiště objektů Blob v Stream Analytics není hello časové razítko, které hello blob poslední změny, což je `BlobLastModifiedUtcTime`. tooprocess hello data jako datový proud použití časového razítka v datové části události hello, je nutné použít hello [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
 
-Sdílený svazek clusteru naformátovaný vstupy *vyžadují* řádek záhlaví definovat polí pro datovou sadu. Kromě toho všechna pole záhlaví řádků musí být jedinečný.
+Sdílený svazek clusteru naformátovaný vstupy *vyžadují* toodefine řádek záhlaví pole pro hello datovou sadu. Kromě toho všechna pole záhlaví řádků musí být jedinečný.
 
 > [!NOTE]
-> Stream Analytics nepodporuje přidávání obsahu do existujícího objektu blob. Objekt blob služby Stream Analytics se zobrazí pouze jednou a veškeré změny, které v objektu blob se provádějí až po úlohy má číst data nejsou předmětem zpracování. Osvědčeným postupem je odeslání všech dat jednou a není události přidat do tohoto úložiště objektů blob.
+> Stream Analytics nepodporuje přidávání obsahu tooan existující objekt blob. Objekt blob služby Stream Analytics se zobrazí pouze jednou a všechny změny, ke kterým došlo v objektu blob hello po hello úlohy má číst hello data nejsou předmětem zpracování. Osvědčeným postupem je tooupload všechna data hello jednou a není přidat úložišti objektů blob toothat události.
 > 
 
 ### <a name="configure-blob-storage-as-a-data-stream-input"></a>Konfigurace úložiště objektů Blob jako vstupní datový proud
 
-Následující tabulka popisuje každou vlastnost v **nové vstup** okno na portálu Azure při konfiguraci úložiště objektů Blob jako vstup.
+Hello následující tabulka popisuje každou vlastnost v hello **nové vstup** okno v hello portálu Azure při konfiguraci úložiště objektů Blob jako vstup.
 
 | Vlastnost | Popis |
 | --- | --- |
-| **Vstupní alias** | Popisný název, který používáte v dotazu úlohy odkazovat tento vstup. |
-| **Účet úložiště** | Název účtu úložiště, kde jsou umístěny soubory objektů blob. |
-| **Klíče účtu úložiště.** | Tajný klíč přidružený k účtu úložiště. |
-| **Kontejner** | Kontejner pro tento objekt blob vstup. Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené ve službě Microsoft Azure Blob. Při nahrávání do objektu blob ve službě úložiště objektů Blob v Azure, je nutné zadat kontejner pro tento objekt blob. |
-| **Vzorek cesty** (volitelné) | Cesta k souboru používaná k nalezení objektů BLOB v rámci zadaného kontejneru. V této cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}`, `{time}`, nebo`{partition}`<br/><br/>Příklad 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2:`cluster1/logs/{date}`<br/><br/>`*` Znak není povolená hodnota pro předponu cestu. Jediné platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">objektů blob v Azure znaků</a> jsou povoleny. |
-| **Formát data** (volitelné) | Pokud použijete proměnnou datum v cestě, ve které soubory jsou uspořádány formát data. Příklad:`YYYY/MM/DD` |
-| **Formát času** (volitelné) |  Pokud použijete proměnnou čas ve formátu času, ve které soubory jsou uspořádány do cesty. Aktuálně je jediná podporovaná hodnota `HH`. |
-| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) pro příchozí streamy. |
-| **Kódování** | Pro sdílený svazek clusteru a JSON je jediným podporovaným formátem kódování aktuálně UTF-8. |
+| **Vstupní alias** | Popisný název, který používáte v tooreference dotazu úlohy hello tento vstup. |
+| **Účet úložiště** | Hello název účtu úložiště hello, kde jsou umístěny soubory hello objektů blob. |
+| **Klíče účtu úložiště.** | Hello tajný klíč přidružený účet úložiště hello. |
+| **Kontejner** | Hello kontejner pro vstup hello objektů blob. Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené v hello služby Microsoft Azure Blob. Při nahrávání toohello objektu blob služby Azure Blob storage, je nutné zadat kontejner pro tento objekt blob. |
+| **Vzorek cesty** (volitelné) | Cesta k souboru Hello používá objekty BLOB hello toolocate v rámci zadaného kontejneru hello. V cestě hello, můžete zadat jednu nebo více instancí následujících tří proměnných hello: `{date}`, `{time}`, nebo`{partition}`<br/><br/>Příklad 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2:`cluster1/logs/{date}`<br/><br/>Hello `*` znak není povolená hodnota pro předponu cesta hello. Jediné platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">objektů blob v Azure znaků</a> jsou povoleny. |
+| **Formát data** (volitelné) | Pokud použijete proměnnou hello datum v cestě hello, hello formát data, ve které hello soubory jsou uspořádány. Příklad:`YYYY/MM/DD` |
+| **Formát času** (volitelné) |  Pokud použijete proměnnou hello čas v cestě hello, hello formát času, ve které hello soubory jsou uspořádány. Aktuálně podporuje jenom hello je `HH`. |
+| **Formát serializace událostí** | Hello formát serializace (JSON, CSV nebo Avro) pro příchozí datové proudy. |
+| **Kódování** | Pro sdílený svazek clusteru a JSON je UTF-8 aktuálně hello podporuje jenom kódování formátu. |
 
-Pokud vaše data pocházejí z zdroje úložiště objektů Blob, máte přístup na následující pole metadat v dotazu Stream Analytics:
+Vaše data pocházejí z zdroje úložiště objektů Blob, máte přístup toohello následující pole metadat v dotazu Stream Analytics:
 
 | Vlastnost | Popis |
 | --- | --- |
-| **BlobName** |Název vstupního objektu blob, který událost pochází. |
-| **EventProcessedUtcTime** |Datum a čas zpracování události Stream Analytics. |
-| **BlobLastModifiedUtcTime** |Datum a čas poslední změny objektu blob. |
-| **ID oddílu** |ID oddílu nulovým základem pro vstupní adaptér. |
+| **BlobName** |Hello název vstupního objektu blob hello, který hello událost pochází. |
+| **EventProcessedUtcTime** |Hello datum a čas, že událost hello zpracování Stream Analytics. |
+| **BlobLastModifiedUtcTime** |Hello datum a čas tomuto objektu blob hello bylo naposledy změněno. |
+| **ID oddílu** |ID Hello nule oddílu pro vstupní adaptér hello. |
 
-Například pomocí těchto polí, které můžete vytvořit dotaz, jako v následujícím příkladu:
+Například pomocí těchto polí, které můžete vytvořit dotaz, jako hello následující ukázka:
 
 ````
 SELECT
@@ -167,7 +167,7 @@ FROM Input
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
-Když jste se naučili o možnosti připojení dat v Azure pro úlohy Stream Analytics. Další informace o Stream Analytics najdete v tématu:
+Když jste se naučili o možnosti připojení dat v Azure pro úlohy Stream Analytics. toolearn Další informace o Stream Analytics, najdete v části:
 
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

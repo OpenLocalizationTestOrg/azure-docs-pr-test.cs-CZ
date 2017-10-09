@@ -1,6 +1,6 @@
 ---
-title: "Vyberte bitové kopie virtuálního počítače s Windows v Azure | Microsoft Docs"
-description: "Další informace o použití prostředí Azure PowerSHell k určení vydavatele, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů."
+title: "bitové kopie aaaSelect virtuální počítač s Windows v Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse prostředí Azure PowerSHell toodetermine hello vydavatele, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů."
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 814ae260123c045d4b6766bf4b312f874cd77068
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 752edcd0935f5141832e49503ae800ea0145e219
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Postup nalezení bitové kopie virtuálního počítače s Windows v Azure Marketplace s prostředím Azure PowerShell
+# <a name="how-toofind-windows-vm-images-in-hello-azure-marketplace-with-azure-powershell"></a>Jak Image toofind virtuální počítač s Windows v nástroji hello Azure Marketplace s prostředím Azure PowerShell
 
-Toto téma popisuje, jak pomocí prostředí Azure PowerShell k vyhledání Image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image pořízenou prostřednictvím Marketplace při vytvoření virtuálního počítače s Windows.
+Toto téma popisuje, jak Image toouse prostředí Azure PowerShell toofind virtuálních počítačů v nástroji hello Azure Marketplace. Při vytvoření virtuálního počítače s Windows, použijte tento informace toospecify image pořízenou prostřednictvím Marketplace.
 
-Ujistěte se, zda je nainstalován a nakonfigurován nejnovější [modul Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Ujistěte se, zda je nainstalován a nakonfigurován hello nejnovější [modul Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 
@@ -48,44 +48,44 @@ Ujistěte se, zda je nainstalován a nakonfigurován nejnovější [modul Azure 
 ## <a name="find-specific-images"></a>Vyhledání konkrétních imagí
 
 
-Při vytváření nového virtuálního počítače pomocí Azure Resource Manageru je v některých případech nutné zadat image kombinací následujících vlastností image:
+Při vytváření nového virtuálního počítače pomocí Azure Resource Manageru, v některých případech je třeba toospecify bitovou kopii s kombinací hello hello následující vlastnosti bitové kopie:
 
 * Vydavatel
 * Nabídka
 * Skladová jednotka (SKU)
 
-Například použít tyto hodnoty [Set-AzureRMVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) rutiny prostředí PowerShell nebo pomocí šablony skupiny prostředků, ve kterém musíte zadat typ virtuálního počítače, který se má vytvořit.
+Například použít tyto hodnoty s hello [Set-AzureRMVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) rutiny prostředí PowerShell nebo pomocí šablony skupiny prostředků v které je nutné zadat typ hello toobe virtuální počítač vytvořit.
 
-Pokud potřebujete zjistit tyto hodnoty, můžete spustit [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), [Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), a [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) rutiny přejděte bitové kopie. Můžete určit tyto hodnoty:
+Pokud potřebujete toodetermine tyto hodnoty, můžete spustit hello [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), [Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), a [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) rutiny toonavigate hello Image. Můžete určit tyto hodnoty:
 
-1. Vypsat vydavatele imagí.
+1. Seznam vydavatelů image hello.
 2. Pro daného vydavatele vypsat jeho nabídky.
 3. Pro danou nabídku vypsat její skladovou jednotku (SKU).
 
-Nejprve vypište vydavatele pomocí následujících příkazů:
+Nejprve seznam vydavatelů hello s hello následující příkazy:
 
 ```powershell
 $locName="<Azure location, such as West US>"
 Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
 ```
 
-Vyplňte název zvoleného vydavatele a spusťte následující příkazy:
+Zadejte název vydavatele zvolené a spusťte následující příkazy hello:
 
 ```powershell
 $pubName="<publisher>"
 Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 ```
 
-Vyplňte název zvolené nabídky a spusťte následující příkazy:
+Zadejte název vaší zvolené nabídka a spusťte následující příkazy hello:
 
 ```powershell
 $offerName="<offer>"
 Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 ```
 
-Z výstupu `Get-AzureRMVMImageSku` příkaz, abyste měli všechny informace, musíte zadat bitovou kopii pro nový virtuální počítač.
+Z hello výstup hello `Get-AzureRMVMImageSku` příkaz, budete mít všechny informace o hello potřebujete toospecify hello image pro nový virtuální počítač.
 
-Následuje úplný příklad:
+Úplný příklad ukazuje, Hello následující:
 
 ```powershell
 $locName="West US"
@@ -111,7 +111,7 @@ Canonical
 ...
 ```
 
-Pro vydavatele „MicrosoftWindowsServer“:
+Pro vydavatele "MicrosoftWindowsServer" hello:
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -128,7 +128,7 @@ WindowsServer
 WindowsServer-HUB
 ```
 
-Pro nabídku „WindowsServer“:
+Pro nabídka "Windows Server" hello:
 
 ```powershell
 $offerName="WindowsServer"
@@ -154,7 +154,7 @@ Skus
 2016-Nano-Server
 ```
 
-Z tohoto seznamu si zkopírujte název zvolené skladové jednotky (SKU) a máte veškeré informace pro rutinu PowerShellu `Set-AzureRMVMSourceImage` nebo pro šablonu skupiny prostředků.
+Z tohoto seznamu, zkopírujte hello zvolený název SKU, a budete mít všechny informace hello hello `Set-AzureRMVMSourceImage` rutiny prostředí PowerShell nebo pro šablonu skupiny prostředků.
 
 ## <a name="next-steps"></a>Další kroky
-Nyní si můžete vybrat přesně tu image, kterou chcete použít. Pokud chcete rychle vytvořit virtuální počítač pomocí informace o obrázku, který jste právě najít, přečtěte si téma [vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell](quick-create-powershell.md).
+Teď můžete zvolit přesněji hello obraz chcete toouse. najdete v části virtuální počítač rychle pomocí informace o obrázku hello, který jste právě najít, toocreate [vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell](quick-create-powershell.md).

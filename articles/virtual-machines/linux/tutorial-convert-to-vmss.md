@@ -1,6 +1,6 @@
 ---
-title: "Převést na sadu škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Vytvořit a nasadit škálování virtuálního počítače Linux Azure nastavit pomocí Azure CLI."
+title: "aaaConvert Azure tooa sady škálování virtuálního počítače | Microsoft Docs"
+description: "Vytvořit a nasadit škálování virtuálního počítače Linux Azure s hello rozhraní příkazového řádku Azure."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: Thraka
@@ -15,52 +15,52 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 8d3376d2791b1349298db618d475ce5573083702
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e228282ac4855cef589b8500e74e9d461f9aed84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="convert-an-existing-azure-virtual-machine-to-a-scale-set"></a>Převést stávající virtuální počítač Azure na škálovací sadě
+# <a name="convert-an-existing-azure-virtual-machine-tooa-scale-set"></a>Převést existující sady škálování virtuálního počítače Azure tooa
 
-V tomto kurzu se dozvíte, jak používat Azure CLI 2.0 převést virtuální počítač na škálovací sadu virtuálních počítačů. Můžete také informace o automatizaci konfigurace virtuálních počítačů v sadě škálování. Další informace o tom, jak nainstalovat Azure CLI 2.0, naleznete v části [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md). Další informace o sadách škálování najdete v tématu [sadách škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
+Tento kurz ukazuje, jak tooconvert toouse 2.0 rozhraní příkazového řádku Azure virtuální počítač tooa škálovací sady virtuálních počítačů. Také zjistíte, jak nastavit konfiguraci hello tooautomate hello virtuální počítače ve škálovací hello. Další informace o tom, jak tooinstall rozhraní příkazového řádku Azure 2.0, najdete v části [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md). Další informace o sadách škálování najdete v tématu [sadách škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
 
-## <a name="step-1---deprovision-the-vm"></a>Krok 1 – zrušení zřízení virtuálního počítače
+## <a name="step-1---deprovision-hello-vm"></a>Krok 1 - Deprovision hello virtuálních počítačů
 
-Použití SSH se připojit k virtuálnímu počítači.
+Pomocí SSH tooconnect toohello virtuálních počítačů.
 
-Zrušení zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure se odstranit soubory a data. Podrobný přehled o zrušení zřízení, najdete v části [zachytit virtuální počítač s Linuxem](capture-image.md).
+Deprovision hello virtuálních počítačů pomocí souborů toodelete agenta virtuálního počítače Azure hello a data. Podrobný přehled o zrušení zřízení, najdete v části [zachytit virtuální počítač s Linuxem](capture-image.md).
 
 ```bash
 sudo waagent -deprovision+user -force
 exit
 ```
 
-## <a name="step-2---capture-an-image-of-the-vm"></a>Krok 2 – Vytvoření bitové kopie virtuálního počítače
+## <a name="step-2---capture-an-image-of-hello-vm"></a>Krok 2 – Vytvoření bitové kopie hello virtuálních počítačů
 
 Podrobný přehled o zachycení, najdete v části [zachytit virtuální počítač s Linuxem](capture-image.md).
 
-Zrušit přidělení virtuálního počítače s [az OM deallocate](/cli/azure/vm#deallocate):
+Deallocate hello virtuálního počítače s [az OM deallocate](/cli/azure/vm#deallocate):
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Generalize virtuálního počítače s [az virtuálních počítačů zobecní](/cli/azure/vm#generalize):
+Generalize hello virtuálního počítače s [az virtuálních počítačů zobecní](/cli/azure/vm#generalize):
 
 ```azurecli
 az vm generalize --resource-group myResourceGroup --name myVM
 ```
 
-Vytvoření image z prostředků virtuálního počítače s [vytvoření bitové kopie az](/cli/azure/image#create):
+Vytvoření image z hello prostředků virtuálního počítače s [vytvoření bitové kopie az](/cli/azure/image#create):
 
 ```azurecli
 az image create --resource-group myResourceGroup --name myImage --source myVM
 ```
 
-## <a name="step-3---create-the-scale-set"></a>Krok 3 – vytvoření sady škálování
+## <a name="step-3---create-hello-scale-set"></a>Krok 3 – vytvoření sadě škálování hello
 
-Získat **id** bitové kopie.
+Získat hello **id** hello bitové kopie.
 
 ```azurecli
 az image show --resource-group myResourceGroup --name myImage --query id
@@ -76,9 +76,9 @@ Vytvořte virtuální počítač z bitové kopie prostředku s [vytvořit az vms
 az vmss create --resource-group myResourceGroup --name myScaleSet --image /subscriptions/afbdaf8b-9188-4651-bce1-9115dd57c98b/resourceGroups/vmtest/providers/Microsoft.Compute/images/myImage --upgrade-policy-mode automatic --vm-sku Standard_DS1_v2 --data-disk-sizes-gb 10 --admin-username azureuser --generate-ssh-keys
 ```
 
-Tento příkaz také připojit datový disk 10gb. Mějte na paměti, který v závislosti na virtuální počítač velikost zvolenou (jsme použili **Standard_DS1_v2**), počet datových disků povolená, se liší. Další informace najdete v článku [velikostí virtuálních počítačů](sizes.md).
+Tento příkaz také připojit datový disk 10gb. Mějte na paměti, který v závislosti na hello virtuálních počítačů velikost zvolenou (jsme použili **Standard_DS1_v2**), se liší hello počet datových disků povolená. Další informace najdete v tématu hello [velikostí virtuálních počítačů](sizes.md).
 
-Po dokončení nastavení měřítka připojte se k němu. Získat seznam IP adres pro instance pro SSH s [az vmss seznamu--připojení-informace o instanci](/cli/azure/vmss#list-instance-connection-info):
+Po dokončení nastavení škálování hello připojte tooit. Získat seznam IP adres pro instance hello SSH s [az vmss seznamu--připojení-informace o instanci](/cli/azure/vmss#list-instance-connection-info):
 
 ```azurecli
 az vmss list-instance-connection-info --resource-group myResourceGroup --name myScaleSet
@@ -91,40 +91,40 @@ az vmss list-instance-connection-info --resource-group myResourceGroup --name my
 ]
 ```
 
-Nyní můžete připojit k instanci virtuálního počítače k chybě při inicializaci datový disk
+Teď se můžete připojit toohello virtuální počítač instance tooinitialize hello datový disk
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub -p 50000 azureuser@52.183.00.000
 ```
 
-## <a name="step-4---initialize-the-data-disk"></a>Krok 4 – inicializovat datový disk
+## <a name="step-4---initialize-hello-data-disk"></a>Krok 4 – inicializovat hello datový disk
 
-Při připojení k virtuálnímu počítači, oddílu disku spolu s `fdisk`:
+Při připojené toohello virtuálního počítače, oddílu hello disk s `fdisk`:
 
 ```bash
 (echo n; echo p; echo 1; echo  ; echo  ; echo w) | sudo fdisk /dev/sdc
 ```
 
-Zápis systém souborů k oddílu s `mkfs` příkaz:
+Zápis systému souborů toohello oddílu s hello `mkfs` příkaz:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
 ```
 
-Připojte nový disk, takže bude přístupný v operačním systému:
+Připojte nový disk hello tak, aby se v hello operačního systému:
 
 ```bash
 sudo mkdir /datadrive ; sudo mount /dev/sdc1 /datadrive
 ```
 
-Disk může být nyní přistupuje prostřednictvím datadrive přípojný bod, který lze ověřit pomocí `ls /datadrive/`.
+Hello disk může být nyní přistupuje prostřednictvím přípojný bod datadrive hello, který lze ověřit pomocí `ls /datadrive/`.
 
-Ukončení relace SSH.
+Ukončení relace SSH hello.
 
 
 ## <a name="step-5---configure-firewall"></a>Krok 5: Konfigurace brány firewall
 
-Děrování díru přes bránu firewall, aby webový server hostované byly sadou škálování. Pokud byly sadou škálování byl vytvořen, byla vytvořena i nástroj pro vyrovnávání zatížení a ho používají **SSH** pro jednotlivé virtuální počítače. Chcete-li otevřít port, je třeba dva kusy informace, které můžete získat pomocí rozhraní příkazového řádku Azure.
+Děrování díru prostřednictvím brány firewall webový server toohello hello hostované hello škálovací sada. Pokud byla vytvořena hello škálovací sadu, byla vytvořena i nástroj pro vyrovnávání zatížení a ho používají **SSH** toohello jednotlivé virtuální počítače. tooopen port, budete potřebovat dva kusy informace, které můžete získat pomocí rozhraní příkazového řádku Azure.
 
 * **Fond adres IP front-endu**  
 `az network lb show --resource-group myResourceGroup --name myScaleSetLB --output table --query frontendIpConfigurations[0].name`
@@ -141,14 +141,14 @@ az network lb rule create --backend-pool-name myScaleSetLBBEPool --backend-port 
 
 ## <a name="step-6---automate-configuration"></a>Krok 6 – automatické konfiguraci
 
-Datový disk musí být nakonfigurované na každou instanci virtuálního počítače. Jsme můžete automatizovat konfiguraci virtuálního počítače s **CustomScript** rozšíření.
+datový disk Hello musí toobe nakonfigurované na každou instanci virtuálního počítače. Jsme můžete automatizovat konfiguraci hello hello virtuálního počítače s hello **CustomScript** rozšíření.
 
-Nejprve vytvořte *.sh* skript, který obsahuje příkazy formátu disku.
+Nejprve vytvořte *.sh* skript, který obsahuje příkazy formát disku hello.
 
 ```sh
 #!/bin/bash
 
-# Setup the data disk
+# Setup hello data disk
 (echo n; echo p; echo 1; echo  ; echo  ; echo w) | fdisk /dev/sdc
 fdisk /dev/sdc
 mkfs -t ext4 /dev/sdc1
@@ -158,9 +158,9 @@ mount /dev/sdc1 /datadrive
 exit 0
 ```
 
-V dalším kroku nahrát daného souboru skriptu k umístění, kde **CustomScript** rozšíření k němu přístup. Je k dispozici kopii [zde](https://gist.githubusercontent.com/Thraka/ab1d8b78ac4b23722f3d3c1c03ac5df4).
+V dalším kroku nahrát tento skript soubor toowhere hello **CustomScript** rozšíření k němu přístup. Je k dispozici kopii [zde](https://gist.githubusercontent.com/Thraka/ab1d8b78ac4b23722f3d3c1c03ac5df4).
 
-Vytvořte místní soubor s názvem **settings.json** a uveďte následující blok JSON. `flieUris` Musí být vlastnost nastavena, kde byla nahrát váš soubor skriptu do.
+Vytvořte místní soubor s názvem **settings.json** a put hello následující bloku JSON v ní. Hello `flieUris` vlastnost musí být nastavená toowhere nahranému v souboru skriptu.
 
 ```json
 {
@@ -169,7 +169,7 @@ Vytvořte místní soubor s názvem **settings.json** a uveďte následující b
 }
 ```
 
-Nasadit tento příkaz vaší škálování s **CustomScript** rozšíření, odkazující **settings.json** souboru jsme právě vytvořili.
+Nasazení tohoto měřítka tooyour příkaz s hello **CustomScript** rozšíření, odkazující na hello **settings.json** souboru jsme právě vytvořili.
 
 ```azurecli
 az vmss extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
@@ -179,11 +179,11 @@ Toto rozšíření se automaticky spustí na všechny aktuální instance a vše
 
 ## <a name="step-7---configure-autoscale-rules"></a>Krok 7: Konfigurace pravidel automatického škálování
 
-Škálování pravidla se v současné době nelze nastavit v rozhraní příkazového řádku Azure. Použití [portál Azure](https://portal.azure.com) ke konfiguraci automatického škálování.
+Škálování pravidla se v současné době nelze nastavit v rozhraní příkazového řádku Azure. Použití hello [portál Azure](https://portal.azure.com) tooconfigure škálování.
 
 ## <a name="step-8---management-tasks"></a>Krok 8 – úlohy správy
 
-V průběhu cyklu škálovací sady můžete spustit jeden nebo více úloh správy. Kromě toho můžete chtít vytvořit skripty, které automatizují různé úlohy životního cyklu a rozhraní příkazového řádku Azure poskytuje rychlý způsob, jak provést tyto úlohy. Tady jsou několik běžných úloh.
+V průběhu cyklu hello škálovací sady hello, může být nutné toorun jedné nebo více úloh správy. Kromě toho může být vhodné toocreate skripty, které automatizují různé úlohy životního cyklu a hello rozhraní příkazového řádku Azure poskytuje rychlý způsob toodo tyto úlohy. Tady jsou několik běžných úloh.
 
 ### <a name="get-connection-info"></a>Získání informací o připojení
 
@@ -206,7 +206,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o některých funkcí sady škálování virtuálního počítače byla zavedená v tomto kurzu, přečtěte si následující informace:
+toolearn informace o některých škálování virtuálních počítačů hello nastavit funkce zavedená v tomto kurzu, najdete v části hello následující informace:
 
 - [Přehled sady škálování virtuálního počítače Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)
 - [Azure Load Balancer – přehled](../../load-balancer/load-balancer-overview.md)

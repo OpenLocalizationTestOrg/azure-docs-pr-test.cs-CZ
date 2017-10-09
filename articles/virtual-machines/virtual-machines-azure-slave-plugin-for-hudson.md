@@ -1,6 +1,6 @@
 ---
-title: "Jak používat modul plug-in Azure podřízený s průběžnou integraci Hudsonem | Microsoft Docs"
-description: "Popisuje, jak používat modul plug-in Azure podřízený s průběžnou integraci Hudsonem."
+title: "aaaHow toouse hello Azure podřízený modul plug-in s průběžnou integraci Hudsonem | Microsoft Docs"
+description: "Popisuje, jak toouse hello Azure podřízený s Hudsonem průběžnou integraci modulu plug-in."
 services: virtual-machines-linux
 documentationcenter: 
 author: rmcmurray
@@ -14,30 +14,30 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cd6e67ad71c208aa56746aa8b70ba507da20bee9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Jak používat modul plug-in Azure podřízený s Hudsonem průběžnou integraci
-Modul plug-in pro Hudsonem Azure podřízený umožňuje zřídit podřízené uzly v Azure při spuštění distribuované sestavení.
+# <a name="how-toouse-hello-azure-slave-plug-in-with-hudson-continuous-integration"></a>Jak toouse hello Azure podřízený s Hudsonem průběžnou integraci modulu plug-in
+Hello Azure podřízený modulu plug-in pro Hudsonem umožňuje tooprovision podřízené uzly v Azure při spuštění distribuované sestavení.
 
-## <a name="install-the-azure-slave-plug-in"></a>Instalace modulu plug-in Azure podřízený
-1. Na řídicím panelu Hudsonem klikněte na tlačítko **spravovat Hudsonem**.
-2. V **spravovat Hudsonem** klikněte na **Správa modulů plug-in**.
-3. Klikněte **dostupné** kartě.
-4. Klikněte na tlačítko **vyhledávání** a typ **Azure** k omezení seznamu k příslušné moduly plug-in.
+## <a name="install-hello-azure-slave-plug-in"></a>Instalace modulu plug-in Azure podřízený hello
+1. V hello Hudsonem řídicí panel, klikněte na **spravovat Hudsonem**.
+2. V hello **spravovat Hudsonem** klikněte na **Správa modulů plug-in**.
+3. Klikněte na tlačítko hello **dostupné** kartě.
+4. Klikněte na tlačítko **vyhledávání** a typ **Azure** toolimit hello seznamu toorelevant zásuvné moduly.
    
-    Pokud se přihlásíte vyhledejte v seznamu dostupných modulů plug-in, zjistí Azure podřízený modulu plug-in v části **správu clusteru a distribuovat sestavení** kapitoly **ostatní** kartě.
-5. Zaškrtněte políčko **modul plug-in Azure podřízený**.
+    Pokud se přihlásíte tooscroll prostřednictvím hello seznamu dostupných modulů plug-in, zjistí hello Azure podřízený modulu plug-in pod hello **správu clusteru a distribuované sestavení** část v hello **ostatní** kartě.
+5. Zaškrtněte políčko hello pro **modul plug-in Azure podřízený**.
 6. Klikněte na **Nainstalovat**.
 7. Restartujte Hudsonem.
 
-Teď, když je nainstalovaný, bude další kroky konfigurace modulu plug-in s profilem vašeho předplatného Azure a vytvořit šablonu, která se použije při vytváření virtuálního počítače pro podřízený uzel.
+Nyní je nainstalován tento modul plug-in hello, bude další kroky hello tooconfigure hello modul plug-in s profil předplatného Azure a toocreate šablonu, která se použije při vytváření hello virtuálních počítačů pro hello podřízený uzel.
 
-## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Modul plug-in Azure podřízený nakonfigurovat svůj profil předplatného
-Odběru profil, který se také označuje jako nastavení publikování, je soubor XML, který obsahuje zabezpečené přihlašovací údaje a doplňující informace, které budete potřebovat pro práci s Azure ve vašem vývojovém prostředí. Pokud chcete konfigurovat modul plug-in Azure podřízený, potřebujete:
+## <a name="configure-hello-azure-slave-plug-in-with-your-subscription-profile"></a>Hello Azure podřízený modul plug-in nakonfigurovat svůj profil předplatného
+Profil předplatné také odkazované tooas nastavení publikování, je soubor XML, který obsahuje zabezpečené přihlašovací údaje a některé další informace, které budete potřebovat toowork s Azure ve vašem vývojovém prostředí. tooconfigure hello Azure podřízený modul plug-in, budete potřebovat:
 
 * Vaše id odběru
 * Certifikát pro správu pro vaše předplatné
@@ -63,56 +63,56 @@ Ty lze najít ve vaší [odběru profil]. Dole je příklad profilu předplatné
 
     </PublishData>
 
-Až budete mít vaše předplatné profilu, postupujte podle těchto kroků nakonfigurujete Azure podřízený modulu plug-in.
+Jakmile je váš profil předplatného, postupujte podle těchto kroků tooconfigure hello Azure podřízený modulu plug-in.
 
-1. Na řídicím panelu Hudsonem klikněte na tlačítko **spravovat Hudsonem**.
+1. V hello Hudsonem řídicí panel, klikněte na **spravovat Hudsonem**.
 2. Klikněte na tlačítko **konfiguraci systému**.
-3. Projděte dolů stránce Najít **cloudu** části.
+3. Projděte dolů hello toofind stránku hello **cloudu** části.
 4. Klikněte na tlačítko **přidat nové cloudové > Microsoft Azure**.
    
     ![Přidat nové cloudu][add new cloud]
    
-    Zobrazí pole potřebujete-li zadat podrobnosti o vašem předplatném.
+    Pole text hello, kde je nutné tooenter zobrazí podrobnosti o vašem předplatném.
    
     ![Konfigurace profilu][configure profile]
-5. Zkopírujte certifikát správy a id předplatného z vašeho profilu předplatného a vložte je do příslušných polí.
+5. Zkopírovat hello předplatné id a správy certifikátu z profilu předplatného a vložte je do příslušných polí hello.
    
-    Při kopírování id a správy certifikátu předplatného **nepodporují** zahrnout uvozovky, které uzavřete hodnoty.
+    Při kopírování id a správy certifikátu předplatného hello **nepodporují** zahrnují hello uvozovky, které uzavřete hello hodnoty.
 6. Klikněte na **ověřte konfiguraci**.
-7. Po konfiguraci je ověření bylo úspěšné, klikněte na tlačítko **Uložit**.
+7. Po konfiguraci hello je ověření bylo úspěšné, klikněte na tlačítko **Uložit**.
 
-## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Nastavení šablony virtuálního počítače pro podřízený Azure modulu plug-in
-Šablonu virtuálního počítače definuje parametry, které modul plug-in použije k vytvoření podřízený uzel v Azure. V následujících krocích jsme budete vytvoření šablony pro virtuálního počítače s Ubuntu.
+## <a name="set-up-a-virtual-machine-template-for-hello-azure-slave-plug-in"></a>Nastavení šablony virtuálního počítače pro hello Azure podřízený modulu plug-in
+Šablonu virtuálního počítače definuje parametry hello hello modul plug-in použije toocreate podřízený uzel v Azure. V následující kroky hello jsme budete vytvoření šablony pro virtuálního počítače s Ubuntu.
 
-1. Na řídicím panelu Hudsonem klikněte na tlačítko **spravovat Hudsonem**.
+1. V hello Hudsonem řídicí panel, klikněte na **spravovat Hudsonem**.
 2. Klikněte na **konfiguraci systému**.
-3. Projděte dolů stránce Najít **cloudu** části.
-4. V rámci **cloudu** část, vyhledejte **přidat šablonu virtuálního počítače Azure** a klikněte na tlačítko **přidat** tlačítko.
+3. Projděte dolů hello toofind stránku hello **cloudu** části.
+4. V rámci hello **cloudu** vyhledejte **přidat šablonu virtuálního počítače Azure** a klikněte na tlačítko hello **přidat** tlačítko.
    
     ![Přidat šablonu virtuálního počítače.][add vm template]
-5. Zadejte název cloudové služby v **název** pole. Pokud název, který zadáte odkazuje na existující službu cloud, virtuální počítač se zřídí v této službě. Jinak Azure vytvoří novou.
-6. V **popis** pole, zadejte text, který popisuje šablonu, kterou vytváříte. Tyto informace je pouze pro účely písemné a nepoužívá se v zřizování virtuálního počítače.
-7. V **popisky** zadejte **linux**. Tento popisek slouží k identifikaci šablonu, kterou vytváříte a následně slouží k odkazování šablonu při vytváření úlohy Hudsonem.
-8. Vyberte oblast, kde bude vytvořen virtuální počítač.
-9. Vyberte odpovídající velikost virtuálního počítače.
-10. Zadejte účet úložiště, kde bude vytvořen virtuální počítač. Ujistěte se, že je ve stejné oblasti jako cloudová služba, kterou budete používat. Pokud chcete vytvořit nové úložiště, můžete toto pole zůstat prázdné.
-11. Doba uchování určuje počet minut, než Hudsonem odstraní nečinnosti podřízený. Nechte na výchozí hodnotu 60.
-12. V **využití**, vyberte vhodné podmínky, když se použije tento podřízený uzel. Nyní, vyberte **využívají tento uzel co nejvíce**.
+5. Zadejte název cloudové služby v hello **název** pole. Pokud zadáte název hello odkazuje tooan stávající cloudovou službu, hello virtuálního počítače se zřídí v této službě. Jinak Azure vytvoří novou.
+6. V hello **popis** pole, zadejte text, který popisuje hello šablonu, kterou vytváříte. Tyto informace je pouze pro účely písemné a nepoužívá se v zřizování virtuálního počítače.
+7. V hello **popisky** zadejte **linux**. Tento popisek je použité tooidentify hello šablonu, kterou vytváříte a následně použít tooreference hello šablonu při vytváření úlohy Hudsonem.
+8. Vyberte oblast, kde bude vytvořen hello virtuálních počítačů.
+9. Vyberte odpovídající velikost virtuálního počítače hello.
+10. Zadejte účet úložiště, kde bude vytvořen hello virtuálních počítačů. Ujistěte se, že je v hello stejné oblasti jako hello cloudové služby, které budete používat. Pokud chcete vytvořit nové úložiště toobe, můžete toto pole zůstat prázdné.
+11. Doba uchování určuje hello počet minut, než Hudsonem odstraní nečinnosti podřízený. Nechte na hello výchozí hodnotu 60.
+12. V **využití**, vyberte hello vhodné podmínky, když se použije tento podřízený uzel. Nyní, vyberte **využívají tento uzel co nejvíce**.
     
-     Formulář v tomto okamžiku by vypadat poněkud podobná této:
+     V tomto okamžiku by formulář vypadat poněkud podobný toothis:
     
      ![Konfigurace šablony][template config]
-13. V **řady bitovou kopii nebo Id** budete muset určit, jaké bitové kopie systému bude nainstalována na váš počítač. Můžete vybrat ze seznamu rodin bitové kopie, nebo zadejte vlastní image.
+13. V **řady bitovou kopii nebo Id** máte toospecify jaké bitové kopie systému bude nainstalována na váš počítač. Můžete vybrat ze seznamu rodin bitové kopie, nebo zadejte vlastní image.
     
-     Pokud chcete vybrat ze seznamu rodiny bitové kopie, zadejte první znak (malá a velká písmena) název rodiny bitové kopie. Například zadáním **U** zobrazíte seznam rodiny Ubuntu Server. Jakmile vyberete ze seznamu, volaných používat nejnovější verzi této bitové kopie systému z této rodiny při zřízení virtuálního počítače.
+     Pokud chcete tooselect ze seznamu rodiny bitové kopie, zadejte hello první znak (malá a velká písmena) název rodiny hello bitové kopie. Například zadáním **U** zobrazíte seznam rodiny Ubuntu Server. Jakmile vyberete ze seznamu hello volaných používat nejnovější verzi této bitové kopie systému z této rodiny hello při zřízení virtuálního počítače.
     
      ![Rodiny seznamu operačního systému][OS family list]
     
-     Pokud máte vlastní image, kterou chcete použít místo toho, zadejte název této vlastní bitové kopie. V seznamu nejsou zobrazeny názvy vlastní image, musíte zkontrolovat, zda je správně zadán název.    
+     Pokud máte vlastní image, které chcete toouse místo toho, zadejte název této vlastní image hello. Názvy vlastních obrázků se nezobrazí v seznamu, abyste získali, že tooensure, který hello název zadán správně.    
     
-     V tomto kurzu zadejte **U** zobrazte seznam Image Ubuntu a vyberte **Ubuntu Server 14.04 LTS**.
+     V tomto kurzu zadejte **U** toobring seznam Image Ubuntu a vyberte **Ubuntu Server 14.04 LTS**.
 14. Pro **spusťte metoda**, vyberte **SSH**.
-15. Zkopírujte následující skript a vložte **Init skriptu** pole.
+15. Zkopírujte níže hello skriptu a vložte hello **Init skriptu** pole.
     
          # Install Java
     
@@ -136,22 +136,22 @@ Až budete mít vaše předplatné profilu, postupujte podle těchto kroků nako
     
          sudo apt-get install -y ant
     
-     **Init skriptu** bude proveden po vytvoření virtuálního počítače. V tomto příkladu skript nainstaluje ant, Java a git.
-16. V **uživatelské jméno** a **heslo** pole, zadejte svoje upřednostňované hodnoty pro účet správce, který se vytvoří na vašem virtuálním počítači.
-17. Klikněte na **ověřte šablony** ke kontrole, jestli jsou parametry jste zadali platný.
+     Hello **Init skriptu** bude proveden po hello vytvoří virtuální počítač. V tomto příkladu hello skript nainstaluje ant, Java a git.
+16. V hello **uživatelské jméno** a **heslo** pole, zadejte upřednostňované hodnoty pro účet správce hello, která bude vytvořena na vašem virtuálním počítači.
+17. Klikněte na **ověřte šablony** toocheck Pokud hello parametry, které jste zadali platné.
 18. Klikněte na **Uložit**.
 
 ## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Vytvořit úlohu Hudsonem, který běží na uzlu podřízený v Azure
 V této části budete vytváření Hudsonem úlohu, která se spustí na podřízený uzel v Azure.
 
-1. Na řídicím panelu Hudsonem klikněte na tlačítko **nová úloha**.
-2. Zadejte název pro úlohu, kterou vytváříte.
-3. Typ úlohy, vyberte **sestavení úloha softwaru bez stylu**.
+1. V hello Hudsonem řídicí panel, klikněte na **nová úloha**.
+2. Zadejte název pro hello úlohu, kterou vytváříte.
+3. Hello typ úlohy, vyberte **sestavení úloha softwaru bez stylu**.
 4. Klikněte na **OK**.
-5. Na stránce konfigurace úlohy, vyberte **omezit, kde můžete spustit tento projekt**.
-6. Vyberte **uzlu a popisek nabídky** a vyberte **linux** (jsme zadali tento popisek, při vytváření šablony virtuálního počítače v předchozí části).
-7. V **sestavení** klikněte na tlačítko **přidat krok sestavení** a vyberte **spustit prostředí**.
-8. Upravte následující skript, nahraďte **{název účtu github}**, **{název projektu}**, a **{adresáři projektu}** s příslušným hodnoty a vložit upravená skript v části textu, který se zobrazí.
+5. Na stránce konfigurace hello úlohy, vyberte **omezit, kde můžete spustit tento projekt**.
+6. Vyberte **uzlu a popisek nabídky** a vyberte **linux** (jsme zadali tento popisek, při vytváření šablony virtuálního počítače hello v předchozí části hello).
+7. V hello **sestavení** klikněte na tlačítko **přidat krok sestavení** a vyberte **spustit prostředí**.
+8. Upravit hello následující skript, nahraďte **{název účtu github}**, **{název projektu}**, a **{adresáři projektu}** s příslušným hodnoty a vložit hello Upravit skript v hello textová oblast, která se zobrazí.
    
         # Clone from git repo
    
@@ -169,7 +169,7 @@ V této části budete vytváření Hudsonem úlohu, která se spustí na podř�
    
         fi
    
-        # change directory to project
+        # change directory tooproject
    
         cd $currentDir/{your project directory}
    
@@ -177,16 +177,16 @@ V této části budete vytváření Hudsonem úlohu, která se spustí na podř�
    
         ant
 9. Klikněte na **Uložit**.
-10. Na řídicím panelu Hudsonem najít úlohu, kterou jste právě vytvořili a klikněte na **naplánovat sestavení** ikonu.
+10. V hello Hudsonem řídicí panel, najděte hello úlohu, kterou jste právě vytvořili a klikněte na hello **naplánovat sestavení** ikonu.
 
-Hudsonem se pak vytvořit podřízený uzel pomocí šablony vytvořené v předchozí části a spustit skript, který jste zadali v kroku sestavení pro tuto úlohu.
+Hudsonem se pak vytvořit pomocí šablony hello vytvořili v předchozí části hello podřízený uzel a spuštění hello skriptu, který jste zadali v kroku hello sestavení pro tuto úlohu.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o používání Javy v Azure najdete na webu [Středisko pro vývojáře Java].
+Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java].
 
 <!-- URL List -->
 
-[Středisko pro vývojáře Java]: https://azure.microsoft.com/develop/java/
+[Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/
 [odběru profil]: http://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->

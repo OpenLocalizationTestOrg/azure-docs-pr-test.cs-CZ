@@ -1,6 +1,6 @@
 ---
-title: "Nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI | Microsoft Docs"
-description: "Vytvoření clusteru s podporou Linux velikosti H16r, H16mr, A8 nebo A9 virtuálních počítačů, které se použije ke spuštění aplikací MPI sítě Azure RDMA"
+title: "aaaSet až aplikací MPI toorun clusteru Linux RDMA | Microsoft Docs"
+description: "Vytvořit cluster Linux velikost H16r, H16mr, A8 a A9 VMs toouse hello Azure RDMA sítě toorun MPI aplikace"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -15,92 +15,92 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3199317a37b095e80718d6724954687d30aea3a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Nastavení clusteru Linux RDMA pro spouštění aplikací MPI
-Zjistěte, jak nastavit clusteru s podporou Linux RDMA v Azure pomocí [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ke spouštění paralelních aplikací Message Passing Interface (MPI). Tento článek obsahuje kroky k přípravě image Linux HPC ke spuštění v clusteru s podporou Intel MPI. Po přípravě nasazení clusteru virtuálních počítačů pomocí tuto bitovou kopii a jeden velikostí podporující RDMA virtuální počítač Azure (aktuálně H16r, H16mr, A8 a A9). Použijte cluster ke spouštění aplikací MPI, které efektivně komunikují přes síť s nízkou latencí, vysokou propustností založené na technologii do paměti vzdáleného přímý přístup do (počítače RDMA).
+# <a name="set-up-a-linux-rdma-cluster-toorun-mpi-applications"></a>Nastavení aplikací MPI toorun clusteru Linux RDMA
+Zjistěte, jak tooset až Linux RDMA cluster v Azure s [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) toorun paralelních aplikací Message Passing Interface (MPI). Tento článek obsahuje kroky tooprepare toorun bitové kopie prostředí HPC Linux Intel MPI v clusteru. Po přípravě nasazení clusteru virtuálních počítačů pomocí tuto bitovou kopii a jeden velikostí hello podporující RDMA virtuálních počítačů Azure (aktuálně H16r, H16mr, A8 a A9). Použití hello clusteru toorun aplikací MPI, které efektivně komunikovat přes nízkou latencí, vysokou propustnost sítě na základě přímého přístupu do paměti (vzdáleného počítače RDMA) technologie.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager](../../../resource-manager-deployment-model.md) a classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager](../../../resource-manager-deployment-model.md) a classic. Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
 
 ## <a name="cluster-deployment-options"></a>Možnosti nasazení clusteru
-Toto jsou metody, které můžete použít k vytvoření clusteru s podporou Linux RDMA s nebo bez Plánovač úloh.
+Toto jsou metody toocreate clusteru s podporou Linux RDMA můžete použít s nebo bez Plánovač úloh.
 
-* **Azure CLI skripty**: Jak uvidíte později v tomto článku, použijte [rozhraní příkazového řádku Azure](../../../cli-install-nodejs.md) (CLI) pro skript nasazení clusteru s podporou RDMA podporovat virtuálních počítačů. Uzly clusteru rozhraní příkazového řádku v režimu správy služby sériově vytvoří v modelu nasazení classic, takže nasazení mnoho výpočetních uzlů může trvat několik minut. Chcete-li povolit síťového připojení RDMA při použití modelu nasazení classic, nasaďte virtuální počítače ve stejné cloudové služby.
-* **Šablony Azure Resource Manageru**: modelu nasazení Resource Manager můžete také použít k nasazení clusteru s podporou RDMA podporovat virtuální počítače připojené k síti RDMA. Můžete [vytvořit vlastní šablonu](../../../resource-group-authoring-templates.md), nebo zkontrolujte [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) pro šablony přispěli k nasazení řešení. Chcete společnosti Microsoft nebo komunitou. Šablony Resource Manageru nabízejí rychlý a spolehlivý způsob, jak nasadit Linux cluster. Pokud chcete povolit síťového připojení RDMA při použití modelu nasazení Resource Manager, nasaďte virtuální počítače ve stejné sadě dostupnosti.
-* **HPC Pack**: vytvoření clusteru s podporou sady Microsoft HPC Pack v Azure a přidat podporu rdma výpočetní uzly, které využívají podporované distribuce systému Linux pro přístup k síti RDMA. Další informace najdete v tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md).
+* **Azure CLI skripty**: Jak uvidíte později v tomto článku, použijte hello [rozhraní příkazového řádku Azure](../../../cli-install-nodejs.md) (CLI) tooscript hello nasazení clusteru s podporou RDMA podporovat virtuálních počítačů. Hello rozhraní příkazového řádku v režimu správy služby se vytvoří hello uzly clusteru sériově v modelu nasazení classic hello, takže nasazení mnoho výpočetních uzlů může trvat několik minut. tooenable hello síťového připojení RDMA při použití modelu nasazení classic hello, nasazení virtuálních počítačů hello v hello stejné cloudové služby.
+* **Šablony Azure Resource Manageru**: Můžete taky hello Resource Manager nasazení modelu toodeploy clusteru podporující RDMA virtuálních počítačů, který se připojuje toohello RDMA sítě. Můžete [vytvořit vlastní šablonu](../../../resource-group-authoring-templates.md), nebo zkontrolujte hello [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) pro šablony přispěli Microsoft hello komunity toodeploy hello řešení nebo chcete. Šablony Resource Manageru nabízejí rychlý a spolehlivý toodeploy Linux cluster. tooenable hello síťového připojení RDMA při použití hello modelu nasazení Resource Manager, nasazení virtuálních počítačů hello v hello stejné skupině dostupnosti.
+* **HPC Pack**: vytvoření clusteru s podporou sady Microsoft HPC Pack v Azure a přidat podporu rdma výpočetních uzlech, které spustit podporované hello RDMA síť tooaccess distribuce systému Linux. Další informace najdete v tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md).
 
-## <a name="sample-deployment-steps-in-the-classic-model"></a>Kroky nasazení ukázkové v klasickém modelu
-Následující kroky ukazují, jak používat rozhraní příkazového řádku Azure k nasazení virtuálního počítače SUSE Linux Enterprise Server (SLES) 12 SP1 HPC z Azure Marketplace, přizpůsobit a vytvořit vlastní image virtuálního počítače. Pak můžete použít bitovou kopii pro skript nasazení clusteru s podporou RDMA podporovat virtuálních počítačů.
+## <a name="sample-deployment-steps-in-hello-classic-model"></a>Ukázka nasazení kroky v modelu classic hello
+Hello následující kroky ukazují, jak přizpůsobit toouse hello rozhraní příkazového řádku Azure toodeploy virtuální počítač SUSE Linux Enterprise Server (SLES) 12 SP1 HPC z hello Azure Marketplace a vytvořit vlastní image virtuálního počítače. Potom můžete image hello tooscript hello nasazení clusteru s podporou RDMA podporovat virtuálních počítačů.
 
 > [!TIP]
-> Podobným způsobem použijte k nasazení clusteru s podporou RDMA podporovat virtuálních počítačů založené na imagích na základě CentOS HPC v Azure Marketplace. Některé kroky poněkud, jak jsme uvedli lišit. 
+> Použijte podobné toodeploy kroky, které clusteru s podporou RDMA podporovat virtuálních počítačů založené na imagích na základě CentOS HPC v hello Azure Marketplace. Některé kroky poněkud, jak jsme uvedli lišit. 
 >
 >
 
 ### <a name="prerequisites"></a>Požadavky
-* **Klientský počítač**: je třeba klientský počítač Mac, Linux nebo Windows ke komunikaci s Azure. Tento postup předpokládá, že používáte klienta Linux.
+* **Klientský počítač**: budete potřebovat toocommunicate počítače Mac, Linux nebo Windows klienta s Azure. Tento postup předpokládá, že používáte klienta Linux.
 * **Předplatné Azure**: Pokud nemáte předplatné, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) si během několika minut. Pro větší clustery zvažte průběžnými platbami předplatné nebo jiné možnosti nákupu.
-* **Virtuální počítač velikost dostupnosti**: následující instance velikosti jsou podporující RDMA: H16r, H16mr, A8 a A9. Zkontrolujte [produkty podle oblasti](https://azure.microsoft.com/regions/services/) pro dostupnost v oblastech Azure.
-* **Kvóta jader**: možná budete muset zvýšit kvótu jader, který má nasadit cluster virtuálních počítačů náročné. Pokud chcete nasadit virtuální počítače 8 A9, jak je znázorněno v tomto článku se například potřebovat nejméně 128 jader. Vaše předplatné může také omezit počet jader, který můžete nasadit v určité rodiny velikost virtuálního počítače, včetně H-series. Požádat o zvýšení kvóty, [otevřete žádosti o podporu online zákazníka](../../../azure-supportability/how-to-create-azure-support-request.md) zdarma.
-* **Rozhraní příkazového řádku Azure**: [nainstalovat](../../../cli-install-nodejs.md) rozhraní příkazového řádku Azure a [připojení k předplatnému Azure](../../../xplat-cli-connect.md) z klientského počítače.
+* **Virtuální počítač velikost dostupnosti**: hello následující instance velikosti jsou podporující RDMA: H16r, H16mr, A8 a A9. Zkontrolujte [produkty podle oblasti](https://azure.microsoft.com/regions/services/) pro dostupnost v oblastech Azure.
+* **Kvóta jader**: může být nutné tooincrease hello kvóty jader toodeploy cluster virtuálních počítačů náročné. Pokud chcete, aby toodeploy 8 A9 virtuálních počítačů, jak je znázorněno v tomto článku se například potřebovat nejméně 128 jader. Vaše předplatné může také omezit hello počet jader, který můžete nasadit v určité rodiny velikost virtuálního počítače, včetně hello H-series. toorequest kvótu zvýšit, [otevřete žádosti o podporu online zákazníka](../../../azure-supportability/how-to-create-azure-support-request.md) zdarma.
+* **Rozhraní příkazového řádku Azure**: [nainstalovat](../../../cli-install-nodejs.md) hello rozhraní příkazového řádku Azure a [připojit tooyour předplatného Azure](../../../xplat-cli-connect.md) z hello klientského počítače.
 
 ### <a name="provision-an-sles-12-sp1-hpc-vm"></a>Zřizování virtuálních počítačů SLES 12 SP1 HPC
-Po přihlášení do Azure pomocí Azure CLI, spusťte `azure config list` potvrďte, že výstup zobrazuje režimu správy služby. Pokud ne, nastavte režim spuštěním tohoto příkazu:
+Po přihlášení tooAzure s hello příkazového řádku Azure CLI, spusťte `azure config list` tooconfirm, který hello výstup ukazuje režimu správy služby. Pokud ne, nastavení režimu hello spuštěním tohoto příkazu:
 
     azure config mode asm
 
 
-Zadejte následující příkaz k zobrazení seznamu všechny odběry, které mají oprávnění využívat:
+Zadejte všechny odběry hello jsou autorizovaní toouse hello toolist následující:
 
     azure account list
 
-Aktuální aktivní předplatné, je označen `Current` nastavena na `true`. Pokud toto předplatné není ten, který chcete použít k vytvoření clusteru, nastavte ID příslušné předplatné jako aktivní předplatné:
+Hello aktuální aktivní předplatné, je označen `Current` nastavit příliš`true`. Pokud toto předplatné není hello, kterou má být toouse toocreate hello cluster, nastavit ID hello příslušné předplatné jako aktivní předplatné hello:
 
     azure account set <subscription-Id>
 
-Pokud chcete zobrazit veřejně dostupné Image SLES 12 SP1 HPC v Azure, spusťte příkaz podobně jako tento, za předpokladu, že vaše prostředí podporuje prostředí **grep**:
+toosee hello veřejně dostupné SLES 12 SP1 HPC bitové kopie v Azure, spusťte příkaz jako hello následující, za předpokladu, že vaše prostředí podporuje prostředí **grep**:
 
     azure vm image list | grep "suse.*hpc"
 
-Zřídit podporou RDMA virtuální počítač s bitovou kopii SLES 12 SP1 HPC spuštěním příkazu takto:
+Zřídit podporou RDMA virtuální počítač s bitovou kopii SLES 12 SP1 HPC spuštěním příkazu jako hello následující:
 
     azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-v20160824
 
 Kde:
 
-* Velikost (v tomto příkladu A9) je jedním z velikosti virtuálních počítačů RDMA podporovat.
-* Externí číslo portu SSH (22 v tomto příkladu, což je výchozí SSH) je platné číslo portu. Interní číslo portu SSH je nastavena na 22.
-* Vytvoří novou cloudovou službu se v oblasti Azure určeného umístění. Zadejte umístění, ve kterém je k dispozici velikost virtuálního počítače, které zvolíte.
-* Pro podporu s prioritou SUSE (který budou vám účtovány dodatečné poplatky) název bitové kopie SLES 12 SP1 aktuálně může být jedna z těchto dvou možností: 
+* Hello velikost (v tomto příkladu A9) je jedním z velikosti virtuálních počítačů hello RDMA podporovat.
+* Hello externí SSH port číslo (22 v tomto příkladu, což je výchozí SSH hello) je platné číslo portu. číslo portu SSH interní Hello nastavena too22.
+* Nová Cloudová služba je vytvořená ve hello určeného umístění hello oblast Azure. Zadejte umístění, ve které hello virtuálního počítače je k dispozici velikost, které zvolíte.
+* Pro podporu s prioritou SUSE (který budou vám účtovány dodatečné poplatky) název bitové kopie hello SLES 12 SP1 aktuálně může být jedna z těchto dvou možností: 
 
  `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-v20160824`
 
   `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-priority-v20160824`
 
 
-### <a name="customize-the-vm"></a>Přizpůsobení virtuálního počítače
-Až virtuální počítač dokončí zřizování, SSH k virtuálnímu počítači pomocí externí IP adresu Virtuálního počítače (nebo název DNS) a externí port číslo jste nakonfigurovali a pak jej přizpůsobit. Podrobnosti připojení najdete v tématu [přihlášení do virtuálního počítače se systémem Linux](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Proveďte příkazy jako uživatel, který jste nakonfigurovali ve virtuálním počítači, pokud kořenový přístup je nutný k dokončení kroku.
+### <a name="customize-hello-vm"></a>Přizpůsobení hello virtuálních počítačů
+Po dokončení zřizování hello virtuálních počítačů SSH toohello virtuálních počítačů pomocí hello externí IP adresu Virtuálního počítače (nebo název DNS) a hello externí port číslo jste nakonfigurovali a pak ho přizpůsobit. Podrobnosti připojení najdete v tématu [jak toolog na tooa virtuální počítač se systémem Linux](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Proveďte příkazy hello uživatele, které jste nakonfigurovali na hello virtuálních počítačů, pokud je kořenový přístup vyžaduje toocomplete krok.
 
 > [!IMPORTANT]
-> Microsoft Azure neposkytuje kořenový přístup k virtuálním počítačům systému Linux. Chcete-li získat přístup pro správu při připojení jako uživatel k virtuálnímu počítači, spusťte příkazy pomocí `sudo`.
+> Microsoft Azure neposkytuje kořenový přístup tooLinux virtuálních počítačů. toogain přístup pro správu při připojení jako uživatel toohello virtuálního počítače, spusťte příkazy pomocí `sudo`.
 >
 >
 
-* **Aktualizace**: nainstalujte aktualizace pomocí zypper. Také můžete chtít nainstalovat nástroje pro systém souborů NFS.
+* **Aktualizace**: nainstalujte aktualizace pomocí zypper. Také můžete chtít tooinstall nástrojů systému souborů NFS.
 
   > [!IMPORTANT]
-  > V SLES 12 SP1 HPC virtuální počítač doporučujeme nepoužijete jádra aktualizace, které může způsobit problémy s Linux RDMA ovladače.
+  > V SLES 12 SP1 HPC virtuální počítač doporučujeme nepoužijete jádra aktualizace, které může způsobit problémy s hello Linux RDMA ovladače.
   >
   >
-* **Intel MPI**: dokončení instalace Intel MPI ve virtuálním počítači se systémem SLES 12 SP1 HPC spuštěním následujícího příkazu:
+* **Intel MPI**: dokončí instalaci hello Intel MPI v hello SLES 12 SP1 HPC virtuálních počítačů tak, že spustíte následující příkaz hello:
 
         sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-* **Uzamknout paměť**: přidat kódy pro MPI k uzamčení paměti k dispozici pro RDMA, nebo změnit následující nastavení v souboru /etc/security/limits.conf. Musíte kořenový přístup k úpravě tohoto souboru.
+* **Uzamknout paměť**: MPI kódy toolock hello paměti k dispozici pro RDMA, přidat nebo změnit následující nastavení v souboru /etc/security/limits.conf hello hello. Budete potřebovat kořenový přístup tooedit tento soubor.
 
     ```
     <User or group name> hard    memlock <memory required for your application in KB>
@@ -109,25 +109,25 @@ Až virtuální počítač dokončí zřizování, SSH k virtuálnímu počíta�
     ```
 
   > [!NOTE]
-  > Pro účely testování můžete také nastavit memlock na neomezený. Například: `<User or group name>    hard    memlock unlimited`. Další informace najdete v tématu [známé nejlepší metody pro nastavení uzamčení velikost paměti](https://software.intel.com/en-us/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size).
+  > Pro účely testování můžete také nastavit memlock toounlimited. Například: `<User or group name>    hard    memlock unlimited`. Další informace najdete v tématu [známé nejlepší metody pro nastavení uzamčení velikost paměti](https://software.intel.com/en-us/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size).
   >
   >
-* **Klíče SSH pro virtuální počítače SLES**: generování SSH klíče k navázání vztahu důvěryhodnosti pro váš uživatelský účet mezi výpočetní uzly v SLES clusteru při spouštění úloh MPI. Pokud nasadíte virtuální počítač na základě CentOS HPC, nemusíte postupujte podle tohoto kroku. Zobrazí pokyny později v tomto článku nastavit passwordless SSH vztah důvěryhodnosti mezi uzly clusteru po zachycení bitové kopie a nasazení clusteru.
+* **Klíče SSH pro virtuální počítače SLES**: generování SSH klíče tooestablish vztahu důvěryhodnosti pro váš uživatelský účet mezi hello výpočetní uzly v clusteru SLES hello při spouštění úloh MPI. Pokud nasadíte virtuální počítač na základě CentOS HPC, nemusíte postupujte podle tohoto kroku. Po zachycení bitové kopie hello a nasazení hello clusteru, najdete v pokynech později v tooset Tento článek se passwordless SSH vztah důvěryhodnosti mezi uzly clusteru hello.
 
-    K vytvoření klíčů SSH, spusťte následující příkaz. Po zobrazení výzvy pro vstup, vyberte **Enter** ke generování klíče ve výchozím umístění bez nastavení hesla.
+    klíče SSH toocreate, spusťte následující příkaz hello. Po zobrazení výzvy pro vstup, vyberte **Enter** toogenerate hello klíčů ve výchozí umístění hello bez nastavení hesla.
 
         ssh-keygen
 
-    Připojí veřejný klíč v souboru authorized_keys známé veřejných klíčů.
+    Připojí hello veřejného klíče toohello authorized_keys souboru známé veřejných klíčů.
 
         cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-    V adresáři ~/.ssh upravovat nebo vytvářet do konfiguračního souboru. Zadejte rozsah IP adres privátní sítě, kterou chcete použít v Azure (v tomto příkladu 10.32.0.0/16):
+    V adresáři ~/.ssh hello upravovat nebo vytvářet hello konfiguračního souboru. Zadejte rozsah IP adres hello hello privátní sítě, abyste naplánovali toouse v Azure (v tomto příkladu 10.32.0.0/16):
 
         host 10.32.0.*
         StrictHostKeyChecking no
 
-    Případně seznam IP adresu privátní sítě jednotlivé virtuální počítače v clusteru následujícím způsobem:
+    Alternativně seznamu hello privátní síť IP adresu každého virtuálního počítače v clusteru následujícím způsobem:
 
     ```
     host 10.32.0.1
@@ -142,16 +142,16 @@ Až virtuální počítač dokončí zřizování, SSH k virtuálnímu počíta�
   > Konfigurace `StrictHostKeyChecking no` můžete vytvořit představuje potenciální bezpečnostní riziko, pokud není zadán konkrétní IP adresu nebo rozsah.
   >
   >
-* **Aplikace**: Nainstalujte aplikace potřebují nebo provedení jiných úprav, než zachytit bitovou kopii.
+* **Aplikace**: Nainstalujte aplikace potřebují nebo provedení jiných úprav, než zaznamenáte hello image.
 
-### <a name="capture-the-image"></a>Zachycení bitové kopie
-K zachycení bitové kopie, nejprve spusťte následující příkaz na virtuální počítač s Linuxem. Tento příkaz deprovisions virtuální počítač ale uchovává uživatelské účty a klíče SSH, které nastavíte.
+### <a name="capture-hello-image"></a>Zachycení bitové kopie hello
+Obrázek hello toocapture nejprve spusťte následující příkaz na hello virtuálního počítače s Linuxem hello. Tento příkaz deprovisions hello virtuálních počítačů, ale spravuje uživatelské účty a klíče SSH, které nastavíte.
 
 ```
 sudo waagent -deprovision
 ```
 
-Na klientském počítači spusťte následující příkazy rozhraní příkazového řádku Azure k zachycení bitové kopie. Další informace najdete v tématu [jak zachytit klasický Linuxový virtuální počítač jako image](capture-image.md).  
+Z klientského počítače spusťte hello následující obrázek hello toocapture příkazy rozhraní příkazového řádku Azure. Další informace najdete v tématu [jak toocapture klasické virtuální počítač s Linuxem jako obrázek](capture-image.md).  
 
 ```
 azure vm shutdown <vm-name>
@@ -160,24 +160,24 @@ azure vm capture -t <vm-name> <image-name>
 
 ```
 
-Po spuštění těchto příkazů zachycenou image virtuálního počítače pro vaše použití a odstranění virtuálního počítače. Nyní máte vlastní bitovou kopii připraveny k nasazení clusteru.
+Po spuštění těchto příkazů zachycenou image virtuálního počítače hello pro vaše použití a hello virtuálních počítačů se odstraní. Nyní máte připravené toodeploy vaše vlastní image clusteru.
 
-### <a name="deploy-a-cluster-with-the-image"></a>Nasazení clusteru s obrázkem
-Upravte následující skript Bash s příslušnými hodnotami pro vaše prostředí a spusťte jej z klientského počítače. Protože Azure nasadí virtuálních počítačů sériově v modelu nasazení classic, trvá několik minut nasazení osm virtuálních počítačů A9 navržený v tento skript.
+### <a name="deploy-a-cluster-with-hello-image"></a>Nasazení clusteru s bitovou kopií hello
+Upravit hello následující skript Bash s příslušnými hodnotami pro vaše prostředí a spusťte jej z klientského počítače. Protože Azure nasadí virtuálních počítačů hello sériově v modelu nasazení classic hello, trvá několik minut toodeploy hello osm virtuálních počítačů A9 navržený v tento skript.
 
 ```
 #!/bin/bash -x
-# Script to create a compute cluster without a scheduler in a VNet in Azure
+# Script toocreate a compute cluster without a scheduler in a VNet in Azure
 # Create a custom private network in Azure
 # Replace 10.32.0.0 with your virtual network address space
 # Replace <network-name> with your network identifier
-# Replace "West US" with an Azure region where the VM size is available
+# Replace "West US" with an Azure region where hello VM size is available
 # See Azure Pricing pages for prices and availability of compute-intensive VMs
 
 azure network vnet create -l "West US" -e 10.32.0.0 -i 16 <network-name>
 
-# Create a cloud service. All the compute-intensive instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
-# Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
+# Create a cloud service. All hello compute-intensive instances need toobe in hello same cloud service for Linux RDMA toowork across InfiniBand.
+# Note: hello current maximum number of VMs in a cloud service is 50. If you need tooprovision more than 50 VMs in hello same cloud service in your cluster, contact Azure Support.
 
 azure service create <cloud-service-name> --location "West US" –s <subscription-ID>
 
@@ -185,55 +185,55 @@ azure service create <cloud-service-name> --location "West US" –s <subscriptio
 
 vmname=cluster
 
-# Define a prefix for external port numbers. If you want to turn off external ports and use only internal ports to communicate between compute nodes via port 22, don’t use this option. Since port numbers up to 10000 are reserved, use numbers after 10000. Leave external port on for rank 0 and head node.
+# Define a prefix for external port numbers. If you want tooturn off external ports and use only internal ports toocommunicate between compute nodes via port 22, don’t use this option. Since port numbers up too10000 are reserved, use numbers after 10000. Leave external port on for rank 0 and head node.
 
 portnumber=101
 
-# In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>. Specify the username and password you used when creating the SSH keys.
+# In this cluster there will be 8 size A9 nodes, named cluster11 toocluster18. Specify your captured image in <image-name>. Specify hello username and password you used when creating hello SSH keys.
 
 for (( i=11; i<19; i++ )); do
         azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
 done
 
-# Save this script with a name like makecluster.sh and run it in your shell environment to provision your cluster
+# Save this script with a name like makecluster.sh and run it in your shell environment tooprovision your cluster
 ```
 
 ## <a name="considerations-for-a-centos-hpc-cluster"></a>Důležité informace pro cluster prostředí HPC CentOS
-Pokud chcete nastavení clusteru na základě jedné z bitové kopie založené na CentOS HPC v Azure Marketplace místo SLES 12 pro prostředí HPC, postupujte podle obecné kroky v předchozí části. Při zřizování a konfiguraci virtuálního počítače, Všimněte si následujících rozdílů:
+Pokud chcete, aby tooset clusteru na základě jedné z bitové kopie založené na CentOS HPC hello v hello Azure Marketplace místo SLES 12 pro prostředí HPC, postupujte podle hello obecné kroky v předcházející části hello. Všimněte si hello následující rozdíly při zřídíte a nakonfigurujete hello virtuálních počítačů:
 
 - Intel MPI je již nainstalován na virtuální počítač z bitové kopie založené na CentOS HPC zřízený.
-- Nastavení uzamčení paměti jsou již přidán do souboru /etc/security/limits.conf Virtuálního počítače.
-- Nedojde k vytvoření klíčů SSH na virtuálním počítači, zřídíte pro zachycení. Místo toho doporučujeme nastavení ověřování na základě uživatele po nasazení clusteru. Další informace najdete v následující části.  
+- Nastavení uzamčení paměti jsou již přidán do souboru /etc/security/limits.conf hello Virtuálního počítače.
+- Nedojde k vytvoření klíčů SSH na hello zřídíte virtuální počítač na zachycení. Místo toho doporučujeme nastavení ověřování na základě uživatele po nasazení clusteru hello. Další informace najdete v tématu hello následující části.  
 
-### <a name="set-up-passwordless-ssh-trust-on-the-cluster"></a>Nastavení passwordless SSH důvěryhodnosti v clusteru
-V clusteru HPC na základě CentOS, existují dvě metody pro vytvoření vztahu důvěryhodnosti mezi výpočetní uzly: ověřování na základě hostitele a ověřování na základě uživatele. Ověřování na základě hostitele je mimo rámec tohoto článku a obecně je třeba provést pomocí skriptu rozšíření během nasazení. Ověřování na základě uživatele je vhodné pro navázání vztahu důvěryhodnosti po nasazení a vyžaduje generování a sdílení klíčů SSH mezi výpočetní uzly v clusteru. Tato metoda se běžně označuje jako passwordless přihlašování přes SSH a je požadován při spouštění úloh MPI.
+### <a name="set-up-passwordless-ssh-trust-on-hello-cluster"></a>Nastavení passwordless SSH důvěryhodnosti v clusteru hello
+V clusteru HPC na základě CentOS, existují dvě metody pro vytvoření vztahu důvěryhodnosti mezi hello výpočetní uzly: ověřování na základě hostitele a ověřování na základě uživatele. Ověřování na základě hostitele je mimo rámec tohoto článku hello a obecně je třeba provést pomocí skriptu rozšíření během nasazení. Ověřování na základě uživatele je vhodné pro navázání vztahu důvěryhodnosti po nasazení a vyžaduje hello generování a sdílení klíčů SSH mezi hello výpočetní uzly v clusteru hello. Tato metoda se běžně označuje jako passwordless přihlašování přes SSH a je požadován při spouštění úloh MPI.
 
-Ukázkový skript podílí od komunity je k dispozici na [Githubu](https://github.com/tanewill/utils/blob/master/user_authentication.sh) k povolení ověřování snadno uživatele na základě CentOS HPC clusteru. Stáhnout a použít tento skript pomocí následujících kroků. Můžete také upravit tento skript nebo použít jinou metodu pro vytvoření passwordless ověřování SSH mezi výpočetní uzly clusteru.
+Ukázkový skript podílí z komunity hello je k dispozici na [Githubu](https://github.com/tanewill/utils/blob/master/user_authentication.sh) tooenable snadno uživatele ověřování na základě CentOS HPC clusteru. Stáhnout a použít tento skript pomocí hello následující kroky. Můžete také upravit tento skript nebo použít jakékoli jiné metoda tooestablish passwordless SSH ověřování mezi hello clusteru výpočetních uzlů.
 
     wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
 
-Pokud chcete spustit skript, musíte znát Předpona podsítě IP adres. Předpona získáte spuštěním následujícího příkazu na jednom z uzlů clusteru. Výstup by měl vypadat podobně jako 10.1.3.5 a předpona je 10.1.3 část.
+toorun hello skriptu, musíte tooknow hello předponu pro podsíť IP adresy. Předpona hello získáte tak, že spustíte následující příkaz na jeden z uzlů clusteru hello hello. Výstup by měl vypadat podobně jako 10.1.3.5 a hello předpona je hello 10.1.3 část.
 
     ifconfig eth0 | grep -w inet | awk '{print $2}'
 
-Nyní spusťte skript pomocí tři parametry: běžné uživatelské jméno na výpočetních uzlech, společné heslo pro daného uživatele na výpočetní uzly a předponu podsítě, který byl vrácen z předchozí příkaz.
+Nyní spusťte skript hello pomocí tři parametry: hello běžné uživatelské jméno v hello výpočetní uzly, hello společné heslo pro tohoto uživatele na hello výpočetních uzlů a předpony hello podsítě, která byla vrácena z předchozí příkaz hello.
 
     ./user_authentication.sh <myusername> <mypassword> 10.1.3
 
-Skript provede následující akce:
+Tento skript hello následující:
 
-* Vytvoří adresář na uzlu hostitele s názvem .ssh, což je vyžadováno pro passwordless přihlášení.
-* Vytvoří konfigurační soubor v adresáři .ssh obsahující pokyn passwordless přihlášení k povolení přihlášení z libovolného uzlu v clusteru.
-* Vytvoří soubory obsahující názvy a uzel IP adresy pro všechny uzly v clusteru. Tyto soubory jsou ponechány po spuštění skriptu pro pozdější použití.
-* Vytvoří pár klíčů privátní a veřejné pro každý uzel clusteru (včetně uzlu hostitele) a vytvoří záznamy v souboru authorized_keys.
+* Vytvoří adresář na uzel hello hostitele s názvem .ssh, což je vyžadováno pro passwordless přihlášení.
+* Vytvoří konfigurační soubor v adresáři .ssh hello, která nastaví přihlášení tooallow passwordless přihlášení z libovolného uzlu v clusteru hello.
+* Vytvoří soubory obsahující názvy hello a uzel IP adresy pro všechny hello uzly v clusteru hello. Tyto soubory jsou ponechány po spuštění skriptu hello pro pozdější použití.
+* Vytvoří pár klíčů privátní a veřejné pro každý uzel clusteru (včetně uzlu hostitele hello) a vytvoří záznamy v souboru authorized_keys hello.
 
 > [!WARNING]
-> Spuštěním tohoto skriptu můžete vytvořit představuje potenciální bezpečnostní riziko. Ujistěte se, že není informací veřejného klíče v ~/.ssh distribuován.
+> Spuštěním tohoto skriptu můžete vytvořit představuje potenciální bezpečnostní riziko. Ujistěte se, že není hello informace o veřejném klíči v ~/.ssh distribuován.
 >
 >
 
 ## <a name="configure-intel-mpi"></a>Konfigurace Intel MPI
-Pro spouštění aplikací MPI v Azure Linux RDMA, musíte nakonfigurovat některé specifické pro Intel MPI proměnné prostředí. Tady je ukázkový skript Bash nakonfigurovat proměnné, které jsou potřebné ke spuštění aplikace. Změňte cestu k mpivars.sh podle potřeby pro instalaci nástroje Intel MPI.
+toorun aplikací MPI na Azure Linux RDMA, je nutné tooconfigure konkrétní tooIntel určité prostředí proměnné MPI. Zde je ukázkové Bash skriptu tooconfigure hello proměnných potřebných toorun aplikace. Podle potřeby pro instalaci nástroje Intel MPI, změňte cestu toompivars.sh hello.
 
 ```
 #!/bin/bash -x
@@ -249,7 +249,7 @@ source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 export I_MPI_FABRICS=shm:dapl
 
 # THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
-# Setting the variable to shm:dapl gives best performance for some applications
+# Setting hello variable tooshm:dapl gives best performance for some applications
 # If your application doesn’t take advantage of shared memory and MPI together, then set only dapl
 
 export I_MPI_DAPL_PROVIDER=ofa-v2-ib0
@@ -260,14 +260,14 @@ export I_MPI_DYNAMIC_CONNECTION=0
 
 # THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
 
-# Command line to run the job
+# Command line toorun hello job
 
-mpirun -n <number-of-cores> -ppn <core-per-node> -hostfile <hostfilename>  /path <path to the application exe> <arguments specific to the application>
+mpirun -n <number-of-cores> -ppn <core-per-node> -hostfile <hostfilename>  /path <path toohello application exe> <arguments specific toohello application>
 
 #end
 ```
 
-Formát souboru hostitele je následující. Přidejte jeden řádek pro každý uzel v clusteru. Zadejte, že privátní IP adresy z virtuální sítě definovaného dříve, není názvy DNS. Například na dva hostitele s IP adresami 10.32.0.1 a 10.32.0.2, soubor obsahuje následující:
+Hello formát souboru hostitele hello je následující. Přidejte jeden řádek pro každý uzel v clusteru. Zadejte, že privátní IP adresy z virtuální sítě hello definovaného dříve, není názvy DNS. Například pro dva hostitele s IP adresami 10.32.0.1 a 10.32.0.2 hello soubor obsahuje hello následující:
 
 ```
 10.32.0.1:16
@@ -275,7 +275,7 @@ Formát souboru hostitele je následující. Přidejte jeden řádek pro každý
 ```
 
 ## <a name="run-mpi-on-a-basic-two-node-cluster"></a>Spustit MPI na Základní dvojuzlový cluster
-Pokud jste tak již neučinili, nejprve nastavení prostředí pro Intel MPI.
+Pokud jste tak již neučinili, nejprve nastavte hello prostředí pro Intel MPI.
 
 ```
 # For a SLES 12 SP1 HPC cluster
@@ -288,12 +288,12 @@ source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 ```
 
 ### <a name="run-an-mpi-command"></a>Spusťte příkaz MPI
-Spusťte příkaz MPI na jednom z výpočetních uzlů k MPI, je správně nainstalována a může komunikovat mezi alespoň že dva výpočetních uzlů. Následující **mpirun** příkaz spustí **hostname** na dvou uzlech.
+Spusťte příkaz MPI na jednom z tooshow hello výpočetní uzly, který MPI je správně nainstalována a může komunikovat mezi aspoň dva výpočetní uzly. Následující Hello **mpirun** příkaz spustí hello **hostname** na dvou uzlech.
 
 ```
 mpirun -ppn 1 -n 2 -hosts <host1>,<host2> -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 hostname
 ```
-Vaše výstup by měl obsahovat názvy všech uzlů, které předávají jako vstup pro `-hosts`. Například **mpirun** příkaz s dvěma uzly vrátí výstup takto:
+Vaše výstup by měl obsahovat hello názvy všech hello uzlů, které předávají jako vstup pro `-hosts`. Například **mpirun** příkaz s dvěma uzly vrátí výstup jako hello následující:
 
 ```
 cluster11
@@ -301,13 +301,13 @@ cluster12
 ```
 
 ### <a name="run-an-mpi-benchmark"></a>Spuštění MPI srovnávacího testu
-Následující příkaz Intel MPI se spustí pingpong srovnávací test pro ověření konfigurace clusteru a připojení k síti RDMA.
+Následující příkaz Intel MPI Hello spustí pingpong srovnávacího testu tooverify hello síť s clustery konfiguraci a připojení toohello RDMA.
 
 ```
 mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
 ```
 
-Na pracovní clusteru se dvěma uzly měli byste vidět výstup jako následující. V síti Azure RDMA očekávejte, že latenci nebo pod 3 mikrosekundách zprávy velikosti až 512 bajtů.
+Na pracovní clusteru se dvěma uzly měli byste vidět výstup podobný následující hello. V síti Azure RDMA hello očekávejte latenci nebo pod 3 mikrosekundách zpráva velikostí až too512 bajtů.
 
 ```
 #------------------------------------------------------------
@@ -321,11 +321,11 @@ Na pracovní clusteru se dvěma uzly měli byste vidět výstup jako následují
 # MPI Version           : 3.0
 # MPI Thread Environment:
 # New default behavior from Version 3.2 on:
-# the number of iterations per message size is cut down
+# hello number of iterations per message size is cut down
 # dynamically when a certain run time (per message size sample)
-# is expected to be exceeded. Time limit is defined by variable
+# is expected toobe exceeded. Time limit is defined by variable
 # "SECS_PER_SAMPLE" (=> IMB_settings.h)
-# or through the flag => -time
+# or through hello flag => -time
 
 # Calling sequence was:
 # /opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
@@ -337,7 +337,7 @@ Na pracovní clusteru se dvěma uzly měli byste vidět výstup jako následují
 # MPI_Op                         :   MPI_SUM
 #
 #
-# List of Benchmarks to run:
+# List of Benchmarks toorun:
 # PingPong
 #---------------------------------------------------
 # Benchmarking PingPong
@@ -377,5 +377,5 @@ Na pracovní clusteru se dvěma uzly měli byste vidět výstup jako následují
 
 ## <a name="next-steps"></a>Další kroky
 * Nasazení a spuštění vaší Linux MPI aplikace na cluster systému Linux.
-* Najdete v článku [dokumentaci ke knihovně MPI Intel](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/) pokyny k Intel MPI.
-* Zkuste [šablony rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos) k vytvoření clusteru Intel Lustre pomocí bitové kopie založené na CentOS HPC. Podrobnosti najdete v tématu [nasazení Intel cloudu Edition pro počítače s Lustre v Microsoft Azure](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/).
+* V tématu hello [dokumentaci ke knihovně MPI Intel](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/) pokyny k Intel MPI.
+* Zkuste [šablony rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos) toocreate Lustre Intel clusteru pomocí bitové kopie založené na CentOS HPC. Podrobnosti najdete v tématu [nasazení Intel cloudu Edition pro počítače s Lustre v Microsoft Azure](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/).

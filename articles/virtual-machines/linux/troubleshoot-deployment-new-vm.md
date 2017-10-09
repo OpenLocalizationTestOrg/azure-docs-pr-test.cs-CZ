@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží s nasazení virtuálního počítače s Linuxem-RM | Microsoft Docs"
+title: "virtuální počítač s Linuxem nasazení RM aaaTroubleshoot | Microsoft Docs"
 description: "Řešení problémů nasazení Resource Manager, když vytvoříte nový virtuální počítač Linux v Azure"
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: aea5db05843b0175b8ef8b713944e12262e33010
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2dd7f1855bba75d86eb90f88e6d573cd42fd8d87
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Řešení problémů nasazení Resource Manager pomocí vytvoření nového virtuálního počítače Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -31,60 +31,60 @@ ms.lasthandoff: 07/11/2017
 
 Pro další problémy při nasazení virtuálního počítače a dotazy, najdete v části [potíží nasazení Linux virtuálního počítače v Azure](troubleshoot-deploy-vm.md).
 ## <a name="collect-activity-logs"></a>Shromážděte aktivity protokolů
-Pokud chcete spustit Poradce při potížích, shromážděte protokoly aktivity k identifikaci chyby související s problém. Následující odkazy obsahují podrobné informace o na postupujte podle procesu.
+řešení potíží, toostart shromažďování hello aktivity zaznamená tooidentify hello chyby související s problémem hello. Hello následující odkazy obsahují podrobné informace o procesu toofollow hello.
 
 [Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Zobrazit protokoly aktivity ke správě prostředků Azure](../../resource-group-audit.md)
+[Zobrazit protokoly toomanage aktivity Azure prostředky](../../resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**/ Y:** Pokud operačního systému Linux zobecněn a je nahrál nebo zachytit pomocí nastavení zobecněný, potom nebudou všechny chyby. Podobně pokud je operačním systémem Linux specializovaný a je nahrál nebo zachytit pomocí specializované nastavení a potom nebudou všechny chyby.
+**/ Y:** Pokud hello operačního systému Linux zobecněn a se nahrál nebo zachytit pomocí hello zobecněn nastavení, potom nebudou všechny chyby. Podobně pokud hello operačního systému Linux specializuje a je nahrál nebo zachytit pomocí hello speciální nastavení, pak nebude existovat žádné chyby.
 
 **Odešlete chyby:**
 
-**N<sup>1</sup>:** Pokud operačního systému Linux zobecněn, a nahraje jako specializovaný, zobrazí se zřizování vypršení časového limitu vzhledem k tomu, že virtuální počítač zasekl ve fázi zřizování.
+**N<sup>1</sup>:** Pokud hello operačního systému Linux zobecněn, a nahraje jako specializovaný, zobrazí se zřizování vypršení časového limitu protože hello virtuálních počítačů zasekl ve fázi zřizování hello.
 
-**N<sup>2</sup>:** Pokud operačního systému Linux specializuje a nahraje jako zobecněn, zřizování selhání chyba se zobrazí, protože nový virtuální počítač je spuštěn s původní název počítače, uživatelské jméno a heslo.
+**N<sup>2</sup>:** Pokud hello operačního systému Linux specializuje a nahraje jako zobecněn, zřizování selhání chyba se zobrazí, protože hello nový virtuální počítač je spuštěn s hello původní název počítače, uživatelské jméno a heslo.
 
 **Řešení:**
 
-Obě tyto chyby vyřešíte nahrajte původní virtuální pevný disk, k dispozici místní, stejné nastavení jako pro operační systém (zobecněn/specializuje). Pokud chcete nahrát jako zobecněn, nezapomeňte spustit - nejprve zrušit jejich zřízení.
+tooresolve obě tyto chyby, odeslat hello původní virtuální pevný disk, k dispozici místní, s hello stejné nastavení jako hello operačního systému (zobecněn/specializuje). tooupload jako zobecněn, mějte na paměti, toorun-nejprve zrušit jejich zřízení.
 
 **Zaznamenat chyby:**
 
-**N<sup>3</sup>:** Pokud operačního systému Linux zobecněn, a se zaznamená jako specializovaný, zobrazí se zřizování vypršení časového limitu vzhledem k tomu, že původní virtuální počítač je nepoužitelný, jako je označena jako zobecněn.
+**N<sup>3</sup>:** Pokud hello operačního systému Linux zobecněn, a se zaznamená jako specializovaný, zobrazí se zřizování vypršení časového limitu protože hello původní virtuální počítač je nepoužitelný je označen jako zobecněn.
 
-**N<sup>4</sup>:** Pokud operačního systému Linux specializuje a z něj zachytí jako zobecněn, zřizování selhání chyba se zobrazí, protože nový virtuální počítač je spuštěn s původní název počítače, uživatelské jméno a heslo. Navíc původní virtuální počítač je nepoužitelný, protože je označeno jako specializované.
+**N<sup>4</sup>:** Pokud hello operačního systému Linux specializuje a z něj zachytí jako zobecněn, zřizování selhání chyba se zobrazí, protože hello nový virtuální počítač je spuštěn s hello původní název počítače, uživatelské jméno a heslo. Navíc hello původní virtuální počítač je nepoužitelný, protože je označeno jako specializované.
 
 **Řešení:**
 
-Chcete-li obě tyto chyby, odstraňte aktuální image z portálu, a [kopii z aktuální virtuální pevné disky](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) stejné nastavení jako pro operační systém (zobecněn/specializuje).
+tooresolve obě tyto chyby odstranit hello aktuální image z portálu hello a [kopii z hello aktuální virtuální pevné disky](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) s hello stejné nastavení jako hello operačního systému (zobecněn/specializuje).
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: Vlastní nebo Galerie / marketplace obrázku; došlo k chybě přidělení
-Tato chyba nastane v situacích, když novou žádost o virtuální počítač umístěn v clusteru, který nepodporuje požadovanou velikost virtuálního počítače, nebo nemá dostupné volné místo pro uložení žádosti.
+Tato chyba nastane v situacích, když hello novou žádost o virtuální počítač je definovaného tooa cluster, který nepodporuje požadovanou velikost virtuálního počítače hello, nebo nemá požadavek hello tooaccommodate dostupné volné místo.
 
-**Příčina 1:** clusteru nepodporuje požadovaná velikost virtuálního počítače.
+**Příčina 1:** hello clusteru nepodporuje hello požadovaná velikost virtuálního počítače.
 
 **Řešení 1:**
 
-* Opakujte tuto žádost pomocí menší velikost virtuálního počítače.
-* Pokud velikost požadovaný virtuální počítač nelze změnit:
-  * Zastavte všechny virtuální počítače v sadě dostupnosti.
+* Opakujte žádost hello pomocí menší velikost virtuálního počítače.
+* Pokud hello požadovaná velikost hello že virtuálních počítačů nelze změnit:
+  * Zastavte všechny virtuální počítače hello v sadě dostupnosti hello.
     Klikněte na tlačítko **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaše skupina dostupnosti* > **virtuální počítače** > *virtuálního počítače* > **Zastavit**.
-  * Po zastavení všech virtuálních počítačů, vytvořte nový virtuální počítač v požadovaná velikost.
-  * Nejprve spusťte nový virtuální počítač a potom vyberte jednotlivé zastaven virtuálních počítačů a klikněte na **spustit**.
+  * Po všech hello zastavit virtuální počítače, vytvořte hello nový virtuální počítač v hello potřeby velikost.
+  * Spusťte nejprve hello nový virtuální počítač a potom vyberete jednotlivé hello zastavena virtuální počítače a klikněte na tlačítko **spustit**.
 
-**Příčina 2:** clusteru nemá uvolnění prostředků.
+**Příčina 2:** hello cluster nebude mít uvolnění prostředků.
 
 **Řešení 2:**
 
-* Opakujte požadavek později.
-* Pokud nový virtuální počítač může být součástí skupiny s jinou dostupnosti
-  * Vytvoření nového virtuálního počítače v různých dostupnosti nastavit (ve stejné oblasti).
-  * Přidáte nový virtuální počítač do stejné virtuální síti.
+* Opakujte žádost hello později.
+* Pokud můžete technologie hello nový virtuální počítač součástí jiné dostupnosti nastavit
+  * Vytvoření nového virtuálního počítače v sadě dostupnosti jinou (v hello stejné oblasti).
+  * Přidat nový virtuální počítač toohello hello stejné virtuální síti.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud dojde k potížím při spuštění zastavený virtuální počítač s Linuxem nebo změnit jeho velikost existující virtuální počítač s Linuxem v Azure, najdete v části [problémy při nasazení Resource Manager řešení potíží s restartováním nebo změnou velikosti existující virtuální počítač Linux v Azure](restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

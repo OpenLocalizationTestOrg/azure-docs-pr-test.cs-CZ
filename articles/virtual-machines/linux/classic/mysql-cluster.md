@@ -1,6 +1,6 @@
 ---
-title: "Clusterize MySQL s vyrovnáváním zatížení sad | Microsoft Docs"
-description: "Nastavení pro zařízení s vyrovnáváním zatížení, vysokou dostupnost clusteru Linux MySQL vytvořené pomocí modelu nasazení classic na platformě Azure"
+title: "aaaClusterize MySQL s vyrovnáváním zatížení sad | Microsoft Docs"
+description: "Nastavení pro zařízení s vyrovnáváním zatížení, vysokou dostupnost clusteru Linux MySQL vytvořené pomocí modelu nasazení classic hello v Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: bureado
@@ -15,34 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 4eaf86c9ac3e4dc2b51b88383626eda774cab0e9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1829fd877c4b0ed177b23a8e3404dbb3db746561
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Pomocí vyrovnávání zatížení sítě nastaví clusterize MySQL v systému Linux
+# <a name="use-load-balanced-sets-tooclusterize-mysql-on-linux"></a>Použití vyrovnávání zatížení sítě nastaví tooclusterize MySQL v systému Linux
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager](../../../resource-manager-deployment-model.md) a classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. A [šablony Resource Manageru](https://azure.microsoft.com/documentation/templates/mysql-replication/) je k dispozici, pokud je potřeba nasadit MySQL cluster.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager](../../../resource-manager-deployment-model.md) a classic. Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. A [šablony Resource Manageru](https://azure.microsoft.com/documentation/templates/mysql-replication/) je k dispozici, pokud potřebujete toodeploy MySQL cluster.
 
-V tomto článku jsou zde popsány a ukazuje různý přístup k dispozici pro nasazení vysokou dostupností služby v Microsoft Azure, prohlížení vysoké dostupnosti serveru MySQL jako základy systémem Linux. Video ilustrující tento přístup je k dispozici na [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL).
+V tomto článku jsou zde popsány a ukazuje hello různý přístup k dispozici toodeploy systémem Linux služeb s vysokou dostupností v Microsoft Azure, prohlížení vysoké dostupnosti serveru MySQL jako základy. Video ilustrující tento přístup je k dispozici na [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL).
 
-Nemůžeme se popisují shared nothing, dvěma uzly, jeden hlavní řešení vysoké dostupnosti databáze MySQL na základě DRBD, Corosync a kardiostimulátor. Databáze MySQL byla najednou spuštěna pouze jeden uzel. Čtení a zápis z prostředku DRBD je také omezen na jenom jeden uzel v čase.
+Nemůžeme se popisují shared nothing, dvěma uzly, jeden hlavní řešení vysoké dostupnosti databáze MySQL na základě DRBD, Corosync a kardiostimulátor. Databáze MySQL byla najednou spuštěna pouze jeden uzel. Čtení a zápis z hello DRBD prostředků je také omezena tooonly jednoho uzlu současně.
 
-Není nutné pro VIP řešení jako LVS, protože budete používat sady Vyrovnávání zatížení sítě v Microsoft Azure k zajištění funkcí a koncový bod zjišťování kruhového dotazování, odebrání a úspěšné obnovení virtuální IP adresu. Virtuální IP adresa je globálně směrovatelné adresu IPv4 přiřazené službou Microsoft Azure při prvním vytvoření cloudové služby.
+Není nutné pro VIP řešení jako LVS, protože budete používat sady Vyrovnávání zatížení sítě v tooprovide kruhového dotazování funkce a koncový bod zjišťování, odebrání a úspěšné obnovení hello VIP Microsoft Azure. Hello VIP je globálně směrovatelné adresu IPv4 přiřazené službou Microsoft Azure při prvním vytváření hello cloudové služby.
 
-Nejsou k dispozici jako virtuální počítač na další možné architektury pro databázi MySQL, včetně NBD clusteru, Percona, Galera a několik řešení middleware, včetně alespoň jeden [skladu virtuálních počítačů](http://vmdepot.msopentech.com). Dokud tato řešení můžete replikovat na jednosměrové a vícesměrové vysílání nebo všesměrové vysílání a nejsou spoléhají na sdílené úložiště nebo více síťových rozhraní, musí být scénáře snadno nasadit v Microsoft Azure.
+Nejsou k dispozici jako virtuální počítač na další možné architektury pro databázi MySQL, včetně NBD clusteru, Percona, Galera a několik řešení middleware, včetně alespoň jeden [skladu virtuálních počítačů](http://vmdepot.msopentech.com). Dokud tato řešení můžete replikovat na jednosměrové a vícesměrové vysílání nebo všesměrové vysílání a nejsou spoléhají na sdílené úložiště nebo více síťových rozhraní, hello scénáře by měl být snadno toodeploy v Microsoft Azure.
 
-Tyto clustering architektury lze rozšířit o další produkty jako PostgreSQL a OpenLDAP podobným způsobem. Například tento postup Vyrovnávání zatížení s nesdílená byla úspěšně testována s více hlavní OpenLDAP a můžete ho sledovat na našem blogu Channel 9.
+Tyto clustering architektury lze rozšířit produkty tooother jako PostgreSQL a OpenLDAP podobným způsobem. Například tento postup Vyrovnávání zatížení s nesdílená byla úspěšně testována s více hlavní OpenLDAP a můžete ho sledovat na našem blogu Channel 9.
 
 ## <a name="get-ready"></a>Příprava
-Budete potřebovat následující prostředky a dalo:
+Budete potřebovat následující hello prostředky a dalo:
 
-  - Účet Microsoft Azure s platným předplatným, moci vytvořit aspoň dva virtuální počítače (XS byl použit v tomto příkladu)
+  - Účet Microsoft Azure s platným předplatným, možné toocreate aspoň dva virtuální počítače (XS byl použit v tomto příkladu)
   - Síť a podsíť
   - Skupiny vztahů
   - Nastavení dostupnosti
-  - Možnost vytvoříte virtuální pevné disky ve stejné oblasti jako cloudová služba a připojte je k virtuální počítače s Linuxem
+  - Hello možnost toocreate virtuální pevné disky ve stejné oblasti jako cloudová služba hello hello a připojte je toohello virtuální počítače s Linuxem
 
 ### <a name="tested-environment"></a>Otestované prostředí
 * Ubuntu 13.10
@@ -51,36 +51,36 @@ Budete potřebovat následující prostředky a dalo:
   * Corosync a kardiostimulátor
 
 ### <a name="affinity-group"></a>Skupina vztahů
-Vytvořit skupinu vztahů pro řešení po přihlášení k portálu Azure classic, vyberte **nastavení**a vytváření skupiny vztahů. Přidělené prostředky vytvořit později přiřadí do této skupiny vztahů.
+Vytvořit skupinu vztahů pro řešení hello přihlášením toohello portál Azure classic, vyberte **nastavení**a vytváření skupiny vztahů. Skupina vztahů toothis bude přiřazen přidělené prostředky vytvořit později.
 
 ### <a name="networks"></a>Networks
-Se vytvoří nová síť a podsíť je vytvořit uvnitř sítě. Tento příklad používá 10.10.10.0/24 síť s podsítí pouze jeden /24 uvnitř.
+Se vytvoří nová síť a podsíť je vytvořit uvnitř sítě hello. Tento příklad používá 10.10.10.0/24 síť s podsítí pouze jeden /24 uvnitř.
 
 ### <a name="virtual-machines"></a>Virtuální počítače
-První virtuálního počítače s Ubuntu 13.10 je vytvořená pomocí image Galerie Endorsed Ubuntu a se nazývá `hadb01`. Nová Cloudová služba je vytvořená ve proces se nazývá hadb. Tento název je znázorněný v podobě sdílené, Vyrovnávání zatížení sítě, které služba bude mít po přidání více prostředků. Vytvoření `hadb01` je bezproblémové a dokončených pomocí portálu. Koncový bod SSH se automaticky vytvoří a bude nová síť je vybrána. Nyní můžete vytvořit sadu dostupnosti pro virtuální počítače.
+Hello první virtuální počítač 13.10 Ubuntu je vytvořená pomocí image Galerie Endorsed Ubuntu a se nazývá `hadb01`. Nová Cloudová služba je vytvořená ve hello proces se nazývá hadb. Tento název znázorňuje hello sdílené, povaze Vyrovnávání zatížení, která hello služba bude mít, když se přidají další prostředky. Hello vytvoření `hadb01` je bezproblémové a dokončených pomocí portálu hello. Koncový bod SSH je automaticky vytvořen a hello novou síť je vybrána. Nyní můžete vytvořit sadu dostupnosti pro hello virtuálních počítačů.
 
-Po vytvoření první virtuální počítač (technicky vytvoření cloudové služby) vytvořit druhý virtuální počítač, `hadb02`. Pro druhý virtuální počítač, použijte virtuálního počítače s Ubuntu 13.10 z Galerie pomocí portálu, ale použít stávající cloudovou službu, `hadb.cloudapp.net`, místo vytvoření nové. Měla by být automaticky vybrána sadu sítě a dostupnost. Koncový bod SSH bude vytvořen, příliš.
+Po hello první virtuální počítač je vytvořen (technicky při hello cloudové služby), vytvořte druhý virtuální počítač, hello `hadb02`. Pro hello druhé virtuálních počítačů, použít virtuálního počítače s Ubuntu 13.10 z hello Galerie pomocí hello portálu, ale použít stávající cloudovou službu, `hadb.cloudapp.net`, místo vytvoření nové. měla by být automaticky vybrána Hello sítě a dostupnost sady. Koncový bod SSH bude vytvořen, příliš.
 
-Po vytvoření oba virtuální počítače, poznamenejte si portu SSH pro `hadb01` (port TCP 22) a `hadb02` (automaticky přiřazené Azure).
+Po vytvoření oba virtuální počítače, poznamenejte si hello portu SSH pro `hadb01` (port TCP 22) a `hadb02` (automaticky přiřazené Azure).
 
 ### <a name="attached-storage"></a>Připojené úložiště
-Nový disk Připojte oba virtuální počítače a vytvořit 5 GB disky v procesu. Disky jsou hostované v kontejneru VHD použijte pro disky hlavní operační systém. Po disky jsou vytvořeny a připojené, není nutné restartovat Linux, protože nové zařízení se zobrazí jádra. Toto zařízení je většinou `/dev/sdc`. Zkontrolujte `dmesg` pro výstup.
+Připojte nový disk tooboth virtuálních počítačů a vytvořit 5 GB disky v procesu hello. Hello disky jsou hostované v kontejneru VHD hello používá pro disky hlavní operační systém. Po vytvoření a připojené disky nejsou bez nutnosti toorestart Linux, protože hello jádra uvidí hello nové zařízení. Toto zařízení je většinou `/dev/sdc`. Zkontrolujte `dmesg` pro výstup hello.
 
-Na každý virtuální počítač vytvořit oddíl pomocí `cfdisk` (primární, Linux oddíl) a zápisu v nové tabulce oddílu. Nevytvářejte systém souborů na tento oddíl.
+Na každý virtuální počítač vytvořit oddíl pomocí `cfdisk` (primární, Linux oddíl) a zápis hello nový oddíl tabulky. Nevytvářejte systém souborů na tento oddíl.
 
-## <a name="set-up-the-cluster"></a>Nastavení clusteru
-Použijte k instalaci Corosync, kardiostimulátor a DRBD oba virtuální počítače Ubuntu byt č. Uděláte to tak s `apt-get`, spusťte následující kód:
+## <a name="set-up-hello-cluster"></a>Nastavení clusteru hello
+Použijte VÝSTIŽNÝ tooinstall Corosync, kardiostimulátor a DRBD na oba Ubuntu virtuální počítače. toodo Ano s `apt-get`spusťte hello následující kód:
 
     sudo apt-get install corosync pacemaker drbd8-utils.
 
-V tuto chvíli neinstalujte MySQL. Debian a Ubuntu instalační skripty inicializuje datový adresář MySQL na `/var/lib/mysql`, ale protože adresáři bude nahrazena systémem souborů DRBD, budete muset nainstalovat MySQL později.
+V tuto chvíli neinstalujte MySQL. Debian a Ubuntu instalační skripty inicializuje datový adresář MySQL na `/var/lib/mysql`, ale protože hello adresář bude nahrazena systémem souborů DRBD, budete potřebovat později tooinstall MySQL.
 
-Ověření (pomocí `/sbin/ifconfig`) že jsou oba virtuální počítače pomocí adresami v podsíti 10.10.10.0/24 a že se navzájem ping podle názvu. Můžete také použít `ssh-keygen` a `ssh-copy-id` a ujistěte se, oba virtuální počítače mohou komunikovat pomocí protokolu SSH bez nutnosti heslo.
+Ověření (pomocí `/sbin/ifconfig`) že jsou oba virtuální počítače pomocí adresy v podsíti 10.10.10.0/24 hello a že se navzájem ping podle názvu. Můžete také použít `ssh-keygen` a `ssh-copy-id` toomake, že oba virtuální počítače mohou komunikovat pomocí protokolu SSH bez nutnosti heslo.
 
 ### <a name="set-up-drbd"></a>Nastavit DRBD
-Vytvořit DRBD prostředek, který používá základní `/dev/sdc1` oddíl, který chcete vytvořit `/dev/drbd1` prostředků, kterou můžete naformátovat pomocí ext3 a používá primární i sekundární uzly.
+Vytvořte prostředek DRBD používající základní hello `/dev/sdc1` oddílu tooproduce `/dev/drbd1` prostředků, kterou můžete naformátovat pomocí ext3 a používá primární i sekundární uzly.
 
-1. Otevřete `/etc/drbd.d/r0.res` a zkopírujte následující definici prostředků na oba virtuální počítače:
+1. Otevřete `/etc/drbd.d/r0.res` a kopírování hello následující definice prostředků na oba virtuální počítače:
 
         resource r0 {
           on `hadb01` {
@@ -97,70 +97,70 @@ Vytvořit DRBD prostředek, který používá základní `/dev/sdc1` oddíl, kte
           }
         }
 
-2. Inicializace prostředku pomocí `drbdadm` na oba virtuální počítače:
+2. Inicializace hello prostředků pomocí `drbdadm` na oba virtuální počítače:
 
         sudo drbdadm -c /etc/drbd.conf role r0
         sudo drbdadm up r0
 
-3. Na primárním virtuálním počítači (`hadb01`), vynutit vlastnictví (primární) DRBD prostředku:
+3. Na hello primárního virtuálního počítače (`hadb01`), vynutit vlastnictví (primární) hello DRBD prostředku:
 
         sudo drbdadm primary --force r0
 
-Pokud si projdete obsah nebo proc/drbd (`sudo cat /proc/drbd`) na oba virtuální počítače, měli byste vidět `Primary/Secondary` na `hadb01` a `Secondary/Primary` na `hadb02`a konzistentní s řešením v tomto okamžiku. 5 GB disk se synchronizují přes síť 10.10.10.0/24 zdarma pro zákazníky.
+Pokud si projdete hello obsah nebo proc/drbd (`sudo cat /proc/drbd`) na oba virtuální počítače, měli byste vidět `Primary/Secondary` na `hadb01` a `Secondary/Primary` na `hadb02`a konzistentní s hello řešení v tomto okamžiku. Hello 5-GB místa na disku se synchronizují přes síť 10.10.10.0/24 hello v žádné toocustomers zdarma.
 
-Po synchronizaci disk můžete vytvořit systém souborů na `hadb01`. Pro účely testování jsme použili ext2, ale následující kód vytvoří systém souborů ext3:
+Po synchronizaci hello disku můžete vytvořit systém souborů hello na `hadb01`. Pro účely testování jsme použili ext2, ale hello následující kód vytvoří systém souborů ext3:
 
     mkfs.ext3 /dev/drbd1
 
-### <a name="mount-the-drbd-resource"></a>Připojte prostředek DRBD
-Nyní jste připraveni připojit prostředky DRBD na `hadb01`. Použití debian a odvozené konfigurace `/var/lib/mysql` jako adresář data na MySQL. Protože jste nenainstalovali MySQL, vytvořit adresář a připojte DRBD prostředků. Chcete-li provést tuto možnost, spusťte následující kód na `hadb01`:
+### <a name="mount-hello-drbd-resource"></a>Připojte prostředek DRBD hello
+Jste nyní připraven toomount hello DRBD prostředky na `hadb01`. Použití debian a odvozené konfigurace `/var/lib/mysql` jako adresář data na MySQL. Protože jste nenainstalovali MySQL, vytvořit adresář hello a přípojných hello DRBD prostředků. tooperform tuto možnost, spusťte následující kód hello `hadb01`:
 
     sudo mkdir /var/lib/mysql
     sudo mount /dev/drbd1 /var/lib/mysql
 
 ## <a name="set-up-mysql"></a>Nastavit MySQL
-Nyní jste připraveni k instalaci databáze MySQL na `hadb01`:
+Nyní jste připravené tooinstall MySQL na `hadb01`:
 
     sudo apt-get install mysql-server
 
-Pro `hadb02`, máte dvě možnosti. Můžete nainstalovat mysql-server, který bude vytvářet /var/lib/mysql, vyplnit nový adresář dat a pak odeberte obsah. Chcete-li provést tuto možnost, spusťte následující kód na `hadb02`:
+Pro `hadb02`, máte dvě možnosti. Můžete nainstalovat mysql-server, který bude vytvářet /var/lib/mysql, vyplnit nový adresář dat a pak odeberte hello obsah. tooperform tuto možnost, spusťte následující kód hello `hadb02`:
 
     sudo apt-get install mysql-server
     sudo service mysql stop
     sudo rm –rf /var/lib/mysql/*
 
-Druhou možností je převzetí služeb při selhání `hadb02` a pak nainstalujte mysql-server existuje. Skripty instalace si všimněte existující instalaci a nebude touch.
+Druhá možnost Hello je toofailover příliš`hadb02` a pak nainstalujte mysql-server existuje. Skripty instalace si všimněte hello existující instalaci a nebude touch.
 
-Spusťte následující kód `hadb01`:
+Spuštění hello následující kód na `hadb01`:
 
     sudo drbdadm secondary –force r0
 
-Spusťte následující kód `hadb02`:
+Spuštění hello následující kód na `hadb02`:
 
     sudo drbdadm primary –force r0
     sudo apt-get install mysql-server
 
-Pokud nemáte v úmyslu převzetí služeb při selhání DRBD nyní, první možností je jednodušší, i když pravděpodobně méně elegantní. Po nastavit tuto možnost, můžete začít pracovat ve vaší databázi MySQL. Spusťte následující kód `hadb02` (nebo libovolného jeden ze serverů je aktivní, podle DRBD):
+Pokud neplánujete toofailover DRBD nyní, první možnost hello je jednodušší, i když pravděpodobně méně elegantní. Po nastavit tuto možnost, můžete začít pracovat ve vaší databázi MySQL. Spuštění hello následující kód na `hadb02` (nebo libovolného jeden z hello serverů je aktivní, podle tooDRBD):
 
     mysql –u root –p
     CREATE DATABASE azureha;
     CREATE TABLE things ( id SERIAL, name VARCHAR(255) );
     INSERT INTO things VALUES (1, "Yet another entity");
-    GRANT ALL ON things.\* TO root;
+    GRANT ALL ON things.\* tooroot;
 
 > [!WARNING]
-> Tento poslední příkaz efektivně zakáže ověřování pro kořenového uživatele v této tabulce. To by měl být nahrazen produkční úrovni udělit příkazy a je jen pro ilustraci zahrnuty.
+> Tento poslední příkaz efektivně zakáže ověřování pro uživatele root hello v této tabulce. To by měl být nahrazen produkční úrovni udělit příkazy a je jen pro ilustraci zahrnuty.
 
-Pokud chcete, aby dotazy z mimo virtuálních počítačů (což je účel tohoto průvodce), musíte také povolit sítě pro databázi MySQL. Na oba virtuální počítače, otevřete `/etc/mysql/my.cnf` a přejděte na `bind-address`. Změňte adresu z adresy 127.0.0.1 na hodnotu 0.0.0.0. Po uložení souboru, vydávání `sudo service mysql restart` na váš aktuální primární.
+Pokud chcete, aby dotazy toomake z virtuálních počítačů mimo hello (což je hello účel tohoto průvodce), musíte taky tooenable sítě pro databázi MySQL. Na oba virtuální počítače, otevřete `/etc/mysql/my.cnf` a přejděte příliš`bind-address`. Změna adresy hello z adresy 127.0.0.1 too0.0.0.0. Po uložení souboru hello, vydávání `sudo service mysql restart` na váš aktuální primární.
 
-### <a name="create-the-mysql-load-balanced-set"></a>Vytvořit sadu MySQL Vyrovnávání zatížení sítě
-Přejděte zpět na portálu, přejděte na `hadb01`a zvolte **koncové body**. Pokud chcete vytvořit koncový bod, zvolte MySQL (TCP 3306) z rozevíracího seznamu a vyberte **s vyrovnáváním zatížení vytvořit nové**. Název koncového bodu Vyrovnávání zatížení sítě `lb-mysql`. Nastavit **čas** na 5 sekund, minimální.
+### <a name="create-hello-mysql-load-balanced-set"></a>Vytvoření sady s vyrovnáváním zatížení MySQL hello
+Přejděte zpět toohello portálu, přejděte příliš`hadb01`a zvolte **koncové body**. toocreate na koncový bod, MySQL (TCP 3306) vybírat hello rozevíracího seznamu a vyberte **s vyrovnáváním zatížení vytvořit nové**. Koncový bod Vyrovnávání zatížení na název hello `lb-mysql`. Nastavit **čas** too5 sekund, minimální.
 
-Po vytvoření koncového bodu, přejděte na `hadb02`, zvolte **koncové body**a vytvořit koncový bod. Zvolte `lb-mysql`a pak z rozevíracího seznamu vyberte MySQL. Můžete také použít rozhraní příkazového řádku Azure pro tento krok.
+Po vytvoření koncového bodu hello přejděte příliš`hadb02`, zvolte **koncové body**a vytvořit koncový bod. Zvolte `lb-mysql`a potom vyberte z rozevíracího seznamu hello MySQL. Můžete taky hello rozhraní příkazového řádku Azure pro tento krok.
 
-Nyní máte všechny potřebné pro ruční operaci clusteru.
+Nyní máte všechny potřebné pro ruční operaci hello clusteru.
 
-### <a name="test-the-load-balanced-set"></a>Testovací sady vyrovnáváním zatížení
+### <a name="test-hello-load-balanced-set"></a>Testovací sady hello vyrovnáváním zatížení
 Testy můžete provést z mimo počítač, pomocí libovolného klienta, MySQL, nebo pomocí některých aplikací, jako je phpMyAdmin spuštěna jako web Azure. V takovém případě použít nástroj příkazového řádku na MySQL na jiného pole Linux:
 
     mysql azureha –u root –h hadb.cloudapp.net –e "select * from things;"
@@ -168,7 +168,7 @@ Testy můžete provést z mimo počítač, pomocí libovolného klienta, MySQL, 
 ### <a name="manually-failing-over"></a>Ručně přebírání služeb při selhání
 Převzetí služeb při selhání můžete simulovat vypínání databáze MySQL, přepnutí na DRBD primární a znovu spustit MySQL.
 
-K provedení této úlohy, spusťte následující kód na hadb01:
+tooperform této úlohy, spusťte následující kód na hadb01 hello:
 
     service mysql stop && umount /var/lib/mysql ; drbdadm secondary r0
 
@@ -179,16 +179,16 @@ Pak klikněte na hadb02:
 Po selhání ručně, můžete opakovat vzdálený dotaz a měli perfektně fungovat.
 
 ## <a name="set-up-corosync"></a>Nastavit Corosync
-Corosync je základní clusteru infrastrukturu potřebnou pro kardiostimulátor pracovat. Pro zjišťování prezenčního signálu (a další metody jako Ultramonkey) je Corosync rozdělení funkce CRM, když kardiostimulátor zůstane více podobná prezenčního signálu ve funkcích.
+Corosync je základní infrastruktura clusteru hello požadované pro kardiostimulátor toowork. Pro zjišťování prezenčního signálu (a další metody jako Ultramonkey) je Corosync rozdělení hello CRM funkce, když kardiostimulátor zůstane více podobné tooHeartbeat funkcí.
 
-Hlavní omezení pro Corosync v Azure je Corosync upřednostní vícesměrového vysílání přes všesměrové vysílání přes komunikace jednosměrového vysílání, že Microsoft Azure sítě podporuje pouze jednosměrového vysílání.
+Hello hlavní omezení pro Corosync v Azure je Corosync upřednostní vícesměrového vysílání přes všesměrové vysílání přes komunikace jednosměrového vysílání, že Microsoft Azure sítě podporuje pouze jednosměrového vysílání.
 
-Naštěstí Corosync má pracovní režim jednosměrového vysílání. Pouze skutečné omezení je, protože všechny uzly nejsou komunikaci mezi sebou, je třeba definovat uzly do konfiguračních souborů, včetně jejich IP adresy. Můžeme použít soubory příklad Corosync pro jednosměrového vysílání a změňte vazby adresu, uzel seznamy a protokolování adresáře (Ubuntu používá `/var/log/corosync` při použití souborů v příkladu `/var/log/cluster`) a povolit nástroje kvora.
+Naštěstí Corosync má pracovní režim jednosměrového vysílání. pouze skutečné omezení Hello je, že vzhledem k tomu, že všechny uzly nejsou komunikaci mezi sebou, toodefine hello uzly v konfiguračních souborech, včetně jejich IP adresy. Můžeme použít hello Corosync příklad soubory pro jednosměrového vysílání a změňte vazby adresu, uzel seznamy a protokolování adresáře (Ubuntu používá `/var/log/corosync` při hello například souborů použijte `/var/log/cluster`) a povolit nástroje kvora.
 
 > [!NOTE]
-> Použijte následující `transport: udpu` směrnice a ručně definované IP adresy pro oba uzly.
+> Použijte hello `transport: udpu` směrnice a hello ručně definovaná IP adresy pro oba uzly.
 
-Spusťte následující kód `/etc/corosync/corosync.conf` pro oba uzly:
+Spuštění hello následující kód na `/etc/corosync/corosync.conf` pro oba uzly:
 
     totem {
       version: 2
@@ -236,18 +236,18 @@ Zkopírujte tento konfigurační soubor na oba virtuální počítače a spustit
 
     sudo service start corosync
 
-Krátce po spuštění služby, by se mělo vytvořit cluster v aktuální prstenec a by měl být vytvářen kvora. Tato funkce jsme můžete zkontrolovat kontrolou protokolů nebo spuštěním následující kód:
+Krátce po spuštění služby hello, by se mělo vytvořit hello cluster v aktuální prstenec hello a by měl být vytvářen kvora. Tato funkce jsme můžete zkontrolovat kontrolou protokolů nebo spuštěním hello následující kód:
 
     sudo corosync-quorumtool –l
 
-Zobrazí se výstup podobný na následujícím obrázku:
+Zobrazí se výstup podobný toohello následující bitové kopie:
 
 ![corosync quorumtool - l ukázkový výstup](./media/mysql-cluster/image001.png)
 
 ## <a name="set-up-pacemaker"></a>Nastavit kardiostimulátor
-Kardiostimulátor používá k monitorování pro prostředky, zadejte, kdy základní barvy přejděte a přepněte tyto prostředky do sekundární databáze clusteru. Prostředky lze definovat ze sady skriptů, k dispozici nebo z LSB skripty (init jako), mezi další možnosti.
+Používá kardiostimulátor hello toomonitor clusteru pro prostředky, definují, kdy základní barvy přejděte a přepínače toosecondaries tyto prostředky. Prostředky lze definovat ze sady skriptů, k dispozici nebo z LSB skripty (init jako), mezi další možnosti.
 
-Chceme kardiostimulátor na "vlastní" prostředek DRBD, přípojného bodu a službu MySQL. Pokud kardiostimulátor můžete zapnout a vypnout DRBD, připojit a odpojit a pak spusťte a ukončete MySQL ve správném pořadí když s primární se stane něco chybný, instalace byla dokončena.
+Chceme kardiostimulátor prostředek DRBD příliš "vlastní" hello, hello přípojného bodu a službu MySQL hello. Pokud kardiostimulátor můžete zapnout a vypnout DRBD, připojit a odpojit a pak spustit a zastavit MySQL v hello správné pořadí při něco chybný se stane s hello primární, instalace byla dokončena.
 
 Při první instalaci kardiostimulátor, musí být dostatečně jednoduchá něco jako konfiguraci:
 
@@ -256,8 +256,8 @@ Při první instalaci kardiostimulátor, musí být dostatečně jednoduchá ně
     node $id="2" hadb02
       attributes standby="off"
 
-1. Zkontrolujte konfiguraci spuštěním `sudo crm configure show`.
-2. Pak vytvořte soubor (například `/tmp/cluster.conf`) se v následujících zdrojích informací:
+1. Zkontrolujte konfiguraci hello spuštěním `sudo crm configure show`.
+2. Pak vytvořte soubor (například `/tmp/cluster.conf`) s hello následující prostředky:
 
         primitive drbd_mysql ocf:linbit:drbd \
               params drbd_resource="r0" \
@@ -287,7 +287,7 @@ Při první instalaci kardiostimulátor, musí být dostatečně jednoduchá ně
 
         property no-quorum-policy=ignore
 
-3. Načtení souboru do konfigurace. Stačí to udělat v jednom uzlu.
+3. Načtení souboru hello do konfigurace hello. Potřebujete jenom toodo to v jednom uzlu.
 
         sudo crm configure
           load update /tmp/cluster.conf
@@ -298,9 +298,9 @@ Při první instalaci kardiostimulátor, musí být dostatečně jednoduchá ně
 
         sudo update-rc.d pacemaker defaults
 
-5. Pomocí `sudo crm_mon –L`, ověřte, že jeden z uzlů se stal hlavní pro cluster a běží všechny prostředky. Zkontrolujte, zda jsou spuštěny prostředky můžete připojit a ps.
+5. Pomocí `sudo crm_mon –L`, ověřte, že jeden z uzlů se stal hello hlavní hello clusteru a běží všechny prostředky hello. Můžete vytvořit připojení a ps toocheck spuštěným hello prostředky.
 
-Následující snímek obrazovky ukazuje `crm_mon` s jedním uzlem zastavena (ukončení tak, že vyberete kombinaci kláves Ctrl + C):
+Následující snímek obrazovky ukazuje Hello `crm_mon` s jedním uzlem zastavena (ukončení tak, že vyberete kombinaci kláves Ctrl + C):
 
 ![uzel crm_mon zastavena](./media/mysql-cluster/image002.png)
 
@@ -309,16 +309,16 @@ Tento snímek obrazovky ukazuje uzly, jeden z nich a jeden podřízený:
 ![podřízený provozní hlavní crm_mon](./media/mysql-cluster/image003.png)
 
 ## <a name="testing"></a>Testování
-Jste připraveni simulaci automatické převzetí služeb při selhání. Existují dva způsoby, jak to udělat: a nepodmíněných.
+Jste připraveni simulaci automatické převzetí služeb při selhání. Existují dva způsoby toodo to: a nepodmíněných.
 
-Logicky způsob využívá funkce vypnutí clusteru: ``crm_standby -U `uname -n` -v on``. Pokud používáte na hlavním serveru tím, že podřízená má. Nezapomeňte nastavit zpět na vypnuto. Pokud to neuděláte, crm_mon zobrazí jeden uzel do úsporného režimu.
+Hello logicky způsob využívá funkce vypnutí hello cluster: ``crm_standby -U `uname -n` -v on``. Pokud použijete toto na hlavní server hello, podřízený hello má. Mějte na paměti tooset tento back toooff. Pokud to neuděláte, crm_mon zobrazí jeden uzel do úsporného režimu.
 
-Pevné způsob, jakým se vypíná primárního virtuálního počítače (hadb01) prostřednictvím portálu nebo změnou runlevel ve virtuálním počítači (to znamená, zastavení, vypnutí). To pomáhá Corosync a kardiostimulátor podle signalizace, která je hlavním směrem dolů. Toto můžete otestovat (vhodný pro údržbu), ale můžete taky přinutit, tento scénář zmrazené virtuálního počítače.
+Hello pevný způsob, jak se vypíná dolů hello primárního virtuálního počítače (hadb01) přes portál hello nebo změnou hello runlevel na hello virtuálního počítače (tj, zastavení, vypnutí). To pomáhá Corosync a kardiostimulátor podle signalizace danou hello předlohu probíhající dolů. Toto můžete otestovat (vhodný pro údržbu), ale můžete vynutit hello scénář zmrazené hello virtuálních počítačů.
 
 ## <a name="stonith"></a>STONITH
-Musí být možné vydat vypnutí virtuálního počítače prostřednictvím rozhraní příkazového řádku Azure místo STONITH skript, který řídí fyzického zařízení. Můžete použít `/usr/lib/stonith/plugins/external/ssh` jako základní a povolit STONITH v konfiguraci clusteru. Rozhraní příkazového řádku Azure by měly být globálně nainstalovány a publikovat nastavení a profil by měly být načteny pro uživatele clusteru.
+By mělo být možné tooissue vypnutí virtuálního počítače prostřednictvím rozhraní příkazového řádku Azure hello místo STONITH skript, který řídí fyzického zařízení. Můžete použít `/usr/lib/stonith/plugins/external/ssh` jako základní a povolit STONITH v konfiguraci clusteru hello. Rozhraní příkazového řádku Azure by měly být globálně nainstalovány a hello nastavení publikování a by měly být načteny profilu pro uživatele hello clusteru.
 
-Ukázkový kód pro prostředek je k dispozici na [Githubu](https://github.com/bureado/aztonith). Změnit konfiguraci clusteru přidáním následujícího `sudo crm configure`:
+Ukázkový kód pro prostředek hello je k dispozici na [Githubu](https://github.com/bureado/aztonith). Změnit konfiguraci clusteru hello přidáním hello následující příliš`sudo crm configure`:
 
     primitive st-azure stonith:external/azure \
       params hostlist="hadb01 hadb02" \
@@ -327,14 +327,14 @@ Ukázkový kód pro prostředek je k dispozici na [Githubu](https://github.com/b
       commit
 
 > [!NOTE]
-> Skript neprovede nahoru/dolů kontroly. Původní prostředků SSH měl 15 příkaz ping kontroluje, ale čas obnovení pro virtuální počítač Azure může být další proměnná.
+> skript Hello neprovede nahoru/dolů kontroly. původní prostředků SSH Hello měl 15 příkaz ping kontroluje, ale čas obnovení pro virtuální počítač Azure může být další proměnná.
 
 ## <a name="limitations"></a>Omezení
-Platí následující omezení:
+použít Hello následující omezení:
 
-* Skript linbit DRBD prostředku, který spravuje DRBD jako prostředek v kardiostimulátor používá `drbdadm down` při vypnutí uzlu, i když uzlu se právě děje pohotovostní režim. Toto není ideální vzhledem k tomu, že podřízená nebude možné synchronizace DRBD prostředků při hlavní získá zápisy. Pokud je hlavní server neselže zdvořile, že podřízená může trvat přes starší stav systému souborů. Existují dva způsoby potenciální toto řešení:
+* Hello linbit DRBD prostředků skript, který spravuje DRBD jako prostředek v kardiostimulátor používá `drbdadm down` při vypnutí uzlu, i v případě, že uzel hello se právě děje pohotovostní režim. Toto není ideální protože hello podřízený nebude možné synchronizaci hello DRBD prostředků při hello hlavní získá zápisy. Pokud hlavní hello neselže zdvořile, podřízený hello může trvat přes starší stav systému souborů. Existují dva způsoby potenciální toto řešení:
   * Vynucení `drbdadm up r0` ve všech uzlech clusteru prostřednictvím místní sledovací zařízení (ne clusterized)
-  * Úpravy linbit DRBD skript, a ověřte, zda `down` není volán`/usr/lib/ocf/resource.d/linbit/drbd`
-* Nástroje pro vyrovnávání zatížení potřeba alespoň pět sekund reagovat, takže aplikace by měla být clustery a být větší toleranci vůči časový limit. Jiné architektury, jako v aplikaci fronty a middlewares dotaz, může také pomoct.
-* Ladění MySQL je nutné zajistit, že zápis se provádí spravovat tempem a mezipaměti jsou vyprazdňuje na disk se často chcete-li minimalizovat ztrátu paměti.
-* Zápis výkonu je závislý na virtuální počítač propojení ve virtuálním přepínači, protože to je používáno DRBD k replikaci zařízení.
+  * Úpravy hello linbit DRBD skript, a ověřte, zda `down` není volán`/usr/lib/ocf/resource.d/linbit/drbd`
+* Nástroj pro vyrovnávání zatížení Hello potřebuje toorespond alespoň pět sekund, takže aplikace by měla být clustery a být větší toleranci vůči časový limit. Jiné architektury, jako v aplikaci fronty a middlewares dotaz, může také pomoct.
+* Ladění MySQL je nezbytné tooensure, které se provádí zápis spravovat tempem a mezipaměti jsou vyprázdněn toodisk často toominimize možné ztrátě paměti.
+* Zápis výkonu je závislý na virtuální počítač propojení ve virtuálním přepínači hello, protože se jedná hello mechanismus používaný DRBD tooreplicate hello zařízením.

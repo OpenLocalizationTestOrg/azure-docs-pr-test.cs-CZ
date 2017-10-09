@@ -1,6 +1,6 @@
 ---
-title: "Plánování údržby pro virtuální počítače Windows v Azure | Microsoft Docs"
-description: "Zjistěte, jak naplánovat plánované údržby na virtuálních počítačích Azure."
+title: "aaaHow tooschedule údržby pro virtuální počítače Windows v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooschedule plánované údržby na virtuálních počítačích Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: igalf
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: igalf
-ms.openlocfilehash: 1c75ba097cad563f4a8d3da7542d1e34b0e796ea
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: e1b568d02ab5d50ad10b6060a85cd0d610027c44
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>Naplánování plánované údržby na virtuálních počítačích Azure
+# <a name="how-tooschedule-planned-maintenance-on-azure-vms"></a>Jak tooSchedule plánovaná údržby na virtuálních počítačích Azure
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o plánované údržbě v modelu Resource Manager najdete v tématu [zde](../planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o plánované údržbě v modelu Resource Manager hello najdete v tématu [zde](../planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-planned-maintenance-schedule](../../../../includes/virtual-machines-common-planned-maintenance-schedule.md)]

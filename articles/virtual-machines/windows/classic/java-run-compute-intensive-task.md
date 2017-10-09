@@ -1,6 +1,6 @@
 ---
-title: "Aplikace Java náročné na virtuálním počítači | Microsoft Docs"
-description: "Naučte se vytvářet Azure virtuální počítač, který spouští aplikaci Java náročné, která lze sledovat v jiné aplikaci Java."
+title: "aplikace Java aaaCompute náročných na virtuálním počítači | Microsoft Docs"
+description: "Zjistěte, jak se dá sledovat toocreate Azure virtuální počítač, který spouští aplikaci Java náročné, který ho jiná aplikace Java."
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
@@ -15,104 +15,104 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 8c51c0bb37e25ad61fe58a85dd641dabe0a1958c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 02a198802a8d78bd444cd5a9197a78cb94f48e3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Jak spouštět úlohy náročné na výpočetní výkon v Javě na virtuálním počítači
+# <a name="how-toorun-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Jak toorun výpočetně náročných úloh v jazyce Java ve virtuálním počítači
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
 
-S Azure můžete pro zpracování úlohy náročné na výkon virtuálního počítače. Virtuální počítač můžete například zpracování úlohy a výsledky doručení do klientského počítače nebo mobilní aplikace. Po přečtení tohoto článku, budete mít představu o tom, jak vytvořit virtuální počítač, který spouští aplikaci Java náročné, která lze sledovat v jiné aplikaci Java.
+S Azure můžete použít virtuální počítač toohandle náročné úlohy. Virtuální počítač můžete například zpracování úlohy a poskytovat výsledky tooclient počítače nebo mobilní aplikace. Po přečtení tohoto článku, budete mít představu o tom, jak toocreate virtuální počítač, který spouští aplikaci Java náročné, který se dá sledovat jinou aplikací Java.
 
-Tento kurz předpokládá vědět, jak k vytvoření konzolové aplikace Java, můžete importovat knihovny do aplikace v jazyce Java a může generovat Java archivu (JAR). Předpokládají se žádné znalosti ve službě Microsoft Azure.
+Tento kurz předpokládá, že víte, jak toocreate konzolové aplikace Java, můžete importovat aplikaci Java tooyour knihovny a může generovat Java archivu (JAR). Předpokládají se žádné znalosti ve službě Microsoft Azure.
 
 Co se dozvíte:
 
-* Postup vytvoření virtuálního počítače s Java Development Kit (JDK) už nainstalovaná.
-* Jak se vzdáleně přihlaste k virtuálnímu počítači.
-* Jak vytvořit obor názvů sběrnice.
-* Jak vytvořit aplikaci Java, která provede náročné úlohy.
-* Jak vytvořit aplikaci Java, která monitoruje průběh úlohy náročné na výkon.
-* Postup spuštění aplikací Java.
-* Postup zastavení aplikací Java.
+* Jak toocreate virtuální počítač s Java Development Kit (JDK) už nainstalovaná.
+* Jak tooremotely přihlásit tooyour virtuálního počítače.
+* Jak toocreate služby sběrnici oboru názvů.
+* Jak toocreate aplikaci Java, která provede náročné úlohy.
+* Jak toocreate aplikaci Java, která monitoruje hello průběh úlohy náročné hello.
+* Jak toorun hello aplikací v jazyce Java.
+* Jak toostop hello aplikací v jazyce Java.
 
-V tomto kurzu použije Traveling prodejce problém pro úlohy náročné na výkon. Následuje příklad aplikace Java spuštění úlohy náročné na výkon.
+V tomto kurzu použije hello Traveling prodejce problém pro hello výpočetně náročných úloh. Hello tady je příklad hello Java aplikace spuštěné hello náročné úlohy.
 
 ![Řešitel problém Traveling prodejce][solver_output]
 
-Následuje příklad monitorování úlohy náročné na výkon aplikací Java.
+Hello následuje příklad hello Java aplikace monitorování hello výpočetně náročných úloh.
 
 ![Problém Traveling prodejce klienta][client_output]
 
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
-## <a name="to-create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-1. Přihlaste se do [portálu Azure Classic](https://manage.windowsazure.com).
+## <a name="toocreate-a-virtual-machine"></a>toocreate virtuálního počítače
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
 2. Klikněte na tlačítko **nový**, klikněte na tlačítko **výpočetní**, klikněte na tlačítko **virtuálního počítače**a potom klikněte na **z Galerie**.
-3. V **vyberte bitovou kopii virtuálního počítače** dialogové okno, vyberte **JDK 7 Windows serveru 2012**.
-   Všimněte si, že **JDK 6 systému Windows Server 2012** je k dispozici v případě, že máte starší aplikace, které ještě nejsou připravené ke spuštění v JDK 7.
+3. V hello **vyberte bitovou kopii virtuálního počítače** dialogové okno, vyberte **JDK 7 Windows serveru 2012**.
+   Všimněte si, že **JDK 6 systému Windows Server 2012** je k dispozici v případě, že máte starší aplikace, které ještě nejsou připraveny toorun v JDK 7.
 4. Klikněte na **Další**.
-5. V **konfigurace virtuálního počítače** dialogové okno:
-   1. Zadejte název pro virtuální počítač.
-   2. Zadejte velikost používat pro virtuální počítač.
-   3. Zadejte název pro správce v **uživatelské jméno** pole. Nezapomeňte toto jméno a heslo, které budou vedle zadat, je budou používat při vzdálené přihlášení k virtuálnímu počítači.
-   4. Zadejte heslo do **nové heslo** pole a zadejte jej v znovu **potvrdit** pole. Toto je heslo k účtu správce.
+5. V hello **konfigurace virtuálního počítače** dialogové okno:
+   1. Zadejte název pro virtuální počítač hello.
+   2. Zadejte velikost toouse hello hello virtuálního počítače.
+   3. Zadejte název pro správce hello v hello **uživatelské jméno** pole. Název a hello heslo, které budou vedle zadejte si zapamatujte, je budou používat při vzdálené přihlášení toohello virtuálního počítače.
+   4. Zadejte heslo do hello **nové heslo** pole a zadejte jej znovu v hello **potvrdit** pole. Toto je heslo účtu správce hello.
    5. Klikněte na **Další**.
-6. V dalším **konfigurace virtuálního počítače** dialogové okno:
-   1. Pro **Cloudová služba**, použijte výchozí **vytvořte novou cloudovou službu**.
-   2. Hodnota **název cloudové služby DNS** musí být jedinečný v rámci cloudapp.net. V případě potřeby upravte tuto hodnotu tak, že Azure označuje, že je jedinečný.
+6. V hello Další **konfigurace virtuálního počítače** dialogové okno:
+   1. Pro **Cloudová služba**, použít výchozí hello **vytvořte novou cloudovou službu**.
+   2. Hello hodnotu **název cloudové služby DNS** musí být jedinečný v rámci cloudapp.net. V případě potřeby upravte tuto hodnotu tak, že Azure označuje, že je jedinečný.
    3. Zadejte oblast, skupiny vztahů nebo virtuální sítě. Pro účely tohoto kurzu, zadejte v oblasti **západní USA**.
    4. Pro **účet úložiště**, vyberte **použít účet úložiště automaticky generované**.
    5. Pro **sadu dostupnosti**, vyberte **(None)**.
    6. Klikněte na **Další**.
-7. V konečné **konfigurace virtuálního počítače** dialogové okno:
-   1. Přijměte výchozí koncový bod položky.
+7. V posledním hello **konfigurace virtuálního počítače** dialogové okno:
+   1. Přijměte hello výchozí koncový bod položky.
    2. Klikněte na **Dokončit**.
 
-## <a name="to-remotely-log-in-to-your-virtual-machine"></a>Vzdáleně se přihlásit k virtuálnímu počítači
-1. Přihlaste se na [portál Azure classic](https://manage.windowsazure.com).
+## <a name="tooremotely-log-in-tooyour-virtual-machine"></a>tooremotely přihlášení tooyour virtuálního počítače
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
 2. Klikněte na tlačítko **virtuální počítače**.
-3. Klikněte na název virtuálního počítače, který chcete k přihlášení do.
+3. Klikněte na název hello hello virtuálního počítače, který chcete toolog v.
 4. Klikněte na **Připojit**.
-5. Reagujete na výzvy podle potřeby pro připojení k virtuálnímu počítači. Pokud budete vyzváni k správce jména a hesla, použijte hodnoty, které jste zadali při vytváření virtuálního počítače.
+5. Odpověď výzvy toohello jako potřebné tooconnect toohello virtuální počítač. Po zobrazení výzvy k hello správce jména a hesla, použijte hello hodnoty, které jste zadali při vytváření hello virtuálního počítače.
 
-Všimněte si, že funkci Azure Service Bus vyžaduje certifikát Baltimore CyberTrust Root, který chcete nainstalovat jako součást vašeho prostředí JRE **cacerts** uložit. Tento certifikát je automaticky zahrnuty v prostředí Java Runtime (JRE) používané v tomto kurzu. Pokud jste tento certifikát ve vašem prostředí JRE **cacerts** úložiště najdete v tématu [přidání certifikátu do úložiště certifikátů certifikační Autority Java] [ add_ca_cert] informace o přidání (a také informace o zobrazení certifikáty v úložišti cacerts).
+Všimněte si, že hello funkce Azure Service Bus vyžaduje toobe certifikát Baltimore CyberTrust Root hello nainstalované v rámci vašeho prostředí JRE **cacerts** uložit. Tento certifikát je automaticky součástí hello Java Runtime Environment (JRE) používané v tomto kurzu. Pokud jste tento certifikát ve vašem prostředí JRE **cacerts** úložiště najdete v tématu [přidání certifikátu toohello, úložiště certifikátů certifikační Autority Java] [ add_ca_cert] informace o přidání (a také informace o zobrazení hello certifikáty v úložišti cacerts).
 
-## <a name="how-to-create-a-service-bus-namespace"></a>Postup vytvoření oboru názvů service bus
-Pokud chcete začít používat fronty služby Service Bus v Azure, musíte nejdřív vytvořit obor názvů služby. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
+## <a name="how-toocreate-a-service-bus-namespace"></a>Jak toocreate služby sběrnici obor názvů
+fronty toobegin pomocí služby Service Bus v Azure, musíte nejdřív vytvořit obor názvů služby. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
 
-Vytvoření oboru názvů služby:
+toocreate oboru názvů služby:
 
-1. Přihlaste se na [portál Azure classic](https://manage.windowsazure.com).
-2. V levém navigačním podokně portálu Azure classic, klikněte na **Service Bus, řízení přístupu a ukládání do mezipaměti**.
-3. V levém podokně portálu Azure classic, klikněte na **Service Bus** uzel a klikněte **nový** tlačítko.  
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. V levém navigačním podokně hello hello portál Azure classic, klikněte na tlačítko **Service Bus, řízení přístupu a ukládání do mezipaměti**.
+3. V levém podokně hello hello portál Azure classic, klikněte na hello **Service Bus** uzel a potom klikněte na hello **nový** tlačítko.  
    ![Snímek obrazovky uzel Service Bus][svc_bus_node]
-4. V **vytvoření nové služby Namespace** dialogovém okně zadejte **Namespace**a pokud chcete mít jistotu, že je jedinečný, klikněte **zkontrolovat dostupnost** tlačítko.  
+4. V hello **vytvoření nové služby Namespace** dialogovém okně zadejte **Namespace**, a potom klikněte na toomake se, že je jedinečný, **zkontrolovat dostupnost** tlačítko.  
    ![Vytvořit nový Namespace snímek][create_namespace]
-5. Po dostupné zajistit, že název oboru názvů vyberte zemi nebo oblast, ve kterém by měl být hostován vašeho oboru názvů a klikněte **vytvořit Namespace** tlačítko.  
+5. Ověřte název oboru názvů hello je k dispozici, vyberte zemi nebo oblast, ve kterém by měl být hostován vašeho oboru názvů a klikněte na položku hello **vytvořit Namespace** tlačítko.  
    
-   Obor názvů, který jste vytvořili se potom zobrazí na portálu Azure classic a aktivovat chvíli trvá. Počkejte, dokud je stav **Active** před pokračováním na další krok.
+   vytvořený obor názvů Hello se potom zobrazí v hello portál Azure classic a tooactivate chvíli trvá. Počkejte, dokud je stav hello **Active** než budete pokračovat v dalším kroku hello.
 
-## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>Získání výchozí pověření pro správu oboru názvů
-Aby bylo možné provádět operace správy, jako je například vytváření fronty, na novém oboru názvů, potřebujete získat přihlašovací údaje pro obor názvů správu.
+## <a name="obtain-hello-default-management-credentials-for-hello-namespace"></a>Získání hello výchozí pověření pro správu oboru názvů hello
+Operace správy tooperform pořadí, jako je například vytváření fronty, na hello nový obor názvů je nutné tooobtain hello správy pověření pro obor názvů.
 
-1. V levém navigačním podokně klikněte **Service Bus** uzlu zobrazíte seznam dostupných oborů názvů.
+1. V levém navigačním podokně hello, klikněte na tlačítko hello **Service Bus** uzel k zobrazení hello seznam dostupných oborů názvů.
    ![K dispozici snímek obory názvů][avail_namespaces]
-2. Vyberte obor názvů, který jste právě vytvořili, v zobrazeném seznamu.
+2. Vyberte obor názvů hello, který jste právě vytvořili, z v zobrazeném seznamu hello.
    ![Snímek obrazovky seznamu Namespace][namespace_list]
-3. Pravém **vlastnosti** podokně jsou uvedeny vlastnosti pro nový obor názvů.
+3. Hello pravém **vlastnosti** podokně zobrazí hello vlastnosti pro nový obor názvů.
    ![Snímek obrazovky podokna Vlastnosti][properties_pane]
-4. **Výchozí klíč** skryt. Klikněte **zobrazení** tlačítko pro zobrazení zabezpečovací přihlašovací údaje.
+4. Hello **výchozí klíč** skryt. Klikněte na tlačítko hello **zobrazení** tlačítko toodisplay hello zabezpečovací pověření.
    ![Výchozí klíč – snímek obrazovky][default_key]
-5. Poznamenejte si **výchozí vystavitele** a **výchozí klíč** jako tento níže uvedené informace se používají k provádění operací s oborem názvů.
+5. Poznamenejte si hello **výchozí vystavitele** a hello **výchozí klíč** jako použije tyto informace níže tooperform operací s oborem názvů.
 
-## <a name="how-to-create-a-java-application-that-performs-a-compute-intensive-task"></a>Jak vytvořit aplikaci Java, která provede náročné úlohy
-1. Na vývojovém počítači (která nemusí být virtuální počítač, který jste vytvořili) stáhněte si [Azure SDK pro jazyk Java](https://azure.microsoft.com/develop/java/).
-2. Vytvořte konzolovou aplikaci Java pomocí ukázkový kód na konci této části. V tomto kurzu použijeme **TSPSolver.java** jako název souboru Java. Změnit **vaše\_služby\_sběrnice\_obor názvů**, **vaše\_služby\_sběrnice\_vlastníka**a **vaše\_služby\_sběrnice\_klíč** zástupné symboly pro použití služby service bus **obor názvů**, **výchozí vystavitele** a  **Výchozí klíč** hodnoty v uvedeném pořadí.
-3. Po kódování, exportovat aplikaci spustitelného archivu Java (JAR) a balíček požadované knihovny do vygenerované JAR. V tomto kurzu použijeme **TSPSolver.jar** jako vygenerovaný název JAR.
+## <a name="how-toocreate-a-java-application-that-performs-a-compute-intensive-task"></a>Jak toocreate aplikaci Java, která provede náročné úlohy
+1. Na počítači pro vývoj (který nemá toobe hello virtuální počítač, který jste vytvořili), stažení hello [Azure SDK pro jazyk Java](https://azure.microsoft.com/develop/java/).
+2. Vytvořte konzolovou aplikaci Java pomocí hello ukázkový kód na konci hello v této části. V tomto kurzu použijeme **TSPSolver.java** jako název souboru hello Java. Upravit hello **vaše\_služby\_sběrnice\_obor názvů**, **vaše\_služby\_sběrnice\_vlastníka**a **vaše\_služby\_sběrnice\_klíč** toouse zástupné symboly služby service bus **obor názvů**, **výchozí vystavitele** a  **Výchozí klíč** hodnoty v uvedeném pořadí.
+3. Po kódování, export hello aplikace tooa spustitelného Java archivu (JAR) a balíček hello požadované knihovny do hello generované JAR. V tomto kurzu použijeme **TSPSolver.jar** jako název JAR hello vygenerovat.
 
 <p/>
 
@@ -131,7 +131,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
 
     public class TSPSolver {
 
-        //  Value specifying how often to provide an update to the console.
+        //  Value specifying how often tooprovide an update toohello console.
         private static long loopCheck = 100000000;  
 
         private static long nTimes = 0, nLoops=0;
@@ -235,12 +235,12 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
 
                 service = ServiceBusService.create(config);
 
-                int numCities = 10;  // Use as the default, if no value is specified at command line.
+                int numCities = 10;  // Use as hello default, if no value is specified at command line.
                 if (args.length != 0)
                 {
                     if (args[0].toLowerCase().compareTo("createqueue")==0)
                     {
-                        // No processing to occur other than creating the queue.
+                        // No processing toooccur other than creating hello queue.
                         QueueInfo queueInfo = new QueueInfo("TSPQueue");
 
                         service.createQueue(queueInfo);
@@ -252,7 +252,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
 
                     if (args[0].toLowerCase().compareTo("deletequeue")==0)
                     {
-                        // No processing to occur other than deleting the queue.
+                        // No processing toooccur other than deleting hello queue.
                         service.deleteQueue("TSPQueue");
 
                         System.out.println("Queue named TSPQueue was deleted.");
@@ -261,7 +261,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
                     }
 
                     // Neither creating or deleting a queue.
-                    // Assume the value passed in is the number of cities to solve.
+                    // Assume hello value passed in is hello number of cities toosolve.
                     numCities = Integer.valueOf(args[0]);  
                 }
 
@@ -299,9 +299,9 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
 
 
 
-## <a name="how-to-create-a-java-application-that-monitors-the-progress-of-the-compute-intensive-task"></a>Jak vytvořit aplikaci Java, která monitoruje průběh úlohy náročné na výkon
-1. Na vývojovém počítači vytvořte konzolovou aplikaci Java pomocí ukázkový kód na konci této části. V tomto kurzu použijeme **TSPClient.java** jako název souboru Java. Jak je uvedeno výše, upravit **vaše\_služby\_sběrnice\_obor názvů**, **vaše\_služby\_sběrnice\_vlastníka**, a **vaše\_služby\_sběrnice\_klíč** zástupné symboly pro použití služby service bus **obor názvů**, **výchozí vystavitele**a **výchozí klíč** hodnoty v uvedeném pořadí.
-2. Exportujte aplikace spustitelného JAR a balíček požadované knihovny do vygenerované JAR. V tomto kurzu použijeme **TSPClient.jar** jako vygenerovaný název JAR.
+## <a name="how-toocreate-a-java-application-that-monitors-hello-progress-of-hello-compute-intensive-task"></a>Jak toocreate aplikaci Java, která monitoruje hello průběh úlohy náročné hello
+1. Na vývojovém počítači vytvořte konzolovou aplikaci Java pomocí hello ukázkový kód na konci hello v této části. V tomto kurzu použijeme **TSPClient.java** jako název souboru hello Java. Jak je uvedeno výše, upravte hello **vaše\_služby\_sběrnice\_obor názvů**, **vaše\_služby\_sběrnice\_vlastníka**, a **vaše\_služby\_sběrnice\_klíč** toouse zástupné symboly služby service bus **obor názvů**, **výchozí vystavitele**a **výchozí klíč** hodnoty v uvedeném pořadí.
+2. Export tooa aplikace hello knihovny do hello generované JAR vyžaduje spustitelného JAR a balíček hello. V tomto kurzu použijeme **TSPClient.jar** jako název JAR hello vygenerovat.
 
 <p/>
 
@@ -340,7 +340,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
 
                     BrokeredMessage message;
 
-                    int waitMinutes = 3;  // Use as the default, if no value is specified at command line.
+                    int waitMinutes = 3;  // Use as hello default, if no value is specified at command line.
                     if (args.length != 0)
                     {
                         waitMinutes = Integer.valueOf(args[0]);  
@@ -366,7 +366,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
                         if (null != message && null != message.getMessageId())
                         {
 
-                            // Display the queue message.
+                            // Display hello queue message.
                             byte[] b = new byte[200];
 
                             System.out.print("From queue: ");
@@ -383,7 +383,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
                             System.out.println();
                             if (s.compareTo("Complete") == 0)
                             {
-                                // No more processing to occur.
+                                // No more processing toooccur.
                                 date = new Date();
                                 System.out.println("Finished at " + dateFormat.format(date) + ".");
                                 break;
@@ -391,7 +391,7 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
                         }
                         else
                         {
-                            // The queue is empty.
+                            // hello queue is empty.
                             System.out.println("Queue is empty. Sleeping for another " + waitString);
                             Thread.sleep(60000 * waitMinutes);
                         }
@@ -415,14 +415,14 @@ Aby bylo možné provádět operace správy, jako je například vytváření fr
 
     }
 
-## <a name="how-to-run-the-java-applications"></a>Spuštění aplikace Java
-Spuštění aplikace náročné na výkon, nejprve k vytvoření fronty, potom k vyřešení problému Saleseman cestě, která přidá aktuální nejlepší směrování do fronty service bus. Při spuštění (nebo později) aplikace náročné spuštění klienta zobrazit výsledky z fronty service bus.
+## <a name="how-toorun-hello-java-applications"></a>Jak toorun hello aplikací v jazyce Java
+Spuštění aplikace hello náročné, první toocreate hello fronty a potom toosolve hello cestě Saleseman problém, který přidá hello aktuální nejlepší trasy toohello frontou service bus. Při hello náročné aplikace je spuštěná (nebo později) spusťte hello klienta toodisplay výsledky z hello frontou service bus.
 
-### <a name="to-run-the-compute-intensive-application"></a>Ke spuštění aplikace náročné na výkon
-1. Přihlaste se k virtuálnímu počítači.
+### <a name="toorun-hello-compute-intensive-application"></a>toorun hello náročné aplikace
+1. Přihlaste se tooyour virtuálního počítače.
 2. Vytvořte složku, kde budete spouštět aplikace. Například **c:\TSP**.
-3. Kopírování **TSPSolver.jar** k **c:\TSP**,
-4. Vytvořte soubor s názvem **c:\TSP\cities.txt** s tímto obsahem.
+3. Kopírování **TSPSolver.jar** příliš**c:\TSP**,
+4. Vytvořte soubor s názvem **c:\TSP\cities.txt** s hello následující obsah.
    
         City_1, 1002.81, -1841.35
         City_2, -953.55, -229.6
@@ -474,44 +474,44 @@ Spuštění aplikace náročné na výkon, nejprve k vytvoření fronty, potom k
         City_48, 363.68, 768.21
         City_49, -120.3, -463.13
         City_50, 588.51, 679.33
-5. Na příkazovém řádku změňte adresáře na c:\TSP.
-6. Zkontrolujte, zda složky Bin přejít prostředí JRE v proměnné prostředí PATH.
-7. Budete muset vytvořit frontou service bus před spuštěním permutací solver TSP. Spusťte následující příkaz k vytvoření fronty service bus.
+5. Na příkazovém řádku změňte adresáře tooc:\TSP.
+6. Zkontrolujte, zda je složka bin hello JRE v proměnné prostředí PATH hello.
+7. Před spuštěním hello TSP solver permutací, budete potřebovat frontou service bus toocreate hello. Spusťte následující příkaz toocreate hello service bus fronty hello.
    
         java -jar TSPSolver.jar createqueue
-8. Teď, když je vytvářena fronta, můžete spustit permutací solver TSP. Například spusťte následující příkaz ke spuštění Řešitele pro 8 měst.
+8. Je teď vytvořená hello fronty, můžete spustit hello TSP solver permutací. Například spusťte následující příkaz toorun hello solver pro 8 města hello.
    
         java -jar TSPSolver.jar 8
    
-   Pokud nezadáte číslo, bude spuštěna pro 10 měst. Jako Řešitele vyhledá aktuální nejkratší trasy, přidá je do fronty.
+   Pokud nezadáte číslo, bude spuštěna pro 10 měst. Jako hello solver vyhledá aktuální nejkratší tras, bude je přidat toohello fronty.
 
 > [!NOTE]
-> Čím větší číslo, které zadáte, tím déle solver spustí. Například běžet 14 města může trvat několik minut a spuštěna 15 města může trvat několik hodin. Zvýšení na 16 nebo víc měst může mít za následek dnů modulu runtime (nakonec týdny, měsíce a letopočty). Příčinou je rychlý nárůst počtu permutací pomocí Řešitele vyhodnotit jako číslo zvyšuje měst.
+> číslo, kterou zadáte, se spustí hello delší hello solver text hello Hello větší. Například běžet 14 města může trvat několik minut a spuštěna 15 města může trvat několik hodin. Zvýšení too16 nebo více měst může mít za následek dnů modulu runtime (nakonec týdny, měsíce a letopočty). Toto je z důvodu toohello rychlý nárůst hello počet permutací vyhodnotit v Řešiteli hello jako hello počet zvyšuje měst.
 > 
 > 
 
-### <a name="how-to-run-the-monitoring-client-application"></a>Spuštění monitorování klientské aplikace
-1. Přihlaste se k počítači, kde budete spouštět klientské aplikace. Toto nemusí být stejný počítač s **TSPSolver** aplikace, i když může být.
+### <a name="how-toorun-hello-monitoring-client-application"></a>Jak toorun hello monitorování klientské aplikace
+1. Přihlaste se na tooyour počítači, kde budete spouštět hello klientské aplikace. To není nutné toobe hello stejný počítač s hello **TSPSolver** aplikace, i když může být.
 2. Vytvořte složku, kde budete spouštět aplikace. Například **c:\TSP**.
-3. Kopírování **TSPClient.jar** k **c:\TSP**,
-4. Zkontrolujte, zda složky Bin přejít prostředí JRE v proměnné prostředí PATH.
-5. Na příkazovém řádku změňte adresáře na c:\TSP.
-6. Spusťte následující příkaz.
+3. Kopírování **TSPClient.jar** příliš**c:\TSP**,
+4. Zkontrolujte, zda je složka bin hello JRE v proměnné prostředí PATH hello.
+5. Na příkazovém řádku změňte adresáře tooc:\TSP.
+6. Spusťte následující příkaz hello.
    
         java -jar TSPClient.jar
    
-    Volitelně můžete zadejte počet minut do režimu spánku mezi kontroly fronty předáním v argument příkazového řádku. Doba spánku výchozí kontroly fronty je 3 minuty, který je použit, pokud je předán žádný argument příkazového řádku **TSPClient**. Pokud chcete použít jiné hodnoty pro interval režimu spánku, například jednu minutu, spusťte následující příkaz.
+    Volitelně zadejte hello počet minut toosleep mezi kontroly fronty hello předáním v argument příkazového řádku. Hello výchozí režim spánku období kontroly fronty hello je 3 minuty, který se používá, pokud je příliš předán žádný argument příkazového řádku**TSPClient**. Pokud chcete toouse jinou hodnotu pro interval hello režimu spánku, například jednu minutu, spusťte hello následující příkaz.
    
         java -jar TSPClient.jar 1
    
-    Klient se spustí, dokud ho uvidí zprávu fronty služby "Dokončeno". Poznámka: Pokud vícenásobné výskyty Řešitele spustíte bez spuštění klienta, pravděpodobně muset spustit klienta vícekrát zcela vyprázdnit frontu. Alternativně můžete odstranit a vytvořit znovu. Pokud chcete odstranit frontu, spusťte následující **TSPSolver** (ne **TSPClient**) příkaz.
+    Hello klienta se spustí, dokud ho uvidí zprávu fronty služby "Dokončeno". Všimněte si, že pokud spustíte vícenásobné výskyty hello solver bez spuštění klienta hello, může být nutné toorun hello klienta několikrát toocompletely prázdný hello fronty. Alternativně můžete odstranit hello fronty a poté jej znovu vytvořit. toodelete hello fronty, spusťte následující hello **TSPSolver** (ne **TSPClient**) příkaz.
    
         java -jar TSPSolver.jar deletequeue
    
-    Řešitele se spustí, dokud neskončí zkoumání všechny trasy.
+    Řešitel Hello se spustí, dokud neskončí zkoumání všechny trasy.
 
-## <a name="how-to-stop-the-java-applications"></a>Postup zastavení aplikací Java
-Řešitel i klientské aplikace, můžete stisknout **Ctrl + C** ukončíte, pokud chcete ukončit před dokončením normální.
+## <a name="how-toostop-hello-java-applications"></a>Jak toostop hello aplikací v jazyce Java
+Pro hello solver a klientské aplikace, můžete stisknout **Ctrl + C** tooexit, pokud chcete, aby tooend předchozí toonormal dokončení.
 
 [solver_output]:media/java-run-compute-intensive-task/WA_JavaTSPSolver.png
 [client_output]:media/java-run-compute-intensive-task/WA_JavaTSPClient.png

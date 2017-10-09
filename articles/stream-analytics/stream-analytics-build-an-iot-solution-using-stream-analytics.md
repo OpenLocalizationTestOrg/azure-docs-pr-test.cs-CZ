@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření řešení IoT pomocí služby Stream Analytics | Microsoft Docs"
-description: "Úvodní kurz pro řešení Stream Analytics IoT mýtná celnice scénáře"
+title: "aaaBuild řešení IoT pomocí služby Stream Analytics | Microsoft Docs"
+description: "Úvodní kurz pro hello řešení Stream Analytics IoT mýtná celnice scénáře"
 keywords: "řešení IOT, okno funkce"
 documentationcenter: 
 services: stream-analytics
@@ -15,44 +15,44 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e37fc5b56c4ffc4a2d7b820afe0c17631e577ea0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Vytvoření řešení IoT pomocí služby Stream Analytics
 ## <a name="introduction"></a>Úvod
-V tomto kurzu se dozvíte, jak získat přehledy v reálném čase z vašich dat pomocí Azure Stream Analytics. Datové proudy dat, například klikněte na tlačítko-datové proudy, protokoly a události generované zařízení mohou vývojáři kombinovat snadno s staré záznamy nebo referenční data odvození informací o podniku. Jako výpočetní služba plně spravovaná, v reálném čase datový proud, který je hostován v Microsoft Azure Azure Stream Analytics poskytuje integrované odolnost proti chybám, s nízkou latencí a škálovatelnost, které jste si a spustit v minutách.
+V tomto kurzu se dozvíte, jak toouse Azure Stream Analytics tooget v reálném čase přehled o vašich datech. Datové proudy dat, například klikněte na tlačítko-datové proudy, protokoly a události generované zařízení mohou vývojáři kombinovat snadno s staré záznamy nebo referenční data tooderive podnikových statistik. Jako výpočetní služba plně spravovaná, v reálném čase datový proud, který je hostován v Microsoft Azure Azure Stream Analytics poskytuje integrované odolnost proti chybám, s nízkou latencí a škálovatelnost tooget jste nahoru a spouštění v minutách.
 
 Po dokončení tohoto kurzu, budete moci:
 
-* Seznamte se s portálem Azure Stream Analytics.
+* Seznamte se s portál Azure Stream Analytics hello.
 * Nakonfigurujte a nasaďte úlohu streamování.
-* Vyjádřete reálného problémy a řešení je pomocí dotazovacího jazyka pro Stream Analytics.
+* Vyjádřete reálného problémy a řešení je pomocí dotazovacího jazyka pro hello Stream Analytics.
 * Vývoj streamování řešení pro vaše zákazníky pomocí služby Stream Analytics s jistotou.
-* Sledování a protokolování prostředí používejte k řešení potíží.
+* Použijte hello sledování a protokolování prostředí tootroubleshoot problémy.
 
 ## <a name="prerequisites"></a>Požadavky
-Budete potřebovat k dokončení tohoto kurzu následující požadavky:
+Můžete se třeba hello následující toocomplete požadavky v tomto kurzu:
 
-* Nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/overview)
-* 2017 Visual Studio 2015, nebo bezplatnou [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
+* nejnovější verze Hello [prostředí Azure PowerShell](/powershell/azure/overview)
+* 2017 Visual Studio 2015, nebo hello volné [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Předplatného Azure](https://azure.microsoft.com/pricing/free-trial/)
-* Oprávnění správce na počítači
-* Stažení [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) z webu Microsoft Download Center
-* Volitelné: Zdrojový kód pro generátor TollApp událostí v [Githubu](https://aka.ms/azure-stream-analytics-toll-source)
+* Oprávnění správce na počítači hello
+* Stažení [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) z hello Microsoft Download Center
+* Volitelné: Zdrojový kód pro hello TollApp událostí generátor v [Githubu](https://aka.ms/azure-stream-analytics-toll-source)
 
 ## <a name="scenario-introduction-hello-toll"></a>Scénář Úvod: "Hello, Projedou!"
-Stanice projedou je běžné jevu. Narazíte je na mnoha rychlostních, mosty a tunely po celém světě. Každé stanici projedou má více kabin projedou. Na ruční kabin zastavíte platit projedou k průvodcem. Senzor nad každý stánek na automatizované kabin kontroluje RFID kartu, která je opatřit čelního skla z vaší vehicle, jak předat stánek projedou. Je snadné k vizualizaci průchod vozidel přes tyto stanice projedou jako datového proudu událostí za které zajímavé operace lze provádět.
+Stanice projedou je běžné jevu. Narazíte je na mnoha rychlostních, mosty a tunely mezi hello, world. Každé stanici projedou má více kabin projedou. Při ruční kabin zastavíte toopay hello projedou tooan průvodce. Senzor nad každý stánek na automatizované kabin kontroluje RFID karta, která je čelního skla připojené toohello vaše vozidel jako předáte stánek projedou hello. Je snadno toovisualize hello průchod vozidel přes tyto stanice projedou jako datového proudu událostí za které zajímavé operace lze provádět.
 
 ![Obrázek automobilů na projedou kabin](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
 
 ## <a name="incoming-data"></a>Příchozí data
-V tomto kurzu pracuje se dvěma datových proudů. Nainstalovaných ve vstupu a ukončení stanice projedou vytvořit první datového proudu. Druhý datový proud je statický vyhledávání datovou sadu, která má vehicle registrační data.
+V tomto kurzu pracuje se dvěma datových proudů. Snímače nainstalována v hello vstupu a ukončení hello projedou stanic vytvořit hello první datového proudu. druhý datový proud Hello je statický vyhledávání datovou sadu, která má vehicle registrační data.
 
 ### <a name="entry-data-stream"></a>Vstupní datový proud
-Vstupní datový proud obsahuje informace o aut při vstupu projedou stanice.
+Hello vstupní datový proud obsahuje informace o aut při vstupu projedou stanice.
 
 | TollID | EntryTime | LicensePlate | Stav | Ujistěte se | Model | VehicleType | VehicleWeight | Projedou | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -63,23 +63,23 @@ Vstupní datový proud obsahuje informace o aut při vstupu projedou stanice.
 | 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
 | 2 |2014-09-10 12:05:00.000 |CDE 1007 |NI |Toyota |4 x 4 |1 |0 |6 |321987654 |
 
-Zde je stručný popis sloupce:
+Zde je stručný popis hello sloupce:
 
 | Sloupec | Popis |
 | --- | --- |
-| TollID |ID stánek projedou, která jednoznačně identifikuje stánek projedou |
-| EntryTime |Datum a čas položky vehicle k stánek projedou v UTC |
-| LicensePlate |Počet registrační nástroj |
+| TollID |Hello projedou stánek ID, která jednoznačně identifikuje stánek projedou |
+| EntryTime |Hello datum a čas položky hello vehicle toohello projedou stánek v UTC |
+| LicensePlate |Hello registrační počet hello vehicle |
 | Stav |Stav v USA |
-| Ujistěte se |Výrobce daného automobilu |
-| Model |Číslo modelu daného automobilu |
+| Ujistěte se |výrobce Hello automobilu hello |
+| Model |číslo modelu Hello automobilu hello |
 | VehicleType |Buď 1 pro osobní vozidel či 2 pro komerční vozidel |
 | WeightType |Vehicle váhy v tunách; 0 pro osobní vozidel |
-| Projedou |Hodnota projedou v USD |
-| Značka |E-Tag na automobilu, který zautomatizuje platebních; prázdné, kde je platba bylo provedeno ručně |
+| Projedou |Hodnota projedou Hello v USD |
+| Značka |Hello e-Tag na hello automobilu, který zautomatizuje platebních; prázdný, kde byla hello platebních provést ručně |
 
 ### <a name="exit-data-stream"></a>Výstupní datový proud
-Výstupní datový proud obsahuje informace o aut ponechat projedou stanice.
+Hello výstupní datový proud obsahuje informace o aut ponechat hello projedou stanice.
 
 | **TollId** | **ExitTime** | **LicensePlate** |
 | --- | --- | --- |
@@ -90,16 +90,16 @@ Výstupní datový proud obsahuje informace o aut ponechat projedou stanice.
 | 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
 | 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
 
-Zde je stručný popis sloupce:
+Zde je stručný popis hello sloupce:
 
 | Sloupec | Popis |
 | --- | --- |
-| TollID |ID stánek projedou, která jednoznačně identifikuje stánek projedou |
-| ExitTime |Datum a čas ukončení nástroj z projedou stánek v UTC |
-| LicensePlate |Počet registrační nástroj |
+| TollID |Hello projedou stánek ID, která jednoznačně identifikuje stánek projedou |
+| ExitTime |Hello datum a čas ukončení hello vehicle z projedou stánek v UTC |
+| LicensePlate |Hello registrační počet hello vehicle |
 
 ### <a name="commercial-vehicle-registration-data"></a>Vehicle komerční registrační data
-Tento kurz používá statický snímek databáze komerční vehicle registrace.
+kurz Hello používá statický snímek databáze komerční vehicle registrace.
 
 | LicensePlate | RegistrationId | Platnost |
 | --- | --- | --- |
@@ -110,240 +110,240 @@ Tento kurz používá statický snímek databáze komerční vehicle registrace.
 | SNY 7188 |592133890 |0 |
 | ELH 9896 |678427724 |1 |
 
-Zde je stručný popis sloupce:
+Zde je stručný popis hello sloupce:
 
 | Sloupec | Popis |
 | --- | --- |
-| LicensePlate |Počet registrační nástroj |
-| RegistrationId |ID registrace vehicle |
-| Platnost |Stav registrace nástroj: 0, pokud je aktivní, vehicle registrace 1, pokud platnost registrace |
+| LicensePlate |Hello registrační počet hello vehicle |
+| RegistrationId |ID registrace Hello vehicle |
+| Platnost |Stav registrace hello vehicle Hello: 0, pokud je aktivní, vehicle registrace 1, pokud platnost registrace |
 
-## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Nastavení prostředí pro Azure Stream Analytics
-K dokončení tohoto kurzu potřebujete předplatné Microsoft Azure. Společnost Microsoft nabízí bezplatné zkušební verze pro služby Microsoft Azure.
+## <a name="set-up-hello-environment-for-azure-stream-analytics"></a>Nastavení hello prostředí pro Azure Stream Analytics
+toocomplete tento kurz, musíte mít předplatné Microsoft Azure. Společnost Microsoft nabízí bezplatné zkušební verze pro služby Microsoft Azure.
 
 Pokud účet Azure nemáte, můžete [požadavku bezplatná zkušební verze](http://azure.microsoft.com/pricing/free-trial/).
 
 > [!NOTE]
-> Chcete-li zaregistrovat k bezplatné zkušební verzi, musíte mobilní zařízení, které může přijímat textové zprávy a platná platební karta.
+> toosign pro bezplatnou zkušební verzi, musíte mobilní zařízení, které může přijímat textové zprávy a platná platební karta.
 > 
 > 
 
-Ujistěte se, postupujte podle kroků v části "Vyčištění účtu Azure" na konci tohoto článku, tak, aby bylo možné provést doporučené použití Azure kreditu.
+Ujistěte se, že toofollow hello kroky v části "Vyčištění účtu Azure" hello na konci hello tohoto článku tak, aby bylo možné vytvořit hello nejlepší využívání Azure kreditu.
 
-## <a name="provision-azure-resources-required-for-the-tutorial"></a>Zřízení prostředků Azure, vyžaduje se pro tento kurz
-Tento kurz vyžaduje dva události rozbočovače pro příjem *položka* a *ukončete* datových proudů. Azure SQL Database výstupy výsledky úlohy Stream Analytics. Azure Storage ukládá referenční data o vehicle registrace.
+## <a name="provision-azure-resources-required-for-hello-tutorial"></a>Zřídit prostředky Azure potřebné pro kurz hello
+Tento kurz vyžaduje dva tooreceive centra událostí *položka* a *ukončete* datových proudů. Azure SQL Database výstupy hello výsledky úlohy Stream Analytics hello. Azure Storage ukládá referenční data o vehicle registrace.
 
-Setup.ps1 skript ve složce TollApp na Githubu slouží k vytvoření všechny požadované prostředky. V zájmu čas doporučujeme ho spustíte. Pokud chcete získat další informace o tom, jak nakonfigurovat tyto prostředky na portálu Azure, podívejte se na Příloha "Konfigurace kurz prostředků na portálu Azure".
+Můžete použít hello Setup.ps1 skript ve složce TollApp hello na Githubu toocreate všechny požadované prostředky. V zájmu hello času doporučujeme ho spustíte. Pokud vás zajímají další informace o tom, jak tooconfigure těchto prostředků ve hello portál Azure, najdete v toolearn příloha toohello "Konfigurace kurz prostředků na portálu Azure".
 
-Stáhněte a uložte v podporu [TollApp](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) složky a soubory.
+Stáhněte a uložte hello podpora [TollApp](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) složky a soubory.
 
-Otevřete **Microsoft Azure PowerShell** okno *jako správce*. Pokud ještě nemáte prostředí Azure PowerShell, postupujte podle pokynů v [instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) k její instalaci.
+Otevřete **Microsoft Azure PowerShell** okno *jako správce*. Pokud ještě nemáte prostředí Azure PowerShell, postupujte podle pokynů hello v [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) tooinstall ho.
 
-Protože Windows automaticky blokuje soubory .exe, .dll a .ps1, budete muset nastavte zásady spouštění, před spuštěním skriptu. Zkontrolujte, že je spuštěný okno Azure PowerShell *jako správce*. Spustit **Set-ExecutionPolicy unrestricted**. Po zobrazení výzvy zadejte **Y**.
+Protože Windows automaticky blokuje soubory .exe, .dll a .ps1, je třeba zásady spouštění hello tooset před spuštěním skriptu hello. Zkontrolujte, že je spuštěný okno Azure PowerShell hello *jako správce*. Spustit **Set-ExecutionPolicy unrestricted**. Po zobrazení výzvy zadejte **Y**.
 
 ![Snímek obrazovky "Set-ExecutionPolicy unrestricted" spuštěné v okno Azure PowerShell](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image2.png)
 
-Spustit **Get-ExecutionPolicy** a ujistěte se, že příkaz fungovala.
+Spustit **Get-ExecutionPolicy** toomake jistotu, že příkaz hello fungovala.
 
 ![Snímek obrazovky "Get-ExecutionPolicy" spuštěné v okno Azure PowerShell](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image3.png)
 
-Přejděte do adresáře, který má generátor aplikace a skripty.
+Přejděte toohello adresář, který má hello skripty a generátor aplikace.
 
-![Snímek obrazovky "cd .\TollApp\TollApp" spuštěna v okně prostředí Azure PowerShell](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image4.png)
+![Snímek obrazovky "cd .\TollApp\TollApp" spuštěné v okno Azure PowerShell hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image4.png)
 
-Typ **.\\ Setup.ps1** nastavení účtu Azure, vytvořit a nakonfigurovat všechny požadované prostředky a začít generovat události. Skript náhodně oblasti převezme vytvoření vašich prostředků. K explicitnímu zadání oblast, můžete předat **-umístění** parametr jako v následujícím příkladu:
+Typ **.\\ Setup.ps1** tooset si účet Azure, vytvořit a nakonfigurovat všechny požadované prostředky a spustit toogenerate události. až toocreate oblast Hello skriptu náhodně vybere vašich prostředků. tooexplicitly určit oblasti, můžete předat hello **-umístění** parametr jako hello následující ukázka:
 
 **. \\Setup.ps1-umístění "Střed USA"**
 
-![Snímek obrazovky stránky Azure přihlášení](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image5.png)
+![Snímek obrazovky stránky hello Azure přihlášení](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image5.png)
 
-Skript se otevře **přihlásit** stránky pro Microsoft Azure. Zadejte přihlašovací údaje účtu.
+Hello skript se otevře hello **přihlásit** stránky pro Microsoft Azure. Zadejte přihlašovací údaje účtu.
 
 > [!NOTE]
-> Pokud má váš účet přístup k více předplatných, budete vyzváni k zadání názvu odběru, který chcete použít pro tento kurz.
+> Pokud má váš účet přístup toomultiple odběry, bude název odběru hello kladené tooenter chcete toouse hello kurzu.
 > 
 > 
 
-Skript může trvat několik minut. Po dokončení výstup by měl vypadat jako na následujícím snímku obrazovky.
+skript Hello může trvat několik minut toorun. Po dokončení hello výstup by měl vypadat jako následující snímek obrazovky hello.
 
-![Snímek obrazovky výstupu skriptu v okně prostředí Azure PowerShell](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image6.PNG)
+![Snímek obrazovky výstupu skriptu hello v okně prostředí Azure PowerShell hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image6.PNG)
 
-Zobrazí se také další okno, který je podobný na následujícím snímku obrazovky. Tato aplikace je odesílání událostí do centra událostí Azure, který je vyžadován ke spuštění tohoto kurzu. Ano nezadávejte zastavte aplikaci, nebo toto okno zavřít, dokud nedokončíte tohoto kurzu.
+Zobrazí se také další okno, které je podobné toohello následující snímek obrazovky. Tato aplikace odesílá události tooAzure Event Hubs, což je požadovaná toorun hello kurzu. Ano nezadávejte zastavení aplikace hello nebo toto okno zavřít, dokud nedokončíte hello kurzu.
 
 ![Snímek obrazovky "Odesílající event hub data"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image7.png)
 
-Nyní byste měli mít vašich prostředků na portálu Azure nyní zobrazeny. Přejděte na <https://portal.azure.com>a přihlaste se pomocí přihlašovacích údajů účtu. Všimněte si, že aktuálně některé funkce využívá portálu classic. Tyto kroky bude jasně označen.
+Můžete musí být schopný toosee vašich prostředků na portálu Azure nyní. Přejděte příliš<https://portal.azure.com>a přihlaste se pomocí přihlašovacích údajů účtu. Všimněte si, že aktuálně některé funkce využívá portálu classic hello. Tyto kroky bude jasně označen.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
-Na portálu Azure klikněte na tlačítko **další služby** na spodní části podokna levém správy. Typ **služby Event hubs** zadané v poli a klikněte na tlačítko **služby Event hubs**. Spustí se nové okno prohlížeče zobrazíte **SERVICE BUS** oblasti v **portálu classic**. Zde se zobrazí vytvořen skriptem Setup.ps1 centra událostí.
+V hello portálu Azure, klikněte na **další služby** na hello dolní části hello správy v levém podokně. Typ **služby Event hubs** v hello zadaná pole a klikněte na tlačítko **služby Event hubs**. Spustí se nové hello toodisplay okno prohlížeče **SERVICE BUS** oblasti v hello **portálu classic**. Zde se zobrazí hello Centrum událostí vytvořené hello Setup.ps1 skriptu.
 
 ![Service Bus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
 
-Klikněte na ten, který začíná *tolldata*. Klikněte **EVENT HUBS** kartě. Zobrazí se dva centra událostí s názvem *položka* a *ukončete* vytvořit v tomto oboru názvů.
+Klikněte na tlačítko hello ten, který začíná *tolldata*. Klikněte na tlačítko hello **EVENT HUBS** kartě. Zobrazí se dva centra událostí s názvem *položka* a *ukončete* vytvořit v tomto oboru názvů.
 
-![Karta centra událostí portálu classic](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
+![Karta centra událostí portálu classic hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
 
 ### <a name="azure-storage-container"></a>Kontejner úložiště Azure
-1. Přejděte zpět na kartu ve vaší otevřete prohlížeč na portálu Azure. Klikněte na tlačítko **úložiště** na levé straně na portálu Azure zobrazíte kontejner Azure Storage, který je použit v tomto kurzu.
+1. Vraťte se zpátky toohello karta prohlížeče otevřete tooAzure portál. Klikněte na tlačítko **úložiště** na levé straně hello Azure portálu toosee hello Azure Storage kontejneru, který se používá v kurzu hello hello.
    
     ![Položky nabídky úložiště](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. Klikněte na jeden, který bude začínat *tolldata*. Klikněte **kontejnery** karty zobrazíte vytvořený kontejner.
+2. Klikněte na tlačítko hello jeden, který bude začínat *tolldata*. Klikněte na tlačítko hello **kontejnery** kartě toosee hello vytvořit kontejner.
    
-    ![Karta kontejnery na portálu Azure](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
-3. Klikněte **tolldata** kontejneru zobrazíte nahrávaný soubor JSON, který má vehicle registrační data.
+    ![Karta kontejnery v hello portálu Azure](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
+3. Klikněte na tlačítko hello **tolldata** kontejneru toosee hello nahrát soubor JSON, který má vehicle registrační data.
    
-    ![Snímek obrazovky registration.json soubor v kontejneru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+    ![Snímek obrazovky aplikace hello registration.json souboru v kontejneru hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
-1. Přejděte zpět na portál Azure na první kartě, kterou jste otevřeli v prohlížeči. Klikněte na tlačítko **databází SQL** na levé straně na portálu Azure SQL database, která se použije v tomto kurzu a klikněte na tlačítko Zobrazit **tolldatadb**.
+1. Zpět na první kartě hello, kterou jste otevřeli v prohlížeči hello toohello portálu Azure. Klikněte na tlačítko **databází SQL** na levé straně hello Azure portálu toosee hello SQL database, která bude použita v kurzu hello a klikněte na tlačítko hello **tolldatadb**.
    
-    ![Snímek obrazovky vytvořené databáze SQL](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
-2. Zkopírujte název serveru bez číslo portu (*servername*. database.windows.net, např.).
-    ![Snímek obrazovky vytvoření databáze SQL db](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15a.png)
+    ![Snímek obrazovky hello vytvoření databáze SQL](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
+2. Název serveru hello kopie bez hello číslo portu (*servername*. database.windows.net, např.).
+    ![Snímek obrazovky hello vytvořit databázi databáze SQL](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15a.png)
 
-## <a name="connect-to-the-database-from-visual-studio"></a>Připojení k databázi ze sady Visual Studio
-Pomocí sady Visual Studio pro přístup k výsledky dotazu v databázi výstup.
+## <a name="connect-toohello-database-from-visual-studio"></a>Připojit databáze toohello ze sady Visual Studio
+Pomocí výsledků dotazu v sadě Visual Studio tooaccess v databázi výstup hello.
 
-Připojení k databázi SQL (cíl) ze sady Visual Studio:
+Připojte databáze SQL toohello (hello cíl) ze sady Visual Studio:
 
-1. Otevřete Visual Studio a pak klikněte na tlačítko **nástroje** > **připojit k databázi**.
+1. Otevřete Visual Studio a pak klikněte na tlačítko **nástroje** > **připojit tooDatabase**.
 2. Pokud se zobrazí dotaz, klikněte na tlačítko **Microsoft SQL Server** jako zdroj dat.
    
     ![Dialogové okno Změnit zdroj dat](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image16.png)
-3. V **název serveru** pole, vložte název, který jste zkopírovali v předchozí části z portálu Azure (to znamená, *servername*. database.windows.net).
+3. V hello **název serveru** pole, vložte hello název, který jste zkopírovali v předchozím oddílu hello ze hello portálu Azure (to znamená, *servername*. database.windows.net).
 4. Klikněte na tlačítko **použít ověřování systému SQL Server**.
-5. Zadejte **tolladmin** v **uživatelské jméno** pole a **123toll!** v **heslo** pole.
-6. Klikněte na tlačítko **vyberte nebo zadejte název databáze**a vyberte **TollDataDB** jako databáze.
+5. Zadejte **tolladmin** v hello **uživatelské jméno** pole a **123toll!** v hello **heslo** pole.
+6. Klikněte na tlačítko **vyberte nebo zadejte název databáze**a vyberte **TollDataDB** jako hello databáze.
    
     ![Přidat dialogové okno připojení](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
 7. Klikněte na **OK**.
 8. Otevřete Průzkumníka serveru.
    
     ![Průzkumník serveru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)
-9. V tématu čtyři tabulek v databázi TollDataDB.
+9. Viz čtyři tabulky v databázi TollDataDB hello.
    
-    ![Tabulky v databázi TollDataDB](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
+    ![Tabulky v databázi TollDataDB hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
 
 ## <a name="event-generator-tollapp-sample-project"></a>Generátor událostí: TollApp ukázkový projekt
-Odesílat události pomocí programu TollApp ukázkové aplikace se automaticky spustí skript prostředí PowerShell. Nemusíte provádět žádné další kroky.
+Hello skript prostředí PowerShell automaticky spustí toosend události pomocí programu hello TollApp ukázkové aplikace. Tooperform nepotřebujete žádné další kroky.
 
-Ale pokud vás zajímají podrobnosti implementace najdete zdrojový kód aplikace TollApp v Githubu [ukázky/TollApp](https://aka.ms/azure-stream-analytics-toll-source).
+Ale pokud vás zajímají podrobnosti implementace najdete hello zdrojový kód hello TollApp aplikace v Githubu [ukázky/TollApp](https://aka.ms/azure-stream-analytics-toll-source).
 
 ![Snímek obrazovky ukázkový kód zobrazený v sadě Visual Studio](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image20.png)
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
-1. Na portálu Azure klikněte na zelenou znaménko plus v levém horním rohu stránky vytvořte novou úlohu služby Stream Analytics. Vyberte **Intelligence + analýzy** a pak klikněte na **úlohy služby Stream Analytics**.
+1. V hello portálu Azure klikněte na tlačítko hello zeleného znaménka v levém horním rohu hello toocreate stránku hello nové úlohy Stream Analytics. Vyberte **Intelligence + analýzy** a pak klikněte na **úlohy služby Stream Analytics**.
    
     ![tlačítko Nový](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image21.png)
-2. Zadejte název úlohy, ověření předplatného opravte a potom vytvořit novou skupinu prostředků ve stejné oblasti jako úložiště centra událostí (výchozí hodnota je jihu USA pro skript).
-3. Klikněte na tlačítko **připnout na řídicí panel** a potom **vytvořit** v dolní části stránky.
+2. Zadejte název úlohy, ověřování odběru hello opravte a potom vytvořit novou skupinu prostředků v hello stejné oblasti jako hello úložiště centra událostí (výchozí hodnota je jihu USA pro skript hello).
+3. Klikněte na tlačítko **Pin toodashboard** a potom **vytvořit** v hello dolní části stránky hello.
    
     ![Vytvoření úlohy Stream Analytics možnost](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image22.png)
 
 ## <a name="define-input-sources"></a>Definování vstupních zdrojů
-1. Úloha vytvoří a otevře stránka úlohy. Nebo můžete kliknout na úlohy vytvořené analytics na řídicím panelu portálu.
+1. Úloha Hello vytvoříte a otevřete stránku hello úlohy. Nebo můžete kliknout na hello vytvořil úlohu analýzy na řídicí panel portálu hello.
 
-2. Klikněte **VSTUPY** a definujte zdrojová data.
+2. Klikněte na tlačítko hello **VSTUPY** kartě toodefine hello zdrojová data.
    
-    ![Na kartě vstupy](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image24.png)
+    ![Karta vstupy Hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image24.png)
 3. Klikněte na tlačítko **přidat vstup**.
    
-    ![Přidat vstup možnost](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image25.png)
+    ![Hello přidat vstup možnost](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image25.png)
 4. Zadejte **EntryStream** jako **vstupní ALIAS**.
 5. Typ zdroje je **datový proud**
 6. Zdroj je **centra událostí**.
-7. **Obor názvů sběrnice** TollData, jeden v rozevírací by měla být mimo provoz.
-8. **Název centra událostí** musí být nastavena na **položka**.
-9. **Název zásady centra událostí*je **RootManageSharedAccessKey** (výchozí hodnota).
+7. **Obor názvů sběrnice** by měla být hello TollData, jeden v hello rozevírací nabídku.
+8. **Název centra událostí** by mělo být nastavené příliš**položka**.
+9. **Název zásady centra událostí*je **RootManageSharedAccessKey** (hello výchozí hodnota).
 10. Vyberte **JSON** pro **formát SERIALIZACE událostí** a **UTF8** pro **kódování**.
    
     Nastavení bude vypadat jako:
    
     ![Nastavení centra událostí](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image28.png)
 
-10. Klikněte na tlačítko **vytvořit** v dolní části stránky průvodce ukončíte.
+10. Klikněte na tlačítko **vytvořit** dole hello v Průvodci hello toofinish stránku hello.
     
-    Teď, když jste vytvořili vstupní datový proud, postupujte podle stejných kroků vytvořte výstupní datový proud. Ujistěte se, že zadejte hodnoty jako na následujícím snímku obrazovky.
+    Teď, když jste vytvořili hello vstupního datového proudu, postupujte podle hello stejné kroky toocreate hello konec datového proudu. Být jisti tooenter hodnoty jako na následující snímek obrazovky hello.
     
-    ![Nastavení pro výstupní datový proud](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image31.png)
+    ![Nastavení pro hello výstupní proud](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image31.png)
     
     Jste definovali dva vstupní datové proudy:
     
-    ![Definované vstupní datové proudy na portálu Azure](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image32.png)
+    ![Vstupní datové proudy definované v hello portálu Azure](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image32.png)
     
-    V dalším kroku přidáte referenčního datového vstupu pro objekt blob, který obsahuje car registrační data.
-11. Klikněte na tlačítko **přidat**a pak opakujte stejný postup pro datový proud vstupy ale vyberte **referenční DATA** místo **datový proud** a **vstupní Alias** je **registrace**.
+    V dalším kroku přidáte referenčního datového vstupu pro soubor hello objektů blob, který obsahuje car registrační data.
+11. Klikněte na tlačítko **přidat**a pak postupujte podle hello stejný proces pro vstupy datového proudu hello ale vybrat **referenční DATA** místo **datový proud** a hello **vstupní Alias**  je **registrace**.
 
-12. účet úložiště, který začíná **tolldata**. Název kontejneru musí být **tolldata**a **vzorek cesty** by měla být **registration.json**. Tento název souboru je velká a malá písmena a musí být **malá**.
+12. účet úložiště, který začíná **tolldata**. název kontejneru Hello by měl být **tolldata**a hello **vzorek cesty** by měla být **registration.json**. Tento název souboru je velká a malá písmena a musí být **malá**.
     
     ![Nastavení úložiště blog](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image34.png)
-13. Klikněte na tlačítko **vytvořit** ukončíte průvodce.
+13. Klikněte na tlačítko **vytvořit** toofinish hello průvodce.
 
 Nyní jsou definovány všechny vstupy.
 
 ## <a name="define-output"></a>Definujte výstupní
-1. V podokně přehled úlohy Stream Analytics vyberte **výstupy**.
+1. V podokně přehled úlohy Stream Analytics hello vyberte **výstupy**.
    
-    ![Karta Výstup a možnost "Přidat výstup"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.png)
+    ![Karta Výstup Hello a možnost "Přidat výstup"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.png)
 2. Klikněte na tlačítko **Přidat**.
-3. Nastavte **alias pro výstup** k "výstupní" a potom **jímky** k **databáze SQL**.
-3. Vyberte název serveru, který se používal v části "Připojení k databázi ze sady Visual Studio" v článku. Název databáze je **TollDataDB**.
-4. Zadejte **tolladmin** v **uživatelské jméno** pole, **123toll!** v **heslo** pole, a **TollDataRefJoin** v **tabulky** pole.
+3. Sada hello **alias pro výstup** too'output a potom **jímky** příliš**databáze SQL**.
+3. Vyberte název serveru hello, která byla použita v hello hello článku v části "Connect tooDatabase ze sady Visual Studio". Název databáze Hello je **TollDataDB**.
+4. Zadejte **tolladmin** v hello **uživatelské jméno** pole, **123toll!** v hello **heslo** pole, a **TollDataRefJoin** v hello **tabulky** pole.
    
     ![Nastavení databáze SQL](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.png)
 5. Klikněte na možnost **Vytvořit**.
 
 ## <a name="azure-stream-analytics-query"></a>Azure Stream analytics dotazu
-**Dotazu** karta obsahuje dotaz SQL, který transformuje příchozí data.
+Hello **dotazu** karta obsahuje dotaz SQL, transformací hello příchozí data.
 
-![Dotaz, přidat na kartu dotaz](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image39.png)
+![Dotaz přidat karta toohello dotazů](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image39.png)
 
-V tomto kurzu se pokusí odpovězte několik obchodní otázky, které se vztahují k datům a konstrukce Stream Analytics dotazy, které lze použít v Azure Stream Analytics k poskytování příslušných odpovědí pro výběr poplatků.
+V tomto kurzu pokusí tooanswer několik obchodní otázky, které se týkají tootoll dat a konstrukce Stream Analytics dotazy, které lze použít v Azure Stream Analytics tooprovide příslušných odpovědí.
 
-Než začnete vaše první práce Stream Analytics, podíváme se na několik scénářů a syntaxe dotazu.
+Než začnete vaše první práce Stream Analytics, podíváme se na několik scénáře a syntaxe dotazů hello.
 
-## <a name="introduction-to-azure-stream-analytics-query-language"></a>Úvod do Azure Stream Analytics query language
+## <a name="introduction-tooazure-stream-analytics-query-language"></a>Úvod tooAzure Stream Analytics query language
 - - -
-Řekněme, že je potřeba počítat počet vozidel, které projedou stánek zadejte. Protože to je nepřetržitý proud událostí, musíte definovat "v časovém intervalu." Pojďme upravit dotaz a "jak množství prostředků zadejte projedou stánek každé tři minuty?". To se obvykle označuje jako počet přeskakující.
+Řekněme, že je potřeba toocount hello počet vozidel, které projedou stánek zadejte. Protože to je nepřetržitý proud událostí, máte toodefine "období času." Pojďme upravit toobe otázku hello "kolik vozidel zadejte projedou stánek každé tři minuty?". To je obvykle označují tooas hello přeskakujícího počet.
 
-Podívejme se na Azure Stream Analytics dotaz, který odpoví na tuto otázku:
+Podívejme se na hello Azure Stream Analytics dotaz, který odpoví na tuto otázku:
 
     SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
     FROM EntryStream TIMESTAMP BY EntryTime
     GROUP BY TUMBLINGWINDOW(minute, 3), TollId
 
-Jak vidíte, Azure Stream Analytics používá dotazovací jazyk, který je například SQL a přidává několik rozšíření k určení souvisejících s časem aspekty dotazu.
+Jak vidíte, Azure Stream Analytics používá dotazovací jazyk, který je například SQL a přidává několik rozšíření toospecify souvisejících s časem aspektů hello dotazu.
 
-Další podrobnosti najdete v tématu o [Správa času](https://msdn.microsoft.com/library/azure/mt582045.aspx) a [Oddílová](https://msdn.microsoft.com/library/azure/dn835019.aspx) konstrukce použitý v dotazu z webu MSDN.
+Další podrobnosti najdete v tématu o [Správa času](https://msdn.microsoft.com/library/azure/mt582045.aspx) a [Oddílová](https://msdn.microsoft.com/library/azure/dn835019.aspx) konstrukce používaných v dotazu hello z webu MSDN.
 
 ## <a name="testing-azure-stream-analytics-queries"></a>Testování dotazů Azure Stream Analytics
-Teď, když jste napsali svůj první dotaz Azure Stream Analytics, je třeba otestovat pomocí ukázkových datových souborů umístěné ve složce TollApp v následující cestě:
+Teď, když jste napsali svůj první dotaz Azure Stream Analytics, je čas tootest pomocí ukázkových datových souborů umístěná ve složce TollApp aplikace hello následující cesty:
 
 **.. \\TollApp\\TollApp\\dat**
 
-Tato složka obsahuje následující soubory:
+Tato složka obsahuje hello následující soubory:
 
 * Entry.JSON
 * Exit.JSON
 * Registration.JSON
 
 ## <a name="question-1-number-of-vehicles-entering-a-toll-booth"></a>Otázka č. 1: Počet vozidel zadávání stánek projedou
-1. Otevřete portál Azure a přejděte na vytvořenou úlohu Azure Stream Analytics. Klikněte **dotazu** kartě a vložte dotaz z předchozí části.
+1. Otevřete hello portál Azure a přejděte tooyour vytvořit úlohy Azure Stream Analytics. Klikněte na tlačítko hello **dotazu** kartě a vložte dotaz z předchozí části hello.
 
-2. K ověření tohoto dotazu proti ukázková data, nahrát data do vstupu EntryStream kliknutím... symbolů a výběr **nahrát ukázková data ze souboru**.
+2. toovalidate tento dotaz ukázková data, nahrávání dat hello do hello EntryStream vstup kliknutím hello... symbolů a výběr **nahrát ukázková data ze souboru**.
 
-    ![Snímek obrazovky Entry.json souboru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image41.png)
-3. V podokně se zobrazí, vyberte soubor (Entry.json) na místním počítači a klikněte na tlačítko **OK**. **Test** ikonu teď osvětlení a možné klepnout.
+    ![Snímek obrazovky hello Entry.json souboru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image41.png)
+3. V podokně hello, který se zobrazí vyberte hello souboru (Entry.json) na místní počítač a klikněte na **OK**. Hello **Test** ikonu teď osvětlení a možné klepnout.
    
-    ![Snímek obrazovky Entry.json souboru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.png)
-3. Ověřte, že výstup dotaz podle očekávání:
+    ![Snímek obrazovky hello Entry.json souboru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.png)
+3. Ověřte, že výstup hello hello dotazu podle očekávání:
    
-    ![Výsledky testu](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image43.png)
+    ![Výsledky testu hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image43.png)
 
-## <a name="question-2-report-total-time-for-each-car-to-pass-through-the-toll-booth"></a>Otázka č. 2: Sestava celkovou dobu pro každý car předávat stánek projedou
-Průměrná doba, které je nutné pro automobilu předávat projedou pomáhá vyhodnocení efektivitu proces a zkušeností zákazníků.
+## <a name="question-2-report-total-time-for-each-car-toopass-through-hello-toll-booth"></a>Otázka č. 2: Sestava celkovou dobu pro každý car toopass prostřednictvím stánek projedou hello
+Průměrná doba Hello, které je nutné pro car toopass prostřednictvím projedou hello pomáhá tooassess hello efektivitu hello proces a zkušeností zákazníků se hello.
 
-Najít celkovou dobu, je nutné připojit datový proud EntryTime s ExitTime datového proudu. Datové proudy pro TollId a LicencePlate sloupce se připojí. **Připojení** operátor vyžaduje, abyste zadejte dočasné volnost, který popisuje přijatelný časový rozdíl mezi připojené k události. Budete používat **DATEDIFF** funkce k určení, že události musí být delší než 15 minut od sebe navzájem. Také použijete **DATEDIFF** funkce ukončíte a časy položku k výpočtu skutečnou času stráví automobilu projedou stanice. Všimněte si rozdílu použití **DATEDIFF** při použití v **vyberte** příkaz ne **připojení** podmínku.
+toofind hello celkový čas, je nutné toojoin hello EntryTime datový proud s hello ExitTime datového proudu. Datové proudy hello na sloupce TollId a LicencePlate se připojí. Hello **připojení** operátor vyžaduje, abyste toospecify dočasné volnost, který popisuje hello přijatelný časový rozdíl mezi hello připojené k události. Budete používat **DATEDIFF** funkce toospecify, že události musí být delší než 15 minut od sebe navzájem. Použijí se taky hello **DATEDIFF** tooexit funkce a záznam časy toocompute hello skutečný čas automobilu stráví v hello výběr poplatků stanice. Všimněte si hello rozdíl hello použití **DATEDIFF** při použití v **vyberte** příkaz ne **připojení** podmínku.
 
     SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
     FROM EntryStream TIMESTAMP BY EntryTime
@@ -351,18 +351,18 @@ Najít celkovou dobu, je nutné připojit datový proud EntryTime s ExitTime dat
     ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
     AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
-1. K otestování tohoto dotazu, aktualizovat dotaz na **dotazu** pro úlohu. Přidejte soubor testu pro **ExitStream** stejně jako **EntryStream** byla zadaná výše.
+1. tootest tento dotaz aktualizace hello dotaz na hello **dotazu** pro úlohu hello. Přidat hello testovací soubor pro **ExitStream** stejně jako **EntryStream** byla zadaná výše.
    
 2. Klikněte na tlačítko **Test**.
 
-3. Zaškrtněte políčko Zobrazit výstup a otestujte dotaz:
+3. Vyberte hello políčko tootest hello dotazů a zobrazení hello výstup:
    
-    ![Výstup testu](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image45.png)
+    ![Výstup hello testu](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image45.png)
 
 ## <a name="question-3-report-all-commercial-vehicles-with-expired-registration"></a>Otázka č. 3: Sestavy všech komerční vozidel s vypršenou platností registrace
-Azure Stream Analytics můžete použít statické snímky dat spojení s dočasné datové proudy. K předvedení tato možnost, použijte následující ukázkový dotaz.
+Azure Stream Analytics můžete použít statické snímky dat toojoin s dočasné datové proudy. toodemonstrate tato funkce, které hello použijte následující ukázkový dotaz.
 
-Pokud komerční vehicle je registrován ve společnosti projedou, můžete předat prostřednictvím stánek projedou bez zastavení pro kontroly. Registrace komerční Vehicle vyhledávací tabulky budete používat k identifikaci všech vozidel komerční, jejichž platnost vypršela registrace.
+Pokud komerční vehicle je registrován s hello projedou společnosti, můžete předat prostřednictvím hello projedou stánek bez zastavení pro kontroly. Registrace komerční Vehicle vyhledávací tabulka tooidentify použijete všechny vozidel komerční, jejichž platnost vypršela registrace.
 
 ```
 SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
@@ -372,72 +372,72 @@ ON EntryStream.LicensePlate = Registration.LicensePlate
 WHERE Registration.Expired = '1'
 ```
 
-Při testování dotazu pomocí referenční data, musíte definovat vstupní zdroj pro referenční data, která jste již dokončili.
+tootest dotazu pomocí referenční data, musíte toodefine vstupní zdroj pro hello referenční data, která jste již dokončili.
 
-K otestování tohoto dotazu, vložte dotaz do **dotazu** , klikněte na **testování**a určete dvou vstupních zdrojů a registraci vzorová data a klikněte na tlačítko **testování**.  
+tootest tento dotaz dotaz hello vložení do hello **dotazu** , klikněte na **Test**a zadejte hello dva vstupní zdroje a hello registrace vzorová data a klikněte na tlačítko **Test**.  
    
-![Výstup testu](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image46.png)
+![Výstup hello testu](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image46.png)
 
-## <a name="start-the-stream-analytics-job"></a>Spustit úlohu služby Stream Analytics
-Nyní je čas na dokončení konfigurace a spustit úlohu. Uložení dotazu z 3 otázku, která vytvoří výstupu, který odpovídá schématu **TollDataRefJoin** výstupní tabulka.
+## <a name="start-hello-stream-analytics-job"></a>Spuštění úlohy Stream Analytics hello
+Nyní je čas toofinish hello konfiguraci a spuštění hello úlohy. Uložit hello dotazů od 3 otázku, která bude vytvoření výstupu, odpovídá hello schéma hello **TollDataRefJoin** výstupní tabulka.
 
-Přejděte do úlohy **řídicí panel**a klikněte na tlačítko **spustit**.
+Úloha přejděte toohello **řídicí panel**a klikněte na tlačítko **spustit**.
 
-![Snímek obrazovky tlačítka Start na řídicím panelu úlohy](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.png)
+![Snímek obrazovky hello tlačítko Start na řídicím panelu úlohy hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.png)
 
-V dialogovém okně, které se otevře, změňte **spustit výstup** čas k **vlastní čas**. Změňte hodinu na jednu hodinu před aktuálním časem. Tato změna zajistí, že všechny události z centra událostí jsou zpracovány od spuštění k vygenerování události na začátku tohoto kurzu. Klikněte na tlačítko **spustit** tlačítko Spustit úlohu.
+V poli hello dialogové okno, které se otevře, změnit hello **spustit výstup** čas příliš**vlastní čas**. Změňte hodinu tooone hello hodinu před hello aktuální čas. Tato změna zajistí, že jsou všechny události z centra událostí hello zpracovaných od spuštění toogenerate hello události od začátku hello hello kurzu. Klikněte na tlačítko hello **spustit** tlačítko toostart hello úlohy.
 
 ![Výběr vlastních času](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image49.png)
 
-Spouštění úlohy může trvat několik minut. Stav můžete zobrazit na stránce nejvyšší úrovně pro Stream Analytics.
+Počáteční hello úlohy může trvat několik minut. Stav hello můžete zobrazit na stránku hello nejvyšší úrovně pro Stream Analytics.
 
-![Snímek obrazovky stav úlohy](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.png)
+![Snímek obrazovky hello stav úlohy hello](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.png)
 
 ## <a name="check-results-in-visual-studio"></a>Výsledky kontroly v sadě Visual Studio
-1. Otevřete Průzkumníka serveru Visual Studia a klikněte pravým tlačítkem myši **TollDataRefJoin** tabulky.
-2. Klikněte na tlačítko **zobrazit Data tabulky** na zobrazení výstupu úlohy.
+1. Otevřete Průzkumníka serveru Visual Studia a klikněte pravým tlačítkem na hello **TollDataRefJoin** tabulky.
+2. Klikněte na tlačítko **zobrazit Data tabulky** toosee hello výstupu úlohy.
    
     ![Výběr "Zobrazit tabulku Data" v Průzkumníku serveru](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image51.jpg)
 
 ## <a name="scale-out-azure-stream-analytics-jobs"></a>Horizontální navýšení kapacity Azure Stream Analytics úlohy
-Azure Stream Analytics je určena pro pružně škálování tak, aby ho může zpracovávat velké množství dat. Můžete použít Azure Stream Analytics dotaz **PARTITION BY** klauzule systému říct, že bude tento krok škálovat. **PartitionId** je speciální sloupec, který přidá systému tak, aby odpovídaly ID oddílu vstupu (Centrum událostí).
+Azure Stream Analytics je navržený tak, tooelastically škálovat tak, aby ho může zpracovávat velké množství dat. Hello Azure Stream Analytics dotazu lze použít **PARTITION BY** klauzule tootell hello systém, který bude tento krok škálovat. **PartitionId** je speciální sloupec, který hello systému přidá ID oddílu hello toomatch vstupu hello (Centrum událostí).
 
     SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
     FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
     GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
-1. Zastavení aktuální úlohy, aktualizaci dotazu ve **dotazu** a otevřete **nastavení** zařízení na řídicím panelu úloh. Klikněte na tlačítko **škálování**.
+1. Aktuální úlohu zastavení hello, aktualizace hello dotaz hello **dotazu** kartě a otevřete hello **nastavení** zařízení na řídicím panelu hello úlohy. Klikněte na tlačítko **škálování**.
    
-    **JEDNOTEK STREAMING** definovat množství výpočetního výkonu, který může přijímat úlohy.
-2. Změňte rozevíracího z 1 z verze 6.
+    **JEDNOTEK STREAMING** definovat může přijímat hello množství výpočetního výkonu, který hello úlohy.
+2. Změna hello rozevíracího seznamu od 1 z 6.
    
     ![Snímek obrazovky výběru 6 jednotky streamování](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image52.png)
-3. Přejděte na **výstupy** kartě a změňte název tabulky SQL na **TollDataTumblingCountPartitioned**.
+3. Přejděte toohello **výstupy** kartě a změňte název hello tabulky SQL hello příliš**TollDataTumblingCountPartitioned**.
 
-Je-li spustit úlohu nyní může Azure Stream Analytics rozložení práce mezi víc zdrojích výpočtů a dosáhnout lepší propustnosti. Upozorňujeme, že aplikace TollApp také odesílá události podle TollId na oddíly.
+Pokud spustíte úlohu hello nyní může Azure Stream Analytics rozložení práce mezi víc zdrojích výpočtů a dosáhnout lepší propustnosti. Upozorňujeme, že tento hello TollApp aplikace také odesílá události podle TollId na oddíly.
 
 ## <a name="monitor"></a>Monitorování
-**Monitorování** oblast obsahuje statistiku spuštěná úloha. Prvním konfigurace je potřeba k použití úložiště účet ve stejné oblasti (název poplatků jako zbytek tohoto dokumentu).   
+Hello **monitorování** oblast obsahuje statistiku hello spuštění úlohy. Prvním konfigurace je potřeba účet úložiště hello toouse hello stejné oblasti (název poplatků jako hello zbytek tohoto dokumentu).   
 
 ![Snímek obrazovky monitorování](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
 
-Dostanete **protokoly aktivity** z řídicího panelu úloha **nastavení** také oblasti.
+Dostanete **protokoly aktivity** z řídicího panelu úloha hello **nastavení** také oblasti.
 
 
 ## <a name="conclusion"></a>Závěr
-V tomto kurzu jste zavedly ve službě Azure Stream Analytics. Je prokázat, jak nakonfigurovat vstupy a výstupy úlohy Stream Analytics. Pomocí dat Projedou scénář, kurz popsaných nejběžnějších problémů, které jsou vyvolány v prostoru dat v provozu a jak lze vyřešit pomocí jednoduchého dotazy podobné jazyku SQL v Azure Stream Analytics. Tento kurz popisuje konstrukce rozšíření SQL pro práci s dočasná data. Vám ukázal, jak propojit datové proudy, jak zlepšit komunikaci oddělení datový proud s statická referenční data a postup škálování dotazů k dosažení vyšší propustnost.
+V tomto kurzu se zavedl toohello služby Azure Stream Analytics. Je prokázat, jak tooconfigure vstupy a výstupy pro hello úlohy služby Stream Analytics. Pomocí hello Projedou Data scénář, hello kurzu popsaných nejběžnějších problémů, které vznikají v prostoru hello dat v provozu a o tom, jak lze vyřešit pomocí jednoduchého dotazy podobné jazyku SQL v Azure Stream Analytics. kurz Hello popsané konstrukce rozšíření SQL pro práci s dočasná data. Vám ukázal, jak toojoin datových proudů, jak tooenrich hello datový proud statická referenční data a jak tooscale na vyšší propustnost tooachieve dotazu.
 
-I když tento kurz představuje dobrou úvod, není kompletní, a to jakýmkoli způsobem. Můžete najít další typy dotazů pomocí jazyka SAQL v [dotaz příkladů běžných vzorů využití Stream Analytics](stream-analytics-stream-analytics-query-patterns.md).
-Odkazovat [online dokumentaci](https://azure.microsoft.com/documentation/services/stream-analytics/) Další informace o Azure Stream Analytics.
+I když tento kurz představuje dobrou úvod, není kompletní, a to jakýmkoli způsobem. Můžete najít další typy dotazů pomocí jazyka SAQL hello v [dotaz příkladů běžných vzorů využití Stream Analytics](stream-analytics-stream-analytics-query-patterns.md).
+Odkazovat toohello [online dokumentaci](https://azure.microsoft.com/documentation/services/stream-analytics/) toolearn Další informace o Azure Stream Analytics.
 
 ## <a name="clean-up-your-azure-account"></a>Vyčištění účtu Azure
-1. Zastavte úlohu služby Stream Analytics na portálu Azure.
+1. Zastavení úlohy Stream Analytics hello v hello portálu Azure.
    
-    Skript Setup.ps1 vytvoří dvě centrům událostí a databázi SQL. Následující pokyny vám pomůžou vyčištění prostředků na konci tohoto kurzu.
-2. V okně prostředí PowerShell, zadejte **.\\ CleanUp.ps1** spustit skript, který odstraní prostředky v tomto kurzu použili.
+    Hello Setup.ps1 skript vytvoří dvě centrům událostí a databázi SQL. Následující pokyny vám pomohou vyčištění prostředků na konci hello tohoto kurzu hello Hello.
+2. V okně prostředí PowerShell, zadejte **.\\ CleanUp.ps1** toostart hello skript, který odstraní prostředky využívané v kurzu hello.
    
    > [!NOTE]
-   > Prostředky jsou identifikovány názvem. Ujistěte se, že jednotlivé položky pečlivě zkontrolovat před potvrzením odebrání.
+   > Prostředky jsou identifikovány názvem hello. Ujistěte se, že jednotlivé položky pečlivě zkontrolovat před potvrzením odebrání.
    > 
    > 
 

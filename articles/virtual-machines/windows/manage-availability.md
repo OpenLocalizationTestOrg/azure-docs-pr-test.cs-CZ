@@ -1,6 +1,6 @@
 ---
-title: "Správa dostupnosti virtuálních počítačů Windows v Azure | Microsoft Docs"
-description: "Naučte se používat více virtuálních počítačů k zajištění vysoké dostupnosti pro aplikaci pro Windows v Azure"
+title: "aaaManage hello dostupnost virtuálních počítačů Windows v Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse více virtuálních počítačů tooensure vysoká dostupnost pro aplikaci pro Windows v Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 408d030a7c26fea47669a690b0487e0868fbc2c9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5a7ccdc4a110ea24dd07ee18bd78941fb3aaac11
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Správa dostupnosti virtuálních počítačích s Windows v Azure 
+# <a name="manage-hello-availability-of-windows-virtual-machines-in-azure"></a>Spravovat hello dostupnost virtuální počítače s Windows v Azure 
 
-Další způsoby, jak nastavit a spravovat více virtuálních počítačů k zajištění vysoké dostupnosti pro aplikaci pro Windows v Azure. Můžete také [Správa dostupnosti virtuálních počítačů Linux](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další způsoby tooset nahoru a spravovat více virtuálních počítačů tooensure vysoká dostupnost pro aplikaci pro Windows v Azure. Můžete také [spravovat hello dostupnosti virtuálních počítačů Linux](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Pokyny k vytváření a používání skupiny dostupnosti při použití modelu nasazení classic, najdete v části [postup konfigurace skupiny dostupnosti](classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Pokyny pro vytváření a používání skupiny dostupnosti při použití modelu nasazení classic hello v tématu [jak tooConfigure sadu dostupnosti](classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o virtuálních počítačích Vyrovnávání zatížení, najdete v části [Vyrovnávání zatížení virtuálních počítačů](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+najdete v části Další informace o virtuálních počítačích, Vyrovnávání zatížení toolearn [Vyrovnávání zatížení virtuálních počítačů](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

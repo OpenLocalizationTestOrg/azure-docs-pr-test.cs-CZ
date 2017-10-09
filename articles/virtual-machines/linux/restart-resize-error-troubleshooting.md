@@ -1,5 +1,5 @@
 ---
-title: "Virtuální počítač restartováním nebo změnou velikosti problémy v Azure | Microsoft Docs"
+title: "aaaVM restartováním nebo změnou velikosti problémy v Azure | Microsoft Docs"
 description: "Řešení problémů nasazení Resource Manager s restartováním nebo změnou velikosti existující virtuální počítač Linux v Azure"
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: 
@@ -16,52 +16,52 @@ ms.workload: required
 ms.date: 01/10/2017
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e49322dbccf4ec1157bc7e3a109175869b53518d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d9ff76b64b6646b04565eb93110759c4ebc858e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-linux-vm-in-azure"></a>Řešení potíží s nasazením s restartováním nebo změnou velikosti existující virtuální počítač s Linuxem v Azure
-Při pokusu o spuštění virtuálního počítače pro zastavený Azure (VM), nebo přizpůsobit existující virtuální počítač Azure je běžnou chybou, které zaznamenáte chybu přidělení. Tato chyba nastává clusteru nebo oblast buď nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače.
+Zkuste toostart ukončeno virtuálního počítače (virtuální počítač Azure) nebo přizpůsobit existující virtuální počítač Azure, hello běžnou chybou, které zaznamenáte při došlo k chybě přidělení. Tato chyba nastává hello clusteru nebo oblast buď nemá k dispozici prostředky nebo nelze podporu hello požadovaná velikost virtuálního počítače.
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
 ## <a name="collect-activity-logs"></a>Shromážděte aktivity protokolů
-Pokud chcete spustit Poradce při potížích, shromážděte protokoly aktivity k identifikaci chyby související s problém. Následující odkazy obsahují podrobné informace o procesu:
+řešení potíží, toostart shromažďování hello aktivity zaznamená tooidentify hello chyby související s problémem hello. Hello následující odkazy obsahují podrobné informace o procesu hello:
 
 [Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Zobrazit protokoly aktivity ke správě prostředků Azure](../../resource-group-audit.md)
+[Zobrazit protokoly toomanage aktivity Azure prostředky](../../resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Problém: Chyba při spouštění zastaveného virtuálního počítače
-Pokoušíte se spustit zastaveného virtuálního počítače, ale získat došlo k chybě přidělení.
+Zkuste toostart zastaveného virtuálního počítače, ale získat došlo k chybě přidělení.
 
 ### <a name="cause"></a>Příčina
-Požadavek na spuštění zastaveného virtuálního počítače musí být pokus v původním clusteru, který je hostitelem cloudové služby. Cluster nemá volné místo dostupné ke splnění tohoto požadavku.
+žádost Hello toostart hello zastavena virtuálních počítačů má toobe na hello původní cluster, který je hostitelem hello cloudové služby. Hello cluster však nebude mít volné místo k dispozici toofulfill hello požadavku.
 
 ### <a name="resolution"></a>Řešení
-* Zastavte všechny virtuální počítače v sadě dostupnosti a znovu spusťte každý virtuální počítač.
+* Zastavte všechny hello virtuálních počítačů v hello dostupnosti nastavení a pak restartujte každý virtuální počítač.
   
   1. Klikněte na tlačítko **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaše skupina dostupnosti* > **virtuální počítače** > *virtuálního počítače* > **Zastavit**.
-  2. Po zastavení všech virtuálních počítačích, vyberte jednotlivé zastaven virtuálních počítačů a klikněte na příkaz spustit.
-* Opakujte žádost restartovat později.
+  2. Po všech hello zastavení virtuálních počítačů, vyberte jednotlivé virtuální počítače hello zastavena a klikněte na příkaz spustit.
+* Opakujte žádost restartování hello později.
 
 ## <a name="issue-error-when-resizing-an-existing-vm"></a>Problém: Chyba při změně velikosti stávajícího virtuálního počítače
-Pokoušíte se změnit velikost existující virtuální počítač ale získat došlo k chybě přidělení.
+Zkuste tooresize existující virtuální počítač ale získat došlo k chybě přidělení.
 
 ### <a name="cause"></a>Příčina
-Žádost o změně velikosti virtuálního počítače musí být pokus v původním clusteru, který je hostitelem cloudové služby. Cluster však nepodporuje požadovaná velikost virtuálního počítače.
+Hello tooresize hello virtuálních počítačů má toobe pokusem o zpracování požadavku v původním clusteru hello dané hostitelů hello cloudové služby. Ale hello clusteru nepodporuje hello požadovaná velikost virtuálního počítače.
 
 ### <a name="resolution"></a>Řešení
-* Opakujte tuto žádost pomocí menší velikost virtuálního počítače.
-* Pokud velikost požadovaný virtuální počítač nelze změnit:
+* Opakujte žádost hello pomocí menší velikost virtuálního počítače.
+* Pokud hello požadovaná velikost hello že virtuálních počítačů nelze změnit:
   
-  1. Zastavte všechny virtuální počítače v sadě dostupnosti.
+  1. Zastavte všechny virtuální počítače hello v sadě dostupnosti hello.
      
      * Klikněte na tlačítko **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaše skupina dostupnosti* > **virtuální počítače** > *virtuálního počítače* > **Zastavit**.
-  2. Po zastavení všech virtuálních počítačů, změňte velikost požadovaný virtuální počítač na větší velikost.
-  3. Vyberte změněnou velikostí virtuálního počítače a klikněte na **spustit**, a následné spuštění všech virtuálních počítačích zastaven.
+  2. Po všech hello zastavení virtuálních počítačů, změna velikosti větší velikost tooa hello potřeby virtuálního počítače.
+  3. Vyberte hello po změně velikosti virtuálních počítačů a klikněte na tlačítko **spustit**, a pak spusťte každý hello zastavena virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud dojde k potížím při vytváření nového virtuálního počítače s Linuxem v Azure, najdete v části [řešení potíží s nasazením s vytvoření nového virtuálního počítače Linux v Azure](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -1,6 +1,6 @@
 ---
-title: "Nejčastější dotazy pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače Linux vytvořené pomocí modelu Resource Manager."
+title: "aaaFrequently dotazy pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
+description: "Poskytuje odpovědi toosome z hello časté otázky týkající se virtuální počítače Linux vytvořené pomocí modelu Resource Manager hello."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,50 +15,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e06d21bd0b6ef807f38e41dcd50c9cd715607a3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0afd08123dddc408851065c46deedc3146dbec20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Časté otázky o virtuálních počítačích s Linuxem
-Tento článek se zaměřuje na některé běžné dotazy týkající se virtuální počítače Linux vytvořené v Azure pomocí modelu nasazení Resource Manager. Windows verzi tohoto tématu naleznete v části [často kladené otázky o virtuálních počítačích s Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Tento článek se zaměřuje na některé běžné dotazy týkající se virtuální počítače Linux vytvořené v Azure pomocí modelu nasazení Resource Manager hello. Verze systému Windows hello tohoto tématu, najdete v části [často kladené otázky o virtuálních počítačích s Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co můžu spouštět na virtuálním počítači Azure?
 Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Další informace najdete v tématu [Linux na Azure-Endorsed distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
-Každý datový disk může mít velikost až 1 TB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Každý datový disk může být až too1 TB. Hello počet datových disků, které můžete použít závisí na velikosti hello hello virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Účet úložiště Azure poskytuje úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
+Účet úložiště Azure poskytuje úložiště pro disk operačního systému hello a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak lze získat přístup k virtuální počítač?
-Vytvořit vzdálené připojení k přihlášení k virtuálnímu počítači pomocí protokolu Secure Shell (SSH). Přečtěte si pokyny o tom, jak připojit [ze systému Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [z Linuxu a Macu](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
+Navázat připojení ke vzdálené toolog toohello virtuálního počítače pomocí protokolu Secure Shell (SSH). O tom, najdete pokyny hello tooconnect [ze systému Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [z Linuxu a Macu](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete zvýšit úpravou hello konfigurační soubor.
 
 Pokud máte problémy, podívejte se na [řešení potíží s Secure Shell (SSH) připojení](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Můžete použít dočasným diskovým (/ dev/sdb1) k uložení dat?
-K ukládání dat nepoužívejte dočasným diskovým (/ dev/sdb1). Pro dočasné úložiště je pouze existuje. Riskujete ztráty dat, které nelze obnovit.
+## <a name="can-i-use-hello-temporary-disk-devsdb1-toostore-data"></a>Můžete použít hello dočasným diskovým (/ dev/sdb1) toostore dat?
+Nepoužívejte hello dočasným diskovým (/ dev/sdb1) toostore data. Pro dočasné úložiště je pouze existuje. Riskujete ztráty dat, které nelze obnovit.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžete kopírovat nebo klonovat existující virtuální počítač Azure?
-Ano. Pokyny najdete v tématu [vytvoření kopie virtuální počítač s Linuxem v modelu nasazení Resource Manager](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ano. Pokyny najdete v tématu [jak hello toocreate kopii virtuální počítač s Linuxem v modelu nasazení Resource Manager](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Proč nejsou zobrazeny Kanada centrální a Východní Kanada oblastí prostřednictvím Správce Azure Resource Manager?
-Dvě nové oblasti Kanada centrální a Východní Kanada nejsou automaticky registrované pro vytvoření virtuálního počítače pro existující předplatných Azure. Tato registrace se provádí automaticky při nasazení virtuálního počítače prostřednictvím portálu Azure do žádné jiné oblasti pomocí Azure Resource Manager. Po nasazení virtuálního počítače v jiné oblasti Azure nové oblasti musí být k dispozici pro následující virtuální počítače.
+dvě nové oblasti Hello Kanada centrální a Východní Kanada nejsou automaticky registrované pro vytvoření virtuálního počítače pro existující předplatných Azure. Tato registrace se provádí automaticky při nasazení virtuálního počítače prostřednictvím portálu Azure tooany hello jiné oblasti pomocí Azure Resource Manager. Virtuální počítač po nasazené tooany jiné oblasti Azure hello nové oblasti by měly být dostupné pro následující virtuální počítače.
 
-## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Mohu přidat síťový adaptér k virtuálnímu počítači po jeho vytvoření?
-Ano, to je nyní možné. Virtuální počítač nejdřív je potřeba zastavit deallocated. Potom můžete přidat nebo odebrat síťový adaptér (Pokud je poslední síťový adaptér ve virtuálním počítači). 
+## <a name="can-i-add-a-nic-toomy-vm-after-its-created"></a>Můžete přidat po vytvoření toomy síťový adaptér virtuálního počítače?
+Ano, to je nyní možné. deallocated byla zastavena toobe první potřebám Hello virtuálních počítačů. Potom můžete přidat nebo odebrat síťový adaptér (Pokud je hello poslední síťovou kartu v hello virtuálních počítačů). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují jakékoli požadavky na název počítače?
-Ano. Název počítače nesmí být delší než 64 znaků. V tématu [pojmenování konvence pravidla a omezení](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace ohledně pojmenování vašich prostředků.
+Ano. název počítače Hello nesmí být delší než 64 znaků. V tématu [pojmenování konvence pravidla a omezení](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace ohledně pojmenování vašich prostředků.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Dochází k jakémukoli prostředku, požadavky na název skupiny?
-Ano. Název skupiny prostředků může být maximálně 90 znaků. V tématu [pojmenování konvence pravidla a omezení](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o skupinách prostředků.
+Ano. Název skupiny prostředků Hello může být maximálně 90 znaků. V tématu [pojmenování konvence pravidla a omezení](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o skupinách prostředků.
 
-## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
+## <a name="what-are-hello-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky hello uživatelského jména, při vytváření virtuálního počítače?
 Uživatelská jména musí být 1-64 znaků.
 
-Následující uživatelská jména nejsou povoleny:
+Hello následující uživatelská jména nejsou povoleny:
 
 <table>
     <tr>
@@ -88,15 +88,15 @@ Následující uživatelská jména nejsou povoleny:
 </table>
 
 
-## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na heslo, když vytvoření virtuálního počítače?
-Hesla musí mít délku 6 72 znaků a musí splňovat 3 z následujících 4 složitost:
+## <a name="what-are-hello-password-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na heslo hello při vytváření virtuálního počítače?
+Hesla musí mít délku 6 72 znaků a musí splňovat 3 z následujících 4 požadavky na složitost hello:
 
 * Mít nižší znaků
 * Horní znaky
 * Mít číslice.
 * Mít speciální znak (regulární výraz odpovídat [\W_])
 
-Nejsou povoleny následující hesla:
+Hello následující hesla nejsou povoleny:
 
 <table>
     <tr>
