@@ -1,6 +1,6 @@
 ---
-title: "Nasazení svítilna na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Informace o instalaci zásobníku svítilna na virtuální počítač s Linuxem v Azure"
+title: "aaaDeploy svítilna na virtuální počítač s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooinstall hello svítilna zásobníku na virtuální počítač s Linuxem v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: jluk
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 2/21/2017
 ms.author: juluk
-ms.openlocfilehash: ad69876bfbeba5f948a81e5c48c659fdf2265ae2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 42d887bb9f78becc02505e336be25fdaaf78df70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-lamp-stack-on-azure"></a>Nasazení svítilna zásobníku v Azure
-Tento článek vás provede procesem nasazení webového serveru Apache, MySQL a PHP (svítilna stack) v Azure. Potřebujete účet Azure ([získat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/)) a [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2). K provedení těchto kroků můžete také využít [Azure CLI 1.0](create-lamp-stack-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek vás provede jak toodeploy platformě Apache webový server, MySQL a PHP (hello svítilna stack) v Azure. Potřebujete účet Azure ([získat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/)) a hello [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2). Můžete také provést tyto kroky hello [Azure CLI 1.0](create-lamp-stack-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="quick-command-summary"></a>Rychlý příkaz souhrn
 
-1. Ukládání a upravování [azuredeploy.parameters.json souboru](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) na vaši volbu na místním počítači.
-2. Spuštěním následujících příkazů pro vytvoření skupiny prostředků a potom nasadíte šablony:
+1. Ukládání a upravování hello [azuredeploy.parameters.json soubor](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) tooyour předvoleb na místním počítači.
+2. Spusťte následující dva příkazy toocreate hello skupinu prostředků a potom nasazení vaší šablony:
 
 ```azurecli
 az group create -l westus -n myResourceGroup
@@ -37,7 +37,7 @@ az group deployment create -g myResourceGroup \
 ```
 
 ### <a name="deploy-lamp-on-existing-vm"></a>Nasazení svítilna na existující virtuální počítač
-Následující příkazy balíčky aktualizací a poté nainstaluje Apache, MySQL a PHP:
+Hello následující příkazy balíčky aktualizací a poté nainstaluje Apache, MySQL a PHP:
 
 ```bash
 sudo apt-get update
@@ -46,16 +46,16 @@ sudo apt-get install apache2 mysql-server php5 php5-mysql
 
 ## <a name="deploy-lamp-on-new-vm-walkthrough"></a>Nasazení svítilna na nový virtuální počítač návod
 
-1. Vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create) tak, aby obsahovala nového virtuálního počítače:
+1. Vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create) toocontain hello nového virtuálního počítače:
 
 ```azurecli
 az group create -l westus -n myResourceGroup
 ```
-Pokud chcete vytvořit virtuální počítač, můžete použít již napsané šablonu Azure Resource Manager [sem na Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app).
+toocreate hello virtuální počítač, můžete použít již napsané šablonu Azure Resource Manager [sem na Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app).
 
-2. Uložit [azuredeploy.parameters.json soubor](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) do místního počítače.
-3. Upravit **azuredeploy.parameters.json** soubor upřednostňované vstupy.
-4. Nasazení šablony s [nasazení skupiny az vytvořit] odkazování na soubor stažený json:
+2. Uložit hello [azuredeploy.parameters.json soubor](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) tooyour místního počítače.
+3. Upravit hello **azuredeploy.parameters.json** tooyour souboru preferované vstupy.
+4. Nasazení šablony hello s [nasazení skupiny az vytvořit] odkazující na hello stáhli soubor json:
 
 ```azurecli
 az group deployment create -g myResourceGroup \
@@ -63,7 +63,7 @@ az group deployment create -g myResourceGroup \
     --parameters @filepathToParameters.json
 ```
 
-Výstup se podobá následujícímu příkladu:
+Hello výstup je podobné toohello následující ukázka:
 
 ```json
 {
@@ -86,17 +86,17 @@ Výstup se podobá následujícímu příkladu:
 }
 ```
 
-Nyní jste vytvořili virtuální počítač s Linuxem se SVÍTILNOU již nainstalován. Pokud chcete, můžete ověřit instalaci přechod dolů na [ověřte svítilna úspěšně nainstaloval](#verify-lamp-successfully-installed).
+Nyní jste vytvořili virtuální počítač s Linuxem se SVÍTILNOU již nainstalován. Pokud chcete, můžete ověřit instalaci hello přechod dolů příliš[ověřte svítilna úspěšně nainstaloval](#verify-lamp-successfully-installed).
 
 ## <a name="deploy-lamp-on-existing-vm-walkthrough"></a>Nasazení svítilna na existující návod virtuálních počítačů
-Pokud potřebujete pomoc, vytvoření virtuálního počítače s Linuxem, head [zde se dozvíte, jak vytvořit virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli). Dále je třeba SSH do virtuálního počítače s Linuxem. Pokud potřebujete pomoc s vytvářením klíč SSH, head [zde se dozvíte, jak vytvořit klíč SSH na Linux nebo Mac.](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud potřebujete pomoc, vytvoření virtuálního počítače s Linuxem, head [sem toolearn jak toocreate virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli). Dále musíte tooSSH do hello virtuálního počítače s Linuxem. Pokud potřebujete pomoc s vytvářením klíč SSH, head [sem toolearn jak toocreate klíče SSH na Linux nebo Mac.](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 Pokud již máte klíč SSH, přejděte dopředu a SSH z příkazového řádku do virtuálním počítačům s Linuxem pomocí `ssh azureuser@mypublicdns.westus.cloudapp.azure.com`.
 
-Teď, když pracujete v rámci vašeho virtuálního počítače s Linuxem, jsme provede instalaci zásobníku svítilna na základě Debian distribuce. Přesný příkazy se mohou lišit pro ostatní distribucích systému Linux.
+Teď, když pracujete v rámci vašeho virtuálního počítače s Linuxem, jsme provede instalaci hello svítilna zásobníku na základě Debian distribuce. přesný příkazy Hello se mohou lišit pro ostatní distribucích systému Linux.
 
 #### <a name="installing-on-debianubuntu"></a>Instalace na Debian/Ubuntu
-Budete potřebovat následující balíčky nainstalované: `apache2`, `mysql-server`, `php5`, a `php5-mysql`. Tyto balíčky můžete nainstalovat přímo metodou tyto balíčky nebo pomocí Tasksel.
-Před instalací musíte stáhnout a aktualizovat balíček seznamy.
+Budete potřebovat následující balíčky nainstalované hello: `apache2`, `mysql-server`, `php5`, a `php5-mysql`. Tyto balíčky můžete nainstalovat přímo metodou tyto balíčky nebo pomocí Tasksel.
+Před instalací potřebovat toodownload a aktualizovat balíček seznamy.
 
 ```bash
 sudo apt-get update
@@ -117,26 +117,26 @@ sudo apt-get install tasksel
 sudo tasksel install lamp-server
 ```
 
-Po spuštění některé z předchozích možností, zobrazí se výzva k instalaci těchto balíčků a různé další závislosti. Chcete-li nastavit heslo správce pro databázi MySQL, stiskněte "y" a potom "Enter, chcete pokračovat a budete postupovat podle dalších pokynů. Tento proces nainstaluje minimální požadované rozšíření PHP potřeba k použití PHP s MySQL. 
+Po spuštění, buď z předchozích možností hello, budete mít výzvami tooinstall tyto balíčky a různé další závislosti. tooset heslo správce pro databázi MySQL, stiskněte "y" a potom toocontinue, zadejte"a budete postupovat podle dalších pokynů. Tento proces nainstaluje hello minimální požadované PHP rozšíření potřeby toouse PHP s MySQL. 
 
 ![][1]
 
-Spusťte následující příkaz, který najdete v části Další rozšíření PHP, které jsou k dispozici jako balíčky:
+Spusťte následující příkaz toosee hello další rozšíření PHP, které jsou k dispozici jako balíčky:
 
 ```bash
 apt-cache search php5
 ```
 
 #### <a name="create-infophp-document"></a>Vytvoření dokumentu info.php
-Nyní byste měli být schopna provést kontrolu, jaká verze Apache, MySQL a PHP, máte pomocí příkazového řádku zadáním `apache2 -v`, `mysql -v`, nebo `php -v`.
+Teď byste měli být schopný toocheck Apache, MySQL a PHP, jaká verze máte prostřednictvím hello příkazového řádku zadáním `apache2 -v`, `mysql -v`, nebo `php -v`.
 
-Pokud chcete otestovat další, můžete vytvořit rychlé PHP stránku s informacemi o zobrazíte v prohlížeči. Vytvořte soubor s Nano textový editor se tento příkaz:
+Pokud by například tootest další, můžete vytvořit rychlé tooview PHP informace o stránku v prohlížeči. Vytvořte soubor s Nano textový editor se tento příkaz:
 
 ```bash
 sudo nano /var/www/html/info.php
 ```
 
-V rámci licence GNU Nano textový editor přidejte následující řádky:
+V rámci hello GNU Nano textový editor přidejte následující řádky hello:
 
 ```php
 <?php
@@ -144,7 +144,7 @@ phpinfo();
 ?>
 ```
 
-Potom uložte a ukončete textový editor.
+Potom uložte a zavřete hello textový editor.
 
 Restartujte Apache pomocí tohoto příkazu, takže všechny nové instalace vstoupila v platnost.
 
@@ -153,18 +153,18 @@ sudo service apache2 restart
 ```
 
 ## <a name="verify-lamp-successfully-installed"></a>Ověřte svítilna úspěšně nainstalován.
-Nyní můžete zkontrolovat stránku s informacemi o PHP, kterou jste vytvořili otevřením prohlížeče a přejdete na http://youruniqueDNS/info.php. By měla vypadat podobně jako tento obrázek.
+Nyní můžete zkontrolovat, stránku s informacemi o PHP hello, kterou jste vytvořili otevřením prohlížeče a budete toohttp://youruniqueDNS/info.php. Měl by vypadat podobně jako toothis bitové kopie.
 
 ![][2]
 
-Apache instalaci můžete zkontrolovat pomocí zobrazení stránky výchozí Ubuntu Apache2 přechodem na http://youruniqueDNS/ můžete. Výstup se podobá následujícímu příkladu:
+Apache instalaci můžete zkontrolovat zobrazením hello Apache2 Ubuntu výchozí stránka přechodem tooyou http://youruniqueDNS/. Hello výstup je podobné toohello následující ukázka:
 
 ![][3]
 
 Blahopřejeme, jste nastavili jen svítilna zásobníku na vašem virtuálním počítači Azure.
 
 ## <a name="next-steps"></a>Další kroky
-Projděte si dokumentaci Ubuntu v zásobníku svítilna:
+Projděte si hello Ubuntu dokumentace v zásobníku svítilna hello:
 
 * [https://help.Ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 

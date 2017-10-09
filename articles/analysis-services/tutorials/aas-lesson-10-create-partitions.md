@@ -1,75 +1,57 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 10: Vytvoření oddílů | Dokumentace Microsoftu"
-description: "Popisuje, jak vytvořit oddíly v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: df74d9cbdcf4916c24955e491767589e72389155
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+Title: aaa "Azure Analysis Services kurz lekce 10: vytvoření oddílů | Microsoft Docs"Popis: Popisuje, jak toocreate oddíly v kurzu projektu hello Azure Analysis Services. služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
+
+MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26 nebo 2017 ms.author: owend
 ---
 # <a name="lesson-10-create-partitions"></a>Lekce 10: Vytvoření oddílů
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této lekci vytvoříte oddíly pro rozdělení tabulky FactInternetSales na menší logické jednotky s možností zpracování (aktualizace) nezávisle na ostatních oddílech. Ve výchozím nastavení má každá tabulka zahrnutá do modelu jeden oddíl, který obsahuje všechny sloupce a řádky tabulky. Pro tabulku FactInternetSales chceme data rozdělit podle roku – jeden oddíl pro každých pět let v tabulce. Jednotlivé oddíly pak bude možné zpracovávat nezávisle na sobě. Další informace najdete v tématu [Oddíly](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular). 
+V této lekci vytvoříte tabulka FactInternetSales hello toodivide oddíly do menších logických částí, které mohou být zpracován (Aktualizovat) bez ohledu na ostatní oddíly. Ve výchozím nastavení má každá tabulka, které můžete zahrnout do modelu jeden oddíl, který zahrnuje všechny hello tabulka sloupce a řádky. Pro tabulka FactInternetSales hello chceme toodivide hello dat po letech; jeden oddíl pro každou tabulku hello pět let. Jednotlivé oddíly pak bude možné zpracovávat nezávisle na sobě. Další, najdete v části toolearn [oddíly](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular). 
   
-Odhadovaný čas dokončení této lekce: **15 minut**  
+Odhadovaný čas toocomplete této lekci: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 9: Vytvoření hierarchií](../tutorials/aas-lesson-9-create-hierarchies.md).  
+Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [lekce 9: vytvoření hierarchie](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Vytvoření oddílů  
   
-#### <a name="to-create-partitions-in-the-factinternetsales-table"></a>Vytvoření oddílů v tabulce FactInternetSales  
+#### <a name="toocreate-partitions-in-hello-factinternetsales-table"></a>toocreate oddílů v tabulce FactInternetSales hello  
   
 1.  V Průzkumníku tabelárních modelů rozbalte **Tabulky** a potom klikněte pravým tlačítkem na **FactInternetSales** > **Oddíly**.  
   
-2.  Ve správci oddílů klikněte na **Kopírovat** a potom změňte název na **FactInternetSales2010**.
+2.  Ve Správci oddílů, klikněte na tlačítko **kopie**a potom změňte název hello příliš**FactInternetSales2010**.
   
-    Protože chcete, aby oddíl obsahoval pouze řádky z určitého období (rok 2010), musíte upravit výraz dotazu.
+    Protože chcete pouze řádky, hello oddílu tooinclude v určitém období, pro hello roku 2010, musíte upravit hello výrazu dotazu.
   
-4.  Kliknutím na **Návrh** otevřete editor dotazů a klikněte na dotaz **FactInternetSales2010**.
+4.  Klikněte na tlačítko **návrhu** tooopen dotaz Editor a potom klikněte na hello **FactInternetSales2010** dotazu.
 
-5.  V náhledu klikněte na šipku dolů v záhlaví sloupce **OrderDate** a potom klikněte na **Filtry data a času** > **Mezi**.
+5.  Ve verzi preview, klikněte na tlačítko hello v hello šipka dolů **OrderDate** záhlaví sloupce a pak klikněte na tlačítko **datum a čas filtry** > **mezi**.
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  V dialogovém okně Filtrovat řádky v části **Zobrazit řádky, kde: OrderDate** ponechte možnost **je po nebo přesně** a do pole kalendářního data zadejte **1. 1. 2010**. Ponechte vybraný operátor **A**, vyberte možnost **je před**, do pole kalendářního data zadejte **1. 1. 2011** a klikněte na **OK**.
+6.  V hello Filtr řádků dialogové okno v **zobrazit tyto řádky: OrderDate**, nechte **je po nebo je rovno**a potom zadejte do pole pro datum hello **1. 1. 2010**. Nechte hello **a** operátor vybraná, pak vyberte **před**, potom zadejte do pole pro datum hello, **1/1/2011**a potom klikněte na **OK**.
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
-    Všimněte si, že v editoru dotazů se v části POUŽITÝ POSTUP zobrazí další krok s názvem Filtrované řádky. Tento filtr slouží k výběru dat objednávek pouze z roku 2010.
+    Všimněte si, že v editoru dotazů se v části POUŽITÝ POSTUP zobrazí další krok s názvem Filtrované řádky. Tento filtr je tooselect pouze data objednávky z 2010.
 
 8.  Klikněte na **Importovat**.
 
-    Ve správci oddílů si všimněte, že výraz dotazu teď obsahuje další klauzuli Filtrované řádky.
+    Ve Správci oddílů, Všimněte si hello dotazů výraz teď obsahuje další klauzuli filtrované řádky.
 
     ![aas-lesson10-query](../tutorials/media/aas-lesson10-query.png)
   
-    Tento příkaz určuje, že by tento oddíl měl zahrnovat pouze data v řádcích, kde hodnota ve sloupci OrderDate spadá do kalendářního roku 2010, jak je uvedeno v klauzuli Filtrované řádky.  
+    Tento příkaz určuje, že tento oddíl obsahovat pouze hello data v těchto řádcích hello OrderDate je-li hello kalendářním roce 2010 jako zadaný v klauzuli hello filtrované řádky.  
   
   
-#### <a name="to-create-a-partition-for-the-2011-year"></a>Vytvoření oddílu pro rok 2011  
+#### <a name="toocreate-a-partition-for-hello-2011-year"></a>toocreate oddíl pro hello roku 2011  
   
-1.  V seznamu oddílů klikněte na oddíl **FactInternetSales2010**, který jste vytvořili, a potom klikněte na **Kopírovat**.  Změňte název oddílu na **FactInternetSales2011**. 
+1.  V seznamu hello oddíly, klikněte na tlačítko hello **FactInternetSales2010** oddílu, kterou jste vytvořili a potom klikněte na **kopie**.  Změňte název oddílu hello příliš**FactInternetSales2011**. 
 
-    Není nutné použít editor dotazů k vytvoření nové klauzule Filtrované řádky. Vzhledem k tomu, že jste vytvořili kopii dotazu pro rok 2010, stačí provést drobnou změnu v dotazu pro rok 2011.
+    Není nutné toouse Editor dotazů toocreate nové klauzule filtrované řádky. Vzhledem k tomu, že vytvoříte kopii hello dotazu pro 2010, je vše, co potřebujete toodo, změňte mírné v hello dotazu pro 2011.
   
-2.  Aby tento oddíl obsahoval pouze řádky pro rok 2011, ve **výrazu dotazu** nahraďte roky v klauzuli Filtrované řádky za **2011** a **2012**:  
+2.  V **výrazu dotazu**, v pořadí pro tento oddíl tooinclude pouze řádky pro hello rok 2011, nahraďte hello let v klauzuli hello filtrované řádky s **2011** a **2012**, jako jsou:  
   
     ```  
     let
@@ -82,39 +64,39 @@ Toto téma je součástí kurzu tabelárního modelování, který by se měl do
    
     ```  
   
-#### <a name="to-create-partitions-for-2012-2013-and-2014"></a>Vytvoření oddílů pro roky 2012, 2013 a 2014  
+#### <a name="toocreate-partitions-for-2012-2013-and-2014"></a>pro 2012, 2013 a 2014 toocreate oddíly.  
   
-- Stejným postupem jako v předchozích krocích vytvořte oddíly pro roky 2012, 2013 a 2014 a v klauzuli Filtrované řádky vždy změňte rok tak, aby se zahrnuly pouze řádky pro daný rok. 
+- Postupujte podle předchozích kroků hello, vytváření oddílů pro 2012, 2013 a 2014, změna hello let v hello filtrované řádky klauzule tooinclude pouze řádky pro tohoto roku. 
   
 
-## <a name="delete-the-factinternetsales-partition"></a>Odstranění oddílu FactInternetSales
-Když teď máte oddíly pro každý rok, můžete odstranit oddíl FactInternetSales. Zabráníte tím překrývání při výběru možnosti Zpracovat vše v rámci zpracování oddílů.
+## <a name="delete-hello-factinternetsales-partition"></a>Odstranit oddíl FactInternetSales hello
+Nyní když máte oddíly pro každý rok, můžete odstranit hello FactInternetSales oddíl. Při výběru zpracovat všechny při zpracování oddílů, brání překrývají.
 
-#### <a name="to-delete-the-factinternetsales-partition"></a>Odstranění oddílu FactInternetSales
--  Klikněte na oddíl FactInternetSales a potom klikněte na **Odstranit**.
+#### <a name="toodelete-hello-factinternetsales-partition"></a>hello toodelete FactInternetSales oddílu
+-  Klikněte na možnost FactInternetSales oddílu hello a pak klikněte na **odstranit**.
 
 
 
 ## <a name="process-partitions"></a>Zpracování oddílů  
-Ve správci oddílů si všimněte, že sloupec **Poslední zpracování** pro každý z nově vytvořených oddílů ukazuje, že oddíly nikdy nebyly zpracovány. Při vytváření oddílů byste měli spustit operaci Zpracování oddílů nebo Zpracování tabulky pro aktualizaci dat v těchto oddílech.  
+Ve Správci oddílů, Všimněte si hello **poslední zpracovat** sloupec pro každou hello nové oddíly, které jste vytvořili, zobrazuje tyto oddíly nikdy byly zpracovány. Při vytváření oddílů, byste měli spustit proces oddíly nebo zpracovat tabulku operaci toorefresh hello data v těchto oddílech.  
   
-#### <a name="to-process-the-factinternetsales-partitions"></a>Zpracování oddílů FactInternetSales  
+#### <a name="tooprocess-hello-factinternetsales-partitions"></a>tooprocess hello FactInternetSales oddíly  
   
-1.  Kliknutím na **OK** zavřete správce oddílů.  
+1.  Klikněte na tlačítko **OK** tooclose Správce oddílů.  
   
-2.  Klikněte na tabulku **FactInternetSales** a potom na nabídku **Model** > **Zpracovat** > **Zpracovat oddíly**.  
+2.  Klikněte na tlačítko hello **FactInternetSales** tabulky a pak klikněte na hello **modelu** nabídky > **proces** > **proces oddíly**.  
   
-3.  V dialogovém okně Zpracovat oddíly zkontrolujte, že je **Režim** nastavený na **Zpracovat výchozí**.  
+3.  V dialogovém okně proces oddíly hello, ověřte **režimu** je nastaven příliš**výchozí proces**.  
   
-4.  Ve sloupci **Zpracovat** zaškrtněte políčko pro každý z pěti oddílů, které jste vytvořili, a potom klikněte na **OK**.  
+4.  Zaškrtněte políčko hello v hello **proces** sloupec pro každou hello pět oddíly jste vytvořili a pak klikněte na tlačítko **OK**.  
 
     ![aas-lesson10-process-partitions](../tutorials/media/aas-lesson10-process-partitions.png)
   
-    Pokud se zobrazí výzva k zadání přihlašovacích údajů k zosobnění, zadejte uživatelské jméno a heslo systému Windows, které jste zadali v lekci 2.  
+    Pokud se zobrazí výzva pro pověření k zosobnění, zadejte uživatelské jméno systému Windows hello a heslo, které jste zadali v lekci 2.  
   
-    Zobrazí se dialogové okno **Zpracování dat** s podrobnostmi o zpracování pro každý oddíl. Všimněte si, že pro každý oddíl se přenáší jiný počet řádků. Každý oddíl obsahuje pouze řádky pro rok zadaný v klauzuli WHERE příkazu jazyka SQL. Po dokončení zpracování zavřete dialogové okno Zpracování dat.  
+    Hello **zpracování dat** se zobrazí dialogové okno a zobrazí podrobnosti o procesu pro každý oddíl. Všimněte si, že pro každý oddíl se přenáší jiný počet řádků. Každý oddíl obsahuje pouze řádky hello roku uvedený v hello klauzule WHERE v příkazu SQL hello. Po dokončení zpracování pokračujte a zavřete dialogové okno zpracování dat hello.  
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>Co dále?
-Přejděte na další lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md). 
+Další lekce přejděte toohello: [lekce 11: vytvoření role](../tutorials/aas-lesson-11-create-roles.md). 

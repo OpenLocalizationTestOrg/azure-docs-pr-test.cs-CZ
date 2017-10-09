@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit webovou aplikaci App Service Environment v1"
-description: "Naučte se vytvářet webové aplikace a aplikace plány služeb v v1 App Service Environment"
+title: "aaaCreate webové aplikace do App Service Environment v1"
+description: "Zjistěte, jak toocreate webové aplikace a plány služby app v v1 App Service Environment"
 services: app-service
 documentationcenter: 
 author: ccompy
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 0779486b040b8dc51cdd42521ba965e58388425a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 322ef344517c54247b102fb4920e35645986ef98
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvořit webovou aplikaci App Service Environment v1
 
 > [!NOTE]
-> Tento článek je o v1 App Service Environment.  Existuje novější verze App Service Environment, který je jednodušší použít a běží na výkonnější infrastruktury. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](../app-service/app-service-environment/intro.md).
+> Tento článek je o hello App Service Environment v1.  Není k dispozici novější verze hello služby App Service Environment, je snazší toouse a běží na výkonnější infrastruktury. Další informace o nové verzi hello začínat hello toolearn [toohello Úvod App Service Environment](../app-service/app-service-environment/intro.md).
 > 
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak vytvářet webové aplikace a plánů služby App Service v [App Service Environment v1](app-service-app-service-environment-intro.md) (App Service Environment). 
+Tento kurz ukazuje, jak toocreate webové aplikace a plánů služby App Service v [App Service Environment v1](app-service-app-service-environment-intro.md) (App Service Environment). 
 
 > [!NOTE]
-> Pokud chcete zjistěte, jak vytvořit webovou aplikaci, ale není nutné provést ve službě App Service Environment, najdete v článku [vytvoření webové aplikace .NET](app-service-web-get-started-dotnet.md) nebo jeden z související kurzy pro jiných jazyků a rozhraní.
+> Pokud chcete toolearn jak toocreate webové aplikace, ale nemusí toodo do služby App Service Environment, najdete v části [vytvoření webové aplikace .NET](app-service-web-get-started-dotnet.md) nebo jeden z hello související kurzy pro jiných jazyků a rozhraní.
 > 
 > 
 
@@ -38,64 +38,64 @@ Tento kurz ukazuje, jak vytvářet webové aplikace a plánů služby App Servic
 Tento kurz předpokládá, že jste vytvořili služby App Service Environment. Pokud jste to neudělali, ještě, přečtěte si téma [vytvoření služby App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
-1. V [portálu Azure](https://portal.azure.com/), klikněte na tlačítko **nové > Web + mobilní > Webová aplikace**. 
+1. V hello [portálu Azure](https://portal.azure.com/), klikněte na tlačítko **nové > Web + mobilní > Webová aplikace**. 
    
     ![][1]
 2. Vyberte své předplatné.  
    
-    Pokud máte více předplatných, uvědomte si, že pokud chcete vytvořit aplikaci ve službě App Service Environment, budete muset používat stejné předplatné, které jste použili při vytváření prostředí. 
+    Pokud máte více předplatných Uvědomte si, že toocreate na aplikaci ve službě App Service Environment, je nutné toouse hello stejné předplatné, které jste použili při vytváření prostředí pro hello. 
 3. Vyberte nebo vytvořte skupinu prostředků.
    
-    *Skupiny prostředků* umožňují správu souvisejících prostředků Azure jako jednotku a jsou užitečné při vytváření *řízení přístupu na základě role* (RBAC) pravidla pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ResourceGroups]. 
+    *Skupiny prostředků* povolit toomanage můžete jako jednotku související s prostředky Azure a jsou užitečné při vytváření *řízení přístupu na základě role* (RBAC) pravidla pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ResourceGroups]. 
 4. Vyberte nebo vytvořte plán služby App Service.
    
-    *Plánů služby App Service* jsou spravované sady webové aplikace.  Obvykle vyberete cenovou ceny požadované je použita na plán služby App Service a nikoli pro jednotlivé aplikace. V App Service Environment platíte za výpočetní instance přidělené App Service Environment místo mít uvedené s vaší ASP.  Škálování počtu instancí webové aplikace, které můžete škálovat instance služby App Service plán a ovlivní všechny webové aplikace v tomto plánu.  Některé funkce, jako je například sloty lokality nebo integrace virtuální sítě také mít omezení množství v rámci plánu.  Další informace najdete v tématu [přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
+    *Plánů služby App Service* jsou spravované sady webové aplikace.  Obvykle po výběru ceny hello ceny požadované je použité toohello plán služby App Service místo toohello jednotlivými aplikacemi. V App Service Environment platíte za výpočetní hello instancí přidělené App Service Environment toohello místo mít uvedené s vaší ASP.  tooscale až hello počet instancí webové aplikace můžete škálovat hello instancích vašeho plánu služby App Service a ovlivní všechny aplikace hello webové aplikace v tomto plánu.  Některé funkce, jako je například sloty lokality nebo integrace virtuální sítě také mít omezení množství v plánu hello.  Další informace najdete v tématu [přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
    
-    Plány služby App Service ve vašem App Service Environment poznáte podle umístění, které je uvedeno v části název plánu.  
+    Hello plánů služby App Service ve vašem App Service Environment poznáte podle hello umístění, které je uvedeno v části název plánu hello.  
    
     ![][5]
    
-    Pokud chcete použít plán služby App Service, která již existuje ve službě App Service Environment, vyberte jej. Pokud chcete vytvořit nový plán služby App Service, najdete v následující části tohoto kurzu [vytvořit plán služby App Service ve službě App Service Environment](#createplan).
-5. Zadejte název pro vaši webovou aplikaci a pak klikněte na tlačítko **vytvořit**. 
+    Pokud chcete toouse plán služby App Service, která již existuje ve službě App Service Environment, vyberte jej. Pokud chcete toocreate nový plán aplikační služby, najdete v následující části tohoto kurzu hello [vytvořit plán služby App Service ve službě App Service Environment](#createplan).
+5. Zadejte název hello pro vaši webovou aplikaci a pak klikněte na tlačítko **vytvořit**. 
    
-    Pokud vaše App Service Environment používá externí VIP adresa URL aplikace v App Service Environment je: [*sitename*]. [[ *název služby App Service Environment*]. p.azurewebsites.net místo [*sitename*]. azurewebsites.net
+    Pokud vaše App Service Environment používá adresu URL hello externí virtuální IP adresy aplikace v App Service Environment: [*sitename*]. [[ *název služby App Service Environment*]. p.azurewebsites.net místo [*sitename*]. azurewebsites.net
    
-    Pokud vaše App Service Environment používá interní VIP adresu URL aplikace, jsou App Service Environment: [*sitename*]. [[ *subdomény zadané během vytváření App Service Environment*]   
-    Po výběru vaší ASP během vytváření App Service Environment uvidíte subdoméně aktualizovat níže **název**
+    Pokud vaše App Service Environment používá adresu URL interní VIP pak hello aplikace, jsou App Service Environment: [*sitename*]. [[ *subdomény zadané během vytváření App Service Environment*]   
+    Po výběru vaší ASP během vytváření App Service Environment uvidíte hello subdomény aktualizovat níže **název**
 
 ## <a name="createplan"></a>Vytvořit plán služby App Service
-Když vytvoříte plán služby App Service ve službě App Service Environment, vaše volby pracovního procesu se liší, protože neexistují žádné sdílené pracovních procesů v App Service Environment.  Pracovní procesy, které budete muset použít jsou ty, které byly přiděleny App Service Environment správce.  To znamená, že pokud chcete vytvořit nový plán, musíte mít další pracovních procesů přidělených pro váš fond pracovních procesů App Service Environment než celkový počet instancí napříč všemi plánu již v tomto fondu pracovních procesů.  Pokud nemáte dostatek pracovních procesů ve fondu pracovních App Service Environment k vytvoření plánu, budete muset spolupráci s vaším správcem App Service Environment získat přidat.
+Když vytvoříte plán služby App Service ve službě App Service Environment, vaše volby pracovního procesu se liší, protože neexistují žádné sdílené pracovních procesů v App Service Environment.  zaměstnanci Hello máte toouse jsou hello ty, které byly přiděleny App Service Environment toohello správce hello.  To znamená že toocreate nový plán, potřebujete další pracovních procesů přidělených tooyour App Service Environment fondu pracovních procesů než hello celkový počet instancí pro toohave napříč všemi plánu již v tomto fondu pracovních procesů.  Pokud nemáte k dispozici dostatek pracovních procesů ve vaší App Service Environment pracovní fond toocreate plánu, je třeba toowork s vaší tooget správce App Service Environment, je přidán.
 
-Další rozdíl s plány služby App Service hostované služby App Service Environment je nedostatek ceny výběr.  Pokud máte služby App Service Environment jsou platícího za výpočetní prostředky, které používá systém a nemají přidané poplatky pro plány v tomto prostředí.  Když vytvoříte plán služby App Service je obvykle vybrat cenový plán, určující vaši fakturaci.  Služby App Service Environment je v podstatě do privátní umístění, kde můžete vytvořit obsah.  Platí pro prostředí a není pro hostování vašeho obsahu.
+Další rozdíl s plány služby App Service hostované služby App Service Environment je nedostatek hello ceny výběr.  Pokud máte služby App Service Environment jsou platícího za výpočetní prostředky používané hello systému a nemají přidané poplatky za hello plány v tomto prostředí.  Když vytvoříte plán služby App Service je obvykle vybrat cenový plán, určující vaši fakturaci.  Služby App Service Environment je v podstatě do privátní umístění, kde můžete vytvořit obsah.  Platíte za hello prostředí a není toohost svůj obsah.
 
-Následující pokyny ukazují, jak vytvořit plán služby App Service při vytváření webové aplikace, jak je popsáno v předchozí části kurzu.
+Hello následující pokyny ukazují, jak naplánovat toocreate App Service při vytváření webové aplikace, jak je popsáno v předchozí části kurzu hello hello.
 
-1. Klikněte na tlačítko **vytvořit nový** v uživatelském rozhraní možnost plánu a zadejte název pro váš plán jako za normálních okolností byste mimo App Service Environment.
-2. Vyberte App Service Environment, který chcete použít z vašeho výběru umístění.
+1. Klikněte na tlačítko **vytvořit nový** v hello plán Výběr uživatelského rozhraní a zadejte název pro váš plán jako za normálních okolností byste mimo App Service Environment.
+2. Vyberte, chcete toouse z vašeho výběru umístění app Service Environment hello.
    
     Protože služby App Service Environment je v podstatě umístění privátní nasazení, zobrazuje se v umístění. 
    
     ![][2]
    
-    Po výběru App Service Environment ve výběru umístění vytvoření plánu služby App Service aktualizací uživatelského rozhraní.  Umístění se teď zobrazuje název systému App Service Environment a oblast je v a nástroje pro výběr cenové plán bude nahrazen pomocí pracovního procesu výběru fondu.  
+    Po výběru App Service Environment ve výběru umístění hello aktualizace hello vytvoření plánu služby App Service uživatelského rozhraní.  Hello umístění nyní zobrazuje hello název hello systému App Service Environment a hello oblast je v a hello ceny plán výběr se nahradí výběr fondu pracovního procesu.  
    
     ![][3]
 
 ### <a name="selecting-a-worker-pool"></a>Výběr fondu pracovních procesů
-Za normálních okolností ve službě Azure App Service a mimo služby App Service Environment, existují 3 výpočetní velikostí, které jsou k dispozici s výběrem plánu vyhrazené ceny.  Podobným způsobem pro App Service Environment můžete definovat až 3 fondy pracovních procesů a zadejte velikost výpočetních, který se používá pro tento fond pracovních procesů.  Co to znamená pro klienty App Service Environment je místo výběru cenový plán s velikostí výpočetní pro plán služby App Service, můžete vybrat, co se nazývá *fondu pracovních procesů*.  
+Za normálních okolností ve službě Azure App Service a mimo služby App Service Environment, existují 3 výpočetní velikostí, které jsou k dispozici s výběrem hello vyhrazené cena plánu.  Podobným způsobem pro App Service Environment můžete definovat až too3 fondy pracovních procesů a zadejte velikost výpočetních hello, který se používá pro tento fond pracovních procesů.  Co to znamená pro klienty hello App Service Environment je, že místo výběru cenový plán s velikostí výpočetní pro plán služby App Service, vyberete co se nazývá *fondu pracovních procesů*.  
 
-Výběr fondu pracovní uživatelského rozhraní zobrazuje velikost výpočetních používaných pro tento fond pracovních procesů pod názvem.  K dispozici odkazuje na tom, kolik výpočetní instance jsou k dispozici pro použití v tomto fondu.  Celkový počet fondu, může mít více instancí než tento počet, ale tato hodnota se odkazuje jednoduše kolik se nepoužívají.  Pokud potřebujete upravit najdete v části App Service Environment přidat další výpočetní prostředky [konfigurace služby App Service Environment](app-service-web-configure-an-app-service-environment.md).
+Hello pracovní fond Výběr uživatelského rozhraní zobrazuje velikost výpočetních hello používaných pro tento fond pracovních procesů pod názvem hello.  Hello množství, které jsou k dispozici odkazuje toohow mnoho výpočetní instance jsou k dispozici pro použití v tomto fondu.  Hello celkového fondu, může mít více instancí než tento počet, ale tato hodnota se odkazuje toosimply kolik se nepoužívají.  Pokud potřebujete tooadjust vaší služby App Service Environment tooadd více výpočetní, najdete v části prostředky [konfigurace služby App Service Environment](app-service-web-configure-an-app-service-environment.md).
 
 ![][4]
 
-V tomto příkladu najdete v části k dispozici pouze dva fondy pracovních procesů. Je to způsobeno správce App Service Environment pouze přidělené hostitele do těchto fondů dvě pracovního procesu.  Třetí by objeví, když nejsou virtuální počítače přidělené do ní.  
+V tomto příkladu najdete v části k dispozici pouze dva fondy pracovních procesů. Je to způsobeno hello App Service Environment správce pouze přidělené hostitele do těchto fondů dvě pracovního procesu.  Hello třetí se zobrazí po přidělené do ní virtuální počítače.  
 
 ## <a name="after-web-app-creation"></a>Po vytvoření webové aplikace
-Existuje několik důležité informace týkající se spouštění webových aplikací a správu plány služby App Service v App Service Environment, které je nutné vzít v úvahu.  
+Existuje několik důležité informace týkající se spouštění webových aplikací a správu plány služby App Service v App Service Environment, potřebujete toobe vzít v úvahu.  
 
-Jak již bylo uvedeno dříve, vlastník App Service Environment je zodpovědný za velikost systému a proto jsou také zajistí, že je dostatečnou kapacitu k hostování požadované plány služby App Service. Pokud neexistují žádné pracovníky k dispozici, nebudete moct vytvořit plán služby App Service.  Toto je také hodnotu PRAVDA, aby vertikálním navýšení kapacity vaší webové aplikace.  Pokud potřebujete další instance je třeba získat správce služby App Service Environment přidat další pracovní procesy.
+Jak již bylo uvedeno dříve, hello vlastník hello App Service Environment je zodpovědný za hello velikost hello systému a v důsledku odpovídají také pro zajištění, že je dostatečná kapacita toohost hello potřeby plány služby App Service. Pokud nejsou žádné dostupné pracovní procesy, které není možné toocreate se plán služby App Service.  Toto je také true tooscaling až vaše webová aplikace.  Pokud potřebujete více instancí, pak byste měli tooget tooadd správce vaší služby App Service Environment další pracovní procesy.
 
-Po vytvoření webové aplikace a plán služby App Service je vhodné vertikálně navýšit kapacitu.  V App Service Environment vždy musíte mít minimálně 2 instance vašeho plánu služby App Service zajistit odolnost proti chybám pro vaše aplikace.  Změna velikosti plán aplikační služby App Service Environment je stejný jako normální prostřednictvím uživatelského rozhraní plán služby App Service.  Další informace o škálování [postup škálování webové aplikace ve službě App Service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+Po vytvoření webové aplikace a plán služby App Service je vhodné tooscale ho nahoru.  V App Service Environment musíte vždycky toohave minimálně 2 instance vaší služby App Service plán tooprovide odolnost proti chybám pro vaše aplikace.  Škálování App Service plán App Service Environment je hello stejné jako normální prostřednictvím hello plán služby App Service uživatelského rozhraní.  Další informace o škálování [jak tooscale webové aplikace ve službě App Service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png

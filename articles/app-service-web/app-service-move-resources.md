@@ -1,6 +1,6 @@
 ---
-title: "Přesunout prostředky webové aplikace do jiné skupiny prostředků"
-description: "Popisuje scénáře, kde můžete přesunout webové aplikace a aplikace služby z jedné skupiny prostředků do jiné."
+title: "aaaMove prostředky webové aplikace tooanother skupiny prostředků"
+description: "Popisuje hello scénáře, kde můžete přesunout webové aplikace a služby, aplikace z jednoho tooanother skupinu prostředků."
 services: app-service
 documentationcenter: 
 author: ZainRizvi
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: zarizvi
-ms.openlocfilehash: 1b5059dc052005b6079f70ecf6771a3771df8d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 931012fee656b7f8a4b2c225c38739a9171d3b2e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-move-configurations"></a>Přesunutí podporované konfigurace
-Přesunutím prostředků webové aplikace Azure pomocí [Resource Manager přesunout prostředky API](../azure-resource-manager/resource-group-move-resources.md).
+Přesunutím prostředků webové aplikace Azure pomocí hello [Resource Manager přesunout prostředky API](../azure-resource-manager/resource-group-move-resources.md).
 
-Webové aplikace Azure aktuálně podporuje následující scénáře přesunutí:
+Azure Web Apps v současné době podporuje následující scénáře přesunutí hello:
 
-* Celý obsah skupiny prostředků (webové aplikace, plány služby app a certifikáty) přesunete do jiné skupiny prostředků. 
+* Přesun celého obsahu hello skupiny prostředků (webové aplikace, plány služby app a certifikáty) tooanother skupinu prostředků. 
    > [!Note]
-   > Cílové skupiny prostředků nesmí obsahovat žádné Microsoft.Web prostředky v tomto scénáři.
+   > Skupina prostředků cílového Hello nesmí obsahovat žádné Microsoft.Web prostředky v tomto scénáři.
 
-* Přesunete jednotlivé webové aplikace do jiné skupině prostředků, a současně stále je hostování v jejich aktuální plán služby app service (plán služby app service zůstává ve skupině původního prostředků).
+* Přesuňte jednotlivé webové aplikace tooa jiné skupině prostředků, při hostování je stále v jejich aktuální plán služby app service (hello aplikace služby plán zůstane ve skupině prostředků staré hello).
 
 

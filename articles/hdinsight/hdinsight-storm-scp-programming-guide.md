@@ -1,6 +1,6 @@
 ---
-title: "Průvodce programováním SCP.NET | Microsoft Docs"
-description: "Další informace o použití SCP.NET k vytvoření. Na základě NET topologie Storm pro použití se Storm v HDInsight."
+title: "Průvodce programováním aaaSCP.NET | Microsoft Docs"
+description: "Zjistěte, jak toouse SCP.NET toocreate. Na základě NET topologie Storm pro použití se Storm v HDInsight."
 services: hdinsight
 documentationcenter: 
 author: raviperi
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: 3d76aebd2a1fd729c8e0639e6afcbde4c3fb752b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a57f4217b07e0e82a3f36650308695fbb45d9128
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním spojovací bod služby
-Spojovací bod služby je platforma pro sestavení v reálném čase, spolehlivé, konzistentní a vysoký výkon zpracování dat aplikace. Je založen na [Apache Storm](http://storm.incubator.apache.org/) – systém navrhovány komunit OSS zpracování datového proudu. Storm je určen podle Nathan Marz a otevřete která byla vytvořena pomocí služby Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiného projektu Apache umožňující vysoce spolehlivé distribuované správy koordinace a stavu. 
+Spojovací bod služby je platforma toobuild reálném čase, spolehlivé, konzistentní a vysoký výkon zpracování dat aplikace. Je založen na [Apache Storm](http://storm.incubator.apache.org/) – systém navrhovány hello OSS komunit zpracování datového proudu. Storm je určen podle Nathan Marz a otevřete která byla vytvořena pomocí služby Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiné Apache projektu tooenable vysoce spolehlivé distribuované koordinace a správa stavu. 
 
-Pouze spojovací bod služby projektu Storm v systému Windows, která je součástí, ale také projektu přidat rozšíření a přizpůsobení pro prostředí Windows. Rozšíření jsou vývojáře prostředí .NET a knihovny, přizpůsobení zahrnuje nasazení systému Windows. 
+Pouze hello spojovací bod služby projektu Storm v systému Windows, která je součástí, ale také hello projektu přidat rozšíření a přizpůsobení pro ekosystém Windows hello. rozšíření Hello zahrnují vývojáře prostředí .NET a knihovny, přizpůsobení hello obsahuje nasazení systému Windows. 
 
-Rozšíření a přizpůsobení se provádí tak, že je není potřeba rozvětvit projekty operačních systémů a jsme může využít odvozené ekosystémů nástavbou Storm.
+Hello rozšíření a přizpůsobení se provádí tak, že jsme nemusejí toofork hello OSS projekty a jsme může využít odvozené ekosystémů nástavbou Storm.
 
 ## <a name="processing-model"></a>Zpracování modelu
-Data v spojovací bod služby je modelovaná jako nepřetržité proudy řazené kolekce členů. Obvykle řazené kolekce členů toku do některé fronty nejprve pak zachyceny a transformovat obchodní logiky hostovanou v rámci topologie Storm, nakonec výstup může předat jako řazených kolekcí členů do jiného systému spojovací bod služby, nebo být zapsána do úložiště jako systém souborů DFS nebo databází jako SQL Server.
+Hello data v spojovací bod služby je modelovaná jako nepřetržité proudy řazené kolekce členů. Obvykle hello řazených kolekcí členů toku do některé fronty nejprve pak zachyceny a transformovat obchodní logiky hostovanou v rámci topologie Storm, nakonec výstup hello může předat jako systém tooanother spojovací bod služby řazené kolekce členů, nebo být potvrdit toostores jako systém souborů DFS nebo databáze, jako SQL Server.
 
-![Diagram fronty napájení data pro zpracování, které informační kanály úložiště dat](media/hdinsight-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+![Diagram fronty napájení tooprocessing data, která kanály úložiště dat](media/hdinsight-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-Topologie aplikací v Storm, definuje výpočetní graf. Každý uzel v topologii obsahuje logiku zpracování a odkazů mezi uzly indikují datový tok. Uzly vložení vstupní data do topologie se nazývají funkcích Spouts, které se dají použít k sekvencování data. Vstupních dat může být umístěn v protokoly transakcí databáze, čítače výkonu systému atd. Funkce Bolts, které provádět filtrování skutečná data a výběry a agregace, se označují jako uzly s obou toky vstupní a výstupní data.
+Topologie aplikací v Storm, definuje výpočetní graf. Každý uzel v topologii obsahuje logiku zpracování a odkazů mezi uzly indikují datový tok. vstupní data tooinject Hello uzly do topologie hello se nazývají funkcích Spouts, které můžou být použité toosequence hello data. Hello vstupních dat může být umístěn v protokoly transakcí databáze, čítače výkonu systému atd. hello uzly s obou toky vstupní a výstupní data se označují jako funkce Bolts, které hello filtrování skutečná data a výběry a agregaci.
 
-Spojovací bod služby podporuje snažit v aspoň jednou a přesně-po zpracování dat. V distribuované aplikaci streamování zpracování různých chybám může dojít během zpracování dat, jako je výpadek sítě, selhání počítače nebo Chyba uživatelského kódu atd. Zpracování v aspoň jednou zajistí, že všechna data zpracuje alespoň jednou stejná data přehrání automaticky, když se stane chyba. Na alespoň jedno zpracování je jednoduché a spolehlivé a vyhovuje dobře v mnoha aplikacích. Pokud aplikace vyžaduje přesné počítání, například na alespoň jedno zpracování je však dostatek vzhledem k tomu, že stejná data může být přehráván potenciálně v topologii aplikace. V takovém případě, přesně-po zpracování je navržená tak, abyste měli jistotu, výsledek je správný, i když data mohou přehrány a zpracovávat vícekrát.
+Spojovací bod služby podporuje snažit v aspoň jednou a přesně-po zpracování dat. V distribuované aplikaci streamování zpracování různých chybám může dojít během zpracování dat, jako je výpadek sítě, selhání počítače nebo Chyba uživatelského kódu atd. Zpracování v aspoň jednou zajistí všechna data zpracují alespoň jednou podle přehrání automaticky hello stejná data při dochází k chybě. Na alespoň jedno zpracování je jednoduché a spolehlivé a vyhovuje dobře v mnoha aplikacích. Pokud aplikace hello vyžaduje přesné počítání, například na alespoň jedno zpracování je však dostatek vzhledem k tomu, že hello stejných dat může potenciálně se přehrávají v topologii aplikace hello. V takovém případě, přesně-po zpracování je navržený tak, že výsledek hello toomake je správný, i v případě, že hello data může být přehrány a zpracování více než jednou..
 
-Spojovací bod služby umožňuje vývojářům rozhraní .NET k vývoji aplikací proces data reálném čase, při využívání Java Virtual Machine (JVM) v části vztahují na základě Storm. Rozhraní .NET a prostředí Java Virtual Machine komunikovat přes TCP místní soketu. V podstatě každou funkcí Spout/Bolt je proces pár .net nebo Java, kde běží logiku uživatelského v rozhraní .net procesu jako o modul plug-in.
+Spojovací bod služby umožňuje .NET vývojáři toodevelop reálném čase data proces aplikacím při využívání hello Java Virtual Machine (JVM) na základě Storm v části titulní hello. Hello .NET a prostředí Java Virtual Machine komunikovat přes TCP místní soketu. V podstatě každou funkcí Spout/Bolt je proces pár .net nebo Java, kde běží logiku uživatelského hello v rozhraní .net procesu jako o modul plug-in.
 
-Sestavit aplikaci pro zpracování dat nad spojovací bod služby, jsou potřeba několik kroků:
+toobuild data, zpracování aplikace nad spojovací bod služby, jsou potřeba několik kroků:
 
-* Návrh a implementaci funkcích Spouts stáhnout data z fronty.
-* Návrh a implementaci funkce Bolts ke zpracování vstupních dat a uložit data do externího úložiště, například databáze.
-* Návrh topologie, odeslání a spusťte topologii. Topologie definuje bodů uchycení a data toků mezi vrcholů. Spojovací bod služby bude trvat specifikace topologie a nasaďte ji na cluster Storm, kde každý vrchol běží na jednom uzlu logické. Převzetí služeb při selhání a škálování se postarat Storm Plánovač úloh.
+* Návrh a implementaci hello funkcích Spouts toopull v datech z fronty.
+* Návrh a implementaci funkce Bolts tooprocess hello vstupní data a uložit tooexternal úložiště dat, například databáze.
+* Návrh hello topologie, odeslání a spusťte hello topologie. Definuje bodů uchycení a hello data zprostředkovatele Hello topologie toků mezi bodů uchycení hello. Spojovací bod služby bude trvat specifikace hello topologie a nasaďte ji na cluster Storm, kde každý vrchol běží na jednom uzlu logické. Hello převzetí služeb při selhání a škálování se postarat pomocí plánovače úloh Storm hello.
 
-Tento dokument pomocí jednoduché příklady ukážeme, jak sestavit aplikaci pro zpracování dat se spojovací bod služby.
+Tento dokument bude používat některé toowalk jednoduché příklady, jak pomocí aplikace toobuild zpracování dat se spojovací bod služby.
 
 ## <a name="scp-plugin-interface"></a>Modul plug-in rozhraní spojovací bod služby
-Moduly plug-in spojovací bod služby (nebo aplikace) je samostatná souborů EXE, které můžete i spustit v prostředí Visual Studio v průběhu fáze vývoje a zapojené do kanálu Storm po nasazení v produkčním prostředí. Psaní modulu plug-in spojovací bod služby je stejně jako zápis jakékoli jiné standardní konzolové aplikace systému Windows. Platforma SCP.NET deklaruje některé rozhraní pro funkcí spout/bolt a kód modulu plug-in uživatele by měla implementovat tato rozhraní. Hlavním účelem tohoto návrhu je, že se uživatel zaměřit na své vlastní obchodní logics a nechá jiných věcí zpracovávat SCP.NET platformy.
+Moduly plug-in spojovací bod služby (nebo aplikace) je samostatná souborů EXE, které můžete i spustit v prostředí Visual Studio v průběhu fáze vývoje hello a zapojené do kanálu hello Storm po nasazení v produkčním prostředí. Zápis modulu plug-in hello spojovací bod služby je hello právě stejné jako zápis jakékoli jiné standardní konzolové aplikace systému Windows. Platforma SCP.NET deklaruje některé rozhraní pro funkcí spout/bolt a hello uživatelského modulu plug-in kódu by měla implementovat tato rozhraní. hlavním účelem Hello tohoto návrhu je, že tento uživatel hello se zaměřit na své vlastní obchodní logics a nechá jiných věcí toobe zpracovávaných SCP.NET platformy.
 
-Modul plug-in kód uživatele by měla implementovat jednu z těchto hodnot rozhraní, závisí na tom, jestli je topologie transakční nebo netransakční, a jestli je součást funkcích spout nebo bolt.
+Hello uživatelského modulu plug-in kódu by měla implementovat jednu z těchto hodnot rozhraní hello, závisí na tom, zda text hello topologie je transakční nebo netransakční, a jestli je součást hello funkcích spout nebo bolt.
 
 * ISCPSpout
 * ISCPBolt
@@ -58,14 +58,14 @@ Modul plug-in kód uživatele by měla implementovat jednu z těchto hodnot rozh
 * ISCPBatchBolt
 
 ### <a name="iscpplugin"></a>ISCPPlugin
-ISCPPlugin je společné rozhraní pro všechny typy modulů plug-in. V současné době je fiktivní rozhraní.
+ISCPPlugin je hello společné rozhraní pro všechny typy modulů plug-in. V současné době je fiktivní rozhraní.
 
     public interface ISCPPlugin 
     {
     }
 
 ### <a name="iscpspout"></a>ISCPSpout
-ISCPSpout je rozhraní pro netransakční funkcí spout.
+ISCPSpout je hello rozhraní pro netransakční funkcí spout.
 
      public interface ISCPSpout : ISCPPlugin                    
      {
@@ -74,28 +74,28 @@ ISCPSpout je rozhraní pro netransakční funkcí spout.
          void Fail(long seqId, Dictionary<string, Object> parms);  
      }
 
-Když `NextTuple()` nazývá C\# uživatelského kódu můžete emitování jeden nebo více řazené kolekce členů. Pokud není nic pro vydávání, tato metoda by měla vrátit bez generování nic. Je potřeba poznamenat, `NextTuple()`, `Ack()`, a `Fail()` se nazývají ve smyčce úzkou v jedno vlákno v jazyce C\# procesu. Pokud nejsou žádné řazených kolekcí členů pro vydávání, je zdvořilý mít NextTuple spánku krátkou dobu (například 10 ms) tak, aby odpady příliš mnoho procesoru.
+Když `NextTuple()` nazývá hello C\# uživatelského kódu můžete emitování jeden nebo více řazené kolekce členů. Pokud není nic tooemit, tato metoda by měla vrátit bez generování nic. Je potřeba poznamenat, `NextTuple()`, `Ack()`, a `Fail()` se nazývají ve smyčce úzkou v jedno vlákno v jazyce C\# procesu. Pokud neexistují žádné tooemit řazené kolekce členů, je zdvořilý toohave NextTuple spánku pro za krátkou dobu čas (například 10 ms), jako toowaste není příliš mnoho procesoru.
 
-`Ack()`a `Fail()` bude volat pouze v případě potvrzení mechanismus je povolena v specifikace souboru. `seqId` Slouží k identifikaci řazené kolekce členů, která je acked nebo se nezdařilo. Takže pokud ack je povoleno v netransakční topologie, následující funkce vysílat by měl používat ve funkcích Spout:
+`Ack()`a `Fail()` bude volat pouze v případě potvrzení mechanismus je povolena v specifikace souboru. Hello `seqId` je použité tooidentify hello řazené kolekce členů, které jsou acked nebo se nezdařilo. Takže pokud ack je povoleno v netransakční topologie, je třeba používat následující funkce vysílat hello v Spout:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
-Pokud ack není podporován v netransakční topologii `Ack()` a `Fail()` může být ponecháno prázdné funkce.
+Pokud ack není podporován v netransakční topologii, hello `Ack()` a `Fail()` může být ponecháno prázdné funkce.
 
-`parms` Vstupní parametry v tyto funkce jsou právě prázdný slovník, jsou vyhrazené pro budoucí použití.
+Hello `parms` vstupní parametry v tyto funkce jsou právě prázdný slovník, jsou vyhrazené pro budoucí použití.
 
 ### <a name="iscpbolt"></a>ISCPBolt
-ISCPBolt je rozhraní pro netransakční funkcí bolt.
+ISCPBolt je hello rozhraní pro netransakční funkcí bolt.
 
     public interface ISCPBolt : ISCPPlugin 
     {
     void Execute(SCPTuple tuple);           
     }
 
-Pokud je k dispozici, nové řazené kolekce členů `Execute()` funkce bude volána k jeho zpracování.
+Pokud je k dispozici nové řazené kolekce členů, hello `Execute()` funkce volaná tooprocess ho.
 
 ### <a name="iscptxspout"></a>ISCPTxSpout
-ISCPTxSpout je rozhraní pro transakční funkcí spout.
+ISCPTxSpout je hello rozhraní pro transakční funkcí spout.
 
     public interface ISCPTxSpout : ISCPPlugin
     {
@@ -104,16 +104,16 @@ ISCPTxSpout je rozhraní pro transakční funkcí spout.
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-Stejně jako netransakční kontrolní část `NextTx()`, `Ack()`, a `Fail()` se nazývají ve smyčce úzkou v jedno vlákno v jazyce C\# procesu. Pokud nejsou žádná data pro vydávání, je zdvořilý tak, aby měl `NextTx` režimu spánku pro krátké množství času (10 ms) tak, aby odpady příliš mnoho procesoru.
+Stejně jako netransakční kontrolní část `NextTx()`, `Ack()`, a `Fail()` se nazývají ve smyčce úzkou v jedno vlákno v jazyce C\# procesu. Pokud neexistují žádné tooemit dat, je zdvořilý toohave `NextTx` režimu spánku pro krátkou dobu (10 ms), jako toowaste není příliš mnoho procesoru.
 
-`NextTx()`je volána spustit novou transakci, výstupní parametr `seqId` slouží k identifikaci transakce, která je použita také v `Ack()` a `Fail()`. V `NextTx()`, uživatel může posílat data na straně Java. Data se uloží v ZooKeeper pro podporu opětovného přehrání. Kapacitu ZooKeeper je velmi omezená, a proto by měl uživatel pouze emitování metadata, není hromadné dat v transakční funkcí spout.
+`NextTx()`je volána toostart novou transakci, hello vnější parametr `seqId` je použité tooidentify hello transakce, která je použita také v `Ack()` a `Fail()`. V `NextTx()`, uživatel může emitování straně tooJava data. Hello data budou uložena v ZooKeeper toosupport opakování. Hello kapacitu ZooKeeper je velmi omezená, a proto by měl uživatel emitování pouze metadata, ne hromadné data v transakční spout.
 
-Bude Storm přehráním transakce automaticky, pokud se nezdaří, tak `Fail()` by neměl být volán v případě normální. Ale pokud spojovací bod služby můžete zkontrolovat metadata vysílaných transakční spout, můžete volat `Fail()` po neplatná metadata.
+Bude Storm přehráním transakce automaticky, pokud se nezdaří, tak `Fail()` by neměl být volán v případě normální. Ale pokud spojovací bod služby můžete zkontrolovat hello metadata vysílaných transakční spout, můžete volat `Fail()` při hello metadat je neplatná.
 
-`parms` Vstupní parametry v tyto funkce jsou právě prázdný slovník, jsou vyhrazené pro budoucí použití.
+Hello `parms` vstupní parametry v tyto funkce jsou právě prázdný slovník, jsou vyhrazené pro budoucí použití.
 
 ### <a name="iscpbatchbolt"></a>ISCPBatchBolt
-ISCPBatchBolt je rozhraní pro transakční funkcí bolt.
+ISCPBatchBolt je hello rozhraní pro transakční funkcí bolt.
 
     public interface ISCPBatchBolt : ISCPPlugin           
     {
@@ -121,15 +121,15 @@ ISCPBatchBolt je rozhraní pro transakční funkcí bolt.
         void FinishBatch(Dictionary<string, Object> parms);  
     }
 
-`Execute()`je volána, když je nové řazené kolekce členů přicházejících u bolt. `FinishBatch()`je volána, když je tato transakce skončila. `parms` Vstupní parametr je vyhrazena pro budoucí použití.
+`Execute()`je volána, když je nové řazené kolekce členů přicházejících u hello bolt. `FinishBatch()`je volána, když je tato transakce skončila. Hello `parms` vstupní parametr je vyhrazena pro budoucí použití.
 
-Pro transakční topologie, je důležité koncept – `StormTxAttempt`. Má dvě pole `TxId` a `AttemptId`. `TxId`slouží k identifikaci konkrétní transakce, a pro dané transakci, může mít několik pokus transakce selže a je přehrány. SCP.NET bude nové jiný objekt ISCPBatchBolt ke zpracování jednotlivých `StormTxAttempt`, jenom jako proveďte co Storm Java straně. Účelem tohoto návrhu je podpora zpracování paralelní transakce. Uživatel ho měli mít na paměti, pokud dokončení transakce pokus, budou zničena odpovídající objekt ISCPBatchBolt a uvolnění z paměti.
+Pro transakční topologie, je důležité koncept – `StormTxAttempt`. Má dvě pole `TxId` a `AttemptId`. `TxId`je použité tooidentify konkrétní transakce a pro dané transakci, může mít několik pokus hello transakce selže a je přehrány. SCP.NET se nový různých ISCPBatchBolt objekt tooprocess každý `StormTxAttempt`, jenom jako proveďte co Storm Java straně. účelem Hello tohoto návrhu je toosupport zpracování paralelní transakce. Uživatel by měl mějte ho, pokud transakce pokus po dokončení, odpovídající objekt ISCPBatchBolt hello budou zničena a uklizeny.
 
 ## <a name="object-model"></a>Objektový Model
-SCP.NET také poskytuje jednoduchou sadou objekty klíče pro vývojáře k programu s. Jsou **kontextu**, **úložiště stavu**, a **SCPRuntime**. Bude se popsané v části rest této části.
+SCP.NET také poskytuje pro vývojáře tooprogram s jednoduchou sadou objekty klíče. Jsou **kontextu**, **úložiště stavu**, a **SCPRuntime**. Bude se zabývá hello rest součástí této části.
 
 ### <a name="context"></a>Kontext
-Kontext poskytuje prostředí běžící aplikaci. Každá instance ISCPPlugin (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) má odpovídající instance kontextu. Funkce poskytované službou kontextu je možné rozdělit do dvou částí: (1) statickou část, která je k dispozici v celé C\# zpracovat, (2) dynamické část, která je dostupná jenom pro konkrétní instance kontextu.
+Poskytuje kontext spuštěné aplikace toohello prostředí. Každá instance ISCPPlugin (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) má odpovídající instance kontextu. Hello funkce poskytované službou kontextu je možné rozdělit do dvou částí: (1) hello statickou část, která je k dispozici v hello celou C\# zpracovat, (2) hello dynamické část, která je dostupná jenom pro konkrétní instance kontextu hello.
 
 ### <a name="static-part"></a>Statické části
     public static ILogger Logger = null;
@@ -139,7 +139,7 @@ Kontext poskytuje prostředí běžící aplikaci. Každá instance ISCPPlugin (
 
 `Logger`pro účely protokolu poskytována.
 
-`pluginType`slouží k označení typ modulu plug-in C\# procesu. Pokud C\# proces běží v režimu místního testovacího (bez Java), typ modulu plug-in je `SCP_NET_LOCAL`.
+`pluginType`je použit typ modulu plug-in hello tooindicate hello C\# procesu. Pokud hello C\# proces běží v režimu místního testovacího (bez Java), typ modulu plug-in hello je `SCP_NET_LOCAL`.
 
     public enum SCPPluginType 
     {
@@ -150,12 +150,12 @@ Kontext poskytuje prostředí běžící aplikaci. Každá instance ISCPPlugin (
         SCP_NET_BATCH_BOLT = 4  
     }
 
-`Config`je k dispozici získat parametry konfigurace ze strany Java. Parametry jsou předány ze strany Java při C\# modul plug-in je inicializován. `Config` Parametry jsou rozdělené do dvou částí: `stormConf` a `pluginConf`.
+`Config`je k dispozici parametry konfigurace tooget ze strany Java. Hello parametry se jí předávají ze strany Java při C\# modul plug-in je inicializován. Hello `Config` parametry jsou rozdělené do dvou částí: `stormConf` a `pluginConf`.
 
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf`je parametry definované Storm a `pluginConf` je parametry definované spojovací bod služby. Například:
+`stormConf`je parametry definované Storm a `pluginConf` je hello parametry definované spojovací bod služby. Například:
 
     public class Constants
     {
@@ -169,9 +169,9 @@ Kontext poskytuje prostředí běžící aplikaci. Každá instance ISCPPlugin (
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext`je k dispozici získat kontext topologie, je nejvhodnější pro komponenty s více stupně paralelního zpracování. Zde naleznete příklad:
+`TopologyContext`je zadaný tooget hello topologie kontextu, je nejvhodnější pro komponenty s více stupně paralelního zpracování. Zde naleznete příklad:
 
-    //demo how to get TopologyContext info
+    //demo how tooget TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
     {
         Context.Logger.Info("TopologyContext info:");
@@ -186,24 +186,24 @@ Kontext poskytuje prostředí běžící aplikaci. Každá instance ISCPPlugin (
     }
 
 ### <a name="dynamic-part"></a>Dynamické části
-Následující rozhraní jsou relevantní pro určité instance kontextu. Instance kontextu je vytvořený SCP.NET platformy a předaný uživatelského kódu:
+Hello následující rozhraní jsou příslušné tooa určité instance kontextu. instance kontextu Hello se vytvoří platformou SCP.NET a předán toohello uživatelského kódu:
 
-    // Declare the Output and Input Stream Schemas
+    // Declare hello Output and Input Stream Schemas
 
     public void DeclareComponentSchema(ComponentStreamSchema schema);   
 
-    // Emit tuple to default stream.
+    // Emit tuple toodefault stream.
     public abstract void Emit(List<object> values);                   
 
-    // Emit tuple to the specific stream.
+    // Emit tuple toohello specific stream.
     public abstract void Emit(string streamId, List<object> values);  
 
-Pro podporu ack netransakční funkcí spout je k dispozici následující metodu:
+Pro podporu ack netransakční funkcí spout je poskytována hello následující metodu:
 
     // for non-transactional Spout which supports ack
     public abstract void Emit(string streamId, List<object> values, long seqId);  
 
-Pro podporu ack netransakční bolt, by měl explicitně `Ack()` nebo `Fail()` řazené kolekce členů přijala. A při vytváření nové řazené kolekce členů, musíte také zadat kotvy nové řazené kolekce členů. Tyto metody jsou k dispozici.
+Pro podporu ack netransakční bolt, by měl explicitně `Ack()` nebo `Fail()` hello obdržel řazené kolekce členů. A při vytváření nové řazené kolekce členů, musíte také zadat hello kotvy hello nové řazené kolekce členů. Hello následující metody jsou k dispozici.
 
     public abstract void Emit(string streamId, IEnumerable<SCPTuple> anchors, List<object> values); 
     public abstract void Ack(SCPTuple tuple);
@@ -212,12 +212,12 @@ Pro podporu ack netransakční bolt, by měl explicitně `Ack()` nebo `Fail()` �
 ### <a name="statestore"></a>Úložiště stavu
 `StateStore`poskytuje metadata služby, generování monotónní pořadí a bez čekání spolupráce. Abstrakce vyšší úrovně distribuované souběžnosti se dají vytvářet `StateStore`, včetně distribuované zámky, distribuované fronty, překážek a transakce služby.
 
-Spojovací bod služby aplikace mohou používat `State` objekt, který chcete zachovat některé informace v ZooKeeper, zejména pro transakční topologii. To tím, že pokud transakční spout zhroucení a restartování, může načíst informace potřebné z ZooKeeper a restartujte kanálu.
+Spojovací bod služby aplikace mohou používat hello `State` objektu toopersist některé informace v ZooKeeper, zejména pro transakční topologii. To proto, pokud transakční spout zhroucení a restartování, může načíst hello nezbytné informace z ZooKeeper a restartujte hello kanálu.
 
-`StateStore` Objekt především má tyto metody:
+Hello `StateStore` objekt především má tyto metody:
 
     /// <summary>
-    /// Static method to retrieve a state store of the given path and connStr 
+    /// Static method tooretrieve a state store of hello given path and connStr 
     /// </summary>
     /// <param name="storePath">StateStore Path</param>
     /// <param name="connStr">StateStore Address</param>
@@ -237,9 +237,9 @@ Spojovací bod služby aplikace mohou používat `State` objekt, který chcete z
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
-    /// Get all the States in the StateStore
+    /// Get all hello States in hello StateStore
     /// </summary>
-    /// <returns>All the States</returns>
+    /// <returns>All hello States</returns>
     public IEnumerable<State> States();
 
     /// <summary>
@@ -251,70 +251,70 @@ Spojovací bod služby aplikace mohou používat `State` objekt, který chcete z
     public T Get<T>(string info = null);
 
     /// <summary>
-    /// List all the committed states
+    /// List all hello committed states
     /// </summary>
-    /// <returns>Registries contain the Committed State </returns> 
+    /// <returns>Registries contain hello Committed State </returns> 
     public IEnumerable<Registry> Commited();
 
     /// <summary>
-    /// List all the Aborted State in the StateStore
+    /// List all hello Aborted State in hello StateStore
     /// </summary>
-    /// <returns>Registries contain the Aborted State</returns>
+    /// <returns>Registries contain hello Aborted State</returns>
     public IEnumerable<Registry> Aborted();
 
     /// <summary>
     /// Retrieve an existing state object from this state store instance 
     /// </summary>
     /// <returns>State from StateStore</returns>
-    /// <typeparam name="T">stateId, id of the State</typeparam>
+    /// <typeparam name="T">stateId, id of hello State</typeparam>
     public State GetState(long stateId)
 
-`State` Objekt především má tyto metody:
+Hello `State` objekt především má tyto metody:
 
     /// <summary>
-    /// Set the status of the state object to commit 
+    /// Set hello status of hello state object toocommit 
     /// </summary>
     public void Commit(bool simpleMode = true); 
 
     /// <summary>
-    /// Set the status of the state object to abort 
+    /// Set hello status of hello state object tooabort 
     /// </summary>
     public void Abort();
 
     /// <summary>
-    /// Put an attribute value under the give key 
+    /// Put an attribute value under hello give key 
     /// </summary>
     /// <param name="key">Key</param> 
     /// <param name="attribute">State Attribute</param> 
     public void PutAttribute<T>(string key, T attribute); 
 
     /// <summary>
-    /// Get the attribute value associated with the given key 
+    /// Get hello attribute value associated with hello given key 
     /// </summary>
     /// <param name="key">Key</param> 
     /// <returns>State Attribute</returns>               
     public T GetAttribute<T>(string key);                    
 
-Pro `Commit()` metoda simpleMode nastavena na hodnotu true, jednoduše odstraní odpovídající ZNode v ZooKeeper. Jinak se odstraní aktuální ZNode a přidání nového uzlu v potvrzení\_cesta.
+Pro hello `Commit()` metodu, pokud je nastavena simpleMode tootrue, jednoduše odstraní odpovídající ZNode v ZooKeeper hello. Jinak se odstraní hello aktuální ZNode a přidání nového uzlu v hello potvrzení\_cesta.
 
 ### <a name="scpruntime"></a>SCPRuntime
-SCPRuntime poskytuje následujících dvou metod.
+SCPRuntime poskytuje hello následující dvě metody.
 
     public static void Initialize();
 
     public static void LaunchPlugin(newSCPPlugin createDelegate);  
 
-`Initialize()`slouží k inicializaci běhové prostředí spojovací bod služby. Tato metoda C\# proces se budou připojovat k straně Java a získá parametry konfigurace a topologie kontextu.
+`Initialize()`je použité tooinitialize hello spojovací bod služby modulu runtime prostředí. Tato metoda hello C\# proces připojí straně toohello Java a získá konfigurace parametrů a kontextu topologie.
 
-`LaunchPlugin()`slouží k ji smyčka zpracování zpráv. V této smyčky C\# modulu plug-in přijímat zprávy formuláře Java straně (včetně řazených kolekcí členů a řízení signály) a pak zpracování zprávy, například voláním metody rozhraní poskytují pomocí uživatelského kódu. Vstupní parametr metody `LaunchPlugin()` je delegáta, který může vrátit objekt, který ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt rozhraní implementovat.
+`LaunchPlugin()`použít tookick vypnout uvítací zprávu zpracovává smyčky. V této smyčky hello C\# modulu plug-in se zobrazí formulář zprávy Java straně (včetně řazených kolekcí členů a řízení signály) a pak zadejte zprávy hello procesu, například voláním metody rozhraní hello pomocí hello uživatelského kódu. Hello vstupního parametru pro metodu `LaunchPlugin()` je delegáta, který může vrátit objekt, který ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt rozhraní implementovat.
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary\<string, Object\> parms); 
 
-Pro ISCPBatchBolt, nám získat `StormTxAttempt` z `parms`a použít ho k posoudit, zda se jedná o přehraná pokus. To se obvykle provádí na bolt potvrzení a je znázorněn v `HelloWorldTx` příklad.
+Pro ISCPBatchBolt, nám získat `StormTxAttempt` z `parms`a použít ho toojudge, jestli je přehraná pokus. To se obvykle provádí na hello potvrzení bolt a je znázorněn v hello `HelloWorldTx` příklad.
 
-Obecně řečeno moduly plug-in spojovací bod služby může spustit ve dvou režimech tady:
+Obecně řečeno hello modulů plug-in spojovací bod služby může spustit ve dvou režimech tady:
 
-1. Místní testovací režim: V tomto režimu, moduly plug-in spojovací bod služby (C\# uživatelského kódu) spustit v průběhu fáze vývoje v sadě Visual Studio. `LocalContext`můžete použít v tomto režimu, který poskytuje metodu, jak serializovat emitovaného řazené kolekce členů do místní soubory a číst je zpět do paměti.
+1. Místní testovací režim: V tomto režimu hello modulů plug-in spojovací bod služby (hello C\# uživatelského kódu) v sadě Visual Studio spustit v průběhu fáze vývoje hello. `LocalContext`můžete použít v tomto režimu, který poskytuje metoda tooserialize hello vygenerované řazených kolekcí členů toolocal soubory a číst jejich zpět toomemory.
    
         public interface ILocalContext
         {
@@ -322,7 +322,7 @@ Obecně řečeno moduly plug-in spojovací bod služby může spustit ve dvou re
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. Regulární režim: V tomto režimu, moduly plug-in spojovací bod služby spustily procesem storm java.
+2. Regulární režim: V tomto režimu, moduly plug-in spojovací bod služby hello spustily procesem storm java.
    
     Tady je příklad spuštění modulu plug-in spojovací bod služby:
    
@@ -341,7 +341,7 @@ Obecně řečeno moduly plug-in spojovací bod služby může spustit ve dvou re
         {
             static void Main(string[] args)
             {
-            /* Setting the environment variable here can change the log file name */
+            /* Setting hello environment variable here can change hello log file name */
             System.Environment.SetEnvironmentVariable("microsoft.scp.logPrefix", "HelloWorld");
    
             SCPRuntime.Initialize();
@@ -353,56 +353,56 @@ Obecně řečeno moduly plug-in spojovací bod služby může spustit ve dvou re
 ## <a name="topology-specification-language"></a>Topologie specifikace jazyka
 Určení topologie spojovací bod služby je domény konkrétní jazyk pro popis a konfiguraci topologie spojovací bod služby. Je založena na Storm na Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) a je prodloužena spojovací bod služby.
 
-Specifikace topologie jde odeslat přímo na clusteru storm pro provedení prostřednictvím ***runspec*** příkaz.
+Specifikace topologie jde odeslat přímo toostorm clusteru pro provedení prostřednictvím hello ***runspec*** příkaz.
 
-SCP.NET má přidat funkce použijte k definování transakční topologie:
+SCP.NET má přidejte postupujte podle funkce toodefine hello transakční topologie:
 
 | **Nové funkce** | **Parametry** | **Popis** |
 | --- | --- | --- |
-| **TX topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii transakcí s názvem topologie &nbsp;spouts definice mapy a funkce bolts definice mapy |
-| **spojovací bod služby. tx spout** |Exec – název<br />argumentů<br />Pole |Definujte transakční funkcí spout. Spustí aplikaci s ***exec název*** pomocí ***argumentů***.<br /><br />***Pole*** je výstup pole pro spout |
-| **spojovací bod služby tx-batch-bolt** |Exec – název<br />argumentů<br />Pole |Definujte transakční Bolt dávky. Spustí aplikaci s ***exec název*** pomocí ***argumentů.***<br /><br />Pole je pole výstup pro funkcí bolt. |
-| **spojovací bod služby tx potvrzení bolt** |Exec – název<br />argumentů<br />Pole |Definujte transakční Committer Bolt. Spustí aplikaci s ***exec název*** pomocí ***argumentů***.<br /><br />***Pole*** je výstup pole pro bolt |
-| **nontx topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii netransakční s názvem topologie&nbsp; spouts definice mapy a funkce bolts definice mapy |
-| **spout spojovací bod služby** |Exec – název<br />argumentů<br />Pole<br />Parametry |Definujte netransakční spout. Spustí aplikaci s ***exec název*** pomocí ***argumentů***.<br /><br />***Pole*** je výstup pole pro spout<br /><br />***Parametry*** je volitelná, jej použijete k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
-| **bolt spojovací bod služby** |Exec – název<br />argumentů<br />Pole<br />Parametry |Definujte netransakční funkcí Bolt. Spustí aplikaci s ***exec název*** pomocí ***argumentů***.<br /><br />***Pole*** je výstup pole pro bolt<br /><br />***Parametry*** je volitelná, jej použijete k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
+| **TX topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii transakcí s názvem topologie hello &nbsp;spouts definice mapy a hello funkce bolts definice mapy |
+| **spojovací bod služby. tx spout** |Exec – název<br />argumentů<br />Pole |Definujte transakční funkcí spout. Spustí aplikace hello s ***exec název*** pomocí ***argumentů***.<br /><br />Hello ***pole*** je pole výstup hello spout |
+| **spojovací bod služby tx-batch-bolt** |Exec – název<br />argumentů<br />Pole |Definujte transakční Bolt dávky. Spustí aplikace hello s ***exec název*** pomocí ***argumentů.***<br /><br />Hello pole je hello výstup polí pro funkcí bolt. |
+| **spojovací bod služby tx potvrzení bolt** |Exec – název<br />argumentů<br />Pole |Definujte transakční Committer Bolt. Spustí aplikace hello s ***exec název*** pomocí ***argumentů***.<br /><br />Hello ***pole*** je pole výstup hello bolt |
+| **nontx topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii netransakční s názvem topologie hello&nbsp; spouts definice mapy a hello funkce bolts definice mapy |
+| **spout spojovací bod služby** |Exec – název<br />argumentů<br />Pole<br />parameters |Definujte netransakční spout. Spustí aplikace hello s ***exec název*** pomocí ***argumentů***.<br /><br />Hello ***pole*** je pole výstup hello spout<br /><br />Hello ***parametry*** je volitelná, použití toospecify některé parametry, jako je například "nontransactional.ack.enabled". |
+| **bolt spojovací bod služby** |Exec – název<br />argumentů<br />Pole<br />parameters |Definujte netransakční funkcí Bolt. Spustí aplikace hello s ***exec název*** pomocí ***argumentů***.<br /><br />Hello ***pole*** je pole výstup hello bolt<br /><br />Hello ***parametry*** je volitelná, použití toospecify některé parametry, jako je například "nontransactional.ack.enabled". |
 
 SCP.NET má postupujte podle klíče slova definované:
 
 | **Klíčová slova** | **Popis** |
 | --- | --- |
-| **: název** |Definovat název topologie |
-| **: topologie** |Definovat topologii pomocí výše uvedených funkcí a sestavení v těch, které jsou. |
-| **: p** |Definujte paralelismus nápovědu pro každou funkcí spout nebo bolt. |
-| **: Konfigurace** |Definování konfigurace parametru nebo aktualizovat existující |
-| **: schéma** |Definování schématu datového proudu. |
+| **: název** |Definování hello název topologie |
+| **: topologie** |Definování hello topologie pomocí hello výše funkce a sestavení v těch, které jsou. |
+| **: p** |Definujte hello paralelismus nápovědu pro každou funkcí spout nebo bolt. |
+| **: Konfigurace** |Definování konfigurace parametru nebo aktualizace hello existující |
+| **: schéma** |Definujte hello schématu datového proudu. |
 
 A často používané parametry:
 
 | **Parametr** | **Popis** |
 | --- | --- |
-| **"plugin.name"** |Název souboru EXE modulu plug-in C# |
+| **"plugin.name"** |Název souboru EXE modulu plug-in hello C# |
 | **"plugin.args"** |argumentů modulu plug-in |
 | **"output.schema"** |Schéma výstupu |
 | **"nontransactional.ack.enabled"** |Určuje, jestli je povolená ack pro netransakční topologie |
 
-Příkaz runspec nasadí společně s službu bits, je použití jako:
+příkaz runspec Hello nasadí společně s hello bits, využití hello je jako:
 
     .\bin\runSpec.cmd
     usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
     ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 
-***Prostředků dir*** parametr je nepovinný, budete muset zadat ho, když chcete zařadit a C\# aplikace a tento adresář bude obsahovat aplikaci, závislosti a konfigurace.
+Hello ***prostředků dir*** parametr je volitelný, je třeba toospecify ho, když chcete, aby tooplug a C\# aplikace a tento adresář bude obsahovat aplikaci hello hello závislosti a konfigurace.
 
-***Cesty pro třídy*** parametr je nepovinný. Slouží k určení cesty pro třídy Java, pokud specifikace soubor obsahuje Java Spout nebo Bolt.
+Hello ***cesty pro třídy*** parametr je nepovinný. Pokud soubor specifikace hello obsahuje Java Spout nebo Bolt je použité toospecify hello Java cesty pro třídy.
 
 ## <a name="miscellaneous-features"></a>Různé funkce
 ### <a name="input-and-output-schema-declaration"></a>Vstup a výstup schématu deklarace
-Uživatel může emitování řazené kolekce členů v jazyce C\# procesu platformy musí serializovat řazenou kolekci členů do byte [], přenést na straně Java a Storm přenese tento řazené kolekce členů k cílům. Mezitím v podřízené součásti, C\# proces bude přijímat řazené kolekce členů zpět z straně java a převést jej do původní typy podle platformy, všechny tyto operace jsou skryté platformou.
+Hello uživatele můžete emitování řazené kolekce členů v jazyce C\# zpracování, hello platformy musí tooserialize hello řazené kolekce členů do byte [] straně tooJava přenos a Storm přenese tento cíle toohello řazené kolekce členů. Mezitím v podřízené součásti hello C\# proces bude přijímat řazené kolekce členů zpět z straně java a převádět je původní typy toohello podle platformy, všechny tyto operace jsou skryt hello platformy.
 
-Pro podporu serializace a deserializace, musí deklarovat schéma vstupy a výstupy uživatelského kódu.
+toosupport hello serializace a deserializace, uživatelský kód musí toodeclare hello schéma hello vstupy a výstupy.
 
-Schéma vstupu a výstupu datového proudu je definován jako slovník, klíč je StreamId a hodnota je typy sloupců. Součást může mít víc datových proudů deklarován.
+schéma vstupu a výstupu datového proudu Hello je definován jako slovník, hello klíč je hello StreamId a hello hodnota je hello typy sloupců hello. součást Hello může mít víc datových proudů deklarován.
 
     public class ComponentStreamSchema
     {
@@ -416,29 +416,29 @@ Schéma vstupu a výstupu datového proudu je definován jako slovník, klíč j
     }
 
 
-V kontextu objektu máme následující rozhraní API, které jsou přidány:
+V kontextu objektu máme hello přidat následující rozhraní API:
 
     public void DeclareComponentSchema(ComponentStreamSchema schema)
 
-Uživatelský kód musí zajistit řazené kolekce členů vygenerované orientují schéma definované pro tento datový proud, nebo systém vyvolá výjimku modulu runtime.
+Uživatelský kód musí zajistit vygenerované řazených kolekcí členů hello orientují hello schéma definované pro tento datový proud nebo hello systému vyvolá výjimku modulu runtime.
 
 ### <a name="multi-stream-support"></a>Podpora více datového proudu
-Spojovací bod služby podporuje uživatelského kódu emitování nebo přijmout z několika různých datových proudů ve stejnou dobu. Podpora odráží v kontextu objektu jako vysílat metoda přebírá parametr ID typu volitelné datového proudu.
+Spojovací bod služby podporuje uživatele code tooemit nebo přijímat z několika různých datových proudů v hello stejný čas. Podpora Hello odráží v kontextu objektu hello jako hello vysílat metoda přijímá parametr ID volitelné datového proudu.
 
-Byly přidány dvě metody v SCP.NET kontextu objektu. Používají se pro vydávání řazené kolekce členů nebo řazené kolekce členů, které slouží k zadání StreamId. StreamId je řetězec a musí se jednat o konzistentní v obou C\# a specifikace definice topologie.
+Byly přidány dvě metody v hello SCP.NET kontextu objektu. Jsou použité tooemit řazené kolekce členů nebo řazené kolekce členů toospecify StreamId. Hello StreamId je řetězec a je nutné toobe konzistentní v obou C\# a hello specifikace definice topologie.
 
-        /* Emit tuple to the specific stream. */
+        /* Emit tuple toohello specific stream. */
         public abstract void Emit(string streamId, List<object> values);
 
         /* for non-transactional Spout only */
         public abstract void Emit(string streamId, List<object> values, long seqId);
 
-Emitování do datového proudu neexistující způsobí, že výjimky za běhu.
+Hello datového proudu neexistující generování tooa způsobí, že výjimky za běhu.
 
 ### <a name="fields-grouping"></a>Pole seskupení
-Seskupení pole sestavení v v Strom v SCP.NET nepracuje správně. Na straně Java Proxy se všechny datové typy polí ve skutečnosti byte [] a pole seskupování používá hash byte [] objektu k seskupení. Hodnota hash objektu byte [] je adresa tohoto objektu v paměti. Seskupení tak bude nesprávný pro dva bajty [] objekty, které sdílejí stejný obsah, ale není stejnou adresu.
+Hello sestavení v seskupení pole v Strom nepracuje správně v SCP.NET. Na hello straně Java Proxy všechny hello pole datové typy jsou ve skutečnosti byte [] a seskupení pole hello používá hello byte [] objekt hash kód tooperform hello seskupení. Kód hash pro objekt Hello byte [] je hello adresa tohoto objektu v paměti. Tak bude hello seskupení nesprávný pro dva bajty [] objekty hello této sdílené složky stejný obsah, ale není hello stejnou adresu.
 
-SCP.NET přidá metoda přizpůsobené seskupení a použije obsah byte [] k seskupení. V **specifikace** soubor, syntaxe je jako:
+SCP.NET přidá metoda přizpůsobené seskupení a použije obsah hello hello byte [] toodo hello seskupení. V **specifikace** souboru hello syntaxe je jako:
 
     (bolt-spec
         {
@@ -451,36 +451,36 @@ SCP.NET přidá metoda přizpůsobené seskupení a použije obsah byte [] k ses
 Tady
 
 1. "spojovací bod služby skupiny polí" znamená "Vlastní pole seskupení implementované spojovací bod služby".
-2. ": tx"nebo": bez tx" znamená, pokud je transakční topologie. Tyto informace potřebujeme od počáteční index se liší v tx oproti bez tx topologie.
+2. ": tx"nebo": bez tx" znamená, pokud je transakční topologie. Tyto informace potřebujeme od hello od indexu se liší v tx oproti bez tx topologie.
 3. [0,1] znamená hashset ID pole, počínaje od 0.
 
 ### <a name="hybrid-topology"></a>Hybridní topologie
-Nativní Storm je napsán v jazyce Java. A SCP.Net má rozšířené jej a povolte naše celní zápis C\# kód pro zpracování jejich obchodní logiku. Také podporujeme hybridní topologie, která obsahuje nejen C, ale\# funkcích spouts nebo funkce bolts, ale také Java funkcí Spout/funkce Bolts.
+nativní Hello Storm je napsán v jazyce Java. A SCP.Net má rozšířené tooenable naše celní toowrite C\# code toohandle své obchodní logiku. Také podporujeme hybridní topologie, která obsahuje nejen C, ale\# funkcích spouts nebo funkce bolts, ale také Java funkcí Spout/funkce Bolts.
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>Zadat Java funkcí Spout/Bolt specifikace souboru
-V souboru specifikace "spojovací bod služby funkcí spout" a "spojovací bod služby funkcí bolt" lze použít také k určení Java Spouts a funkce Bolts, tady je příklad:
+V souboru specifikace "spojovací bod služby funkcí spout" a "spojovací bod služby funkcí bolt" může být také použít toospecify Spouts Java a funkce Bolts, tady je příklad:
 
     (spout-spec 
       (microsoft.scp.example.HybridTopology.Generator.)           
       :p 1)
 
-Zde `microsoft.scp.example.HybridTopology.Generator` je název třídy Java Spout.
+Zde `microsoft.scp.example.HybridTopology.Generator` je název hello hello Java Spout třídy.
 
 ### <a name="specify-java-classpath-in-runspec-command"></a>Zadejte cestu pro třídy Java v runSpec příkaz
-Pokud chcete odeslat topologie obsahující Java Spouts nebo funkce Bolts, musíte napřed zkompilovat Java Spouts nebo funkce Bolts a získání souborů Jar. Pak musíte zadat cestu pro třídy java, která obsahuje soubory Jar při odesílání topologie. Zde naleznete příklad:
+Pokud chcete toosubmit topologie obsahující Java Spouts nebo funkce Bolts, potřebovat hello kompilace toofirst Java Spouts nebo funkce Bolts a získání souborů Jar hello. Pak musíte zadat cestě třídy hello java, která obsahuje soubory Jar hello při odesílání topologie. Zde naleznete příklad:
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 
-Zde **příklady\\HybridTopology\\java\\cíl\\ ** je ve složce obsahující soubor Jar funkcí Spout/Bolt Java.
+Zde **příklady\\HybridTopology\\java\\cíl\\**  je hello složku obsahující soubor Jar funkcí Spout/Bolt Java hello.
 
 ### <a name="serialization-and-deserialization-between-java-and-c"></a>Serializace a deserializace mezi Java a C\
-Součásti naší spojovací bod služby zahrnuje straně Java a C\# straně. Chcete-li pracovat s nativní Java funkcích Spouts nebo funkce Bolts, musí být provedena serializaci nebo deserializaci mezi straně Java a C\# straně, jak je znázorněno v následujícím grafu.
+Součásti naší spojovací bod služby zahrnuje straně Java a C\# straně. V pořadí toointeract s nativní Java funkcích Spouts nebo funkce Bolts, musí být provedena serializaci nebo deserializaci mezi straně Java a C\# straně, jak je znázorněno v následujícím grafu hello.
 
-![Diagram součásti java odesílání do komponenty spojovací bod služby odesílání do komponent v jazyce Java](media/hdinsight-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+![Diagram součásti java odesílání tooSCP součást odesílání tooJava součásti](media/hdinsight-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
 
 1. **Serializace v jazyce Java straně a deserializace v jazyce C\# straně**
    
-   Nejprve poskytujeme výchozí implementace v jazyce Java straně serializace a deserializace v jazyce C\# straně. Metoda serializace v jazyce Java straně lze zadat v souboru specifikace:
+   Nejprve poskytujeme výchozí implementace v jazyce Java straně serializace a deserializace v jazyce C\# straně. Metoda serializace Hello na straně Java lze zadat v souboru specifikace:
    
        (scp-bolt
            {
@@ -490,23 +490,23 @@ Součásti naší spojovací bod služby zahrnuje straně Java a C\# straně. Ch
                "customized.java.serializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer"]
            })
    
-   Metoda deserializace v jazyce C\# straně musí být zadán v jazyce C\# uživatelského kódu:
+   Hello deserializace metody v jazyce C\# straně musí být zadán v jazyce C\# uživatelského kódu:
    
        Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
        inputSchema.Add("default", new List<Type>() { typeof(Person) });
        this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
        this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());            
    
-   Tato výchozí implementace by měla řídit většinou, pokud datový typ není příliš složitý. U některých případů, protože je příliš složitý uživatelský datový typ nebo protože výkon naše výchozí implementace nesplňuje požadavek na uživatele, uživatel může modul plug-in vlastní implementaci.
+   Tato výchozí implementace by měla řídit většinou, pokud hello datový typ není příliš složitý. Pro určité případy buď protože hello uživatelský datový typ je příliš složité, nebo protože hello výkon naše výchozí implementace nesplňuje hello požadavek uživatele, uživatel může modul plug-in vlastní implementaci.
    
-   Serializace rozhraní na straně java je definován jako:
+   Hello serializovat rozhraní v jazyce java straně je definován jako:
    
        public interface ICustomizedInteropJavaSerializer {
            public void prepare(String[] args);
            public List<ByteBuffer> serialize(List<Object> objectList);
        }
    
-   Deserialize rozhraní v jazyce C\# straně je definován jako:
+   Hello deserializovat rozhraní v jazyce C\# straně je definován jako:
    
    veřejné rozhraní ICustomizedInteropCSharpDeserializer
    
@@ -516,11 +516,11 @@ Součásti naší spojovací bod služby zahrnuje straně Java a C\# straně. Ch
        }
 2. **Serializace v jazyce C\# straně a deserializace v jazyce Java souběžný**
    
-   Metoda serializace v jazyce C\# straně musí být zadán v jazyce C\# uživatelského kódu:
+   Hello metoda serializace v jazyce C\# straně musí být zadán v jazyce C\# uživatelského kódu:
    
        this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer()); 
    
-   Metoda deserializace na straně Java musí být zadán v souboru specifikace:
+   Hello deserializace metody na straně Java musí být zadán v souboru specifikace:
    
      (spojovací bod služby spout
    
@@ -531,16 +531,16 @@ Součásti naší spojovací bod služby zahrnuje straně Java a C\# straně. Ch
          "customized.java.deserializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" "microsoft.scp.example.HybridTopology.Person"]
        })
    
-   Následuje název deserializátor "microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" a "microsoft.scp.example.HybridTopology.Person" je, že cílová třída dat se deserializovat k.
+   Následuje název hello deserializátor "microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" a "microsoft.scp.example.HybridTopology.Person" je, že je k deserializaci hello cílová třída hello data.
    
-   Uživatel může také modulu plug-in vlastní implementace C\# serializátor a deserializátor Java. Toto je rozhraní pro C\# serializátor:
+   Uživatel může také modulu plug-in vlastní implementace C\# serializátor a deserializátor Java. Toto je hello rozhraní pro C\# serializátor:
    
        public interface ICustomizedInteropCSharpSerializer
        {
            List<byte[]> Serialize(List<object> dataList);
        }
    
-   Toto je rozhraní pro deserializátor Java:
+   Toto je hello rozhraní pro deserializátor Java:
    
        public interface ICustomizedInteropJavaDeserializer {
            public void prepare(String[] targetClassNames);
@@ -548,7 +548,7 @@ Součásti naší spojovací bod služby zahrnuje straně Java a C\# straně. Ch
        }
 
 ## <a name="scp-host-mode"></a>Spojovací bod služby hostitele režimu
-V tomto režimu můžete uživatele zkompilovat jejich kódů DLL a používat k odesílání topologie SCPHost.exe poskytované spojovací bod služby. Specifikace soubor vypadá takto:
+V tomto režimu můžete uživatele jejich kódy tooDLL zkompilovat a použít SCPHost.exe poskytované topologie toosubmit spojovací bod služby. Specifikace souboru Hello vypadá takto:
 
     (scp-spout
       {
@@ -559,36 +559,36 @@ V tomto režimu můžete uživatele zkompilovat jejich kódů DLL a používat k
 
 Zde `plugin.name` je zadán jako `SCPHost.exe` poskytované spojovací bod služby SDK. SCPHost.exe které přijímá přesně tři parametry:
 
-1. První z nich je název knihovny DLL, která je `"HelloWorld.dll"` v tomto příkladu.
-2. Druhá je název třídy, což je `"Scp.App.HelloWorld.Generator"` v tomto příkladu.
-3. Třetí ten je název veřejné statické metody, který může vyvolat získat instanci ISCPPlugin.
+1. Hello nejprve jeden je hello DLL název, který je `"HelloWorld.dll"` v tomto příkladu.
+2. Hello druhá je hello názvu třídy, což je `"Scp.App.HelloWorld.Generator"` v tomto příkladu.
+3. Hello třetí jeden je hello název veřejné statické metody, které může být vyvolaná tooget instanci ISCPPlugin.
 
-V režimu hostitele uživatelský kód kompiluje jako knihovny DLL a je vyvolána platformou spojovací bod služby. Spojovací bod služby platformy, můžete získat úplné řízení pro logiku celou zpracování. Proto doporučujeme, abyste naše zákazníky, odeslání topologie v režimu hostitele spojovací bod služby, protože můžete zjednodušit vývojového prostředí a přineste nám větší flexibilitu a zpětnou kompatibilitu pro také novější verze.
+V režimu hostitele uživatelský kód kompiluje jako knihovny DLL a je vyvolána platformou spojovací bod služby. Spojovací bod služby platformy, můžete získat úplné řízení pro logiku celou zpracování hello. Proto doporučujeme naše zákazníky toosubmit topologii spojovací bod služby hostitele režimu vzhledem k tomu, že ho můžete zjednodušit hello vývojového prostředí a přineste nám větší flexibilitu a zpětnou kompatibilitu pro také novější verzi.
 
 ## <a name="scp-programming-examples"></a>Příklady programování spojovací bod služby
 ### <a name="helloworld"></a>Hello World
-**Hello World** je velmi jednoduchý příklad zobrazíte chuť SCP.Net. Používá topologii netransakční s spout, nazývá **generátor**a dvě funkce bolts názvem **rozdělovače** a **čítač**. Spout **generátor** se náhodně generovat některé věty a tyto věty k vydávání **rozdělovače**. Bolt **rozdělovače** bude rozdělení věty na slova a emitování tyto slova **čítač** funkcí bolt. Bolt "čítač" používá slovník pro záznam výskyt počet jednotlivých slov.
+**Hello World** je velmi jednoduchý příklad tooshow chuť SCP.Net. Používá topologii netransakční s spout, nazývá **generátor**a dvě funkce bolts názvem **rozdělovače** a **čítač**. Hello spout **generátor** se náhodně generovat některé věty a příliš emitování tyto věty**rozdělovače**. Hello bolt **rozdělovače** bude rozdělení toowords věty hello a emitování tato slova příliš**čítač** funkcí bolt. Čítač"Hello bolt" používá slovník toorecord hello výskyt počet jednotlivých slov.
 
-Existují dva soubory specifikace, **HelloWorld.spec** a **HelloWorld\_EnableAck.spec** v tomto příkladu. V C\# kódu, ho můžete zjistit, zda je povoleno potvrzení získáním pluginConf ze strany Java.
+Existují dva soubory specifikace, **HelloWorld.spec** a **HelloWorld\_EnableAck.spec** v tomto příkladu. V hello C\# kódu, ho můžete zjistit, zda je povoleno potvrzení získáním hello pluginConf ze strany Java.
 
-    /* demo how to get pluginConf info */
+    /* demo how tooget pluginConf info */
     if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK))
     {
         enableAck = (bool)(Context.Config.pluginConf[Constants.NONTRANSACTIONAL_ENABLE_ACK]);
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-Ve funkcích spout Pokud je povoleno potvrzení, slouží slovník pro ukládání do mezipaměti řazené kolekce členů, které nebyly acked. Pokud je volána Fail(), budou přehrány selhání řazené kolekce členů:
+Ve funkcích spout hello Pokud je povoleno potvrzení, slovník je použité toocache hello záznamů, které nebyly acked. Pokud je volána Fail(), hello selhání řazené kolekce členů budou přehrány:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {
         Context.Logger.Info("Fail, seqId: {0}", seqId);
         if (cachedTuples.ContainsKey(seqId))
         {
-            /* get the cached tuple */
+            /* get hello cached tuple */
             string sentence = cachedTuples[seqId];
 
-            /* replay the failed tuple */
+            /* replay hello failed tuple */
             Context.Logger.Info("Re-Emit: {0}, seqId: {1}", sentence, seqId);
             this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), seqId);
         }
@@ -599,19 +599,19 @@ Ve funkcích spout Pokud je povoleno potvrzení, slouží slovník pro ukládán
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** příklad ukazuje, jak implementovat transakční topologie. Neměl mít jeden spout názvem **generátor**, funkce bolts batch názvem **partial počet**, potvrzení bolt s názvem **počet součet**. Existují také tři soubory txt předem vytvořené: **DataSource0.txt**, **DataSource1.txt** a **DataSource2.txt**.
+Hello **HelloWorldTx** příklad ukazuje, jak tooimplement transakční topologie. Neměl mít jeden spout názvem **generátor**, funkce bolts batch názvem **partial počet**, potvrzení bolt s názvem **počet součet**. Existují také tři soubory txt předem vytvořené: **DataSource0.txt**, **DataSource1.txt** a **DataSource2.txt**.
 
-V každou transakci, spout **generátor** náhodně zvolím dva soubory z předem vytvořené tři soubory a emitování názvy dvou souborů k **partial počet** funkcí bolt. Bolt **partial počet** bude nejprve získat název souboru z přijaté řazené kolekce členů, pak otevřete soubor a počet slov v tomto souboru a nakonec emitování word číslo, které má **počet součet** bolt. **Počet součet** bolt představuje souhrn celkového počtu.
+V každou transakci, hello spout **generátor** náhodně zvolím dva soubory z hello předem vytvořené tři soubory a emitování hello dva souboru názvy toohello **partial počet** funkcí bolt. Hello bolt **partial počet** nejdřív získat název souboru hello z hello přijatých řazené kolekce členů a pak otevřete hello souboru a počet hello počtu slov v tomto souboru a nakonec emitování hello word číslo toohello **počet – součet**funkcí bolt. Hello **počet součet** bolt shrnuje celkový počet hello.
 
-K dosažení **právě jednou** sémantiku, potvrzení bolt **počet součet** potřeba posoudit, zda se jedná o přehraná transakce. V tomto příkladu má proměnná statický člen:
+tooachieve **právě jednou** sémantiku, hello potvrzení bolt **počet součet** potřebovat toojudge toho, jestli je přehraná transakce. V tomto příkladu má proměnná statický člen:
 
     public static long lastCommittedTxId = -1; 
 
-Když je vytvořena ISCPBatchBolt instance, se budou získávat `txAttempt` ze vstupní parametry:
+Když je vytvořena ISCPBatchBolt instance, se budou získávat hello `txAttempt` ze vstupní parametry:
 
     public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
     {
-        /* for transactional topology, we can get txAttempt from the input parms */
+        /* for transactional topology, we can get txAttempt from hello input parms */
         if (parms.ContainsKey(Constants.STORM_TX_ATTEMPT))
         {
             StormTxAttempt txAttempt = (StormTxAttempt)parms[Constants.STORM_TX_ATTEMPT];
@@ -623,7 +623,7 @@ Když je vytvořena ISCPBatchBolt instance, se budou získávat `txAttempt` ze v
         }
     }
 
-Když `FinishBatch()` je volána, `lastCommittedTxId` bude aktualizace, pokud není přehraná transakce.
+Když `FinishBatch()` je volána, hello `lastCommittedTxId` bude aktualizace, pokud není přehraná transakce.
 
     public void FinishBatch(Dictionary<string, Object> parms)
     {
@@ -632,7 +632,7 @@ Když `FinishBatch()` je volána, `lastCommittedTxId` bude aktualizace, pokud ne
 
         if (!replay)
         {
-            /* If it is not replayed, update the toalCount and lastCommittedTxId vaule */
+            /* If it is not replayed, update hello toalCount and lastCommittedTxId vaule */
             totalCount = totalCount + this.count;
             lastCommittedTxId = this.txAttempt.TxId;
         }
@@ -641,19 +641,19 @@ Když `FinishBatch()` je volána, `lastCommittedTxId` bude aktualizace, pokud ne
 
 
 ### <a name="hybridtopology"></a>HybridTopology
-Tato topologie obsahuje Java Spout a a C\# funkcí Bolt. Používá výchozí serializace a deserializace implementace poskytované spojovací bod služby platformy. Ref se prosím **HybridTopology.spec** v **příklady\\HybridTopology** složku podrobnosti specifikace souboru, a **SubmitTopology.bat** pro určení Cesta pro třídy Java.
+Tato topologie obsahuje Java Spout a a C\# funkcí Bolt. Používá hello výchozí serializace a deserializace implementace poskytovaná spojovací bod služby platformy. Prosím ref hello **HybridTopology.spec** v **příklady\\HybridTopology** složku podrobnosti hello specifikace souboru, a **SubmitTopology.bat** jak Cesta pro třídy toospecify Java.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
-Tento příklad je stejný jako HelloWorld v zásadě. Jediným rozdílem je, že kompilace kódu uživatele jako knihovny DLL a topologii je odeslána pomocí SCPHost.exe. Prosím ref v části "Spojovací bod služby hostitele režim" podrobnější vysvětlení.
+V tomto příkladu je hello v podstatě stejné jako Hello World. Hello pouze rozdílem je, že hello uživatele kódu jako knihovny DLL a odeslání hello topologie pomocí SCPHost.exe. Podrobnější vysvětlení prosím ref hello část "Spojovací bod služby hostitele režim".
 
 ## <a name="next-steps"></a>Další kroky
-Příklady topologií Storm vytvořený spojovací bod služby naleznete v následujících tématech:
+Příklady topologií Storm vytvořený spojovací bod služby najdete v tématu hello následující:
 
 * [Vývoj topologie C# pro Apache Storm v HDInsight pomocí sady Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [Zpracování událostí z Azure Event Hubs se Storm v HDInsight](hdinsight-storm-develop-csharp-event-hub-topology.md)
 * [Vytvoření více datových proudů v topologie C# Storm](hdinsight-storm-twitter-trending.md)
-* [Pomocí Power Bi vizualizovat data z topologie Storm](hdinsight-storm-power-bi-topology.md)
+* [Použít data toovisualize Power Bi od topologie Storm](hdinsight-storm-power-bi-topology.md)
 * [Zpracování dat snímačů vehicle ze služby Event Hubs pomocí Storm v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Extrakce, transformace a načítání (ETL) ze služby Azure Event Hubs k HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Extrakce, transformace a načítání (ETL) z Azure Event Hubs tooHBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
 * [Korelovat události pomocí nástrojů Storm a HBase v HDInsight](hdinsight-storm-correlation-topology.md)
 

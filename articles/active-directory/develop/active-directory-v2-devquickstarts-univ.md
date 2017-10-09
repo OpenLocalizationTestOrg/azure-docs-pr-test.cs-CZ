@@ -1,6 +1,6 @@
 ---
-title: "Univerzální aplikace Windows Azure AD v2.0 | Microsoft Docs"
-description: "Jak sestavit aplikaci univerzální pro Windows, která podepisuje uživatele přihlašují pomocí Account Microsoft i osobní a pracovní nebo školní účty."
+title: "aaaAzure AD v2.0 univerzální aplikace pro Windows | Microsoft Docs"
+description: "Jak toobuild aplikaci pro univerzální pro Windows, přihlášení uživatelů s Account Microsoft i osobní a pracovní nebo školní účty."
 services: active-directory
 documentationcenter: 
 author: jmprieur
@@ -15,21 +15,21 @@ ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 369802f1a42b8720aa730d5ac7e5576ed20eeddf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 49b26c74fa5a76664c3229256c9bd128563b830c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-a-windows-universal-app-using-the-v20-endpoint"></a>Přidání přihlašování do Windows univerzální aplikace pro použití koncového bodu v2.0
-  Úvodní kurz pro univerzálních aplikací pro Windows není poměrně připraven... Vraťte se sem brzy & vyhledejte aktualizace z @AzureAD na Twitteru.
+# <a name="add-sign-in-tooa-windows-universal-app-using-hello-v20-endpoint"></a>Přidat aplikaci univerzální pro Windows tooa přihlášení pomocí koncového bodu v2.0 hello
+  Hello úvodní kurz pro univerzálních aplikací pro Windows není poměrně připraven... Vraťte se sem brzy & vyhledejte aktualizace z @AzureAD na Twitteru.
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0 hello.  toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 > 
 > 
 
     ## Get security updates for our products
 
-Doporučujeme vám získávat oznámení o bezpečnostních incidentech tak, že navštívíte [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlásíte se k odběru služby Security Advisory Alerts.
+Doporučujeme vám tooget oznámení o bezpečnostních incidentech navštivte stránky [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlášení k odběru tooSecurity Advisory Alerts.
 

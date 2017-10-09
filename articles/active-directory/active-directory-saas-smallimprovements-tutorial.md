@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s malé vylepšení | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi malé vylepšení a Azure Active Directory."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi malé vylepšení a Azure Active Directory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 49a8cd3acfc6df15ef6a51171c8421162bc94efc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 33213fe4b61f5005cf78bee2c05b2b1e5e71ae8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Kurz: Azure Active Directory integrace s malé vylepšení
 
-V tomto kurzu zjistěte, jak integrovat malé vylepšení s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate malé vylepšení v Azure Active Directory (Azure AD).
 
-Malé vylepšení integrace s Azure AD poskytuje následující výhody:
+Malé vylepšení integrace s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k vylepšení malé
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k malé vylepšení (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooSmall vylepšení
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooSmall vylepšení (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s malé vylepšení, potřebujete následující položky:
+tooconfigure integrace Azure AD s malé vylepšení, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Malých vylepšení jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání vylepšení malé z Galerie
+1. Přidání vylepšení malé z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-small-improvements-from-the-gallery"></a>Přidání vylepšení malé z Galerie
-Při konfiguraci integrace malé vylepšení do služby Azure AD, potřebujete přidat malé vylepšení z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-small-improvements-from-hello-gallery"></a>Přidání vylepšení malé z Galerie hello
+tooconfigure hello integrace malé vylepšení do Azure AD, je nutné tooadd malé vylepšení hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat malé vylepšení z galerie, proveďte následující kroky:**
+**tooadd malé vylepšení z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **malé vylepšení**.
+4. Hello vyhledávacího pole zadejte **malé vylepšení**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_search.png)
 
-5. Na panelu výsledků vyberte **malé vylepšení**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **malé vylepšení**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s malé vylepšení podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v malých vylepšení je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v malých vylepšení musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v malých vylepšení je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v malých vylepšení musí toobe navázat.
 
-V malých vylepšení přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V malých vylepšení přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s malé vylepšení, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s malé vylepšení, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele malé vylepšení](#creating-a-small-improvements-test-user)**  – Pokud chcete mít protějšek Britta Simon v malých vylepšení propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele malé vylepšení](#creating-a-small-improvements-test-user)**  -toohave protějšek Britta Simon v malých vylepšení, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci malé vylepšení.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci malé vylepšení.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s malé vylepšení, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s malé vylepšení, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **malé vylepšení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **malé vylepšení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_samlbase.png)
 
-3. Na **malé vylepšení domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **malé vylepšení domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.small-improvements.com`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.small-improvements.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.small-improvements.com`
+    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.small-improvements.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory pro malé vylepšení klienta](mailto:support@small-improvements.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory pro malé vylepšení klienta](mailto:support@small-improvements.com) tooget tyto hodnoty. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_certificate.png) 
 
@@ -125,80 +125,80 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_400.png)
 
-6. Na **malé konfigurace vylepšení** klikněte na tlačítko **konfigurace malých vylepšení** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **malé konfigurace vylepšení** klikněte na tlačítko **konfigurace malých vylepšení** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_configure.png) 
 
-7. V jiném okně prohlížeče Přihlaste se k serveru vaší společnosti malé vylepšení jako správce.
+7. V jiném okně prohlížeče Přihlaste se jako správce na webu společnosti tooyour malé vylepšení.
 
-8. Na stránce hlavní řídicí panel, klikněte na tlačítko **správy** tlačítko na levé straně.
+8. Na stránce hello hlavní řídicí panel, klikněte na tlačítko **správy** tlačítko na levé straně hello.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
-9. Klikněte **jednotné přihlašování SAML** tlačítko z **integrace** části.
+9. Klikněte na tlačítko hello **jednotné přihlašování SAML** tlačítko z **integrace** části.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
-10. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
+10. Na stránce instalace jednotné přihlašování hello proveďte následující kroky hello:
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. V **koncový bod HTTP** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    a. V hello **koncový bod HTTP** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
 
-    b. V poznámkovém bloku otevřete stažený certifikát, kopírovat obsah a vložte ji do **x509 certifikát** textové pole. 
+    b. Otevřete stažený certifikát v poznámkovém bloku hello kopírování obsahu a pak ji vložit do hello **x509 certifikát** textové pole. 
 
-    c. Pokud chcete mít jednotné přihlašování a přihlašovací formulář ověřování možnost k dispozici pro uživatele, zkontrolujte **povolit přístup přes heslo pro přihlášení příliš** možnost.  
+    c. Pokud chcete toohave jednotné přihlašování a přihlašovací formulář ověřování možnost k dispozici pro uživatele, zkontrolujte hello **povolit přístup přes heslo pro přihlášení příliš** možnost.  
 
-    d. Zadejte odpovídající hodnotu pro název tlačítko jednotného přihlášení v **SAML výzva** textové pole.  
+    d. Zadejte hello odpovídající hodnotu tooName hello přihlášení SSO tlačítko hello **SAML výzva** textové pole.  
 
     e. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-small-improvements-test-user"></a>Vytvoření zkušebního uživatele malé vylepšení
 
-Povolit uživatelům Azure AD přihlášení k vylepšení malé, musí být zřízená do malých vylepšení. V případě malé vylepšení zřizování je ruční úloha.
+Uživatelé toolog tooenable Azure AD v tooSmall vylepšení, se musí být zřízená do malých vylepšení. V případě hello malé vylepšení zřizování je ruční úloha.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**tooprovision uživatelský účet, proveďte následující kroky hello:**
 
-1. Přihlašování k webu společnosti malé vylepšení jako správce.
+1. Web společnosti malé vylepšení tooyour přihlášení jako správce.
 
-2. Na domovské stránce, přejděte do nabídky na levé straně, klikněte na tlačítko **správy**.
+2. Na domovské stránce hello, přejděte na hello zbývajících toohello nabídky, klikněte na tlačítko **správy**.
 
-3. Klikněte **adresář uživatelského** tlačítko z části Správa uživatelů. 
+3. Klikněte na tlačítko hello **adresář uživatelského** tlačítko z části Správa uživatelů. 
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
@@ -206,37 +206,37 @@ Povolit uživatelům Azure AD přihlášení k vylepšení malé, musí být zř
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
-5. Na **přidat uživatele** dialogové okno, proveďte následující kroky: 
+5. Na hello **přidat uživatele** dialogové okno, proveďte následující kroky hello: 
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    a. Zadejte **křestní jméno** uživatele jako **Britta**.
+    a. Zadejte hello **křestní jméno** uživatele jako **Britta**.
 
-    b. Zadejte **příjmení** uživatele jako **Simon**.
+    b. Zadejte hello **příjmení** uživatele jako **Simon**.
 
-    c. Zadejte **e-mailu** uživatele jako  **brittasimon@contoso.com** . 
+    c. Zadejte hello **e-mailu** uživatele jako  **brittasimon@contoso.com** . 
 
-    d. Můžete také zadat osobní zprávu v **odeslat e-mailové oznámení** pole. Pokud nechcete, aby k odesílání oznámení, poté zrušte zaškrtnutí tohoto políčka.
+    d. Můžete také tooenter hello osobní zprávu v hello **odeslat e-mailové oznámení** pole. Pokud nechcete, aby toosend hello oznámení, poté zrušte zaškrtnutí tohoto políčka.
 
     e. Klikněte na tlačítko **vytvořte uživatele**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu malé vylepšení.
+V této části povolíte tak, že udělíte přístup k vylepšení tooSmall toouse Britta Simon Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon malé vylepšení, proveďte následující kroky:**
+**tooassign Britta Simon tooSmall vylepšení, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **malé vylepšení**.
+2. V seznamu aplikace hello vyberte **malé vylepšení**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -244,7 +244,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -252,13 +252,13 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.  
+Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.  
 
-Když kliknete na dlaždici malé vylepšení na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci malé vylepšení.
+Po kliknutí na tlačítko hello malé vylepšení dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour malé vylepšení aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

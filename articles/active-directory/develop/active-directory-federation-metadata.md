@@ -1,6 +1,6 @@
 ---
-title: "Federační Metadata Azure AD | Microsoft Docs"
-description: "Tento článek popisuje federační metadata dokumentu, který publikuje Azure Active Directory pro služby, které přijímají tokeny služby Azure Active Directory."
+title: "aaaAzure AD federačních metadat | Microsoft Docs"
+description: "Tento článek popisuje hello federační metadata dokument, který publikuje Azure Active Directory pro služby, které přijímají tokeny služby Azure Active Directory."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,41 +15,41 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ecafb02a6ac13d1c3cd1fe77ef710cd8525e32b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 23535bcd5eeb3e9b2e17d89a9b0420fc98bd3895
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="federation-metadata"></a>Metadata federování
-Azure Active Directory (Azure AD) publikuje dokumentu metadat federace pro služby nakonfigurovaný tak, aby přijímal tokeny zabezpečení, které Azure AD vydá. Formát dokumentu metadat federace je popsaný v tématu [Web Services Federation Language (WS-Federation) verze 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), který rozšiřuje [Metadata pro v2.0 OASIS Security Assertion Markup Language (SAML)](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+Azure Active Directory (Azure AD) publikuje federační metadata dokumentu pro služby, které je nakonfigurováno tokeny zabezpečení hello tooaccept, které Azure AD vydá. Hello formát dokument federačních metadat je popsaná v hello [Web Services Federation Language (WS-Federation) verze 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), který rozšiřuje [Metadata pro hello OASIS Security Assertion Markup Language (SAML) v2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Specifické pro klienta a koncové body metadat nezávislé na klienta
 Azure AD publikuje koncové body konkrétního klienta a nezávislé na klienta.
 
-Koncové body konkrétního klienta jsou navrženy pro konkrétního klienta. Specifické pro klienta federační metadata obsahují informace o klientovi, včetně informací o konkrétního klienta vystavitele a koncového bodu. Aplikace, které omezují přístup na jednoho klienta pomocí konkrétního klienta koncové body.
+Koncové body konkrétního klienta jsou navrženy pro konkrétního klienta. Hello konkrétního klienta federační metadata obsahují informace o klientovi hello, včetně vystavitele konkrétního klienta a informace o koncovém. Aplikace, které omezují přístup tooa jednoho klienta pomocí konkrétního klienta koncové body.
 
-Koncové body klienta nezávislé poskytují informace, které jsou společné pro všechny klienty Azure AD. Tyto informace platí pro klienty hostovanou na *login.microsoftonline.com* , že je sdílená mezi klienty. Nezávislé na klienta koncových bodů – se doporučují pro víceklientské aplikace, vzhledem k tomu, že nejsou přidružené žádné konkrétní klienta.
+Koncové body klienta nezávislé poskytují informace, které je běžné tooall klienty Azure AD. Tyto informace se vztahují tootenants hostovanou na *login.microsoftonline.com* , že je sdílená mezi klienty. Nezávislé na klienta koncových bodů – se doporučují pro víceklientské aplikace, vzhledem k tomu, že nejsou přidružené žádné konkrétní klienta.
 
 ## <a name="federation-metadata-endpoints"></a>Koncové body federačních metadat
 Azure AD publikuje federační metadata v `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.
 
-Pro **koncové body konkrétního klienta**, `TenantDomainName` může být jedna z následujících typů:
+Pro **koncové body konkrétního klienta**, hello `TenantDomainName` může být jedna z hello následující typy:
 
 * Klienta registrovaný název domény služby Azure AD, jako například: `contoso.onmicrosoft.com`.
-* Neměnné ID domény, jako například klienta `72f988bf-86f1-41af-91ab-2d7cd011db45`.
+* Hello neměnné ID hello domény, jako například klienta `72f988bf-86f1-41af-91ab-2d7cd011db45`.
 
-Pro **koncové body klienta nezávislé**, `TenantDomainName` je `common`. Tento dokument uvádí jenom prvky federačních metadat, které jsou společné pro všechny klienty Azure AD, které jsou hostované v login.microsoftonline.com.
+Pro **koncové body klienta nezávislé**, hello `TenantDomainName` je `common`. Tento dokument uvádí jenom prvky federačních metadat hello, které jsou společné tooall klienty Azure AD, které jsou hostované v login.microsoftonline.com.
 
-Koncový bod konkrétního klienta může být například `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Koncový bod nezávislé na klienta je [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadat federace můžete zobrazit tak, že zadáte tuto adresu URL v prohlížeči.
+Koncový bod konkrétního klienta může být například `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. koncový bod Hello nezávislé na klienta je [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadat federace hello můžete zobrazit tak, že zadáte tuto adresu URL v prohlížeči.
 
 ## <a name="contents-of-federation-metadata"></a>Obsah federační Metadata
-Následující část obsahuje informace potřebné pro služby, které používají tokeny vydané službou Azure AD.
+Hello následující část obsahuje informace potřebné pro služby, které používají hello tokeny vydané službou Azure AD.
 
 ### <a name="entity-id"></a>Entity ID
-`EntityDescriptor` Obsahuje element `EntityID` atribut. Hodnota `EntityID` atribut představuje vystavitele, tedy služby tokenů zabezpečení (STS) vydaný token. Je důležité k ověření vystavitele, když obdrží token.
+Hello `EntityDescriptor` obsahuje element `EntityID` atribut. Hello hodnotu hello `EntityID` atribut představuje hello vystavitele, tedy hello zabezpečení token služba TOKENŮ token tuto vydaných hello. Pokud obdržíte token, je důležité toovalidate hello vystavitele.
 
-Následující metadata zobrazí ukázku konkrétního klienta `EntityDescriptor` element s `EntityID` elementu.
+Hello následující metadata zobrazí ukázku konkrétního klienta `EntityDescriptor` element s `EntityID` elementu.
 
 ```
 <EntityDescriptor
@@ -57,9 +57,9 @@ xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
 ID="_b827a749-cfcb-46b3-ab8b-9f6d14a1294b"
 entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
-ID klienta v koncovém bodě nezávislé na klienta můžete nahradit vaše ID klienta k vytvoření konkrétního klienta `EntityID` hodnotu. Výsledná hodnota bude stejné jako vydavatel tokenu. Strategie umožňuje víceklientské aplikace k ověření vystavitele pro daného klienta.
+Můžete nahradit hello ID klienta v hello nezávislé na klienta endpoint toocreate ID vašeho klienta konkrétního klienta `EntityID` hodnotu. Výsledná hodnota Hello bude hello stejná hodnota jako vydavatel tokenu hello. strategie Hello umožňuje vystavitele hello toovalidate víceklientské aplikace pro daného klienta.
 
-Následující metadata zobrazí ukázku nezávislé na klienta `EntityID` elementu. Upozorňujeme, že `{tenant}` je literál, není zástupný symbol.
+Hello následující metadata zobrazí ukázku nezávislé na klienta `EntityID` elementu. Upozorňujeme, že hello `{tenant}` je literál, není zástupný symbol.
 
 ```
 <EntityDescriptor
@@ -69,11 +69,11 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Podpisové certifikáty tokenu
-Když služba přijme token, který je vydaný klienta Azure AD, musí být podpis tokenu ověřené pomocí podpisový klíč, který je publikován v dokument federačních metadat. Federační metadata obsahují veřejnou část certifikátů, které klienti používat k podepisování tokenů. Nezpracovaná bajtů certifikátu se zobrazí v `KeyDescriptor` elementu. Podpisový certifikát tokenu je platný pro podepisování pouze tehdy, když hodnota `use` atribut je `signing`.
+Když služba přijme token, který je vydaný klienta Azure AD, hello podpisu tokenu hello musí být ověřené pomocí podpisový klíč, který je publikován v dokumentu metadat federace hello. Hello federační metadata obsahují hello veřejnou část hello certifikátů, které hello klientům používat k podepisování tokenů. Nezpracovaná bajtů Hello certifikátu se zobrazí v hello `KeyDescriptor` elementu. podpisový certifikát tokenu Hello je platná pro podepisování pouze když hello hodnotu hello `use` atribut je `signing`.
 
-Dokument metadat federace publikována ve službě Azure AD může mít několik podpisové klíče, například když se připravuje Azure AD k aktualizaci podpisového certifikátu. Pokud dokument federačních metadat obsahuje více než jeden certifikát, služba, která je ověřování tokenů by měly podporovat všechny certifikáty v dokumentu.
+Dokument metadat federace publikována ve službě Azure AD může mít několik podpisové klíče, jako je například pokud Azure AD se připravuje tooupdate hello podpisový certifikát. Pokud dokument federačních metadat obsahuje více než jeden certifikát, služba, která ověřuje tokeny hello by měly podporovat všechny certifikáty v dokumentu hello.
 
-Následující metadata zobrazí ukázku `KeyDescriptor` element s podpisový klíč.
+Hello následující metadata zobrazí ukázku `KeyDescriptor` element s podpisový klíč.
 
 ```
 <KeyDescriptor use="signing">
@@ -87,29 +87,29 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 </KeyDescriptor>
   ```
 
-`KeyDescriptor` Prvek se zobrazuje na dvou místech v dokument federačních metadat, v části WS-Federation konkrétní a v části konkrétní SAML. Certifikáty, které jsou publikovány v obou částech budou stejné.
+Hello `KeyDescriptor` prvek se zobrazuje na dvou místech v dokumentu metadat federace hello; v hello WS-Federation konkrétní a hello SAML konkrétní oddílu. certifikáty Hello publikované v obou částech bude hello stejné.
 
-V části WS-Federation konkrétní by čtečku metadat specifikace WS-Federation číst certifikáty z `RoleDescriptor` element s `SecurityTokenServiceType` typu.
+V části hello WS-Federation konkrétní by čtečku metadat specifikace WS-Federation číst hello certifikáty z `RoleDescriptor` element s hello `SecurityTokenServiceType` typu.
 
-Následující metadata zobrazí ukázku `RoleDescriptor` elementu.
+Hello následující metadata zobrazí ukázku `RoleDescriptor` elementu.
 
 ```
 <RoleDescriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fed="http://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="http://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-V části konkrétní SAML by čtečku metadat specifikace WS-Federation číst certifikáty z `IDPSSODescriptor` elementu.
+V části hello SAML konkrétní by čtečku metadat specifikace WS-Federation číst hello certifikáty z `IDPSSODescriptor` elementu.
 
-Následující metadata zobrazí ukázku `IDPSSODescriptor` elementu.
+Hello následující metadata zobrazí ukázku `IDPSSODescriptor` elementu.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
-Nejsou žádné rozdíly ve formátu konkrétního klienta a nezávislé na klientské certifikáty.
+Nejsou žádné rozdíly ve formátu hello certifikátů konkrétního klienta a nezávislé na klienta.
 
 ### <a name="ws-federation-endpoint-url"></a>Adresa URL koncového bodu služby WS-Federation
-Federační metadata obsahují adresu URL, která se používá Azure AD pro jeden přihlašování a odhlašování v protokolu WS-Federation jednou. Tento koncový bod se zobrazí v `PassiveRequestorEndpoint` elementu.
+Hello federační metadata obsahují hello používaná pro jeden přihlašování a odhlašování v protokolu WS-Federation jedním URL, která je Azure AD. Tento koncový bod se zobrazí v hello `PassiveRequestorEndpoint` elementu.
 
-Následující metadata zobrazí ukázku `PassiveRequestorEndpoint` element pro koncový bod konkrétního klienta.
+Hello následující metadata zobrazí ukázku `PassiveRequestorEndpoint` element pro koncový bod konkrétního klienta.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -120,7 +120,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-Pro koncový bod nezávislé na klienta adresa URL služby WS-Federation se zobrazí v koncovém bodě WS-Federation, jak znázorňuje následující ukázka.
+Pro koncový bod hello nezávislé na klienta hello WS-Federation adresa URL se zobrazí v koncový bod hello WS-Federation, jak je znázorněno v následující ukázka hello.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -133,11 +133,11 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>Adresa URL koncového bodu protokolu SAML
-Federační metadata obsahují adresu URL, která používá Azure AD pro jeden přihlašování a odhlašování v protokolu SAML 2.0 jednou. Tyto koncové body se zobrazí v `IDPSSODescriptor` elementu.
+Hello federační metadata obsahují hello URL, která používá Azure AD pro jeden přihlašování a odhlašování v protokolu SAML 2.0 jednou. Tyto koncové body se zobrazí v hello `IDPSSODescriptor` elementu.
 
-Přihlášení a odhlášení adresy URL se zobrazí v `SingleSignOnService` a `SingleLogoutService` elementy.
+Hello přihlášení a odhlášení adresy URL se zobrazí v hello `SingleSignOnService` a `SingleLogoutService` elementy.
 
-Následující metadata zobrazí ukázku `PassiveResistorEndpoint` pro koncový bod konkrétního klienta.
+Hello následující metadata zobrazí ukázku `PassiveResistorEndpoint` pro koncový bod konkrétního klienta.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -147,7 +147,7 @@ Následující metadata zobrazí ukázku `PassiveResistorEndpoint` pro koncový 
   </IDPSSODescriptor>
 ```
 
-Podobně jako koncové body pro běžné koncové body protokolu SAML 2.0 jsou publikovány v nezávislé na klienta federačních metadat, jak znázorňuje následující ukázka.
+Podobně hello koncové body pro hello běžné koncové body protokolu SAML 2.0 jsou publikovány v hello nezávislé na klienta federačních metadat, jak je znázorněno v následující ukázka hello.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

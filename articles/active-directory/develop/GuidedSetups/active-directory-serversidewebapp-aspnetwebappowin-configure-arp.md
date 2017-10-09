@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 ASP.NET Web Server získávání spuštěno – konfigurace | Microsoft Docs"
+title: "aaaAzure AD v2 ASP.NET Web Server Začínáme - Config | Microsoft Docs"
 description: "Implementace přihlašování společnosti Microsoft na řešení technologie ASP.NET s tradiční webovou aplikací využívajících prohlížeč pomocí OpenID Connect standard"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,24 +15,24 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 8a1650a65e7980f4a13fa4edc7918b0099bb5464
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: badc47e131290a56a507592f944a0fc7093260a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>Konfigurace webové aplikace ASP.NET s informace o registraci aplikace
+## <a name="configure-your-aspnet-web-app-with-hello-applications-registration-information"></a>Konfigurace webové aplikace ASP.NET s informace o registraci aplikace hello
 
-V tomto kroku nakonfigurujete svůj projekt na používání protokolu SSL a pak použijte adresu URL SSL konfigurovat informace o registraci vaší aplikace. Potom tuto aplikaci přidat, informace o registraci do řešení prostřednictvím *web.config*.
+V tomto kroku konfigurace vašeho projektu toouse SSL a pak použít hello SSL URL tooconfigure informace o registraci vaší aplikace. Po této, přidání aplikace hello' registrační informace tooyour řešení prostřednictvím *web.config*.
 
-1.  V Průzkumníku řešení, vyberte projekt a podívejte se na `Properties` okno (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
-2.  Změna `SSL Enabled` na`True`
-3.  Zkopírujte hodnotu z `SSL URL` výše a vložte jej do `Redirect URL` pole nahoře na této stránce a pak klikněte na *aktualizace*:<br/><br/>![Vlastnosti projektu](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-4.  Přidejte následující v `web.config` soubor umístěný na kořenové složky, části `configuration\appSettings`:
+1.  V Průzkumníku řešení, vyberte hello projekt a podívejte se na hello `Properties` okno (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
+2.  Změna `SSL Enabled` příliš`True`
+3.  Zkopírujte hodnotu hello z `SSL URL` výše a vložte ji do hello `Redirect URL` pole na hello horní části této stránky a pak klikněte na *aktualizace*:<br/><br/>![Vlastnosti projektu](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
+4.  Přidejte následující hello `web.config` soubor umístěný na kořenové složky, části `configuration\appSettings`:
 
 ```xml
-<add key="ClientId" value="[Enter the application Id here]" />
-<add key="RedirectUri" value="[Enter the Redirect URL here]" />
+<add key="ClientId" value="[Enter hello application Id here]" />
+<add key="RedirectUri" value="[Enter hello Redirect URL here]" />
 <add key="Tenant" value="common" />
 <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
 ```

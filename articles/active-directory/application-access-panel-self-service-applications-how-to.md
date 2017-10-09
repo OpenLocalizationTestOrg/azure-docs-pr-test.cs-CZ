@@ -1,6 +1,6 @@
 ---
-title: "Jak používat přístup k aplikaci Samoobslužné služby | Microsoft Docs"
-description: "Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace"
+title: "přístup k samoobslužné služby aplikaci toouse aaaHow | Microsoft Docs"
+description: "Povolit aplikaci Samoobslužné služby přístup tooallow uživatelé toofind svých vlastních aplikacích"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,73 +14,73 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 08a05a70d976104d4e0a37b0a0dd15042b0212d8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 03a44c20d544a6232fa802bcffaf70e5030ad3ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-self-service-application-access"></a>Jak používat přístup k aplikaci Samoobslužné služby
+# <a name="how-toouse-self-service-application-access"></a>Jak přistupovat k toouse samoobslužné služby aplikace
 
-Než uživatelům můžete zjistit samoobslužné aplikací z jejich přístupového panelu, musíte povolit **přístup k aplikaci Samoobslužné služby** pro všechny aplikace, které chcete povolit uživatelům samoobslužné zjišťování a požádat o přístup k.
+Než uživatelům můžete zjistit samoobslužné aplikací z jejich přístupového panelu, musíte tooenable **přístup k aplikaci Samoobslužné služby** tooany aplikace, které chcete tooallow uživatelé tooself-zjišťovat a požádat o přístup k.
 
-Tato funkce je skvělý způsob, jak ušetřit čas i finanční prostředky jako skupinu IT a důrazně doporučujeme jako součást nasazení moderních aplikací s Azure Active Directory.
+Tato funkce je skvělým způsobem, abyste toosave čas a peníze jako IT oddělení a důrazně doporučujeme jako součást nasazení moderních aplikací s Azure Active Directory.
 
 Pomocí této funkce můžete:
 
--   Umožní uživatelům samoobslužné zjišťování aplikací z [Panel přístupu aplikace](https://myapps.microsoft.com/) bez bothering IT oddělení.
+-   Umožní uživatelům samoobslužné zjišťování aplikací z hello [Panel přístupu aplikace](https://myapps.microsoft.com/) bez bothering hello IT skupiny.
 
--   Přidání těchto uživatelů do skupinu předem nakonfigurovaná tak, aby v tématu, který žádá o přístup, odebrat přístup a spravovat role přiřazené k nim.
+-   Přidejte tyto skupiny předem nakonfigurovaná tooa uživatelů tak, aby v tématu, který žádá o přístup, odebrání přístupu a spravovat role hello přiřazené toothem.
 
--   Volitelně můžete povolit obchodní schvalovatel ke schválení žádosti o přístup aplikace, není třeba IT oddělení.
+-   Volitelně povolení schvalovatel obchodní tooapprove aplikace požadavků na přístup, není třeba hello IT oddělení.
 
--   Volitelně můžete nakonfigurujte až 10 jednotlivce, kteří mohou schválit přístup k této aplikaci.
+-   Volitelně můžete nakonfigurujte až too10 jednotlivce, kteří mohou schválit přístup toothis aplikace.
 
--   Volitelně můžete povolit obchodní schvalovatel k nastavení hesla uživatele, můžete použít k přihlášení do aplikace, vpravo od schvalovatele obchodní [Panel přístupu aplikace](https://myapps.microsoft.com/).
+-   Volitelně můžete povolit schvalovatel obchodní tooset hello hesla uživatele, můžete použít toosign v aplikaci toohello vpravo od schvalovatele hello firmy [Panel přístupu aplikace](https://myapps.microsoft.com/).
 
--   Volitelně můžete automaticky přiřadíte přímo přiřazené aplikační role uživatele samoobslužné služby.
+-   Volitelně můžete automaticky přiřadíte přímo přiřazené uživatelům samoobslužné služby tooan aplikační role.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace
+## <a name="enable-self-service-application-access-tooallow-users-toofind-their-own-applications"></a>Povolit aplikaci Samoobslužné služby přístup tooallow uživatelé toofind svých vlastních aplikacích
 
-Přístup k aplikaci Samoobslužné služby je skvělým způsobem, jak povolit uživatelům samoobslužné zjišťování aplikací, můžete povolit obchodní skupiny můžete schválit přístup pro tyto aplikace. Můžete povolit obchodní skupině pro správu přiřazené pro tyto uživatele pro heslo jednotné přihlašování v aplikacích vpravo z jejich přístup panelů přihlašovací údaje.
+Přístup k aplikaci Samoobslužné služby je skvělý způsob tooallow uživatelé tooself-zjišťovat aplikace, můžete také povolit hello firmy skupiny tooapprove přístup toothose aplikace. Můžete povolit, že pověření hello hello firmy skupiny toomanage přiřadili toothose uživatelů pro heslo jednotné přihlašování v aplikacích přímo z jejich panelů přístup.
 
-Pokud chcete povolit samoobslužné služby aplikaci přístup k aplikaci, postupujte podle následujících kroků:
+tooenable aplikace Samoobslužné služby přístup tooan aplikace, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, které chcete povolit samoobslužné přístup ze seznamu.
+6.  Vyberte aplikaci hello chcete tooenable samoobslužné služby přístup toofrom hello seznamu.
 
-7.  Po načtení aplikace, klikněte na **samoobslužné služby** navigační nabídce vlevo aplikace.
+7.  Po načtení hello aplikace, klikněte na **samoobslužné služby** z aplikace hello levém navigační nabídky.
 
-8.  Pokud chcete povolit přístup k aplikaci Samoobslužné služby pro tuto aplikaci, zapněte **povolit uživatelům žádat o přístup k této aplikaci?** přepnutím **Ano.**
+8.  tooenable přístup k aplikaci Samoobslužné služby pro tuto aplikaci, aktivujte hello **povolit uživatelům toorequest přístup toothis aplikace?** přepnutí příliš**Ano.**
 
-9.  V dalším kroku vyberte skupiny, které uživatelům, kteří požadují by se měl přístup k této aplikaci přidat, klikněte na tlačítko modulu pro výběr vedle popisek **skupinu, pro kterou má přiřazené byli přidáni uživatelé?** a vyberte skupinu.
+9.  V dalším kroku tooselect hello skupiny toowhich uživatelů, kteří požadují přístup toothis aplikace by měla být přidány, klikněte na tlačítko hello selektor další toohello popisek **toowhich skupina by měla přiřazená byli přidáni uživatelé?** a vyberte skupinu.
 
-10. **Volitelné:** nastaví, pokud chcete vyžadovat schválení obchodní před uživatelé mají povolen přístup **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
+10. **Volitelné:** nechcete-li toorequire obchodní schválení předtím, než mohou uživatelé přístup, nastavte hello **vyžadovat schválení před udělením přístupu toothis aplikace?** přepnutí příliš**Ano**.
 
-11. **Volitelné: pro aplikace pomocí hesla jednotné přihlašování na pouze** Pokud chcete povolit tyto firmy schvalovatelů k zadání hesla, které se odesílají na tuto žádost o schválení uživatelé, nastavte **povolit schvalovatelů k nastavení hesla uživatele pro tuto aplikaci?** přepnutím **Ano**.
+11. **Volitelné: pro aplikace pomocí hesla jednotné přihlašování na pouze** Pokud chcete tyto firmy schvalovatelů toospecify hello hesel, která se posílají toothis žádost o schválení uživatelé tooallow, nastavte hello **tooset schvalovatelů povolit hesla uživatele pro tuto aplikaci?**  přepnutí příliš**Ano**.
 
-12. **Volitelné:** pro zadání schvalovatelů firmy, kteří mají povoleno schválit přístup k této aplikaci, klikněte na výběr vedle popisek **kdo může schválit přístup k této aplikaci?** můžete vybrat až 10 jednotlivé obchodní schvalovatele.
+12. **Volitelné:** toospecify hello firmy schvalovatelů, kteří mají povoleno tooapprove přístup toothis aplikace, klikněte na tlačítko hello selektor další toohello popisek **kdo je povolená tooapprove přístup toothis aplikace?** tooselect nahoru too10 jednotlivé obchodní schvalovatelů.
 
    * Skupiny nejsou podporovány.
 
-13. **Volitelné:** **pro aplikace, které zveřejňují role**, pokud chcete přiřadit roli schválené uživatelé samoobslužné služby, klikněte na modulu pro výběr vedle **do role, které by měl být přiřazena uživatelům v této aplikaci?** vyberte roli, ke kterému by se měla přiřadit těmto uživatelům.
+13. **Volitelné:** **pro aplikace, které zveřejňují role**, pokud chcete, aby role tooa tooassign schválené uživatelé samoobslužné služby, klikněte na tlačítko Další toohello hello selektor **toowhich role lze přiřadit uživatelům v této aplikace?**  tooselect hello role toowhich by měla být přiřazená tyto uživatele.
 
-14. Klikněte **Uložit** tlačítka v horní části okna dokončit.
+14. Klikněte na tlačítko hello **Uložit** tlačítko hello horní části okna toofinish hello.
 
-Po dokončení konfigurace samoobslužné služby aplikace, uživatelé mohou přejít na jejich [Panel přístupu aplikace](https://myapps.microsoft.com/) a klikněte na tlačítko **+ přidat** tlačítko k vyhledání aplikace, na které jste povolili samoobslužné služby přístup. Obchodní schvalovatelů také zobrazit oznámení v jejich [Panel přístupu aplikace](https://myapps.microsoft.com/). Můžete povolit e-mail s upozorněním, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení. 
+Po dokončení konfigurace samoobslužné služby aplikace, uživatelé mohou přejít tootheir [Panel přístupu aplikace](https://myapps.microsoft.com/) a klikněte na tlačítko hello **+ přidat** tlačítko toofind hello aplikace toowhich jste povolili Samoobslužné služby přístup. Obchodní schvalovatelů také zobrazit oznámení v jejich [Panel přístupu aplikace](https://myapps.microsoft.com/). Můžete povolit e-mail s upozorněním, když uživatel požaduje přístup tooan aplikace, která vyžaduje schválení. 
 
-Tato schválení podporují jeden schválení pracovní postupy, což znamená, že pokud zadáte několik schvalovatelů, jeden schvalovatel může schválit přístup k aplikaci.
+Tato schválení podporují jeden schválení pracovních pouze, což znamená, že pokud zadáte několik schvalovatelů, jeden schvalovatel může schválit přístup toohello aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 [Nastavení služby Azure Active Directory pro samoobslužnou správu skupin](active-directory-accessmanagement-self-service-group-management.md)

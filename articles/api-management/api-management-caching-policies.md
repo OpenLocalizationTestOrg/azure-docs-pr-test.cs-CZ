@@ -1,6 +1,6 @@
 ---
-title: "Zásady ukládání do mezipaměti Azure API Management | Microsoft Docs"
-description: "Další informace o ukládání do mezipaměti zásady, které jsou k dispozici pro použití v Azure API Management."
+title: "ukládání do mezipaměti zásady služby API Management aaaAzure | Microsoft Docs"
+description: "Další informace o hello zásady, které jsou k dispozici pro použití v Azure API Management ukládání do mezipaměti."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a8f012e7e223ef5c1683c8a6c5ecf2f3e96bed8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd6b0721945609b28dbf6e7ef0631979c08c8c65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-caching-policies"></a>Ukládání do mezipaměti zásady služby API Management
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Toto téma obsahuje odkaz pro hello následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CachingPolicies"></a>Zásady ukládání do mezipaměti  
   
@@ -29,26 +29,26 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
     -   [Získat z mezipaměti](api-management-caching-policies.md#GetFromCache) -provést mezipaměti vyhledat a vrátit platnou do mezipaměti odpovědi, pokud je k dispozici.  
   
-    -   [Úložiště pro mezipaměť](api-management-caching-policies.md#StoreToCache) -ukládá do mezipaměti odpovědi podle konfigurace zadané mezipaměti ovládacího prvku.  
+    -   [Uložení toocache](api-management-caching-policies.md#StoreToCache) – mezipamětí odpovědí podle konfigurace toohello zadaný mezipaměti ovládacího prvku.  
   
 -   Hodnota zásady ukládání do mezipaměti  
   
     -   [Získat hodnotu z mezipaměti](#GetFromCacheByKey) -načíst položky v mezipaměti podle klíče.  
   
-    -   [Uložení v mezipaměti hodnoty](#StoreToCacheByKey) -uložit položky do mezipaměti podle klíče.  
+    -   [Uložení v mezipaměti hodnoty](#StoreToCacheByKey) -uložit položku hello mezipaměti podle klíče.  
   
-    -   [Odebrat hodnotu z mezipaměti](#RemoveCacheByKey) -odebrání položky v mezipaměti podle klíče.  
+    -   [Odebrat hodnotu z mezipaměti](#RemoveCacheByKey) -odebrání položky v mezipaměti hello podle klíče.  
   
 ##  <a name="GetFromCache"></a>Získat z mezipaměti  
- Použití `cache-lookup` zásad provést mezipaměti vyhledat a vrátit platnou odpověď uložená v mezipaměti pokud je k dispozici. Tuto zásadu lze použít v případech, kde odpovědi obsah zůstane statické přes v časovém intervalu. Ukládání odpovědí do mezipaměti omezuje šířku pásma a požadavky na zpracování uložených na back-end webový server a snižuje latence zaznamenatelného spotřebiteli rozhraní API.  
+ Použití hello `cache-lookup` tooperform mezipaměť zásad vyhledat a vrátit platnou odpověď uložená v mezipaměti pokud je k dispozici. Tuto zásadu lze použít v případech, kde odpovědi obsah zůstane statické přes v časovém intervalu. Ukládání odpovědí do mezipaměti omezuje šířku pásma a požadavky na zpracování uložených na hello back-end webový server a snižuje latence, zaznamenatelného spotřebiteli rozhraní API.  
   
 > [!NOTE]
->  Tato zásada musí mít odpovídající [úložiště do mezipaměti](api-management-caching-policies.md#StoreToCache) zásad.  
+>  Tato zásada musí mít odpovídající [toocache úložiště](api-management-caching-policies.md#StoreToCache) zásad.  
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
 ```xml  
-<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">  
+<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression tooevaluate)">  
   <vary-by-header>Accept</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Accept-Charset</vary-by-header>  
@@ -82,18 +82,18 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Příklad pomocí výrazů zásad  
- Tento příklad ukazuje, jak k ke konfiguraci ukládání do mezipaměti dobu trvání, která odpovídá odpovědi ukládání do mezipaměti back-end službu jako odpověď API Management můžou být specifikované pomocí služby zálohování `Cache-Control` – direktiva. Ukázka konfiguraci a použití této zásady, najdete v části [cloudu zahrnují díl 177: rozhraní API funkce správy více s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převíjení vpřed na 25:25.  
+ Tento příklad ukazuje, jak odpovědi API Management tootooconfigure ukládání do mezipaměti Doba trvání, zda text hello odpovídá ukládání odpovědí do mezipaměti hello back-end služby podle specifikace hello zálohovaný služby `Cache-Control` – direktiva. Ukázka konfiguraci a použití této zásady, najdete v části [cloudu zahrnují díl 177: rozhraní API funkce správy více s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a převinutí vpřed too25:25.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- hello following cache policy snippets demonstrate how toocontrol API Management reponse cache duration with Cache-Control headers sent by hello backend service. -->  
   
-<!-- Copy this snippet into the inbound section -->  
+<!-- Copy this snippet into hello inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
   <vary-by-header>Accept</vary-by-header>  
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into hello outbound section. Note that cache duration is set toohello max-age value provided in hello Cache-Control header received from hello backend service or toohello deafult value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -116,21 +116,21 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Povolit privátní odpovědi-ukládání do mezipaměti|Pokud nastavíte hodnotu `true`, umožňuje ukládání do mezipaměti požadavků, které obsahují autorizační hlavičky.|Ne|False|  
-|podřízený typ ukládání do mezipaměti|Tento atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -none - podřízené ukládání do mezipaměti není povolen.<br />-soukromý – podřízené privátní ukládání do mezipaměti je povolen.<br />-veřejný - privátní a sdílené podřízené ukládání do mezipaměti je povolen.|Ne|None|  
-|musí revalidate|Pokud je povoleno ukládání do mezipaměti podřízené tento atribut Zapne nebo vypne `must-revalidate` direktiva ovládací prvek mezipaměti v odpovědi brány.|Ne|Hodnota TRUE|  
-|se liší podle vývojáře|Nastavte na `true` do mezipaměti odpovědi na vývojáře klíč.|Ne|False|  
-|se liší podle vývojáře skupiny –|Nastavte na `true` do mezipaměti odpovědi na roli uživatele.|Ne|False|  
+|Povolit privátní odpovědi-ukládání do mezipaměti|Pokud nastavíte příliš`true`, umožňuje ukládání do mezipaměti požadavků, které obsahují autorizační hlavičky.|Ne|False|  
+|podřízený typ ukládání do mezipaměti|Tento atribut musí být nastavena tooone hello následující hodnoty.<br /><br /> -none - podřízené ukládání do mezipaměti není povolen.<br />-soukromý – podřízené privátní ukládání do mezipaměti je povolen.<br />-veřejný - privátní a sdílené podřízené ukládání do mezipaměti je povolen.|Ne|None|  
+|musí revalidate|Pokud je povoleno ukládání do mezipaměti podřízené tento atribut Zapne nebo vypne hello `must-revalidate` direktiva ovládací prvek mezipaměti v odpovědi brány.|Ne|Hodnota TRUE|  
+|se liší podle vývojáře|Nastavení příliš`true` toocache odpovědi na vývojáře klíč.|Ne|False|  
+|se liší podle vývojáře skupiny –|Nastavení příliš`true` toocache odpovědi na roli uživatele.|Ne|False|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásady:** příchozí  
   
 -   **Zásady obory:** rozhraní API, operace, produktu  
   
-##  <a name="StoreToCache"></a>Ukládání do mezipaměti  
- `cache-store` Zásad ukládá do mezipaměti odpovědi podle nastavení zadaný mezipaměti. Tuto zásadu lze použít v případech, kde odpovědi obsah zůstane statické přes v časovém intervalu. Ukládání odpovědí do mezipaměti omezuje šířku pásma a požadavky na zpracování uložených na back-end webový server a snižuje latence zaznamenatelného spotřebiteli rozhraní API.  
+##  <a name="StoreToCache"></a>Toocache úložiště  
+ Hello `cache-store` odpovědí mezipamětí zásady podle toohello zadaná nastavení mezipaměti. Tuto zásadu lze použít v případech, kde odpovědi obsah zůstane statické přes v časovém intervalu. Ukládání odpovědí do mezipaměti omezuje šířku pásma a požadavky na zpracování uložených na hello back-end webový server a snižuje latence, zaznamenatelného spotřebiteli rozhraní API.  
   
 > [!NOTE]
 >  Tato zásada musí mít odpovídající [získat z mezipaměti](api-management-caching-policies.md#GetFromCache) zásad.  
@@ -161,18 +161,18 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Příklad pomocí výrazů zásad  
- Tento příklad ukazuje, jak k ke konfiguraci ukládání do mezipaměti dobu trvání, která odpovídá odpovědi ukládání do mezipaměti back-end službu jako odpověď API Management můžou být specifikované pomocí služby zálohování `Cache-Control` – direktiva. Ukázka konfiguraci a použití této zásady, najdete v části [cloudu zahrnují díl 177: rozhraní API funkce správy více s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převíjení vpřed na 25:25.  
+ Tento příklad ukazuje, jak odpovědi API Management tootooconfigure ukládání do mezipaměti Doba trvání, zda text hello odpovídá ukládání odpovědí do mezipaměti hello back-end služby podle specifikace hello zálohovaný služby `Cache-Control` – direktiva. Ukázka konfiguraci a použití této zásady, najdete v části [cloudu zahrnují díl 177: rozhraní API funkce správy více s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a převinutí vpřed too25:25.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- hello following cache policy snippets demonstrate how toocontrol API Management reponse cache duration with Cache-Control headers sent by hello backend service. -->  
   
-<!-- Copy this snippet into the inbound section -->  
+<!-- Copy this snippet into hello inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
   <vary-by-header>Accept</vary-by-header>  
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into hello outbound section. Note that cache duration is set toohello max-age value provided in hello Cache-Control header received from hello backend service or toohello deafult value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -193,17 +193,17 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Doba trvání|Time-to-live položek v mezipaměti, zadané v sekundách.|Ano|Není k dispozici|  
+|Doba trvání|Time-to-live Dobrý den do mezipaměti položky, které jsou zadány v sekundách.|Ano|Není k dispozici|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásady:** odchozí  
   
 -   **Zásady obory:** rozhraní API, operace, produktu  
   
 ##  <a name="GetFromCacheByKey"></a>Získat hodnotu z mezipaměti  
- Použití `cache-lookup-value` zásady a provádět vyhledávání v mezipaměti podle klíče a vrátí hodnotu uloženou v mezipaměti. Klíč může mít hodnotu libovolný řetězec a se většinou poskytuje pomocí výrazů zásad.  
+ Použití hello `cache-lookup-value` tooperform zásady mezipaměti vyhledávání pomocí klíče a vrátí hodnotu uloženou v mezipaměti. klíč Hello může mít hodnotu libovolný řetězec a se většinou poskytuje pomocí výrazů zásad.  
   
 > [!NOTE]
 >  Tato zásada musí mít odpovídající [uložení hodnoty v mezipaměti](#StoreToCacheByKey) zásad.  
@@ -212,7 +212,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ```xml  
 <cache-lookup-value key="cache key value"   
-    default-value="value to use if cache lookup resulted in a miss"   
+    default-value="value toouse if cache lookup resulted in a miss"   
     variable-name="name of a variable looked up value is assigned to" />  
 ```  
   
@@ -236,19 +236,19 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Výchozí hodnota|Hodnota, která se přiřadí proměnné Pokud vyhledávání klíčů mezipaměti vedlo k neúspěšnému přístupu. Pokud se tento atribut nezadá, `null` je přiřazen.|Ne|`null`|  
-|key|Hodnota klíče mezipaměti pro použití v vyhledávání.|Ano|Není k dispozici|  
-|Název proměnné|Název [kontextové proměnné](api-management-policy-expressions.md#ContextVariables) looked až hodnota budou přiřazeny, pokud je úspěšné vyhledávání. Pokud vyhledávání výsledkem k neúspěšnému přístupu do, proměnné se přiřadí hodnota `default-value` atribut nebo `null`, pokud `default-value` atribut vynechán.|Ano|Není k dispozici|  
+|Výchozí hodnota|Hodnota, která se přiřadí proměnné toohello Pokud vyhledávání klíčů mezipaměti hello vedlo k neúspěšnému přístupu. Pokud se tento atribut nezadá, `null` je přiřazen.|Ne|`null`|  
+|key|Hodnota klíče toouse hello vyhledávání v mezipaměti.|Ano|Není k dispozici|  
+|Název proměnné|Název hello [kontextové proměnné](api-management-policy-expressions.md#ContextVariables) hello prohledávat hodnotu budou přiřazeny, pokud je úspěšné vyhledávání. Pokud vyhledávání vede k neúspěšnému přístupu do, hello proměnnou, bude přiřazen hello hodnotu hello `default-value` atribut nebo `null`, pokud hello `default-value` atribut vynechán.|Ano|Není k dispozici|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásady:** vstupní, výstupní a back-end, při chybě  
   
 -   **Zásady obory:** globální, rozhraní API, operace, produktu  
   
 ##  <a name="StoreToCacheByKey"></a>Hodnota úložiště v mezipaměti  
- `cache-store-value` Provede úložiště mezipaměti podle klíče. Klíč může mít hodnotu libovolný řetězec a se většinou poskytuje pomocí výrazů zásad.  
+ Hello `cache-store-value` provede úložiště mezipaměti podle klíče. klíč Hello může mít hodnotu libovolný řetězec a se většinou poskytuje pomocí výrazů zásad.  
   
 > [!NOTE]
 >  Tato zásada musí mít odpovídající [získat hodnotu z mezipaměti](#GetFromCacheByKey) zásad.  
@@ -256,7 +256,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
 ```xml  
-<cache-store-value key="cache key value" value="value to cache" duration="seconds" />  
+<cache-store-value key="cache key value" value="value toocache" duration="seconds" />  
 ```  
   
 ### <a name="example"></a>Příklad  
@@ -279,19 +279,19 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Doba trvání|Hodnota bude do mezipaměti pro hodnotu zadaná doba trvání, zadaný v sekundách.|Ano|Není k dispozici|  
-|key|V části se má uložit klíč mezipaměti hodnota.|Ano|Není k dispozici|  
-|hodnota|Hodnota ukládat do mezipaměti.|Ano|Není k dispozici|  
+|Doba trvání|Hodnota bude do mezipaměti pro hello zadat hodnotu doby trvání, zadaný v sekundách.|Ano|Není k dispozici|  
+|key|Hodnota klíče hello mezipaměti bude uložena v části.|Ano|Není k dispozici|  
+|hodnota|toobe hodnota Hello do mezipaměti.|Ano|Není k dispozici|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásady:** vstupní, výstupní a back-end, při chybě  
   
 -   **Zásady obory:** globální, rozhraní API, operace, produktu  
   
 ###  <a name="RemoveCacheByKey"></a>Odebrat hodnotu z mezipaměti  
- `cache-remove-value` Odstraní identifikovaný svůj klíč položky v mezipaměti. Klíč může mít hodnotu libovolný řetězec a se většinou poskytuje pomocí výrazů zásad.  
+ Hello `cache-remove-value` odstraní identifikovaný svůj klíč položky v mezipaměti. klíč Hello může mít hodnotu libovolný řetězec a se většinou poskytuje pomocí výrazů zásad.  
   
 #### <a name="policy-statement"></a>Prohlášení o zásadách  
   
@@ -319,10 +319,10 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|key|Klíče uložené v mezipaměti hodnota, která má být odebrány z mezipaměti.|Ano|Není k dispozici|  
+|key|klíč Hello hello dříve do mezipaměti hodnotu toobe odebraných z mezipaměti hello.|Ano|Není k dispozici|  
   
 #### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
 -   **Části zásady:** vstupní, výstupní a back-end, při chybě  
   

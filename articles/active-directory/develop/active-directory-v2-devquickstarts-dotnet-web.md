@@ -1,6 +1,6 @@
 ---
-title: "Služba Azure AD v2.0 .NET webové přihlášení aplikace Začínáme | Microsoft Docs"
-description: "Postup vytvoření webové aplikace MVC .NET, která podepisuje uživatele přihlašují pomocí Account Microsoft i osobní a pracovní nebo školní účty."
+title: "aaaAzure AD v2.0 .NET webové přihlášení aplikace Začínáme | Microsoft Docs"
+description: "Jak toobuild webové aplikace .NET MVC, přihlášení uživatelů s Account Microsoft i osobní a pracovní nebo školní účty."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ba5bdf7daba6086b70aec54ebe25d4445fa708c3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 241e9c90bd752fbecc3696ce4f1bed3f9772189d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-an-net-mvc-web-app"></a>Přidání přihlašování do webové aplikace .NET MVC
-S koncovým bodem v2.0 můžete rychle přidat ověřování do vaší webové aplikace s podporou pro oba osobní účty Microsoft a pracovní nebo školní účty.  V aplikacích ASP.NET web můžete to provést pomocí middlewaru OWIN společnosti Microsoft, zahrnutá v rozhraní .NET Framework 4.5.
+# <a name="add-sign-in-tooan-net-mvc-web-app"></a>Přidání přihlášení tooan .NET MVC webové aplikace
+S koncovým bodem v2.0 hello můžete rychle přidat ověřování tooyour webové aplikace s podporou pro oba osobní účty Microsoft a pracovní nebo školní účty.  V aplikacích ASP.NET web můžete to provést pomocí middlewaru OWIN společnosti Microsoft, zahrnutá v rozhraní .NET Framework 4.5.
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0 hello.  toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
 >
 
- Zde jsme budete vytvářet webové aplikace, která používá OWIN uživatele přihlásit, zobrazí některé informace o uživateli a přihlášení uživatele mimo aplikaci.
+ Zde jsme budete vytvářet webové aplikace, která používá OWIN toosign hello uživatele v zobrazení některé informace o uživateli hello a přihlašovací hello uživatele mimo aplikaci hello.
 
 ## <a name="download"></a>Ke stažení
-Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet).  Chcete-li sledovat, můžete [stáhnout kostru aplikace jako ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) nebo tuto kostru klonovat:
+Hello kód v tomto kurzu se udržuje [na Githubu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet).  toofollow společně, můžete [stáhnout kostru aplikace hello jako ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) nebo hello kostru klonovat:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
-Dokončená aplikace je k dispozici na konci tohoto kurzu také.
+aplikace Hello dokončit, je k dispozici na konci hello také tohoto kurzu.
 
 ## <a name="register-an-app"></a>Registrace aplikace
 Vytvoření nové aplikace v [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle těchto [podrobné kroky](active-directory-v2-app-registration.md).  Zkontrolujte, že:
 
-* Zkopírování **Id aplikace** přiřazené vaší aplikaci, budete ho potřebovat brzy k dispozici.
-* Přidat **webové** platformu pro vaši aplikaci.
-* Zadejte správný **identifikátor URI pro přesměrování**. Určuje identifikátor uri přesměrování do služby Azure AD, kde se mají směrovat ověřování odpovědí – výchozí hodnota pro tento kurz je `https://localhost:44326/`.
+* Poznamenejte hello **Id aplikace** přiřazen tooyour aplikace, budete ho potřebovat brzy k dispozici.
+* Přidat hello **webové** platformu pro vaši aplikaci.
+* Zadejte správný hello **identifikátor URI pro přesměrování**. Hello identifikátor uri přesměrování označuje tooAzure AD, kde se mají směrovat ověřování odpovědí – hello výchozí hodnota pro tento kurz je `https://localhost:44326/`.
 
 ## <a name="install--configure-owin-authentication"></a>Instalace a konfigurace ověřování OWIN.
-Zde nakonfigurujeme middleware OWIN pro použití ověřovacího protokolu OpenID Connect.  OWIN se použije k vydávání požadavků na přihlášení a odhlášení, spravovat relace uživatele a získat informace o uživateli, mimo jiné.
+Zde nakonfigurujeme hello OWIN middleware toouse hello ověřovacího protokolu OpenID Connect.  OWIN bude použité tooissue požadavků na přihlášení a odhlášení, spravovat hello uživatelské relace a získat informace o uživateli hello, mimo jiné.
 
-1. Chcete-li začít, otevřete `web.config` v kořenovém adresáři projektu soubor a zadejte hodnoty konfigurace vaší aplikace v `<appSettings>` oddílu.
+1. toobegin, otevřete hello `web.config` v kořenovém hello hello projektu soubor a zadejte hodnoty konfigurace vaší aplikace v hello `<appSettings>` části.
 
-  * `ida:ClientId` Je **Id aplikace** přiřazené vaší aplikaci v portálu pro registraci.
-  * `ida:RedirectUri` Je **identifikátor Uri pro přesměrování** jste zadali v portálu.
+  * Hello `ida:ClientId` je hello **Id aplikace** přiřazené tooyour aplikace v portálu pro registraci hello.
+  * Hello `ida:RedirectUri` je hello **identifikátor Uri pro přesměrování** jste zadali v portálu hello.
 
-2. Balíčky NuGet middleware OWIN v dalším kroku přidejte do projektu pomocí konzoly Správce balíčků.
+2. Dál přidejte hello OWIN middleware NuGet balíčky toohello projekt pomocí hello Konzola správce balíčků.
 
         ```
         PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -61,8 +61,8 @@ Zde nakonfigurujeme middleware OWIN pro použití ověřovacího protokolu OpenI
         PM> Install-Package Microsoft.Owin.Host.SystemWeb
         ```  
 
-3. Přidání "Třídy pro spuštění OWIN" do projektu názvem `Startup.cs` správné, klikněte na projekt--> **přidat** --> **nová položka** --> vyhledejte "OWIN".  Middleware OWIN při spuštění vaší aplikace vyvolá metodu `Configuration(...)`.
-4. Změňte deklaraci třídy k `public partial class Startup` -již implementovali jsme součástí této třídy pro vás v jiném souboru.  V `Configuration(...)` metoda, zkontrolujte zavolá ConfigureAuth(...) nastavení ověřování pro webovou aplikaci  
+3. Přidat projekt aplikace "Třídy pro spuštění OWIN" toohello nazývá `Startup.cs` správné, klikněte na projekt hello--> **přidat** --> **nová položka** --> vyhledejte "OWIN".  Hello OWIN middleware vyvolá hello `Configuration(...)` metoda při spuštění aplikace.
+4. Změňte deklaraci třídy hello příliš`public partial class Startup` -již implementovali jsme součástí této třídy pro vás v jiném souboru.  V hello `Configuration(...)` metoda, ujistěte se, volání tooConfigureAuth(...) tooset až ověřování pro webovou aplikaci  
 
         ```C#
         [assembly: OwinStartup(typeof(Startup))]
@@ -79,7 +79,7 @@ Zde nakonfigurujeme middleware OWIN pro použití ověřovacího protokolu OpenI
         }
         ```
 
-5. Otevřete soubor `App_Start\Startup.Auth.cs` a implementovat `ConfigureAuth(...)` metoda.  Parametry, zadejte v `OpenIdConnectAuthenticationOptions` bude sloužit jako souřadnice pro vaši aplikaci komunikovat s Azure AD.  Také budete muset nastavit ověřování souborů Cookie – používá soubory cookie pod pozadí, middleware OpenID Connect.
+5. Soubor otevřete hello `App_Start\Startup.Auth.cs` a implementovat hello `ConfigureAuth(...)` metoda.  Hello parametry, které zadáte v `OpenIdConnectAuthenticationOptions` bude sloužit jako souřadnice toocommunicate vaší aplikace s Azure AD.  Budete také potřebovat tooset až ověřování souborů Cookie – používá soubory cookie pod hello zahrnuje, OpenID Connect middleware hello.
 
         ```C#
         public void ConfigureAuth(IAppBuilder app)
@@ -91,9 +91,9 @@ Zde nakonfigurujeme middleware OWIN pro použití ověřovacího protokolu OpenI
                              app.UseOpenIdConnectAuthentication(
                                      new OpenIdConnectAuthenticationOptions
                                      {
-                                             // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
-                                             // The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
-                                             // In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
+                                             // hello `Authority` represents hello v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+                                             // hello `Scope` describes hello permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
+                                             // In a real application you could use issuer validation for additional checks, like making sure hello user's organization has signed up for your app, for instance.
         
                                              ClientId = clientId,
                                              Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
@@ -114,9 +114,9 @@ Zde nakonfigurujeme middleware OWIN pro použití ověřovacího protokolu OpenI
         ```
 
 ## <a name="send-authentication-requests"></a>Odeslání žádosti o ověření
-Aplikace je nyní správně nakonfigurováno pro komunikaci s koncovým bodem v2.0 pomocí ověřovacího protokolu OpenID Connect.  OWIN má postaráno všechny ugly podrobnosti věnujte zpráv ověřování, ověřování tokenů z Azure AD a udržování uživatelské relace.  Už jen zbývá umožnit uživatelům způsob, jak přihlášení a odhlášení.
+Aplikace je nyní správně nakonfigurované toocommunicate s koncovým bodem v2.0 hello pomocí ověřovacího protokolu OpenID Connect hello.  OWIN má postaráno všechny hello ugly podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelské relace.  Všechno, co zůstane je toogive vaši uživatelé odhlaste se a způsob toosign v.
 
-- Můžete použít autorizovat značky v řadičích tak, aby vyžadovala přihlášení tohoto uživatele před přístupem k určité stránky.  Otevřete `Controllers\HomeController.cs`a přidejte `[Authorize]` značka, které je o kontroleru.
+- Můžete použít autorizovat značky v vaše řadiče toorequire tento uživatel přihlásí před přístupem k určité stránky.  Otevřete `Controllers\HomeController.cs`a přidejte hello `[Authorize]` značky toohello o řadiče.
         
         ```C#
         [Authorize]
@@ -125,7 +125,7 @@ Aplikace je nyní správně nakonfigurováno pro komunikaci s koncovým bodem v2
           ...
         ```
 
-- Můžete taky OWIN přímo vydání žádosti o ověření z vašeho kódu.  Otevřete `Controllers\AccountController.cs`.  V SignIn() a SignOut() akce vydejte OpenID Connect výzvy a odhlášení požadavků, v uvedeném pořadí.
+- Můžete taky OWIN toodirectly problém žádosti o ověření z vašeho kódu.  Otevřete `Controllers\AccountController.cs`.  V hello SignIn() a SignOut() akce vydejte OpenID Connect výzvy a odhlášení požadavků, v uvedeném pořadí.
 
         ```C#
         public void SignIn()
@@ -137,7 +137,7 @@ Aplikace je nyní správně nakonfigurováno pro komunikaci s koncovým bodem v2
             }
         }
         
-        // BUGBUG: Ending a session with the v2.0 endpoint is not yet supported.  Here, we just end the session with the web app.  
+        // BUGBUG: Ending a session with hello v2.0 endpoint is not yet supported.  Here, we just end hello session with hello web app.  
         public void SignOut()
         {
             // Send an OpenID Connect sign-out request.
@@ -146,7 +146,7 @@ Aplikace je nyní správně nakonfigurováno pro komunikaci s koncovým bodem v2
         }
         ```
 
-- Nyní otevřete `Views\Shared\_LoginPartial.cshtml`.  Toto je, kde můžete zobrazit uživatele vaší aplikace přihlášení a odhlášení odkazy a vytiskněte uživatelské jméno v zobrazení.
+- Nyní otevřete `Views\Shared\_LoginPartial.cshtml`.  Toto je, kde můžete zobrazit uživatele hello odkazy přihlášení a odhlášení vaší aplikace a vytiskněte hello uživatelské jméno v zobrazení.
 
         ```HTML
         @if (Request.IsAuthenticated)
@@ -155,7 +155,7 @@ Aplikace je nyní správně nakonfigurováno pro komunikaci s koncovým bodem v2
                 <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-text">
         
-                        @*The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves.*@
+                        @*hello 'preferred_username' claim can be used for showing hello user's primary way of identifying themselves.*@
         
                         Hello, @(System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value)!
                     </li>
@@ -174,9 +174,9 @@ Aplikace je nyní správně nakonfigurováno pro komunikaci s koncovým bodem v2
         ```
 
 ## <a name="display-user-information"></a>Zobrazit informace o uživateli
-Při ověřování uživatelů s OpenID Connect, vrátí koncový bod v2.0 požadavku id_token na aplikaci, která obsahuje deklarace identity nebo tvrzení o uživateli.  Tyto deklarace identity můžete použít k přizpůsobení funkcí aplikace:
+Při ověřování uživatelů s OpenID Connect, vrátí koncového bodu v2.0 hello požadavku id_token toohello aplikaci, která obsahuje deklarace identity nebo tvrzení o hello uživatele.  Můžete použít tyto deklarace identity toopersonalize aplikace:
 
-- Otevřete soubor `Controllers\HomeController.cs`.  Dostanete deklaracích identity uživatele v řadičích prostřednictvím `ClaimsPrincipal.Current` zaregistrovaný objekt zabezpečení.
+- Otevřete hello `Controllers\HomeController.cs` souboru.  Deklarace identity uživatelů hello dostanete v řadičích prostřednictvím hello `ClaimsPrincipal.Current` zaregistrovaný objekt zabezpečení.
 
         ```C#
         [Authorize]
@@ -184,36 +184,36 @@ Při ověřování uživatelů s OpenID Connect, vrátí koncový bod v2.0 poža
         {
             ViewBag.Name = ClaimsPrincipal.Current.FindFirst("name").Value;
         
-            // The object ID claim will only be emitted for work or school accounts at this time.
+            // hello object ID claim will only be emitted for work or school accounts at this time.
             Claim oid = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier");
             ViewBag.ObjectId = oid == null ? string.Empty : oid.Value;
         
-            // The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves
+            // hello 'preferred_username' claim can be used for showing hello user's primary way of identifying themselves
             ViewBag.Username = ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
         
-            // The subject or nameidentifier claim can be used to uniquely identify the user
+            // hello subject or nameidentifier claim can be used toouniquely identify hello user
             ViewBag.Subject = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
         
             return View();
         }
         ```
 
-## <a name="run"></a>Spuštění
-Nakonec sestavte a spusťte aplikaci!   Přihlaste se pomocí osobního Account Microsoft nebo pracovní nebo školní účet a Všimněte si, jak se odrazí identitu uživatelů v horním navigačním panelu.  Nyní máte webovou aplikaci zabezpečené pomocí standardních oborových protokolech, které může ověřit uživatele s svoje osobní, tak i pracovní nebo školní účty.
+## <a name="run"></a>Spusťte
+Nakonec sestavte a spusťte aplikaci!   Přihlaste se pomocí osobního Account Microsoft nebo pracovní nebo školní účet a Všimněte si, jak identitu uživatele hello se odrazí v horním navigačním panelu hello.  Nyní máte webovou aplikaci zabezpečené pomocí standardních oborových protokolech, které může ověřit uživatele s svoje osobní, tak i pracovní nebo školní účty.
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [je k dispozici jako ZIP zde](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip), nebo ji můžete klonovat z Githubu:
+Pro referenci hello dokončit ukázka (bez vašich hodnot nastavení) [je k dispozici jako ZIP zde](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip), nebo ji můžete klonovat z Githubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
 ## <a name="next-steps"></a>Další kroky
-Nyní se můžete přesunout na pokročilejší témata.  Můžete se pokusit:
+Nyní se můžete přesunout na pokročilejší témata.  Může být vhodné tootry:
 
-[Zabezpečení webového rozhraní API se koncový bod v2.0 >>](active-directory-devquickstarts-webapi-dotnet.md)
+[Zabezpečení webového rozhraní API s koncovým bodem v2.0 hello hello >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 Další zdroje projděte si:
 
-* [Příručka vývojáře v2.0 >>](active-directory-appmodel-v2-overview.md)
+* [Příručka vývojáře v2.0 Hello >>](active-directory-appmodel-v2-overview.md)
 * [Značka StackOverflow "azure-active-directory" >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Získejte bezpečnostní aktualizace našich produktů
-Doporučujeme vám získávat oznámení o bezpečnostních incidentech tak, že navštívíte [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlásíte se k odběru služby Security Advisory Alerts.
+Doporučujeme vám tooget oznámení o bezpečnostních incidentech navštivte stránky [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlášení k odběru tooSecurity Advisory Alerts.
