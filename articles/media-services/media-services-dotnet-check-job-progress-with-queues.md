@@ -1,6 +1,6 @@
 ---
-title: "Sledujte oznámení úlohy Media Services pomocí rozhraní .NET pomocí Azure Queue storage | Microsoft Docs"
-description: "Naučte se používat Azure Queue storage k monitorování oznámení úlohy Media Services. Ukázka kódu je napsána v jazyce C# a pomocí sady Media Services SDK pro .NET."
+title: "aaaUse Azure Queue storage toomonitor Media Services úlohy oznámení s .NET | Microsoft Docs"
+description: "Zjistěte, jak toouse Azure Queue storage toomonitor Media Services úlohy oznámení. Ukázka kódu Hello je napsána v jazyce C# a používá hello sady Media Services SDK pro .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,58 +14,58 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: juliako
-ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e4068621ada00d763133dc0d01cfc666b53f8b1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a><span data-ttu-id="83e07-104">Pomocí Azure Queue storage monitorovat oznámení úlohy Media Services pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="83e07-104">Use Azure Queue storage to monitor Media Services job notifications with .NET</span></span>
-<span data-ttu-id="83e07-105">Při spuštění úlohy kódování, často vyžadují způsob, jak sledovat průběh úlohy.</span><span class="sxs-lookup"><span data-stu-id="83e07-105">When you run encoding jobs, you often require a way to track job progress.</span></span> <span data-ttu-id="83e07-106">Můžete nakonfigurovat Media Services pro doručování oznámení [Azure Queue storage](../storage/storage-dotnet-how-to-use-queues.md).</span><span class="sxs-lookup"><span data-stu-id="83e07-106">You can configure Media Services to deliver notifications to [Azure Queue storage](../storage/storage-dotnet-how-to-use-queues.md).</span></span> <span data-ttu-id="83e07-107">Průběh úlohy můžete sledovat získáním oznámení z Queue storage.</span><span class="sxs-lookup"><span data-stu-id="83e07-107">You can monitor job progress by getting notifications from the Queue storage.</span></span> 
+# <a name="use-azure-queue-storage-toomonitor-media-services-job-notifications-with-net"></a><span data-ttu-id="ce4fb-104">Azure Queue storage toomonitor Media Services úlohy oznámení pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="ce4fb-104">Use Azure Queue storage toomonitor Media Services job notifications with .NET</span></span>
+<span data-ttu-id="ce4fb-105">Při spuštění úlohy kódování, často vyžadují průběh úlohy tootrack způsobem.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-105">When you run encoding jobs, you often require a way tootrack job progress.</span></span> <span data-ttu-id="ce4fb-106">Je možné nakonfigurovat oznámení toodeliver Media Services příliš[Azure Queue storage](../storage/storage-dotnet-how-to-use-queues.md).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-106">You can configure Media Services toodeliver notifications too[Azure Queue storage](../storage/storage-dotnet-how-to-use-queues.md).</span></span> <span data-ttu-id="ce4fb-107">Průběh úlohy můžete sledovat pomocí získávání oznámení z hello Queue storage.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-107">You can monitor job progress by getting notifications from hello Queue storage.</span></span> 
 
-<span data-ttu-id="83e07-108">Doručování zpráv do fronty úložiště přístupná odkudkoli na světě.</span><span class="sxs-lookup"><span data-stu-id="83e07-108">Messages delivered to Queue storage can be accessed from anywhere in the world.</span></span> <span data-ttu-id="83e07-109">Zasílání zpráv architektura fronty úložiště je spolehlivé a vysoce škálovatelná.</span><span class="sxs-lookup"><span data-stu-id="83e07-109">The Queue storage messaging architecture is reliable and highly scalable.</span></span> <span data-ttu-id="83e07-110">Dotazování Queue storage pro zprávy, se doporučuje namísto použití jiných metod.</span><span class="sxs-lookup"><span data-stu-id="83e07-110">Polling Queue storage for messages is recommended over using other methods.</span></span>
+<span data-ttu-id="ce4fb-108">Zpráv doručených tooQueue úložiště je přístupná z kdekoli v hello, world.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-108">Messages delivered tooQueue storage can be accessed from anywhere in hello world.</span></span> <span data-ttu-id="ce4fb-109">Hello architektura zasílání zpráv fronty úložiště je spolehlivé a vysoce škálovatelná.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-109">hello Queue storage messaging architecture is reliable and highly scalable.</span></span> <span data-ttu-id="ce4fb-110">Dotazování Queue storage pro zprávy, se doporučuje namísto použití jiných metod.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-110">Polling Queue storage for messages is recommended over using other methods.</span></span>
 
-<span data-ttu-id="83e07-111">Jeden běžný scénář pro naslouchání oznámení Media Services je, že pokud vyvíjíte systém správy obsahu, který potřebuje provést některé další úlohy po dokončení kódování úlohy (například k aktivaci na další krok v pracovním postupu nebo publikovat obsah).</span><span class="sxs-lookup"><span data-stu-id="83e07-111">One common scenario for listening to Media Services notifications is if you are developing a content management system that needs to perform some additional task after an encoding job completes (for example, to trigger the next step in a workflow, or to publish content).</span></span>
+<span data-ttu-id="ce4fb-111">Jednou z běžný scénář pro naslouchání služby oznámení tooMedia je, pokud vyvíjíte systém správy obsahu, které je tooperform dokončení některé další úlohy po kódování úlohy (například tootrigger hello dalším krokem v procesu pracovního postupu, nebo toopublish obsah).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-111">One common scenario for listening tooMedia Services notifications is if you are developing a content management system that needs tooperform some additional task after an encoding job completes (for example, tootrigger hello next step in a workflow, or toopublish content).</span></span>
 
-<span data-ttu-id="83e07-112">Toto téma ukazuje, jak získat oznamující zprávy z fronty úložiště.</span><span class="sxs-lookup"><span data-stu-id="83e07-112">This topic shows how to get notification messages from Queue storage.</span></span>  
+<span data-ttu-id="ce4fb-112">Toto téma ukazuje, jak oznámení tooget zpráv z fronty úložiště.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-112">This topic shows how tooget notification messages from Queue storage.</span></span>  
 
-## <a name="considerations"></a><span data-ttu-id="83e07-113">Požadavky</span><span class="sxs-lookup"><span data-stu-id="83e07-113">Considerations</span></span>
-<span data-ttu-id="83e07-114">Při vývoji aplikací Media Services, které používají fronty úložiště, zvažte následující:</span><span class="sxs-lookup"><span data-stu-id="83e07-114">Consider the following when developing Media Services applications that use Queue storage:</span></span>
+## <a name="considerations"></a><span data-ttu-id="ce4fb-113">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ce4fb-113">Considerations</span></span>
+<span data-ttu-id="ce4fb-114">Při vývoji aplikací Media Services, které používají fronty úložiště, zvažte následující hello:</span><span class="sxs-lookup"><span data-stu-id="ce4fb-114">Consider hello following when developing Media Services applications that use Queue storage:</span></span>
 
-* <span data-ttu-id="83e07-115">Fronty úložiště neposkytuje zárukou toho first-in-first-out (FIFO) seřazené doručení.</span><span class="sxs-lookup"><span data-stu-id="83e07-115">Queue storage does not provide a guarantee of first-in-first-out (FIFO) ordered delivery.</span></span> <span data-ttu-id="83e07-116">Další informace najdete v tématu [fronty Azure a Azure Service Bus fronty porovnání a Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).</span><span class="sxs-lookup"><span data-stu-id="83e07-116">For more information, see [Azure Queues and Azure Service Bus Queues Compared and Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).</span></span>
-* <span data-ttu-id="83e07-117">Fronty úložiště není nabízecí služby.</span><span class="sxs-lookup"><span data-stu-id="83e07-117">Queue storage is not a push service.</span></span> <span data-ttu-id="83e07-118">Budete muset dotazovat fronty.</span><span class="sxs-lookup"><span data-stu-id="83e07-118">You have to poll the queue.</span></span>
-* <span data-ttu-id="83e07-119">Může mít libovolný počet front.</span><span class="sxs-lookup"><span data-stu-id="83e07-119">You can have any number of queues.</span></span> <span data-ttu-id="83e07-120">Další informace najdete v tématu [rozhraní API REST služby fronty](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).</span><span class="sxs-lookup"><span data-stu-id="83e07-120">For more information, see [Queue Service REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).</span></span>
-* <span data-ttu-id="83e07-121">Fronty úložiště má určitá omezení a specifika znát.</span><span class="sxs-lookup"><span data-stu-id="83e07-121">Queue storage has some limitations and specifics to be aware of.</span></span> <span data-ttu-id="83e07-122">Tyto možnosti jsou popsány v [fronty Azure a Azure Service Bus fronty porovnání a Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).</span><span class="sxs-lookup"><span data-stu-id="83e07-122">These are described in [Azure Queues and Azure Service Bus Queues Compared and Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).</span></span>
+* <span data-ttu-id="ce4fb-115">Fronty úložiště neposkytuje zárukou toho first-in-first-out (FIFO) seřazené doručení.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-115">Queue storage does not provide a guarantee of first-in-first-out (FIFO) ordered delivery.</span></span> <span data-ttu-id="ce4fb-116">Další informace najdete v tématu [fronty Azure a Azure Service Bus fronty porovnání a Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-116">For more information, see [Azure Queues and Azure Service Bus Queues Compared and Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).</span></span>
+* <span data-ttu-id="ce4fb-117">Fronty úložiště není nabízecí služby.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-117">Queue storage is not a push service.</span></span> <span data-ttu-id="ce4fb-118">Máte toopoll hello fronty.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-118">You have toopoll hello queue.</span></span>
+* <span data-ttu-id="ce4fb-119">Může mít libovolný počet front.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-119">You can have any number of queues.</span></span> <span data-ttu-id="ce4fb-120">Další informace najdete v tématu [rozhraní API REST služby fronty](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-120">For more information, see [Queue Service REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).</span></span>
+* <span data-ttu-id="ce4fb-121">Fronty úložiště má určitá omezení a specifika toobe vědět.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-121">Queue storage has some limitations and specifics toobe aware of.</span></span> <span data-ttu-id="ce4fb-122">Tyto možnosti jsou popsány v [fronty Azure a Azure Service Bus fronty porovnání a Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-122">These are described in [Azure Queues and Azure Service Bus Queues Compared and Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).</span></span>
 
-## <a name="net-code-example"></a><span data-ttu-id="83e07-123">Příklad kódu rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="83e07-123">.NET code example</span></span>
+## <a name="net-code-example"></a><span data-ttu-id="ce4fb-123">Příklad kódu rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="ce4fb-123">.NET code example</span></span>
 
-<span data-ttu-id="83e07-124">Příklad kódu v této části provede následující akce:</span><span class="sxs-lookup"><span data-stu-id="83e07-124">The code example in this section does the following:</span></span>
+<span data-ttu-id="ce4fb-124">Příklad kódu Hello v této části hello následující:</span><span class="sxs-lookup"><span data-stu-id="ce4fb-124">hello code example in this section does hello following:</span></span>
 
-1. <span data-ttu-id="83e07-125">Definuje **EncodingJobMessage** třídu, která se mapuje na formát zprávy oznámení.</span><span class="sxs-lookup"><span data-stu-id="83e07-125">Defines the **EncodingJobMessage** class that maps to the notification message format.</span></span> <span data-ttu-id="83e07-126">Kód deserializuje zprávy přijaté z fronty do objektů **EncodingJobMessage** typu.</span><span class="sxs-lookup"><span data-stu-id="83e07-126">The code deserializes messages received from the queue into objects of the **EncodingJobMessage** type.</span></span>
-2. <span data-ttu-id="83e07-127">Načte informace účtu Media Services a úložiště ze souboru app.config.</span><span class="sxs-lookup"><span data-stu-id="83e07-127">Loads the Media Services and Storage account information from the app.config file.</span></span> <span data-ttu-id="83e07-128">Příklad kódu používá tyto informace k vytvoření **CloudMediaContext** a **CloudQueue** objekty.</span><span class="sxs-lookup"><span data-stu-id="83e07-128">The code example uses this information to create the **CloudMediaContext** and **CloudQueue** objects.</span></span>
-3. <span data-ttu-id="83e07-129">Vytvoří frontu, která přijímá zprávy s oznámením o úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="83e07-129">Creates the queue that receives notification messages about the encoding job.</span></span>
-4. <span data-ttu-id="83e07-130">Vytvoří koncový bod oznámení, který je namapovaný do fronty.</span><span class="sxs-lookup"><span data-stu-id="83e07-130">Creates the notification end point that is mapped to the queue.</span></span>
-5. <span data-ttu-id="83e07-131">Připojí koncového bodu oznámení do úlohy a předá úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="83e07-131">Attaches the notification end point to the job and submits the encoding job.</span></span> <span data-ttu-id="83e07-132">Může mít několik koncových bodů oznámení připojen k úloze.</span><span class="sxs-lookup"><span data-stu-id="83e07-132">You can have multiple notification end points attached to a job.</span></span>
-6. <span data-ttu-id="83e07-133">Předává **NotificationJobState.FinalStatesOnly** k **AddNew** metoda.</span><span class="sxs-lookup"><span data-stu-id="83e07-133">Passes **NotificationJobState.FinalStatesOnly** to the **AddNew** method.</span></span> <span data-ttu-id="83e07-134">(V tomto příkladu jsme jsou jenom zájem o poslední stavy zpracování úloh).</span><span class="sxs-lookup"><span data-stu-id="83e07-134">(In this example, we are only interested in final states of the job processing.)</span></span>
+1. <span data-ttu-id="ce4fb-125">Definuje hello **EncodingJobMessage** třídu, která mapuje toohello formát zprávy oznámení.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-125">Defines hello **EncodingJobMessage** class that maps toohello notification message format.</span></span> <span data-ttu-id="ce4fb-126">Kód Hello deserializuje zprávy přijaté z fronty hello do objektů hello **EncodingJobMessage** typu.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-126">hello code deserializes messages received from hello queue into objects of hello **EncodingJobMessage** type.</span></span>
+2. <span data-ttu-id="ce4fb-127">Načítání hello Media Services a informace o účtu úložiště ze souboru app.config hello.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-127">Loads hello Media Services and Storage account information from hello app.config file.</span></span> <span data-ttu-id="ce4fb-128">Příklad kódu Hello používá tato informace toocreate hello **CloudMediaContext** a **CloudQueue** objekty.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-128">hello code example uses this information toocreate hello **CloudMediaContext** and **CloudQueue** objects.</span></span>
+3. <span data-ttu-id="ce4fb-129">Vytvoří frontu hello, která přijímá zprávy s oznámením o hello kódování úlohy.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-129">Creates hello queue that receives notification messages about hello encoding job.</span></span>
+4. <span data-ttu-id="ce4fb-130">Vytvoří hello oznámení, že koncový bod, který je namapovaný toohello fronty.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-130">Creates hello notification end point that is mapped toohello queue.</span></span>
+5. <span data-ttu-id="ce4fb-131">Připojí úlohu toohello koncového bodu oznámení hello a předá hello úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-131">Attaches hello notification end point toohello job and submits hello encoding job.</span></span> <span data-ttu-id="ce4fb-132">Může mít několik oznámení koncové body, které jsou připojené tooa úlohy.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-132">You can have multiple notification end points attached tooa job.</span></span>
+6. <span data-ttu-id="ce4fb-133">Předává **NotificationJobState.FinalStatesOnly** toohello **AddNew** metoda.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-133">Passes **NotificationJobState.FinalStatesOnly** toohello **AddNew** method.</span></span> <span data-ttu-id="ce4fb-134">(V tomto příkladu jsme jsou jenom zájem o poslední stavy hello úlohy zpracování).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-134">(In this example, we are only interested in final states of hello job processing.)</span></span>
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. <span data-ttu-id="83e07-135">Pokud předáte **NotificationJobState.All**, získáte všechny následující oznámení změny stavu: zařazených do fronty, naplánované, zpracování a dokončení.</span><span class="sxs-lookup"><span data-stu-id="83e07-135">If you pass **NotificationJobState.All**, you get all of the following state change notifications: queued, scheduled, processing, and finished.</span></span> <span data-ttu-id="83e07-136">Ale jak bylo uvedeno dříve, Queue storage nezaručuje doručení.</span><span class="sxs-lookup"><span data-stu-id="83e07-136">However, as noted earlier, Queue storage does not guarantee ordered delivery.</span></span> <span data-ttu-id="83e07-137">Pořadí zprávy, použijte **časové razítko** vlastnosti (definovaná v **EncodingJobMessage** typu v následujícím příkladu).</span><span class="sxs-lookup"><span data-stu-id="83e07-137">To order messages, use the **Timestamp** property (defined on the **EncodingJobMessage** type in the example below).</span></span> <span data-ttu-id="83e07-138">Je možné, duplicitní zprávy.</span><span class="sxs-lookup"><span data-stu-id="83e07-138">Duplicate messages are possible.</span></span> <span data-ttu-id="83e07-139">Kontrola duplikátů **vlastnost ETag** (definované na **EncodingJobMessage** typ).</span><span class="sxs-lookup"><span data-stu-id="83e07-139">To check for duplicates, use the **ETag property** (defined on the **EncodingJobMessage** type).</span></span> <span data-ttu-id="83e07-140">Je také možné, že některé oznámení změny stavu získat přeskočit.</span><span class="sxs-lookup"><span data-stu-id="83e07-140">It is also possible that some state change notifications get skipped.</span></span>
-8. <span data-ttu-id="83e07-141">Čeká na získání kontrolou fronty každých 10 sekund do stavu dokončení úlohy.</span><span class="sxs-lookup"><span data-stu-id="83e07-141">Waits for the job to get to the finished state by checking the queue every 10 seconds.</span></span> <span data-ttu-id="83e07-142">Odstraní zprávy po jejich zpracování.</span><span class="sxs-lookup"><span data-stu-id="83e07-142">Deletes messages after they have been processed.</span></span>
-9. <span data-ttu-id="83e07-143">Odstraní frontu a koncového bodu oznámení.</span><span class="sxs-lookup"><span data-stu-id="83e07-143">Deletes the queue and the notification end point.</span></span>
+7. <span data-ttu-id="ce4fb-135">Pokud předáte **NotificationJobState.All**, získáte všechny hello následující oznámení změny stavu: zařazených do fronty, naplánované, zpracování a dokončení.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-135">If you pass **NotificationJobState.All**, you get all of hello following state change notifications: queued, scheduled, processing, and finished.</span></span> <span data-ttu-id="ce4fb-136">Ale jak bylo uvedeno dříve, Queue storage nezaručuje doručení.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-136">However, as noted earlier, Queue storage does not guarantee ordered delivery.</span></span> <span data-ttu-id="ce4fb-137">tooorder zprávy, použijte hello **časové razítko** vlastnosti (definovaná v hello **EncodingJobMessage** typu v následujícím příkladu hello).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-137">tooorder messages, use hello **Timestamp** property (defined on hello **EncodingJobMessage** type in hello example below).</span></span> <span data-ttu-id="ce4fb-138">Je možné, duplicitní zprávy.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-138">Duplicate messages are possible.</span></span> <span data-ttu-id="ce4fb-139">toocheck duplicity, použijte hello **vlastnost ETag** (definované na hello **EncodingJobMessage** typ).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-139">toocheck for duplicates, use hello **ETag property** (defined on hello **EncodingJobMessage** type).</span></span> <span data-ttu-id="ce4fb-140">Je také možné, že některé oznámení změny stavu získat přeskočit.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-140">It is also possible that some state change notifications get skipped.</span></span>
+8. <span data-ttu-id="ce4fb-141">Počká pro hello úlohy tooget toohello dokončení stavu kontrolou hello fronty každých 10 sekund.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-141">Waits for hello job tooget toohello finished state by checking hello queue every 10 seconds.</span></span> <span data-ttu-id="ce4fb-142">Odstraní zprávy po jejich zpracování.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-142">Deletes messages after they have been processed.</span></span>
+9. <span data-ttu-id="ce4fb-143">Odstraní frontu hello a hello oznámení koncového bodu.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-143">Deletes hello queue and hello notification end point.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="83e07-144">Doporučeným způsobem, jak sledovat stav úlohy je naslouchání zpráv s oznámením, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="83e07-144">The recommended way to monitor a job’s state is by listening to notification messages, as shown in the following example.</span></span>
+> <span data-ttu-id="ce4fb-144">Hello toomonitor doporučeným způsobem, stav úlohy je pomocí naslouchání toonotification zprávy, jak ukazuje následující příklad hello.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-144">hello recommended way toomonitor a job’s state is by listening toonotification messages, as shown in hello following example.</span></span>
 >
-> <span data-ttu-id="83e07-145">Alternativně můžete zkontrolovat stav úlohy s použitím **IJob.State** vlastnost.</span><span class="sxs-lookup"><span data-stu-id="83e07-145">Alternatively, you could check on a job’s state by using the **IJob.State** property.</span></span>  <span data-ttu-id="83e07-146">Oznámení o dokončení úlohy může před stav doručení do **IJob** je nastaven na **dokončeno**.</span><span class="sxs-lookup"><span data-stu-id="83e07-146">A notification message about a job’s completion may arrive before the state on **IJob** is set to **Finished**.</span></span> <span data-ttu-id="83e07-147">**IJob.State** vlastnost odráží přesného stavu se ke krátké prodlevě.</span><span class="sxs-lookup"><span data-stu-id="83e07-147">The **IJob.State**  property reflects the accurate state with a slight delay.</span></span>
+> <span data-ttu-id="ce4fb-145">Alternativně můžete zkontrolovat stav úlohy s použitím hello **IJob.State** vlastnost.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-145">Alternatively, you could check on a job’s state by using hello **IJob.State** property.</span></span>  <span data-ttu-id="ce4fb-146">Oznámení o dokončení úlohy může doručení před hello stavu do **IJob** je nastaven příliš**dokončeno**.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-146">A notification message about a job’s completion may arrive before hello state on **IJob** is set too**Finished**.</span></span> <span data-ttu-id="ce4fb-147">Hello **IJob.State** vlastnost odráží hello přesného stavu se ke krátké prodlevě.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-147">hello **IJob.State**  property reflects hello accurate state with a slight delay.</span></span>
 >
 >
 
-### <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="83e07-148">Vytvoření a konfigurace projektu Visual Studia</span><span class="sxs-lookup"><span data-stu-id="83e07-148">Create and configure a Visual Studio project</span></span>
+### <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="ce4fb-148">Vytvoření a konfigurace projektu Visual Studia</span><span class="sxs-lookup"><span data-stu-id="ce4fb-148">Create and configure a Visual Studio project</span></span>
 
-1. <span data-ttu-id="83e07-149">Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="83e07-149">Set up your development environment and populate the app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
-2. <span data-ttu-id="83e07-150">Vytvořte novou složku (kdekoli na místním disku) a zkopírujte si soubor .mp4, který chcete kódovat a streamovat nebo progresivně stahovat.</span><span class="sxs-lookup"><span data-stu-id="83e07-150">Create a new folder (folder can be anywhere on your local drive) and copy an .mp4 file that you want to encode and stream or progressively download.</span></span> <span data-ttu-id="83e07-151">V tomto příkladu se používá cestu "C:\Media".</span><span class="sxs-lookup"><span data-stu-id="83e07-151">In this example, the "C:\Media" path is used.</span></span>
+1. <span data-ttu-id="ce4fb-149">Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="ce4fb-149">Set up your development environment and populate hello app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+2. <span data-ttu-id="ce4fb-150">Vytvořte novou složku (složka může být kdekoli na místní disk) a zkopírujte soubor .mp4 má tooencode a datový proud nebo progresivně stahovat.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-150">Create a new folder (folder can be anywhere on your local drive) and copy an .mp4 file that you want tooencode and stream or progressively download.</span></span> <span data-ttu-id="ce4fb-151">V tomto příkladu se používá hello "C:\Media" cesta.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-151">In this example, hello "C:\Media" path is used.</span></span>
 
-### <a name="code"></a><span data-ttu-id="83e07-152">Kód</span><span class="sxs-lookup"><span data-stu-id="83e07-152">Code</span></span>
+### <a name="code"></a><span data-ttu-id="ce4fb-152">Kód</span><span class="sxs-lookup"><span data-stu-id="ce4fb-152">Code</span></span>
 
 ```
 using System;
@@ -86,30 +86,30 @@ namespace JobNotification
         // MessageVersion is used for version control.
         public String MessageVersion { get; set; }
 
-        // Type of the event. Valid values are
+        // Type of hello event. Valid values are
         // JobStateChange and NotificationEndpointRegistration.
         public String EventType { get; set; }
 
-        // ETag is used to help the customer detect if
-        // the message is a duplicate of another message previously sent.
+        // ETag is used toohelp hello customer detect if
+        // hello message is a duplicate of another message previously sent.
         public String ETag { get; set; }
 
-        // Time of occurrence of the event.
+        // Time of occurrence of hello event.
         public String TimeStamp { get; set; }
 
-        // Collection of values specific to the event.
+        // Collection of values specific toohello event.
 
-        // For the JobStateChange event the values are:
-        //     JobId - Id of the Job that triggered the notification.
-        //     NewState- The new state of the Job. Valid values are:
+        // For hello JobStateChange event hello values are:
+        //     JobId - Id of hello Job that triggered hello notification.
+        //     NewState- hello new state of hello Job. Valid values are:
         //          Scheduled, Processing, Canceling, Cancelled, Error, Finished
-        //     OldState- The old state of the Job. Valid values are:
+        //     OldState- hello old state of hello Job. Valid values are:
         //          Scheduled, Processing, Canceling, Cancelled, Error, Finished
 
-        // For the NotificationEndpointRegistration event the values are:
-        //     NotificationEndpointId- Id of the NotificationEndpoint
-        //          that triggered the notification.
-        //     State- The state of the Endpoint.
+        // For hello NotificationEndpointRegistration event hello values are:
+        //     NotificationEndpointId- Id of hello NotificationEndpoint
+        //          that triggered hello notification.
+        //     State- hello state of hello Endpoint.
         //          Valid values are: Registered and Unregistered.
 
         public IDictionary<string, object> Properties { get; set; }
@@ -118,7 +118,7 @@ namespace JobNotification
     class Program
     {
 
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -137,16 +137,16 @@ namespace JobNotification
         {
             string endPointAddress = Guid.NewGuid().ToString();
 
-            // Create the context.
+            // Create hello context.
             var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-            // Create the queue that will be receiving the notification messages.
+            // Create hello queue that will be receiving hello notification messages.
             _queue = CreateQueue(_StorageConnectionString, endPointAddress);
 
-            // Create the notification point that is mapped to the queue.
+            // Create hello notification point that is mapped toohello queue.
             _notificationEndPoint =
                     _context.NotificationEndPoints.Create(
                     Guid.NewGuid().ToString(), NotificationEndPointType.AzureQueue, endPointAddress);
@@ -168,13 +168,13 @@ namespace JobNotification
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageAccountConnectionString);
 
-            // Create the queue client
+            // Create hello queue client
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-            // Retrieve a reference to a queue
+            // Retrieve a reference tooa queue
             CloudQueue queue = queueClient.GetQueueReference(endPointAddress);
 
-            // Create the queue if it doesn't already exist
+            // Create hello queue if it doesn't already exist
             queue.CreateIfNotExists();
 
             return queue;
@@ -184,30 +184,30 @@ namespace JobNotification
         public static IJob SubmitEncodingJobWithNotificationEndPoint(string inputMediaFilePath)
         {
             // Declare a new job.
-            IJob job = _context.Jobs.Create("My MP4 to Smooth Streaming encoding job");
+            IJob job = _context.Jobs.Create("My MP4 tooSmooth Streaming encoding job");
 
-            //Create an encrypted asset and upload the mp4.
+            //Create an encrypted asset and upload hello mp4.
             IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.StorageEncrypted,
                 inputMediaFilePath);
 
-            // Get a media processor reference, and pass to it the name of the
-            // processor to use for the specific task.
+            // Get a media processor reference, and pass tooit hello name of the
+            // processor toouse for hello specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Create a task with the conversion details, using a configuration file.
+            // Create a task with hello conversion details, using a configuration file.
             ITask task = job.Tasks.AddNew("My encoding Task",
                 processor,
                 "Adaptive Streaming",
                 Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.None);
 
-            // Specify the input asset to be encoded.
+            // Specify hello input asset toobe encoded.
             task.InputAssets.Add(asset);
 
-            // Add an output asset to contain the results of the job.
+            // Add an output asset toocontain hello results of hello job.
             task.OutputAssets.AddNew("Output asset",
                 AssetCreationOptions.None);
 
-            // Add a notification point to the job. You can add multiple notification points.  
+            // Add a notification point toohello job. You can add multiple notification points.  
             job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly,
                 _notificationEndPoint);
 
@@ -227,7 +227,7 @@ namespace JobNotification
 
             while (!jobReachedExpectedState)
             {
-                // Specify how often you want to get messages from the queue.
+                // Specify how often you want tooget messages from hello queue.
                 Thread.Sleep(TimeSpan.FromSeconds(10));
 
                 foreach (var message in _queue.GetMessages(10))
@@ -241,7 +241,7 @@ namespace JobNotification
 
                         Console.WriteLine();
 
-                        // Display the message information.
+                        // Display hello message information.
                         Console.WriteLine("EventType: {0}", encodingJobMsg.EventType);
                         Console.WriteLine("MessageVersion: {0}", encodingJobMsg.MessageVersion);
                         Console.WriteLine("ETag: {0}", encodingJobMsg.ETag);
@@ -276,7 +276,7 @@ namespace JobNotification
                             }
                         }
                     }
-                    // Delete the message after we've read it.
+                    // Delete hello message after we've read it.
                     _queue.DeleteMessage(message);
                 }
 
@@ -326,7 +326,7 @@ namespace JobNotification
     }
 }
 ```
-<span data-ttu-id="83e07-153">V předchozím příkladu vytváří následující výstup.</span><span class="sxs-lookup"><span data-stu-id="83e07-153">The preceding example produced the following output.</span></span> <span data-ttu-id="83e07-154">Vaše hodnoty se budou lišit.</span><span class="sxs-lookup"><span data-stu-id="83e07-154">Your values will vary.</span></span>
+<span data-ttu-id="ce4fb-153">předchozí příklad vytváří hello následující výstup Hello.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-153">hello preceding example produced hello following output.</span></span> <span data-ttu-id="ce4fb-154">Vaše hodnoty se budou lišit.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-154">Your values will vary.</span></span>
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4
@@ -346,7 +346,7 @@ namespace JobNotification
     ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
     TimeStamp: 2013-05-14T20:24:40
         JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
+        JobName: My MP4 tooSmooth Streaming encoding job
         NewState: Finished
         OldState: Processing
         AccountName: westeuropewamsaccount
@@ -354,10 +354,10 @@ namespace JobNotification
     State: Finished
 
 
-## <a name="next-step"></a><span data-ttu-id="83e07-155">Další krok</span><span class="sxs-lookup"><span data-stu-id="83e07-155">Next step</span></span>
-<span data-ttu-id="83e07-156">Prohlédněte si mapy kurzů k Media Services.</span><span class="sxs-lookup"><span data-stu-id="83e07-156">Review Media Services learning paths.</span></span>
+## <a name="next-step"></a><span data-ttu-id="ce4fb-155">Další krok</span><span class="sxs-lookup"><span data-stu-id="ce4fb-155">Next step</span></span>
+<span data-ttu-id="ce4fb-156">Prohlédněte si mapy kurzů k Media Services.</span><span class="sxs-lookup"><span data-stu-id="ce4fb-156">Review Media Services learning paths.</span></span>
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="83e07-157">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="83e07-157">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="ce4fb-157">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="ce4fb-157">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

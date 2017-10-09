@@ -1,6 +1,6 @@
 ---
-title: "Postup zobrazení a změna Incentive prodejce Cloud Solution Provider | Microsoft Docs"
-description: "Postup zobrazení a změnit vaši volbu pro Incentive prodejce zprostředkovatele kryptografických služeb"
+title: "aaaHow tooview a změňte hello Incentive prodejce poskytovatele Cloud Solution Provider | Microsoft Docs"
+description: "Jak tooview a změnit vaši volbu pro Incentive prodejce zprostředkovatele kryptografických služeb"
 services: marketplace-publishing
 documentationcenter: na
 author: DavidBosland
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: DavidBosland
-ms.openlocfilehash: d6e6e13f352dea5c27939c39ecb8be97bf6990ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4702d0167c38d100755a872f9b23e49cc7a46ba2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-the-azure-marketplace"></a><span data-ttu-id="edb9b-103">Zobrazení a změna Cloud Solution Provider "Prodejce Incentive" v Azure Marketplace</span><span class="sxs-lookup"><span data-stu-id="edb9b-103">View and change your Cloud Solution Provider "Reseller Incentive" in the Azure Marketplace</span></span>
-<span data-ttu-id="edb9b-104">15. března 2016 vytočit poskytovatelů Cloud Solution Providers (CSP) "Prodejce Incentive" k dispozici pro vydavatele Marketplace.</span><span class="sxs-lookup"><span data-stu-id="edb9b-104">On March 15, 2016 we'll make the Cloud Solution Providers (CSPs) “Reseller Incentive” available to Marketplace publishers.</span></span>  <span data-ttu-id="edb9b-105">Výchozí nastavení je tato hodnota pobídkové **Ano**.</span><span class="sxs-lookup"><span data-stu-id="edb9b-105">The default setting for this incentive value is **Yes**.</span></span>  <span data-ttu-id="edb9b-106">Jako vydavatel se rozhodnete výslovný nesouhlas s pobídkové programu.</span><span class="sxs-lookup"><span data-stu-id="edb9b-106">As a publisher you can decide to opt-out of the incentive program.</span></span>  <span data-ttu-id="edb9b-107">Tento článek ukazuje, jak změnit nastavení v profilu vydavatele, takže je můžete výslovný nesouhlas s.</span><span class="sxs-lookup"><span data-stu-id="edb9b-107">This article shows how to change the setting in your publisher profile so you can opt-out.</span></span>
+# <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-hello-azure-marketplace"></a><span data-ttu-id="b41a0-103">Zobrazení a změna Cloud Solution Provider "Prodejce Incentive" v hello Azure Marketplace</span><span class="sxs-lookup"><span data-stu-id="b41a0-103">View and change your Cloud Solution Provider "Reseller Incentive" in hello Azure Marketplace</span></span>
+<span data-ttu-id="b41a0-104">15. března 2016 vytočit poskytovatelů hello Cloud Solution Providers (CSP) "Prodejce Incentive" k dispozici tooMarketplace vydavatele.</span><span class="sxs-lookup"><span data-stu-id="b41a0-104">On March 15, 2016 we'll make hello Cloud Solution Providers (CSPs) “Reseller Incentive” available tooMarketplace publishers.</span></span>  <span data-ttu-id="b41a0-105">Dobrý den, výchozí nastavení je tato hodnota pobídkové **Ano**.</span><span class="sxs-lookup"><span data-stu-id="b41a0-105">hello default setting for this incentive value is **Yes**.</span></span>  <span data-ttu-id="b41a0-106">Jako vydavatel můžete rozhodnout tooopt nesouhlas s programem pobídkové hello.</span><span class="sxs-lookup"><span data-stu-id="b41a0-106">As a publisher you can decide tooopt-out of hello incentive program.</span></span>  <span data-ttu-id="b41a0-107">Tento článek ukazuje, jak toochange hello nastavení funkce vašeho profilu, vám může výslovný nesouhlas s.</span><span class="sxs-lookup"><span data-stu-id="b41a0-107">This article shows how toochange hello setting in your publisher profile so you can opt-out.</span></span>
 
-<span data-ttu-id="edb9b-108">Chcete-li zobrazit nebo změnit stav "Prodejce Incentive", postupujte podle těchto kroků:</span><span class="sxs-lookup"><span data-stu-id="edb9b-108">To view or change your “Reseller Incentive” status, follow these steps:</span></span>
+<span data-ttu-id="b41a0-108">tooview nebo změnit stav "Prodejce Incentive", postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="b41a0-108">tooview or change your “Reseller Incentive” status, follow these steps:</span></span>
 
-1. <span data-ttu-id="edb9b-109">Přihlaste se k vaší [účet pro Microsoft Azure publikování](https://publish.windowsazure.com/workspace)</span><span class="sxs-lookup"><span data-stu-id="edb9b-109">Log in to your [Microsoft Azure Publishing account](https://publish.windowsazure.com/workspace)</span></span>
+1. <span data-ttu-id="b41a0-109">Přihlaste se tooyour [účet pro Microsoft Azure publikování](https://publish.windowsazure.com/workspace)</span><span class="sxs-lookup"><span data-stu-id="b41a0-109">Log in tooyour [Microsoft Azure Publishing account](https://publish.windowsazure.com/workspace)</span></span>
 
    ![Profil cílová obrazovky][1]
-2. <span data-ttu-id="edb9b-111">Klikněte na tlačítko **vydavatele**</span><span class="sxs-lookup"><span data-stu-id="edb9b-111">Click **Publishers**</span></span>
+2. <span data-ttu-id="b41a0-111">Klikněte na tlačítko **vydavatele**</span><span class="sxs-lookup"><span data-stu-id="b41a0-111">Click **Publishers**</span></span>
 
    ![Profil cílová obrazovky - vydavatelů propojení][2]
-3. <span data-ttu-id="edb9b-113">Všimněte si informace ve vašem profilu o CSP.</span><span class="sxs-lookup"><span data-stu-id="edb9b-113">Notice the information in your profile about CSPs.</span></span>  <span data-ttu-id="edb9b-114">Je **přepnout vyslovte Ano nebo Ne** "Prodejce Incentive" - výchozí stav je "Ano".</span><span class="sxs-lookup"><span data-stu-id="edb9b-114">There is a **switch to say yes or no** to the "Reseller Incentive" - the default status is “Yes.”</span></span>
+3. <span data-ttu-id="b41a0-113">Všimněte si hello informace ve vašem profilu o CSP.</span><span class="sxs-lookup"><span data-stu-id="b41a0-113">Notice hello information in your profile about CSPs.</span></span>  <span data-ttu-id="b41a0-114">Je **přepínač toosay Ano nebo Ne** toohello "Prodejce Incentive" - hello výchozí stav je "Ano".</span><span class="sxs-lookup"><span data-stu-id="b41a0-114">There is a **switch toosay yes or no** toohello "Reseller Incentive" - hello default status is “Yes.”</span></span>
 
    ![Profil - vydavatele][3]
-4. <span data-ttu-id="edb9b-116">Chcete-li změnit váš "prodejce Incentive" stav přístupu váš profil vydavatele poté vyberte a uložit zvoleného:</span><span class="sxs-lookup"><span data-stu-id="edb9b-116">To change your "Reseller Incentive" status access your Publisher Profile then select and save your choice:</span></span>
+4. <span data-ttu-id="b41a0-116">toochange stav vaší "Prodejce Incentive" přístup k váš profil vydavatele poté vyberte a uložit zvoleného:</span><span class="sxs-lookup"><span data-stu-id="b41a0-116">toochange your "Reseller Incentive" status access your Publisher Profile then select and save your choice:</span></span>
 
-   * <span data-ttu-id="edb9b-117">Vyberte **Ano** zvolit k poskytování slevu 20 % CSP, kteří jsou následný aplikace a služby, které jste zobrazili v Azure Marketplace.</span><span class="sxs-lookup"><span data-stu-id="edb9b-117">Select **Yes** to choose to provide the 20 percent discount to the CSPs who are reselling the applications and services you have listed in the Azure Marketplace.</span></span>  <span data-ttu-id="edb9b-118">Nebo vyberte **ne** pro vyjádření výslovného nesouhlasu pobídkové programu.</span><span class="sxs-lookup"><span data-stu-id="edb9b-118">Or select **No** to opt out of this incentive program.</span></span>  <span data-ttu-id="edb9b-119">V obou případech přijímá vydavatele než stejný výběr.</span><span class="sxs-lookup"><span data-stu-id="edb9b-119">In either case the publisher receives the same payout.</span></span>
-   * <span data-ttu-id="edb9b-120">Po provedení výběru zajistěte, aby kliknutí **Uložit** v pravém horním rohu.</span><span class="sxs-lookup"><span data-stu-id="edb9b-120">After you make a selection make sure you click **Save** in the upper right hand corner.</span></span>
+   * <span data-ttu-id="b41a0-117">Vyberte **Ano** toochoose tooprovide hello slevu 20 % toohello zprostředkovatelů kryptografických služeb, kteří jsou následný hello aplikace a služby, které jste zobrazili v hello Azure Marketplace.</span><span class="sxs-lookup"><span data-stu-id="b41a0-117">Select **Yes** toochoose tooprovide hello 20 percent discount toohello CSPs who are reselling hello applications and services you have listed in hello Azure Marketplace.</span></span>  <span data-ttu-id="b41a0-118">Nebo vyberte **ne** tooopt mimo tento pobídkové program.</span><span class="sxs-lookup"><span data-stu-id="b41a0-118">Or select **No** tooopt out of this incentive program.</span></span>  <span data-ttu-id="b41a0-119">V obou případu hello vydavatele přijímá hello stejné výběr.</span><span class="sxs-lookup"><span data-stu-id="b41a0-119">In either case hello publisher receives hello same payout.</span></span>
+   * <span data-ttu-id="b41a0-120">Po provedení výběru zajistěte, aby kliknutí **Uložit** v pravém horním rohu hello.</span><span class="sxs-lookup"><span data-stu-id="b41a0-120">After you make a selection make sure you click **Save** in hello upper right hand corner.</span></span>
 
    ![Profil - vydavatelů - změna polí][4]
 

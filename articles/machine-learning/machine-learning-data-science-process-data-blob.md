@@ -1,5 +1,5 @@
 ---
-title: "Zpracování dat objektů blob v Azure s pokročilou analýzu | Microsoft Docs"
+title: "aaaProcess Azure blob dat s pokročilou analýzu | Microsoft Docs"
 description: "Zpracování dat v úložišti objektů Blob Azure."
 services: machine-learning,storage
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 36d950fd81029af82d9f2f652b2f01dba5fc8cc9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5911d4211c4135680555a8cdd99e745499a24215
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <span data-ttu-id="93702-103"><a name="heading"></a>Zpracování dat objektů blob v Azure s pokročilou analýzu</span><span class="sxs-lookup"><span data-stu-id="93702-103"><a name="heading"></a>Process Azure blob data with advanced analytics</span></span>
-<span data-ttu-id="93702-104">Tento dokument popisuje seznámení data a funkce generování z dat uložených v Azure Blob storage.</span><span class="sxs-lookup"><span data-stu-id="93702-104">This document covers exploring data and generating features from data stored in Azure Blob storage.</span></span> 
+# <span data-ttu-id="27425-103"><a name="heading"></a>Zpracování dat objektů blob v Azure s pokročilou analýzu</span><span class="sxs-lookup"><span data-stu-id="27425-103"><a name="heading"></a>Process Azure blob data with advanced analytics</span></span>
+<span data-ttu-id="27425-104">Tento dokument popisuje seznámení data a funkce generování z dat uložených v Azure Blob storage.</span><span class="sxs-lookup"><span data-stu-id="27425-104">This document covers exploring data and generating features from data stored in Azure Blob storage.</span></span> 
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a><span data-ttu-id="93702-105">Načíst data do rámečku Pandas dat</span><span class="sxs-lookup"><span data-stu-id="93702-105">Load the data into a Pandas data frame</span></span>
-<span data-ttu-id="93702-106">Abyste mohli prozkoumat a upravit datovou sadu, se musí stáhnout ze zdroje blob do místního souboru, který lze načíst v rámci Pandas data.</span><span class="sxs-lookup"><span data-stu-id="93702-106">In order to explore and manipulate a dataset, it must be downloaded from the blob source to a local file which can then be loaded in a Pandas data frame.</span></span> <span data-ttu-id="93702-107">Tady jsou kroky provést tento postup:</span><span class="sxs-lookup"><span data-stu-id="93702-107">Here are the steps to follow for this procedure:</span></span>
+## <a name="load-hello-data-into-a-pandas-data-frame"></a><span data-ttu-id="27425-105">Načtení dat hello do rámečku Pandas dat</span><span class="sxs-lookup"><span data-stu-id="27425-105">Load hello data into a Pandas data frame</span></span>
+<span data-ttu-id="27425-106">V pořadí tooexplore a pracovat s datovou sadu, se musí stáhnout z hello blob zdroj tooa místního souboru, který lze načíst v rámci Pandas data.</span><span class="sxs-lookup"><span data-stu-id="27425-106">In order tooexplore and manipulate a dataset, it must be downloaded from hello blob source tooa local file which can then be loaded in a Pandas data frame.</span></span> <span data-ttu-id="27425-107">Zde jsou kroky toofollow hello pro tento postup:</span><span class="sxs-lookup"><span data-stu-id="27425-107">Here are hello steps toofollow for this procedure:</span></span>
 
-1. <span data-ttu-id="93702-108">Stahování dat z Azure blob s následujícím kódem ukázkové Python pomocí služby objektů blob.</span><span class="sxs-lookup"><span data-stu-id="93702-108">Download the data from Azure blob with the following sample Python code using blob service.</span></span> <span data-ttu-id="93702-109">Nahraďte konkrétní hodnoty proměnné v kódu níže:</span><span class="sxs-lookup"><span data-stu-id="93702-109">Replace the variable in the code below with your specific values:</span></span> 
+1. <span data-ttu-id="27425-108">Stáhněte si hello data z Azure blob s hello následující ukázkový kód Python pomocí služby objektů blob.</span><span class="sxs-lookup"><span data-stu-id="27425-108">Download hello data from Azure blob with hello following sample Python code using blob service.</span></span> <span data-ttu-id="27425-109">Nahraďte konkrétní hodnoty proměnné hello v hello kódu níže:</span><span class="sxs-lookup"><span data-stu-id="27425-109">Replace hello variable in hello code below with your specific values:</span></span> 
    
         from azure.storage.blob import BlobService
         import tables
@@ -42,52 +42,52 @@ ms.lasthandoff: 07/11/2017
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. <span data-ttu-id="93702-110">Načtení dat do data rámeček Pandas ze staženého souboru.</span><span class="sxs-lookup"><span data-stu-id="93702-110">Read the data into a Pandas data-frame from the downloaded file.</span></span>
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. <span data-ttu-id="27425-110">Čtení hello dat do data rámečku Pandas z hello stáhli soubor.</span><span class="sxs-lookup"><span data-stu-id="27425-110">Read hello data into a Pandas data-frame from hello downloaded file.</span></span>
    
-        #LOCALFILE is the file path    
+        #LOCALFILE is hello file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-<span data-ttu-id="93702-111">Nyní jste připraveni k data prozkoumat a generování funkce pro tuto datovou sadu.</span><span class="sxs-lookup"><span data-stu-id="93702-111">Now you are ready to explore the data and generate features on this dataset.</span></span>
+<span data-ttu-id="27425-111">Nyní jsou připravené tooexplore hello data a vygenerovat funkce pro tuto datovou sadu.</span><span class="sxs-lookup"><span data-stu-id="27425-111">Now you are ready tooexplore hello data and generate features on this dataset.</span></span>
 
-## <span data-ttu-id="93702-112"><a name="blob-dataexploration"></a>Zkoumání dat</span><span class="sxs-lookup"><span data-stu-id="93702-112"><a name="blob-dataexploration"></a>Data Exploration</span></span>
-<span data-ttu-id="93702-113">Tady je několik příkladů jak prozkoumat dat pomocí Pandas:</span><span class="sxs-lookup"><span data-stu-id="93702-113">Here are a few examples of ways to explore data using Pandas:</span></span>
+## <span data-ttu-id="27425-112"><a name="blob-dataexploration"></a>Zkoumání dat</span><span class="sxs-lookup"><span data-stu-id="27425-112"><a name="blob-dataexploration"></a>Data Exploration</span></span>
+<span data-ttu-id="27425-113">Zde je několik příkladů způsoby tooexplore dat pomocí Pandas:</span><span class="sxs-lookup"><span data-stu-id="27425-113">Here are a few examples of ways tooexplore data using Pandas:</span></span>
 
-1. <span data-ttu-id="93702-114">Kontrola počtu řádků a sloupců</span><span class="sxs-lookup"><span data-stu-id="93702-114">Inspect the number of rows and columns</span></span> 
+1. <span data-ttu-id="27425-114">Zkontrolujte hello počet řádků a sloupců</span><span class="sxs-lookup"><span data-stu-id="27425-114">Inspect hello number of rows and columns</span></span> 
    
-        print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. <span data-ttu-id="93702-115">Zkontrolujte první nebo poslední několik řádků v datové sadě, jak je uvedeno níže:</span><span class="sxs-lookup"><span data-stu-id="93702-115">Inspect the first or last few rows in the dataset as below:</span></span>
+        print 'hello size of hello data is: %d rows and  %d columns' % dataframe_blobdata.shape
+2. <span data-ttu-id="27425-115">Zkontrolujte hello první nebo poslední několik řádků v datové sadě hello jak je uvedeno níže:</span><span class="sxs-lookup"><span data-stu-id="27425-115">Inspect hello first or last few rows in hello dataset as below:</span></span>
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. <span data-ttu-id="93702-116">Kontrola typu dat, které každý sloupec byl importován jako pomocí následující vzorový kód</span><span class="sxs-lookup"><span data-stu-id="93702-116">Check the data type each column was imported as using the following sample code</span></span>
+3. <span data-ttu-id="27425-116">Zkontrolujte hello datový typ, který každý sloupec byl importován jako pomocí hello následující ukázkový kód</span><span class="sxs-lookup"><span data-stu-id="27425-116">Check hello data type each column was imported as using hello following sample code</span></span>
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. <span data-ttu-id="93702-117">Zkontrolujte následující základní statistiky pro sloupce v datové sadě</span><span class="sxs-lookup"><span data-stu-id="93702-117">Check the basic stats for the columns in the data set as follows</span></span>
+4. <span data-ttu-id="27425-117">Zkontrolujte hello základní statistiky pro hello sloupců v datové sadě hello následujícím způsobem</span><span class="sxs-lookup"><span data-stu-id="27425-117">Check hello basic stats for hello columns in hello data set as follows</span></span>
    
         dataframe_blobdata.describe()
-5. <span data-ttu-id="93702-118">Podívejte se na počet položek pro každou hodnotu sloupce následujícím způsobem</span><span class="sxs-lookup"><span data-stu-id="93702-118">Look at the number of entries for each column value as follows</span></span>
+5. <span data-ttu-id="27425-118">Podívejte se na hello počet položek pro každou hodnotu sloupce následujícím způsobem</span><span class="sxs-lookup"><span data-stu-id="27425-118">Look at hello number of entries for each column value as follows</span></span>
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. <span data-ttu-id="93702-119">Počet chybějících hodnot a skutečný počet položek v jednotlivých sloupcích pomocí následující vzorový kód</span><span class="sxs-lookup"><span data-stu-id="93702-119">Count missing values versus the actual number of entries in each column using the following sample code</span></span>
+6. <span data-ttu-id="27425-119">Počet chybějících hodnot versus hello skutečný počet položek v jednotlivých sloupcích pomocí hello následující ukázkový kód</span><span class="sxs-lookup"><span data-stu-id="27425-119">Count missing values versus hello actual number of entries in each column using hello following sample code</span></span>
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. <span data-ttu-id="93702-120">Pokud máte chybějící hodnoty pro konkrétní sloupec v datech, vyřaďte je následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="93702-120">If you have missing values for a specific column in the data, you can drop them as follows:</span></span>
+7. <span data-ttu-id="27425-120">Pokud máte chybějící hodnoty pro konkrétní sloupec v datech hello, vyřaďte je následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="27425-120">If you have missing values for a specific column in hello data, you can drop them as follows:</span></span>
    
-     <span data-ttu-id="93702-121">dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape</span><span class="sxs-lookup"><span data-stu-id="93702-121">dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape</span></span>
+     <span data-ttu-id="27425-121">dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape</span><span class="sxs-lookup"><span data-stu-id="27425-121">dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape</span></span>
    
-   <span data-ttu-id="93702-122">Jiný způsob, jak nahradit chybějící hodnoty je pomocí funkce režimu:</span><span class="sxs-lookup"><span data-stu-id="93702-122">Another way to replace missing values is with the mode function:</span></span>
+   <span data-ttu-id="27425-122">Jiný způsob tooreplace chybějící hodnoty je pomocí funkce režimu hello:</span><span class="sxs-lookup"><span data-stu-id="27425-122">Another way tooreplace missing values is with hello mode function:</span></span>
    
-     <span data-ttu-id="93702-123">dataframe_blobdata_mode = dataframe_blobdata.fillna ({< column_name >: .mode()[0]}) dataframe_blobdata ['< column_name >"]</span><span class="sxs-lookup"><span data-stu-id="93702-123">dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})</span></span>        
-8. <span data-ttu-id="93702-124">Vytvoření histogram vykreslení pomocí proměnné počet přihrádek k vykreslení distribuce proměnné</span><span class="sxs-lookup"><span data-stu-id="93702-124">Create a histogram plot using variable number of bins to plot the distribution of a variable</span></span>    
+     <span data-ttu-id="27425-123">dataframe_blobdata_mode = dataframe_blobdata.fillna ({< column_name >: .mode()[0]}) dataframe_blobdata ['< column_name >"]</span><span class="sxs-lookup"><span data-stu-id="27425-123">dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})</span></span>        
+8. <span data-ttu-id="27425-124">Vytvoření histogram vykreslení pomocí proměnný počet přihrádek tooplot hello distribuční proměnné</span><span class="sxs-lookup"><span data-stu-id="27425-124">Create a histogram plot using variable number of bins tooplot hello distribution of a variable</span></span>    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. <span data-ttu-id="93702-125">Podívejte se na korelací mezi proměnné pomocí scatterplot nebo pomocí funkce integrované korelace</span><span class="sxs-lookup"><span data-stu-id="93702-125">Look at correlations between variables using a scatterplot or using the built-in correlation function</span></span>
+9. <span data-ttu-id="27425-125">Podívejte se na korelací mezi proměnné pomocí scatterplot nebo pomocí funkce integrované korelace hello</span><span class="sxs-lookup"><span data-stu-id="27425-125">Look at correlations between variables using a scatterplot or using hello built-in correlation function</span></span>
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
@@ -95,49 +95,49 @@ ms.lasthandoff: 07/11/2017
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <span data-ttu-id="93702-126"><a name="blob-featuregen"></a>Funkce generování</span><span class="sxs-lookup"><span data-stu-id="93702-126"><a name="blob-featuregen"></a>Feature Generation</span></span>
-<span data-ttu-id="93702-127">Můžete se vygeneruje funkcí s použitím Python následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="93702-127">We can generate features using Python as follows:</span></span>
+## <span data-ttu-id="27425-126"><a name="blob-featuregen"></a>Funkce generování</span><span class="sxs-lookup"><span data-stu-id="27425-126"><a name="blob-featuregen"></a>Feature Generation</span></span>
+<span data-ttu-id="27425-127">Můžete se vygeneruje funkcí s použitím Python následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="27425-127">We can generate features using Python as follows:</span></span>
 
-### <span data-ttu-id="93702-128"><a name="blob-countfeature"></a>Hodnota ukazatele na základě funkce generování</span><span class="sxs-lookup"><span data-stu-id="93702-128"><a name="blob-countfeature"></a>Indicator value based Feature Generation</span></span>
-<span data-ttu-id="93702-129">Kategorií funkce lze vytvořit následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="93702-129">Categorical features can be created as follows:</span></span>
+### <span data-ttu-id="27425-128"><a name="blob-countfeature"></a>Hodnota ukazatele na základě funkce generování</span><span class="sxs-lookup"><span data-stu-id="27425-128"><a name="blob-countfeature"></a>Indicator value based Feature Generation</span></span>
+<span data-ttu-id="27425-129">Kategorií funkce lze vytvořit následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="27425-129">Categorical features can be created as follows:</span></span>
 
-1. <span data-ttu-id="93702-130">Zkontrolujte distribuci sloupci kategorií:</span><span class="sxs-lookup"><span data-stu-id="93702-130">Inspect the distribution of the categorical column:</span></span>
+1. <span data-ttu-id="27425-130">Zkontrolujte hello distribuční sloupce hello kategorií:</span><span class="sxs-lookup"><span data-stu-id="27425-130">Inspect hello distribution of hello categorical column:</span></span>
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. <span data-ttu-id="93702-131">Generování hodnot ukazatele pro jednotlivé hodnoty ve sloupcích</span><span class="sxs-lookup"><span data-stu-id="93702-131">Generate indicator values for each of the column values</span></span>
+2. <span data-ttu-id="27425-131">Generování hodnot ukazatele pro jednotlivé hodnoty ve sloupcích hello</span><span class="sxs-lookup"><span data-stu-id="27425-131">Generate indicator values for each of hello column values</span></span>
    
-        #generate the indicator column
+        #generate hello indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. <span data-ttu-id="93702-132">Připojit ukazatel sloupec s původní data rámečku</span><span class="sxs-lookup"><span data-stu-id="93702-132">Join the indicator column with the original data frame</span></span> 
+3. <span data-ttu-id="27425-132">Připojení k hello indikátor sloupec s hello původní data rámečku</span><span class="sxs-lookup"><span data-stu-id="27425-132">Join hello indicator column with hello original data frame</span></span> 
    
-            #Join the dummy variables back to the original data frame
+            #Join hello dummy variables back toohello original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. <span data-ttu-id="93702-133">Odeberte původní proměnnou:</span><span class="sxs-lookup"><span data-stu-id="93702-133">Remove the original variable itself:</span></span>
+4. <span data-ttu-id="27425-133">Odebrání hello původní proměnná sám sebe:</span><span class="sxs-lookup"><span data-stu-id="27425-133">Remove hello original variable itself:</span></span>
    
-        #Remove the original column rate_code in df1_with_dummy
+        #Remove hello original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <span data-ttu-id="93702-134"><a name="blob-binningfeature"></a>Přihrádkování funkce generování</span><span class="sxs-lookup"><span data-stu-id="93702-134"><a name="blob-binningfeature"></a>Binning Feature Generation</span></span>
-<span data-ttu-id="93702-135">Pro generování binned funkce, budeme postupovat takto:</span><span class="sxs-lookup"><span data-stu-id="93702-135">For generating binned features, we proceed as follows:</span></span>
+### <span data-ttu-id="27425-134"><a name="blob-binningfeature"></a>Přihrádkování funkce generování</span><span class="sxs-lookup"><span data-stu-id="27425-134"><a name="blob-binningfeature"></a>Binning Feature Generation</span></span>
+<span data-ttu-id="27425-135">Pro generování binned funkce, budeme postupovat takto:</span><span class="sxs-lookup"><span data-stu-id="27425-135">For generating binned features, we proceed as follows:</span></span>
 
-1. <span data-ttu-id="93702-136">Přidat posloupnost sloupce, které chcete bin je číselný sloupec</span><span class="sxs-lookup"><span data-stu-id="93702-136">Add a sequence of columns to bin a numeric column</span></span>
+1. <span data-ttu-id="27425-136">Přidat posloupnost toobin sloupce je číselný sloupec</span><span class="sxs-lookup"><span data-stu-id="27425-136">Add a sequence of columns toobin a numeric column</span></span>
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. <span data-ttu-id="93702-137">Převést přihrádkování pořadí boolean proměnných</span><span class="sxs-lookup"><span data-stu-id="93702-137">Convert binning to a sequence of boolean variables</span></span>
+2. <span data-ttu-id="27425-137">Převést přihrádkování tooa pořadí boolean proměnných</span><span class="sxs-lookup"><span data-stu-id="27425-137">Convert binning tooa sequence of boolean variables</span></span>
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. <span data-ttu-id="93702-138">Nakonec připojení fiktivní proměnné zpět na původní data rámečku</span><span class="sxs-lookup"><span data-stu-id="93702-138">Finally, Join the dummy variables back to the original data frame</span></span>
+3. <span data-ttu-id="27425-138">Nakonec připojení hello fiktivní proměnné back toohello původní data rámečku</span><span class="sxs-lookup"><span data-stu-id="27425-138">Finally, Join hello dummy variables back toohello original data frame</span></span>
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <span data-ttu-id="93702-139"><a name="sql-featuregen"></a>Zápis dat zpět do objektu blob Azure a využívají v Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="93702-139"><a name="sql-featuregen"></a>Writing data back to Azure blob and consuming in Azure Machine Learning</span></span>
-<span data-ttu-id="93702-140">Poté, co jste prozkoumali data a vytvořili nezbytné funkce, můžete nahrát data (vzorkovat nebo featurized) do Azure blob a využívat v Azure Machine Learning pomocí následujících kroků: Další funkce můžete vytvářet v Azure Machine Learning Studio také.</span><span class="sxs-lookup"><span data-stu-id="93702-140">After you have explored the data and created the necessary features, you can upload the data (sampled or featurized) to an Azure blob and consume it in Azure Machine Learning using the following steps: Note that additional features can be created in the Azure Machine Learning Studio as well.</span></span> 
+## <span data-ttu-id="27425-139"><a name="sql-featuregen"></a>Zápis dat zálohovat tooAzure objektů blob a využívání v Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="27425-139"><a name="sql-featuregen"></a>Writing data back tooAzure blob and consuming in Azure Machine Learning</span></span>
+<span data-ttu-id="27425-140">Poté, co jste prozkoumali hello dat a vytvořit hello nezbytné funkce, můžete nahrát hello data (vzorkovat nebo featurized) tooan Azure blob a využívat v Azure Machine Learning pomocí následujících kroků hello: Další funkce můžete vytvářet v hello Azure Machine Learning Studio také.</span><span class="sxs-lookup"><span data-stu-id="27425-140">After you have explored hello data and created hello necessary features, you can upload hello data (sampled or featurized) tooan Azure blob and consume it in Azure Machine Learning using hello following steps: Note that additional features can be created in hello Azure Machine Learning Studio as well.</span></span> 
 
-1. <span data-ttu-id="93702-141">Zápis dat rámečku k místnímu souboru.</span><span class="sxs-lookup"><span data-stu-id="93702-141">Write the data frame to local file</span></span>
+1. <span data-ttu-id="27425-141">Zápis hello dat rámce toolocal souboru</span><span class="sxs-lookup"><span data-stu-id="27425-141">Write hello data frame toolocal file</span></span>
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. <span data-ttu-id="93702-142">Nahrajte data do objektů blob v Azure následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="93702-142">Upload the data to Azure blob as follows:</span></span>
+2. <span data-ttu-id="27425-142">Nahrajte objekt blob tooAzure data hello následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="27425-142">Upload hello data tooAzure blob as follows:</span></span>
    
         from azure.storage.blob import BlobService
         import tables
@@ -158,7 +158,7 @@ ms.lasthandoff: 07/11/2017
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. <span data-ttu-id="93702-143">Nyní lze číst data z objektu blob pomocí Azure Machine Learning [importovat Data] [ import-data] modulu, jak je znázorněno na obrazovce níže:</span><span class="sxs-lookup"><span data-stu-id="93702-143">Now the data can be read from the blob using the Azure Machine Learning [Import Data][import-data] module as shown in the screen below:</span></span>
+3. <span data-ttu-id="27425-143">Teď můžete číst hello data z hello blob pomocí Azure Machine Learning hello [importovat Data] [ import-data] modulu, jak je znázorněno v úvodní obrazovka níže:</span><span class="sxs-lookup"><span data-stu-id="27425-143">Now hello data can be read from hello blob using hello Azure Machine Learning [Import Data][import-data] module as shown in hello screen below:</span></span>
 
 ![Čtečka objektů blob][1]
 

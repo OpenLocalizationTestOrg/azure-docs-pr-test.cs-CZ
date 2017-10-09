@@ -1,0 +1,10 @@
+## <a name="add-a-consumer-group-tooyour-iot-hub"></a><span data-ttu-id="daaf7-101">Přidat příjemce skupiny tooyour IoT hub</span><span class="sxs-lookup"><span data-stu-id="daaf7-101">Add a consumer group tooyour IoT hub</span></span>
+
+<span data-ttu-id="daaf7-102">Skupiny uživatelů slouží aplikacím toopull data ze služby Azure IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="daaf7-102">Consumer groups are used by applications toopull data from Azure IoT Hub.</span></span> <span data-ttu-id="daaf7-103">V tomto kurzu vytvoříte příjemce toobe skupiny používané příchozí data tooread služba Azure ze služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="daaf7-103">In this tutorial, you create a consumer group toobe used by a coming Azure service tooread data from your IoT hub.</span></span>
+
+<span data-ttu-id="daaf7-104">tooadd příjemce skupiny tooyour IoT hub, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="daaf7-104">tooadd a consumer group tooyour IoT hub, follow these steps:</span></span>
+
+1. <span data-ttu-id="daaf7-105">V hello [portál Azure](https://ms.portal.azure.com/), otevřete své služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="daaf7-105">In hello [Azure portal](https://ms.portal.azure.com/), open your IoT hub.</span></span>
+2. <span data-ttu-id="daaf7-106">V levém podokně hello, klikněte na **koncové body**, vyberte **události** v prostředním podokně hello, zadejte název v rámci **skupiny příjemců** hello pravém podokně a pak klikněte na tlačítko  **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="daaf7-106">In hello left pane, click **Endpoints**, select **Events** on hello middle pane, enter a name under **Consumer groups** on hello right pane, and then click **Save**.</span></span>
+
+   ![Vytvořte skupinu uživatelů ve službě IoT hub](../articles/iot-hub/media/iot-hub-create-consumer-group/1_iot-hub-create-consumer-group-azure.png)

@@ -1,6 +1,6 @@
 ---
-title: "H264 Jednotné přenosovou rychlostí 720p zvuk 5.1 | Microsoft Docs"
-description: "Téma nabízí přehled ** jednou přenosovou rychlostí H264 720p zvuk 5.1* * úloh přednastavení."
+title: "aaaH264 jednou přenosovou rychlostí 720p zvuk 5.1 | Microsoft Docs"
+description: "Hello téma nabízí přehled hello ** jednou přenosovou rychlostí H264 720p zvuk 5.1* * úloh přednastavení."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: juliako
-ms.openlocfilehash: 629ef7690f25dc6de1773a83cf967544cdf16682
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 32b8b104dd288954310e044c05c3bc67f8b8d27f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-single-bitrate-720p-audio-51"></a><span data-ttu-id="c8504-103">H264 Jednou přenosovou rychlostí 720p zvuk 5.1</span><span class="sxs-lookup"><span data-stu-id="c8504-103">H264 Single Bitrate 720p Audio 5.1</span></span>
-<span data-ttu-id="c8504-104">`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="c8504-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="c8504-105">Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média.</span><span class="sxs-lookup"><span data-stu-id="c8504-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="c8504-106">Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16.</span><span class="sxs-lookup"><span data-stu-id="c8504-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="c8504-107">By pak předejte vlastní přednastavení kodéru.</span><span class="sxs-lookup"><span data-stu-id="c8504-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="c8504-108">Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="c8504-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-single-bitrate-720p-audio-51"></a><span data-ttu-id="0e555-103">H264 Jednou přenosovou rychlostí 720p zvuk 5.1</span><span class="sxs-lookup"><span data-stu-id="0e555-103">H264 Single Bitrate 720p Audio 5.1</span></span>
+<span data-ttu-id="0e555-104">`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="0e555-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="0e555-105">Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru.</span><span class="sxs-lookup"><span data-stu-id="0e555-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="0e555-106">Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16.</span><span class="sxs-lookup"><span data-stu-id="0e555-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="0e555-107">By pak předejte kodér vlastní přednastavené toohello hello.</span><span class="sxs-lookup"><span data-stu-id="0e555-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="0e555-108">Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="0e555-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="c8504-109">Toto téma ukazuje `H264 Single Bitrate 720p Audio 5.1` přednastavení ve formátu XML a JSON.</span><span class="sxs-lookup"><span data-stu-id="c8504-109">This topic shows the `H264 Single Bitrate 720p Audio 5.1` preset in XML and JSON format.</span></span>  
+ <span data-ttu-id="0e555-109">Toto téma ukazuje hello `H264 Single Bitrate 720p Audio 5.1` přednastavení ve formátu XML a JSON.</span><span class="sxs-lookup"><span data-stu-id="0e555-109">This topic shows hello `H264 Single Bitrate 720p Audio 5.1` preset in XML and JSON format.</span></span>  
   
- <span data-ttu-id="c8504-110">Tato předvolba vytváří jednoho souboru MP4 s přenosovou rychlostí 4500 kb/s a zvuku AAC 5.1.</span><span class="sxs-lookup"><span data-stu-id="c8504-110">This preset produces a single MP4 file with a bitrate of 4500 kbps, and AAC 5.1 audio.</span></span> <span data-ttu-id="c8504-111">Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže.</span><span class="sxs-lookup"><span data-stu-id="c8504-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="c8504-112">Vysvětlení znamená, co každý prvek a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="c8504-112">For explanations of what each element means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>  
+ <span data-ttu-id="0e555-110">Tato předvolba vytváří jednoho souboru MP4 s přenosovou rychlostí 4500 kb/s a zvuku AAC 5.1.</span><span class="sxs-lookup"><span data-stu-id="0e555-110">This preset produces a single MP4 file with a bitrate of 4500 kbps, and AAC 5.1 audio.</span></span> <span data-ttu-id="0e555-111">Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže.</span><span class="sxs-lookup"><span data-stu-id="0e555-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="0e555-112">Vysvětlení znamená, co každý prvek a hello platné hodnoty pro každý element, najdete v tématu hello [Media Encoder Standard schématu](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="0e555-112">For explanations of what each element means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>  
   
- <span data-ttu-id="c8504-113">XML</span><span class="sxs-lookup"><span data-stu-id="c8504-113">XML</span></span>  
+ <span data-ttu-id="0e555-113">XML</span><span class="sxs-lookup"><span data-stu-id="0e555-113">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="c8504-114">JSON</span><span class="sxs-lookup"><span data-stu-id="c8504-114">JSON</span></span>  
+ <span data-ttu-id="0e555-114">JSON</span><span class="sxs-lookup"><span data-stu-id="0e555-114">JSON</span></span>  
   
 ```  
 {  

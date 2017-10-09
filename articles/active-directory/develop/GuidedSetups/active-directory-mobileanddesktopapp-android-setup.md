@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 Android získávání spuštěno – nastavení | Microsoft Docs"
+title: "aaaAzure AD v2 Android Začínáme - instalace | Microsoft Docs"
 description: "Jak získat přístupový token a volání rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nebo Microsoft Graph API Android Asie"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,27 +15,27 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: a43d7e30a6f4176afba27f0de2c2c116df741080
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: df2670d6d35b7a9a81158d4d7eb190540ca9c695
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="set-up-your-project"></a><span data-ttu-id="9311d-103">Nastavení projektu</span><span class="sxs-lookup"><span data-stu-id="9311d-103">Set up your project</span></span>
+## <a name="set-up-your-project"></a><span data-ttu-id="5f0a6-103">Nastavení projektu</span><span class="sxs-lookup"><span data-stu-id="5f0a6-103">Set up your project</span></span>
 
-> <span data-ttu-id="9311d-104">Stáhněte si tento ukázkový projekt Android Studio místo dávají přednost?</span><span class="sxs-lookup"><span data-stu-id="9311d-104">Prefer to download this sample's Android Studio project instead?</span></span> <span data-ttu-id="9311d-105">[Stažení projektu](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip) a pokračujte [krok konfigurace](#create-an-application-express) před provedením konfigurace ukázka kódu.</span><span class="sxs-lookup"><span data-stu-id="9311d-105">[Download a project](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip) and skip to the [Configuration step](#create-an-application-express) to configure the code sample before executing    .</span></span>
-
-
-### <a name="create-a-new-project"></a><span data-ttu-id="9311d-106">Vytvoření nového projektu</span><span class="sxs-lookup"><span data-stu-id="9311d-106">Create a new project</span></span> 
-1.  <span data-ttu-id="9311d-107">Otevřete Android Studio a přejděte do:`File` > `New` > `New Project`</span><span class="sxs-lookup"><span data-stu-id="9311d-107">Open Android Studio, go to: `File` > `New` > `New Project`</span></span>
-2.  <span data-ttu-id="9311d-108">Název aplikace a klikněte na tlačítko`Next`</span><span class="sxs-lookup"><span data-stu-id="9311d-108">Name your application and click `Next`</span></span>
-3.  <span data-ttu-id="9311d-109">Je nutné vybrat *21 rozhraní API nebo novější (Android 5.0)* a klikněte na tlačítko`Next`</span><span class="sxs-lookup"><span data-stu-id="9311d-109">Make sure to select *API 21 or newer (Android 5.0)* and click `Next`</span></span>
-4.  <span data-ttu-id="9311d-110">Nechte `Empty Activity`, klikněte na tlačítko `Next`, pak`Finish`</span><span class="sxs-lookup"><span data-stu-id="9311d-110">Leave `Empty Activity`, click `Next`, then `Finish`</span></span>
+> <span data-ttu-id="5f0a6-104">Dáváte přednost toodownload tento ukázkový projekt Android Studio místo?</span><span class="sxs-lookup"><span data-stu-id="5f0a6-104">Prefer toodownload this sample's Android Studio project instead?</span></span> <span data-ttu-id="5f0a6-105">[Stažení projektu](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip) a přeskočit toohello [krok konfigurace](#create-an-application-express) ukázka kódu hello tooconfigure před provedením.</span><span class="sxs-lookup"><span data-stu-id="5f0a6-105">[Download a project](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip) and skip toohello [Configuration step](#create-an-application-express) tooconfigure hello code sample before executing    .</span></span>
 
 
-### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a><span data-ttu-id="9311d-111">Do projektu přidejte knihovny ověřování společnosti Microsoft (MSAL)</span><span class="sxs-lookup"><span data-stu-id="9311d-111">Add the Microsoft Authentication Library (MSAL) to your project</span></span>
-1.  <span data-ttu-id="9311d-112">V nástroji Android Studio přejděte do:`Gradle Scripts` > `build.gradle (Module: app)`</span><span class="sxs-lookup"><span data-stu-id="9311d-112">In Android Studio, go to: `Gradle Scripts` > `build.gradle (Module: app)`</span></span>
-2.  <span data-ttu-id="9311d-113">Zkopírujte a vložte následující kód pod `Dependencies`:</span><span class="sxs-lookup"><span data-stu-id="9311d-113">Copy and paste the following code under `Dependencies`:</span></span>
+### <a name="create-a-new-project"></a><span data-ttu-id="5f0a6-106">Vytvoření nového projektu</span><span class="sxs-lookup"><span data-stu-id="5f0a6-106">Create a new project</span></span> 
+1.  <span data-ttu-id="5f0a6-107">Otevřete Android Studio a přejděte do:`File` > `New` > `New Project`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-107">Open Android Studio, go to: `File` > `New` > `New Project`</span></span>
+2.  <span data-ttu-id="5f0a6-108">Název aplikace a klikněte na tlačítko`Next`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-108">Name your application and click `Next`</span></span>
+3.  <span data-ttu-id="5f0a6-109">Ujistěte se, že tooselect *21 rozhraní API nebo novější (Android 5.0)* a klikněte na tlačítko`Next`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-109">Make sure tooselect *API 21 or newer (Android 5.0)* and click `Next`</span></span>
+4.  <span data-ttu-id="5f0a6-110">Nechte `Empty Activity`, klikněte na tlačítko `Next`, pak`Finish`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-110">Leave `Empty Activity`, click `Next`, then `Finish`</span></span>
+
+
+### <a name="add-hello-microsoft-authentication-library-msal-tooyour-project"></a><span data-ttu-id="5f0a6-111">Přidání projektu tooyour hello Microsoft ověřování knihovny (MSAL)</span><span class="sxs-lookup"><span data-stu-id="5f0a6-111">Add hello Microsoft Authentication Library (MSAL) tooyour project</span></span>
+1.  <span data-ttu-id="5f0a6-112">V nástroji Android Studio přejděte do:`Gradle Scripts` > `build.gradle (Module: app)`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-112">In Android Studio, go to: `Gradle Scripts` > `build.gradle (Module: app)`</span></span>
+2.  <span data-ttu-id="5f0a6-113">Kopírování a vložení hello následující kód pod `Dependencies`:</span><span class="sxs-lookup"><span data-stu-id="5f0a6-113">Copy and paste hello following code under `Dependencies`:</span></span>
 
 ```ruby  
 compile ('com.microsoft.identity.client:msal:0.1.+') {
@@ -45,17 +45,17 @@ compile 'com.android.volley:volley:1.0.0'
 ```
 
 <!--start-collapse-->
-### <a name="about-this-package"></a><span data-ttu-id="9311d-114">O tomto balíčku</span><span class="sxs-lookup"><span data-stu-id="9311d-114">About this package</span></span>
+### <a name="about-this-package"></a><span data-ttu-id="5f0a6-114">O tomto balíčku</span><span class="sxs-lookup"><span data-stu-id="5f0a6-114">About this package</span></span>
 
-<span data-ttu-id="9311d-115">Výše uvedené balíček nainstaluje Microsoft ověřování knihovny (MSAL).</span><span class="sxs-lookup"><span data-stu-id="9311d-115">The package above installs the Microsoft Authentication Library (MSAL).</span></span> <span data-ttu-id="9311d-116">MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci tokeny uživatel používá pro přístup k rozhraní API, které jsou chráněné službou Azure Active Directory v2 koncový bod.</span><span class="sxs-lookup"><span data-stu-id="9311d-116">MSAL handles acquiring, caching and refreshing user tokens used to access APIs protected by Azure Active Directory v2 endpoint.</span></span>
+<span data-ttu-id="5f0a6-115">balíček Hello výše nainstaluje hello Microsoft ověřování knihovny (MSAL).</span><span class="sxs-lookup"><span data-stu-id="5f0a6-115">hello package above installs hello Microsoft Authentication Library (MSAL).</span></span> <span data-ttu-id="5f0a6-116">MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci uživatele použití tokenů tooaccess chráněné službou Azure Active Directory v2 koncový bod rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="5f0a6-116">MSAL handles acquiring, caching and refreshing user tokens used tooaccess APIs protected by Azure Active Directory v2 endpoint.</span></span>
 <!--end-collapse-->
 
-## <a name="create-your-applications-ui"></a><span data-ttu-id="9311d-117">Vytvoření uživatelského rozhraní aplikace</span><span class="sxs-lookup"><span data-stu-id="9311d-117">Create your application’s UI</span></span>
+## <a name="create-your-applications-ui"></a><span data-ttu-id="5f0a6-117">Vytvoření uživatelského rozhraní aplikace</span><span class="sxs-lookup"><span data-stu-id="5f0a6-117">Create your application’s UI</span></span>
 
-1.  <span data-ttu-id="9311d-118">Otevřete: `activity_main.xml` v části`res` > `layout`</span><span class="sxs-lookup"><span data-stu-id="9311d-118">Open: `activity_main.xml` under `res` > `layout`</span></span>
-2.  <span data-ttu-id="9311d-119">Změna rozložení aktivity z `android.support.constraint.ConstraintLayout` či jiné na`LinearLayout`</span><span class="sxs-lookup"><span data-stu-id="9311d-119">Change the activity layout from `android.support.constraint.ConstraintLayout` or other to `LinearLayout`</span></span>
-3.  <span data-ttu-id="9311d-120">Přidat `android:orientation="vertical"` vlastnost `LinearLayout` uzlu</span><span class="sxs-lookup"><span data-stu-id="9311d-120">Add `android:orientation="vertical"` property to `LinearLayout` node</span></span>
-4.  <span data-ttu-id="9311d-121">Zkopírujte a vložte následující kód do `LinearLayout` uzlu, nahraďte aktuální obsahu:</span><span class="sxs-lookup"><span data-stu-id="9311d-121">Copy and paste the following code into the `LinearLayout` node, replacing the current content:</span></span>
+1.  <span data-ttu-id="5f0a6-118">Otevřete: `activity_main.xml` v části`res` > `layout`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-118">Open: `activity_main.xml` under `res` > `layout`</span></span>
+2.  <span data-ttu-id="5f0a6-119">Změna rozložení aktivity hello z `android.support.constraint.ConstraintLayout` či jiné příliš`LinearLayout`</span><span class="sxs-lookup"><span data-stu-id="5f0a6-119">Change hello activity layout from `android.support.constraint.ConstraintLayout` or other too`LinearLayout`</span></span>
+3.  <span data-ttu-id="5f0a6-120">Přidat `android:orientation="vertical"` vlastnost příliš`LinearLayout` uzlu</span><span class="sxs-lookup"><span data-stu-id="5f0a6-120">Add `android:orientation="vertical"` property too`LinearLayout` node</span></span>
+4.  <span data-ttu-id="5f0a6-121">Kopírování a vložení hello následující kód do hello `LinearLayout` uzlu, nahraďte obsah aktuální hello:</span><span class="sxs-lookup"><span data-stu-id="5f0a6-121">Copy and paste hello following code into hello `LinearLayout` node, replacing hello current content:</span></span>
 
 ```xml
 <TextView

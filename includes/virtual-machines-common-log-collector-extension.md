@@ -1,47 +1,47 @@
 
-<span data-ttu-id="70774-101">Diagnostika problémů s cloudové služby Microsoft Azure vyžaduje shromažďování souborů protokolů služby u virtuálních počítačů jako dojít k problémům.</span><span class="sxs-lookup"><span data-stu-id="70774-101">Diagnosing issues with an Microsoft Azure cloud service requires collecting the service’s log files on virtual machines as the issues occur.</span></span> <span data-ttu-id="70774-102">Můžete použít AzureLogCollector rozšíření na vyžádání k perfom jednorázové shromažďování protokolů z jedné nebo více cloudové služby virtuálních počítačů (z webové role i role pracovního procesu) a přenos shromážděných souborů do účtu úložiště Azure – všechny bez vzdálené přihlášení k jakémukoli z virtuální počítače.</span><span class="sxs-lookup"><span data-stu-id="70774-102">You can use the AzureLogCollector extension on-demand to perfom one-time collection of logs from one or more Cloud Service VMs (from both web roles and worker roles) and transfer the collected files to an Azure storage account – all without remotely logging on to any of the VMs.</span></span>
+<span data-ttu-id="b6a70-101">Diagnostika problémů s cloudové služby Microsoft Azure vyžaduje shromažďování souborů protokolů služby hello na virtuální počítače jsou prováděny hello problémy.</span><span class="sxs-lookup"><span data-stu-id="b6a70-101">Diagnosing issues with an Microsoft Azure cloud service requires collecting hello service’s log files on virtual machines as hello issues occur.</span></span> <span data-ttu-id="b6a70-102">Můžete použít hello AzureLogCollector rozšíření na vyžádání tooperfom jednorázové shromažďování protokolů z jedné nebo více virtuálních počítačů služby cloudu (z webových rolí a rolí pracovního procesu) a přenos hello shromážděné soubory tooan účtu úložiště Azure – všechny bez vzdálené přihlášení tooany hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="b6a70-102">You can use hello AzureLogCollector extension on-demand tooperfom one-time collection of logs from one or more Cloud Service VMs (from both web roles and worker roles) and transfer hello collected files tooan Azure storage account – all without remotely logging on tooany of hello VMs.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="70774-103">Popisy pro většinu zaznamenané informace lze najít na http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.</span><span class="sxs-lookup"><span data-stu-id="70774-103">Descriptions for most of the logged information can be found at http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.</span></span>
+> <span data-ttu-id="b6a70-103">Popisy pro většinu hello protokolovat informace lze najít na http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.</span><span class="sxs-lookup"><span data-stu-id="b6a70-103">Descriptions for most of hello logged information can be found at http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.</span></span>
 > 
 > 
 
-<span data-ttu-id="70774-104">Existují dva režimy kolekce závisí na typy souborů, které se mají shromažďovat.</span><span class="sxs-lookup"><span data-stu-id="70774-104">There are two modes of collection dependent on the types of files to be collected.</span></span>
+<span data-ttu-id="b6a70-104">Existují dva režimy kolekce závisí na typech hello toobe soubory shromážděny.</span><span class="sxs-lookup"><span data-stu-id="b6a70-104">There are two modes of collection dependent on hello types of files toobe collected.</span></span>
 
-* <span data-ttu-id="70774-105">Azure hostovaného agenta protokoly pouze (GA).</span><span class="sxs-lookup"><span data-stu-id="70774-105">Azure Guest Agent Logs only (GA).</span></span> <span data-ttu-id="70774-106">Tento režim kolekce zahrnuje všechny protokoly související s agenty Azure hostů a další součásti Azure.</span><span class="sxs-lookup"><span data-stu-id="70774-106">This collection mode includes all the logs related to Azure guest agents and other Azure components.</span></span>
-* <span data-ttu-id="70774-107">Všechny protokoly (úplná záloha).</span><span class="sxs-lookup"><span data-stu-id="70774-107">All Logs (Full).</span></span> <span data-ttu-id="70774-108">Tento režim kolekce bude shromažďovat všechny soubory v režimu GA plus:</span><span class="sxs-lookup"><span data-stu-id="70774-108">This collection mode will collect all files in GA mode plus:</span></span>
+* <span data-ttu-id="b6a70-105">Azure hostovaného agenta protokoly pouze (GA).</span><span class="sxs-lookup"><span data-stu-id="b6a70-105">Azure Guest Agent Logs only (GA).</span></span> <span data-ttu-id="b6a70-106">Tento režim kolekce zahrnuje všechny agenty hostů související tooAzure hello protokoly a dalšími součástmi Azure.</span><span class="sxs-lookup"><span data-stu-id="b6a70-106">This collection mode includes all hello logs related tooAzure guest agents and other Azure components.</span></span>
+* <span data-ttu-id="b6a70-107">Všechny protokoly (úplná záloha).</span><span class="sxs-lookup"><span data-stu-id="b6a70-107">All Logs (Full).</span></span> <span data-ttu-id="b6a70-108">Tento režim kolekce bude shromažďovat všechny soubory v režimu GA plus:</span><span class="sxs-lookup"><span data-stu-id="b6a70-108">This collection mode will collect all files in GA mode plus:</span></span>
   
-  * <span data-ttu-id="70774-109">protokoly událostí systému a aplikací</span><span class="sxs-lookup"><span data-stu-id="70774-109">system and application event logs</span></span>
-  * <span data-ttu-id="70774-110">Protokoly chyb HTTP</span><span class="sxs-lookup"><span data-stu-id="70774-110">HTTP error logs</span></span>
-  * <span data-ttu-id="70774-111">Protokoly služby IIS</span><span class="sxs-lookup"><span data-stu-id="70774-111">IIS Logs</span></span>
-  * <span data-ttu-id="70774-112">Protokoly instalace</span><span class="sxs-lookup"><span data-stu-id="70774-112">Setup logs</span></span>
-  * <span data-ttu-id="70774-113">Další systémové protokoly</span><span class="sxs-lookup"><span data-stu-id="70774-113">other system logs</span></span>
+  * <span data-ttu-id="b6a70-109">protokoly událostí systému a aplikací</span><span class="sxs-lookup"><span data-stu-id="b6a70-109">system and application event logs</span></span>
+  * <span data-ttu-id="b6a70-110">Protokoly chyb HTTP</span><span class="sxs-lookup"><span data-stu-id="b6a70-110">HTTP error logs</span></span>
+  * <span data-ttu-id="b6a70-111">Protokoly služby IIS</span><span class="sxs-lookup"><span data-stu-id="b6a70-111">IIS Logs</span></span>
+  * <span data-ttu-id="b6a70-112">Protokoly instalace</span><span class="sxs-lookup"><span data-stu-id="b6a70-112">Setup logs</span></span>
+  * <span data-ttu-id="b6a70-113">Další systémové protokoly</span><span class="sxs-lookup"><span data-stu-id="b6a70-113">other system logs</span></span>
 
-<span data-ttu-id="70774-114">V obou režimech kolekce složky kolekcí další data lze pomocí kolekce následující strukturou:</span><span class="sxs-lookup"><span data-stu-id="70774-114">In both collection modes, additional data collection folders can be specified by using a collection of the following structure:</span></span>
+<span data-ttu-id="b6a70-114">V obou režimech kolekce složky kolekcí další data lze pomocí kolekce hello strukturu:</span><span class="sxs-lookup"><span data-stu-id="b6a70-114">In both collection modes, additional data collection folders can be specified by using a collection of hello following structure:</span></span>
 
-* <span data-ttu-id="70774-115">**Název**: název kolekce, která se použije jako název podsložky v souboru zip, které se mají shromažďovat.</span><span class="sxs-lookup"><span data-stu-id="70774-115">**Name**: The name of the collection, which will be used as the name of subfolder inside the zip file to be collected.</span></span>
-* <span data-ttu-id="70774-116">**Umístění**: cesta ke složce na virtuálním počítači, kde budou shromažďovány souboru.</span><span class="sxs-lookup"><span data-stu-id="70774-116">**Location**: The path to the folder on the virtual machine where file will be collected.</span></span>
-* <span data-ttu-id="70774-117">**SearchPattern**: vzor názvů souborů, které se mají shromažďovat.</span><span class="sxs-lookup"><span data-stu-id="70774-117">**SearchPattern**: The pattern of the names of files to be collected.</span></span> <span data-ttu-id="70774-118">Výchozí hodnota je "*"</span><span class="sxs-lookup"><span data-stu-id="70774-118">Default is “*”</span></span>
-* <span data-ttu-id="70774-119">**Rekurzivní**: Pokud soubory budou shromažďovat rekurzivně ve složce.</span><span class="sxs-lookup"><span data-stu-id="70774-119">**Recursive**: if the files will be collected recursively under the folder.</span></span>
+* <span data-ttu-id="b6a70-115">**Název**: název hello hello kolekce, která se použije jako hello název podsložky uvnitř toobe soubor zip hello shromažďují.</span><span class="sxs-lookup"><span data-stu-id="b6a70-115">**Name**: hello name of hello collection, which will be used as hello name of subfolder inside hello zip file toobe collected.</span></span>
+* <span data-ttu-id="b6a70-116">**Umístění**: hello cesta toohello složky na virtuálním počítači hello kde budou shromažďovány souboru.</span><span class="sxs-lookup"><span data-stu-id="b6a70-116">**Location**: hello path toohello folder on hello virtual machine where file will be collected.</span></span>
+* <span data-ttu-id="b6a70-117">**SearchPattern**: hello vzor názvů hello toobe soubory shromážděny.</span><span class="sxs-lookup"><span data-stu-id="b6a70-117">**SearchPattern**: hello pattern of hello names of files toobe collected.</span></span> <span data-ttu-id="b6a70-118">Výchozí hodnota je "*"</span><span class="sxs-lookup"><span data-stu-id="b6a70-118">Default is “*”</span></span>
+* <span data-ttu-id="b6a70-119">**Rekurzivní**: Pokud budou soubory hello shromážděných rekurzivně složce hello.</span><span class="sxs-lookup"><span data-stu-id="b6a70-119">**Recursive**: if hello files will be collected recursively under hello folder.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="70774-120">Požadavky</span><span class="sxs-lookup"><span data-stu-id="70774-120">Prerequisites</span></span>
-* <span data-ttu-id="70774-121">Potřebujete mít účet úložiště pro rozšíření, které chcete ukládat soubory generované zip.</span><span class="sxs-lookup"><span data-stu-id="70774-121">You need to have a storage account for extension to save generated zip files.</span></span>
-* <span data-ttu-id="70774-122">Ujistěte se, že používáte V0.8.0 rutiny Azure PowerShell nebo vyšší.</span><span class="sxs-lookup"><span data-stu-id="70774-122">You must make sure that you are using Azure PowerShell Cmdlets V0.8.0 or above.</span></span> <span data-ttu-id="70774-123">Další informace najdete v tématu [Azure stáhne](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="70774-123">For more information, see [Azure Downloads](https://azure.microsoft.com/downloads/).</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="b6a70-120">Požadavky</span><span class="sxs-lookup"><span data-stu-id="b6a70-120">Prerequisites</span></span>
+* <span data-ttu-id="b6a70-121">Potřebujete toohave účet úložiště pro soubory zip toosave generované rozšíření.</span><span class="sxs-lookup"><span data-stu-id="b6a70-121">You need toohave a storage account for extension toosave generated zip files.</span></span>
+* <span data-ttu-id="b6a70-122">Ujistěte se, že používáte V0.8.0 rutiny Azure PowerShell nebo vyšší.</span><span class="sxs-lookup"><span data-stu-id="b6a70-122">You must make sure that you are using Azure PowerShell Cmdlets V0.8.0 or above.</span></span> <span data-ttu-id="b6a70-123">Další informace najdete v tématu [Azure stáhne](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="b6a70-123">For more information, see [Azure Downloads](https://azure.microsoft.com/downloads/).</span></span>
 
-## <a name="add-the-extension"></a><span data-ttu-id="70774-124">Přidejte rozšíření</span><span class="sxs-lookup"><span data-stu-id="70774-124">Add the extension</span></span>
-<span data-ttu-id="70774-125">Můžete použít [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) rutiny nebo [rozhraní API REST pro správu služby](https://msdn.microsoft.com/library/ee460799.aspx) přidat AzureLogCollector rozšíření.</span><span class="sxs-lookup"><span data-stu-id="70774-125">You can use [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlets or [Service Management REST APIs](https://msdn.microsoft.com/library/ee460799.aspx) to add the AzureLogCollector extension.</span></span>
+## <a name="add-hello-extension"></a><span data-ttu-id="b6a70-124">Přidat rozšíření hello</span><span class="sxs-lookup"><span data-stu-id="b6a70-124">Add hello extension</span></span>
+<span data-ttu-id="b6a70-125">Můžete použít [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) rutiny nebo [rozhraní API REST pro správu služby](https://msdn.microsoft.com/library/ee460799.aspx) tooadd hello AzureLogCollector rozšíření.</span><span class="sxs-lookup"><span data-stu-id="b6a70-125">You can use [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlets or [Service Management REST APIs](https://msdn.microsoft.com/library/ee460799.aspx) tooadd hello AzureLogCollector extension.</span></span>
 
-<span data-ttu-id="70774-126">Pro cloudové služby, existující rutiny Azure Powershellu **Set-AzureServiceExtension**, slouží k povolení rozšíření u instancí role cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="70774-126">For Cloud Services, the existing Azure Powershell cmdlet, **Set-AzureServiceExtension**, can be used to enable the extension on Cloud Service role instances.</span></span> <span data-ttu-id="70774-127">Pokaždé, když je toto rozšíření povolené prostřednictvím této rutiny, aktivuje se v instancích vybranou roli v systému vybrané role shromáždění protokolů.</span><span class="sxs-lookup"><span data-stu-id="70774-127">Every time this extension is enabled through this cmdlet, log collection is triggered on the selected role instances of selected roles.</span></span>
+<span data-ttu-id="b6a70-126">Pro cloudové služby, hello existující rutiny Azure Powershellu, **Set-AzureServiceExtension**, může být použité tooenable hello rozšíření u instancí role cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="b6a70-126">For Cloud Services, hello existing Azure Powershell cmdlet, **Set-AzureServiceExtension**, can be used tooenable hello extension on Cloud Service role instances.</span></span> <span data-ttu-id="b6a70-127">Pokaždé, když je toto rozšíření povolené prostřednictvím této rutiny, aktivuje se u instancí role hello vybrané vybraných rolí shromáždění protokolů.</span><span class="sxs-lookup"><span data-stu-id="b6a70-127">Every time this extension is enabled through this cmdlet, log collection is triggered on hello selected role instances of selected roles.</span></span>
 
-<span data-ttu-id="70774-128">Pro virtuální počítače, existující rutiny Azure Powershellu **Set-AzureVMExtension**, slouží k povolení rozšíření na virtuálních počítačích.</span><span class="sxs-lookup"><span data-stu-id="70774-128">For Virtual Machines, the existing Azure Powershell cmdlet, **Set-AzureVMExtension**, can be used to enable the extension on Virtual Machines.</span></span> <span data-ttu-id="70774-129">Pokaždé, když je toto rozšíření povolené prostřednictvím rutin, aktivuje se na každou instanci shromáždění protokolů.</span><span class="sxs-lookup"><span data-stu-id="70774-129">Every time this extension is enabled through the cmdlets, log collection is triggered on each instance.</span></span>
+<span data-ttu-id="b6a70-128">Pro virtuální počítače, hello existující rutiny Azure Powershellu, **Set-AzureVMExtension**, může být rozšíření hello tooenable používané virtuálními počítači.</span><span class="sxs-lookup"><span data-stu-id="b6a70-128">For Virtual Machines, hello existing Azure Powershell cmdlet, **Set-AzureVMExtension**, can be used tooenable hello extension on Virtual Machines.</span></span> <span data-ttu-id="b6a70-129">Pokaždé, když je toto rozšíření povolené pomocí rutin hello, aktivuje se na každou instanci shromáždění protokolů.</span><span class="sxs-lookup"><span data-stu-id="b6a70-129">Every time this extension is enabled through hello cmdlets, log collection is triggered on each instance.</span></span>
 
-<span data-ttu-id="70774-130">Toto rozšíření interně používá na základě JSON PublicConfiguration a PrivateConfiguration.</span><span class="sxs-lookup"><span data-stu-id="70774-130">Internally, this extension uses the JSON-based PublicConfiguration and PrivateConfiguration.</span></span> <span data-ttu-id="70774-131">Toto je rozložení ukázku JSON pro veřejné a privátní konfigurace.</span><span class="sxs-lookup"><span data-stu-id="70774-131">The following is the layout of a sample JSON for public and private configuration.</span></span>
+<span data-ttu-id="b6a70-130">Toto rozšíření interně používá hello na základě JSON PublicConfiguration a PrivateConfiguration.</span><span class="sxs-lookup"><span data-stu-id="b6a70-130">Internally, this extension uses hello JSON-based PublicConfiguration and PrivateConfiguration.</span></span> <span data-ttu-id="b6a70-131">Hello následuje hello rozložení ukázkové JSON pro veřejné a privátní konfigurace.</span><span class="sxs-lookup"><span data-stu-id="b6a70-131">hello following is hello layout of a sample JSON for public and private configuration.</span></span>
 
-### <a name="publicconfiguration"></a><span data-ttu-id="70774-132">PublicConfiguration</span><span class="sxs-lookup"><span data-stu-id="70774-132">PublicConfiguration</span></span>
+### <a name="publicconfiguration"></a><span data-ttu-id="b6a70-132">PublicConfiguration</span><span class="sxs-lookup"><span data-stu-id="b6a70-132">PublicConfiguration</span></span>
     {
         "Instances":  "*",
         "Mode":  "Full",
-        "SasUri":  "SasUri to your storage account with sp=wl",
+        "SasUri":  "SasUri tooyour storage account with sp=wl",
         "AdditionalData":
         [
           {
@@ -59,37 +59,37 @@
         ]
     }
 
-### <a name="privateconfiguration"></a><span data-ttu-id="70774-133">PrivateConfiguration</span><span class="sxs-lookup"><span data-stu-id="70774-133">PrivateConfiguration</span></span>
+### <a name="privateconfiguration"></a><span data-ttu-id="b6a70-133">PrivateConfiguration</span><span class="sxs-lookup"><span data-stu-id="b6a70-133">PrivateConfiguration</span></span>
     {
 
     }
 
 > [!NOTE]
-> <span data-ttu-id="70774-134">Toto rozšíření nevyžaduje **privateConfiguration**.</span><span class="sxs-lookup"><span data-stu-id="70774-134">This extension doesn’t need **privateConfiguration**.</span></span> <span data-ttu-id="70774-135">Zadáte na prázdnou strukturou pro **– PrivateConfiguration** argument.</span><span class="sxs-lookup"><span data-stu-id="70774-135">You can just provide an empty structure for the **–PrivateConfiguration** argument.</span></span>
+> <span data-ttu-id="b6a70-134">Toto rozšíření nevyžaduje **privateConfiguration**.</span><span class="sxs-lookup"><span data-stu-id="b6a70-134">This extension doesn’t need **privateConfiguration**.</span></span> <span data-ttu-id="b6a70-135">Můžete jenom zadat prázdnou strukturou hello **– PrivateConfiguration** argument.</span><span class="sxs-lookup"><span data-stu-id="b6a70-135">You can just provide an empty structure for hello **–PrivateConfiguration** argument.</span></span>
 > 
 > 
 
-<span data-ttu-id="70774-136">Můžete provést jednu z dvě následující kroky k přidání AzureLogCollector na jeden nebo více instancí cloudové služby nebo virtuálního počítače vybrané role, která aktivuje kolekce na každý virtuální počítač ke spuštění a odeslání shromážděné soubory pro zadaný účet Azure.</span><span class="sxs-lookup"><span data-stu-id="70774-136">You can follow one of the two following steps to add the AzureLogCollector to one or more instances of a Cloud Service or Virtual Machine of selected roles, which triggers the collections on each VM to run and send the collected files to Azure account specified.</span></span>
+<span data-ttu-id="b6a70-136">Proveďte jeden z hello dvě následující kroky tooadd hello AzureLogCollector tooone nebo více instancí služeb Cloud nebo virtuální počítač z vybrané role, které aktivuje hello kolekce na každý počítač toorun a odesílat hello shromážděné soubory tooAzure účtu zadat.</span><span class="sxs-lookup"><span data-stu-id="b6a70-136">You can follow one of hello two following steps tooadd hello AzureLogCollector tooone or more instances of a Cloud Service or Virtual Machine of selected roles, which triggers hello collections on each VM toorun and send hello collected files tooAzure account specified.</span></span>
 
-## <a name="adding-as-a-service-extension"></a><span data-ttu-id="70774-137">Přidání jako rozšíření služby</span><span class="sxs-lookup"><span data-stu-id="70774-137">Adding as a Service Extension</span></span>
-1. <span data-ttu-id="70774-138">Postupujte podle pokynů k připojení k vašemu předplatnému Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="70774-138">Follow the instructions to connect Azure PowerShell to your subscription.</span></span>
-2. <span data-ttu-id="70774-139">Zadejte název, slotu, role a role instance služby pro které chcete přidat a povolit AzureLogCollector rozšíření.</span><span class="sxs-lookup"><span data-stu-id="70774-139">Specify the service name, slot, roles, and role instances to which you want to add and enable the AzureLogCollector extension.</span></span>
+## <a name="adding-as-a-service-extension"></a><span data-ttu-id="b6a70-137">Přidání jako rozšíření služby</span><span class="sxs-lookup"><span data-stu-id="b6a70-137">Adding as a Service Extension</span></span>
+1. <span data-ttu-id="b6a70-138">Postupujte podle hello pokyny tooconnect prostředí Azure PowerShell tooyour předplatné.</span><span class="sxs-lookup"><span data-stu-id="b6a70-138">Follow hello instructions tooconnect Azure PowerShell tooyour subscription.</span></span>
+2. <span data-ttu-id="b6a70-139">Zadejte název služby hello, slotu, role a role instance toowhich chcete tooadd a povolit rozšíření AzureLogCollector hello.</span><span class="sxs-lookup"><span data-stu-id="b6a70-139">Specify hello service name, slot, roles, and role instances toowhich you want tooadd and enable hello AzureLogCollector extension.</span></span>
    
         #Specify your cloud service name
         $ServiceName = 'extensiontest2'
    
-        #Specify the slot. 'Production' or 'Staging'
+        #Specify hello slot. 'Production' or 'Staging'
         $slot = 'Production'
    
-        #Specified the roles on which the extension will be installed and enabled
+        #Specified hello roles on which hello extension will be installed and enabled
         $roles = @("WorkerRole1","WebRole1")
    
-        #Specify the instances on which extension will be installed and enabled.  Use wildcard * for all instances
+        #Specify hello instances on which extension will be installed and enabled.  Use wildcard * for all instances
         $instances = @("*")
    
-        #Specify the collection mode, "Full" or "GA"
+        #Specify hello collection mode, "Full" or "GA"
         $mode = "GA"
-3. <span data-ttu-id="70774-140">Zadejte složku další data, pro které se budou shromažďovat soubory (Tento krok je volitelný).</span><span class="sxs-lookup"><span data-stu-id="70774-140">Specify the additional data folder for which files will be collected (this step is optional).</span></span>
+3. <span data-ttu-id="b6a70-140">Zadejte složku hello další data, pro které se budou shromažďovat soubory (Tento krok je volitelný).</span><span class="sxs-lookup"><span data-stu-id="b6a70-140">Specify hello additional data folder for which files will be collected (this step is optional).</span></span>
    
         #add one location
         $a1 = New-Object PSObject
@@ -103,18 +103,18 @@
               #more locations can be added....
    
    > [!NOTE]
-   > <span data-ttu-id="70774-141">Můžete použít token `%roleroot%` chcete určit kořenovou jednotku role, protože nepoužívá pevnou jednotku.</span><span class="sxs-lookup"><span data-stu-id="70774-141">You can use token `%roleroot%` to specify the role root drive since it doesn’t use a fixed drive.</span></span>
+   > <span data-ttu-id="b6a70-141">Můžete použít token `%roleroot%` toospecify hello role kořenové jednotce vzhledem k tomu nepoužívá pevnou jednotku.</span><span class="sxs-lookup"><span data-stu-id="b6a70-141">You can use token `%roleroot%` toospecify hello role root drive since it doesn’t use a fixed drive.</span></span>
    > 
    > 
-4. <span data-ttu-id="70774-142">Zadejte název účtu úložiště Azure a klíč, ke kterému se nahraje shromážděných souborů.</span><span class="sxs-lookup"><span data-stu-id="70774-142">Provide the Azure storage account name and key to which collected files will be uploaded.</span></span>
+4. <span data-ttu-id="b6a70-142">Zadejte název účtu úložiště Azure hello a klíče toowhich shromážděné soubory budou odeslány.</span><span class="sxs-lookup"><span data-stu-id="b6a70-142">Provide hello Azure storage account name and key toowhich collected files will be uploaded.</span></span>
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-5. <span data-ttu-id="70774-143">Volání SetAzureServiceLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="70774-143">Call the SetAzureServiceLogCollector.ps1 (included at the end of the article) as follows to enable the AzureLogCollector extension for a Cloud Service.</span></span> <span data-ttu-id="70774-144">Po dokončení provádění můžete najít nahrávaný soubor v části`https://YouareStorageAccountName.blob.core.windows.net/vmlogs`</span><span class="sxs-lookup"><span data-stu-id="70774-144">Once the execution is completed, you can find the uploaded file under `https://YouareStorageAccountName.blob.core.windows.net/vmlogs`</span></span>
+5. <span data-ttu-id="b6a70-143">Volání hello SetAzureServiceLogCollector.ps1 (zahrnutá na konci hello tohoto článku hello) jako způsobem tooenable hello AzureLogCollector rozšíření pro cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="b6a70-143">Call hello SetAzureServiceLogCollector.ps1 (included at hello end of hello article) as follows tooenable hello AzureLogCollector extension for a Cloud Service.</span></span> <span data-ttu-id="b6a70-144">Po dokončení provádění hello hello nahrát soubor naleznete v části`https://YouareStorageAccountName.blob.core.windows.net/vmlogs`</span><span class="sxs-lookup"><span data-stu-id="b6a70-144">Once hello execution is completed, you can find hello uploaded file under `https://YouareStorageAccountName.blob.core.windows.net/vmlogs`</span></span>
    
         .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
 
-<span data-ttu-id="70774-145">Zde je definice parametry předané do skriptu.</span><span class="sxs-lookup"><span data-stu-id="70774-145">The following is the definition of the parameters passed to the script.</span></span> <span data-ttu-id="70774-146">(To je zkopírovat níže také.)</span><span class="sxs-lookup"><span data-stu-id="70774-146">(This is copied below as well.)</span></span>
+<span data-ttu-id="b6a70-145">Hello následuje hello Definice hello parametry předané toohello skriptu.</span><span class="sxs-lookup"><span data-stu-id="b6a70-145">hello following is hello definition of hello parameters passed toohello script.</span></span> <span data-ttu-id="b6a70-146">(To je zkopírovat níže také.)</span><span class="sxs-lookup"><span data-stu-id="b6a70-146">(This is copied below as well.)</span></span>
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -144,14 +144,14 @@
     [PSObject[]] $AdditionDataLocationList = $null
     )
 
-* <span data-ttu-id="70774-147">*ServiceName*: název vaší cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="70774-147">*ServiceName*: Your cloud service name.</span></span>
-* <span data-ttu-id="70774-148">*Role*: seznam rolí, například "WebRole1" nebo "WorkerRole1".</span><span class="sxs-lookup"><span data-stu-id="70774-148">*Roles*: A list of roles, such as “WebRole1” or ”WorkerRole1”.</span></span>
-* <span data-ttu-id="70774-149">*Instance*: seznam názvů instancí role oddělené čárkou – použít zástupný znak řetězec ("*") pro všechny instance role.</span><span class="sxs-lookup"><span data-stu-id="70774-149">*Instances*: A list of the names of role instances separated by comma -- use the wildcard string (“*”) for all role instances.</span></span>
-* <span data-ttu-id="70774-150">*Slot*: název slotu.</span><span class="sxs-lookup"><span data-stu-id="70774-150">*Slot*: Slot name.</span></span> <span data-ttu-id="70774-151">"Výroba" nebo "Přípravy".</span><span class="sxs-lookup"><span data-stu-id="70774-151">“Production” or “Staging”.</span></span>
-* <span data-ttu-id="70774-152">*Režim*: režim kolekce.</span><span class="sxs-lookup"><span data-stu-id="70774-152">*Mode*: Collection mode.</span></span> <span data-ttu-id="70774-153">"Úplná" nebo "GA".</span><span class="sxs-lookup"><span data-stu-id="70774-153">“Full” or “GA”.</span></span>
-* <span data-ttu-id="70774-154">*StorageAccountName*: název Azure účet úložiště pro ukládání shromážděných dat.</span><span class="sxs-lookup"><span data-stu-id="70774-154">*StorageAccountName*: Name of Azure storage account for storing collected data.</span></span>
-* <span data-ttu-id="70774-155">*StorageAccountKey*: název Azure klíč účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="70774-155">*StorageAccountKey*: Name of Azure storage account key.</span></span>
-* <span data-ttu-id="70774-156">*AdditionalDataLocationList*: seznam následující strukturou:</span><span class="sxs-lookup"><span data-stu-id="70774-156">*AdditionalDataLocationList*: A list of the following structure:</span></span>
+* <span data-ttu-id="b6a70-147">*ServiceName*: název vaší cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="b6a70-147">*ServiceName*: Your cloud service name.</span></span>
+* <span data-ttu-id="b6a70-148">*Role*: seznam rolí, například "WebRole1" nebo "WorkerRole1".</span><span class="sxs-lookup"><span data-stu-id="b6a70-148">*Roles*: A list of roles, such as “WebRole1” or ”WorkerRole1”.</span></span>
+* <span data-ttu-id="b6a70-149">*Instance*: seznam názvů hello instancí role oddělené čárkou – použijte hello zástupný řetězec ("*") pro všechny instance role.</span><span class="sxs-lookup"><span data-stu-id="b6a70-149">*Instances*: A list of hello names of role instances separated by comma -- use hello wildcard string (“*”) for all role instances.</span></span>
+* <span data-ttu-id="b6a70-150">*Slot*: název slotu.</span><span class="sxs-lookup"><span data-stu-id="b6a70-150">*Slot*: Slot name.</span></span> <span data-ttu-id="b6a70-151">"Výroba" nebo "Přípravy".</span><span class="sxs-lookup"><span data-stu-id="b6a70-151">“Production” or “Staging”.</span></span>
+* <span data-ttu-id="b6a70-152">*Režim*: režim kolekce.</span><span class="sxs-lookup"><span data-stu-id="b6a70-152">*Mode*: Collection mode.</span></span> <span data-ttu-id="b6a70-153">"Úplná" nebo "GA".</span><span class="sxs-lookup"><span data-stu-id="b6a70-153">“Full” or “GA”.</span></span>
+* <span data-ttu-id="b6a70-154">*StorageAccountName*: název Azure účet úložiště pro ukládání shromážděných dat.</span><span class="sxs-lookup"><span data-stu-id="b6a70-154">*StorageAccountName*: Name of Azure storage account for storing collected data.</span></span>
+* <span data-ttu-id="b6a70-155">*StorageAccountKey*: název Azure klíč účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="b6a70-155">*StorageAccountKey*: Name of Azure storage account key.</span></span>
+* <span data-ttu-id="b6a70-156">*AdditionalDataLocationList*: seznam hello strukturu:</span><span class="sxs-lookup"><span data-stu-id="b6a70-156">*AdditionalDataLocationList*: A list of hello following structure:</span></span>
   
       {
       String Name,
@@ -160,21 +160,21 @@
       Bool   Recursive
       }
 
-## <a name="adding-as-a-vm-extension"></a><span data-ttu-id="70774-157">Přidání jako rozšíření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="70774-157">Adding as a VM Extension</span></span>
-<span data-ttu-id="70774-158">Postupujte podle pokynů k připojení k vašemu předplatnému Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="70774-158">Follow the instructions to connect Azure PowerShell to your subscription.</span></span>
+## <a name="adding-as-a-vm-extension"></a><span data-ttu-id="b6a70-157">Přidání jako rozšíření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="b6a70-157">Adding as a VM Extension</span></span>
+<span data-ttu-id="b6a70-158">Postupujte podle hello pokyny tooconnect prostředí Azure PowerShell tooyour předplatné.</span><span class="sxs-lookup"><span data-stu-id="b6a70-158">Follow hello instructions tooconnect Azure PowerShell tooyour subscription.</span></span>
 
-1. <span data-ttu-id="70774-159">Zadejte název služby, virtuálních počítačů a režim kolekce.</span><span class="sxs-lookup"><span data-stu-id="70774-159">Specify the service name, VM, and the collection mode.</span></span>
+1. <span data-ttu-id="b6a70-159">Zadejte název služby hello, virtuálních počítačů a režim kolekce hello.</span><span class="sxs-lookup"><span data-stu-id="b6a70-159">Specify hello service name, VM, and hello collection mode.</span></span>
    
         #Specify your cloud service name
         $ServiceName = 'YourCloudServiceName'
    
-        #Specify the VM name
+        #Specify hello VM name
         $VMName = "'YourVMName'"
    
-        #Specify the collection mode, "Full" or "GA"
+        #Specify hello collection mode, "Full" or "GA"
         $mode = "GA"
    
-        Specify the additional data folder for which files will be collected (this step is optional).
+        Specify hello additional data folder for which files will be collected (this step is optional).
    
         #add one location
         $a1 = New-Object PSObject
@@ -186,13 +186,13 @@
    
         $AdditionalDataList+= $a1
               #more locations can be added....
-2. <span data-ttu-id="70774-160">Zadejte název účtu úložiště Azure a klíč, ke kterému se nahraje shromážděných souborů.</span><span class="sxs-lookup"><span data-stu-id="70774-160">Provide the Azure storage account name and key to which collected files will be uploaded.</span></span>
+2. <span data-ttu-id="b6a70-160">Zadejte název účtu úložiště Azure hello a klíče toowhich shromážděné soubory budou odeslány.</span><span class="sxs-lookup"><span data-stu-id="b6a70-160">Provide hello Azure storage account name and key toowhich collected files will be uploaded.</span></span>
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-3. <span data-ttu-id="70774-161">Volání SetAzureVMLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="70774-161">Call the SetAzureVMLogCollector.ps1 (included at the end of the article) as follows to enable the AzureLogCollector extension for a Cloud Service.</span></span> <span data-ttu-id="70774-162">Po dokončení provádění najdete v části https://YouareStorageAccountName.blob.core.windows.net/vmlogs nahrávaný soubor</span><span class="sxs-lookup"><span data-stu-id="70774-162">Once the execution is completed, you can find the uploaded file under https://YouareStorageAccountName.blob.core.windows.net/vmlogs</span></span>
+3. <span data-ttu-id="b6a70-161">Volání hello SetAzureVMLogCollector.ps1 (zahrnutá na konci hello tohoto článku hello) jako způsobem tooenable hello AzureLogCollector rozšíření pro cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="b6a70-161">Call hello SetAzureVMLogCollector.ps1 (included at hello end of hello article) as follows tooenable hello AzureLogCollector extension for a Cloud Service.</span></span> <span data-ttu-id="b6a70-162">Po dokončení provádění hello můžete najít v souboru hello nahrán pod https://YouareStorageAccountName.blob.core.windows.net/vmlogs</span><span class="sxs-lookup"><span data-stu-id="b6a70-162">Once hello execution is completed, you can find hello uploaded file under https://YouareStorageAccountName.blob.core.windows.net/vmlogs</span></span>
 
-<span data-ttu-id="70774-163">Zde je definice parametry předané do skriptu.</span><span class="sxs-lookup"><span data-stu-id="70774-163">The following is the definition of the parameters passed to the script.</span></span> <span data-ttu-id="70774-164">(To je zkopírovat níže také.)</span><span class="sxs-lookup"><span data-stu-id="70774-164">(This is copied below as well.)</span></span>
+<span data-ttu-id="b6a70-163">Hello následuje hello Definice hello parametry předané toohello skriptu.</span><span class="sxs-lookup"><span data-stu-id="b6a70-163">hello following is hello definition of hello parameters passed toohello script.</span></span> <span data-ttu-id="b6a70-164">(To je zkopírovat níže také.)</span><span class="sxs-lookup"><span data-stu-id="b6a70-164">(This is copied below as well.)</span></span>
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -216,12 +216,12 @@
       [PSObject[]] $AdditionDataLocationList = $null
       )
 
-* <span data-ttu-id="70774-165">Název služby: Váš název cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="70774-165">ServiceName: Your cloud service name.</span></span>
-* <span data-ttu-id="70774-166">VMName název virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="70774-166">VMName The name of the VM.</span></span>
-* <span data-ttu-id="70774-167">Režim: Režim kolekce.</span><span class="sxs-lookup"><span data-stu-id="70774-167">Mode: Collection mode.</span></span> <span data-ttu-id="70774-168">"Úplná" nebo "GA".</span><span class="sxs-lookup"><span data-stu-id="70774-168">“Full” or “GA”.</span></span>
-* <span data-ttu-id="70774-169">StorageAccountName: Název účtu úložiště Azure pro ukládání shromážděna data.</span><span class="sxs-lookup"><span data-stu-id="70774-169">StorageAccountName: Name of Azure storage account for storing collected data.</span></span>
-* <span data-ttu-id="70774-170">StorageAccountKey: Název klíč účtu úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="70774-170">StorageAccountKey: Name of Azure storage account key.</span></span>
-* <span data-ttu-id="70774-171">AdditionalDataLocationList: Seznam následující strukturou:</span><span class="sxs-lookup"><span data-stu-id="70774-171">AdditionalDataLocationList: A list of the following structure:</span></span>
+* <span data-ttu-id="b6a70-165">Název služby: Váš název cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="b6a70-165">ServiceName: Your cloud service name.</span></span>
+* <span data-ttu-id="b6a70-166">Název hello VMName hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="b6a70-166">VMName hello name of hello VM.</span></span>
+* <span data-ttu-id="b6a70-167">Režim: Režim kolekce.</span><span class="sxs-lookup"><span data-stu-id="b6a70-167">Mode: Collection mode.</span></span> <span data-ttu-id="b6a70-168">"Úplná" nebo "GA".</span><span class="sxs-lookup"><span data-stu-id="b6a70-168">“Full” or “GA”.</span></span>
+* <span data-ttu-id="b6a70-169">StorageAccountName: Název účtu úložiště Azure pro ukládání shromážděna data.</span><span class="sxs-lookup"><span data-stu-id="b6a70-169">StorageAccountName: Name of Azure storage account for storing collected data.</span></span>
+* <span data-ttu-id="b6a70-170">StorageAccountKey: Název klíč účtu úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="b6a70-170">StorageAccountKey: Name of Azure storage account key.</span></span>
+* <span data-ttu-id="b6a70-171">AdditionalDataLocationList: Seznam hello strukturu:</span><span class="sxs-lookup"><span data-stu-id="b6a70-171">AdditionalDataLocationList: A list of hello following structure:</span></span>
 
 ```
       {
@@ -232,8 +232,8 @@
       }
 ```
 
-## <a name="extention-powershell-script-files"></a><span data-ttu-id="70774-172">Soubory skriptu prostředí PowerShell vytvořit vícejazyčný</span><span class="sxs-lookup"><span data-stu-id="70774-172">Extention PowerShell Script files</span></span>
-<span data-ttu-id="70774-173">SetAzureServiceLogCollector.ps1</span><span class="sxs-lookup"><span data-stu-id="70774-173">SetAzureServiceLogCollector.ps1</span></span>
+## <a name="extention-powershell-script-files"></a><span data-ttu-id="b6a70-172">Soubory skriptu prostředí PowerShell vytvořit vícejazyčný</span><span class="sxs-lookup"><span data-stu-id="b6a70-172">Extention PowerShell Script files</span></span>
+<span data-ttu-id="b6a70-173">SetAzureServiceLogCollector.ps1</span><span class="sxs-lookup"><span data-stu-id="b6a70-173">SetAzureServiceLogCollector.ps1</span></span>
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -274,7 +274,7 @@
           }
         $publicConfig | Add-Member -MemberType NoteProperty -Name "Instances" -Value $instanceText
     }
-    else  #For all instances if not specified.  The value should be a space or *
+    else  #For all instances if not specified.  hello value should be a space or *
     {
         $publicConfig | Add-Member -MemberType NoteProperty -Name "Instances" -Value " "
     }
@@ -289,7 +289,7 @@
     }
 
     #
-    #we need to get the Sasuri from StorageAccount and containers
+    #we need tooget hello Sasuri from StorageAccount and containers
     #
     $context = New-AzureStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
@@ -306,7 +306,7 @@
     $publicConfig | Add-Member -MemberType NoteProperty -Name "SasUri" -Value $SasUri
 
     #
-    #Add AdditionalData to collect data from additional folders
+    #Add AdditionalData toocollect data from additional folders
     #
     if ($AdditionDataLocationList -ne $null )
     {
@@ -314,7 +314,7 @@
     }
 
     #
-    # Convert it to JSON format
+    # Convert it tooJSON format
     #
     $publicConfigJSON = $publicConfig | ConvertTo-Json
     "publicConfig is:  $publicConfigJSON"
@@ -333,15 +333,15 @@
     }
 
     #
-    #This is an optional step: generate a sasUri to the container so it can be shared with other people if nened
+    #This is an optional step: generate a sasUri toohello container so it can be shared with other people if nened
     #
     $SasExpireTime = [DateTime]::Now.AddMinutes(120).ToString("o")
     $SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rl -Context $context
     $SasUri = $SasUri + "&restype=container&comp=list"
-    Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
+    Write-Output "hello container for uploaded file can be accessed using this link:`r`n$sasuri"
 
 
-<span data-ttu-id="70774-174">SetAzureVMLogCollector.ps1</span><span class="sxs-lookup"><span data-stu-id="70774-174">SetAzureVMLogCollector.ps1</span></span>
+<span data-ttu-id="b6a70-174">SetAzureVMLogCollector.ps1</span><span class="sxs-lookup"><span data-stu-id="b6a70-174">SetAzureVMLogCollector.ps1</span></span>
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -378,7 +378,7 @@
     }
 
     #
-    #we need to get the Sasuri from StorageAccount and containers
+    #we need tooget hello Sasuri from StorageAccount and containers
     #
     $context = New-AzureStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
@@ -395,7 +395,7 @@
     $publicConfig | Add-Member -MemberType NoteProperty -Name "SasUri" -Value $SasUri
 
     #
-    #Add AdditionalData to collect data from additional folders
+    #Add AdditionalData toocollect data from additional folders
     #
     if ($AdditionDataLocationList -ne $null )
     {
@@ -403,7 +403,7 @@
     }
 
     #
-    # Convert it to JSON format
+    # Convert it tooJSON format
     #
     $publicConfigJSON = $publicConfig | ConvertTo-Json
 
@@ -425,8 +425,8 @@
                 Set-AzureVMExtension -VM $VM -ExtensionName "AzureLogCollector" -Publisher Microsoft.WindowsAzure.Compute -PublicConfiguration $publicConfigJSON -PrivateConfiguration $privateconfig -Version 1.* | Update-AzureVM -Verbose
 
                 #
-                #We will check the VM status to find if operation by extension has been completed or not. The completion of the operation,either succeed or fail, can be indicated by
-                #the presence of SubstatusList field.
+                #We will check hello VM status toofind if operation by extension has been completed or not. hello completion of hello operation,either succeed or fail, can be indicated by
+                #hello presence of SubstatusList field.
                 #
                 $Completed = $false
                 while ($Completed -ne $true)
@@ -442,7 +442,7 @@
                         elseif (($status.ExtensionSettingStatus.SubstatusList -eq $null -or $status.ExtensionSettingStatus.SubstatusList.Count -lt 1))
                         {
                               $Completed = $false
-                              Write-Output "Waiting for operation to complete..."
+                              Write-Output "Waiting for operation toocomplete..."
                         }
                         else
                         {
@@ -453,15 +453,15 @@
                               $blob = New-Object Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob($UploadedFileUri)
 
                       #
-                            # This is an optional step:  For easier access to the file, we can generate a read-only SasUri directly to the file
+                            # This is an optional step:  For easier access toohello file, we can generate a read-only SasUri directly toohello file
                               #
                               $ExpiryTimeRead =  [DateTime]::Now.AddMinutes(120).ToString("o")
                               $ReadSasUri = New-AzureStorageBlobSASToken -ExpiryTime $ExpiryTimeRead  -FullUri  -Blob  $blob.name -Container $blob.Container.Name -Permission r -Context $context
 
-                            Write-Output "The uploaded file can be accessed using this link: $ReadSasUri"
+                            Write-Output "hello uploaded file can be accessed using this link: $ReadSasUri"
 
                               #
-                              #This is an optional step:  Remove the extension after we are done
+                              #This is an optional step:  Remove hello extension after we are done
                               #
                               Get-AzureVM -ServiceName $ServiceName -Name $VMName | Set-AzureVMExtension -Publisher Microsoft.WindowsAzure.Compute -ExtensionName "AzureLogCollector" -Version 1.* -Uninstall | Update-AzureVM -Verbose
 
@@ -471,15 +471,15 @@
           }
           else
           {
-              Write-Output "VM OS Type is not Windows, the extension cannot be enabled"
+              Write-Output "VM OS Type is not Windows, hello extension cannot be enabled"
           }
 
     }
     else
     {
-      Write-Output "VM name is not specified, the extension cannot be enabled"
+      Write-Output "VM name is not specified, hello extension cannot be enabled"
     }
 
-## <a name="next-steps"></a><span data-ttu-id="70774-175">Další kroky</span><span class="sxs-lookup"><span data-stu-id="70774-175">Next Steps</span></span>
-<span data-ttu-id="70774-176">Nyní můžete prozkoumat nebo kopírování protokolů z jednoho umístění velmi jednoduché.</span><span class="sxs-lookup"><span data-stu-id="70774-176">Now you can examine or copy your logs from one very simple location.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="b6a70-175">Další kroky</span><span class="sxs-lookup"><span data-stu-id="b6a70-175">Next Steps</span></span>
+<span data-ttu-id="b6a70-176">Nyní můžete prozkoumat nebo kopírování protokolů z jednoho umístění velmi jednoduché.</span><span class="sxs-lookup"><span data-stu-id="b6a70-176">Now you can examine or copy your logs from one very simple location.</span></span>
 

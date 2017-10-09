@@ -1,0 +1,9 @@
+## <a name="scenario"></a><span data-ttu-id="20804-101">Scénář</span><span class="sxs-lookup"><span data-stu-id="20804-101">Scenario</span></span>
+<span data-ttu-id="20804-102">Tento dokument provede nasazení, které používá statickou veřejnou IP adresu přidělené tooa virtuální počítač (VM).</span><span class="sxs-lookup"><span data-stu-id="20804-102">This document will walk through a deployment that uses a static public IP address allocated tooa virtual machine (VM).</span></span> <span data-ttu-id="20804-103">V tomto scénáři máte jeden virtuální počítač s vlastním statickou veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="20804-103">In this scenario, you have a single VM with its own static public IP address.</span></span> <span data-ttu-id="20804-104">Hello virtuální počítač je součástí podsíť s názvem **front-endu** a také se statickou privátní IP adresou (**192.168.1.101**) v této podsíti.</span><span class="sxs-lookup"><span data-stu-id="20804-104">hello VM is part of a subnet named **FrontEnd** and also has a static private IP address (**192.168.1.101**) in that subnet.</span></span>
+
+<span data-ttu-id="20804-105">Musíte statickou IP adresu pro webové servery, které vyžadují připojení SSL, ve které hello SSL certifikát je propojené tooan IP adresu.</span><span class="sxs-lookup"><span data-stu-id="20804-105">You may need a static IP address for web servers that require SSL connections in which hello SSL certificate is linked tooan IP address.</span></span> 
+
+![POPISEK OBRÁZKU](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
+
+<span data-ttu-id="20804-107">Můžete provést kroky hello níže prostředí hello toodeploy ukazuje předchozí obrázek hello.</span><span class="sxs-lookup"><span data-stu-id="20804-107">You can follow hello steps below toodeploy hello environment shown in hello figure above.</span></span>
+

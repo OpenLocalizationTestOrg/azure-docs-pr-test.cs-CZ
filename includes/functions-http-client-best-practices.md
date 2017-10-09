@@ -1,0 +1,4 @@
+> [!TIP]
+>
+> <span data-ttu-id="28681-101">Pokud máte v plánu toouse hello protokolu HTTP nebo Webhooku vazby, naplánujte vyčerpání tooavoid port, který může být způsobeno nesprávným vytvořením instance `HttpClient`.</span><span class="sxs-lookup"><span data-stu-id="28681-101">If you plan toouse hello HTTP or WebHook bindings, plan tooavoid port exhaustion that can be caused by improper instantiation of `HttpClient`.</span></span> <span data-ttu-id="28681-102">Další informace, přečtěte si článek hello [nesprávné konkretizaci antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).</span><span class="sxs-lookup"><span data-stu-id="28681-102">For more information, review hello article [Improper Instantiation antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).</span></span>
+>

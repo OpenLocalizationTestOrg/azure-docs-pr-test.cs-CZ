@@ -1,13 +1,13 @@
 ---
 layout: HubPage
 hide_bc: True
-title: Dokumentace k Microsoft Azure
-description: "Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudových služeb Microsoft Azure. Získejte dokumentaci, ukázkový kód, výukové kurzy a další materiály."
-ms.openlocfilehash: 282e1da4a5ec8ccb3c6119c6de6fd37b83bbb71e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+title: aaaMicrosoft dokumentaci k Azure
+description: "Zjistěte, jak toobuild a spravovat pomocí služby Microsoft Azure cloud services efektivní aplikace. Získejte dokumentaci, ukázkový kód, výukové kurzy a další materiály."
+ms.openlocfilehash: a844a7c29be3e0f61c50eb0e89b8677029ee97dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1081,7 +1081,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Škálovací sady virtuálních počítačů</h3>
-                                                    <p>Správa a škálování desítek až tisícovek virtuálních počítačů s Linuxem a Windows</p>
+                                                    <p>Spravovat a škálování 10s too1000s virtuálních počítačů Linux a Windows</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1218,7 +1218,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Přehled sítí</h3>
-                                                    <p>Integrované zobrazení síťových služeb v Azure</p>
+                                                    <p>Ucelený přehled hello síťové služby v Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1237,7 +1237,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Network</h3>
-                                                    <p>Zřizování privátních sítí s možností připojení k místním datovým centrům</p>
+                                                    <p>Soukromých sítích zřídit, volitelně připojit tooon místní datová centra</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1256,7 +1256,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Load Balancer</h3>
-                                                    <p>Zajištění vysoké dostupnosti a výkonu sítě pro vaše aplikace</p>
+                                                    <p>Poskytování vysoké dostupnosti a výkonu v síti tooyour aplikace</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1332,7 +1332,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Dodávání obsahu koncovým zákazníkům prostřednictvím robustní globální sítě datových center </p>
+                                                    <p>Doručovat obsah tooend uživatele přes síť robustní globální datová centra </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1370,7 +1370,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ExpressRoute</h3>
-                                                    <p>Vyhrazená optická připojení privátních sítí k Azure</p>
+                                                    <p>Vyhrazené tooAzure připojení fiber privátní sítě</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1469,8 +1469,8 @@ ms.lasthandoff: 08/03/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Jednoduché a spolehlivé zálohování serveru v cloudu</p>
+                                                    <h3>Zálohování</h3>
+                                                    <p>Jednoduché a spolehlivé serveru zálohování toohello cloudu</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1532,7 +1532,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Apps</h3>
-                                                    <p>Sestavování a hostování back-endu pro libovolnou mobilní aplikaci</p>
+                                                    <p>Sestavení a hostitele hello back-end pro všechny mobilní aplikace</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1570,7 +1570,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>Automatizace přístupu a používání dat napříč cloudy bez psaní kódu</p>
+                                                    <p>Automatizovat hello přístup a používání dat napříč cloudy bez nutnosti psaní kódu</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1589,7 +1589,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Dodávání obsahu koncovým zákazníkům prostřednictvím robustní globální sítě datových center </p>
+                                                    <p>Doručovat obsah tooend uživatele přes síť robustní globální datová centra </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1827,7 +1827,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Dynamické roztažení místních databází SQL Serveru do Azure</p>
+                                                    <p>Dynamicky stretch tooAzure databáze systému SQL Server na místě</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1903,7 +1903,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis Cache</h3>
-                                                    <p>Sestavování rychlých a škálovatelných aplikací díky vysoké propustnosti a nízké latenci při přístupu k datům</p>
+                                                    <p>Vysoká propustnost s nízkou latencí pro přístup k datům toobuild fast/škálovatelné aplikace</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1984,7 +1984,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Webové vyhledávání Bingu</h3>
-                                                    <p>Spojení výkonného hledání na webu s aplikacemi</p>
+                                                    <p>Připojit výkonné webové aplikace tooyour vyhledávání</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2022,7 +2022,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Custom Vision Service</h3>
-                                                    <p>Přizpůsobitelná webová služba, která se učí rozpoznávat v obrázcích konkrétní obsah</p>
+                                                    <p>Přizpůsobitelné webové službě, která zjišťuje toorecognize konkrétní obsah dokumentů</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2060,7 +2060,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Služba LUIS (Language Understanding Intelligent Service)</h3>
-                                                    <p>Naučte svoje aplikace, aby rozuměly příkazům uživatelů</p>
+                                                    <p>Naučit vaše aplikace toounderstand příkazy od uživatelů</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2079,7 +2079,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Vlastní vyhledávání Bingu</h3>
-                                                    <p>Sestavte požadované výsledky hledání</p>
+                                                    <p>Sestavení hello výsledky hledání, který hledáte</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2122,7 +2122,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning</h3>
-                                                    <p>Výkonný cloudový nástroj prediktivní analýzy umožňující prediktivní údržbu</p>
+                                                    <p>Efektivní cloudové prediktivní analýzy nástroj tooenable prediktivní údržby</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2160,7 +2160,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>Povolení samoobslužného zjišťování zdrojů dat v podniku</p>
+                                                    <p>Povolit zjišťování zdroje dat samoobslužné služby v rámci podniku hello</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2255,7 +2255,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Analysis Services</h3>
-                                                    <p>Modelování dat na podnikové úrovni v cloudu</p>
+                                                    <p>Modelování v cloudu hello podnikové úrovni dat</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2336,7 +2336,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure IoT Suite</h3>
-                                                    <p>Zachycení a analýza neprobádaných dat s cílem zlepšit výsledky podniku</p>
+                                                    <p>Zaznamenání a analyzovat data neaktivované tooimprove obchodní výsledky</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2393,7 +2393,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning</h3>
-                                                    <p>Výkonný cloudový nástroj prediktivní analýzy umožňující prediktivní údržbu</p>
+                                                    <p>Efektivní cloudové prediktivní analýzy nástroj tooenable prediktivní údržby</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2455,7 +2455,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>Automatizace přístupu a používání dat napříč cloudy bez psaní kódu</p>
+                                                    <p>Automatizovat hello přístup a používání dat napříč cloudy bez nutnosti psaní kódu</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2493,7 +2493,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>Bezpečné a škálovatelné publikování rozhraní API pro vývojáře, partnery a zaměstnance</p>
+                                                    <p>Publikovat toodevelopers rozhraní API, partneři a zaměstnanci bezpečně a ve velkém měřítku</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2531,7 +2531,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Dynamické roztažení místních databází SQL Serveru do Azure</p>
+                                                    <p>Dynamicky stretch tooAzure databáze systému SQL Server na místě</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2569,7 +2569,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Biztalk Services</h3>
-                                                    <p>Snadná integrace vašeho podniku do cloudu</p>
+                                                    <p>Bez problémů integrují hello enterprise a hello cloudu</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2593,7 +2593,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Security Center</h3>
-                                                    <p>Ochrana před hrozbami, jejich rozpoznání a reakce na ně se zvýšenou viditelností</p>
+                                                    <p>Zabránit, zjistit a reagovat toothreats nabízí lepší přehled</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2612,7 +2612,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>Jak spravovat kryptografické a tajné klíče</p>
+                                                    <p>Zjistěte, jak toomanage kryptografické klíče a tajné klíče</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2650,7 +2650,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory B2C</h3>
-                                                    <p>Správa identit a přístupu zákazníků v cloudu</p>
+                                                    <p>Správu identit a přístupu k příjemce v cloudu hello</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2669,7 +2669,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Active Directory Domain Services</h3>
-                                                    <p>Připojení virtuálních počítačů Azure k doménám bez řadičů domény</p>
+                                                    <p>Připojit virtuální počítače Azure tooa domény bez řadiče domény</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2688,7 +2688,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-factor Authentication</h3>
-                                                    <p>Zabezpečený přístup k datům a aplikacím s dodatečnou úrovní ověřování</p>
+                                                    <p>Zabezpečit přístup tooyour data a aplikace s další úrovní ověřování</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2707,7 +2707,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Informace o zabezpečení</h3>
-                                                    <p>Další informace o tom, jak Azure poskytuje zabezpečenou infrastrukturu pro vytváření cloudových řešení</p>
+                                                    <p>Zjistěte, jak Azure poskytuje zabezpečené infrastruktury toobuild cloudového řešení</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2731,7 +2731,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Team Services</h3>
-                                                    <p>Týmové služby určené ke sdílení kódu, sledování práce a dodávání softwaru</p>
+                                                    <p>Služby pro týmy tooshare kód, sledování práce a dodávat softwaru</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2788,7 +2788,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>Bezpečné a škálovatelné publikování rozhraní API pro vývojáře, partnery a zaměstnance</p>
+                                                    <p>Publikovat toodevelopers rozhraní API, partneři a zaměstnanci bezpečně a ve velkém měřítku</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2850,7 +2850,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>Jak transformovat strojová data na provozní informace</p>
+                                                    <p>Zjistěte, jak tootransform počítač data do provozní intelligence</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2887,8 +2887,8 @@ ms.lasthandoff: 08/03/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Jednoduché a spolehlivé zálohování serveru v cloudu</p>
+                                                    <h3>Zálohování</h3>
+                                                    <p>Jednoduché a spolehlivé serveru zálohování toohello cloudu</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2964,7 +2964,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Fakturace</h3>
-                                                    <p>Jak číst informace o využití a vyúčtování předplatného Azure a jak je chápat</p>
+                                                    <p>Zjistěte, jak porozumět/tooread hello využití a fakturovaná částka u předplatného Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2983,7 +2983,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Advisor</h3>
-                                                    <p>Zlepšení finanční efektivity, výkonu, vysoké dostupnosti a zabezpečení vašich prostředků Azure</p>
+                                                    <p>Zlepšení hello náklady účinnosti, výkon, vysokou dostupnost a zabezpečení vašich prostředků Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3116,7 +3116,7 @@ ms.lasthandoff: 08/03/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Získat knihovny Azure pro .NET</a>
+                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Získat hello knihovny Azure pro .NET</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/net/">Začínáme</a>
@@ -3140,7 +3140,7 @@ ms.lasthandoff: 08/03/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://pypi.python.org/pypi/azure">Získat sadu Python SDK</a>
+                                                    <a href="https://pypi.python.org/pypi/azure">Získat hello Python SDK</a>
                                                 </h3>
                                                 <p>
                                                     <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">Začínáme</a>
@@ -3170,7 +3170,7 @@ ms.lasthandoff: 08/03/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.npmjs.com/package/azure">Získání sady Node.js SDK</a>
+                                                    <a href="https://www.npmjs.com/package/azure">Získat hello Node.js SDK</a>
                                                 </h3>
                                                 <p>
                                                     <a href="http://azure.github.io/azure-sdk-for-node/">Začínáme</a>
@@ -3200,7 +3200,7 @@ ms.lasthandoff: 08/03/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">Získat knihovny Azure pro Javu</a>
+                                                    <a href="/java/azure/java-sdk-azure-install">Získat hello knihovny Azure pro jazyk Java</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/java/">Začínáme</a>
@@ -3224,7 +3224,7 @@ ms.lasthandoff: 08/03/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://rubygems.org/gems/azure">Získat sadu Ruby SDK</a>
+                                                    <a href="https://rubygems.org/gems/azure">Získat hello Ruby SDK</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Začínáme</a>
@@ -3496,7 +3496,7 @@ ms.lasthandoff: 08/03/2017
                         <ul id="architecture1" class="cardsC">
                             <li>
                                 <div class="container intro">
-                                    <p>Sada doporučených architektur pro cloudové aplikace. Každá architektura zahrnuje osvědčené postupy, doporučené kroky a spustitelnou komponentu, která tato doporučení shrnuje.</p>
+                                    <p>Sada doporučených architektur pro cloudové aplikace. Každou architekturu obsahuje doporučené postupy, doporučený postup a komponentu spustitelný soubor, který ztělesňuje hello doporučení.</p>
                                 </div>
                             </li>
                             <li>
@@ -3511,7 +3511,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Základy práce s cloudy</h3>
-                                                    <p>Základní znalosti pro zajištění úspěšnosti v cloudu. Pokud cloudy nebo Azure zatím neznáte, začněte tady.</p>
+                                                    <p>Základní znalosti toobe úspěšné v cloudu hello. Pokud jste nový toohello cloud nebo nové tooAzure, začněte zde.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3530,7 +3530,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Referenční architektury</h3>
-                                                    <p>Sada doporučených architektur pro cloud. Každá architektura zahrnuje osvědčené postupy, doporučené kroky a nasaditelné řešení.</p>
+                                                    <p>Sada doporučené architektury pro hello cloud. Každá architektura zahrnuje osvědčené postupy, doporučené kroky a nasaditelné řešení.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3549,7 +3549,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Způsoby návrhu v cloudu</h3>
-                                                    <p>Způsoby návrhu pro cloud. Každý vzor obsahuje popis problému, jeho možné řešení a příklad s využitím Azure.</p>
+                                                    <p>Vzory pro hello cloud návrhu. Každý vzor popisuje problém, vzor, který adresy hello problému a příklad založené na Azure.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3587,7 +3587,7 @@ ms.lasthandoff: 08/03/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Scenario Guides</h3>
-                                                    <p>Guidance for various end-to-end application scenarios in the cloud. Includes
+                                                    <p>Guidance for various end-to-end application scenarios in hello cloud. Includes
                                                         written guidance and reference implementations.</p>
                                                 </div>
                                             </div>

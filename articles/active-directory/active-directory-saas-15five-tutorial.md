@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s 15Five | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 15Five."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a 15Five."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,221 +13,221 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: ea36774747a0fcfa4ace1aefb2d46dba815d92c4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9e531615c16331ce000e285d13d9adce13735a04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-15five"></a><span data-ttu-id="48184-103">Kurz: Azure Active Directory integrace s 15Five</span><span class="sxs-lookup"><span data-stu-id="48184-103">Tutorial: Azure Active Directory integration with 15Five</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-15five"></a><span data-ttu-id="82fa4-103">Kurz: Azure Active Directory integrace s 15Five</span><span class="sxs-lookup"><span data-stu-id="82fa4-103">Tutorial: Azure Active Directory integration with 15Five</span></span>
 
-<span data-ttu-id="48184-104">V tomto kurzu zjistěte, jak integrovat 15Five s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="48184-104">In this tutorial, you learn how to integrate 15Five with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="82fa4-104">V tomto kurzu zjistíte, jak toointegrate 15Five s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="82fa4-104">In this tutorial, you learn how toointegrate 15Five with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="48184-105">Integrace 15Five s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="48184-105">Integrating 15Five with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="82fa4-105">Integrace 15Five s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="82fa4-105">Integrating 15Five with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="48184-106">Můžete řídit ve službě Azure AD, který má přístup k 15Five</span><span class="sxs-lookup"><span data-stu-id="48184-106">You can control in Azure AD who has access to 15Five</span></span>
-- <span data-ttu-id="48184-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k 15Five (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="48184-107">You can enable your users to automatically get signed-on to 15Five (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="48184-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="48184-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="82fa4-106">Můžete řídit ve službě Azure AD, který má přístup too15Five</span><span class="sxs-lookup"><span data-stu-id="82fa4-106">You can control in Azure AD who has access too15Five</span></span>
+- <span data-ttu-id="82fa4-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného too15Five (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="82fa4-107">You can enable your users tooautomatically get signed-on too15Five (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="82fa4-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="82fa4-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="48184-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="48184-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="82fa4-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="82fa4-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="48184-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="48184-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="82fa4-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="82fa4-110">Prerequisites</span></span>
 
-<span data-ttu-id="48184-111">Konfigurace integrace Azure AD s 15Five, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="48184-111">To configure Azure AD integration with 15Five, you need the following items:</span></span>
+<span data-ttu-id="82fa4-111">Integrace služby Azure AD s 15Five tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="82fa4-111">tooconfigure Azure AD integration with 15Five, you need hello following items:</span></span>
 
-- <span data-ttu-id="48184-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="48184-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="48184-113">15Five jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="48184-113">A 15Five single-sign on enabled subscription</span></span>
+- <span data-ttu-id="82fa4-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="82fa4-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="82fa4-113">15Five jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="82fa4-113">A 15Five single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="48184-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="48184-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="82fa4-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="82fa4-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="48184-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="48184-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="82fa4-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="82fa4-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="48184-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="48184-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="48184-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="48184-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="82fa4-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="82fa4-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="82fa4-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="82fa4-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="48184-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="48184-118">Scenario description</span></span>
-<span data-ttu-id="48184-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="48184-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="48184-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="48184-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="82fa4-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="82fa4-118">Scenario description</span></span>
+<span data-ttu-id="82fa4-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="82fa4-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="82fa4-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="82fa4-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="48184-121">Přidání 15Five z Galerie</span><span class="sxs-lookup"><span data-stu-id="48184-121">Adding 15Five from the gallery</span></span>
-2. <span data-ttu-id="48184-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="48184-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="82fa4-121">Přidání 15Five z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="82fa4-121">Adding 15Five from hello gallery</span></span>
+2. <span data-ttu-id="82fa4-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="82fa4-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-15five-from-the-gallery"></a><span data-ttu-id="48184-123">Přidání 15Five z Galerie</span><span class="sxs-lookup"><span data-stu-id="48184-123">Adding 15Five from the gallery</span></span>
-<span data-ttu-id="48184-124">Při konfiguraci integrace 15Five do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS 15Five z galerie.</span><span class="sxs-lookup"><span data-stu-id="48184-124">To configure the integration of 15Five into Azure AD, you need to add 15Five from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-15five-from-hello-gallery"></a><span data-ttu-id="82fa4-123">Přidání 15Five z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="82fa4-123">Adding 15Five from hello gallery</span></span>
+<span data-ttu-id="82fa4-124">tooconfigure hello integrace 15Five do Azure AD, je nutné tooadd 15Five hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="82fa4-124">tooconfigure hello integration of 15Five into Azure AD, you need tooadd 15Five from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="48184-125">**Pokud chcete přidat 15Five z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="48184-125">**To add 15Five from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="82fa4-125">**tooadd 15Five z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="82fa4-125">**tooadd 15Five from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="48184-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="48184-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="82fa4-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="82fa4-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="48184-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="48184-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="48184-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="48184-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="82fa4-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="82fa4-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="48184-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="48184-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="82fa4-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="82fa4-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="48184-133">Do vyhledávacího pole zadejte **15Five**.</span><span class="sxs-lookup"><span data-stu-id="48184-133">In the search box, type **15Five**.</span></span>
+4. <span data-ttu-id="82fa4-133">Hello vyhledávacího pole zadejte **15Five**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-133">In hello search box, type **15Five**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-15five-tutorial/tutorial_15five_search.png)
 
-5. <span data-ttu-id="48184-135">Na panelu výsledků vyberte **15Five**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="48184-135">In the results panel, select **15Five**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="82fa4-135">Na panelu výsledků hello vyberte **15Five**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="82fa4-135">In hello results panel, select **15Five**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-15five-tutorial/tutorial_15five_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="48184-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="48184-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="48184-138">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s 15Five podle testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="48184-138">In this section, you configure and test Azure AD single sign-on with 15Five based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="82fa4-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="82fa4-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="82fa4-138">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s 15Five podle testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="82fa4-138">In this section, you configure and test Azure AD single sign-on with 15Five based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="48184-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v 15Five je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="48184-139">For single sign-on to work, Azure AD needs to know what the counterpart user in 15Five is to a user in Azure AD.</span></span> <span data-ttu-id="48184-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v 15Five musí navázat.</span><span class="sxs-lookup"><span data-stu-id="48184-140">In other words, a link relationship between an Azure AD user and the related user in 15Five needs to be established.</span></span>
+<span data-ttu-id="82fa4-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v 15Five je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="82fa4-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in 15Five is tooa user in Azure AD.</span></span> <span data-ttu-id="82fa4-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v 15Five musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="82fa4-140">In other words, a link relationship between an Azure AD user and hello related user in 15Five needs toobe established.</span></span>
 
-<span data-ttu-id="48184-141">V 15Five, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="48184-141">In 15Five, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="82fa4-141">V 15Five, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="82fa4-141">In 15Five, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="48184-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s 15Five, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="48184-142">To configure and test Azure AD single sign-on with 15Five, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="82fa4-142">tooconfigure a testu Azure AD jednotné přihlašování s 15Five, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="82fa4-142">tooconfigure and test Azure AD single sign-on with 15Five, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="48184-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="48184-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="48184-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="48184-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="48184-145">**[Vytvoření zkušebního uživatele 15Five](#creating-a-15five-test-user)**  – Pokud chcete mít protějšek Britta Simon v 15Five propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="48184-145">**[Creating a 15Five test user](#creating-a-15five-test-user)** - to have a counterpart of Britta Simon in 15Five that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="48184-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="48184-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="48184-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="48184-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="82fa4-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="82fa4-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="82fa4-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="82fa4-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="82fa4-145">**[Vytvoření zkušebního uživatele 15Five](#creating-a-15five-test-user)**  -toohave protějšek Britta Simon v 15Five, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="82fa4-145">**[Creating a 15Five test user](#creating-a-15five-test-user)** - toohave a counterpart of Britta Simon in 15Five that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="82fa4-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="82fa4-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="82fa4-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="82fa4-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="48184-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="48184-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="82fa4-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="82fa4-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="48184-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci 15Five.</span><span class="sxs-lookup"><span data-stu-id="48184-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your 15Five application.</span></span>
+<span data-ttu-id="82fa4-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci 15Five.</span><span class="sxs-lookup"><span data-stu-id="82fa4-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your 15Five application.</span></span>
 
-<span data-ttu-id="48184-150">**Ke konfiguraci Azure AD jednotné přihlašování s 15Five, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="48184-150">**To configure Azure AD single sign-on with 15Five, perform the following steps:**</span></span>
+<span data-ttu-id="82fa4-150">**tooconfigure Azure AD jednotné přihlašování s 15Five, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="82fa4-150">**tooconfigure Azure AD single sign-on with 15Five, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="48184-151">Na portálu Azure na **15Five** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="48184-151">In the Azure portal, on the **15Five** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="82fa4-151">V portálu Azure, na hello hello **15Five** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-151">In hello Azure portal, on hello **15Five** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="48184-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="48184-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="82fa4-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="82fa4-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-15five-tutorial/tutorial_15five_samlbase.png)
 
-3. <span data-ttu-id="48184-155">Na **15Five domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="48184-155">On the **15Five Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="82fa4-155">Na hello **15Five domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="82fa4-155">On hello **15Five Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-15five-tutorial/tutorial_15five_url.png)
 
-    <span data-ttu-id="48184-157">a.</span><span class="sxs-lookup"><span data-stu-id="48184-157">a.</span></span> <span data-ttu-id="48184-158">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.15five.com`</span><span class="sxs-lookup"><span data-stu-id="48184-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<companyname>.15five.com`</span></span>
+    <span data-ttu-id="82fa4-157">a.</span><span class="sxs-lookup"><span data-stu-id="82fa4-157">a.</span></span> <span data-ttu-id="82fa4-158">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.15five.com`</span><span class="sxs-lookup"><span data-stu-id="82fa4-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<companyname>.15five.com`</span></span>
 
-    <span data-ttu-id="48184-159">b.</span><span class="sxs-lookup"><span data-stu-id="48184-159">b.</span></span> <span data-ttu-id="48184-160">V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.15five.com/saml2/metadata/`</span><span class="sxs-lookup"><span data-stu-id="48184-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<companyname>.15five.com/saml2/metadata/`</span></span>
+    <span data-ttu-id="82fa4-159">b.</span><span class="sxs-lookup"><span data-stu-id="82fa4-159">b.</span></span> <span data-ttu-id="82fa4-160">V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.15five.com/saml2/metadata/`</span><span class="sxs-lookup"><span data-stu-id="82fa4-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<companyname>.15five.com/saml2/metadata/`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="48184-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="48184-161">These values are not real.</span></span> <span data-ttu-id="48184-162">Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="48184-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="48184-163">Obraťte se na [tým podpory klienta 15Five](https://www.15five.com/contact/) k získání těchto hodnot.</span><span class="sxs-lookup"><span data-stu-id="48184-163">Contact [15Five Client support team](https://www.15five.com/contact/) to get these values.</span></span> 
+    > <span data-ttu-id="82fa4-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="82fa4-161">These values are not real.</span></span> <span data-ttu-id="82fa4-162">Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="82fa4-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="82fa4-163">Obraťte se na [tým podpory klienta 15Five](https://www.15five.com/contact/) tooget tyto hodnoty.</span><span class="sxs-lookup"><span data-stu-id="82fa4-163">Contact [15Five Client support team](https://www.15five.com/contact/) tooget these values.</span></span> 
  
-4. <span data-ttu-id="48184-164">Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="48184-164">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+4. <span data-ttu-id="82fa4-164">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="82fa4-164">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-15five-tutorial/tutorial_15five_certificate.png) 
 
-5. <span data-ttu-id="48184-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="48184-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="82fa4-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="82fa4-166">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-15five-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="48184-168">Konfigurace jednotného přihlašování na **15Five** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory 15Five](https://www.15five.com/contact/).</span><span class="sxs-lookup"><span data-stu-id="48184-168">To configure single sign-on on **15Five** side, you need to send the downloaded **Metadata XML** to [15Five support team](https://www.15five.com/contact/).</span></span>
+6. <span data-ttu-id="82fa4-168">tooconfigure jednotného přihlašování na **15Five** straně, je nutné stáhnout hello toosend **soubor XML s metadaty** příliš[tým podpory 15Five](https://www.15five.com/contact/).</span><span class="sxs-lookup"><span data-stu-id="82fa4-168">tooconfigure single sign-on on **15Five** side, you need toosend hello downloaded **Metadata XML** too[15Five support team](https://www.15five.com/contact/).</span></span>
 
 > [!TIP]
-> <span data-ttu-id="48184-169">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="48184-169">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="48184-170">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="48184-170">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="48184-171">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="48184-171">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="82fa4-169">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="82fa4-169">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="82fa4-170">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="82fa4-170">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="82fa4-171">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="82fa4-171">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="48184-172">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="48184-172">Creating an Azure AD test user</span></span>
-<span data-ttu-id="48184-173">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="48184-173">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="82fa4-172">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="82fa4-172">Creating an Azure AD test user</span></span>
+<span data-ttu-id="82fa4-173">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="82fa4-173">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="48184-175">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="48184-175">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="82fa4-175">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="82fa4-175">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="48184-176">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="48184-176">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="82fa4-176">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="82fa4-176">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-15five-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="48184-178">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="48184-178">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="82fa4-178">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-178">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-15five-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="48184-180">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="48184-180">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="82fa4-180">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="82fa4-180">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-15five-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="48184-182">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="48184-182">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="82fa4-182">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="82fa4-182">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-15five-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="48184-184">a.</span><span class="sxs-lookup"><span data-stu-id="48184-184">a.</span></span> <span data-ttu-id="48184-185">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="48184-185">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="82fa4-184">a.</span><span class="sxs-lookup"><span data-stu-id="82fa4-184">a.</span></span> <span data-ttu-id="82fa4-185">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-185">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="48184-186">b.</span><span class="sxs-lookup"><span data-stu-id="48184-186">b.</span></span> <span data-ttu-id="48184-187">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="48184-187">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="82fa4-186">b.</span><span class="sxs-lookup"><span data-stu-id="82fa4-186">b.</span></span> <span data-ttu-id="82fa4-187">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="82fa4-187">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="48184-188">c.</span><span class="sxs-lookup"><span data-stu-id="48184-188">c.</span></span> <span data-ttu-id="48184-189">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="48184-189">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="82fa4-188">c.</span><span class="sxs-lookup"><span data-stu-id="82fa4-188">c.</span></span> <span data-ttu-id="82fa4-189">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-189">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="48184-190">d.</span><span class="sxs-lookup"><span data-stu-id="48184-190">d.</span></span> <span data-ttu-id="48184-191">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="48184-191">Click **Create**.</span></span>
+    <span data-ttu-id="82fa4-190">d.</span><span class="sxs-lookup"><span data-stu-id="82fa4-190">d.</span></span> <span data-ttu-id="82fa4-191">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-191">Click **Create**.</span></span>
  
-### <a name="creating-a-15five-test-user"></a><span data-ttu-id="48184-192">Vytvoření zkušebního uživatele 15Five</span><span class="sxs-lookup"><span data-stu-id="48184-192">Creating a 15Five test user</span></span>
+### <a name="creating-a-15five-test-user"></a><span data-ttu-id="82fa4-192">Vytvoření zkušebního uživatele 15Five</span><span class="sxs-lookup"><span data-stu-id="82fa4-192">Creating a 15Five test user</span></span>
 
-<span data-ttu-id="48184-193">Pokud chcete povolit uživatelům Azure AD přihlášení k 15Five, musí být zřízená do 15Five.</span><span class="sxs-lookup"><span data-stu-id="48184-193">To enable Azure AD users to log in to 15Five, they must be provisioned into 15Five.</span></span> <span data-ttu-id="48184-194">Při zřizování 15Five, je ruční úlohy.</span><span class="sxs-lookup"><span data-stu-id="48184-194">When 15Five, provisioning is a manual task.</span></span>
+<span data-ttu-id="82fa4-193">Uživatelé toolog tooenable Azure AD v too15Five, se musí být zřízená do 15Five.</span><span class="sxs-lookup"><span data-stu-id="82fa4-193">tooenable Azure AD users toolog in too15Five, they must be provisioned into 15Five.</span></span> <span data-ttu-id="82fa4-194">Při zřizování 15Five, je ruční úlohy.</span><span class="sxs-lookup"><span data-stu-id="82fa4-194">When 15Five, provisioning is a manual task.</span></span>
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a><span data-ttu-id="48184-195">Pokud chcete konfigurovat, zřizování uživatelů, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="48184-195">To configure user provisioning, perform the following steps:</span></span>
-1. <span data-ttu-id="48184-196">Přihlaste se k vaší **15Five** společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="48184-196">Log in to your **15Five** company site as administrator.</span></span>
+### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a><span data-ttu-id="82fa4-195">tooconfigure zřizování uživatelů, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="82fa4-195">tooconfigure user provisioning, perform hello following steps:</span></span>
+1. <span data-ttu-id="82fa4-196">Přihlaste se tooyour **15Five** společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="82fa4-196">Log in tooyour **15Five** company site as administrator.</span></span>
 
-2. <span data-ttu-id="48184-197">Přejděte na **spravovat společnosti**.</span><span class="sxs-lookup"><span data-stu-id="48184-197">Go to **Manage Company**.</span></span>
+2. <span data-ttu-id="82fa4-197">Přejděte příliš**společnosti spravovat**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-197">Go too**Manage Company**.</span></span>
    
-    <span data-ttu-id="48184-198">![Spravovat společnosti](./media/active-directory-saas-15five-tutorial/IC784675.png "spravovat společnosti")</span><span class="sxs-lookup"><span data-stu-id="48184-198">![Manage Company](./media/active-directory-saas-15five-tutorial/IC784675.png "Manage Company")</span></span>
+    <span data-ttu-id="82fa4-198">![Spravovat společnosti](./media/active-directory-saas-15five-tutorial/IC784675.png "spravovat společnosti")</span><span class="sxs-lookup"><span data-stu-id="82fa4-198">![Manage Company](./media/active-directory-saas-15five-tutorial/IC784675.png "Manage Company")</span></span>
 
-3. <span data-ttu-id="48184-199">Přejděte na **osoby \> přidat osoby**.</span><span class="sxs-lookup"><span data-stu-id="48184-199">Go to **People \> Add People**.</span></span>
+3. <span data-ttu-id="82fa4-199">Přejděte příliš**osoby \> přidat osoby**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-199">Go too**People \> Add People**.</span></span>
    
-    <span data-ttu-id="48184-200">![Lidé](./media/active-directory-saas-15five-tutorial/IC784676.png "osoby")</span><span class="sxs-lookup"><span data-stu-id="48184-200">![People](./media/active-directory-saas-15five-tutorial/IC784676.png "People")</span></span>
+    <span data-ttu-id="82fa4-200">![Lidé](./media/active-directory-saas-15five-tutorial/IC784676.png "osoby")</span><span class="sxs-lookup"><span data-stu-id="82fa4-200">![People](./media/active-directory-saas-15five-tutorial/IC784676.png "People")</span></span>
 
-4. <span data-ttu-id="48184-201">V části Přidání nové osobě proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="48184-201">In the Add New Person section, perform the following steps:</span></span>
+4. <span data-ttu-id="82fa4-201">V části přidat nové osobě hello proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="82fa4-201">In hello Add New Person section, perform hello following steps:</span></span>
    
-    <span data-ttu-id="48184-202">![Přidat nové osobě](./media/active-directory-saas-15five-tutorial/IC784677.png "přidat nové osobě")</span><span class="sxs-lookup"><span data-stu-id="48184-202">![Add New Person](./media/active-directory-saas-15five-tutorial/IC784677.png "Add New Person")</span></span>
+    <span data-ttu-id="82fa4-202">![Přidat nové osobě](./media/active-directory-saas-15five-tutorial/IC784677.png "přidat nové osobě")</span><span class="sxs-lookup"><span data-stu-id="82fa4-202">![Add New Person](./media/active-directory-saas-15five-tutorial/IC784677.png "Add New Person")</span></span>
    
-    <span data-ttu-id="48184-203">a.</span><span class="sxs-lookup"><span data-stu-id="48184-203">a.</span></span> <span data-ttu-id="48184-204">Typ **křestní jméno**, **příjmení**, **název**, **e-mailová adresa** platného účtu Azure Active Directory chcete zřídit do související textových polí.</span><span class="sxs-lookup"><span data-stu-id="48184-204">Type the **First Name**, **Last Name**, **Title**, **Email address** of a valid Azure Active Directory account you want to provision into the related textboxes.</span></span>
+    <span data-ttu-id="82fa4-203">a.</span><span class="sxs-lookup"><span data-stu-id="82fa4-203">a.</span></span> <span data-ttu-id="82fa4-204">Typ hello **křestní jméno**, **příjmení**, **název**, **e-mailová adresa** platný účet služby Azure Active Directory, kterou chcete tooprovision do Hello související textových polí.</span><span class="sxs-lookup"><span data-stu-id="82fa4-204">Type hello **First Name**, **Last Name**, **Title**, **Email address** of a valid Azure Active Directory account you want tooprovision into hello related textboxes.</span></span>
 
-    <span data-ttu-id="48184-205">b.</span><span class="sxs-lookup"><span data-stu-id="48184-205">b.</span></span> <span data-ttu-id="48184-206">Klikněte na **Done** (Hotovo).</span><span class="sxs-lookup"><span data-stu-id="48184-206">Click **Done**.</span></span>
+    <span data-ttu-id="82fa4-205">b.</span><span class="sxs-lookup"><span data-stu-id="82fa4-205">b.</span></span> <span data-ttu-id="82fa4-206">Klikněte na **Done** (Hotovo).</span><span class="sxs-lookup"><span data-stu-id="82fa4-206">Click **Done**.</span></span>
    
     > [!NOTE]
-    > <span data-ttu-id="48184-207">Držitel účtu Azure AD obdrží e-mail, včetně odkaz pro potvrzení účtu před stane aktivní.</span><span class="sxs-lookup"><span data-stu-id="48184-207">The Azure AD account holder receives an email including a link to confirm the account before it becomes active.</span></span>
+    > <span data-ttu-id="82fa4-207">Hello účet Azure AD, že držitel obdrží e-mail, včetně účet odkaz tooconfirm hello dříve, než se stane aktivní.</span><span class="sxs-lookup"><span data-stu-id="82fa4-207">hello Azure AD account holder receives an email including a link tooconfirm hello account before it becomes active.</span></span>
    
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="48184-208">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="48184-208">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="82fa4-208">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="82fa4-208">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="48184-209">V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k 15Five.</span><span class="sxs-lookup"><span data-stu-id="48184-209">In this section, you enable Britta Simon to use Azure single sign-on by granting access to 15Five.</span></span>
+<span data-ttu-id="82fa4-209">V této části povolíte tak, že udělíte přístup too15Five toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="82fa4-209">In this section, you enable Britta Simon toouse Azure single sign-on by granting access too15Five.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="48184-211">**Pokud chcete přiřadit Britta Simon 15Five, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="48184-211">**To assign Britta Simon to 15Five, perform the following steps:**</span></span>
+<span data-ttu-id="82fa4-211">**tooassign Britta Simon too15Five, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="82fa4-211">**tooassign Britta Simon too15Five, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="48184-212">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="48184-212">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="82fa4-212">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-212">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="48184-214">V seznamu aplikací vyberte **15Five**.</span><span class="sxs-lookup"><span data-stu-id="48184-214">In the applications list, select **15Five**.</span></span>
+2. <span data-ttu-id="82fa4-214">V seznamu aplikace hello vyberte **15Five**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-214">In hello applications list, select **15Five**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-15five-tutorial/tutorial_15five_app.png) 
 
-3. <span data-ttu-id="48184-216">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="48184-216">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="82fa4-216">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="82fa4-216">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="48184-218">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="48184-218">Click **Add** button.</span></span> <span data-ttu-id="48184-219">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="48184-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="82fa4-218">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="82fa4-218">Click **Add** button.</span></span> <span data-ttu-id="82fa4-219">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="82fa4-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="48184-221">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="48184-221">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="82fa4-221">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="82fa4-221">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="48184-222">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="48184-222">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="82fa4-222">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="82fa4-222">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="48184-223">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="48184-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="82fa4-223">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="82fa4-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="48184-224">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="48184-224">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="82fa4-224">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="82fa4-224">Testing single sign-on</span></span>
 
-<span data-ttu-id="48184-225">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="48184-225">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="82fa4-225">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="82fa4-225">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="48184-226">Když kliknete na dlaždici 15Five na přístupovém panelu, měli byste obdržet přihlašovací stránku 15Five aplikace.</span><span class="sxs-lookup"><span data-stu-id="48184-226">When you click the 15Five tile in the Access Panel, you should get login page of 15Five application.</span></span>
-<span data-ttu-id="48184-227">Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="48184-227">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
+<span data-ttu-id="82fa4-226">Když kliknete na dlaždici 15Five hello v hello přístupového panelu, měli byste obdržet přihlašovací stránku 15Five aplikace.</span><span class="sxs-lookup"><span data-stu-id="82fa4-226">When you click hello 15Five tile in hello Access Panel, you should get login page of 15Five application.</span></span>
+<span data-ttu-id="82fa4-227">Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="82fa4-227">For more information about hello Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="48184-228">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="48184-228">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="82fa4-228">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="82fa4-228">Additional resources</span></span>
 
-* [<span data-ttu-id="48184-229">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="48184-229">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="48184-230">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="48184-230">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="82fa4-229">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="82fa4-229">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="82fa4-230">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="82fa4-230">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

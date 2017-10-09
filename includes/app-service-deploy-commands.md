@@ -1,0 +1,8 @@
+
+<span data-ttu-id="3653c-101">toodeploy hello prostředky tooAzure, musíte být přihlášení tooyour účet Azure a je nutné použít modul Správce Azure Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="3653c-101">toodeploy hello resources tooAzure, you must be logged in tooyour Azure account and you must use hello Azure Resource Manager module.</span></span> <span data-ttu-id="3653c-102">toolearn o správce prostředků Azure pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure, najdete v části:</span><span class="sxs-lookup"><span data-stu-id="3653c-102">toolearn about using Azure Resource Manager with either Azure PowerShell or Azure CLI, see:</span></span>
+
+* [<span data-ttu-id="3653c-103">Použití Azure PowerShellu s Azure Resource Managerem</span><span class="sxs-lookup"><span data-stu-id="3653c-103">Using Azure PowerShell with Azure Resource Manager</span></span>](../articles/azure-resource-manager/powershell-azure-resource-manager.md)
+* <span data-ttu-id="3653c-104">[Pomocí hello příkazového řádku Azure CLI pro Mac, Linux a Windows se správou prostředků Azure](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).</span><span class="sxs-lookup"><span data-stu-id="3653c-104">[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).</span></span>
+
+<span data-ttu-id="3653c-105">Následující příklady Hello předpokládá, že již máte skupinu prostředků ve vašem účtu se zadaným názvem hello.</span><span class="sxs-lookup"><span data-stu-id="3653c-105">hello following examples assume you already have a resource group in your account with hello specified name.</span></span> 
+

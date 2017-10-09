@@ -1,6 +1,6 @@
 ---
-title: "Automatizované skript pro vytvoření aplikace webového portálu Service Manager pro připojení s konektorem správy služeb IT v OMS | Microsoft Docs"
-description: "Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu připojit s konektorem správy služeb IT v OMS a centrálně monitorovat a spravovat ITSM pracovní položky."
+title: "skript toocreate aaaAutomated tooconnect aplikace webového portálu Service Manager pomocí konektoru správy služeb IT v OMS | Microsoft Docs"
+description: "Vytvoření aplikace webového portálu Service Manager pomocí konektoru správy služeb IT v OMS, tooconnect automatizované skriptu a centrálně monitorovat a spravovat hello ITSM pracovní položky."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cbe6a1f75548ac541fd428a977edf64eea959e4f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a><span data-ttu-id="fa22a-103">Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu (Preview)</span><span class="sxs-lookup"><span data-stu-id="fa22a-103">Create Service Manager Web app using the automated script (Preview)</span></span>
+# <a name="create-service-manager-web-app-using-hello-automated-script-preview"></a><span data-ttu-id="64c03-103">Vytvoření aplikace webového portálu Service Manager pomocí skriptu hello automatizované (Preview)</span><span class="sxs-lookup"><span data-stu-id="64c03-103">Create Service Manager Web app using hello automated script (Preview)</span></span>
 
-<span data-ttu-id="fa22a-104">Pomocí následujícího skriptu k vytvoření webové aplikace pro instanci portálu Service Manager.</span><span class="sxs-lookup"><span data-stu-id="fa22a-104">Use the following script to create the Web app for your Service Manager instance.</span></span> <span data-ttu-id="fa22a-105">Zde jsou další informace o připojení k portálu Service Manager: [portálu Service Manager webové aplikace](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span><span class="sxs-lookup"><span data-stu-id="fa22a-105">More information about Service Manager connection is here: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span></span>
+<span data-ttu-id="64c03-104">Použijte hello následující skript toocreate hello webové aplikace pro instanci portálu Service Manager.</span><span class="sxs-lookup"><span data-stu-id="64c03-104">Use hello following script toocreate hello Web app for your Service Manager instance.</span></span> <span data-ttu-id="64c03-105">Zde jsou další informace o připojení k portálu Service Manager: [portálu Service Manager webové aplikace](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span><span class="sxs-lookup"><span data-stu-id="64c03-105">More information about Service Manager connection is here: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span></span>
 
-<span data-ttu-id="fa22a-106">Spusťte skript tím, že poskytuje následující požadované podrobnosti:</span><span class="sxs-lookup"><span data-stu-id="fa22a-106">Run the script by providing the following required details:</span></span>
+<span data-ttu-id="64c03-106">Spusťte skript hello tím, že poskytuje hello následující požadované podrobnosti:</span><span class="sxs-lookup"><span data-stu-id="64c03-106">Run hello script by providing hello following required details:</span></span>
 
-- <span data-ttu-id="fa22a-107">Podrobnosti o předplatném Azure</span><span class="sxs-lookup"><span data-stu-id="fa22a-107">Azure subscription details</span></span>
-- <span data-ttu-id="fa22a-108">Název skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="fa22a-108">Resource group name</span></span>
-- <span data-ttu-id="fa22a-109">Umístění</span><span class="sxs-lookup"><span data-stu-id="fa22a-109">Location</span></span>
-- <span data-ttu-id="fa22a-110">Podrobnosti o serveru portálu Service Manager (název serveru, domény, uživatelské jméno a heslo)</span><span class="sxs-lookup"><span data-stu-id="fa22a-110">Service Manager server details (server name,    domain, username and password)</span></span>
-- <span data-ttu-id="fa22a-111">Předpona názvu lokality pro vaši webovou aplikaci</span><span class="sxs-lookup"><span data-stu-id="fa22a-111">Site name prefix for your Web app</span></span>
-- <span data-ttu-id="fa22a-112">Namespace sběrnice.</span><span class="sxs-lookup"><span data-stu-id="fa22a-112">ServiceBus Namespace.</span></span>
+- <span data-ttu-id="64c03-107">Podrobnosti o předplatném Azure</span><span class="sxs-lookup"><span data-stu-id="64c03-107">Azure subscription details</span></span>
+- <span data-ttu-id="64c03-108">Název skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="64c03-108">Resource group name</span></span>
+- <span data-ttu-id="64c03-109">Umístění</span><span class="sxs-lookup"><span data-stu-id="64c03-109">Location</span></span>
+- <span data-ttu-id="64c03-110">Podrobnosti o serveru portálu Service Manager (název serveru, domény, uživatelské jméno a heslo)</span><span class="sxs-lookup"><span data-stu-id="64c03-110">Service Manager server details (server name,    domain, username and password)</span></span>
+- <span data-ttu-id="64c03-111">Předpona názvu lokality pro vaši webovou aplikaci</span><span class="sxs-lookup"><span data-stu-id="64c03-111">Site name prefix for your Web app</span></span>
+- <span data-ttu-id="64c03-112">Namespace sběrnice.</span><span class="sxs-lookup"><span data-stu-id="64c03-112">ServiceBus Namespace.</span></span>
 
-<span data-ttu-id="fa22a-113">Skript se vytvoří webovou aplikaci pomocí názvu, který jste zadali (spolu s několika další řetězce, aby byla zajištěna jedinečnost).</span><span class="sxs-lookup"><span data-stu-id="fa22a-113">The script will create the Web app using the name that you specified (along with few additional strings to make it unique).</span></span> <span data-ttu-id="fa22a-114">Vygeneruje **adresa URL webové aplikace**, **ID klienta** a **tajný klíč klienta**.</span><span class="sxs-lookup"><span data-stu-id="fa22a-114">It generates the **Web app URL**, **client ID** and **client secret**.</span></span>
+<span data-ttu-id="64c03-113">Hello skript vytvoří hello webovou aplikaci pomocí hello název, který jste zadali (spolu s několika toomake další řetězce je jedinečný).</span><span class="sxs-lookup"><span data-stu-id="64c03-113">hello script will create hello Web app using hello name that you specified (along with few additional strings toomake it unique).</span></span> <span data-ttu-id="64c03-114">Vygeneruje hello **adresa URL webové aplikace**, **ID klienta** a **tajný klíč klienta**.</span><span class="sxs-lookup"><span data-stu-id="64c03-114">It generates hello **Web app URL**, **client ID** and **client secret**.</span></span>
 
-<span data-ttu-id="fa22a-115">Uložení těchto hodnot bude nutné tyto při vytváření připojení pomocí konektoru služby správy IT.</span><span class="sxs-lookup"><span data-stu-id="fa22a-115">Save these values, you will need these when you create a connection with IT Service Management Connector.</span></span>
+<span data-ttu-id="64c03-115">Uložení těchto hodnot bude nutné tyto při vytváření připojení pomocí konektoru služby správy IT.</span><span class="sxs-lookup"><span data-stu-id="64c03-115">Save these values, you will need these when you create a connection with IT Service Management Connector.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="fa22a-116">Požadavky</span><span class="sxs-lookup"><span data-stu-id="fa22a-116">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="64c03-116">Požadavky</span><span class="sxs-lookup"><span data-stu-id="64c03-116">Prerequisites</span></span>
 
- <span data-ttu-id="fa22a-117">Windows Management Framework 5.0 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="fa22a-117">Windows Management Framework 5.0 or above.</span></span>
-<span data-ttu-id="fa22a-118">Windows 10 má 5.1 ve výchozím nastavení.</span><span class="sxs-lookup"><span data-stu-id="fa22a-118">Windows 10 has 5.1 by default.</span></span> <span data-ttu-id="fa22a-119">Si můžete stáhnout rozhraní z [sem](https://www.microsoft.com/download/details.aspx?id=53347):</span><span class="sxs-lookup"><span data-stu-id="fa22a-119">You can download the framework from [here](https://www.microsoft.com/download/details.aspx?id=53347):</span></span>
+ <span data-ttu-id="64c03-117">Windows Management Framework 5.0 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="64c03-117">Windows Management Framework 5.0 or above.</span></span>
+<span data-ttu-id="64c03-118">Windows 10 má 5.1 ve výchozím nastavení.</span><span class="sxs-lookup"><span data-stu-id="64c03-118">Windows 10 has 5.1 by default.</span></span> <span data-ttu-id="64c03-119">Hello framework z si můžete stáhnout [sem](https://www.microsoft.com/download/details.aspx?id=53347):</span><span class="sxs-lookup"><span data-stu-id="64c03-119">You can download hello framework from [here](https://www.microsoft.com/download/details.aspx?id=53347):</span></span>
 
-<span data-ttu-id="fa22a-120">Pomocí následujícího skriptu:</span><span class="sxs-lookup"><span data-stu-id="fa22a-120">Use the following script:</span></span>
+<span data-ttu-id="64c03-120">Použijte hello následující skript:</span><span class="sxs-lookup"><span data-stu-id="64c03-120">Use hello following script:</span></span>
 
 ```
 ####################################
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 # Subscription name in Azure account. Check in Azure Portal.
 $azureSubscriptionName = ""
 
-# Resource group name for resource deployment. Could be an existing resource group or a new one to be created.
+# Resource group name for resource deployment. Could be an existing resource group or a new one toobe created.
 $resourceGroupName = ""
 
 # Location for existing resource group or new resource group deployment
@@ -70,7 +70,7 @@ $username = ""
 $password = ""
 
 
-# Azure site Name Prefix. Default is "smoc". It can be configured to any desired value.
+# Azure site Name Prefix. Default is "smoc". It can be configured tooany desired value.
 $siteNamePrefix = ""
 
 # Service Bus namespace. Please provide an already existing service bus namespace.
@@ -85,7 +85,7 @@ $serviceName = ""
 # Installations
 ################
 
-# Allowing the execution of the script for current user.  
+# Allowing hello execution of hello script for current user.  
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 Write-Host "Checking for required modules..."
@@ -141,7 +141,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
     }   
 }
@@ -203,7 +203,7 @@ try
 }
 catch
 {
-    # Delete the deployed web app if Azure AD application fails
+    # Delete hello deployed web app if Azure AD application fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     Write-Host "Faiure occured in Azure AD application....Try again!!"
@@ -247,10 +247,10 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete hello AzureRm AD Application if confiuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
-    # Delete the deployed web app if configuration fails
+    # Delete hello deployed web app if configuration fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     exit
@@ -276,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Relay Resource Provider. Please register it in Azure Portal."
     }   
 }
 
@@ -305,7 +305,7 @@ if(!$resource)
 
 }
 
-Write-Host "Note: Please Configure Hybrid connection in the Networking section of the web application in Azure Portal to link to the on-premises system.`n"
+Write-Host "Note: Please Configure Hybrid connection in hello Networking section of hello web application in Azure Portal toolink toohello on-premises system.`n"
 Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
@@ -318,5 +318,5 @@ if(!$err)
 }
 
 ```
-## <a name="next-steps"></a><span data-ttu-id="fa22a-121">Další kroky</span><span class="sxs-lookup"><span data-stu-id="fa22a-121">Next steps</span></span>
-<span data-ttu-id="fa22a-122">[Konfigurace hybridní připojení](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span><span class="sxs-lookup"><span data-stu-id="fa22a-122">[Configure the Hybrid connection](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="64c03-121">Další kroky</span><span class="sxs-lookup"><span data-stu-id="64c03-121">Next steps</span></span>
+<span data-ttu-id="64c03-122">[Konfigurace hello hybridní připojení](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span><span class="sxs-lookup"><span data-stu-id="64c03-122">[Configure hello Hybrid connection](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span></span>

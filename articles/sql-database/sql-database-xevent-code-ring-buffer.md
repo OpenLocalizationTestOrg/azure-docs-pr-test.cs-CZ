@@ -1,6 +1,6 @@
 ---
-title: "Kód XEvent cyklické vyrovnávací paměti pro databázi SQL. | Microsoft Docs"
-description: "Poskytuje ukázky kódu jazyka Transact-SQL, která přišla rychlé a snadné použití cíl cyklické vyrovnávací paměti, v databázi SQL Azure."
+title: "aaaXEvent kód cyklické vyrovnávací paměti pro databázi SQL. | Microsoft Docs"
+description: "Poskytuje ukázky kódu jazyka Transact-SQL, která přišla rychlé a snadné použití cíl hello cyklické vyrovnávací paměti, v databázi SQL Azure."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,52 +16,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: 6fbefe151901ac3b15d93712422878fc4d6206f1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 21df748d9999d6837d2b5bbe4a3f47fb351b4633
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a><span data-ttu-id="ccccd-103">Prstence kódu cílové vyrovnávací paměti pro rozšířené události v databázi SQL</span><span class="sxs-lookup"><span data-stu-id="ccccd-103">Ring Buffer target code for extended events in SQL Database</span></span>
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a><span data-ttu-id="95157-103">Prstence kódu cílové vyrovnávací paměti pro rozšířené události v databázi SQL</span><span class="sxs-lookup"><span data-stu-id="95157-103">Ring Buffer target code for extended events in SQL Database</span></span>
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-<span data-ttu-id="ccccd-104">Chcete úplného příkladu kódu pro nejjednodušší rychlý způsob, jak informace o zachycení a sestav pro rozšířené události během testu.</span><span class="sxs-lookup"><span data-stu-id="ccccd-104">You want a complete code sample for the easiest quick way to capture and report information for an extended event during a test.</span></span> <span data-ttu-id="ccccd-105">Je nejjednodušší cíl pro rozšířené události data [cíl cyklické vyrovnávací paměti](http://msdn.microsoft.com/library/ff878182.aspx).</span><span class="sxs-lookup"><span data-stu-id="ccccd-105">The easiest target for extended event data is the [Ring Buffer target](http://msdn.microsoft.com/library/ff878182.aspx).</span></span>
+<span data-ttu-id="95157-104">Chcete úplného příkladu kódu hello nejjednodušší rychlý způsob toocapture a sestava informace pro rozšířené události během testu.</span><span class="sxs-lookup"><span data-stu-id="95157-104">You want a complete code sample for hello easiest quick way toocapture and report information for an extended event during a test.</span></span> <span data-ttu-id="95157-105">Hello nejjednodušší cíl pro data rozšířených událostí je hello [cíl cyklické vyrovnávací paměti](http://msdn.microsoft.com/library/ff878182.aspx).</span><span class="sxs-lookup"><span data-stu-id="95157-105">hello easiest target for extended event data is hello [Ring Buffer target](http://msdn.microsoft.com/library/ff878182.aspx).</span></span>
 
-<span data-ttu-id="ccccd-106">Toto téma představuje ukázku kódu jazyka Transact-SQL, který:</span><span class="sxs-lookup"><span data-stu-id="ccccd-106">This topic presents a Transact-SQL code sample that:</span></span>
+<span data-ttu-id="95157-106">Toto téma představuje ukázku kódu jazyka Transact-SQL, který:</span><span class="sxs-lookup"><span data-stu-id="95157-106">This topic presents a Transact-SQL code sample that:</span></span>
 
-1. <span data-ttu-id="ccccd-107">Vytvoří tabulku s daty k předvedení s.</span><span class="sxs-lookup"><span data-stu-id="ccccd-107">Creates a table with data to demonstrate with.</span></span>
-2. <span data-ttu-id="ccccd-108">Vytvoří relaci pro existující událost rozšířené, a to **sqlserver.sql_statement_starting**.</span><span class="sxs-lookup"><span data-stu-id="ccccd-108">Creates a session for an existing extended event, namely **sqlserver.sql_statement_starting**.</span></span>
+1. <span data-ttu-id="95157-107">Vytvoří tabulku se toodemonstrate data s.</span><span class="sxs-lookup"><span data-stu-id="95157-107">Creates a table with data toodemonstrate with.</span></span>
+2. <span data-ttu-id="95157-108">Vytvoří relaci pro existující událost rozšířené, a to **sqlserver.sql_statement_starting**.</span><span class="sxs-lookup"><span data-stu-id="95157-108">Creates a session for an existing extended event, namely **sqlserver.sql_statement_starting**.</span></span>
    
-   * <span data-ttu-id="ccccd-109">Událost je omezený na příkazy SQL, které obsahují určitý řetězec aktualizace: **příkaz jako '% aktualizace tabEmployee %'**.</span><span class="sxs-lookup"><span data-stu-id="ccccd-109">The event is limited to SQL statements that contain a particular Update string: **statement LIKE '%UPDATE tabEmployee%'**.</span></span>
-   * <span data-ttu-id="ccccd-110">Vybere možnost odesílat výstup události k cíli typu cyklické vyrovnávací paměti, a to **package0.ring_buffer**.</span><span class="sxs-lookup"><span data-stu-id="ccccd-110">Chooses to send the output of the event to a target of type Ring Buffer, namely  **package0.ring_buffer**.</span></span>
-3. <span data-ttu-id="ccccd-111">Spustí relaci události.</span><span class="sxs-lookup"><span data-stu-id="ccccd-111">Starts the event session.</span></span>
-4. <span data-ttu-id="ccccd-112">Vydá několik jednoduchých příkazy aktualizace SQL.</span><span class="sxs-lookup"><span data-stu-id="ccccd-112">Issues a couple of simple SQL UPDATE statements.</span></span>
-5. <span data-ttu-id="ccccd-113">Vydá příkazu SQL SELECT načíst výstup událostí z cyklické vyrovnávací paměti.</span><span class="sxs-lookup"><span data-stu-id="ccccd-113">Issues a SQL SELECT statement to retrieve event output from the Ring Buffer.</span></span>
+   * <span data-ttu-id="95157-109">Hello událostí je omezená tooSQL příkazů, které obsahují určitý řetězec aktualizace: **příkaz jako '% aktualizace tabEmployee %'**.</span><span class="sxs-lookup"><span data-stu-id="95157-109">hello event is limited tooSQL statements that contain a particular Update string: **statement LIKE '%UPDATE tabEmployee%'**.</span></span>
+   * <span data-ttu-id="95157-110">Vybere toosend hello výstup hello cíl tooa události typu cyklické vyrovnávací paměti, a to **package0.ring_buffer**.</span><span class="sxs-lookup"><span data-stu-id="95157-110">Chooses toosend hello output of hello event tooa target of type Ring Buffer, namely  **package0.ring_buffer**.</span></span>
+3. <span data-ttu-id="95157-111">Spustí relaci události hello.</span><span class="sxs-lookup"><span data-stu-id="95157-111">Starts hello event session.</span></span>
+4. <span data-ttu-id="95157-112">Vydá několik jednoduchých příkazy aktualizace SQL.</span><span class="sxs-lookup"><span data-stu-id="95157-112">Issues a couple of simple SQL UPDATE statements.</span></span>
+5. <span data-ttu-id="95157-113">Problémy SQL vyberte příkaz tooretrieve událostí výstup hello cyklické vyrovnávací paměti.</span><span class="sxs-lookup"><span data-stu-id="95157-113">Issues a SQL SELECT statement tooretrieve event output from hello Ring Buffer.</span></span>
    
-   * <span data-ttu-id="ccccd-114">**Sys.dm_xe_database_session_targets** a jsou připojené ostatní zobrazení dynamické správy (zobrazení dynamické správy).</span><span class="sxs-lookup"><span data-stu-id="ccccd-114">**sys.dm_xe_database_session_targets** and other dynamic management views (DMVs) are joined.</span></span>
-6. <span data-ttu-id="ccccd-115">Zastaví relace události.</span><span class="sxs-lookup"><span data-stu-id="ccccd-115">Stops the event session.</span></span>
-7. <span data-ttu-id="ccccd-116">Zahodí cíl cyklické vyrovnávací paměti, chcete-li uvolnit její prostředky.</span><span class="sxs-lookup"><span data-stu-id="ccccd-116">Drops the Ring Buffer target, to release its resources.</span></span>
-8. <span data-ttu-id="ccccd-117">Zahodí ukázkové tabulky a relace události.</span><span class="sxs-lookup"><span data-stu-id="ccccd-117">Drops the event session and the demo table.</span></span>
+   * <span data-ttu-id="95157-114">**Sys.dm_xe_database_session_targets** a jsou připojené ostatní zobrazení dynamické správy (zobrazení dynamické správy).</span><span class="sxs-lookup"><span data-stu-id="95157-114">**sys.dm_xe_database_session_targets** and other dynamic management views (DMVs) are joined.</span></span>
+6. <span data-ttu-id="95157-115">Zastaví hello relace události.</span><span class="sxs-lookup"><span data-stu-id="95157-115">Stops hello event session.</span></span>
+7. <span data-ttu-id="95157-116">Vyřazuje hello cíl cyklické vyrovnávací paměti, toorelease její prostředky.</span><span class="sxs-lookup"><span data-stu-id="95157-116">Drops hello Ring Buffer target, toorelease its resources.</span></span>
+8. <span data-ttu-id="95157-117">Zahodí relace události hello a hello ukázkové tabulky.</span><span class="sxs-lookup"><span data-stu-id="95157-117">Drops hello event session and hello demo table.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="ccccd-118">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ccccd-118">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="95157-118">Požadavky</span><span class="sxs-lookup"><span data-stu-id="95157-118">Prerequisites</span></span>
 
-* <span data-ttu-id="ccccd-119">Účet a předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="ccccd-119">An Azure account and subscription.</span></span> <span data-ttu-id="ccccd-120">Můžete si zaregistrovat i [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="ccccd-120">You can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
-* <span data-ttu-id="ccccd-121">Všechny databáze, které je možné vytvořit tabulku v.</span><span class="sxs-lookup"><span data-stu-id="ccccd-121">Any database you can create a table in.</span></span>
+* <span data-ttu-id="95157-119">Účet a předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="95157-119">An Azure account and subscription.</span></span> <span data-ttu-id="95157-120">Můžete si zaregistrovat i [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="95157-120">You can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+* <span data-ttu-id="95157-121">Všechny databáze, které je možné vytvořit tabulku v.</span><span class="sxs-lookup"><span data-stu-id="95157-121">Any database you can create a table in.</span></span>
   
-  * <span data-ttu-id="ccccd-122">Volitelně můžete [vytvořit **AdventureWorksLT** ukázkovou databázi](sql-database-get-started.md) v minutách.</span><span class="sxs-lookup"><span data-stu-id="ccccd-122">Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.</span></span>
-* <span data-ttu-id="ccccd-123">SQL Server Management Studio (ssms.exe), v ideálním případě její nejnovější měsíční aktualizace verzi.</span><span class="sxs-lookup"><span data-stu-id="ccccd-123">SQL Server Management Studio (ssms.exe), ideally its latest monthly update version.</span></span> 
-  <span data-ttu-id="ccccd-124">Si můžete stáhnout nejnovější ssms.exe z:</span><span class="sxs-lookup"><span data-stu-id="ccccd-124">You can download the latest ssms.exe from:</span></span>
+  * <span data-ttu-id="95157-122">Volitelně můžete [vytvořit **AdventureWorksLT** ukázkovou databázi](sql-database-get-started.md) v minutách.</span><span class="sxs-lookup"><span data-stu-id="95157-122">Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.</span></span>
+* <span data-ttu-id="95157-123">SQL Server Management Studio (ssms.exe), v ideálním případě její nejnovější měsíční aktualizace verzi.</span><span class="sxs-lookup"><span data-stu-id="95157-123">SQL Server Management Studio (ssms.exe), ideally its latest monthly update version.</span></span> 
+  <span data-ttu-id="95157-124">Si můžete stáhnout nejnovější ssms.exe hello z:</span><span class="sxs-lookup"><span data-stu-id="95157-124">You can download hello latest ssms.exe from:</span></span>
   
-  * <span data-ttu-id="ccccd-125">Téma s názvem [stáhnout SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="ccccd-125">Topic titled [Download SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span></span>
-  * [<span data-ttu-id="ccccd-126">Přímý odkaz na stažení.</span><span class="sxs-lookup"><span data-stu-id="ccccd-126">A direct link to the download.</span></span>](http://go.microsoft.com/fwlink/?linkid=616025)
+  * <span data-ttu-id="95157-125">Téma s názvem [stáhnout SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="95157-125">Topic titled [Download SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span></span>
+  * [<span data-ttu-id="95157-126">Stahování toohello přímý odkaz.</span><span class="sxs-lookup"><span data-stu-id="95157-126">A direct link toohello download.</span></span>](http://go.microsoft.com/fwlink/?linkid=616025)
 
-## <a name="code-sample"></a><span data-ttu-id="ccccd-127">Ukázka kódu</span><span class="sxs-lookup"><span data-stu-id="ccccd-127">Code sample</span></span>
+## <a name="code-sample"></a><span data-ttu-id="95157-127">Ukázka kódu</span><span class="sxs-lookup"><span data-stu-id="95157-127">Code sample</span></span>
 
-<span data-ttu-id="ccccd-128">S velmi malé změny můžete spustit následující ukázka kódu cyklické vyrovnávací paměti na Azure SQL Database nebo Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="ccccd-128">With very minor modification, the following Ring Buffer code sample can be run on either Azure SQL Database or Microsoft SQL Server.</span></span> <span data-ttu-id="ccccd-129">Rozdíl je přítomnost uzlu '_databáze' názvu některá zobrazení dynamické správy (zobrazení dynamické správy), použít v klauzuli FROM v kroku 5.</span><span class="sxs-lookup"><span data-stu-id="ccccd-129">The difference is the presence of the node '_database' in the name of some dynamic management views (DMVs), used in the FROM clause in Step 5.</span></span> <span data-ttu-id="ccccd-130">Například:</span><span class="sxs-lookup"><span data-stu-id="ccccd-130">For example:</span></span>
+<span data-ttu-id="95157-128">S velmi malé změny hello následující ukázka kódu cyklické vyrovnávací paměti lze spustit v Azure SQL Database nebo Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="95157-128">With very minor modification, hello following Ring Buffer code sample can be run on either Azure SQL Database or Microsoft SQL Server.</span></span> <span data-ttu-id="95157-129">Hello rozdíl je hello přítomnosti hello uzlu '_databáze"v názvu hello některé zobrazení dynamické správy (zobrazení dynamické správy), použít v klauzuli FROM hello v kroku 5.</span><span class="sxs-lookup"><span data-stu-id="95157-129">hello difference is hello presence of hello node '_database' in hello name of some dynamic management views (DMVs), used in hello FROM clause in Step 5.</span></span> <span data-ttu-id="95157-130">Například:</span><span class="sxs-lookup"><span data-stu-id="95157-130">For example:</span></span>
 
-* <span data-ttu-id="ccccd-131">Sys.dm_xe**_databáze**_session_targets</span><span class="sxs-lookup"><span data-stu-id="ccccd-131">sys.dm_xe**_database**_session_targets</span></span>
-* <span data-ttu-id="ccccd-132">Sys.dm_xe_session_targets</span><span class="sxs-lookup"><span data-stu-id="ccccd-132">sys.dm_xe_session_targets</span></span>
+* <span data-ttu-id="95157-131">Sys.dm_xe**_databáze**_session_targets</span><span class="sxs-lookup"><span data-stu-id="95157-131">sys.dm_xe**_database**_session_targets</span></span>
+* <span data-ttu-id="95157-132">Sys.dm_xe_session_targets</span><span class="sxs-lookup"><span data-stu-id="95157-132">sys.dm_xe_session_targets</span></span>
 
 &nbsp;
 
@@ -218,15 +218,15 @@ GO
 
 &nbsp;
 
-## <a name="ring-buffer-contents"></a><span data-ttu-id="ccccd-133">Obsah prstenec vyrovnávací paměti</span><span class="sxs-lookup"><span data-stu-id="ccccd-133">Ring Buffer contents</span></span>
+## <a name="ring-buffer-contents"></a><span data-ttu-id="95157-133">Obsah prstenec vyrovnávací paměti</span><span class="sxs-lookup"><span data-stu-id="95157-133">Ring Buffer contents</span></span>
 
-<span data-ttu-id="ccccd-134">Použili jsme ssms.exe spustit ukázkový kód.</span><span class="sxs-lookup"><span data-stu-id="ccccd-134">We used ssms.exe to run the code sample.</span></span>
+<span data-ttu-id="95157-134">Použili jsme ukázka kódu hello toorun ssms.exe.</span><span class="sxs-lookup"><span data-stu-id="95157-134">We used ssms.exe toorun hello code sample.</span></span>
 
-<span data-ttu-id="ccccd-135">Pokud chcete zobrazit výsledky, jsme klikli buňky v záhlaví sloupce **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="ccccd-135">To view the results, we clicked the cell under the column header **target_data_XML**.</span></span>
+<span data-ttu-id="95157-135">výsledky hello tooview, jsme klikli hello buňky v záhlaví sloupce hello **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="95157-135">tooview hello results, we clicked hello cell under hello column header **target_data_XML**.</span></span>
 
-<span data-ttu-id="ccccd-136">Potom v podokně výsledků jsme klikli buňky v záhlaví sloupce **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="ccccd-136">Then in the results pane we clicked the cell under the column header **target_data_XML**.</span></span> <span data-ttu-id="ccccd-137">Klepněte na tlačítko vytvořit jinou kartu Soubor v ssms.exe ve kterém byl obsah buňky výsledek zobrazí, jako XML.</span><span class="sxs-lookup"><span data-stu-id="ccccd-137">This click created another file tab in ssms.exe in which the content of the result cell was displayed, as XML.</span></span>
+<span data-ttu-id="95157-136">Potom v podokně výsledků hello jsme klikli hello buňky v záhlaví sloupce hello **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="95157-136">Then in hello results pane we clicked hello cell under hello column header **target_data_XML**.</span></span> <span data-ttu-id="95157-137">Klepněte na tlačítko vytvořit jinou kartu Soubor v ssms.exe v které hello zobrazila obsah buňky hello výsledek ve formátu XML.</span><span class="sxs-lookup"><span data-stu-id="95157-137">This click created another file tab in ssms.exe in which hello content of hello result cell was displayed, as XML.</span></span>
 
-<span data-ttu-id="ccccd-138">Výstup se zobrazuje v následující bloku.</span><span class="sxs-lookup"><span data-stu-id="ccccd-138">The output is shown in the following block.</span></span> <span data-ttu-id="ccccd-139">Vypadá tak dlouho, ale je právě dva  **<event>**  elementy.</span><span class="sxs-lookup"><span data-stu-id="ccccd-139">It looks long, but it is just two **<event>** elements.</span></span>
+<span data-ttu-id="95157-138">výstup Hello se zobrazí v následující bloku hello.</span><span class="sxs-lookup"><span data-stu-id="95157-138">hello output is shown in hello following block.</span></span> <span data-ttu-id="95157-139">Vypadá tak dlouho, ale je právě dva  **<event>**  elementy.</span><span class="sxs-lookup"><span data-stu-id="95157-139">It looks long, but it is just two **<event>** elements.</span></span>
 
 &nbsp;
 
@@ -318,9 +318,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### <a name="release-resources-held-by-your-ring-buffer"></a><span data-ttu-id="ccccd-140">Uvolnit prostředky držené vaší cyklické vyrovnávací paměti</span><span class="sxs-lookup"><span data-stu-id="ccccd-140">Release resources held by your Ring Buffer</span></span>
+#### <a name="release-resources-held-by-your-ring-buffer"></a><span data-ttu-id="95157-140">Uvolnit prostředky držené vaší cyklické vyrovnávací paměti</span><span class="sxs-lookup"><span data-stu-id="95157-140">Release resources held by your Ring Buffer</span></span>
 
-<span data-ttu-id="ccccd-141">Až skončíte s vaší cyklické vyrovnávací paměti, můžete ho odebrat a její prostředky vydání verze **ALTER** podobně jako následující:</span><span class="sxs-lookup"><span data-stu-id="ccccd-141">When you are done with your Ring Buffer, you can remove it and release its resources issuing an **ALTER** like the following:</span></span>
+<span data-ttu-id="95157-141">Až skončíte s vaší cyklické vyrovnávací paměti, můžete ho odebrat a její prostředky vydání verze **ALTER** jako hello následující:</span><span class="sxs-lookup"><span data-stu-id="95157-141">When you are done with your Ring Buffer, you can remove it and release its resources issuing an **ALTER** like hello following:</span></span>
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -330,7 +330,7 @@ GO
 ```
 
 
-<span data-ttu-id="ccccd-142">Definice relaci události je aktualizován, ale není vyřazen.</span><span class="sxs-lookup"><span data-stu-id="ccccd-142">The definition of your event session is updated, but not dropped.</span></span> <span data-ttu-id="ccccd-143">Později můžete přidat další instanci cyklické vyrovnávací paměti do relace události:</span><span class="sxs-lookup"><span data-stu-id="ccccd-143">Later you can add another instance of the Ring Buffer to your event session:</span></span>
+<span data-ttu-id="95157-142">definice Hello relaci události je aktualizován, ale není vyřazen.</span><span class="sxs-lookup"><span data-stu-id="95157-142">hello definition of your event session is updated, but not dropped.</span></span> <span data-ttu-id="95157-143">Později můžete přidat další instanci relace události tooyour hello cyklické vyrovnávací paměti:</span><span class="sxs-lookup"><span data-stu-id="95157-143">Later you can add another instance of hello Ring Buffer tooyour event session:</span></span>
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -343,19 +343,19 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 ```
 
 
-## <a name="more-information"></a><span data-ttu-id="ccccd-144">Další informace</span><span class="sxs-lookup"><span data-stu-id="ccccd-144">More information</span></span>
+## <a name="more-information"></a><span data-ttu-id="95157-144">Další informace</span><span class="sxs-lookup"><span data-stu-id="95157-144">More information</span></span>
 
-<span data-ttu-id="ccccd-145">Primární téma pro rozšířené události v databázi SQL Azure je:</span><span class="sxs-lookup"><span data-stu-id="ccccd-145">The primary topic for extended events on Azure SQL Database is:</span></span>
+<span data-ttu-id="95157-145">Hello primární téma pro rozšířené události v databázi SQL Azure je:</span><span class="sxs-lookup"><span data-stu-id="95157-145">hello primary topic for extended events on Azure SQL Database is:</span></span>
 
-* <span data-ttu-id="ccccd-146">[Rozšířené aspekty událost v databázi SQL](sql-database-xevent-db-diff-from-svr.md), který se liší od některých aspektů rozšířené události, které se liší od Azure SQL Database a serveru Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="ccccd-146">[Extended event considerations in SQL Database](sql-database-xevent-db-diff-from-svr.md), which contrasts some aspects of extended events that differ between Azure SQL Database versus Microsoft SQL Server.</span></span>
+* <span data-ttu-id="95157-146">[Rozšířené aspekty událost v databázi SQL](sql-database-xevent-db-diff-from-svr.md), který se liší od některých aspektů rozšířené události, které se liší od Azure SQL Database a serveru Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="95157-146">[Extended event considerations in SQL Database](sql-database-xevent-db-diff-from-svr.md), which contrasts some aspects of extended events that differ between Azure SQL Database versus Microsoft SQL Server.</span></span>
 
-<span data-ttu-id="ccccd-147">Další témata ukázkový kód pro rozšířené události jsou dostupné prostřednictvím následujících odkazů.</span><span class="sxs-lookup"><span data-stu-id="ccccd-147">Other code sample topics for extended events are available at the following links.</span></span> <span data-ttu-id="ccccd-148">Ale je nutné pravidelně zkontrolovat všechny ukázkové zobrazíte zda ukázku cílem Microsoft SQL Server a databáze SQL Azure.</span><span class="sxs-lookup"><span data-stu-id="ccccd-148">However, you must routinely check any sample to see whether the sample targets Microsoft SQL Server versus Azure SQL Database.</span></span> <span data-ttu-id="ccccd-149">Potom můžete rozhodnout, zda jsou mírně potřebné ke spuštění ukázky.</span><span class="sxs-lookup"><span data-stu-id="ccccd-149">Then you can decide whether minor changes are needed to run the sample.</span></span>
+<span data-ttu-id="95157-147">Další témata ukázkový kód pro rozšířené události jsou k dispozici hello následující odkazy.</span><span class="sxs-lookup"><span data-stu-id="95157-147">Other code sample topics for extended events are available at hello following links.</span></span> <span data-ttu-id="95157-148">Jestli hello ukázka cílem Microsoft SQL Server a databáze SQL Azure však musíte zkontrolovat pravidelně žádné toosee ukázka.</span><span class="sxs-lookup"><span data-stu-id="95157-148">However, you must routinely check any sample toosee whether hello sample targets Microsoft SQL Server versus Azure SQL Database.</span></span> <span data-ttu-id="95157-149">Potom můžete rozhodnout, zda jsou mírně potřebné toorun hello ukázka.</span><span class="sxs-lookup"><span data-stu-id="95157-149">Then you can decide whether minor changes are needed toorun hello sample.</span></span>
 
-* <span data-ttu-id="ccccd-150">Ukázka kódu pro Azure SQL Database: [kód cílový soubor událostí pro rozšířené události v databázi SQL](sql-database-xevent-code-event-file.md)</span><span class="sxs-lookup"><span data-stu-id="ccccd-150">Code sample for Azure SQL Database: [Event File target code for extended events in SQL Database](sql-database-xevent-code-event-file.md)</span></span>
+* <span data-ttu-id="95157-150">Ukázka kódu pro Azure SQL Database: [kód cílový soubor událostí pro rozšířené události v databázi SQL](sql-database-xevent-code-event-file.md)</span><span class="sxs-lookup"><span data-stu-id="95157-150">Code sample for Azure SQL Database: [Event File target code for extended events in SQL Database](sql-database-xevent-code-event-file.md)</span></span>
 
 <!--
 ('lock_acquired' event.)
 
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Find hello Objects That Have hello Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->

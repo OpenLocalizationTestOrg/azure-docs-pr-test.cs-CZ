@@ -1,0 +1,6 @@
+1. <span data-ttu-id="851ef-101">Z nabídky hello Visual Studio, vyberte **soubor > Nový > projekt**.</span><span class="sxs-lookup"><span data-stu-id="851ef-101">From hello Visual Studio menu, select **File > New > Project**.</span></span>
+2. <span data-ttu-id="851ef-102">V části hello **šablony** části hello **nový projekt** dialogové okno, vyberte **Visual C# > Web**.</span><span class="sxs-lookup"><span data-stu-id="851ef-102">Under hello **Templates** section of hello **New Project** dialog box, select **Visual C# > Web**.</span></span>
+3. <span data-ttu-id="851ef-103">Vyberte **ASP.NET Core webové aplikace (.NET Core)**.</span><span class="sxs-lookup"><span data-stu-id="851ef-103">Select **ASP.NET Core Web Application (.NET Core)**.</span></span>
+4. <span data-ttu-id="851ef-104">Zadejte novou aplikaci pro název (nebo proveďte hello výchozí) a vyberte **OK**.</span><span class="sxs-lookup"><span data-stu-id="851ef-104">Give your new application a name (or take hello default) and select **OK**.</span></span>
+5. <span data-ttu-id="851ef-105">V části **ASP.NET Core 1.1 šablony**, vyberte **webové aplikace** a vyberte **OK**.</span><span class="sxs-lookup"><span data-stu-id="851ef-105">Under **ASP.NET Core 1.1 Templates**, select **Web Application** and select **OK**.</span></span>
+

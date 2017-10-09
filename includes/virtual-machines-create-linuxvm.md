@@ -1,21 +1,21 @@
 
-1. <span data-ttu-id="27225-101">Přihlaste se k předplatnému Azure, pomocí kroků uvedených v tématu věnovaném [připojení k Azure z rozhraní příkazového řádku Azure CLI 1.0](../articles/xplat-cli-connect.md).</span><span class="sxs-lookup"><span data-stu-id="27225-101">Sign in to your Azure subscription using the steps listed in [Connect to Azure from the Azure CLI 1.0](../articles/xplat-cli-connect.md).</span></span>
+1. <span data-ttu-id="56943-101">Přihlaste se tooyour předplatného Azure, pomocí kroků uvedených v tomto seznamu hello [připojit tooAzure z hello Azure CLI 1.0](../articles/xplat-cli-connect.md).</span><span class="sxs-lookup"><span data-stu-id="56943-101">Sign in tooyour Azure subscription using hello steps listed in [Connect tooAzure from hello Azure CLI 1.0](../articles/xplat-cli-connect.md).</span></span>
 
-2. <span data-ttu-id="27225-102">Pomocí následujícího postupu zkontrolujte, že používáte režim nasazení Classic:</span><span class="sxs-lookup"><span data-stu-id="27225-102">Make sure you are in the Classic deployment mode as follows:</span></span>
+2. <span data-ttu-id="56943-102">Zkontrolujte, zda že jsou v režimu nasazení Classic hello následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="56943-102">Make sure you are in hello Classic deployment mode as follows:</span></span>
 
     ```azurecli
     azure config mode asm
     ```
 
-3. <span data-ttu-id="27225-103">Pomocí následujícího příkazu najděte v seznamu dostupných imagí linuxovou image, kterou chcete nahrát:</span><span class="sxs-lookup"><span data-stu-id="27225-103">Find out the Linux image that you want to load from the available images as follows:</span></span>
+3. <span data-ttu-id="56943-103">Zjistěte hello Linux image, které chcete tooload z dostupných imagí hello následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="56943-103">Find out hello Linux image that you want tooload from hello available images as follows:</span></span>
 
    ```azurecli   
     azure vm image list | grep "Linux"
     ```
    
-    <span data-ttu-id="27225-104">V okně příkazového řádku Windows místo grep použijte **find**.</span><span class="sxs-lookup"><span data-stu-id="27225-104">In a Windows command-prompt window, use **find** instead of grep.</span></span>
+    <span data-ttu-id="56943-104">V okně příkazového řádku Windows místo grep použijte **find**.</span><span class="sxs-lookup"><span data-stu-id="56943-104">In a Windows command-prompt window, use **find** instead of grep.</span></span>
    
-4. <span data-ttu-id="27225-105">Pomocí příkazu `azure vm create` vytvořte virtuální počítač s linuxovou imagí z předcházejícího seznamu.</span><span class="sxs-lookup"><span data-stu-id="27225-105">Use `azure vm create` to create a VM with the Linux image from the previous list.</span></span> <span data-ttu-id="27225-106">Tento krok vytvoří cloudovou službu a účet úložiště.</span><span class="sxs-lookup"><span data-stu-id="27225-106">This step creates a cloud service and storage account.</span></span> <span data-ttu-id="27225-107">Pomocí možnosti `-c` je také možné připojit tento virtuální počítač ke stávající cloudové službě.</span><span class="sxs-lookup"><span data-stu-id="27225-107">You could also connect this VM to an existing cloud service with a `-c` option.</span></span> <span data-ttu-id="27225-108">Pomocí možnosti `-e` vytvořte koncový bod SSH pro přihlášení k virtuálnímu počítači s Linuxem.</span><span class="sxs-lookup"><span data-stu-id="27225-108">Create an SSH endpoint to log in to the Linux virtual machine with the `-e` option.</span></span> <span data-ttu-id="27225-109">V následujícím příkladu se vytvoří virtuální počítač s názvem `myVM` pomocí image `Ubuntu-14_04_4-LTS` v umístění `West US` a přidá se uživatelské jméno `ops`:</span><span class="sxs-lookup"><span data-stu-id="27225-109">The following example creates a VM named `myVM` using the `Ubuntu-14_04_4-LTS` image in the `West US` location, and adds a user name `ops`:</span></span>
+4. <span data-ttu-id="56943-105">Použití `azure vm create` toocreate virtuální počítač s bitovou kopii systému Linux hello z předchozího seznamu hello.</span><span class="sxs-lookup"><span data-stu-id="56943-105">Use `azure vm create` toocreate a VM with hello Linux image from hello previous list.</span></span> <span data-ttu-id="56943-106">Tento krok vytvoří cloudovou službu a účet úložiště.</span><span class="sxs-lookup"><span data-stu-id="56943-106">This step creates a cloud service and storage account.</span></span> <span data-ttu-id="56943-107">Může také připojit tento počítač tooan existující Cloudová služba se `-c` možnost.</span><span class="sxs-lookup"><span data-stu-id="56943-107">You could also connect this VM tooan existing cloud service with a `-c` option.</span></span> <span data-ttu-id="56943-108">Vytvoření toolog koncový bod SSH v toohello Linux virtuální počítač s hello `-e` možnost.</span><span class="sxs-lookup"><span data-stu-id="56943-108">Create an SSH endpoint toolog in toohello Linux virtual machine with hello `-e` option.</span></span> <span data-ttu-id="56943-109">Hello následující příklad vytvoří virtuální počítač s názvem `myVM` pomocí hello `Ubuntu-14_04_4-LTS` bitové kopie v hello `West US` umístění a přidá uživatelské jméno `ops`:</span><span class="sxs-lookup"><span data-stu-id="56943-109">hello following example creates a VM named `myVM` using hello `Ubuntu-14_04_4-LTS` image in hello `West US` location, and adds a user name `ops`:</span></span>
    
     ```azurecli
     azure vm create myVM \
@@ -23,7 +23,7 @@
         -g ops -p P@ssw0rd! -z "Small" -e -l "West US"
     ```
 
-    <span data-ttu-id="27225-110">Výstup se podobá následujícímu příkladu:</span><span class="sxs-lookup"><span data-stu-id="27225-110">The output is similar to the following example:</span></span>
+    <span data-ttu-id="56943-110">Hello výstup je podobné toohello následující ukázka:</span><span class="sxs-lookup"><span data-stu-id="56943-110">hello output is similar toohello following example:</span></span>
 
     ```azurecli
     info:    Executing command vm create
@@ -37,20 +37,20 @@
     ```
    
    > [!NOTE]
-   > <span data-ttu-id="27225-111">Pro virtuální počítač s Linuxem musíte v příkazu `vm create` zadat možnost `-e`.</span><span class="sxs-lookup"><span data-stu-id="27225-111">For a Linux virtual machine, you must provide the `-e` option in `vm create`.</span></span> <span data-ttu-id="27225-112">Po vytvoření virtuálního počítače už není možné SSH povolit.</span><span class="sxs-lookup"><span data-stu-id="27225-112">It is not possible to enable SSH after the virtual machine has been created.</span></span> <span data-ttu-id="27225-113">Další informace o SSH najdete v tématu [Jak použít SSH s Linuxem v Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="27225-113">For more details on SSH, read [How to Use SSH with Linux on Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+   > <span data-ttu-id="56943-111">Pro virtuální počítač s Linuxem, je nutné zadat hello `-e` možnost `vm create`.</span><span class="sxs-lookup"><span data-stu-id="56943-111">For a Linux virtual machine, you must provide hello `-e` option in `vm create`.</span></span> <span data-ttu-id="56943-112">Není možné tooenable SSH po vytvoření hello virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="56943-112">It is not possible tooenable SSH after hello virtual machine has been created.</span></span> <span data-ttu-id="56943-113">Další informace o SSH, najdete v tématu [jak tooUse SSH s Linuxem v Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="56943-113">For more details on SSH, read [How tooUse SSH with Linux on Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
-5. <span data-ttu-id="27225-114">Atributy virtuálního počítače můžete ověřit pomocí příkazu `azure vm show`.</span><span class="sxs-lookup"><span data-stu-id="27225-114">You can verify the attributes of the VM by using the `azure vm show` command.</span></span> <span data-ttu-id="27225-115">Následující příklad zobrazí informace pro virtuální počítač s názvem `myVM`:</span><span class="sxs-lookup"><span data-stu-id="27225-115">The following example lists information for the VM named `myVM`:</span></span>
+5. <span data-ttu-id="56943-114">Atributy hello hello virtuálních počítačů lze ověřit pomocí hello `azure vm show` příkaz.</span><span class="sxs-lookup"><span data-stu-id="56943-114">You can verify hello attributes of hello VM by using hello `azure vm show` command.</span></span> <span data-ttu-id="56943-115">Hello následující příklad uvádí informace o hello virtuálního počítače s názvem `myVM`:</span><span class="sxs-lookup"><span data-stu-id="56943-115">hello following example lists information for hello VM named `myVM`:</span></span>
 
     ```azurecli   
     azure vm show myVM
     ```
 
-6. <span data-ttu-id="27225-116">Ke spuštění virtuálního počítače použijte příkaz `azure vm start`:</span><span class="sxs-lookup"><span data-stu-id="27225-116">Start your VM with the `azure vm start` command as follows:</span></span>
+6. <span data-ttu-id="56943-116">Spustit virtuální počítač s hello `azure vm start` příkaz takto:</span><span class="sxs-lookup"><span data-stu-id="56943-116">Start your VM with hello `azure vm start` command as follows:</span></span>
 
     ```azurecli
     azure vm start myVM
     ```
 
-## <a name="next-steps"></a><span data-ttu-id="27225-117">Další kroky</span><span class="sxs-lookup"><span data-stu-id="27225-117">Next steps</span></span>
-<span data-ttu-id="27225-118">Podrobné informace o všech těchto příkazech rozhraní příkazového řádku Azure CLI 1.0 pro virtuální počítače najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure CLI 1.0 s rozhraním API nasazení Classic](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="27225-118">For details on all these Azure CLI 1.0 virtual machine commands, read the [Using the Azure CLI 1.0 with the Classic deployment API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="56943-117">Další kroky</span><span class="sxs-lookup"><span data-stu-id="56943-117">Next steps</span></span>
+<span data-ttu-id="56943-118">Podrobnosti o všech těchto příkazů virtuálního počítače Azure CLI 1.0, přečtěte si hello [hello pomocí Azure CLI 1.0 pomocí rozhraní API nasazení Classic hello](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="56943-118">For details on all these Azure CLI 1.0 virtual machine commands, read hello [Using hello Azure CLI 1.0 with hello Classic deployment API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).</span></span>
 

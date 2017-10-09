@@ -1,14 +1,14 @@
-<span data-ttu-id="c66c4-101">K mezipamětem můžete na webu [Azure Portal](https://portal.azure.com) získat přístup v okně **Procházet**.</span><span class="sxs-lookup"><span data-stu-id="c66c4-101">Caches can be accessed in the [Azure portal](https://portal.azure.com) using the **Browse** blade.</span></span>
+<span data-ttu-id="89b82-101">Mezipaměti je přístupná v hello [portál Azure](https://portal.azure.com) pomocí hello **Procházet** okno.</span><span class="sxs-lookup"><span data-stu-id="89b82-101">Caches can be accessed in hello [Azure portal](https://portal.azure.com) using hello **Browse** blade.</span></span>
 
 ![Okno procházení Azure Redis Cache](media/redis-cache-browse/redis-cache-browse.png)
 
-<span data-ttu-id="c66c4-103">Pokud chcete zobrazit mezipaměti, klikněte na **Další služby > Mezipaměti Redis**.</span><span class="sxs-lookup"><span data-stu-id="c66c4-103">To view your caches, click **More services > Redis Caches**.</span></span> <span data-ttu-id="c66c4-104">Pokud jste nedávno přešli na některou mezipaměť Redis, můžete přímo v seznamu kliknout na **Mezipaměti Redis**, aniž byste předtím museli kliknout na **Další služby**.</span><span class="sxs-lookup"><span data-stu-id="c66c4-104">If you have recently browsed to a Redis Cache, you can click **Redis Caches** directly from the list without clicking **More services**.</span></span>
+<span data-ttu-id="89b82-103">Klikněte na své mezipaměti tooview **další služby > mezipaměti Redis**.</span><span class="sxs-lookup"><span data-stu-id="89b82-103">tooview your caches, click **More services > Redis Caches**.</span></span> <span data-ttu-id="89b82-104">Pokud jste nedávno přešli tooa Redis Cache, můžete kliknout na **mezipaměti Redis cache** přímo ze seznamu hello bez kliknutí na **další služby**.</span><span class="sxs-lookup"><span data-stu-id="89b82-104">If you have recently browsed tooa Redis Cache, you can click **Redis Caches** directly from hello list without clicking **More services**.</span></span>
 
-<span data-ttu-id="c66c4-105">Pokud chcete zobrazit a nakonfigurovat nastavení určité mezipaměti, vyberte ji.</span><span class="sxs-lookup"><span data-stu-id="c66c4-105">Select the desired cache to view and configure the settings for that cache.</span></span>
+<span data-ttu-id="89b82-105">Vybrat tooview hello potřeby mezipaměti a nakonfigurovat nastavení hello pro mezipaměť.</span><span class="sxs-lookup"><span data-stu-id="89b82-105">Select hello desired cache tooview and configure hello settings for that cache.</span></span>
 
 ![Seznam mezipamětí Azure Redis v okně Procházet](media/redis-cache-browse/redis-caches.png)
 
-<span data-ttu-id="c66c4-107">Mezipaměť můžete zobrazit a nakonfigurovat z okna **Mezipaměť Redis**.</span><span class="sxs-lookup"><span data-stu-id="c66c4-107">You can view and configure your cache from the **Redis Cache** blade.</span></span>
+<span data-ttu-id="89b82-107">Můžete zobrazit a konfigurovat mezipaměti z hello **Redis Cache** okno.</span><span class="sxs-lookup"><span data-stu-id="89b82-107">You can view and configure your cache from hello **Redis Cache** blade.</span></span>
 
 ![Všechna nastavení mezipaměti Redis](media/redis-cache-browse/redis-cache-blade.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Přidání zpoždění v aplikace logiky | Microsoft Docs"
-description: "Přehled zpoždění a zpoždění – dokud akcí a jejich použití s aplikací Azure logiku."
+title: "aaaAdd zpoždění při aplikace logiky | Microsoft Docs"
+description: "Přehled hello zpoždění a prodlevu – dokud akce a jak toouse je s Azure logiku aplikace."
 services: 
 documentationcenter: 
 author: jeffhollan
@@ -15,62 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e5bc9d639adbddc01ee0f6a4c68716f586d4344a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-delay-and-delay-until-actions"></a><span data-ttu-id="58179-103">Začínáme s zpoždění a zpoždění – dokud akce</span><span class="sxs-lookup"><span data-stu-id="58179-103">Get started with the delay and delay-until actions</span></span>
-<span data-ttu-id="58179-104">Pomocí zpoždění a "zpoždění – dokud" akce, můžete dokončit scénáře pracovního postupu.</span><span class="sxs-lookup"><span data-stu-id="58179-104">By using the delay and "delay-until" actions, you can complete workflow scenarios.</span></span>
+# <a name="get-started-with-hello-delay-and-delay-until-actions"></a><span data-ttu-id="e0e37-103">Začínáme s hello zpoždění a prodlevu – dokud akce</span><span class="sxs-lookup"><span data-stu-id="e0e37-103">Get started with hello delay and delay-until actions</span></span>
+<span data-ttu-id="e0e37-104">Pomocí hello zpoždění a "zpoždění – dokud" akce, můžete dokončit scénáře pracovního postupu.</span><span class="sxs-lookup"><span data-stu-id="e0e37-104">By using hello delay and "delay-until" actions, you can complete workflow scenarios.</span></span>
 
-<span data-ttu-id="58179-105">Můžete například provést následující věci:</span><span class="sxs-lookup"><span data-stu-id="58179-105">For example, you can:</span></span>
+<span data-ttu-id="e0e37-105">Můžete například provést následující věci:</span><span class="sxs-lookup"><span data-stu-id="e0e37-105">For example, you can:</span></span>
 
-* <span data-ttu-id="58179-106">Počkejte na jeden den v týdnu pro odeslání e-mailu aktualizace stavu.</span><span class="sxs-lookup"><span data-stu-id="58179-106">Wait until a weekday to send a status update over email.</span></span>
-* <span data-ttu-id="58179-107">Pracovní postup počkat, až budou volání protokolu HTTP má čas na dokončení obnovení a načítání výsledek.</span><span class="sxs-lookup"><span data-stu-id="58179-107">Delay the workflow until an HTTP call has time to finish before resuming and retrieving the result.</span></span>
+* <span data-ttu-id="e0e37-106">Počkejte, dokud toosend den v týdnu stav aktualizace prostřednictvím e-mailu.</span><span class="sxs-lookup"><span data-stu-id="e0e37-106">Wait until a weekday toosend a status update over email.</span></span>
+* <span data-ttu-id="e0e37-107">Pracovní postup hello zpoždění až volání protokolu HTTP má čas toofinish před obnovení a načítání hello výsledek.</span><span class="sxs-lookup"><span data-stu-id="e0e37-107">Delay hello workflow until an HTTP call has time toofinish before resuming and retrieving hello result.</span></span>
 
-<span data-ttu-id="58179-108">Chcete-li začít používat zpoždění akce v aplikaci logiky, přečtěte si téma [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="58179-108">To get started using the delay action in a logic app, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
+<span data-ttu-id="e0e37-108">tooget spuštění pomocí hello zpoždění akce v aplikaci logiky, aplikaci najdete v části [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="e0e37-108">tooget started using hello delay action in a logic app, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
 
-## <a name="use-the-delay-actions"></a><span data-ttu-id="58179-109">Pomocí akcí zpoždění</span><span class="sxs-lookup"><span data-stu-id="58179-109">Use the delay actions</span></span>
-<span data-ttu-id="58179-110">Akce je operace, která se provádí v pracovním postupu, který je definován v aplikaci logiky.</span><span class="sxs-lookup"><span data-stu-id="58179-110">An action is an operation that is carried out by the workflow that is defined in a logic app.</span></span> <span data-ttu-id="58179-111">[Další informace o akcích](connectors-overview.md).</span><span class="sxs-lookup"><span data-stu-id="58179-111">[Learn more about actions](connectors-overview.md).</span></span>
+## <a name="use-hello-delay-actions"></a><span data-ttu-id="e0e37-109">Pomocí akcí zpoždění hello</span><span class="sxs-lookup"><span data-stu-id="e0e37-109">Use hello delay actions</span></span>
+<span data-ttu-id="e0e37-110">Akce je operace, která se provádí v pracovním postupu hello, která je definována v aplikaci logiky.</span><span class="sxs-lookup"><span data-stu-id="e0e37-110">An action is an operation that is carried out by hello workflow that is defined in a logic app.</span></span> <span data-ttu-id="e0e37-111">[Další informace o akcích](connectors-overview.md).</span><span class="sxs-lookup"><span data-stu-id="e0e37-111">[Learn more about actions](connectors-overview.md).</span></span>
 
-<span data-ttu-id="58179-112">Tady je v sekvenci příklad použití kroku zpoždění v aplikaci logiky:</span><span class="sxs-lookup"><span data-stu-id="58179-112">Here’s an example sequence of how to use a delay step in a logic app:</span></span>
+<span data-ttu-id="e0e37-112">Tady je příklad posloupnosti jak toouse zpoždění krok v aplikaci logiky:</span><span class="sxs-lookup"><span data-stu-id="e0e37-112">Here’s an example sequence of how toouse a delay step in a logic app:</span></span>
 
-1. <span data-ttu-id="58179-113">Po přidání aktivační událost, klikněte na tlačítko **nový krok** a přidejte akci.</span><span class="sxs-lookup"><span data-stu-id="58179-113">After adding a trigger, click **New Step** to add an action.</span></span>
-2. <span data-ttu-id="58179-114">Vyhledejte **zpoždění** se zprovoznit akce zpoždění.</span><span class="sxs-lookup"><span data-stu-id="58179-114">Search for **delay** to bring up the delay actions.</span></span> <span data-ttu-id="58179-115">V tomto příkladu jsme vyberte **zpoždění**.</span><span class="sxs-lookup"><span data-stu-id="58179-115">In this example, we will select **Delay**.</span></span>
+1. <span data-ttu-id="e0e37-113">Po přidání aktivační událost, klikněte na tlačítko **nový krok** tooadd akce.</span><span class="sxs-lookup"><span data-stu-id="e0e37-113">After adding a trigger, click **New Step** tooadd an action.</span></span>
+2. <span data-ttu-id="e0e37-114">Vyhledejte **zpoždění** toobring až hello zpoždění akce.</span><span class="sxs-lookup"><span data-stu-id="e0e37-114">Search for **delay** toobring up hello delay actions.</span></span> <span data-ttu-id="e0e37-115">V tomto příkladu jsme vyberte **zpoždění**.</span><span class="sxs-lookup"><span data-stu-id="e0e37-115">In this example, we will select **Delay**.</span></span>
    
     ![Zpoždění akce](./media/connectors-native-delay/using-action-1.png)
-3. <span data-ttu-id="58179-117">Dokončete všechny vlastnosti Akce konfigurace zpoždění.</span><span class="sxs-lookup"><span data-stu-id="58179-117">Complete any of the action properties to configure the delay.</span></span>
+3. <span data-ttu-id="e0e37-117">Dokončete všechny hello akce vlastnosti tooconfigure hello zpoždění.</span><span class="sxs-lookup"><span data-stu-id="e0e37-117">Complete any of hello action properties tooconfigure hello delay.</span></span>
    
     ![Konfigurace zpoždění](./media/connectors-native-delay/using-action-2.png)
-4. <span data-ttu-id="58179-119">Klikněte na tlačítko **Uložit** k publikování a aktivovat aplikaci logiky.</span><span class="sxs-lookup"><span data-stu-id="58179-119">Click **Save** to publish and activate the logic app.</span></span>
+4. <span data-ttu-id="e0e37-119">Klikněte na tlačítko **Uložit** toopublish a aktivovat aplikaci logiky hello.</span><span class="sxs-lookup"><span data-stu-id="e0e37-119">Click **Save** toopublish and activate hello logic app.</span></span>
 
-## <a name="action-details"></a><span data-ttu-id="58179-120">Podrobnosti akce</span><span class="sxs-lookup"><span data-stu-id="58179-120">Action details</span></span>
-<span data-ttu-id="58179-121">Aktivační událost opakování má následující vlastnosti, které lze konfigurovat.</span><span class="sxs-lookup"><span data-stu-id="58179-121">The recurrence trigger has the following properties that can be configured.</span></span>
+## <a name="action-details"></a><span data-ttu-id="e0e37-120">Podrobnosti akce</span><span class="sxs-lookup"><span data-stu-id="e0e37-120">Action details</span></span>
+<span data-ttu-id="e0e37-121">aktivační událost Hello opakování má následující vlastnosti, které lze nakonfigurovat hello.</span><span class="sxs-lookup"><span data-stu-id="e0e37-121">hello recurrence trigger has hello following properties that can be configured.</span></span>
 
-### <a name="delay-action"></a><span data-ttu-id="58179-122">Zpoždění akce</span><span class="sxs-lookup"><span data-stu-id="58179-122">Delay action</span></span>
-<span data-ttu-id="58179-123">Tato akce zpozdí spuštění pro určitý časový interval.</span><span class="sxs-lookup"><span data-stu-id="58179-123">This action delays the run for a certain time interval.</span></span>
-<span data-ttu-id="58179-124">A * znamená, že je povinné pole.</span><span class="sxs-lookup"><span data-stu-id="58179-124">A * means that it is a required field.</span></span>
+### <a name="delay-action"></a><span data-ttu-id="e0e37-122">Zpoždění akce</span><span class="sxs-lookup"><span data-stu-id="e0e37-122">Delay action</span></span>
+<span data-ttu-id="e0e37-123">Tato akce hello zpoždění spuštění pro určitý časový interval.</span><span class="sxs-lookup"><span data-stu-id="e0e37-123">This action delays hello run for a certain time interval.</span></span>
+<span data-ttu-id="e0e37-124">A * znamená, že je povinné pole.</span><span class="sxs-lookup"><span data-stu-id="e0e37-124">A * means that it is a required field.</span></span>
 
-| <span data-ttu-id="58179-125">Zobrazované jméno</span><span class="sxs-lookup"><span data-stu-id="58179-125">Display name</span></span> | <span data-ttu-id="58179-126">Název vlastnosti</span><span class="sxs-lookup"><span data-stu-id="58179-126">Property name</span></span> | <span data-ttu-id="58179-127">Popis</span><span class="sxs-lookup"><span data-stu-id="58179-127">Description</span></span> |
+| <span data-ttu-id="e0e37-125">Zobrazované jméno</span><span class="sxs-lookup"><span data-stu-id="e0e37-125">Display name</span></span> | <span data-ttu-id="e0e37-126">Název vlastnosti</span><span class="sxs-lookup"><span data-stu-id="e0e37-126">Property name</span></span> | <span data-ttu-id="e0e37-127">Popis</span><span class="sxs-lookup"><span data-stu-id="e0e37-127">Description</span></span> |
 | --- | --- | --- |
-| <span data-ttu-id="58179-128">Počet *</span><span class="sxs-lookup"><span data-stu-id="58179-128">Count*</span></span> |<span data-ttu-id="58179-129">Počet</span><span class="sxs-lookup"><span data-stu-id="58179-129">count</span></span> |<span data-ttu-id="58179-130">Počet jednotek doba zpoždění před</span><span class="sxs-lookup"><span data-stu-id="58179-130">The number of time units to delay</span></span> |
-| <span data-ttu-id="58179-131">Jednotka *</span><span class="sxs-lookup"><span data-stu-id="58179-131">Unit*</span></span> |<span data-ttu-id="58179-132">jednotka</span><span class="sxs-lookup"><span data-stu-id="58179-132">unit</span></span> |<span data-ttu-id="58179-133">Jednotka času: `Second`, `Minute`, `Hour`, nebo`Day`</span><span class="sxs-lookup"><span data-stu-id="58179-133">The unit of time: `Second`, `Minute`, `Hour`, or `Day`</span></span> |
+| <span data-ttu-id="e0e37-128">Počet *</span><span class="sxs-lookup"><span data-stu-id="e0e37-128">Count*</span></span> |<span data-ttu-id="e0e37-129">Počet</span><span class="sxs-lookup"><span data-stu-id="e0e37-129">count</span></span> |<span data-ttu-id="e0e37-130">Hello počet jednotek toodelay čas</span><span class="sxs-lookup"><span data-stu-id="e0e37-130">hello number of time units toodelay</span></span> |
+| <span data-ttu-id="e0e37-131">Jednotka *</span><span class="sxs-lookup"><span data-stu-id="e0e37-131">Unit*</span></span> |<span data-ttu-id="e0e37-132">jednotka</span><span class="sxs-lookup"><span data-stu-id="e0e37-132">unit</span></span> |<span data-ttu-id="e0e37-133">jednotka času Hello: `Second`, `Minute`, `Hour`, nebo`Day`</span><span class="sxs-lookup"><span data-stu-id="e0e37-133">hello unit of time: `Second`, `Minute`, `Hour`, or `Day`</span></span> |
 
 <br>
 
-### <a name="delay-until-action"></a><span data-ttu-id="58179-134">Zpoždění – dokud akce</span><span class="sxs-lookup"><span data-stu-id="58179-134">Delay-until action</span></span>
-<span data-ttu-id="58179-135">Tato akce zpozdí spustit až do zadaného data a času.</span><span class="sxs-lookup"><span data-stu-id="58179-135">This action delays the run until a specified date/time.</span></span>
-<span data-ttu-id="58179-136">A * znamená, že je povinné pole.</span><span class="sxs-lookup"><span data-stu-id="58179-136">A * means that it is a required field.</span></span>
+### <a name="delay-until-action"></a><span data-ttu-id="e0e37-134">Zpoždění – dokud akce</span><span class="sxs-lookup"><span data-stu-id="e0e37-134">Delay-until action</span></span>
+<span data-ttu-id="e0e37-135">Tato akce zpozdí hello běžet, dokud zadané datum a čas.</span><span class="sxs-lookup"><span data-stu-id="e0e37-135">This action delays hello run until a specified date/time.</span></span>
+<span data-ttu-id="e0e37-136">A * znamená, že je povinné pole.</span><span class="sxs-lookup"><span data-stu-id="e0e37-136">A * means that it is a required field.</span></span>
 
-| <span data-ttu-id="58179-137">Zobrazované jméno</span><span class="sxs-lookup"><span data-stu-id="58179-137">Display name</span></span> | <span data-ttu-id="58179-138">Název vlastnosti</span><span class="sxs-lookup"><span data-stu-id="58179-138">Property name</span></span> | <span data-ttu-id="58179-139">Popis</span><span class="sxs-lookup"><span data-stu-id="58179-139">Description</span></span> |
+| <span data-ttu-id="e0e37-137">Zobrazované jméno</span><span class="sxs-lookup"><span data-stu-id="e0e37-137">Display name</span></span> | <span data-ttu-id="e0e37-138">Název vlastnosti</span><span class="sxs-lookup"><span data-stu-id="e0e37-138">Property name</span></span> | <span data-ttu-id="e0e37-139">Popis</span><span class="sxs-lookup"><span data-stu-id="e0e37-139">Description</span></span> |
 | --- | --- | --- |
-| <span data-ttu-id="58179-140">Rok *</span><span class="sxs-lookup"><span data-stu-id="58179-140">Year*</span></span> |<span data-ttu-id="58179-141">časové razítko</span><span class="sxs-lookup"><span data-stu-id="58179-141">timestamp</span></span> |<span data-ttu-id="58179-142">Roku zpoždění až (GMT)</span><span class="sxs-lookup"><span data-stu-id="58179-142">The year to delay until (GMT)</span></span> |
-| <span data-ttu-id="58179-143">Měsíc *</span><span class="sxs-lookup"><span data-stu-id="58179-143">Month*</span></span> |<span data-ttu-id="58179-144">časové razítko</span><span class="sxs-lookup"><span data-stu-id="58179-144">timestamp</span></span> |<span data-ttu-id="58179-145">V měsíci pro zpoždění až (GMT)</span><span class="sxs-lookup"><span data-stu-id="58179-145">The month to delay until (GMT)</span></span> |
-| <span data-ttu-id="58179-146">Den *</span><span class="sxs-lookup"><span data-stu-id="58179-146">Day*</span></span> |<span data-ttu-id="58179-147">časové razítko</span><span class="sxs-lookup"><span data-stu-id="58179-147">timestamp</span></span> |<span data-ttu-id="58179-148">Den zpoždění až (GMT)</span><span class="sxs-lookup"><span data-stu-id="58179-148">The day to delay until (GMT)</span></span> |
+| <span data-ttu-id="e0e37-140">Rok *</span><span class="sxs-lookup"><span data-stu-id="e0e37-140">Year*</span></span> |<span data-ttu-id="e0e37-141">časové razítko</span><span class="sxs-lookup"><span data-stu-id="e0e37-141">timestamp</span></span> |<span data-ttu-id="e0e37-142">Hello roku toodelay dokud (GMT)</span><span class="sxs-lookup"><span data-stu-id="e0e37-142">hello year toodelay until (GMT)</span></span> |
+| <span data-ttu-id="e0e37-143">Měsíc *</span><span class="sxs-lookup"><span data-stu-id="e0e37-143">Month*</span></span> |<span data-ttu-id="e0e37-144">časové razítko</span><span class="sxs-lookup"><span data-stu-id="e0e37-144">timestamp</span></span> |<span data-ttu-id="e0e37-145">Hello toodelay měsíce až (GMT)</span><span class="sxs-lookup"><span data-stu-id="e0e37-145">hello month toodelay until (GMT)</span></span> |
+| <span data-ttu-id="e0e37-146">Den *</span><span class="sxs-lookup"><span data-stu-id="e0e37-146">Day*</span></span> |<span data-ttu-id="e0e37-147">časové razítko</span><span class="sxs-lookup"><span data-stu-id="e0e37-147">timestamp</span></span> |<span data-ttu-id="e0e37-148">Hello den toodelay dokud (GMT)</span><span class="sxs-lookup"><span data-stu-id="e0e37-148">hello day toodelay until (GMT)</span></span> |
 
 <br>
 
-## <a name="next-steps"></a><span data-ttu-id="58179-149">Další kroky</span><span class="sxs-lookup"><span data-stu-id="58179-149">Next steps</span></span>
-<span data-ttu-id="58179-150">Teď vyzkoušet platformu a [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="58179-150">Now, try out the platform and [create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span> <span data-ttu-id="58179-151">Ostatní konektory k dispozici v aplikace logiky můžete prozkoumat pohledem na našem [rozhraní API seznamu](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="58179-151">You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e0e37-149">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e0e37-149">Next steps</span></span>
+<span data-ttu-id="e0e37-150">Teď vyzkoušet hello platformy a [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="e0e37-150">Now, try out hello platform and [create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span> <span data-ttu-id="e0e37-151">Můžete prozkoumat hello dalších dostupných konektorů v aplikacích logiky pohledem na našem [rozhraní API seznamu](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="e0e37-151">You can explore hello other available connectors in logic apps by looking at our [APIs list](apis-list.md).</span></span>
 

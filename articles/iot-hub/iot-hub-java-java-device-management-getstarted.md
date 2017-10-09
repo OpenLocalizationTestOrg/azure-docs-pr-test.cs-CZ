@@ -1,6 +1,6 @@
 ---
-title: "Začínáme se správou zařízení Azure IoT Hub (Java) | Microsoft Docs"
-description: "Jak používat k zahájení restartu zařízení vzdálenou správou zařízení Azure IoT Hub. Zařízení Azure IoT SDK pro jazyk Java, kterou použijete k implementaci aplikaci ze simulovaného zařízení, která zahrnuje přímá metoda a sady SDK pro jazyk Java k implementaci aplikační služby, která volá metodu přímé služby Azure IoT."
+title: "aaaGet spuštění se správou zařízení Azure IoT Hub (Java) | Microsoft Docs"
+description: "Jak tooinitiate správy zařízení Azure IoT Hub toouse vzdáleném zařízení restartovat. Použití zařízení Azure IoT hello SDK pro Javu tooimplement aplikaci simulovaného zařízení, která zahrnuje přímá metoda a hello sady SDK služby Azure IoT pro Java tooimplement aplikační služby, která volá metodu přímé hello."
 services: iot-hub
 documentationcenter: .java
 author: dominicbetts
@@ -13,69 +13,69 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c75635f366f5ced4bf91792d1a905dd6aab8ed79
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7aaeda9d4ff7002e5c66adfd61e2dfd5bcea964f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-device-management-java"></a><span data-ttu-id="8eb5e-104">Začínáme se správou zařízení (Java)</span><span class="sxs-lookup"><span data-stu-id="8eb5e-104">Get started with device management (Java)</span></span>
+# <a name="get-started-with-device-management-java"></a><span data-ttu-id="f248f-104">Začínáme se správou zařízení (Java)</span><span class="sxs-lookup"><span data-stu-id="f248f-104">Get started with device management (Java)</span></span>
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-<span data-ttu-id="8eb5e-105">V tomto kurzu získáte informace o následujících postupech:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-105">This tutorial shows you how to:</span></span>
+<span data-ttu-id="f248f-105">V tomto kurzu získáte informace o následujících postupech:</span><span class="sxs-lookup"><span data-stu-id="f248f-105">This tutorial shows you how to:</span></span>
 
-* <span data-ttu-id="8eb5e-106">Použití portálu Azure k vytvoření služby IoT Hub a vytvoření identity zařízení ve službě IoT hub.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-106">Use the Azure portal to create an IoT Hub and create a device identity in your IoT hub.</span></span>
-* <span data-ttu-id="8eb5e-107">Vytvořte aplikaci ze simulovaného zařízení, která používá přímý způsob restartování zařízení.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-107">Create a simulated device app that implements a direct method to reboot the device.</span></span> <span data-ttu-id="8eb5e-108">Přímé metody jsou vyvolány z cloudu.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-108">Direct methods are invoked from the cloud.</span></span>
-* <span data-ttu-id="8eb5e-109">Vytvořte aplikaci, která volá metodu přímé restartování v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-109">Create an app that invokes the reboot direct method in the simulated device app through your IoT hub.</span></span> <span data-ttu-id="8eb5e-110">Tuto aplikaci poté sleduje hlášen vlastnostech ze zařízení, které najdete v části po dokončení operace restartování.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-110">This app then monitors the reported properties from the device to see when the reboot operation is complete.</span></span>
+* <span data-ttu-id="f248f-106">Použijte hello portálu toocreate Azure IoT Hub a vytvoření identity zařízení ve službě IoT hub.</span><span class="sxs-lookup"><span data-stu-id="f248f-106">Use hello Azure portal toocreate an IoT Hub and create a device identity in your IoT hub.</span></span>
+* <span data-ttu-id="f248f-107">Vytvoření aplikace simulovaného zařízení, která implementuje přímá metoda tooreboot hello zařízení.</span><span class="sxs-lookup"><span data-stu-id="f248f-107">Create a simulated device app that implements a direct method tooreboot hello device.</span></span> <span data-ttu-id="f248f-108">Přímé metody jsou vyvolány z cloudu hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-108">Direct methods are invoked from hello cloud.</span></span>
+* <span data-ttu-id="f248f-109">Vytvořte aplikaci, která volá metodu přímé hello restartování v hello aplikaci simulovaného zařízení prostřednictvím služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="f248f-109">Create an app that invokes hello reboot direct method in hello simulated device app through your IoT hub.</span></span> <span data-ttu-id="f248f-110">Tato aplikace pak monitorování hello hlášené vlastnosti z toosee hello zařízení po dokončení operace restartování hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-110">This app then monitors hello reported properties from hello device toosee when hello reboot operation is complete.</span></span>
 
-<span data-ttu-id="8eb5e-111">Na konci tohoto kurzu máte dvě aplikace konzoly v jazyce Java:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-111">At the end of this tutorial, you have two Java console apps:</span></span>
+<span data-ttu-id="f248f-111">Na konci hello tohoto kurzu máte dvě aplikace konzoly v jazyce Java:</span><span class="sxs-lookup"><span data-stu-id="f248f-111">At hello end of this tutorial, you have two Java console apps:</span></span>
 
-<span data-ttu-id="8eb5e-112">**simulated-device**.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-112">**simulated-device**.</span></span> <span data-ttu-id="8eb5e-113">Tuto aplikaci:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-113">This app:</span></span>
+<span data-ttu-id="f248f-112">**simulated-device**.</span><span class="sxs-lookup"><span data-stu-id="f248f-112">**simulated-device**.</span></span> <span data-ttu-id="f248f-113">Tuto aplikaci:</span><span class="sxs-lookup"><span data-stu-id="f248f-113">This app:</span></span>
 
-* <span data-ttu-id="8eb5e-114">Připojí se ke službě IoT hub s dříve vytvořenou identitou zařízení.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-114">Connects to your IoT hub with the device identity created earlier.</span></span>
-* <span data-ttu-id="8eb5e-115">Přijme hovor přímá metoda restartování.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-115">Receives a reboot direct method call.</span></span>
-* <span data-ttu-id="8eb5e-116">Simuluje fyzické restartování.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-116">Simulates a physical reboot.</span></span>
-* <span data-ttu-id="8eb5e-117">Čas poslední restartování prostřednictvím hlášené vlastnosti sestavy.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-117">Reports the time of the last reboot through a reported property.</span></span>
+* <span data-ttu-id="f248f-114">Připojí tooyour IoT hub s dříve vytvořenou identitou zařízení hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-114">Connects tooyour IoT hub with hello device identity created earlier.</span></span>
+* <span data-ttu-id="f248f-115">Přijme hovor přímá metoda restartování.</span><span class="sxs-lookup"><span data-stu-id="f248f-115">Receives a reboot direct method call.</span></span>
+* <span data-ttu-id="f248f-116">Simuluje fyzické restartování.</span><span class="sxs-lookup"><span data-stu-id="f248f-116">Simulates a physical reboot.</span></span>
+* <span data-ttu-id="f248f-117">Sestavy hello čas poslední restartování hello prostřednictvím hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="f248f-117">Reports hello time of hello last reboot through a reported property.</span></span>
 
-<span data-ttu-id="8eb5e-118">**aktivační událost restartování**.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-118">**trigger-reboot**.</span></span> <span data-ttu-id="8eb5e-119">Tuto aplikaci:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-119">This app:</span></span>
+<span data-ttu-id="f248f-118">**aktivační událost restartování**.</span><span class="sxs-lookup"><span data-stu-id="f248f-118">**trigger-reboot**.</span></span> <span data-ttu-id="f248f-119">Tuto aplikaci:</span><span class="sxs-lookup"><span data-stu-id="f248f-119">This app:</span></span>
 
-* <span data-ttu-id="8eb5e-120">Přímá metoda volá v aplikaci simulovaného zařízení.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-120">Calls a direct method in the simulated device app.</span></span>
-* <span data-ttu-id="8eb5e-121">Zobrazí odpověď na volání metody přímé poslal simulované zařízení</span><span class="sxs-lookup"><span data-stu-id="8eb5e-121">Displays the response to the direct method call sent by the simulated device</span></span>
-* <span data-ttu-id="8eb5e-122">Zobrazí aktualizovaná hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-122">Displays the updated reported properties.</span></span>
+* <span data-ttu-id="f248f-120">Přímá metoda volá v aplikaci simulovaného zařízení hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-120">Calls a direct method in hello simulated device app.</span></span>
+* <span data-ttu-id="f248f-121">Zobrazí hello odpovědi toohello přímé volání metody, které poslal hello simulovaného zařízení</span><span class="sxs-lookup"><span data-stu-id="f248f-121">Displays hello response toohello direct method call sent by hello simulated device</span></span>
+* <span data-ttu-id="f248f-122">Zobrazí hello aktualizovat hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="f248f-122">Displays hello updated reported properties.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8eb5e-123">Informace o sadách SDK, které můžete použít k vytváření aplikací pro spuštění na zařízení a back end vašeho řešení najdete v tématu [SDK služby Azure IoT][lnk-hub-sdks].</span><span class="sxs-lookup"><span data-stu-id="8eb5e-123">For information about the SDKs that you can use to build applications to run on devices and your solution back end, see [Azure IoT SDKs][lnk-hub-sdks].</span></span>
+> <span data-ttu-id="f248f-123">Informace o hello sady SDK, které můžete toorun toobuild aplikace na zařízení a back end vašeho řešení, najdete v části [SDK služby Azure IoT][lnk-hub-sdks].</span><span class="sxs-lookup"><span data-stu-id="f248f-123">For information about hello SDKs that you can use toobuild applications toorun on devices and your solution back end, see [Azure IoT SDKs][lnk-hub-sdks].</span></span>
 
-<span data-ttu-id="8eb5e-124">Pro absolvování tohoto kurzu potřebujete:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-124">To complete this tutorial, you need:</span></span>
+<span data-ttu-id="f248f-124">toocomplete tohoto kurzu potřebujete:</span><span class="sxs-lookup"><span data-stu-id="f248f-124">toocomplete this tutorial, you need:</span></span>
 
-* <span data-ttu-id="8eb5e-125">Java SE 8.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-125">Java SE 8.</span></span> <br/> <span data-ttu-id="8eb5e-126">Kapitola [Příprava vývojového prostředí][lnk-dev-setup] popisuje postup instalace Javy pro tento návod v systému Windows nebo Linux.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-126">[Prepare your development environment][lnk-dev-setup] describes how to install Java for this tutorial on either Windows or Linux.</span></span>
-* <span data-ttu-id="8eb5e-127">Maven 3.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-127">Maven 3.</span></span>  <br/> <span data-ttu-id="8eb5e-128">Kapitola [Příprava vývojového prostředí][lnk-dev-setup] popisuje postup instalace nástroje [Maven][lnk-maven] pro tento návod v systému Windows nebo Linux.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-128">[Prepare your development environment][lnk-dev-setup] describes how to install [Maven][lnk-maven] for this tutorial on either Windows or Linux.</span></span>
-* <span data-ttu-id="8eb5e-129">[Verze Node.js 0.10.0 nebo novější](http://nodejs.org).</span><span class="sxs-lookup"><span data-stu-id="8eb5e-129">[Node.js version 0.10.0 or later](http://nodejs.org).</span></span>
+* <span data-ttu-id="f248f-125">Java SE 8.</span><span class="sxs-lookup"><span data-stu-id="f248f-125">Java SE 8.</span></span> <br/> <span data-ttu-id="f248f-126">[Příprava vývojového prostředí] [ lnk-dev-setup] popisuje, jak tooinstall Java v tomto kurzu v systému Windows nebo Linux.</span><span class="sxs-lookup"><span data-stu-id="f248f-126">[Prepare your development environment][lnk-dev-setup] describes how tooinstall Java for this tutorial on either Windows or Linux.</span></span>
+* <span data-ttu-id="f248f-127">Maven 3.</span><span class="sxs-lookup"><span data-stu-id="f248f-127">Maven 3.</span></span>  <br/> <span data-ttu-id="f248f-128">[Příprava vývojového prostředí] [ lnk-dev-setup] popisuje, jak tooinstall [Maven] [ lnk-maven] v tomto kurzu v systému Windows nebo Linux.</span><span class="sxs-lookup"><span data-stu-id="f248f-128">[Prepare your development environment][lnk-dev-setup] describes how tooinstall [Maven][lnk-maven] for this tutorial on either Windows or Linux.</span></span>
+* <span data-ttu-id="f248f-129">[Verze Node.js 0.10.0 nebo novější](http://nodejs.org).</span><span class="sxs-lookup"><span data-stu-id="f248f-129">[Node.js version 0.10.0 or later](http://nodejs.org).</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a><span data-ttu-id="8eb5e-130">Aktivační události restartu vzdálené v zařízení s přímá metoda</span><span class="sxs-lookup"><span data-stu-id="8eb5e-130">Trigger a remote reboot on the device using a direct method</span></span>
+## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a><span data-ttu-id="f248f-130">Aktivační události restartu vzdálené na zařízení hello pomocí přímá metoda</span><span class="sxs-lookup"><span data-stu-id="f248f-130">Trigger a remote reboot on hello device using a direct method</span></span>
 
-<span data-ttu-id="8eb5e-131">V této části vytvoříte konzolovou aplikaci Java:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-131">In this section, you create a Java console app that:</span></span>
+<span data-ttu-id="f248f-131">V této části vytvoříte konzolovou aplikaci Java:</span><span class="sxs-lookup"><span data-stu-id="f248f-131">In this section, you create a Java console app that:</span></span>
 
-1. <span data-ttu-id="8eb5e-132">Vyvolá metodu přímé restartování v aplikaci simulovaného zařízení.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-132">Invokes the reboot direct method in the simulated device app.</span></span>
-1. <span data-ttu-id="8eb5e-133">Zobrazí odpověď.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-133">Displays the response.</span></span>
-1. <span data-ttu-id="8eb5e-134">Hlasování hlášen vlastnostech odesílaných ze zařízení k určení po dokončení restartování.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-134">Polls the reported properties sent from the device to determine when the reboot is complete.</span></span>
+1. <span data-ttu-id="f248f-132">Vyvolá metodu přímé hello restartování v aplikaci simulovaného zařízení hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-132">Invokes hello reboot direct method in hello simulated device app.</span></span>
+1. <span data-ttu-id="f248f-133">Zobrazí hello odpovědi.</span><span class="sxs-lookup"><span data-stu-id="f248f-133">Displays hello response.</span></span>
+1. <span data-ttu-id="f248f-134">Hlasování hello hlášené vlastnosti odeslaný toodetermine hello zařízení po dokončení restartování hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-134">Polls hello reported properties sent from hello device toodetermine when hello reboot is complete.</span></span>
 
-<span data-ttu-id="8eb5e-135">Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody přímé a čtení hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-135">This console app connects to your IoT Hub to invoke the direct method and read the reported properties.</span></span>
+<span data-ttu-id="f248f-135">Tato Konzolová aplikace připojí tooyour IoT Hub tooinvoke hello přímá metoda a čtení hello hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="f248f-135">This console app connects tooyour IoT Hub tooinvoke hello direct method and read hello reported properties.</span></span>
 
-1. <span data-ttu-id="8eb5e-136">Vytvořte prázdnou složku s názvem dm-get-started.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-136">Create an empty folder called dm-get-started.</span></span>
+1. <span data-ttu-id="f248f-136">Vytvořte prázdnou složku s názvem dm-get-started.</span><span class="sxs-lookup"><span data-stu-id="f248f-136">Create an empty folder called dm-get-started.</span></span>
 
-1. <span data-ttu-id="8eb5e-137">Ve složce dm-get-started vytvořte projekt Maven s názvem **restartování aktivační událost** pomocí následujícího příkazu na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-137">In the dm-get-started folder, create a Maven project called **trigger-reboot** using the following command at your command prompt.</span></span> <span data-ttu-id="8eb5e-138">Následující obrázek znázorňuje jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-138">The following shows a single, long command:</span></span>
+1. <span data-ttu-id="f248f-137">Ve složce hello dm-get-started vytvořte projekt Maven s názvem **restartování aktivační událost** pomocí hello následující příkaz na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="f248f-137">In hello dm-get-started folder, create a Maven project called **trigger-reboot** using hello following command at your command prompt.</span></span> <span data-ttu-id="f248f-138">Následující Hello zobrazuje jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="f248f-138">hello following shows a single, long command:</span></span>
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. <span data-ttu-id="8eb5e-139">Na příkazovém řádku přejděte do složky restartování aktivační události.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-139">At your command prompt, navigate to the trigger-reboot folder.</span></span>
+1. <span data-ttu-id="f248f-139">Na příkazovém řádku přejděte složky toohello restartování aktivační události.</span><span class="sxs-lookup"><span data-stu-id="f248f-139">At your command prompt, navigate toohello trigger-reboot folder.</span></span>
 
-1. <span data-ttu-id="8eb5e-140">Pomocí textového editoru, otevřete soubor pom.xml ve složce restartování aktivační události a přidejte následující závislost na **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-140">Using a text editor, open the pom.xml file in the trigger-reboot folder and add the following dependency to the **dependencies** node.</span></span> <span data-ttu-id="8eb5e-141">Tuto závislost umožňuje komunikovat se službou IoT hub pomocí balíčku klienta služby iot ve vaší aplikaci:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-141">This dependency enables you to use the iot-service-client package in your app to communicate with your IoT hub:</span></span>
+1. <span data-ttu-id="f248f-140">Pomocí textového editoru, otevřete soubor pom.xml hello ve složce hello restartování aktivační události a přidejte následující závislost toohello hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="f248f-140">Using a text editor, open hello pom.xml file in hello trigger-reboot folder and add hello following dependency toohello **dependencies** node.</span></span> <span data-ttu-id="f248f-141">Tuto závislost umožňuje, aby vám toouse hello klienta služby iot balíček ve vaší aplikaci toocommunicate službou IoT hub:</span><span class="sxs-lookup"><span data-stu-id="f248f-141">This dependency enables you toouse hello iot-service-client package in your app toocommunicate with your IoT hub:</span></span>
 
     ```xml
     <dependency>
@@ -87,9 +87,9 @@ ms.lasthandoff: 08/18/2017
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="8eb5e-142">Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven][lnk-maven-service-search].</span><span class="sxs-lookup"><span data-stu-id="8eb5e-142">You can check for the latest version of **iot-service-client** using [Maven search][lnk-maven-service-search].</span></span>
+    > <span data-ttu-id="f248f-142">Můžete zkontrolovat nejnovější verze hello **klienta služby iot** pomocí [Maven vyhledávání][lnk-maven-service-search].</span><span class="sxs-lookup"><span data-stu-id="f248f-142">You can check for hello latest version of **iot-service-client** using [Maven search][lnk-maven-service-search].</span></span>
 
-1. <span data-ttu-id="8eb5e-143">Přidejte následující **sestavení** uzlu po **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-143">Add the following **build** node after the **dependencies** node.</span></span> <span data-ttu-id="8eb5e-144">Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-144">This configuration instructs Maven to use Java 1.8 to build the app:</span></span>
+1. <span data-ttu-id="f248f-143">Přidejte následující hello **sestavení** uzlu po hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="f248f-143">Add hello following **build** node after hello **dependencies** node.</span></span> <span data-ttu-id="f248f-144">Tato konfigurace se dá pokyn hello aplikace v jazyce Java 1,8 toobuild Maven toouse:</span><span class="sxs-lookup"><span data-stu-id="f248f-144">This configuration instructs Maven toouse Java 1.8 toobuild hello app:</span></span>
 
     ```xml
     <build>
@@ -107,11 +107,11 @@ ms.lasthandoff: 08/18/2017
     </build>
     ```
 
-1. <span data-ttu-id="8eb5e-145">Soubor pom.xml uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-145">Save and close the pom.xml file.</span></span>
+1. <span data-ttu-id="f248f-145">Uložte a zavřete soubor pom.xml hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-145">Save and close hello pom.xml file.</span></span>
 
-1. <span data-ttu-id="8eb5e-146">Pomocí textového editoru otevřete trigger-reboot\src\main\java\com\mycompany\app\App.java zdrojový soubor.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-146">Using a text editor, open the trigger-reboot\src\main\java\com\mycompany\app\App.java source file.</span></span>
+1. <span data-ttu-id="f248f-146">Pomocí textového editoru otevřete hello trigger-reboot\src\main\java\com\mycompany\app\App.java zdrojový soubor.</span><span class="sxs-lookup"><span data-stu-id="f248f-146">Using a text editor, open hello trigger-reboot\src\main\java\com\mycompany\app\App.java source file.</span></span>
 
-1. <span data-ttu-id="8eb5e-147">Do souboru přidejte následující příkazy pro **import**:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-147">Add the following **import** statements to the file:</span></span>
+1. <span data-ttu-id="f248f-147">Přidejte následující hello **importovat** souboru toohello příkazy:</span><span class="sxs-lookup"><span data-stu-id="f248f-147">Add hello following **import** statements toohello file:</span></span>
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -126,7 +126,7 @@ ms.lasthandoff: 08/18/2017
     import java.util.concurrent.ExecutorService;
     ```
 
-1. <span data-ttu-id="8eb5e-148">Do třídy **App** přidejte následující proměnné na úrovni třídy.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-148">Add the following class-level variables to the **App** class.</span></span> <span data-ttu-id="8eb5e-149">Nahraďte `{youriothubconnectionstring}` IoT hub připojovacím řetězcem jste si poznamenali v *vytvoření služby IoT Hub* části:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-149">Replace `{youriothubconnectionstring}` with your IoT hub connection string you noted in the *Create an IoT Hub* section:</span></span>
+1. <span data-ttu-id="f248f-148">Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="f248f-148">Add hello following class-level variables toohello **App** class.</span></span> <span data-ttu-id="f248f-149">Nahraďte `{youriothubconnectionstring}` IoT hub připojovacím řetězcem jste si poznamenali v hello *vytvoření služby IoT Hub* části:</span><span class="sxs-lookup"><span data-stu-id="f248f-149">Replace `{youriothubconnectionstring}` with your IoT hub connection string you noted in hello *Create an IoT Hub* section:</span></span>
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -137,7 +137,7 @@ ms.lasthandoff: 08/18/2017
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. <span data-ttu-id="8eb5e-150">Chcete-li implementovat podproces, který čte hlášené vlastnosti z dvojče zařízení každých 10 sekund, přidejte následující vnořenou třídu k **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-150">To implement a thread that reads the reported properties from the device twin every 10 seconds, add the following nested class to the **App** class:</span></span>
+1. <span data-ttu-id="f248f-150">tooimplement podproces, který čte hello hlášené vlastnosti z dvojče zařízení hello každých 10 sekund, přidejte následující hello vnořené třídy toohello **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="f248f-150">tooimplement a thread that reads hello reported properties from hello device twin every 10 seconds, add hello following nested class toohello **App** class:</span></span>
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -158,7 +158,7 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. <span data-ttu-id="8eb5e-151">K vyvolání metody přímé restartování na simulované zařízení, přidejte následující kód, který **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-151">To invoke the reboot direct method on the simulated device, add the following code to the **main** method:</span></span>
+1. <span data-ttu-id="f248f-151">Přímá metoda restartování tooinvoke hello na hello simulované zařízení, přidejte následující kód toohello hello **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="f248f-151">tooinvoke hello reboot direct method on hello simulated device, add hello following code toohello **main** method:</span></span>
 
     ```java
     System.out.println("Starting sample...");
@@ -183,7 +183,7 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. <span data-ttu-id="8eb5e-152">Chcete-li spustit vlákno pro cyklické dotazování hlášen vlastnostech ze simulovaného zařízení, přidejte následující kód, který **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-152">To start the thread to poll the reported properties from the simulated device, add the following code to the **main** method:</span></span>
+1. <span data-ttu-id="f248f-152">toostart hello vlákno toopoll hello hlášené vlastnosti z hello simulovaného zařízení, přidejte následující kód toohello hello **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="f248f-152">toostart hello thread toopoll hello reported properties from hello simulated device, add hello following code toohello **main** method:</span></span>
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -191,32 +191,32 @@ ms.lasthandoff: 08/18/2017
     executor.execute(showReportedProperties);
     ```
 
-1. <span data-ttu-id="8eb5e-153">Chcete-li umožňují zastavte aplikaci, přidejte následující kód do **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-153">To enable you to stop the app, add the following code to the **main** method:</span></span>
+1. <span data-ttu-id="f248f-153">tooenable toostop hello aplikace, přidejte následující kód toohello hello **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="f248f-153">tooenable you toostop hello app, add hello following code toohello **main** method:</span></span>
 
     ```java
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     executor.shutdownNow();
     System.out.println("Shutting down sample...");
     ```
 
-1. <span data-ttu-id="8eb5e-154">Uložte a zavřete soubor trigger-reboot\src\main\java\com\mycompany\app\App.java.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-154">Save and close the trigger-reboot\src\main\java\com\mycompany\app\App.java file.</span></span>
+1. <span data-ttu-id="f248f-154">Uložte a zavřete soubor trigger-reboot\src\main\java\com\mycompany\app\App.java hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-154">Save and close hello trigger-reboot\src\main\java\com\mycompany\app\App.java file.</span></span>
 
-1. <span data-ttu-id="8eb5e-155">Sestavení **restartování aktivační událost** back-end aplikace a opravte všechny chyby.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-155">Build the **trigger-reboot** back-end app and correct any errors.</span></span> <span data-ttu-id="8eb5e-156">Na příkazovém řádku přejděte do složky, restartování aktivační události a spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-156">At your command prompt, navigate to the trigger-reboot folder and run the following command:</span></span>
+1. <span data-ttu-id="f248f-155">Sestavení hello **restartování aktivační událost** back-end aplikace a opravte všechny chyby.</span><span class="sxs-lookup"><span data-stu-id="f248f-155">Build hello **trigger-reboot** back-end app and correct any errors.</span></span> <span data-ttu-id="f248f-156">Na příkazovém řádku přejděte toohello restartování aktivační událost složky a spuštění hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="f248f-156">At your command prompt, navigate toohello trigger-reboot folder and run hello following command:</span></span>
 
     `mvn clean package -DskipTests`
 
-## <a name="create-a-simulated-device-app"></a><span data-ttu-id="8eb5e-157">Vytvoření aplikace simulovaného zařízení</span><span class="sxs-lookup"><span data-stu-id="8eb5e-157">Create a simulated device app</span></span>
+## <a name="create-a-simulated-device-app"></a><span data-ttu-id="f248f-157">Vytvoření aplikace simulovaného zařízení</span><span class="sxs-lookup"><span data-stu-id="f248f-157">Create a simulated device app</span></span>
 
-<span data-ttu-id="8eb5e-158">V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-158">In this section, you create a Java console app that simulates a device.</span></span> <span data-ttu-id="8eb5e-159">Aplikace naslouchá restartování přímé volání metody ze služby IoT hub a okamžitě odpoví na toto volání.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-159">The app listens for the reboot direct method call from your IoT hub and immediately responds to that call.</span></span> <span data-ttu-id="8eb5e-160">Aplikace pak chvíli k simulaci procesu restartování předtím, než použije hlášené vlastnost oznámení v režimu spánku **restartování aktivační událost** back-end aplikačním dokončení restartování.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-160">The app then sleeps for a while to simulate the reboot process before it uses a reported property to notify the **trigger-reboot** back-end app that the reboot is complete.</span></span>
+<span data-ttu-id="f248f-158">V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení.</span><span class="sxs-lookup"><span data-stu-id="f248f-158">In this section, you create a Java console app that simulates a device.</span></span> <span data-ttu-id="f248f-159">Hello aplikace čeká na restartování hello přímá metoda. volání ze služby IoT hub a okamžitě odpoví toothat volání.</span><span class="sxs-lookup"><span data-stu-id="f248f-159">hello app listens for hello reboot direct method call from your IoT hub and immediately responds toothat call.</span></span> <span data-ttu-id="f248f-160">Hello aplikace pak chvíli v režimu spánku toosimulate hello restartování procesu předtím, než použije hlášené vlastnost toonotify hello **restartování aktivační událost** back-end aplikace, která hello restartování je dokončena.</span><span class="sxs-lookup"><span data-stu-id="f248f-160">hello app then sleeps for a while toosimulate hello reboot process before it uses a reported property toonotify hello **trigger-reboot** back-end app that hello reboot is complete.</span></span>
 
-1. <span data-ttu-id="8eb5e-161">Ve složce dm-get-started vytvořte projekt Maven s názvem **simulated-device** pomocí následujícího příkazu na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-161">In the dm-get-started folder, create a Maven project called **simulated-device** using the following command at your command prompt.</span></span> <span data-ttu-id="8eb5e-162">Toto je jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-162">The following is a single, long command:</span></span>
+1. <span data-ttu-id="f248f-161">Ve složce hello dm-get-started vytvořte projekt Maven s názvem **simulated-device** pomocí hello následující příkaz na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="f248f-161">In hello dm-get-started folder, create a Maven project called **simulated-device** using hello following command at your command prompt.</span></span> <span data-ttu-id="f248f-162">Hello následuje jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="f248f-162">hello following is a single, long command:</span></span>
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. <span data-ttu-id="8eb5e-163">Na příkazovém řádku přejděte do složky simulated-devices.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-163">At your command prompt, navigate to the simulated-device folder.</span></span>
+1. <span data-ttu-id="f248f-163">Na příkazovém řádku přejděte toohello složky simulated Devices.</span><span class="sxs-lookup"><span data-stu-id="f248f-163">At your command prompt, navigate toohello simulated-device folder.</span></span>
 
-1. <span data-ttu-id="8eb5e-164">Pomocí textového editoru otevřete ve složce simulated-device soubor pom.xml a přidejte následující závislost na **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-164">Using a text editor, open the pom.xml file in the simulated-device folder and add the following dependency to the **dependencies** node.</span></span> <span data-ttu-id="8eb5e-165">Tuto závislost umožňuje komunikovat se službou IoT hub pomocí balíčku klienta služby iot ve vaší aplikaci:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-165">This dependency enables you to use the iot-service-client package in your app to communicate with your IoT hub:</span></span>
+1. <span data-ttu-id="f248f-164">Pomocí textového editoru, otevřete soubor pom.xml hello ve složce simulated-device hello a přidejte následující závislost toohello hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="f248f-164">Using a text editor, open hello pom.xml file in hello simulated-device folder and add hello following dependency toohello **dependencies** node.</span></span> <span data-ttu-id="f248f-165">Tuto závislost umožňuje, aby vám toouse hello klienta služby iot balíček ve vaší aplikaci toocommunicate službou IoT hub:</span><span class="sxs-lookup"><span data-stu-id="f248f-165">This dependency enables you toouse hello iot-service-client package in your app toocommunicate with your IoT hub:</span></span>
 
     ```xml
     <dependency>
@@ -227,9 +227,9 @@ ms.lasthandoff: 08/18/2017
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="8eb5e-166">Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven][lnk-maven-device-search].</span><span class="sxs-lookup"><span data-stu-id="8eb5e-166">You can check for the latest version of **iot-device-client** using [Maven search][lnk-maven-device-search].</span></span>
+    > <span data-ttu-id="f248f-166">Můžete zkontrolovat nejnovější verze hello **klienta zařízení iot** pomocí [Maven vyhledávání][lnk-maven-device-search].</span><span class="sxs-lookup"><span data-stu-id="f248f-166">You can check for hello latest version of **iot-device-client** using [Maven search][lnk-maven-device-search].</span></span>
 
-1. <span data-ttu-id="8eb5e-167">Přidejte následující **sestavení** uzlu po **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-167">Add the following **build** node after the **dependencies** node.</span></span> <span data-ttu-id="8eb5e-168">Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-168">This configuration instructs Maven to use Java 1.8 to build the app:</span></span>
+1. <span data-ttu-id="f248f-167">Přidejte následující hello **sestavení** uzlu po hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="f248f-167">Add hello following **build** node after hello **dependencies** node.</span></span> <span data-ttu-id="f248f-168">Tato konfigurace se dá pokyn hello aplikace v jazyce Java 1,8 toobuild Maven toouse:</span><span class="sxs-lookup"><span data-stu-id="f248f-168">This configuration instructs Maven toouse Java 1.8 toobuild hello app:</span></span>
 
     ```xml
     <build>
@@ -247,11 +247,11 @@ ms.lasthandoff: 08/18/2017
     </build>
     ```
 
-1. <span data-ttu-id="8eb5e-169">Soubor pom.xml uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-169">Save and close the pom.xml file.</span></span>
+1. <span data-ttu-id="f248f-169">Uložte a zavřete soubor pom.xml hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-169">Save and close hello pom.xml file.</span></span>
 
-1. <span data-ttu-id="8eb5e-170">Pomocí textového editoru, otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java zdroje.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-170">Using a text editor, open the simulated-device\src\main\java\com\mycompany\app\App.java source file.</span></span>
+1. <span data-ttu-id="f248f-170">Pomocí textového editoru otevřete hello simulated-device\src\main\java\com\mycompany\app\App.java zdrojový soubor.</span><span class="sxs-lookup"><span data-stu-id="f248f-170">Using a text editor, open hello simulated-device\src\main\java\com\mycompany\app\App.java source file.</span></span>
 
-1. <span data-ttu-id="8eb5e-171">Do souboru přidejte následující příkazy pro **import**:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-171">Add the following **import** statements to the file:</span></span>
+1. <span data-ttu-id="f248f-171">Přidejte následující hello **importovat** souboru toohello příkazy:</span><span class="sxs-lookup"><span data-stu-id="f248f-171">Add hello following **import** statements toohello file:</span></span>
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -265,7 +265,7 @@ ms.lasthandoff: 08/18/2017
     import java.util.HashSet;
     ```
 
-1. <span data-ttu-id="8eb5e-172">Do třídy **App** přidejte následující proměnné na úrovni třídy.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-172">Add the following class-level variables to the **App** class.</span></span> <span data-ttu-id="8eb5e-173">Nahraďte `{yourdeviceconnectionstring}` jste si poznamenali v připojovacím řetězcem zařízení *vytvoření identity zařízení* části:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-173">Replace `{yourdeviceconnectionstring}` with the device connection string you noted in the *Create a device identity* section:</span></span>
+1. <span data-ttu-id="f248f-172">Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="f248f-172">Add hello following class-level variables toohello **App** class.</span></span> <span data-ttu-id="f248f-173">Nahraďte `{yourdeviceconnectionstring}` s řetězcem připojení zařízení hello jste si poznamenali v hello *vytvoření identity zařízení* části:</span><span class="sxs-lookup"><span data-stu-id="f248f-173">Replace `{yourdeviceconnectionstring}` with hello device connection string you noted in hello *Create a device identity* section:</span></span>
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -276,31 +276,31 @@ ms.lasthandoff: 08/18/2017
     private static DeviceClient client;
     ```
 
-1. <span data-ttu-id="8eb5e-174">K implementaci obslužná rutina zpětného volání pro přímé metoda události stavu, přidejte následující vnořenou třídu k **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-174">To implement a callback handler for direct method status events, add the following nested class to the **App** class:</span></span>
+1. <span data-ttu-id="f248f-174">tooimplement obslužná rutina zpětného volání pro přímé metoda události stavu, přidejte následující hello vnořené třídy toohello **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="f248f-174">tooimplement a callback handler for direct method status events, add hello following nested class toohello **App** class:</span></span>
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context)
       {
-        System.out.println("IoT Hub responded to device method operation with status " + status.name());
+        System.out.println("IoT Hub responded toodevice method operation with status " + status.name());
       }
     }
     ```
 
-1. <span data-ttu-id="8eb5e-175">K implementaci obslužná rutina zpětného volání pro zařízení twin stav události, přidejte následující vnořenou třídu k **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-175">To implement a callback handler for device twin status events, add the following nested class to the **App** class:</span></span>
+1. <span data-ttu-id="f248f-175">tooimplement obslužná rutina zpětného volání pro události twin stavu zařízení, přidejte následující hello vnořené třídy toohello **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="f248f-175">tooimplement a callback handler for device twin status events, add hello following nested class toohello **App** class:</span></span>
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
     {
         public void execute(IotHubStatusCode status, Object context)
         {
-            System.out.println("IoT Hub responded to device twin operation with status " + status.name());
+            System.out.println("IoT Hub responded toodevice twin operation with status " + status.name());
         }
     }
     ```
 
-1. <span data-ttu-id="8eb5e-176">Chcete-li implementovat obslužná rutina zpětného volání pro vlastnosti události, přidejte následující vnořenou třídu k **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-176">To implement a callback handler for property events, add the following nested class to the **App** class:</span></span>
+1. <span data-ttu-id="f248f-176">tooimplement obslužná rutina zpětného volání pro vlastnosti události, přidejte následující hello vnořené třídy toohello **aplikace** třídy:</span><span class="sxs-lookup"><span data-stu-id="f248f-176">tooimplement a callback handler for property events, add hello following nested class toohello **App** class:</span></span>
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -313,7 +313,7 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. <span data-ttu-id="8eb5e-177">Chcete-li implementovat vlákno k simulaci restartování zařízení, přidejte následující vnořenou třídu k **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-177">To implement a thread to simulate the device reboot, add the following nested class to the **App** class.</span></span> <span data-ttu-id="8eb5e-178">Vlákno pět sekund v režimu spánku a poté nastaví **lastReboot** hlášené vlastnost:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-178">The thread sleeps for five seconds and then sets the **lastReboot** reported property:</span></span>
+1. <span data-ttu-id="f248f-177">tooimplement restartu vlákno toosimulate hello zařízení přidat hello následující vnořené třídy toohello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="f248f-177">tooimplement a thread toosimulate hello device reboot, add hello following nested class toohello **App** class.</span></span> <span data-ttu-id="f248f-178">vlákno Hello pět sekund v režimu spánku a poté nastaví hello **lastReboot** hlášené vlastnost:</span><span class="sxs-lookup"><span data-stu-id="f248f-178">hello thread sleeps for five seconds and then sets hello **lastReboot** reported property:</span></span>
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -334,7 +334,7 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. <span data-ttu-id="8eb5e-179">Chcete-li implementovat metodu přímé na zařízení, přidejte následující vnořenou třídu k **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-179">To implement the direct method on the device, add the following nested class to the **App** class.</span></span> <span data-ttu-id="8eb5e-180">Když simulované aplikace obdrží volání **restartovat** přímá metoda ji vrátí potvrzení volající a pak spustí vlákna ke zpracování restartování:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-180">When the simulated app receives a call to the **reboot** direct method, it returns an acknowledgement to the caller and then starts a thread to process the reboot:</span></span>
+1. <span data-ttu-id="f248f-179">Přímá metoda hello tooimplement na hello zařízení, přidejte následující hello vnořené třídy toohello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="f248f-179">tooimplement hello direct method on hello device, add hello following nested class toohello **App** class.</span></span> <span data-ttu-id="f248f-180">Když simulované aplikace hello obdrží volání toohello **restartovat** přímá metoda vrátí volající toohello potvrzení a pak spustí vlákno tooprocess hello restartovat:</span><span class="sxs-lookup"><span data-stu-id="f248f-180">When hello simulated app receives a call toohello **reboot** direct method, it returns an acknowledgement toohello caller and then starts a thread tooprocess hello reboot:</span></span>
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -366,20 +366,20 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. <span data-ttu-id="8eb5e-181">Upravte podpis metody **hlavní** metoda k vyvolání následující výjimky:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-181">Modify the signature of the **main** method to throw the following exceptions:</span></span>
+1. <span data-ttu-id="f248f-181">Upravte podpis hello hello **hlavní** hello toothrow metoda následující výjimky:</span><span class="sxs-lookup"><span data-stu-id="f248f-181">Modify hello signature of hello **main** method toothrow hello following exceptions:</span></span>
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. <span data-ttu-id="8eb5e-182">K vytváření instancí **DeviceClient**, přidejte následující kód, který **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-182">To instantiate a **DeviceClient**, add the following code to the **main** method:</span></span>
+1. <span data-ttu-id="f248f-182">tooinstantiate **DeviceClient**, přidejte následující kód toohello hello **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="f248f-182">tooinstantiate a **DeviceClient**, add hello following code toohello **main** method:</span></span>
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-1. <span data-ttu-id="8eb5e-183">Pokud chcete spustit přijímá volání přímá metoda, přidejte následující kód do **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-183">To start listening for direct method calls, add the following code to the **main** method:</span></span>
+1. <span data-ttu-id="f248f-183">toostart přijímá volání přímá metoda, přidejte následující kód toohello hello **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="f248f-183">toostart listening for direct method calls, add hello following code toohello **main** method:</span></span>
 
     ```java
     try
@@ -387,7 +387,7 @@ ms.lasthandoff: 08/18/2017
       client.open();
       client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
       client.startDeviceTwin(new DeviceTwinStatusCallback(), null, new PropertyCallback(), null);
-      System.out.println("Subscribed to direct methods and polling for reported properties. Waiting...");
+      System.out.println("Subscribed toodirect methods and polling for reported properties. Waiting...");
     }
     catch (Exception e)
     {
@@ -397,10 +397,10 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-1. <span data-ttu-id="8eb5e-184">Chcete-li vypnout v simulátoru zařízení, přidejte následující kód do **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-184">To shut down the device simulator, add the following code to the **main** method:</span></span>
+1. <span data-ttu-id="f248f-184">tooshut dolů hello simulátor zařízení, přidejte následující kód toohello hello **hlavní** metoda:</span><span class="sxs-lookup"><span data-stu-id="f248f-184">tooshut down hello device simulator, add hello following code toohello **main** method:</span></span>
 
     ```java
-    System.out.println("Press any key to exit...");
+    System.out.println("Press any key tooexit...");
     Scanner scanner = new Scanner(System.in);
     scanner.nextLine();
     scanner.close();
@@ -408,31 +408,31 @@ ms.lasthandoff: 08/18/2017
     System.out.println("Shutting down...");
     ```
 
-1. <span data-ttu-id="8eb5e-185">Uložte a zavřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-185">Save and close the simulated-device\src\main\java\com\mycompany\app\App.java file.</span></span>
+1. <span data-ttu-id="f248f-185">Uložte a zavřete soubor simulated-device\src\main\java\com\mycompany\app\App.java hello.</span><span class="sxs-lookup"><span data-stu-id="f248f-185">Save and close hello simulated-device\src\main\java\com\mycompany\app\App.java file.</span></span>
 
-1. <span data-ttu-id="8eb5e-186">Sestavení **simulated-device** back-end aplikace a opravte všechny chyby.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-186">Build the **simulated-device** back-end app and correct any errors.</span></span> <span data-ttu-id="8eb5e-187">Na příkazovém řádku přejděte do složky simulated-device a spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-187">At your command prompt, navigate to the simulated-device folder and run the following command:</span></span>
+1. <span data-ttu-id="f248f-186">Sestavení hello **simulated-device** back-end aplikace a opravte všechny chyby.</span><span class="sxs-lookup"><span data-stu-id="f248f-186">Build hello **simulated-device** back-end app and correct any errors.</span></span> <span data-ttu-id="f248f-187">Na příkazovém řádku přejděte složky simulated Devices toohello a spuštění hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="f248f-187">At your command prompt, navigate toohello simulated-device folder and run hello following command:</span></span>
 
     `mvn clean package -DskipTests`
 
-## <a name="run-the-apps"></a><span data-ttu-id="8eb5e-188">Spouštění aplikací</span><span class="sxs-lookup"><span data-stu-id="8eb5e-188">Run the apps</span></span>
+## <a name="run-hello-apps"></a><span data-ttu-id="f248f-188">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="f248f-188">Run hello apps</span></span>
 
-<span data-ttu-id="8eb5e-189">Nyní jste připraveni aplikaci spustit.</span><span class="sxs-lookup"><span data-stu-id="8eb5e-189">You are now ready to run the apps.</span></span>
+<span data-ttu-id="f248f-189">Nyní je připraven toorun hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="f248f-189">You are now ready toorun hello apps.</span></span>
 
-1. <span data-ttu-id="8eb5e-190">V příkazovém řádku ve složce simulated-device spusťte následující příkaz, aby začal přijímat volání metody restartování ze služby IoT hub:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-190">At a command prompt in the simulated-device folder, run the following command to begin listening for reboot method calls from your IoT hub:</span></span>
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Přímá metoda volání restartovat aplikaci simulovaného zařízení Java IoT Hub pro naslouchání][1]
-
-1. <span data-ttu-id="8eb5e-192">Na příkazovém řádku ve složce Aktivační událost restartování spusťte následující příkaz k volání metody restartování na simulovaného zařízení ze služby IoT hub:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-192">At a command prompt in the trigger-reboot folder, run the following command to call the reboot method on your simulated device from your IoT hub:</span></span>
+1. <span data-ttu-id="f248f-190">Na příkazovém řádku ve složce simulated-device hello spusťte následující příkaz toobegin přijímá restartování metoda volání ze služby IoT hub hello:</span><span class="sxs-lookup"><span data-stu-id="f248f-190">At a command prompt in hello simulated-device folder, run hello following command toobegin listening for reboot method calls from your IoT hub:</span></span>
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Aplikace služby Java IoT Hub k volání metody přímé restartování][2]
+    ![IoT Hub Java simulované zařízení aplikaci toolisten pro volání metod přímé restartování][1]
 
-1. <span data-ttu-id="8eb5e-194">Simulované zařízení reaguje na volání metody přímé restartování:</span><span class="sxs-lookup"><span data-stu-id="8eb5e-194">The simulated device responds to the reboot direct method call:</span></span>
+1. <span data-ttu-id="f248f-192">Na příkazovém řádku ve složce hello restartování aktivační událost spusťte následující příkaz toocall hello restartování metodu na simulovaného zařízení ze služby IoT hub hello:</span><span class="sxs-lookup"><span data-stu-id="f248f-192">At a command prompt in hello trigger-reboot folder, run hello following command toocall hello reboot method on your simulated device from your IoT hub:</span></span>
 
-    ![Aplikaci simulovaného zařízení Java IoT Hub odpoví na volání přímá metoda][3]
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Hello toocall aplikace služby Java IoT Hub restartovat přímá metoda][2]
+
+1. <span data-ttu-id="f248f-194">Simulované zařízení Hello odpoví toohello restartování přímá metoda volání:</span><span class="sxs-lookup"><span data-stu-id="f248f-194">hello simulated device responds toohello reboot direct method call:</span></span>
+
+    ![Volání metody přímé toohello odpoví aplikaci simulovaného zařízení Java IoT Hub][3]
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

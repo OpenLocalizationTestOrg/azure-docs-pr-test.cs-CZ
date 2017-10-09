@@ -44,7 +44,7 @@
 ### [Nejčastější dotazy](log-analytics-log-search-faq.md)
 ### [Přehled prohledávání protokolů](log-analytics-log-search-new.md)
 ### [Portály prohledávání protokolů](log-analytics-log-search-portals.md)
-#### [Použití portálu prohledávání protokolů](log-analytics-log-search-log-search-portal.md)
+#### [Pomocí portálu vyhledávání protokolu hello](log-analytics-log-search-log-search-portal.md)
 ### [Přechod ze starší verze jazyka](log-analytics-log-search-transition.md)
 ### [Konektor pro Flow](log-analytics-flow-tutorial.md)
 

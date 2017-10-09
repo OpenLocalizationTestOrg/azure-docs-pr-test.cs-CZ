@@ -1,6 +1,6 @@
 ---
-title: "Spravovat virtuální počítače pomocí Průzkumníku Azure pro IntelliJ | Microsoft Docs"
-description: "Zjistěte, jak spravovat virtuální počítače Azure pomocí Průzkumníka Azure pro IntelliJ."
+title: "hello aaaManage virtuální počítače pomocí Průzkumníku Azure pro IntelliJ | Microsoft Docs"
+description: "Zjistěte, jak toomanage virtuální počítače Azure pomocí hello Průzkumníka Azure pro IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,177 +14,177 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 9197580407b3509fbf9a842e1fee1e6348478c34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a73dd4f73b311dd3413f6712e3b76c36ee464de1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-virtual-machines-by-using-the-azure-explorer-for-intellij"></a><span data-ttu-id="a7628-103">Spravovat virtuální počítače pomocí Průzkumníku Azure pro IntelliJ</span><span class="sxs-lookup"><span data-stu-id="a7628-103">Manage virtual machines by using the Azure Explorer for IntelliJ</span></span>
+# <a name="manage-virtual-machines-by-using-hello-azure-explorer-for-intellij"></a><span data-ttu-id="171ef-103">Správa virtuálních počítačů pomocí hello Průzkumník Azure pro IntelliJ</span><span class="sxs-lookup"><span data-stu-id="171ef-103">Manage virtual machines by using hello Azure Explorer for IntelliJ</span></span>
 
-<span data-ttu-id="a7628-104">Průzkumník Azure, který je součástí sady nástrojů Azure pro IntelliJ, poskytuje Java vývojářům snadno použitelné řešení pro správu virtuálních počítačů v jejich účtu Azure z uvnitř IntelliJ integrované vývojové prostředí (IDE).</span><span class="sxs-lookup"><span data-stu-id="a7628-104">The Azure Explorer, which is part of the Azure Toolkit for IntelliJ, provides Java developers with an easy-to-use solution for managing virtual machines in their Azure account from inside the IntelliJ integrated development environment (IDE).</span></span>
+<span data-ttu-id="171ef-104">Hello Průzkumník Azure, který je součástí hello nástrojů Azure pro IntelliJ, poskytuje vývojáře v jazyce Java s řešením snadno použitelné pro správu virtuálních počítačů v jejich účtu Azure z uvnitř hello IntelliJ integrované vývojové prostředí (IDE).</span><span class="sxs-lookup"><span data-stu-id="171ef-104">hello Azure Explorer, which is part of hello Azure Toolkit for IntelliJ, provides Java developers with an easy-to-use solution for managing virtual machines in their Azure account from inside hello IntelliJ integrated development environment (IDE).</span></span>
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
 [!INCLUDE [azure-toolkit-for-intellij-show-azure-explorer](../includes/azure-toolkit-for-intellij-show-azure-explorer.md)]
 
-## <a name="create-a-virtual-machine-in-intellij"></a><span data-ttu-id="a7628-105">Vytvoření virtuálního počítače v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="a7628-105">Create a virtual machine in IntelliJ</span></span>
+## <a name="create-a-virtual-machine-in-intellij"></a><span data-ttu-id="171ef-105">Vytvoření virtuálního počítače v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="171ef-105">Create a virtual machine in IntelliJ</span></span>
 
-<span data-ttu-id="a7628-106">K vytvoření virtuálního počítače pomocí Průzkumníku Azure, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="a7628-106">To create a virtual machine by using the Azure Explorer, do the following:</span></span> 
+<span data-ttu-id="171ef-106">toocreate virtuálního počítače pomocí hello Azure Explorer hello následující:</span><span class="sxs-lookup"><span data-stu-id="171ef-106">toocreate a virtual machine by using hello Azure Explorer, do hello following:</span></span> 
 
-1. <span data-ttu-id="a7628-107">Přihlaste se k účtu Azure pomocí kroků v [přihlášení pokyny pro Azure Toolkit IntelliJ] článku.</span><span class="sxs-lookup"><span data-stu-id="a7628-107">Sign in to your Azure account by using the steps in the [Sign-in instructions for the Azure Toolkit for IntelliJ] article.</span></span>
+1. <span data-ttu-id="171ef-107">Přihlaste se pomocí kroků hello v hello tooyour účet Azure [přihlášení pokyny pro hello Azure Toolkit IntelliJ] článku.</span><span class="sxs-lookup"><span data-stu-id="171ef-107">Sign in tooyour Azure account by using hello steps in hello [Sign-in instructions for hello Azure Toolkit for IntelliJ] article.</span></span>
 
-2. <span data-ttu-id="a7628-108">V **Azure Explorer** , rozbalte **Azure** uzel, klikněte pravým tlačítkem na **virtuální počítače**a potom klikněte na **vytvoření virtuálního počítače**.</span><span class="sxs-lookup"><span data-stu-id="a7628-108">In the **Azure Explorer** view, expand the **Azure** node, right-click **Virtual Machines**, and then click **Create VM**.</span></span> 
+2. <span data-ttu-id="171ef-108">V hello **Azure Explorer** , rozbalte hello **Azure** uzel, klikněte pravým tlačítkem na **virtuální počítače**a potom klikněte na **vytvoření virtuálního počítače**.</span><span class="sxs-lookup"><span data-stu-id="171ef-108">In hello **Azure Explorer** view, expand hello **Azure** node, right-click **Virtual Machines**, and then click **Create VM**.</span></span> 
 
-   <span data-ttu-id="a7628-109">![Příkaz vytvoření virtuálního počítače][CR01]</span><span class="sxs-lookup"><span data-stu-id="a7628-109">![The Create VM command][CR01]</span></span>  
-    <span data-ttu-id="a7628-110">**Vytvořit nový virtuální počítač** otevře se průvodce.</span><span class="sxs-lookup"><span data-stu-id="a7628-110">The **Create new Virtual Machine** wizard opens.</span></span>
+   <span data-ttu-id="171ef-109">![Hello příkaz vytvoření virtuálního počítače][CR01]</span><span class="sxs-lookup"><span data-stu-id="171ef-109">![hello Create VM command][CR01]</span></span>  
+    <span data-ttu-id="171ef-110">Hello **vytvořit nový virtuální počítač** otevře se průvodce.</span><span class="sxs-lookup"><span data-stu-id="171ef-110">hello **Create new Virtual Machine** wizard opens.</span></span>
 
-3. <span data-ttu-id="a7628-111">V **zvolte předplatné** oken, vyberte své předplatné a pak klikněte na tlačítko **Další**.</span><span class="sxs-lookup"><span data-stu-id="a7628-111">In the **Choose a Subscription** window, select your subscription, and then click **Next**.</span></span> 
+3. <span data-ttu-id="171ef-111">V hello **zvolte předplatné** oken, vyberte své předplatné a pak klikněte na tlačítko **Další**.</span><span class="sxs-lookup"><span data-stu-id="171ef-111">In hello **Choose a Subscription** window, select your subscription, and then click **Next**.</span></span> 
 
-   ![Zvolte předplatné okna][CR02]
+   ![Hello zvolte předplatné okna][CR02]
 
-4. <span data-ttu-id="a7628-113">V **vyberte bitovou kopii virtuálního počítače** okno, zadejte následující informace:</span><span class="sxs-lookup"><span data-stu-id="a7628-113">In the **Select a Virtual Machine Image** window, enter the following information:</span></span>
+4. <span data-ttu-id="171ef-113">V hello **vyberte bitovou kopii virtuálního počítače** okno, zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="171ef-113">In hello **Select a Virtual Machine Image** window, enter hello following information:</span></span>
 
-   * <span data-ttu-id="a7628-114">**Umístění**: Určuje, kde bude vytvořen virtuální počítač (například *západní USA*).</span><span class="sxs-lookup"><span data-stu-id="a7628-114">**Location**: Specifies where your virtual machine will be created (for example, *West US*).</span></span> 
+   * <span data-ttu-id="171ef-114">**Umístění**: Určuje, kde bude vytvořen virtuální počítač (například *západní USA*).</span><span class="sxs-lookup"><span data-stu-id="171ef-114">**Location**: Specifies where your virtual machine will be created (for example, *West US*).</span></span> 
 
-   * <span data-ttu-id="a7628-115">**Doporučená image**: Určuje, že zvolíte bitovou kopii z zkrácený seznam běžně používané bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="a7628-115">**Recommended image**: Specifies that you will choose an image from an abbreviated list of commonly used images.</span></span>
+   * <span data-ttu-id="171ef-115">**Doporučená image**: Určuje, že zvolíte bitovou kopii z zkrácený seznam běžně používané bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="171ef-115">**Recommended image**: Specifies that you will choose an image from an abbreviated list of commonly used images.</span></span>
 
-   * <span data-ttu-id="a7628-116">**Vlastní image**: Určuje, že zvolíte vlastní image tím, že poskytuje následující informace:</span><span class="sxs-lookup"><span data-stu-id="a7628-116">**Custom image**: Specifies that you will choose a custom image by providing the following information:</span></span>
+   * <span data-ttu-id="171ef-116">**Vlastní image**: Určuje, že zvolíte vlastní image tím, že poskytuje hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="171ef-116">**Custom image**: Specifies that you will choose a custom image by providing hello following information:</span></span>
 
-      * <span data-ttu-id="a7628-117">**Vydavatel**: Určuje publisher, který vytvořil bitovou kopii, kterou budete používat pro virtuální počítač (například *Microsoft*).</span><span class="sxs-lookup"><span data-stu-id="a7628-117">**Publisher**: Specifies the publisher that created the image that you will use for your virtual machine (for example, *Microsoft*).</span></span>
+      * <span data-ttu-id="171ef-117">**Vydavatel**: Určuje hello vydavatele, který vytvořili hello obrázek, který budete používat pro virtuální počítač (například *Microsoft*).</span><span class="sxs-lookup"><span data-stu-id="171ef-117">**Publisher**: Specifies hello publisher that created hello image that you will use for your virtual machine (for example, *Microsoft*).</span></span>
 
-      * <span data-ttu-id="a7628-118">**Nabízejí**: Určuje nabídky používat od vydavatele, vybraný virtuální počítač (například *JDK*).</span><span class="sxs-lookup"><span data-stu-id="a7628-118">**Offer**: Specifies the virtual machine offering to use from the selected publisher (for example, *JDK*).</span></span>
+      * <span data-ttu-id="171ef-118">**Nabízejí**: Určuje nabídky toouse od vydavatele vybrané hello hello virtuálního počítače (například *JDK*).</span><span class="sxs-lookup"><span data-stu-id="171ef-118">**Offer**: Specifies hello virtual machine offering toouse from hello selected publisher (for example, *JDK*).</span></span>
 
-      * <span data-ttu-id="a7628-119">**Skladová položka**: Určuje skladová jednotka (SKU) z vybrané nabídky (například *JDK_8*).</span><span class="sxs-lookup"><span data-stu-id="a7628-119">**Sku**: Specifies the stockkeeping unit (SKU) to use from the selected offering (for example, *JDK_8*).</span></span>
+      * <span data-ttu-id="171ef-119">**Skladová položka**: Určuje hello skladové jednotky (SKU) toouse z vybrané nabídky hello (například *JDK_8*).</span><span class="sxs-lookup"><span data-stu-id="171ef-119">**Sku**: Specifies hello stockkeeping unit (SKU) toouse from hello selected offering (for example, *JDK_8*).</span></span>
 
-      * <span data-ttu-id="a7628-120">**Verze #**: Určuje, kterou verzi vybrané SKU používat.</span><span class="sxs-lookup"><span data-stu-id="a7628-120">**Version #**: Specifies which version of the selected SKU to use.</span></span>
+      * <span data-ttu-id="171ef-120">**Verze #**: Určuje, která verze hello vybrané SKU toouse.</span><span class="sxs-lookup"><span data-stu-id="171ef-120">**Version #**: Specifies which version of hello selected SKU toouse.</span></span>
 
-   ![Vyberte okno bitovou kopii virtuálního počítače][CR03]
+   ![Hello vyberte časové období bitovou kopii virtuálního počítače][CR03]
 
-5. <span data-ttu-id="a7628-122">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="a7628-122">Click **Next**.</span></span> 
+5. <span data-ttu-id="171ef-122">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="171ef-122">Click **Next**.</span></span> 
 
-6. <span data-ttu-id="a7628-123">V **základní nastavení virtuálního počítače** okno, zadejte následující informace:</span><span class="sxs-lookup"><span data-stu-id="a7628-123">In the **Virtual Machine Basic Settings** window, enter the following information:</span></span>
+6. <span data-ttu-id="171ef-123">V hello **základní nastavení virtuálního počítače** okno, zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="171ef-123">In hello **Virtual Machine Basic Settings** window, enter hello following information:</span></span>
 
-   * <span data-ttu-id="a7628-124">**Název virtuálního počítače**: Určuje název pro nový virtuální počítač, který musí začínat písmenem a obsahovat pouze písmena, číslice a pomlčky.</span><span class="sxs-lookup"><span data-stu-id="a7628-124">**Virtual machine name**: Specifies the name for your new virtual machine, which must start with a letter and contain only letters, numbers, and hyphens.</span></span>
+   * <span data-ttu-id="171ef-124">**Název virtuálního počítače**: Určuje hello název pro nový virtuální počítač, který musí začínat písmenem a obsahovat pouze písmena, číslice a pomlčky.</span><span class="sxs-lookup"><span data-stu-id="171ef-124">**Virtual machine name**: Specifies hello name for your new virtual machine, which must start with a letter and contain only letters, numbers, and hyphens.</span></span>
 
-   * <span data-ttu-id="a7628-125">**Velikost**: Určuje počet jader a paměti k přidělení pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="a7628-125">**Size**: Specifies the number of cores and memory to allocate for your virtual machine.</span></span>
+   * <span data-ttu-id="171ef-125">**Velikost**: Určuje hello počet jader a paměti tooallocate pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="171ef-125">**Size**: Specifies hello number of cores and memory tooallocate for your virtual machine.</span></span>
 
-   * <span data-ttu-id="a7628-126">**Uživatelské jméno**: Určuje účet správce, který chcete vytvořit pro virtuální počítač pod správou.</span><span class="sxs-lookup"><span data-stu-id="a7628-126">**User name**: Specifies the administrator account to create for managing your virtual machine.</span></span>
+   * <span data-ttu-id="171ef-126">**Uživatelské jméno**: Určuje hello správce účtu toocreate pro virtuální počítač pod správou.</span><span class="sxs-lookup"><span data-stu-id="171ef-126">**User name**: Specifies hello administrator account toocreate for managing your virtual machine.</span></span>
 
-   * <span data-ttu-id="a7628-127">**Heslo** a **potvrdit**: Určuje heslo pro účet správce.</span><span class="sxs-lookup"><span data-stu-id="a7628-127">**Password** and **Confirm**: Specifies the password for your administrator account.</span></span>
+   * <span data-ttu-id="171ef-127">**Heslo** a **potvrdit**: Určuje hello heslo pro účet správce.</span><span class="sxs-lookup"><span data-stu-id="171ef-127">**Password** and **Confirm**: Specifies hello password for your administrator account.</span></span>
 
-   ![Okno základní nastavení virtuálního počítače][CR04]
+   ![okno Hello základní nastavení virtuálního počítače][CR04]
 
-7. <span data-ttu-id="a7628-129">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="a7628-129">Click **Next**.</span></span> 
+7. <span data-ttu-id="171ef-129">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="171ef-129">Click **Next**.</span></span> 
 
-8. <span data-ttu-id="a7628-130">V **související prostředky** okno, zadejte následující informace:</span><span class="sxs-lookup"><span data-stu-id="a7628-130">In the **Associated Resources** window, enter the following information:</span></span>
+8. <span data-ttu-id="171ef-130">V hello **související prostředky** okno, zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="171ef-130">In hello **Associated Resources** window, enter hello following information:</span></span>
 
-   * <span data-ttu-id="a7628-131">**Skupina prostředků**: Určuje skupinu prostředků pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="a7628-131">**Resource group**: Specifies the resource group for your virtual machine.</span></span> <span data-ttu-id="a7628-132">Vyberte jednu z následujících možností:</span><span class="sxs-lookup"><span data-stu-id="a7628-132">Select one of the following options:</span></span>
-      * <span data-ttu-id="a7628-133">**Vytvořit nový**: Určuje, že chcete vytvořit novou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="a7628-133">**Create new**: Specifies that you want to create a new resource group.</span></span>
-      * <span data-ttu-id="a7628-134">**Použít existující**: Určuje, zda chcete vybrat ze seznamu skupin prostředků, které jsou spojeny s vaším účtem Azure.</span><span class="sxs-lookup"><span data-stu-id="a7628-134">**Use existing**: Specifies that you want to select from a list of resource groups that are associated with your Azure account.</span></span>
+   * <span data-ttu-id="171ef-131">**Skupina prostředků**: Určuje hello skupinu prostředků pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="171ef-131">**Resource group**: Specifies hello resource group for your virtual machine.</span></span> <span data-ttu-id="171ef-132">Vyberte jednu z hello následující možnosti:</span><span class="sxs-lookup"><span data-stu-id="171ef-132">Select one of hello following options:</span></span>
+      * <span data-ttu-id="171ef-133">**Vytvořit nový**: Určuje, že chcete toocreate novou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="171ef-133">**Create new**: Specifies that you want toocreate a new resource group.</span></span>
+      * <span data-ttu-id="171ef-134">**Použít existující**: Určuje, že chcete tooselect ze seznamu skupin prostředků, které jsou spojeny s vaším účtem Azure.</span><span class="sxs-lookup"><span data-stu-id="171ef-134">**Use existing**: Specifies that you want tooselect from a list of resource groups that are associated with your Azure account.</span></span>
 
-       ![Okna přidružené prostředky][CR07]
+       ![okna přidružené prostředky Hello][CR07]
 
-   * <span data-ttu-id="a7628-136">**Účet úložiště**: Určuje účet úložiště, který chcete použít pro virtuální počítač uložen.</span><span class="sxs-lookup"><span data-stu-id="a7628-136">**Storage account**: Specifies the storage account to use for storing your virtual machine.</span></span> <span data-ttu-id="a7628-137">Můžete vybrat existující účet úložiště nebo vytvořit nový účet.</span><span class="sxs-lookup"><span data-stu-id="a7628-137">You can choose an existing storage account or create a new account.</span></span> <span data-ttu-id="a7628-138">Pokud se rozhodnete **vytvořit nový**, zobrazí se dialogové okno následující:</span><span class="sxs-lookup"><span data-stu-id="a7628-138">If you choose **Create New**, the following dialog box appears:</span></span>
+   * <span data-ttu-id="171ef-136">**Účet úložiště**: Určuje toouse účet hello úložiště pro uložení virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="171ef-136">**Storage account**: Specifies hello storage account toouse for storing your virtual machine.</span></span> <span data-ttu-id="171ef-137">Můžete vybrat existující účet úložiště nebo vytvořit nový účet.</span><span class="sxs-lookup"><span data-stu-id="171ef-137">You can choose an existing storage account or create a new account.</span></span> <span data-ttu-id="171ef-138">Pokud se rozhodnete **vytvořit nový**, zobrazí se následující dialogové okno hello:</span><span class="sxs-lookup"><span data-stu-id="171ef-138">If you choose **Create New**, hello following dialog box appears:</span></span>
 
-      ![Dialogové okno Vytvořit účet úložiště][CR05]
+      ![Dialogové okno Vytvořit účet úložiště Hello][CR05]
 
-   * <span data-ttu-id="a7628-140">**Virtuální síť** a **podsíť**: Určuje virtuální síť a podsíť, kterému se bude připojovat virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="a7628-140">**Virtual Network** and **Subnet**: Specifies the virtual network and subnet that your virtual machine will connect to.</span></span> <span data-ttu-id="a7628-141">Můžete použít existující síť a podsíť, nebo můžete vytvořit nové sítě a podsítě.</span><span class="sxs-lookup"><span data-stu-id="a7628-141">You can use an existing network and subnet, or you can create a new network and subnet.</span></span> <span data-ttu-id="a7628-142">Pokud vyberete **vytvořit nový**, zobrazí se dialogové okno následující:</span><span class="sxs-lookup"><span data-stu-id="a7628-142">If you select **Create new**, the following dialog box appears:</span></span>
+   * <span data-ttu-id="171ef-140">**Virtuální síť** a **podsíť**: Určuje hello virtuální síť a podsíť, kterému se bude připojovat virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="171ef-140">**Virtual Network** and **Subnet**: Specifies hello virtual network and subnet that your virtual machine will connect to.</span></span> <span data-ttu-id="171ef-141">Můžete použít existující síť a podsíť, nebo můžete vytvořit nové sítě a podsítě.</span><span class="sxs-lookup"><span data-stu-id="171ef-141">You can use an existing network and subnet, or you can create a new network and subnet.</span></span> <span data-ttu-id="171ef-142">Pokud vyberete **vytvořit nový**, zobrazí se následující dialogové okno hello:</span><span class="sxs-lookup"><span data-stu-id="171ef-142">If you select **Create new**, hello following dialog box appears:</span></span>
 
-      ![Dialogové okno vytvořit virtuální síť][CR06]
+      ![Dialogové okno vytvořit virtuální síť Hello][CR06]
 
-   * <span data-ttu-id="a7628-144">**Veřejná IP adresa**: Určuje externí IP adresu pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="a7628-144">**Public IP address**: Specifies an external-facing IP address for your virtual machine.</span></span> <span data-ttu-id="a7628-145">Můžete vytvořit novou IP adresu nebo, pokud virtuální počítač nebude mít veřejnou IP adresu, můžete si vybrat **(None)**.</span><span class="sxs-lookup"><span data-stu-id="a7628-145">You can choose to create a new IP address or, if your virtual machine will not have a public IP address, you can select **(None)**.</span></span> 
+   * <span data-ttu-id="171ef-144">**Veřejná IP adresa**: Určuje externí IP adresu pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="171ef-144">**Public IP address**: Specifies an external-facing IP address for your virtual machine.</span></span> <span data-ttu-id="171ef-145">Můžete toocreate novou IP adresu nebo, pokud virtuální počítač nebude mít veřejnou IP adresu, můžete si vybrat **(None)**.</span><span class="sxs-lookup"><span data-stu-id="171ef-145">You can choose toocreate a new IP address or, if your virtual machine will not have a public IP address, you can select **(None)**.</span></span> 
 
-   * <span data-ttu-id="a7628-146">**Skupina zabezpečení sítě**: Určuje volitelné síťové brány firewall pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="a7628-146">**Network security group**: Specifies an optional networking firewall for your virtual machine.</span></span> <span data-ttu-id="a7628-147">Můžete vybrat existující bránu firewall, nebo pokud virtuální počítač nebude používat síťovou bránu firewall, můžete vybrat **(None)**.</span><span class="sxs-lookup"><span data-stu-id="a7628-147">You can select an existing firewall or, if your virtual machine will not use a network firewall, you can select **(None)**.</span></span> 
+   * <span data-ttu-id="171ef-146">**Skupina zabezpečení sítě**: Určuje volitelné síťové brány firewall pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="171ef-146">**Network security group**: Specifies an optional networking firewall for your virtual machine.</span></span> <span data-ttu-id="171ef-147">Můžete vybrat existující bránu firewall, nebo pokud virtuální počítač nebude používat síťovou bránu firewall, můžete vybrat **(None)**.</span><span class="sxs-lookup"><span data-stu-id="171ef-147">You can select an existing firewall or, if your virtual machine will not use a network firewall, you can select **(None)**.</span></span> 
 
-   * <span data-ttu-id="a7628-148">**Skupina dostupnosti**: Určuje, že virtuální počítač může patřit do sadu volitelné dostupnosti.</span><span class="sxs-lookup"><span data-stu-id="a7628-148">**Availability set**: Specifies an optional availability set that your virtual machine can belong to.</span></span> <span data-ttu-id="a7628-149">Můžete vybrat existující sadu dostupnosti, vytvořit novou skupinu dostupnosti nebo, pokud nebude virtuální počítač patří do skupiny dostupnosti, vyberte **(None)**.</span><span class="sxs-lookup"><span data-stu-id="a7628-149">You can select an existing availability set, create a new availability set or, if your virtual machine will not belong to an availability set, select **(None)**.</span></span>
+   * <span data-ttu-id="171ef-148">**Skupina dostupnosti**: Určuje, že virtuální počítač může patřit do sadu volitelné dostupnosti.</span><span class="sxs-lookup"><span data-stu-id="171ef-148">**Availability set**: Specifies an optional availability set that your virtual machine can belong to.</span></span> <span data-ttu-id="171ef-149">Můžete vybrat existující sadu dostupnosti, vytvořte novou skupinu dostupnosti nebo, pokud virtuální počítač nebude patří tooan nastavení dostupnosti, vyberte **(None)**.</span><span class="sxs-lookup"><span data-stu-id="171ef-149">You can select an existing availability set, create a new availability set or, if your virtual machine will not belong tooan availability set, select **(None)**.</span></span>
 
-9. <span data-ttu-id="a7628-150">Klikněte na **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="a7628-150">Click **Finish**.</span></span>  
-    <span data-ttu-id="a7628-151">Nový virtuální počítač se zobrazí v okně nástroje Průzkumník Azure.</span><span class="sxs-lookup"><span data-stu-id="a7628-151">Your new virtual machine appears in the Azure Explorer tool window.</span></span> 
+9. <span data-ttu-id="171ef-150">Klikněte na **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="171ef-150">Click **Finish**.</span></span>  
+    <span data-ttu-id="171ef-151">Nový virtuální počítač se zobrazí v okně nástroje Azure Exploreru hello.</span><span class="sxs-lookup"><span data-stu-id="171ef-151">Your new virtual machine appears in hello Azure Explorer tool window.</span></span> 
 
-   ![Nový virtuální počítač v zobrazení Průzkumník Azure][CR08]
+   ![Nový virtuální počítač v hello Průzkumník Azure][CR08]
 
-## <a name="restart-a-virtual-machine-in-intellij"></a><span data-ttu-id="a7628-153">Restartování virtuálního počítače v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="a7628-153">Restart a virtual machine in IntelliJ</span></span>
+## <a name="restart-a-virtual-machine-in-intellij"></a><span data-ttu-id="171ef-153">Restartování virtuálního počítače v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="171ef-153">Restart a virtual machine in IntelliJ</span></span>
 
-<span data-ttu-id="a7628-154">K restartování virtuálního počítače pomocí Průzkumníku Azure v IntelliJ, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="a7628-154">To restart a virtual machine by using the Azure Explorer in IntelliJ, do the following:</span></span>
+<span data-ttu-id="171ef-154">virtuální počítač pomocí hello Průzkumník Azure v IntelliJ, toorestart hello následující:</span><span class="sxs-lookup"><span data-stu-id="171ef-154">toorestart a virtual machine by using hello Azure Explorer in IntelliJ, do hello following:</span></span>
 
-1. <span data-ttu-id="a7628-155">V **Azure Explorer** zobrazení, klikněte pravým tlačítkem na virtuální počítač a pak vyberte **restartujte**.</span><span class="sxs-lookup"><span data-stu-id="a7628-155">In the **Azure Explorer** view, right-click the virtual machine, and then select **Restart**.</span></span>
+1. <span data-ttu-id="171ef-155">V hello **Azure Explorer** zobrazení, klikněte pravým tlačítkem na hello virtuálního počítače a pak vyberte **restartujte**.</span><span class="sxs-lookup"><span data-stu-id="171ef-155">In hello **Azure Explorer** view, right-click hello virtual machine, and then select **Restart**.</span></span>
 
-   ![Příkaz restartovat virtuální počítač][RE01]
+   ![příkaz restartovat virtuální počítač Hello][RE01]
 
-2. <span data-ttu-id="a7628-157">V okně potvrzení klikněte na **Ano**.</span><span class="sxs-lookup"><span data-stu-id="a7628-157">In the confirmation window, click **Yes**.</span></span> 
+2. <span data-ttu-id="171ef-157">V okně potvrzení hello klikněte **Ano**.</span><span class="sxs-lookup"><span data-stu-id="171ef-157">In hello confirmation window, click **Yes**.</span></span> 
 
-   ![Okno pro potvrzení restartování virtuálního počítače][RE02]
+   ![Hello restartovat virtuální počítač potvrzovacím okně][RE02]
 
-## <a name="shut-down-a-virtual-machine-in-intellij"></a><span data-ttu-id="a7628-159">Vypnout virtuální počítač v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="a7628-159">Shut down a virtual machine in IntelliJ</span></span>
+## <a name="shut-down-a-virtual-machine-in-intellij"></a><span data-ttu-id="171ef-159">Vypnout virtuální počítač v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="171ef-159">Shut down a virtual machine in IntelliJ</span></span>
 
-<span data-ttu-id="a7628-160">Vypnout spuštěného virtuálního počítače pomocí Průzkumníku Azure v IntelliJ, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="a7628-160">To shut down a running virtual machine by using the Azure Explorer in IntelliJ, do the following:</span></span>
+<span data-ttu-id="171ef-160">tooshut dolů spuštěného virtuálního počítače pomocí hello Průzkumník Azure v IntelliJ, hello následující:</span><span class="sxs-lookup"><span data-stu-id="171ef-160">tooshut down a running virtual machine by using hello Azure Explorer in IntelliJ, do hello following:</span></span>
 
-1. <span data-ttu-id="a7628-161">V **Azure Explorer** zobrazení, klikněte pravým tlačítkem na virtuální počítač a pak vyberte **vypnutí**.</span><span class="sxs-lookup"><span data-stu-id="a7628-161">In the **Azure Explorer** view, right-click the virtual machine, and then select **Shutdown**.</span></span>
+1. <span data-ttu-id="171ef-161">V hello **Azure Explorer** zobrazení, klikněte pravým tlačítkem na hello virtuálního počítače a pak vyberte **vypnutí**.</span><span class="sxs-lookup"><span data-stu-id="171ef-161">In hello **Azure Explorer** view, right-click hello virtual machine, and then select **Shutdown**.</span></span>
 
-   ![Příkaz pro vypnutí virtuálního počítače][SH01]
+   ![příkaz pro vypnutí virtuálního počítače Hello][SH01]
 
-2. <span data-ttu-id="a7628-163">V okně potvrzení klikněte na **Ano**.</span><span class="sxs-lookup"><span data-stu-id="a7628-163">In the confirmation window, click **Yes**.</span></span> 
+2. <span data-ttu-id="171ef-163">V okně potvrzení hello klikněte **Ano**.</span><span class="sxs-lookup"><span data-stu-id="171ef-163">In hello confirmation window, click **Yes**.</span></span> 
 
-   ![Vypnutí virtuálního počítače potvrzovacím okně][SH02]
+   ![Vypněte virtuální počítač potvrzovacím okně Hello][SH02]
 
-## <a name="delete-a-virtual-machine-in-intellij"></a><span data-ttu-id="a7628-165">Odstranění virtuálního počítače v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="a7628-165">Delete a virtual machine in IntelliJ</span></span>
+## <a name="delete-a-virtual-machine-in-intellij"></a><span data-ttu-id="171ef-165">Odstranění virtuálního počítače v IntelliJ</span><span class="sxs-lookup"><span data-stu-id="171ef-165">Delete a virtual machine in IntelliJ</span></span>
 
-<span data-ttu-id="a7628-166">Odstranění virtuálního počítače pomocí Průzkumníku Azure v IntelliJ, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="a7628-166">To delete a virtual machine by using the Azure Explorer in IntelliJ, do the following:</span></span>
+<span data-ttu-id="171ef-166">virtuální počítač pomocí hello Průzkumník Azure v IntelliJ, toodelete hello následující:</span><span class="sxs-lookup"><span data-stu-id="171ef-166">toodelete a virtual machine by using hello Azure Explorer in IntelliJ, do hello following:</span></span>
 
-1. <span data-ttu-id="a7628-167">V **Azure Explorer** zobrazení, klikněte pravým tlačítkem na virtuální počítač a pak vyberte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="a7628-167">In the **Azure Explorer** view, right-click the virtual machine, and then select **Delete**.</span></span>
+1. <span data-ttu-id="171ef-167">V hello **Azure Explorer** zobrazení, klikněte pravým tlačítkem na hello virtuálního počítače a pak vyberte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="171ef-167">In hello **Azure Explorer** view, right-click hello virtual machine, and then select **Delete**.</span></span>
 
-   ![Příkaz Delete virtuálního počítače][DE01]
+   ![příkaz Delete Hello virtuálního počítače][DE01]
 
-2. <span data-ttu-id="a7628-169">V okně potvrzení klikněte na **Ano**.</span><span class="sxs-lookup"><span data-stu-id="a7628-169">In the confirmation window, click **Yes**.</span></span> 
+2. <span data-ttu-id="171ef-169">V okně potvrzení hello klikněte **Ano**.</span><span class="sxs-lookup"><span data-stu-id="171ef-169">In hello confirmation window, click **Yes**.</span></span> 
 
-   ![Okno pro potvrzení odstranění virtuálního počítače][DE02]
+   ![Hello odstranit okno pro potvrzení virtuálního počítače][DE02]
 
-## <a name="next-steps"></a><span data-ttu-id="a7628-171">Další kroky</span><span class="sxs-lookup"><span data-stu-id="a7628-171">Next steps</span></span>
-<span data-ttu-id="a7628-172">Další informace o Azure velikostí virtuálních počítačů a cenách najdete v následujících zdrojích informací:</span><span class="sxs-lookup"><span data-stu-id="a7628-172">For more information about Azure virtual-machine sizes and pricing, see the following resources:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="171ef-171">Další kroky</span><span class="sxs-lookup"><span data-stu-id="171ef-171">Next steps</span></span>
+<span data-ttu-id="171ef-172">Další informace o Azure velikosti virtuálního počítače a cenách najdete v tématu hello následující prostředky:</span><span class="sxs-lookup"><span data-stu-id="171ef-172">For more information about Azure virtual-machine sizes and pricing, see hello following resources:</span></span>
 
-* <span data-ttu-id="a7628-173">Azure velikostí virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="a7628-173">Azure virtual-machine sizes</span></span>
-  * <span data-ttu-id="a7628-174">[Velikosti pro virtuální počítače s Windows v Azure]</span><span class="sxs-lookup"><span data-stu-id="a7628-174">[Sizes for Windows virtual machines in Azure]</span></span>
-  * <span data-ttu-id="a7628-175">[Velikosti pro virtuální počítače s Linuxem v Azure]</span><span class="sxs-lookup"><span data-stu-id="a7628-175">[Sizes for Linux virtual machines in Azure]</span></span>
-* <span data-ttu-id="a7628-176">Azure virtual Machines – ceny</span><span class="sxs-lookup"><span data-stu-id="a7628-176">Azure virtual-machine pricing</span></span>
-  * <span data-ttu-id="a7628-177">[Ceny virtuálního počítače Windows]</span><span class="sxs-lookup"><span data-stu-id="a7628-177">[Windows virtual-machine pricing]</span></span>
-  * <span data-ttu-id="a7628-178">[Virtuální počítače Linux – ceny]</span><span class="sxs-lookup"><span data-stu-id="a7628-178">[Linux virtual-machine pricing]</span></span>
+* <span data-ttu-id="171ef-173">Azure velikostí virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="171ef-173">Azure virtual-machine sizes</span></span>
+  * <span data-ttu-id="171ef-174">[Velikosti pro virtuální počítače s Windows v Azure]</span><span class="sxs-lookup"><span data-stu-id="171ef-174">[Sizes for Windows virtual machines in Azure]</span></span>
+  * <span data-ttu-id="171ef-175">[Velikosti pro virtuální počítače s Linuxem v Azure]</span><span class="sxs-lookup"><span data-stu-id="171ef-175">[Sizes for Linux virtual machines in Azure]</span></span>
+* <span data-ttu-id="171ef-176">Azure virtual Machines – ceny</span><span class="sxs-lookup"><span data-stu-id="171ef-176">Azure virtual-machine pricing</span></span>
+  * <span data-ttu-id="171ef-177">[Ceny virtuálního počítače Windows]</span><span class="sxs-lookup"><span data-stu-id="171ef-177">[Windows virtual-machine pricing]</span></span>
+  * <span data-ttu-id="171ef-178">[Virtuální počítače Linux – ceny]</span><span class="sxs-lookup"><span data-stu-id="171ef-178">[Linux virtual-machine pricing]</span></span>
 
-<span data-ttu-id="a7628-179">Další informace o sadách Azure pro integrovaného vývojového prostředí Java najdete v následujících zdrojích informací:</span><span class="sxs-lookup"><span data-stu-id="a7628-179">For more information about the Azure Toolkits for Java IDEs, see the following resources:</span></span>
+<span data-ttu-id="171ef-179">Další informace o hello sadách Azure pro integrovaného vývojového prostředí Java najdete v tématu hello následující prostředky:</span><span class="sxs-lookup"><span data-stu-id="171ef-179">For more information about hello Azure Toolkits for Java IDEs, see hello following resources:</span></span>
 
-* <span data-ttu-id="a7628-180">[Azure nástrojů pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="a7628-180">[Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="a7628-181">[Co je nového v sadě nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="a7628-181">[What's new in the Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="a7628-182">[Instalace sady Azure Toolkit pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="a7628-182">[Installing the Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="a7628-183">[Pokyny přihlášení k Azure nástrojů pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="a7628-183">[Sign-in instructions for the Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="a7628-184">[Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]</span><span class="sxs-lookup"><span data-stu-id="a7628-184">[Create a Hello World web app for Azure in Eclipse]</span></span>
-* <span data-ttu-id="a7628-185">[Sada Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="a7628-185">[Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="a7628-186">[Co je nového v sadě nástrojů Azure pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="a7628-186">[What's new in the Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="a7628-187">[Instalace sady Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="a7628-187">[Installing the Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="a7628-188">[přihlášení pokyny pro Azure Toolkit IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="a7628-188">[Sign-in instructions for the Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="a7628-189">[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="a7628-189">[Create a Hello World web app for Azure in IntelliJ]</span></span>
+* <span data-ttu-id="171ef-180">[Azure nástrojů pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="171ef-180">[Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="171ef-181">[Co je nového v hello nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="171ef-181">[What's new in hello Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="171ef-182">[Instalace hello nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="171ef-182">[Installing hello Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="171ef-183">[Přihlášení pokyny pro hello nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="171ef-183">[Sign-in instructions for hello Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="171ef-184">[Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]</span><span class="sxs-lookup"><span data-stu-id="171ef-184">[Create a Hello World web app for Azure in Eclipse]</span></span>
+* <span data-ttu-id="171ef-185">[Sada Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="171ef-185">[Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="171ef-186">[Co je nového v hello nástrojů Azure pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="171ef-186">[What's new in hello Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="171ef-187">[Instalace hello Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="171ef-187">[Installing hello Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="171ef-188">[přihlášení pokyny pro hello Azure Toolkit IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="171ef-188">[Sign-in instructions for hello Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="171ef-189">[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="171ef-189">[Create a Hello World web app for Azure in IntelliJ]</span></span>
 
-<span data-ttu-id="a7628-190">Další informace o používání Azure s Java najdete v tématu [Azure střediska pro vývojáře Java] a [Java nástrojů pro Visual Studio Team Services].</span><span class="sxs-lookup"><span data-stu-id="a7628-190">For more information about using Azure with Java, see [Azure Java Developer Center] and [Java Tools for Visual Studio Team Services].</span></span>
+<span data-ttu-id="171ef-190">Další informace o používání Azure s Java najdete v tématu [Azure střediska pro vývojáře Java] a [Java nástrojů pro Visual Studio Team Services].</span><span class="sxs-lookup"><span data-stu-id="171ef-190">For more information about using Azure with Java, see [Azure Java Developer Center] and [Java Tools for Visual Studio Team Services].</span></span>
 
 <!-- URL List -->
 
-<span data-ttu-id="a7628-191">[Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse.md</span><span class="sxs-lookup"><span data-stu-id="a7628-191">[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md</span></span>
-<span data-ttu-id="a7628-192">[Sada Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij.md</span><span class="sxs-lookup"><span data-stu-id="a7628-192">[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md</span></span>
-<span data-ttu-id="a7628-193">[Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md</span><span class="sxs-lookup"><span data-stu-id="a7628-193">[Create a Hello World web app for Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md</span></span>
-<span data-ttu-id="a7628-194">[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md</span><span class="sxs-lookup"><span data-stu-id="a7628-194">[Create a Hello World web app for Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md</span></span>
-<span data-ttu-id="a7628-195">[Instalace sady Azure Toolkit pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md</span><span class="sxs-lookup"><span data-stu-id="a7628-195">[Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md</span></span>
-<span data-ttu-id="a7628-196">[Instalace sady Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-installation.md</span><span class="sxs-lookup"><span data-stu-id="a7628-196">[Installing the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md</span></span>
-<span data-ttu-id="a7628-197">[Pokyny přihlášení k Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md</span><span class="sxs-lookup"><span data-stu-id="a7628-197">[Sign-in instructions for the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md</span></span>
-<span data-ttu-id="a7628-198">[přihlášení pokyny pro Azure Toolkit IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md</span><span class="sxs-lookup"><span data-stu-id="a7628-198">[Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md</span></span>
-<span data-ttu-id="a7628-199">[Co je nového v sadě nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md</span><span class="sxs-lookup"><span data-stu-id="a7628-199">[What's new in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md</span></span>
-<span data-ttu-id="a7628-200">[Co je nového v sadě nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md</span><span class="sxs-lookup"><span data-stu-id="a7628-200">[What's new in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md</span></span>
+[Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse.md
+[Sada Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij.md
+[Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Instalace hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Instalace hello Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Přihlášení pokyny pro hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[přihlášení pokyny pro hello Azure Toolkit IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Co je nového v hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Co je nového v hello nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-<span data-ttu-id="a7628-201">[Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/</span><span class="sxs-lookup"><span data-stu-id="a7628-201">[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/</span></span>
-<span data-ttu-id="a7628-202">[Java nástrojů pro Visual Studio Team Services]: https://java.visualstudio.com/</span><span class="sxs-lookup"><span data-stu-id="a7628-202">[Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/</span></span>
+[Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/
+[Java nástrojů pro Visual Studio Team Services]: https://java.visualstudio.com/
 
-<span data-ttu-id="a7628-203">[Velikosti pro virtuální počítače s Windows v Azure]: /azure/virtual-machines/virtual-machines-windows-sizes</span><span class="sxs-lookup"><span data-stu-id="a7628-203">[Sizes for Windows virtual machines in Azure]: /azure/virtual-machines/virtual-machines-windows-sizes</span></span>
-<span data-ttu-id="a7628-204">[Velikosti pro virtuální počítače s Linuxem v Azure]: /azure/virtual-machines/virtual-machines-linux-sizes</span><span class="sxs-lookup"><span data-stu-id="a7628-204">[Sizes for Linux virtual machines in Azure]: /azure/virtual-machines/virtual-machines-linux-sizes</span></span>
-<span data-ttu-id="a7628-205">[Ceny virtuálního počítače Windows]: /pricing/details/virtual-machines/windows/</span><span class="sxs-lookup"><span data-stu-id="a7628-205">[Windows virtual-machine pricing]: /pricing/details/virtual-machines/windows/</span></span>
-<span data-ttu-id="a7628-206">[Virtuální počítače Linux – ceny]: /pricing/details/virtual-machines/linux/</span><span class="sxs-lookup"><span data-stu-id="a7628-206">[Linux virtual-machine pricing]: /pricing/details/virtual-machines/linux/</span></span>
+[Velikosti pro virtuální počítače s Windows v Azure]: /azure/virtual-machines/virtual-machines-windows-sizes
+[Velikosti pro virtuální počítače s Linuxem v Azure]: /azure/virtual-machines/virtual-machines-linux-sizes
+[Ceny virtuálního počítače Windows]: /pricing/details/virtual-machines/windows/
+[Virtuální počítače Linux – ceny]: /pricing/details/virtual-machines/linux/
 
 
 <!-- IMG List -->

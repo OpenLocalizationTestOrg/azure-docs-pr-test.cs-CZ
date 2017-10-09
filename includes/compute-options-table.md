@@ -1,0 +1,10 @@
+
+| <span data-ttu-id="48174-101">Možnosti služby Compute</span><span class="sxs-lookup"><span data-stu-id="48174-101">Compute Options</span></span> | <span data-ttu-id="48174-102">Cílová skupina</span><span class="sxs-lookup"><span data-stu-id="48174-102">Audience</span></span> |
+| --- | --- |
+| <span data-ttu-id="48174-103">[App Service][lnk_app]</span><span class="sxs-lookup"><span data-stu-id="48174-103">[App Service][lnk_app]</span></span> |<span data-ttu-id="48174-104">Škálovatelné webové aplikace, mobilní aplikace, aplikace API a aplikace logiky pro všechna zařízení</span><span class="sxs-lookup"><span data-stu-id="48174-104">Scalable Web Apps, Mobile Apps, API Apps, and Logic Apps for any device</span></span> |
+| <span data-ttu-id="48174-105">[Cloud Services][lnk_cloud]</span><span class="sxs-lookup"><span data-stu-id="48174-105">[Cloud Services][lnk_cloud]</span></span> |<span data-ttu-id="48174-106">Vysoce dostupné a škálovatelné cloudové n vrstvé aplikace nabízející větší kontrolu nad hello operačního systému</span><span class="sxs-lookup"><span data-stu-id="48174-106">Highly available, scalable n-tier cloud apps with more control of hello OS</span></span> |
+| <span data-ttu-id="48174-107">[Virtual Machines][lnk_vm]</span><span class="sxs-lookup"><span data-stu-id="48174-107">[Virtual Machines][lnk_vm]</span></span> |<span data-ttu-id="48174-108">Přizpůsobené Windows a virtuálních počítačů Linux s úplnou kontrolu nad hello operačního systému</span><span class="sxs-lookup"><span data-stu-id="48174-108">Customized Windows and Linux VMs with complete control of hello OS</span></span> |
+
+[lnk_app]: ../articles/app-service-web/app-service-web-overview.md
+[lnk_vm]:../articles/virtual-machines/windows/overview.md
+[lnk_cloud]: ../articles/cloud-services/cloud-services-choose-me.md

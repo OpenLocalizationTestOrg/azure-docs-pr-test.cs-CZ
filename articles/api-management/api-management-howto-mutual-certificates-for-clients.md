@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení rozhraní API klienta pomocí certifikátu ověřování ve službě API Management - Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak zabezpečit přístup k rozhraní API pomocí klientských certifikátů"
+title: "aaaSecure rozhraní API pomocí ověření klientského certifikátu ve službě API Management - Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toosecure přístup tooAPIs pomocí klientských certifikátů"
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.openlocfilehash: d3d51d0575a6d2dacced931601d48eb1e51a4051
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6ff78bda3d429829da79d0dc4d652f19669cc919
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a><span data-ttu-id="964ad-103">Zabezpečení rozhraní API pomocí klienta pro ověřování pomocí certifikátu ve službě API Management</span><span class="sxs-lookup"><span data-stu-id="964ad-103">How to secure APIs using client certificate authentication in API Management</span></span>
+# <a name="how-toosecure-apis-using-client-certificate-authentication-in-api-management"></a><span data-ttu-id="6f590-103">Jak toosecure rozhraní API pomocí klientských certifikátů ověřování v API Management</span><span class="sxs-lookup"><span data-stu-id="6f590-103">How toosecure APIs using client certificate authentication in API Management</span></span>
 
-<span data-ttu-id="964ad-104">API Management poskytuje schopnost zabezpečit přístup k rozhraní API (tj. klienta k API Management) pomocí klientských certifikátů.</span><span class="sxs-lookup"><span data-stu-id="964ad-104">API Management provides the capability to secure access to APIs (i.e., client to API Management) using client certificates.</span></span> <span data-ttu-id="964ad-105">V současné době můžete zkontrolovat kryptografický otisk certifikátu klienta pro požadovanou hodnotu.</span><span class="sxs-lookup"><span data-stu-id="964ad-105">Currently, you can check the thumbprint of a client certificate against a desired value.</span></span> <span data-ttu-id="964ad-106">Můžete také zkontrolovat kryptografický otisk pro existující certifikátů odeslaných do rozhraní API Management.</span><span class="sxs-lookup"><span data-stu-id="964ad-106">You can also check the thumbprint against existing certificates uploaded to API Management.</span></span>  
+<span data-ttu-id="6f590-104">Služba API Management nabízí hello schopností toosecure přístup tooAPIs (tj, klient tooAPI Management) pomocí klientských certifikátů.</span><span class="sxs-lookup"><span data-stu-id="6f590-104">API Management provides hello capability toosecure access tooAPIs (i.e., client tooAPI Management) using client certificates.</span></span> <span data-ttu-id="6f590-105">V současné době můžete zkontrolovat hello kryptografický otisk certifikátu klienta pro požadovanou hodnotu.</span><span class="sxs-lookup"><span data-stu-id="6f590-105">Currently, you can check hello thumbprint of a client certificate against a desired value.</span></span> <span data-ttu-id="6f590-106">Můžete také zkontrolovat, že kryptografický otisk hello před existující certifikáty načtený tooAPI správy.</span><span class="sxs-lookup"><span data-stu-id="6f590-106">You can also check hello thumbprint against existing certificates uploaded tooAPI Management.</span></span>  
 
-<span data-ttu-id="964ad-107">Informace o zabezpečení přístupu ke službě back endové rozhraní API pomocí klientských certifikátů (tj, rozhraní API správy na back-end) najdete v tématu [jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)</span><span class="sxs-lookup"><span data-stu-id="964ad-107">For information about securing access to the back-end service of an API using client certificates (i.e., API Management to back-end), see [How to secure back-end services using client certificate authentication](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)</span></span>
+<span data-ttu-id="6f590-107">Informace o zabezpečení služby back-end toohello přístup rozhraní API pomocí klientských certifikátů (tj, API Management tooback-end) najdete v tématu [jak toosecure back endové služby pomocí klientského certifikátu ověřování](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)</span><span class="sxs-lookup"><span data-stu-id="6f590-107">For information about securing access toohello back-end service of an API using client certificates (i.e., API Management tooback-end), see [How toosecure back-end services using client certificate authentication](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)</span></span>
 
-## <a name="checking-the-expiration-date"></a><span data-ttu-id="964ad-108">Kontrola datum vypršení platnosti</span><span class="sxs-lookup"><span data-stu-id="964ad-108">Checking the expiration date</span></span>
+## <a name="checking-hello-expiration-date"></a><span data-ttu-id="6f590-108">Kontrola, zda text hello datum vypršení platnosti</span><span class="sxs-lookup"><span data-stu-id="6f590-108">Checking hello expiration date</span></span>
 
-<span data-ttu-id="964ad-109">Níže zásady mohou být konfigurovány ke kontrole, pokud vypršela platnost certifikátu:</span><span class="sxs-lookup"><span data-stu-id="964ad-109">Below policies can be configured to check if the certificate is expired:</span></span>
+<span data-ttu-id="6f590-109">Níže zásad může být nakonfigurované toocheck, pokud vypršela platnost certifikátu hello:</span><span class="sxs-lookup"><span data-stu-id="6f590-109">Below policies can be configured toocheck if hello certificate is expired:</span></span>
 
 ```
 <choose>
@@ -39,9 +39,9 @@ ms.lasthandoff: 07/11/2017
 </choose>
 ```
 
-## <a name="checking-the-issuer-and-subject"></a><span data-ttu-id="964ad-110">Kontrola vystavitele a předmět</span><span class="sxs-lookup"><span data-stu-id="964ad-110">Checking the issuer and subject</span></span>
+## <a name="checking-hello-issuer-and-subject"></a><span data-ttu-id="6f590-110">Kontrola, zda text hello vystavitele a předmět</span><span class="sxs-lookup"><span data-stu-id="6f590-110">Checking hello issuer and subject</span></span>
 
-<span data-ttu-id="964ad-111">Ke kontrole vystavitele a předmět certifikátu klienta lze nakonfigurovat následující zásady:</span><span class="sxs-lookup"><span data-stu-id="964ad-111">Below policies can be configured to check the issuer and subject of a client certificate:</span></span>
+<span data-ttu-id="6f590-111">Níže zásad může být nakonfigurované toocheck hello vystavitele a předmět certifikátu klienta:</span><span class="sxs-lookup"><span data-stu-id="6f590-111">Below policies can be configured toocheck hello issuer and subject of a client certificate:</span></span>
 
 ```
 <choose>
@@ -53,9 +53,9 @@ ms.lasthandoff: 07/11/2017
 </choose>
 ```
 
-## <a name="checking-the-thumbprint"></a><span data-ttu-id="964ad-112">Kontrola kryptografický otisk</span><span class="sxs-lookup"><span data-stu-id="964ad-112">Checking the thumbprint</span></span>
+## <a name="checking-hello-thumbprint"></a><span data-ttu-id="6f590-112">Kontrola, zda text hello kryptografický otisk</span><span class="sxs-lookup"><span data-stu-id="6f590-112">Checking hello thumbprint</span></span>
 
-<span data-ttu-id="964ad-113">Níže zásady můžete nakonfigurovat zkontrolujte kryptografický otisk certifikátu klienta:</span><span class="sxs-lookup"><span data-stu-id="964ad-113">Below policies can be configured to check the thumbprint of a client certificate:</span></span>
+<span data-ttu-id="6f590-113">Níže zásad může být nakonfigurované toocheck hello kryptografický otisk certifikátu klienta:</span><span class="sxs-lookup"><span data-stu-id="6f590-113">Below policies can be configured toocheck hello thumbprint of a client certificate:</span></span>
 
 ```
 <choose>
@@ -67,9 +67,9 @@ ms.lasthandoff: 07/11/2017
 </choose>
 ```
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a><span data-ttu-id="964ad-114">Kontrola kryptografický otisk před certifikáty nahrán do rozhraní API Management</span><span class="sxs-lookup"><span data-stu-id="964ad-114">Checking a thumbprint against certificates uploaded to API Management</span></span>
+## <a name="checking-a-thumbprint-against-certificates-uploaded-tooapi-management"></a><span data-ttu-id="6f590-114">Kontrola kryptografický otisk před certifikáty nahrán tooAPI správy</span><span class="sxs-lookup"><span data-stu-id="6f590-114">Checking a thumbprint against certificates uploaded tooAPI Management</span></span>
 
-<span data-ttu-id="964ad-115">Následující příklad ukazuje, jak zkontrolujte kryptografický otisk certifikátu klienta vůči certifikátů odeslaných do rozhraní API správy:</span><span class="sxs-lookup"><span data-stu-id="964ad-115">The following example shows how to check the thumbprint of a client certificate against certificates uploaded to API Management:</span></span> 
+<span data-ttu-id="6f590-115">Hello následující příklad ukazuje, jak nahrát toocheck hello kryptografický otisk certifikátu klienta před certifikáty tooAPI správy:</span><span class="sxs-lookup"><span data-stu-id="6f590-115">hello following example shows how toocheck hello thumbprint of a client certificate against certificates uploaded tooAPI Management:</span></span> 
 
 ```
 <choose>
@@ -82,8 +82,8 @@ ms.lasthandoff: 07/11/2017
 
 ```
 
-## <a name="next-step"></a><span data-ttu-id="964ad-116">Další krok</span><span class="sxs-lookup"><span data-stu-id="964ad-116">Next step</span></span>
+## <a name="next-step"></a><span data-ttu-id="6f590-116">Další krok</span><span class="sxs-lookup"><span data-stu-id="6f590-116">Next step</span></span>
 
-*  [<span data-ttu-id="964ad-117">Jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu</span><span class="sxs-lookup"><span data-stu-id="964ad-117">How to secure back-end services using client certificate authentication</span></span>](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
-*  [<span data-ttu-id="964ad-118">Postup nahrání certifikátů</span><span class="sxs-lookup"><span data-stu-id="964ad-118">How to upload certificates</span></span>](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
+*  [<span data-ttu-id="6f590-117">Jak toosecure back endové služby pomocí klientského certifikátu ověřování</span><span class="sxs-lookup"><span data-stu-id="6f590-117">How toosecure back-end services using client certificate authentication</span></span>](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
+*  [<span data-ttu-id="6f590-118">Jak tooupload certifikáty</span><span class="sxs-lookup"><span data-stu-id="6f590-118">How tooupload certificates</span></span>](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
 

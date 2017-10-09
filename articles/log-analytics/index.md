@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Log Analytics – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat službu Log Analytics ke shromažďování a analýze dat vygenerovaných prostředky ve vašem cloudovém a místním prostředí bez ohledu na jejich fyzické umístění."
+title: "aaaAzure dokumentace k Log Analytics – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toocollect toouse analýzy protokolů a analýza dat vygenerovaných prostředky ve vašich cloudových a místních prostředích bez ohledu na fyzické umístění."
 services: log-analytics
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 9d5d1ada86a2cb1b6f6f70d9c662708f81b5bcc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48b3c1b28d9e3a9eaed34201d6bae2a6fdea90fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-analytics-documentation"></a>Dokumentace ke službě Log Analytics
 
-Naučte se používat službu Log Analytics, která je součástí sady Operations Management Suite OMS, ke shromažďování a analýze dat vygenerovaných prostředky ve vašem cloudovém a místním prostředí. Kurzy a další dokumentace ukazují, jak získávat informace v reálném čase napříč vašimi úlohami a servery bez ohledu na jejich fyzické umístění.
+Zjistěte, jak toouse analýzy protokolů v hello toocollect Operations Management Suite a analýza dat vygenerovaných prostředky ve vašich cloudových a místních prostředích. Kurzy a další dokumentaci ukazují, jak přehledy v reálném čase tooget napříč servery bez ohledu na fyzické umístění a úloh.
 
 <ul class="panelContent cardsFTitle">
     <li>

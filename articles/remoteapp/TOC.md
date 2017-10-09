@@ -25,15 +25,15 @@
 # Postup
 
 ## [Migrace uživatelských dat ze služby Azure RemoteApp](remoteapp-migrate.md)
-## [Migrace do MyCloudIT](remoteapp-migrate-mycloudit.md)
-## [Migrace na Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
+## [Migrace tooMyCloudIT](remoteapp-migrate-mycloudit.md)
+## [Migrace tooCitrix XenApp Essentials](remoteapp-migrate-citrix.md)
 ## Vytvoření kolekce služby RemoteApp
 ### [Kterou kolekci potřebujete?](remoteapp-collections.md)
 ### [Vytvoření cloudové kolekce](remoteapp-create-cloud-deployment.md)
 ### [Vytvoření hybridní kolekce](remoteapp-create-hybrid-deployment.md)
 ### [Aktualizace kolekce](remoteapp-update.md)
 ### [Vytvoření image služby RemoteApp](remoteapp-imageoptions.md)
-### [Co obsahuje image šablony?](remoteapp-images.md)
+### [Co jsou image šablony hello?](remoteapp-images.md)
 ### [Požadavky image](remoteapp-imagereqs.md)
 ### [Nahrání image](remoteapp-uploadimage.md)
 ### [Vytvoření image z virtuálního počítače Azure](remoteapp-image-on-azurevm.md)
@@ -41,13 +41,13 @@
 ### [Plánování virtuální sítě](remoteapp-planvnet.md)
 ### [Informace o portu a adrese URL](remoteapp-ports.md)
 ### [Ověření virtuální sítě](remoteapp-vnet.md)
-### [Migrace na virtuální síť Azure](remoteapp-migratevnet.md)
+### [Migrace tooan virtuální síť Azure](remoteapp-migratevnet.md)
 ## Publikování aplikací
-### [Jak publikovat aplikaci](remoteapp-publish.md)
+### [Jak toopublish aplikace](remoteapp-publish.md)
 ## Správa uživatelů
-### [Jak přidat uživatele](remoteapp-user.md)
+### [Jak uživatelé tooadd](remoteapp-user.md)
 ### [Konfigurace Active Directory](remoteapp-ad.md)
-### [Změna tenanta Azure AD](remoteapp-changetenant.md)
+### [Změny klienta hello Azure AD](remoteapp-changetenant.md)
 ### [Uživatelské účty Office 365](remoteapp-o365user.md)
 ### [Zabezpečení dat](remoteapp-secureaccess.md)
 ### [Uživatelská data](remoteapp-upd.md)

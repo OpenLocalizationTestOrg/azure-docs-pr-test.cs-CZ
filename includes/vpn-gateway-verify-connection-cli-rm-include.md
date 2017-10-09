@@ -1,0 +1,6 @@
+<span data-ttu-id="ec664-101">Můžete ověřit, že bylo připojení úspěšně pomocí hello [az síťové připojení vpn zobrazit](/cli/azure/network/vpn-connection#show) příkaz.</span><span class="sxs-lookup"><span data-stu-id="ec664-101">You can verify that your connection succeeded by using hello [az network vpn-connection show](/cli/azure/network/vpn-connection#show) command.</span></span> <span data-ttu-id="ec664-102">V příkladu hello. – název ' odkazuje toohello název hello připojení, které chcete tootest.</span><span class="sxs-lookup"><span data-stu-id="ec664-102">In hello example, '--name' refers toohello name of hello connection that you want tootest.</span></span> <span data-ttu-id="ec664-103">Když hello připojení je v procesu hello zavedeno, se zobrazí jeho stav připojení "Připojení".</span><span class="sxs-lookup"><span data-stu-id="ec664-103">When hello connection is in hello process of being established, its connection status shows 'Connecting'.</span></span> <span data-ttu-id="ec664-104">Po navázání připojení hello hello stav změní too'Connected'.</span><span class="sxs-lookup"><span data-stu-id="ec664-104">Once hello connection is established, hello status changes too'Connected'.</span></span>
+
+```azurecli
+az network vpn-connection show --name VNet1toSite2 --resource-group TestRG1
+```
+

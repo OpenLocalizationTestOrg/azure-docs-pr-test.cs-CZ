@@ -1,2 +1,2 @@
 >[!NOTE]
-><span data-ttu-id="91b3a-101">Sada WebJobs SDK zatím nepodporuje .NET Core.</span><span class="sxs-lookup"><span data-stu-id="91b3a-101">The WebJobs SDK does not yet support .NET Core.</span></span>
+><span data-ttu-id="d9a8f-101">Hello WebJobs SDK zatím nepodporuje .NET Core.</span><span class="sxs-lookup"><span data-stu-id="d9a8f-101">hello WebJobs SDK does not yet support .NET Core.</span></span>

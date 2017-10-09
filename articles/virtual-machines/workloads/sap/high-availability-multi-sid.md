@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření konfigurace aplikace SAP více SID v Azure | Microsoft Docs"
-description: "Průvodce konfigurace více SID SAP NetWeaver s vysokou dostupností v systému Windows, virtuální počítače"
+title: "aaaCreate konfigurace aplikace SAP více SID v Azure | Microsoft Docs"
+description: "Průvodce toohigh dostupnosti SAP NetWeaver více SID konfiguraci na virtuálních počítačích s Windows"
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
@@ -17,13 +17,13 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c813329b6fed2a2c23e59f1bdfd2d3babae0e724
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 546d951d1f0861b27639fdab40ebaf0b7f379575
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-sap-netweaver-multi-sid-configuration"></a><span data-ttu-id="123ca-103">Vytvoření konfigurace aplikace SAP NetWeaver více SID</span><span class="sxs-lookup"><span data-stu-id="123ca-103">Create an SAP NetWeaver multi-SID configuration</span></span>
+# <a name="create-an-sap-netweaver-multi-sid-configuration"></a><span data-ttu-id="bcacf-103">Vytvoření konfigurace aplikace SAP NetWeaver více SID</span><span class="sxs-lookup"><span data-stu-id="bcacf-103">Create an SAP NetWeaver multi-SID configuration</span></span>
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -444,93 +444,93 @@ ms.lasthandoff: 08/29/2017
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-<span data-ttu-id="123ca-104">V září 2016 společnost Microsoft vydala funkce, kde můžete spravovat víc virtuálních IP adres pomocí [pro vyrovnávání zatížení Azure interní][load-balancer-multivip-overview].</span><span class="sxs-lookup"><span data-stu-id="123ca-104">In September 2016, Microsoft released a feature where you can manage multiple virtual IP addresses by using an [Azure internal load balancer][load-balancer-multivip-overview].</span></span> <span data-ttu-id="123ca-105">Tato funkce již existuje v Azure externím vyrovnáváním zatížení.</span><span class="sxs-lookup"><span data-stu-id="123ca-105">This functionality already exists in the Azure external load balancer.</span></span>
+<span data-ttu-id="bcacf-104">V září 2016 společnost Microsoft vydala funkce, kde můžete spravovat víc virtuálních IP adres pomocí [pro vyrovnávání zatížení Azure interní][load-balancer-multivip-overview].</span><span class="sxs-lookup"><span data-stu-id="bcacf-104">In September 2016, Microsoft released a feature where you can manage multiple virtual IP addresses by using an [Azure internal load balancer][load-balancer-multivip-overview].</span></span> <span data-ttu-id="bcacf-105">Tato funkce již existuje v hello Azure externím vyrovnáváním zatížení.</span><span class="sxs-lookup"><span data-stu-id="bcacf-105">This functionality already exists in hello Azure external load balancer.</span></span>
 
-<span data-ttu-id="123ca-106">Pokud máte nasazení SAP, jak je uvedeno v, můžete použít interní nástroj pro vytvoření konfigurace clusteru systému Windows pro SAP ASC nebo SCS [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide].</span><span class="sxs-lookup"><span data-stu-id="123ca-106">If you have an SAP deployment, you can use an internal load balancer to create a Windows cluster configuration for SAP ASCS/SCS, as documented in the [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide].</span></span>
+<span data-ttu-id="bcacf-106">Pokud máte nasazení SAP, můžete použít interní služby load vyrovnávání toocreate konfiguraci clusteru systému Windows pro SAP ASC nebo SCS, jak je uvedeno v hello [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows] [ sap-ha-guide].</span><span class="sxs-lookup"><span data-stu-id="bcacf-106">If you have an SAP deployment, you can use an internal load balancer toocreate a Windows cluster configuration for SAP ASCS/SCS, as documented in hello [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide].</span></span>
 
-<span data-ttu-id="123ca-107">Tento článek se zaměřuje na postup přesunutí z jedné instalace ASC nebo SCS ke konfiguraci více SID SAP nainstalováním další instance SAP ASC nebo SCS clusteru do existujícího clusteru Windows Server Failover Clustering (WSFC).</span><span class="sxs-lookup"><span data-stu-id="123ca-107">This article focuses on how to move from a single ASCS/SCS installation to an SAP multi-SID configuration by installing additional SAP ASCS/SCS clustered instances into an existing Windows Server Failover Clustering (WSFC) cluster.</span></span> <span data-ttu-id="123ca-108">Po dokončení tohoto procesu jste nakonfigurovali clusteru více SID služby SAP.</span><span class="sxs-lookup"><span data-stu-id="123ca-108">When this process is completed, you will have configured an SAP multi-SID cluster.</span></span>
+<span data-ttu-id="bcacf-107">Tento článek se zaměřuje na tom, jak toomove z ASC nebo SCS instalace tooan SAP SID více konfigurací jedné nainstalováním dalších SAP ASC nebo SCS Clusterované instance do existujícího clusteru Windows Server Failover Clustering (WSFC).</span><span class="sxs-lookup"><span data-stu-id="bcacf-107">This article focuses on how toomove from a single ASCS/SCS installation tooan SAP multi-SID configuration by installing additional SAP ASCS/SCS clustered instances into an existing Windows Server Failover Clustering (WSFC) cluster.</span></span> <span data-ttu-id="bcacf-108">Po dokončení tohoto procesu jste nakonfigurovali clusteru více SID služby SAP.</span><span class="sxs-lookup"><span data-stu-id="bcacf-108">When this process is completed, you will have configured an SAP multi-SID cluster.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="123ca-109">Tato funkce je k dispozici pouze v modelu nasazení Azure Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="123ca-109">This feature is available only in the Azure Resource Manager deployment model.</span></span>
+> <span data-ttu-id="bcacf-109">Tato funkce je k dispozici pouze v modelu nasazení Azure Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="bcacf-109">This feature is available only in hello Azure Resource Manager deployment model.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="123ca-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="123ca-110">Prerequisites</span></span>
-<span data-ttu-id="123ca-111">Jste již nakonfigurovali cluster služby WSFC, který se používá pro jednu instanci SAP ASC nebo SCS, jak je popsáno v [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows] [ sap-ha-guide] a jak je znázorněno v tomto diagramu.</span><span class="sxs-lookup"><span data-stu-id="123ca-111">You have already configured a WSFC cluster that is used for one SAP ASCS/SCS instance, as discussed in the [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide] and as shown in this diagram.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bcacf-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="bcacf-110">Prerequisites</span></span>
+<span data-ttu-id="bcacf-111">Jste již nakonfigurovali cluster služby WSFC, který se používá pro jednu instanci SAP ASC nebo SCS, jak je popsáno v hello [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows] [ sap-ha-guide] a jak je znázorněno v tomto diagramu.</span><span class="sxs-lookup"><span data-stu-id="bcacf-111">You have already configured a WSFC cluster that is used for one SAP ASCS/SCS instance, as discussed in hello [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide] and as shown in this diagram.</span></span>
 
 ![Instance SAP ASC nebo SCS vysokou dostupnost][sap-ha-guide-figure-6001]
 
-## <a name="target-architecture"></a><span data-ttu-id="123ca-113">Cílová architektura</span><span class="sxs-lookup"><span data-stu-id="123ca-113">Target architecture</span></span>
+## <a name="target-architecture"></a><span data-ttu-id="bcacf-113">Cílová architektura</span><span class="sxs-lookup"><span data-stu-id="bcacf-113">Target architecture</span></span>
 
-<span data-ttu-id="123ca-114">Cílem je nainstalovat více ASC ABAP SAP nebo SAP Java SCS Clusterované instance ve stejném clusteru služby WSFC, jako ilustrované tady:</span><span class="sxs-lookup"><span data-stu-id="123ca-114">The goal is to install multiple SAP ABAP ASCS or SAP Java SCS clustered instances in the same WSFC cluster, as illustrated here:</span></span>
+<span data-ttu-id="bcacf-114">Hello cílem je tooinstall více SAP ABAP ASC nebo SAP Java SCS Clusterované instance v hello stejný cluster služby WSFC, jak je znázorněno zde:</span><span class="sxs-lookup"><span data-stu-id="bcacf-114">hello goal is tooinstall multiple SAP ABAP ASCS or SAP Java SCS clustered instances in hello same WSFC cluster, as illustrated here:</span></span>
 
 ![Více instancí SAP ASC nebo SCS clusteru v Azure][sap-ha-guide-figure-6002]
 
 > [!NOTE]
-><span data-ttu-id="123ca-116">Existuje omezení počtu privátní front-end IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.</span><span class="sxs-lookup"><span data-stu-id="123ca-116">There is a limit to the number of private front-end IPs for each Azure internal load balancer.</span></span>
+><span data-ttu-id="bcacf-116">Existuje limit toohello, počet privátní front-end IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.</span><span class="sxs-lookup"><span data-stu-id="bcacf-116">There is a limit toohello number of private front-end IPs for each Azure internal load balancer.</span></span>
 >
-><span data-ttu-id="123ca-117">Maximální počet instancí SAP ASC nebo SCS do jednoho clusteru služby WSFC se rovná maximální počet privátní front-end IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.</span><span class="sxs-lookup"><span data-stu-id="123ca-117">The maximum number of SAP ASCS/SCS instances in one WSFC cluster is equal to the maximum number of private front-end IPs for each Azure internal load balancer.</span></span>
+><span data-ttu-id="bcacf-117">maximální počet instancí SAP ASC nebo SCS do jednoho clusteru služby WSFC Hello je rovna toohello maximální počet privátní front-end IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.</span><span class="sxs-lookup"><span data-stu-id="bcacf-117">hello maximum number of SAP ASCS/SCS instances in one WSFC cluster is equal toohello maximum number of private front-end IPs for each Azure internal load balancer.</span></span>
 >
 
-<span data-ttu-id="123ca-118">Další informace o omezeních pro vyrovnávání zatížení, najdete v části "privátní front-end IP adresy na nástroj pro vyrovnávání zatížení" v [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].</span><span class="sxs-lookup"><span data-stu-id="123ca-118">For more information about load-balancer limits, see "Private front end IP per load balancer" in [Networking limits: Azure Resource Manager][networking-limits-azure-resource-manager].</span></span>
+<span data-ttu-id="bcacf-118">Další informace o omezeních pro vyrovnávání zatížení, najdete v části "privátní front-end IP adresy na nástroj pro vyrovnávání zatížení" v [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].</span><span class="sxs-lookup"><span data-stu-id="bcacf-118">For more information about load-balancer limits, see "Private front end IP per load balancer" in [Networking limits: Azure Resource Manager][networking-limits-azure-resource-manager].</span></span>
 
-<span data-ttu-id="123ca-119">Dokončení na šířku s dvěma systémy SAP vysoké dostupnosti bude vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="123ca-119">The complete landscape with two high-availability SAP systems would look like this:</span></span>
+<span data-ttu-id="bcacf-119">dokončení na šířku Hello s dvěma systémy SAP vysoké dostupnosti bude vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="bcacf-119">hello complete landscape with two high-availability SAP systems would look like this:</span></span>
 
 ![Nastavení vysoké dostupnosti více SID SAP s dvě systému SAP identifikátorů SID][sap-ha-guide-figure-6003]
 
 > [!IMPORTANT]
-> <span data-ttu-id="123ca-121">Nastavení musí splňovat následující podmínky:</span><span class="sxs-lookup"><span data-stu-id="123ca-121">The setup must meet the following conditions:</span></span>
-> - <span data-ttu-id="123ca-122">Instance SAP ASC nebo SCS musejí sdílet stejný cluster služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="123ca-122">The SAP ASCS/SCS instances must share the same WSFC cluster.</span></span>
-> - <span data-ttu-id="123ca-123">Každý SID databázového systému musí mít svůj vlastní vyhrazený cluster služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="123ca-123">Each DBMS SID must have its own dedicated WSFC cluster.</span></span>
-> - <span data-ttu-id="123ca-124">SAP aplikační servery, které patří do jednoho systému SAP SID musí mít vlastní vyhrazených virtuálních počítačích.</span><span class="sxs-lookup"><span data-stu-id="123ca-124">SAP application servers that belong to one SAP system SID must have their own dedicated VMs.</span></span>
+> <span data-ttu-id="bcacf-121">Instalační program Hello musí splňovat hello následující podmínky:</span><span class="sxs-lookup"><span data-stu-id="bcacf-121">hello setup must meet hello following conditions:</span></span>
+> - <span data-ttu-id="bcacf-122">Hello SAP ASC nebo SCS instance musejí sdílet hello stejný cluster služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="bcacf-122">hello SAP ASCS/SCS instances must share hello same WSFC cluster.</span></span>
+> - <span data-ttu-id="bcacf-123">Každý SID databázového systému musí mít svůj vlastní vyhrazený cluster služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="bcacf-123">Each DBMS SID must have its own dedicated WSFC cluster.</span></span>
+> - <span data-ttu-id="bcacf-124">SAP aplikační servery, které patří systému SAP tooone SID musí mít vlastní vyhrazených virtuálních počítačích.</span><span class="sxs-lookup"><span data-stu-id="bcacf-124">SAP application servers that belong tooone SAP system SID must have their own dedicated VMs.</span></span>
 
 
-## <a name="prepare-the-infrastructure"></a><span data-ttu-id="123ca-125">Příprava infrastruktury</span><span class="sxs-lookup"><span data-stu-id="123ca-125">Prepare the infrastructure</span></span>
-<span data-ttu-id="123ca-126">Příprava infrastruktury, můžete nainstalovat další instance SAP ASC nebo SCS s následujícími parametry:</span><span class="sxs-lookup"><span data-stu-id="123ca-126">To prepare your infrastructure, you can install an additional SAP ASCS/SCS instance with the following parameters:</span></span>
+## <a name="prepare-hello-infrastructure"></a><span data-ttu-id="bcacf-125">Příprava infrastruktury hello</span><span class="sxs-lookup"><span data-stu-id="bcacf-125">Prepare hello infrastructure</span></span>
+<span data-ttu-id="bcacf-126">tooprepare infrastrukturu, můžete nainstalovat další instance SAP ASC nebo SCS s hello následující parametry:</span><span class="sxs-lookup"><span data-stu-id="bcacf-126">tooprepare your infrastructure, you can install an additional SAP ASCS/SCS instance with hello following parameters:</span></span>
 
-| <span data-ttu-id="123ca-127">Název parametru</span><span class="sxs-lookup"><span data-stu-id="123ca-127">Parameter name</span></span> | <span data-ttu-id="123ca-128">Hodnota</span><span class="sxs-lookup"><span data-stu-id="123ca-128">Value</span></span> |
+| <span data-ttu-id="bcacf-127">Název parametru</span><span class="sxs-lookup"><span data-stu-id="bcacf-127">Parameter name</span></span> | <span data-ttu-id="bcacf-128">Hodnota</span><span class="sxs-lookup"><span data-stu-id="bcacf-128">Value</span></span> |
 | --- | --- |
-| <span data-ttu-id="123ca-129">SAP ASC NEBO SCS SID</span><span class="sxs-lookup"><span data-stu-id="123ca-129">SAP ASCS/SCS SID</span></span> |<span data-ttu-id="123ca-130">PR1-lb ASC</span><span class="sxs-lookup"><span data-stu-id="123ca-130">pr1-lb-ascs</span></span> |
-| <span data-ttu-id="123ca-131">Databázového systému SAP interní nástroj pro vyrovnávání zatížení</span><span class="sxs-lookup"><span data-stu-id="123ca-131">SAP DBMS internal load balancer</span></span> | <span data-ttu-id="123ca-132">PR5</span><span class="sxs-lookup"><span data-stu-id="123ca-132">PR5</span></span> |
-| <span data-ttu-id="123ca-133">Název virtuálního hostitele SAP</span><span class="sxs-lookup"><span data-stu-id="123ca-133">SAP virtual host name</span></span> | <span data-ttu-id="123ca-134">pr5. sap cl</span><span class="sxs-lookup"><span data-stu-id="123ca-134">pr5-sap-cl</span></span> |
-| <span data-ttu-id="123ca-135">SAP ASC nebo SCS virtuální hostitele IP adresu (IP adresa služby Vyrovnávání zatížení Další Azure)</span><span class="sxs-lookup"><span data-stu-id="123ca-135">SAP ASCS/SCS virtual host IP address (additional Azure load balancer IP address)</span></span> | <span data-ttu-id="123ca-136">10.0.0.50</span><span class="sxs-lookup"><span data-stu-id="123ca-136">10.0.0.50</span></span> |
-| <span data-ttu-id="123ca-137">Čísla instance SAP ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="123ca-137">SAP ASCS/SCS instance number</span></span> | <span data-ttu-id="123ca-138">50</span><span class="sxs-lookup"><span data-stu-id="123ca-138">50</span></span> |
-| <span data-ttu-id="123ca-139">Port testu ILB pro další instance SAP ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="123ca-139">ILB probe port for additional SAP ASCS/SCS instance</span></span> | <span data-ttu-id="123ca-140">62350</span><span class="sxs-lookup"><span data-stu-id="123ca-140">62350</span></span> |
+| <span data-ttu-id="bcacf-129">SAP ASC NEBO SCS SID</span><span class="sxs-lookup"><span data-stu-id="bcacf-129">SAP ASCS/SCS SID</span></span> |<span data-ttu-id="bcacf-130">PR1-lb ASC</span><span class="sxs-lookup"><span data-stu-id="bcacf-130">pr1-lb-ascs</span></span> |
+| <span data-ttu-id="bcacf-131">Databázového systému SAP interní nástroj pro vyrovnávání zatížení</span><span class="sxs-lookup"><span data-stu-id="bcacf-131">SAP DBMS internal load balancer</span></span> | <span data-ttu-id="bcacf-132">PR5</span><span class="sxs-lookup"><span data-stu-id="bcacf-132">PR5</span></span> |
+| <span data-ttu-id="bcacf-133">Název virtuálního hostitele SAP</span><span class="sxs-lookup"><span data-stu-id="bcacf-133">SAP virtual host name</span></span> | <span data-ttu-id="bcacf-134">pr5. sap cl</span><span class="sxs-lookup"><span data-stu-id="bcacf-134">pr5-sap-cl</span></span> |
+| <span data-ttu-id="bcacf-135">SAP ASC nebo SCS virtuální hostitele IP adresu (IP adresa služby Vyrovnávání zatížení Další Azure)</span><span class="sxs-lookup"><span data-stu-id="bcacf-135">SAP ASCS/SCS virtual host IP address (additional Azure load balancer IP address)</span></span> | <span data-ttu-id="bcacf-136">10.0.0.50</span><span class="sxs-lookup"><span data-stu-id="bcacf-136">10.0.0.50</span></span> |
+| <span data-ttu-id="bcacf-137">Čísla instance SAP ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="bcacf-137">SAP ASCS/SCS instance number</span></span> | <span data-ttu-id="bcacf-138">50</span><span class="sxs-lookup"><span data-stu-id="bcacf-138">50</span></span> |
+| <span data-ttu-id="bcacf-139">Port testu ILB pro další instance SAP ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="bcacf-139">ILB probe port for additional SAP ASCS/SCS instance</span></span> | <span data-ttu-id="bcacf-140">62350</span><span class="sxs-lookup"><span data-stu-id="bcacf-140">62350</span></span> |
 
 > [!NOTE]
-> <span data-ttu-id="123ca-141">Každou IP adresu pro SAP ASC nebo SCS instance clusteru, vyžaduje port jedinečný testu.</span><span class="sxs-lookup"><span data-stu-id="123ca-141">For SAP ASCS/SCS cluster instances, each IP address requires a unique probe port.</span></span> <span data-ttu-id="123ca-142">Například pokud jednu IP adresu na Azure interní nástroj používá port testu 62300, žádné jiné IP adresy na tento nástroj pro vyrovnávání zatížení můžete použít port testu 62300.</span><span class="sxs-lookup"><span data-stu-id="123ca-142">For example, if one IP address on an Azure internal load balancer uses probe port 62300, no other IP address on that load balancer can use probe port 62300.</span></span>
+> <span data-ttu-id="bcacf-141">Každou IP adresu pro SAP ASC nebo SCS instance clusteru, vyžaduje port jedinečný testu.</span><span class="sxs-lookup"><span data-stu-id="bcacf-141">For SAP ASCS/SCS cluster instances, each IP address requires a unique probe port.</span></span> <span data-ttu-id="bcacf-142">Například pokud jednu IP adresu na Azure interní nástroj používá port testu 62300, žádné jiné IP adresy na tento nástroj pro vyrovnávání zatížení můžete použít port testu 62300.</span><span class="sxs-lookup"><span data-stu-id="bcacf-142">For example, if one IP address on an Azure internal load balancer uses probe port 62300, no other IP address on that load balancer can use probe port 62300.</span></span>
 >
-><span data-ttu-id="123ca-143">Pro naše účely protože port testu 62300 je rezervovaná, se používá port testu 62350.</span><span class="sxs-lookup"><span data-stu-id="123ca-143">For our purposes, because probe port 62300 is already reserved, we are using probe port 62350.</span></span>
+><span data-ttu-id="bcacf-143">Pro naše účely protože port testu 62300 je rezervovaná, se používá port testu 62350.</span><span class="sxs-lookup"><span data-stu-id="bcacf-143">For our purposes, because probe port 62300 is already reserved, we are using probe port 62350.</span></span>
 
-<span data-ttu-id="123ca-144">V existujícím clusteru služby WSFC s dvěma uzly můžete nainstalovat další instance SAP ASC nebo SCS:</span><span class="sxs-lookup"><span data-stu-id="123ca-144">You can install additional SAP ASCS/SCS instances in the existing WSFC cluster with two nodes:</span></span>
+<span data-ttu-id="bcacf-144">Můžete nainstalovat další instance SAP ASC nebo SCS v hello existující cluster služby WSFC s dvěma uzly:</span><span class="sxs-lookup"><span data-stu-id="bcacf-144">You can install additional SAP ASCS/SCS instances in hello existing WSFC cluster with two nodes:</span></span>
 
-| <span data-ttu-id="123ca-145">Role virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="123ca-145">Virtual machine role</span></span> | <span data-ttu-id="123ca-146">Název hostitele virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="123ca-146">Virtual machine host name</span></span> | <span data-ttu-id="123ca-147">Statická IP adresa</span><span class="sxs-lookup"><span data-stu-id="123ca-147">Static IP address</span></span> |
+| <span data-ttu-id="bcacf-145">Role virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="bcacf-145">Virtual machine role</span></span> | <span data-ttu-id="bcacf-146">Název hostitele virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="bcacf-146">Virtual machine host name</span></span> | <span data-ttu-id="bcacf-147">Statická IP adresa</span><span class="sxs-lookup"><span data-stu-id="bcacf-147">Static IP address</span></span> |
 | --- | --- | --- |
-| <span data-ttu-id="123ca-148">1. uzel clusteru pro instanci ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="123ca-148">1st cluster node for ASCS/SCS instance</span></span> |<span data-ttu-id="123ca-149">PR1-ASC-0</span><span class="sxs-lookup"><span data-stu-id="123ca-149">pr1-ascs-0</span></span> |<span data-ttu-id="123ca-150">10.0.0.10</span><span class="sxs-lookup"><span data-stu-id="123ca-150">10.0.0.10</span></span> |
-| <span data-ttu-id="123ca-151">2. uzel clusteru pro instanci ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="123ca-151">2nd cluster node for ASCS/SCS instance</span></span> |<span data-ttu-id="123ca-152">PR1-ASC-1</span><span class="sxs-lookup"><span data-stu-id="123ca-152">pr1-ascs-1</span></span> |<span data-ttu-id="123ca-153">10.0.0.9</span><span class="sxs-lookup"><span data-stu-id="123ca-153">10.0.0.9</span></span> |
+| <span data-ttu-id="bcacf-148">1. uzel clusteru pro instanci ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="bcacf-148">1st cluster node for ASCS/SCS instance</span></span> |<span data-ttu-id="bcacf-149">PR1-ASC-0</span><span class="sxs-lookup"><span data-stu-id="bcacf-149">pr1-ascs-0</span></span> |<span data-ttu-id="bcacf-150">10.0.0.10</span><span class="sxs-lookup"><span data-stu-id="bcacf-150">10.0.0.10</span></span> |
+| <span data-ttu-id="bcacf-151">2. uzel clusteru pro instanci ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="bcacf-151">2nd cluster node for ASCS/SCS instance</span></span> |<span data-ttu-id="bcacf-152">PR1-ASC-1</span><span class="sxs-lookup"><span data-stu-id="bcacf-152">pr1-ascs-1</span></span> |<span data-ttu-id="bcacf-153">10.0.0.9</span><span class="sxs-lookup"><span data-stu-id="bcacf-153">10.0.0.9</span></span> |
 
-### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a><span data-ttu-id="123ca-154">Vytvořte název virtuálního hostitele pro skupinu prostředků clusteru SAP ASC nebo SCS na serveru DNS</span><span class="sxs-lookup"><span data-stu-id="123ca-154">Create a virtual host name for the clustered SAP ASCS/SCS instance on the DNS server</span></span>
+### <a name="create-a-virtual-host-name-for-hello-clustered-sap-ascsscs-instance-on-hello-dns-server"></a><span data-ttu-id="bcacf-154">Na serveru DNS hello vytvořte název virtuálního hostitele pro instance SAP ASC nebo SCS hello v clusteru</span><span class="sxs-lookup"><span data-stu-id="bcacf-154">Create a virtual host name for hello clustered SAP ASCS/SCS instance on hello DNS server</span></span>
 
-<span data-ttu-id="123ca-155">Položku DNS pro název virtuálního hostitele instance ASC nebo SCS můžete vytvořit pomocí následujících parametrů:</span><span class="sxs-lookup"><span data-stu-id="123ca-155">You can create a DNS entry for the virtual host name of the ASCS/SCS instance by using the following parameters:</span></span>
+<span data-ttu-id="bcacf-155">Položku DNS pro název virtuálního hostitele hello hello ASC nebo SCS instance můžete vytvořit pomocí hello následující parametry:</span><span class="sxs-lookup"><span data-stu-id="bcacf-155">You can create a DNS entry for hello virtual host name of hello ASCS/SCS instance by using hello following parameters:</span></span>
 
-| <span data-ttu-id="123ca-156">Nový název virtuálního hostitele SAP ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="123ca-156">New SAP ASCS/SCS virtual host name</span></span> | <span data-ttu-id="123ca-157">Přidružené IP adresu</span><span class="sxs-lookup"><span data-stu-id="123ca-157">Associated IP address</span></span> |
+| <span data-ttu-id="bcacf-156">Nový název virtuálního hostitele SAP ASC nebo SCS</span><span class="sxs-lookup"><span data-stu-id="bcacf-156">New SAP ASCS/SCS virtual host name</span></span> | <span data-ttu-id="bcacf-157">Přidružené IP adresu</span><span class="sxs-lookup"><span data-stu-id="bcacf-157">Associated IP address</span></span> |
 | --- | --- | --- |
-|<span data-ttu-id="123ca-158">pr5. sap cl</span><span class="sxs-lookup"><span data-stu-id="123ca-158">pr5-sap-cl</span></span> |<span data-ttu-id="123ca-159">10.0.0.50</span><span class="sxs-lookup"><span data-stu-id="123ca-159">10.0.0.50</span></span> |
+|<span data-ttu-id="bcacf-158">pr5. sap cl</span><span class="sxs-lookup"><span data-stu-id="bcacf-158">pr5-sap-cl</span></span> |<span data-ttu-id="bcacf-159">10.0.0.50</span><span class="sxs-lookup"><span data-stu-id="bcacf-159">10.0.0.50</span></span> |
 
-<span data-ttu-id="123ca-160">Novým názvem hostitele a IP adresa se zobrazí ve Správci DNS, jak je znázorněno na následujícím snímku obrazovky:</span><span class="sxs-lookup"><span data-stu-id="123ca-160">The new host name and IP address are displayed in the DNS Manager, as shown in the following screenshot:</span></span>
+<span data-ttu-id="bcacf-160">Hello novým názvem hostitele a IP adresa se zobrazí v hello Správce DNS, jak ukazuje následující snímek obrazovky hello:</span><span class="sxs-lookup"><span data-stu-id="bcacf-160">hello new host name and IP address are displayed in hello DNS Manager, as shown in hello following screenshot:</span></span>
 
-![Správce DNS seznamu zvýraznění definované položky DNS pro novou SAP ASC nebo SCS clusteru virtuální název a adresu TCP/IP][sap-ha-guide-figure-6004]
+![Správce DNS seznamu zvýraznění hello definované položku DNS pro hello nové SAP ASC nebo SCS virtuální název clusteru a adresa TCP/IP][sap-ha-guide-figure-6004]
 
-<span data-ttu-id="123ca-162">Postup pro vytvoření položky DNS je také popsáno podrobně v hlavní [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-9.1.1].</span><span class="sxs-lookup"><span data-stu-id="123ca-162">The procedure for creating a DNS entry is also described in detail in the main [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-9.1.1].</span></span>
+<span data-ttu-id="bcacf-162">Hello postup pro vytvoření položky DNS je taky podrobně popsaná v v hello hlavní [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-9.1.1].</span><span class="sxs-lookup"><span data-stu-id="bcacf-162">hello procedure for creating a DNS entry is also described in detail in hello main [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-9.1.1].</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="123ca-163">Novou IP adresu, která přiřadíte název virtuálního hostitele další instance ASC nebo SCS musí být stejný jako novou IP adresu, který jste přiřadili ke službě Vyrovnávání zatížení SAP Azure.</span><span class="sxs-lookup"><span data-stu-id="123ca-163">The new IP address that you assign to the virtual host name of the additional ASCS/SCS instance must be the same as the new IP address that you assigned to the SAP Azure load balancer.</span></span>
+> <span data-ttu-id="bcacf-163">Hello novou IP adresu přiřadit název virtuálního hostitele toohello hello další ASC nebo SCS instance musí být hello stejné jako hello novou IP adresu, že jste přiřadili nástroj pro vyrovnávání zatížení toohello SAP Azure.</span><span class="sxs-lookup"><span data-stu-id="bcacf-163">hello new IP address that you assign toohello virtual host name of hello additional ASCS/SCS instance must be hello same as hello new IP address that you assigned toohello SAP Azure load balancer.</span></span>
 >
-><span data-ttu-id="123ca-164">V našem scénáři je IP adresa 10.0.0.50.</span><span class="sxs-lookup"><span data-stu-id="123ca-164">In our scenario, the IP address is 10.0.0.50.</span></span>
+><span data-ttu-id="bcacf-164">V našem scénáři hello IP adresa je 10.0.0.50.</span><span class="sxs-lookup"><span data-stu-id="bcacf-164">In our scenario, hello IP address is 10.0.0.50.</span></span>
 
-### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a><span data-ttu-id="123ca-165">Přidat existující Vyrovnávání zatížení Azure interní IP adresu pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="123ca-165">Add an IP address to an existing Azure internal load balancer by using PowerShell</span></span>
+### <a name="add-an-ip-address-tooan-existing-azure-internal-load-balancer-by-using-powershell"></a><span data-ttu-id="bcacf-165">Přidat IP adresu tooan existující interní pro vyrovnávání zatížení Azure pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="bcacf-165">Add an IP address tooan existing Azure internal load balancer by using PowerShell</span></span>
 
-<span data-ttu-id="123ca-166">Pokud chcete vytvořit více než jedna instance SAP ASC nebo SCS ve stejném clusteru služby WSFC, přidat existující Vyrovnávání zatížení Azure interní IP adresu pomocí prostředí PowerShell.</span><span class="sxs-lookup"><span data-stu-id="123ca-166">To create more than one SAP ASCS/SCS instance in the same WSFC cluster, use PowerShell to add an IP address to an existing Azure internal load balancer.</span></span> <span data-ttu-id="123ca-167">Každou IP adresu vyžaduje vlastní pravidla Vyrovnávání zatížení, port testu, front-end fond IP adres a fond back-end.</span><span class="sxs-lookup"><span data-stu-id="123ca-167">Each IP address requires its own load-balancing rules, probe port, front-end IP pool, and back-end pool.</span></span>
+<span data-ttu-id="bcacf-166">toocreate více než jedna instance SAP ASC nebo SCS v hello stejné služby WSFC clusteru, použijte IP adresu tooan stávající nástroje pro vyrovnávání zatížení Azure interní tooadd prostředí PowerShell.</span><span class="sxs-lookup"><span data-stu-id="bcacf-166">toocreate more than one SAP ASCS/SCS instance in hello same WSFC cluster, use PowerShell tooadd an IP address tooan existing Azure internal load balancer.</span></span> <span data-ttu-id="bcacf-167">Každou IP adresu vyžaduje vlastní pravidla Vyrovnávání zatížení, port testu, front-end fond IP adres a fond back-end.</span><span class="sxs-lookup"><span data-stu-id="bcacf-167">Each IP address requires its own load-balancing rules, probe port, front-end IP pool, and back-end pool.</span></span>
 
-<span data-ttu-id="123ca-168">Následující skript přidá novou IP adresu do existující pro vyrovnávání zatížení.</span><span class="sxs-lookup"><span data-stu-id="123ca-168">The following script adds a new IP address to an existing load balancer.</span></span> <span data-ttu-id="123ca-169">Aktualizujte proměnné prostředí PowerShell pro vaše prostředí.</span><span class="sxs-lookup"><span data-stu-id="123ca-169">Update the PowerShell variables for your environment.</span></span> <span data-ttu-id="123ca-170">Skript se vytvoří všechny potřebné pravidla Vyrovnávání zatížení pro všechny porty SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="123ca-170">The script will create all needed load-balancing rules for all SAP ASCS/SCS ports.</span></span>
+<span data-ttu-id="bcacf-168">Hello následující skript přidá novou IP adresu tooan existující Vyrovnávání zatížení.</span><span class="sxs-lookup"><span data-stu-id="bcacf-168">hello following script adds a new IP address tooan existing load balancer.</span></span> <span data-ttu-id="bcacf-169">Aktualizujte hello proměnné prostředí PowerShell pro vaše prostředí.</span><span class="sxs-lookup"><span data-stu-id="bcacf-169">Update hello PowerShell variables for your environment.</span></span> <span data-ttu-id="bcacf-170">skript Hello vytvoří všechny potřebné pravidla Vyrovnávání zatížení pro všechny porty SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="bcacf-170">hello script will create all needed load-balancing rules for all SAP ASCS/SCS ports.</span></span>
 
 ```powershell
 
@@ -551,7 +551,7 @@ $count = $ILB.FrontendIpConfigurations.Count + 1
 $FrontEndConfigurationName ="lbFrontendASCS$count"
 $LBProbeName = "lbProbeASCS$count"
 
-# Get the Azure VNet and subnet
+# Get hello Azure VNet and subnet
 $VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
 $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
@@ -574,14 +574,14 @@ $BEConfig = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfig
 # Get new updated config
 $ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
-# Assign VM NICs to backend pool
+# Assign VM NICs toobackend pool
 $BEPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
 foreach($VMName in $VMNames){
         $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName
         $NICName = ($VM.NetworkInterfaceIDs[0].Split('/') | select -last 1)        
         $NIC = Get-AzureRmNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName                
         $NIC.IpConfigurations[0].LoadBalancerBackendAddressPools += $BEPool
-        Write-Host "Assigning network card '$NICName' of the '$VMName' VM to the backend pool '$BackEndConfigurationName' ..." -ForegroundColor Green
+        Write-Host "Assigning network card '$NICName' of hello '$VMName' VM toohello backend pool '$BackEndConfigurationName' ..." -ForegroundColor Green
         Set-AzureRmNetworkInterface -NetworkInterface $NIC
         #start-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VM.Name
 }
@@ -594,79 +594,79 @@ $FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfiguration
 $BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
 $HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
-Write-Host "Creating load balancing rules for the ports: '$Ports' ... " -ForegroundColor Green
+Write-Host "Creating load balancing rules for hello ports: '$Ports' ... " -ForegroundColor Green
 
 foreach ($Port in $Ports) {
 
         $LBConfigrulename = "lbrule$Port" + "_$count"
-        Write-Host "Creating load balancing rule '$LBConfigrulename' for the port '$Port' ..." -ForegroundColor Green
+        Write-Host "Creating load balancing rule '$LBConfigrulename' for hello port '$Port' ..." -ForegroundColor Green
 
         $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $HealthProbe -Protocol tcp -FrontendPort  $Port -BackendPort $Port -IdleTimeoutInMinutes 30 -LoadDistribution Default -EnableFloatingIP   
 }
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Succesfully added new IP '$ILBIP' toohello internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
-<span data-ttu-id="123ca-171">Po spuštění skriptu, výsledky se zobrazí na portálu Azure, jak je znázorněno na následujícím snímku obrazovky:</span><span class="sxs-lookup"><span data-stu-id="123ca-171">After the script has run, the results are displayed in the Azure portal, as shown in the following screenshot:</span></span>
+<span data-ttu-id="bcacf-171">Po spuštění skriptu hello, hello hello výsledky jsou zobrazeny v portálu Azure, jak ukazuje následující snímek obrazovky hello:</span><span class="sxs-lookup"><span data-stu-id="bcacf-171">After hello script has run, hello results are displayed in hello Azure portal, as shown in hello following screenshot:</span></span>
 
-![Nový fond IP front-endu na portálu Azure][sap-ha-guide-figure-6005]
+![Nový fond IP front-endu v hello portálu Azure][sap-ha-guide-figure-6005]
 
-### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a><span data-ttu-id="123ca-173">Přidat disky do clusteru počítačů a konfiguraci disku SIOS clusteru sdílené složky</span><span class="sxs-lookup"><span data-stu-id="123ca-173">Add disks to cluster machines, and configure the SIOS cluster share disk</span></span>
+### <a name="add-disks-toocluster-machines-and-configure-hello-sios-cluster-share-disk"></a><span data-ttu-id="bcacf-173">Přidat disky toocluster počítače a nakonfigurovat disk sdílené složky clusteru SIOS hello</span><span class="sxs-lookup"><span data-stu-id="bcacf-173">Add disks toocluster machines, and configure hello SIOS cluster share disk</span></span>
 
-<span data-ttu-id="123ca-174">Musíte přidat nový disk clusteru sdílené složky pro každou další instanci SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="123ca-174">You must add a new cluster share disk for each additional SAP ASCS/SCS instance.</span></span> <span data-ttu-id="123ca-175">Pro Windows Server 2012 R2 je disk sdílené složky clusteru služby WSFC aktuálně používán s DataKeeper softwarové řešení.</span><span class="sxs-lookup"><span data-stu-id="123ca-175">For Windows Server 2012 R2, the WSFC cluster share disk currently in use is the SIOS DataKeeper software solution.</span></span>
+<span data-ttu-id="bcacf-174">Musíte přidat nový disk clusteru sdílené složky pro každou další instanci SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="bcacf-174">You must add a new cluster share disk for each additional SAP ASCS/SCS instance.</span></span> <span data-ttu-id="bcacf-175">Pro Windows Server 2012 R2 je disk sdílené složky clusteru služby WSFC hello aktuálně používán hello s DataKeeper softwarové řešení.</span><span class="sxs-lookup"><span data-stu-id="bcacf-175">For Windows Server 2012 R2, hello WSFC cluster share disk currently in use is hello SIOS DataKeeper software solution.</span></span>
 
-<span data-ttu-id="123ca-176">Udělejte toto:</span><span class="sxs-lookup"><span data-stu-id="123ca-176">Do the following:</span></span>
-1. <span data-ttu-id="123ca-177">Přidat další disk nebo disky stejnou velikost (které je třeba rozkládají) na všech uzlech clusteru a jejich formátování.</span><span class="sxs-lookup"><span data-stu-id="123ca-177">Add an additional disk or disks of the same size (which you need to stripe) to each of the cluster nodes, and format them.</span></span>
-2. <span data-ttu-id="123ca-178">Nakonfigurujte s DataKeeper replikace úložiště.</span><span class="sxs-lookup"><span data-stu-id="123ca-178">Configure storage replication with SIOS DataKeeper.</span></span>
+<span data-ttu-id="bcacf-176">Hello následující:</span><span class="sxs-lookup"><span data-stu-id="bcacf-176">Do hello following:</span></span>
+1. <span data-ttu-id="bcacf-177">Přidat další disk nebo disky hello stejnou velikost (které je třeba toostripe) tooeach hello uzly clusteru a jejich formátování.</span><span class="sxs-lookup"><span data-stu-id="bcacf-177">Add an additional disk or disks of hello same size (which you need toostripe) tooeach of hello cluster nodes, and format them.</span></span>
+2. <span data-ttu-id="bcacf-178">Nakonfigurujte s DataKeeper replikace úložiště.</span><span class="sxs-lookup"><span data-stu-id="bcacf-178">Configure storage replication with SIOS DataKeeper.</span></span>
 
-<span data-ttu-id="123ca-179">Tento postup předpokládá, že jste již nainstalovali s DataKeeper u počítačů clusteru služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="123ca-179">This procedure assumes that you have already installed SIOS DataKeeper on the WSFC cluster machines.</span></span> <span data-ttu-id="123ca-180">Pokud jste ho nainstalovali, musíte teď nakonfigurovat replikace mezi počítači.</span><span class="sxs-lookup"><span data-stu-id="123ca-180">If you have installed it, you must now configure replication between the machines.</span></span> <span data-ttu-id="123ca-181">Proces je podrobně popsány v hlavní [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-8.12.3.3].</span><span class="sxs-lookup"><span data-stu-id="123ca-181">The process is described in detail in the main [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-8.12.3.3].</span></span>  
+<span data-ttu-id="bcacf-179">Tento postup předpokládá, že jste již nainstalovali s DataKeeper u počítačů clusteru služby WSFC hello.</span><span class="sxs-lookup"><span data-stu-id="bcacf-179">This procedure assumes that you have already installed SIOS DataKeeper on hello WSFC cluster machines.</span></span> <span data-ttu-id="bcacf-180">Pokud jste ho nainstalovali, musíte teď nakonfigurovat replikace mezi počítači hello.</span><span class="sxs-lookup"><span data-stu-id="bcacf-180">If you have installed it, you must now configure replication between hello machines.</span></span> <span data-ttu-id="bcacf-181">proces Hello je podrobně popsaná v hello hlavní [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-8.12.3.3].</span><span class="sxs-lookup"><span data-stu-id="bcacf-181">hello process is described in detail in hello main [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-8.12.3.3].</span></span>  
 
-![DataKeeper synchronní zrcadlení pro nové SAP ASC nebo SCS sdílet disk][sap-ha-guide-figure-6006]
+![DataKeeper synchronní zrcadlení pro hello nový disk SAP ASC nebo SCS sdílené složky][sap-ha-guide-figure-6006]
 
-### <a name="deploy-vms-for-sap-application-servers-and-dbms-cluster"></a><span data-ttu-id="123ca-183">Nasazení virtuálních počítačů pro SAP aplikační servery a cluster databázového systému</span><span class="sxs-lookup"><span data-stu-id="123ca-183">Deploy VMs for SAP application servers and DBMS cluster</span></span>
+### <a name="deploy-vms-for-sap-application-servers-and-dbms-cluster"></a><span data-ttu-id="bcacf-183">Nasazení virtuálních počítačů pro SAP aplikační servery a cluster databázového systému</span><span class="sxs-lookup"><span data-stu-id="bcacf-183">Deploy VMs for SAP application servers and DBMS cluster</span></span>
 
-<span data-ttu-id="123ca-184">K dokončení Příprava infrastruktury pro druhý systému SAP, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="123ca-184">To complete the infrastructure preparation for the second SAP system, do the following:</span></span>
+<span data-ttu-id="bcacf-184">Příprava infrastruktury hello toocomplete hello druhý systému SAP, hello následující:</span><span class="sxs-lookup"><span data-stu-id="bcacf-184">toocomplete hello infrastructure preparation for hello second SAP system, do hello following:</span></span>
 
-1. <span data-ttu-id="123ca-185">Nasazení vyhrazených virtuálních počítačích pro SAP aplikační servery a vložte je do své vlastní vyhrazené dostupnosti skupiny.</span><span class="sxs-lookup"><span data-stu-id="123ca-185">Deploy dedicated VMs for SAP application servers and put them in their own dedicated availability group.</span></span>
-2. <span data-ttu-id="123ca-186">Nasazení vyhrazených virtuálních počítačích pro cluster databázového systému a vložte je do své vlastní vyhrazené dostupnosti skupiny.</span><span class="sxs-lookup"><span data-stu-id="123ca-186">Deploy dedicated VMs for DBMS cluster and put them in their own dedicated availability group.</span></span>
+1. <span data-ttu-id="bcacf-185">Nasazení vyhrazených virtuálních počítačích pro SAP aplikační servery a vložte je do své vlastní vyhrazené dostupnosti skupiny.</span><span class="sxs-lookup"><span data-stu-id="bcacf-185">Deploy dedicated VMs for SAP application servers and put them in their own dedicated availability group.</span></span>
+2. <span data-ttu-id="bcacf-186">Nasazení vyhrazených virtuálních počítačích pro cluster databázového systému a vložte je do své vlastní vyhrazené dostupnosti skupiny.</span><span class="sxs-lookup"><span data-stu-id="bcacf-186">Deploy dedicated VMs for DBMS cluster and put them in their own dedicated availability group.</span></span>
 
 
-## <a name="install-the-second-sap-sid2-netweaver-system"></a><span data-ttu-id="123ca-187">Instalace druhé systému SAP SID2 NetWeaver</span><span class="sxs-lookup"><span data-stu-id="123ca-187">Install the second SAP SID2 NetWeaver system</span></span>
+## <a name="install-hello-second-sap-sid2-netweaver-system"></a><span data-ttu-id="bcacf-187">Instalace systému SAP SID2 NetWeaver druhý hello</span><span class="sxs-lookup"><span data-stu-id="bcacf-187">Install hello second SAP SID2 NetWeaver system</span></span>
 
-<span data-ttu-id="123ca-188">Dokončení procesu instalace druhé systému SAP SID2 je popsaný v hlavní [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-9].</span><span class="sxs-lookup"><span data-stu-id="123ca-188">The complete process of installing a second SAP SID2 system is described in the main [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-9].</span></span>
+<span data-ttu-id="bcacf-188">Hello dokončení procesu instalace druhé systému SAP SID2 je popsaná v hello hlavní [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-9].</span><span class="sxs-lookup"><span data-stu-id="bcacf-188">hello complete process of installing a second SAP SID2 system is described in hello main [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-9].</span></span>
 
-<span data-ttu-id="123ca-189">Podrobný postup je následující:</span><span class="sxs-lookup"><span data-stu-id="123ca-189">The high-level procedure is as follows:</span></span>
+<span data-ttu-id="bcacf-189">Hello podrobný postup je následující:</span><span class="sxs-lookup"><span data-stu-id="bcacf-189">hello high-level procedure is as follows:</span></span>
 
-1. <span data-ttu-id="123ca-190">[Instalace prvního uzlu clusteru SAP][sap-ha-guide-9.1.2].</span><span class="sxs-lookup"><span data-stu-id="123ca-190">[Install the SAP first cluster node][sap-ha-guide-9.1.2].</span></span>  
- <span data-ttu-id="123ca-191">V tomto kroku instalujete SAP s vysokou dostupností ASC nebo SCS instancí na **uzlu clusteru služby WSFC existující 1**.</span><span class="sxs-lookup"><span data-stu-id="123ca-191">In this step, you are installing SAP with a high-availability ASCS/SCS instance on the **EXISTING WSFC cluster node 1**.</span></span>
+1. <span data-ttu-id="bcacf-190">[Instalace prvního uzlu clusteru hello SAP][sap-ha-guide-9.1.2].</span><span class="sxs-lookup"><span data-stu-id="bcacf-190">[Install hello SAP first cluster node][sap-ha-guide-9.1.2].</span></span>  
+ <span data-ttu-id="bcacf-191">V tomto kroku instalujete SAP s vysokou dostupností ASC nebo SCS instancí na hello **uzlu clusteru služby WSFC existující 1**.</span><span class="sxs-lookup"><span data-stu-id="bcacf-191">In this step, you are installing SAP with a high-availability ASCS/SCS instance on hello **EXISTING WSFC cluster node 1**.</span></span>
 
-2. <span data-ttu-id="123ca-192">[Upravit profil SAP instance ASC nebo SCS][sap-ha-guide-9.1.3].</span><span class="sxs-lookup"><span data-stu-id="123ca-192">[Modify the SAP profile of the ASCS/SCS instance][sap-ha-guide-9.1.3].</span></span>
+2. <span data-ttu-id="bcacf-192">[Upravit profil SAP hello hello ASC nebo SCS instance][sap-ha-guide-9.1.3].</span><span class="sxs-lookup"><span data-stu-id="bcacf-192">[Modify hello SAP profile of hello ASCS/SCS instance][sap-ha-guide-9.1.3].</span></span>
 
-3. <span data-ttu-id="123ca-193">[Nakonfigurujte port testu][sap-ha-guide-9.1.4].</span><span class="sxs-lookup"><span data-stu-id="123ca-193">[Configure a probe port][sap-ha-guide-9.1.4].</span></span>  
- <span data-ttu-id="123ca-194">V tomto kroku nakonfigurujete prostředek clusteru SAP port testu SAP. SID2 IP pomocí prostředí PowerShell.</span><span class="sxs-lookup"><span data-stu-id="123ca-194">In this step, you are configuring an SAP cluster resource SAP-SID2-IP probe port by using PowerShell.</span></span> <span data-ttu-id="123ca-195">Tuto konfiguraci proveďte v jednom z uzlů clusteru SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="123ca-195">Execute this configuration on one of the SAP ASCS/SCS cluster nodes.</span></span>
+3. <span data-ttu-id="bcacf-193">[Nakonfigurujte port testu][sap-ha-guide-9.1.4].</span><span class="sxs-lookup"><span data-stu-id="bcacf-193">[Configure a probe port][sap-ha-guide-9.1.4].</span></span>  
+ <span data-ttu-id="bcacf-194">V tomto kroku nakonfigurujete prostředek clusteru SAP port testu SAP. SID2 IP pomocí prostředí PowerShell.</span><span class="sxs-lookup"><span data-stu-id="bcacf-194">In this step, you are configuring an SAP cluster resource SAP-SID2-IP probe port by using PowerShell.</span></span> <span data-ttu-id="bcacf-195">Tuto konfiguraci proveďte jeden z uzlů clusteru SAP ASC nebo SCS hello.</span><span class="sxs-lookup"><span data-stu-id="bcacf-195">Execute this configuration on one of hello SAP ASCS/SCS cluster nodes.</span></span>
 
-4. <span data-ttu-id="123ca-196">[Instalovat instanci databáze][sap-ha-guide-9.2].</span><span class="sxs-lookup"><span data-stu-id="123ca-196">[Install the database instance][sap-ha-guide-9.2].</span></span>  
- <span data-ttu-id="123ca-197">V tomto kroku instalujete databázového systému na vyhrazeném clusteru služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="123ca-197">In this step, you are installing DBMS on a dedicated WSFC cluster.</span></span>
+4. <span data-ttu-id="bcacf-196">[Instalovat instanci databáze hello][sap-ha-guide-9.2].</span><span class="sxs-lookup"><span data-stu-id="bcacf-196">[Install hello database instance][sap-ha-guide-9.2].</span></span>  
+ <span data-ttu-id="bcacf-197">V tomto kroku instalujete databázového systému na vyhrazeném clusteru služby WSFC.</span><span class="sxs-lookup"><span data-stu-id="bcacf-197">In this step, you are installing DBMS on a dedicated WSFC cluster.</span></span>
 
-5. <span data-ttu-id="123ca-198">[Instalaci druhého uzlu clusteru][sap-ha-guide-9.3].</span><span class="sxs-lookup"><span data-stu-id="123ca-198">[Install the second cluster node][sap-ha-guide-9.3].</span></span>  
- <span data-ttu-id="123ca-199">V tomto kroku instalujete SAP s vysokou dostupností ASC nebo SCS instancí na stávající uzel clusteru služby WSFC 2.</span><span class="sxs-lookup"><span data-stu-id="123ca-199">In this step, you are installing SAP with a high-availability ASCS/SCS instance on the existing WSFC cluster node 2.</span></span>
+5. <span data-ttu-id="bcacf-198">[Instalaci druhého uzlu clusteru hello][sap-ha-guide-9.3].</span><span class="sxs-lookup"><span data-stu-id="bcacf-198">[Install hello second cluster node][sap-ha-guide-9.3].</span></span>  
+ <span data-ttu-id="bcacf-199">V tomto kroku instalujete SAP s vysokou dostupností ASC nebo SCS instancí na hello WSFC uzlu stávajícího clusteru 2.</span><span class="sxs-lookup"><span data-stu-id="bcacf-199">In this step, you are installing SAP with a high-availability ASCS/SCS instance on hello existing WSFC cluster node 2.</span></span>
 
-6. <span data-ttu-id="123ca-200">Otevřete porty brány Windows Firewall pro instance SAP ASC nebo SCS a ProbePort.</span><span class="sxs-lookup"><span data-stu-id="123ca-200">Open Windows Firewall ports for the SAP ASCS/SCS instance and ProbePort.</span></span>  
- <span data-ttu-id="123ca-201">Na obou uzlů clusteru, které se používají pro instance SAP ASC nebo SCS otevíráte všechny porty brány Windows Firewall, které SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="123ca-201">On both cluster nodes that are used for SAP ASCS/SCS instances, you are opening all Windows Firewall ports that are used by SAP ASCS/SCS.</span></span> <span data-ttu-id="123ca-202">Tyto porty jsou uvedeny v [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-8.8].</span><span class="sxs-lookup"><span data-stu-id="123ca-202">These ports are listed in the [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-8.8].</span></span>  
- <span data-ttu-id="123ca-203">Také otevřete port testu nástroje pro vyrovnávání Azure interní služby load, což je 62350 v tomto scénáři.</span><span class="sxs-lookup"><span data-stu-id="123ca-203">Also open the Azure internal load balancer probe port, which is 62350 in our scenario.</span></span>
+6. <span data-ttu-id="bcacf-200">Otevřete porty brány Windows Firewall pro instance SAP ASC nebo SCS hello a ProbePort.</span><span class="sxs-lookup"><span data-stu-id="bcacf-200">Open Windows Firewall ports for hello SAP ASCS/SCS instance and ProbePort.</span></span>  
+ <span data-ttu-id="bcacf-201">Na obou uzlů clusteru, které se používají pro instance SAP ASC nebo SCS otevíráte všechny porty brány Windows Firewall, které SAP ASC nebo SCS.</span><span class="sxs-lookup"><span data-stu-id="bcacf-201">On both cluster nodes that are used for SAP ASCS/SCS instances, you are opening all Windows Firewall ports that are used by SAP ASCS/SCS.</span></span> <span data-ttu-id="bcacf-202">Tyto porty jsou uvedeny v hello [průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide-8.8].</span><span class="sxs-lookup"><span data-stu-id="bcacf-202">These ports are listed in hello [guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide-8.8].</span></span>  
+ <span data-ttu-id="bcacf-203">Také otevřete hello zatížení Azure interní nástroj pro vyrovnávání testu port, který je 62350 v tomto scénáři.</span><span class="sxs-lookup"><span data-stu-id="bcacf-203">Also open hello Azure internal load balancer probe port, which is 62350 in our scenario.</span></span>
 
-7. <span data-ttu-id="123ca-204">[Změnit typ spuštění instance služby Windows YBRAT SAP][sap-ha-guide-9.4].</span><span class="sxs-lookup"><span data-stu-id="123ca-204">[Change the start type of the SAP ERS Windows service instance][sap-ha-guide-9.4].</span></span>
+7. <span data-ttu-id="bcacf-204">[Změňte typ spouštění hello instance služby SAP YBRAT Windows hello][sap-ha-guide-9.4].</span><span class="sxs-lookup"><span data-stu-id="bcacf-204">[Change hello start type of hello SAP ERS Windows service instance][sap-ha-guide-9.4].</span></span>
 
-8. <span data-ttu-id="123ca-205">[Instalace serveru primární aplikace SAP] [ sap-ha-guide-9.5] na novém vyhrazeném virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="123ca-205">[Install the SAP primary application server][sap-ha-guide-9.5] on the new dedicated VM.</span></span>
+8. <span data-ttu-id="bcacf-205">[Instalace serveru primární aplikace SAP hello] [ sap-ha-guide-9.5] na hello nové vyhrazený virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="bcacf-205">[Install hello SAP primary application server][sap-ha-guide-9.5] on hello new dedicated VM.</span></span>
 
-9. <span data-ttu-id="123ca-206">[Instalace serveru SAP další aplikaci] [ sap-ha-guide-9.6] na novém vyhrazeném virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="123ca-206">[Install the SAP additional application server][sap-ha-guide-9.6] on the new dedicated VM.</span></span>
+9. <span data-ttu-id="bcacf-206">[Instalace serveru další aplikace SAP hello] [ sap-ha-guide-9.6] na hello nové vyhrazený virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="bcacf-206">[Install hello SAP additional application server][sap-ha-guide-9.6] on hello new dedicated VM.</span></span>
 
-10. <span data-ttu-id="123ca-207">[Testovací převzetí služeb při selhání SAP ASC nebo SCS instance a replikace SIOS][sap-ha-guide-10].</span><span class="sxs-lookup"><span data-stu-id="123ca-207">[Test the SAP ASCS/SCS instance failover and SIOS replication][sap-ha-guide-10].</span></span>
+10. <span data-ttu-id="bcacf-207">[Testovací převzetí služeb při selhání hello SAP ASC nebo SCS instance a replikace SIOS][sap-ha-guide-10].</span><span class="sxs-lookup"><span data-stu-id="bcacf-207">[Test hello SAP ASCS/SCS instance failover and SIOS replication][sap-ha-guide-10].</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="123ca-208">Další kroky</span><span class="sxs-lookup"><span data-stu-id="123ca-208">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="bcacf-208">Další kroky</span><span class="sxs-lookup"><span data-stu-id="bcacf-208">Next steps</span></span>
 
-- <span data-ttu-id="123ca-209">[Omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]</span><span class="sxs-lookup"><span data-stu-id="123ca-209">[Networking limits: Azure Resource Manager][networking-limits-azure-resource-manager]</span></span>
-- <span data-ttu-id="123ca-210">[Nástroj pro vyrovnávání zatížení několika virtuálními IP adresami pro Azure.][load-balancer-multivip-overview]</span><span class="sxs-lookup"><span data-stu-id="123ca-210">[Multiple VIPs for Azure Load Balancer][load-balancer-multivip-overview]</span></span>
-- <span data-ttu-id="123ca-211">[Průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide]</span><span class="sxs-lookup"><span data-stu-id="123ca-211">[Guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide]</span></span>
+- <span data-ttu-id="bcacf-209">[Omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]</span><span class="sxs-lookup"><span data-stu-id="bcacf-209">[Networking limits: Azure Resource Manager][networking-limits-azure-resource-manager]</span></span>
+- <span data-ttu-id="bcacf-210">[Nástroj pro vyrovnávání zatížení několika virtuálními IP adresami pro Azure.][load-balancer-multivip-overview]</span><span class="sxs-lookup"><span data-stu-id="bcacf-210">[Multiple VIPs for Azure Load Balancer][load-balancer-multivip-overview]</span></span>
+- <span data-ttu-id="bcacf-211">[Průvodci pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích Windows][sap-ha-guide]</span><span class="sxs-lookup"><span data-stu-id="bcacf-211">[Guide for high-availability SAP NetWeaver on Windows VMs][sap-ha-guide]</span></span>

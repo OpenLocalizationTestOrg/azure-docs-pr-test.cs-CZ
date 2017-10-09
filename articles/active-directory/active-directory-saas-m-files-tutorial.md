@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s M soubory | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a M soubory."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a M soubory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,226 +13,226 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 0f2682cf7cd3e11a5a7156938fbe9d4c7f541312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e1d268da53312b1d2c12e29d66b1a5b66d0cdcce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-m-files"></a><span data-ttu-id="de1b3-103">Kurz: Azure Active Directory integrace s M – soubory</span><span class="sxs-lookup"><span data-stu-id="de1b3-103">Tutorial: Azure Active Directory integration with M-Files</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-m-files"></a><span data-ttu-id="22f2a-103">Kurz: Azure Active Directory integrace s M – soubory</span><span class="sxs-lookup"><span data-stu-id="22f2a-103">Tutorial: Azure Active Directory integration with M-Files</span></span>
 
-<span data-ttu-id="de1b3-104">V tomto kurzu zjistěte, jak integrovat M soubory s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="de1b3-104">In this tutorial, you learn how to integrate M-Files with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="22f2a-104">V tomto kurzu zjistíte, jak toointegrate M soubory s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="22f2a-104">In this tutorial, you learn how toointegrate M-Files with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="de1b3-105">Integrace M soubory s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="de1b3-105">Integrating M-Files with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="22f2a-105">Integrace M soubory s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="22f2a-105">Integrating M-Files with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="de1b3-106">Můžete řídit ve službě Azure AD, který má přístup k souborům M</span><span class="sxs-lookup"><span data-stu-id="de1b3-106">You can control in Azure AD who has access to M-Files</span></span>
-- <span data-ttu-id="de1b3-107">Můžete povolit uživatelům, aby automaticky získat přihlášeného k souborům M (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="de1b3-107">You can enable your users to automatically get signed-on to M-Files (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="de1b3-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="de1b3-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="22f2a-106">Můžete řídit ve službě Azure AD, který má přístup tooM – soubory</span><span class="sxs-lookup"><span data-stu-id="22f2a-106">You can control in Azure AD who has access tooM-Files</span></span>
+- <span data-ttu-id="22f2a-107">Můžete povolit uživatelům tooautomatically get přihlášeného tooM – soubory (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="22f2a-107">You can enable your users tooautomatically get signed-on tooM-Files (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="22f2a-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="22f2a-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="de1b3-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="de1b3-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="22f2a-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="22f2a-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="de1b3-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="de1b3-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="22f2a-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="22f2a-110">Prerequisites</span></span>
 
-<span data-ttu-id="de1b3-111">Ke konfiguraci integrace služby Azure AD se soubory M, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="de1b3-111">To configure Azure AD integration with M-Files, you need the following items:</span></span>
+<span data-ttu-id="22f2a-111">tooconfigure integrace Azure AD se soubory M, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="22f2a-111">tooconfigure Azure AD integration with M-Files, you need hello following items:</span></span>
 
-- <span data-ttu-id="de1b3-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="de1b3-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="de1b3-113">M soubory jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="de1b3-113">A M-Files single sign-on enabled subscription</span></span>
+- <span data-ttu-id="22f2a-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="22f2a-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="22f2a-113">M soubory jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="22f2a-113">A M-Files single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="de1b3-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="de1b3-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="22f2a-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="22f2a-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="de1b3-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="de1b3-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="22f2a-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="22f2a-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="de1b3-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="de1b3-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="de1b3-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="de1b3-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="22f2a-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="22f2a-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="22f2a-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="22f2a-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="de1b3-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="de1b3-118">Scenario description</span></span>
-<span data-ttu-id="de1b3-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="de1b3-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="de1b3-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="de1b3-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="22f2a-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="22f2a-118">Scenario description</span></span>
+<span data-ttu-id="22f2a-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="22f2a-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="22f2a-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="22f2a-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="de1b3-121">Přidávání M souborů z Galerie</span><span class="sxs-lookup"><span data-stu-id="de1b3-121">Adding M-Files from the gallery</span></span>
-2. <span data-ttu-id="de1b3-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="de1b3-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="22f2a-121">Přidávání M souborů z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="22f2a-121">Adding M-Files from hello gallery</span></span>
+2. <span data-ttu-id="22f2a-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="22f2a-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-m-files-from-the-gallery"></a><span data-ttu-id="de1b3-123">Přidávání M souborů z Galerie</span><span class="sxs-lookup"><span data-stu-id="de1b3-123">Adding M-Files from the gallery</span></span>
-<span data-ttu-id="de1b3-124">Při konfiguraci integrace M souborů do služby Azure AD, potřebujete přidat M soubory z Galerie si na seznam spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="de1b3-124">To configure the integration of M-Files into Azure AD, you need to add M-Files from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-m-files-from-hello-gallery"></a><span data-ttu-id="22f2a-123">Přidávání M souborů z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="22f2a-123">Adding M-Files from hello gallery</span></span>
+<span data-ttu-id="22f2a-124">tooconfigure hello integrace M souborů do Azure AD, je nutné tooadd M soubory hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="22f2a-124">tooconfigure hello integration of M-Files into Azure AD, you need tooadd M-Files from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="de1b3-125">**Pokud chcete přidat soubory M z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="de1b3-125">**To add M-Files from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="22f2a-125">**tooadd M soubory z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="22f2a-125">**tooadd M-Files from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="de1b3-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="de1b3-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="22f2a-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="22f2a-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="de1b3-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="de1b3-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="22f2a-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="22f2a-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="de1b3-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="de1b3-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="22f2a-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="22f2a-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="de1b3-133">Do vyhledávacího pole zadejte **M soubory**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-133">In the search box, type **M-Files**.</span></span>
+4. <span data-ttu-id="22f2a-133">Hello vyhledávacího pole zadejte **M soubory**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-133">In hello search box, type **M-Files**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-m-files-tutorial/tutorial_m-files_search.png)
 
-5. <span data-ttu-id="de1b3-135">Na panelu výsledků vyberte **M soubory**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="de1b3-135">In the results panel, select **M-Files**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="22f2a-135">Na panelu výsledků hello vyberte **M soubory**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="22f2a-135">In hello results panel, select **M-Files**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-m-files-tutorial/tutorial_m-files_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="de1b3-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="de1b3-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="de1b3-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s M-soubory podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="de1b3-138">In this section, you configure and test Azure AD single sign-on with M-Files based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="22f2a-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="22f2a-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="22f2a-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s M-soubory podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="22f2a-138">In this section, you configure and test Azure AD single sign-on with M-Files based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="de1b3-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v souborech M je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="de1b3-139">For single sign-on to work, Azure AD needs to know what the counterpart user in M-Files is to a user in Azure AD.</span></span> <span data-ttu-id="de1b3-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v souborech M musí navázat.</span><span class="sxs-lookup"><span data-stu-id="de1b3-140">In other words, a link relationship between an Azure AD user and the related user in M-Files needs to be established.</span></span>
+<span data-ttu-id="22f2a-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v souborech M je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="22f2a-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in M-Files is tooa user in Azure AD.</span></span> <span data-ttu-id="22f2a-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v souborech M musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="22f2a-140">In other words, a link relationship between an Azure AD user and hello related user in M-Files needs toobe established.</span></span>
 
-<span data-ttu-id="de1b3-141">V souborech M, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="de1b3-141">In M-Files, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="22f2a-141">V souborech M, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="22f2a-141">In M-Files, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="de1b3-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování se soubory M, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="de1b3-142">To configure and test Azure AD single sign-on with M-Files, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="22f2a-142">tooconfigure a testování Azure AD jednotné přihlašování se soubory M, je třeba toocomplete hello stavební bloky následující:</span><span class="sxs-lookup"><span data-stu-id="22f2a-142">tooconfigure and test Azure AD single sign-on with M-Files, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="de1b3-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="de1b3-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="de1b3-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="de1b3-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="de1b3-145">**[Vytvoření zkušebního uživatele M soubory](#creating-a-m-files-test-user)**  – Pokud chcete mít protějšek Britta Simon v souborech M, propojené služby Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="de1b3-145">**[Creating a M-Files test user](#creating-a-m-files-test-user)** - to have a counterpart of Britta Simon in M-Files that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="de1b3-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="de1b3-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="de1b3-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="de1b3-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="22f2a-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="22f2a-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="22f2a-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="22f2a-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="22f2a-145">**[Vytvoření zkušebního uživatele M soubory](#creating-a-m-files-test-user)**  -toohave protějšek Britta Simon v souborech M, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="22f2a-145">**[Creating a M-Files test user](#creating-a-m-files-test-user)** - toohave a counterpart of Britta Simon in M-Files that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="22f2a-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="22f2a-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="22f2a-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="22f2a-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="de1b3-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="de1b3-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="22f2a-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="22f2a-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="de1b3-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci M soubory.</span><span class="sxs-lookup"><span data-stu-id="de1b3-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your M-Files application.</span></span>
+<span data-ttu-id="22f2a-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci M soubory.</span><span class="sxs-lookup"><span data-stu-id="22f2a-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your M-Files application.</span></span>
 
-<span data-ttu-id="de1b3-150">**Ke konfiguraci Azure AD jednotné přihlašování se soubory M, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="de1b3-150">**To configure Azure AD single sign-on with M-Files, perform the following steps:**</span></span>
+<span data-ttu-id="22f2a-150">**tooconfigure Azure AD jednotné přihlašování se soubory M, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="22f2a-150">**tooconfigure Azure AD single sign-on with M-Files, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="de1b3-151">Na portálu Azure na **M soubory** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-151">In the Azure portal, on the **M-Files** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="22f2a-151">V portálu Azure, na hello hello **M soubory** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-151">In hello Azure portal, on hello **M-Files** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="de1b3-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="de1b3-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="22f2a-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="22f2a-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_m-files_samlbase.png)
 
-3. <span data-ttu-id="de1b3-155">Na **M soubory domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="de1b3-155">On the **M-Files Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="22f2a-155">Na hello **M soubory domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="22f2a-155">On hello **M-Files Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_m-files_url.png)
 
-    <span data-ttu-id="de1b3-157">a.</span><span class="sxs-lookup"><span data-stu-id="de1b3-157">a.</span></span> <span data-ttu-id="de1b3-158">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`</span><span class="sxs-lookup"><span data-stu-id="de1b3-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`</span></span>
+    <span data-ttu-id="22f2a-157">a.</span><span class="sxs-lookup"><span data-stu-id="22f2a-157">a.</span></span> <span data-ttu-id="22f2a-158">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`</span><span class="sxs-lookup"><span data-stu-id="22f2a-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`</span></span>
 
-    <span data-ttu-id="de1b3-159">b.</span><span class="sxs-lookup"><span data-stu-id="de1b3-159">b.</span></span> <span data-ttu-id="de1b3-160">V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenantname>.cloudvault.m-files.com`</span><span class="sxs-lookup"><span data-stu-id="de1b3-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<tenantname>.cloudvault.m-files.com`</span></span>
+    <span data-ttu-id="22f2a-159">b.</span><span class="sxs-lookup"><span data-stu-id="22f2a-159">b.</span></span> <span data-ttu-id="22f2a-160">V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<tenantname>.cloudvault.m-files.com`</span><span class="sxs-lookup"><span data-stu-id="22f2a-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<tenantname>.cloudvault.m-files.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="de1b3-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="de1b3-161">These values are not real.</span></span> <span data-ttu-id="de1b3-162">Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="de1b3-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="de1b3-163">Obraťte se na [tým podpory M soubory klienta](mailto:support@m-files.com) k získání těchto hodnot.</span><span class="sxs-lookup"><span data-stu-id="de1b3-163">Contact [M-Files Client support team](mailto:support@m-files.com) to get these values.</span></span> 
+    > <span data-ttu-id="22f2a-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="22f2a-161">These values are not real.</span></span> <span data-ttu-id="22f2a-162">Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="22f2a-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="22f2a-163">Obraťte se na [tým podpory M soubory klienta](mailto:support@m-files.com) tooget tyto hodnoty.</span><span class="sxs-lookup"><span data-stu-id="22f2a-163">Contact [M-Files Client support team](mailto:support@m-files.com) tooget these values.</span></span> 
  
-4. <span data-ttu-id="de1b3-164">Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="de1b3-164">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+4. <span data-ttu-id="22f2a-164">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="22f2a-164">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_m-files_certificate.png) 
 
-5. <span data-ttu-id="de1b3-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="de1b3-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="22f2a-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="22f2a-166">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="de1b3-168">Pokud chcete získat jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace, obraťte se na [tým podpory M soubory](mailto:support@m-files.com) a poskytněte stažené Metadata.</span><span class="sxs-lookup"><span data-stu-id="de1b3-168">To get SSO configured for your application, contact [M-Files support team](mailto:support@m-files.com) and provide them the downloaded Metadata.</span></span>
+6. <span data-ttu-id="22f2a-168">tooget nakonfigurovat jednotné přihlašování pro vaši aplikaci, obraťte se na [tým podpory M soubory](mailto:support@m-files.com) a poskytněte hello stáhnout Metadata.</span><span class="sxs-lookup"><span data-stu-id="22f2a-168">tooget SSO configured for your application, contact [M-Files support team](mailto:support@m-files.com) and provide them hello downloaded Metadata.</span></span>
    
     >[!NOTE]
-    ><span data-ttu-id="de1b3-169">Pokud chcete nakonfigurovat jednotné přihlašování pro vás aplikace pracovní plochy M soubor, použijte následující postup.</span><span class="sxs-lookup"><span data-stu-id="de1b3-169">Follow the next steps if you want to configure SSO for you M-File desktop application.</span></span> <span data-ttu-id="de1b3-170">Pokud chcete nakonfigurovat jednotné přihlašování pro verzi webové M soubory nejsou potřeba žádné další kroky.</span><span class="sxs-lookup"><span data-stu-id="de1b3-170">No extra steps are required if you only want to configure SSO for M-Files web version.</span></span>  
+    ><span data-ttu-id="22f2a-169">Pokud chcete tooconfigure jednotné přihlašování pro vás aplikace pracovní plochy M souboru, postupujte podle hello další kroky.</span><span class="sxs-lookup"><span data-stu-id="22f2a-169">Follow hello next steps if you want tooconfigure SSO for you M-File desktop application.</span></span> <span data-ttu-id="22f2a-170">Pokud chcete pouze tooconfigure jednotné přihlašování pro verzi webové M soubory nejsou potřeba žádné další kroky.</span><span class="sxs-lookup"><span data-stu-id="22f2a-170">No extra steps are required if you only want tooconfigure SSO for M-Files web version.</span></span>  
 
-7. <span data-ttu-id="de1b3-171">Podle další kroky pro konfiguraci aplikace pracovní plochy M souboru k povolení přihlášení SSO s Azure AD.</span><span class="sxs-lookup"><span data-stu-id="de1b3-171">Follow the next steps to configure the M-File desktop application to enable SSO with Azure AD.</span></span> <span data-ttu-id="de1b3-172">Chcete-li stáhnout soubory M, přejděte na [M soubory stáhnout](https://www.m-files.com/en/download-latest-version) stránky.</span><span class="sxs-lookup"><span data-stu-id="de1b3-172">To download M-Files, go to [M-Files download](https://www.m-files.com/en/download-latest-version) page.</span></span>
+7. <span data-ttu-id="22f2a-171">Postupujte podle hello další kroky tooconfigure hello M souboru aplikace pracovní plochy tooenable jednotné přihlašování s Azure AD.</span><span class="sxs-lookup"><span data-stu-id="22f2a-171">Follow hello next steps tooconfigure hello M-File desktop application tooenable SSO with Azure AD.</span></span> <span data-ttu-id="22f2a-172">toodownload M-soubory, přejděte příliš[M soubory stáhnout](https://www.m-files.com/en/download-latest-version) stránky.</span><span class="sxs-lookup"><span data-stu-id="22f2a-172">toodownload M-Files, go too[M-Files download](https://www.m-files.com/en/download-latest-version) page.</span></span>
 
-8. <span data-ttu-id="de1b3-173">Otevřete **nastavení plochy M soubory** okno.</span><span class="sxs-lookup"><span data-stu-id="de1b3-173">Open the **M-Files Desktop Settings** window.</span></span> <span data-ttu-id="de1b3-174">Potom klikněte na **přidat**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-174">Then, click **Add**.</span></span>
+8. <span data-ttu-id="22f2a-173">Otevřete hello **nastavení plochy M soubory** okno.</span><span class="sxs-lookup"><span data-stu-id="22f2a-173">Open hello **M-Files Desktop Settings** window.</span></span> <span data-ttu-id="22f2a-174">Potom klikněte na **přidat**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-174">Then, click **Add**.</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_m_files_10.png)
 
-9. <span data-ttu-id="de1b3-176">Na **vlastnosti připojení trezoru dokumentu** okno, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="de1b3-176">On the **Document Vault Connection Properties** window, perform the following steps:</span></span>
+9. <span data-ttu-id="22f2a-176">Na hello **vlastnosti připojení trezoru dokumentu** okně provést hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="22f2a-176">On hello **Document Vault Connection Properties** window, perform hello following steps:</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_m_files_11.png)  
 
-    <span data-ttu-id="de1b3-178">V rámci serveru tématu typ, hodnoty následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="de1b3-178">Under the Server section type, the values as follows:</span></span>  
+    <span data-ttu-id="22f2a-178">V části hello typ oddílu serveru hello hodnoty následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="22f2a-178">Under hello Server section type, hello values as follows:</span></span>  
 
-    <span data-ttu-id="de1b3-179">a.</span><span class="sxs-lookup"><span data-stu-id="de1b3-179">a.</span></span> <span data-ttu-id="de1b3-180">Pro **název**, typ `<tenant-name>.cloudvault.m-files.com`.</span><span class="sxs-lookup"><span data-stu-id="de1b3-180">For **Name**, type `<tenant-name>.cloudvault.m-files.com`.</span></span> 
+    <span data-ttu-id="22f2a-179">a.</span><span class="sxs-lookup"><span data-stu-id="22f2a-179">a.</span></span> <span data-ttu-id="22f2a-180">Pro **název**, typ `<tenant-name>.cloudvault.m-files.com`.</span><span class="sxs-lookup"><span data-stu-id="22f2a-180">For **Name**, type `<tenant-name>.cloudvault.m-files.com`.</span></span> 
  
-    <span data-ttu-id="de1b3-181">b.</span><span class="sxs-lookup"><span data-stu-id="de1b3-181">b.</span></span> <span data-ttu-id="de1b3-182">Pro **číslo portu**, typ **4466**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-182">For **Port Number**, type **4466**.</span></span> 
+    <span data-ttu-id="22f2a-181">b.</span><span class="sxs-lookup"><span data-stu-id="22f2a-181">b.</span></span> <span data-ttu-id="22f2a-182">Pro **číslo portu**, typ **4466**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-182">For **Port Number**, type **4466**.</span></span> 
 
-    <span data-ttu-id="de1b3-183">c.</span><span class="sxs-lookup"><span data-stu-id="de1b3-183">c.</span></span> <span data-ttu-id="de1b3-184">Pro **protokol**, vyberte **HTTPS**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-184">For **Protocol**, select **HTTPS**.</span></span> 
+    <span data-ttu-id="22f2a-183">c.</span><span class="sxs-lookup"><span data-stu-id="22f2a-183">c.</span></span> <span data-ttu-id="22f2a-184">Pro **protokol**, vyberte **HTTPS**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-184">For **Protocol**, select **HTTPS**.</span></span> 
 
-    <span data-ttu-id="de1b3-185">d.</span><span class="sxs-lookup"><span data-stu-id="de1b3-185">d.</span></span> <span data-ttu-id="de1b3-186">V **ověřování** pole, vyberte **konkrétní Windows uživatele**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-186">In the **Authentication** field, select **Specific Windows user**.</span></span> <span data-ttu-id="de1b3-187">Potom zobrazí se výzva s podpisový stránky.</span><span class="sxs-lookup"><span data-stu-id="de1b3-187">Then, you are prompted with a signing page.</span></span> <span data-ttu-id="de1b3-188">Vložte přihlašovací údaje Azure AD.</span><span class="sxs-lookup"><span data-stu-id="de1b3-188">Insert your Azure AD credentials.</span></span> 
+    <span data-ttu-id="22f2a-185">d.</span><span class="sxs-lookup"><span data-stu-id="22f2a-185">d.</span></span> <span data-ttu-id="22f2a-186">V hello **ověřování** pole, vyberte **konkrétní Windows uživatele**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-186">In hello **Authentication** field, select **Specific Windows user**.</span></span> <span data-ttu-id="22f2a-187">Potom zobrazí se výzva s podpisový stránky.</span><span class="sxs-lookup"><span data-stu-id="22f2a-187">Then, you are prompted with a signing page.</span></span> <span data-ttu-id="22f2a-188">Vložte přihlašovací údaje Azure AD.</span><span class="sxs-lookup"><span data-stu-id="22f2a-188">Insert your Azure AD credentials.</span></span> 
 
-    <span data-ttu-id="de1b3-189">e.</span><span class="sxs-lookup"><span data-stu-id="de1b3-189">e.</span></span> <span data-ttu-id="de1b3-190">Pro **úložiště na serveru**, vyberte odpovídající úložiště na serveru.</span><span class="sxs-lookup"><span data-stu-id="de1b3-190">For the **Vault on Server**,  select the corresponding vault on server.</span></span>
+    <span data-ttu-id="22f2a-189">e.</span><span class="sxs-lookup"><span data-stu-id="22f2a-189">e.</span></span> <span data-ttu-id="22f2a-190">Pro hello **úložiště na serveru**, vyberte hello odpovídající úložiště na serveru.</span><span class="sxs-lookup"><span data-stu-id="22f2a-190">For hello **Vault on Server**,  select hello corresponding vault on server.</span></span>
  
-    <span data-ttu-id="de1b3-191">f.</span><span class="sxs-lookup"><span data-stu-id="de1b3-191">f.</span></span> <span data-ttu-id="de1b3-192">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-192">Click **OK**.</span></span>
+    <span data-ttu-id="22f2a-191">f.</span><span class="sxs-lookup"><span data-stu-id="22f2a-191">f.</span></span> <span data-ttu-id="22f2a-192">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-192">Click **OK**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="de1b3-193">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="de1b3-193">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="de1b3-194">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="de1b3-194">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="de1b3-195">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="de1b3-195">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="22f2a-193">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="22f2a-193">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="22f2a-194">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="22f2a-194">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="22f2a-195">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="22f2a-195">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="de1b3-196">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="de1b3-196">Creating an Azure AD test user</span></span>
-<span data-ttu-id="de1b3-197">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="de1b3-197">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="22f2a-196">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="22f2a-196">Creating an Azure AD test user</span></span>
+<span data-ttu-id="22f2a-197">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="22f2a-197">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="de1b3-199">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="de1b3-199">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="22f2a-199">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="22f2a-199">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="de1b3-200">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="de1b3-200">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="22f2a-200">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="22f2a-200">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-m-files-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="de1b3-202">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-202">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="22f2a-202">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-202">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-m-files-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="de1b3-204">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="de1b3-204">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="22f2a-204">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="22f2a-204">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-m-files-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="de1b3-206">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="de1b3-206">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="22f2a-206">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="22f2a-206">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-m-files-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="de1b3-208">a.</span><span class="sxs-lookup"><span data-stu-id="de1b3-208">a.</span></span> <span data-ttu-id="de1b3-209">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-209">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="22f2a-208">a.</span><span class="sxs-lookup"><span data-stu-id="22f2a-208">a.</span></span> <span data-ttu-id="22f2a-209">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-209">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="de1b3-210">b.</span><span class="sxs-lookup"><span data-stu-id="de1b3-210">b.</span></span> <span data-ttu-id="de1b3-211">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="de1b3-211">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="22f2a-210">b.</span><span class="sxs-lookup"><span data-stu-id="22f2a-210">b.</span></span> <span data-ttu-id="22f2a-211">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="22f2a-211">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="de1b3-212">c.</span><span class="sxs-lookup"><span data-stu-id="de1b3-212">c.</span></span> <span data-ttu-id="de1b3-213">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-213">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="22f2a-212">c.</span><span class="sxs-lookup"><span data-stu-id="22f2a-212">c.</span></span> <span data-ttu-id="22f2a-213">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-213">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="de1b3-214">d.</span><span class="sxs-lookup"><span data-stu-id="de1b3-214">d.</span></span> <span data-ttu-id="de1b3-215">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-215">Click **Create**.</span></span>
+    <span data-ttu-id="22f2a-214">d.</span><span class="sxs-lookup"><span data-stu-id="22f2a-214">d.</span></span> <span data-ttu-id="22f2a-215">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-215">Click **Create**.</span></span>
  
-### <a name="creating-a-m-files-test-user"></a><span data-ttu-id="de1b3-216">Vytvoření zkušebního uživatele M – soubory</span><span class="sxs-lookup"><span data-stu-id="de1b3-216">Creating a M-Files test user</span></span>
+### <a name="creating-a-m-files-test-user"></a><span data-ttu-id="22f2a-216">Vytvoření zkušebního uživatele M – soubory</span><span class="sxs-lookup"><span data-stu-id="22f2a-216">Creating a M-Files test user</span></span>
 
-<span data-ttu-id="de1b3-217">Cílem této části je vytvoření uživatele volat Britta Simon v souborech M.</span><span class="sxs-lookup"><span data-stu-id="de1b3-217">The objective of this section is to create a user called Britta Simon in M-Files.</span></span> <span data-ttu-id="de1b3-218">Práce s [tým podpory M soubory](mailto:support@m-files.com) přidejte uživatele, v souborech M.</span><span class="sxs-lookup"><span data-stu-id="de1b3-218">Work with  [M-Files support team](mailto:support@m-files.com) to add the users in the M-Files.</span></span>
+<span data-ttu-id="22f2a-217">Hello cílem této části je toocreate uživatele volat Britta Simon v souborech M.</span><span class="sxs-lookup"><span data-stu-id="22f2a-217">hello objective of this section is toocreate a user called Britta Simon in M-Files.</span></span> <span data-ttu-id="22f2a-218">Práce s [tým podpory M soubory](mailto:support@m-files.com) tooadd hello uživatele v hello M soubory.</span><span class="sxs-lookup"><span data-stu-id="22f2a-218">Work with  [M-Files support team](mailto:support@m-files.com) tooadd hello users in hello M-Files.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="de1b3-219">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="de1b3-219">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="22f2a-219">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="22f2a-219">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="de1b3-220">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k souborům M.</span><span class="sxs-lookup"><span data-stu-id="de1b3-220">In this section, you enable Britta Simon to use Azure single sign-on by granting access to M-Files.</span></span>
+<span data-ttu-id="22f2a-220">V této části povolíte tak, že udělíte přístup tooM – soubory toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="22f2a-220">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooM-Files.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="de1b3-222">**Pokud chcete přiřadit Britta Simon M soubory, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="de1b3-222">**To assign Britta Simon to M-Files, perform the following steps:**</span></span>
+<span data-ttu-id="22f2a-222">**tooassign Britta Simon tooM – soubory, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="22f2a-222">**tooassign Britta Simon tooM-Files, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="de1b3-223">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-223">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="22f2a-223">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-223">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="de1b3-225">V seznamu aplikací vyberte **M soubory**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-225">In the applications list, select **M-Files**.</span></span>
+2. <span data-ttu-id="22f2a-225">V seznamu aplikace hello vyberte **M soubory**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-225">In hello applications list, select **M-Files**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-m-files-tutorial/tutorial_m-files_app.png) 
 
-3. <span data-ttu-id="de1b3-227">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="de1b3-227">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="22f2a-227">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="22f2a-227">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="de1b3-229">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="de1b3-229">Click **Add** button.</span></span> <span data-ttu-id="de1b3-230">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="de1b3-230">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="22f2a-229">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="22f2a-229">Click **Add** button.</span></span> <span data-ttu-id="22f2a-230">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="22f2a-230">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="de1b3-232">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="de1b3-232">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="22f2a-232">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="22f2a-232">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="de1b3-233">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="de1b3-233">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="22f2a-233">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="22f2a-233">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="de1b3-234">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="de1b3-234">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="22f2a-234">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="22f2a-234">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="de1b3-235">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="de1b3-235">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="22f2a-235">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="22f2a-235">Testing single sign-on</span></span>
 
-<span data-ttu-id="de1b3-236">Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.</span><span class="sxs-lookup"><span data-stu-id="de1b3-236">The objective of this section is to test your Azure AD SSO configuration using the Access Panel.</span></span>
+<span data-ttu-id="22f2a-236">Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.</span><span class="sxs-lookup"><span data-stu-id="22f2a-236">hello objective of this section is tootest your Azure AD SSO configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="de1b3-237">Když kliknete na dlaždici M soubory na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci M soubory.</span><span class="sxs-lookup"><span data-stu-id="de1b3-237">When you click the M-Files tile in the Access Panel, you should get automatically signed-on to your M-Files application.</span></span>
+<span data-ttu-id="22f2a-237">Po kliknutí na tlačítko hello M soubory dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour M soubory aplikace.</span><span class="sxs-lookup"><span data-stu-id="22f2a-237">When you click hello M-Files tile in hello Access Panel, you should get automatically signed-on tooyour M-Files application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="de1b3-238">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="de1b3-238">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="22f2a-238">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="22f2a-238">Additional resources</span></span>
 
-* [<span data-ttu-id="de1b3-239">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="de1b3-239">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="de1b3-240">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="de1b3-240">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="22f2a-239">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="22f2a-239">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="22f2a-240">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="22f2a-240">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

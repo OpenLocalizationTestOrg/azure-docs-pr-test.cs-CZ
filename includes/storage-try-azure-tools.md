@@ -1,8 +1,8 @@
 > [!TIP]
 > 
-> **Vyzkoušení Microsoft Azure Storage Exploreru**
+> <span data-ttu-id="0db53-101">**Zkuste hello Microsoft Azure Storage Explorer**</span><span class="sxs-lookup"><span data-stu-id="0db53-101">**Try hello Microsoft Azure Storage Explorer**</span></span>
 > 
-> [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
+> <span data-ttu-id="0db53-102">[Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, volná, od společnosti Microsoft, která vám umožní toowork vizuálně s daty Azure Storage ve Windows, systému macOS a Linux.</span><span class="sxs-lookup"><span data-stu-id="0db53-102">[Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you toowork visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
 > 
 > 
 

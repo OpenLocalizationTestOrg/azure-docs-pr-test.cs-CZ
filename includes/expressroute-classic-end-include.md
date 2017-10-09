@@ -1,0 +1,12 @@
+> [!IMPORTANT] 
+> <span data-ttu-id="11380-101">Od verze 1. března 2017 nelze vytvořit nové okruhy ExpressRoute v modelu nasazení classic hello.</span><span class="sxs-lookup"><span data-stu-id="11380-101">As of March 1, 2017, you can't create new ExpressRoute circuits in hello classic deployment model.</span></span>
+> 
+> - <span data-ttu-id="11380-102">Žádné připojení výpadek nedochází přitom můžete přesunout existujícímu okruhu ExpressRoute z modelu nasazení classic hello, toohello modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="11380-102">You can move an existing ExpressRoute circuit from hello classic deployment model toohello Resource Manager deployment model without experiencing any connectivity down time.</span></span> <span data-ttu-id="11380-103">Další informace najdete v tématu věnovaném [přesunu stávajících okruhů](../articles/expressroute/expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="11380-103">For more information, see [Move an existing circuit](../articles/expressroute/expressroute-move.md).</span></span>
+> - <span data-ttu-id="11380-104">Připojíte toovirtual sítí v modelu nasazení classic hello nastavením **allowClassicOperations** tooTRUE.</span><span class="sxs-lookup"><span data-stu-id="11380-104">You can connect toovirtual networks in hello classic deployment model by setting **allowClassicOperations** tooTRUE.</span></span>
+> 
+> <span data-ttu-id="11380-105">Použijte následující odkazy toocreate hello a spravovat okruhy ExpressRoute v modelu nasazení Resource Manager hello:</span><span class="sxs-lookup"><span data-stu-id="11380-105">Use hello following links toocreate and manage ExpressRoute circuits in hello Resource Manager deployment model:</span></span>
+
+> - [<span data-ttu-id="11380-106">Vytvoření a správa okruhů ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="11380-106">Create and manage ExpressRoute circuits</span></span>](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
+> - [<span data-ttu-id="11380-107">Konfigurace směrování (partnerského vztahu) pro okruhy ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="11380-107">Configure routing (peering) for ExpressRoute circuits</span></span>](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
+>
+>

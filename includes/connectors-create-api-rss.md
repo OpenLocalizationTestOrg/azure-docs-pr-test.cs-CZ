@@ -1,0 +1,14 @@
+### <a name="prerequisites"></a><span data-ttu-id="1b70e-101">Požadavky</span><span class="sxs-lookup"><span data-stu-id="1b70e-101">Prerequisites</span></span>
+* <span data-ttu-id="1b70e-102">[RSS](https://wikipedia.org/wiki/RSS) účtu</span><span class="sxs-lookup"><span data-stu-id="1b70e-102">An [RSS](https://wikipedia.org/wiki/RSS) account</span></span>  
+
+<span data-ttu-id="1b70e-103">Než v aplikaci logiky můžete použít váš účet RSS, musíte je nejdříve autorizovat hello logiku aplikace tooconnect tooyour RSS účtu. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="1b70e-103">Before you can use your RSS account in a Logic app, you must authorize hello Logic app tooconnect tooyour RSS account.Fortunately, you can do this easily from within your Logic app on hello Azure Portal.</span></span>  
+
+<span data-ttu-id="1b70e-104">Zde jsou kroky tooauthorize hello účtu RSS tooyour tooconnect logiku aplikace:</span><span class="sxs-lookup"><span data-stu-id="1b70e-104">Here are hello steps tooauthorize your Logic app tooconnect tooyour RSS account:</span></span>  
+
+1. <span data-ttu-id="1b70e-105">Vyberte připojení tooRSS, v návrháři aplikace logiky hello, toocreate **zobrazit Microsoft spravované rozhraní API** v hello rozevíracím seznamu a potom zadejte *RSS* hello vyhledávacího pole.</span><span class="sxs-lookup"><span data-stu-id="1b70e-105">toocreate a connection tooRSS, in hello Logic app designer, select **Show Microsoft managed APIs** in hello drop down list then enter *RSS* in hello search box.</span></span> <span data-ttu-id="1b70e-106">Vyberte hello aktivační události nebo akce, budete jako toouse:</span><span class="sxs-lookup"><span data-stu-id="1b70e-106">Select hello trigger or action you'll like toouse:</span></span>  
+   <span data-ttu-id="1b70e-107">![Krok vytvoření připojení RSS](./media/connectors-create-api-rss/rss-1.png)</span><span class="sxs-lookup"><span data-stu-id="1b70e-107">![RSS connection creation step](./media/connectors-create-api-rss/rss-1.png)</span></span>  
+2. <span data-ttu-id="1b70e-108">Vyberte **vytvořit připojení** :</span><span class="sxs-lookup"><span data-stu-id="1b70e-108">Select **Create connection** :</span></span>  
+   <span data-ttu-id="1b70e-109">![Krok vytvoření připojení RSS](./media/connectors-create-api-rss/rss-2.png)</span><span class="sxs-lookup"><span data-stu-id="1b70e-109">![RSS connection creation step](./media/connectors-create-api-rss/rss-2.png)</span></span>  
+3. <span data-ttu-id="1b70e-110">Všimněte si hello připojení bylo vytvořeno a jste nyní volné tooproceed s hello další kroky v aplikaci logiky:</span><span class="sxs-lookup"><span data-stu-id="1b70e-110">Notice hello connection has been created and you are now free tooproceed with hello other steps in your Logic app:</span></span>  
+   ![Krok vytvoření připojení RSS](./media/connectors-create-api-rss/rss-3.png)  
+

@@ -1,19 +1,19 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a><span data-ttu-id="1a216-101">Přidat nebo upravit plán zálohování StorSimple</span><span class="sxs-lookup"><span data-stu-id="1a216-101">To add or modify a StorSimple backup schedule</span></span>
+#### <a name="tooadd-or-modify-a-storsimple-backup-schedule"></a><span data-ttu-id="c8532-101">tooadd nebo upravte plán zálohování StorSimple</span><span class="sxs-lookup"><span data-stu-id="c8532-101">tooadd or modify a StorSimple backup schedule</span></span>
 
-1. <span data-ttu-id="1a216-102">Přejděte ke svému zařízení StorSimple a klikněte na **Zásady zálohování**.</span><span class="sxs-lookup"><span data-stu-id="1a216-102">Go to your StorSimple device and click **Backup policy**.</span></span>
+1. <span data-ttu-id="c8532-102">Přejděte tooyour zařízení StorSimple a klikněte na tlačítko **zálohování zásad**.</span><span class="sxs-lookup"><span data-stu-id="c8532-102">Go tooyour StorSimple device and click **Backup policy**.</span></span>
 
-2. <span data-ttu-id="1a216-103">V tabulkovém seznam zásad, vyberte a klikněte na zásadu, kterou chcete upravit.</span><span class="sxs-lookup"><span data-stu-id="1a216-103">In the tabular listing of the policies, select and click the policy that you want to modify.</span></span> <span data-ttu-id="1a216-104">Klikněte pravým tlačítkem na vyvolání v místní nabídce a potom vyberte **přidat plán**.</span><span class="sxs-lookup"><span data-stu-id="1a216-104">Right-click to invoke the context menu and then select **Add schedule**.</span></span>
+2. <span data-ttu-id="c8532-103">V tabulkovém seznamu hello hello zásad, vyberte a klikněte na hello zásady, které chcete toomodify.</span><span class="sxs-lookup"><span data-stu-id="c8532-103">In hello tabular listing of hello policies, select and click hello policy that you want toomodify.</span></span> <span data-ttu-id="c8532-104">Klikněte pravým tlačítkem na tooinvoke hello kontextovou nabídku a pak vyberte **přidat plán**.</span><span class="sxs-lookup"><span data-stu-id="c8532-104">Right-click tooinvoke hello context menu and then select **Add schedule**.</span></span>
 
     ![Spravovat plány](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
-3. <span data-ttu-id="1a216-106">V **přidat plán** okně Upravit typ snímku, frekvenci zálohování, uchovávání a počáteční datum a čas.</span><span class="sxs-lookup"><span data-stu-id="1a216-106">In the **Add schedule** blade, modify the snapshot type, backup frequency, retention, and start date and time.</span></span> <span data-ttu-id="1a216-107">Klikněte na tlačítko **Přidat**.</span><span class="sxs-lookup"><span data-stu-id="1a216-107">Click **Add**.</span></span>
+3. <span data-ttu-id="c8532-106">V hello **přidat plán** okně Upravit typ hello snímku, frekvenci zálohování, uchovávání a počáteční datum a čas.</span><span class="sxs-lookup"><span data-stu-id="c8532-106">In hello **Add schedule** blade, modify hello snapshot type, backup frequency, retention, and start date and time.</span></span> <span data-ttu-id="c8532-107">Klikněte na tlačítko **Přidat**.</span><span class="sxs-lookup"><span data-stu-id="c8532-107">Click **Add**.</span></span>
 
     ![Spravovat plány](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
-4. <span data-ttu-id="1a216-109">Upozornění se zobrazí po dokončení vytvoření zásady zálohování.</span><span class="sxs-lookup"><span data-stu-id="1a216-109">You are notified when the backup policy creation is complete.</span></span> <span data-ttu-id="1a216-110">Zásady zálohování seznamu je také aktualizovat.</span><span class="sxs-lookup"><span data-stu-id="1a216-110">The backup policy list is also updated.</span></span>
+4. <span data-ttu-id="c8532-109">Upozornění se zobrazí po dokončení vytvoření zásady zálohování hello.</span><span class="sxs-lookup"><span data-stu-id="c8532-109">You are notified when hello backup policy creation is complete.</span></span> <span data-ttu-id="c8532-110">zásady zálohování seznamu Hello je také aktualizovat.</span><span class="sxs-lookup"><span data-stu-id="c8532-110">hello backup policy list is also updated.</span></span>
 
     ![Spravovat plány](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
 

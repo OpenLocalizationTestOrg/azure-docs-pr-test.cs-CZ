@@ -1,15 +1,15 @@
-### <a name="create-a-console-application"></a><span data-ttu-id="65f73-101">Vytvoření konzolové aplikace</span><span class="sxs-lookup"><span data-stu-id="65f73-101">Create a console application</span></span>
+### <a name="create-a-console-application"></a><span data-ttu-id="318be-101">Vytvoření konzolové aplikace</span><span class="sxs-lookup"><span data-stu-id="318be-101">Create a console application</span></span>
 
-<span data-ttu-id="65f73-102">Nejprve spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Framework)**.</span><span class="sxs-lookup"><span data-stu-id="65f73-102">First, launch Visual Studio and create a new **Console App (.NET Framework)** project.</span></span>
+<span data-ttu-id="318be-102">Nejprve spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Framework)**.</span><span class="sxs-lookup"><span data-stu-id="318be-102">First, launch Visual Studio and create a new **Console App (.NET Framework)** project.</span></span>
 
-### <a name="add-the-relay-nuget-package"></a><span data-ttu-id="65f73-103">Přidání balíčku NuGet služby Relay</span><span class="sxs-lookup"><span data-stu-id="65f73-103">Add the Relay NuGet package</span></span>
+### <a name="add-hello-relay-nuget-package"></a><span data-ttu-id="318be-103">Přidání balíčku NuGet předávání hello</span><span class="sxs-lookup"><span data-stu-id="318be-103">Add hello Relay NuGet package</span></span>
 
-1. <span data-ttu-id="65f73-104">Klikněte pravým tlačítkem na nově vytvořený projekt a potom klikněte na **Spravovat balíčky NuGet**.</span><span class="sxs-lookup"><span data-stu-id="65f73-104">Right-click the newly created project and then click **Manage NuGet Packages**.</span></span>
-2. <span data-ttu-id="65f73-105">Klikněte na kartu **Procházet**, vyhledejte „Microsoft.Azure.Relay“ a vyberte položku **Microsoft Azure Relay**.</span><span class="sxs-lookup"><span data-stu-id="65f73-105">Click the **Browse** tab, then search for "Microsoft.Azure.Relay" and select the **Microsoft Azure Relay** item.</span></span> <span data-ttu-id="65f73-106">Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="65f73-106">Click **Install** to complete the installation, then close this dialog box.</span></span>
+1. <span data-ttu-id="318be-104">Klikněte pravým tlačítkem na projekt hello nově vytvořený a pak klikněte na **spravovat balíčky NuGet**.</span><span class="sxs-lookup"><span data-stu-id="318be-104">Right-click hello newly created project and then click **Manage NuGet Packages**.</span></span>
+2. <span data-ttu-id="318be-105">Klikněte na tlačítko hello **Procházet** kartu a potom vyhledejte "Microsoft.Azure.Relay" a vyberte hello **Microsoft Azure předávání** položky.</span><span class="sxs-lookup"><span data-stu-id="318be-105">Click hello **Browse** tab, then search for "Microsoft.Azure.Relay" and select hello **Microsoft Azure Relay** item.</span></span> <span data-ttu-id="318be-106">Klikněte na tlačítko **nainstalovat** toocomplete hello instalace a pak zavřete toto dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="318be-106">Click **Install** toocomplete hello installation, then close this dialog box.</span></span>
 
-### <a name="write-some-code-to-send-messages"></a><span data-ttu-id="65f73-107">Napsání kódu pro odesílání zpráv</span><span class="sxs-lookup"><span data-stu-id="65f73-107">Write some code to send messages</span></span>
+### <a name="write-some-code-toosend-messages"></a><span data-ttu-id="318be-107">Napsat kód toosend zprávy</span><span class="sxs-lookup"><span data-stu-id="318be-107">Write some code toosend messages</span></span>
 
-1. <span data-ttu-id="65f73-108">Nahraďte existující příkazy `using` na začátku souboru Program.cs následujícími příkazy `using`:</span><span class="sxs-lookup"><span data-stu-id="65f73-108">Replace the existing `using` statements at the top of the Program.cs file with the following `using` statements:</span></span>
+1. <span data-ttu-id="318be-108">Nahradit stávající hello `using` příkazy hello horní části souboru Program.cs hello s následující hello `using` příkazy:</span><span class="sxs-lookup"><span data-stu-id="318be-108">Replace hello existing `using` statements at hello top of hello Program.cs file with hello following `using` statements:</span></span>
    
     ```csharp
     using System;
@@ -18,7 +18,7 @@
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. <span data-ttu-id="65f73-109">Do třídy `Program` přidejte konstanty s podrobnostmi o hybridním připojení.</span><span class="sxs-lookup"><span data-stu-id="65f73-109">Add constants to the `Program` class for the hybrid connection details.</span></span> <span data-ttu-id="65f73-110">Zástupné symboly v závorkách nahraďte hodnotami, které jste získali při vytváření hybridního připojení.</span><span class="sxs-lookup"><span data-stu-id="65f73-110">Replace the placeholders in brackets with the values you obtained when creating the hybrid connection.</span></span> <span data-ttu-id="65f73-111">Nezapomeňte použít plně kvalifikovaný obor názvů:</span><span class="sxs-lookup"><span data-stu-id="65f73-111">Be sure to use the fully qualified namespace name:</span></span>
+2. <span data-ttu-id="318be-109">Přidat konstanty toohello `Program` třída podrobnosti hello hybridní připojení.</span><span class="sxs-lookup"><span data-stu-id="318be-109">Add constants toohello `Program` class for hello hybrid connection details.</span></span> <span data-ttu-id="318be-110">Nahraďte zástupné symboly hello v závorkách hello hodnoty, které jste získali při vytváření hello hybridní připojení.</span><span class="sxs-lookup"><span data-stu-id="318be-110">Replace hello placeholders in brackets with hello values you obtained when creating hello hybrid connection.</span></span> <span data-ttu-id="318be-111">Být jisti toouse hello obor názvů plně kvalifikovaný název:</span><span class="sxs-lookup"><span data-stu-id="318be-111">Be sure toouse hello fully qualified namespace name:</span></span>
    
     ```csharp
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
@@ -26,74 +26,74 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. <span data-ttu-id="65f73-112">Do třídy `Program` přidejte následující metodu:</span><span class="sxs-lookup"><span data-stu-id="65f73-112">Add the following method to the `Program` class:</span></span>
+3. <span data-ttu-id="318be-112">Přidejte následující metodu toohello hello `Program` třídy:</span><span class="sxs-lookup"><span data-stu-id="318be-112">Add hello following method toohello `Program` class:</span></span>
    
     ```csharp
     private static async Task RunAsync()
     {
-        Console.WriteLine("Enter lines of text to send to the server with ENTER");
+        Console.WriteLine("Enter lines of text toosend toohello server with ENTER");
    
         // Create a new hybrid connection client
         var tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(KeyName, Key);
         var client = new HybridConnectionClient(new Uri(String.Format("sb://{0}/{1}", RelayNamespace, ConnectionName)), tokenProvider);
    
-        // Initiate the connection
+        // Initiate hello connection
         var relayConnection = await client.CreateConnectionAsync();
    
-        // We run two concurrent loops on the connection. One 
-        // reads input from the console and writes it to the connection 
-        // with a stream writer. The other reads lines of input from the 
-        // connection with a stream reader and writes them to the console. 
-        // Entering a blank line will shut down the write task after 
-        // sending it to the server. The server will then cleanly shut down
-        // the connection which will terminate the read task.
+        // We run two concurrent loops on hello connection. One 
+        // reads input from hello console and writes it toohello connection 
+        // with a stream writer. hello other reads lines of input from hello 
+        // connection with a stream reader and writes them toohello console. 
+        // Entering a blank line will shut down hello write task after 
+        // sending it toohello server. hello server will then cleanly shut down
+        // hello connection which will terminate hello read task.
    
         var reads = Task.Run(async () => {
-            // Initialize the stream reader over the connection
+            // Initialize hello stream reader over hello connection
             var reader = new StreamReader(relayConnection);
             var writer = Console.Out;
             do
             {
-                // Read a full line of UTF-8 text up to newline
+                // Read a full line of UTF-8 text up toonewline
                 string line = await reader.ReadLineAsync();
-                // if the string is empty or null, we are done.
+                // if hello string is empty or null, we are done.
                 if (String.IsNullOrEmpty(line))
                     break;
-                // Write to the console
+                // Write toohello console
                 await writer.WriteLineAsync(line);
             }
             while (true);
         });
    
-        // Read from the console and write to the hybrid connection
+        // Read from hello console and write toohello hybrid connection
         var writes = Task.Run(async () => {
             var reader = Console.In;
             var writer = new StreamWriter(relayConnection) { AutoFlush = true };
             do
             {
-                // Read a line form the console
+                // Read a line form hello console
                 string line = await reader.ReadLineAsync();
-                // Write the line out, also when it's empty
+                // Write hello line out, also when it's empty
                 await writer.WriteLineAsync(line);
-                // Quit when the line was empty
+                // Quit when hello line was empty
                 if (String.IsNullOrEmpty(line))
                     break;
             }
             while (true);
         });
    
-        // Wait for both tasks to complete
+        // Wait for both tasks toocomplete
         await Task.WhenAll(reads, writes);
         await relayConnection.CloseAsync(CancellationToken.None);
     }
     ```
-4. <span data-ttu-id="65f73-113">Ve třídě `Program` přidejte do metody `Main` následující řádek kódu.</span><span class="sxs-lookup"><span data-stu-id="65f73-113">Add the following line of code to the `Main` method in the `Program` class.</span></span>
+4. <span data-ttu-id="318be-113">Přidejte následující řádek kódu toohello hello `Main` metoda v hello `Program` třídy.</span><span class="sxs-lookup"><span data-stu-id="318be-113">Add hello following line of code toohello `Main` method in hello `Program` class.</span></span>
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
-    <span data-ttu-id="65f73-114">Soubor Program.cs by měl vypadat takhle.</span><span class="sxs-lookup"><span data-stu-id="65f73-114">Here is what your Program.cs should look like.</span></span>
+    <span data-ttu-id="318be-114">Soubor Program.cs by měl vypadat takhle.</span><span class="sxs-lookup"><span data-stu-id="318be-114">Here is what your Program.cs should look like.</span></span>
    
     ```csharp
     using System;
@@ -118,58 +118,58 @@
    
             private static async Task RunAsync()
             {
-                Console.WriteLine("Enter lines of text to send to the server with ENTER");
+                Console.WriteLine("Enter lines of text toosend toohello server with ENTER");
    
                 // Create a new hybrid connection client
                 var tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(KeyName, Key);
                 var client = new HybridConnectionClient(new Uri(String.Format("sb://{0}/{1}", RelayNamespace, ConnectionName)), tokenProvider);
    
-                // Initiate the connection
+                // Initiate hello connection
                 var relayConnection = await client.CreateConnectionAsync();
    
-                // We run two conucrrent loops on the connection. One 
-                // reads input from the console and writes it to the connection 
-                // with a stream writer. The other reads lines of input from the 
-                // connection with a stream reader and writes them to the console. 
-                // Entering a blank line will shut down the write task after 
-                // sending it to the server. The server will then cleanly shut down
-                // the connection which will terminate the read task.
+                // We run two conucrrent loops on hello connection. One 
+                // reads input from hello console and writes it toohello connection 
+                // with a stream writer. hello other reads lines of input from hello 
+                // connection with a stream reader and writes them toohello console. 
+                // Entering a blank line will shut down hello write task after 
+                // sending it toohello server. hello server will then cleanly shut down
+                // hello connection which will terminate hello read task.
    
                 var reads = Task.Run(async () => {
-                    // Initialize the stream reader over the connection
+                    // Initialize hello stream reader over hello connection
                     var reader = new StreamReader(relayConnection);
                     var writer = Console.Out;
                     do
                     {
-                        // Read a full line of UTF-8 text up to newline
+                        // Read a full line of UTF-8 text up toonewline
                         string line = await reader.ReadLineAsync();
-                        // If the string is empty or null, we are done.
+                        // If hello string is empty or null, we are done.
                         if (String.IsNullOrEmpty(line))
                             break;
-                        // Write to the console
+                        // Write toohello console
                         await writer.WriteLineAsync(line);
                     }
                     while (true);
                 });
    
-                // Read from the console and write to the hybrid connection
+                // Read from hello console and write toohello hybrid connection
                 var writes = Task.Run(async () => {
                     var reader = Console.In;
                     var writer = new StreamWriter(relayConnection) { AutoFlush = true };
                     do
                     {
-                        // Read a line form the console
+                        // Read a line form hello console
                         string line = await reader.ReadLineAsync();
-                        // Write the line out, also when it's empty
+                        // Write hello line out, also when it's empty
                         await writer.WriteLineAsync(line);
-                        // Quit when the line was empty
+                        // Quit when hello line was empty
                         if (String.IsNullOrEmpty(line))
                             break;
                     }
                     while (true);
                 });
    
-                // Wait for both tasks to complete
+                // Wait for both tasks toocomplete
                 await Task.WhenAll(reads, writes);
                 await relayConnection.CloseAsync(CancellationToken.None);
             }

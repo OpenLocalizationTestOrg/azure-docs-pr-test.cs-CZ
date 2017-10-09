@@ -1,0 +1,46 @@
+<span data-ttu-id="a88f4-101">Hello Azure CLI 2.0 umožňuje toocreate a správě prostředků Azure v systému macOS, Linux a Windows.</span><span class="sxs-lookup"><span data-stu-id="a88f4-101">hello Azure CLI 2.0 allows you toocreate and manage your Azure resources on macOS, Linux, and Windows.</span></span> <span data-ttu-id="a88f4-102">Tento článek podrobně některé z nejběžnějších toocreate příkazy hello a spravovat virtuální počítače (VM).</span><span class="sxs-lookup"><span data-stu-id="a88f4-102">This article details some of hello most common commands toocreate and manage virtual machines (VMs).</span></span>
+
+<span data-ttu-id="a88f4-103">Tento článek vyžaduje hello Azure CLI verze verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="a88f4-103">This article requires hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="a88f4-104">Spustit `az --version` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="a88f4-104">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="a88f4-105">Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="a88f4-105">If you need tooupgrade, see [Install Azure CLI 2.0](/cli/azure/install-azure-cli).</span></span> <span data-ttu-id="a88f4-106">Můžete také použít [cloudové prostředí](/azure/cloud-shell/quickstart) z prohlížeče.</span><span class="sxs-lookup"><span data-stu-id="a88f4-106">You can also use [Cloud Shell](/azure/cloud-shell/quickstart) from your browser.</span></span>
+
+## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a><span data-ttu-id="a88f4-107">Základní příkazy Azure Resource Manageru v Azure CLI</span><span class="sxs-lookup"><span data-stu-id="a88f4-107">Basic Azure Resource Manager commands in Azure CLI</span></span>
+<span data-ttu-id="a88f4-108">Podrobné pomoc s přepínače konkrétní příkazového řádku a možnosti, můžete použít příkaz online nápovědu hello a možnosti zadáním `az <command> <subcommand> --help`.</span><span class="sxs-lookup"><span data-stu-id="a88f4-108">For more detailed help with specific command line switches and options, you can use hello online command help and options by typing `az <command> <subcommand> --help`.</span></span>
+
+### <a name="create-vms"></a><span data-ttu-id="a88f4-109">Vytvoření virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="a88f4-109">Create VMs</span></span>
+| <span data-ttu-id="a88f4-110">Úkol</span><span class="sxs-lookup"><span data-stu-id="a88f4-110">Task</span></span> | <span data-ttu-id="a88f4-111">Příkazy Azure CLI</span><span class="sxs-lookup"><span data-stu-id="a88f4-111">Azure CLI commands</span></span> |
+| --- | --- |
+| <span data-ttu-id="a88f4-112">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="a88f4-112">Create a resource group</span></span> | `az group create --name myResourceGroup --location eastus` |
+| <span data-ttu-id="a88f4-113">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="a88f4-113">Create a Linux VM</span></span> | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
+| <span data-ttu-id="a88f4-114">Vytvoření virtuálního počítače s Windows</span><span class="sxs-lookup"><span data-stu-id="a88f4-114">Create a Windows VM</span></span> | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
+
+### <a name="manage-vm-state"></a><span data-ttu-id="a88f4-115">Spravovat stav virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-115">Manage VM state</span></span>
+| <span data-ttu-id="a88f4-116">Úkol</span><span class="sxs-lookup"><span data-stu-id="a88f4-116">Task</span></span> | <span data-ttu-id="a88f4-117">Příkazy Azure CLI</span><span class="sxs-lookup"><span data-stu-id="a88f4-117">Azure CLI commands</span></span> |
+| --- | --- |
+| <span data-ttu-id="a88f4-118">Spuštění virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-118">Start a VM</span></span> | `az vm start --resource-group myResourceGroup --name myVM` |
+| <span data-ttu-id="a88f4-119">Zastavení virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-119">Stop a VM</span></span> | `az vm stop --resource-group myResourceGroup --name myVM` |
+| <span data-ttu-id="a88f4-120">Uvolnění virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-120">Deallocate a VM</span></span> | `az vm deallocate --resource-group myResourceGroup --name myVM` |
+| <span data-ttu-id="a88f4-121">Restartování virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-121">Restart a VM</span></span> | `az vm restart --resource-group myResourceGroup --name myVM` |
+| <span data-ttu-id="a88f4-122">Znovunasazení virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-122">Redeploy a VM</span></span> | `az vm redeploy --resource-group myResourceGroup --name myVM` |
+| <span data-ttu-id="a88f4-123">Odstranění virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-123">Delete a VM</span></span> | `az vm delete --resource-group myResourceGroup --name myVM` |
+
+### <a name="get-vm-info"></a><span data-ttu-id="a88f4-124">Získání informací o virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="a88f4-124">Get VM info</span></span>
+| <span data-ttu-id="a88f4-125">Úkol</span><span class="sxs-lookup"><span data-stu-id="a88f4-125">Task</span></span> | <span data-ttu-id="a88f4-126">Příkazy Azure CLI</span><span class="sxs-lookup"><span data-stu-id="a88f4-126">Azure CLI commands</span></span> |
+| --- | --- |
+| <span data-ttu-id="a88f4-127">Výpis virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="a88f4-127">List VMs</span></span> | `az vm list` |
+| <span data-ttu-id="a88f4-128">Získání informací o virtuálním počítači</span><span class="sxs-lookup"><span data-stu-id="a88f4-128">Get information about a VM</span></span> | `az vm show --resource-group myResourceGroup --name myVM` |
+| <span data-ttu-id="a88f4-129">Získání využití prostředků virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-129">Get usage of VM resources</span></span> | `az vm list-usage --location eastus` |
+| <span data-ttu-id="a88f4-130">Získání všech dostupných velikostí virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="a88f4-130">Get all available VM sizes</span></span> | `az vm list-sizes --location eastus` |
+
+## <a name="disks-and-images"></a><span data-ttu-id="a88f4-131">Disky a obrázků</span><span class="sxs-lookup"><span data-stu-id="a88f4-131">Disks and images</span></span>
+| <span data-ttu-id="a88f4-132">Úkol</span><span class="sxs-lookup"><span data-stu-id="a88f4-132">Task</span></span> | <span data-ttu-id="a88f4-133">Příkazy Azure CLI</span><span class="sxs-lookup"><span data-stu-id="a88f4-133">Azure CLI commands</span></span> |
+| --- | --- |
+| <span data-ttu-id="a88f4-134">Přidání disku tooa data virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-134">Add a data disk tooa VM</span></span> | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
+| <span data-ttu-id="a88f4-135">Odebrání datového disku z virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-135">Remove a data disk from a VM</span></span> | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
+| <span data-ttu-id="a88f4-136">Změna velikosti disku</span><span class="sxs-lookup"><span data-stu-id="a88f4-136">Resize a disk</span></span> | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
+| <span data-ttu-id="a88f4-137">Pořízení snímku disku</span><span class="sxs-lookup"><span data-stu-id="a88f4-137">Snapshot a disk</span></span> | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |
+| <span data-ttu-id="a88f4-138">Vytvoření bitové kopie virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="a88f4-138">Create image of a VM</span></span> | `az image create --resource-group myResourceGroup --source myVM --name myImage` |
+| <span data-ttu-id="a88f4-139">Vytvořit virtuální počítač z bitové kopie</span><span class="sxs-lookup"><span data-stu-id="a88f4-139">Create VM from image</span></span> | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
+
+
+## <a name="next-steps"></a><span data-ttu-id="a88f4-140">Další kroky</span><span class="sxs-lookup"><span data-stu-id="a88f4-140">Next steps</span></span>
+<span data-ttu-id="a88f4-141">Další příklady příkazů hello rozhraní příkazového řádku najdete v tématu hello [vytvořit a spravovat virtuální počítače s Linuxem pomocí rozhraní příkazového řádku Azure hello](../articles/virtual-machines/linux/tutorial-manage-vm.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="a88f4-141">For additional examples of hello CLI commands, see hello [Create and Manage Linux VMs with hello Azure CLI](../articles/virtual-machines/linux/tutorial-manage-vm.md) tutorial.</span></span>
+

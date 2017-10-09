@@ -1,0 +1,7 @@
+
+1. <span data-ttu-id="14ec4-101">V hello [portál Azure](https://portal.azure.com/), klikněte na tlačítko **Procházet vše** > **App Services**a klikněte na vaše mobilní aplikace back-end.</span><span class="sxs-lookup"><span data-stu-id="14ec4-101">In hello [Azure portal](https://portal.azure.com/), click **Browse All** > **App Services**, and click your Mobile Apps back end.</span></span> <span data-ttu-id="14ec4-102">V části **nastavení**, klikněte na tlačítko **aplikace služby Push**a potom klikněte na název vašeho centra oznámení.</span><span class="sxs-lookup"><span data-stu-id="14ec4-102">Under **Settings**, click **App Service Push**, and then click your notification hub name.</span></span>
+2. <span data-ttu-id="14ec4-103">Přejděte příliš**Windows (WNS)**, zadejte hello **klíč zabezpečení** (tajný klíč klienta) a **SID balíčku** získané z hello Web služeb Live Services, a pak klikněte na  **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="14ec4-103">Go too**Windows (WNS)**, enter hello **Security key** (client secret) and **Package SID** that you obtained from hello Live Services site, and then click **Save**.</span></span>
+
+    ![Nastavit klíč WNS hello hello portálu](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+
+<span data-ttu-id="14ec4-105">Back-end vašeho je teď nakonfigurovaná toouse WNS toosend nabízená oznámení.</span><span class="sxs-lookup"><span data-stu-id="14ec4-105">Your back end is now configured toouse WNS toosend push notifications.</span></span>

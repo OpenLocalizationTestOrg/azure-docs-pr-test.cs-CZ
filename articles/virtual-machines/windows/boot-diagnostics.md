@@ -1,6 +1,6 @@
 ---
-title: "Spuštění diagnostiky pro virtuální počítače s Windows v Azure | Microsoft dokumentů"
-description: "Přehled ladění dvou funkcí pro virtuální počítače s Windows v Azure"
+title: "aaaBoot diagnostiky pro virtuální počítače s Windows v Azure | Microsoft dokumentů"
+description: "Přehled hello dvě funkce ladění pro virtuální počítače s Windows v Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines-windows
 author: Deland-Han
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: delhan
-ms.openlocfilehash: 12edd2628d2f15ad608f940dcf5d46363d2e9172
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 353c58562929de2dc49bb8c89ce1d0d6b6a0aa18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-windows-virtual-machines-in-azure"></a><span data-ttu-id="5a2ae-103">Jak používat Diagnostika spouštění k řešení potíží s virtuální počítače s Windows v Azure</span><span class="sxs-lookup"><span data-stu-id="5a2ae-103">How to use boot diagnostics to troubleshoot Windows virtual machines in Azure</span></span>
+# <a name="how-toouse-boot-diagnostics-tootroubleshoot-windows-virtual-machines-in-azure"></a><span data-ttu-id="33a92-103">Jak toouse spouštět diagnostiku tootroubleshoot Windows virtuálních počítačů v Azure</span><span class="sxs-lookup"><span data-stu-id="33a92-103">How toouse boot diagnostics tootroubleshoot Windows virtual machines in Azure</span></span>
 
 [!INCLUDE [virtual-machines-common-boot-diagnostics](../../../includes/virtual-machines-common-boot-diagnostics.md)]

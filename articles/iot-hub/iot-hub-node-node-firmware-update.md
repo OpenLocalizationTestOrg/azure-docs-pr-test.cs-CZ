@@ -1,6 +1,6 @@
 ---
-title: "Aktualizace firmwaru zařízení s Azure IoT Hub (uzel) | Microsoft Docs"
-description: "Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použijete k implementaci aplikace simulovaného zařízení a aplikaci služby, která spustí aktualizaci firmwaru SDK služby Azure IoT pro Node.js."
+title: "aktualizace firmwaru aaaDevice službou Azure IoT Hub (uzel) | Microsoft Docs"
+description: "Jak aktualizovat toouse správou zařízení ve službě Azure IoT Hub tooinitiate firmwaru zařízení. Aplikace simulovaného zařízení a aplikaci služby, která spustí aktualizaci firmwaru hello použijete pro Node.js tooimplement SDK služby Azure IoT hello."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2017
 ms.author: juanpere
-ms.openlocfilehash: 350cf1cbec8847d1bbf29814435502af6f098e54
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 99d4b369e7aba334bf713e0c657e6e5d227fb691
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a><span data-ttu-id="1951a-104">Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (uzel nebo uzel)</span><span class="sxs-lookup"><span data-stu-id="1951a-104">Use device management to initiate a device firmware update (Node/Node)</span></span>
+# <a name="use-device-management-tooinitiate-a-device-firmware-update-nodenode"></a><span data-ttu-id="8a967-104">Použití zařízení správu tooinitiate aktualizaci firmwaru zařízení (uzel nebo uzel)</span><span class="sxs-lookup"><span data-stu-id="8a967-104">Use device management tooinitiate a device firmware update (Node/Node)</span></span>
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-## <a name="introduction"></a><span data-ttu-id="1951a-105">Úvod</span><span class="sxs-lookup"><span data-stu-id="1951a-105">Introduction</span></span>
-<span data-ttu-id="1951a-106">V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení.</span><span class="sxs-lookup"><span data-stu-id="1951a-106">In the [Get started with device management][lnk-dm-getstarted] tutorial, you saw how to use the [device twin][lnk-devtwin] and [direct methods][lnk-c2dmethod] primitives to remotely reboot a device.</span></span> <span data-ttu-id="1951a-107">Tento kurz používá stejné primitiv IoT Hub a poskytuje pokyny a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.</span><span class="sxs-lookup"><span data-stu-id="1951a-107">This tutorial uses the same IoT Hub primitives and provides guidance and shows you how to do an end-to-end simulated firmware update.</span></span>  <span data-ttu-id="1951a-108">Tento vzor slouží k implementaci aktualizace firmwaru pro vzorovou Intel Edison zařízení.</span><span class="sxs-lookup"><span data-stu-id="1951a-108">This pattern is used in the firmware update implementation for the Intel Edison device sample.</span></span>
+## <a name="introduction"></a><span data-ttu-id="8a967-105">Úvod</span><span class="sxs-lookup"><span data-stu-id="8a967-105">Introduction</span></span>
+<span data-ttu-id="8a967-106">V hello [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurzu jste viděli, jak toouse hello [dvojče zařízení] [ lnk-devtwin] a [přímé metody] [ lnk-c2dmethod] tooremotely primitiv restartování zařízení.</span><span class="sxs-lookup"><span data-stu-id="8a967-106">In hello [Get started with device management][lnk-dm-getstarted] tutorial, you saw how toouse hello [device twin][lnk-devtwin] and [direct methods][lnk-c2dmethod] primitives tooremotely reboot a device.</span></span> <span data-ttu-id="8a967-107">Tento kurz používá hello stejné primitiv IoT Hub a poskytuje pokyny a ukazuje, jak toodo začátku do konce simulated aktualizaci firmwaru.</span><span class="sxs-lookup"><span data-stu-id="8a967-107">This tutorial uses hello same IoT Hub primitives and provides guidance and shows you how toodo an end-to-end simulated firmware update.</span></span>  <span data-ttu-id="8a967-108">Tento vzor se používá v implementaci aktualizace firmwaru hello pro ukázku zařízení Intel Edison hello.</span><span class="sxs-lookup"><span data-stu-id="8a967-108">This pattern is used in hello firmware update implementation for hello Intel Edison device sample.</span></span>
 
-<span data-ttu-id="1951a-109">V tomto kurzu získáte informace o následujících postupech:</span><span class="sxs-lookup"><span data-stu-id="1951a-109">This tutorial shows you how to:</span></span>
+<span data-ttu-id="8a967-109">V tomto kurzu získáte informace o následujících postupech:</span><span class="sxs-lookup"><span data-stu-id="8a967-109">This tutorial shows you how to:</span></span>
 
-* <span data-ttu-id="1951a-110">Vytvořte konzolovou aplikaci softwaru Node.js, která volá metodu firmwareUpdate přímé v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="1951a-110">Create a Node.js console app that calls the firmwareUpdate direct method in the simulated device app through your IoT hub.</span></span>
-* <span data-ttu-id="1951a-111">Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda.</span><span class="sxs-lookup"><span data-stu-id="1951a-111">Create a simulated device app that implements a **firmwareUpdate** direct method.</span></span> <span data-ttu-id="1951a-112">Tato metoda inicializuje více fáze procesu, který čeká na stažení bitové kopie firmwaru, stáhne bitovou kopii firmware a nakonec platí bitovou kopii firmwaru.</span><span class="sxs-lookup"><span data-stu-id="1951a-112">This method initiates a multi-stage process that waits to download the firmware image, downloads the firmware image, and finally applies the firmware image.</span></span> <span data-ttu-id="1951a-113">Během aktualizace v každé fázi používá zařízení hlášené vlastnosti hlásit průběh.</span><span class="sxs-lookup"><span data-stu-id="1951a-113">During each stage of the update, the device uses the reported properties to report on progress.</span></span>
+* <span data-ttu-id="8a967-110">Vytvořte konzolovou aplikaci softwaru Node.js, která volá metodu přímé firmwareUpdate hello v hello aplikaci simulovaného zařízení prostřednictvím služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="8a967-110">Create a Node.js console app that calls hello firmwareUpdate direct method in hello simulated device app through your IoT hub.</span></span>
+* <span data-ttu-id="8a967-111">Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda.</span><span class="sxs-lookup"><span data-stu-id="8a967-111">Create a simulated device app that implements a **firmwareUpdate** direct method.</span></span> <span data-ttu-id="8a967-112">Tato metoda inicializuje více fáze procesu, který čeká toodownload hello firmware image, soubory ke stažení bitové kopie hello firmware a nakonec platí hello firmware image.</span><span class="sxs-lookup"><span data-stu-id="8a967-112">This method initiates a multi-stage process that waits toodownload hello firmware image, downloads hello firmware image, and finally applies hello firmware image.</span></span> <span data-ttu-id="8a967-113">Během každé fáze hello aktualizace hello zařízení používá hello ohlášeny průběh tooreport vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="8a967-113">During each stage of hello update, hello device uses hello reported properties tooreport on progress.</span></span>
 
-<span data-ttu-id="1951a-114">Na konci tohoto kurzu máte dvě aplikace konzoly Node.js:</span><span class="sxs-lookup"><span data-stu-id="1951a-114">At the end of this tutorial, you have two Node.js console apps:</span></span>
+<span data-ttu-id="8a967-114">Na konci hello tohoto kurzu máte dvě aplikace konzoly Node.js:</span><span class="sxs-lookup"><span data-stu-id="8a967-114">At hello end of this tutorial, you have two Node.js console apps:</span></span>
 
-<span data-ttu-id="1951a-115">**dmpatterns_fwupdate_service.js**, která volá metodu přímé v aplikaci simulovaného zařízení, zobrazí odpověď a pravidelně (každých 500ms) zobrazí aktualizovaná hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="1951a-115">**dmpatterns_fwupdate_service.js**, which calls a direct method in the simulated device app, displays the response, and periodically (every 500ms) displays the updated reported properties.</span></span>
+<span data-ttu-id="8a967-115">**dmpatterns_fwupdate_service.js**, která volá metodu přímé v aplikaci simulovaného zařízení hello, zobrazí hello odpovědi a pravidelně (každých 500ms) zobrazí hello aktualizovat hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="8a967-115">**dmpatterns_fwupdate_service.js**, which calls a direct method in hello simulated device app, displays hello response, and periodically (every 500ms) displays hello updated reported properties.</span></span>
 
-<span data-ttu-id="1951a-116">**dmpatterns_fwupdate_device.js**, který se připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, dostane přímá metoda firmwareUpdate, spustí prostřednictvím více stavu procesu k simulaci, včetně aktualizace firmwaru: čekání bitové kopie stažení, stahování novou bitovou kopii a nakonec použitím bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="1951a-116">**dmpatterns_fwupdate_device.js**, which connects to your IoT hub with the device identity created earlier, receives a firmwareUpdate direct method, runs through a multi-state process to simulate a firmware update including: waiting for the image download, downloading the new image, and finally applying the image.</span></span>
+<span data-ttu-id="8a967-116">**dmpatterns_fwupdate_device.js**, který připojí tooyour IoT hub s dříve, vytvořenou identitou zařízení hello dostane přímá metoda firmwareUpdate, spustí prostřednictvím toosimulate více stavu procesu, včetně aktualizace firmwaru: Čekání na hello Stáhnout bitovou kopii, stahování hello novou bitovou kopii a nakonec použití hello bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="8a967-116">**dmpatterns_fwupdate_device.js**, which connects tooyour IoT hub with hello device identity created earlier, receives a firmwareUpdate direct method, runs through a multi-state process toosimulate a firmware update including: waiting for hello image download, downloading hello new image, and finally applying hello image.</span></span>
 
-<span data-ttu-id="1951a-117">Pro absolvování tohoto kurzu potřebujete:</span><span class="sxs-lookup"><span data-stu-id="1951a-117">To complete this tutorial, you need the following:</span></span>
+<span data-ttu-id="8a967-117">toocomplete tohoto kurzu budete potřebovat hello následující:</span><span class="sxs-lookup"><span data-stu-id="8a967-117">toocomplete this tutorial, you need hello following:</span></span>
 
-* <span data-ttu-id="1951a-118">Node.js verze 0.12.x nebo novější,</span><span class="sxs-lookup"><span data-stu-id="1951a-118">Node.js version 0.12.x or later,</span></span> <br/>  <span data-ttu-id="1951a-119">[Příprava vývojového prostředí] [ lnk-dev-setup] popisuje postup instalace Node.js pro tento návod v systému Windows nebo Linux.</span><span class="sxs-lookup"><span data-stu-id="1951a-119">[Prepare your development environment][lnk-dev-setup] describes how to install Node.js for this tutorial on either Windows or Linux.</span></span>
-* <span data-ttu-id="1951a-120">Aktivní účet Azure.</span><span class="sxs-lookup"><span data-stu-id="1951a-120">An active Azure account.</span></span> <span data-ttu-id="1951a-121">(Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)</span><span class="sxs-lookup"><span data-stu-id="1951a-121">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
+* <span data-ttu-id="8a967-118">Node.js verze 0.12.x nebo novější,</span><span class="sxs-lookup"><span data-stu-id="8a967-118">Node.js version 0.12.x or later,</span></span> <br/>  <span data-ttu-id="8a967-119">[Příprava vývojového prostředí] [ lnk-dev-setup] popisuje, jak tooinstall Node.js pro tento kurz v systému Windows nebo Linux.</span><span class="sxs-lookup"><span data-stu-id="8a967-119">[Prepare your development environment][lnk-dev-setup] describes how tooinstall Node.js for this tutorial on either Windows or Linux.</span></span>
+* <span data-ttu-id="8a967-120">Aktivní účet Azure.</span><span class="sxs-lookup"><span data-stu-id="8a967-120">An active Azure account.</span></span> <span data-ttu-id="8a967-121">(Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)</span><span class="sxs-lookup"><span data-stu-id="8a967-121">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
 
-<span data-ttu-id="1951a-122">Postupujte podle [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md) článek k vytvoření služby IoT hub a získat připojovací řetězec služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="1951a-122">Follow the [Get started with device management](iot-hub-node-node-device-management-get-started.md) article to create your IoT hub and get your IoT Hub connection string.</span></span>
+<span data-ttu-id="8a967-122">Postupujte podle hello [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md) článek toocreate služby IoT hub a získat připojovací řetězec služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="8a967-122">Follow hello [Get started with device management](iot-hub-node-node-device-management-get-started.md) article toocreate your IoT hub and get your IoT Hub connection string.</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a><span data-ttu-id="1951a-123">Spustit aktualizaci vzdálené firmwaru v zařízení s přímá metoda</span><span class="sxs-lookup"><span data-stu-id="1951a-123">Trigger a remote firmware update on the device using a direct method</span></span>
-<span data-ttu-id="1951a-124">V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuje aktualizace vzdálené firmwaru v zařízení.</span><span class="sxs-lookup"><span data-stu-id="1951a-124">In this section, you create a Node.js console app that initiates a remote firmware update on a device.</span></span> <span data-ttu-id="1951a-125">Přímá metoda používá k zahájení aktualizace a aplikace používá zařízení twin dotazy a pravidelně získat stav aktualizace active firmware.</span><span class="sxs-lookup"><span data-stu-id="1951a-125">The app uses a direct method to initiate the update and uses device twin queries to periodically get the status of the active firmware update.</span></span>
+## <a name="trigger-a-remote-firmware-update-on-hello-device-using-a-direct-method"></a><span data-ttu-id="8a967-123">Aktivovat aktualizaci firmwaru vzdálené na zařízení hello pomocí přímá metoda</span><span class="sxs-lookup"><span data-stu-id="8a967-123">Trigger a remote firmware update on hello device using a direct method</span></span>
+<span data-ttu-id="8a967-124">V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuje aktualizace vzdálené firmwaru v zařízení.</span><span class="sxs-lookup"><span data-stu-id="8a967-124">In this section, you create a Node.js console app that initiates a remote firmware update on a device.</span></span> <span data-ttu-id="8a967-125">aplikace Hello používá s přímá metoda tooinitiate hello aktualizací a používá zařízení twin dotazy tooperiodically získat stav hello hello active firmware aktualizace.</span><span class="sxs-lookup"><span data-stu-id="8a967-125">hello app uses a direct method tooinitiate hello update and uses device twin queries tooperiodically get hello status of hello active firmware update.</span></span>
 
-1. <span data-ttu-id="1951a-126">Vytvořit prázdnou složku s názvem **triggerfwupdateondevice**.</span><span class="sxs-lookup"><span data-stu-id="1951a-126">Create an empty folder called **triggerfwupdateondevice**.</span></span>  <span data-ttu-id="1951a-127">V **triggerfwupdateondevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="1951a-127">In the **triggerfwupdateondevice** folder, create a package.json file using the following command at your command prompt.</span></span>  <span data-ttu-id="1951a-128">Přijměte všechny výchozí hodnoty:</span><span class="sxs-lookup"><span data-stu-id="1951a-128">Accept all the defaults:</span></span>
+1. <span data-ttu-id="8a967-126">Vytvořit prázdnou složku s názvem **triggerfwupdateondevice**.</span><span class="sxs-lookup"><span data-stu-id="8a967-126">Create an empty folder called **triggerfwupdateondevice**.</span></span>  <span data-ttu-id="8a967-127">V hello **triggerfwupdateondevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku hello.</span><span class="sxs-lookup"><span data-stu-id="8a967-127">In hello **triggerfwupdateondevice** folder, create a package.json file using hello following command at your command prompt.</span></span>  <span data-ttu-id="8a967-128">Přijměte všechny výchozí hodnoty hello:</span><span class="sxs-lookup"><span data-stu-id="8a967-128">Accept all hello defaults:</span></span>
    
     ```
     npm init
     ```
-2. <span data-ttu-id="1951a-129">Na příkazovém řádku v **triggerfwupdateondevice** složky, spusťte následující příkaz k instalaci **azure-iot-hub** a **azure-iot zařízení mqtt** zařízení SDK balíčky:</span><span class="sxs-lookup"><span data-stu-id="1951a-129">At your command prompt in the **triggerfwupdateondevice** folder, run the following command to install the **azure-iot-hub** and **azure-iot-device-mqtt** Device SDK packages:</span></span>
+2. <span data-ttu-id="8a967-129">Na příkazovém řádku v hello **triggerfwupdateondevice** složky, spusťte následující příkaz tooinstall hello hello **azure-iot-hub** a **azure-iot zařízení mqtt** zařízení Balíčky sady SDK:</span><span class="sxs-lookup"><span data-stu-id="8a967-129">At your command prompt in hello **triggerfwupdateondevice** folder, run hello following command tooinstall hello **azure-iot-hub** and **azure-iot-device-mqtt** Device SDK packages:</span></span>
    
     ```
     npm install azure-iothub --save
     ```
-3. <span data-ttu-id="1951a-130">Pomocí textového editoru, vytvořte **dmpatterns_getstarted_service.js** v soubor **triggerfwupdateondevice** složky.</span><span class="sxs-lookup"><span data-stu-id="1951a-130">Using a text editor, create a **dmpatterns_getstarted_service.js** file in the **triggerfwupdateondevice** folder.</span></span>
-4. <span data-ttu-id="1951a-131">Přidejte následující příkazy na začátku "vyžadovat" **dmpatterns_getstarted_service.js** souboru:</span><span class="sxs-lookup"><span data-stu-id="1951a-131">Add the following 'require' statements at the start of the **dmpatterns_getstarted_service.js** file:</span></span>
+3. <span data-ttu-id="8a967-130">Pomocí textového editoru, vytvořte **dmpatterns_getstarted_service.js** souboru v hello **triggerfwupdateondevice** složky.</span><span class="sxs-lookup"><span data-stu-id="8a967-130">Using a text editor, create a **dmpatterns_getstarted_service.js** file in hello **triggerfwupdateondevice** folder.</span></span>
+4. <span data-ttu-id="8a967-131">Přidejte následující hello "vyžadovat" příkazy při spuštění hello hello **dmpatterns_getstarted_service.js** souboru:</span><span class="sxs-lookup"><span data-stu-id="8a967-131">Add hello following 'require' statements at hello start of hello **dmpatterns_getstarted_service.js** file:</span></span>
    
     ```
     'use strict';
@@ -70,7 +70,7 @@ ms.lasthandoff: 07/11/2017
     var Registry = require('azure-iothub').Registry;
     var Client = require('azure-iothub').Client;
     ```
-5. <span data-ttu-id="1951a-132">Přidejte následující deklarace proměnných a nahraďte zástupné hodnoty:</span><span class="sxs-lookup"><span data-stu-id="1951a-132">Add the following variable declarations and replace the placeholder values:</span></span>
+5. <span data-ttu-id="8a967-132">Přidejte následující deklarace proměnných hello a nahraďte zástupné hodnoty hello:</span><span class="sxs-lookup"><span data-stu-id="8a967-132">Add hello following variable declarations and replace hello placeholder values:</span></span>
    
     ```
     var connectionString = '{device_connectionstring}';
@@ -78,7 +78,7 @@ ms.lasthandoff: 07/11/2017
     var client = Client.fromConnectionString(connectionString);
     var deviceToUpdate = 'myDeviceId';
     ```
-6. <span data-ttu-id="1951a-133">Přidejte následující funkci k vyhledání a zobrazení hodnotu firmwareUpdate jsou uvedeny vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="1951a-133">Add the following function to find and display the value of the firmwareUpdate reported property.</span></span>
+6. <span data-ttu-id="8a967-133">Přidejte následující hello funkce toofind a zobrazit hodnotu hello hello firmwareUpdate hlášené vlastnost.</span><span class="sxs-lookup"><span data-stu-id="8a967-133">Add hello following function toofind and display hello value of hello firmwareUpdate reported property.</span></span>
    
     ```
     var queryTwinFWUpdateReported = function() {
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
         });
     };
     ```
-7. <span data-ttu-id="1951a-134">Přidejte následující funkci k vyvolání metody firmwareUpdate restartování cílového zařízení:</span><span class="sxs-lookup"><span data-stu-id="1951a-134">Add the following function to invoke the firmwareUpdate method to reboot the target device:</span></span>
+7. <span data-ttu-id="8a967-134">Přidejte následující funkce tooinvoke hello firmwareUpdate metoda tooreboot hello cílové zařízení hello:</span><span class="sxs-lookup"><span data-stu-id="8a967-134">Add hello following function tooinvoke hello firmwareUpdate method tooreboot hello target device:</span></span>
    
     ```
     var startFirmwareUpdateDevice = function() {
@@ -110,40 +110,40 @@ ms.lasthandoff: 07/11/2017
    
       client.invokeDeviceMethod(deviceToUpdate, methodParams, function(err, result) {
         if (err) {
-          console.error('Could not start the firmware update on the device: ' + err.message)
+          console.error('Could not start hello firmware update on hello device: ' + err.message)
         } 
       });
     };
     ```
-8. <span data-ttu-id="1951a-135">Nakonec přidejte následující funkci k kód pro spuštění pořadí aktualizací firmwaru a spusťte pravidelně zobrazuje hlášené vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="1951a-135">Finally, Add the following function to code to start the firmware update sequence and start periodically showing the reported properties:</span></span>
+8. <span data-ttu-id="8a967-135">Nakonec přidat hello následující funkce toocode toostart hello firmware aktualizace pořadí a začne pravidelně zobrazovat hello hlášené vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="8a967-135">Finally, Add hello following function toocode toostart hello firmware update sequence and start periodically showing hello reported properties:</span></span>
    
     ```
     startFirmwareUpdateDevice();
     setInterval(queryTwinFWUpdateReported, 500);
     ```
-9. <span data-ttu-id="1951a-136">Uložte a zavřete **dmpatterns_fwupdate_service.js** souboru.</span><span class="sxs-lookup"><span data-stu-id="1951a-136">Save and close the **dmpatterns_fwupdate_service.js** file.</span></span>
+9. <span data-ttu-id="8a967-136">Uložte a zavřete hello **dmpatterns_fwupdate_service.js** souboru.</span><span class="sxs-lookup"><span data-stu-id="8a967-136">Save and close hello **dmpatterns_fwupdate_service.js** file.</span></span>
 
 [!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
 
-## <a name="run-the-apps"></a><span data-ttu-id="1951a-137">Spouštění aplikací</span><span class="sxs-lookup"><span data-stu-id="1951a-137">Run the apps</span></span>
-<span data-ttu-id="1951a-138">Nyní jste připraveni aplikaci spustit.</span><span class="sxs-lookup"><span data-stu-id="1951a-138">You are now ready to run the apps.</span></span>
+## <a name="run-hello-apps"></a><span data-ttu-id="8a967-137">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="8a967-137">Run hello apps</span></span>
+<span data-ttu-id="8a967-138">Nyní je připraven toorun hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="8a967-138">You are now ready toorun hello apps.</span></span>
 
-1. <span data-ttu-id="1951a-139">Na příkazovém řádku v **manageddevice** složky, spusťte následující příkaz, aby začal přijímat přímá metoda restartování.</span><span class="sxs-lookup"><span data-stu-id="1951a-139">At the command prompt in the **manageddevice** folder, run the following command to begin listening for the reboot direct method.</span></span>
+1. <span data-ttu-id="8a967-139">Na příkazovém řádku hello v hello **manageddevice** složky, spusťte následující příkaz toobegin naslouchání pro přímá metoda hello restartování hello.</span><span class="sxs-lookup"><span data-stu-id="8a967-139">At hello command prompt in hello **manageddevice** folder, run hello following command toobegin listening for hello reboot direct method.</span></span>
    
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. <span data-ttu-id="1951a-140">Na příkazovém řádku v **triggerfwupdateondevice** složky, spusťte následující příkaz k aktivační události restartovat vzdálený počítač a dotaz pro dvojče zařízení najít poslední čas restartování počítače.</span><span class="sxs-lookup"><span data-stu-id="1951a-140">At the command prompt in the **triggerfwupdateondevice** folder, run the following command to trigger the remote reboot and query for the device twin to find the last reboot time.</span></span>
+2. <span data-ttu-id="8a967-140">Na příkazovém řádku hello v hello **triggerfwupdateondevice** složky, spusťte následující příkaz tootrigger hello vzdálené hello restartujte počítač a dotaz hello zařízení twin toofind hello restartovat poslední čas.</span><span class="sxs-lookup"><span data-stu-id="8a967-140">At hello command prompt in hello **triggerfwupdateondevice** folder, run hello following command tootrigger hello remote reboot and query for hello device twin toofind hello last reboot time.</span></span>
    
     ```
     node dmpatterns_fwupdate_service.js
     ```
-3. <span data-ttu-id="1951a-141">Zobrazí zařízení odpověď na přímá metoda v konzole.</span><span class="sxs-lookup"><span data-stu-id="1951a-141">You see the device response to the direct method in the console.</span></span>
+3. <span data-ttu-id="8a967-141">Zobrazí hello zařízení odpovědi toohello přímá metoda v konzole hello.</span><span class="sxs-lookup"><span data-stu-id="8a967-141">You see hello device response toohello direct method in hello console.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="1951a-142">Další kroky</span><span class="sxs-lookup"><span data-stu-id="1951a-142">Next steps</span></span>
-<span data-ttu-id="1951a-143">V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="1951a-143">In this tutorial, you used a direct method to trigger a remote firmware update on a device and used the reported properties to follow the progress of the firmware update.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8a967-142">Další kroky</span><span class="sxs-lookup"><span data-stu-id="8a967-142">Next steps</span></span>
+<span data-ttu-id="8a967-143">V tomto kurzu jste použili tootrigger přímá metoda vzdálené aktualizace firmwaru v zařízení a používané hello hlášené vlastnosti toofollow hello průběh aktualizace firmwaru hello.</span><span class="sxs-lookup"><span data-stu-id="8a967-143">In this tutorial, you used a direct method tootrigger a remote firmware update on a device and used hello reported properties toofollow hello progress of hello firmware update.</span></span>
 
-<span data-ttu-id="1951a-144">Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.</span><span class="sxs-lookup"><span data-stu-id="1951a-144">To learn how to extend your IoT solution and schedule method calls on multiple devices, see the [Schedule and broadcast jobs][lnk-tutorial-jobs] tutorial.</span></span>
+<span data-ttu-id="8a967-144">toolearn o tooextend IoT řešení a plán metodu volá na několika zařízeních a v tématu hello [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.</span><span class="sxs-lookup"><span data-stu-id="8a967-144">toolearn how tooextend your IoT solution and schedule method calls on multiple devices, see hello [Schedule and broadcast jobs][lnk-tutorial-jobs] tutorial.</span></span>
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

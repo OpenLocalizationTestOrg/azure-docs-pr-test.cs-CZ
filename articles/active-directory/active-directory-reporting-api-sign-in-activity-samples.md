@@ -1,6 +1,6 @@
 ---
-title: "Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory | Microsoft Docs"
-description: "Jak začít pracovat s Azure Active Directory Reporting API"
+title: "ukázky sestavy API aktivity aaaAzure přihlášení služby Active Directory | Microsoft Docs"
+description: Jak tooget pracovat s Azure Active Directory Reporting API hello
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d4fbbea95fe0b52828673b997681ae37481e21bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a><span data-ttu-id="57c08-103">Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory</span><span class="sxs-lookup"><span data-stu-id="57c08-103">Azure Active Directory sign-in activity report API samples</span></span>
-<span data-ttu-id="57c08-104">Toto téma je součástí kolekce témat o službě Azure Active Directory, vytváření sestav rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="57c08-104">This topic is part of a collection of topics about the Azure Active Directory reporting API.</span></span>  
-<span data-ttu-id="57c08-105">Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům přihlašovací aktivita pomocí kódu nebo související nástroje.</span><span class="sxs-lookup"><span data-stu-id="57c08-105">Azure AD reporting provides you with an API that enables you to access sign-in activity data using code or related tools.</span></span>  
-<span data-ttu-id="57c08-106">Obor tohoto tématu je poskytnout ukázkový kód pro **aktivity API přihlášení**.</span><span class="sxs-lookup"><span data-stu-id="57c08-106">The scope of this topic is to provide you with sample code for the **sign-in activity API**.</span></span>
+# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a><span data-ttu-id="57664-103">Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory</span><span class="sxs-lookup"><span data-stu-id="57664-103">Azure Active Directory sign-in activity report API samples</span></span>
+<span data-ttu-id="57664-104">Toto téma je součástí kolekce témat o hello Azure Active Directory reporting rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="57664-104">This topic is part of a collection of topics about hello Azure Active Directory reporting API.</span></span>  
+<span data-ttu-id="57664-105">Generování sestav služby Azure AD poskytuje rozhraní API, které vám umožní tooaccess přihlašovací aktivita dat pomocí kódu nebo související nástroje.</span><span class="sxs-lookup"><span data-stu-id="57664-105">Azure AD reporting provides you with an API that enables you tooaccess sign-in activity data using code or related tools.</span></span>  
+<span data-ttu-id="57664-106">Hello obor tohoto tématu je k ukázkový kód hello tooprovide **aktivity API přihlášení**.</span><span class="sxs-lookup"><span data-stu-id="57664-106">hello scope of this topic is tooprovide you with sample code for hello **sign-in activity API**.</span></span>
 
-<span data-ttu-id="57c08-107">Přejděte na téma:</span><span class="sxs-lookup"><span data-stu-id="57c08-107">See:</span></span>
+<span data-ttu-id="57664-107">Přejděte na téma:</span><span class="sxs-lookup"><span data-stu-id="57664-107">See:</span></span>
 
-* <span data-ttu-id="57c08-108">[Protokoly auditu](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace</span><span class="sxs-lookup"><span data-stu-id="57c08-108">[Audit logs](active-directory-reporting-azure-portal.md#activity-reports)  for more conceptual information</span></span>
-* <span data-ttu-id="57c08-109">[Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) Další informace o rozhraní API pro generování sestav.</span><span class="sxs-lookup"><span data-stu-id="57c08-109">[Getting started with the Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) for more information about the reporting API.</span></span>
+* <span data-ttu-id="57664-108">[Protokoly auditu](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace</span><span class="sxs-lookup"><span data-stu-id="57664-108">[Audit logs](active-directory-reporting-azure-portal.md#activity-reports)  for more conceptual information</span></span>
+* <span data-ttu-id="57664-109">[Začínáme s Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) Další informace o hello reporting rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="57664-109">[Getting started with hello Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) for more information about hello reporting API.</span></span>
 
 
-## <a name="prerequisites"></a><span data-ttu-id="57c08-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="57c08-110">Prerequisites</span></span>
-<span data-ttu-id="57c08-111">Před použitím ukázky v tomto tématu, které potřebujete k dokončení [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md).</span><span class="sxs-lookup"><span data-stu-id="57c08-111">Before you can use the samples in this topic, you need to complete the [prerequisites to access the Azure AD reporting API](active-directory-reporting-api-prerequisites.md).</span></span>  
+## <a name="prerequisites"></a><span data-ttu-id="57664-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="57664-110">Prerequisites</span></span>
+<span data-ttu-id="57664-111">Než použijete hello ukázky v tomto tématu, musíte toocomplete hello [požadavky tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).</span><span class="sxs-lookup"><span data-stu-id="57664-111">Before you can use hello samples in this topic, you need toocomplete hello [prerequisites tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).</span></span>  
 
-## <a name="powershell-script"></a><span data-ttu-id="57c08-112">Skript PowerShellu</span><span class="sxs-lookup"><span data-stu-id="57c08-112">PowerShell script</span></span>
-    # This script will require the Web Application and permissions setup in Azure Active Directory
+## <a name="powershell-script"></a><span data-ttu-id="57664-112">Skript PowerShellu</span><span class="sxs-lookup"><span data-stu-id="57664-112">PowerShell script</span></span>
+    # This script will require hello Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
     $loginURL       = "https://login.microsoftonline.com/"
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/03/2017
     Do{
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-        Write-Output "Save the output to a file SigninActivities$i.json"
+        Write-Output "Save hello output tooa file SigninActivities$i.json"
         Write-Output "---------------------------------------------"
         $myReport.Content | Out-File -FilePath SigninActivities$i.json -Force
         $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
@@ -78,13 +78,13 @@ ms.lasthandoff: 08/03/2017
 
 
 
-## <a name="executing-the-script"></a><span data-ttu-id="57c08-113">Provádění skriptu</span><span class="sxs-lookup"><span data-stu-id="57c08-113">Executing the script</span></span>
-<span data-ttu-id="57c08-114">Se vrátí po ukončení úprav skript, spouštět a ověřte, že očekávaná data z auditu protokoluje sestavy.</span><span class="sxs-lookup"><span data-stu-id="57c08-114">Once you finish editing the script, run it and verify that the expected data from the Audit logs report is returned.</span></span>
+## <a name="executing-hello-script"></a><span data-ttu-id="57664-113">Provádění skriptu hello</span><span class="sxs-lookup"><span data-stu-id="57664-113">Executing hello script</span></span>
+<span data-ttu-id="57664-114">Jednou dokončíte úpravy hello skriptu, spouštět a ověřte, zda že tento hello očekává, že se vrátí data z hello sestavy protokolů auditu.</span><span class="sxs-lookup"><span data-stu-id="57664-114">Once you finish editing hello script, run it and verify that hello expected data from hello Audit logs report is returned.</span></span>
 
-<span data-ttu-id="57c08-115">Skript vrátí výstupní ze sestavy přihlášení ve formátu JSON.</span><span class="sxs-lookup"><span data-stu-id="57c08-115">The script returns output from the sign-in report in JSON format.</span></span> <span data-ttu-id="57c08-116">Vytvoří také `SigninActivities.json` soubor s stejný výstup.</span><span class="sxs-lookup"><span data-stu-id="57c08-116">It also creates an `SigninActivities.json` file with the same output.</span></span> <span data-ttu-id="57c08-117">Můžete experimentovat změnou skript, který chcete vrátit data z jiných sestavy a komentář výstupní formáty, které nepotřebujete.</span><span class="sxs-lookup"><span data-stu-id="57c08-117">You can experiment by modifying the script to return data from other reports, and comment out the output formats that you do not need.</span></span>
+<span data-ttu-id="57664-115">Hello skript vrátí výstupní hello přihlášení sestavy ve formátu JSON.</span><span class="sxs-lookup"><span data-stu-id="57664-115">hello script returns output from hello sign-in report in JSON format.</span></span> <span data-ttu-id="57664-116">Vytvoří také `SigninActivities.json` soubor s hello stejný výstup.</span><span class="sxs-lookup"><span data-stu-id="57664-116">It also creates an `SigninActivities.json` file with hello same output.</span></span> <span data-ttu-id="57664-117">Můžete experimentovat změnou hello skriptu tooreturn data z jiných sestavy a komentář hello výstupní formáty, které nepotřebujete.</span><span class="sxs-lookup"><span data-stu-id="57664-117">You can experiment by modifying hello script tooreturn data from other reports, and comment out hello output formats that you do not need.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="57c08-118">Další kroky</span><span class="sxs-lookup"><span data-stu-id="57c08-118">Next Steps</span></span>
-* <span data-ttu-id="57c08-119">Chcete přizpůsobit ukázky v tomto tématu?</span><span class="sxs-lookup"><span data-stu-id="57c08-119">Would you like to customize the samples in this topic?</span></span> <span data-ttu-id="57c08-120">Podívejte se [referenční dokumentace rozhraní API služby Azure Active Directory přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-reference.md).</span><span class="sxs-lookup"><span data-stu-id="57c08-120">Check out the [Azure Active Directory sign-in activity API reference](active-directory-reporting-api-sign-in-activity-reference.md).</span></span> 
-* <span data-ttu-id="57c08-121">Pokud chcete zobrazit úplný přehled pomocí Azure Active Directory, vytváření sestav rozhraní API, najdete v části [Začínáme s Azure Active Directory, vytváření sestav rozhraní API](active-directory-reporting-api-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="57c08-121">If you want to see a complete overview of using the Azure Active Directory reporting API, see [Getting started with the Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).</span></span>
-* <span data-ttu-id="57c08-122">Pokud chcete získat další informace o vytváření sestav Azure Active Directory, přečtěte si téma [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).</span><span class="sxs-lookup"><span data-stu-id="57c08-122">If you would like to find out more about Azure Active Directory reporting, see the [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).</span></span>  
+## <a name="next-steps"></a><span data-ttu-id="57664-118">Další kroky</span><span class="sxs-lookup"><span data-stu-id="57664-118">Next Steps</span></span>
+* <span data-ttu-id="57664-119">Chcete, aby toocustomize hello ukázky v tomto tématu?</span><span class="sxs-lookup"><span data-stu-id="57664-119">Would you like toocustomize hello samples in this topic?</span></span> <span data-ttu-id="57664-120">Podívejte se na hello [referenční dokumentace rozhraní API služby Azure Active Directory přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-reference.md).</span><span class="sxs-lookup"><span data-stu-id="57664-120">Check out hello [Azure Active Directory sign-in activity API reference](active-directory-reporting-api-sign-in-activity-reference.md).</span></span> 
+* <span data-ttu-id="57664-121">Pokud chcete, aby toosee úplný přehled pomocí hello Azure Active Directory, vytváření sestav rozhraní API najdete v tématu [Začínáme s Azure Active Directory, vytváření sestav API hello](active-directory-reporting-api-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="57664-121">If you want toosee a complete overview of using hello Azure Active Directory reporting API, see [Getting started with hello Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).</span></span>
+* <span data-ttu-id="57664-122">Pokud chcete toofind Další informace o vytváření sestav Azure Active Directory, přečtěte si téma hello [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).</span><span class="sxs-lookup"><span data-stu-id="57664-122">If you would like toofind out more about Azure Active Directory reporting, see hello [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).</span></span>  
 

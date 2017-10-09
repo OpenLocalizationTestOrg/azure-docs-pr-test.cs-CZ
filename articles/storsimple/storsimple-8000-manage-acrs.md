@@ -1,6 +1,6 @@
 ---
-title: "Spravovat záznamy řízení přístupu v zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak používat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v zařízení StorSimple."
+title: "aaaManage záznamy řízení přístupu v zařízení StorSimple | Microsoft Docs"
+description: "Popisuje, jak řízení přístupu toouse záznamy toodetermine (ACRs), které hostitele může připojit tooa svazek v zařízení StorSimple hello."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,119 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9173e34f889ce1c082b20bb382cb6ca9a03dd797
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cf532206e2c0bc49da853663ba34ae993ec2981d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a><span data-ttu-id="660f4-103">Použít službu StorSimple Manager ke správě záznamy řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-103">Use the StorSimple Manager service to manage access control records</span></span>
+# <a name="use-hello-storsimple-manager-service-toomanage-access-control-records"></a><span data-ttu-id="11195-103">Použití služby StorSimple Manager hello, toomanage záznamy řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-103">Use hello StorSimple Manager service toomanage access control records</span></span>
 
-## <a name="overview"></a><span data-ttu-id="660f4-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="660f4-104">Overview</span></span>
-<span data-ttu-id="660f4-105">Záznamy řízení přístupu (ACRs) umožňují určit, které hostitele může připojit k svazek v zařízení StorSimple.</span><span class="sxs-lookup"><span data-stu-id="660f4-105">Access control records (ACRs) allow you to specify which hosts can connect to a volume on the StorSimple device.</span></span> <span data-ttu-id="660f4-106">ACRs jsou nastaveny na konkrétním svazku a obsahovat kvalifikované názvy iSCSI (IQN) hostitele.</span><span class="sxs-lookup"><span data-stu-id="660f4-106">ACRs are set to a specific volume and contain the iSCSI Qualified Names (IQNs) of the hosts.</span></span> <span data-ttu-id="660f4-107">Když hostitel pokusí o připojení ke svazku, zařízení se kontroluje ACR přidružený tento svazek pro název IQN a pokud je nalezena shoda, pak připojení.</span><span class="sxs-lookup"><span data-stu-id="660f4-107">When a host tries to connect to a volume, the device checks the ACR associated with that volume for the IQN name and if there is a match, then the connection is established.</span></span> <span data-ttu-id="660f4-108">Zaznamenává řízení přístupu **konfigurace** části okně vaší služby StorSimple Manager zařízení zobrazí všechny záznamy řízení přístupu s odpovídající IQN hostitelů.</span><span class="sxs-lookup"><span data-stu-id="660f4-108">The access control records in the **Configuration** section of your StorSimple Device Manager service blade display all the access control records with the corresponding IQNs of the hosts.</span></span>
+## <a name="overview"></a><span data-ttu-id="11195-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="11195-104">Overview</span></span>
+<span data-ttu-id="11195-105">Záznamy řízení přístupu (ACRs) umožňují toospecify, které hostitele může připojit tooa svazek v zařízení StorSimple hello.</span><span class="sxs-lookup"><span data-stu-id="11195-105">Access control records (ACRs) allow you toospecify which hosts can connect tooa volume on hello StorSimple device.</span></span> <span data-ttu-id="11195-106">ACRs jsou nastavené určité svazku tooa a obsahovat hello iSCSI (IQN) kvalifikované názvy hostitelů hello.</span><span class="sxs-lookup"><span data-stu-id="11195-106">ACRs are set tooa specific volume and contain hello iSCSI Qualified Names (IQNs) of hello hosts.</span></span> <span data-ttu-id="11195-107">Když se hostitel pokusí tooconnect tooa svazku, zkontroluje zařízení hello hello ACR přidruženého tento svazek pro název IQN hello a pokud je nalezen, pak hello připojení.</span><span class="sxs-lookup"><span data-stu-id="11195-107">When a host tries tooconnect tooa volume, hello device checks hello ACR associated with that volume for hello IQN name and if there is a match, then hello connection is established.</span></span> <span data-ttu-id="11195-108">Hello záznamy řízení přístupu v hello **konfigurace** části okně vaší služby StorSimple Manager zařízení zobrazí všechny záznamy řízení přístupu hello s hello odpovídající IQN hello hostitelů.</span><span class="sxs-lookup"><span data-stu-id="11195-108">hello access control records in hello **Configuration** section of your StorSimple Device Manager service blade display all hello access control records with hello corresponding IQNs of hello hosts.</span></span>
 
-<span data-ttu-id="660f4-109">Tento kurz vysvětluje následující běžné úlohy související s ACR:</span><span class="sxs-lookup"><span data-stu-id="660f4-109">This tutorial explains the following common ACR-related tasks:</span></span>
+<span data-ttu-id="11195-109">Tento kurz vysvětluje hello následující běžné úlohy související s ACR:</span><span class="sxs-lookup"><span data-stu-id="11195-109">This tutorial explains hello following common ACR-related tasks:</span></span>
 
-* <span data-ttu-id="660f4-110">Přidání záznamu o řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-110">Add an access control record</span></span>
-* <span data-ttu-id="660f4-111">Upravit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-111">Edit an access control record</span></span>
-* <span data-ttu-id="660f4-112">Odstranit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-112">Delete an access control record</span></span>
+* <span data-ttu-id="11195-110">Přidání záznamu o řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-110">Add an access control record</span></span>
+* <span data-ttu-id="11195-111">Upravit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-111">Edit an access control record</span></span>
+* <span data-ttu-id="11195-112">Odstranit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-112">Delete an access control record</span></span>
 
 > [!IMPORTANT]
-> * <span data-ttu-id="660f4-113">Při přiřazování ACR svazku, vezměte v potaz, že svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku.</span><span class="sxs-lookup"><span data-stu-id="660f4-113">When assigning an ACR to a volume, take care that the volume is not concurrently accessed by more than one non-clustered host because this could corrupt the volume.</span></span>
-> * <span data-ttu-id="660f4-114">Při odstraňování ACR ze svazku, ujistěte se, že odpovídající hostitele není přístup k svazku vzhledem k tomu, že odstranění může mít za následek přerušení pro čtení a zápis.</span><span class="sxs-lookup"><span data-stu-id="660f4-114">When deleting an ACR from a volume, make sure that the corresponding host is not accessing the volume because the deletion could result in a read-write disruption.</span></span>
+> * <span data-ttu-id="11195-113">Při přiřazování svazek tooa ACR, vezměte v potaz, že hello svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku hello.</span><span class="sxs-lookup"><span data-stu-id="11195-113">When assigning an ACR tooa volume, take care that hello volume is not concurrently accessed by more than one non-clustered host because this could corrupt hello volume.</span></span>
+> * <span data-ttu-id="11195-114">Při odstraňování ACR ze svazku, ujistěte se, že tohoto hostitele odpovídající hello není přístup k hello svazek, protože odstranění hello může mít za následek přerušení pro čtení a zápis.</span><span class="sxs-lookup"><span data-stu-id="11195-114">When deleting an ACR from a volume, make sure that hello corresponding host is not accessing hello volume because hello deletion could result in a read-write disruption.</span></span>
 
-## <a name="get-the-iqn"></a><span data-ttu-id="660f4-115">Získání názvu IQN</span><span class="sxs-lookup"><span data-stu-id="660f4-115">Get the IQN</span></span>
+## <a name="get-hello-iqn"></a><span data-ttu-id="11195-115">Získání názvu IQN hello</span><span class="sxs-lookup"><span data-stu-id="11195-115">Get hello IQN</span></span>
 
-<span data-ttu-id="660f4-116">Proveďte následující kroky k získání názvu IQN hostitele Windows se systémem Windows Server 2012.</span><span class="sxs-lookup"><span data-stu-id="660f4-116">Perform the following steps to get the IQN of a Windows host that is running Windows Server 2012.</span></span>
+<span data-ttu-id="11195-116">Proveďte následující kroky tooget hello názvu IQN hostitele se systémem Windows Server 2012 Windows hello.</span><span class="sxs-lookup"><span data-stu-id="11195-116">Perform hello following steps tooget hello IQN of a Windows host that is running Windows Server 2012.</span></span>
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 
-## <a name="add-an-access-control-record"></a><span data-ttu-id="660f4-117">Přidání záznamu o řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-117">Add an access control record</span></span>
-<span data-ttu-id="660f4-118">Můžete použít **konfigurace** část v okně service Manager zařízení StorSimple přidat ACRs.</span><span class="sxs-lookup"><span data-stu-id="660f4-118">You use the **Configuration** section in the StorSimple Device Manager service blade to add ACRs.</span></span> <span data-ttu-id="660f4-119">Obvykle přidružíte jednu ACR jeden svazek.</span><span class="sxs-lookup"><span data-stu-id="660f4-119">Typically, you will associate one ACR with one volume.</span></span>
+## <a name="add-an-access-control-record"></a><span data-ttu-id="11195-117">Přidání záznamu o řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-117">Add an access control record</span></span>
+<span data-ttu-id="11195-118">Použít hello **konfigurace** v hello Správce zařízení StorSimple služby okno tooadd ACRs části.</span><span class="sxs-lookup"><span data-stu-id="11195-118">You use hello **Configuration** section in hello StorSimple Device Manager service blade tooadd ACRs.</span></span> <span data-ttu-id="11195-119">Obvykle přidružíte jednu ACR jeden svazek.</span><span class="sxs-lookup"><span data-stu-id="11195-119">Typically, you will associate one ACR with one volume.</span></span>
 
-<span data-ttu-id="660f4-120">Proveďte následující postup pro přidání ACR.</span><span class="sxs-lookup"><span data-stu-id="660f4-120">Perform the following steps to add an ACR.</span></span>
+<span data-ttu-id="11195-120">Proveďte následující kroky tooadd ACR hello.</span><span class="sxs-lookup"><span data-stu-id="11195-120">Perform hello following steps tooadd an ACR.</span></span>
 
-#### <a name="to-add-an-acr"></a><span data-ttu-id="660f4-121">Chcete-li přidat ACR</span><span class="sxs-lookup"><span data-stu-id="660f4-121">To add an ACR</span></span>
+#### <a name="tooadd-an-acr"></a><span data-ttu-id="11195-121">tooadd ACR</span><span class="sxs-lookup"><span data-stu-id="11195-121">tooadd an ACR</span></span>
 
-1. <span data-ttu-id="660f4-122">Přejděte do služby StorSimple Manager zařízení, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.</span><span class="sxs-lookup"><span data-stu-id="660f4-122">Go to your StorSimple Device Manager service, double-click the service name, and then within the **Configuration** section, click **Access control records**.</span></span>
-2. <span data-ttu-id="660f4-123">V **záznamy řízení přístupu** okně klikněte na tlačítko **+ přidat ACR**.</span><span class="sxs-lookup"><span data-stu-id="660f4-123">In the **Access control records** blade, click **+ Add ACR**.</span></span>
+1. <span data-ttu-id="11195-122">Přejděte tooyour service Manager zařízení StorSimple, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.</span><span class="sxs-lookup"><span data-stu-id="11195-122">Go tooyour StorSimple Device Manager service, double-click hello service name, and then within hello **Configuration** section, click **Access control records**.</span></span>
+2. <span data-ttu-id="11195-123">V hello **záznamy řízení přístupu** okně klikněte na tlačítko **+ přidat ACR**.</span><span class="sxs-lookup"><span data-stu-id="11195-123">In hello **Access control records** blade, click **+ Add ACR**.</span></span>
 
     ![Klikněte na tlačítko Přidat ACR](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. <span data-ttu-id="660f4-125">V **přidat ACR** okno, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="660f4-125">In the **Add ACR** blade, do the following steps:</span></span>
+3. <span data-ttu-id="11195-125">V hello **přidat ACR** okně hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="11195-125">In hello **Add ACR** blade, do hello following steps:</span></span>
 
-    1. <span data-ttu-id="660f4-126">Zadáte název acr.</span><span class="sxs-lookup"><span data-stu-id="660f4-126">Supply a name for your ACR.</span></span>
+    1. <span data-ttu-id="11195-126">Zadáte název acr.</span><span class="sxs-lookup"><span data-stu-id="11195-126">Supply a name for your ACR.</span></span>
     
-    2. <span data-ttu-id="660f4-127">Zadejte název IQN hostitele vašeho systému Windows Server v části **iSCSI Initiator název IQN ()**.</span><span class="sxs-lookup"><span data-stu-id="660f4-127">Provide the IQN name of your Windows Server host under **iSCSI Initiator Name (IQN)**.</span></span>
+    2. <span data-ttu-id="11195-127">Zadejte název IQN hello hostiteli systému Windows Server v části **iSCSI Initiator název IQN ()**.</span><span class="sxs-lookup"><span data-stu-id="11195-127">Provide hello IQN name of your Windows Server host under **iSCSI Initiator Name (IQN)**.</span></span>
 
-    3. <span data-ttu-id="660f4-128">Klikněte na tlačítko **přidat** vytvořit ACR.</span><span class="sxs-lookup"><span data-stu-id="660f4-128">Click **Add** to create the ACR.</span></span>
+    3. <span data-ttu-id="11195-128">Klikněte na tlačítko **přidat** toocreate hello ACR.</span><span class="sxs-lookup"><span data-stu-id="11195-128">Click **Add** toocreate hello ACR.</span></span>
 
         ![Klikněte na tlačítko Přidat ACR](./media/storsimple-8000-manage-acrs/createacr2.png)
 
-4.  <span data-ttu-id="660f4-130">Nově přidaný ACR se zobrazí v tabulkovém seznam ACRs.</span><span class="sxs-lookup"><span data-stu-id="660f4-130">The newly added ACR will display in the tabular listing of ACRs.</span></span>
+4.  <span data-ttu-id="11195-130">Hello nově přidaní že ACR se zobrazí v tabulkovém seznam ACRs hello.</span><span class="sxs-lookup"><span data-stu-id="11195-130">hello newly added ACR will display in hello tabular listing of ACRs.</span></span>
 
     ![Klikněte na tlačítko Přidat ACR](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
-## <a name="edit-an-access-control-record"></a><span data-ttu-id="660f4-132">Upravit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-132">Edit an access control record</span></span>
-<span data-ttu-id="660f4-133">Můžete použít **konfigurace** část v okně service Manager zařízení StorSimple upravit ACRs.</span><span class="sxs-lookup"><span data-stu-id="660f4-133">You use the **Configuration** section in the StorSimple Device Manager service blade to edit ACRs.</span></span>
+## <a name="edit-an-access-control-record"></a><span data-ttu-id="11195-132">Upravit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-132">Edit an access control record</span></span>
+<span data-ttu-id="11195-133">Použít hello **konfigurace** v hello Správce zařízení StorSimple služby okno tooedit ACRs části.</span><span class="sxs-lookup"><span data-stu-id="11195-133">You use hello **Configuration** section in hello StorSimple Device Manager service blade tooedit ACRs.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="660f4-134">Doporučujeme proto upravovat pouze ACRs, které nejsou aktuálně používá.</span><span class="sxs-lookup"><span data-stu-id="660f4-134">It is recommended that you modify only those ACRs that are currently not in use.</span></span> <span data-ttu-id="660f4-135">Chcete-li upravit ACR přidružené k svazku, který je aktuálně používán, musíte nejdřív udělat svazek offline.</span><span class="sxs-lookup"><span data-stu-id="660f4-135">To edit an ACR associated with a volume that is currently in use, you must first take the volume offline.</span></span>
+> <span data-ttu-id="11195-134">Doporučujeme proto upravovat pouze ACRs, které nejsou aktuálně používá.</span><span class="sxs-lookup"><span data-stu-id="11195-134">It is recommended that you modify only those ACRs that are currently not in use.</span></span> <span data-ttu-id="11195-135">tooedit přidruženého ACR svazku, který je aktuálně používán, musíte nejdřív udělat hello svazek offline.</span><span class="sxs-lookup"><span data-stu-id="11195-135">tooedit an ACR associated with a volume that is currently in use, you must first take hello volume offline.</span></span>
 
-<span data-ttu-id="660f4-136">Proveďte následující kroky, chcete-li upravit ACR.</span><span class="sxs-lookup"><span data-stu-id="660f4-136">Perform the following steps to edit an ACR.</span></span>
+<span data-ttu-id="11195-136">Proveďte následující kroky tooedit ACR hello.</span><span class="sxs-lookup"><span data-stu-id="11195-136">Perform hello following steps tooedit an ACR.</span></span>
 
-#### <a name="to-edit-an-access-control-record"></a><span data-ttu-id="660f4-137">Chcete-li upravit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-137">To edit an access control record</span></span>
-1.  <span data-ttu-id="660f4-138">Přejděte do služby StorSimple Manager zařízení, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.</span><span class="sxs-lookup"><span data-stu-id="660f4-138">Go to your StorSimple Device Manager service, double-click the service name, and then within the **Configuration** section, click **Access control records**.</span></span>
+#### <a name="tooedit-an-access-control-record"></a><span data-ttu-id="11195-137">tooedit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-137">tooedit an access control record</span></span>
+1.  <span data-ttu-id="11195-138">Přejděte tooyour service Manager zařízení StorSimple, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.</span><span class="sxs-lookup"><span data-stu-id="11195-138">Go tooyour StorSimple Device Manager service, double-click hello service name, and then within hello **Configuration** section, click **Access control records**.</span></span>
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. <span data-ttu-id="660f4-140">V tabulkovém seznam záznamy řízení přístupu, klikněte na tlačítko a vyberte ACR, který chcete upravit.</span><span class="sxs-lookup"><span data-stu-id="660f4-140">In the tabular listing of the access control records, click and select the ACR that you wish to modify.</span></span>
+2. <span data-ttu-id="11195-140">V hello tabulkové výpis hello záznamy řízení přístupu, klikněte na tlačítko a vyberte hello ACR chcete toomodify.</span><span class="sxs-lookup"><span data-stu-id="11195-140">In hello tabular listing of hello access control records, click and select hello ACR that you wish toomodify.</span></span>
 
     ![Úpravy záznamů o řízení přístupu](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. <span data-ttu-id="660f4-142">V **záznam řízení přístupu upravit** okno, zadejte jiný IQN odpovídající do jiného hostitele.</span><span class="sxs-lookup"><span data-stu-id="660f4-142">In the **Edit access control record** blade, provide a different IQN corresponding to another host.</span></span>
+3. <span data-ttu-id="11195-142">V hello **záznam řízení přístupu upravit** okno, zadejte jiný hostitelský odpovídající tooanother IQN.</span><span class="sxs-lookup"><span data-stu-id="11195-142">In hello **Edit access control record** blade, provide a different IQN corresponding tooanother host.</span></span>
 
     ![Úpravy záznamů o řízení přístupu](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. <span data-ttu-id="660f4-144">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="660f4-144">Click **Save**.</span></span> <span data-ttu-id="660f4-145">Po zobrazení výzvy k potvrzení klikněte na **Ano**.</span><span class="sxs-lookup"><span data-stu-id="660f4-145">When prompted for confirmation, click **Yes**.</span></span> 
+4. <span data-ttu-id="11195-144">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="11195-144">Click **Save**.</span></span> <span data-ttu-id="11195-145">Po zobrazení výzvy k potvrzení klikněte na **Ano**.</span><span class="sxs-lookup"><span data-stu-id="11195-145">When prompted for confirmation, click **Yes**.</span></span> 
 
     ![Úpravy záznamů o řízení přístupu](./media/storsimple-8000-manage-acrs/editacr3.png)
 
-5. <span data-ttu-id="660f4-147">Budete upozorněni, když se aktualizuje ACR.</span><span class="sxs-lookup"><span data-stu-id="660f4-147">You are notified when the ACR is updated.</span></span> <span data-ttu-id="660f4-148">Tabulkové se také seznam aktualizuje, aby odrážely změny.</span><span class="sxs-lookup"><span data-stu-id="660f4-148">The tabular listing also updates to reflect the change.</span></span>
+5. <span data-ttu-id="11195-147">Budete upozorněni, když je aktualizována hello ACR.</span><span class="sxs-lookup"><span data-stu-id="11195-147">You are notified when hello ACR is updated.</span></span> <span data-ttu-id="11195-148">tabulkový výčet Hello rovněž aktualizuje tooreflect hello změnu.</span><span class="sxs-lookup"><span data-stu-id="11195-148">hello tabular listing also updates tooreflect hello change.</span></span>
 
    
-## <a name="delete-an-access-control-record"></a><span data-ttu-id="660f4-149">Odstranit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-149">Delete an access control record</span></span>
-<span data-ttu-id="660f4-150">Můžete použít **konfigurace** část v okně služby StorSimple Manager zařízení odstranit ACRs.</span><span class="sxs-lookup"><span data-stu-id="660f4-150">You use the **Configuration** section in the StorSimple Device Manager service blade to delete ACRs.</span></span>
+## <a name="delete-an-access-control-record"></a><span data-ttu-id="11195-149">Odstranit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-149">Delete an access control record</span></span>
+<span data-ttu-id="11195-150">Použít hello **konfigurace** v hello Správce zařízení StorSimple služby okno toodelete ACRs části.</span><span class="sxs-lookup"><span data-stu-id="11195-150">You use hello **Configuration** section in hello StorSimple Device Manager service blade toodelete ACRs.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="660f4-151">Lze odstranit pouze ACRs, které nejsou aktuálně používá.</span><span class="sxs-lookup"><span data-stu-id="660f4-151">You can delete only those ACRs that are currently not in use.</span></span> <span data-ttu-id="660f4-152">Pokud chcete odstranit ACR přidružené k svazku, který je aktuálně používán, musíte nejdřív udělat svazek offline.</span><span class="sxs-lookup"><span data-stu-id="660f4-152">To delete an ACR associated with a volume that is currently in use, you must first take the volume offline.</span></span>
+> <span data-ttu-id="11195-151">Lze odstranit pouze ACRs, které nejsou aktuálně používá.</span><span class="sxs-lookup"><span data-stu-id="11195-151">You can delete only those ACRs that are currently not in use.</span></span> <span data-ttu-id="11195-152">toodelete přidruženého ACR svazku, který je aktuálně používán, musíte nejdřív udělat hello svazek offline.</span><span class="sxs-lookup"><span data-stu-id="11195-152">toodelete an ACR associated with a volume that is currently in use, you must first take hello volume offline.</span></span>
 
-<span data-ttu-id="660f4-153">Proveďte následující kroky a odstraňte záznam řízení přístupu.</span><span class="sxs-lookup"><span data-stu-id="660f4-153">Perform the following steps to delete an access control record.</span></span>
+<span data-ttu-id="11195-153">Proveďte následující kroky toodelete záznam řízení přístupu hello.</span><span class="sxs-lookup"><span data-stu-id="11195-153">Perform hello following steps toodelete an access control record.</span></span>
 
-#### <a name="to-delete-an-access-control-record"></a><span data-ttu-id="660f4-154">Odstranit záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="660f4-154">To delete an access control record</span></span>
-1.  <span data-ttu-id="660f4-155">Přejděte do služby StorSimple Manager zařízení, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.</span><span class="sxs-lookup"><span data-stu-id="660f4-155">Go to your StorSimple Device Manager service, double-click the service name, and then within the **Configuration** section, click **Access control records**.</span></span>
+#### <a name="toodelete-an-access-control-record"></a><span data-ttu-id="11195-154">toodelete záznam řízení přístupu</span><span class="sxs-lookup"><span data-stu-id="11195-154">toodelete an access control record</span></span>
+1.  <span data-ttu-id="11195-155">Přejděte tooyour service Manager zařízení StorSimple, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.</span><span class="sxs-lookup"><span data-stu-id="11195-155">Go tooyour StorSimple Device Manager service, double-click hello service name, and then within hello **Configuration** section, click **Access control records**.</span></span>
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. <span data-ttu-id="660f4-157">V tabulkovém seznam záznamy řízení přístupu, klikněte na tlačítko a vyberte ACR, který chcete odstranit.</span><span class="sxs-lookup"><span data-stu-id="660f4-157">In the tabular listing of the access control records, click and select the ACR that you wish to delete.</span></span>
+2. <span data-ttu-id="11195-157">V hello tabulkové výpis hello záznamy řízení přístupu, klikněte na tlačítko a vyberte hello ACR chcete toodelete.</span><span class="sxs-lookup"><span data-stu-id="11195-157">In hello tabular listing of hello access control records, click and select hello ACR that you wish toodelete.</span></span>
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. <span data-ttu-id="660f4-159">Klikněte pravým tlačítkem a vyvolání v místní nabídce vyberte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="660f4-159">Right-click to invoke the context menu and select **Delete**.</span></span>
+3. <span data-ttu-id="11195-159">Klikněte pravým tlačítkem na tooinvoke hello kontextovou nabídku a vyberte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="11195-159">Right-click tooinvoke hello context menu and select **Delete**.</span></span>
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. <span data-ttu-id="660f4-161">Po zobrazení výzvy k potvrzení, zkontrolujte informace a pak klikněte na tlačítko **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="660f4-161">When prompted for confirmation, review the information and then click **Delete**.</span></span>
+4. <span data-ttu-id="11195-161">Po zobrazení výzvy k potvrzení, zkontrolujte hello informace a pak klikněte na tlačítko **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="11195-161">When prompted for confirmation, review hello information and then click **Delete**.</span></span>
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
-5. <span data-ttu-id="660f4-163">Upozornění se zobrazí po dokončení odstranění.</span><span class="sxs-lookup"><span data-stu-id="660f4-163">You are notified when the deletion completes.</span></span> <span data-ttu-id="660f4-164">Tabulkový výčet je aktualizována tak, aby odrážela odstranění.</span><span class="sxs-lookup"><span data-stu-id="660f4-164">The tabular listing is updated to reflect the deletion.</span></span>
+5. <span data-ttu-id="11195-163">Upozornění se zobrazí po dokončení odstranění hello.</span><span class="sxs-lookup"><span data-stu-id="11195-163">You are notified when hello deletion completes.</span></span> <span data-ttu-id="11195-164">tabulkový výčet Hello je aktualizovaný tooreflect hello odstranění.</span><span class="sxs-lookup"><span data-stu-id="11195-164">hello tabular listing is updated tooreflect hello deletion.</span></span>
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
-## <a name="next-steps"></a><span data-ttu-id="660f4-166">Další kroky</span><span class="sxs-lookup"><span data-stu-id="660f4-166">Next steps</span></span>
-* <span data-ttu-id="660f4-167">Další informace o [správu svazků zařízení StorSimple](storsimple-8000-manage-volumes-u2.md).</span><span class="sxs-lookup"><span data-stu-id="660f4-167">Learn more about [managing StorSimple volumes](storsimple-8000-manage-volumes-u2.md).</span></span>
-* <span data-ttu-id="660f4-168">Další informace o [pomocí služby StorSimple Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).</span><span class="sxs-lookup"><span data-stu-id="660f4-168">Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="11195-166">Další kroky</span><span class="sxs-lookup"><span data-stu-id="11195-166">Next steps</span></span>
+* <span data-ttu-id="11195-167">Další informace o [správu svazků zařízení StorSimple](storsimple-8000-manage-volumes-u2.md).</span><span class="sxs-lookup"><span data-stu-id="11195-167">Learn more about [managing StorSimple volumes](storsimple-8000-manage-volumes-u2.md).</span></span>
+* <span data-ttu-id="11195-168">Další informace o [pomocí hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-8000-manager-service-administration.md).</span><span class="sxs-lookup"><span data-stu-id="11195-168">Learn more about [using hello StorSimple Manager service tooadminister your StorSimple device](storsimple-8000-manager-service-administration.md).</span></span>
 
