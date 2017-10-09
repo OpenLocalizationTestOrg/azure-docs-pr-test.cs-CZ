@@ -1,5 +1,5 @@
 ---
-title: "SAP NetWeaver na virtuálních počítačích Azure – Průvodce nasazením databázového systému | Microsoft Docs"
+title: "aaaSAP NetWeaver na virtuálních počítačích Azure – Průvodce nasazením databázového systému | Microsoft Docs"
 description: "SAP NetWeaver na virtuálních počítačích Azure (VM) – Průvodce nasazením databázového systému"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc7c85382d8f8183ef3eb3cc7496b012808148e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a56b8f6b3b26fa10e01a25a251a3e4a7bfc77e2b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sap-netweaver-on-azure-windows-virtual-machines-vms--dbms-deployment-guide"></a>SAP NetWeaver na Azure Windows virtuální počítače (VM) – Průvodce nasazením databázového systému
-[767598]:https://launchpad.support.sap.com/#/notes/767598
+[767598 ]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
@@ -257,7 +257,7 @@ ms.lasthandoff: 07/11/2017
 [virtual-machines-azure-resource-manager-architecture]:../../resource-manager-deployment-model.md
 [virtual-machines-azurerm-versus-azuresm]:../../resource-manager-deployment-model.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../virtual-machines-windows-classic-configure-oracle-data-guard.md
-[virtual-machines-linux-cli-deploy-templates]:../linux/cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI)
+[virtual-machines-linux-cli-deploy-templates]:../linux/cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and hello Azure CLI)
 [virtual-machines-deploy-rmtemplates-powershell]:../virtual-machines-windows-ps-manage.md (Manage virtual machines using Azure Resource Manager and PowerShell)
 [virtual-machines-linux-agent-user-guide]:../linux/agent-user-guide.md
 [virtual-machines-linux-agent-user-guide-command-line-options]:../linux/agent-user-guide.md#command-line-options
@@ -303,42 +303,42 @@ ms.lasthandoff: 07/11/2017
 [xplat-cli]:../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../xplat-cli-azure-resource-manager.md
 
-Tato příručka je součástí v dokumentaci na implementaci a nasazení SAP softwaru v Microsoft Azure. Před čtením této příručky, přečtěte si [plánování a implementace průvodce][planning-guide]. Tento dokument popisuje nasazení různých systémů správy relační databáze (RDBMS) a souvisejících produktů v kombinaci s SAP na Microsoft Azure virtuální počítače (VM) pomocí infrastruktury Azure jako možnosti služby (IaaS).
+Tato příručka je součástí hello dokumentaci na implementaci a nasazení softwaru SAP hello v Microsoft Azure. Před čtením této příručky, přečtěte si hello [plánování a implementace průvodce][planning-guide]. Tento dokument popisuje nasazení hello různých systémů správy relační databáze (RDBMS) a souvisejících produktů v kombinaci s SAP na Microsoft Azure virtuální počítače (VM) pomocí hello infrastruktury Azure jako možnosti služby (IaaS).
 
-Dokumentu doplňuje SAP instalace dokumentace a poznámky k SAP, které představují primární prostředky pro instalace a nasazení SAP softwaru na dané platformy
+zadané Hello dokumentu doplňuje hello SAP instalace dokumentace a poznámky k SAP, které představují hello primární prostředky pro instalace a nasazení softwaru SAP na platformy
 
 ## <a name="general-considerations"></a>Obecné aspekty
-V této kapitole aspekty spuštěných SAP související s vydávají databázového systému systémy ve virtuálních počítačích Azure. Existuje několik odkazy na konkrétní systémy databázového systému v této kapitole. Místo toho konkrétní systémy databázového systému jsou zpracovávány v tomto dokumentu po této kapitoly.
+V této kapitole aspekty spuštěných SAP související s vydávají databázového systému systémy ve virtuálních počítačích Azure. Existuje několik odkazů na systémy toospecific databázového systému v této kapitole. Místo toho hello konkrétní databázového systému systémy jsou zpracovávány v tomto dokumentu po této kapitoly.
 
 ### <a name="definitions-upfront"></a>Definice předem
-V celém dokumentu budeme používat následující podmínky:
+V dokumentu hello použijeme hello následující podmínky:
 
 * IaaS: Infrastruktura jako služba.
 * PaaS: Platforma jako služba.
 * SaaS: Software jako služba.
 * Součást SAP: jednotlivých SAP aplikace například ECC, BW, správce řešení nebo podnikovém portálu.  SAP součástí může být založen na tradičních technologií ABAP nebo Java nebo jiných NetWeaver na základě aplikaci, například obchodních objektů.
-* Prostředí SAP: jeden nebo více součástí SAP logicky seskupeny provést obchodní funkce jako je například vývoj, QAS, školení, zotavení po Havárii nebo produkční.
-* SAP na šířku: Vztahuje se k celé SAP prostředků v zákazníka na šířku IT. Na šířku SAP zahrnuje všechny produkční a mimo provozní prostředí.
-* Systém SAP: Kombinace databázového systému vrstvy a aplikaci vrstva například SAP ERP vývojového systému SAP BW testovací systém, produkční systému SAP CRM, atd. V nasazeních Azure nepodporuje rozdělit tyto dvě vrstvy mezi místními a Azure. To znamená, že systému SAP buď je nasazena místně nebo je nasazené v Azure. Můžete však nasadit různých systémech SAP šířku v Azure nebo místní. Můžete například nasazení SAP CRM vývoj a testování systémy v Azure, ale SAP CRM produkční systému místní.
-* Nasazení jenom cloudu: nasazení, kde není připojen k předplatnému Azure prostřednictvím site-to-site nebo připojením ExpressRoute na místní infrastrukturu sítě. Společné dokumentace k Azure tyto typy nasazení jsou také popsány jako 'jenom pro Cloud, nasazení. Virtuální počítače nasazené pomocí této metody jsou přístupné přes Internet a veřejné koncové body Internetu přiřazené k virtuálním počítačům v Azure. Místní služby Active Directory (AD) a DNS není rozšířené k Azure v těchto typů nasazení. Proto virtuální počítače nejsou součástí místní služby Active Directory. Poznámka: Jenom pro Cloud nasazení v tomto dokumentu jsou definovány jako dokončení krajiny SAP, které jsou spuštěny v Azure bez rozšíření služby Active Directory nebo překlad výhradně z místního do veřejného cloudu. Jenom pro cloud konfigurace nejsou podporovány pro produkční systémy SAP nebo konfigurace, kdy moduly STM SAP nebo jiných místních prostředků je potřeba použít mezi systémy SAP hostované v Azure a prostředky, které se nacházejí na místní.
-* Mezi různými místy: Popisuje scénář, kde jsou nasazené virtuální počítače k předplatnému Azure, který má site-to-site, více lokalit nebo připojení ExpressRoute mezi místní datových centrech a Azure. Dokumentace k společné Azure, tyto typy nasazení jsou také popsány jako mezi různými místy scénáře. Z důvodu pro připojení je rozšířit místní domény, místní služby Active Directory a místní DNS do Azure. Na šířku místní je rozšířeno na Azure prostředky předplatného. S touto příponou, virtuálních počítačů může být součástí místní domény. Uživatelé domény místní domény, můžete přístup k serverům a službu lze spouštět na těchto virtuálních počítačů (např. služby databázového systému). Komunikace a název rozlišení mezi virtuálními počítači nasazen místní a virtuální počítače nasazené v Azure je možné. Očekáváme, že to být nejběžnější scénáře pro nasazení SAP prostředky v Azure. V tématu [to] [ vpn-gateway-cross-premises-options] článku a [to] [ vpn-gateway-site-to-site-create] Další informace.
+* Prostředí SAP: jeden nebo více součástí SAP logicky seskupeny tooperform obchodní funkce jako je například vývoj, QAS, školení, zotavení po Havárii nebo produkční.
+* SAP na šířku: Vztahuje toohello celý SAP prostředky v zákazníka na šířku IT. Hello SAP šířku zahrnuje všechny produkční a mimo provozní prostředí.
+* Systém SAP: kombinace hello databázového systému vrstvy a aplikaci vrstva například SAP ERP vývojového systému SAP BW testovací systém, produkční systému SAP CRM, atd. V Azure nasazení, které není podporováno toodivide tyto dvě vrstvy mezi místními a Azure. To znamená, že systému SAP buď je nasazena místně nebo je nasazené v Azure. Můžete však nasadit hello různých systémech SAP šířku v Azure nebo místní. Například může nasadit systémy vývoj a testování SAP CRM hello v Azure, ale hello SAP CRM produkční systému místní.
+* Nasazení jenom cloudu: nasazení, kde není hello předplatného Azure připojená prostřednictvím site-to-site nebo ExpressRoute připojení toohello místní síťové infrastruktuře. Společné dokumentace k Azure tyto typy nasazení jsou také popsány jako 'jenom pro Cloud, nasazení. Virtuální počítače nasazené pomocí této metody jsou přístupné prostřednictvím hello Internet a veřejné koncové body Internetu přiřazených toohello virtuálních počítačů v Azure. Hello místní služby Active Directory (AD) a DNS není rozšířeno tooAzure v těchto typů nasazení. Virtuální počítače hello proto nejsou součástí hello místní služby Active Directory. Poznámka: Jenom pro Cloud nasazení v tomto dokumentu jsou definovány jako dokončení krajiny SAP, které jsou spuštěny v Azure bez rozšíření služby Active Directory nebo překlad výhradně z místního do veřejného cloudu. Jenom pro cloud konfigurace nejsou podporovány pro produkční systémy SAP nebo konfigurace, kde moduly STM SAP nebo jiné místní prostředky musí toobe používá mezi systémy SAP hostované v Azure a prostředky, které se nacházejí v místě.
+* Mezi různými místy: Popisuje scénář, kde jsou virtuální počítače nasazené tooan předplatné Azure, který má site-to-site, více lokalit nebo připojením ExpressRoute mezi místní hello datových centrech a Azure. Dokumentace k společné Azure, tyto typy nasazení jsou také popsány jako mezi různými místy scénáře. Hello důvod pro připojení hello je tooextend místními doménami, místní služby Active Directory a místní DNS do Azure. Hello místně na šířku je rozšířené toohello Azure prostředky předplatného hello. S touto příponou, hello virtuálních počítačů může být součástí hello místní domény. Uživatelé domény hello místní domény může přistupovat k serverům hello a službu lze spouštět na ty virtuální počítače (např. služby databázového systému). Komunikace a název rozlišení mezi virtuálními počítači nasazen místní a virtuální počítače nasazené v Azure je možné. Očekáváme, že tento toobe hello nejběžnější scénáře pro nasazení SAP prostředky v Azure. V tématu [to] [ vpn-gateway-cross-premises-options] článku a [to] [ vpn-gateway-site-to-site-create] Další informace.
 
 > [!NOTE]
-> Mezi různými místy nasazení SAP systémy, kde Azure Virtual Machines s SAP systémy jsou členy místní domény jsou podporovány pro produkční systémy SAP. Konfigurace mezi různými místy jsou podporovány pro nasazení částí nebo dokončení krajiny SAP do Azure. I spuštění povahu dokončení SAP v Azure vyžaduje, že tyto virtuální počítače byly součástí místní domény a služby Active Directory. V předchozí verze dokumentace už jsme mluvili o IT hybridní scénáře, kde je termín "Hybridní" integrován do skutečnost, že je připojení mezi různými místy mezi místními a Azure. V tomto případě "Hybridní" také znamená, že virtuální počítače v Azure jsou součástí služby Active Directory v místě.
+> Mezi různými místy nasazení SAP systémy, kde Azure Virtual Machines s SAP systémy jsou členy místní domény jsou podporovány pro produkční systémy SAP. Konfigurace mezi různými místy jsou podporovány pro nasazení částí nebo dokončení krajiny SAP do Azure. Hello dokončení SAP na šířku i běžící v Azure vyžaduje, že tyto virtuální počítače byly součástí místní domény a služby Active Directory. V předchozí verze dokumentace hello už jsme mluvili o IT hybridní scénáře, kde se zobrazuje hello termín "Hybridní" v hello fakt, že existuje připojení mezi různými místy mezi místními a Azure. V tomto případě "Hybridní" také znamená, že hello virtuálních počítačů v Azure jsou součástí hello místní služby Active Directory.
 >
 >
 
-Některé dokumentaci Microsoft popisuje scénáře mezi různými místy trochu jinak, zejména pro konfigurace HA databázového systému. V případě SAP související dokumenty, mezi různými místy scénář jenom varu dolů s site-to-site ani privátní připojení (ExpressRoute) a na to, že je povahu SAP distribuovat mezi místními a Azure.
+Některé dokumentaci Microsoft popisuje scénáře mezi různými místy trochu jinak, zejména pro konfigurace HA databázového systému. V hello případ hello SAP související dokumenty, scénář hello mezi různými místy právě boils dolů toohaving site-to-site nebo privátní (ExpressRoute) připojení a toohello faktu, hello SAP šířku rozděluje mezi místními a Azure.
 
 ### <a name="resources"></a>Zdroje
-Pro téma nasazení SAP v Azure k dispozici jsou následující příručky:
+Hello následující příručky jsou k dispozici pro téma hello nasazení SAP v Azure:
 
 * [SAP NetWeaver na virtuálních počítačích Azure (VM) – plánování a implementace Průvodce][planning-guide]
 * [SAP NetWeaver na virtuálních počítačích Azure (VM) – Příručka pro nasazení][deployment-guide]
 * [SAP NetWeaver ve virtuálních počítačích Azure (VM) – Průvodce nasazením databázového systému (Tento dokument)][dbms-guide]
 * [SAP NetWeaver na virtuálních počítačích Azure (VM) – Příručka pro nasazení vysoké dostupnosti][ha-guide]
 
-Následující poznámky k SAP souvisí s tématem SAP v Azure:
+Následující poznámky k SAP Hello jsou související toohello tématem SAP v Azure:
 
 | Poznámka: číslo | Název |
 | --- | --- |
@@ -348,65 +348,65 @@ Následující poznámky k SAP souvisí s tématem SAP v Azure:
 | [2178632] |Klíč monitorování metriky pro SAP na platformě Microsoft Azure |
 | [1409604] |Virtualizace v systému Windows: rozšířené monitorování |
 | [2191498] |SAP v systému Linux s Azure: rozšířené monitorování |
-| [2039619] |SAP aplikací v Microsoft Azure pomocí databáze Oracle: podporované produkty a verze |
+| [2039619] |SAP aplikací v Microsoft Azure pomocí hello databáze Oracle: podporované produkty a verze |
 | [2233094] |DB6: Aplikace SAP v Azure pomocí IBM DB2 pro Linux, UNIX a Windows - Další informace |
 | [2243692] |Linux na Microsoft Azure (IaaS) virtuálních počítačů: problémy licence SAP |
 | [1984787] |Systému SUSE LINUX Enterprise Server 12: Poznámky k instalaci |
 | [2002167] |Red Hat Enterprise Linux 7.x: instalace a Upgrade |
 
-Přečtěte si také [oznámení změny stavu Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) obsahující všechny SAP poznámky pro Linux.
+Přečtěte si také hello [oznámení změny stavu Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) obsahující všechny SAP poznámky pro Linux.
 
-Měli byste mít praktické znalosti o Architektura Microsoft Azure a jak jsou nasadit a provozovat virtuální počítače Microsoft Azure. Můžete najít další informace v tomto poli <https://azure.microsoft.com/documentation/>
+Měli byste mít praktické znalosti o hello Architektura Microsoft Azure a jak jsou nasadit a provozovat virtuální počítače Microsoft Azure. Můžete najít další informace v tomto poli <https://azure.microsoft.com/documentation/>
 
 > [!NOTE]
-> Snažíme se **není** hovoříte o platforma Microsoft Azure jako služba (PaaS) nabídky na platformě Microsoft Azure. Tento dokument je o spuštění systému správy databáze (databázového systému) v Microsoft Azure Virtual Machines (IaaS), stejně jako databázového systému by byl spuštěn v místním prostředí. Možnosti databáze a funkce mezi tyto dvě nabídky se velmi liší a nesmí promíchala mezi sebou. Viz také: <https://azure.microsoft.com/services/sql-database/>
+> Snažíme se **není** hovoříte o platforma Microsoft Azure jako služba (PaaS) nabídky Nástroje hello platforma Microsoft Azure. Tento dokument je o spuštění systému správy databáze (databázového systému) v Microsoft Azure Virtual Machines (IaaS), stejně jako hello databázového systému by byl spuštěn v místním prostředí. Možnosti databáze a funkce mezi tyto dvě nabídky se velmi liší a nesmí promíchala mezi sebou. Viz také: <https://azure.microsoft.com/services/sql-database/>
 >
 >
 
-Vzhledem k tomu, že budeme se zabývat IaaS, obecně se instalace systému Windows, Linux a databázového systému a konfigurace jsou v podstatě stejné jako jakékoli virtuálního počítače nebo úplné systému počítače, které by nainstalujete místně. Existují však některé architektura a systém správy implementace rozhodnutí, která se bude lišit při použití IaaS. Účelem tohoto dokumentu je popisují konkrétní architektury a rozdíly systému správy, které musí být přípravy na při použití IaaS.
+Vzhledem k tomu, že budeme se zabývat IaaS, obecně hello Windows, Linux a databázového systému instalace a konfigurace jsou v podstatě hello stejné jako jakékoli virtuálního počítače nebo úplné systému počítače, které by nainstalujete místně. Existují však některé architektura a systém správy implementace rozhodnutí, která se bude lišit při použití IaaS. Hello účelem tohoto dokumentu je tooexplain hello konkrétní systému a architektuře správy rozdíly, musí být připravených pro při použití IaaS.
 
-Celkové oblasti rozdílem, že tento dokument popisuje jsou obecně:
+Obecně platí hello celkové oblasti rozdílem, že tento dokument popisuje jsou:
 
-* Plánování správné rozložení virtuálního počítače nebo virtuální pevný disk systémů SAP do, zda že máte správná data souboru rozložení a můžete dosáhnout dostatek IOPS pro úlohy.
+* Plánování hello správné virtuálního počítače nebo virtuální pevný disk rozložení tooensure systémy SAP máte rozložení souboru hello správná data a můžete dosáhnout dostatek IOPS pro úlohy.
 * Požadavky sítě při použití IaaS.
-* Funkce konkrétní databáze má použít k optimalizaci rozložení databáze.
+* Funkce toouse konkrétní databáze v pořadí toooptimize hello databáze rozložení.
 * Aspekty zálohování a obnovení v IaaS.
 * Využívá různé typy Image pro nasazení.
 * Vysoké dostupnosti v Azure IaaS.
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktura RDBMS nasazení
-V pořadí podle této kapitoly, je potřeba pochopit, co se zobrazí v [to] [ deployment-guide-3] kapitoly [Průvodce nasazením][deployment-guide]. Informace o různých virtuálních počítačů-Series a jejich rozdíly a rozdíly Azure Standard a Premium úložiště by měl rozumím jim a známé před čtením této kapitoly.
+V pořadí podle této kapitoly, je nutné toounderstand co se zobrazí v [to] [ deployment-guide-3] kapitoly hello [Průvodce nasazením][deployment-guide]. Znalost hello jinou sérii virtuálních počítačů a jejich rozdíly a rozdíly Azure Standard a Premium Storage by měl být rozumím jim a známé před čtením této kapitoly.
 
-Dokud března 2015 byly omezený na 127 GB velikost Azure virtuální pevné disky, které obsahují operačního systému. Toto omezení získali odvolat v března 2015 (Další informace o kontrole <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/> ). Odtud na virtuální pevné disky obsahující operační systém může mít stejnou velikost jako všechny ostatní virtuální pevný disk. Nicméně nám stále přednost struktura nasazení, kde jsou oddělené od databázové soubory operačního systému, databázového systému a případný SAP binární soubory. Proto Očekáváme, že SAP systémy s operačním systémem v Azure Virtual Machines bude mít základní virtuální počítač (nebo VHD) nainstalován operační systém, databáze správy spustitelných souborů a systému SAP spustitelné soubory. Soubory protokolu a data databázového systému budou uloženy ve službě Azure Storage (Standard nebo Premium Storage) v samostatné soubory virtuálního pevného disku a připojit k původní image Azure operačního systému virtuálního počítače jako logické disky.
+Dokud března 2015 Azure virtuální pevné disky, které obsahují operačního systému byly omezené too127 GB velikost. Toto omezení získali odvolat v března 2015 (Další informace o kontrole <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/> ). Odtud na virtuální pevné disky obsahující hello operačního systému může mít hello stejnou velikost jako jakýkoli další virtuální pevný disk. Nicméně nám stále přednost struktura nasazení, kde hello operační systém, databázového systému a případný SAP binární soubory jsou oddělené od hello soubory databáze. Proto Očekáváme, že SAP systémy s operačním systémem v Azure Virtual Machines bude mít hello základní virtuálního počítače (nebo VHD) nainstalované s hello operační systém, databáze správy spustitelných souborů a systému SAP spustitelné soubory. Hello databázového systému data a soubory protokolu budou uloženy ve službě Azure Storage (Standard nebo Premium Storage) v samostatné soubory virtuálního pevného disku a připojené jako logické disky toohello původní Azure bitovou kopii operačního systému virtuálního počítače.
 
-Závisí na využívání Azure Standard nebo Premium Storage (například pomocí služby DS-series nebo GS-series virtuálních počítačů) existuje jsou ostatní kvóty v Azure, které jsou popsány [sem][virtual-machines-sizes]. Při plánování virtuální pevné disky Azure, budete muset najít nejlepší rovnováhu mezi kvót pro následující:
+Závisí na využívání Azure Standard nebo Premium Storage (například pomocí hello DS-series nebo GS-series virtuálních počítačů) existuje jsou ostatní kvóty v Azure, které jsou popsány [sem][virtual-machines-sizes]. Při plánování virtuální pevné disky Azure, budete potřebovat toofind hello vyvážit hello kvót pro hello následující:
 
-* Počet datových souborů.
-* Počet virtuálních pevných disků, které obsahují soubory.
-* Kvóty IOPS jednoho virtuálního pevného disku.
-* Propustnost dat na virtuální pevný disk.
-* Počet další možné virtuální pevné disky na velikost virtuálního počítače.
-* Celkovou propustnost úložiště může poskytovat virtuálního počítače.
+* Hello počet datových souborů.
+* Hello počet virtuálních pevných disků, které obsahují soubory hello.
+* kvóty IOPS Hello jednoho virtuálního pevného disku.
+* Hello propustnost dat na virtuální pevný disk.
+* Hello počet další možné virtuální pevné disky na velikost virtuálního počítače.
+* Hello celková propustnost úložiště virtuálního počítače může poskytnout.
 
-Azure bude vynutit kvóty IOPS na jednotku virtuálního pevného disku. Tyto kvóty se liší pro virtuální pevné disky hostované na úložiště Azure úrovně Standard a Premium Storage. Latence vstupně-výstupních operací také bude velmi odlišné mezi těmito dvěma typy úložiště Storage úrovně Premium doručování faktory lepší latence vstupně-výstupních operací. Každý jiný typ virtuálního počítače mají omezený počet virtuálních pevných disků, které budete moci připojit. Další omezení je, že pouze určité typy virtuálních počítačů můžete využít Azure Premium Storage. To znamená, že rozhodnutí pro určitý typ virtuálního počítače nemusí pouze bude týkat procesoru a paměti požadavky, ale také podle IOPS, latenci a disku propustnost požadavky, které jsou obvykle škálovat počet virtuálních pevných disků nebo typ disky úložiště Premium. Zejména s Storage úrovně Premium velikost virtuálního pevného disku také může být závisí na počtu IOPS a propustnosti, kterou je možné dosáhnout každý virtuální pevný disk.
+Azure bude vynutit kvóty IOPS na jednotku virtuálního pevného disku. Tyto kvóty se liší pro virtuální pevné disky hostované na úložiště Azure úrovně Standard a Premium Storage. Vstupně-výstupních operací latence také bude velmi liší hello dva typy úložiště Storage úrovně Premium doručování faktory lepší latence vstupně-výstupních operací. Každý jiný typ virtuálního počítače hello mají omezený počet virtuálních pevných disků, že budete mít tooattach. Další omezení je, že pouze určité typy virtuálních počítačů můžete využít Azure Premium Storage. To znamená, že hello rozhodnutí pro určitý typ virtuálního počítače nemusí pouze bude týkat hello procesoru a požadavky na paměť, ale i hello IOPS, latenci a disku propustnost požadavky, které obvykle jsou změněna pomocí hello počet virtuálních pevných disků nebo hello typ disky úložiště Premium. Zejména s Premium Storage je také může závisí hello velikost virtuálního pevného disku na hello počtu IOPS a propustnosti, který potřebuje toobe dosáhnout každý virtuální pevný disk.
 
-Skutečnost, že počet virtuálních pevných disků připojit celkovou rychlost IOPS, a velikost virtuálního počítače, jsou všechny svázané společně, může způsobit konfigurace systému SAP jiné než její místní nasazení aplikace Azure. Omezení IOPS na logické jednotky jsou obvykle konfigurovatelná v místním nasazení. Vzhledem k tomu s Azure Storage jsou tyto limity pevný nebo jako úložiště Premium závisí na typu disku. Proto s místní nasazení vidíte zákazníka konfigurace databázové servery, které používají pro speciální spustitelné soubory jako SAP a databázového systému nebo speciální svazky pro dočasné databáze nebo tabulka prostory mnoho různých svazcích. Když v místním systému je přesunuta do Azure může vést k plýtvání potenciální IOPS šířky pásma pomocí plýtvání virtuální pevný disk pro spustitelné soubory nebo databáze, které neprovádějte žádné nebo není spoustu IOPS. Proto ve virtuálních počítačích Azure doporučujeme, aby spustitelné soubory databázového systému a SAP Pokud je to možné nainstalovat na disk operačního systému.
+Hello skutečnost, že hello celkovou rychlost IOPS, hello počet virtuální pevné disky připojené a hello velikost hello virtuálních počítačů, jsou všechny svázané společně, může dojít Azure konfigurace systému SAP toobe liší od jeho místního nasazení. omezení Hello IOPS na logické jednotce se obvykle konfigurovat v místním nasazení. Vzhledem k tomu s Azure Storage jsou tyto limity pevný nebo jako úložiště Premium závisí na typu disku hello. Proto s místní nasazení vidíte zákazníka konfigurace databázové servery, které používají mnoho různých svazcích pro speciální spustitelné soubory jako SAP a hello databázového systému nebo speciální svazky pro dočasné databáze nebo tabulka prostory. Po v místním systému přesunutý tooAzure ho může vést tooa odpady šířky pásma potenciální IOPS podle plýtvání virtuální pevný disk pro spustitelné soubory nebo databáze, které neprovádějte žádné nebo není spoustu IOPS. Ve virtuálních počítačích Azure proto doporučujeme tuto hello databázového systému SAP spustitelné soubory a pokud je to možné nainstalovat na disk hello operačního systému.
 
-Umístění souborů databáze a soubory protokolu a typ úložiště Azure používají, nesmí být definován IOPS, latence a propustnosti požadavky. Chcete-li mít dostatek IOPS pro protokol transakcí, mohlo by být vynuceno využívat více virtuálních pevných disků pro soubor protokolu transakcí nebo použijte větší disk úložiště Premium. V tomto případě se jednoduše by sestavení softwaru RAID (např. Windows úložiště fondu pro systém Windows nebo MDADM a LVM (Správce logických svazku) pro Linux) s virtuální pevné disky, které bude obsahovat transakčního protokolu.
+Hello umístění hello databázové soubory a soubory protokolu a typ hello Azure Storage používá, nesmí být definován IOPS, latence a propustnosti požadavky. V pořadí toohave dostatek IOPS pro hello transakčního protokolu, je možné, vynucené tooleverage více virtuálních pevných disků pro hello transakčního protokolu souborů nebo použijte větší disk úložiště Premium. V tomto případě se jednoduše by sestavení softwaru RAID (např. Windows úložiště fondu pro systém Windows nebo MDADM a LVM (Správce logických svazku) pro Linux) s hello virtuální pevné disky, které bude obsahovat hello transakčního protokolu.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Jednotka D:\ virtuální počítač Azure je netrvalé disku, který je zálohovaný díky některé místní disky na Azure výpočetním uzlu. Protože se jedná, netrvalý, to znamená, že všechny změny obsahu na jednotku D:\ bude ztracena, jakmile je virtuální počítač restartovat. "Jakékoliv změny" jsme znamená uložené soubory, adresáře vytvořené, nainstalované aplikace, atd.
+> Jednotka D:\ virtuální počítač Azure je netrvalé disku, který je zálohovaný díky některé místní disky na hello Azure výpočetním uzlu. Protože se jedná, netrvalý, to znamená, všechny změny provedené toohello obsahu na jednotku D:\ hello bude ztracena, jakmile hello virtuálních počítačů po restartu. "Jakékoliv změny" jsme znamená uložené soubory, adresáře vytvořené, nainstalované aplikace, atd.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Virtuální počítače Azure s Linuxem jednotku v /mnt/resource, který se nachází na dočasné jednotce založenou na místní disky na Azure výpočetním uzlu automaticky připojit. Protože se jedná, netrvalý, to znamená, že všechny změny na obsah v /mnt/resource bude ztracena, jakmile je virtuální počítač restartovat. Jakékoliv změny jsme znamená soubory uložené, adresáře vytvořené, nainstalované aplikace, atd.
+> Virtuální počítače Azure s Linuxem jednotku v /mnt/resource, který se nachází na dočasné jednotce založenou na místní disky na hello Azure výpočetním uzlu automaticky připojit. Protože se jedná, netrvalý, to znamená, že toocontent všechny změny provedené v /mnt/resource bude ztracena, jakmile hello virtuálních počítačů po restartu. Jakékoliv změny jsme znamená soubory uložené, adresáře vytvořené, nainstalované aplikace, atd.
 >
 >
 
 - - -
-Závisí na virtuální počítač Azure-series, místní disky na výpočetním uzlu zobrazit různé výkonu, které můžou být zařazené do kategorie jako:
+Závisí na hello Azure VM-series, hello místní disky na hello výpočetní zobrazit uzel jiný se výkonu, které můžou být zařazené do kategorie jako:
 
 * A0 A7: Velmi omezená výkonu. Nejde použít pro všechno, co je nad rámec stránkovací soubor windows
 * A8-A11: Velmi dobré výkonové charakteristiky se některé deset tisíc IOPS a > propustnost 1GB/s
@@ -415,45 +415,45 @@ Závisí na virtuální počítač Azure-series, místní disky na výpočetním
 * G-Series: Velmi dobré výkonové charakteristiky se některé deset tisíc IOPS a > propustnost 1GB/s
 * GS-Series: Velmi dobré výkonové charakteristiky se některé deset tisíc IOPS a > propustnost 1GB/s
 
-Výše uvedené příkazy se má použít pro typy virtuálních počítačů, které jsou certifikované s SAP. Virtuální počítač series s vynikající IOPS a propustnost dosáhlo nároku na využívání některé funkce databázového systému, jako jsou databáze tempdb nebo místa na dočasné tabulky.
+Výše uvedené příkazy se má použít toohello typy virtuálních počítačů, které jsou certifikované s SAP. Hello řady virtuálních počítačů s vynikající IOPS a propustnost kvalifikaci pro využívání některé funkce databázového systému, jako jsou databáze tempdb nebo místa na dočasné tabulky.
 
 ### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Ukládání do mezipaměti pro virtuální počítače a virtuální pevné disky
-Při vytváření těchto disků nebo virtuálních pevných disků prostřednictvím portálu nebo pokud jsme připojit nahraný virtuální pevné disky pro virtuální počítače, jsme můžete vybrat, jestli jsou do mezipaměti vstupně-výstupní provoz mezi virtuálního počítače a tyto virtuální pevné disky umístěné v úložišti Azure. Azure Standard a Premium Storage použít dvě různé technologie pro tento typ mezipaměti. V obou případech mezipaměti samotné by byl disk zálohovaný na stejné jednotky využívané dočasným diskovým (D:\ v systému Windows) nebo /mnt/resource v systému Linux virtuálního počítače.
+Při vytváření těchto disků nebo virtuálních pevných disků prostřednictvím portálu hello nebo pokud jsme připojit nahrané tooVMs virtuální pevné disky, jsme můžete vybrat, jestli jsou do mezipaměti hello vstupně-výstupní provoz mezi hello virtuálních počítačů a tyto virtuální pevné disky umístěné v úložišti Azure. Azure Standard a Premium Storage použít dvě různé technologie pro tento typ mezipaměti. V obou případech hello mezipaměti samotné by byl disk zálohovaný na hello používá stejné jednotky hello dočasné disku (v systému Windows D:\) nebo /mnt/resource v systému Linux hello virtuálních počítačů.
 
-Pro Azure Standard Storage mezipaměti možné typy jsou:
+Pro Azure Standard Storage hello mezipaměti možné typy jsou:
 
 * Žádné ukládání do mezipaměti
 * Mezipaměti pro čtení
 * Čtení a ukládání do mezipaměti
 
-Chcete-li získat konzistentní a deterministický výkonu, měli byste nastavit ukládání do mezipaměti na Azure Standard Storage pro všechny virtuální pevné disky obsahující **databázového systému související datové soubory, soubory protokolu a tabulka místa pro 'NONE'**. Ukládání do mezipaměti virtuálního počítače může zůstat s výchozím.
+Konzistentní a deterministický výkonu tooget pořadí byste měli nastavit hello ukládání do mezipaměti na Azure Standard Storage pro všechny virtuální pevné disky obsahující **databázového systému související datové soubory, soubory protokolu a tabulka místo too'NONE'**. Hello ukládání do mezipaměti hello virtuálních počítačů může zůstat výchozí hello.
 
-Pro Storage úrovně Premium existují tyto možnosti ukládání do mezipaměti:
+Pro Storage úrovně Premium existovat hello následující možnosti ukládání do mezipaměti:
 
 * Žádné ukládání do mezipaměti
 * Mezipaměti pro čtení
 
-Doporučení pro Storage úrovně Premium je možné využít **číst ukládání do mezipaměti pro datové soubory** databázi SAP a pokusit **bez ukládání do mezipaměti pro VHD(s) souborů protokolu**.
+Doporučení pro Storage úrovně Premium je tooleverage **číst ukládání do mezipaměti pro datové soubory** databázi SAP hello a pokusit **bez ukládání do mezipaměti pro hello VHD(s) soubory protokolu**.
 
 ### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>Softwaru diskového pole RAID
-Jak již uvedené výše, budete muset vyvážit počet IOPS potřebné pro soubory databáze mezi počet virtuálních pevných disků můžete nakonfigurovat a zadejte maximální hodnotu IOPS virtuálního počítače Azure poskytne na disk VHD nebo Premium Storage. Nejjednodušší způsob, jak řešit zatížení IOPS přes virtuálních pevných disků je sestavení softwaru diskového pole RAID v různých virtuálních pevných disků. Pak umístíte počet datových souborů databázového systému SAP na jednotky LUN carved mimo softwaru diskového pole RAID. Závislé na požadavky, které že můžete vzít v úvahu využití úložiště Premium také od dvě ze tří různých disky úložiště Premium poskytují vyšší kvóty IOPS než podle standardního úložiště virtuálních pevných disků. Kromě toho významné lepší latence vstupně-výstupních operací poskytované Azure Premium Storage.
+Jak již bylo uvedeno výše budete potřebovat toobalance hello počet IOPS potřebné pro soubory databáze hello napříč hello počet virtuálních pevných disků můžete nakonfigurovat a hello maximální IOPS virtuálního počítače Azure poskytuje pro virtuální pevný disk nebo Premium Storage typ disku. Nejjednodušší způsob toodeal s hello IOPS načíst přes virtuálních pevných disků je toobuild softwaru diskového pole RAID nad hello jiný virtuální pevné disky. Počet datových souborů hello databázového systému SAP pak umístíte na hello logické jednotky LUN carved mimo hello softwaru diskového pole RAID. Závisí na hello požadavky, které že můžete tooconsider hello využití úložiště Premium Storage také od dva hello tři různé Storage úrovně Premium disky poskytují vyšší kvóty IOPS než podle standardního úložiště virtuálních pevných disků. Kromě hello významné lépe vstupně-výstupních operací latence poskytované Azure Premium Storage.
 
-Totéž platí i pro transakční protokol různých systémů databázového systému. S velkým množstvím je jen přidat další soubory protokolu nepomůže vzhledem k tomu, že systémy databázového systému zapisovat do jednoho ze souborů vždy pouze. Pokud jsou potřeba vyšší rychlosti IOPS než jednu standardní úložiště založené může poskytnout virtuálního pevného disku, můžete rozkládají přes několik standardní úložiště virtuálních pevných disků, nebo můžete použít větší typ disku Storage úrovně Premium, který kromě vyšší rychlosti IOPS také nabízí faktory menší latence pro zápis vstupně-výstupních operací do protokolu transakcí.
+Totéž platí i toohello transakčního protokolu hello různých systémů databázového systému. S velkým množstvím je jen přidat další soubory protokolu nepomůže vzhledem k tomu, že systémy databázového systému hello zapisovat do jednoho ze souborů hello vždy pouze. Pokud jsou potřeba vyšší rychlosti IOPS než jednu standardní úložiště na základě může poskytnout virtuálního pevného disku, můžete rozkládají přes několik standardní úložiště virtuálních pevných disků, nebo můžete použít větší typ disku Storage úrovně Premium, který kromě vyšší rychlosti IOPS také nabízí faktory menší latence pro zápis hello I / Chcete-li operační systém do hello transakčního protokolu.
 
 Situacích došlo v Azure nasazení, které by upřednostnit pomocí softwaru diskového pole RAID jsou:
 
 * Transakční protokol/opakování protokol vyžadují více procesorů než Azure poskytuje pro jeden virtuální pevný disk. Jak je uvedeno nahoře to bude možné vyřešit podle budovy logické jednotce LUN přes několik virtuálních pevných disků pomocí softwaru diskového pole RAID.
-* Nevyrovnaná vstupně-výstupní úlohy distribuce přes různé datové soubory databázi SAP. V takových případech jeden prostředí stiskne kvótu místo často jeden datový soubor. Zatímco brzy bude dosaženo kvóty IOPS jednoho virtuálního pevného disku se nezobrazují i jiné datové soubory. V takových případech Nejsnazším řešením je k vytvoření jedné logické jednotce přes několik virtuálních pevných disků pomocí softwaru diskového pole RAID.
-* Nevíte, co přesně vstupně-výstupní úlohy za datový soubor a pouze zhruba věděli, jakou celkové zatížení IOPS proti databázového systému. Je nejjednodušší udělat k vytvoření jedné logické jednotce pomocí softwaru diskového pole RAID. Součet kvót více virtuálních pevných disků za tuto logickou jednotku by pak splnění známé rychlost IOPS.
+* Nevyrovnaná vstupně-výstupní úlohy distribuce hello různé datové soubory databáze SAP hello. V takových případech jeden prostředí jeden datový soubor místo často stiskne hello kvóty. Zatímco jiné datové soubory i nezobrazují zavřít toohello IOPS kvóty jednoho virtuálního pevného disku. V takových případech hello Nejsnazším řešením je toobuild jednu logickou jednotku prostřednictvím více virtuálních pevných disků pomocí softwaru diskového pole RAID.
+* Nevíte, jaká hello přesný vstupně-výstupní úlohy na datovém souboru je a pouze zhruba vědět, co hello celkové zatížení IOPS proti hello databázového systému je. Nejjednodušší toodo je toobuild jedné logické jednotce s hello pomůže softwaru diskového pole RAID. Součet Hello kvóty více virtuálních pevných disků za tuto logickou jednotku by pak splnění hello známé IOPS rychlost.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Použití systému Windows Server 2012 nebo vyšší prostory úložiště je vhodnější, protože je to efektivnější než proložení Windows starších verzí systému Windows. Upozorňujeme, že může potřebujete vytvořit fondy úložiště systému Windows a prostory úložiště pomocí příkazů prostředí PowerShell při použití systému Windows Server 2012 jako operační systém. Příkazy prostředí PowerShell naleznete zde <https://technet.microsoft.com/library/jj851254.aspx>
+> Použití systému Windows Server 2012 nebo vyšší prostory úložiště je vhodnější, protože je to efektivnější než proložení Windows starších verzí systému Windows. Upozorňujeme, že budete pravděpodobně potřebovat toocreate hello fondy úložiště systému Windows a prostory úložiště pomocí příkazů prostředí PowerShell při použití systému Windows Server 2012 jako operační systém. Příkazy prostředí PowerShell Hello naleznete zde <https://technet.microsoft.com/library/jj851254.aspx>
 >
 > ![Linux][Logo_Linux] Linux
 >
-> K vytvoření softwaru diskového pole RAID v systému Linux jsou podporovány pouze MDADM a LVM (Správce logických svazek). Další informace najdete v následujících článcích:
+> Pouze MDADM a LVM (Správce logických svazku) jsou podporované toobuild softwaru diskového pole RAID v systému Linux. Další informace najdete v tématu hello následující články:
 >
 > * [Konfigurace softwaru diskového pole RAID v systému Linux] [ virtual-machines-linux-configure-raid] (pro MDADM)
 > * [Konfigurace LVM na virtuální počítač s Linuxem v Azure][virtual-machines-linux-configure-lvm]
@@ -461,261 +461,261 @@ Situacích došlo v Azure nasazení, které by upřednostnit pomocí softwaru di
 >
 
 - - -
-Důležité informace pro využívání virtuálních počítačů series, které mohou pracovat s Azure Premium Storage obvykle jsou:
+Důležité informace pro využívání virtuálních počítačů series, které jsou možné toowork službou Azure Premium Storage obvykle jsou:
 
-* Požadavky pro latenci vstupně-výstupních operací, které již brzy bude dosaženo co poskytovat zařízení sítě SAN nebo NAS.
+* Požadavky pro latenci vstupně-výstupních operací, které jsou zavřete toowhat SAN nebo NAS zařízení doručit.
 * Vyžádání pro faktory lepší vstupně-výstupních operací latenci než může poskytnout Azure Standard Storage.
 * Vyšší IOPS na virtuálních počítačů než co bylo možné dosáhnout s více standardní úložiště virtuálních pevných disků pro určitý typ virtuálního počítače.
 
-Vzhledem k tomu, že základní úložiště Azure replikuje do alespoň tři uzly úložiště, každý z nich jednoduché RAID 0 proložení lze použít. Není nutné implementovat RAID5 nebo RAID1.
+Od hello základní Azure Storage replikuje jednotlivých uzlů úložiště tooat minimálně tři virtuální pevný disk jednoduché RAID 0 proložení lze použít. Neexistuje žádné nutné tooimplement RAID5 nebo RAID1.
 
 ### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage
-Microsoft Azure Storage uloží základní virtuální počítač (s operačním systémem) a virtuální pevné disky nebo objekty BLOB ke minimálně 3 uzlům samostatné úložiště. Při vytváření účtu úložiště, existuje možnost výběru ochrany, jak je vidět tady:
+Microsoft, které se budou ukládat úložiště Azure hello základní virtuální počítač (s operačním systémem) a virtuální pevné disky nebo objekty BLOB uzlů samostatné úložiště tooat minimálně 3. Při vytváření účtu úložiště, existuje možnost výběru ochrany, jak je vidět tady:
 
 ![Geografická replikace povolena pro účet úložiště Azure][dbms-guide-figure-100]
 
-Místní účet replikace Azure Storage (místně redundantní) poskytuje úrovně ochrany proti ztrátě dat v důsledku selhání infrastruktury, které několik zákazníků může dovolit nasazení. Jako v příkladu nahoře, že se s pátá se varianta jeden ze tří první 4 různé možnosti. Vyhledávání blíže v nich jsme možné rozlišit:
+Místní účet replikace Azure Storage (místně redundantní) poskytuje úrovně ochrany proti ztrátě dat z důvodu selhání tooinfrastructure, že několik zákazníků může dovolit toodeploy. Jako v příkladu nahoře, že se s pátá se varianta mezi hello první tři 4 různé možnosti. Vyhledávání blíže v nich jsme možné rozlišit:
 
-* **Premium místně redundantní úložiště (LRS)**: Azure Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro virtuální počítače spuštěné I náročnými úlohy. Existují 3 repliky dat v rámci stejné datové centrum Azure z oblasti Azure. Kopie bude v různých selhání a upgradu domén (koncepty, najdete v tématu [to] [ planning-guide-3.2] kapitoly v [Planning Guide][planning-guide]). V případě replika dat přejdete mimo provoz z důvodu selhání uzlu úložiště nebo selhání disku se automaticky vytvoří novou repliku.
-* **Místně redundantní úložiště (LRS)**: V tomto případě jsou 3 repliky dat v rámci stejné datové centrum Azure z oblasti Azure. Kopie bude v různých selhání a upgradu domén (koncepty, najdete v tématu [to] [ planning-guide-3.2] kapitoly v [Planning Guide][planning-guide]). V případě replika dat přejdete mimo provoz z důvodu selhání uzlu úložiště nebo selhání disku se automaticky vytvoří novou repliku.
-* **Geograficky redundantní úložiště (GRS)**: V tomto případě je asynchronní replikaci, která bude kanálu další 3 repliky dat v jiné oblasti Azure, který je ve většině případů ve stejné zeměpisné oblasti (např. Severní Evropa a západní Evropa). Výsledkem bude 3 další repliky, aby byly v součet 6 repliky. Varianta to je doplněk, kde dat v oblasti geograficky replikované Azure lze pro čtení účely (Read-Access Geo-redundantní).
-* **Zónu redundantní úložiště (ZRS)**: V tomto případě 3 repliky data zůstat ve stejné oblasti Azure. Jak je popsáno v [to] [ planning-guide-3.1] kapitoly [Planning Guide] [ planning-guide] oblast Azure může být počet datových centrech v těsné blízkosti. V případě LRS by repliky distribuovány prostřednictvím různých datových centrech, který jedné oblasti Azure.
+* **Premium místně redundantní úložiště (LRS)**: Azure Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro virtuální počítače spuštěné I náročnými úlohy. Existují 3 repliky hello dat v rámci hello stejné datové centrum Azure z oblasti Azure. Hello kopie bude v různých selhání a upgradu domén (koncepty, najdete v tématu [to] [ planning-guide-3.2] kapitoly v hello [Planning Guide][planning-guide]). V případě repliky hello dat přejdete mimo provoz z důvodu selhání uzlu úložiště tooa nebo selhání disku se automaticky vytvoří novou repliku.
+* **Místně redundantní úložiště (LRS)**: V tomto případě jsou 3 repliky hello dat v rámci hello stejné datové centrum Azure z oblasti Azure. Hello kopie bude v různých selhání a upgradu domén (koncepty, najdete v tématu [to] [ planning-guide-3.2] kapitoly v hello [Planning Guide][planning-guide]). V případě repliky hello dat přejdete mimo provoz z důvodu selhání uzlu úložiště tooa nebo selhání disku se automaticky vytvoří novou repliku.
+* **Geograficky redundantní úložiště (GRS)**: V tomto případě je asynchronní replikaci, která bude kanálu další 3 repliky hello dat v jiné oblasti Azure, který je ve většině případů hello v hello stejné zeměpisné oblasti (např. Severní Evropa a západní Evropa). Výsledkem bude 3 další repliky, aby byly v součet 6 repliky. Varianta to je doplněk, kde hello data v hello geograficky replikované oblasti Azure lze použít pro čtení účely (Read-Access Geo-redundantní).
+* **Zónu redundantní úložiště (ZRS)**: V tomto případě hello hello 3 repliky hello data zůstat ve stejné oblasti Azure. Jak je popsáno v [to] [ planning-guide-3.1] kapitoly hello [Planning Guide] [ planning-guide] oblast Azure může být počet datových centrech v těsné blízkosti. V případě hello LRS by hello repliky distribuovány prostřednictvím různých datových centrech hello, který jedné oblasti Azure.
 
 Další informace naleznete [sem][storage-redundancy].
 
 > [!NOTE]
-> Pro nasazení databázového systému se nedoporučuje využití geograficky redundantní úložiště
+> Pro nasazení databázového systému se nedoporučuje hello využití geograficky redundantní úložiště
 >
-> Azure geografická replikace úložiště je asynchronní. Replikace jednotlivé virtuální pevné disky připojené k jedné virtuálnímu počítači nejsou synchronizovány v kroku zámku. Proto není vhodný pro replikaci databázového systému souborů, které jsou distribuovány na jiný virtuální pevné disky nebo nasadit proti softwaru diskového pole RAID podle více virtuálních pevných disků. Software databázového systému vyžaduje, aby trvalé úložný prostor na disku se synchronizuje přesněji v různých logických jednotek a základní disky nebo virtuální pevné disky nebo disky. Software databázového systému používá různé mechanismy pro aktivity pořadí vstupně-výstupní operace zápisu a databázového systému budou hlásit, že úložiště na disku, který je cílem replikace je poškozená, pokud tyto i liší v závislosti na několik milisekund. Proto pokud jeden opravdu chce konfigurace databáze s databází roztažen tak napříč více virtuálních pevných disků geograficky replikované, takové replikace musí provést s prostředky databáze a funkce. Jeden neměli spoléhat na Azure úložiště geografická replikace k provedení této úlohy.
+> Azure geografická replikace úložiště je asynchronní. Replikace jednotlivých virtuálních pevných disků připojených tooa jeden virtuální počítač nejsou synchronizované v kroku zámku. Proto není vhodné tooreplicate databázového systému souborů, které jsou distribuovány na jiný virtuální pevné disky nebo nasadit proti softwaru diskového pole RAID podle více virtuálních pevných disků. Software databázového systému vyžaduje, aby hello trvalé diskového úložiště se synchronizuje přesněji v různých logických jednotek a základní disky nebo virtuální pevné disky nebo disky. Software databázového systému používá různé mechanismy toosequence vstupně-výstupní operace zápisu aktivity a databázového systému budou hlásit, že cílem replikace hello hello diskového úložiště je poškozená, pokud tyto i liší v závislosti na několik milisekund. Proto pokud jeden opravdu chce konfigurace databáze s databází roztažen tak napříč více virtuálních pevných disků geograficky replikované, takové replikace musí toobe provést s prostředky databáze a funkce. Jeden neměli spoléhat na úložiště Azure geografická replikace tooperform tuto úlohu.
 >
-> Problém je nejjednodušší vysvětlit, třeba systém. Předpokládejme, že máte systému SAP nahraje do Azure, který má 8 virtuální pevné disky obsahující datové soubory databázového systému plus jeden virtuální pevný disk obsahující soubor protokolu transakcí. Každé z nich tyto 9 virtuálních pevných disků bude mít data zapsaná do je konzistentní metoda podle databázového systému, zda data probíhá zápis do souborů protokolu dat nebo transakcí.
+> problém Hello je nejjednodušší tooexplain příklad systém. Předpokládejme, že máte systému SAP nahraje do Azure, který má 8 virtuální pevné disky obsahující data souborů hello databázového systému plus jeden virtuální pevný disk obsahující hello soubor protokolu transakcí. Každé z nich tyto 9 virtuálních pevných disků, bude mít data zapsaná toothem v konzistentní způsob podle toohello databázového systému, zda zapisuje hello data toohello dat nebo transakcí soubory protokolu.
 >
-> V, aby se správně geograficky replikovat data a zachovat bitovou kopii konzistentní databáze obsahu devět virtuálních pevných disků by mohl být geograficky replikované v uvedeném pořadí u devět jiný virtuální pevné disky nebyly spustit vstupně-výstupních operací. Geografická replikace Azure Storage, ale neumožňuje deklarovat závislosti mezi virtuální pevné disky. To znamená, že geografická replikace úložiště Microsoft Azure neví o tom, že obsah těchto devět jiný virtuální pevné disky jsou vzájemně souvisí a že změny dat jsou konzistentní pouze v případě, že replikace v pořadí vstupně-výstupních operací se stalo napříč všemi 9 virtuální pevné disky.
+> V pořadí tooproperly geo replikovat hello dat a údržbu image konzistentní databáze, obsah hello devět virtuálních pevných disků by mít toobe geograficky replikované v hello přesný pořadí hello vstupně-výstupních operacích měla spustit pro hello devět různých virtuálních pevných disků. Geografická replikace Azure Storage, ale neumožňuje toodeclare závislosti mezi virtuální pevné disky. To znamená, že hello skutečnost, že obsah hello v těchto devět jiný virtuální pevné disky jsou související tooeach jiné a že jsou změny dat hello konzistentní pouze v případě, že replikace v hello pořadí hello vstupně-výstupních operací došlo neví geografická replikace úložiště Microsoft Azure napříč všemi hello 9 virtuálních pevných disků.
 >
-> Kromě toho se vysoké, že geograficky replikované bitové kopie v tomto scénáři neposkytují image konzistentní databáze, také je snížení výkonu, který se zobrazí s geograficky redundantní úložiště, které může vážně šance dopad na výkon. V souhrnu nepoužívejte tento typ redundance úložiště pro úlohy typu databázového systému.
+> Kromě toho se vysoké, že hello geograficky replikované Image ve scénáři hello neposkytují image konzistentní databáze, také je snížení výkonu, který se zobrazí s geograficky redundantní úložiště, které může vážně šance dopad na výkon. V souhrnu nepoužívejte tento typ redundance úložiště pro úlohy typu databázového systému.
 >
 >
 
 #### <a name="mapping-vhds-into-azure-virtual-machine-service-storage-accounts"></a>Mapování virtuálních pevných disků do účtů úložiště služby virtuální počítač Azure
-Účet úložiště Azure je pouze pro správu konstrukce, ale také předmětem omezení. Zatímco se omezeních lišit na tom, jestli mluvíme o standardní účet úložiště Azure nebo prémiový účet úložiště Azure. Jsou uvedeny přesný možnostmi a omezeními [sem][storage-scalability-targets]
+Účet úložiště Azure je pouze pro správu konstrukce, ale také předmětem omezení. Zatímco hello omezení liší na tom, jestli mluvíme o standardní účet úložiště Azure nebo prémiový účet úložiště Azure. Hello přesný možnosti a omezení jsou uvedeny [sem][storage-scalability-targets]
 
-Proto pro Azure Standard Storage je důležité si uvědomit, je omezen na IOPS na účet úložiště (řádek obsahující 'celkový počet požadavků, v [článek][storage-scalability-targets]). Kromě toho existuje počáteční maximální 100 účtů úložiště za předplatné Azure (k červenci 2015). Proto se doporučuje vyvážit IOPS z virtuálních počítačů mezi více účtů úložiště při použití Azure Standard Storage. Zatímco jeden virtuální počítač v ideálním případě pokud je to možné používá jeden účet úložiště. Takže pokud mluvíme o databázového systému nasazení, kde může každý virtuální pevný disk, který je hostován na Azure Standard Storage dosažení limitu kvóty, měli byste pouze nasadit 30-40 virtuální pevné disky na účet úložiště Azure, která používá Azure Standard Storage. Na druhé straně Pokud využít Azure Premium Storage a chcete ukládat velké databáze svazků, je dobře z hlediska IOPS. Ale prémiový účet úložiště Azure je ve svazku data způsobem více omezující než standardní účet úložiště Azure. V důsledku toho lze nasadit pouze omezený počet virtuálních pevných disků v rámci účtu Azure Premium Storage před stiskne limit dat svazek. Na koncové Považujte účet úložiště Azure jako "Virtuální síť SAN" omezené možnosti v IOPS a kapacity. Úkol zůstane v důsledku toho jako místní nasazení, můžete definovat rozložení virtuálních pevných disků různých systémů SAP přes různé 'pomyslná zařízení sítě SAN, nebo účty úložiště Azure.
+Proto pro Azure Standard Storage je důležité toonote je omezena na hello IOPS na účet úložiště (řádek obsahující 'celkový počet požadavků, v [hello článku][storage-scalability-targets]). Kromě toho existuje počáteční maximální 100 účtů úložiště za předplatné Azure (k červenci 2015). Proto se doporučuje toobalance IOPS z virtuálních počítačů mezi více účtů úložiště při použití Azure Standard Storage. Zatímco jeden virtuální počítač v ideálním případě pokud je to možné používá jeden účet úložiště. Takže pokud mluvíme o databázového systému nasazení, kde může každý virtuální pevný disk, který je hostován na Azure Standard Storage dosažení limitu kvóty, měli byste pouze nasadit 30-40 virtuální pevné disky na účet úložiště Azure, která používá Azure Standard Storage. Na hello druhé straně, pokud využít Azure Premium Storage a chcete toostore svazky velké databáze, je dobře z hlediska IOPS. Ale prémiový účet úložiště Azure je ve svazku data způsobem více omezující než standardní účet úložiště Azure. V důsledku toho lze nasadit pouze omezený počet virtuálních pevných disků v rámci účtu Azure Premium Storage před stiskne limit hello dat svazku. Na účet úložiště Azure jako "Virtuální síť SAN" hello end Považujte omezené možnosti v IOPS a kapacity. Hello úkol zůstane v důsledku toho jako místní nasazení, toodefine hello rozložení hello virtuální pevné disky hello různé SAP systémy přes hello různých 'pomyslná zařízení sítě SAN, nebo účty úložiště Azure.
 
-Pro Azure Standard Storage není doporučeno prezentace úložišť jiným účtům úložiště pro jeden virtuální počítač, pokud je to možné.
+Pro Azure Standard Storage není doporučeno toopresent úložiště z jiného úložiště účtů tooa Pokud je to možné jednotné virtuálních počítačů.
 
-Zatímco použití DS nebo GS-series virtuálních počítačů Azure je možné připojit virtuální pevné disky mimo standardní účty úložiště Azure a účty úložiště Premium. Případy použití, jako je zápis do standardního úložiště záloh zálohovaný virtuální pevné disky, vzhledem k tomu, že máte data databázového systému a soubory protokolu na Storage úrovně Premium se k rozhodnutí, kde může využít takové heterogenní úložiště.
+Zatímco pomocí hello DS nebo GS-series virtuálních počítačů Azure je možné toomount virtuální pevné disky mimo standardní účty úložiště Azure a účty úložiště Premium. Případy použití, jako je zápis do standardního úložiště záloh zálohovaný virtuální pevné disky, vzhledem k tomu, že máte data databázového systému a soubory protokolu na Storage úrovně Premium pocházet toomind, kde může využít takové heterogenní úložiště.
 
-Na základě zákaznických nasazení a testování přibližně 30 až 40 virtuální pevné disky obsahující data soubory databáze a soubory protokolu se dá zřídit v jednom Azure standardní účet úložiště s přijatelný výkon. Jak už bylo zmíněno dříve, bude nejspíš kapacity dat, kterou lze nainstalovat a není IOPS omezení prémiový účet úložiště Azure.
+Na základě zákaznických nasazení a testování přibližně 30 too40, které virtuální pevné disky obsahující data soubory databáze a soubory protokolu se dá zřídit v jednom Azure standardní účet úložiště s přijatelný výkon. Jak už bylo zmíněno dříve, hello omezení prémiový účet úložiště Azure je pravděpodobně toobe hello data kapacitu, kterou lze nainstalovat a není IOPS.
 
-Jako síť SAN zařízení místní, sdílení vyžaduje některá monitorování s cílem nakonec detekovat kritická místa na účet úložiště Azure. Rozšíření monitorování Azure pro SAP a portálu Azure jsou nástroje, které lze použít k detekci zaneprázdněn účtech úložiště Azure, který může být doručování zhoršené výkon vstupně-výstupní operace.  Pokud tato situace je zjištěna, že doporučuje se přesunout zaneprázdněn virtuálních počítačů na jiný účet úložiště Azure. Naleznete [Průvodce nasazením] [ deployment-guide] podrobnosti o tom, jak aktivovat SAP hostitelským možnosti monitorování.
+Jako síť SAN zařízení místní, sdílení vyžaduje některá monitorování v pořadí tooeventually detekovat kritická místa na účet úložiště Azure. Hello rozšíření monitorování Azure pro SAP a hello portálu Azure jsou nástroje, které se dají použít toodetect zaneprázdněných účty úložiště Azure, který může být doručování zhoršené výkon vstupně-výstupní operace.  Pokud se v této situaci detekuje, že se doporučuje toomove zaneprázdněn virtuální počítače tooanother účet úložiště Azure. Podrobnosti najdete toohello [Průvodce nasazením] [ deployment-guide] podrobnosti o tom, jak tooactivate hello SAP hostitele možnosti monitorování.
 
 Jiný článek shrnutí osvědčené postupy v oblasti Azure Standard Storage a standardních účtech úložiště Azure je zde uveden <https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>
 
-#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-to-azure-premium-storage"></a>Přesun nasazení databázového systému virtuálních počítačů z Azure Standard Storage do Azure Premium Storage
-Jsme setkají poměrně některých scénářích, kde jako zákazník chcete přesunout nasazený virtuální počítač z Azure Standard Storage do Azure Premium Storage. To není možné bez fyzickým přesunutím data. Chcete-li dosáhnout několika způsoby:
+#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-tooazure-premium-storage"></a>Přesunutí nasadit databázového systému virtuálních počítačů z Azure Standard Storage tooAzure Storage úrovně Premium
+Jsme setkají poměrně některých scénářích, kde se jako zákazník má toomove nasazený virtuální počítač z Azure Standard Storage do Azure Premium Storage. To není možné bez fyzicky přesouvání dat hello. Existuje několik způsobů tooachieve hello cíle:
 
-* Všechny virtuální pevné disky, základní virtuální pevný disk a také data virtuálních pevných disků může jednoduše zkopírovat do nového účtu úložiště Azure Premium. Velmi často zvolili počet virtuálních pevných disků v Azure Standard Storage není z důvodu fakt, že je potřeba zavést datový svazek. Ale potřebné tolika virtuálních pevných disků kvůli IOPS. Teď, když přesunete na Azure Premium Storage je může přejít způsob menší virtuálních pevných disků k dosažení některé IOPS propustnost. Vzhledem k tomu, že v Azure Standard Storage platíte za používaná data a ne podle velikosti nominální disku, počet virtuálních pevných disků, není podstatné skutečně z hlediska nákladů. Službou Azure Premium Storage, ale by platila pro velikost nominální disku. Většina zákazníka proto zkuste mějte počet virtuálních pevných disků Azure Premium Storage na číslo potřebná k dosažení propustnost IOPS nezbytné. Ano většina zákazníků rozhodnout proti způsob jednoduchou 1:1 kopie.
-* Pokud není dosud připojen, připojte se jeden virtuální pevný disk obsahující zálohu databáze z databáze SAP. Po dokončení zálohování odpojte všechny virtuální pevné disky, včetně virtuální pevný disk obsahující zálohu a zkopírujte základní virtuální pevný disk a virtuální pevný disk s zálohování do účtu Azure Premium Storage. By pak nasaďte virtuální počítač založen na základní virtuální pevný disk a připojit virtuální pevný disk se zálohou. Teď vytvoříte další prázdný prémiové disky úložiště pro virtuální počítač, který slouží k obnovení databáze do. Předpokladem je, že databázového systému umožňuje změnit cesty k souborům protokolu a data v rámci procesu obnovení.
-* Další možností je variace bývalé procesu, kde právě zkopírujte zálohování virtuálního pevného disku do Azure Premium Storage a připojte ji na virtuální počítač, který nově nasazení a instalaci.
-* Čtvrtý možnosti, které jste by zvolte, pokud potřebují Chcete-li změnit počet datových souborů databáze. V takovém případě můžete provést pomocí exportu/importu kopie homogenního systému SAP. PUT ty exportovat soubory do virtuálního pevného disku, který se zkopíruje do prémiový účet úložiště Azure a jeho připojení k virtuální počítač, který používáte ke spouštění procesů importu. Zákazníci využít tuto možnost, hlavně v případě, že chcete snížení počtu datových souborů.
+* Všechny virtuální pevné disky, základní virtuální pevný disk a také data virtuálních pevných disků může jednoduše zkopírovat do nového účtu úložiště Azure Premium. Velmi často zvolili hello počet virtuálních pevných disků v Azure Standard Storage není z důvodu hello fakt, že je potřeba zavést hello datový svazek. Ale potřebné tolika virtuálních pevných disků kvůli hello IOPS. Teď, když přesouváte tooAzure Storage úrovně Premium může přejít způsob menší virtuální pevné disky tooachieve hello některé propustnost IOPS. Vzhledem tomu hello, že v Azure Standard Storage platíte za hello používá data a není velikost hello nominální disku, hello počet virtuálních pevných disků, není podstatné skutečně z hlediska nákladů. S Azure Premium Storage, však by platila pro velikost disku nominální hello. Většina zákazníků hello proto zkuste tookeep hello počet virtuálních pevných discích Azure ve Storage úrovně Premium na hello číslo potřebné tooachieve hello IOPS propustnost nezbytné. Ano většina zákazníků rozhodnout proti hello způsob jednoduchou 1:1 kopie.
+* Pokud není dosud připojen, připojte se jeden virtuální pevný disk obsahující zálohu databáze z databáze SAP. Po dokončení zálohování hello odpojte všechny virtuální pevné disky, včetně hello virtuálního pevného disku obsahující hello zálohování a kopírování hello základní virtuální pevný disk a hello virtuálního pevného disku s hello zálohování do účtu Azure Premium Storage. Při nasazení pak hello virtuálních počítačů v závislosti na hello základní virtuální pevný disk a připojení hello virtuálního pevného disku s hello zálohování. Nyní můžete vytvořit další prázdný disky úložiště Premium pro hello virtuálních počítačů, které jsou používané toorestore hello databáze do. Předpokladem je, že tento hello databázového systému můžete toochange cesty toohello dat a souborů protokolu v rámci procesu obnovení hello.
+* Další možností je varianta hello bývalé procesu, kde právě zkopírujte hello zálohování virtuálního pevného disku do Azure Premium Storage a připojte ji na virtuální počítač, který nově nasazení a instalaci.
+* čtvrtý možnost Hello je by zvolte, pokud potřebují toochange hello počtu datových souborů databáze. V takovém případě můžete provést pomocí exportu/importu kopie homogenního systému SAP. Vložení ty exportovat soubory do virtuálního pevného disku, která se zkopírují do prémiový účet úložiště Azure a jeho připojení tooa virtuálních počítačů, že používáte toorun hello import procesy. Zákazníci využít tuto možnost, hlavně v případě, že chtějí toodecrease hello počtu datových souborů.
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Nasazení virtuálních počítačů pro SAP v Azure
-Microsoft Azure nabízí několik způsobů pro nasazení virtuálních počítačů a přidruženými disky. Tím je velmi důležité pochopit rozdíly, od přípravy virtuálních počítačů se můžou lišit závisí na způsobu nasazení. Obecně platí podíváme do popsané v následujících kapitolách scénáře.
+Microsoft Azure nabízí několik způsobů toodeploy virtuální počítače a přidružené disky. Tím je velmi důležité toounderstand hello rozdíly, od přípravy hello virtuálních počítačů se můžou lišit závisí na hello způsob nasazení. Obecně platí podíváme do scénáře hello popsané v následujících kapitolách hello.
 
-#### <a name="deploying-a-vm-from-the-azure-marketplace"></a>Nasazení virtuálních počítačů z Azure Marketplace
-Chcete převést Microsoft nebo 3. stran zadané bitové kopie z Azure Marketplace pro nasazení virtuálního počítače. Po nasazení virtuálního počítače v Azure použijte stejné pokyny a nástroje pro instalaci softwaru SAP uvnitř virtuálního počítače, jako byste to udělali v místním prostředí. Pro instalaci softwaru SAP ve virtuálním počítači Azure, SAP a Microsoft doporučujeme nahrát a uložit na instalačním médiu SAP do Azure virtuální pevné disky nebo vytvořte virtuální počítač Azure funguje jako "souborový server', který obsahuje všechny potřebné SAP instalačního média.
+#### <a name="deploying-a-vm-from-hello-azure-marketplace"></a>Nasazení virtuálního počítače z hello Azure Marketplace
+Jako tootake od společnosti Microsoft nebo 3. stran, pokud bitovou kopii z Azure Marketplace toodeploy hello virtuálního počítače. Po nasazení virtuálního počítače v Azure provedením hello stejné pokyny a nástroje pro tooinstall hello SAP softwaru uvnitř virtuálního počítače, jako byste to udělali v místním prostředí. Pro instalaci softwaru SAP hello uvnitř hello virtuálního počítače Azure, SAP a Microsoft doporučujeme tooupload a uložte hello SAP instalačním médiu Azure virtuální pevné disky nebo toocreate virtuální počítač Azure funguje jako "souborový server', který obsahuje všechny hello nezbytné SAP instalačního média.
 
 #### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Nasazení virtuálního počítače s konkrétní zobecněný image zákazníka
-Z důvodu opravy specifické požadavky namapoval vaší verzí operačního systému nebo databázového systému nemusí zadané bitové kopie v Azure Marketplace podle vašich potřeb. Proto může být potřeba vytvořit virtuální počítač pomocí vlastní "privátní" image operačního systému nebo databázového systému virtuálního počítače, které mohou být nasazeny několikrát později. Pro přípravu "privátní" image pro duplikaci, musí být zobecněn operačního systému na virtuálním počítači na místě. Podrobnosti najdete [Průvodce nasazením] [ deployment-guide] podrobnosti o tom, jak generalize virtuálního počítače.
+Z důvodu toospecific oprava požadavky v namapoval tooyour operační systém nebo verzi databázového systému nemusí hello zadané bitové kopie v Azure Marketplace hello podle vašich potřeb. Proto může být nutné toocreate virtuálního počítače pomocí vlastní "privátní" image operačního systému nebo databázového systému virtuálního počítače, které mohou být nasazeny několikrát později. tooprepare "privátní" image duplikovaná hello operačního systému musí být zobecněn na hello místní počítač. Naleznete toohello [Průvodce nasazením] [ deployment-guide] podrobnosti o tom toogeneralize virtuálního počítače.
 
-Pokud jste již nainstalovali SAP obsah v místní virtuální počítač (hlavně u systémy vrstvě 2), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure pomocí instance přejmenovat postup nepodporuje správce zřizování softwaru SAP (Poznámka SAP [1619720]). Jinak můžete nainstalovat SAP software později po nasazení virtuálního počítače Azure.
+Pokud jste již nainstalovali SAP obsah v místní virtuální počítač (hlavně u systémy vrstvě 2), můžete upravit nastavení systému SAP hello po nasazení hello hello virtuálního počítače Azure pomocí hello instance přejmenovat postup nepodporuje hello zřizování softwaru SAP Správce (Poznámka SAP [1619720]). Jinak můžete nainstalovat hello SAP software později po nasazení hello hello virtuálního počítače Azure.
 
-Od verze databáze obsahu používá aplikace SAP obsah můžete vygenerovat čerstvě instalací SAP nebo svůj obsah můžete importovat do Azure pomocí virtuální pevný disk s zálohu databáze databázového systému nebo s využitím možnosti databázového systému na zálohování přímo do služby Microsoft Azure Storage. V takovém případě může také připravit virtuální pevné disky s databázového systému protokolu a data souborů místní a importovat tyto disky do Azure. Ale přenos dat databázového systému, který je načítán z místního do Azure by fungovat přes virtuální pevný disk disky, které musejí být připraveny na místě.
+Od verze obsahu databáze hello používá hello aplikace SAP hello obsahu může generovat čerstvě instalací SAP nebo svůj obsah můžete importovat do Azure pomocí virtuální pevný disk s zálohu databáze databázového systému nebo využití funkcí toodirectly databázového systému hello zálohování do služby Microsoft Azure Storage. V takovém případě může také připravit virtuální pevné disky s hello databázového systému dat a protokolovat soubory na místě a importovat tyto disky do Azure. Ale hello přenosu dat databázového systému, který je načítán z místní tooAzure by fungovat přes virtuální pevný disk disky, které potřebují toobe připravené na místě.
 
-#### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a>Přesunutí virtuálního počítače z místního do Azure s diskem zobecněn
-Máte v úmyslu přesunout z místní konkrétního systému SAP do Azure (navýšení a shift). Tento krok můžete provést tím, že nahrajete virtuální pevný disk, který obsahuje operační systém, SAP binární soubory a binární soubory případné databázového systému a virtuální pevné disky s soubory protokolu a data databázového systému Azure. V opačném scénář #2 výše, můžete zachovat název hostitele, identifikátor SID SAP a SAP uživatelské účty ve virtuálním počítači Azure byly nakonfigurované v místním prostředí. Proto generalizací bitovou kopii není nutné. Tento případ se většinou platí pro scénáře mezi různými místy, kde je součástí povahu SAP spouštět místně a částí v Azure.
+#### <a name="moving-a-vm-from-on-premises-tooazure-with-a-non-generalized-disk"></a>Přesunutí virtuálního počítače z místní tooAzure s diskem zobecněn
+Máte v plánu toomove konkrétního systému SAP z místní tooAzure (navýšení a shift). To lze provést tím, že nahrajete hello virtuálního pevného disku, který obsahuje hello operačního systému, hello SAP binární soubory a binární soubory případné databázového systému plus hello virtuální pevné disky s hello protokolu a data souborů tooAzure hello databázového systému. V opačné tooscenario #2 výše necháte hello název hostitele, identifikátor SID SAP a SAP uživatelské účty v hello virtuálního počítače Azure byly nakonfigurované v prostředí místní hello. Proto generalizací hello bitové kopie není nutné. Tento případ se většinou platí pro scénáře mezi různými místy, kde je součástí hello SAP šířku spouštět místně a částí v Azure.
 
 ## <a name="871dfc27-e509-4222-9370-ab1de77021c3"></a>Vysoká dostupnost a zotavení po havárii s virtuálními počítači Azure
-Azure nabízí následující funkce vysoké dostupnosti (HA) a obnovení po havárii (DR), které platí pro různé součásti, které by používáme pro nasazení SAP a databázového systému
+Azure nabízí následující funkce vysoké dostupnosti (HA) a obnovení po havárii (DR), které se vztahují toodifferent součásti, které jsme byste použili pro nasazení SAP a databázového systému hello
 
 ### <a name="vms-deployed-on-azure-nodes"></a>Virtuální počítače nasazené na uzly Azure
-Platforma Azure nenabízí funkce, jako je migrace za provozu pro nasazené virtuální počítače. To znamená, že pokud v clusteru serveru, na kterém je nasazený virtuální počítač je nutné údržby, virtuální počítač je potřeba získat zastavena a restartována. Údržby v Azure se provádí pomocí tak názvem upgradu domén v rámci clusterů serverů. Pouze jeden upgradu domény současně je neudržují. Při restartování takových bude přerušení služby během virtuální počítač je vypnutý, provádění údržby a restartování virtuálního počítače. Většina dodavatelů databázového systému ale poskytovat vysokou dostupnost a zotavení po havárii funkce, které bude rychle restartovat služby databázového systému v jiném uzlu, pokud není k dispozici primárního uzlu. Platforma Azure nabízí funkce pro distribuci virtuálních počítačů, úložiště a dalším službám Azure napříč doménami Upgrade k zajištění, aby plánované údržby nebo infrastruktury selhání by vliv pouze malou podmnožinu virtuální počítače a služby.  S pečlivé plánování je možné dosáhnout úrovní dostupnosti srovnatelná místní infrastruktury.
+Hello platformě Azure nenabízí funkce, jako je migrace za provozu pro nasazené virtuální počítače. To znamená, zda v clusteru serveru, na kterém je nasazený virtuální počítač je nutné údržby, hello virtuálních počítačů není nutné tooget zastavena a restartována. Údržby v Azure se provádí pomocí tak názvem upgradu domén v rámci clusterů serverů. Pouze jeden upgradu domény současně je neudržují. Při restartování takových bude přerušení služby během hello virtuální počítač je vypnutý, provádění údržby a restartování virtuálního počítače. Většina dodavatelů databázového systému ale poskytovat vysokou dostupnost a zotavení po havárii funkce, které bude rychle restartovat služby databázového systému hello na jiný uzel, pokud není k dispozici hello primárního uzlu. Hello platformě Azure nabízí funkce toodistribute virtuálních počítačů, úložiště a dalším službám Azure napříč tooensure upgradu domény, který plánované údržby nebo infrastruktury selhání by ovlivnit pouze malou část virtuálních počítačů nebo služeb.  S pečlivé plánování je možné tooachieve dostupnosti úrovně porovnatelný z hlediska tooon místní infrastruktury.
 
-Skupiny dostupnosti Microsoft Azure jsou logická seskupení virtuálních počítačů nebo služeb, které zajišťuje virtuálním počítačům a dalším službám jsou distribuovány do různých selhání a upgradu domén v rámci clusteru tak, že by existovat pouze jedna vypnutí uzlu v daném v čase (přečíst [to] [ virtual-machines-manage-availability] další podrobnosti najdete v článku).
+Skupiny dostupnosti Microsoft Azure jsou logické seskupení virtuální počítače nebo služby, které zajišťuje virtuálním počítačům a dalším službám distribuované toodifferent selhání a upgradu domén v rámci clusteru tak, že by existovat pouze jedna vypnutí uzlu v daném v čase (přečíst [to] [ virtual-machines-manage-availability] další podrobnosti najdete v článku).
 
-Je nutné konfigurovat tak, že účel při zavádění virtuálních počítačů, jak je vidět tady:
+Je nutné toobe nakonfiguroval účel při zavádění virtuálních počítačů, jak je vidět tady:
 
 ![Definice sadu dostupnosti pro HA databázového systému konfigurace][dbms-guide-figure-200]
 
-Pokud nám chcete vytvořit vysoce dostupné konfigurace databázového systému nasazení (nezávisle na jednotlivé HA databázového systému funkce používá), by třeba virtuální počítače databázového systému:
+Pokud chceme toocreate vysoce dostupné konfigurace databázového systému nasazení (nezávisle na hello jednotlivých HA databázového systému funkce použité), by třeba hello databázového systému virtuální počítače:
 
-* Přidat virtuální počítače do stejné virtuální síti Azure (<https://azure.microsoft.com/documentation/services/virtual-network/>)
-* Virtuální počítače konfigurace HA by měla být ve stejné podsíti. Překlad mezi různé podsítě není možné v čistě cloudové nasazení, bude fungovat pouze IP řešení. Pomocí site-to-site nebo připojením ExpressRoute pro nasazení mezi různými místy, síť se alespoň jednu podsíť bude již vytvořeno. Rozlišení názvů bude provedeno podle místní zásady a síťové infrastruktury služby AD.
+* Přidat virtuální počítače toohello hello stejné virtuální síti Azure (<https://azure.microsoft.com/documentation/services/virtual-network/>)
+* v hello navíc by měl mít Hello virtuální počítače hello HA konfigurace stejné podsíti. Překlad mezi různých podsítích hello není možné v čistě cloudové nasazení, bude fungovat pouze IP řešení. Pomocí site-to-site nebo připojením ExpressRoute pro nasazení mezi různými místy, síť se alespoň jednu podsíť bude již vytvořeno. Rozlišení názvů bude provedeno podle toohello místní AD zásady a síťové infrastruktury.
 
 [comment]: <> (Test TODO MSSedusch Pokud stále true v ARM)
 
 #### <a name="ip-addresses"></a>IP adresy
-Důrazně doporučujeme nastavit virtuálních počítačů pro konfigurace HA odolným způsobem. Pokud se používají statické IP adresy, není spoléhat na IP adresy, adresy HA partnerů v rámci konfigurace HA spolehlivé v Azure. V Azure existují dva koncepty "Vypnout":
+Důrazně doporučujeme toosetup hello virtuálních počítačů pro konfigurace HA odolným způsobem. Spoléhat na IP adresy tooaddress hello HA partnerů v rámci konfigurace HA hello není spolehlivá v Azure, pokud se používají statické IP adresy. V Azure existují dva koncepty "Vypnout":
 
-* Vypnout prostřednictvím portálu Azure nebo Azure PowerShell rutinu Stop-AzureRmVM: V tomto případě získá vypnutí a zrušte přidělené virtuálního počítače. Účtu Azure bude účtována již pro tento virtuální počítač, jsou jediné poplatky, které bude platit za využívání úložiště. Pokud nebyla statickou privátní IP adresa síťového rozhraní, IP adresa se neuvolní a není zaručeno, že síťové rozhraní získá starou IP adresu přiřadit znovu po restartování virtuálního počítače. Provádění vypnutí dolů prostřednictvím portálu Azure nebo voláním Stop-AzureRmVM automaticky způsobí deaktivace přidělení. Pokud nechcete deallocat počítač použijte Stop-AzureRmVM - StayProvisioned
-* Pokud vypnete virtuální počítač z úroveň operačního systému, získá virtuální počítač vypnout a není zrušte přiřazený. Ale v takovém případě účtu Azure bude stále účtována pro virtuální počítač přes skutečnost, že se jedná o vypnutí. V takovém případě zůstanou beze změn přiřazení IP adresy do zastaveného virtuálního počítače. Vypínání virtuálního počítače z v rámci nebude vynutit automaticky deaktivace přidělení.
+* Vypnout prostřednictvím portálu Azure nebo Azure PowerShell rutinu Stop-AzureRmVM: V tomto případě hello virtuální počítač získá vypnutí a zrušte přiřazený. Účtu Azure bude účtována již pro tento virtuální počítač tak, aby byly hello pouze poplatky, které bude platit za využívání úložiště hello. Ale pokud hello privátní IP adresu síťového rozhraní hello nebyla statické, hello IP adresa se neuvolní a není zaručeno, že rozhraní sítě, hello získá hello starou znovu po restartování hello virtuálních počítačů přiřazen adresu IP. Provádění hello vypnout prostřednictvím hello portálu Azure nebo voláním Stop-AzureRmVM automaticky způsobí deaktivace přidělení. Pokud nechcete, aby počítač hello toodeallocat použijte Stop-AzureRmVM - StayProvisioned
+* Pokud vypnete hello virtuální počítač z úroveň operačního systému, získá hello virtuální počítač vypnout a není zrušte přiřazený. Ale v takovém případě účtu Azure bude dál účtovat poplatek za hello virtuální počítač, i přes hello fakt, že se jedná o vypnutí. V takovém případě hello přiřazení hello IP adresu tooa zastaveného virtuálního počítače zůstanou beze změn. Vypínání hello virtuálních počítačů v rámci nebude vynutit automaticky deaktivace přidělení.
 
-I pro scénáře mezi různými místy ve výchozím nastavení vypnutí a deaktivace přidělení znamená deaktivace přiřazení IP adres z virtuálního počítače, i když místní zásady v nastavení protokolu DHCP se liší.
+I pro scénáře mezi různými místy ve výchozím nastavení vypnutí a deaktivace přidělení znamená deaktivace přiřazení hello IP adresy z hello virtuální počítač, i když místní zásady v nastavení protokolu DHCP se liší.
 
-* Výjimka je popsán Pokud jednu statickou IP adresu přiřadí k síťovému rozhraní jako [sem][virtual-networks-reserved-private-ip].
-* V takovém případě zůstává pevná IP adresa, tak dlouho, dokud se neodstraní síťové rozhraní.
+* Hello výjimka je pokud jeden přiřadí statické IP adresy tooa rozhraní sítě jako popsaný [sem][virtual-networks-reserved-private-ip].
+* V takovém případě zůstává pevná hello IP adresu, tak dlouho, dokud se neodstraní hello síťové rozhraní.
 
 > [!IMPORTANT]
-> Chcete-li zachovat celého nasazení jednoduché a spravovat, zrušte doporučuje se nastavit partnerství databázového systému HA nebo konfigurace zotavení po Havárii v rámci Azure tak, že je funkční překlad mezi různé virtuální počítače spojené virtuálních počítačů.
+> V pořadí tookeep hello celého nasazení jednoduché a spravovat hello hello jasné, že doporučení je toosetup partnerství společností v konfiguraci s HA databázového systému nebo zotavení po Havárii v rámci Azure tak, že je funkční překlad mezi hello, které se podílejí různé virtuální počítače virtuální počítače.
 >
 >
 
 ## <a name="deployment-of-host-monitoring"></a>Nasazení hostitele monitorování
-Pro produktivní využití SAP aplikací v Azure Virtual Machines SAP vyžaduje schopnost získat hostitele dat monitorování od fyzických hostitelů se spuštěnými virtuálními počítači Azure. Konkrétní úroveň oprav SAP HostAgent se bude vyžadovat umožňující tuto funkci SAPOSCOL a SAP HostAgent. Úroveň přesný oprav je popsána v Poznámka SAP [1409604].
+Pro produktivní využití SAP aplikací v Azure Virtual Machines vyžaduje SAP hello možnost tooget hostitele dat monitorování od hello fyzických hostitelů se spuštěnými hello virtuálních počítačích Azure. Konkrétní úroveň oprav SAP HostAgent se bude vyžadovat umožňující tuto funkci SAPOSCOL a SAP HostAgent. úroveň oprav přesný Hello je popsána v Poznámka SAP [1409604].
 
-Podrobnosti týkající se nasazení komponent, které doručování dat hostitele a SAPHostAgent SAPOSCOL a správa životního cyklu těchto součástí naleznete [Příručka pro nasazení][deployment-guide]
+Podrobnosti hello týkající se nasazení komponent, které poskytovat tooSAPOSCOL dat hostitele a správu životního cyklu SAPHostAgent a hello těchto součástí naleznete toohello [Příručka pro nasazení][deployment-guide]
 
-## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Podrobnosti k systému Microsoft SQL Server
+## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Specifika tooMicrosoft systému SQL Server
 ### <a name="sql-server-iaas"></a>SQL Server IaaS
-Od verze Microsoft Azure, můžete snadno migrovat existující aplikace SQL Server založený na platformě Windows Server na virtuálních počítačích Azure. SQL Server ve virtuálním počítači umožňuje snížit celkové náklady na vlastnictví nasazení, správu a údržbu enterprise spektra aplikací snadno migrací těchto aplikací do Microsoft Azure. Se systémem SQL Server v virtuální počítač Azure správci a vývojáři můžete dál používat stejné vývoj a nástroje pro správu, které jsou k dispozici místně.
+Od verze Microsoft Azure, můžete snadno migrovat existující systém SQL Server aplikace založená na Windows Server platforma tooAzure virtuálních počítačů. SQL Server ve virtuálním počítači můžete tooreduce hello celkové náklady na vlastnictví nasazení, správu a údržbu enterprise spektra aplikací umožňuje snadno migrací tooMicrosoft tyto aplikace Azure. Se systémem SQL Server v virtuální počítač Azure můžete správci a vývojáři dál používat hello stejných nástrojů vývoj a správu, které jsou k dispozici místně.
 
 > [!IMPORTANT]
-> Upozorňujeme, že jsme nejsou hovoříte o Microsoft Azure SQL Database, což je platforma jako nabídka služeb platformy Microsoft Azure. Informace v tomto dokumentu jsou o spuštění produktu SQL Server, protože je znám pro místní nasazení v Azure Virtual Machines, využití infrastruktury jako funkce služby Azure. Možnosti databáze a funkce mezi tyto dvě nabídky se liší a nesmí promíchala mezi sebou. Viz také: <https://azure.microsoft.com/services/sql-database/>
+> Upozorňujeme, že jsme nejsou hovoříte o Microsoft Azure SQL Database, což je platforma jako služba nabídka Dobrý den platforma Microsoft Azure. Hello informace v tomto dokumentu jsou o spuštění hello produktu SQL Server, protože je znám pro místní nasazení v Azure Virtual Machines, využívání hello infrastruktury jako funkce služby Azure. Možnosti databáze a funkce mezi tyto dvě nabídky se liší a nesmí promíchala mezi sebou. Viz také: <https://azure.microsoft.com/services/sql-database/>
 >
 >
 
-Důrazně doporučujeme zkontrolovat [to] [ virtual-machines-sql-server-infrastructure-services] dokumentace než budete pokračovat.
+Důrazně doporučujeme tooreview [to] [ virtual-machines-sql-server-infrastructure-services] dokumentace než budete pokračovat.
 
-V následujících částech se agregovat a uvedených kusy části dokumentace v části výše uvedený odkaz. Specifika kolem SAP jsou také uvedené a některé pojmy jsou popsány podrobněji. Důrazně ale doporučujeme fungovat prostřednictvím dokumentace výše první než si přečtete konkrétní dokumentaci k SQL serveru.
+Následující části částí hello dokumentace v části výše uvedený odkaz hello se v hello agregovat a uvedených. Specifika kolem SAP jsou také uvedené a některé pojmy jsou popsány podrobněji. Důrazně ale toowork prostřednictvím hello dokumentace výše první než si přečtete konkrétní dokumentaci k systému SQL Server hello.
 
 V IaaS konkrétní informace, které byste měli vědět před pokračováním je některé systému SQL Server:
 
 * **Virtuální počítač SLA**: je SLA pro virtuální počítače běžící v Azure, které naleznete zde: <https://azure.microsoft.com/support/legal/sla/>  
-* **Podpora verzí SQL**: pro zákazníky, SAP, podporujeme SQL Server 2008 R2 a vyšší na virtuální počítač Microsoft Azure. Nejsou podporované starší verze. Zkontrolujte tato obecná [prohlášení o odborné pomoci](https://support.microsoft.com/kb/956893) další podrobnosti. Upozorňujeme, že obecně systému SQL Server 2008 je společnost Microsoft podporuje také. Ale kvůli důležité funkce pro SAP, která byla představena SQL Server 2008 R2, SQL Server 2008 R2 je minimální verze pro SAP. Mějte na paměti, že SQL Server 2012 a 2014 získali rozšířené o hlubší integrace do scénář IaaS (např. zálohování přímo s Azure Storage). Proto jsme omezení tento dokument k systému SQL Server 2012 a 2014 s jeho nejnovější úroveň oprav pro Azure.
-* **Podpora funkce SQL**: funkce nejvíce systému SQL Server jsou podporovány ve virtuálních počítačích Microsoft Azure na několik výjimek. **SQL Server převzetí služeb při selhání pomocí sdílených disků není možné clusterování**.  Distribuované technologie jako databáze zrcadlení, skupiny dostupnosti AlwaysOn, replikace, přesouvání protokolu a služby Service Broker jsou podporovány v jedné oblasti Azure. SQL Server AlwaysOn taky je podporovaná mezi různých oblastech Azure, jak je uvedeno zde: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Zkontrolujte [prohlášení o odborné pomoci](https://support.microsoft.com/kb/956893) další podrobnosti. Příklad pro nasazení konfigurace funkce AlwaysOn je uveden v [to] [ virtual-machines-workload-template-sql-alwayson] článku. Také, podívejte se na osvědčené postupy popsané [sem][virtual-machines-sql-server-infrastructure-services]
-* **Výkon SQL**: jsme si jisti, že rozdíl od jiných nabídky virtualizace veřejného cloudu, ale jednotlivé výsledky provede velmi dobře hostované virtuální počítače Microsoft Azure se může lišit. Podívejte se na [to] [ virtual-machines-sql-server-performance-best-practices] článku.
-* **Pomocí bitové kopie z Azure Marketplace**: nejrychlejší způsob, jak nasadit nový virtuální počítač Microsoft Azure je použít bitovou kopii z Azure Marketplace. Existují bitové kopie v Azure Marketplace, které obsahují systému SQL Server. Bitové kopie, kde je již nainstalován systém SQL Server nelze použít pro aplikace SAP NetWeaver okamžitě. Důvodem je, že výchozí kolace systému SQL Server je nainstalován v rámci těchto bitových kopií a není potřeba systémy SAP NetWeaver kolace. Chcete-li použít tyto obrázky, Zkontrolujte prosím kroků popsaných v kapitole [pomocí SQL serveru Image z webu Microsoft Azure Marketplace][dbms-guide-5.6].
-* Podívejte se na [podrobnosti o cenách](https://azure.microsoft.com/pricing/) Další informace. [SQL Server 2012 Licensing průvodce](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) a [SQL Server 2014 licencování průvodce](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) jsou také důležité prostředků.
+* **Podpora verzí SQL**: pro zákazníky, SAP, podporujeme SQL Server 2008 R2 a vyšší na virtuální počítač Microsoft Azure. Nejsou podporované starší verze. Zkontrolujte tato obecná [prohlášení o odborné pomoci](https://support.microsoft.com/kb/956893) další podrobnosti. Upozorňujeme, že obecně systému SQL Server 2008 je společnost Microsoft podporuje také. Ale kvůli toosignificant funkce pro SAP, která byla představena SQL Server 2008 R2, SQL Server 2008 R2 je hello minimální verze pro SAP. Mějte na paměti, že SQL Server 2012 a 2014 získali rozšířené o hlubší integrace do hello scénář IaaS (např. zálohování přímo s Azure Storage). Proto jsme omezit tento dokument tooSQL Server 2012 a 2014 s jeho nejnovější úroveň oprav pro Azure.
+* **Podpora funkce SQL**: funkce nejvíce systému SQL Server jsou podporovány ve virtuálních počítačích Microsoft Azure na několik výjimek. **SQL Server převzetí služeb při selhání pomocí sdílených disků není možné clusterování**.  Distribuované technologie jako databáze zrcadlení, skupiny dostupnosti AlwaysOn, replikace, přesouvání protokolu a služby Service Broker jsou podporovány v jedné oblasti Azure. SQL Server AlwaysOn taky je podporovaná mezi různých oblastech Azure, jak je uvedeno zde: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Zkontrolujte hello [prohlášení o odborné pomoci](https://support.microsoft.com/kb/956893) další podrobnosti. Příklad na tom, jak toodeploy konfigurace aplikace AlwaysOn se zobrazí v [to] [ virtual-machines-workload-template-sql-alwayson] článku. Zkontrolujte také, out hello osvědčené postupy popsané [sem][virtual-machines-sql-server-infrastructure-services]
+* **Výkon SQL**: jsme si jisti, že se může lišit v porovnání tooother veřejného cloudu virtualizace nabídek, ale jednotlivé výsledky provede velmi dobře hostované virtuální počítače Microsoft Azure. Podívejte se na [to] [ virtual-machines-sql-server-performance-best-practices] článku.
+* **Pomocí bitové kopie z Azure Marketplace**: hello nejrychlejší způsob, jak toodeploy nový virtuální počítač Microsoft Azure je toouse bitové kopie z hello Azure Marketplace. Existují obrázků v hello Azure Marketplace, které obsahují systému SQL Server. Hello bitové kopie, kde je již nainstalován systém SQL Server nelze použít pro aplikace SAP NetWeaver okamžitě. Hello důvodem je, že kolace systému SQL Server hello výchozí je nainstalován v rámci těchto bitových kopií a není hello kolace vyžadovanou SAP NetWeaver systémy. V pořadí toouse takovými obrázky, zkontrolujte, zda text hello kroků popsaných v kapitole [pomocí SQL serveru Image z webu Microsoft Azure Marketplace hello][dbms-guide-5.6].
+* Podívejte se na [podrobnosti o cenách](https://azure.microsoft.com/pricing/) Další informace. Hello [SQL Server 2012 Licensing průvodce](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) a [SQL Server 2014 licencování průvodce](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) jsou také důležité prostředků.
 
 ### <a name="sql-server-configuration-guidelines-for-sap-related-sql-server-installations-in-azure-vms"></a>Pokyny pro konfigurace systému SQL Server pro SAP související instalace systému SQL Server ve virtuálních počítačích Azure
 #### <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Doporučení ve struktuře virtuálního počítače nebo virtuální pevný disk pro SAP související nasazení systému SQL Server
-V souladu s obecný popis spustitelné soubory systému SQL Server nachází nebo nainstalován do systémové jednotce základní virtuální pevný disk Virtuálního počítače (jednotka C:\).  Obvykle se většina systémových databází systému SQL Server nejsou využívaných na vysoké úrovni SAP NetWeaver zatížení. Proto může na jednotce C:\ také zůstat systémové databáze systému SQL Server (hlavní, databázi msdb a modelu). Výjimka může být databáze tempdb, v případě některých ERP SAP a všechny úlohy BW, může to vyžadovat vyšší datový svazek nebo vstupně-výstupní operace svazek, který se nemůže vejít do původní virtuální počítač. Pro tyto systémy je možné provádět následující kroky:
+V souladu s hello obecný popis, by měla být spustitelné soubory systému SQL Server nachází nebo nainstalován do hello systémové jednotce hello Virtuálního počítače základní virtuální pevný disk (jednotka C:\).  Obvykle se většina databáze systému SQL Server hello nejsou využívaných na vysoké úrovni SAP NetWeaver zatížení. Proto hello systémové databáze systému SQL Server (hlavní, databázi msdb a modelu) může zůstat na hello také jednotku C:\. Výjimka může být databáze tempdb, v případě hello některé ERP SAP a všechny úlohy BW, může to vyžadovat vyšší datový svazek nebo vstupně-výstupní operace svazek, který se nemůže vejít do hello původní virtuální počítač. Pro tyto systémy je možné provádět hello následující kroky:
 
-* Přesuňte soubory dat primární databáze tempdb stejné logické jednotce jako primární datové soubory databáze SAP.
-* Přidáte žádné další databáze tempdb datové soubory ke každému z jiné logické jednotky obsahující soubor dat databáze SAP uživatele.
-* Přidejte soubor protokolu databáze tempdb logické jednotky, která obsahuje soubor protokolu databáze uživatele.
-* **Výhradně pro typů virtuálních počítačů, které používají místní SSD** v protokolu a výpočetní uzel databáze tempdb data soubory mohou být umístěny na jednotku D:\. Nicméně může se doporučuje použít víc datových souborech databáze tempdb. Mějte na paměti, že svazky jednotce D:\ se liší podle typu virtuálního počítače.
+* Přesunout hello primární databáze tempdb datové soubory toohello stejné logické jednotce jako primární datové soubory hello hello SAP databáze.
+* Přidejte všechny další databáze tempdb data souborů tooeach Dobrý den jiné logické jednotky obsahující soubor dat z databáze uživatelů SAP hello.
+* Přidejte hello databáze tempdb logfile toohello logické jednotky obsahující soubor protokolu databáze hello uživatele.
+* **Výhradně pro typů virtuálních počítačů, které používají místní SSD** v protokolu a hello výpočetní uzel databáze tempdb data může soubory umístit na jednotku D:\ hello. Nicméně, může to být doporučená toouse víc datových souborech databáze tempdb. Mějte na paměti, že svazky jednotce D:\ se liší podle hello typ virtuálního počítače.
 
-Tyto konfigurace povolit databáze tempdb využívat více místa, než je schopný poskytnout systémové jednotce. Aby bylo možné určit velikost správné databázi tempdb, jeden zkontrolujte velikost databáze tempdb na existující systémy, které spustit místně. Kromě toho by taková konfigurace umožňuje IOPS čísla proti databázi tempdb, který nemůže být součástí systému systémová jednotka. Znovu systémy, které jsou místní slouží k monitorování vstupně-výstupní úlohy proti databázi tempdb tak, aby odvozujete čísla IOPS, která byste měli vidět na vaše databáze tempdb.
+Tyto konfigurace povolit databáze tempdb tooconsume více místa, než je možné tooprovide hello systémová jednotka. Pořadí toodetermine hello databáze tempdb správnou velikost jeden zkontrolujte velikost databáze tempdb hello na existující systémy, které spustit místně. Kromě toho by taková konfigurace umožňuje IOPS čísla proti databázi tempdb, který nemůže být součástí systému hello systémového disku. Systémy, které jsou místní znovu, může být použité toomonitor vstupně-výstupní úlohy proti databázi tempdb, tak, aby odvozujete čísla IOPS hello očekávat toosee na vaše databáze tempdb.
 
-Konfigurace virtuálního počítače, který používá systém SQL Server s databázi SAP a umístění souboru protokolu databáze tempdb a databázi tempdb dat na jednotku D:\ by vypadat podobně jako:
+Konfigurace virtuálního počítače, který používá systém SQL Server s databázi SAP a umístění souboru protokolu databáze tempdb a databázi tempdb dat na jednotku D:\ hello by vypadat podobně jako:
 
 ![Konfigurace referenčního virtuálního počítače Azure IaaS pro SAP][dbms-guide-figure-300]
 
-Upozorňujeme, že jednotku D:\ má různou velikost závisí na typu virtuálního počítače. Závisí na požadavek na velikost databáze tempdb vám může vynutit pár databáze tempdb data a soubory protokolu s SAP protokolu a data soubory databáze v případech, kdy jednotku D:\ je příliš malá.
+Mějte na paměti, že tento hello jednotku D:\ má různou velikost závisí na hello typ virtuálního počítače. Závisí na požadavek hello velikost databáze tempdb je vynucené toopair databáze tempdb data a soubory protokolu s hello SAP data databáze a soubory protokolů v případech, kdy jednotku D:\ je příliš malá.
 
-#### <a name="formatting-the-vhds"></a>Formátování virtuálních pevných disků
-Pro systém SQL Server systému souborů NTFS blokovat velikost pro virtuální pevné disky obsahující data systému SQL Server a soubory protokolů by měla být 64 kB. Není nutné k formátování jednotku D:\. Tato jednotka obsahuje předem formátovaný.
+#### <a name="formatting-hello-vhds"></a>Formátování hello virtuálních pevných disků
+Pro SQL Server hello velikost bloku systému souborů NTFS pro virtuální pevné disky obsahující data systému SQL Server a protokolu musí být soubory 64 kB. Neexistuje žádné nutné tooformat hello jednotku D:\. Tato jednotka obsahuje předem formátovaný.
 
-Pokud chcete mít jistotu, že obnovení nebo vytváření databází není inicializace datové soubory podle vynulování obsah souborů, jeden by se ujistěte, že má uživatelský kontext, který služba SQL Server běží v určité oprávnění. Uživatelé ve skupině pro správu služby Windows obvykle mají tato oprávnění. Pokud služba SQL Server běží v kontextu uživatele Windows uživatel není správcem, budete muset přiřadit tento uživatel uživatelské právo, provádět úlohy údržby svazku'.  Zobrazit podrobnosti v tomto článku znalostní báze Microsoft: <https://support.microsoft.com/kb/2574695>
+V pořadí toomake jistotu, že hello obnovení nebo vytváření databází není inicializace hello datové soubory podle vynulování hello obsah hello soubory, jeden měli ujistit, že je spuštěna služba SQL Server hello uživatele kontextu hello má určitá oprávnění. Uživatelé ve skupině pro správu služby Windows hello obvykle mají tato oprávnění. Pokud hello služby SQL Server běží v kontextu uživatele hello Windows uživatel není správcem, je třeba tooassign tohoto uživatele hello uživatelské právo, provádět úlohy údržby svazku'.  Zobrazit podrobnosti hello v tomto článku znalostní báze Microsoft: <https://support.microsoft.com/kb/2574695>
 
 #### <a name="impact-of-database-compression"></a>Dopad komprese databáze
-V konfiguracích, kde vstupně-výstupní šířky pásma může představovat problém každý měr, což snižuje IOPS vám může pomoci stretch úlohy, jež možné spouštět v případě pomocí IaaS, jako je například Azure. Proto pokud to ještě neudělali, použití SQL serveru stránky komprese důrazně doporučujeme SAP i Microsoft před nahráním existující SAP databáze do Azure.
+V konfiguracích, kde vstupně-výstupní šířky pásma může představovat problém mohou pomoci při každé měr, což snižuje IOPS toostretch hello úlohy, jež možné spouštět v případě pomocí IaaS, jako je například Azure. Proto pokud to ještě neudělali, použití SQL serveru stránky komprese důrazně doporučujeme SAP i Microsoft před nahráním existující SAP databáze tooAzure.
 
-Doporučení k provedení komprese databáze před nahráním do Azure je dán ze dvou důvodů:
+Hello doporučení tooperform komprese databáze před nahráním tooAzure je dán ze dvou důvodů:
 
-* Množství dat k odeslání je nižší.
-* Doba trvání spuštění komprese je kratší, za předpokladu, že jeden může používat silnější hardware s více procesorů nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupních operací latence místně.
-* Menší velikosti databáze může vést k nižší náklady pro přidělení disku
+* Hello množství dat toobe nahrán je nižší.
+* Doba trvání Hello provádění komprese hello je kratší, za předpokladu, že jeden může používat silnější hardware s více procesorů nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupních operací latence místně.
+* Menší velikosti databáze může vést tooless náklady pro přidělení disku
 
-Komprese databáze pracuje také virtuálních počítačích Azure, jako místní. Další podrobnosti o tom, jak komprimovat existující Server SQL SAP databáze najdete tady: <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>
+Komprese databáze pracuje také virtuálních počítačích Azure, jako místní. Další informace o tom, jak toocompress existující databázi SAP SQL Server zkontrolujte, zde: <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>
 
 ### <a name="sql-server-2014--storing-database-files-directly-on-azure-blog-storage"></a>SQL Server 2014 – ukládání databáze soubory přímo na blogu úložiště Azure
-SQL Server 2014 otevře možnost ukládat databázové soubory přímo v úložišti objektů Blob Azure bez "obálku" virtuální pevný disk je obcházet. Zejména s použitím standardního úložiště Azure nebo menší typy virtuálních počítačů to umožňuje scénáře, kde lze překonat omezení IOPS, která vynucovaly omezený počet virtuálních pevných disků, které může být připojen k některé menší typy virtuálních počítačů. Tento postup funguje pro uživatelské databáze, ale ne pro systémové databáze systému SQL Server. Funguje i pro data a soubory protokolu serveru SQL Server. Pokud chcete nasadit do databáze SQL serveru SAP tímto způsobem místo 'zabalení' do virtuální pevné disky, prosím mějte následující:
+SQL Server 2014 otevře hello možnost toostore databázových souborů přímo v úložišti objektů Blob Azure bez hello "obálku" VHD je obcházet. Zejména s použitím standardního úložiště Azure nebo menší typy virtuálních počítačů to umožňuje scénáře, kde lze překonat hello omezení IOPS, která vynucovaly omezený počet virtuálních pevných disků, které mohou být připojené toosome menší typy virtuálních počítačů. Tento postup funguje pro uživatelské databáze, ale ne pro systémové databáze systému SQL Server. Funguje i pro data a soubory protokolu serveru SQL Server. Pokud chcete toodeploy databáze SQL serveru SAP tímto způsobem místo prosím 'zabalení"jej do virtuální pevné disky, mějte hello následující skutečnosti:
 
-* Použít pro účet úložiště, které musí být ve stejné oblasti Azure jako ten, který se používá k nasazení virtuálních počítačů systému SQL Server běží v.
-* Aspekty, které jsou uvedeny na začátku namapoval distribuovat disků VHD přes různé účty úložiště Azure platí pro tuto metodu nasazení také. Znamená počet vstupně-výstupních operací do omezení účtu úložiště Azure.
+* toobe potřebám Hello účet úložiště používané v hello stejné oblasti Azure jako ten, který je použité toodeploy hello virtuálního počítače SQL Server běží v hello.
+* Aspekty, které jsou uvedené výše v namapoval toodistribute virtuální pevné disky v různých účtech úložiště Azure platí pro tuto metodu také nasazení. Znamená hello počet vstupně-výstupní operace proti hello omezení hello účet úložiště Azure.
 
 [comment]: <> (MSSedusch TODO ale tímto dojde k použití šířka pásma sítě a není potřeba úložiště, nebude ho?)
 
 Podrobnosti o tomto typu nasazení jsou zde uvedeny: <https://msdn.microsoft.com/library/dn385720.aspx>
 
-Chcete-li uložit datové soubory SQL Server přímo na Azure Premium Storage, musíte mít minimální verzi SQL Server 2014 opravy, které jsou zde uvedeny: <https://support.microsoft.com/kb/3063054>. Ukládání souborů dat systému SQL Server v Azure Standard Storage funguje s vydaná verze systému SQL Server 2014. Velmi stejné opravy však obsahují další řadu opravy, které přímého použití Azure Blob Storage pro datové soubory SQL serveru a zálohy spolehlivější. Proto doporučujeme použít tyto opravy obecně.
+Pořadí toostore soubory systému SQL Server data přímo na Azure Premium Storage, je nutné vydání opravy toohave minimální SQL Server 2014, které jsou zde uvedeny: <https://support.microsoft.com/kb/3063054>. Ukládání souborů dat systému SQL Server v Azure Standard Storage funguje s hello vydaná verze systému SQL Server 2014. Velmi stejné opravy hello však obsahují další řadu opravy, které hello přímého použití Azure Blob Storage pro datové soubory SQL serveru a zálohy spolehlivější. Proto doporučujeme, abyste toouse tyto opravy obecně.
 
 ### <a name="sql-server-2014-buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti systému SQL Server 2014
-SQL Server 2014 zavedly novou funkci, která se nazývá rozšíření fondu vyrovnávací paměti. Tato funkce rozšíření fondu vyrovnávací paměti systému SQL Server, který je uložen v paměti s druhou úroveň mezipaměti, kterou je zajištěna místní SSD server nebo virtuální počítač. To umožňuje ponechat větší pracovní sadu dat, v paměti'. Ve srovnání s přístup k Azure Standard Storage přístup do rozšíření fondu vyrovnávací paměti, který je uložený na místní SSD virtuální počítač Azure se mnoha faktorech rychlejší.  Využití místní jednotce D:\ typy virtuálních počítačů, které mají vynikající IOPS a propustnost proto může být velmi rozumný způsob, jak snížit zatížení IOPS Azure Storage a výrazně zlepšit dobu odezvy dotazů. To platí hlavně v případě, že není použití služby Premium Storage. V případě Storage úrovně Premium a využití mezipaměti pro čtení Azure Premium na výpočetním uzlu jsou doporučené pro datové soubory, očekávané žádné velké rozdíly. Důvodem je to, jak mezipaměti (rozšíření fondu vyrovnávací paměti systému SQL Server a mezipaměti pro čtení úložiště Premium) používáte místní disky výpočetních uzlů.
+SQL Server 2014 zavedly novou funkci, která se nazývá rozšíření fondu vyrovnávací paměti. Tato funkce rozšiřuje hello fondu vyrovnávací paměti systému SQL Server, který je uložen v paměti s druhou úroveň mezipaměti, kterou je zajištěna místní SSD server nebo virtuální počítač. To umožňuje tookeep větší pracovní sady dat "v paměti'. Porovnání tooaccessing Azure Standard Storage hello přístup do hello rozšíření fondu vyrovnávací paměti hello, který je uložený na místní SSD virtuální počítač Azure je rychlejší mnoha faktorech.  Využití hello místní jednotku D:\ hello typů virtuálních počítačů, které mají vynikající IOPS a propustnost proto může být tooreduce hello velmi rozumný způsob, IOPS načíst Azure Storage a výrazně zlepšit dobu odezvy dotazů. To platí hlavně v případě, že není použití služby Premium Storage. V případě a hello využití na výpočetním uzlu hello hello mezipaměti pro čtení Azure Premium Storage úrovně Premium jsou doporučené pro datové soubory, očekávané žádné velké rozdíly. Důvodem je to, jak mezipaměti (rozšíření fondu vyrovnávací paměti systému SQL Server a mezipaměti pro čtení úložiště Premium) používáte místní disky hello hello výpočetních uzlů.
 Další podrobnosti o této funkci, zkontrolujte Tato dokumentace: <https://msdn.microsoft.com/library/dn133176.aspx>
 
 ### <a name="backuprecovery-considerations-for-sql-server"></a>Důležité informace o zálohování nebo obnovení pro SQL Server
-Při nasazování systému SQL Server do Azure musí být zkontrolovány vaše zálohování metodika. I když v systému není systémem produktivní, databázi SAP, který je hostitelem SQL Server je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní méně důležité v ohledem na kompenzace havárie úložiště zálohy. Z důvodu priority pro údržbu správné plán zálohování a obnovení je větší, který můžete kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Cílem je proto záloh buď použijte k obnovení databázi zpět do určité míry v čase nebo k použití zálohování v Azure počáteční hodnoty jiného systému zkopírováním existující databáze. Například je může přenáší z konfigurace SAP vrstvě 2 na instalaci systému 3vrstvé stejného systému obnovení ze zálohy.
+Při nasazování systému SQL Server do Azure musí být zkontrolovány vaše zálohování metodika. I když hello systému není systémem produktivní, databázi SAP hello hostitelem SQL Server je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní méně důležité v ohledem toocompensating havárie úložiště zálohy. Důvod priority Hello k zachování správné plán zálohování a obnovení je informace, které můžete kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Tak, aby hello cílem tooeither použití zálohy toorestore hello zálohování databáze tooa určité bodu v čase nebo toouse hello záloh v Azure tooseed jiného systému zkopírováním hello existující databázi. Například je může přenést z vrstvě 2 SAP konfigurace tooa 3vrstvé systému nastavení hello stejné systému obnovení ze zálohy.
 
-Existují tři různé způsoby zálohování systému SQL Server do služby Azure Storage:
+Existují tři různé způsoby toobackup systému SQL Server tooAzure úložiště:
 
-1. SQL Server 2012 CU4 a vyšší nativně zálohování databází můžete na adresu URL. To je podrobně popsán v blogu [novou funkčnost systému SQL Server 2014 – část 5 – zálohování a obnovení vylepšení](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx). Naleznete v kapitole [SQL Server 2012 SP1 CU4 nebo novější][dbms-guide-5.5.1].
-2. Verze systému SQL Server před SQL 2012 CU4 můžete použít funkci přesměrování zálohování na disk VHD a v podstatě přesuňte směrem umístění úložiště Azure, který byl nakonfigurován zápisu datového proudu. Naleznete v kapitole [SQL Server 2012 SP1 CU3 a starších verzích][dbms-guide-5.5.2].
-3. Poslední metodu je provést konvenční zálohování serveru SQL Server na disku příkaz do zařízení disku VHD.  Toto je stejný jako vzoru místní nasazení a není podrobněji v tomto dokumentu.
+1. SQL Server 2012 CU4 a vyšší mohou nativně zálohování databází tooa adresy URL. To je podrobně popsán v blogu hello [novou funkčnost systému SQL Server 2014 – část 5 – zálohování a obnovení vylepšení](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx). Naleznete v kapitole [SQL Server 2012 SP1 CU4 nebo novější][dbms-guide-5.5.1].
+2. Předchozí tooSQL verzích systému SQL Server 2012 CU4 používat tooa toobackup funkce přesměrování virtuálního pevného disku a v podstatě přesunout hello zápisu datového proudu směrem umístění úložiště Azure, který byl nakonfigurován. Naleznete v kapitole [SQL Server 2012 SP1 CU3 a starších verzích][dbms-guide-5.5.2].
+3. poslední metodu Hello je tooperform konvenční příkaz toodisk zálohování systému SQL Server do zařízení disku VHD.  Toto je identické toohello místní nasazení vzor a není podrobněji v tomto dokumentu.
 
 #### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 nebo novější
-Tato funkce umožňuje přímo zálohování do Azure BLOB storage. Bez této metody musíte zálohovat na jiných Azure virtuální pevné disky, které se spotřebovávají kapacitu virtuální pevný disk a IOPS. Cílem je v podstatě to:
+Tato funkce umožňuje úložiště objektů BLOB zálohy tooAzure toodirectly. Bez této metody musíte zálohovat tooother Azure VHD, který by spotřebovávají kapacitu virtuální pevný disk a IOPS. Rada Hello je v podstatě to:
 
- ![Pomocí zálohování systému SQL Server 2012 do úložiště objektů BLOB Microsoft Azure][dbms-guide-figure-400]
+ ![Pomocí zálohování systému SQL Server 2012 tooMicrosoft Azure Storage BLOB][dbms-guide-figure-400]
 
-Výhoda spočívá v tomto případě, že jeden nepotřebuje zatěžovat virtuální pevné disky pro ukládání záloh systému SQL Server na. Takže máte méně virtuální pevné disky přidělené a celou šířku pásma IOPS virtuálního pevného disku lze použít pro soubory protokolu a data. Upozorňujeme, že maximální velikost zálohy je omezená na maximálně 1 TB, jak je uvedeno v části "Meze" v tomto článku: <https://msdn.microsoft.com/library/dn435916.aspx#limitations>. Pokud velikost zálohování navzdory pomocí zálohování serveru SQL komprese překročí velikost 1 TB, funkce popsané v kapitole [SQL Server 2012 SP1 CU3 a starších verzích] [ dbms-guide-5.5.2] v tomto dokumentu se musí použít.
+Hello využít v tomto případě je, že jeden nepotřebuje záloh systému SQL Server toostore toospend virtuální pevné disky na. Takže máte méně virtuální pevné disky přidělené a hello celou šířku pásma IOPS virtuálního pevného disku lze použít pro soubory protokolu a data. Upozorňujeme, že hello maximální velikost zálohy je omezené tooa maximálně 1 TB, jak je uvedeno v části hello "Meze" v tomto článku: <https://msdn.microsoft.com/library/dn435916.aspx#limitations>. Pokud velikost zálohování hello navzdory pomocí zálohování serveru SQL komprese překročí velikost 1 TB, hello funkce popsané v kapitole [SQL Server 2012 SP1 CU3 a starších verzích] [ dbms-guide-5.5.2] musí v tomto dokumentu toobe použít.
 
-[Související dokumentaci](https://msdn.microsoft.com/library/dn449492.aspx) popisující obnovení databáze ze zálohy na úložišti objektů Blob Azure doporučujeme nechcete obnovit přímo z úložiště objektů BLOB v Azure, pokud je zálohování > 25 GB. Doporučení v tomto článku je jednoduše založenou na důležité informace o výkonu a ne z důvodu omezení funkční. Proto různých podmínkách uplatnit na případ od případu.
+[Související dokumentaci](https://msdn.microsoft.com/library/dn449492.aspx) popisující hello obnovení databáze ze zálohy na úložišti objektů Blob Azure doporučujeme není toorestore přímo z úložiště objektů BLOB v Azure, pokud je zálohování hello > 25 GB. Hello doporučení v tomto článku je jednoduše založenou na důležité informace o výkonu a ne z důvodu omezení toofunctional. Proto různých podmínkách uplatnit na případ od případu.
 
 Dokumentaci o tom, jak je tento typ zálohy nastavit a využít lze nalézt v [to](https://msdn.microsoft.com/library/dn466438.aspx) kurzu
 
-Příklad pořadí kroků lze číst [zde](https://msdn.microsoft.com/library/dn435916.aspx).
+Příkladem hello pořadí kroků, mohou být čteny v [zde](https://msdn.microsoft.com/library/dn435916.aspx).
 
-Automatizace zálohování, je nejvyšší důležité, abyste měli jistotu, že jsou objekty BLOB pro každé zálohování jiný název. V opačném případě budou přepsány a je porušený řetězec obnovení.
+Automatizace zálohování, je nejvyšší důležitosti toomake jistotu, že jsou objekty BLOB hello pro každé zálohování jiný název. V opačném případě se přepíše a je porušený řetězec obnovení hello.
 
-Aby se kombinovat až věcí mezi 3 různé typy záloh se doporučuje vytvořit různé kontejnery pod účet úložiště pro zálohy. Kontejnery může být pouze virtuální počítač nebo podle typu virtuálního počítače a zálohování. Schéma může vypadat podobně jako:
+V pořadí není toomix až věcí mezi hello 3 různé typy záloh je vhodné toocreate různé kontejnery pod hello účet úložiště používané pro zálohování. kontejnery Hello může být pouze virtuální počítač nebo podle typu virtuálního počítače a zálohování. schéma Hello může vypadat podobně jako:
 
- ![Pomocí zálohování systému SQL Server 2012 k Microsoft Azure Storage BLOB – různé kontejnery v části samostatný účet úložiště][dbms-guide-figure-500]
+ ![Pomocí zálohování systému SQL Server 2012 tooMicrosoft Azure Storage BLOB – různé kontejnery v části samostatný účet úložiště][dbms-guide-figure-500]
 
-V předchozím příkladu by provést zálohování do stejný účet úložiště, kde jsou nasazené virtuální počítače. Bude nový účet úložiště speciálně pro zálohování. V rámci účty úložiště by různé kontejnery, které jsou vytvořené pomocí matice typu zálohování a název virtuálního počítače. Takové segmentace bude bylo snazší správa záloh různých virtuálních počítačů.
+V příkladu hello výše hello, že zálohování by nebyla provedena do hello účet stejné úložiště, kde hello nasazených virtuálních počítačů. Bude nový účet úložiště pro zálohy hello. V rámci hello účty úložiště by různé kontejnery, které jsou vytvořené pomocí matice hello typu zálohování a hello název virtuálního počítače. Takové segmentace bude snazší zálohy tooadministrate hello hello různé virtuální počítače.
 
-Objekty BLOB jeden přímo zapíše zálohy, které chcete nejsou přidání na počet virtuálních pevných disků virtuálního počítače. Proto může jeden maximalizovat maximální počet virtuálních pevných disků připojit konkrétní verze SKU virtuálních počítačů pro data a soubor protokolu transakcí a spustit zálohu na kontejner úložiště.
+objekty BLOB Hello jeden přímo zapíše hello zálohy, nejsou přidání toohello počet hello virtuální pevné disky virtuálního počítače. Proto může jeden maximalizovat hello maximálně virtuální pevné disky připojené hello specifické SKU virtuálních počítačů pro hello data a soubor protokolu transakcí a spustit zálohu na kontejner úložiště.
 
 #### <a name="f9071eff-9d72-4f47-9da4-1852d782087b"></a>SQL Server 2012 SP1 CU3 a starších verzích
-Prvním krokem je třeba provést pro dosažení zálohování přímo s Azure Storage bude stáhnout soubor msi, který je propojený s [to](https://www.microsoft.com/download/details.aspx?id=40740) KBA článku.
+první krok text Hello, je nutné provést v pořadí tooachieve zálohování přímo s Azure Storage bude toodownload hello msi, který je propojený příliš[to](https://www.microsoft.com/download/details.aspx?id=40740) KBA článku.
 
-Stažení x64 instalační soubor a v dokumentaci. Soubor nainstaluje program s názvem: 'Microsoft SQL Server zálohování pro nástroj Microsoft Azure'. Přečtěte si důkladně dokumentaci produktu.  Nástroj v podstatě funguje následujícím způsobem:
+Stáhněte si instalační soubor hello x64 a dokumentaci hello. soubor Hello nainstaluje program s názvem: "Zálohování systému Microsoft SQL Server tooMicrosoft nástroj Azure". Přečtěte si dokumentaci hello produktu hello důkladně.  Nástroj Hello v podstatě funguje v hello následujícím způsobem:
 
-* Na straně serveru SQL Server je definována umístění na disku pro zálohování serveru SQL Server (nepoužívejte jednotku D:\ pro to).
-* Tento nástroj vám umožní definovat pravidla, které můžete použít k přímé různých typech zálohování pro různé kontejnery Azure Storage.
-* Jakmile pravidla jsou na místě, nástroj přesměruje zápisu datového proudu zálohy na jednom z virtuálních pevných disků nebo disků do úložiště Azure, který byl dříve definován.
-* Nástroj ponechá malé se zakázaným inzerováním soubor několik velikosti KB na virtuální pevný disk nebo disku, který byl definován pro SQL Server zálohování. **Tento soubor by měl být ponecháno na umístění úložiště, vzhledem k tomu, že je třeba, aby opakujte obnovení z Azure Storage.**
-  * Pokud jste ztratili soubor se zakázaným inzerováním (např. prostřednictvím ztrátě úložná média, která obsahovala soubor se zakázaným inzerováním) a vybrali jste možnost zálohování na účet Microsoft Azure Storage, může obnovit soubor se zakázaným inzerováním prostřednictvím služby Microsoft Azure Storage stažením z s torage kontejner, ve kterém je umístěn. Soubor se zakázaným inzerováním by pak umístit do složky v místním počítači, kde je nástroj nakonfigurované ke zjišťování a nahrajte do kontejneru, pomocí stejného hesla šifrování, pokud šifrování byl použit s původní pravidlo.
+* Z hello straně systému SQL Server, je definována umístění na disku pro zálohování serveru SQL Server hello (nepoužívejte jednotku D:\ hello to).
+* Nástroj Hello vám umožní toodefine pravidla, které můžou být použité toodirect různé typy záloh toodifferent Azure Storage kontejnerů.
+* Jakmile hello pravidla jsou na místě, nástroj hello přesměruje hello zápisu datového proudu hello zálohování tooone z virtuálních pevných disků nebo disků toohello hello umístění úložiště Azure, který byl dříve definován.
+* Nástroj Hello ponechá malé se zakázaným inzerováním soubor několik velikosti KB na hello virtuálního pevného disku nebo Disk, který byl definován pro SQL Server hello zálohování. **Tento soubor by měl být ponecháno na umístění úložiště hello vzhledem k tomu, že je požadovaná toorestore znovu ze služby Azure Storage.**
+  * Pokud jste ztratili hello se zakázaným inzerováním souboru (například prostřednictvím ztrátě hello úložná média, která obsahovala hello se zakázaným inzerováním souboru) a vybrali jste možnost hello zálohování tooa účet služby Microsoft Azure Storage, obnovíte hello se zakázaným inzerováním soubor prostřednictvím služby Microsoft Azure Storage podle stáhnout z kontejneru hello úložiště, ve kterém je umístěn. Souboru se zakázaným inzerováním hello by pak umístit do složky v místním počítači hello, kde hello nástroj je nakonfigurované toohello toodetect a nahrání stejný kontejner s hello stejné heslo šifrování, pokud šifrování byl použit s původní pravidlo hello.
 
-To znamená, že schéma jak bylo popsáno výše pro novější verze systému SQL Server, můžou být přepnuté zavedené i pro verze systému SQL Server, které nejsou povolení přímé adresu umístění úložiště Azure.
+To znamená, že schéma hello jak bylo popsáno výše pro novější verze systému SQL Server, můžou být přepnuté zavedené i pro verze systému SQL Server, které nejsou povolení přímé adresu umístění úložiště Azure.
 
-Tato metoda by neměl být používá s novější verze systému SQL Server, které podporují základní až nativně Azure Storage. Výjimky jsou, kde se omezeních nativního zálohování do Azure blokování nativní zálohování provádění do Azure.
+Tato metoda by neměl být používá s novější verze systému SQL Server, které podporují základní až nativně Azure Storage. Výjimky jsou, kde se omezeních hello nativního zálohování do Azure blokování nativní zálohování provádění do Azure.
 
-#### <a name="other-possibilities-to-backup-sql-server-databases"></a>Další možnosti pro zálohování databází systému SQL Server
-Další možnosti pro zálohování databáze je pro připojení k virtuální počítač, který použijete k uložení zálohy na další virtuální pevné disky. V takovém případě musíte zajistit, že virtuální pevné disky nejsou spuštěné úplné. Pokud je to tento případ, potřebovali byste Odpojte virtuální pevný disk a proto do speak 'archivu"jej a nahraďte ji metodou nový prázdný virtuální pevný disk. Pokud přejdete dolů této cestě, chcete zachovat tyto virtuální pevné disky v samostatných účtech úložiště Azure od těch, virtuální pevné disky s soubory databáze.
+#### <a name="other-possibilities-toobackup-sql-server-databases"></a>Databáze systému SQL Server toobackup další možnosti.
+Další možnosti toobackup databáze je tooa další virtuální pevné disky virtuálního počítače, který používáte toostore zálohy na tooattach. V takovém případě byste potřebovali toomake opravdu neběží úplné této hello virtuální pevné disky. Pokud, je případ hello, potřebovali byste toounmount hello virtuálního pevného disku a proto toospeak 'archivu"jej a nahraďte ji metodou nový prázdný virtuální pevný disk. Pokud přejdete dolů této cestě, chcete tookeep tyto virtuální pevné disky v samostatných účtech úložiště Azure z hello ty, které hello virtuální pevné disky s hello soubory databáze.
 
-Druhá možnost se má používat velký virtuální počítač, který může mít mnoho virtuální pevné disky připojené. Například D14 s 32VHDs. Používejte prostory úložiště flexibilní prostředí sestavení, kde je sestavení sdílené složky, které jsou pak používány jako cíle zálohování pro různé servery databázového systému.
+Druhou možností je toouse velký virtuální počítač, který může mít mnoho virtuální pevné disky připojené. Například D14 s 32VHDs. Použijte prostory úložiště toobuild flexibilní prostředí, kde je sestavení sdílených složek, jsou použity pak jako cíle zálohování pro různé servery databázového systému hello.
 
 Některé z osvědčených postupů tu popsané [zde](https://blogs.msdn.com/b/sqlcat/archive/2015/02/26/large-sql-server-database-backup-on-an-azure-vm-and-archiving.aspx) také.
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Důležité informace o výkonu pro zálohování a obnovování
-Stejně jako u nasazení úplné obnovení je závislá na tom, kolik svazky lze číst souběžně a propustnost tyto svazky, které je možné výkonu zálohování a obnovení. Kromě toho může spotřeby procesoru, který je používán kompresi zálohy přehrát významnou roli na virtuálních počítačích s právě až 8 vláken na procesor. Proto můžete předpokládat jeden:
+Stejně jako u nasazení úplné obnovení je závislá na tom, kolik svazky lze číst souběžně a může být co hello propustnost těchto svazků výkonu zálohování a obnovení. Kromě toho může hello používá kompresi zálohy spotřeby procesoru přehrát významnou roli na virtuálních počítačích s právě až too8 procesoru vláken. Proto můžete předpokládat jeden:
 
-* Méně počet virtuálních pevných disků použitých k ukládání dat souborů, tím menší celkovou propustnost v režimu čtení.
-* Menší že počet procesoru vláken ve virtuálním počítači, závažnější dopad kompresi zálohy.
-* Méně cíle (objekty BLOB nebo virtuální pevné disky) k zápisu zálohování, nižší úrovně propustnosti.
-* Menší virtuální počítač velikost, tím menší propustnost kvótu úložiště zápis a čtení ze služby Azure Storage. Nezávisle na tom, jestli jsou zálohy přímo uložené v Azure Blob, nebo zda jsou uloženy na virtuální pevné disky, které znovu ukládají do objektů BLOB Azure.
+* Hello méně hello počet virtuálních pevných disků použitých toostore hello data souborů, hello menší hello celkovou propustnost v režimu čtení.
+* Dobrý den menší hello počet vláken procesoru v hello virtuálních počítačů, hello závažnější hello dopad kompresi zálohy.
+* Hello méně cílů (objekty BLOB nebo virtuální pevné disky) toowrite hello zálohování na, hello nižší úrovně propustnosti hello.
+* Hello menší hello velikost virtuálního počítače, hello menší hello propustnost kvótu úložiště zápis a čtení ze služby Azure Storage. Nezávisle na tom, jestli jsou hello zálohy přímo uložené v Azure Blob, nebo zda jsou uloženy na virtuální pevné disky, které znovu ukládají do objektů BLOB Azure.
 
-Při použití Microsoft Azure Storage BLOB jako cíl zálohování v novějších verzích, jste s omezeným přístupem k určení pouze jeden cíl adresy URL pro každé konkrétní zálohování.
+Při použití Microsoft Azure Storage BLOB jako cíl zálohování hello v novějších verzích, jste s omezeným přístupem toodesignating pouze jeden cíl adresy URL pro každé konkrétní zálohování.
 
-Ale pokud používáte 'Microsoft SQL Server zálohy nástroj Microsoft Azure' ve starších verzích, můžete definovat více než jeden soubor cíl. S více než jeden cíl zálohování můžete škálovat a je vyšší propustnost zálohování. Výsledkem by pak více souborů také v účtu úložiště Azure. V našich testech pomocí více cílů souboru jeden výborný můžete dosáhnout propustnosti, který jeden může dosáhnout s příponami zálohování implementovat z SQL serveru 2012 SP1 CU4 na. Můžete také nejsou blokována bránou limit 1 TB jako nativního zálohování do Azure.
+Ale při použití hello "zálohování systému Microsoft SQL Server tooMicrosoft nástroj Azure" starší verze, můžete definovat více než jeden soubor cíl. S více než jeden cíl zálohování hello můžete škálovat a hello propustnost hello zálohy je vyšší. Výsledkem by pak více souborů také v hello účet úložiště Azure. V našich testech pomocí více cílů souboru jeden výborný můžete dosáhnout propustnosti hello, který jeden může dosáhnout s příponami zálohování hello implementovat z SQL serveru 2012 SP1 CU4 na. Můžete také nejsou blokována bránou limit 1 TB hello jako hello nativního zálohování do Azure.
 
-Nicméně, mějte na paměti, propustnost je také závisí na umístění účtu úložiště Azure, můžete použít pro zálohování. Najít účet úložiště v jiné oblasti než virtuální počítače běží v může být představu. Například by spustit konfigurace virtuálního počítače v oblasti západní Evropa, ale put účet úložiště, který používáte k zálohování nahoru vůči v severní Evropě. Který určitě může mít dopad na propustnost zálohování a není pravděpodobně vygenerujte propustnost 150MB/s, jak se vám zdá, že v případech, kde cílového úložiště a virtuální počítače běží ve stejném datacentru regionální možné.
+Nicméně, mějte na paměti, hello propustnost je také závisí na umístění hello hello účet úložiště Azure můžete použít k zálohování hello. Účet úložiště hello toolocate v jiné oblasti než hello virtuální počítače jsou spuštěné v může být představu. Například by spustit hello konfigurace virtuálního počítače v oblasti západní Evropa, ale put hello účtu úložiště používat tooback nahoru vůči v severní Evropě. Který určitě může mít dopad na propustnost zálohování hello a je nepravděpodobné toogenerate propustnost 150MB/s, protože se zdá být toobe v případech, kdy hello cílového úložiště a hello virtuální počítače běží v hello stejného místního datového centra.
 
 #### <a name="managing-backup-blobs"></a>Správa objektů BLOB zálohy
-Není potřeba spravovat zálohy sami. Vzhledem k tomu, očekává se, že mnoho objektů BLOB vytvoří spuštěním zálohování časté transakčního protokolu, správu těchto objektů BLOB snadno může přetížit portálu Azure. Je proto recommendable využít Azure Storage Explorer. Existuje několik dobrý ty, které jsou k dispozici které může pomoci spravovat účet úložiště Azure
+Není zálohování hello toomanage požadavek na vlastní. Vzhledem k tomu, že hello očekává se, že mnoho objektů BLOB vytvoří spuštěním zálohování časté transakčního protokolu, správu těchto objektů BLOB snadno může přetížit hello portálu Azure. Proto je recommendable tooleverage Průzkumníka úložiště Azure. Existuje několik dobrý ty, které jsou k dispozici můžete lépe toomanage účet úložiště Azure
 
 * Microsoft Visual Studio sadou Azure SDK nainstalovaný (<https://azure.microsoft.com/downloads/>)
 * Microsoft Azure Storage Explorer (<https://azure.microsoft.com/downloads/>)
@@ -723,77 +723,77 @@ Není potřeba spravovat zálohy sami. Vzhledem k tomu, očekává se, že mnoho
 
 [comment]: <> (Na ARM není dosud podporován.)
 [comment]: <> (### Azure zálohování virtuálních počítačů)
-[comment]: <> (Virtuální počítače v systému SAP lze zálohovat pomocí funkce zálohování virtuálních počítačů Azure. Azure zálohování virtuálního počítače byly zavedeny již v rané fázi v roce 2015 a mezitím je standardní metoda zálohování dokončení virtuálního počítače v Azure. Zálohování Azure ukládá zálohování v Azure a umožňuje obnovení virtuálního počítače znovu.)
-[comment]: <> (Virtuální počítače, které spuštění databáze lze zálohovat konzistentním způsobem a pokud systémy databázového systému podporuje systému Windows VSS služby Stínová kopie svazku < https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx> jako systém SQL Server nepodporuje. Použít zálohování virtuálních počítačů Azure může být způsob, jak získat obnovitelné záloha databáze SAP. Ale mějte na paměti, založený na zálohování virtuálního počítače Azure, které v daném okamžiku obnoví databází není možné. Proto doporučujeme provést zálohování databází s funkcemi databázového systému, aniž byste museli spoléhat na zálohování virtuálních počítačů Azure.)
-[comment]: <> (Abyste se seznámili s zálohování virtuálních počítačů Azure, spusťte zde < https://azure.microsoft.com/documentation/services/backup/>)
+[comment]: <> (Virtuální počítače v rámci hello systému SAP lze zálohovat pomocí funkce zálohování virtuálních počítačů Azure. Zálohování virtuálního počítače Azure získali zavedená již v rané fázi v hello roce 2015 a mezitím je standardní metoda toobackup dokončení virtuálního počítače v Azure. Zálohování Azure ukládá hello záloh v Azure a umožňuje obnovení virtuálního počítače znovu.)
+[comment]: <> (Virtuální počítače, které spuštění databáze lze zálohovat konzistentním způsobem také pokud hello podporuje systémy hello databázového systému Windows VSS služby Stínová kopie < https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx> jako systém SQL Server nepodporuje. Takže pomocí zálohování virtuálních počítačů Azure může být tooa způsob tooget, obnovitelné zálohování databáze SAP. Ale mějte na paměti, založený na zálohování virtuálního počítače Azure, které v daném okamžiku obnoví databází není možné. Hello doporučení je proto tooperform zálohy databází s funkcemi databázového systému, aniž byste museli spoléhat na zálohování virtuálních počítačů Azure.)
+[comment]: <> (tooget obeznámeni s zálohování virtuálních počítačů Azure, spusťte zde < https://azure.microsoft.com/documentation/services/backup/>)
 
-### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Pomocí bitové kopie systému SQL Server z webu Microsoft Azure Marketplace
-Společnost Microsoft poskytuje virtuální počítače v Azure Marketplace, které již obsahují verze systému SQL Server. Pro SAP zákazníky, kteří požadují licence pro SQL Server a Windows může to být příležitost v podstatě nepokrývají potřebu licencí podle roztočený až virtuální počítače se systémem SQL Server již nainstalován. Chcete-li použít tyto obrázky pro SAP, nutné provést následující aspekty:
+### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Pomocí imagí SQL serveru mimo hello Microsoft Azure Marketplace
+Společnost Microsoft poskytuje virtuální počítače v hello Azure Marketplace, které již obsahují verze systému SQL Server. Pro SAP zákazníky, kteří požadují licence pro SQL Server a Windows může se jednat možnost toobasically titulní hello potřebu licencí podle roztočený až virtuální počítače se systémem SQL Server již nainstalován. Pořadí toouse takovými obrázky pro SAP, hello následující aspekty třeba toobe provedené:
 
-* Zkušební verze systému SQL Server získat vyšší náklady než právě "Pouze pro systém Windows" virtuální počítač nasadit z Azure Marketplace. Prosím naleznete v článcích k porovnání ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/> a <https://azure.microsoft.com/pricing/details/virtual-machines/#Sql>.
+* Hello systému SQL Server není zkušební verze získat vyšší náklady než právě "Pouze pro systém Windows" virtuální počítač nasadit z Azure Marketplace. Naleznete v těchto článcích toocompare ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/> a <https://azure.microsoft.com/pricing/details/virtual-machines/#Sql>.
 * Můžete použít jenom verze systému SQL Server, které jsou podporovány produktem SAP, jako je SQL Server 2012.
-* Kolace instance systému SQL Server, který je nainstalován ve virtuálních počítačích, které nabízí Azure Marketplace není kolace SAP NetWeaver vyžaduje instanci systému SQL Server spustit. Když pomocí pokynů v následující části, můžete změnit kolaci.
+* kolace Hello hello instance systému SQL Server, který je nainstalován ve virtuálních počítačích hello nenabízí hello Azure Marketplace není hello kolace SAP NetWeaver vyžaduje toorun instance systému SQL Server hello. I když s hello pokynů v následující části hello, můžete změnit kolaci hello.
 
-#### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Změna kolace systému SQL Server systému Microsoft Windows nebo SQL Server virtuálního počítače
-Vzhledem k tomu, že bitové kopie systému SQL Server v Azure Marketplace nejsou nastaveny pro používání kolace, který je požadován SAP NetWeaver aplikace, musí změnit okamžitě po nasazení. Pro SQL Server 2012 lze to provést pomocí následujících kroků při nasazený virtuální počítač a správci je moci přihlásit do nasazených virtuálních počítačů:
+#### <a name="changing-hello-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Změna kolace systému SQL Server z virtuálního počítače s Microsoft Windows nebo SQL Server hello
+Vzhledem k tomu, že hello bitové kopie systému SQL Server v Azure Marketplace hello nejsou nastavit toouse hello kolaci, která je vyžadována aplikace SAP NetWeaver, musí toobe okamžitě po nasazení hello změnit. Pro SQL Server 2012, to lze provést pomocí hello následující kroky při hello virtuálního počítače byla nasazena a správce může toolog do hello nasazení virtuálních počítačů:
 
 * 'Jako správce, otevřete okno příkazu systému Windows.
-* Změňte adresář na C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Spusťte příkaz: Setup.exe/quiet nezobrazí /ACTION = REBUILDDATABASE InstanceName = MSSQLSERVER /SQLSYSADMINACCOUNTS =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`> je účet, který byl definován jako účet správce při nasazování virtuálního počítače poprvé v galerii.
+* Změňte hello directory tooC:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
+* Provedení příkazu hello: Setup.exe/quiet nezobrazí /ACTION = REBUILDDATABASE InstanceName = MSSQLSERVER /SQLSYSADMINACCOUNTS =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+  * `<local_admin_account_name`> je hello účet, který byl definován jako účet správce hello při nasazování hello virtuálních počítačů pro hello poprvé prostřednictvím Galerie hello.
 
-Proces by měla pouze trvat několik minut. Chcete-li Ujistěte se, zda v kroku skončila s správný výsledek, proveďte následující kroky:
+proces Hello by měla pouze trvat několik minut. V pořadí toomake se, zda hello krok skončila s hello správný výsledek, proveďte hello následující kroky:
 
 * Otevřete SQL Server Management Studio.
 * Otevřete okno dotazu.
-* Spustíte příkaz sp_helpsort v hlavní databázi systému SQL Server.
+* Spustíte příkaz sp_helpsort hello v hlavní databázi systému SQL Server hello.
 
-Požadovaný výsledek by měl vypadat podobně jako:
+výsledek Hello potřeby by měl vypadat podobně jako:
 
     Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 
-Pokud není výsledek, ZASTAVTE nasazení SAP a zjistěte, proč možnosti instalačního příkazu nefunguje podle očekávání. Nasazení aplikací SAP NetWeaver do instance systému SQL Server s jinou kódové stránky systému SQL Server než ten, který uvedených výše je **není** podporována.
+Pokud není výsledek hello, ZASTAVTE nasazení SAP a zjistěte, proč hello instalačního příkazu nefunguje podle očekávání. Nasazení aplikací SAP NetWeaver do instance systému SQL Server s jinou kódové stránky systému SQL Server, než jeden zmíněné hello je **není** podporována.
 
 ### <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server vysoká dostupnost pro SAP v Azure
-Jak je uvedeno výše v tomto dokumentu, není možné vytvořit sdílené úložiště, který je potřebný pro použití nejstarší funkci vysoké dostupnosti systému SQL Server. Tato funkce by nainstalujte dva nebo více instancí systému SQL Server v Windows Server Failover Cluster (WSFC) pomocí sdíleného disku pro uživatelské databáze (a nakonec databáze tempdb). Toto je metoda standardní vysoké dostupnosti dlouhou dobu, kterou také podporuje SAP. Protože Azure nepodporuje sdílené úložiště, nemůže být dosaženo konfigurace systému SQL Server s vysokou dostupností s konfigurací sdíleného disku clusteru. Ale jiné metody vysoké dostupnosti jsou stále možné a jsou popsané v následujících částech.
+Jak je uvedeno výše v tomto dokumentu, neexistuje žádné možnost toocreate sdílené úložiště, který je potřebný pro použití hello hello funkci vysoké dostupnosti nejstarší systému SQL Server. Tato funkce by nainstalujte dva nebo více instancí systému SQL Server v Windows Server Failover Cluster (WSFC) pomocí sdíleného disku pro hello uživatelských databází (a nakonec databáze tempdb). Toto je metoda hello dlouhou dobu standardní vysokou dostupnost, který taky podporuje SAP. Protože Azure nepodporuje sdílené úložiště, nemůže být dosaženo konfigurace systému SQL Server s vysokou dostupností s konfigurací sdíleného disku clusteru. Ale jiné metody vysoké dostupnosti jsou stále možné a jsou popsané v následující části hello.
 
-[comment]: <> (Článek odkazuje stále na ASM)
-[comment]: <> (Než si přečtete použitelné technologie různých konkrétní vysokou dostupnost pro SQL Server v Azure, je velmi dobré dokument, který poskytuje další podrobnosti a ukazatele [[[[zde] Virtual-Machines-SQL-Server-High-Availability-and-Disaster-Recovery-Solutions])
+[comment]: <> (Článek je stále refering tooASM)
+[comment]: <> (Než si přečtete hello různých konkrétní vysokou dostupnost technologie použitelné pro SQL Server v Azure, je velmi dobré dokument, který poskytuje další podrobnosti a ukazatele [[[[zde] Virtual-Machines-SQL-Server-High-Availability-and-Disaster-Recovery-Solutions])
 
 #### <a name="sql-server-log-shipping"></a>Přesouvání protokolu systému SQL Server
-Jedna z metod vysokou dostupnost (HA) je přesouvání protokolu serveru SQL. Pokud virtuální počítače účastní HA konfigurace funguje překlad, žádný problém a instalační program v Azure nebude liší od všech instalačního programu, která se provádí na místě. Není doporučeno spoléhají na pouze pro překlad IP. Namapoval nastavení přesouvání protokolu a zásady kolem přesouvání protokolu zkontrolujte této dokumentace:
+Jednu z metod hello vysoké dostupnosti (HA) je přesouvání protokolu SQL serveru. Pokud virtuální počítače hello účastní hello HA konfigurace funguje překlad, žádný problém a instalační program hello v Azure nebude liší od žádné nastavení, která se provádí na místě. Není doporučeno toorely na pouze IP řešení. Namapoval zkontrolujte toosetting přesouvání protokolu a zásady hello kolem přesouvání protokolu této dokumentace:
 
 <https://technet.microsoft.com/library/ms187103.aspx>
 
-Skutečně dosáhnout vysoké dostupnosti proveďte, jeden potřebuje k nasazení virtuálních počítačů, které jsou v rámci těchto přesouvání protokolu konfiguraci, kterou chcete být v rámci stejné Azure skupina dostupnosti.
+V pořadí tooreally dosáhnout vysoké dostupnosti proveďte, jeden musí toodeploy hello virtuálních počítačů, které jsou v rámci takové přesouvání protokolu configuration toobe v rámci hello stejné skupiny dostupnosti Azure.
 
 #### <a name="database-mirroring"></a>Zrcadlení databáze
-Zrcadlení databáze, podporuje SAP (viz poznámka SAP [965908]) využívá k definování partnera převzetí služeb při selhání v připojovacím řetězci SAP. V případech mezi různými místy jsme předpokládají, že dva virtuální počítače jsou ve stejné doméně a kontext uživatele dvě instance systému SQL Server jsou spuštěny v části jsou také uživatele domény a mít dostatečná oprávnění v zahrnutých dvě instance systému SQL Server. Mezi typické místní instalace nebo konfigurace se proto neliší nastavení zrcadlení databáze v Azure.
+Zrcadlení databáze, podporuje SAP (viz poznámka SAP [965908]) využívá k definování partnera převzetí služeb při selhání v hello SAP připojovací řetězec. V případech hello mezi různými místy, předpokládáme, že hello dva virtuální počítače jsou v hello stejné domény a zda jsou spuštěny instance systému SQL Server hello dva kontext uživatele hello jsou také uživatele domény a mít dostatečná oprávnění v instance systému SQL Server hello dva spojené. Proto mezi typické místní instalace nebo konfigurační liší hello nastavení zrcadlení databáze v Azure.
 
-Od verze čistě cloudové nasazení je nejsnazší má jiné nastavení domény v Azure a mají tyto virtuální počítače databázového systému (a ideálně vyhrazených virtuálních počítačích SAP) v rámci jedné domény.
+Jako čistě cloudové nasazení, je nejsnazší hello toohave jinou doménu instalační program v Azure toohave tyto virtuální počítače databázového systému (a ideálně vyhrazených virtuálních počítačích SAP) v rámci jedné domény.
 
-Pokud domény není možné, jeden můžete také použít certifikáty pro databázi zrcadlení koncových bodů podle postupu popsaného tady: <https://technet.microsoft.com/library/ms191477.aspx>
+Pokud domény není možné, jeden můžete také použít certifikáty pro hello databázi zrcadlení koncových bodů podle postupu popsaného tady: <https://technet.microsoft.com/library/ms191477.aspx>
 
-Kurz k nastavení zrcadlení databáze v Azure naleznete zde: <https://technet.microsoft.com/library/ms189852.aspx>
+Kurz tooset-up zrcadlení databáze v Azure naleznete zde: <https://technet.microsoft.com/library/ms189852.aspx>
 
 #### <a name="alwayson"></a>AlwaysOn
-AlwaysOn podporuje pro SAP místní (viz poznámka SAP [1772688]), podporuje se použije v kombinaci s SAP v Azure. Fakt, že není možné vytvořit sdílené disky v Azure neznamená, že jeden nelze vytvořit konfigurace aplikace AlwaysOn systému Windows Server Failover Cluster (WSFC) mezi různé virtuální počítače. Pouze znamená, že nemáte možnost použití sdíleného disku jako kvora v konfiguraci clusteru. Proto můžete sestavit konfigurace aplikace AlwaysOn WSFC v Azure a jednoduše nevybírejte kvora typ, který využívá sdílený disk. Prostředí Azure těchto virtuálních počítačů nasazených v by měl vyřešit virtuální počítače podle názvu a virtuální počítače musí být ve stejné doméně. To platí pro pouze Azure a mezi různými místy nasazení. Existují některé důležité informace týkající se nasazení SQL serveru naslouchacího procesu skupiny dostupnosti (Nezaměňovat s Azure sady dostupnosti nesmí) vzhledem k tomu, že Azure v tuto chvíli není povolena pro jednoduše vytvoření objektu AD a DNS, protože je možné místní. Proto některé jiné instalace kroky jsou nezbytné k překonání konkrétní chování Azure.
+AlwaysOn podporuje pro SAP místní (viz poznámka SAP [1772688]), je podporované toobe použít v kombinaci s SAP v Azure. Hello fakt, že zatím nejste možné toocreate sdílené disky v Azure neznamená, že jeden nelze vytvořit konfigurace aplikace AlwaysOn systému Windows Server Failover Cluster (WSFC) mezi různé virtuální počítače. Pouze znamená, že nemáte možnost toouse hello sdíleného disku jako kvora v clusteru s hello. Proto můžete sestavit konfigurace aplikace AlwaysOn WSFC v Azure a jednoduše nevybírejte hello kvora typ, který využívá sdílený disk. Hello prostředí Azure těchto virtuálních počítačů nasazených v měli vyřešit hello virtuální počítače podle názvu a hello virtuální počítače by měla být v hello stejné domény. To platí pro pouze Azure a mezi různými místy nasazení. Existují některé důležité informace týkající se nasazení hello SQL serveru naslouchací proces skupiny dostupnosti (ne toobe zaměňovat s hello sadu dostupnosti Azure) vzhledem k tomu, že Azure v tuto chvíli není povolena toosimply vytvoření objektu služby AD a DNS, protože je možné, místní. Proto některé jiné instalace kroky jsou nezbytné tooovercome hello konkrétní chování Azure.
 
 Některé aspekty pomocí naslouchací proces skupiny dostupnosti jsou:
 
-* Pomocí naslouchací proces skupiny dostupnosti je možné pouze v systému Windows Server 2012 nebo Windows Server 2012 R2 jako hostovaný operační systém virtuálního počítače. Pro Windows Server 2012, budete muset Ujistěte se, že tato oprava platí: <https://support.microsoft.com/kb/2854082>
-* Pro Windows Server 2008 R2, tato oprava neexistuje a AlwaysOn by bylo potřeba použít stejným způsobem jako zrcadlení databáze zadáním partnera převzetí služeb při selhání v řetězci připojení (provést prostřednictvím SAP default.pfl parametr databáze nebo mss nebo serveru – viz poznámka SAP [965908]).
-* Při použití naslouchací proces skupiny dostupnosti, je třeba se připojit k vyhrazené pro vyrovnávání zatížení databáze virtuálních počítačů. Rozpoznání názvu v čistě cloudové nasazení by vyžadovaly buď všechny virtuální počítače systému SAP (aplikační servery, databázového systému server a server (A) SCS) jsou ve stejné virtuální síti nebo by vyžadovaly z aplikační vrstva SAP souboru etc\host za účelem údržby získáte virtuální počítač názvy virtuálních počítačů serveru SQL přeložit. Aby se zabránilo, že Azure je přiřazení nové IP adresy v případech, kdy oba virtuální počítače jsou náhodně vypnutí, jeden by měl přiřadit statické IP adresy na rozhraní sítě těchto virtuálních počítačů v konfiguraci AlwaysOn (definice, které se statickou IP adresu je popsaná v [to] [ virtual-networks-reserved-private-ip] článek)
+* Pomocí naslouchací proces skupiny dostupnosti je možné pouze v systému Windows Server 2012 nebo Windows Server 2012 R2 jako hostovaný operační systém hello virtuálních počítačů. Pro Windows Server 2012 je nutné toomake jistotu, že tato oprava platí: <https://support.microsoft.com/kb/2854082>
+* Pro Windows Server 2008 R2 tato oprava neexistuje a potřebovat AlwaysOn toobe používán hello stejný způsobem jako zrcadlení databáze zadáním partnera převzetí služeb při selhání v řetězci připojení hello (prostřednictvím hello SAP default.pfl parametr databáze a mss nebo serveru – viz poznámka SAP [965908]).
+* Pokud pomocí naslouchací proces skupiny dostupnosti, virtuální počítače hello databáze potřebovat toobe připojené tooa vyhrazené pro vyrovnávání zatížení. Název řešení v čistě cloudové nasazení by buď vyžadují všech virtuálních počítačů systému SAP (aplikační servery, databázového systému server a server (A) SCS) jsou v hello stejné virtuální síti nebo by vyžadovaly ze SAP aplikace vrstvy hello údržby hello etc\host souboru v pořadí tooget hello virtuálních počítačů názvy hello SQL serveru, virtuálních počítačů přeložit. V pořadí tooavoid, že Azure je přiřazení nové IP adresy v případech, kdy oba virtuální počítače jsou náhodně vypnutí jeden by měl přiřadit statické IP adresy síťových rozhraní toohello těchto virtuálních počítačů v konfiguraci AlwaysOn hello (definice, které je podrobněji popsaná statickou IP adresu [to] [ virtual-networks-reserved-private-ip] článek)
 
 [comment]: <> (Původní blogy)
 [comment]: <> (< https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>, < https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
-* Požadované při vytváření konfigurace clusteru služby WSFC, kde clusteru vyžaduje speciální IP adresu přiřazen, protože Azure s jeho aktuální funkce přiřazujete název clusteru stejnou IP adresu jako uzel clusteru je vytvořen na speciální kroky. To znamená, že provedení ručního kroku je nutné provést k přiřadit jinou IP adresu clusteru.
-* Naslouchací proces skupiny dostupnosti přechází se vytvoří v Azure s koncových bodů protokolu TCP/IP, které jsou přiřazeny k virtuálním počítačům s primární a sekundární repliky skupiny dostupnosti.
-* Může být potřeba zabezpečit tyto koncové body pomocí seznamů řízení přístupu.
+* Zvláštní kroky potřebné při vytváření konfigurace clusteru služby WSFC hello kdy hello clusteru je speciální IP adresu přiřazen, protože Azure s jeho stávající funkčnost bude přiřazen název clusteru hello hello stejnou IP adresu jako cluster hello uzlu hello je vytvořen v. To znamená, že provedení ručního kroku musí být provádět tooassign jiného clusteru toohello IP adresu.
+* Hello naslouchací proces skupiny dostupnosti přechází toobe vytvoří v Azure pomocí koncových bodů protokolu TCP/IP, které jsou přiřazeny toohello virtuální počítače se systémem hello primární a sekundární repliky skupiny dostupnosti hello.
+* Může být nutné toosecure tyto koncové body pomocí seznamů řízení přístupu.
 
 [comment]: <> (Blog staré TODO)
-[comment]: <> (Podrobné kroky a životní potřeby instalace konfigurace aplikace AlwaysOn na Azure se nejlépe došlo při s návodem k dispozici kurzu [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
-[comment]: <> (Předkonfigurované nastavení AlwaysOn prostřednictvím Azure galerii < https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Hello podrobné kroky a životní potřeby instalace konfigurace aplikace AlwaysOn v Azure jsou nejpohodlnější, když s návodem hello kurz k dispozici [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
+[comment]: <> (Předkonfigurované nastavení AlwaysOn prostřednictvím hello Azure galerii < https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
 [comment]: <> (Vytváření naslouchací proces skupiny dostupnosti se nejlépe popisuje v kurzu [this][virtual-machines-windows-classic-ps-sql-int-listener])
 [comment]: <> (Zabezpečení koncových bodů sítě s seznamy ACL vysvětlení najdete nejlépe tady:)
 [comment]: <> (* < https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
@@ -801,21 +801,21 @@ Některé aspekty pomocí naslouchací proces skupiny dostupnosti jsou:
 [comment]: <> (* < https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
 [comment]: <> (* < https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
 
-Je možné nasadit v různých oblastech Azure také skupinu dostupnosti AlwaysOn serveru SQL. Tato funkce bude využívat připojení k Azure VNet-to-Vnet ([podrobnosti][virtual-networks-configure-vnet-to-vnet-connection]).
+V různých oblastech Azure také je možné toodeploy skupinu dostupnosti AlwaysOn serveru SQL. Tato funkce bude využívat hello Azure VNet-to-Vnet připojení ([podrobnosti][virtual-networks-configure-vnet-to-vnet-connection]).
 
 [comment]: <> (Blog staré TODO)
-[comment]: <> (Instalační program skupin dostupnosti AlwaysOn serveru SQL v takové situaci je zde popsán: < https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
+[comment]: <> (Instalační program Hello skupin dostupnosti AlwaysOn serveru SQL v takové situaci je zde popsán: < https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
 
 #### <a name="summary-on-sql-server-high-availability-in-azure"></a>Souhrn na vysoké dostupnosti SQL serveru v Azure
-Vzhledem k tomu, že Azure Storage je ochrana obsahu, je jeden menší důvod se trvat na bitovou kopii hot standby. To znamená, že váš scénář vysoké dostupnosti je potřeba chránit pouze proti v následujících případech:
+Vzhledem tomu hello, že Azure Storage chrání obsah hello, na bitovou kopii hot standby je jeden menší tooinsist důvod. To znamená, že váš scénář vysoké dostupnosti musí tooonly ochranu proti hello následujících případech:
 
-* Nedostupnosti virtuálního počítače jako celek z důvodu údržby v clusteru serveru v Azure nebo z jiných důvodů
-* Problémů se softwarem v instanci systému SQL Server
+* Nedostupnosti hello virtuálního počítače jako celek kvůli toomaintenance v clusteru serveru hello v Azure nebo z jiných důvodů
+* Problémů se softwarem v instanci systému SQL Server hello
 * Ochrana proti ruční chyba, kde se odstranila data a je potřeba obnovení bodu v čase
 
-Prohlížení odpovídající technologií, pomocí kterých jeden můžete uvádějí, že první dva případy se dá pokrýt komponentami zrcadlení databáze nebo AlwaysOn, zatímco třetí případ pouze se dá pokrýt komponentami přesouvání protokolu.
+Prohlížení odpovídající technologií, pomocí kterých jeden můžete uvádějí, že první dva případy hello se dá pokrýt komponentami zrcadlení databáze nebo AlwaysOn, zatímco třetí případ hello pouze se dá pokrýt komponentami přesouvání protokolu.
 
-Musíte vyvážit složitější nastavení AlwaysOn, ve srovnání s zrcadlení databáze, s výhod AlwaysOn. Tyto výhody může být uvedený jako:
+Budete potřebovat toobalance hello složitější nastavení AlwaysOn, porovnání tooDatabase zrcadlení s hello výhod AlwaysOn. Tyto výhody může být uvedený jako:
 
 * Čitelných místních replikách.
 * Zálohování z sekundární repliky.
@@ -823,80 +823,80 @@ Musíte vyvážit složitější nastavení AlwaysOn, ve srovnání s zrcadlení
 * Více než jednu sekundární repliky.
 
 ### <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Obecné SQL Server pro SAP v Azure souhrnu
-Existuje mnoho doporučení v tomto průvodci a doporučujeme přečtěte si ho více než jednou před plánování vašeho nasazení Azure. Obecně platí ale nezapomeňte podle top deset obecné databázového systému Azure konkrétní body:
+Existuje mnoho doporučení v tomto průvodci a doporučujeme přečtěte si ho více než jednou před plánování vašeho nasazení Azure. Obecně platí ale být jisti toofollow hello top deset obecné databázového systému na Azure konkrétní body:
 
 [comment]: <> (2.3 vyšší propustnost než co? Než jeden virtuální pevný disk?)
-1. Použijte nejnovější verzi databázového systému, jako je SQL Server 2014, která má většina výhod v Azure. Pro systém SQL Server to je SQL Server 2012 SP1 CU4, který zahrnuje funkci zálohování zobrazení Azure Storage. Ve spojení s SAP by doporučujeme však minimálně SQL Server 2014 SP1 CU1 nebo SQL Server 2012 SP2 a nejnovější Cu:.
-2. Pečlivě naplánujte vašeho systému SAP na šířku v Azure vyvážit Azure omezení a rozložení souboru dat:
-   * Nemusíte mít příliš mnoho virtuálních pevných disků, ale dostatek zajistit, že nedostanete vaší požadované IOPS.
+1. Použijte hello nejnovější databázového systému vydání, jako je SQL Server 2014, která má většina výhod hello v Azure. Pro systém SQL Server to je SQL Server 2012 SP1 CU4, která bude zahrnovat hello funkce zálohování zobrazení Azure Storage. Ve spojení s SAP by doporučujeme však minimálně SQL Server 2014 SP1 CU1 nebo SQL Server 2012 SP2 a hello nejnovější CU.
+2. Pečlivě naplánujte vašeho systému SAP na šířku v Azure omezení a rozložení Azure toobalance hello datového souboru:
+   * Není k dispozici příliš mnoho virtuálních pevných disků, ale mají dostatek tooensure nedostanete vaší požadované IOPS.
    * Mějte na paměti, že IOPS jsou také omezené na účet úložiště Azure a omezeny účty úložiště v rámci každé předplatné Azure ([podrobnosti][azure-subscription-service-limits]).
-   * Pouze stripe napříč virtuální pevné disky, pokud je potřeba dosáhnout vyšší propustnost.
-3. Software nemá nikdy instalovat nebo blokovat všechny soubory, které vyžadují trvalost na jednotku D:\, jako je jiný trvalé a nic na této jednotce budou ztraceny při restartování systému Windows.
+   * Pouze stripe napříč virtuální pevné disky, pokud potřebujete tooachieve vyšší propustnost.
+3. Software nemá nikdy instalovat nebo blokovat všechny soubory, které vyžadují trvalost na hello jednotku D:\, jako je jiný trvalé a nic na této jednotce budou ztraceny při restartování systému Windows.
 4. Nepoužívejte ukládání do mezipaměti Azure virtuálního pevného disku pro Azure Standard Storage.
 5. Nepoužívejte Azure geograficky replikované úložiště účtů.  Místně redundantní použijte pro úlohy databázového systému.
-6. Použijte řešení dodavatele databázového systému HA/DR k replikaci dat databáze.
+6. Použijte data databáze tooreplicate řešení HA/DR od dodavatele databázového systému.
 7. Vždy můžete použít překlad, nespoléhejte na IP adresy.
-8. Nejvyšší komprese databáze, která je možné používejte. Pro systém SQL Server Toto je stránka komprese.
-9. Dávejte pozor, pomocí bitové kopie systému SQL Server v Azure Marketplace. Pokud používáte Server SQL, jednu, musíte změnit kompletování instance před instalací jakékoli systému SAP NetWeaver na něm.
-10. Instalace a konfigurace monitorování SAP hostitele pro Azure, jak je popsáno v [Průvodce nasazením][deployment-guide].
+8. Použijte hello nejvyšší databáze komprese možné. Pro systém SQL Server Toto je stránka komprese.
+9. Dávejte pozor, pomocí bitové kopie systému SQL Server z hello Azure Marketplace. Pokud používáte hello systému SQL Server, jednu, musíte změnit kompletování instance hello před instalací jakékoli systému SAP NetWeaver na něm.
+10. Instalace a konfigurace hello SAP hostitele monitorování pro Azure, jak je popsáno v [Průvodce nasazením][deployment-guide].
 
-## <a name="specifics-to-sap-ase-on-windows"></a>Podrobné App Service Environment SAP v systému Windows
-Od verze Microsoft Azure, můžete snadno migrovat existující aplikace app Service Environment SAP do Azure Virtual Machines. SAP App Service Environment ve virtuálním počítači umožňuje snížit celkové náklady na vlastnictví nasazení, správu a údržbu enterprise spektra aplikací snadno migrací těchto aplikací do Microsoft Azure. S SAP App Service Environment ve virtuální počítač Azure správci a vývojáři můžete dál používat stejné vývoj a nástroje pro správu, které jsou k dispozici místně.
+## <a name="specifics-toosap-ase-on-windows"></a>Specifika tooSAP App Service Environment v systému Windows
+Od verze Microsoft Azure, můžete snadno migrovat vaší existující tooAzure aplikace app Service Environment SAP virtuálních počítačů. SAP App Service Environment ve virtuálním počítači můžete tooreduce hello celkové náklady na vlastnictví nasazení, správu a údržbu enterprise spektra aplikací umožňuje snadno migrací tooMicrosoft tyto aplikace Azure. SAP App Service Environment ve virtuální počítač Azure správci a vývojáři stále pomocí hello stejných nástrojů vývoj a správu, které jsou k dispozici místně.
 
-Je SLA pro Azure virtuální počítače, které naleznete zde: <https://azure.microsoft.com/support/legal/sla>
+Je SLA pro hello virtuální počítače Azure, které naleznete zde: <https://azure.microsoft.com/support/legal/sla>
 
-Jsme si jisti, že rozdíl od jiných nabídky virtualizace veřejného cloudu, ale jednotlivé výsledky provede velmi dobře hostované virtuální počítače Microsoft Azure se může lišit. Změna velikosti protokoly SAP množství různých SAP SAP certifikované SKU virtuálních počítačů bude k dispozici v samostatné Poznámka SAP [1928533].
+Jsme si jisti, že se může lišit v porovnání tooother veřejného cloudu virtualizace nabídek, ale jednotlivé výsledky provede velmi dobře hostované virtuální počítače Microsoft Azure. Změna velikosti protokoly SAP počty hello různých SAP certifikované SKU virtuálních počítačů bude k dispozici v samostatné Poznámka SAP SAP [1928533].
 
-Příkazy a doporučení ohledně využití z Azure Storage, nasazení SAP prostředků virtuálních počítačů nebo monitorování SAP platí pro nasazení SAP App Service Environment ve spojení s aplikací SAP, jak je uvedeno v rámci první čtyři kapitol tohoto dokumentu.
+Příkazy a doporučení v ohledem toohello využití Azure Storage, nasazení SAP prostředků virtuálních počítačů nebo monitorování SAP použít toodeployments SAP App Service Environment ve spojení s aplikací SAP, jak je uvedeno v rámci hello první čtyři kapitol tohoto dokumentu.
 
 ### <a name="sap-ase-version-support"></a>Podpora verzí App Service Environment SAP
-SAP aktuálně podporuje SAP App Service Environment verze 16.0 pro použití s produkty SAP Business Suite. Všechny aktualizace pro server App Service Environment SAP nebo JDBC a ovladače ODBC pro použití s produkty SAP Business Suite je zajišťována výhradně prostřednictvím Marketplace služby SAP v: <https://support.sap.com/swdc>.
+SAP aktuálně podporuje SAP App Service Environment verze 16.0 pro použití s produkty SAP Business Suite. Všechny aktualizace pro server App Service Environment SAP nebo JDBC a rozhraní ODBC toobe ovladače použít s produkty jsou poskytovány výhradně prostřednictvím SAP Business Suite hello Marketplace SAP Service na: <https://support.sap.com/swdc>.
 
-Jako u instalací na místních počítačích nestahovat aktualizací pro server App Service Environment SAP, nebo ovladače JDBC a rozhraní ODBC přímo z databáze Sybase webů. Podrobné informace o opravy, které jsou podporovány pro použití s SAP Business Suite produkty místně a v Azure Virtual Machines najdete následující poznámky k SAP:
+Jako u instalací na místních počítačích nestahovat přímo z databáze Sybase webů aktualizací pro server hello SAP App Service Environment, nebo hello JDBC a ovladačů ODBC. Podrobné informace o opravy, které jsou podporovány pro použití s SAP Business Suite produkty místně a v Azure Virtual Machines najdete následující poznámky k SAP hello:
 
 * [1590719]
 * [1973241]
 
-Obecné informace o spouštění SAP Business Suite v App Service Environment SAP najdete v [oznámení změny stavu](https://scn.sap.com/community/ase)
+Obecné informace o spouštění SAP Business Suite v App Service Environment SAP naleznete v hello [oznámení změny stavu](https://scn.sap.com/community/ase)
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfigurace SAP App Service Environment pro SAP související s instalací SAP App Service Environment ve virtuálních počítačích Azure
-#### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP App Service Environment
-V souladu s obecný popis App Service Environment SAP spustitelné soubory umístěné nebo nainstalován do systémové jednotce základní virtuální pevný disk Virtuálního počítače (jednotka c:\). Obvykle většinu databází systému a nástroje pro SAP App Service Environment nejsou využít skutečně pevného SAP NetWeaver zatížení. Proto může na C:\drive také zůstat systému a nástroje pro databáze (master, model, saptools, sybmgmtdb, sybsystemdb).
+#### <a name="structure-of-hello-sap-ase-deployment"></a>Struktura hello nasazení SAP App Service Environment
+V souladu s hello obecný popis, by měla být App Service Environment SAP spustitelné soubory umístěné nebo nainstalován do hello systémové jednotce hello Virtuálního počítače základní virtuální pevný disk (jednotka c:\). Obvykle většinu hello databáze systému a nástroje pro SAP App Service Environment nejsou využít skutečně pevného SAP NetWeaver zatížení. Proto hello systému a nástroje pro databáze (master, model, saptools, sybmgmtdb, sybsystemdb) může zůstat na hello C:\drive také.
 
-Výjimka může být dočasná databáze obsahující všechny pracovní tabulky a vytvořit pomocným SAP, což může vyžadovat vyšší datový svazek nebo vstupně-výstupní operace svazek, který se nemůže vejít do původní virtuální počítač v případě některých ERP SAP a všechny úlohy BW dočasných tabulek Základní virtuální pevný disk (jednotka c:\).
+Výjimka může být hello dočasné databáze obsahující všechny pracovní tabulky a vytvořit pomocným SAP, který v případě některých ERP SAP a všechny úlohy BW může vyžadovat vyšší datový svazek nebo vstupně-výstupní operace svazek, který se nemůže vejít do hello původní dočasných tabulek Základní virtuální pevný disk Virtuálního počítače (jednotka c:\).
 
-V závislosti na verzi SAPInst nebo SWPM použitý k instalaci systému může obsahovat databáze:
+V závislosti na hello používá verzi SAPInst nebo SWPM tooinstall hello systému, může obsahovat hello databáze:
 
 * Jeden databáze tempdb SAP App Service Environment, která je vytvořena při instalaci SAP App Service Environment
-* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další saptempdb vytvořené rutiny instalace SAP
-* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další databáze tempdb, který byl vytvořen ručně (např. po Poznámka SAP [1752266]) splnění konkrétní databázi tempdb ERP/BW
+* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další saptempdb vytvořené hello SAP instalačního programu
+* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další databáze tempdb, který byl vytvořen ručně (např. po Poznámka SAP [1752266]) toomeet ERP/BW konkrétní databázi tempdb požadavky
 
-V případě konkrétní ERP nebo všechny úlohy BW má smysl, pokud jde o výkonu, aby databáze tempdb zařízení, která kromě vytvořené databáze tempdb (SWPM nebo ručně) na jiné jednotce než C:\. Pokud žádné další databáze tempdb existuje se doporučuje se ji vytvořit (Poznámka SAP [1752266]).
+V případě konkrétní ERP nebo všechny úlohy BW má smysl, v ohledem tooperformance tookeep hello databáze tempdb zařízení na jiné jednotce než C:\ hello kromě vytvořili tempdb (SWPM nebo ručně). Pokud žádné další databáze tempdb existuje se doporučuje toocreate jeden (Poznámka SAP [1752266]).
 
-Pro tyto systémy by měla pro kromě vytvořené databáze tempdb provést následující kroky:
+Pro tyto systémy hello by měla pro hello kromě vytvořit databázi tempdb provést následující kroky:
 
-* Přesunout první databáze tempdb zařízení jako první zařízení databázi SAP
-* Přidat zařízení databáze tempdb všechny virtuální pevné disky obsahující zařízení, která databázi SAP
+* Přesunout hello první databáze tempdb zařízení toohello první zařízení databáze SAP hello
+* Přidání databáze tempdb zařízení tooeach Dobrý den virtuální pevné disky obsahující zařízení databáze SAP hello
 
-Tato konfigurace umožňuje databáze tempdb buď využívat více místa, než je schopný poskytnout systémové jednotce. Jako referenci jeden můžete zkontrolovat zařízení velikosti databáze tempdb na existující systémy, které spustit místně. Nebo taková konfigurace by povolte IOPS čísla proti databázi tempdb, který nemůže být součástí systému systémové jednotce. Znovu systémy, které jsou místní slouží k monitorování vstupně-výstupní úlohy proti databázi tempdb.
+Tato konfigurace umožňuje databáze tempdb tooeither využívat více místa, než je možné tooprovide hello systémová jednotka. Jako referenci jeden můžete zkontrolovat hello databáze tempdb zařízení velikosti na existující systémy, které spustit místně. Nebo taková konfigurace by povolte IOPS čísla proti databázi tempdb, který nemůže být součástí systému hello systémová jednotka. Systémy, které jsou místní může být znovu použít toomonitor vstupně-výstupní úlohy proti databázi tempdb.
 
-Veškerá zařízení, která App Service Environment SAP nikdy umístit na jednotku D:\ virtuálního počítače. To platí také pro databázi tempdb, i když jsou pouze dočasné objekty zachovány v databázi tempdb.
+Nikdy uveďte veškerá zařízení, která App Service Environment SAP do hello jednotce D:\ hello virtuálních počítačů. To platí toohello tempdb, i v případě hello objekty zachovány v databázi tempdb hello jsou pouze dočasné.
 
 #### <a name="impact-of-database-compression"></a>Dopad komprese databáze
-V konfiguracích, kde vstupně-výstupní šířky pásma může představovat problém každý měr, což snižuje IOPS vám může pomoci stretch úlohy, jež možné spouštět v případě pomocí IaaS, jako je například Azure. Proto se důrazně doporučujeme a ujistěte se, že se používá komprese App Service Environment SAP před nahráním existující databázi SAP do Azure.
+V konfiguracích, kde vstupně-výstupní šířky pásma může představovat problém mohou pomoci při každé měr, což snižuje IOPS toostretch hello úlohy, jež možné spouštět v případě pomocí IaaS, jako je například Azure. Proto důrazně doporučujeme toomake jistotu, že se používá komprese App Service Environment SAP před nahráním existující databázi tooAzure SAP.
 
-Doporučení k provedení komprese před nahráním do Azure, pokud již není implementována je dán z několika důvodů:
+komprese tooperform doporučení Hello před nahráním tooAzure, pokud již není implementována je dán z několika důvodů:
 
-* Je menší množství dat k odeslání do Azure
-* Doba trvání spuštění komprese je kratší, za předpokladu, že jeden může používat silnější hardware s více procesorů nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupních operací latence na místě
-* Menší velikosti databáze může vést k nižší náklady pro přidělení disku
+* je menší množství Hello tooAzure toobe nahrát data
+* Doba trvání Hello provádění komprese hello je kratší, za předpokladu, že jeden může používat silnější hardware s více procesorů nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupních operací latence místně
+* Menší velikosti databáze může vést tooless náklady pro přidělení disku
 
-Komprese dat a obchodní fungovat na virtuální počítač hostovaný v Azure Virtual Machines, stejně jako místní. Další informace o tom, jak zkontrolovat, zda komprese je již v použijte v existující databázi SAP App Service Environment zkontrolujte Poznámka SAP [1750510].
+Komprese dat a obchodní fungovat na virtuální počítač hostovaný v Azure Virtual Machines, stejně jako místní. Další podrobnosti o tom, jak používat toocheck Pokud komprese je již v App Service Environment existující SAP databáze, zkontrolujte Poznámka SAP [1750510].
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Pomocí DBACockpit k monitorování instancí databáze
-Pro systémy SAP, které používají jako platformu databázi SAP App Service Environment je dostupné jako windows embedded prohlížeče v transakci DBACockpit nebo Webdynpro DBACockpit. Všechny funkce pro monitorování a Správa databáze je ale implementace Webdynpro DBACockpit pouze k dispozici.
+#### <a name="using-dbacockpit-toomonitor-database-instances"></a>Pomocí DBACockpit toomonitor databáze instancí
+Pro systémy SAP, které používají jako platformu databázi SAP App Service Environment je dostupné jako windows embedded prohlížeče v transakci DBACockpit nebo Webdynpro hello DBACockpit. Ale hello úplné funkce pro monitorování a správa hello databáze je k dispozici v implementaci Webdynpro hello hello DBACockpit pouze.
 
-Jako s místním systémům několik kroků nutné povolit všechny funkce SAP NetWeaver používá Webdynpro provádění DBACockpit. Postupujte podle Poznámka SAP [1245200] povolit použití webdynpros a generovat požadované ty. Pokud podle pokynů v výše uvedené poznámky bude také nakonfigurovat Správce internetové komunikace (icm) společně s porty, které chcete používat pro připojení http a https. Výchozí nastavení pro protokol http vypadá takto:
+Jako místní systémy, které jsou několik kroků vyžadován tooenable všechny funkce SAP NetWeaver používané hello Webdynpro provádění hello DBACockpit. Postupujte podle Poznámka SAP [1245200] tooenable hello využití webdynpros a generovat hello těch, které jsou potřeba. Pokud následující pokyny hello v hello výše poznámky, kterou konfigurujete hello Správce internetové komunikace (icm) bude také spolu s hello toobe porty používané pro připojení http a https. Hello výchozí nastavení pro protokol http vypadá takto:
 
 > ICM/server_port_0 = ochranu = HTTP, PORT = 8000 PROCTIMEOUT = 600, vypršení časového LIMITU = 600
 >
@@ -904,7 +904,7 @@ Jako s místním systémům několik kroků nutné povolit všechny funkce SAP N
 >
 >
 
-a odkazy vygenerované v transakci DBACockpit bude vypadat podobně jako tento:
+a odkazy hello vygenerované v transakci DBACockpit bude vypadat podobně jako toothis:
 
 > https://`<fullyqualifiedhostname`>: 44300/sap nebo bc/webdynpro/sap nebo dba_cockpit
 >
@@ -912,17 +912,17 @@ a odkazy vygenerované v transakci DBACockpit bude vypadat podobně jako tento:
 >
 >
 
-V závislosti na zda a jak virtuální počítač Azure, který je hostitelem systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), musíte zajistit, že ICM používá plně kvalifikovaný název hostitele, který lze převést na počítači kde se pokoušíte otevřít DBACockpit z. Přečtěte si poznámku SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
+V závislosti na zda a jak hello virtuálního počítače Azure hostování hello systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), je nutné toomake se, že ICM používá plně kvalifikovaný název hostitele, který lze převést na hello počítače, které se pokoušíte tooopen hello DBACockpit z. Přečtěte si poznámku SAP [773830] toounderstand Určuje, jak ICM hello plně kvalifikovaný název hostitele v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
 
-Pokud nasadíte virtuální počítač v čistě cloudové scénář bez připojení mezi různými místy mezi místními a Azure, budete muset definovat veřejnou IP adresu a domainlabel. Formát veřejný název DNS virtuálního počítače se pak vypadat takto:
+Pokud jste nasadili hello virtuálních počítačů ve scénáři jenom pro Cloud bez připojení mezi různými místy mezi místními a Azure, budete potřebovat toodefine veřejnou IP adresu a domainlabel. Formát Hello hello veřejného názvu DNS hello virtuální počítač bude potom vypadat takto:
 
 > `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 >
 >
 
-Můžete najít další podrobnosti týkající se názvu DNS [sem][virtual-machines-azurerm-versus-azuresm].
+Další podrobnosti související naleznete název DNS toohello [sem][virtual-machines-azurerm-versus-azuresm].
 
-Nastavení parametru profil SAP icm/host_name_full jako název DNS virtuálního počítače Azure odkaz může vypadat podobně jako:
+Nastavení hello SAP profil parametr icm/host_name_full toohello, který může vypadat podobně jako název DNS hello virtuálního počítače Azure hello odkaz:
 
 > https://mydomainlabel.westeurope.cloudapp.NET:44300/sap nebo bc/webdynpro/sap nebo dba_cockpit
 >
@@ -930,18 +930,18 @@ Nastavení parametru profil SAP icm/host_name_full jako název DNS virtuálního
 >
 >
 
-V takovém případě musíte nezapomeňte:
+V takovém případě je třeba toomake nezapomeňte:
 
-* Přidat příchozí pravidlo na skupinu zabezpečení sítě na portálu Azure pro porty TCP/IP, používaný ke komunikaci s ICM
-* Přidat příchozí pravidla konfigurace brány Windows Firewall pro porty TCP/IP používaný ke komunikaci s ICM
+* Přidat příchozí pravidla toohello skupinu zabezpečení sítě v hello portál Azure pro porty TCP/IP hello použít toocommunicate s ICM
+* Přidat konfiguraci brány Windows Firewall toohello příchozích pravidel pro toocommunicate používané porty TCP/IP hello s hello ICM
 
-Pro automatickou naimportovány všechny oprav, které jsou k dispozici se doporučuje pravidelně použít kolekci oprava Poznámka SAP pro vaši verzi SAP:
+Automatickou importované všechny opravy, které jsou k dispozici, je doporučeno použít tooperiodically hello oprava kolekce Poznámka SAP použít tooyour SAP verze:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Další informace o DBA řídící panel pro App Service Environment SAP naleznete v následující poznámky k SAP:
+Další informace o DBA řídící panel pro App Service Environment SAP naleznete v následující poznámky k SAP hello:
 
 * [1605680]
 * [1757924]
@@ -953,103 +953,103 @@ Další informace o DBA řídící panel pro App Service Environment SAP nalezne
 * [1956005]
 
 #### <a name="backuprecovery-considerations-for-sap-ase"></a>Důležité informace o zálohování nebo obnovení pro SAP App Service Environment
-Při nasazování App Service Environment SAP do Azure musí být zkontrolovány vaše zálohování metodika. I když v systému není systémem produktivní, databázi SAP hostované SAP App Service Environment je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní méně důležité v ohledem na kompenzace havárie úložiště zálohy. Hlavním důvodem pro údržbu správné plán zálohování a obnovení je větší, který můžete kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Cílem je proto záloh buď použijte k obnovení databázi zpět do určité míry v čase nebo k použití zálohování v Azure počáteční hodnoty jiného systému zkopírováním existující databáze. Například je může přenáší z konfigurace SAP vrstvě 2 na instalaci systému 3vrstvé stejného systému obnovení ze zálohy.
+Při nasazování App Service Environment SAP do Azure musí být zkontrolovány vaše zálohování metodika. I v případě, že systém hello není systémem produktivní, hello SAP databázi hostované SAP App Service Environment musí být zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní méně důležité v ohledem toocompensating havárie úložiště zálohy. Hello hlavním důvodem pro údržbu správné plán zálohování a obnovení je větší, můžete kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Tak, aby hello cílem tooeither použití zálohy toorestore hello zálohování databáze tooa určité bodu v čase nebo toouse hello záloh v Azure tooseed jiného systému zkopírováním hello existující databázi. Například je může přenést z vrstvě 2 SAP konfigurace tooa 3vrstvé systému nastavení hello stejné systému obnovení ze zálohy.
 
-Zálohování a obnovení databáze v Azure funguje stejným způsobem jako místní. Najdete v tématech SAP poznámky:
+Zálohování a obnovení databáze v Azure funguje hello stejný způsobem jako místní. Najdete v tématech SAP poznámky:
 
 * [1588316]
 * [1585981]
 
-Podrobné informace o vytváření výpis konfigurace a plánování zálohování. V závislosti na vaše požadavky, které můžete konfigurovat a strategie databáze a protokolu výpisy paměti na disk na jednu z existujících virtuálních pevných disků nebo přidejte další virtuální pevný disk pro zálohování.  Ke snížení nebezpečí dojít ke ztrátě dat v případě chyby doporučujeme použít virtuální pevný disk, kde se nachází žádné databáze zařízení.
+Podrobné informace o vytváření výpis konfigurace a plánování zálohování. V závislosti na vaše požadavky, které můžete konfigurovat a strategie databáze a protokolu výpisy toodisk na jednu z hello stávající virtuální pevné disky, nebo přidejte další virtuální pevný disk pro zálohování hello.  tooreduce hello nebezpečí dojít ke ztrátě dat v případě chyby je doporučeno toouse virtuálního pevného disku, kde se nachází žádné databáze zařízení.
 
-Kromě dat a obchodní komprese App Service Environment SAP také nabízí kompresi zálohy. Aby zabírala méně místa s výpisy databáze a protokolu se doporučuje použít kompresi zálohy. Přečtěte si poznámku SAP [1588316] Další informace. Komprese zálohy je také nezbytné k snížit množství dat, které se mají přenést, pokud plánujete stáhnout zálohy nebo virtuální pevné disky obsahující zálohování výpisy z virtuálního počítače Azure k místnímu.
+Kromě dat a obchodní komprese App Service Environment SAP také nabízí kompresi zálohy. Vypíše toooccupy méně místa s hello databáze a protokolu se doporučuje toouse kompresi zálohy. Přečtěte si poznámku SAP [1588316] Další informace. Komprese zálohy hello je také velmi důležitý tooreduce hello množství dat toobe přenést, pokud máte v plánu zálohování toodownload nebo virtuální pevné disky obsahující zálohování výpisy z hello tooon místní virtuální počítač Azure.
 
 Nepoužívejte jednotce D:\ jako cíl výpisu databázi nebo protokolu.
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Důležité informace o výkonu pro zálohování a obnovování
-Stejně jako u nasazení úplné obnovení je závislá na tom, kolik svazky lze číst souběžně a propustnost tyto svazky, které je možné výkonu zálohování a obnovení. Kromě toho může spotřeby procesoru, který je používán kompresi zálohy přehrát významnou roli na virtuálních počítačích s právě až 8 vláken na procesor. Proto můžete předpokládat jeden:
+Stejně jako u nasazení úplné obnovení je závislá na tom, kolik svazky lze číst souběžně a může být co hello propustnost těchto svazků výkonu zálohování a obnovení. Kromě toho může hello používá kompresi zálohy spotřeby procesoru přehrát významnou roli na virtuálních počítačích s právě až too8 procesoru vláken. Proto můžete předpokládat jeden:
 
-* Méně počet virtuálních pevných disků se používá k ukládání databáze zařízení, menší celkovou propustnost čtení
-* Menší že počet procesoru vláken ve virtuálním počítači, závažnější dopad kompresi zálohy
-* Méně cílů (Stripe adresáře, virtuální pevné disky) k zápisu zálohování, nižší úrovně propustnosti
+* Hello méně hello počet virtuálních pevných disků používaných toostore hello databáze zařízení, hello menší hello celkovou propustnost v režimu čtení
+* Dobrý den menší hello počet vláken procesoru v hello virtuálních počítačů, hello závažnější hello dopad kompresi zálohy
+* Dobrý den méně cílů (Stripe adresáře, virtuální pevné disky) toowrite hello zálohování, hello nižší úrovně propustnosti hello
 
-Zvýšit počet cílů k zápisu do, že jsou uvedeny dvě možnosti, které lze použít nebo kombinaci podle potřeby:
+tooincrease hello počet toothere toowrite cíle jsou dvě možnosti, které lze použít nebo kombinaci v závislosti na vašich potřeb:
 
-* Za účelem zlepšení propustnosti IOPS na tomto svazku prokládané prokládání cílový svazek přes několik připojených virtuálních pevných disků
-* Vytvoření výpisu konfigurace na úrovni SAP App Service Environment, který používá více než jeden cílový adresář k výpisu k zápisu
+* Prokládání hello zálohování cílový svazek přes několik připojených virtuálních pevných disků v pořadí tooimprove hello IOPS propustnosti na tomto svazku prokládané
+* Vytvoření výpisu konfigurace na úrovni SAP App Service Environment, který používá více než jeden cílový adresář toowrite hello výpis do
 
-Prokládání svazek přes více připojených virtuálních pevných discích má popsané výše v této příručce. Další informace o použití více adresářů v App Service Environment SAP výpisu konfiguraci naleznete v dokumentaci na sp_config_dump uloženou proceduru, který se používá k vytvoření výpisu konfigurace na [informační Sybase středisko](http://infocenter.sybase.com/help/index.jsp).
+Prokládání svazek přes více připojených virtuálních pevných discích má popsané výše v této příručce. Další informace o používání více adresářů v hello App Service Environment SAP výpis konfigurace naleznete v dokumentaci toohello na sp_config_dump uloženou proceduru, což je použité toocreate hello výpis konfigurace na hello [informační Sybase středisko](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii s virtuálními počítači Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat s SAP Sybase replikace Server
-S SAP SAP Sybase replikace serveru (SRS), App Service Environment poskytuje záložním pohotovostním řešení asynchronně přenášet databázové transakce na vzdálené umístění.
+S hello App Service Environment SAP SAP Sybase replikace serveru (SRS) poskytuje na záložním pohotovostním řešení tootransfer databáze transakce tooa vzdálené umístění asynchronně.
 
-Instalace a používání služby SRS funguje i funkčně ve virtuálním počítači, který je hostitelem služby virtuálního počítače Azure stejně jako místní.
+instalace Hello a operace SRS funguje i funkčně ve virtuálním počítači, který je hostitelem služby virtuálního počítače Azure stejně jako místní.
 
 App Service Environment HADR prostřednictvím serveru SAP replikace je plánované v budoucí verzi. Bude testovány s a vydání pro platformy Microsoft Azure, jakmile je k dispozici.
 
-## <a name="specifics-to-sap-ase-on-linux"></a>Podrobné App Service Environment SAP v systému Linux
-Od verze Microsoft Azure, můžete snadno migrovat existující aplikace app Service Environment SAP do Azure Virtual Machines. SAP App Service Environment ve virtuálním počítači umožňuje snížit celkové náklady na vlastnictví nasazení, správu a údržbu enterprise spektra aplikací snadno migrací těchto aplikací do Microsoft Azure. S SAP App Service Environment ve virtuální počítač Azure správci a vývojáři můžete dál používat stejné vývoj a nástroje pro správu, které jsou k dispozici místně.
+## <a name="specifics-toosap-ase-on-linux"></a>Specifika tooSAP App Service Environment v systému Linux
+Od verze Microsoft Azure, můžete snadno migrovat vaší existující tooAzure aplikace app Service Environment SAP virtuálních počítačů. SAP App Service Environment ve virtuálním počítači můžete tooreduce hello celkové náklady na vlastnictví nasazení, správu a údržbu enterprise spektra aplikací umožňuje snadno migrací tooMicrosoft tyto aplikace Azure. SAP App Service Environment ve virtuální počítač Azure správci a vývojáři stále pomocí hello stejných nástrojů vývoj a správu, které jsou k dispozici místně.
 
-Pro nasazení virtuálních počítačů Azure je důležité vědět oficiální SLA, které naleznete zde: <https://azure.microsoft.com/support/legal/sla>
+Pro nasazení virtuálních počítačů Azure důležité tooknow hello oficiální SLA, které naleznete zde: <https://azure.microsoft.com/support/legal/sla>
 
 Informace o nastavení velikosti SAP a seznam SAP certifikované SKU virtuálních počítačů bude k dispozici v Poznámka SAP [1928533]. Změna velikosti dokumentů pro virtuálními počítači Azure je zde uveden další SAP <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> a zde <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-Příkazy a doporučení ohledně využití z Azure Storage, nasazení SAP prostředků virtuálních počítačů nebo monitorování SAP platí pro nasazení SAP App Service Environment ve spojení s aplikací SAP, jak je uvedeno v rámci první čtyři kapitol tohoto dokumentu.
+Příkazy a doporučení v ohledem toohello využití Azure Storage, nasazení SAP prostředků virtuálních počítačů nebo monitorování SAP použít toodeployments SAP App Service Environment ve spojení s aplikací SAP, jak je uvedeno v rámci hello první čtyři kapitol tohoto dokumentu.
 
-Následující poznámky k dvě SAP patří obecné informace o App Service Environment na Linuxu a App Service Environment v cloudu:
+Hello následující dvě poznámky SAP zahrnout obecné informace o App Service Environment na Linuxu a App Service Environment hello cloudu:
 
 * [2134316]
 * [1941500]
 
 ### <a name="sap-ase-version-support"></a>Podpora verzí App Service Environment SAP
-SAP aktuálně podporuje SAP App Service Environment verze 16.0 pro použití s produkty SAP Business Suite. Všechny aktualizace pro server App Service Environment SAP nebo JDBC a ovladače ODBC pro použití s produkty SAP Business Suite je zajišťována výhradně prostřednictvím Marketplace služby SAP v: <https://support.sap.com/swdc>.
+SAP aktuálně podporuje SAP App Service Environment verze 16.0 pro použití s produkty SAP Business Suite. Všechny aktualizace pro server App Service Environment SAP nebo JDBC a rozhraní ODBC toobe ovladače použít s produkty jsou poskytovány výhradně prostřednictvím SAP Business Suite hello Marketplace SAP Service na: <https://support.sap.com/swdc>.
 
-Jako u instalací na místních počítačích nestahovat aktualizací pro server App Service Environment SAP, nebo ovladače JDBC a rozhraní ODBC přímo z databáze Sybase webů. Podrobné informace o opravy, které jsou podporovány pro použití s SAP Business Suite produkty místně a v Azure Virtual Machines najdete následující poznámky k SAP:
+Jako u instalací na místních počítačích nestahovat přímo z databáze Sybase webů aktualizací pro server hello SAP App Service Environment, nebo hello JDBC a ovladačů ODBC. Podrobné informace o opravy, které jsou podporovány pro použití s SAP Business Suite produkty místně a v Azure Virtual Machines najdete následující poznámky k SAP hello:
 
 * [1590719]
 * [1973241]
 
-Obecné informace o spouštění SAP Business Suite v App Service Environment SAP najdete v [oznámení změny stavu](https://scn.sap.com/community/ase)
+Obecné informace o spouštění SAP Business Suite v App Service Environment SAP naleznete v hello [oznámení změny stavu](https://scn.sap.com/community/ase)
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfigurace SAP App Service Environment pro SAP související s instalací SAP App Service Environment ve virtuálních počítačích Azure
-#### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP App Service Environment
-V souladu s obecný popis by měla být App Service Environment SAP spustitelné soubory umístěné nebo nainstalován do systému souborů kořenové virtuálního počítače (/sybase). Obvykle většinu databází systému a nástroje pro SAP App Service Environment nejsou využít skutečně pevného SAP NetWeaver zatížení. Proto systém a nástroje pro databáze (master, model, saptools, sybmgmtdb, sybsystemdb) může zůstat v systému souborů kořenové také.
+#### <a name="structure-of-hello-sap-ase-deployment"></a>Struktura hello nasazení SAP App Service Environment
+V souladu s hello obecný popis by měla být App Service Environment SAP spustitelné soubory umístěné nebo nainstalován do systému souborů kořenové hello hello virtuálních počítačů (/sybase). Obvykle většinu hello databáze systému a nástroje pro SAP App Service Environment nejsou využít skutečně pevného SAP NetWeaver zatížení. Proto hello systému a nástroje pro databáze (master, model, saptools, sybmgmtdb, sybsystemdb) může zůstat v hello kořenové systému souborů i.
 
-Výjimka může být dočasná databáze obsahující všechny pracovní tabulky a vytvořit pomocným SAP, což může vyžadovat vyšší datový svazek nebo vstupně-výstupní operace svazek, který se nemůže vejít do operačního systému původní virtuální počítač v případě některých ERP SAP a všechny úlohy BW dočasných tabulek disk.
+Výjimka může být hello dočasné databáze obsahující všechny pracovní tabulky a vytvořit pomocným SAP, který v případě některých ERP SAP a všechny úlohy BW může vyžadovat vyšší datový svazek nebo vstupně-výstupní operace svazek, který se nemůže vejít do hello původní dočasných tabulek Disk s operačním systémem Virtuálního počítače.
 
-V závislosti na verzi SAPInst nebo SWPM použitý k instalaci systému může obsahovat databáze:
+V závislosti na hello používá verzi SAPInst nebo SWPM tooinstall hello systému, může obsahovat hello databáze:
 
 * Jeden databáze tempdb SAP App Service Environment, která je vytvořena při instalaci SAP App Service Environment
-* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další saptempdb vytvořené rutiny instalace SAP
-* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další databáze tempdb, který byl vytvořen ručně (např. po Poznámka SAP [1752266]) splnění konkrétní databázi tempdb ERP/BW
+* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další saptempdb vytvořené hello SAP instalačního programu
+* App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další databáze tempdb, který byl vytvořen ručně (např. po Poznámka SAP [1752266]) toomeet ERP/BW konkrétní databázi tempdb požadavky
 
-V případě konkrétní ERP nebo všechny úlohy BW má smysl, s ohledem na výkon, aby databáze tempdb zařízení, která kromě vytvořené databáze tempdb (SWPM nebo ručně) systému samostatných souborů, které může být reprezentovaný jednoho Azure datový disk nebo Linux diskového pole RAID pokrývání uzlů m více Azure datových disků. Pokud žádné další databáze tempdb existuje se doporučuje se ji vytvořit (Poznámka SAP [1752266]).
+V případě konkrétní ERP nebo všechny úlohy BW má smysl, v ohledem tooperformance tookeep hello databáze tempdb zařízení tempdb hello kromě vytvořili (SWPM nebo ručně) v systému samostatného souboru, který může být reprezentovaný jednoho Azure datový disk nebo Linux RAID práci s více disky dat Azure. Pokud žádné další databáze tempdb existuje se doporučuje toocreate jeden (Poznámka SAP [1752266]).
 
-Pro tyto systémy by měla pro kromě vytvořené databáze tempdb provést následující kroky:
+Pro tyto systémy hello by měla pro hello kromě vytvořit databázi tempdb provést následující kroky:
 
-* Přesunout první adresář databáze tempdb na první systém souborů databáze SAP
-* Databáze tempdb adresáře přidat všechny virtuální pevné disky obsahující systému souborů databáze SAP
+* Přesunout hello první databáze tempdb directory toohello první systém souborů databáze SAP hello
+* Přidání databáze tempdb adresáře tooeach Dobrý den virtuální pevné disky obsahující systému souborů databáze SAP hello
 
-Tato konfigurace umožňuje databáze tempdb buď využívat více místa, než je schopný poskytnout systémové jednotce. Jako referenci jeden můžete zkontrolovat velikosti adresář databáze tempdb na existující systémy, které spustit místně. Nebo taková konfigurace by povolte IOPS čísla proti databázi tempdb, který nemůže být součástí systému systémové jednotce. Znovu systémy, které jsou místní slouží k monitorování vstupně-výstupní úlohy proti databázi tempdb.
+Tato konfigurace umožňuje databáze tempdb tooeither využívat více místa, než je možné tooprovide hello systémová jednotka. Jako referenci jeden můžete zkontrolovat velikosti adresář databáze tempdb hello na existující systémy, které spustit místně. Nebo taková konfigurace by povolte IOPS čísla proti databázi tempdb, který nemůže být součástí systému hello systémová jednotka. Systémy, které jsou místní může být znovu použít toomonitor vstupně-výstupní úlohy proti databázi tempdb.
 
-Nikdy uveďte všechny adresáře App Service Environment SAP do /mnt nebo /mnt/resource virtuálního počítače. To platí také pro databázi tempdb, i v případě, že jsou tyto objekty zachovány v databázi tempdb pouze dočasné protože /mnt nebo /mnt/resource je dočasné místo výchozí virtuální počítač Azure, který není trvalý. Další podrobnosti o dočasnou místo na virtuálním počítači Azure najdete v [v tomto článku][virtual-machines-linux-how-to-attach-disk]
+Nikdy uveďte všechny adresáře App Service Environment SAP do /mnt nebo /mnt/resource hello virtuálních počítačů. To platí toohello tempdb, i v případě hello objekty zachovány v databázi tempdb hello jsou pouze dočasné protože /mnt nebo /mnt/resource je dočasné místo výchozí virtuální počítač Azure, který není trvalý. Další podrobnosti o hello dočasného prostoru virtuálního počítače Azure najdete v [v tomto článku][virtual-machines-linux-how-to-attach-disk]
 
 #### <a name="impact-of-database-compression"></a>Dopad komprese databáze
-V konfiguracích, kde vstupně-výstupní šířky pásma může představovat problém každý měr, což snižuje IOPS vám může pomoci stretch úlohy, jež možné spouštět v případě pomocí IaaS, jako je například Azure. Proto se důrazně doporučujeme a ujistěte se, že se používá komprese App Service Environment SAP před nahráním existující databázi SAP do Azure.
+V konfiguracích, kde vstupně-výstupní šířky pásma může představovat problém mohou pomoci při každé měr, což snižuje IOPS toostretch hello úlohy, jež možné spouštět v případě pomocí IaaS, jako je například Azure. Proto důrazně doporučujeme toomake jistotu, že se používá komprese App Service Environment SAP před nahráním existující databázi tooAzure SAP.
 
-Doporučení k provedení komprese před nahráním do Azure, pokud již není implementována je dán z několika důvodů:
+komprese tooperform doporučení Hello před nahráním tooAzure, pokud již není implementována je dán z několika důvodů:
 
-* Je menší množství dat k odeslání do Azure
-* Doba trvání spuštění komprese je kratší, za předpokladu, že jeden může používat silnější hardware s více procesorů nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupních operací latence na místě
-* Menší velikosti databáze může vést k nižší náklady pro přidělení disku
+* je menší množství Hello tooAzure toobe nahrát data
+* Doba trvání Hello provádění komprese hello je kratší, za předpokladu, že jeden může používat silnější hardware s více procesorů nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupních operací latence místně
+* Menší velikosti databáze může vést tooless náklady pro přidělení disku
 
-Komprese dat a obchodní fungovat na virtuální počítač hostovaný v Azure Virtual Machines, stejně jako místní. Další informace o tom, jak zkontrolovat, zda komprese je již v použijte v existující databázi SAP App Service Environment zkontrolujte Poznámka SAP [1750510]. Také viz poznámka SAP [2121797] Další informace týkající se databáze komprese.
+Komprese dat a obchodní fungovat na virtuální počítač hostovaný v Azure Virtual Machines, stejně jako místní. Další podrobnosti o tom, jak používat toocheck Pokud komprese je již v App Service Environment existující SAP databáze, zkontrolujte Poznámka SAP [1750510]. Také viz poznámka SAP [2121797] Další informace týkající se databáze komprese.
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Pomocí DBACockpit k monitorování instancí databáze
-Pro systémy SAP, které používají jako platformu databázi SAP App Service Environment je dostupné jako windows embedded prohlížeče v transakci DBACockpit nebo Webdynpro DBACockpit. Všechny funkce pro monitorování a Správa databáze je ale implementace Webdynpro DBACockpit pouze k dispozici.
+#### <a name="using-dbacockpit-toomonitor-database-instances"></a>Pomocí DBACockpit toomonitor databáze instancí
+Pro systémy SAP, které používají jako platformu databázi SAP App Service Environment je dostupné jako windows embedded prohlížeče v transakci DBACockpit nebo Webdynpro hello DBACockpit. Ale hello úplné funkce pro monitorování a správa hello databáze je k dispozici v implementaci Webdynpro hello hello DBACockpit pouze.
 
-Jako s místním systémům několik kroků nutné povolit všechny funkce SAP NetWeaver používá Webdynpro provádění DBACockpit. Postupujte podle Poznámka SAP [1245200] povolit použití webdynpros a generovat požadované ty. Pokud podle pokynů v výše uvedené poznámky bude také nakonfigurovat Správce internetové komunikace (icm) společně s porty, které chcete používat pro připojení http a https. Výchozí nastavení pro protokol http vypadá takto:
+Jako místní systémy, které jsou několik kroků vyžadován tooenable všechny funkce SAP NetWeaver používané hello Webdynpro provádění hello DBACockpit. Postupujte podle Poznámka SAP [1245200] tooenable hello využití webdynpros a generovat hello těch, které jsou potřeba. Pokud následující pokyny hello v hello výše poznámky, kterou konfigurujete hello Správce internetové komunikace (icm) bude také spolu s hello toobe porty používané pro připojení http a https. Hello výchozí nastavení pro protokol http vypadá takto:
 
 > ICM/server_port_0 = ochranu = HTTP, PORT = 8000 PROCTIMEOUT = 600, vypršení časového LIMITU = 600
 >
@@ -1057,7 +1057,7 @@ Jako s místním systémům několik kroků nutné povolit všechny funkce SAP N
 >
 >
 
-a odkazy vygenerované v transakci DBACockpit bude vypadat podobně jako tento:
+a odkazy hello vygenerované v transakci DBACockpit bude vypadat podobně jako toothis:
 
 > https://`<fullyqualifiedhostname`>: 44300/sap nebo bc/webdynpro/sap nebo dba_cockpit
 >
@@ -1065,17 +1065,17 @@ a odkazy vygenerované v transakci DBACockpit bude vypadat podobně jako tento:
 >
 >
 
-V závislosti na zda a jak virtuální počítač Azure, který je hostitelem systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), musíte zajistit, že ICM používá plně kvalifikovaný název hostitele, který lze převést na počítači kde se pokoušíte otevřít DBACockpit z. Přečtěte si poznámku SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
+V závislosti na zda a jak hello virtuálního počítače Azure hostování hello systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), je nutné toomake se, že ICM používá plně kvalifikovaný název hostitele, který lze převést na hello počítače, které se pokoušíte tooopen hello DBACockpit z. Přečtěte si poznámku SAP [773830] toounderstand Určuje, jak ICM hello plně kvalifikovaný název hostitele v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
 
-Pokud nasadíte virtuální počítač v čistě cloudové scénář bez připojení mezi různými místy mezi místními a Azure, budete muset definovat veřejnou IP adresu a domainlabel. Formát veřejný název DNS virtuálního počítače se pak vypadat takto:
+Pokud jste nasadili hello virtuálních počítačů ve scénáři jenom pro Cloud bez připojení mezi různými místy mezi místními a Azure, budete potřebovat toodefine veřejnou IP adresu a domainlabel. Formát Hello hello veřejného názvu DNS hello virtuální počítač bude potom vypadat takto:
 
 > `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 >
 >
 
-Můžete najít další podrobnosti týkající se názvu DNS [sem][virtual-machines-azurerm-versus-azuresm].
+Další podrobnosti související naleznete název DNS toohello [sem][virtual-machines-azurerm-versus-azuresm].
 
-Nastavení parametru profil SAP icm/host_name_full jako název DNS virtuálního počítače Azure odkaz může vypadat podobně jako:
+Nastavení hello SAP profil parametr icm/host_name_full toohello, který může vypadat podobně jako název DNS hello virtuálního počítače Azure hello odkaz:
 
 > https://mydomainlabel.westeurope.cloudapp.NET:44300/sap nebo bc/webdynpro/sap nebo dba_cockpit
 >
@@ -1083,18 +1083,18 @@ Nastavení parametru profil SAP icm/host_name_full jako název DNS virtuálního
 >
 >
 
-V takovém případě musíte nezapomeňte:
+V takovém případě je třeba toomake nezapomeňte:
 
-* Přidat příchozí pravidlo na skupinu zabezpečení sítě na portálu Azure pro porty TCP/IP, používaný ke komunikaci s ICM
-* Přidat příchozí pravidla konfigurace brány Windows Firewall pro porty TCP/IP používaný ke komunikaci s ICM
+* Přidat příchozí pravidla toohello skupinu zabezpečení sítě v hello portál Azure pro porty TCP/IP hello použít toocommunicate s ICM
+* Přidat konfiguraci brány Windows Firewall toohello příchozích pravidel pro toocommunicate používané porty TCP/IP hello s hello ICM
 
-Pro automatickou naimportovány všechny oprav, které jsou k dispozici se doporučuje pravidelně použít kolekci oprava Poznámka SAP pro vaši verzi SAP:
+Automatickou importované všechny opravy, které jsou k dispozici, je doporučeno použít tooperiodically hello oprava kolekce Poznámka SAP použít tooyour SAP verze:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Další informace o DBA řídící panel pro App Service Environment SAP naleznete v následující poznámky k SAP:
+Další informace o DBA řídící panel pro App Service Environment SAP naleznete v následující poznámky k SAP hello:
 
 * [1605680]
 * [1757924]
@@ -1106,54 +1106,54 @@ Další informace o DBA řídící panel pro App Service Environment SAP nalezne
 * [1956005]
 
 #### <a name="backuprecovery-considerations-for-sap-ase"></a>Důležité informace o zálohování nebo obnovení pro SAP App Service Environment
-Při nasazování App Service Environment SAP do Azure musí být zkontrolovány vaše zálohování metodika. I když v systému není systémem produktivní, databázi SAP hostované SAP App Service Environment je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní méně důležité v ohledem na kompenzace havárie úložiště zálohy. Hlavním důvodem pro údržbu správné plán zálohování a obnovení je větší, který můžete kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Cílem je proto záloh buď použijte k obnovení databázi zpět do určité míry v čase nebo k použití zálohování v Azure počáteční hodnoty jiného systému zkopírováním existující databáze. Například je může přenáší z konfigurace SAP vrstvě 2 na instalaci systému 3vrstvé stejného systému obnovení ze zálohy.
+Při nasazování App Service Environment SAP do Azure musí být zkontrolovány vaše zálohování metodika. I v případě, že systém hello není systémem produktivní, hello SAP databázi hostované SAP App Service Environment musí být zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní méně důležité v ohledem toocompensating havárie úložiště zálohy. Hello hlavním důvodem pro údržbu správné plán zálohování a obnovení je větší, můžete kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Tak, aby hello cílem tooeither použití zálohy toorestore hello zálohování databáze tooa určité bodu v čase nebo toouse hello záloh v Azure tooseed jiného systému zkopírováním hello existující databázi. Například je může přenést z vrstvě 2 SAP konfigurace tooa 3vrstvé systému nastavení hello stejné systému obnovení ze zálohy.
 
-Zálohování a obnovení databáze v Azure funguje stejným způsobem jako místní. Najdete v tématech SAP poznámky:
+Zálohování a obnovení databáze v Azure funguje hello stejný způsobem jako místní. Najdete v tématech SAP poznámky:
 
 * [1588316]
 * [1585981]
 
-Podrobné informace o vytváření výpis konfigurace a plánování zálohování. V závislosti na vaše požadavky, které můžete konfigurovat a strategie databáze a protokolu výpisy paměti na disk na jednu z existujících virtuálních pevných disků nebo přidejte další virtuální pevný disk pro zálohování.  Ke snížení nebezpečí dojít ke ztrátě dat v případě chyby doporučujeme použít virtuální pevný disk, kde je umístěn žádný adresář nebo soubor databáze.
+Podrobné informace o vytváření výpis konfigurace a plánování zálohování. V závislosti na vaše požadavky, které můžete konfigurovat a strategie databáze a protokolu výpisy toodisk na jednu z hello stávající virtuální pevné disky, nebo přidejte další virtuální pevný disk pro zálohování hello.  tooreduce hello nebezpečí dojít ke ztrátě dat v případě chyby je doporučeno toouse virtuálního pevného disku, kde je umístěn žádný adresář nebo soubor databáze.
 
-Kromě dat a obchodní komprese App Service Environment SAP také nabízí kompresi zálohy. Aby zabírala méně místa s výpisy databáze a protokolu se doporučuje použít kompresi zálohy. Přečtěte si poznámku SAP [1588316] Další informace. Komprese zálohy je také nezbytné k snížit množství dat, které se mají přenést, pokud plánujete stáhnout zálohy nebo virtuální pevné disky obsahující zálohování výpisy z virtuálního počítače Azure k místnímu.
+Kromě dat a obchodní komprese App Service Environment SAP také nabízí kompresi zálohy. Vypíše toooccupy méně místa s hello databáze a protokolu se doporučuje toouse kompresi zálohy. Přečtěte si poznámku SAP [1588316] Další informace. Komprese zálohy hello je také velmi důležitý tooreduce hello množství dat toobe přenést, pokud máte v plánu zálohování toodownload nebo virtuální pevné disky obsahující zálohování výpisy z hello tooon místní virtuální počítač Azure.
 
-Virtuální počítač Azure dočasného prostoru /mnt nebo /mnt/resource nepoužívejte jako cíl výpisu databázi nebo protokolu.
+Nepoužívejte hello virtuálního počítače Azure dočasného prostoru /mnt nebo /mnt/resource jako cíl výpisu databázi nebo protokolu.
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Důležité informace o výkonu pro zálohování a obnovování
-Stejně jako u nasazení úplné obnovení je závislá na tom, kolik svazky lze číst souběžně a propustnost tyto svazky, které je možné výkonu zálohování a obnovení. Kromě toho může spotřeby procesoru, který je používán kompresi zálohy přehrát významnou roli na virtuálních počítačích s právě až 8 vláken na procesor. Proto můžete předpokládat jeden:
+Stejně jako u nasazení úplné obnovení je závislá na tom, kolik svazky lze číst souběžně a může být co hello propustnost těchto svazků výkonu zálohování a obnovení. Kromě toho může hello používá kompresi zálohy spotřeby procesoru přehrát významnou roli na virtuálních počítačích s právě až too8 procesoru vláken. Proto můžete předpokládat jeden:
 
-* Méně počet virtuálních pevných disků se používá k ukládání databáze zařízení, menší celkovou propustnost čtení
-* Menší že počet procesoru vláken ve virtuálním počítači, závažnější dopad kompresi zálohy
-* Méně cílů (Linux softwaru diskového pole RAID, virtuální pevné disky) k zápisu zálohování, nižší úrovně propustnosti
+* Hello méně hello počet virtuálních pevných disků používaných toostore hello databáze zařízení, hello menší hello celkovou propustnost v režimu čtení
+* Dobrý den menší hello počet vláken procesoru v hello virtuálních počítačů, hello závažnější hello dopad kompresi zálohy
+* Hello méně cílů (Linux softwaru diskového pole RAID, virtuální pevné disky) toowrite hello zálohování na, hello nižší úrovně propustnosti hello
 
-Zvýšit počet cílů k zápisu do, že jsou uvedeny dvě možnosti, které lze použít nebo kombinaci podle potřeby:
+tooincrease hello počet toothere toowrite cíle jsou dvě možnosti, které lze použít nebo kombinaci v závislosti na vašich potřeb:
 
-* Za účelem zlepšení propustnosti IOPS na tomto svazku prokládané prokládání cílový svazek přes několik připojených virtuálních pevných disků
-* Vytvoření výpisu konfigurace na úrovni SAP App Service Environment, který používá více než jeden cílový adresář k výpisu k zápisu
+* Prokládání hello zálohování cílový svazek přes několik připojených virtuálních pevných disků v pořadí tooimprove hello IOPS propustnosti na tomto svazku prokládané
+* Vytvoření výpisu konfigurace na úrovni SAP App Service Environment, který používá více než jeden cílový adresář toowrite hello výpis do
 
-Prokládání svazek přes více připojených virtuálních pevných discích má popsané výše v této příručce. Další informace o použití více adresářů v App Service Environment SAP výpisu konfiguraci naleznete v dokumentaci na sp_config_dump uloženou proceduru, který se používá k vytvoření výpisu konfigurace na [informační Sybase středisko](http://infocenter.sybase.com/help/index.jsp).
+Prokládání svazek přes více připojených virtuálních pevných discích má popsané výše v této příručce. Další informace o používání více adresářů v hello App Service Environment SAP výpis konfigurace naleznete v dokumentaci toohello na sp_config_dump uloženou proceduru, což je použité toocreate hello výpis konfigurace na hello [informační Sybase středisko](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii s virtuálními počítači Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat s SAP Sybase replikace Server
-S SAP SAP Sybase replikace serveru (SRS), App Service Environment poskytuje záložním pohotovostním řešení asynchronně přenášet databázové transakce na vzdálené umístění.
+S hello App Service Environment SAP SAP Sybase replikace serveru (SRS) poskytuje na záložním pohotovostním řešení tootransfer databáze transakce tooa vzdálené umístění asynchronně.
 
-Instalace a používání služby SRS funguje i funkčně ve virtuálním počítači, který je hostitelem služby virtuálního počítače Azure stejně jako místní.
+instalace Hello a operace SRS funguje i funkčně ve virtuálním počítači, který je hostitelem služby virtuálního počítače Azure stejně jako místní.
 
-App Service Environment HADR prostřednictvím serveru SAP replikace není podporována v daném okamžiku. Může být testovány s a v budoucnu vydání pro platformy Microsoft Azure.
+App Service Environment HADR prostřednictvím serveru SAP replikace není podporována v daném okamžiku. Může být testovány s a vydání pro platformy Microsoft Azure v budoucnu hello.
 
-## <a name="specifics-to-oracle-database-on-windows"></a>Podrobnosti do databáze Oracle v systému Windows
-Od midyear 2013 Oracle softwaru podporuje Oracle pro spouštění v Microsoft Windows Hyper-V a Azure. Přečtěte si tento článek k získání dalších podrobností na obecné podpoře Windows Hyper-V a Azure společností Oracle: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>
+## <a name="specifics-toooracle-database-on-windows"></a>Specifika tooOracle databáze v systému Windows
+Od midyear 2013 Oracle softwaru podporuje toorun Oracle na Microsoft Windows Hyper-V a Azure. Přečtěte si tento článek tooget podrobné informace o podporovaných obecné hello Windows Hyper-V a Azure společností Oracle: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>
 
-Následující obecné podporu je také podporována konkrétní scénář aplikací SAP, Oracle – databáze využití. Podrobnosti jsou pojmenované v této části dokumentu.
+Následující obecné podporu hello je také podporována hello konkrétní scénář aplikací SAP, Oracle – databáze využití. Podrobnosti jsou pojmenované v této části dokumentu hello.
 
 ### <a name="oracle-version-support"></a>Podpora verzí Oracle
-Všechny podrobnosti o verzích Oracle a odpovídající verze operačního systému, které jsou podporovány pro SAP systémem Oracle na virtuálních počítačích Azure najdete v následujících Poznámka SAP [2039619]
+Všechny podrobnosti o verzích Oracle a odpovídající verze operačního systému, které jsou podporovány pro SAP systémem Oracle na virtuálních počítačích Azure lze nalézt v hello následující poznámka SAP [2039619]
 
 Obecné informace o spuštění SAP Business Suite na Oracle naleznete na oznámení změny stavu: <https://scn.sap.com/community/oracle>
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfigurace Oracle pro SAP instalace ve virtuálních počítačích Azure
 #### <a name="storage-configuration"></a>Konfigurace úložiště
-Pouze jednu instanci Oracle pomocí NTFS naformátovaný disků je podporována. Všechny soubory databáze musí být uložen v systému souborů NTFS založené na disky VHD. Tyto virtuální pevné disky jsou připojené k virtuálnímu počítači Azure a jsou založené na Azure úložiště objektů BLOB stránky (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
+Pouze jednu instanci Oracle pomocí NTFS naformátovaný disků je podporována. Všechny soubory databáze musí být uložen v systému souborů NTFS hello založené na disky VHD. Tyto virtuální pevné disky jsou připojené toohello virtuální počítač Azure a jsou založené na Azure úložiště objektů BLOB stránky (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
 Jakýkoli druh síťové jednotky nebo vzdálených sdílených složkách, jako je Azure souborových služeb:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/Introducing-Microsoft-Azure-File-Service.aspx>
@@ -1161,78 +1161,78 @@ Jakýkoli druh síťové jednotky nebo vzdálených sdílených složkách, jako
 
 jsou **není** podporované pro soubory databáze Oracle!
 
-Pomocí Azure virtuální pevné disky založené na úložiště objektů BLOB stránky Azure, příkazy provedené v tomto dokumentu v kapitole [ukládání do mezipaměti pro virtuální počítače a virtuální pevné disky] [ dbms-guide-2.1] a [Microsoft Azure Storage] [ dbms-guide-2.3] týkají nasazení s databázi Oracle.
+Pomocí Azure virtuální pevné disky založené na úložiště objektů BLOB stránky Azure, hello příkazy provedené v tomto dokumentu v kapitole [ukládání do mezipaměti pro virtuální počítače a virtuální pevné disky] [ dbms-guide-2.1] a [Microsoft Azure Storage] [ dbms-guide-2.3] použít toodeployments s také hello databáze Oracle.
 
-Jak je popsáno výše v části Obecné v dokumentu, kvóty na propustnost IOPS pro virtuální pevné disky Azure neexistuje. Přesný kvóty jsou v závislosti na typu virtuálního počítače použít. Seznam typů virtuálních počítačů s jejich kvóty najdete [sem][virtual-machines-sizes]
+Jak je popsáno výše v části Obecné hello hello dokumentu, kvóty na propustnost IOPS pro virtuální pevné disky Azure neexistuje. přesný kvóty Hello se v závislosti na typu hello virtuálních počítačů používají. Seznam typů virtuálních počítačů s jejich kvóty najdete [sem][virtual-machines-sizes]
 
-Pokud chcete identifikovat podporované typy virtuálního počítače Azure, naleznete v Poznámka SAP [1928533]
+tooidentify hello podporované typy virtuálního počítače Azure, vyhledejte tooSAP Poznámka [1928533]
 
-Tak dlouho, dokud se aktuální kvóty IOPS na disk splňuje požadavky, je možné uložit všechny soubory databáze na jednu jedné připojené Azure virtuálního pevného disku.
+Tak dlouho, dokud hello aktuální kvóty IOPS na disk splňuje požadavky hello, je možné toostore všechny soubory hello DB na jednu jedním připojit virtuální pevný disk Azure.
 
-Pokud jsou vyžadovány další IOPS, důrazně doporučujeme vytvořit jeden velký logického zařízení přes více připojené disky VHD pomocí fondů úložiště okna (jenom k dispozici v systému Windows Server 2012 a vyšší) nebo prokládání Windows pro systém Windows 2008 R2. Viz také kapitoly [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu. Tento přístup zjednodušuje nároky na správu spravovat místo na disku a zabraňuje úsilí nezbytné k ručně distribuovat soubory do více připojených virtuálních pevných discích.
+Je potřeba další IOPS, doporučujeme toouse okno fondy úložiště (pouze k dispozici v systému Windows Server 2012 a vyšší) nebo Windows pro systém Windows 2008 R2 toocreate prokládání jeden velký logického zařízení přes více připojené disky VHD. Viz také kapitoly [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu. Tento přístup zjednodušuje hello správy režijní toomanage hello místa a zabraňuje hello úsilí toomanually distribuovat soubory do více připojených virtuálních pevných discích.
 
 #### <a name="backup--restore"></a>Backup / obnovení
-Pro zálohování a obnově funkce, Brazílie SAP * nástroje pro Oracle jsou podporovány stejným způsobem jako na standardní operační systémy Windows Server a Hyper-V. Správce obnovení Oracle (RMAN) je také podporována pro zálohování na disk a obnovení z disku.
+Pro zálohování / obnovit funkčnost, dobrý den SAP BR * nástroje pro Oracle jsou podporovány ve stejné hello způsobem jako na standardní operační systémy Windows Server a Hyper-V. Správce obnovení Oracle (RMAN) je také podporována pro toodisk zálohování a obnovení z disku.
 
 #### <a name="high-availability"></a>Vysoká dostupnost
-[comment]: <> (odkaz se vztahuje k ASM)
+[comment]: <> (odkaz odkazuje tooASM)
 Oracle Data Guard je podporována pro vysokou dostupnost a zotavení po havárii pro účely. Podrobnosti najdete v [to] [ virtual-machines-windows-classic-configure-oracle-data-guard] dokumentaci.
 
 #### <a name="other"></a>Ostatní
-Další obecné témata jako skupiny dostupnosti Azure nebo SAP monitorování platí jak je popsáno v první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s databázi Oracle.
+Další obecné témata jako skupiny dostupnosti Azure nebo SAP monitorování platí jak je popsáno v hello první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s také hello databáze Oracle.
 
-## <a name="specifics-for-the-sap-maxdb-database-on-windows"></a>Specifika pro databázi SAP MaxDB v systému Windows
+## <a name="specifics-for-hello-sap-maxdb-database-on-windows"></a>Specifika pro hello SAP MaxDB databáze v systému Windows
 ### <a name="sap-maxdb-version-support"></a>Podpora verzí MaxDB SAP
-SAP aktuálně podporuje SAP MaxDB verze 7.9 pro použití s produkty na základě SAP NetWeaver v Azure. Jsou k dispozici všechny aktualizace pro SAP MaxDB server nebo JDBC a ovladače ODBC pro použití s produkty na základě SAP NetWeaver výhradně prostřednictvím Marketplace služby SAP na <https://support.sap.com/swdc>.
+SAP aktuálně podporuje SAP MaxDB verze 7.9 pro použití s produkty na základě SAP NetWeaver v Azure. Všechny aktualizace pro SAP MaxDB server nebo JDBC a rozhraní ODBC toobe ovladače použít s produkty na základě SAP NetWeaver jsou k dispozici výhradně prostřednictvím hello SAP služby Marketplace na <https://support.sap.com/swdc>.
 Obecné informace o spouštění SAP NetWeaver na SAP MaxDB lze najít na <https://scn.sap.com/community/maxdb>.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Podporované typy verze Microsoft Windows a virtuálních počítačů Azure pro SAP MaxDB databázového systému
-Podporované verze systému Windows pro SAP MaxDB databázového systému v Azure, najdete v tématu:
+verze Microsoft Windows hello podporované toofind pro SAP MaxDB databázového systému v Azure, najdete v části:
 
 * [SAP produktu dostupnosti matice (PAM)][sap-pam]
 * Poznámka SAP [1928533]
 
-Důrazně doporučujeme používat nejnovější verzi operačního systému Microsoft Windows, což je Microsoft Windows 2012 R2.
+Důrazně doporučujeme toouse hello nejnovější verzi hello operačního systému Microsoft Windows, což je Microsoft Windows 2012 R2.
 
 ### <a name="available-sap-maxdb-documentation"></a>K dispozici SAP MaxDB dokumentace
-Aktualizovaný seznam SAP MaxDB dokumentaci můžete najít v následujících Poznámka SAP [767598]
+Hello aktualizovat seznam SAP MaxDB dokumentaci můžete najít v následujících Poznámka SAP hello [767598 ]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfigurace MaxDB SAP pro SAP instalace ve virtuálních počítačích Azure
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Konfigurace úložiště
-Úložiště Azure osvědčené postupy pro SAP MaxDB podle obecná doporučení uvedená v kapitole [struktura nasazení RDBMS][dbms-guide-2].
+Úložiště Azure osvědčené postupy pro SAP MaxDB podle hello obecná doporučení uvedená v kapitole [struktura nasazení RDBMS][dbms-guide-2].
 
 > [!IMPORTANT]
-> Stejně jako jiné databáze SAP MaxDB má také dat a souborů protokolu. V terminologii SAP MaxDB je správným termínem "svazek" (ne "soubor"). Například existují SAP MaxDB datové svazky a svazky protokolu. Nezaměňujte tato nastavení u diskové svazky operačního systému.
+> Stejně jako jiné databáze SAP MaxDB má také dat a souborů protokolu. V terminologii SAP MaxDB je hello správné termín "svazek" (ne "soubor"). Například existují SAP MaxDB datové svazky a svazky protokolu. Nezaměňujte tato nastavení u diskové svazky operačního systému.
 >
 >
 
 Stručně řečeno budete muset:
 
-* Nastavit účet úložiště Azure, který obsahuje SAP MaxDB protokolu a data svazky (tj. soubory) na **místní redundantní úložiště (LRS)** uvedené v kapitole [Microsoft Azure Storage] [ dbms-guide-2.3].
-* Vstupně-výstupní cestu pro SAP MaxDB datové svazky (tj. soubory) nezávislá na vstupně-výstupní cestu pro svazky protokolu (tj. soubory). To znamená, že SAP MaxDB datové svazky (tj. soubory) musí být instalovány na jedné logické jednotce a svazky protokolu SAP MaxDB (tj. soubory) musí být instalovány na jiné logické jednotce.
-* Nastavit správný soubor ukládání do mezipaměti pro každý objekt blob systému Azure, v závislosti na tom, jestli ho použít pro SAP MaxDB dat či protokolu svazky (tj. soubory) a jestli použít standardní Azure nebo Azure Premium Storage, jak je popsáno v kapitole [ukládání do mezipaměti pro virtuální počítače] [ dbms-guide-2.1].
-* Tak dlouho, dokud se aktuální kvóty IOPS na disk splňuje požadavky, je možné uložit všechny datové svazky v jedné připojené Azure virtuální pevný disk a také uložení všechny svazky protokolu databáze na jiné jedné připojené Azure virtuálního pevného disku.
-* Pokud jsou vyžadovány další IOPS nebo místa, důrazně doporučujeme vytvořit jeden velký logického zařízení přes pomocí fondů úložiště okno Microsoft (pouze k dispozici v systému Microsoft Windows Server 2012 a vyšší) nebo Microsoft Windows prokládání pro Microsoft Windows 2008 R2 více připojené disky VHD. Viz také kapitoly [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu. Tento přístup zjednodušuje nároky na správu spravovat místo na disku a zabraňuje úsilí ručně distribuci souborů mezi více připojených virtuálních pevných discích.
-* Pro požadavky na nejvyšší IOPS můžete použít Azure Premium Storage, který je k dispozici na DS-series a GS-series virtuálních počítačů.
+* Nastavení účtu úložiště Azure hello hello SAP MaxDB protokolu a data svazky (tj. soubory) obsahuje příliš**místní redundantní úložiště (LRS)** uvedené v kapitole [Microsoft Azure Storage] [ dbms-guide-2.3].
+* Samostatné hello cesta vstupně-výstupní operace pro SAP MaxDB datové svazky (tj. soubory) z cesty hello vstupně-výstupní operace pro svazky protokolu (tj. soubory). To znamená, že SAP MaxDB datové svazky (tj. soubory) mají toobe nainstalovaná na jedné logické jednotce a svazky protokolu SAP MaxDB (tj. soubory) mají toobe nainstalován na jiné logické jednotce.
+* Nastavit hello správný soubor ukládání do mezipaměti pro každý objekt blob systému Azure, v závislosti na tom, jestli ho použít pro SAP MaxDB dat či protokolu svazky (tj. soubory) a jestli použít standardní Azure nebo Azure Premium Storage, jak je popsáno v kapitole [ukládání do mezipaměti pro virtuální počítače] [ dbms-guide-2.1].
+* Tak dlouho, dokud hello aktuální kvóty IOPS na disk splňuje požadavky hello, je možné toostore všechny datové svazky hello na jedné připojené Azure virtuální pevný disk a také uložení všechny svazky protokolu databáze na jiné jedné připojené Azure virtuálního pevného disku.
+* Pokud jsou vyžadovány další IOPS nebo místa, důrazně doporučujeme toouse Microsoft okno fondy úložiště (pouze k dispozici v systému Microsoft Windows Server 2012 a vyšší) nebo Microsoft Windows prokládání pro Microsoft Windows 2008 R2 toocreate jedno velké logické zařízení přes více připojené disky VHD. Viz také kapitoly [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu. Tento přístup zjednodušuje hello správy režijní toomanage hello místa a zabraňuje hello úsilí ručně distribuci souborů mezi více připojených virtuálních pevných discích.
+* Hello požadavky na nejvyšší IOPS můžete použít Azure Premium Storage, který je k dispozici na DS-series a GS-series virtuálních počítačů.
 
 ![Konfigurace referenčního virtuálního počítače Azure IaaS pro SAP MaxDB databázového systému][dbms-guide-figure-600]
 
 #### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Zálohování a obnovení
-Při nasazování SAP MaxDB do Azure, je nutné si vaše zálohování metody. I když v systému není systémem produktivní, databázi SAP hostované SAP MaxDB je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní zálohu méně důležité z hlediska ochrany proti selhání úložiště a důležitější selhání provozní nebo správce systému. Hlavním důvodem pro údržbu správné zálohování a obnovení plán je tak, aby můžete kompenzovat chyby logické nebo ruční tím, že poskytuje možnosti obnovení bodu v čase. Cílem je proto buď pomocí zálohy obnovit databázi do určité míry v čase nebo použití zálohování v Azure počáteční hodnoty jiného systému zkopírováním existující databáze. Například je může přenáší z konfigurace SAP vrstvě 2 na instalaci systému 3vrstvé stejného systému obnovení ze zálohy.
+Při nasazování SAP MaxDB do Azure, je nutné si vaše zálohování metody. I když hello systému není systémem produktivní, databázi SAP hello hostované SAP MaxDB je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure úložiště udržuje tři bitové kopie, je nyní zálohu méně důležité z hlediska ochrany proti selhání úložiště a důležitější selhání provozní nebo správce systému. Hello hlavním důvodem pro údržbu správné zálohování a obnovení plán je, aby můžete kompenzovat chyby logické nebo ruční tím, že poskytuje možnosti obnovení bodu v čase. Tak hello cílem je tooeither použití zálohy toorestore hello databáze tooa určité bodu v čase nebo toouse hello záloh v Azure tooseed jiného systému zkopírováním hello existující databázi. Například je může přenést z vrstvě 2 SAP konfigurace tooa 3vrstvé systému nastavení hello stejné systému obnovení ze zálohy.
 
-Zálohování a obnovení databáze v Azure funguje stejným způsobem jako v případě místních systémů, abyste mohli používat standardní SAP MaxDB zálohování a obnovení nástroje, které jsou popsány v jednom z dokumentace dokumenty SAP MaxDB uvedené v Poznámka SAP [767598].
+Zálohování a obnovení databáze v Azure funguje hello stejným způsobem, jak aplikace místních systémů, abyste mohli používat standardní MaxDB SAP provede zálohování a obnovení nástroje, které jsou popsány v jednom z hello SAP MaxDB dokumentace dokumenty, které jsou uvedené v Poznámka SAP [767598 ].
 
 #### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Důležité informace o výkonu pro zálohování a obnovení
-Stejně jako u úplné nasazení je závislá na tom, kolik svazky lze číst v paralelní a propustnost tyto svazky výkonu zálohování a obnovení. Kromě toho můžete spotřeby procesoru, který je používán kompresi zálohy přehrát významnou roli na virtuálních počítačích s až 8 vláken na procesor. Proto můžete předpokládat jeden:
+Stejně jako u úplné nasazení je závislá na tom, kolik svazky lze číst v paralelní a hello propustnost těchto svazků výkonu zálohování a obnovení. Kromě toho můžete hello používá kompresi zálohy spotřeby procesoru přehrát významnou roli na virtuálních počítačích s až too8 procesoru vláken. Proto můžete předpokládat jeden:
 
-* Méně počet virtuálních pevných disků použitých k uložení databáze zařízení, čím nižší celkovou propustnost čtení
-* Menší že počet procesoru vláken ve virtuálním počítači, závažnější dopad kompresi zálohy
-* Méně cílů (Stripe adresáře, virtuální pevné disky) k zápisu zálohování do dolní propustnost
+* Dobrý den méně hello počet virtuálních pevných disků použitých toostore hello databáze zařízení, hello celkové nižší hello číst propustnost
+* Dobrý den menší hello počet vláken procesoru v hello virtuálních počítačů, hello závažnější hello dopad kompresi zálohy
+* Hello méně cílů (Stripe adresáře, virtuální pevné disky) toowrite hello zálohování, propustnost nižší hello hello
 
-Pokud chcete zvýšit počet cílů k zápisu, existují dvě možnosti, které můžete použít, pravděpodobně v kombinaci, v závislosti na vašich potřeb:
+počet hello tooincrease cílem toowrite k, existují dvě možnosti, které můžete použít, pravděpodobně v kombinaci, v závislosti na vašich potřeb:
 
 * Vyhradit samostatných svazcích pro zálohování
-* Prokládání cílový svazek přes několik připojených virtuálních pevných disků za účelem zlepšení propustnosti IOPS na tomto svazku prokládané disku
+* Prokládání hello zálohování cílový svazek přes několik připojených virtuálních pevných disků v pořadí tooimprove hello IOPS propustnosti na tomto svazku prokládané disku
 * S zařízení, samostatné vyhrazené logického disku:
   * SAP MaxDB záložní svazky (tj. soubory)
   * SAP MaxDB datové svazky (tj. soubory)
@@ -1241,8 +1241,8 @@ Pokud chcete zvýšit počet cílů k zápisu, existují dvě možnosti, které 
 Prokládání svazek přes více připojených virtuálních pevných discích popsané dříve v kapitole [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu.
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Další
-Jak je popsáno v první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s databázi SAP MaxDB také použít další obecné témata jako jsou skupiny dostupnosti Azure nebo SAP monitorování.
-Další nastavení specifické pro SAP MaxDB jsou transparentní pro virtuální počítače Azure a jsou popsané v různé dokumenty, které jsou uvedené v Poznámka SAP [767598] a v těchto poznámkách k SAP:
+Další obecné témata jako jsou skupiny dostupnosti Azure nebo SAP monitorování platí také, jak je popsáno v hello první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s databázi SAP MaxDB hello.
+Další nastavení MaxDB specifické pro SAP, jsou virtuální počítače transparentní tooAzure a jsou popsané v různé dokumenty, které jsou uvedené v Poznámka SAP [767598 ] a v těchto poznámkách k SAP:
 
 * [826037]
 * [1139904]
@@ -1253,39 +1253,39 @@ Další nastavení specifické pro SAP MaxDB jsou transparentní pro virtuální
 Minimální verze SAP liveCache podporované v Azure Virtual Machines je **SAP LC/LCAPPS 10.0 SP 25** včetně **liveCache 7.9.08.31** a **LCA sestavení 25**, vydaná pro **EhP 2 pro SAP SCM 7.0** a vyšší.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Podporované typy verze Microsoft Windows a virtuálních počítačů Azure pro SAP liveCache databázového systému
-Podporované verze systému Windows pro SAP liveCache v Azure, najdete v tématu:
+verze Microsoft Windows hello podporované toofind pro SAP liveCache v Azure, najdete v části:
 
 * [SAP produktu dostupnosti matice (PAM)][sap-pam]
 * Poznámka SAP [1928533]
 
-Důrazně doporučujeme používat nejnovější verzi operačního systému Microsoft Windows, což je Microsoft Windows 2012 R2.
+Důrazně doporučujeme toouse hello nejnovější verzi hello operačního systému Microsoft Windows, což je Microsoft Windows 2012 R2.
 
 ### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache pokyny pro konfigurace pro SAP instalace ve virtuálních počítačích Azure
 #### <a name="recommended-azure-vm-types"></a>Doporučená typy virtuálních počítačů Azure
-SAP liveCache je aplikace, která provede výpočty velký, velikost a rychlost paměti RAM a procesoru má hlavní vliv na výkon liveCache SAP.
+SAP liveCache je aplikace, která provede výpočty velký, má hlavní vliv na výkon liveCache SAP hello velikost a rychlost paměti RAM a procesoru.
 
-Pro virtuální počítač Azure typy podporované systémem SAP (Poznámka SAP [1928533]), všechny virtuální prostředky procesoru přidělené k virtuálnímu počítači jsou zajišťované vyhrazené fyzické prostředky procesoru hypervisoru. Žádné předimenzování (a proto žádné soutěž o prostředky procesoru) probíhá.
+Pro hello virtuálního počítače Azure typy podporované systémem SAP (Poznámka SAP [1928533]), všechny virtuální prostředky procesoru přidělené toohello virtuálních počítačů jsou zajišťované vyhrazené fyzické prostředky procesoru hello hypervisoru. Žádné předimenzování (a proto žádné soutěž o prostředky procesoru) probíhá.
 
-Podobně pro všechny virtuální počítač Azure instance typy podporované systémem SAP, paměť virtuálního počítače je 100 %, které jsou namapované na fyzické paměti – například předimenzování (většího celkového), se nepoužije.
+Podobně pro všechny virtuální počítač Azure instance typy podporované systémem SAP, hello paměť virtuálního počítače je 100 % namapované toohello fyzické paměti – předimenzování (většího celkového), například nepoužívá.
 
-Z tohoto hlediska důrazně doporučujeme používat nový typ virtuálního počítače Azure DS-series (v kombinaci s Azure Premium Storage) nebo D-series, jako mají 60 % rychlejší procesory než A-series. U nejvyšší zatížení paměti RAM a procesoru můžete G-series a GS-series (v kombinaci s Azure Premium Storage) virtuálních počítačů s nejnovější Intel Xeon® E5 v3 třídu procesoru, které mají dvakrát paměti a čtyřikrát SSD disk úložiště (SSD) D/DS-series.
+Z tohoto hlediska důrazně doporučujeme toouse hello nového virtuálního počítače Azure DS-series (v kombinaci s Azure Premium Storage) nebo D-series typu, jako mají 60 % rychlejší procesory než hello A-series. Pro hello nejvyšší paměti RAM a zatížení procesoru, můžete použít G-series a GS-series (v kombinaci s Azure Premium Storage) virtuální počítače s procesorem Intel Xeon® nejnovější hello E5 v3 rodiny, které mají dvakrát hello paměti a čtyřikrát hello SSD disk úložiště (SSD) hello D / DS-series.
 
 #### <a name="storage-configuration"></a>Konfigurace úložiště
-Jako SAP liveCache je založena na technologii SAP MaxDB, službu Azure storage osvědčených postupů doporučení uvedená v kapitole pro SAP MaxDB [konfigurace úložiště] [ dbms-guide-8.4.1] platí také pro SAP liveCache.
+Jako SAP liveCache je založena na technologii SAP MaxDB, všechny hello úložiště Azure z doporučených osvědčených postupů uvedených v kapitole pro SAP MaxDB [konfigurace úložiště] [ dbms-guide-8.4.1] platí také pro SAP liveCache.
 
 #### <a name="dedicated-azure-vm-for-livecache"></a>Pro liveCache vyhrazený virtuální počítač Azure
-Jako SAP liveCache intenzivně využívá výpočetní výkon, produktivitu využití důrazně doporučujeme k nasazení na vyhrazený virtuální počítač Azure.
+Jako SAP liveCache intenzivně využívá výpočetní výkon, produktivitu využití důrazně doporučujeme toodeploy na vyhrazený virtuální počítač Azure.
 
 ![Vyhrazený virtuální počítač Azure pro liveCache pro případ použití produktivitu][dbms-guide-figure-700]
 
 #### <a name="backup-and-restore"></a>Zálohování a obnovení
-Zálohování a obnovení, včetně faktory ovlivňující výkon, jsou již popsané v příslušné kapitolám SAP MaxDB [zálohování a obnovení] [ dbms-guide-8.4.2] a [otázky výkonu při zálohování a obnovení][dbms-guide-8.4.3].
+Zálohování a obnovení, včetně faktory ovlivňující výkon, jsou již popsané v hello odpovídající SAP MaxDB kapitoly [zálohování a obnovení] [ dbms-guide-8.4.2] a [důležité informace o výkonu pro zálohování a obnovení][dbms-guide-8.4.3].
 
 #### <a name="other"></a>Ostatní
-Další obecné témata jsou již popsané v příslušné MaxDB SAP [to] [ dbms-guide-8.4.4] kapitoly.
+Další obecné témata jsou již popsané v hello relevantní SAP MaxDB [to] [ dbms-guide-8.4.4] kapitoly.
 
-## <a name="specifics-for-the-sap-content-server-on-windows"></a>Specifika serveru SAP obsahu v systému Windows
-Obsah serveru SAP je komponenta samostatný, na serveru k ukládání obsahu například elektronických dokumentů v různých formátech. Server obsahu SAP zajišťuje vývoj technologie a má být použít mezi aplikacemi pro všechny aplikace SAP. Je nainstalovaná v samostatném systému. Typické obsah je školicí materiály a dokumentace z skladu znalostní báze nebo technické výkresy pocházející z mySAP PLM systém správy dokumentů.
+## <a name="specifics-for-hello-sap-content-server-on-windows"></a>Specifika pro hello SAP Server obsahu v systému Windows
+Hello serveru SAP obsah je obsahem toostore samostatný, serverových součástí například elektronických dokumentů v různých formátech. Hello obsahu serveru SAP zajišťuje vývoj technologie a je mezi aplikacemi toobe použít pro všechny aplikace SAP. Je nainstalovaná v samostatném systému. Typické obsah je cvičení materiálu a dokumentace z skladu znalostní báze nebo technické výkresy pocházející z hello mySAP PLM systém správy dokumentů.
 
 ### <a name="sap-content-server-version-support"></a>Podpora verze obsahu serveru SAP
 SAP aktuálně podporuje:
@@ -1294,107 +1294,107 @@ SAP aktuálně podporuje:
 * **SAP MaxDB verze 7.9**
 * **Microsoft IIS (Internet Information Server) verze 8.0 (a vyšší)**
 
-Důrazně doporučujeme používat nejnovější verzi obsahu serveru SAP, což v době psaní tohoto dokumentu je **6.50 SP4**a nejnovější verzi **Microsoft IIS 8.5**.
+Důrazně doporučujeme toouse hello nejnovější verzi obsahu serveru SAP, což v době psaní tohoto dokumentu hello je **6.50 SP4**a nejnovější verze hello **Microsoft IIS 8.5**.
 
-Zkontrolujte podporované verze obsahu serveru SAP a Microsoft IIS v [SAP produktu dostupnosti matice (PAM)][sap-pam].
+Zkontrolujte hello nejnovější podporované verze obsahu serveru SAP a Microsoft IIS v hello [SAP produktu dostupnosti matice (PAM)][sap-pam].
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Podporované typy Microsoft Windows a virtuálních počítačů Azure pro Server obsahu SAP
-Podporované verze systému Windows pro SAP Server obsahu v Azure, najdete v tématu:
+toofind na podporovanou verzi systému Windows pro SAP Server obsahu v Azure, najdete v části:
 
 * [SAP produktu dostupnosti matice (PAM)][sap-pam]
 * Poznámka SAP [1928533]
 
-Důrazně doporučujeme používat nejnovější verzi systému Microsoft Windows, který v době psaní tohoto dokumentu je **Windows Server 2012 R2**.
+Důrazně doporučujeme toouse hello nejnovější verze systému Microsoft Windows, který je v době psaní tohoto dokumentu hello **Windows Server 2012 R2**.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny ke konfiguraci serveru obsahu SAP pro SAP instalace ve virtuálních počítačích Azure
 #### <a name="storage-configuration"></a>Konfigurace úložiště
-Pokud nakonfigurujete Server obsahu SAP k ukládání souborů v databázi SAP MaxDB, všechny úložiště Azure osvědčených postupů doporučení uvedená pro SAP MaxDB v kapitole [konfigurace úložiště] [ dbms-guide-8.4.1] platí také pro scénář obsahu serveru SAP.
+Pokud nakonfigurujete Server obsahu SAP toostore soubory v databázi SAP MaxDB hello, všechny úložiště Azure osvědčených postupů doporučení uvedená v kapitole pro SAP MaxDB [konfigurace úložiště] [ dbms-guide-8.4.1] jsou také platné pro scénář obsahu serveru SAP hello.
 
-Pokud nakonfigurujete Server obsahu SAP k uložení souborů v systému souborů, doporučujeme použít vyhrazený logické jednotky. Použití prostorů úložiště můžete taky zvýšit velikost logického disku a propustnost IOPS, jak je popsáno v kapitole v [softwaru diskového pole RAID][dbms-guide-2.2].
+Pokud nakonfigurujete Server obsahu SAP toostore soubory v systému souborů hello, je doporučeno toouse vyhrazené logické jednotky. Použití prostorů úložiště vám umožní tooalso zvýšení logického disku velikosti a IOPS propustnosti, jak je popsáno v kapitole v [softwaru diskového pole RAID][dbms-guide-2.2].
 
 #### <a name="sap-content-server-location"></a>Umístění obsahu serveru SAP
-Server obsahu SAP, je nutné nasadit ve stejné oblasti Azure a virtuální síť Azure, kde je nasazen v systému SAP. Můžete se mohou rozhodnout, jestli chcete nasadit Server obsahu SAP součásti na vyhrazený virtuální počítač Azure nebo na kterém je spuštěný v systému SAP stejného virtuálního počítače.
+Server obsahu SAP má toobe nasazené v hello stejné oblasti Azure a virtuální síť Azure, kde je nasazená hello systému SAP. Jestli chcete, že součásti serveru SAP obsahu toodeploy na vyhrazených virtuálních počítačů Azure nebo na hello stejného virtuálního počítače se spuštěným systémem hello systému SAP jste volné toodecide.
 
 ![Vyhrazený virtuální počítač Azure pro Server obsahu SAP][dbms-guide-figure-800]
 
 #### <a name="sap-cache-server-location"></a>Umístění mezipaměti serveru SAP
-Serveru SAP mezipaměti je další komponentu na serveru k poskytování přístupu k místně (v mezipaměti) dokumenty. Ukládá do mezipaměti serveru SAP mezipaměti dokumenty obsahu serveru SAP. Toto je za účelem optimalizace síťový provoz, pokud mají být načteny více než jednou z různých míst dokumenty. Obecně platí, že serveru SAP mezipaměti musí být fyzicky blízko klienta, který má přístup k serveru SAP mezipaměti.
+Hello serveru SAP mezipaměti je další serverové součásti tooprovide přístup too(cached) dokumenty místně. Hello serveru SAP mezipaměti ukládá do mezipaměti hello dokumentů serveru SAP obsahu. Toto je toooptimize síťový provoz, pokud dokumenty toobe více než jednou načteny z různých umístění. Hello obecně platí, že tento Server mezipaměti SAP hello má toobe fyzicky zavřít toohello klienta, který přistupuje k hello mezipaměti serveru SAP.
 
 Zde máte dvě možnosti:
 
-1. **Klient je systém SAP back-end** Pokud systému SAP back-end je nakonfigurovaná pro přístup k obsahu serveru SAP, že systém SAP je klienta. Při nasazování systému SAP a obsahu serveru SAP ve stejné oblasti Azure – ve stejném datovém centru Azure – jsou fyzicky blízko sebe navzájem. Je proto potřeba mít vyhrazený Server mezipaměti SAP. Klienti SAP uživatelského rozhraní (SAP GUI nebo webový prohlížeč) přímý přístup v systému SAP a v systému SAP načte dokumenty ze serveru obsahu SAP.
-2. **Klient je webový prohlížeč místně** lze nastavit v obsahu serveru SAP nelze přistupovat přímo ve webovém prohlížeči. V takovém případě je webový prohlížeč s místní – klient obsahu serveru SAP. Místního datového centra a datové centrum Azure jsou umístěny v různých fyzických lokacích (v ideálním případě blízko sebe navzájem). Vaše místního datového centra je připojená k Azure přes Azure Site-to-Site VPN nebo ExpressRoute. I když obě možnosti nabízí zabezpečené připojení sítě VPN do Azure, site-to-site síťové připojení nenabízí SLA síťové šířky pásma a čekací doba mezi místního datového centra a datovém centru Azure. Pro urychlení přístupu k dokumentům, můžete provést jednu z těchto možností:
-   1. Instalace serveru SAP mezipaměti místně, zavřete do místní webové prohlížeče (možnost [to] [ dbms-guide-900-sap-cache-server-on-premises] obrázek)
+1. **Klient je systém SAP back-end** Pokud systému SAP back-end je nakonfigurované tooaccess obsahu serveru SAP, že systému SAP je klient. Při nasazování systému SAP a obsahu serveru SAP v hello stejné oblasti Azure – v hello stejné datové centrum Azure – jsou fyzicky zavřít tooeach jiné. Je proto bez nutnosti toohave vyhrazený Server mezipaměti SAP. Hello přístup klientů (SAP grafického uživatelského rozhraní nebo webový prohlížeč) SAP uživatelského rozhraní systému SAP přímo a hello SAP systému načte dokumenty z hello obsahu serveru SAP.
+2. **Klient je webový prohlížeč místně** hello serveru SAP obsahu může být nakonfigurované toobe přistupovat přímo pomocí hello webového prohlížeče. V takovém případě je webový prohlížeč s místní – klienta hello obsahu serveru SAP. Místního datového centra a datové centrum Azure jsou umístěny v různých fyzických lokacích (v ideálním případě zavřít tooeach Další). Vaše místního datového centra je připojený tooAzure přes Azure Site-to-Site VPN nebo ExpressRoute. I když obě možnosti nabízí zabezpečené tooAzure připojení sítě VPN, site-to-site síťové připojení nenabízí SLA síťové šířky pásma a čekací doba mezi hello místního datového centra a hello datového centra Azure. toospeed až toodocuments přístup, můžete provést jednu z následujících akcí hello:
+   1. Instalace serveru SAP mezipaměti místně, zavřete toohello místní webový prohlížeč (možnost [to] [ dbms-guide-900-sap-cache-server-on-premises] obrázek)
    2. Konfigurace Azure ExpressRoute, který nabízí vysokorychlostní a nízkou latencí vyhrazené síťové připojení mezi místního datového centra a datového centra Azure.
 
-![Možnost instalace serveru SAP mezipaměti místně][dbms-guide-figure-900]
+![Možnost tooinstall SAP mezipaměti místní Server][dbms-guide-figure-900]
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Backup / obnovení
-Při konfiguraci serveru SAP obsahu k ukládání souborů v databázi SAP MaxDB, zálohování a obnovení postupu a výkonové požadavky jsou již popsané v kapitole SAP MaxDB [zálohování a obnovení] [ dbms-guide-8.4.2] a kapitoly [otázky výkonu při zálohování a obnovení][dbms-guide-8.4.3].
+Pokud nakonfigurujete hello obsahu serveru SAP toostore soubory v databázi SAP MaxDB hello, hello zálohování nebo obnovení postupu a výkonové požadavky jsou již popsané v kapitole SAP MaxDB [zálohování a obnovení] [ dbms-guide-8.4.2] a kapitoly [otázky výkonu při zálohování a obnovení][dbms-guide-8.4.3].
 
-Při konfiguraci serveru SAP obsahu k uložení souborů v systému souborů, jednou z možností je provést ruční zálohování nebo obnovení struktury celý soubor, kde se nachází v dokumentech. Podobně jako SAP MaxDB zálohování a obnovení, se doporučuje mít vyhrazeným diskovým svazek pro zálohování účel.
+Pokud nakonfigurujete hello obsahu serveru SAP toostore soubory v systému souborů hello, jednou z možností je tooexecute ruční zálohování nebo obnovení hello celý soubor struktury a kde se nachází hello dokumenty. Podobně jako tooSAP MaxDB zálohování a obnovení, je doporučeno toohave vyhrazené diskový svazek pro zálohování účel.
 
 #### <a name="other"></a>Ostatní
-Další konkrétní nastavení serveru SAP obsahu jsou transparentní pro virtuální počítače Azure a jsou popsané v různých dokumenty a SAP poznámky:
+Další konkrétní nastavení serveru SAP obsahu je transparentní tooAzure virtuálních počítačů a jsou popsané v různých dokumenty a SAP poznámky:
 
 * <https://Service.SAP.com/contentserver>
 * Poznámka SAP [1619726]  
 
-## <a name="specifics-to-ibm-db2-for-luw-on-windows"></a>Podrobné IBM DB2 pro LUW v systému Windows
-S Microsoft Azure můžete snadno migrovat stávající aplikaci SAP systémem IBM DB2 pro Linux, UNIX a systému Windows (LUW) na virtuálních počítačích Azure. S SAP na IBM DB2 pro LUW správci a vývojáři můžete dál používat stejné vývoj a nástroje pro správu, které jsou k dispozici místně.
-Obecné informace o spuštění na IBM DB2 SAP Business Suite, LUW naleznete v SAP komunity sítě (oznámení změny stavu) na <https://scn.sap.com/community/db2-for-linux-unix-windows>.
+## <a name="specifics-tooibm-db2-for-luw-on-windows"></a>Specifika tooIBM DB2 pro LUW v systému Windows
+S Microsoft Azure můžete snadno migrovat stávající aplikaci SAP systémem IBM DB2 pro Linux, UNIX a systému Windows (LUW) tooAzure virtuální počítače. SAP na IBM DB2 pro LUW správci a vývojáři stále pomocí hello stejných nástrojů vývoj a správu, které jsou k dispozici místně.
+Obecné informace o spuštění SAP Business Suite na IBM DB2 pro LUW lze nalézt v hello SAP komunity sítě (oznámení změny stavu) na <https://scn.sap.com/community/db2-for-linux-unix-windows>.
 
 Další informace a aktualizace o SAP v DB2 pro LUW v Azure, viz poznámka SAP [2233094].
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 pro Linux, UNIX a podpora verzí systému Windows
 SAP na IBM DB2 pro LUW na služby Microsoft Azure virtuálního počítače je podporováno od verze DB2 10.5.
 
-Informace o podporovaných produktech SAP a typy virtuálního počítače Azure, naleznete v Poznámka SAP [1928533].
+Informace o podporovaných produktech SAP a typy virtuálního počítače Azure, naleznete v tooSAP Poznámka [1928533].
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 pro Linux, UNIX a pokyny pro konfigurace systému Windows pro SAP instalace ve virtuálních počítačích Azure
 #### <a name="storage-configuration"></a>Konfigurace úložiště
-Všechny soubory databáze musí být uložen v systému souborů NTFS založené na disky VHD. Tyto virtuální pevné disky jsou připojené k virtuálnímu počítači Azure a jsou založené na Azure úložiště objektů BLOB stránky (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
-Jakýkoli druh síťové jednotky nebo vzdálených sdílených složkách, jako jsou následující služby Azure file **není** podporované pro soubory databáze:
+Všechny soubory databáze musí být uložen v systému souborů NTFS hello založené na disky VHD. Tyto virtuální pevné disky jsou připojené toohello virtuální počítač Azure a jsou založené na Azure úložiště objektů BLOB stránky (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
+Jakýkoli druh síťové jednotky nebo vzdálených sdílených složkách, jako jsou následující Azure souborové služby hello **není** podporované pro soubory databáze:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/Introducing-Microsoft-Azure-File-Service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-Connections-to-Microsoft-Azure-Files.aspx>
 
-Pokud používáte Azure virtuální pevné disky založené na úložiště objektů BLOB stránky Azure, příkazy provedené v tomto dokumentu v kapitole [struktura nasazení RDBMS] [ dbms-guide-2] platí také pro nasazení s IBM DB2 LUW databáze.
+Pokud používáte Azure virtuální pevné disky založené na úložiště objektů BLOB stránky Azure, hello příkazy provedené v tomto dokumentu v kapitole [struktura nasazení RDBMS] [ dbms-guide-2] platí také pro LUW toodeployments s hello IBM DB2 Databáze.
 
-Jak je popsáno výše v části Obecné v dokumentu, kvóty na propustnost IOPS pro virtuální pevné disky Azure neexistuje. Přesný kvóty závisí na typu virtuálního počítače použít. Seznam typů virtuálních počítačů s jejich kvóty najdete [sem][virtual-machines-sizes]
+Jak je popsáno výše v části Obecné hello hello dokumentu, kvóty na propustnost IOPS pro virtuální pevné disky Azure neexistuje. přesný kvóty Hello závisí na typu hello virtuálních počítačů použít. Seznam typů virtuálních počítačů s jejich kvóty najdete [sem][virtual-machines-sizes]
 
-Tak dlouho, dokud stačí aktuální kvóty IOPS na disk, je možné uložit všechny soubory databáze na jednu jedné připojené Azure virtuálního pevného disku.
+Tak dlouho, dokud hello aktuální kvóty IOPS na disk je dostačující, že je možné toostore, které hello všechny soubory databáze na jednu jedním připojených Azure virtuálního pevného disku.
 
-Výkon aspekty také najdete v části "Data zabezpečení a výkonu důležité informace pro databázi adresáře" kapitoly v příručkách instalace SAP.
+Aspekty výkonu se také podívat toochapter "datové zabezpečení a výkonu důležité informace pro databázi adresáře" v příručkách instalace SAP.
 
-Alternativně můžete použít fondy úložiště systému Windows (pouze k dispozici v systému Windows Server 2012 a vyšší) nebo proložení Windows pro systém Windows 2008 R2 jako popsané v kapitole [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu Vytvořte jeden velký logického zařízení přes více připojené disky VHD.
-Pro disky obsahující cesty úložiště DB2 pro sapdata a saptmp adresářů musíte zadat velikost sektoru fyzického disku 512 KB. Pokud používáte fondy úložišť systému Windows, je třeba vytvořit fondy úložiště ručně pomocí rozhraní příkazového řádku pomocí parametru "-LogicalSectorSizeDefault". Podrobnosti najdete v tématu <https://technet.microsoft.com/library/hh848689.aspx>.
+Alternativně můžete použít fondy úložiště systému Windows (pouze k dispozici v systému Windows Server 2012 a vyšší) nebo proložení Windows pro systém Windows 2008 R2 jako popsané v kapitole [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu toocreate jeden velký logického zařízení přes více připojené disky VHD.
+Pro disky hello obsahující hello DB2 cesty úložiště pro vaše sapdata a saptmp adresáře musíte zadat velikost sektoru fyzického disku 512 KB. Pokud používáte fondy úložišť systému Windows, musíte vytvořit hello fondy úložiště ručně pomocí rozhraní příkazového řádku pomocí parametru hello "-LogicalSectorSizeDefault". Podrobnosti najdete v tématu <https://technet.microsoft.com/library/hh848689.aspx>.
 
 #### <a name="backuprestore"></a>Zálohování a obnovení
-Funkce zálohování a obnovení pro IBM DB2 pro LUW je podporována stejným způsobem jako standardní operační systémy Windows Server a Hyper-V.
+Hello funkce zálohování a obnovení pro IBM DB2 LUW je podporováno v hello stejný způsobem jako na standardní operační systémy Windows Server a Hyper-V.
 
 Musí se ujistěte, že máte zavedenou strategie zálohování platnou databázi.
 
-Jako úplné nasazení výkonu zálohování a obnovení závisí na kolik svazky lze číst paralelně a propustnost tyto svazky, které je možné. Kromě toho může spotřeby procesoru, který je používán kompresi zálohy přehrát významnou roli na virtuálních počítačích s právě až 8 vláken na procesor. Proto můžete předpokládat jeden:
+Jako úplné nasazení výkonu zálohování a obnovení závisí na kolik svazky lze číst paralelně a může být co hello propustnost těchto svazků. Kromě toho může hello používá kompresi zálohy spotřeby procesoru přehrát významnou roli na virtuálních počítačích s právě až too8 procesoru vláken. Proto můžete předpokládat jeden:
 
-* Méně počet virtuálních pevných disků se používá k ukládání databáze zařízení, menší celkovou propustnost čtení
-* Menší že počet procesoru vláken ve virtuálním počítači, závažnější dopad kompresi zálohy
-* Méně cílů (Stripe adresáře, virtuální pevné disky) k zápisu zálohování do dolní propustnost
+* Hello méně hello počet virtuálních pevných disků používaných toostore hello databáze zařízení, hello menší hello celkovou propustnost v režimu čtení
+* Dobrý den menší hello počet vláken procesoru v hello virtuálních počítačů, hello závažnější hello dopad kompresi zálohy
+* Hello méně cílů (Stripe adresáře, virtuální pevné disky) toowrite hello zálohování, propustnost nižší hello hello
 
-Pokud chcete zvýšit počet cílů k zápisu, může být dvě možnosti, podle potřeby použít nebo kombinaci:
+tooincrease hello počet toowrite cíle k, dvě možnosti může být použit nebo kombinaci podle potřeby:
 
-* Za účelem zlepšení propustnosti IOPS na tomto svazku prokládané prokládání cílový svazek přes několik připojených virtuálních pevných disků
-* Použití více než jeden cílový adresář pro psaní zálohy
+* Prokládání hello zálohování cílový svazek přes několik připojených virtuálních pevných disků v pořadí tooimprove hello IOPS propustnosti na tomto svazku prokládané
+* Použití více než jeden cílový adresář toowrite hello zálohování
 
 #### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
 Microsoft Cluster Server (MSCS) není podporována.
 
-Zotavení po havárii DB2 vysokou dostupnost (HADR) je podporováno. Pokud virtuální počítače HA konfigurace funguje překlad adres, instalační program v Azure nebude liší od všech instalačního programu, která se provádí na místě. Není doporučeno spoléhají na pouze pro překlad IP.
+Zotavení po havárii DB2 vysokou dostupnost (HADR) je podporováno. Pokud virtuální počítače hello hello HA konfigurace funguje překlad adres, nebude instalace hello v Azure liší od žádné nastavení, která se provádí na místě. Není doporučeno toorely na pouze IP řešení.
 
-Nepoužívejte úložiště Azure geografická replikace. Další informace naleznete v kapitole [Microsoft Azure Storage] [ dbms-guide-2.3] a kapitoly [vysokou dostupnost a zotavení po havárii s virtuálními počítači Azure] [ dbms-guide-3].
+Nepoužívejte úložiště Azure geografická replikace. Další informace najdete v části toochapter [Microsoft Azure Storage] [ dbms-guide-2.3] a kapitoly [vysokou dostupnost a zotavení po havárii s virtuálními počítači Azure] [ dbms-guide-3].
 
 #### <a name="other"></a>Ostatní
-Jak je popsáno v první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s IBM DB2 pro LUW také použít všechny ostatní obecné témata jako skupiny dostupnosti Azure nebo SAP monitorování.
+Jak je popsáno v hello první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s IBM DB2 pro LUW také použít všechny ostatní obecné témata jako skupiny dostupnosti Azure nebo SAP monitorování.
 
-Se také podívat na kapitoly [obecné SQL Server pro SAP v Azure souhrnu][dbms-guide-5.8].
+Najdete také toochapter [obecné SQL Server pro SAP v Azure souhrnu][dbms-guide-5.8].

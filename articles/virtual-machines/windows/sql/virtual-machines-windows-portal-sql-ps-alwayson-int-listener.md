@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace vždy na naslouchací procesy skupiny dostupnosti – Microsoft Azure | Microsoft Docs"
-description: "Naslouchací procesy skupiny dostupnosti nakonfigurujte na modelu Azure Resource Manager, pomocí interní nástroj pro jednu nebo více IP adres."
+title: "aaaConfigure vždy na dostupnosti naslouchací procesy skupiny – Microsoft Azure | Microsoft Docs"
+description: "Naslouchací procesy skupiny dostupnosti nakonfigurujte na modelu hello Azure Resource Manager, pomocí interní nástroj pro jednu nebo více IP adres."
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 74fa1e4c9cfa608a9a385f3dd82a0599fbcc421c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 81edfe2c2ea536d8dcec466f36fccf8bc0e02c2d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurovat jeden nebo více vždy na dostupnosti naslouchací procesy skupiny - Resource Manager
 Toto téma ukazuje, jak:
 
 * Vytvořte interní nástroj pro skupiny dostupnosti systému SQL Server pomocí rutin prostředí PowerShell.
-* Přidejte další IP adresy pro vyrovnávání zatížení pro víc než jedné skupiny dostupnosti. 
+* Přidejte další IP adresy tooa Vyrovnávání zatížení pro víc než jedné skupiny dostupnosti. 
 
-Naslouchací proces skupiny dostupnosti je název virtuální sítě, který klienti připojovat k pro přístup k databázi. Nástroj pro vyrovnávání zatížení na virtuálních počítačích Azure, obsahuje IP adresu pro naslouchací proces. Nástroje pro vyrovnávání zatížení směruje provoz do instance systému SQL Server, která naslouchá na portu testu. Skupiny dostupnosti se obvykle používá interní nástroj. K nástroji pro vyrovnávání zatížení interní Azure můžete hostovat jednu nebo více IP adres. Každou IP adresu používá port konkrétní test. Tento dokument ukazuje, jak pomocí prostředí PowerShell vytvořit nástroj pro vyrovnávání zatížení nebo přidejte IP adresy do existující Vyrovnávání zatížení pro skupiny dostupnosti systému SQL Server. 
+Naslouchací proces skupiny dostupnosti je název virtuální sítě, aby se klienti připojovali toofor přístup k databázi. Nástroj pro vyrovnávání zatížení na virtuálních počítačích Azure, obsahuje hello IP adresu pro naslouchací proces hello. směrování pro vyrovnávání zatížení Hello provoz toohello instance systému SQL Server, která naslouchá na portu testu hello. Skupiny dostupnosti se obvykle používá interní nástroj. K nástroji pro vyrovnávání zatížení interní Azure můžete hostovat jednu nebo více IP adres. Každou IP adresu používá port konkrétní test. Tento dokument ukazuje, jak toouse prostředí PowerShell toocreate nástroj pro vyrovnávání zatížení nebo přidejte IP adres tooan existující Vyrovnávání zatížení pro skupiny dostupnosti systému SQL Server. 
 
-Umožňuje přiřadit k nástroji pro vyrovnávání zatížení pro vnitřní více IP adres je nové do Azure a je dostupný jenom v modelu Resource Manager. Tuto úlohu dokončit, musíte mít skupinu dostupnosti systému SQL Server, který je nasazen na virtuálních počítačích Azure v modelu Resource Manager. Virtuální počítače systému SQL Server musí patřit do stejné skupiny dostupnosti. Můžete použít [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) pro automatické vytvoření skupiny dostupnosti ve službě Správce prostředků Azure. Tato šablona automaticky vytvoří skupiny dostupnosti, včetně nástroje pro vyrovnávání zatížení pro vnitřní za vás. Pokud dáváte přednost, můžete [ruční konfigurace skupiny dostupnosti Always On](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Hello možnost tooassign více IP adres tooan interní nástroj pro vyrovnávání zatížení je nové tooAzure a je dostupný jenom v modelu Resource Manager. toocomplete tuto úlohu je nutné toohave nasadit skupinu dostupnosti systému SQL Server na virtuálních počítačích Azure v modelu Resource Manager. Virtuální počítače systému SQL Server musí patřit toohello stejné skupině dostupnosti. Můžete použít hello [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) tooautomatically vytvoření skupiny dostupnosti hello ve službě Správce prostředků Azure. Tato šablona automaticky vytvoří hello skupiny dostupnosti, včetně služby Vyrovnávání zatížení interní hello za vás. Pokud dáváte přednost, můžete [ruční konfigurace skupiny dostupnosti Always On](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
 
 Toto téma vyžaduje vaše skupiny dostupnosti jsou již nakonfigurována.  
 
@@ -39,16 +39,16 @@ Související témata:
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
-## <a name="configure-the-windows-firewall"></a>Konfigurace brány Windows Firewall
-Konfigurace brány Windows Firewall pro povolení přístupu k SQL serveru. Pravidla brány firewall povolit připojení TCP pro porty používané instance systému SQL Server a kontroly naslouchací proces. Podrobné pokyny najdete v tématu [konfigurace brány Windows Firewall pro přístup k databázovému stroji](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvoření příchozího pravidla pro port serveru SQL Server a port testu.
+## <a name="configure-hello-windows-firewall"></a>Konfigurace hello brány Windows Firewall
+Nakonfigurujte hello brány Windows Firewall tooallow systému SQL Server přístup. pravidla brány firewall Hello umožňují používat porty toohello připojení TCP tak, že instance systému SQL Server hello a testu hello naslouchací proces. Podrobné pokyny najdete v tématu [konfigurace brány Windows Firewall pro přístup k databázovému stroji](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvoření příchozího pravidla pro hello port serveru SQL Server a port testu hello.
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Ukázkový skript: Vytvoření Vyrovnávání zatížení interní pomocí prostředí PowerShell
 > [!NOTE]
-> Pokud jste vytvořili vaší skupiny dostupnosti s [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), nástroje pro vyrovnávání zatížení pro vnitřní již bylo vytvořeno. 
+> Pokud jste vytvořili vaší skupiny dostupnosti s hello [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), již bylo vytvořeno hello interní vyrovnávání zátěže. 
 > 
 > 
 
-Následující skript prostředí PowerShell vytvoří interní nástroj, nakonfiguruje pravidla Vyrovnávání zatížení a nastaví IP adresu pro nástroj pro vyrovnávání zatížení. Pokud chcete spustit skript, otevřete Windows PowerShell ISE a vložte skript v podokně skriptu. Použití `Login-AzureRMAccount` pro přihlášení k prostředí PowerShell. Pokud máte víc předplatných Azure, použijte `Select-AzureRmSubscription ` nastavte předplatné. 
+Hello následující skript prostředí PowerShell vytvoří interní nástroj, nakonfiguruje pravidla Vyrovnávání zatížení hello a nastaví IP adresu pro nástroj pro vyrovnávání zatížení hello. skript hello toorun, otevřete Windows PowerShell ISE a vložte hello skriptu v podokně skriptu hello. Použití `Login-AzureRMAccount` toolog v tooPowerShell. Pokud máte víc předplatných Azure, použijte `Select-AzureRmSubscription ` tooset hello předplatného. 
 
 ```powershell
 # Login-AzureRmAccount
@@ -65,11 +65,11 @@ $ILBIP = "<n.n.n.n>"                         # IP address
 [int]$ListenerPort = "<nnnn>"                # AG listener port
 [int]$ProbePort = "<nnnn>"                   # Probe port
 
-$LBProbeName ="ILBPROBE_$ListenerPort"       # The Load balancer Probe Object Name              
-$LBConfigRuleName = "ILBCR_$ListenerPort"    # The Load Balancer Rule Object Name
+$LBProbeName ="ILBPROBE_$ListenerPort"       # hello Load balancer Probe Object Name              
+$LBConfigRuleName = "ILBCR_$ListenerPort"    # hello Load Balancer Rule Object Name
 
-$FrontEndConfigurationName = "FE_SQLAGILB_1" # Object name for the front-end configuration 
-$BackEndConfigurationName ="BE_SQLAGILB_1"   # Object name for the back-end configuration
+$FrontEndConfigurationName = "FE_SQLAGILB_1" # Object name for hello front-end configuration 
+$BackEndConfigurationName ="BE_SQLAGILB_1"   # Object name for hello back-end configuration
 
 $VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
 
@@ -98,10 +98,10 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="Add-IP"></a>Ukázkový skript: Přidat IP adresu existující Vyrovnávání zatížení s prostředí PowerShell
-Pokud chcete použít více než jedné skupiny dostupnosti, přidejte další IP adresu nástroji pro vyrovnávání zatížení. Každou IP adresu vyžaduje vlastní pravidla Vyrovnávání zatížení, port testu a front port.
+## <a name="Add-IP"></a>Ukázkový skript: přidejte k IP adresu tooan existující pro vyrovnávání zatížení v prostředí PowerShell
+toouse více než jeden dostupnosti skupiny, přidejte k další IP adresu toohello pro vyrovnávání zatížení. Každou IP adresu vyžaduje vlastní pravidla Vyrovnávání zatížení, port testu a front port.
 
-Front-end port je port, který aplikace použít pro připojení k instanci systému SQL Server. IP adresy pro skupiny dostupnosti jinou můžete použít stejný port front-endu.
+Hello front-end port je port hello, aplikace použít instanci systému SQL Server toohello tooconnect. IP adresy pro různé dostupnosti skupiny můžete použít hello stejný port front-endu.
 
 > [!NOTE]
 > Pro skupiny dostupnosti systému SQL Server vyžaduje každou IP adresu, port konkrétní testu. Například pokud jednu IP adresu zařízení na Vyrovnávání zatížení používá port testu 59999, žádné jiné IP adresy na tento nástroj pro vyrovnávání zatížení můžete použít port testu 59999.
@@ -109,7 +109,7 @@ Front-end port je port, který aplikace použít pro připojení k instanci syst
 * Informace o omezeních pro vyrovnávání zatížení najdete v tématu **privátní front-endu IP adresu na nástroj pro vyrovnávání zatížení** pod [omezení sítě - Správce Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * Informace o omezeních skupiny dostupnosti naleznete v tématu [omezení (skupiny dostupnosti)](http://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
-Následující skript přidá novou IP adresu do existující pro vyrovnávání zatížení. ILB používá port naslouchacího procesu pro front-end port Vyrovnávání zatížení. Port, který SQL Server naslouchá na může být tento port. Pro výchozí instance systému SQL Server je port 1433. Pravidlo pro skupinu dostupnosti Vyrovnávání zatížení vyžaduje plovoucí IP (přímá odpověď ze serveru), tak back-end port je stejný jako front-end port. Aktualizujte proměnné pro vaše prostředí. 
+Hello následující skript přidá novou IP adresu tooan existující Vyrovnávání zatížení. Hello ILB používá port naslouchacího procesu hello hello zátěže front-end port. Hello port, který SQL Server naslouchá na může být tento port. Pro výchozí instance systému SQL Server hello port je 1433. pravidlo pro skupinu dostupnosti Vyrovnávání zatížení Hello vyžaduje plovoucí IP (přímá odpověď ze serveru) tak, aby hello back-end port stejné hello jako hello front-end port. Aktualizujte hello proměnné prostředí. 
 
 ```powershell
 # Login-AzureRmAccount
@@ -150,56 +150,56 @@ $BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAd
 $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzureRmLoadBalancer   
 ```
 
-## <a name="configure-the-listener"></a>Konfigurace naslouchací proces
+## <a name="configure-hello-listener"></a>Konfigurace naslouchací proces hello
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
-## <a name="set-the-listener-port-in-sql-server-management-studio"></a>Nastavit port naslouchacího procesu v systému SQL Server Management Studio
+## <a name="set-hello-listener-port-in-sql-server-management-studio"></a>Nastavit port naslouchacího procesu hello v aplikaci SQL Server Management Studio
 
-1. Spusťte SQL Server Management Studio a připojte se k primární replice.
+1. Spusťte SQL Server Management Studio a připojte toohello primární repliky.
 
-1. Přejděte na **AlwaysOn vysokou dostupnost** | **skupiny dostupnosti** | **naslouchací procesy skupiny dostupnosti**. 
+1. Přejděte příliš**vysoké dostupnosti AlwaysOn** | **skupiny dostupnosti** | **naslouchací procesy skupiny dostupnosti**. 
 
-1. Teď byste měli vidět název naslouchacího procesu, který jste vytvořili ve Správci clusteru převzetí služeb při selhání. Klikněte pravým tlačítkem na název naslouchacího procesu a klikněte na tlačítko **vlastnosti**.
+1. Teď byste měli vidět název hello naslouchacího procesu, který jste vytvořili ve Správci clusteru převzetí služeb při selhání. Klikněte pravým tlačítkem na název naslouchacího procesu hello a klikněte na tlačítko **vlastnosti**.
 
-1. V **Port** pole, zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort jste použili předtím (1433 se výchozí nastavení), pak klikněte na tlačítko **OK**.
+1. V hello **Port** zadejte číslo portu naslouchacího procesu skupiny dostupnosti hello hello pomocí hello $EndpointPort jste použili předtím (1433 byla výchozí hello), pak klikněte na tlačítko **OK**.
 
-## <a name="test-the-connection-to-the-listener"></a>Test připojení k naslouchací proces
+## <a name="test-hello-connection-toohello-listener"></a>Naslouchací proces toohello testovací hello připojení
 
-K testování připojení:
+tootest hello připojení:
 
-1. RDP k systému SQL Server, který je ve stejné virtuální síti, ale není vlastníkem repliky. To může být SQL Server v clusteru.
+1. RDP tooa systému SQL Server, který je v hello stejné virtuální síti však není vlastní hello repliky. To může být hello jiný SQL Server v clusteru hello.
 
-1. Použití **sqlcmd** nástroj k testování připojení. Například následující skript vytvoří **sqlcmd** připojení k primární replice prostřednictvím naslouchací proces s ověřováním systému Windows:
+1. Použití **sqlcmd** nástroj tootest hello připojení. Například vytvoří hello následující skript **sqlcmd** připojení toohello primární repliky prostřednictvím hello naslouchací proces s ověřováním systému Windows:
    
     ```
     sqlmd -S <listenerName> -E
     ```
    
-    Pokud naslouchací proces používá jiný port než výchozí port (1433), zadejte port v připojovacím řetězci. Například následující příkaz sqlcmd připojí k naslouchání na portu 1435: 
+    Pokud naslouchací proces hello používá port jiný než hello výchozí port (1433), zadejte hello port v hello připojovací řetězec. Například hello následujícího příkazu sqlcmd připojuje tooa naslouchání na portu 1435: 
    
     ```
     sqlcmd -S <listenerName>,1435 -E
     ```
 
-Připojení SQLCMD se automaticky připojí na kteroukoli instanci systému SQL Server hostitelem primární repliky. 
+Hello SQLCMD připojení automaticky připojí toowhichever instanci systému SQL Server hostitele hello primární repliky. 
 
 > [!NOTE]
-> Ujistěte se, že je port, který zadáte otevřen v bráně firewall oba servery SQL. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. V tématu [přidat nebo upravit pravidlo brány Firewall](http://technet.microsoft.com/library/cc753558.aspx) Další informace. 
+> Ujistěte se, že je otevřen v bráně firewall hello obou serverů SQL hello port, který zadáte. Oba servery vyžadují příchozí pravidlo pro hello port TCP, který používáte. V tématu [přidat nebo upravit pravidlo brány Firewall](http://technet.microsoft.com/library/cc753558.aspx) Další informace. 
 > 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Pokyny a omezení
-Všimněte si, že následující pokyny na naslouchací proces skupiny dostupnosti v Azure pomocí interní nástroj pro vyrovnávání zatížení:
+Vezměte na vědomí následující pokyny na naslouchací proces skupiny dostupnosti v Azure pomocí nástroje pro vyrovnávání zatížení pro vnitřní hello:
 
-* S nástrojem pro vyrovnávání zatížení pro vnitřní můžete přístup jenom k naslouchání z v rámci stejné virtuální síti.
+* S nástrojem pro vyrovnávání zatížení pro vnitřní, můžete přístup pouze k naslouchání hello z v rámci hello stejné virtuální síti.
 
 
 ## <a name="for-more-information"></a>Další informace
 Další informace najdete v tématu [skupiny dostupnosti nakonfigurujte Always On ve virtuálním počítači Azure ručně](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
 
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
-Pomocí následující rutiny prostředí PowerShell k vytvoření interní nástroj pro virtuální počítače Azure.
+Použijte hello následující toocreate rutiny prostředí PowerShell interní nástroj pro virtuální počítače Azure.
 
 * [Nové AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 
 * [Nové AzureRMLoadBalancerFrontendIpConfig](http://msdn.microsoft.com/library/mt603510.aspx) vytvoří konfiguraci front-end IP adresy pro vyrovnávání zatížení. 

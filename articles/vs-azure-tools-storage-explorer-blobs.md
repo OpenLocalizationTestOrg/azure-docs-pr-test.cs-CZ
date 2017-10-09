@@ -1,5 +1,5 @@
 ---
-title: "Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview) | Microsoft Docs"
+title: "aaaManage prostředků Azure Blob Storage pomocí Storage Exploreru (Preview) | Microsoft Docs"
 description: "Správa objektů Blob v Azure kontejnerům a objektům BLOB pomocí Storage Exploreru (Preview)"
 services: storage
 documentationcenter: na
@@ -14,206 +14,206 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.openlocfilehash: f833027203441e12340bd93f3570de073d297223
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 503dd061b205875da127378ab48e8d465800fc09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview)
 ## <a name="overview"></a>Přehled
-[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) je služba pro ukládání velkého objemu nestrukturovaných dat, jako je například textu nebo binárních dat, která jsou přístupná odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS.
-Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se naučíte používat Storage Explorer (Preview) pro práci s kontejnery objektů blob a objekty BLOB.
+[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) je služba pro ukládání velkého objemu nestrukturovaných dat, jako je například textu nebo binárních dat, která je přístupná z kdekoli v hello, world pomocí protokolů HTTP nebo HTTPS.
+Data tooexpose úložiště objektů Blob můžete použít veřejně toohello svět nebo data aplikací toostore soukromě. V tomto článku se dozvíte jak toouse toowork Storage Explorer (Preview) s kontejnery objektů blob a objekty BLOB.
 
 ## <a name="prerequisites"></a>Požadavky
-K dokončení kroků v tomto článku budete potřebovat následující:
+toocomplete hello kroky v tomto článku, budete potřebovat následující hello:
 
 * [Stažení a instalace Storage Exploreru (Preview)](http://www.storageexplorer.com)
-* [Připojení k účtu úložiště nebo službě Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+* [Připojení účtu úložiště Azure tooa nebo služby](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Vytvořte kontejner objektů blob
 Všechny objekty BLOB se musí nacházet v kontejneru objektů blob, který je jednoduše logické seskupení objektů BLOB. Účet může obsahovat neomezený počet kontejnerů a každý kontejner můžete pojmout neomezený počet objektů BLOB.
 
-Následující kroky ukazují, jak vytvořit kontejner objektů blob v rámci Storage Explorer (Preview).
+Hello následující kroky popisují jak toocreate kontejner objektů blob v rámci Storage Explorer (Preview).
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte účet úložiště, ve kterém chcete vytvořit kontejner objektů blob.
-3. Klikněte pravým tlačítkem na **kontejnery objektů Blob**a v místní nabídce - vyberte **vytvořit kontejner objektů Blob**.
+2. V levém podokně hello rozbalte účet hello úložiště, ve kterém chcete kontejner objektů blob toocreate hello.
+3. Klikněte pravým tlačítkem na **kontejnery objektů Blob**a - hello kontextové nabídce vyberte **vytvořit kontejner objektů Blob**.
 
    ![Vytvoření objektu blob kontejnery kontextové nabídky][0]
-4. V textovém poli se zobrazí níže **kontejnery objektů Blob** složky. Zadejte název pro váš kontejner objektů blob. Najdete v článku [pravidla pojmenování kontejneru](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) části Seznam pravidel a omezení pro pojmenovávání kontejnerů objektů blob.
+4. V textovém poli se zobrazí pod hello **kontejnery objektů Blob** složky. Zadejte název hello kontejnerech objektů blob. V tématu hello [pravidla pojmenování kontejneru](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) části Seznam pravidel a omezení pro pojmenovávání kontejnerů objektů blob.
 
    ![Vytvoření textového pole kontejnery objektů Blob][1]
-5. Stiskněte klávesu **Enter** po dokončení vytvoření kontejneru objektů blob nebo **Esc** zrušit. Po úspěšném vytvoření kontejneru objektů blob se zobrazí v části **kontejnery objektů Blob** složku pro vybraný účet úložiště.
+5. Stiskněte klávesu **Enter** po dokončení kontejneru objektu blob hello toocreate nebo **Esc** toocancel. Po úspěšném vytvoření kontejneru objektů blob hello se zobrazí v části hello **kontejnery objektů Blob** složku pro hello vybraný účet úložiště.
 
    ![Vytvořit kontejner objektů BLOB][2]
 
 ## <a name="view-a-blob-containers-contents"></a>Zobrazit obsah kontejner objektů blob
 Kontejnery objektů BLOB obsahovat objekty BLOB a složky (které mohou obsahovat také objekty BLOB).
 
-Následující kroky ukazují, jak zobrazit obsah kontejneru objektů blob v rámci Storage Explorer (Preview):
+Hello následující kroky popisují jak tooview hello obsah kontejneru objektů blob v rámci Storage Explorer (Preview):
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete zobrazit.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Klikněte pravým tlačítkem na kontejner objektů blob, které chcete zobrazit a v místní nabídce - vyberte **otevřete Editor kontejner objektů Blob**.
-   Dvakrát klikněte na kontejner objektů blob, který si přejete zobrazit.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující chcete tooview kontejner objektů blob hello.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Klikněte pravým tlačítkem na kontejner objektů blob hello je chcete tooview a - hello kontextové nabídce vyberte **otevřete Editor kontejner objektů Blob**.
+   Dvakrát klikněte na kontejner objektů blob hello chcete tooview.
 
    ![Otevřete blob kontejneru editor kontextové nabídky][19]
-5. V hlavním podokně se zobrazí obsah kontejneru objektů blob.
+5. Hello hlavním podokně se zobrazí obsah kontejneru objektů blob hello.
 
    ![Editor kontejner objektů BLOB][3]
 
 ## <a name="delete-a-blob-container"></a>Odstranit kontejner objektů blob
-Kontejnery objektů BLOB můžete snadno vytvořit a odstraněn podle potřeby. (Chcete-li zjistit, jak odstranit jednotlivé objekty BLOB, informace naleznete v sekci [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
+Kontejnery objektů BLOB můžete snadno vytvořit a odstraněn podle potřeby. (toosee jak toodelete jednotlivé objekty BLOB, najdete v části toohello [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
 
-Následující kroky ukazují, jak odstranit kontejner objektů blob v rámci Storage Explorer (Preview):
+Hello následující kroky popisují jak toodelete kontejner objektů blob v rámci Storage Explorer (Preview):
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete zobrazit.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Klikněte pravým tlačítkem na kontejner objektů blob, které chcete odstranit a v místní nabídce - vyberte **odstranit**.
-   Můžete také stisknout **odstranit** odstranit kontejner aktuálně vybraných objektů blob.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující chcete tooview kontejner objektů blob hello.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Klikněte pravým tlačítkem na kontejner objektů blob hello je chcete toodelete a - hello kontextové nabídce vyberte **odstranit**.
+   Můžete také stisknout **odstranit** toodelete hello aktuálně vybraného objektu blob kontejneru.
 
    ![Odstranit objekt blob kontejneru kontextové nabídky][4]
-5. V potvrzovacím dialogovém okně klikněte na **Ano**.
+5. Vyberte **Ano** toohello dialogové okno potvrzení.
 
    ![Odstranit objekt blob kontejneru potvrzení][5]
 
 ## <a name="copy-a-blob-container"></a>Zkopírujte kontejner objektů blob
-Storage Explorer (Preview) umožňuje kopírovat kontejner objektů blob do schránky a vložte tento kontejner objektů blob do jiný účet úložiště. (Chcete-li zjistit, jak zkopírovat jednotlivé objekty BLOB, informace naleznete v sekci [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
+Storage Explorer (Preview) vám umožní toocopy schránky toohello kontejner objektů blob a potom vložení, který kontejner objektů blob do jiný účet úložiště. (toosee jak toocopy jednotlivé objekty BLOB, najdete v části toohello [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
 
-Následující kroky ukazují, jak zkopírovat kontejner objektů blob z jeden účet úložiště do druhého.
+Hello následující kroky ukazují, jak toocopy kontejner objektů blob z jednoho úložiště účet tooanother.
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete kopírovat.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Klikněte pravým tlačítkem na kontejner objektů blob, které chcete kopírovat a v místní nabídce - vyberte **kontejner objektů Blob kopie**.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující chcete toocopy kontejner objektů blob hello.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Klikněte pravým tlačítkem na kontejner objektů blob hello je chcete toocopy a - hello kontextové nabídce vyberte **kontejner objektů Blob kopie**.
 
    ![Kopírovat objekt blob kontejneru kontextové nabídky][6]
-5. Klikněte pravým tlačítkem na účet úložiště požadované "target", do kterého chcete vložit kontejneru objektů blob a v místní nabídce - vyberte **vložit kontejner objektů Blob**.
+5. Klikněte pravým tlačítkem na požadované hello "target" účet úložiště, do kterého chcete kontejner objektů blob hello toopaste a - hello kontextové nabídce vyberte **kontejner objektů Blob vložení**.
 
    ![Vložení objektu blob kontejneru kontextové nabídky][7]
 
-## <a name="get-the-sas-for-a-blob-container"></a>Získání sdíleného přístupového podpisu (SAS) pro kontejner objektů blob
-[Sdílený přístupový podpis (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště.
-To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po stanovené časové období a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu.
+## <a name="get-hello-sas-for-a-blob-container"></a>Získat hello SAS pro kontejner objektů blob
+A [sdílený přístupový podpis (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) poskytuje Delegovaný přístup tooresources ve vašem účtu úložiště.
+To znamená, že můžete udělit, že klient omezené oprávnění tooobjects ve vašem účtu úložiště v zadaném časovém intervalu a zadanou sadu oprávnění, aniž by museli sdílet klíče pro přístup k účtu.
 
-Následující kroky ukazují, jak vytvořit SAS pro kontejner objektů blob:
+Hello následující kroky popisují jak toocreate SAS pro kontejner objektů blob:
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte obsahující kontejner objektů blob, pro kterou chcete získat SAS účtu úložiště.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Klikněte pravým tlačítkem na kontejner objektů blob požadované a v místní nabídce - vyberte **sdíleného přístupového podpisu**.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující kontejner objektů blob hello, pro kterou chcete tooget SAS.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Klikněte pravým tlačítkem na kontejner objektů blob požadované hello a - hello kontextové nabídce vyberte **sdíleného přístupového podpisu**.
 
    ![Získat SAS kontextové nabídky][8]
-5. V dialogovém okně **Sdílený přístupový podpis** zadejte zásadu, počáteční datum a datum vypršení platnosti, časové pásmo a požadované úrovně přístupu k prostředku.
+5. V hello **sdíleného přístupového podpisu** dialogové okno, zadejte hello zásad, spuštění a datum vypršení platnosti, časové pásmo a chcete pro prostředek hello úrovně přístupu.
 
    ![Získat možnosti SAS][9]
-6. Jakmile budete hotovi se zadáváním možností sdíleného přístupového podpisu, vyberte **Vytvořit**.
-7. Druhý **sdíleného přístupového podpisu** dialogové okno se zobrazí, pak se seznamem kontejneru objektů blob společně s adresu URL a QueryStrings můžete použít pro přístup k prostředku úložiště.
-   Vyberte **Kopírovat** vedle adresy URL, kterou chcete zkopírovat do schránky.
+6. Jakmile budete hotovi, zadání možností hello SAS, vyberte **vytvořit**.
+7. Druhý **sdíleného přístupového podpisu** poté zobrazí dialogové okno, seznamy hello kontejner objektů blob společně s hello adresy URL a QueryStrings můžete použít tooaccess hello prostředků úložiště.
+   Vyberte **kopie** další URL toohello chcete toocopy toohello schránky.
 
    ![Zkopírování adresy URL SAS][10]
 8. Až budete hotovi, vyberte **Zavřít**.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>Správa zásad přístupu pro kontejner objektů blob
-Následující kroky ukazují, jak spravovat (přidání a odebrání) získat přístup k zásadám pro kontejner objektů blob:
+Hello následující kroky popisují jak toomanage (přidání a odebrání) získat přístup k zásadám pro kontejner objektů blob:
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte účet úložiště obsahující kontejner objektů blob, jejichž zásady přístupu, které chcete spravovat.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Vyberte kontejner objektů blob požadované a v místní nabídce - vyberte **spravovat zásady přístupu**.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující kontejner objektů blob hello jejichž zásady přístupu, které chcete toomanage.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Vyberte kontejner objektů blob požadované hello a - z kontextové nabídky hello - vyberte **spravovat zásady přístupu**.
 
    ![Místní nabídka Spravovat zásady přístupu][11]
-5. **Zásady přístupu** dialogové okno se zobrazí seznam všechny zásady přístupu, které jsou vytvořeny již pro vybraný objekt blob kontejneru.
+5. Hello **zásady přístupu** dialogové okno se zobrazí seznam všechny zásady přístupu, které jsou vytvořeny již pro kontejner objektů blob vybrané hello.
 
    ![Možnosti zásad přístupu][12]        
-6. V závislosti na úloze správy zásad přístupu postupujte podle těchto kroků:
+6. Pomocí těchto kroků v závislosti na úlohu správy zásad přístupu hello:
 
-   * **Přidání nové zásady přístupu:** Vyberte **Přidat**. Po vygenerování se nová zásada přístupu (s výchozím nastavením) zobrazí v dialogovém okně **Zásady přístupu**.
+   * **Přidání nové zásady přístupu:** Vyberte **Přidat**. Po vygenerování hello **zásady přístupu** dialogové okno se zobrazí hello nově přidaná přístup zásad (s výchozí nastavení).
    * **Upravit zásady přístupu** – proveďte veškeré požadované úpravy a vyberte **Uložit**.
-   * **Odebrání zásady přístupu:** Vyberte **Odebrat** vedle zásady přístupu, kterou chcete odebrat.
+   * **Odebrat zásady přístupu** – vyberte **odebrat** další zásady přístupu toohello chcete tooremove.
 
-## <a name="set-the-public-access-level-for-a-blob-container"></a>Nastavení úrovně veřejný přístup pro kontejner objektů blob
-Ve výchozím nastavení každý kontejner objektů blob nastavena na "Žádný veřejný přístup".
+## <a name="set-hello-public-access-level-for-a-blob-container"></a>Nastavit hello úroveň veřejný přístup pro kontejner objektů blob
+Ve výchozím nastavení, každý kontejner objektů blob je nastaven příliš "Žádné veřejný přístup".
 
-Následující kroky ukazují, jak k určení úrovně veřejný přístup pro kontejner objektů blob.
+Hello následující kroky popisují toospecify veřejné přístupu úrovně pro kontejner objektů blob.
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte účet úložiště obsahující kontejner objektů blob, jejichž zásady přístupu, které chcete spravovat.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Vyberte kontejner objektů blob požadované a v místní nabídce - vyberte **nastavit úroveň veřejný přístup**.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující kontejner objektů blob hello jejichž zásady přístupu, které chcete toomanage.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Vyberte kontejner objektů blob požadované hello a - z kontextové nabídky hello - vyberte **nastavit úroveň veřejný přístup**.
 
    ![Nastavení úrovně kontextovou nabídku veřejného přístupu][13]
-5. V **nastavit úroveň veřejný přístup kontejneru** dialogové okno, zadejte úroveň požadované přístupu.
+5. V hello **nastavit úroveň veřejný přístup kontejneru** dialogové okno, zadejte úroveň přístupu hello potřeby.
 
    ![Nastavení možností úrovně veřejného přístupu][14]
 6. Vyberte **Použít**.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Správa objektů BLOB v kontejneru objektů blob
-Po vytvoření kontejneru objektů blob, můžete nahrát objekt blob kontejneru objektů blob, stáhne objekt blob do místního počítače, otevřete objekt blob na místním počítači a mnoho dalšího.
+Po vytvoření kontejneru objektů blob, můžete nahrát objekt blob kontejneru objektů blob toothat, stažení objektů blob tooyour místní počítač, otevřete objekt blob na místním počítači a mnoho dalšího.
 
-Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v kontejneru objektů blob.
+Hello následující kroky ukazují, jak toomanage hello objekty BLOB (a složky) v kontejneru objektů blob.
 
 1. Otevřete Storage Explorer (Preview).
-2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete spravovat.
-3. Rozbalte účet úložiště **kontejnery objektů Blob**.
-4. Dvakrát klikněte na kontejner objektů blob, který si přejete zobrazit.
-5. V hlavním podokně se zobrazí obsah kontejneru objektů blob.
+2. V levém podokně hello rozbalte účet úložiště hello obsahující chcete toomanage kontejner objektů blob hello.
+3. Rozbalte účet úložiště hello **kontejnery objektů Blob**.
+4. Dvakrát klikněte na kontejner objektů blob hello chcete tooview.
+5. Hello hlavním podokně se zobrazí obsah kontejneru objektů blob hello.
 
    ![Kontejner objektů blob zobrazení][3]
-6. V hlavním podokně se zobrazí obsah kontejneru objektů blob.
-7. V závislosti na úloze, kterou chcete provést, postupujte podle těchto kroků:
+6. Hello hlavním podokně se zobrazí obsah kontejneru objektů blob hello.
+7. Postupujte podle těchto kroků v závislosti na úkolu hello chcete tooperform:
 
-   * **Nahrání souborů do kontejneru objektů blob**
+   * **Nahrát kontejner objektů blob tooa soubory**
 
-     1. Na panelu nástrojů v hlavním podokně vyberte **Nahrát** a pak v rozevírací nabídce vyberte **Nahrát soubory**.
+     1. Na panelu nástrojů hello hlavním podokně vyberte **nahrát**a potom **nahrání souborů** z rozevírací nabídky hello.
 
         ![Nahrát soubory nabídky][15]
-     2. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
+     2. V hello **nahrání souborů** dialogové okno, vyberte hello třemi tečkami (**...** ) na pravé straně hello hello tlačítko **soubory** textového pole tooselect hello soubory chcete tooupload.
 
         ![Nahrávání souborů možnosti][16]
-     3. Zadejte typ **Blob typu**. Článek [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) vysvětluje rozdíly mezi různé typy objektů blob.
-     4. Volitelně zadejte cílovou složku, do kterého se nahraje vybrané soubory. Pokud cílová složka neexistuje, vytvoří se.
+     3. Zadejte typ hello **Blob typu**. článek Hello [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) hello rozdíly mezi hello vysvětluje různé typy objektů blob.
+     4. Volitelně zadejte cílovou složku, do kterého se nahraje hello vybrané soubory. Pokud hello cílové složce neexistuje, bude vytvořen.
      5. Vyberte **Nahrát**.
-   * **Nahrajte do složky na kontejner objektů blob**
+   * **Nahrát kontejneru objektů blob tooa složky**
 
-     1. Na panelu nástrojů v hlavním podokně vyberte **Nahrát** a pak v rozevírací nabídce vyberte **Nahrát složku**.
+     1. Na panelu nástrojů hello hlavním podokně vyberte **nahrát**a potom **nahrát složky** z rozevírací nabídky hello.
 
         ![Nabídka Nahrát složku][17]
-     2. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
+     2. V hello **nahrávání složky** dialogové okno, vyberte hello třemi tečkami (**...** ) na pravé straně hello hello tlačítko **složky** textové pole tooselect hello složku, jejíž obsah, chcete tooupload.
 
         ![Nahrát Možnosti složky][18]
-     3. Zadejte typ **Blob typu**. Článek [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) vysvětluje rozdíly mezi různé typy objektů blob.
-     4. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
+     3. Zadejte typ hello **Blob typu**. článek Hello [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) hello rozdíly mezi hello vysvětluje různé typy objektů blob.
+     4. Volitelně zadejte cílovou složku, do které hello se nahraje obsah vybrané složky. Pokud hello cílové složce neexistuje, bude vytvořen.
      5. Vyberte **Nahrát**.
-   * **Stáhnout objekt blob do místního počítače**
+   * **Stáhněte si místní počítač tooyour objektů blob**
 
-     1. Vyberte objekt blob, který chcete stáhnout.
-     2. Na panelu nástrojů v hlavním podokně vyberte **Stáhnout**.
-     3. V **určení místa k uložení stažených blob** dialogové okno, zadejte umístění, kam má objekt blob stáhli a název chcete pojmenujte ho.  
+     1. Vyberte objekt blob hello chcete toodownload.
+     2. Na panelu nástrojů hello hlavním podokně vyberte **Stáhnout**.
+     3. V hello **zadejte, kam toosave hello stáhli blob** dialogové okno, zadejte hello umístění, kam má hello blob stáhli, a hello název chcete toogive ho.  
      4. Vyberte **Uložit**.
    * **Otevřete objekt blob do místního počítače**
 
-     1. Vyberte objekt blob, který chcete otevřít.
-     2. Na panelu nástrojů v hlavním podokně vyberte **Otevřít**.
-     3. Objekt blob se stáhne a otevřít pomocí aplikace přidružené k objektu blob základní typ souboru.
-   * **Kopírovat objekt blob do schránky.**
+     1. Vyberte objekt blob hello chcete tooopen.
+     2. Na panelu nástrojů hello hlavním podokně vyberte **otevřete**.
+     3. Objekt blob Hello se stáhne a otevřít pomocí aplikace hello spojené s hello blob základní typ souboru.
+   * **Kopírování schránky toohello objektů blob**
 
-     1. Vyberte objekt blob, který chcete kopírovat.
-     2. Na panelu nástrojů v hlavním podokně vyberte **Kopírovat**.
-     3. V levém podokně přejděte na jiný kontejner objektů blob a dvojím kliknutím zobrazíte v hlavním podokně.
-     4. Na panelu nástrojů v hlavním podokně vyberte **vložení** vytvoření kopie objektu blob.
+     1. Vyberte objekt blob hello chcete toocopy.
+     2. Na panelu nástrojů hello hlavním podokně vyberte **kopie**.
+     3. V levém podokně hello přejděte tooanother kontejner objektů blob a dvojím kliknutím tooview v hlavním podokně hello.
+     4. Na panelu nástrojů hello hlavním podokně vyberte **vložení** toocreate kopii hello objektů blob.
    * **Odstranit objekt blob**
 
-     1. Vyberte objekt blob, který chcete odstranit.
-     2. Na panelu nástrojů v hlavním podokně vyberte **Odstranit**.
-     3. V potvrzovacím dialogovém okně klikněte na **Ano**.
+     1. Vyberte objekt blob hello chcete toodelete.
+     2. Na panelu nástrojů hello hlavním podokně vyberte **odstranit**.
+     3. Vyberte **Ano** toohello dialogové okno potvrzení.
 
 ## <a name="next-steps"></a>Další kroky
-* Podívejte se na [nejnovější poznámky k verzi a videa pro Storage Explorer (Preview)](http://www.storageexplorer.com).
-* Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).
+* Zobrazení hello [nejnovější poznámky k verzi Storage Explorer (Preview) a videa](http://www.storageexplorer.com).
+* Zjistěte, jak příliš[vytvářet aplikace, které používají Azure BLOB, tabulek, front a soubory](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png
 [1]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-create.png

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuální síti Azure partnerského vztahu – Resource Manager - stejného předplatného. | Microsoft Docs"
-description: "Naučte se vytvořit virtuální síť partnerský vztah mezi virtuální sítě vytvořené pomocí Správce prostředků, které existují ve stejném předplatném Azure."
+title: "aaaCreate virtuální síti Azure partnerský vztah – Resource Manager - stejného předplatného. | Microsoft Docs"
+description: "Zjistěte, jak virtuální sítě vztahy mezi virtuálními sítěmi toocreate vytváří pomocí Správce prostředků, který neexistuje v hello stejné předplatné Azure."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2017
 ms.author: jdial;narayan;annahar
-ms.openlocfilehash: a32a6b33e04c603325ab3612f61e5852682eac7d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c2d24fdc8103c09c3bfb8e59be12e301d9e9a55a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-same-subscription"></a>Vytvoření virtuální sítě partnerský vztah – Resource Manager, stejného předplatného.
 
-V tomto kurzu zjistíte vytvořit virtuální síť partnerský vztah mezi virtuální sítě vytvořené pomocí Správce prostředků. Obě virtuální sítě existovat ve stejném předplatném. Partnerský vztah dva prostředky umožňuje virtuální sítě v různých virtuálních sítích ke komunikaci mezi sebou stejným šířky pásma a latence, jako by byl prostředky ve stejné virtuální síti. Další informace o [partnerský vztah virtuální sítě](virtual-network-peering-overview.md). 
+V tomto kurzu zjistíte toocreate virtuální síť partnerský vztah mezi virtuální sítě vytvořené pomocí Správce prostředků. Obě virtuální sítě existuje v hello stejné předplatné. Partnerského vztahu dva virtuální sítě umožňuje prostředky v různých virtuálních sítích toocommunicate s jinými s hello stejné šířky pásma a latence, jako by byl hello prostředky v hello stejné virtuální síti. Další informace o [partnerský vztah virtuální sítě](virtual-network-peering-overview.md). 
 
-Postup vytvoření virtuální sítě partnerského vztahu se liší v závislosti na tom, jestli virtuální sítě jsou ve stejné nebo jiné, odběry a které [modelu nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuální sítě se vytvářejí pomocí. Naučte se vytvořit virtuální síť partnerský vztah v jiných scénářích kliknutím na scénář z v následující tabulce:
+Hello kroky toocreate virtuální sítě partnerský vztah se liší, v závislosti na tom, zda text hello virtuální sítě jsou v hello stejný nebo jiný, odběry a které [modelu nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hello virtuální sítě se vytvářejí prostřednictvím. Zjistěte, jak toocreate a virtuální sítě, partnerský vztah v jiných scénářích kliknutím hello scénář z hello následující tabulka:
 
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
@@ -33,15 +33,15 @@ Postup vytvoření virtuální sítě partnerského vztahu se liší v závislos
 |[Jeden Resource Manager, jeden classic](create-peering-different-deployment-models.md) |stejné|
 |[Jeden Resource Manager, jeden classic](create-peering-different-deployment-models-subscriptions.md) |Různé|
 
-Virtuální síť partnerský vztah nelze vytvořit mezi dvěma virtuálními sítěmi nasazené prostřednictvím modelu nasazení classic. Partnerský vztah virtuální síť lze vytvořit pouze mezi dvěma virtuálními sítěmi, které existují ve stejné oblasti Azure. Pokud potřebujete připojit virtuální sítě, které byly obě vytvořené pomocí modelu nasazení classic nebo které existovat v různých oblastech Azure, můžete použít Azure [brány VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) připojení virtuální sítě. 
+Mezi dvěma virtuálními sítěmi nasazené prostřednictvím modelu nasazení classic hello nelze vytvořit virtuální síť partnerský vztah. Partnerský vztah virtuální sítě mohou být vytvořeny pouze mezi dvěma virtuálními sítěmi, které existují v hello stejné oblasti Azure. Pokud potřebujete tooconnect virtuální sítě, které byly obě vytvořené pomocí modelu nasazení classic hello nebo které existovat v různých oblastech Azure, můžete použít Azure [brány VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tooconnect hello virtuální sítě. 
 
-Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řádku](#cli) (CLI) Azure [prostředí PowerShell](#powershell), nebo [šablony Azure Resource Manageru](#template)vytvoření virtuální sítě partnerského vztahu. Klikněte na libovolný předchozí odkaz nástroj přejít přímo na kroky pro vytvoření virtuální sítě partnerský vztah nástroji vašeho výběru.
+Můžete použít hello [portál Azure](#portal), hello Azure [rozhraní příkazového řádku](#cli) (CLI) Azure [prostředí PowerShell](#powershell), nebo [šablony Azure Resource Manageru](#template) toocreate partnerský vztah virtuální sítě. Přímo toohello kroky pro vytvoření virtuální sítě partnerský vztah pomocí vaší nástroje, klepněte na libovolný hello předchozí nástroj odkazy toogo.
 
 ## <a name="portal"></a>Vytvoření partnerského vztahu – portál Azure
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com). Hello účet, ke kterému se přihlásíte pomocí musí mít hello potřebná oprávnění toocreate partnerský vztah virtuální sítě. V tématu hello [oprávnění](#permissions) tohoto článku podrobnosti.
 2. Klikněte na tlačítko **+ nový**, klikněte na tlačítko **sítě**, pak klikněte na tlačítko **virtuální síť**.
-3. V **vytvořit virtuální síť** okno, zadejte, nebo vyberte hodnoty pro následující nastavení a potom klikněte na tlačítko **vytvořit**:
+3. V hello **vytvořit virtuální síť** okno, zadejte, nebo vyberte hodnoty pro hello následující nastavení a potom klikněte na tlačítko **vytvořit**:
     - **Název**: *myVnet1*
     - **Adresní prostor**: *10.0.0.0/16*
     - **Název podsítě**: *výchozí*
@@ -49,7 +49,7 @@ Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řá
     - **Předplatné**: Vyberte předplatné
     - **Skupina prostředků**: vyberte **vytvořit nový** a zadejte *myResourceGroup*
     - **Umístění**: *východní USA*
-4. Proveďte kroky 2 až 3 znovu zadat následující hodnoty v kroku 3:
+4. Proveďte kroky 2 až 3 znovu zadání hello následující hodnoty v kroku 3:
     - **Název**: *myVnet2*
     - **Adresní prostor**: *10.1.0.0/16*
     - **Název podsítě**: *výchozí*
@@ -57,41 +57,41 @@ Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řá
     - **Předplatné**: Vyberte předplatné
     - **Skupina prostředků**: vyberte **použít existující** a vyberte *myResourceGroup*
     - **Umístění**: *východní USA*
-5. V **vyhledávání prostředků** pole v horní části portálu, typ *myResourceGroup*. Klikněte na tlačítko **myResourceGroup** při zobrazí ve výsledcích hledání. Zobrazí okno **myresourcegroup** skupinu prostředků. Skupina prostředků obsahuje dvě virtuální sítě vytvořené v předchozích krocích.
+5. V hello **vyhledávání prostředků** pole v horní části hello hello portálu, typ *myResourceGroup*. Klikněte na tlačítko **myResourceGroup** při zobrazí ve výsledcích hledání hello. Zobrazí se okno pro hello **myresourcegroup** skupinu prostředků. Skupina prostředků Hello obsahuje hello dvě virtuální sítě vytvořené v předchozích krocích.
 6. Klikněte na tlačítko **myVNet1**.
-7. V **myVnet1** okno, které se zobrazí, klikněte na tlačítko **partnerských vztahů** ze seznamu svislé možností na levé straně okna.
-8. V **myVnet1 - partnerských vztahů** okno, které se zobrazily, klikněte na tlačítko **+ přidat**
-9. V **partnerský vztah přidat** okno, které se zobrazí, zadejte, nebo vyberte následující možnosti a potom klikněte na tlačítko **OK**:
+7. V hello **myVnet1** okno, které se zobrazí, klikněte na tlačítko **partnerských vztahů** z hello svislé seznam možností na levé straně okna hello hello.
+8. V hello **myVnet1 - partnerských vztahů** okno, které se zobrazily, klikněte na tlačítko **+ přidat**
+9. V hello **partnerský vztah přidat** okno, které se zobrazí, zadejte, nebo vyberte hello následující možnosti a potom klikněte na tlačítko **OK**:
      - **Název**: *myVnet1ToMyVnet2*
      - **Virtuální síť modelu nasazení**: vyberte **Resource Manager**. 
      - **Předplatné**: Vyberte předplatné
      - **Virtuální síť**: klikněte na tlačítko **vyberte virtuální síť**, pak klikněte na tlačítko **myVnet2**.
      - **Povolit přístup k virtuální síti:** Ujistěte se, že **povoleno** je vybrána.
-    Žádné další nastavení použitá v tomto kurzu. Další informace o všech nastaveních partnerského vztahu, přečtěte si [spravovat virtuální sítě partnerských vztahů](virtual-network-manage-peering.md#create-a-peering).
-10. Po kliknutí na **OK** v předchozím kroku, **partnerský vztah přidat** okno se zavře a zobrazí **myVnet1 - partnerských vztahů** okno znovu. Za několik sekund partnerského vztahu, kterou jste vytvořili se zobrazí v okně. **Iniciované** , je uvedena ve **stav partnerského vztahu** sloupec pro **myVnet1ToMyVnet2** partnerského vztahu, můžete vytvořit. Jste peered Vnet1 k Vnet2, ale teď musí peer myVnet2 k myVnet1. Partnerský vztah, musí být vytvořený v obou směrech povolit prostředky ve virtuálních sítích ke komunikaci mezi sebou.
-11. Proveďte kroky 5 až 10 znovu pro myVnet2.  Název partnerského vztahu *myVnet2ToMyVnet1*.
-12. Několik sekund po kliknutí na **OK** vytvoření partnerského vztahu pro MyVnet2, **myVnet2ToMyVnet1** partnerský vztah, kterou jste právě vytvořili je označené **připojeno** v  **Partnerský vztah stav** sloupce.
-13. Znovu proveďte kroky 5 až 7 pro MyVnet1. **Stav partnerského vztahu** pro **myVnet1ToVNet2** partnerského vztahu je nyní také **připojeno**. Partnerského vztahu je úspěšně vytvořeno po uvidíte **připojeno** v **stav partnerského vztahu** sloupec pro obě virtuální sítě v partnerském vztahu.
-14. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jednoho virtuálního počítače na druhý k ověření připojení.
-15. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v [odstranit prostředky](#delete-portal) tohoto článku.
+    Žádné další nastavení použitá v tomto kurzu. Přečtěte si toolearn o všech nastaveních partnerského vztahu, [spravovat virtuální sítě partnerských vztahů](virtual-network-manage-peering.md#create-a-peering).
+10. Po kliknutí na **OK** v předchozím kroku hello hello **partnerský vztah přidat** okno se zavře a zobrazí hello **myVnet1 - partnerských vztahů** okno znovu. Za několik sekund zobrazí se hello partnerský vztah, kterou jste vytvořili v okně hello. **Iniciované** je uvedena v hello **stav partnerského vztahu** sloupec pro hello **myVnet1ToMyVnet2** partnerského vztahu, můžete vytvořit. Jste peered Vnet1 tooVnet2, ale teď musí peer myVnet2 toomyVnet1. Hello partnerského vztahu musí být vytvořený v obou směrech tooenable prostředky v toocommunicate hello virtuálních sítí mezi sebou.
+11. Proveďte kroky 5 až 10 znovu pro myVnet2.  Partnerský vztah hello název *myVnet2ToMyVnet1*.
+12. Několik sekund po kliknutí na **OK** toocreate hello partnerský vztah pro MyVnet2, hello **myVnet2ToMyVnet1** partnerský vztah, kterou jste právě vytvořili je označené **připojeno** v hello  **Partnerský vztah stav** sloupce.
+13. Znovu proveďte kroky 5 až 7 pro MyVnet1. Hello **stav partnerského vztahu** pro hello **myVnet1ToVNet2** partnerského vztahu je nyní také **připojeno**. partnerský vztah Hello je úspěšně vytvořeno po uvidíte **připojeno** v hello **stav partnerského vztahu** sloupec pro obě virtuální sítě v partnerském vztahu hello.
+14. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jedné virtuální počítač toohello jiných, toovalidate připojení.
+15. **Volitelné**: toodelete hello prostředky, které vytvoříte v tomto kurzu, dokončení hello kroky hello [odstranit prostředky](#delete-portal) tohoto článku.
 
-Veškeré prostředky Azure, kterou vytvoříte na buď virtuální sítě je nyní možné vzájemně komunikovat prostřednictvím jejich IP adresy. Pokud používáte překlad výchozí Azure pro virtuální sítě, nejsou prostředky ve virtuálních sítích překládat názvy virtuálních sítí. Pokud chcete překládat názvy virtuálních sítí v partnerský vztah, musíte vytvořit vlastní server DNS. Zjistěte, jak nastavit [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+Veškeré prostředky Azure, kterou vytvoříte na buď virtuální sítě je teď možné toocommunicate mezi sebou prostřednictvím jejich IP adresy. Pokud používáte výchozí Azure překlad hello virtuálních sítí, hello prostředky ve virtuálních sítích hello nejsou možné tooresolve názvy virtuálních sítí hello. Pokud chcete tooresolve názvy virtuálních sítí v partnerský vztah, musíte vytvořit vlastní server DNS. Zjistěte, jak tooset až [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
 ## <a name="cli"></a>Vytvoření partnerského vztahu - rozhraní příkazového řádku Azure
 
-Následující skript:
+Hello následující skript:
 
-- Vyžaduje Azure CLI verze verze 2.0.4 nebo novější. Chcete-li najít verzi, spusťte `az --version` příkaz. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Funguje v prostředí Bash. Možnosti na spouštění skriptů rozhraní příkazového řádku Azure v klientovi Windows najdete v tématu [běžící ve Windows Azure CLI](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+- Vyžaduje hello Azure CLI verze verze 2.0.4 nebo novější. verze hello toofind, spusťte hello `az --version` příkaz. Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Funguje v prostředí Bash. Možnosti na spouštění skriptů rozhraní příkazového řádku Azure v klientovi Windows najdete v tématu [běžící ve Windows hello rozhraní příkazového řádku Azure](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
-Místo instalace rozhraní příkazového řádku a jeho závislé součásti, můžete použít prostředí cloudové služby Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte **vyzkoušet** tlačítko ve skriptu, který způsobem, které vyvolá prostředí cloudu, který vám umožní přihlásit se k účtu Azure s. Chcete-li spustit skript, klikněte na tlačítko **kopie** tlačítko a umožňuje vložit obsah do své cloudové prostředí.
+Místo instalace hello rozhraní příkazového řádku a jeho závislé součásti, můžete použít hello prostředí cloudu Azure. Hello cloudové prostředí Azure je bezplatná prostředí Bash, který můžete spustit přímo v rámci hello portálu Azure. Má hello rozhraní příkazového řádku Azure předinstalována a nakonfigurované toouse s vaším účtem. Klikněte na tlačítko hello **vyzkoušet** tlačítka na hello skript, který způsobem, které vyvolá prostředí cloudu, který vám umožní přihlásit se tooyour účet Azure s. tooexecute hello skriptu, klikněte na tlačítko hello **kopie** tlačítko a vložte obsah hello do své cloudové prostředí.
 
 1. Vytvořte skupinu prostředků a dvě virtuální sítě.
 
     ```azurecli-interactive
     #!/bin/bash
 
-    # Variables for common values used throughout the script.
+    # Variables for common values used throughout hello script.
     rgName="myResourceGroup"
     location="eastus"
 
@@ -115,23 +115,23 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       --address-prefix 10.1.0.0/16
     ```
 
-2. Vytvoření virtuální sítě partnerský vztah mezi dvěma virtuálními sítěmi.
+2. Vytvoření virtuální sítě partnerský vztah mezi dvěma virtuálními sítěmi hello.
  
     ```azurecli-interactive
-    # Get the id for VNet1.
+    # Get hello id for VNet1.
     vnet1Id=$(az network vnet show \
       --resource-group $rgName \
       --name myVnet1 \
       --query id --out tsv)
 
-    # Get the id for VNet2.
+    # Get hello id for VNet2.
     vnet2Id=$(az network vnet show \
       --resource-group $rgName \
       --name myVnet2 \
       --query id \
       --out tsv)
 
-    # Peer VNet1 to VNet2.
+    # Peer VNet1 tooVNet2.
     az network vnet peering create \
       --name myVnet1ToMyVnet2 \
       --resource-group $rgName \
@@ -139,7 +139,7 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       --remote-vnet-id $vnet2Id \
       --allow-vnet-access
 
-    # Peer VNet2 to VNet1.
+    # Peer VNet2 tooVNet1.
     az network vnet peering create \
       --name myVnet2ToMyVnet1 \
       --resource-group $rgName \
@@ -148,7 +148,7 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       --allow-vnet-access
     ```
 
-3. Po spuštění skriptu, zkontrolujte partnerských vztahů pro každou virtuální síť. 
+3. Po provedení hello skriptu, zkontrolujte hello partnerských vztahů pro každou virtuální síť. 
 
     ```azurecli-interactive
     az network vnet peering list \
@@ -157,23 +157,23 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       --output table
     ```
     
-    Předchozí příkaz spusťte znovu, nahraďte *myVnet1* s *myVnet2*. Výstup z obou příkazů ukazuje **připojeno** v **PeeringState** sloupce.
+    Opakujte předchozí příkaz hello, nahraďte *myVnet1* s *myVnet2*. výstup Hello obou příkazů ukazuje **připojeno** v hello **PeeringState** sloupce.
 
-     Veškeré prostředky Azure, kterou vytvoříte na buď virtuální sítě je nyní možné vzájemně komunikovat prostřednictvím jejich IP adresy. Pokud používáte překlad výchozí Azure pro virtuální sítě, nejsou prostředky ve virtuálních sítích překládat názvy virtuálních sítí. Pokud chcete překládat názvy virtuálních sítí v partnerský vztah, musíte vytvořit vlastní server DNS. Zjistěte, jak nastavit [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+     Veškeré prostředky Azure, kterou vytvoříte na buď virtuální sítě je teď možné toocommunicate mezi sebou prostřednictvím jejich IP adresy. Pokud používáte výchozí Azure překlad hello virtuálních sítí, hello prostředky ve virtuálních sítích hello nejsou možné tooresolve názvy virtuálních sítí hello. Pokud chcete tooresolve názvy virtuálních sítí v partnerský vztah, musíte vytvořit vlastní server DNS. Zjistěte, jak tooset až [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
-4. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jednoho virtuálního počítače na druhý k ověření připojení.
-5. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v [odstranit prostředky](#delete-cli) v tomto článku.
+4. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jedné virtuální počítač toohello jiných, toovalidate připojení.
+5. **Volitelné**: toodelete hello prostředky, které vytvoříte v tomto kurzu, kroky dokončení hello [odstranit prostředky](#delete-cli) v tomto článku.
 
 
 ## <a name="powershell"></a>Vytvoření partnerského vztahu – prostředí PowerShell
 
-1. Nainstalujte nejnovější verzi modulu [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) pro PowerShell. Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Pokud chcete spustit relaci PowerShellu, přejděte do nabídky **Start**, zadejte **powershell** a potom klikněte na **PowerShell**.
-3. V PowerShellu se přihlaste k Azure zadáním příkazu `login-azurermaccount`. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
-4. Vytvořte skupinu prostředků a dvě virtuální sítě. Spustit skript, zkopírujte následující skript, vložte jej do prostředí PowerShell a potom stiskněte klávesu `Enter` po poslední řádek se zobrazí na obrazovce:
+1. Nainstalujte nejnovější verzi hello prostředí PowerShell hello [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) modulu. Pokud jste nový tooAzure prostředí PowerShell, najdete v části [Přehled prostředí Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. toostart relaci prostředí PowerShell, přejděte příliš**spustit**, zadejte **prostředí powershell**a potom klikněte na **prostředí PowerShell**.
+3. V prostředí PowerShell přihlásit tooAzure zadáním hello `login-azurermaccount` příkaz. Hello účet, ke kterému se přihlásíte pomocí musí mít hello potřebná oprávnění toocreate partnerský vztah virtuální sítě. V tématu hello [oprávnění](#permissions) tohoto článku podrobnosti.
+4. Vytvořte skupinu prostředků a dvě virtuální sítě. tooexecute hello skriptu kopie hello následující skript, vložte jej do prostředí PowerShell a stiskněte klávesu `Enter` po poslední řádek hello se zobrazí na úvodní obrazovka:
 
     ```powershell
-    # Variables for common values used throughout the script.
+    # Variables for common values used throughout hello script.
     $rgName='myResourceGroup'
     $location='eastus'
 
@@ -197,21 +197,21 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       -Location $location
     ```
 
-5. Vytvoření virtuální sítě partnerský vztah mezi dvěma virtuálními sítěmi. Zkopírujte následující skript, vložte v prostředí PowerShell a potom stiskněte klávesu `Enter` po poslední řádek se zobrazí na obrazovce:
+5. Vytvoření virtuální sítě partnerský vztah mezi dvěma virtuálními sítěmi hello. Kopírování hello následující skript, vložte tooPowerShell a stiskněte klávesu `Enter` po poslední řádek hello se zobrazí na úvodní obrazovka:
     ```powershell
-    # Peer VNet1 to VNet2.
+    # Peer VNet1 tooVNet2.
     Add-AzureRmVirtualNetworkPeering `
       -Name 'myVnet1ToMyVnet2' `
       -VirtualNetwork $vnet1 `
       -RemoteVirtualNetworkId $vnet2.Id
 
-    # Peer VNet2 to VNet1.
+    # Peer VNet2 tooVNet1.
     Add-AzureRmVirtualNetworkPeering `
       -Name 'myVnet2ToMyVnet1' `
       -VirtualNetwork $vnet2 `
       -RemoteVirtualNetworkId $vnet1.Id
     ```
-6. Ke kontrole podsítě virtuální sítě, zkopírujte následující příkaz, vložte v prostředí PowerShell a stiskněte klávesu `Enter`:
+6. tooreview hello podsítě pro virtuální síť hello, kopie hello následující příkaz, vložte tooPowerShell a potom stiskněte klávesu `Enter`:
 
     ```powershell
     Get-AzureRmVirtualNetworkPeering `
@@ -220,41 +220,41 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       | Format-Table VirtualNetworkName, PeeringState
     ```
 
-    Předchozí příkaz spusťte znovu, nahraďte *myVnet1* s *myVnet2*. Výstup z obou příkazů ukazuje **připojeno** v **PeeringState** sloupce.
-7. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jednoho virtuálního počítače na druhý k ověření připojení.
-8. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v [odstranit prostředky](#delete-powershell) v tomto článku.
+    Opakujte předchozí příkaz hello, nahraďte *myVnet1* s *myVnet2*. výstup Hello obou příkazů ukazuje **připojeno** v hello **PeeringState** sloupce.
+7. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jedné virtuální počítač toohello jiných, toovalidate připojení.
+8. **Volitelné**: toodelete hello prostředky, které vytvoříte v tomto kurzu, kroky dokončení hello [odstranit prostředky](#delete-powershell) v tomto článku.
 
-Veškeré prostředky Azure, kterou vytvoříte na buď virtuální sítě je nyní možné vzájemně komunikovat prostřednictvím jejich IP adresy. Pokud používáte překlad výchozí Azure pro virtuální sítě, nejsou prostředky ve virtuálních sítích překládat názvy virtuálních sítí. Pokud chcete překládat názvy virtuálních sítí v partnerský vztah, musíte vytvořit vlastní server DNS. Zjistěte, jak nastavit [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+Veškeré prostředky Azure, kterou vytvoříte na buď virtuální sítě je teď možné toocommunicate mezi sebou prostřednictvím jejich IP adresy. Pokud používáte výchozí Azure překlad hello virtuálních sítí, hello prostředky ve virtuálních sítích hello nejsou možné tooresolve názvy virtuálních sítí hello. Pokud chcete tooresolve názvy virtuálních sítí v partnerský vztah, musíte vytvořit vlastní server DNS. Zjistěte, jak tooset až [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
 ## <a name="template"></a>Vytvoření partnerského vztahu - šablony Resource Manageru
 
-1. Referenční dokumentace [vytvoření virtuální sítě partnerského vztahu](https://azure.microsoft.com/resources/templates/201-vnet-to-vnet-peering) šablony Resource Manageru. Součástí šablony jsou pokyny pro její nasazení pomocí webu Azure Portal, PowerShellu nebo Azure CLI. Přihlaste se ke podle toho, co nástroj, můžete zvolit pro nasazení šablony s použitím účtu, který má nezbytná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
-2. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jednoho virtuálního počítače na druhý k ověření připojení.
-3. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v [odstranit prostředky](#delete) tohoto článku, pomocí portálu Azure, PowerShell nebo rozhraní příkazového řádku Azure.
+1. Referenční dokumentace [vytvoření virtuální sítě partnerského vztahu](https://azure.microsoft.com/resources/templates/201-vnet-to-vnet-peering) šablony Resource Manageru. Pokyny jsou k dispozici hello šablonou pro nasazení šablony hello pomocí hello portálu Azure, PowerShell nebo hello rozhraní příkazového řádku Azure. Přihlášení toowhichever nástroj, který zvolíte toodeploy hello šablony s použitím účtu, který má hello toocreate potřebná oprávnění, virtuální sítě partnerský vztah. V tématu hello [oprávnění](#permissions) tohoto článku podrobnosti.
+2. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jedné virtuální počítač toohello jiných, toovalidate připojení.
+3. **Volitelné**: toodelete hello prostředky, které vytvoříte v tomto kurzu, dokončení hello kroky hello [odstranit prostředky](#delete) hello tohoto článku, buď pomocí portálu Azure, PowerShell nebo hello rozhraní příkazového řádku Azure.
 
 ## <a name="permissions"></a>Oprávnění
 
-Účty, které použijete k vytvoření virtuální sítě partnerského vztahu musí mít potřebné role nebo oprávnění. Například pokud dvě virtuální sítě s názvem VNet1 a VNet2 byly partnerský vztah, musí váš účet se přiřazenou následující minimální role nebo oprávnění pro každou virtuální síť:
+Hello účty, že používáte toocreate partnerský vztah virtuální síť musí mít hello potřebné role nebo oprávnění. Například pokud dvě virtuální sítě s názvem VNet1 a VNet2 byly partnerský vztah, musí váš účet se přiřazenou hello následující minimální role nebo oprávnění pro každou virtuální síť:
     
 |Virtuální síť|Role|Oprávnění|
 |---|---|---|
 |VNet1|[Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 |VNet2|[Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 
-Další informace o [předdefinované role](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a přiřazení specifické oprávnění pro [vlastní role](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (pouze Resource Manager).
+Další informace o [předdefinované role](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a přiřazení konkrétní oprávnění příliš[vlastní role](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (pouze Resource Manager).
 
 ## <a name="delete"></a>Odstraňte prostředky
-Po dokončení tohoto kurzu, můžete chtít odstranit z prostředků, které jste vytvořili v tomto kurzu, aby vám zbytečně nenabíhaly poplatky za používání. Odstranění skupiny prostředků se také odstraní všechny prostředky, které jsou ve skupině prostředků.
+Po dokončení tohoto kurzu, můžete chtít toodelete hello prostředků, kterou jste vytvořili v kurzu hello, aby vám zbytečně nenabíhaly poplatky za používání. Odstranění skupiny prostředků se také odstraní všechny prostředky, které jsou ve skupině prostředků hello.
 
 ### <a name="delete-portal"></a>Portál Azure
 
-1. V dialogovém okně hledání portálu zadejte **myResourceGroup**. Ve výsledcích hledání klikněte na tlačítko **myResourceGroup**.
-2. Na **myResourceGroup** okně klikněte **odstranit** ikonu.
-3. Potvrďte odstranění, v **název skupiny prostředků typu** zadejte **myResourceGroup**a potom klikněte na **odstranit**.
+1. Hello portálu vyhledávacího pole zadejte **myResourceGroup**. Ve výsledcích hledání hello, klikněte na tlačítko **myResourceGroup**.
+2. Na hello **myResourceGroup** okně klikněte na tlačítko hello **odstranit** ikonu.
+3. odstranění hello tooconfirm, v hello **typ hello název skupiny prostředků** zadejte **myResourceGroup**a potom klikněte na **odstranit**.
 
 ### <a name="delete-cli"></a>Rozhraní příkazového řádku Azure
 
-Zadejte následující příkaz:
+Zadejte hello následující příkaz:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -262,7 +262,7 @@ az group delete --name myResourceGroup --yes
 
 ### <a name="delete-powershell"></a>Prostředí PowerShell
 
-Zadejte následující příkaz:
+Zadejte hello následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -force
@@ -272,4 +272,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -force
 
 - Důkladně Seznamte se s důležité [partnerského vztahu omezení virtuální sítě a chování](virtual-network-manage-peering.md#requirements-and-constraints) před vytvořením virtuální sítě partnerský vztah pro produkční použití.
 - Další informace o všech [partnerského vztahu nastavení virtuální sítě](virtual-network-manage-peering.md#create-a-peering).
-- Zjistěte, jak [vytvořit rozbočovače a příčkou topologie sítě](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerský vztah virtuální sítě.
+- Zjistěte, jak příliš[vytvořit rozbočovače a příčkou topologie sítě](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerský vztah virtuální sítě.

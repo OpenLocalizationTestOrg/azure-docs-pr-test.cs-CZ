@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace projektu Azure pomocí více konfigurace služby | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat změnou ServiceDefinition.csdef a souboru ServiceConfiguration.cscfg souborů projektu Azure cloud service."
+title: "aaaConfiguring projektu Azure pomocí více konfigurace služby | Microsoft Docs"
+description: "Zjistěte, jak tooconfigure Azure cloudové služby projektu změnou hello ServiceDefinition.csdef a souboru ServiceConfiguration.cscfg soubory."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 14222266093eb876db0ac9ce8d3d17a04c65d1a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>Konfigurace projektu Azure pomocí více konfigurace služby
-Projekt Azure cloud service zahrnuje dvě konfigurační soubory: ServiceDefinition.csdef a souboru ServiceConfiguration.cscfg. Tyto soubory jsou zabalit s aplikací Azure cloud service a nasazení do Azure.
+Projekt Azure cloud service zahrnuje dvě konfigurační soubory: ServiceDefinition.csdef a souboru ServiceConfiguration.cscfg. Tyto soubory jsou zabalit s aplikací Azure cloud service a nasazení tooAzure.
 
-* **ServiceDefinition.csdef** soubor obsahuje metadata, která je požadované pro prostředí Azure pro požadavky na aplikace cloudové služby, včetně rolí, které obsahuje. Tento soubor zároveň obsahuje nastavení konfigurace, které se vztahují na všechny instance. Tato nastavení konfigurace můžete přečíst v době běhu pomocí služby hostování modulu Runtime rozhraní API služby Azure. Tento soubor nelze aktualizovat, když vaše služba běží v Azure.
-* **Souboru ServiceConfiguration.cscfg** souboru nastaví hodnoty pro nastavení konfigurace definované v definičním souboru služby a určuje počet instancí pro jednotlivé role. Tento soubor můžete aktualizovat, když cloudové služby běží v Azure.
+* Hello **ServiceDefinition.csdef** soubor obsahuje hello metadat, který je požadován hello prostředí Azure pro hello požadavky aplikace cloudové služby, včetně rolí, které obsahuje. Tento soubor zároveň obsahuje nastavení konfigurace, které se vztahují tooall instance. Tato nastavení konfigurace můžete přečíst v době běhu pomocí hello API Runtime hostování služby Azure. Tento soubor nelze aktualizovat, když vaše služba běží v Azure.
+* Hello **souboru ServiceConfiguration.cscfg** souboru nastaví hodnoty pro nastavení konfigurace hello definované v souboru definice služby hello a určuje hello počet instancí toorun pro každou roli. Tento soubor můžete aktualizovat, když cloudové služby běží v Azure.
 
-Nástroje pro Azure pro sadu Microsoft Visual Studio poskytují stránky vlastností, které můžete použít k nastavení konfigurace uložené v těchto souborech. Pro přístup k stránek vlastností, dvakrát klikněte na odkaz na roli pod projektu Azure cloudové služby v Průzkumníku řešení, nebo klikněte pravým tlačítkem na odkaz na roli a vyberte **vlastnosti**, jak je znázorněno na následujícím obrázku.
+Hello nástroje Azure pro sadu Microsoft Visual Studio poskytují stránky vlastností, které můžete použít nastavení konfigurace tooset uložené v těchto souborech. tooaccess hello stránky vlastností, dvakrát klikněte na odkaz na role hello pod hello projektu Azure cloudové služby v Průzkumníku řešení, nebo klikněte pravým tlačítkem na odkaz hello roli a vyberte možnost **vlastnosti**, jak ukazuje následující obrázek hello.
 
 ![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-Informace o základní schémata pro definice služby a soubory konfigurace služby najdete v tématu [– odkaz schématu](https://msdn.microsoft.com/library/azure/dd179398.aspx). Další informace o konfiguraci služby najdete v tématu [postup konfigurace cloudové služby](cloud-services/cloud-services-how-to-configure.md).
+Informace o hello základní schémata hello definice služby a soubory konfigurace služby najdete v tématu hello [– odkaz schématu](https://msdn.microsoft.com/library/azure/dd179398.aspx). Další informace o konfiguraci služby najdete v tématu [jak tooConfigure cloudových služeb](cloud-services/cloud-services-how-to-configure.md).
 
 ## <a name="configuring-role-properties"></a>Konfigurace vlastností role
-Stránky vlastností pro webovou roli a roli pracovního procesu jsou podobné, i když existuje několik rozdílů, na kterou v následujících částech.
+stránky vlastností Hello pro webovou roli a roli pracovního procesu jsou podobné, i když existuje několik rozdílů, na kterou v následující části hello.
 
-Z **ukládání do mezipaměti** stránky, můžete nakonfigurovat ukládání do mezipaměti služby Azure.
+Z hello **ukládání do mezipaměti** stránky, můžete nakonfigurovat hello ukládání do mezipaměti služby Azure.
 
 ### <a name="configuration-page"></a>Stránka Konfigurace
-Na **konfigurace** stránky, můžete nastavit tyto vlastnosti:
+Na hello **konfigurace** stránky, můžete nastavit tyto vlastnosti:
 
 **Instance**
 
-Nastavte **Instance** počet vlastnosti tak, aby se počet instancí služby měly být spuštěny pro tuto roli.
+Sada hello **Instance** počet vlastnost toohello počet instancí služby hello měly být spuštěny pro tuto roli.
 
-Nastavte **velikost virtuálního počítače** vlastnost **navíc malé**, **malé**, **střední**, **velké**, nebo **Velmi velké**.  Další informace najdete v tématu [velikosti pro cloudové služby](cloud-services/cloud-services-sizes-specs.md).
+Sada hello **velikost virtuálního počítače** vlastnost příliš**navíc malé**, **malé**, **střední**, **velké**, nebo **Velmi velké**.  Další informace najdete v tématu [velikosti pro cloudové služby](cloud-services/cloud-services-sizes-specs.md).
 
 **Po spuštění akce** (jenom webové Role)
 
-Nastavte tuto vlastnost k určení, že by měl Visual Studio při spuštění ladění spustit webový prohlížeč, koncových bodů protokolu HTTP nebo HTTPS koncových bodů, nebo obojí.
+Nastavte tuto vlastnost toospecify, který Visual Studio by měla spustit webový prohlížeč, koncové body hello HTTP nebo HTTPS hello koncových bodů nebo obojí, při spuštění ladění.
 
-Možnost koncový bod HTTPS je k dispozici pouze v případě, že jste definovali koncový bod HTTPS již pro vaši roli. Můžete definovat koncový bod HTTPS na **koncové body** stránku vlastností.
+Hello možnost koncový bod HTTPS je k dispozici pouze v případě, že jste definovali koncový bod HTTPS již pro vaši roli. Můžete definovat koncový bod HTTPS na hello **koncové body** stránku vlastností.
 
-Pokud jste už přidali koncový bod HTTPS, ve výchozím nastavení je povolena možnost koncový bod HTTPS a Visual Studio spustí prohlížeč pro tento koncový bod, když spustíte, ladění, kromě prohlížeče pro svůj koncový bod HTTP. Předpokladem je, že jsou povolené oba možnosti spuštění.
+Pokud jste už přidali koncový bod HTTPS, hello možnost koncový bod HTTPS je ve výchozím nastavení povolené a Visual Studio spustí prohlížeč pro tento koncový bod, když spustíte, ladění, kromě prohlížeče tooa pro svůj koncový bod HTTP. Předpokladem je, že jsou povolené oba možnosti spuštění.
 
 **Diagnostika**
 
-Diagnostika je ve výchozím nastavení povolena pro webovou roli. Účet služby Azure cloud projektu a úložiště jsou nastaveny na používat emulátor místního úložiště. Pokud budete chtít nasadit do Azure, můžete vybrat tlačítko Tvůrce (**...** ) se aktualizovat účet úložiště pro použití úložiště Azure v cloudu. Diagnostická data můžou přenášet k účtu úložiště na vyžádání nebo v automaticky naplánovaných intervalech. Další informace o Azure diagnostics najdete v tématu [povolení diagnostiky Azure Cloud Services a virtuálních počítačů](cloud-services/cloud-services-dotnet-diagnostics.md).
+Diagnostika je ve výchozím nastavení povolena pro webovou roli hello. emulátor místního úložiště hello toouse jsou nastavené Hello projektu Azure cloudové služby a účet úložiště. Pokud jste připravené toodeploy tooAzure, můžete vybrat tlačítko Tvůrce hello (**...** ) tooupdate hello úložiště účet toouse úložiště Azure v cloudu hello. Účet úložiště toohello data diagnostiky hello můžete přenést na vyžádání nebo v automaticky naplánovaných intervalech. Další informace o Azure diagnostics najdete v tématu [povolení diagnostiky Azure Cloud Services a virtuálních počítačů](cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="settings-page"></a>Nastavení stránky
-Na **nastavení** stránky, můžete přidat nastavení konfigurace služby. Nastavení konfigurace jsou páry název hodnota. Kód spuštěný v roli může číst hodnoty nastavení konfigurace v době běhu pomocí třídy poskytované [spravované knihovny Azure](http://go.microsoft.com/fwlink?LinkID=171026). Konkrétně [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) vrátí metoda hodnotu s názvem konfigurace nastavení za běhu.
+Na hello **nastavení** stránky, můžete přidat nastavení konfigurace pro vaši službu. Nastavení konfigurace jsou páry název hodnota. Kód spuštěný v roli hello může číst hello hodnoty nastavení konfigurace v době běhu pomocí třídy poskytované hello [spravované knihovny Azure](http://go.microsoft.com/fwlink?LinkID=171026). Konkrétně hello [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) metoda vrátí hodnotu hello nastavení s názvem konfigurace za běhu.
 
-### <a name="configuring-a-connection-string-to-a-storage-account"></a>Konfigurace připojovacího řetězce k účtu úložiště
-Připojovací řetězec je nastavení konfigurace, která poskytuje informace o připojení a ověřování pro emulátor úložiště nebo pro účet úložiště Azure. Vždy, když kód musí přístup k datům služby úložiště Azure – to znamená, objektů blob, fronty nebo dat v tabulce – Kód spuštěný v roli, je nutné zadat připojovací řetězec pro daný účet úložiště.
+### <a name="configuring-a-connection-string-tooa-storage-account"></a>Konfigurace účtu úložiště tooa řetězec připojení
+Připojovací řetězec je nastavení konfigurace, která poskytuje informace o připojení a ověřování pro emulátor úložiště hello nebo pro účet úložiště Azure. Vždy, když kód musí přístup k datům služby úložiště Azure – to znamená, objektů blob, fronty nebo dat v tabulce – Kód spuštěný v roli, budete mít toodefine připojovací řetězec pro daný účet úložiště.
 
-Připojovací řetězec, který odkazuje na účet úložiště Azure, musíte použít definované formát. Informace o tom, jak vytvořit připojovacích řetězců najdete v tématu [nakonfigurování připojovacích řetězců úložiště Azure](storage/common/storage-configure-connection-string.md).
+Připojovací řetězec, který účet úložiště Azure tooan bodů musí mít definovaný formát. Informace o tom najdete v části toocreate připojovací řetězce, [nakonfigurování připojovacích řetězců úložiště Azure](storage/common/storage-configure-connection-string.md).
 
-Až budete připraveni k testování služby pro služby Azure storage, nebo když budete připraveni k nasazení cloudové služby na Azure, můžete změnit hodnotu libovolné púřipojovací řetězce tak, aby odkazovaly na váš účet úložiště Azure. Vyberte (**...** ), vyberte **zadejte přihlašovací údaje účtu úložiště**. Zadejte informací o vašem účtu, který obsahuje název účtu a klíč účtu. V **připojovací řetězce k účtu úložiště** dialogové okno, můžete také znamená to, zda použít výchozí HTTPS koncové body (výchozí možnost), výchozí koncové body protokolu HTTP nebo vlastní koncové body. Můžete se rozhodnout používat vlastní koncové body, pokud je zaregistrovaný vlastní název domény pro vaši službu, jak je popsáno v [nakonfigurovat vlastní název domény pro data objektů blob v účtu úložiště Azure](storage/blobs/storage-custom-domain-name.md).
+Když jsou připravené tootest služby proti hello služby Azure storage, nebo pokud jste připraveni toodeploy tooAzure vaše cloudové služby, můžete změnit hodnotu hello všechny připojovací řetězce toopoint tooyour účtu úložiště Azure. Vyberte (**...** ), vyberte **zadejte přihlašovací údaje účtu úložiště**. Zadejte informací o vašem účtu, který obsahuje název účtu a klíč účtu. V hello **připojovací řetězce k účtu úložiště** dialogové okno, můžete také určit, jestli chcete toouse hello výchozí HTTPS koncové body (hello výchozí možnost), koncové body HTTP hello výchozí nebo vlastní koncové body. Můžete se rozhodnout vlastní koncové body toouse Pokud je zaregistrovaný vlastní název domény pro vaši službu, jak je popsáno v [nakonfigurovat vlastní název domény pro data objektů blob v účtu úložiště Azure](storage/blobs/storage-custom-domain-name.md).
 
 > [!IMPORTANT]
-> Je třeba upravit připojovací řetězce tak, aby odkazoval na účet úložiště Azure, před nasazením služby. V opačném případě to může způsobit vaše role není spuštění a cyklicky přepínat mezi stavy inicializace, zaneprázdněn a ukončení.
+> Před nasazením služby, je třeba upravit vaše připojení řetězce toopoint tooan účtu úložiště Azure. Není-li toodo to může způsobit vaše role není toostart nebo toocycle prostřednictvím hello inicializace, zaneprázdněn a ukončení stavů.
 > 
 > 
 
 ## <a name="endpoints-page"></a>Stránka Koncové body
-Role pracovních procesů může mít libovolný počet koncových bodů protokolu HTTP, HTTPS nebo TCP. Koncové body můžou být vstupních koncových bodů, které jsou k dispozici pro externí klienty, nebo vnitřních koncových bodů, které jsou k dispozici na jiných rolí, které běží ve službě.
+Role pracovních procesů může mít libovolný počet koncových bodů protokolu HTTP, HTTPS nebo TCP. Koncové body můžou být vstupních koncových bodů, které jsou k dispozici tooexternal klientů, nebo vnitřních koncových bodů, které jsou k dispozici tooother role, které běží ve službě hello.
 
-* Koncový bod HTTP zpřístupnit do externích klientů a webové prohlížeče, změňte typ koncového bodu jako vstup a zadejte název a číslo veřejného portu.
-* Aby byl dostupný koncový bod HTTPS do externích klientů a webových prohlížečů, změnit typ koncového bodu na **vstupní**a zadejte název, číslo veřejného portu a název certifikátu pro správu.
+* toomake HTTP koncový bod k dispozici tooexternal klientů a webové prohlížeče, změňte hello koncový bod typu tooinput a zadejte název a číslo veřejného portu.
+* toomake HTTPS koncový bod k dispozici tooexternal klientů a webových prohlížečů, změnit typ koncového bodu hello příliš**vstupní**a zadejte název, číslo veřejného portu a název certifikátu pro správu.
   
-    Všimněte si, že abyste mohli zadat certifikát pro správu, je nutné na definovat certifikát **certifikáty** stránku vlastností.
-* Koncový bod zpřístupnit pro interní přístupu podle rolí v rámci cloudové služby, změňte typ koncového bodu na interní a zadejte název a privátní porty možné pro tento koncový bod.
+    Všimněte si, že abyste mohli zadat certifikát pro správu, je nutné na hello definovat hello certifikát **certifikáty** stránku vlastností.
+* toomake koncový bod k dispozici pro interní přístupu podle rolí v hello cloudové služby, změňte hello koncový bod typu toointernal a zadejte název a privátní porty možné pro tento koncový bod.
 
 ## <a name="local-storage-page"></a>Stránka Místní úložiště
-Můžete použít **místní úložiště** stránka vlastností můžete vyhradit jeden nebo více prostředků místní úložiště pro roli. Prostředek Místní úložiště je vyhrazené adresáře v systému souborů Azure virtuálního počítače, ve kterém je spuštěna instance role.
+Můžete použít hello **místní úložiště** tooreserve vlastností stránky, jeden nebo více prostředků místní úložiště pro roli. Prostředek Místní úložiště je vyhrazené adresář v systému souborů hello hello virtuální počítač Azure ve kterém je spuštěna instance role.
 
 ## <a name="certificates-page"></a>Stránka certifikátů
-Na **certifikáty** stránky, certifikáty můžete přidružit vaši roli. Certifikáty, které přidáte lze nakonfigurovat na koncové body HTTPS **koncové body** stránku vlastností.
+Na hello **certifikáty** stránky, certifikáty můžete přidružit vaši roli. Hello certifikáty, které přidáte, může být použité tooconfigure koncové body HTTPS na hello **koncové body** stránku vlastností.
 
-**Certifikáty** stránka vlastností přidá informace o certifikáty konfigurace služby. Všimněte si, že certifikáty nejsou spojených s službou; musíte nahrát certifikáty samostatně do Azure pomocí [portál Azure classic](http://go.microsoft.com/fwlink/?LinkID=213885).
+Hello **certifikáty** stránka vlastností přidá informace o konfiguraci certifikátů tooyour služby. Všimněte si, že certifikáty nejsou spojených s službou; je potřeba nahrát certifikáty samostatně tooAzure prostřednictvím hello [portál Azure classic](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-Pokud chcete přiřadit certifikát vaše role, zadejte název pro certifikát. Tento název je použít k odkazování na certifikátu, když konfigurujete na koncový bod HTTPS **koncové body** stránku vlastností. V dalším kroku určete, zda je úložiště certifikátů **místního počítače** nebo **aktuální uživatel** a název úložiště. Nakonec zadejte kryptografický otisk certifikátu. Pokud je certifikát v aktuální User\Personal (My) úložiště, můžete zadat kryptografický otisk certifikátu výběrem certifikátu z vyplněná seznamu. Pokud se nachází v jiném umístění, zadejte hodnotu kryptografického otisku ručně.
+tooassociate certifikát s rolí, zadejte název pro certifikát hello. Při konfiguraci koncový bod HTTPS na hello se použít tento certifikát název toorefer toohello **koncové body** stránku vlastností. V dalším kroku určete, zda je úložiště certifikátů hello **místního počítače** nebo **aktuální uživatel** a název hello hello úložiště. Nakonec zadejte kryptografický otisk certifikátu hello. Pokud certifikát hello je v hello aktuální User\Personal (My) úložiště, můžete zadat kryptografický otisk certifikátu hello výběrem hello certifikát z vyplněná seznamu. Pokud se nachází v jiném umístění, zadejte hodnotu kryptografického otisku hello ručně.
 
-Když přidáte certifikát z úložiště certifikátů, nastavení konfigurace pro vás se automaticky přidají všechny zprostředkující certifikáty. Chcete-li správně nakonfigurovat služby pro protokol SSL, musí se tyto zprostředkující certifikáty také nahrát do Azure.
+Když přidáte certifikát z úložiště certifikátů hello, všechny zprostředkující certifikáty se automaticky přidají toohello nastavení konfigurace pro vás. Tyto zprostředkující certifikáty musí být také nahrát tooAzure v pořadí toocorrectly konfigurace služby pro protokol SSL.
 
-Všechny certifikáty správy, které přidružit služby použít k službě jenom v případě, že je spuštěna v cloudu. Pokud vaše služba běží v místní vývojové prostředí, používá standardní certifikát, který je spravován pomocí emulátoru služby výpočty v.
+Všechny certifikáty správy, které přidružit služby použít službu tooyour jenom v případě, že je spuštěna v cloudu hello. Pokud vaše služba běží v hello místní vývojové prostředí, používá standardní certifikát, který je spravován pomocí emulátoru služby výpočty hello.
 
-## <a name="configuring-the-azure-cloud-service-project"></a>Konfigurace projektu Azure cloudové služby
-Chcete-li nakonfigurovat nastavení vztahující se k projektu celý Azure cloud service, poprvé otevřete místní nabídku pro tento uzel projektu a zvolte Vlastnosti otevřete jeho stránky vlastností. V následující tabulce jsou tyto stránky vlastností.
+## <a name="configuring-hello-azure-cloud-service-project"></a>Konfigurace projektu hello Azure cloudové služby
+tooconfigure nastavení, které se vztahuje projekt tooan celý Azure cloudové služby, poprvé otevřete hello místní nabídky pro tento uzel projektu a pak vyberte vlastnosti tooopen jeho stránky vlastností. Hello následující tabulka znázorňuje tyto stránky vlastností.
 
 | Stránky vlastností | Popis |
 | --- | --- |
-| Aplikace |Z této stránky můžete zobrazit informace o verzi nástroje Azure, která používá tento projekt cloudové služby, a můžete upgradovat na aktuální verzi nástroje. |
+| Aplikace |Z této stránky můžete zobrazit informace o hello verzi nástroje Azure, který používá tento projekt cloudové služby a můžete upgradovat toohello aktuální verze nástroje hello. |
 | Události sestavení |Na této stránce můžete nastavit před a po sestavení události. |
-| Vývoj |Z této stránky můžete zadat pokyny ke konfiguraci sestavení a podmínky, za kterých se spustit žádné události po sestavení. |
-| Web |Z této stránky můžete nakonfigurovat nastavení, které se vztahují na webový server. |
+| Vývoj |Z této stránky můžete zadat pokyny ke konfiguraci sestavení a hello podmínky, za kterých se spustit žádné události po sestavení. |
+| Web |Z této stránky můžete nakonfigurovat nastavení, které se týkají toohello webový server. |
 

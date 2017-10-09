@@ -1,6 +1,6 @@
 ---
-title: "Přehled zprostředkovatele prostředků sítě | Microsoft Docs"
-description: "Další informace o nové poskytovatele síťových prostředků ve službě Správce prostředků Azure"
+title: "aaaNetwork přehled zprostředkovatele prostředků | Microsoft Docs"
+description: "Další informace o hello nového poskytovatele síťových prostředků ve službě Správce prostředků Azure"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 2428c707ddeed281fddd1e57bc5574603f0b9b1c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 81b8f51fe8ee180d8f7885c6e04eb953904d7be5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="network-resource-provider"></a>Poskytovatel síťových prostředků
-Podpůrný potřeba v dnešních obchodní úspěch, je možnost vytvářet a spravovat aplikace využívající rozsáhlé sítě způsobem agilní, flexibilní, zabezpečení a opakovatelných. Azure Resource Manager umožňuje vytvářet takové aplikace jako jedinou kolekci prostředků do skupiny prostředků. Tyto prostředky se spravují prostřednictvím různých poskytovatelů prostředků v části správce prostředků.
+Podpůrný potřeba v dnešních obchodní úspěch, je hello možnost toobuild a spravovat aplikace využívající rozsáhlé sítě agilní, flexibilní, zabezpečení a opakovatelných způsobem. Azure Resource Manager umožňuje toocreate můžete takové aplikace jako jedinou kolekci prostředků do skupiny prostředků. Tyto prostředky se spravují prostřednictvím různých poskytovatelů prostředků v části správce prostředků.
 
-Azure Resource Manager spoléhá na poskytovatele různých prostředků k poskytování přístupu k prostředkům. Existují tři hlavní prostředků zprostředkovatelé: sítě, úložiště a výpočty. Tento dokument popisuje vlastnosti a výhody poskytovatele síťových prostředků, včetně:
+Azure Resource Manager závisí na různých prostředků zprostředkovatelé tooprovide přístup tooyour prostředky. Existují tři hlavní prostředků zprostředkovatelé: sítě, úložiště a výpočty. Tento dokument popisuje hello charakteristiky a výhod hello poskytovatele síťových prostředků, včetně:
 
-* **Metadata** – budete moct přidat informace k prostředkům pomocí značek. Tyto značky lze použít ke sledování využití prostředků mezi skupinami prostředků a předplatná.
-* **Větší kontrolu nad síti** – síťové prostředky jsou volně vázány a je mohli řídit podrobnější způsobem. To znamená, že máte větší flexibilitu při správě síťových prostředků.
+* **Metadata** – můžete přidat informace tooresources pomocí značek. Tyto značky mohou být použité tootrack využití prostředků v rámci skupiny prostředků a předplatná.
+* **Větší kontrolu nad síti** – síťové prostředky jsou volně vázány a je mohli řídit podrobnější způsobem. To znamená, že máte větší flexibilitu při správě síťových prostředků hello.
 * **Rychlejší konfigurace** -vzhledem k tomu, že jsou volně vázány síťovým prostředkům, můžete vytvořit a orchestraci síťové prostředky paralelně. To má výrazně snížit čas konfigurace.
-* **Řízení přístupu na základě role** -RBAC poskytuje výchozí role, s konkrétní bezpečnostní oboru, kromě toho, že vytvoření vlastních rolí zabezpečení správy.
-* **Jednodušší správu a nasazení** -je jednodušší nasazení a Správa aplikací, protože můžete můžete vytvořit celý zásobník aplikací jako jedinou kolekci prostředků ve skupině prostředků. A rychlejší chcete nasadit, protože můžete nasadit jednoduše poskytnutím datové části JSON šablony.
-* **Rychlé přizpůsobení** -deklarativní stylu šablony můžete použít za účelem přizpůsobení opakovatelných a rychlé nasazení.
-* **Přizpůsobení opakovatelných** -deklarativní stylu šablony můžete použít za účelem přizpůsobení opakovatelných a rychlé nasazení.
-* **Rozhraní pro správu** -k správě prostředků můžete použít některou z následujících rozhraní:
+* **Řízení přístupu na základě role** -RBAC poskytuje výchozí role, s konkrétní bezpečnostní obor v přidání tooallowing hello vytvoření vlastních rolí zabezpečení správy.
+* **Jednodušší správu a nasazení** -je snazší toodeploy a spravovat aplikace, protože můžete můžete vytvořit celý zásobník aplikací jako jedinou kolekci prostředků ve skupině prostředků. A rychlejší toodeploy, protože můžete nasadit jednoduše poskytnutím datové části JSON šablony.
+* **Rychlé přizpůsobení** – můžete použít vlastní opakovatelných a rychlé tooenable deklarativní stylu šablony nasazení.
+* **Přizpůsobení opakovatelných** – můžete použít vlastní opakovatelných a rychlé tooenable deklarativní stylu šablony nasazení.
+* **Rozhraní pro správu** -pomocí některé z následujících rozhraní toomanage hello vaše prostředky:
   * REST API založené na
   * PowerShell
   * .NET SDK
@@ -49,15 +49,15 @@ Koncepční zobrazení nasazení ukázkové zahrnující víceúrovňových apli
 
 ![Model prostředků sítě](./media/resource-groups-networking/Figure2.png)
 
-Každý prostředek obsahuje společnou sadu vlastností a jejich jednotlivé vlastnost nastavit. Běžné vlastnosti jsou:
+Každý prostředek obsahuje společnou sadu vlastností a jejich jednotlivé vlastnost nastavit. běžné vlastnosti Hello jsou:
 
 | Vlastnost | Popis | Ukázkové hodnoty |
 | --- | --- | --- |
 | **Jméno** |Název prostředku jedinečné. Každý typ prostředku má svou vlastní omezení pro pojmenovávání. |NIC01 PIP01, VM01, |
-| **location** |Oblast Azure, ve kterém se nachází na prostředek |westus eastus |
+| **location** |Oblast Azure, ve které hello nachází prostředků |westus eastus |
 | **ID** |Jedinečný identifikátor URI na základě identifikace |/subscriptions/<subGUID>/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestPIP |
 
-Zkontrolujte jednotlivé vlastnosti prostředků v následujících částech.
+Můžete zkontrolovat hello jednotlivé vlastnosti prostředků v následujících částech hello.
 
 [!INCLUDE [virtual-networks-nrp-pip-include](../../includes/virtual-networks-nrp-pip-include.md)]
 
@@ -85,26 +85,26 @@ Můžete spravovat pomocí různých rozhraní prostředků Azure sítě. V tomt
 ### <a name="rest-api"></a>REST API
 Jak už bylo zmíněno dříve, je možné spravovat síťovým prostředkům prostřednictvím různých rozhraní, včetně REST API, sady .NET SDK, Node.JS SDK, sady Java SDK, prostředí PowerShell, rozhraní příkazového řádku, portálu Azure a šablony.
 
-Rozhraní Rest API odpovídají specifikaci protokol HTTP 1.1. Obecná struktura URI rozhraní API je uveden níže:
+rozhraní Rest API Hello požadavkům toohello specifikace protokolu HTTP 1.1. Hello obecné URI struktura hello rozhraní API je uveden níže:
 
     https://management.azure.com/subscriptions/{subscription-id}/providers/{resource-provider-namespace}/locations/{region-location}/register?api-version={api-version}
 
-A parametrů do složených závorek představují následující prvky:
+A parametry hello do složených závorek představují hello následující prvky:
 
 * **id předplatného** -svoje id předplatného Azure.
-* **– obor názvů zprostředkovatele prostředků** – obor názvů pro použitý zprostředkovatel. Hodnota pro poskytovatele síťových prostředků je *Microsoft.Network*.
-* **Název oblasti** – název oblasti Azure
+* **– obor názvů zprostředkovatele prostředků** – obor názvů pro používaný zprostředkovatel hello. Hodnota Hello poskytovatele síťových prostředků hello je *Microsoft.Network*.
+* **Název oblasti** – název oblasti Azure hello
 
-Následující metody HTTP jsou podporovány při volání rozhraní REST API:
+Hello následující metody HTTP jsou podporovány při provádění toohello volání rozhraní REST API:
 
-* **UVEĎTE** – použité k vytvoření prostředku daného typu, upravte vlastnosti prostředku nebo změnit přidružení mezi prostředky.
-* **ZÍSKAT** – používané k načtení informací pro zřízené prostředek.
-* **Odstranit** – používané k odstranění existujícího prostředku.
+* **UVEĎTE** – použité toocreate prostředek daného typu, upravte vlastnosti prostředku nebo změnit přidružení mezi prostředky.
+* **ZÍSKAT** – používá informace tooretrieve zřízené prostředku.
+* **Odstranit** -použít toodelete existující prostředek.
 
-Požadavků a odpovědí požadavkům formátu datové části JSON. Další podrobnosti najdete v tématu [rozhraní API pro správu prostředků Azure](https://msdn.microsoft.com/library/azure/dn948464.aspx).
+Hello požadavku a odpovědi požadavkům tooa Formát datové části JSON. Další podrobnosti najdete v tématu [rozhraní API pro správu prostředků Azure](https://msdn.microsoft.com/library/azure/dn948464.aspx).
 
 ### <a name="resource-manager-template-language"></a>Jazyk šablony Resource Manageru
-Kromě správy prostředků imperativní (přes rozhraní API nebo sady SDK), můžete taky deklarativní programovací styl vytvářet a spravovat prostředky sítě pomocí jazyka šablony Resource Manageru.
+V přidání toomanaging prostředky imperativní (přes rozhraní API nebo sady SDK) můžete také použít deklarativní programování toobuild styl a spravovat síťovým prostředkům pomocí hello jazyk šablony Resource Manageru.
 
 Ukázka reprezentace šablony najdete níže –
 
@@ -117,7 +117,7 @@ Ukázka reprezentace šablony najdete níže –
       "outputs": { <output-of-template> }    
     }
 
-Šablona je primárně popis JSON prostředky a instance hodnoty vložit prostřednictvím parametrů. Následující příklad slouží k vytvoření virtuální sítě s 2 podsítě.
+Šablona Hello je primárně popis JSON hello prostředků a hodnoty instance hello vložit prostřednictvím parametrů. Následující příklad Hello lze použít toocreate virtuální síť s 2 podsítě.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/VNET.json",
@@ -205,7 +205,7 @@ Ukázka reprezentace šablony najdete níže –
         ]
     }
 
-Máte možnost ručně poskytnout hodnoty parametrů při použití šablony, nebo můžete použít soubor s parametry. Následující příklad ukazuje sadu možných hodnot parametrů pro použití s výše uvedené šablony:
+Máte možnost hello ručně zadáním hodnot parametru hello při použití šablony, nebo můžete použít soubor s parametry. Následující příklad Hello ukazuje možné sadu toobe hodnoty parametru použít s hello šablony výše:
 
     {
       "location": {
@@ -232,28 +232,28 @@ Máte možnost ručně poskytnout hodnoty parametrů při použití šablony, ne
     }
 
 
-Hlavní výhody použití šablony jsou:
+Hello hlavní výhody použití šablony jsou:
 
-* Můžete vytvořit komplexní infrastruktury ve skupině prostředků v deklarativní stylu. Pomocí Správce prostředků se zpracovává orchestration vytváření prostředků, včetně správy závislostí.
-* Infrastruktura vytvořením opakovatelných způsobem v různých oblastech a v oblasti jednoduše změnou parametry.
-* Styl deklarativní vede ke kratší dobu realizace v vytváření šablony a nasazení infrastruktury.
+* Můžete vytvořit komplexní infrastruktury ve skupině prostředků v deklarativní stylu. Dobrý den orchestraci vytváření hello prostředků, včetně správy závislostí, zpracovává pomocí Správce prostředků.
+* Hello infrastruktury vytvořením opakovatelných způsobem v různých oblastech a v oblasti jednoduše změnou parametry.
+* deklarativní styl Hello vede doba realizace tooshorter ve vytváření šablony hello a zavádí hello infrastruktury.
 
 Ukázka šablony, najdete v části [šablony Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates).
 
-Další informace o jazyce šablony Resource Manageru najdete v tématu [jazyk šablony Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+Další informace o hello jazyk šablony Resource Manageru, najdete v části [jazyk šablony Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Výše uvedené ukázkové šablona používá virtuální síť a podsíť prostředky. Existují jiným síťovým prostředkům, které můžete použít jak je uvedeno dále:
+výše uvedené šablony ukázka Hello používá hello virtuální síť a podsíť prostředky. Existují jiným síťovým prostředkům, které můžete použít jak je uvedeno dále:
 
 ### <a name="using-a-template"></a>Pomocí šablony
-Služby můžete nasadit do Azure ze šablony pomocí prostředí PowerShell, AzureCLI, nebo provedením klikněte na nasadit z Githubu. Pokud chcete nasadit služby ze šablony v Githubu, spusťte následující kroky:
+TooAzure služby ze šablony můžete nasadit pomocí prostředí PowerShell, AzureCLI, nebo provedením toodeploy klikněte na z webu GitHub. toodeploy služby ze šablony v Githubu, spusťte hello následující kroky:
 
-1. Otevřete soubor template3 z Githubu. Jako příklad, otevřete [virtuální síť se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
-2. Klikněte na **nasadit do Azure**a pak Přihlaste se k portálu Azure pomocí svých přihlašovacích údajů.
-3. Zkontrolujte šablonu a potom klikněte na **Uložit**.
-4. Klikněte na tlačítko **upravit parametry** a vyberte umístění, jako například *západní USA*, pro virtuální sítě a podsítě.
-5. V případě potřeby změnit **ADDRESSPREFIX** a **SUBNETPREFIX** parametry a pak klikněte na tlačítko **OK**.
-6. Klikněte na tlačítko **vyberte skupinu prostředků** a potom klikněte na skupinu prostředků, které chcete přidat virtuální sítě a podsítě. Alternativně můžete vytvořit novou skupinu prostředků kliknutím **nebo vytvořit nový**.
-7. Klikněte na možnost **Vytvořit**. Všimněte si dlaždice zobrazení **nasazení zřizování šablony**. Po nasazení se provádí, zobrazí podobnou obrazovce níže.
+1. Otevřete soubor template3 hello z Githubu. Jako příklad, otevřete [virtuální síť se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
+2. Klikněte na **nasazení tooAzure**a potom se přihlaste na toohello portálu Azure pomocí svých přihlašovacích údajů.
+3. Ověření hello šablony a potom klikněte na **Uložit**.
+4. Klikněte na tlačítko **upravit parametry** a vyberte umístění, jako například *západní USA*pro hello virtuální sítě a podsítě.
+5. V případě potřeby změňte hello **ADDRESSPREFIX** a **SUBNETPREFIX** parametry a pak klikněte na tlačítko **OK**.
+6. Klikněte na tlačítko **vyberte skupinu prostředků** a potom klikněte na skupinu prostředků hello chcete tooadd hello virtuální sítě a podsítě, které. Alternativně můžete vytvořit novou skupinu prostředků kliknutím **nebo vytvořit nový**.
+7. Klikněte na možnost **Vytvořit**. Všimněte si dlaždice zobrazení hello **nasazení zřizování šablony**. Po dokončení nasazení hello, zobrazí se dole podobné tooone obrazovky.
 
 ![Ukázka nasazení šablony](./media/resource-groups-networking/Figure6.png)
 

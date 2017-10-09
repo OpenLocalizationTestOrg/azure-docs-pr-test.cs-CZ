@@ -1,5 +1,5 @@
 ---
-title: "Azure virtuálních počítačů, plánování a implementace pro SAP NetWeaver | Microsoft Docs"
+title: "aaaAzure virtuální počítače plánování a implementace pro SAP NetWeaver | Microsoft Docs"
 description: "Azure virtuálních počítačů, plánování a implementace pro SAP NetWeaver"
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17b2277de7df2ce534896c73bc9a682b9e72196f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0d1e9fa13d847e4d8abb3c34fd352d1f4ece3717
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuálních počítačů, plánování a implementace pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -313,64 +313,64 @@ ms.lasthandoff: 08/29/2017
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Microsoft Azure umožňuje společnostem získat výpočetní a úložnou kapacitu v minimálním čase bez zdlouhavé nákup cykly. Virtuální počítače Azure umožňují společnostem klasického aplikace, můžete nasadit jako SAP NetWeaver na základě aplikace do Azure a rozšířit jejich spolehlivosti a dostupnosti bez nutnosti další prostředky k dispozici místně. Služby virtuálního počítače Azure také podporuje připojení mezi různými místy, která umožňuje společnostem aktivně integrovat virtuálních počítačích Azure do místní domény, jejich privátních Cloudů a jejich šířku systému SAP.
-Tento dokument popisuje základní informace o virtuálním počítači Microsoft Azure a poskytuje návod aspekty plánování a implementace pro SAP NetWeaver instalace v Azure a jako takový musí být dokument k načtení před zahájením skutečné nasazení SAP NetWeaver v Azure.
-Dokumentu doplňuje SAP instalace dokumentace a poznámky k SAP, které představují primární prostředky pro instalace a nasazení SAP softwaru na dané platformy.
+Microsoft Azure umožňuje společnosti tooacquire výpočetní a úložnou kapacitu v minimálním čase bez zdlouhavé nákup cykly. Virtuální počítače Azure umožňují společnosti toodeploy klasického aplikacím, jako SAP NetWeaver na základě aplikace do Azure a rozšířit jejich spolehlivosti a dostupnosti bez nutnosti další prostředky k dispozici místně. Služby virtuálního počítače Azure také podporuje připojení mezi různými místy, které umožňuje společnosti tooactively integrovat virtuálních počítačích Azure do místní domény, jejich privátních Cloudů a jejich šířku systému SAP.
+Tento dokument popisuje hello základy virtuální počítač Microsoft Azure a poskytuje návod aspekty plánování a implementace pro SAP NetWeaver instalace v Azure a jako takový musí být hello dokumentu tooread před zahájením skutečné nasazení SAP NetWeaver v Azure.
+zadané platformy Hello dokumentu doplňuje hello SAP instalace dokumentace a poznámky k SAP, které představují hello primární prostředky pro instalace a nasazení softwaru SAP na.
 
 ## <a name="summary"></a>Souhrn
-Cloud Computing je často používaný výrazu, který je získání více důležitost v IT odvětví, z malých společností až velkých a mezinárodních společnosti.
+Cloud Computing je často používaný výrazu, který je získání více význam v rámci hello IT odvětví, z malých společností až toolarge a mezinárodních společnosti.
 
-Microsoft Azure je Cloudová platforma služby společnosti Microsoft, který nabízí široké spektrum nové možnosti. Nyní zákazníci mohou rychle zřizovat a deaktivace zřízení aplikace jako službu v cloudu, takže nejsou omezeny na technické nebo rozpočet omezení. Společnosti můžete místo času a investovat do hardwaru infrastruktury, soustředit na aplikace, podnikové procesy a jeho výhody pro zákazníky a uživatele.
+Microsoft Azure je hello cloudové služby společnosti Microsoft, který nabízí široké spektrum nové možnosti. Nyní zákazníci jsou zřídit a deaktivace zřízení aplikací mít toorapidly jako služba v cloudu hello, takže nejsou omezené tootechnical nebo rozpočet omezení. Společnosti můžete místo času a investovat do hardwaru infrastruktury, soustředit na aplikace hello, podnikové procesy a jeho výhody pro zákazníky a uživatele.
 
-Pomocí služeb Microsoft Azure pro virtuální počítače nabízí společnost Microsoft komplexní platformu infrastruktury jako služby (IaaS). Služba Azure Virtual Machines teď v rámci IaaS podporuje aplikace využívající SAP NetWeaver. Tento dokument White Paper popisuje, jak naplánovat a implementovat SAP NetWeaver na základě aplikací v rámci Microsoft Azure jako platformu výběru.
+Pomocí služeb Microsoft Azure pro virtuální počítače nabízí společnost Microsoft komplexní platformu infrastruktury jako služby (IaaS). Služba Azure Virtual Machines teď v rámci IaaS podporuje aplikace využívající SAP NetWeaver. Tento dokument White Paper popisuje, jak tooplan a implementujte SAP NetWeaver založených na aplikace v rámci Microsoft Azure jako platformu hello výběru.
 
-Dokument, samotné se zaměřuje na dvě hlavní aspekty:
+Hello dokumentu samotné se zaměřuje na dvě hlavní aspekty:
 
-* První část popisuje dva vzory podporované nasazení SAP NetWeaver na základě aplikací na platformě Azure. Také popisuje obecné zpracování Azure s nasazení SAP v paměti.
-* Druhá část Podrobnosti implementace dva různé scénáře, které jsou popsané v první části.
+* Hello první část popisuje dva vzory podporované nasazení SAP NetWeaver na základě aplikací na platformě Azure. Také popisuje obecné zpracování Azure s nasazení SAP v paměti.
+* Hello druhou část Podrobnosti o implementaci hello dva různé scénáře popsané v první části hello.
 
 Další zdroje naleznete v kapitole [prostředky] [ planning-guide-1.2] v tomto dokumentu.
 
 ### <a name="definitions-upfront"></a>Definice předem
-V dokumentu můžeme použít následující podmínky:
+V dokumentu hello používáme hello následující podmínky:
 
 * IaaS: Infrastruktury jako služby
 * PaaS: Platforma jako služba
 * SaaS: Software jako služba
 * ARM: Azure Resource Manager
 * Součást SAP: jednotlivých SAP aplikace například ECC, BW, správce řešení nebo podnikovém portálu.  SAP součástí může být založen na tradičních technologií ABAP nebo Java nebo jiných NetWeaver na základě aplikaci, například obchodních objektů.
-* Prostředí SAP: jeden nebo více součástí SAP logicky seskupeny provést obchodní funkce jako je například vývoj, QAS, školení, zotavení po Havárii nebo produkční.
-* SAP na šířku: Vztahuje se k celé SAP prostředků v zákazníka na šířku IT. Na šířku SAP zahrnuje všechny produkční a mimo provozní prostředí.
-* Systém SAP: Kombinace databázového systému vrstvu a aplikační vrstvu služby, například SAP ERP vývojového systému SAP BW testovací systém, produkční systému SAP CRM, atd... V nasazeních Azure není možné rozdělit tyto dvě vrstvy mezi místními a Azure. To znamená, že systému SAP buď je nasazena místně nebo je nasazené v Azure. Můžete však nasadit různých systémech šířku SAP do Azure nebo místní. Můžete například nasazení SAP CRM vývoj a testování systémy v Azure, ale SAP CRM produkční systému místní.
-* Nasazení jenom cloudu: nasazení, kde není připojen k předplatnému Azure prostřednictvím site-to-site nebo připojením ExpressRoute na místní infrastrukturu sítě. Společné dokumentace k Azure tyto typy nasazení jsou také popsány jako 'jenom pro Cloud, nasazení. Virtuální počítače nasazené pomocí této metody jsou přístupné prostřednictvím Internetu a veřejnou IP adresu nebo veřejný název DNS přiřazené k virtuálním počítačům v Azure. Pro Microsoft Windows v místní službě Active Directory (AD) a DNS není rozšířené k Azure v těchto typů nasazení. Proto virtuální počítače nejsou součástí místní služby Active Directory. Totéž platí pro implementace Linux, například pomocí OpenLDAP + protokolu Kerberos.
+* Prostředí SAP: jeden nebo více součástí SAP logicky seskupeny tooperform obchodní funkce jako je například vývoj, QAS, školení, zotavení po Havárii nebo produkční.
+* SAP na šířku: Vztahuje toohello celý SAP prostředky v zákazníka na šířku IT. Hello SAP šířku zahrnuje všechny produkční a mimo provozní prostředí.
+* Systém SAP: kombinace hello databázového systému vrstvu a aplikační vrstvu služby, například SAP ERP vývojového systému SAP BW testovací systém, produkční systému SAP CRM, atd... V Azure nasazení není podporované toodivide tyto dvě vrstvy mezi místními a Azure. To znamená, že systému SAP buď je nasazena místně nebo je nasazené v Azure. Můžete však nasadit hello různých systémech šířku SAP do Azure nebo místní. Například může nasadit systémy vývoj a testování SAP CRM hello v Azure, ale hello SAP CRM produkční systému místní.
+* Nasazení jenom cloudu: nasazení, kde není hello předplatného Azure připojená prostřednictvím site-to-site nebo ExpressRoute připojení toohello místní síťové infrastruktuře. Společné dokumentace k Azure tyto typy nasazení jsou také popsány jako 'jenom pro Cloud, nasazení. Virtuální počítače nasazené pomocí této metody jsou přístupné prostřednictvím Internetu hello a veřejnou IP adresu nebo veřejném DNS název přiřazené toohello virtuálních počítačů v Azure. Pro Microsoft Windows hello v místní službě Active Directory (AD) a DNS není rozšířeno tooAzure v těchto typů nasazení. Virtuální počítače hello proto nejsou součástí hello místní služby Active Directory. Totéž platí pro implementace Linux, například pomocí OpenLDAP + protokolu Kerberos.
 
 > [!NOTE]
-> Čistě cloudové nasazení v tomto dokumentu je definován jako dokončení krajiny SAP běží výhradně v Azure bez přípony služby Active Directory nebo OpenLDAP nebo překladu názvů z místní do veřejného cloudu. Jenom pro cloud konfigurace nejsou podporovány pro produkční systémy SAP nebo konfigurace, kdy moduly STM SAP nebo jiných místních prostředků je potřeba použít mezi systémy SAP hostované v Azure a prostředky, které se nacházejí na místní.
+> Čistě cloudové nasazení v tomto dokumentu je definován jako dokončení krajiny SAP běží výhradně v Azure bez přípony služby Active Directory nebo OpenLDAP nebo překladu názvů z místní do veřejného cloudu. Jenom pro cloud konfigurace nejsou podporovány pro produkční systémy SAP nebo konfigurace, kde moduly STM SAP nebo jiné místní prostředky musí toobe používá mezi systémy SAP hostované v Azure a prostředky, které se nacházejí v místě.
 >
 >
 
-* Mezi různými místy: Popisuje scénář, kde jsou nasazené virtuální počítače k předplatnému Azure, který má site-to-site, více lokalit nebo připojení ExpressRoute mezi místní datových centrech a Azure. Dokumentace k společné Azure, tyto typy nasazení jsou také popsány jako mezi různými místy scénáře. Z důvodu pro připojení je rozšířit místní domény, OpenLDAP Active Directory v místě a místní DNS do Azure. Na šířku místní je rozšířeno na Azure prostředky předplatného. S touto příponou, virtuálních počítačů může být součástí místní domény. Uživatelé domény místní domény, můžete přístup k serverům a službu lze spouštět na těchto virtuálních počítačů (např. služby databázového systému). Komunikace a název rozlišení mezi virtuální počítače nasazené na místě a nasazené virtuální počítače Azure je možné. Je tento scénář Očekáváme, že většina SAP prostředky se mají nasadit v. Další informace najdete v tématu [to] [ vpn-gateway-cross-premises-options] článku a [to][vpn-gateway-site-to-site-create].
+* Mezi různými místy: Popisuje scénář, kde jsou virtuální počítače nasazené tooan předplatné Azure, který má site-to-site, více lokalit nebo připojením ExpressRoute mezi místní hello datových centrech a Azure. Dokumentace k společné Azure, tyto typy nasazení jsou také popsány jako mezi různými místy scénáře. Hello důvod pro připojení hello je tooextend místními doménami, místní Active Directory nebo OpenLDAP a místní DNS do Azure. Hello místně na šířku je rozšířené toohello Azure prostředky předplatného hello. S touto příponou, hello virtuálních počítačů může být součástí hello místní domény. Uživatelé domény hello místní domény může přistupovat k serverům hello a službu lze spouštět na ty virtuální počítače (např. služby databázového systému). Komunikace a název rozlišení mezi virtuální počítače nasazené na místě a nasazené virtuální počítače Azure je možné. Toto je hello scénáře, který Očekáváme, že většina toobe SAP prostředky nasazené v. Další informace najdete v tématu [to] [ vpn-gateway-cross-premises-options] článku a [to][vpn-gateway-site-to-site-create].
 
 > [!NOTE]
-> Mezi různými místy nasazení SAP systémy, kde Azure Virtual Machines s SAP systémy jsou členy místní domény jsou podporovány pro produkční systémy SAP. Konfigurace mezi různými místy jsou podporovány pro nasazení částí nebo dokončení krajiny SAP do Azure. I spuštění povahu dokončení SAP v Azure vyžaduje, že tyto virtuální počítače byly součástí místní domény a služby Active Directory nebo OpenLDAP. V předchozí verze dokumentace už jsme mluvili o IT hybridní scénáře, kde je termín "Hybridní" integrován do skutečnost, že je připojení mezi různými místy mezi místními a Azure. Plus skutečnost, že virtuální počítače v Azure jsou součástí služby Active Directory v místě nebo OpenLDAP.
+> Mezi různými místy nasazení SAP systémy, kde Azure Virtual Machines s SAP systémy jsou členy místní domény jsou podporovány pro produkční systémy SAP. Konfigurace mezi různými místy jsou podporovány pro nasazení částí nebo dokončení krajiny SAP do Azure. Hello dokončení SAP na šířku i běžící v Azure vyžaduje, že tyto virtuální počítače byly součástí místní domény a služby Active Directory nebo OpenLDAP. V předchozí verze dokumentace hello už jsme mluvili o IT hybridní scénáře, kde se zobrazuje hello termín "Hybridní" v hello fakt, že existuje připojení mezi různými místy mezi místními a Azure. Plus, hello fakt, že hello virtuálních počítačů v Azure jsou součástí hello místní služby Active Directory nebo OpenLDAP.
 >
 >
 
-Některé dokumentaci Microsoft popisuje scénáře mezi různými místy trochu jinak, zejména pro konfigurace HA databázového systému. V případě SAP související dokumenty mezi různými místy scénář právě boils na situaci, kdy site-to-site nebo připojení k privátní (ExpressRoute) a fakt, že je povahu SAP distribuovat mezi místními a Azure.  
+Některé dokumentaci Microsoft popisuje scénáře mezi různými místy trochu jinak, zejména pro konfigurace HA databázového systému. V případě hello hello související SAP dokumentů hello napříč místním a externím právě boils dolů toohaving site-to-site nebo privátní (ExpressRoute) připojení a hello faktu, hello SAP šířku rozděluje mezi místními a Azure.  
 
 ### <a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Prostředky
-Následující další příručky jsou k dispozici pro téma nasazení SAP v Azure:
+Hello následujících dalších příručkách jsou k dispozici pro téma hello nasazení SAP v Azure:
 
 * [Azure virtuálních počítačů, plánování a implementace pro SAP NetWeaver (Tento dokument)][planning-guide]
 * [Nasazení virtuálních počítačů Azure pro SAP NetWeaver][deployment-guide]
 * [Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver][dbms-guide]
 
 > [!IMPORTANT]
-> Kdekoli možné odkaz odkazující Instalační příručka slouží (referenční dokumentace InstGuide-01, najdete v části <http://service.sap.com/instguides>). Pokud jde o proces instalace a požadavky, příručky SAP NetWeaver instalace by měla vždycky číst pečlivě, tento dokument popisuje jenom konkrétní úlohy pro SAP NetWeaver systémy nainstalované v virtuální počítač Microsoft Azure.
+> Všude, kde se používá možné odkaz toohello, odkazující Instalační příručka (referenční dokumentace InstGuide-01, najdete v části <http://service.sap.com/instguides>). Když jde o toohello požadavky a proces instalace, hello SAP NetWeaver instalace příručky by měl být vždy přečtěte pečlivě, protože tento dokument popisuje jenom konkrétní úlohy pro SAP NetWeaver systémy nainstalované v virtuální počítač Microsoft Azure.
 >
 >
 
-Následující poznámky k SAP souvisí s tématem SAP v Azure:
+Následující poznámky k SAP Hello jsou související toohello tématem SAP v Azure:
 
 | Poznámka: číslo | Název |
 | --- | --- |
@@ -386,14 +386,14 @@ Následující poznámky k SAP souvisí s tématem SAP v Azure:
 | [2069760] |Oracle Linux 7.x SAP instalace a Upgrade |
 | [1597355] |Doporučení odkládacího prostoru pro Linux |
 
-Přečíst také [oznámení změny stavu Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) obsahující všechny SAP poznámky pro Linux.
+Hello si také přečíst [oznámení změny stavu Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) obsahující všechny SAP poznámky pro Linux.
 
 Obecné výchozí omezení a maximální omezení předplatná Azure naleznete v [v tomto článku][azure-subscription-service-limits-subscription].
 
 ## <a name="possible-scenarios"></a>Možné scénáře
-SAP je často považovat za jednu z nejvíce důležitých aplikací v rámci firmy. Operace těchto aplikací a architektura je většinou velmi složitý a zajistíte, že splňujete požadavky na dostupnosti a výkonu je důležité.
+SAP je často považovat za jeden hello nejvíce důležitých aplikací v rámci firmy. operace těchto aplikací a architektura Hello je většinou velmi složitý a zajistíte, že splňujete požadavky na dostupnosti a výkonu je důležité.
 
-Proto podniků má zamyslet pečlivě o tom, které aplikace lze spustit v prostředí veřejného cloudu, nezávisle na poskytovateli zvolený cloud.
+Proto podniků má toothink pečlivě o tom, které aplikace lze spustit v prostředí veřejného cloudu, nezávisle na poskytovatele cloudových služeb vybrali hello.
 
 Typy možné systému pro nasazení SAP NetWeaver na základě aplikací v rámci veřejného cloudu, prostředí, které jsou uvedeny níže:
 
@@ -403,18 +403,18 @@ Typy možné systému pro nasazení SAP NetWeaver na základě aplikací v rámc
 4. Systémy prototypu
 5. Učení / ukázkový systémy
 
-Chcete-li úspěšně nasadit systémy SAP do Azure IaaS nebo IaaS obecně, je důležité si uvědomit, významné rozdíly mezi nabídky tradiční outsourcers nebo hostitelé a nabídkou IaaS. Zatímco tradiční hostitel nebo pro externí dodavatele přizpůsobuje infrastrukturu (typ sítě, úložiště a server) pro zatížení, které chce zákazník hostitele, se místo toho odpovědnosti zákazníka vybrat správné zatížení pro nasazení IaaS.
+V pořadí toosuccessfully nasazení systémů SAP do Azure IaaS nebo IaaS obecně, je důležité toounderstand hello významné rozdíly mezi hello nabídky tradiční outsourcers nebo hostitelé a nabídkou IaaS. Zatímco hello tradiční hostitel nebo pro externí dodavatele přizpůsobuje infrastruktury (typ sítě, úložiště a server) toohello zatížení zákazník chce toohost, se místo toho hello zákazníka odpovědnost toochoose hello správné zatížení pro nasazení IaaS.
 
-Jako první krok potřeba zákazníků, zkontrolujte následující položky:
+Jako první krok třeba zákazníkům tooverify hello následující položky:
 
-* SAP podporované typy virtuálních počítačů Azure
-* SAP podporované produkty/verze v Azure
-* Podporované operační systém a databázového systému verze pro konkrétní verze SAP v Azure
+* Hello SAP podporované typy virtuálních počítačů Azure
+* Hello SAP podporované produkty/verze v Azure
+* Hello podporované verze operačního systému a databázového systému pro hello konkrétní SAP uvolní v Azure
 * Protokoly SAP propustnost poskytované různé identifikátory SKU Azure
 
-Odpovědi na tyto otázky lze číst v Poznámka SAP [1928533].
+Hello otázky toothese odpovědi lze číst v Poznámka SAP [1928533].
 
-Jako druhý krok musí být porovnáno více prostředků skutečné spotřebě místních systémů Azure omezení prostředků a šířku pásma. Zákazníci proto musí být obeznámeni s jinou možností Azure typy podporované s SAP v oblasti:
+V druhém kroku musí Azure omezení prostředků a šířku pásma toobe porovnání tooactual spotřeby prostředků z místních systémů. Proto zákazníky nutné toobe obeznámeni s hello různé možnosti hello Azure typy podporované s SAP v oblasti hello:
 
 * Prostředky procesoru a paměti různých typů virtuálních počítačů a
 * Šířka pásma IOPS různé typy virtuálních počítačů a
@@ -422,51 +422,51 @@ Jako druhý krok musí být porovnáno více prostředků skutečné spotřebě 
 
 Většina těchto dat lze nalézt [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows].
 
-Mějte na paměti, že omezení uvedená v výše uvedený odkaz jsou horní meze. Neznamená to, omezení pro některý ze zdrojů, například IOPS lze zadat za všech okolností. Výjimky, když jsou prostředky procesoru a paměti typu zvolené virtuálních počítačů. Pro typy virtuálních počítačů nepodporuje SAP prostředky procesoru a paměti jsou vyhrazeny a jako takový k dispozici v libovolném bodě v čase pro používání v rámci virtuálního počítače.
+Mějte na paměti, která hello omezení uvedené v výše uvedený odkaz hello jsou horní meze. Neznamená to, že hello limity pro kterýkoli z hello prostředků, například IOPS lze zadat za všech okolností. Hello výjimky, když jsou prostředky procesoru a paměti hello typu zvolené virtuálních počítačů. Pro typy virtuálních počítačů hello nepodporuje SAP hello prostředků procesoru a paměti jsou vyhrazeny a jako takový k dispozici v libovolném bodě v čase pro používání v rámci hello virtuálních počítačů.
 
-Platforma Microsoft Azure jako jiné platformy IaaS je platforma pro více klientů. To znamená, že jsou mezi klienty sdílené úložiště, sítě a dalším prostředkům. Inteligentní omezení a kvóty logiku se používá k jednoho klienta zabrání závažný způsobem, které mají vliv na výkon jiného klienta (aktivní sousedním). Přestože logiku v Azure se pokusí zachovat odchylky v šířky pásma došlo malé, vysoce sdílené platformy zpravidla zavádět větší odchylky v dostupnosti prostředků nebo šířky pásma, než mnoho zákazníků se používají k v jejich nasazeních v místě. V důsledku toho může dojít k různých úrovních šířky pásma týkající se sítěmi nebo úložištěm vstupně-výstupní operace (na svazku a také latence) z minutu minutu. Pravděpodobnost, že systému SAP v Azure může na základě zkušeností uživatelů odchylky větší než v místním systému je potřeba vzít v úvahu.
+Platforma Microsoft Azure Hello jako jiné platformy IaaS je platforma pro více klientů. To znamená, že jsou mezi klienty sdílené úložiště, sítě a dalším prostředkům. Inteligentní omezení a kvóty logiku je klient tooprevent použít jeden z závažný způsobem, což ovlivňuje výkon hello jiného klienta (aktivní sousedním). Přestože logiku v Azure pokusí odchylky tookeep šířky pásma došlo malé, vysoce sdílené platformy zpravidla toointroduce větší odchylky v dostupnosti prostředků nebo šířky pásma než mnoho zákazníků použité tooin jejich místní nasazení. V důsledku toho může dojít k různých úrovních šířky pásma týkající se sítěmi nebo úložištěm vstupně-výstupní operace (hello svazku a také latence) z toominute minutu. Hello pravděpodobnost, že systému SAP v Azure může na základě zkušeností uživatelů odchylky větší než v místním systému musí toobe vzít v úvahu.
 
-Posledním krokem je k vyhodnocení požadavků na dostupnost. Může se stát, že základní infrastrukturu Azure potřebuje aktualizovat a vyžaduje spuštěných virtuálních počítačů až po restartování hostitele. V těchto případech by se vypínají a restartují i virtuálních počítačů spuštěných na těchto hostitelích. Načasování takové údržby se provádí v pracovní době vedlejší pro konkrétní oblasti, ale je poměrně široké okno potenciální několik hodin, během které dojde k restartování. Existují různé technologie v rámci Azure platformy, na které je možné nakonfigurovat na zmírnit některé nebo všechny dopad tyto aktualizace. Budoucí vylepšení platformy Azure, databázového systému a SAP aplikací navržených pro minimalizaci dopadů takové restartování.
+Posledním krokem je tooevaluate dostupnosti požadavky. K tomu může dojít, že hello základní infrastrukturu Azure potřebuje tooget aktualizovat a vyžaduje hello hostitele se systémem toobe virtuální počítače restartovat. V těchto případech by se vypínají a restartují i virtuálních počítačů spuštěných na těchto hostitelích. Načasování Hello takové údržby se provádí v pracovní době vedlejší pro konkrétní oblasti, ale je relativně široké hello potenciální okno několik hodin, během které dojde k restartování. Existují různé technologie v rámci hello platformy Azure, kterou lze nakonfigurovat toomitigate některé nebo všechny hello vliv těchto aktualizací. Budoucí vylepšení z hello platformy Azure, databázového systému, a aplikace SAP jsou navržené toominimize hello dopad takové restartování.
 
-Chcete-li úspěšně nasadit systém SAP do Azure, místní SAP systémy operační systém, databáze a aplikace SAP musí být na matici podpory SAP Azure, nevejde se v rámci prostředků Azure může poskytnout infrastruktury a který můžete pracovat s nabídkami dostupnost SLA Microsoft Azure. Tyto systémy jsou určeny, musíte při rozhodování o jednu z následujících scénářů dvě nasazení.
+V pořadí nasazení toosuccessfully systému SAP do Azure, hello místní SAP systémy operační systém, databáze, a na hello SAP Azure můžete zadat matici podpory, nevejde se do hello hello prostředky infrastruktury Azure a které musí být aplikace SAP můžete pracovat s hello dostupnost SLA Microsoft Azure nabízí. Jak se identifikují ty systémy, musíte toodecide na jednom z hello následující dva scénáře nasazení.
 
-### <a name="1625df66-4cc6-4d60-9202-de8a0b77f803"></a>Jenom pro cloud - nasazení virtuálních počítačů do Azure bez závislosti na místní sítě zákazníka
+### <a name="1625df66-4cc6-4d60-9202-de8a0b77f803"></a>Jenom pro cloud - nasazení virtuálních počítačů do Azure bez závislosti na hello místní síti zákazníka
 ![Jeden virtuální počítač s ukázkovou SAP nebo scénáře školení nasazené v Azure][planning-guide-figure-100]
 
-Tento scénář je typické pro školení nebo ukázku systémy, kde jsou nainstalovány všechny součásti SAP a softwaru jiných SAP v rámci jednoho virtuálního počítače. Produkční SAP systémy nejsou podporovány v tomto scénáři nasazení. Obecně platí tento scénář splňuje následující požadavky:
+Tento scénář je typické pro školení nebo ukázku systémy, kde jsou nainstalovány všechny součásti hello SAP a softwaru jiných SAP v rámci jednoho virtuálního počítače. Produkční SAP systémy nejsou podporovány v tomto scénáři nasazení. Obecně platí tento scénář splňuje hello následující požadavky:
 
-* Vlastních virtuálních počítačů jsou přístupné přes veřejnou síť. Přímé připojení pro aplikace spuštěné v rámci virtuálních počítačů k místní síti společnosti vlastnící demoaplikace nebo školení obsah nebo zákazník není nutné.
-* V případě představující školení nebo ukázkový scénář několika virtuálních počítačů síťové komunikace a název řešení musí fungovat mezi virtuálními počítači. Ale komunikace mezi sadu virtuálních počítačů musí být izolované tak, aby několik sady virtuálních počítačů můžete nasadit vedle sebe bez narušení.  
-* Připojení k Internetu je vyžadována pro koncového uživatele na vzdálené přihlášení do pro virtuální počítače hostované v Azure. V závislosti na hostovaného operačního systému, Terminálové služby a služby RDS nebo VNC na ssh slouží k přístupu virtuálních počítačů pro splnění úlohy školení nebo provést ukázky. Pokud SAP porty například 3200, 3300 & 3600 může také zpřístupnit instance aplikace na SAP je přístupná na jakémkoli počítači připojené Internetu.
-* Systémy SAP (a VM(s)) představují samostatné scénář v Azure, což pouze veřejné připojení k Internetu vyžaduje pro přístup koncových uživatelů a nevyžaduje připojení k ostatním virtuálním počítačům v Azure.
-* SAPGUI a prohlížeče jsou nainstalovat a spustit přímo na virtuálním počítači.
-* Je vyžadován rychlé resetování virtuálního počítače do původního stavu a opakujte nové nasazení tohoto původního stavu.
-* V případě scénáře školení a ukázku, která jsou rozpoznat v několika virtuálních počítačů, služby Active Directory / OpenLDAP nebo DNS služby je zapotřebí pro každou sadu virtuálních počítačů.
+* vlastních virtuálních počítačů Hello jsou přístupné přes veřejnou síť hello. Přímé připojení hello aplikací spuštěných v rámci virtuálních počítačů toohello hello místní síť společnosti buď hello vlastnící hello demoaplikace nebo školení obsah nebo hello zákazníka není nutné.
+* V případě několika virtuálních počítačů představující hello školení nebo ukázkový scénář musí síťové komunikace a překladu toowork mezi virtuálními počítači hello. Ale komunikace mezi hello sadu virtuálních počítačů potřebovat toobe izolované tak, aby několik sady virtuálních počítačů můžete nasadit vedle sebe bez narušení.  
+* Připojení k Internetu je vyžadována pro hello koncový uživatel tooremote přihlášení do toohello, které virtuální počítače hostované v Azure. V závislosti na hello hostovaný operační systém, je použít Terminálové služby a služby RDS nebo VNC na ssh tooaccess hello virtuálních počítačů tooeither splnění hello školení úlohy nebo provádět hello ukázky. Pokud SAP porty například 3200, 3300 & 3600 může také zpřístupnit instanci aplikace SAP hello je přístupná na jakémkoli počítači připojené Internetu.
+* Hello SAP systémy (a VM(s)) představují samostatné scénář v Azure, což pouze vyžaduje veřejné připojení k Internetu pro přístup koncových uživatelů a nevyžaduje tooother připojení virtuálních počítačů v Azure.
+* SAPGUI a prohlížeče jsou nainstalovat a spustit přímo na hello virtuálních počítačů.
+* Rychlé obnovení původního stavu toohello virtuálních počítačů a znovu nové nasazení tohoto původního stavu je vyžadován.
+* V případě hello demo a scénáře školení, které jsou v několika virtuálních počítačů, služby Active Directory realizovány / OpenLDAP nebo DNS služby je zapotřebí pro každou sadu virtuálních počítačů.
 
 ![Skupinu Virtuálního počítače představující jednu ukázku nebo školení scénář v cloudové službě Azure][planning-guide-figure-200]
 
-Je důležité mít na paměti, že virtuální počítače v jednotlivých sad musí být nasazeny současně, kde názvy virtuálních počítačů v každé sady jsou stejné.
+Je důležité, že tookeep si, že hello virtuální počítače v jednotlivých hello nastaví toobe nutné nasadit souběžně, kde jsou hello názvy virtuálních počítačů v každé sady hello hello stejné.
 
-### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>Mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s požadavkem je plně integrován do místní sítě
+### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>Mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s hello požadavek se plně integrován do hello do místní sítě
 ![Síť VPN se připojení Site-To-Site (mezi různými místy)][planning-guide-figure-300]
 
-Tento scénář je mezi různými místy scénář s mnoha schémat možné nasazení. Lze popsat jednoduše systémem některé části SAP šířku místní a dalšími částmi sady SAP šířku v Azure. Všechny aspekty skutečnost, že součástí komponent SAP běží v Azure by měl být transparentní pro koncové uživatele. Proto přenosu oprava systému (moduly STM) SAP, RFC komunikace, tisk, zabezpečení (jako je jednotné přihlašování) atd fungovat bez problémů systémů SAP spuštěné v Azure. Ale mezi různými místy scénář také popisuje scénář, kde povahu dokončení SAP spuštění v Azure s doménou zákazníka a DNS rozšířit do Azure.
+Tento scénář je mezi různými místy scénář s mnoha schémat možné nasazení. Může být jako jednoduše popsané jako spuštěné některé části hello SAP šířku místní a dalšími částmi sady hello SAP šířku v Azure. Všechny aspekty hello skutečnost, že součástí hello SAP komponent jsou spuštěné v Azure by měl být transparentní pro koncové uživatele. Proto hello SAP přenosu oprava systému (moduly STM), RFC komunikaci, tisk, zabezpečení (jako je jednotné přihlašování) atd fungovat bez problémů pro systémy SAP hello spuštěné v Azure. Ale hello mezi různými místy scénář také popisuje scénář, kde hello dokončení SAP šířku spuštění v Azure s doménou hello zákazníka a DNS rozšířit do Azure.
 
 > [!NOTE]
-> Toto je tento scénář nasazení, který je podporován pro produktivní systémem SAP.
+> Toto je hello scénář nasazení, který je podporován pro produktivní systémem SAP.
 >
 >
 
-Čtení [v tomto článku] [ vpn-gateway-create-site-to-site-rm-powershell] Další informace o tom, jak připojit místní sítě k Microsoft Azure
+Čtení [v tomto článku] [ vpn-gateway-create-site-to-site-rm-powershell] Další informace o tom, tooconnect místní sítě tooMicrosoft Azure
 
 > [!IMPORTANT]
-> Když jsme mluvíme o scénářích mezi různými místy mezi Azure a místními zákaznických nasazení, jsme před sebou členitost celou systémy SAP. Scénáře, které jsou *nepodporuje* pro mezi různými místy scénáře jsou:
+> Když jsme mluvíme o scénářích mezi různými místy mezi Azure a místními zákaznických nasazení, jsme před sebou hello členitost celou systémy SAP. Scénáře, které jsou *nepodporuje* pro mezi různými místy scénáře jsou:
 >
-> * Spuštění různých úrovní aplikace SAP v různých metod nasazení. Například spuštění databázového systému vrstvy místní, ale aplikační vrstvu SAP ve virtuálních počítačích nasazených ve virtuálních počítačích Azure a naopak.
-> * Některé součásti SAP vrstvy v Azure a některé na místě. Příklad rozdělení instance SAP aplikační vrstvy mezi místní a virtuální počítače Azure.
+> * Spuštění různých úrovní aplikace SAP v různých metod nasazení. Například spuštění hello databázového systému vrstvy v místě, ale hello SAP aplikační vrstvu ve virtuálních počítačích nasazených ve virtuálních počítačích Azure a naopak.
+> * Některé součásti SAP vrstvy v Azure a některé na místě. Příklad rozdělení instance hello SAP aplikační vrstvu mezi místní a virtuální počítače Azure.
 > * Není dostupná podpora distribuce virtuálních počítačů spuštěné instance SAP jeden systém nad několika oblastmi Azure.
 >
-> Důvod tato omezení je požadavkem pro vysoce výkonné síť s velmi nízkou latencí v rámci jednoho systému SAP, zejména mezi instancemi aplikace a vrstva databázového systému SAP systému.
+> Hello důvod pro tato omezení je hello požadavek pro vysoce výkonné síť s velmi nízkou latencí v rámci jednoho systému SAP, zejména mezi instancemi aplikace hello a hello databázového systému vrstvy systému SAP.
 >
 >
 
@@ -474,101 +474,101 @@ Tento scénář je mezi různými místy scénář s mnoha schémat možné nasa
 * Podporované služby virtuálního počítače Azure je uvedené v tomto článku serverového softwaru společnosti Microsoft: <http://support.microsoft.com/kb/2721672>.
 * Podporované operační systém verze, vydání systému databáze podporované na služby virtuálního počítače Azure ve spojení s SAP softwaru jsou popsané v Poznámka SAP [1928533].
 * Aplikace SAP a verzí podporované na virtuální počítač služby Azure jsou dokumentovány v článku Poznámka SAP [1928533].
-* Ke spuštění jako virtuální počítače hostované v Azure pro SAP scénáře jsou podporované Image pouze 64bitové. Také to znamená, že jsou podporovány pouze 64bitové aplikace SAP a databází.
+* Pouze 64bitové obrázky nejsou podporované toorun jako virtuální počítače hostované v Azure pro SAP scénáře. Také to znamená, že jsou podporovány pouze 64bitové aplikace SAP a databází.
 
 ## <a name="microsoft-azure-virtual-machine-services"></a>Služby virtuálního počítače Microsoft Azure
-Platformy Microsoft Azure je platforma internetových cloudové služby hostované a pracuje v datových centrech společnosti Microsoft. Platforma obsahuje virtuální počítač služby Microsoft Azure (infrastruktura jako služba nebo IaaS) a sadu bohaté platforma jako služba (PaaS) možnosti.
+Platforma Microsoft Azure Hello je internetových cloudové platformy služby hostované a provozována centrech dat společnosti Microsoft. Platforma Hello obsahuje služeb virtuálního počítače Microsoft Azure hello (infrastruktura jako služba nebo IaaS) a sadu bohaté platforma jako služba (PaaS) možnosti.
 
-Platformy Azure omezuje potřebu počáteční technologie a nákupech infrastruktury. Zjednodušuje údržbu a provoz aplikace tím, že poskytuje na vyžádání výpočetního prostředí a úložiště pro hostování, škálování a Správa webové aplikace a propojených aplikací. Správu infrastruktury je automatické s platformu, která je určená pro vysokou dostupnost a dynamické škálování tak, aby odpovídaly potřebám použití s parametrem průběžnými platbami cenový model.
+Hello platformy Azure omezuje hello nutnost počáteční technologie a nákupech infrastruktury. Zjednodušuje údržbu a provoz aplikace tím, že poskytuje na vyžádání toohost výpočetního prostředí a úložiště, škálování a správu webové aplikace a propojených aplikací. Správu infrastruktury je automatické s platformu, která je určená pro vysokou dostupnost a dynamické škálování potřeby využití toomatch s hello možnost průběžnými platbami cenový model.
 
 ![Umístění služby virtuálního počítače Microsoft Azure][planning-guide-figure-400]
 
-Pomocí služby virtuálního počítače Azure je povolení Microsoft nasadit bitové kopie vlastní server do Azure jako instance IaaS (viz obrázek 4). Virtuální počítače v Azure jsou založené na technologii Hyper-V virtuální pevné disky (VHD) a je možné spouštět různé operační systémy jako hostovaného operačního systému.
+Pomocí služby virtuálního počítače Azure Microsoft je umožňuje tooAzure bitové kopie toodeploy vlastní server jako instance IaaS (viz obrázek 4). Hello virtuálních počítačů v Azure jsou založené na technologii Hyper-V virtuální pevné disky (VHD) a jsou možné toorun různé operační systémy jako hostovaného operačního systému.
 
-Z provozního hlediska nabízí služba virtuálního počítače Azure podobné možnosti jako virtuální počítače nasazené na místní. Ale má významné výhody, který nemusíte zakoupit, spravovat a správě infrastruktury. Vývojáři a správci mít plnou kontrolu nad bitovou kopii operačního systému v rámci těchto virtuálních počítačů. Správci můžou na přihlásit vzdáleně těchto virtuálních počítačů k provádění údržby a řešení potíží s úlohy a také úlohy nasazení softwaru. S ohledem na nasazení jsou pouze omezení velikosti a možnosti virtuálních počítačích Azure. Nemusí se jednat o jako jemné granulární v konfiguraci, jako tomu lze místně. Při volbě typů virtuálních počítačů, které představují kombinaci:
+Z provozního hlediska vyskytne hello, které služba Azure Virtual Machine poskytuje podobné jako virtuální počítače nasazené místně. Má však hello významné výhody, které nepotřebujete tooprocure, správu a správě infrastruktury hello. Vývojáři a správci mít plnou kontrolu nad hello bitovou kopii operačního systému v rámci těchto virtuálních počítačů. Správci mohou přihlásit vzdáleně v toothose virtuální počítače tooperform údržby a řešení potíží s úlohy a také úlohy nasazení softwaru. V ohledem toodeployment jsou hello pouze omezení velikosti hello a možnosti virtuálních počítačích Azure. Nemusí se jednat o jako jemné granulární v konfiguraci, jako tomu lze místně. Při volbě typů virtuálních počítačů, které představují kombinaci:
 
 * Počet Vcpu,
 * Paměť
 * Počet virtuálních pevných disků, které je možné připojit,
 * Šířek pásma sítě a úložiště.
 
-Velikost a omezení velikostí různé virtuální počítače různých nabízí, můžete zobrazit v tabulce v [v tomto článku (Linux)] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)][virtual-machines-sizes-windows].
+velikost Hello a omezení velikostí různé virtuální počítače různých nabízí, můžete zobrazit v tabulce v [v tomto článku (Linux)] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)] [ virtual-machines-sizes-windows].
 
-Jak si myslíte, existují různé rodiny nebo řadu virtuálních počítačů. Možné rozlišit následující rodiny virtuálních počítačů:
+Jak si myslíte, existují různé rodiny nebo řadu virtuálních počítačů. Možné rozlišit hello následující rodiny virtuálních počítačů:
 
 * Virtuální počítač a0 A7 typy: Ne všechny z nich jsou certifikovány pro SAP. První virtuální počítač série, která získali zavedené Azure IaaS.
 * Virtuální počítač a8-A11 typy: instance s vysokým výkonem. Běžet na různých lepší provádění výpočetní hostitelů než ostatní virtuální počítače A-series.
-* Počítač D/Dv2-Series typy: lépe než A0 A7 provádění. Ne všechny typy virtuálních počítačů jsou certifikované s SAP.
-* Typy virtuálních počítačů služby DS, DSv2-Series: podobná D/Dv2-series, ale jsou možné se připojit k Azure Premium Storage (naleznete v kapitole [Azure Premium Storage] [ planning-guide-3.3.2] tohoto dokumentu). Znovu ne všechny typy virtuálních počítačů, které jsou certifikované s SAP.
+* Počítač D/Dv2-Series typy: lépe než A0 A7 provádění. Ne všechny typy hello virtuálních počítačů jsou certifikované s SAP.
+* Typy virtuálních počítačů služby DS, DSv2-Series: podobné tooD/Dv2-series, ale jsou možné tooconnect tooAzure Storage úrovně Premium (naleznete v kapitole [Azure Premium Storage] [ planning-guide-3.3.2] tohoto dokumentu). Znovu ne všechny typy virtuálních počítačů, které jsou certifikované s SAP.
 * Virtuální počítač G-Series typy: typy vysokého využití paměti virtuálního počítače.
-* Virtuální počítač GS-Series typy: jako G-Series, ale včetně možnosti používání Azure Premium Storage (naleznete v kapitole [Azure Premium Storage] [ planning-guide-3.3.2] tohoto dokumentu). Při používání virtuálních počítačů GS-Series jako databázové servery, je nutné používat úložiště úrovně Premium pro soubory protokolů databáze dat a transakce
+* Virtuální počítač GS-Series typy: jako G-Series, ale včetně hello možnost toouse Storage úrovně Premium (naleznete v kapitole [Azure Premium Storage] [ planning-guide-3.3.2] tohoto dokumentu). Při použití GS-Series virtuální počítače jako databázové servery, je povinné toouse Storage úrovně Premium pro soubory protokolů databáze dat a transakce
 
-V řadě různých virtuálních počítačů můžete zjistit stejném procesoru a paměti konfigurace. Nicméně když hledáte propustnost těchto virtuálních počítačů mimo jiné řady se mohou výrazně lišit. Přes stejnou konfiguraci procesoru a paměti. Důvodem je, že základní hardware serveru hostitele na zavedení různé typy virtuálních počítačů mají různé propustnost vlastnosti.  Obvykle rozdíl ukazuje propustnost je odráží rovněž v cenu různé virtuální počítače.
+Stejné konfigurace procesoru a paměti může najde hello v řadě různých virtuálních počítačů. Nicméně když hledáte hello propustnost těchto virtuálních počítačů z řady různých hello se mohou výrazně lišit. Přes hello stejné konfigurace procesoru a paměti. Důvodem je, že hello základní hostitele serverový hardware v hello Úvod hello různých typů virtuálních počítačů mají různé propustnost vlastnosti.  Obvykle hello rozdíl ukazuje propustnost je odráží rovněž v hello cena hello různé virtuální počítače.
 
-Ne všechny řady různých virtuálních počítačů může nabízena v každé z nich oblastí Azure (pro oblasti Azure naleznete v kapitole Další). Nezapomínejte, že ne všechny virtuální počítače nebo řadu virtuálních počítačů jsou certifikovány pro SAP.
+Ne všechny řady různých virtuálních počítačů může nabízena v každé z nich hello oblasti Azure (pro oblasti Azure naleznete v kapitole Další). Nezapomínejte, že ne všechny virtuální počítače nebo řadu virtuálních počítačů jsou certifikovány pro SAP.
 
 > [!IMPORTANT]
-> Pro používání SAP NetWeaver na základě aplikací, pouze podmnožinu typy virtuálních počítačů a konfigurace uvedené v Poznámka SAP [1928533] jsou podporovány.
+> Pro použití hello SAP NetWeaver na základě aplikací, jenom podmnožina hello typů virtuálních počítačů a konfigurace uvedené v Poznámka SAP [1928533] jsou podporovány.
 >
 >
 
 ### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Oblasti Azure
-Microsoft umožňuje nasazení virtuálních počítačů do tak volané Azure oblasti. Oblast Azure může být jeden nebo více datových center, které se nacházejí v těsné blízkosti. Pro většinu geopolitické oblasti na světě. Společnost Microsoft nemá alespoň dva oblasti Azure. Například v Evropě není oblast Azure, Severní Evropa, a jednu z "Západní Evropa". Tyto dvě Azure oblastem v geopolitické oblasti jsou odděleny dostatečně velkou vzdálenost tak, aby přírodních nebo technických havárie neovlivní obou oblastí Azure ve stejné geopolitické oblasti. Vzhledem k tomu, že Microsoft vytrvale vytváří se nové oblasti Azure v různých oblastech geopolitické globálně, počet tyto oblasti vytrvale roste a od prosince 2015 dosaženo počtu 20 oblasti Azure s další oblasti oznámeno již. Systémy SAP vy jako zákazník můžete nasadit do všech těchto oblastech, včetně dvou oblastí Azure v Číně. Aktuální aktuální informace o oblastech Azure najdete v tomto webu: <https://azure.microsoft.com/regions/>
+Microsoft umožňuje toodeploy virtuálních počítačů do tak volané Azure oblasti. Oblast Azure může být jeden nebo více datových center, které se nacházejí v těsné blízkosti. Pro většinu hello geopolitické oblasti v hello, world Microsoft má alespoň dva oblasti Azure. Například v Evropě není oblast Azure, Severní Evropa, a jednu z "Západní Evropa". Tyto dvě Azure oblastem v geopolitické oblasti jsou odděleny dostatečně velkou vzdálenost tak, aby přírodních nebo technických havárie neovlivní obou oblastí Azure v hello stejné geopolitické oblasti. Vzhledem k tomu, že Microsoft vytrvale vytváří se nové oblasti Azure v různých oblastech geopolitické globálně, hello počet tyto oblasti vytrvale roste a od prosince 2015 dosaženo hello počtu 20 oblasti Azure s další oblasti oznámeno již. Systémy SAP vy jako zákazník můžete nasadit do všech těchto oblastech, včetně hello dvou oblastech Azure v Číně. Aktuální aktuální informace o oblastech Azure najdete v tomto webu: <https://azure.microsoft.com/regions/>
 
-### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Koncept virtuálního počítače Microsoft Azure
-Microsoft Azure nabízí infrastruktura jako služba (IaaS) řešení hostitele virtuálních počítačů s podobné funkce jako místní řešení virtualizace. Budete moci vytvářet virtuální počítače z portálu Azure, PowerShell nebo rozhraní příkazového řádku, které také nabízí nasazení a možnosti správy.
+### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Hello koncept virtuálního počítače Microsoft Azure
+Microsoft Azure nabízí infrastruktury jako toohost řešení služby (IaaS) virtuálních počítačů s podobné funkce jako místní řešení virtualizace. Se může toocreate virtuální počítače v rámci hello portál Azure, PowerShell nebo rozhraní příkazového řádku, které také nabízí nasazení a možnosti správy.
 
-Azure Resource Manager umožňuje zřizovat aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Použijete stejné šablony k opakovaně nasazovat aplikace během každé fáze životního cyklu aplikace.
+Azure Resource Manager můžete tooprovision vaší aplikace s použitím deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Použít hello stejné šablony toorepeatedly nasazení aplikace během každé fáze životního cyklu aplikace hello.
 
 Další informace o používání šablon Resource Manageru naleznete zde:
 
-* [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a rozhraní příkazového řádku Azure] [.. /.. / linux/create-ssh-secured-vm-from-template.md]
+* [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a hello rozhraní příkazového řádku Azure] [.. /.. / linux/create-ssh-secured-vm-from-template.md]
 * [Správa virtuálních počítačů pomocí Azure Resource Manageru a prostředí PowerShell][virtual-machines-deploy-rmtemplates-powershell]
 * <https://Azure.microsoft.com/documentation/Templates/>
 
-Jiné zajímavé funkce je možnost vytvářet bitové kopie z virtuálních počítačů, které umožňuje připravit určité úložiště, ze kterých budete moci rychle nasadit instancí virtuálního počítače, které odpovídají vašim požadavkům.
+Další zajímavých funkcí je hello možnost toocreate bitové kopie z virtuálních počítačů, které vám umožní tooprepare určité úložiště, ze kterých se může tooquickly nasazení instance virtuálních počítačů, které odpovídají vašim požadavkům.
 
 Další informace o vytváření bitové kopie z virtuálních počítačů naleznete v [v tomto článku (Linux)] [ virtual-machines-linux-capture-image-resource-manager] a [v tomto článku (Windows)][virtual-machines-windows-capture-image-resource-manager].
 
 #### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Domén selhání
-Fyzická jednotka nezdaří, velmi úzce související fyzické infrastruktuře obsažené v datových centrech, a když fyzické okno nebo rack lze považovat za domény selhání představují domén selhání, neexistuje žádné přímé mapování 1: 1 mezi nimi.
+Fyzická jednotka nezdaří, velmi úzce související toohello fyzické infrastruktuře obsažené v datových centrech, a když fyzické okno nebo rack lze považovat za domény selhání představují domén selhání, neexistuje žádné přímé mapování 1: 1 mezi hello dva.
 
-Při nasazení více virtuálních počítačů v rámci jednoho systému SAP v služeb virtuálního počítače Microsoft Azure, můžete ovlivnit Kontroleru prostředků infrastruktury Azure k nasazení aplikace do různých domén selhání, a tím splňující požadavky smlouvy SLA pro Microsoft Azure. Distribuce domén selhání v jednotky škálování služby Azure (shromažďování stovky výpočetních uzlů nebo uzlů úložiště a sítě) nebo přiřazení virtuálních počítačů do konkrétní domény selhání je však něco přes které nemají přímou kontrolu. Aby bylo možné směrovat kontroleru prostředků infrastruktury Azure k nasazení sadu virtuálních počítačů přes různých domén selhání, budete muset přiřadit skupiny dostupnosti Azure virtuální počítače v době nasazení. Další informace o Azure skupiny dostupnosti, naleznete v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] v tomto dokumentu.
+Při nasazení více virtuálních počítačů v rámci jednoho systému SAP v služeb virtuálního počítače Microsoft Azure, můžete ovlivnit hello Kontroleru prostředků infrastruktury Azure toodeploy vaší aplikace do různých domén selhání, a tím splňuje požadavky hello hello Microsoft Azure SLA. Však hello distribuce domén selhání přes jednotky škálování služby Azure (shromažďování stovky výpočetních uzlů nebo uzlů úložiště a sítě) nebo hello přiřazení virtuální počítače tooa konkrétní doméně selhání je něco přes které nemáte přímé ovládacího prvku. V pořadí toodirect hello prostředků infrastruktury Azure řadiče toodeploy sadu virtuálních počítačů v různých doménách selhání musíte v době nasazení tooassign toohello Azure sadu dostupnosti virtuálních počítačů. Další informace o Azure skupiny dostupnosti, naleznete v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] v tomto dokumentu.
 
 #### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Domén upgradu
-Domén upgradu představují logické jednotce, která vám pomoci určit, jak se virtuální počítač v rámci systému SAP, která se skládá z instancí SAP spuštěných v několika virtuálními počítači, aktualizuje. Když dojde k upgradu, Microsoft Azure projde proces aktualizace těchto domén upgradu po jednom. Tak, že se virtuální počítače v době nasazení v různých doménách upgradu, můžete chránit váš systém SAP částečně z potenciální výpadek. Chcete-li vynutit Azure k nasazení virtuálních počítačů v různých doménách Upgrade systému SAP, budete muset nastavit konkrétní atribut v době nasazení každého virtuálního počítače. Podobně jako u domén selhání, představuje jednotku škálování Azure je rozdělené do několika domén upgradu. Aby bylo možné směrovat řadičem prostředků infrastruktury Azure k nasazení sadu virtuálních počítačů v různých doménách upgradu, budete muset přiřadit skupiny dostupnosti Azure virtuální počítače v době nasazení. Další informace o Azure skupiny dostupnosti, naleznete v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] níže.
+Domén upgradu představují logické jednotce, která pomáhají toodetermine, jak se virtuální počítač v rámci systému SAP, která se skládá z instancí SAP spuštěných v několika virtuálními počítači, aktualizuje. Když dojde k upgradu, Microsoft Azure projde hello proces aktualizace těchto domén upgradu po jednom. Tak, že se virtuální počítače v době nasazení v různých doménách upgradu, můžete chránit váš systém SAP částečně z potenciální výpadek. V pořadí tooforce Azure toodeploy hello virtuální počítače v různých doménách Upgrade systému SAP, musíte tooset konkrétní atribut v době nasazení každého virtuálního počítače. Podobně jako tooFault domén, představuje jednotku škálování Azure je rozdělené do několika domén upgradu. Pořadí toodirect hello prostředků infrastruktury Azure řadiče toodeploy sadu virtuálních počítačů v různých doménách upgradovat je nutné tooassign toohello Azure sadu dostupnosti virtuálních počítačů v době nasazení. Další informace o Azure skupiny dostupnosti, naleznete v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] níže.
 
 #### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Skupiny dostupnosti Azure
-Virtuální počítače Azure v rámci jedné skupiny dostupnosti Azure rozdělené podle Kontroleru prostředků infrastruktury Azure přes různé selhání a upgradu domény. Účelem distribuce přes různé selhání a upgradu domény je zabránit vypnut v případě údržbu infrastruktury nebo selhání v jedné doméně selhání všech virtuálních počítačů systému SAP. Ve výchozím nastavení virtuální počítače nejsou součástí skupiny dostupnosti. Zapojení virtuálního počítače do skupiny dostupnosti je definována v době nasazení nebo později tak, že změna konfigurace a opětovné nasazení virtuálního počítače.
+Virtuální počítače Azure v rámci jedné skupiny dostupnosti Azure rozdělené podle hello Kontroleru prostředků infrastruktury Azure přes různé selhání a upgradu domény. účelem Hello rozdělení hello přes různé selhání a upgradu domény je tooprevent všech virtuálních počítačů systému SAP nebudou vypnut v případě hello údržbu infrastruktury nebo selhání v rámci jedné domény selhání. Ve výchozím nastavení virtuální počítače nejsou součástí skupiny dostupnosti. účast Hello virtuálního počítače ve skupině dostupnosti je definována v době nasazení nebo později tak, že změna konfigurace a opětovné nasazení virtuálního počítače.
 
-Porozumět koncepci skupinami dostupnosti služby Azure a způsob, jakým skupiny dostupnosti se týkají selhání a upgradu domény, přečtěte si [v tomto článku][virtual-machines-manage-availability]
+Číst koncept hello toounderstand skupinami dostupnosti služby Azure a hello způsob skupiny dostupnosti se týkají tooFault a upgradu domény [v tomto článku][virtual-machines-manage-availability]
 
-Definovat skupiny dostupnosti pro ARM prostřednictvím šablonu json najdete v tématu [specifikace rozhraní rest api](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) a vyhledejte "dostupnosti".
+skupiny dostupnosti toodefine pro ARM prostřednictvím šablonu json najdete v části [hello specifikace rozhraní rest api](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) a vyhledejte "dostupnosti".
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Úložiště: Microsoft Azure Storage a datové disky
-Microsoft Azure virtuální počítače využívat různé typy úložišť. Při implementaci SAP na služby virtuálního počítače Azure, je důležité znát rozdíly mezi tyto dva hlavní typy úložiště:
+Microsoft Azure virtuální počítače využívat různé typy úložišť. Při implementaci SAP na služby virtuálního počítače Azure, je důležité toounderstand hello rozdíly mezi tyto dva hlavní typy úložiště:
 
 * Bez trvalé, volatile úložiště.
 * Trvalé úložiště.
 
-Dočasnou úložiště je přímo připojený k běžící virtuální počítače a se nachází na výpočetních uzlech sami – místní instance úložiště (dočasné úložiště). Velikost závisí na velikosti virtuálního počítače, které vybrali při spuštění nasazení. Tento typ úložiště je volatile a proto je disk inicializován při restartování instanci virtuálního počítače. Stránkovací soubor pro operační systém se obvykle nachází na toto dočasný disku.
+Hello dočasnou úložiště je přímo připojené toohello běžící virtuální počítače a se nachází na výpočetních uzlech hello sami – hello místní instance úložiště (dočasné úložiště). velikost Hello závisí na velikosti hello hello vybrali při spuštění hello nasazení virtuálního počítače. Tento typ úložiště je volatile a proto hello disk inicializován při restartování instanci virtuálního počítače. Hello stránkovacího souboru pro operační systém hello se obvykle nachází na toto dočasný disku.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Na virtuálních počítačích Windows je dočasná disk připojit jako jednotku D:\ v nasazených virtuálních počítačů.
+> Na virtuálních počítačích Windows hello dočasného jednotka připojena jako jednotku D:\ v nasazených virtuálních počítačů.
 >
 > ![Linux][Logo_Linux] Linux
 >
 > Na virtuální počítače s Linuxem je připojené jako /mnt/resource nebo /mnt. Naleznete zde podrobnosti:
 >
-> * [Tom, jak připojit datový Disk pro virtuální počítač s Linuxem][virtual-machines-linux-how-to-attach-disk]
+> * [Jak tooAttach datový Disk tooa Linux virtuálního počítače][virtual-machines-linux-how-to-attach-disk]
 > * <https://docs.microsoft.com/Azure/Storage/Storage-About-Disks-and-vhds-Linux#Temporary-disk>
 >
 >
 
 - - -
-Skutečné jednotka je volatile, protože je získávání uložený na samotném serveru hostitele. Pokud se přesune virtuální počítač v opětovné nasazení (například z důvodu údržby v hostiteli nebo vypnutí a restartování) obsah disku dojde ke ztrátě. Proto není možnost k ukládání důležitých dat na této jednotce. Typ média pro tento typ úložiště použít se liší mezi jinou sérii virtuálních počítačů se příliš neliší výkonové charakteristiky, které od června 2015 vypadat podobně jako:
+skutečné jednotka Hello je volatile, protože je získávání uložený na samotném serveru hello hostitele. Pokud se přesune hello virtuálních počítačů v opětovné nasazení (například kvůli toomaintenance v hostiteli hello nebo vypnutí a restartování) dojde ke ztrátě hello obsah hello jednotky. Proto není toostore možnost žádná důležitá data pro tuto jednotku. mezi jinou sérii virtuálních počítačů se příliš neliší výkonové charakteristiky, které od června 2015 vypadat liší Hello typu média použitého pro tento typ úložiště:
 
 * A5-A7: Velmi omezená výkonu. Není doporučeno pro všechno, co je nad rámec stránkovacího souboru
 * A8-A11: Velmi dobré výkonové charakteristiky se některé deset tisíc IOPS a > propustnost 1GB/s.
@@ -577,23 +577,23 @@ Skutečné jednotka je volatile, protože je získávání uložený na samotné
 * G-Series: Velmi dobré výkonové charakteristiky se některé deset tisíc IOPS a > propustnost 1GB/s.
 * GS-Series: Velmi dobré výkonové charakteristiky se některé deset tisíc IOPS a > propustnost 1GB/s.
 
-Výše uvedené příkazy se má použít pro typy virtuálních počítačů, které jsou certifikované s SAP. Virtuální počítač series s vynikající IOPS a propustnost dosáhlo nároku na využívání některé funkce databázového systému. Další informace najdete v tématu [Průvodce nasazením databázového systému][dbms-guide].
+Výše uvedené příkazy se má použít toohello typy virtuálních počítačů, které jsou certifikované s SAP. Hello řady virtuálních počítačů s vynikající IOPS a propustnost kvalifikaci pro využívání některé funkce databázového systému. Další informace najdete v tématu hello [Průvodce nasazením databázového systému][dbms-guide].
 
-Microsoft Azure Storage poskytuje trvalou úložiště a typické úrovně ochrany a redundance jsme si ukazovali tady úložiště SAN. Disky založené na Azure Storage jsou virtuální pevný disk (VHD) v služby Azure Storage. Místní Disk operačního systému (Windows C:\, Linux/dev/sda1) je uložen v úložišti Azure, a další svazky nebo disky připojené k virtuálnímu počítači získat v ní uloženy, příliš.
+Microsoft Azure Storage poskytuje trvalou úložiště a hello typické úrovně ochrany a redundance jsme si ukazovali tady úložiště SAN. Disky založené na Azure Storage jsou virtuální pevný disk (VHD) v hello služby úložiště Azure. Hello místní Disk operačního systému (Windows C:\, Linux/dev/sda1) je uložen na hello Azure Storage a další svazky nebo disky připojené toohello virtuální počítač získat v ní uloženy, příliš.
 
-Je možné nahrát existující virtuální pevný disk z místní nebo prázdných z v rámci Azure a vytvořte do nasazené virtuální počítače.
+Je možné tooupload existujícího virtuálního pevného disku z místní nebo vytvořit prázdných z v rámci Azure a připojte tyto virtuální počítače toodeployed.
 
-Po vytvoření nebo odesílání virtuálního pevného disku do úložiště Azure, je možné připojit a připojit, aby se stávající virtuální počítač a zkopírovat stávající virtuální pevný disk (nepřipojené).
+Po vytvoření nebo odesílání virtuálního pevného disku do úložiště Azure, je možné toomount a připojte tyto tooan existující virtuální počítač a toocopy existující virtuální pevný disk (nepřipojené).
 
-Tyto virtuální pevné disky jsou nastavené jako trvalé, data a změny v těch, které jsou bezpečné při restartování a znovu vytvořit instanci virtuálního počítače. I když je odstraněna instance, tyto virtuální pevné disky zůstal v bezpečí a můžete znovu nasadit nebo v případě disky bez operačního systému může být připojen k ostatním virtuálním počítačům.
+Tyto virtuální pevné disky jsou nastavené jako trvalé, data a změny v těch, které jsou bezpečné při restartování a znovu vytvořit instanci virtuálního počítače. I když je odstraněna instance, tyto virtuální pevné disky zůstal v bezpečí a můžete znovu nasadit nebo v případě disky bez operačního systému, může být připojené tooother virtuální počítače.
 
-V rámci sítě Azure Storage, můžete nakonfigurovat různé redundance úrovně:
+V rámci hello mohou být konfigurovány síťové redundance různé úrovně úložiště Azure:
 
-* Minimální úroveň, kterou je možné vybrat je 'místní redundanci', která je ekvivalentní tři repliky dat ve stejném datovém centru oblast Azure (naleznete v kapitole [oblasti Azure][planning-guide-3.1]).
-* Redundantní úložiště zóny, které šíří tři Image přes různé datové centra v rámci stejné oblasti Azure.
-* Výchozí úroveň redundance je geografická redundance, která asynchronně replikuje obsahu do jiného tři bitové kopie dat do jiné oblasti Azure, který je hostován ve stejné geopolitické oblasti.
+* Minimální úroveň, kterou je možné vybrat je "místní redundanci', která je ekvivalentní toothree repliky hello dat v rámci hello stejném datovém centru oblasti Azure (naleznete v kapitole [oblasti Azure][planning-guide-3.1]).
+* Zóny redundantní úložiště, které šíří hello tři Image přes různých datových střediscích v rámci hello stejné oblasti Azure.
+* Výchozí úroveň redundance je geografická redundance, která asynchronně replikuje hello obsahu do jiného tři bitové kopie hello data do jiné oblasti Azure, který je hostován v hello stejné geopolitické oblasti.
 
-Také najdete v tabulce v tomto článku týkající se možnosti různých redundance: <https://azure.microsoft.com/pricing/details/storage/>
+Informace v tématu hello tabulky v tomto článku týkající se možnosti různých redundance hello: <https://azure.microsoft.com/pricing/details/storage/>
 
 Další informace o službě Azure Storage naleznete zde:
 
@@ -603,106 +603,106 @@ Další informace o službě Azure Storage naleznete zde:
 * <https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/Azure-disk-Encryption-for-Linux-and-Windows-Virtual-Machines-Public-Preview.aspx>
 
 #### <a name="azure-standard-storage"></a>Úložiště Azure úrovně Standard
-Standardní úložiště Azure se typ úložiště, které jsou k dispozici, pokud byl vydán Azure IaaS. Nebyly IOPS kvóty na jednom disku. Latence došlo nebyla ve stejné třídy jako zařízení sítě SAN nebo NAS obvykle nasazuje pro vyšší kategorie systémy SAP hostované na místě. Azure Standard Storage ukázalo dostatečná pro mnoho stovky systémy SAP mezitím nasazené v Azure.
+Úložiště Azure úrovně Standard byl hello typu úložiště k dispozici, pokud byl vydán Azure IaaS. Nebyly IOPS kvóty na jednom disku. Latence došlo nebyla ve hello stejné třídy jako zařízení sítě SAN nebo NAS obvykle nasazují systémů SAP vyšší kategorie hostované na místě. Nicméně hello Azure Standard Storage prokázat dostatečná pro mnoho stovky systémy SAP mezitím nasazené v Azure.
 
-Disky, které jsou uložené na standardních účtech úložiště Azure budou účtovat podle skutečné data, která je uložená, objem transakce úložiště, odchozí přenosy dat a zvolená možnost redundance. Mnoho disky se dají vytvořit v maximální 1TB, velikost, ale také ty zůstat prázdné je bezplatná. Pokud pak zadejte jeden virtuální pevný disk s 100GB, budou se účtovat pro ukládání 100GB a ne pro nominální velikost, které s nebyl vytvořen virtuální pevný disk.
+Disky, které jsou uložené na standardních účtech úložiště Azure budou účtovat podle hello skutečná data, která je uložena, objem hello transakce úložiště, odchozí přenosy dat a zvolená možnost redundance. Mnoho disky se dají vytvořit v hello maximálně 1 TB, velikost, ale také ty zůstat prázdné je bezplatná. Pokud pak zadejte jeden virtuální pevný disk s 100GB, budou se účtovat pro ukládání 100GB a ne pro hello hello nominální velikost virtuálního pevného disku nebyl vytvořen s.
 
 #### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Storage
-V duben 2015 zavedl Microsoft Azure Premium Storage. Storage úrovně Premium získali zavedl s cílem zajistit:
+V duben 2015 zavedl Microsoft Azure Premium Storage. Storage úrovně Premium získali zavedl s cílem tooprovide hello:
 
 * Lepší latence vstupně-výstupní operace.
 * Lepší propustnost.
 * Menší je jejich variabilita latence vstupně-výstupní operace.
 
-K tomuto účelu mnoho změn zavedených nejvýznamnějších dva jsou:
+K tomuto účelu byly zavedeny mnoho změn, které hello dva nejvýznamnějších jsou:
 
-* Využití disků SSD na uzlech Azure Storage
-* Nový číst mezipaměti, které je založeno na místní SSD Azure výpočetního uzlu
+* Využití disků SSD ve hello uzlů úložiště Azure
+* Nové mezipaměti pro čtení, kterou je zajištěna hello místní SSD Azure výpočetního uzlu
 
-V opačném standardního úložiště, kde se nezměnila možnosti závisí na velikosti disku (nebo VHD), Storage úrovně Premium aktuálně má tří kategorií jiný disk, které jsou uvedeny v tomto článku: <https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
+V opačném tooStandard úložiště, kde možnosti nezměnila závisí na velikosti hello hello disku (nebo VHD), Storage úrovně Premium aktuálně má tří kategorií jiný disk, které jsou uvedeny v tomto článku: <https://azure.microsoft.com/ ceny/podrobnosti / / nespravované disky úložiště nebo>
 
-Uvidíte, zda jsou závislé na kategorii velikost disků nebo disku a disku propustnost nebo disku
+Uvidíte, zda jsou závislé na kategorie hello velikost disků hello nebo disku a disku propustnost nebo disku
 
-Základní náklady v případě Storage úrovně Premium není svazek skutečná data uložená v těchto discích, ale velikost kategorii takový disk, nezávisle na množství dat, která jsou uložená v disku.
+Základní náklady v případě hello úložiště Premium Storage není svazek hello skutečná data uložená v takové disky, ale velikost kategorie hello takové disku, nezávisle na hello množství hello data, která je uložena v hello disku.
 
-Také můžete vytvořit disky na Storage úrovně Premium, které nejsou přímo mapování do kategorií velikost vidět. To může být případ, zejména v případě, že kopírování disků ze standardního úložiště do úložiště úrovně Premium. V takových případech se provádí mapování na možnost další disk největší Storage úrovně Premium.
+Také můžete vytvořit disky na Storage úrovně Premium, které nejsou přímo mapování do kategorií velikost hello vidět. To může být případ hello, zejména v případě, že kopírování disků ze standardního úložiště do úložiště úrovně Premium. V takových případech se provádí disku řešením mapování toohello další největší úložiště Premium.
 
-Upozorňujeme, že pouze určité řadu virtuálních počítačů mohou těžit z výhod Azure Premium Storage. Od prosince 2015 jedná se o řady GS a DS. DS-series je v podstatě stejný jako D-series s tím rozdílem, že DS-series má schopnost Storage úrovně Premium připojení virtuálních počítačů kromě na disky, které jsou hostované na základě Azure Standard Storage. Totéž platí pro G-series ve srovnání s GS-series.
+Upozorňujeme, že pouze určité řadu virtuálních počítačů mohou těžit z výhod hello Azure Premium Storage. Od prosince 2015 jedná se o hello DS - a GS-series. Hello DS-series je v podstatě hello stejné jako D-series s výjimkou hello že DS-series má možnost toomount hello Storage úrovně Premium založené na virtuálních počítačích kromě toodisks, které jsou hostované v Azure Standard Storage. Samé platí pro porovnání G-series tooGS-series.
 
-Pokud se odhlašuje součástí DS-series virtuálních počítačů v [v tomto článku (Linux)] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)][virtual-machines-sizes-windows], si myslíte, že jsou data svazku omezení na Storage úrovně Premium disky na členitost úroveň virtuálního počítače. Různé DS-series nebo GS-series virtuálních počítačů také mít různá omezení namapoval počet datových disků, které může být připojen. Tato omezení jsou popsané v článku také uvedených výše. Ale v podstatě znamená, že pokud, například připojíte 32 x P30 disků, aby se jeden virtuální počítač DS14 není získáte 32 x maximální propustnost P30 disku. Místo toho maximální propustnost na úrovni virtuálních počítačů, jak je uvedeno v následujícím článku omezuje propustnost dat.
+Pokud se odhlašuje hello součástí hello DS-series virtuálních počítačů v [v tomto článku (Linux)] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)][virtual-machines-sizes-windows], je potřeba si uvědomit, který nejsou data svazku omezení tooPremium úložiště disky na hello členitost hello úroveň virtuálního počítače. Různé DS-series nebo GS-series virtuálních počítačů také mít různá omezení v namapoval toohello počet datových disků, které může být připojen. Tato omezení jsou popsané v článku hello zmíněné také. Ale v podstatě znamená, že pokud, například připojíte 32 tooa disky x P30 jeden virtuální počítač DS14 není získáte 32 x hello maximální propustnost P30 disku. Místo toho hello maximální propustnost na úrovni virtuálních počítačů, jak je uvedeno v propustnost dat omezení článku hello.
 
 Další informace o Storage úrovně Premium naleznete zde: <http://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
 #### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Spravované disky
-Spravované disky jsou nového typu prostředku v Azure Resource Manager, který lze použít místo virtuální pevné disky, které jsou uložené v účtech úložiště Azure. Spravované disky automaticky zarovnané s skupina dostupnosti virtuálního počítače, které jsou připojené k a proto zvýšit dostupnost virtuálního počítače a služby, které jsou spuštěny na virtuálním počítači. Další informace najdete v tématu [článek s přehledem](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+Spravované disky jsou nového typu prostředku v Azure Resource Manager, který lze použít místo virtuální pevné disky, které jsou uložené v účtech úložiště Azure. Spravované disky automaticky přiblížili hello sadu dostupnosti hello virtuálního počítače, které jsou připojené tooand proto zvýšení dostupnosti hello virtuálního počítače a služby hello, které jsou spuštěny na virtuálním počítači hello. Další informace najdete v tématu hello [článek s přehledem](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
-Doporučujeme použít spravované disku, protože se zjednodušit nasazení a správu virtuálních počítačů.
+Doporučujeme použít tooyou spravované disk, protože se zjednodušit hello nasazení a správu virtuálních počítačů.
 SAP aktuálně podporuje jenom disky spravované Premium. Další informace najdete v tématu Poznámka SAP [1928533].
 
 #### <a name="azure-storage-accounts"></a>Účty služby Azure Storage
-Při nasazování služeb nebo virtuálních počítačů v Azure, mohou být uspořádány nasazení virtuální pevné disky a Image virtuálních počítačů v jednotek nazývaných účtech úložiště Azure. Při plánování nasazení služby Azure, budete muset pečlivě zvažte omezení Azure. Na jedné straně je omezený počet účtů úložiště podle předplatného Azure. I když každý účet úložiště Azure pojme velký počet soubory virtuálního pevného disku, je pevný limit na celkový počet IOPS na účet úložiště. Při nasazování stovky SAP virtuálních počítačů se systémy databázového systému vytváření významné volání vstupně-výstupní operace, se doporučuje distribuovat vysoké databázového systému virtuální počítače IOPS mezi více účtů úložiště Azure. Musí dát pozor nechcete překračovat aktuální limit účtech úložiště Azure za předplatné. Vzhledem k tomu, že úložiště je důležitou součástí nasazení databáze systému SAP, tento koncept je podrobněji popsána v již odkazovaná [Průvodce nasazením databázového systému][dbms-guide].
+Při nasazování služeb nebo virtuálních počítačů v Azure, mohou být uspořádány nasazení virtuální pevné disky a Image virtuálních počítačů v jednotek nazývaných účtech úložiště Azure. Při plánování nasazení služby Azure, budete potřebovat toocarefully zvažte omezení hello Azure. Na jedné straně hello je omezený počet účtů úložiště podle předplatného Azure. I když každý účet úložiště Azure pojme velký počet soubory virtuálního pevného disku, je na hello pevný limit celkový počet IOPS na účet úložiště. Při nasazování stovky SAP virtuálních počítačů se systémy databázového systému vytváření významné volání vstupně-výstupní operace, je doporučeno toodistribute vysoké databázového systému virtuální počítače IOPS mezi více účtů úložiště Azure. Musí být pozor není tooexceed hello aktuální limit účtů úložiště Azure za předplatné. Vzhledem k tomu, že úložiště je sice podstatná součást hello nasazení databáze systému SAP, tento koncept je podrobněji popsána v hello již odkazuje [Průvodce nasazením databázového systému][dbms-guide].
 
-Další informace o účtech Azure Storage najdete v [v tomto článku][storage-scalability-targets]. Přečtení tohoto článku, zjistíte, že nejsou v omezení rozdíly mezi standardních účtech úložiště Azure a účty úložiště Premium. Hlavní rozdíly mezi nimi jsou objem dat, které můžou být uložené v rámci účtu úložiště. V Standard Storage svazek je větší než Storage úrovně Premium rozsahem. Na druhé straně standardní účet úložiště je vážně omezená IOPS (viz sloupec 'Celkový počet požadavků'), zatímco prémiový účet úložiště Azure má žádné takové omezení. Se budeme zabývat podrobnosti a výsledky tyto rozdíly když hovoříte o nasazení SAP systémy, hlavně servery databázového systému.
+Další informace o účtech Azure Storage najdete v [v tomto článku][storage-scalability-targets]. Přečtení tohoto článku, zjistíte, že nejsou v omezení hello rozdíly mezi standardních účtech úložiště Azure a účty úložiště Premium. Hlavní rozdíly mezi nimi jsou hello objem dat, které můžou být uložené v rámci účtu úložiště. V standardní úložiště hello svazek je větší než Storage úrovně Premium rozsahem. Na hello druhé straně hello standardní účet úložiště je vážně omezená IOPS (viz sloupec 'Celkový počet požadavků'), zatímco hello prémiový účet úložiště Azure má žádné takové omezení. Se budeme zabývat podrobnosti a výsledky tyto rozdíly když hovoříte o hello nasazení SAP systémů, hlavně servery hello databázového systému.
 
-V rámci účtu úložiště máte možnost vytvořit různé kontejnery za účelem uspořádání a kategorizaci jiný virtuální pevné disky. Tyto kontejnery se obvykle používají k například samostatné virtuální pevné disky různé virtuální počítače. Neexistují žádné ovlivnit výkon při použití kontejner jenom jeden nebo více kontejnerů pod jeden účet úložiště Azure.
+V rámci účtu úložiště máte různé kontejnery toocreate hello možnost hello za účelem uspořádání a kategorizaci jiný virtuální pevné disky. Tyto kontejnery se obvykle používají k například samostatné virtuální pevné disky různé virtuální počítače. Neexistují žádné ovlivnit výkon při použití kontejner jenom jeden nebo více kontejnerů pod jeden účet úložiště Azure.
 
-Název disku VHD v rámci Azure zahrnuje následující pojmenování připojení, které je potřeba zadat jedinečný název pro virtuální pevný disk v rámci Azure:
+V rámci Azure následuje název disku VHD hello následující pojmenování připojení, které je tooprovide jedinečný název pro hello virtuálního pevného disku v rámci Azure:
 
     http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
 
-Jak je uvedeno výše řetězec musí k jednoznačné identifikaci virtuální pevný disk, který je uložen v úložišti Azure.
+Jako výše uvedených hello řetězec potřebuje toouniquely identifikovat hello virtuálního pevného disku, který je uložen v úložišti Azure.
 
 ### <a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Sítě Microsoft Azure
-Microsoft Azure poskytuje síťovou infrastrukturu, která umožňuje mapování všechny scénáře, které chceme mějte na paměti SAP softwarem. Možnosti jsou:
+Microsoft Azure poskytuje síťovou infrastrukturu, která umožňuje mapování hello všechny scénáře, které chceme toorealize softwarem SAP. Hello možnosti jsou:
 
-* Přístup z venku, přímo k virtuálním počítačům prostřednictvím Terminálová služba systému Windows nebo ssh/VNC
-* Přístup ke službám a určité porty používané aplikacemi v rámci virtuálních počítačů
+* Přístup z hello mimo přímo toohello virtuálních počítačů prostřednictvím Terminálová služba systému Windows nebo ssh/VNC
+* Tooservices přístup a určité porty používané aplikacemi v rámci hello virtuální počítače
 * Interní komunikaci a překlad mezi skupinou virtuální počítače nasazené jako virtuální počítače Azure
-* Připojení mezi různými místy mezi místní sítí zákazníka a síť Azure
+* Připojení mezi různými místy mezi místní sítí a hello síť Azure zákazníka
 * Křížové oblast Azure nebo datových center připojení mezi sítěmi Azure
 
 Další informace naleznete zde: <https://azure.microsoft.com/documentation/services/virtual-network/>
 
-Existuje mnoho různých možností, jak konfigurovat název a IP řešení v Azure. V tomto dokumentu jenom pro Cloud scénáře spoléhají na výchozí hodnotu pomocí Azure DNS (na rozdíl od definování vlastní služby DNS). Je také novou službu Azure DNS, který může být použit místo nastavení serveru DNS. Další informace naleznete v [v tomto článku] [ virtual-networks-manage-dns-in-vnet] a na [tuto stránku](https://azure.microsoft.com/services/dns/).
+Existuje mnoho různých možnosti tooconfigure název a IP řešení v Azure. V tomto dokumentu jenom pro Cloud scénáře spoléhají na výchozí hello pomocí Azure DNS (v kontrastu toodefining služby vlastní DNS). Je také novou službu Azure DNS, který může být použit místo nastavení serveru DNS. Další informace naleznete v [v tomto článku] [ virtual-networks-manage-dns-in-vnet] a na [tuto stránku](https://azure.microsoft.com/services/dns/).
 
-Pro scénáře mezi různými místy, jsme se spoléhat na fakt, na který místní AD a OpenLDAP/DNS bylo rozšířeno prostřednictvím sítě VPN nebo privátní připojení do Azure. Pro určité scénáře podle postupu uvedeného v tomto poli může být potřeba mít repliku AD nebo OpenLDAP nainstalován v Azure.
+Pro scénáře mezi různými místy, jsme se spoléhat na hello fakt této hello místní AD a OpenLDAP/DNS bylo rozšířeno prostřednictvím sítě VPN nebo tooAzure privátní připojení. Pro určité scénáře podle postupu uvedeného v tomto poli může být nutné toohave repliku AD nebo OpenLDAP nainstalován v Azure.
 
-Protože sítě a překladu je důležitou součástí nasazení databáze systému SAP, tento koncept je podrobněji popsána v [Průvodce nasazením databázového systému][dbms-guide].
+Protože sítě a překladu je sice podstatná součást hello nasazení databáze systému SAP, tento koncept je podrobněji popsána v hello [Průvodce nasazením databázového systému][dbms-guide].
 
 ##### <a name="azure-virtual-networks"></a>Virtuální sítě Azure
-Sestavením virtuální síť Azure, můžete definovat rozsah adres privátní IP adresy přidělené funkce Azure protokolu DHCP. Ve scénářích mezi různými místy rozsah IP adres definované je pořád ještě přidělená použití protokolu DHCP v Azure. Ale překlad názvu domény se provádí místně (za předpokladu, že virtuální počítače jsou součástí místní domény) a proto může překládat adresy mimo jiné cloudové služby Azure.
+Sestavením virtuální síť Azure, můžete definovat rozsah adres hello hello soukromé IP adresy přidělené funkce Azure protokolu DHCP. Ve scénářích mezi různými místy rozsah IP adres hello definované je pořád ještě přidělená použití protokolu DHCP v Azure. Ale překlad názvu domény se provádí místně (za předpokladu, že hello virtuální počítače jsou součástí místní domény) a proto může překládat adresy mimo jiné cloudové služby Azure.
 
-Každý virtuální počítač v Azure musí být připojen k virtuální síti.
+Každý virtuální počítač v Azure potřebám toobe připojen tooa virtuální sítě.
 
 Další podrobnosti naleznete v [v tomto článku] [ resource-groups-networking] a na [tuto stránku](https://azure.microsoft.com/documentation/services/virtual-network/).
 
-[comment]: <> (MShermannd TODO nelze nalézt článek, který obsahuje téma OpenLDAP + ARM;)
+[comment]: <> (MShermannd TODO nelze nalézt článek, který obsahuje téma OpenLDAP hello + ARM;)
 [comment]: <> (MSSedusch < https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL>)
 
 > [!NOTE]
-> Ve výchozím nastavení Jakmile je nasazen virtuální počítač nejde změnit konfiguraci virtuální sítě. Nastavení protokolu TCP/IP musí být ponechány na server Azure DHCP. Výchozí chování je přiřazování dynamické IP adres.
+> Ve výchozím nastavení Jakmile je nasazen virtuální počítač nelze změnit hello konfigurace virtuální sítě. nastavení protokolu TCP/IP Hello musí být ponechány toohello Azure DHCP server. Výchozí chování je přiřazování dynamické IP adres.
 >
 >
 
-Adresa MAC virtuální síťové karty může například změnit po změny velikosti a systému Windows nebo Linux hostovaného operačního systému převezme nové síťové karty a automaticky používá protokol DHCP k přiřazení adres IP a DNS v tomto případě.
+může změnit Hello adresa MAC hello virtuální síťové karty, například v po změny velikosti a hello Windows nebo Linux hostovaný operační systém převezme hello nové síťové karty a automaticky používá DHCP tooassign hello služby DNS a IP adresy v tomto případě.
 
 ##### <a name="static-ip-assignment"></a>Přiřazování statických IP adres
-Je možné přiřadit pevné nebo vyhrazené IP adresy k virtuálním počítačům ve virtuální síti Azure. Spuštění virtuálních počítačů v Azure Virtual Network otevře skvělé možnost využít tuto funkci, pokud potřebné nebo požadované pro některé scénáře. Přiřazování IP adres zůstává v platnosti po existenci virtuální počítač, nezávisle na tom, jestli je virtuální počítač, spuštění nebo vypnutí. V důsledku toho budete muset provést celkový počet virtuálních počítačů (virtuálních počítačů spuštěných a zastavených) v úvahu při definování rozsahu IP adres pro virtuální síť. IP adresa zůstane přiřazená až do odstranění virtuálního počítače a jeho síťové rozhraní, nebo dokud nebude IP adresa získá zrušte znovu přiřadit. Další informace najdete v tématu [v tomto článku][virtual-networks-static-private-ip-arm-pportal].
+Je možné tooassign pevné nebo vyhrazené IP adresy tooVMs ve virtuální síti Azure. Spuštěných virtuálních počítačů hello ve virtuální síti Azure otevře tooleverage skvělé možnost tuto funkci, pokud potřebné nebo požadované pro některé scénáře. přiřazení IP Hello zůstává v platnosti po hello existenci hello virtuální počítač, nezávisle na tom, zda je spuštěna hello virtuálního počítače nebo vypnutí. V důsledku toho je nutné tootake hello celkový počet virtuálních počítačů (virtuálních počítačů spuštěných a zastavených) v úvahu při definování hello rozsah IP adres pro hello virtuální sítě. Hello IP adresa zůstane přiřazená až do odstranění hello virtuálního počítače a jeho síťové rozhraní, nebo dokud hello přiřazená IP adresa získá zrušte znovu. Další informace najdete v tématu [v tomto článku][virtual-networks-static-private-ip-arm-pportal].
 
 ##### <a name="multiple-nics-per-vm"></a>Několik síťových adaptérů na virtuální počítač
-Můžete definovat několik virtuálních síťových karet (vNIC) pro virtuální počítač Azure. Možnost mít více vNICs, které lze spustit nastavit síťový provoz oddělení, kde, například přenosy klienta směrován přes jednu vNIC a back-end provoz směrován přes druhý vNIC. Závisí na typu virtuálního počítače existuje jiný omezení jsou namapoval počet vNICs. Přesné podrobnosti, funkce a omezení naleznete v těchto článcích:
+Můžete definovat několik virtuálních síťových karet (vNIC) pro virtuální počítač Azure. Možnost toohave hello více vNICs můžete spouštět tooset až oddělení provoz sítě, kde, například přenosy klientů je směrován přes jednu vNIC a back-end provoz se směruje pomocí druhého vNIC. Závisí na typu hello existují různá omezení v virtuálního počítače, pokud o toohello počet vNICs. Přesné podrobnosti, funkce a omezení naleznete v těchto článcích:
 
 * [Vytvoření virtuálního počítače s Windows s více síťovými kartami][virtual-networks-multiple-nics-windows]
 * [Vytvoření virtuálního počítače s Linuxem s více síťovými kartami][virtual-networks-multiple-nics-linux]
 * [Nasazení více seskupování virtuálních počítačů pomocí šablony][virtual-network-deploy-multinic-arm-template]
 * [Nasazení více seskupování virtuálních počítačů pomocí prostředí PowerShell][virtual-network-deploy-multinic-arm-ps]
-* [Nasazení více seskupování virtuálních počítačů pomocí rozhraní příkazového řádku Azure][virtual-network-deploy-multinic-arm-cli]
+* [Nasazení více seskupování virtuálních počítačů pomocí hello rozhraní příkazového řádku Azure][virtual-network-deploy-multinic-arm-cli]
 
 #### <a name="site-to-site-connectivity"></a>Připojení Site-to-Site
-Mezi různými místy je virtuálních počítačích Azure a místními propojené s transparentní, trvalé připojení VPN. Očekává se stane Nejběžnější vzor nasazení SAP v Azure. Předpokladem je, že by měl transparentně fungovat provozních postupů a procesů pomocí instance SAP v Azure. Tyto prostředky, které byste měli nelze tisknout z těchto systémů stejně jako použití SAP přenosu správu systému (TMS) k přenosu změní z vývojového systému v Azure na testovací systém, který je nasazen na místě. Další dokumentaci ohledně site-to-site lze nalézt v [v tomto článku][vpn-gateway-create-site-to-site-rm-powershell]
+Mezi různými místy je virtuálních počítačích Azure a místními propojené s transparentní, trvalé připojení VPN. Je očekávané toobecome hello nejběžnější SAP vzor nasazení v Azure. Hello předpokladem je, že by měl transparentně fungovat provozních postupů a procesů pomocí instance SAP v Azure. To znamená, že jste by měl být schopný tooprint mimo tyto systémy a také použít hello tootransport SAP přenosu správu systému (TMS) se změní z vývojového systému v Azure tooa testovací systém, který je nasazený na místě. Další dokumentaci ohledně site-to-site lze nalézt v [v tomto článku][vpn-gateway-create-site-to-site-rm-powershell]
 
 ##### <a name="vpn-tunnel-device"></a>Zařízení tunelové propojení VPN
-Chcete-li vytvořit připojení site-to-site (místního datového centra k datovému centru Azure), musíte buď získat a nakonfigurovat zařízení VPN nebo použít směrování a vzdálený přístup (RRAS) zavedenou jako součást softwaru se systémem Windows Server 2012.
+V pořadí toocreate připojení site-to-site (místní data center tooAzure datového centra), musíte tooeither získat a nakonfigurovat zařízení VPN nebo použít směrování a vzdálený přístup (RRAS) zavedenou jako součást softwaru se systémem Windows Server 2012.
 
 * [Vytvoření virtuální sítě s připojením VPN typu site-to-site pomocí prostředí PowerShell][vpn-gateway-create-site-to-site-rm-powershell]
 * [Informace o zařízeních VPN pro připojení Site-to-Site VPN Gateway][vpn-gateway-about-vpn-devices]
@@ -710,27 +710,27 @@ Chcete-li vytvořit připojení site-to-site (místního datového centra k dato
 
 ![Připojení Site-to-site mezi místními a Azure][planning-guide-figure-600]
 
-Výše uvedené schéma ukazuje, že dvě předplatná Azure podrozsahů na adresu IP, které jsou vyhrazené pro použití ve virtuálních sítích v Azure. Prostřednictvím sítě VPN je vytvořeno připojení z místní sítě do Azure.
+Hello předchozí obrázek ukazuje, že dvě předplatná Azure podrozsahů na adresu IP, které jsou vyhrazené pro použití ve virtuálních sítích v Azure. připojení k Hello z hello místní, že je vytvořeno tooAzure sítě prostřednictvím sítě VPN.
 
 #### <a name="point-to-site-vpn"></a>Point-to-Site VPN
-Point-to-site VPN vyžaduje každý klientský počítač se připojit s vlastním VPN do Azure. Pro scénáře SAP, které jsme prohlížení není praktické připojení point-to-site. Proto jsou uvedeny žádné další odkazy k připojení k síti VPN point-to-site.
+Point-to-site VPN vyžaduje každý počítač tooconnect klienta s vlastním VPN do Azure. Pro scénáře SAP hello Těšíme se na není praktické připojení point-to-site. Proto žádné další odkazy jsou uvedeny připojení toopoint-to-site VPN.
 
 Další informace naleznete zde
-* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí webu Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Konfigurace připojení typu Point-to-Site k virtuální síti pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Konfigurace tooa připojení Point-to-Site virtuální sítě pomocí portálu Azure hello](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Konfigurace tooa připojení Point-to-Site virtuální sítě pomocí prostředí PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
 #### <a name="multi-site-vpn"></a>Více servery VPN
-Azure v současné době také nabízí možnost vytvořit připojení VPN více lokalit pro jedno předplatné. V rámci jednoho předplatného dříve omezovala na jedno připojení site-to-site VPN. Toto omezení se rychle s připojeními VPN typu více lokalit pro v rámci jednoho předplatného. Díky tomu je možné využívat více než jedné oblasti Azure pro konkrétní předplatné prostřednictvím konfigurace mezi různými místy.
+Azure nabízí také v současné době hello možnost toocreate připojení k VPN více lokalit pro jedno předplatné. V rámci jednoho předplatného byla dřív připojení omezené tooone site-to-site VPN. Toto omezení se rychle s připojeními VPN typu více lokalit pro v rámci jednoho předplatného. Díky tomu je možné tooleverage více než jedné oblasti Azure pro konkrétní předplatné prostřednictvím konfigurace mezi různými místy.
 
 Další dokumentaci, najdete v tématu [v tomto článku][vpn-gateway-create-site-to-site-rm-powershell]
 
 [comment]: <> (MShermannd TODO nalezen žádný odkaz doku ARM)
 
-#### <a name="vnet-to-vnet-connection"></a>Virtuální síť připojení virtuální sítě
-Použití více servery VPN, musíte nakonfigurovat samostatné virtuální sítě Azure v každé z oblastí. Máte ale velmi často požadavek, který by měl vzájemně komunikovat softwarové komponenty v různých oblastech. V ideálním případě tato komunikace by neměl směrovat z jedné oblasti Azure k místnímu a z ní do jiné oblasti Azure. Na zástupce Azure nabízí možnost konfigurace připojení z jedné virtuální sítě Azure v jedné oblasti s jinou virtuální sítí Azure hostovaná v jiné oblasti. Tato funkce je volána připojení VNet-to-VNet. Další podrobnosti o této funkci naleznete zde: <https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>.
+#### <a name="vnet-toovnet-connection"></a>Virtuální síť tooVNet připojení
+Prostřednictvím sítě VPN více lokalit, je nutné tooconfigure samostatné virtuální sítě Azure v jednotlivých oblastech hello. Máte ale velmi často hello požadavek, který by měl hello softwarové součásti v různých oblastech hello vzájemně komunikovat. V ideálním případě by neměl tato komunikace směrovat z jedné oblasti Azure tooon místní a že toohello jiné oblasti Azure. tooshortcut, Azure nabízí možnost tooconfigure hello připojení z jedné virtuální sítě Azure v jedné oblasti tooanother, které Azure Virtual Network hostované v jiné oblasti. Tato funkce je volána připojení VNet-to-VNet. Další podrobnosti o této funkci naleznete zde: <https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>.
 
-#### <a name="private-connection-to-azure--expressroute"></a>Privátní připojení k Azure – ExpressRoute
-Microsoft Azure ExpressRoute umožňuje vytvářet privátní připojení mezi datových center Azure a buď místní infrastruktury zákazníka nebo v prostředí ve společném umístění. ExpressRoute nabízí různé MPLS poskytovatelé sítě VPN (přepínáním paketů) nebo jiní poskytovatelé služeb sítě. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Připojení ExpressRoute nabízejí vyšší zabezpečení, spolehlivost další prostřednictvím více paralelních okruhů, vyšší rychlost a nižší latenci než Typická připojení přes Internet.
+#### <a name="private-connection-tooazure--expressroute"></a>Privátní připojení tooAzure – ExpressRoute
+Microsoft Azure ExpressRoute umožňuje vytvoření hello privátní připojení mezi datových center Azure a místní infrastruktury zákazníka buď hello nebo v prostředí ve společném umístění. ExpressRoute nabízí různé MPLS poskytovatelé sítě VPN (přepínáním paketů) nebo jiní poskytovatelé služeb sítě. Připojení ExpressRoute se nepřenášejí prostřednictvím hello veřejného Internetu. Připojení ExpressRoute nabízejí vyšší zabezpečení, spolehlivost další prostřednictvím více paralelních okruhů, vyšší rychlost a nižší latenci než Typická připojení přes hello Internet.
 
 Najdete další informace o Azure ExpressRoute a nabídky tady:
 
@@ -744,180 +744,180 @@ Express Route umožňuje víc předplatných Azure prostřednictvím jeden okruh
 * <https://Azure.microsoft.com/documentation/articles/expressroute-howto-Circuit-arm/>
 
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Vynucené tunelování v případě mezi různými místy
-Pro virtuální počítače připojení k doménám místní prostřednictvím site-to-site, point-to-site nebo ExpressRoute budete muset nastavení internetového proxy serveru jsou získávání nasazení pro všechny uživatele v těchto virtuálních počítačů i. Ve výchozím nastavení software na těchto virtuálních počítačů nebo uživatelů pro přístup k Internetu pomocí prohlížeče by jít přes proxy server společnosti, ale by připojení přímo přes Azure k Internetu. Ale i nastavení proxy není 100 % řešení pro řízení provozu prostřednictvím proxy serveru společnosti, protože se jedná o odpovědnost softwaru a služeb ke kontrole pro proxy server. Pokud software spuštěný ve virtuálním počítači není učinit nebo správce manipuluje nastavení, provoz na Internetu může znovu detoured přímo přes Azure k Internetu.
+Pro virtuální počítače připojení k doménám místní prostřednictvím site-to-site, point-to-site nebo ExpressRoute budete potřebovat toomake hello nastavení internetového proxy serveru jsou získávání nasazení pro všechny uživatele hello ve také tyto virtuální počítače. Ve výchozím nastavení, software na těchto virtuálních počítačů nebo uživatelů používajících tooaccess hello prohlížeče, nebude projít hello společnosti proxy Internetu, ale by připojení přímo přes Azure toohello Internetu. Ale i hello nastavení proxy serveru není přenosem hello toodirect 100 % řešení prostřednictvím proxy serveru společnosti hello vzhledem k tomu, že odpovídá toocheck softwaru a služeb pro proxy server hello. Pokud software na hello virtuálního počítače není učinit nebo správce manipuluje hello nastavení, můžete toohello provoz sítě Internet znovu detoured přímo přes Azure toohello Internetu.
 
-Chcete-li předejít, můžete nakonfigurovat vynucené tunelování připojení site-to-site mezi místními a Azure. Podrobný popis funkce vynucené tunelování je publikována zde <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+V pořadí tooavoid to, můžete konfigurovat vynucené tunelování s připojením site-to-site mezi místními a Azure. Hello podrobný popis funkce vynucené tunelování hello je publikována zde <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
-Vynucené tunelové připojení s ExpressRoute je povoleno zákazníci inzeruje výchozí trasu prostřednictvím relace partnerského vztahu protokolu BGP ExpressRoute.
+Vynucené tunelové připojení s ExpressRoute je povoleno zákazníci inzeruje výchozí trasu přes hello ExpressRoute BGP pro relace partnerského vztahu.
 
 #### <a name="summary-of-azure-networking"></a>Shrnutí sítě Azure
-Tato kapitola obsahuje mnoho důležitých bodů o sítí Azure. Zde je souhrn hlavní body:
+Tato kapitola obsahuje mnoho důležitých bodů o sítí Azure. Zde je souhrn hello hlavní body:
 
-* Virtuální sítě Azure umožňuje nastavení sítě podle vlastních potřeb
-* Virtuální sítě Azure můžete využít k přiřazení rozsahy IP adres k virtuálním počítačům nebo přiřadit pevné IP adresy virtuálních počítačů
-* Nastavení připojení Site-To-Site nebo Point-To-Site, musíte nejprve vytvořit virtuální síť Azure
-* Po nasazení virtuálního počítače se už nedají změnit ve virtuální síti přiřazené k virtuálnímu počítači
+* Virtuální sítě Azure umožňuje tooset hello sítě podle vlastních potřeb tooyour
+* Virtuální sítě Azure lze využít tooassign IP adresy rozsahů tooVMs nebo přiřadit pevné IP adresy tooVMs
+* tooset Site-To-Site nebo Point-To-Site připojení, je nejprve nutné toocreate virtuální síť Azure
+* Po nasazení virtuálního počítače již není možné toochange hello, virtuální sítě přiřadit toohello virtuálních počítačů
 
 ### <a name="quotas-in-azure-virtual-machine-services"></a>Kvóty pro služby Azure virtuálního počítače
-Je potřeba mít o fakt, že úložiště a síťové infrastruktury jsou sdílena mezi virtuálních počítačů spuštěných v infrastruktuře Azure řady služeb. A stejně jako v datových centrech vlastní zákazníka, předimenzování některých prostředky infrastruktury v míře. Platforma Microsoft Azure používá disk, procesoru, sítě a jiných kvóty pro omezení spotřeby prostředků a chcete zachovat výkon konzistentní a deterministický.  Různé typy virtuálních počítačů (A5, A6 atd.) mají různé kvóty pro počet disků, procesoru, paměti RAM a sítě.
+Budeme potřebovat toobe vymazat o hello fakt této hello úložiště a síťové infrastruktury jsou sdílena mezi virtuální počítače se systémem řady služeb v hello infrastruktury Azure. A jako v případě hello zákazníka vlastní datových centrech předimenzování některých prostředků infrastruktury hello trvá stupeň tooa místní. Hello platforma Microsoft Azure používá disk, procesoru, sítě a další spotřeby prostředků hello toolimit kvóty a výkonu toopreserve konzistentní a deterministický.  Hello různé typy virtuálních počítačů (A5, A6 atd.) mají různé kvóty pro hello počet disků, procesoru, paměti RAM a sítě.
 
 > [!NOTE]
-> Prostředky procesoru a paměti typů virtuálních počítačů nepodporuje SAP jsou předběžně přidělených v hostitelských uzlech. To znamená, že po nasazení virtuálního počítače prostředků na hostiteli jsou k dispozici, jak jsou definovány podle typu virtuálního počítače.
+> Prostředky procesoru a paměti hello typů virtuálních počítačů nepodporuje SAP jsou předběžně přidělených na uzly hostitele hello. To znamená, že po nasazení virtuálního počítače hello hello prostředky na hostiteli hello jsou k dispozici podle definice hello typ virtuálního počítače.
 >
 >
 
-Při plánování a změna velikosti SAP na řešení Azure je třeba zvážit kvóty pro každou velikost virtuálního počítače. Kvóty virtuálního počítače jsou popsány [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows].
+Je třeba zvážit při plánování a změna velikosti SAP na řešení Azure hello kvóty pro každou velikost virtuálního počítače. kvóty Hello virtuálních počítačů jsou popsány [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows].
 
-Kvót popsané představují teoretický maximální hodnoty.  Limit IOPS na disku lze dosáhnout s malé IOs (8kb), ale pravděpodobně nemusí být dosaženo s velké IOs (1 Mb).  IOPS limit se vynucuje u členitost jediný disk.
+Hello kvót popsané představují hello teoretický maximální hodnoty.  Hello limit IOPS na jeden disk může dosáhnout s malé IOs (8kb), ale pravděpodobně nemusí být dosaženo s velké IOs (1 Mb).  Hello IOPS limit se vynucuje u hello členitost jediný disk.
 
-Jako hrubý rozhodovací strom rozhodnout, jestli se systému SAP zapadá do služby virtuálního počítače Azure a jeho funkce nebo jestli stávajícího systému musí být nakonfigurována jinak než k nasazení systému v Azure se dají použít rozhodovacího stromu níže:
+Jako toodecide hrubý rozhodovací strom zda se systému SAP zapadá do služby Azure virtuálního počítače a jeho funkce nebo zda stávajícího systému potřebuje toobe nakonfigurována jinak než v systému hello toodeploy pořadí v Azure, hello rozhodovací strom níže lze použít:
 
-![Rozhodovací strom k rozhodování o možnost nasazení SAP v Azure][planning-guide-figure-700]
+![Rozhodovací strom toodecide možnost toodeploy SAP v Azure][planning-guide-figure-700]
 
-**Krok 1**: nejdůležitější informace je spustit s protokoly SAP požadavkem pro daný systém SAP. Požadavky na protokoly SAP musí být oddělené do části databázového systému a část aplikace SAP, i v případě, že je v systému SAP již nasadit místně v konfiguraci vrstvy 2. Stávajících systémů můžete určit nebo odhadované podle existující srovnávacích testů SAP přístupové body související do hardwaru, který používá často. Výsledky naleznete zde: <http://global.sap.com/campaigns/benchmark/index.epx>.
-Pro nově nasazené systémy SAP by měl prošli velikosti cvičení, které by měl určit požadavky na protokoly SAP systému.
+**Krok 1**: hello nejdůležitější informace toostart s je hello protokoly SAP požadavkem pro daný systém SAP. Hello protokoly SAP požadavky nutné toobe oddělené do části databázového systému hello a část aplikace hello SAP, i když hello SAP systému je již nasazen na místě v konfiguraci vrstvy 2. Pro existující systémy hello protokoly SAP související toohello hardwaru používá často lze určit nebo odhadované založené na existující SAP srovnávacích testů. výsledky Hello naleznete zde: <http://global.sap.com/campaigns/benchmark/index.epx>.
+Pro nově nasazené systémy SAP by měl prošli nastavení velikosti cvičení, která by měla určí požadavky protokoly SAP hello hello systému.
 Viz také tomto blogu a přiložený dokument pro SAP velikosti v Azure: <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-**Krok 2**: stávajících systémů svazek vstupně-výstupních operací a vstupně-výstupních operací za sekundu na serveru databázového systému by se mělo měřit. Pro nově plánované systémy cvičení nastavení velikosti pro nový systém také měl dát hrubý nápady požadavky na vstupně-výstupních operací na straně databázového systému. Pokud si jisti, nakonec potřebujete provést testování konceptu.
+**Krok 2**: stávajících systémů hello svazku vstupně-výstupních operací a by se mělo měřit vstupně-výstupních operací za sekundu na hello databázového systému serveru. Pro nově plánované systémy hello dimenzování cvičení pro nový systém hello také získat hrubý nápady hello vstupně-výstupní požadavky hello straně databázového systému. Pokud si jisti, musíte nakonec tooconduct testování konceptu.
 
-**Krok 3**: porovnejte protokoly SAP požadavky pro server databázového systému s přístupové body, můžete zadat různé typy virtuálních počítačů Azure. Informace o protokoly SAP různých typů virtuální počítač Azure je popsána v Poznámka SAP [1928533]. Fokus musí být ve virtuálním počítači databázového systému nejprve vzhledem k tomu, že v databázové vrstvě je vrstva SAP NetWeaver systému, které není horizontální navýšení kapacity pro většinu nasazení. Naproti tomu SAP aplikační vrstvu lze škálovat. Pokud žádná z SAP podporované typy virtuální počítač Azure může poskytnout požadovaná přístupové body, zatížení plánované systému SAP nelze spustit v Azure. Buď musíte k nasazení systému místní nebo budete muset změnit svazek zatížení systému.
+**Krok 3**: porovnání hello protokoly SAP požadavek hello databázového systému server s protokoly SAP hello hello jiný virtuální počítač typy Azure poskytuje. Hello informace o protokoly SAP hello různých typů virtuální počítač Azure je popsána v Poznámka SAP [1928533]. fokus Hello by měla být na hello databázového systému virtuální počítač nejdřív vzhledem k tomu, že vrstva databáze hello je vrstva hello SAP NetWeaver systému, které není horizontální rozšíření kapacity v hello většinu nasazení. Naproti tomu hello SAP aplikační vrstvu lze škálovat. Pokud žádná z hello SAP podporované typy virtuálního počítače Azure můžete poskytovat hello požadované protokoly SAP, hello zatížení systému SAP hello plánované nelze spustit v Azure. Buď musíte toodeploy hello systému místní nebo potřebujete toochange hello zatížení svazku pro systém hello.
 
-**Krok 4**: jak se píše [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows], Azure vynucuje kvóty IOPS na disk nezávislé zda používat úložiště úrovně Standard nebo Premium Storage. Závisí na typu virtuálního počítače, počet datových disků, které může být připojen se liší. V důsledku toho můžete vypočítat maximální IOPS číslo, které lze dosáhnout s jednotlivými různé typy virtuálních počítačů. Závisí na rozložení souboru databáze, vám může rozkládají disky se jeden svazek v hostovaný operační systém. Ale pokud aktuální svazek IOPS nasazené systému SAP překračuje počítané omezení typu největší virtuálních počítačů Azure a pokud neexistuje možnost odpovídajícím způsobem s více paměti, zatížení systému SAP ovlivněné můžou být vážně. V takových případech můžete dosáhl bodu, kde není vhodné nasazovat systému v Azure.
+**Krok 4**: jak se píše [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows], Azure vynucuje kvóty IOPS na disk nezávislé zda používat úložiště úrovně Standard nebo Premium Storage. Závisí na hello typ virtuálního počítače, hello počet datových disků, které může být připojen se liší. V důsledku toho můžete vypočítat maximální IOPS číslo, které lze dosáhnout s jednotlivými hello různé typy virtuálních počítačů. Závisí na hello rozložení souboru databáze, vám může rozkládají disky toobecome jeden svazek v hello hostovaný operační systém. Ale pokud hello aktuální IOPS svazku nasazené systému SAP překračuje omezení hello vypočítat hello největší typ virtuálního počítače Azure a pokud neexistuje žádné prvního toocompensate s více paměti, hello zatížení hello systému SAP ovlivněné můžou být vážně. V takových případech můžete dosáhl bodu, kde není vhodné nasazovat hello systému v Azure.
 
-**Krok 5**: hlavně v systémech SAP, které jsou nasazené na místě v konfiguracích vrstvě 2, pravděpodobné, systém může být potřeba nakonfigurovat v Azure v konfiguraci vrstvy 3. V tomto kroku budete muset zkontrolovat, zda je součást v aplikační vrstvě SAP, který nelze škálovat na více systémů a který by začlenit do prostředků procesoru a paměti, které nabízejí různé typy virtuálního počítače Azure. Pokud skutečně existuje takový komponentu, SAP systému a jeho úlohy nelze nasadit do Azure. Ale pokud můžete škálovat součásti aplikace SAP do více virtuálních počítačů Azure, systém lze nasadit do Azure.
+**Krok 5**: hlavně v systémech SAP, které jsou nasazené na místě v konfiguracích vrstvě 2, hello pravděpodobné že hello systému může být nutné toobe nakonfigurovaný v Azure v konfiguraci vrstvy 3. V tomto kroku je nutné toocheck, zda je součást v hello SAP aplikační vrstvu, která nelze škálovat na více systémů a který by začlenit do hello procesoru a paměti, že prostředky hello různé typy nabídka virtuálního počítače Azure. Pokud skutečně existuje takový komponentu, hello SAP systému a jeho úlohy nelze nasadit do Azure. Ale pokud můžete škálovat součásti aplikace hello SAP do více virtuálních počítačů Azure, hello systém lze nasadit do Azure.
 
-**Krok 6**: Pokud databázového systému a SAP součásti vrstvy aplikace lze spustit ve virtuálních počítačích Azure, musí být definován s ohledem na konfiguraci:
+**Krok 6**: Pokud hello databázového systému a součásti vrstvy aplikace SAP lze spustit ve virtuálních počítačích Azure, je hello konfiguraci toobe definované s ohledem na:
 
 * Počet virtuálních počítačů Azure
-* Typy virtuálních počítačů pro jednotlivé součásti
-* Počet virtuálních pevných disků ve virtuálním počítači databázového systému zajistit dostatek IOPS
+* Typy virtuálních počítačů pro jednotlivé součásti hello
+* Počet virtuálních pevných disků v tooprovide databázového systému virtuálního počítače dostatek IOPS
 
 ## <a name="managing-azure-assets"></a>Správa prostředků Azure
 ### <a name="azure-portal"></a>Azure Portal
-Portál Azure je jedním z tři rozhraní pro správu nasazení virtuálního počítače Azure. Základní správu úkoly, jako je nasazení virtuálních počítačů z bitové kopie, lze provést prostřednictvím portálu Azure. Kromě toho vytváření účtů úložiště, virtuální sítě a jiných součástí Azure jsou také úlohy, které na portálu Azure může zpracovat velmi dobře. Funkce, jako jsou virtuální pevné disky nahrávat z místního do Azure nebo kopírování virtuálního pevného disku v rámci Azure jsou však úlohy, které vyžadují nástroje třetích stran nebo správu pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
+Hello portál Azure je jedním ze tří rozhraní toomanage Azure nasazení virtuálních počítačů. úlohy Hello základní správy, jako je nasazení virtuálních počítačů z bitové kopie, lze provést prostřednictvím hello portálu Azure. Kromě toho hello vytvoření účtů úložiště, virtuální sítě, a další Azure součásti jsou také úlohy hello portálu Azure může zpracovat velmi dobře. Funkce jako nahrávat virtuální pevné disky z místní tooAzure nebo kopírování virtuálního pevného disku v rámci Azure jsou však úlohy, které vyžadují nástroje třetích stran nebo správu pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
 
 ![Portál Microsoft Azure – Přehled virtuálních počítačů][planning-guide-figure-800]
 
 [comment]: <> (MSSedusch * < https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
 [comment]: <> (MSSedusch * < https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
-Úlohy správy a konfigurace pro instanci virtuálního počítače je možné z portálu Azure.
+Úlohy správy a konfigurace pro instanci virtuálního počítače hello je možné z v rámci hello portálu Azure.
 
-Kromě toho, restartování a vypínání virtuálního počítače můžete připojit, odpojte a vytvořte datových disků pro instanci virtuálního počítače, k zaznamenání instance pro přípravy bitové kopie a nakonfigurujte velikost instance virtuálního počítače.
+Kromě toho, restartování a vypínání virtuálního počítače můžete také připojit, odpojit a vytvořit datových disků pro hello instanci virtuálního počítače, instanci hello toocapture pro přípravy bitové kopie a nakonfigurujte hello velikost hello instanci virtuálního počítače.
 
-Portál Azure poskytuje základní funkce můžete nasadit a nakonfigurovat virtuální počítače a mnoha dalším službám Azure. Ale ne všechny dostupné funkce se vztahuje na portálu Azure. Na portálu Azure není možné provést úkoly, jako je:
+Hello portál Azure poskytuje základní funkce toodeploy a konfigurace virtuálních počítačů a mnoha dalším službám Azure. Ale ne všechny dostupné funkce je předmětem hello portálu Azure. Hello portálu Azure není možné tooperform úkoly, jako je:
 
-* Virtuální pevné disky se nahrávají na Azure
+* Odesílání tooAzure virtuálních pevných disků
 * Kopírování virtuálních počítačů
 
 [comment]: <> (MShermannd TODO, co o automatizaci služby pro SAP virtuální počítače?)
 [comment]: <> (MSSedusch nasazení více virtuálních počítačů os mezitím možné)
-[comment]: <> (Jakýkoli typ automatizace týkající se nasazení také MSSedusch není možné pomocí portálu Azure. Úlohy, jako je skriptované nasazení více virtuálních počítačů není možná prostřednictvím portálu Azure.)
+[comment]: <> (Jakýkoli typ automatizace týkající se nasazení také MSSedusch není možné pomocí hello portálu Azure. Úlohy, jako je skriptované nasazení více virtuálních počítačů není možná prostřednictvím hello portálu Azure.)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Správa pomocí rutin prostředí PowerShell Microsoft Azure
-Prostředí Windows PowerShell je výkonný a rozšiřitelný rámec, který má byla široce přijat zákazníky, kteří instalují velký počet systémů v Azure. Po instalaci rutin prostředí PowerShell na plochu, přenosných počítačů nebo vyhrazené správy stanice dá se spouštět rutiny prostředí PowerShell vzdáleně.
+Prostředí Windows PowerShell je výkonný a rozšiřitelný rámec, který má byla široce přijat zákazníky, kteří instalují velký počet systémů v Azure. Po instalaci hello rutin prostředí PowerShell na plochu, přenosných počítačů nebo vyhrazené správy stanice můžete hello rutiny prostředí PowerShell spustit vzdáleně.
 
-Povolit místní desktop nebo přenosný počítač pro použití rutin prostředí Azure PowerShell a postup konfigurace těch, které pro použití s předplatná Azure je popsaná v procesu [v tomto článku][powershell-install-configure].
+Hello proces tooenable místní desktop nebo přenosný počítač pro hello použití rutin prostředí Azure PowerShell a jak tooconfigure pro použití s hello hello Azure odběry je popsáno v [v tomto článku][powershell-install-configure].
 
-Podrobnější postup k instalaci, aktualizaci a nakonfigurovat Azure PowerShell rutin najdete také v [této kapitoly v Průvodci nasazením][deployment-guide-4.1].
+Další podrobné kroky na tom, jak tooinstall, aktualizovat a nakonfigurovat rutin prostředí Azure PowerShell hello najdete také v [tato kapitola hello Průvodce nasazením][deployment-guide-4.1].
 
-Zkušeností zákazníků, pokud byl prostředí PowerShell (PS) je určitě více výkonný nástroj pro nasazení virtuálních počítačů a vytvořit vlastní kroky v nasazení virtuálních počítačů. Všechny zákazníky spuštěné instance SAP v Azure používají rutiny PS doplníte úlohy správy udělat na portálu Azure, případně i pomocí rutiny PS výhradně ke správě jejich nasazeních v Azure. Protože rutiny specifické pro Azure sdílet stejné zásady vytváření názvů jako více než 2000 rutiny související s Windows, není jednoduchý úkol správcům systému Windows využívají tyto rutiny.
+Zkušeností zákazníků, pokud byl, prostředí PowerShell (PS) je určitě hello výkonnější nástroj toodeploy virtuální počítače a toocreate vlastní kroky v hello nasazení virtuálních počítačů. Všechny spuštěné instance SAP v Azure zákazníků hello používají PS rutiny toosupplement úlohy správy nemají v hello portál Azure nebo jsou i pomocí rutin PS výhradně toomanage jejich nasazeních v Azure. Vzhledem k tomu, že sdílené složky rutiny specifické pro Azure hello hello stejné zásady vytváření názvů jako hello více než 2000 rutiny související s Windows, je snadno úloha pro Windows správci tooleverage tyto rutiny.
 
 Podívejte se sem příklad: <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 [comment]: <> (MShermannd TODO popisují nový příkaz rozhraní příkazového řádku při testování)
-Nasazení rozšíření monitorování Azure pro SAP (naleznete v kapitole [řešením pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím prostředí PowerShell nebo rozhraní příkazového řádku. Proto je nutné vytvořit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.  
+Nasazení hello rozšíření monitorování Azure pro SAP (naleznete v kapitole [řešením pro monitorování Azure pro SAP] [ planning-guide-9.1] v tomto dokumentu) je možné pouze prostřednictvím prostředí PowerShell nebo rozhraní příkazového řádku. Proto je povinné tooset provozu a konfigurace prostředí PowerShell nebo rozhraní příkazového řádku pro nasazování nebo správu systém SAP NetWeaver v Azure.  
 
-Jak Azure poskytuje další funkce, nové rutiny PS se chystáte přidat, který vyžaduje aktualizace rutin. Proto má smysl na serveru Azure stáhnout alespoň jednou v měsíci <https://azure.microsoft.com/downloads/> pro novou verzi rutiny. Nainstaluje se nová verze na starší verzi.
+Jak Azure poskytuje další funkce, budou nové rutiny PS toobe přidat, který vyžaduje aktualizace rutin hello. Proto má smysl toocheck hello stáhnout Azure lokality alespoň jednou hello měsíc <https://azure.microsoft.com/downloads/> pro novou verzi hello rutiny. nainstaluje se nová verze Hello nad hello starší verze.
 
 Obecnější seznam souvisejících s Azure PowerShell příkazy najdete tady: <https://docs.microsoft.com/powershell/azure/overview>.
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Správu prostřednictvím Microsoft rozhraní příkazového řádku Azure
-Pro zákazníky, kteří použijte Linux a chcete spravovat Azure nemusí být prostředků Powershell možnost. Společnost Microsoft nabízí jako alternativu rozhraní příkazového řádku Azure.
-Rozhraní příkazového řádku Azure poskytuje sadu softwaru open source, příkazy a platformy pro práci s platformou Azure. Rozhraní příkazového řádku Azure poskytuje mnohem stejné funkce najít na portálu Azure.
+Pro zákazníky, kteří se používá Linux a chcete toomanage Azure nemusí být prostředků Powershell možnost. Společnost Microsoft nabízí jako alternativu rozhraní příkazového řádku Azure.
+Hello rozhraní příkazového řádku Azure poskytuje sadu softwaru open source, příkazy a platformy pro práci s hello platformě Azure. Hello rozhraní příkazového řádku Azure poskytuje mnohem hello stejné funkce najít v hello portálu Azure.
 
-Informace o instalaci, konfiguraci a používání rozhraní příkazového řádku najdete v části příkazy k provádění úloh Azure
+Informace o instalaci, konfiguraci a jak toouse rozhraní příkazového řádku příkazy tooaccomplish Azure úlohy v tématu
 
-* [Instalace rozhraní příkazového řádku Azure CLI][xplat-cli]
-* [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a rozhraní příkazového řádku Azure] [.. /.. / linux/create-ssh-secured-vm-from-template.md]
-* [Použití Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru][xplat-cli-azure-resource-manager]
+* [Nainstalujte hello rozhraní příkazového řádku Azure][xplat-cli]
+* [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a hello rozhraní příkazového řádku Azure] [.. /.. / linux/create-ssh-secured-vm-from-template.md]
+* [Hello použití Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru][xplat-cli-azure-resource-manager]
 
-Také číst kapitoly [rozhraní příkazového řádku Azure pro virtuální počítače s Linuxem] [ deployment-guide-4.5.2] v [Průvodce nasazením] [ planning-guide] týkající se používání rozhraní příkazového řádku Azure k nasazení rozšíření monitorování Azure pro SAP.
+Také číst kapitoly [rozhraní příkazového řádku Azure pro virtuální počítače s Linuxem] [ deployment-guide-4.5.2] v hello [Průvodce nasazením] [ planning-guide] na tom, jak toouse rozhraní příkazového řádku Azure toodeploy hello Azure Monitoring Rozšíření pro SAP.
 
-## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Různé způsoby k nasazení virtuálních počítačů pro SAP v Azure
-V této kapitoly zjistíte různé způsoby, jak nasadit virtuální počítač v Azure. V této kapitole jsou popsané postupy další přípravy, jakož i zpracování virtuální pevné disky a virtuální počítače v Azure.
+## <a name="different-ways-toodeploy-vms-for-sap-in-azure"></a>Různé způsoby toodeploy virtuálních počítačů pro SAP v Azure
+V této kapitoly zjistíte hello různé způsoby toodeploy virtuálního počítače v Azure. V této kapitole jsou popsané postupy další přípravy, jakož i zpracování virtuální pevné disky a virtuální počítače v Azure.
 
 ### <a name="deployment-of-vms-for-sap"></a>Nasazení virtuálních počítačů pro SAP
-Microsoft Azure nabízí několik způsobů pro nasazení virtuálních počítačů a přidruženými disky. Proto je důležité pochopit rozdíly, od přípravy virtuálních počítačů se můžou lišit v závislosti na metodě nasazení. Obecně platí jsme podívejte se na následující scénáře:
+Microsoft Azure nabízí několik způsobů toodeploy virtuální počítače a přidružené disky. Proto je velmi důležité toounderstand hello rozdíly, od přípravy hello virtuálních počítačů se můžou lišit v závislosti na metodě hello nasazení. Obecně platí jsme si prohlédněte hello následující scénáře:
 
-#### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Přesunutí virtuálního počítače z místního do Azure s diskem zobecněn
-Máte v úmyslu přesunout z místní konkrétního systému SAP do Azure. Tento krok můžete provést tím, že nahrajete virtuální pevný disk, který obsahuje operační systém, SAP binární soubory a binární soubory databázového systému plus virtuální pevné disky se soubory protokolu a data z databázového systému Azure. Rozdíl k [scénář #2 níže][planning-guide-5.1.2], zachovat název hostitele, identifikátor SID SAP, a SAP uživatelských účtů ve virtuálním počítači Azure, jak byla nakonfigurována v místním prostředí. Proto generalizací bitovou kopii není nutné. Najdete v kapitolách [přípravy pro přesun virtuálního počítače z místního do Azure s diskem zobecněn] [ planning-guide-5.2.1] tohoto dokumentu pro místní přípravné kroky a odesílání-zobecněný virtuální počítače nebo virtuální pevné disky do Azure. Čtení kapitoly [scénář 3: přesunutí virtuálního počítače z místního virtuálního pevného disku není zobecněný Azure pomocí SAP] [ deployment-guide-3.4] v [Průvodce nasazením] [ deployment-guide] podrobný postup nasazení takové bitovou kopii v Azure.
+#### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Přesunutí virtuálního počítače z místní tooAzure s diskem zobecněn
+Máte v plánu toomove konkrétního systému SAP z místní tooAzure. To lze provést tím, že nahrajete hello virtuálního pevného disku, který obsahuje hello operačního systému, hello SAP binární soubory a binární soubory databázového systému plus hello virtuální pevné disky s hello protokolu a data souborů tooAzure hello databázového systému. Na rozdíl od příliš[scénář #2 níže][planning-guide-5.1.2], zachovat hello název hostitele, identifikátor SID SAP, a SAP uživatelských účtů v hello virtuálního počítače Azure, jak byla nakonfigurována v místním prostředí hello. Proto generalizací hello bitové kopie není nutné. Najdete v kapitolách [přípravy pro přesun virtuálního počítače z místní tooAzure s diskem zobecněn] [ planning-guide-5.2.1] tohoto dokumentu pro místní přípravné kroky a odesílání tooAzure zobecněný virtuální počítače nebo virtuální pevné disky. Čtení kapitoly [scénář 3: přesunutí virtuálního počítače z místního virtuálního pevného disku není zobecněný Azure pomocí SAP] [ deployment-guide-3.4] v hello [Průvodce nasazením] [ deployment-guide] podrobný postup nasazení takové bitovou kopii v Azure.
 
 #### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Nasazení virtuálního počítače s bitovou kopii zákaznické
-Z důvodu opravy specifické požadavky vaší verzí operačního systému nebo databázového systému nemusí zadané bitové kopie v Azure Marketplace podle vašich potřeb. Proto může být potřeba vytvořit virtuální počítač pomocí vlastní "privátní" image operačního systému nebo databázového systému virtuálního počítače, které mohou být nasazeny několikrát později. Pro přípravu "privátní" image pro duplikaci, musí být považovány za následující položky:
+Z důvodu toospecific oprava požadavkům vaší verzí operačního systému nebo databázového systému nemusí hello zadané bitové kopie v Azure Marketplace hello podle vašich potřeb. Proto může být nutné toocreate virtuálního počítače pomocí vlastní "privátní" image operačního systému nebo databázového systému virtuálního počítače, které mohou být nasazeny několikrát později. tooprepare "privátní" image duplikovaná hello následující položky mají toobe považována za:
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Zobrazte další podrobnosti zde: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> nastavení systému Windows (např. Windows SID a název hostitele) musí být zobecněn na místní virtuální počítač pomocí příkazu sysprep jejich abstrahované.
+> Zobrazte další podrobnosti zde: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> nastavení systému Windows hello (jako jsou SID systému Windows a název hostitele) musí být zobecněn místními hello jejich abstrahované Virtuální počítač pomocí příkazu sysprep hello.
 >
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Postupujte podle kroků popsaných v těchto článcích pro [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd], nebo [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle], připravit virtuální pevný disk má nahrát do Azure.
+> Postupujte podle kroků hello popsaných v těchto článcích pro [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd], nebo [Oracle Linux] [ virtual-machines-linux-create-upload-vhd-oracle], tooAzure nahrán tooprepare toobe virtuálního pevného disku.
 >
 >
 
 - - -
-Pokud jste již nainstalovali SAP obsah v místní virtuální počítač (hlavně u systémy vrstvě 2), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure pomocí instance přejmenovat postup nepodporuje správce zřizování softwaru SAP (Poznámka SAP [1619720]). Najdete v kapitolách [přípravy pro nasazení virtuálního počítače s bitovou kopii zákaznické pro SAP] [ planning-guide-5.2.2] a [odesílání virtuálního pevného disku z místního do Azure] [ planning-guide-5.3.2] tohoto dokumentu pro místní přípravné kroky a odesílání zobecněný virtuální počítač do Azure. Čtení kapitoly [scénář 2: nasazení virtuálního počítače s vlastní image pro SAP] [ deployment-guide-3.3] v [Průvodce nasazením] [ deployment-guide] podrobný postup nasazení takové bitovou kopii v Azure.
+Pokud jste již nainstalovali SAP obsah v místní virtuální počítač (hlavně u systémy vrstvě 2), můžete upravit nastavení systému SAP hello po nasazení hello hello virtuálního počítače Azure pomocí hello instance přejmenovat postup nepodporuje hello zřizování softwaru SAP Správce (Poznámka SAP [1619720]). Najdete v kapitolách [přípravy pro nasazení virtuálního počítače s bitovou kopii zákaznické pro SAP] [ planning-guide-5.2.2] a [odesílání virtuálního pevného disku z místní tooAzure] [ planning-guide-5.3.2]tohoto dokumentu pro místní přípravné kroky a odesílání zobecněný tooAzure virtuálních počítačů. Čtení kapitoly [scénář 2: nasazení virtuálního počítače s vlastní image pro SAP] [ deployment-guide-3.3] v hello [Průvodce nasazením] [ deployment-guide] podrobné kroky nasazení takové bitovou kopii v Azure.
 
-#### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Nasazení virtuálních počítačů z Azure Marketplace
-Chcete používat Microsoft nebo třetích stran, pokud image virtuálního počítače v Azure Marketplace pro nasazení virtuálního počítače. Po nasazení virtuálního počítače v Azure použijte stejné pokyny a nástroje pro instalaci softwaru SAP nebo databázového systému uvnitř virtuálního počítače, jako byste to udělali v místním prostředí. Podrobnější popis nasazení, získáte v kapitole [scénář 1: nasazení virtuálního počítače z Azure Marketplace pro SAP] [ deployment-guide-3.2] v [Průvodce nasazením][deployment-guide].
+#### <a name="deploying-a-vm-out-of-hello-azure-marketplace"></a>Nasazení virtuálních počítačů mimo hello Azure Marketplace
+Chcete toouse společnosti Microsoft nebo třetích stran zadaná image virtuálního počítače z Azure Marketplace toodeploy hello virtuálního počítače. Po nasazení virtuálního počítače v Azure provedením hello stejné pokyny a nástroje pro tooinstall hello SAP softwaru nebo databázového systému uvnitř virtuálního počítače jako byste to udělali v místním prostředí. Podrobnější popis nasazení, získáte v kapitole [scénář 1: nasazení virtuálního počítače mimo hello Azure Marketplace pro SAP] [ deployment-guide-3.2] v hello [Průvodce nasazením] [ deployment-guide].
 
 ### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Příprava na Azure virtuálních počítačů s SAP
-Před nahráním virtuálních počítačů do Azure, budete muset zajistěte, aby virtuální počítače a virtuální pevné disky splnit určité požadavky. Existují malé rozdíly v závislosti na metodě nasazení, který se používá.
+Před nahráním virtuálních počítačů do Azure je nutné toomake se, že hello virtuálních počítačů a virtuálních pevných disků splnit určité požadavky. Existují malé rozdíly v závislosti na metodě nasazení hello, který se používá.
 
-#### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Příprava pro přesun virtuálního počítače z místního do Azure s diskem zobecněn
-Běžnou metodu nasazení je přesunout existující virtuální počítač, na kterém běží systém SAP z místního do Azure. Tento virtuální počítač a SAP systém ve virtuálním počítači právě měli spustit v Azure pomocí stejný název hostitele a velmi pravděpodobně stejným identifikátorem SID SAP. V takovém případě by neměl být zobecněn hostovaného operačního systému virtuálního počítače pro více nasazení. Pokud je tu rozšířené místní sítě do Azure (naleznete v kapitole [mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s požadavkem je plně integrován do místní sítě] [ planning-guide-2.2] v tomto dokumentu), pak i stejné účty domény je možné v rámci virtuálního počítače jako těch, které byly používány před místně.
+#### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Příprava pro přesun virtuálního počítače z místní tooAzure s diskem zobecněn
+Běžnou metodu nasazení je toomove existující virtuální počítač, na kterém běží systém SAP z místní tooAzure. Virtuální počítač a hello systému SAP v hello virtuální počítač by měl stačí spustit v Azure pomocí hello stejný název hostitele a velmi pravděpodobně hello stejný identifikátor SID SAP. V takovém případě by neměl být zobecněn hello hostovaného operačního systému virtuálního počítače pro více nasazení. Pokud tu rozšířeno hello do místní sítě do Azure (naleznete v kapitole [mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s hello požadavek se plně integrován do místní sítě hello] [ planning-guide-2.2] v tomto dokumentu), pak i hello stejné účty domény může být použit hello virtuálního počítače jako těch, které byly používány před místně.
 
 Požadavky při přípravě vlastní disku virtuálního počítače Azure jsou:
 
-* Maximální velikost 127GB pouze může být původně virtuálního pevného disku obsahující operační systém. Toto omezení získali eliminovat na konci března 2015. Virtuální pevný disk obsahující operační systém nyní může být velikost až 1TB, jako ostatní Azure Storage i hostované virtuální pevný disk.
-* Musí se jednat o ve formátu pevný virtuální pevný disk. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx se ještě nepodporují v Azure. Dynamické virtuální pevné disky budou převedeny na statický virtuálních pevných disků při nahrávání virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
-* Virtuální pevné disky, které jsou připojené k virtuálnímu počítači a musí být připojené znovu v Azure do virtuálního počítače potřeba mít také pevné Formát virtuálního pevného disku. Přečtěte si prosím [v tomto článku (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) a [v tomto článku (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) pro omezení velikosti datových disků. Dynamické virtuální pevné disky budou převedeny na statický virtuálních pevných disků při nahrávání virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
-* Přidáte, může být použit jiný místní účet s oprávněními správce, které mohou být využívána podpory společnosti Microsoft nebo které lze přiřadit jako kontext pro služeb a aplikací na spouštění v, dokud je virtuální počítač nasazen a více příslušné uživatele.
-* Pro případ použití scénáři jenom pro Cloud nasazení (naleznete v kapitole [jenom pro Cloud - nasazení virtuálních počítačů do Azure bez závislosti na místní sítě zákazníka] [ planning-guide-2.1] tohoto dokumentu) v kombinaci s Tato metoda nasazení, účtů domény nemusí fungovat po disku Azure je nasazené v Azure. To platí hlavně pro účty, které se používají ke spouštění služeb jako databázového systému nebo SAP aplikací. Proto musíte pro tyto účty domény nahraďte místní účty virtuálního počítače a odstranění místních účtů domény ve virtuálním počítači. Zachování místní domény uživatele do bitové kopie virtuálního počítače se nejedná o problém při je virtuální počítač nasazen ve scénáři mezi různými místy, jak je popsáno v kapitole [mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s požadavkem je plně integrován do místní sítě] [ planning-guide-2.2] v tomto dokumentu.
-* Pokud se při spuštění systému na místě a tyto virtuální počítače jsou by měl být nasazen v čistě cloudové scénáře účty domény používaly jako databázového systému přihlášení nebo uživatelé, třeba odstranit uživatele domény. Musíte zajistit, že místní správce a jiný virtuální počítač místní uživatel je přidán jako přihlášení uživatele do databázového systému jako správci.
-* Přidejte další místní účty, jak těch, které mohou být potřebné pro tento scénář konkrétní nasazení.
+* Původně hello virtuálního pevného disku obsahující hello operačního systému může mít maximální velikost 127GB jenom. Toto omezení získali odstraňují u hello konci března 2015. Nyní hello virtuální pevný disk obsahující hello operačního systému může být až too1TB velikost jako jakékoli jiné úložiště Azure také hostované virtuální pevný disk.
+* Musí být toobe v hello pevné formátu virtuálního pevného disku. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx se ještě nepodporují v Azure. Dynamické virtuální pevné disky bude převedený toostatic virtuálních pevných disků při nahrávání hello virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
+* Virtuální pevné disky, které jsou připojené toohello virtuálních počítačů a by měl být připojené znovu toobe nutné virtuální počítač Azure toohello v také pevném formátu virtuálního pevného disku. Přečtěte si prosím [v tomto článku (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) a [v tomto článku (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) pro omezení velikosti datových disků. Dynamické virtuální pevné disky bude převedený toostatic virtuálních pevných disků při nahrávání hello virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
+* Přidáte, může být použit jiný místní účet s oprávněními správce, které mohou být využívána podpory společnosti Microsoft nebo které lze přiřadit jako kontext pro služby a aplikace toorun v dokud hello, který je nasazen virtuální počítač a více příslušné uživatele.
+* Pro případ hello použití scénáři jenom pro Cloud nasazení (naleznete v kapitole [jenom pro Cloud - nasazení virtuálních počítačů do Azure bez závislosti na hello místní síti zákazníka] [ planning-guide-2.1] tohoto zdokumentujte) v kombinaci s Tato metoda nasazení, domény, které účty nemusí fungovat po hello disku Azure je nasazené v Azure. To platí hlavně pro účty, které jsou používané toorun služby, jako je aplikace hello databázového systému nebo SAP. Proto nutné tooreplace tyto účty domény s účty místní počítač a odstraňte hello místní doménové účty v hello virtuálních počítačů. Zachování místní domény uživatele v hello image virtuálního počítače se nejedná o problém při hello virtuální počítač nasazen v hello mezi různými místy scénář popsaný v kapitole [mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s hello požadavek se plně integrován do místní sítě hello] [ planning-guide-2.2] v tomto dokumentu.
+* Pokud byly použity účty domény jako databázového systému přihlášení nebo uživatelé při spuštění hello systému místně a tyto virtuální počítače mají toobe nasazené v čistě cloudové scénáře, uživatelé domény hello musí toobe odstranit. Je nutné toomake ujistili, že hello místního správce a jiný virtuální počítač místní uživatel je přidán jako přihlášení uživatele do hello databázového systému jako správci.
+* Přidejte další místní účty, jak těch, které mohou být potřebné pro konkrétní nasazení scénář hello.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> V tomto scénáři žádné generalizace (sysprep) virtuálního počítače je potřeba nahrát a nasadit virtuální počítač na platformě Azure.
+> V tomto scénáři žádné generalizace (sysprep) hello virtuálního počítače je požadovaná tooupload a nasaďte hello virtuálního počítače na platformě Azure.
 > Ujistěte se, že jednotku, kterou nepoužívá D:\.
 > Nastavení automatického připojení disku pro připojené disky, jak je popsáno v kapitole [nastavení automatického připojení pro připojené disky] [ planning-guide-5.5.3] v tomto dokumentu.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> V tomto scénáři žádné generalizace (příkaz waagent-deprovision) virtuálního počítače je potřeba nahrát a nasadit virtuální počítač na platformě Azure.
-> Ujistěte se, zda se nepoužívá/mnt nebo prostředků a že jsou všechny disky připojené přes uuid. Pro disk operačního systému ověřte, že položka zaváděcí program pro spouštění také změna připojení na základě uuid.
+> V tomto scénáři žádné generalizace (příkaz waagent-deprovision) hello virtuálního počítače je požadovaná tooupload a nasadit hello virtuálního počítače na platformě Azure.
+> Ujistěte se, zda se nepoužívá/mnt nebo prostředků a že jsou všechny disky připojené přes uuid. Pro disk hello operačního systému ověřte, že hello zaváděcí program pro spouštění položku také změna připojení na základě uuid hello.
 >
 >
 
 - - -
 #### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Příprava pro nasazení virtuálního počítače s bitovou kopii zákaznické pro SAP
-Soubory virtuálního pevného disku, které obsahují zobecněný operačního systému jsou uloženy v kontejnery v účtech úložiště Azure nebo jako spravované diskové Image. Můžete nasadit nový virtuální počítač z takových bitové kopie odkazující na bitovou kopii virtuálního pevného disku nebo Disk spravované jako zdroj v souborech šablony nasazení, jak je popsáno v kapitole [scénář 2: nasazení virtuálního počítače s vlastní image pro SAP] [ deployment-guide-3.3] z [Průvodce nasazením][deployment-guide].
+Soubory virtuálního pevného disku, které obsahují zobecněný operačního systému jsou uloženy v kontejnery v účtech úložiště Azure nebo jako spravované diskové Image. Můžete nasadit nový virtuální počítač z takových bitové kopie odkazující na hello virtuálního pevného disku nebo spravovat bitové kopie disku jako zdroj v souborech šablony nasazení, jak je popsáno v kapitole [scénář 2: nasazení virtuálního počítače s vlastní image pro SAP] [ deployment-guide-3.3]z hello [Průvodce nasazením][deployment-guide].
 
 Požadavky při přípravě vlastní Image virtuálního počítače Azure jsou:
 
-* Maximální velikost 127GB pouze může být původně virtuálního pevného disku obsahující operační systém. Toto omezení získali eliminovat na konci března 2015. Virtuální pevný disk obsahující operační systém nyní může být velikost až 1TB, jako ostatní Azure Storage i hostované virtuální pevný disk.
-* Musí se jednat o ve formátu pevný virtuální pevný disk. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx se ještě nepodporují v Azure. Dynamické virtuální pevné disky budou převedeny na statický virtuálních pevných disků při nahrávání virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
-* Virtuální pevné disky, které jsou připojené k virtuálnímu počítači a musí být připojené znovu v Azure do virtuálního počítače potřeba mít také pevné Formát virtuálního pevného disku. Přečtěte si prosím [v tomto článku (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) a [v tomto článku (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) pro omezení velikosti datových disků. Dynamické virtuální pevné disky budou převedeny na statický virtuálních pevných disků při nahrávání virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
-* Vzhledem k tomu, že všichni uživatelé domény registrovaný jako uživatelům ve virtuálním počítači nebude existovat ve scénáři jenom pro Cloud (naleznete v kapitole [jenom pro Cloud - nasazení virtuálních počítačů do Azure bez závislosti na místní sítě zákazníka] [ planning-guide-2.1] tohoto dokumentu), služby pomocí takové domény účty nemusí fungovat po bitovou kopii je nasazené v Azure. To platí hlavně pro účty, které se používají ke spouštění služeb jako databázového systému nebo SAP aplikací. Proto musíte pro tyto účty domény nahraďte místní účty virtuálního počítače a odstranění místních účtů domény ve virtuálním počítači. Zachování místní domény uživatele do bitové kopie virtuálního počítače nemusí být problém, když je virtuální počítač nasazen ve scénáři mezi různými místy, jak je popsáno v kapitole [mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s požadavkem je plně integrován do místní sítě] [ planning-guide-2.2] v tomto dokumentu.
-* Přidáte, může být použit jiný místní účet s oprávněními správce, které mohou být využívána podpory společnosti Microsoft v vyšetřování problém nebo které lze přiřadit jako kontext pro služeb a aplikací na spouštění v, dokud je virtuální počítač nasazen a více příslušné uživatele.
-* V nasazení jenom pro Cloud a kde účty domény používaly jako databázového systému přihlášení nebo uživatelé při spuštění systému na místě měli byste odstranit uživatele domény. Musíte zajistit, že místní správce a jiný uživatel místní počítač přidán jako přihlášení nebo uživatel databázového systému jako správci.
-* Přidejte další místní účty, jak těch, které mohou být potřebné pro tento scénář konkrétní nasazení.
-* Pokud bitová kopie obsahuje instalace SAP NetWeaver a přejmenování názvu hostitele z původní název v okamžiku nasazení Azure je pravděpodobné, že doporučuje se nejnovější verze SAP softwaru zřizování Manager DVD zkopírovat do šablony. To vám umožní snadno použít funkci SAP zadané přejmenování přizpůsobit změněné název hostitele nebo změnit SID systému SAP v nasazené bitové kopie virtuálního počítače, jakmile se spustí novou kopií.
+* Původně hello virtuálního pevného disku obsahující hello operačního systému může mít maximální velikost 127GB jenom. Toto omezení získali odstraňují u hello konci března 2015. Nyní hello virtuální pevný disk obsahující hello operačního systému může být až too1TB velikost jako jakékoli jiné úložiště Azure také hostované virtuální pevný disk.
+* Musí být toobe v hello pevné formátu virtuálního pevného disku. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx se ještě nepodporují v Azure. Dynamické virtuální pevné disky bude převedený toostatic virtuálních pevných disků při nahrávání hello virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
+* Virtuální pevné disky, které jsou připojené toohello virtuálních počítačů a by měl být připojené znovu toobe nutné virtuální počítač Azure toohello v také pevném formátu virtuálního pevného disku. Přečtěte si prosím [v tomto článku (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) a [v tomto článku (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) pro omezení velikosti datových disků. Dynamické virtuální pevné disky bude převedený toostatic virtuálních pevných disků při nahrávání hello virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
+* Vzhledem k tomu, že všechny uživatele domény registrovaný jako uživatelé v hello virtuální počítač nebude existovat ve scénáři jenom pro Cloud hello (naleznete v kapitole [jenom pro Cloud - nasazení virtuálních počítačů do Azure bez závislosti na hello místní síti zákazníka] [ planning-guide-2.1] tohoto dokumentu), služby pomocí takové domény účty nemusí fungovat po hello obrázku je nasazena v Azure. To platí hlavně pro účty, které jsou používané toorun služby, jako je databázového systému nebo SAP aplikací. Proto nutné tooreplace tyto účty domény s účty místní počítač a odstraňte hello místní doménové účty v hello virtuálních počítačů. Zachování místní domény uživatele v hello image virtuálního počítače nemusí být problém, když virtuální počítač nasazen v hello hello mezi různými místy scénář popsaný v kapitole [mezi různými místy - nasazení jedné nebo více virtuálních počítačů SAP do Azure s hello požadavek Probíhá plně integrován do místní sítě hello] [ planning-guide-2.2] v tomto dokumentu.
+* Přidáte, může být použit jiný místní účet s oprávněními správce, které mohou být využívána podpory společnosti Microsoft v vyšetřování problém nebo které lze přiřadit jako kontext pro služby a aplikace toorun v dokud hello, který je nasazen virtuální počítač a více příslušné uživatele.
+* V nasazení jenom pro Cloud a kde účty domény byly použity jako databázového systému přihlášení nebo hello uživatelům při spuštění systému na místě měli byste odstranit hello uživatele domény. Je nutné toomake jistotu, že hello místního správce a jiný virtuální počítač místní uživatel je přidán jako přihlášení nebo uživatel hello databázového systému jako správci.
+* Přidejte další místní účty, jak těch, které mohou být potřebné pro konkrétní nasazení scénář hello.
+* Pokud hello bitová kopie obsahuje instalace SAP NetWeaver a přejmenování hello název hostitele z původní název hello v hello bod hello nasazení Azure je pravděpodobné, je doporučené toocopy hello nejnovější verze DVD Manager hello zřizování softwaru SAP do Šablona Hello. To vám umožní tooeasily použití hello SAP zadaný přejmenování funkce tooadapt hello změnil název hostitele nebo změnu hello SID hello systému SAP v rámci hello nasazení image virtuálního počítače, jakmile se spustí novou kopii.
 
 - - -
 > ![Windows][Logo_Windows] Windows
@@ -926,134 +926,134 @@ Požadavky při přípravě vlastní Image virtuálního počítače Azure jsou:
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Ujistěte se, zda se nepoužívá/mnt nebo prostředků a že jsou všechny disky připojené přes uuid. Pro disk operačního systému zkontrolujte, zda že položka zaváděcí program pro spouštění také odráží připojení na základě uuid.
+> Ujistěte se, zda se nepoužívá/mnt nebo prostředků a že jsou všechny disky připojené přes uuid. Pro disk hello operačního systému zkontrolujte, zda položka zaváděcí program pro spouštění hello také odráží připojení na základě uuid hello.
 >
 >
 
 - - -
 * SAP grafickým uživatelským rozhraním (pro správu a instalační program pro účely) může být předem nainstalován v takové šablonu.
-* Další potřebné ke spuštění virtuálních počítačů, které jsou úspěšně ve scénářích mezi různými místy software se dá nainstalovat, dokud tento software může spolupracovat s přejmenování virtuálního počítače.
+* Další software hello nezbytné toorun, virtuální počítače úspěšně ve scénářích mezi různými místy lze nainstalovat, dokud tento software může spolupracovat s hello přejmenovat z hello virtuálních počítačů.
 
-Jestliže virtuální počítač je připravená dostatečně obecné a nakonec nezávislé na účty či uživatelů ve scénáři nasazenou Azure není k dispozici, je provedena poslední krok přípravy generalizací takové image.
+Pokud hello virtuálního počítače je připravená dostatečně toobe obecné a nakonec nezávisle účtů nebo uživatele není k dispozici v hello cíleného scénář nasazení Azure, se provádí hello poslední přípravy krok generalizací takové image.
 
 ##### <a name="generalizing-a-vm"></a>Generalizací virtuálního počítače
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Posledním krokem je k přihlášení k virtuálnímu počítači pomocí účtu správce. Otevřete příkazové okno Windows jako 'správce. Přejděte do %windir%\windows\system32\sysprep a provést sysprep.exe.
-> Zobrazí se okno malé. Je důležité zaškrtnutí políčka "Generalizace" (výchozí hodnota je vypnuta) a změnit možnost vypnutí z výchozí hodnoty, restartování' 'Vypnutí'. Tento postup předpokládá, že procesu nástroje sysprep je spustit místně v hostovaného operačního systému virtuálního počítače.
-> Pokud chcete provést postup v případě virtuálních počítačů už běží v Azure, postupujte podle kroků popsaných v [v tomto článku](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource).
+> posledním krokem Hello je toolog v tooa virtuálních počítačů s účtem správce. Otevřete příkazové okno Windows jako 'správce. Přejděte too%windir%\windows\system32\sysprep a provést sysprep.exe.
+> Zobrazí se okno malé. Je důležité toocheck hello 'Generalizace' možnost (výchozí hello je vypnuta) a změnit hello možnost vypnutí z výchozí hodnoty "Restartovat" too'Shutdown'. Tento postup předpokládá, že procesu sysprep hello je spustit místně v hello hostovaného operačního systému virtuálního počítače.
+> Pokud chcete tooperform hello postup v případě virtuálních počítačů už běží v Azure, postupujte podle kroků hello popsaných v [v tomto článku](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource).
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [Jak zachytit virtuální počítač s Linuxem chcete použít jako šablony Resource Manageru][capture-image-linux-step-2-create-vm-image]
+> [Jak toocapture toouse virtuálního počítače Linux jako šablony Resource Manageru][capture-image-linux-step-2-create-vm-image]
 >
 >
 
 - - -
-### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>Přenos virtuálních počítačů a virtuálních pevných disků mezi místním nasazením a Azure
-Vzhledem k tomu, že nahrání Image virtuálních počítačů a disků do Azure není možné prostřednictvím portálu Azure, budete muset použít rutiny prostředí Azure PowerShell nebo rozhraní příkazového řádku. Další možností je použití nástroje 'AzCopy'. Nástroj můžete zkopírovat virtuální pevné disky mezi místními a Azure (v obou směrech). Je taky zkopírovat virtuální pevné disky mezi oblastmi Azure. Přečtěte si [této dokumentace] [ storage-use-azcopy] pro stažení a použití nástroje AzCopy.
+### <a name="transferring-vms-and-vhds-between-on-premises-tooazure"></a>Přenos mezi místními tooAzure virtuálních počítačů a virtuálních pevných disků
+Vzhledem k tomu, že odesílání tooAzure Image a disky virtuálního počítače není možné prostřednictvím hello portálu Azure, musíte toouse rutin prostředí Azure PowerShell nebo rozhraní příkazového řádku. Další možností je použití hello nástroje hello 'AzCopy'. Nástroj Hello můžete zkopírovat virtuální pevné disky mezi místními a Azure (v obou směrech). Je taky zkopírovat virtuální pevné disky mezi oblastmi Azure. Přečtěte si [této dokumentace] [ storage-use-azcopy] pro stažení a použití nástroje AzCopy.
 
-Třetí možnost může být použití různých nástrojů orientovaných na grafickém uživatelském rozhraní třetích stran. Ale ujistěte, že tyto nástroje jsou podpora objekty BLOB stránky Azure. Pro naše účely potřebujeme používat úložiště objektů Blob stránky Azure (rozdíly jsou popsány zde: <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Také nástroje poskytované subsystémem pro Azure jsou velmi efektivní v kompresi virtuálních počítačů a virtuálních pevných disků, které je třeba k odeslání. To je důležité, protože této efektivity v komprese snižuje čas odeslání (který se liší přesto podle nahrávání odkaz k Internetu z místní zařízením a cílem nasazení Azure oblast). Je správného předpoklad, že odesílání virtuálního počítače nebo virtuálního pevného disku z Evropského umístění na základě USA Azure dat v centrech bude trvat déle než stejné virtuální počítače nebo virtuální pevné disky se nahrávají na Evropského Azure datová centra.
+Třetí alternativní by toouse různé orientované na grafickém uživatelském rozhraní nástroje třetích stran. Ale ujistěte, že tyto nástroje jsou podpora objekty BLOB stránky Azure. Pro naše účely potřebujeme toouse objekt Blob stránky Azure ukládání (hello rozdíly jsou popsány zde: <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Hello nástroje poskytované subsystémem pro Azure jsou také velmi efektivní v kompresi hello virtuálních počítačů a virtuálních pevných disků, které vyžadují toobe nahrát. To je důležité, protože této efektivity v komprese snižuje dobu hello nahrávání, (který se liší přesto podle hello nahrávání odkaz toohello cílem Internetu hello místní zařízením a hello nasazení Azure oblast). Je správného předpokládá, že nahrávat virtuálního počítače nebo virtuální pevný disk z Evropského umístění toohello Azure dat na základě USA, Center bude trvat déle než odesílání hello virtuální počítače nebo virtuální pevné disky toohello Evropského Azure datových center.
 
-#### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Nahrání virtuálního pevného disku z místního do Azure
-Nahrát na existující virtuální počítač nebo virtuální pevný disk z místní sítě virtuálních počítačů nebo virtuální pevný disk musí splňovat požadavky uvedené v kapitole [přípravy pro přesun virtuálního počítače z místního do Azure s diskem zobecněn] [ planning-guide-5.2.1] tohoto dokumentu.
+#### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Nahrání virtuálního pevného disku z místní tooAzure
+tooupload existující virtuální počítač nebo virtuální pevný disk z hello místní sítí virtuálních počítačů nebo virtuální pevný disk musí toomeet hello požadavky, jak je uvedeno v kapitole [přípravy pro přesun virtuálního počítače z místní tooAzure s diskem zobecněn] [ planning-guide-5.2.1] tohoto dokumentu.
 
-Virtuální počítač nemusí být zobecněn a ve stavu a tvar, který se má po vypnutí na straně místní je možné uložit. Totéž platí pro další virtuální pevné disky, které neobsahují žádný operační systém.
+Tyto virtuální počítač nemusí toobe zobecněn a v hello stavu a tvar, který se má po vypnutí hello místní straně je možné uložit. Hello totéž platí pro další virtuální pevné disky, které neobsahují žádný operační systém.
 
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Nahrání virtuálního pevného disku a jejich zpřístupnění diskem Azure
-V tomto případě chceme nahrát VHD, s nebo bez operační systém v něm a připojte k virtuálnímu počítači jako datový disk nebo ho používat jako disk s operačním systémem. Jedná se o vícekrokový proces
+V takovém případě jsme má tooupload disku VHD, s nebo bez operační systém v něm a ji tooa virtuální počítač jako datový disk připojit nebo ho použít jako disk s operačním systémem. Jedná se o vícekrokový proces
 
 **Powershell**
 
-* Přihlaste se k vašemu předplatnému s *Login-AzureRmAccount*
-* Nastavte předplatné váš kontext s *Set-AzureRmContext* a parametr ID předplatného nebo Název_předplatného - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
-* Nahrání virtuálního pevného disku s *přidat AzureRmVhd* účet úložiště Azure - najdete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
-* (Volitelné) Vytvoření spravované disku z virtuálního pevného disku s *New-AzureRmDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
-* Nastavte disku operačního systému nová konfigurace virtuálního počítače na virtuální pevný disk nebo spravované Disk s *Set-AzureRmVMOSDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
-* Vytvoření nového virtuálního počítače z konfigurace virtuálního počítače s *New-AzureRmVM* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
-* Přidat datový disk do nového virtuálního počítače s *přidat AzureRmVMDataDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk>
+* Přihlaste se tooyour předplatné s *Login-AzureRmAccount*
+* Nastavte předplatné hello váš kontext s *Set-AzureRmContext* a parametr ID předplatného nebo Název_předplatného - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
+* Nahrát hello virtuálního pevného disku s *přidat AzureRmVhd* najdete v části tooan účet úložiště Azure - <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
+* (Volitelné) Vytvoření disku spravované ze hello virtuálního pevného disku s *New-AzureRmDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
+* Nastavte hello operačního systému disku toohello nové konfigurace virtuálních počítačů virtuálního pevného disku nebo Disk spravované s *Set-AzureRmVMOSDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
+* Vytvoření nového virtuálního počítače z konfigurace virtuálního počítače hello s *New-AzureRmVM* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
+* Přidat datového disku tooa nový virtuální počítač s *přidat AzureRmVMDataDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk>
 
 **Azure CLI 2.0**
 
-* Přihlaste se k vašemu předplatnému s *az přihlášení*
+* Přihlaste se tooyour předplatné s *az přihlášení*
 * Vyberte předplatné s *nastaven účet az--předplatného`<subscription name or id`>*
-* Nahrání virtuálního pevného disku s *az úložiště objektů blob nahrávání* -najdete v části [použití Azure CLI s Azure Storage][storage-azure-cli]
-* (Volitelné) Vytvoření spravované disku z virtuálního pevného disku s *vytvoření disku az* -najdete v části https://docs.microsoft.com/cli/azure/disk#create
-* Vytvoření nového virtuálního počítače zadání nahraný virtuální pevný disk nebo spravované Disk jako disk operačního systému s *vytvořit virtuální počítač az* a parametr *– připojit disk operačního systému*
-* Přidat datový disk do nového virtuálního počítače s *připojit disk virtuálního počítače az* a parametr *– nový*
+* Nahrát hello virtuálního pevného disku s *az úložiště objektů blob nahrávání* -najdete v části [hello pomocí rozhraní příkazového řádku Azure s Azure Storage][storage-azure-cli]
+* (Volitelné) Vytvoření disku spravované ze hello virtuálního pevného disku s *vytvoření disku az* -najdete v části https://docs.microsoft.com/cli/azure/disk#create
+* Vytvoření nového virtuálního počítače zadání hello odesílané virtuálního pevného disku nebo spravované Disk jako disk operačního systému s *vytvořit virtuální počítač az* a parametr *– připojit disk operačního systému*
+* Přidat tooa disku data nový virtuální počítač s *připojit disk virtuálního počítače az* a parametr *– nový*
 
 **Šablona**
 
-* Nahrání virtuálního pevného disku pomocí prostředí Powershell nebo Azure CLI
-* (Volitelné) Vytvoření spravované disku z virtuálního pevného disku pomocí prostředí Powershell, rozhraní příkazového řádku Azure nebo portálu Azure
-* Nasaďte virtuální počítač pomocí šablony JSON odkazující na virtuální pevný disk, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json) nebo pomocí spravovaných disků, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-disk-md/azuredeploy.json).
+* Nahrát hello virtuálního pevného disku pomocí prostředí Powershell nebo rozhraní příkazového řádku Azure
+* (Volitelné) Vytvoření disku spravované ze hello virtuálního pevného disku pomocí prostředí Powershell, rozhraní příkazového řádku Azure nebo hello portálu Azure
+* Nasazení hello virtuálních počítačů pomocí JSON šablony odkazující na hello virtuálního pevného disku, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json) nebo pomocí spravovaných disků, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-disk-md/azuredeploy.json).
 
 #### <a name="deployment-of-a-vm-image"></a>Nasazení Image virtuálního počítače
-Nahrát na existující virtuální počítač nebo virtuální pevný disk z místní sítě chcete-li použít bitovou kopii virtuálního počítače Azure virtuálních počítačů nebo virtuální pevný disk budou muset splnit požadavky uvedené v kapitole [přípravy pro nasazení virtuálního počítače s bitovou kopii zákaznické pro SAP] [ planning-guide-5.2.2] tohoto dokumentu.
+tooupload existující virtuální počítač nebo virtuální pevný disk z hello místní sítě v pořadí toouse ji jako bitovou kopii virtuálního počítače Azure virtuálních počítačů nebo virtuální pevný disk potřebujete toomeet hello požadavky uvedené v kapitole [přípravy pro nasazení virtuálního počítače s bitovou kopii zákaznické pro SAP] [ planning-guide-5.2.2] tohoto dokumentu.
 
-* Použít *sysprep* v systému Windows nebo *příkaz waagent-deprovision* v systému Linux ke generalizaci virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak zachytit virtuální počítač s Linuxem chcete použít jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
-* Přihlaste se k vašemu předplatnému s *Login-AzureRmAccount*
-* Nastavte předplatné váš kontext s *Set-AzureRmContext* a parametr ID předplatného nebo Název_předplatného - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
-* Nahrání virtuálního pevného disku s *přidat AzureRmVhd* účet úložiště Azure - najdete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
-* (Volitelné) Vytvoření bitové kopie disku spravované z virtuálního pevného disku s *New-AzureRmImage* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
-* Nastavit nové konfigurace virtuálního počítače na disku operačního systému
+* Použití *sysprep* v systému Windows nebo *příkaz waagent-deprovision* na Linux toogeneralize virtuálního počítače – najdete v části [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak toocapture Virtuální počítač toouse Linux jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
+* Přihlaste se tooyour předplatné s *Login-AzureRmAccount*
+* Nastavte předplatné hello váš kontext s *Set-AzureRmContext* a parametr ID předplatného nebo Název_předplatného - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
+* Nahrát hello virtuálního pevného disku s *přidat AzureRmVhd* najdete v části tooan účet úložiště Azure - <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
+* (Volitelné) Vytvoření bitové kopie disku spravované z hello virtuálního pevného disku s *New-AzureRmImage* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
+* Nastavení disku operačního systému hello nové toothe konfigurace virtuálního počítače
   * Virtuální pevný disk s *Set AzureRmVMOSDisk - SourceImageUri - CreateOption fromImage* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
   * Spravované bitové kopie disku *Set-AzureRmVMSourceImage* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage>
-* Vytvoření nového virtuálního počítače z konfigurace virtuálního počítače s *New-AzureRmVM* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
+* Vytvoření nového virtuálního počítače z konfigurace virtuálního počítače hello s *New-AzureRmVM* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
 
 **Azure CLI 2.0**
 
-* Použít *sysprep* v systému Windows nebo *příkaz waagent-deprovision* v systému Linux ke generalizaci virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak zachytit virtuální počítač s Linuxem chcete použít jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
-* Přihlaste se k vašemu předplatnému s *az přihlášení*
+* Použití *sysprep* v systému Windows nebo *příkaz waagent-deprovision* na Linux toogeneralize virtuálního počítače – najdete v části [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak toocapture Virtuální počítač toouse Linux jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
+* Přihlaste se tooyour předplatné s *az přihlášení*
 * Vyberte předplatné s *nastaven účet az--předplatného`<subscription name or id`>*
-* Nahrání virtuálního pevného disku s *az úložiště objektů blob nahrávání* -najdete v části [použití Azure CLI s Azure Storage][storage-azure-cli]
-* (Volitelné) Vytvoření bitové kopie disku spravované z virtuálního pevného disku s *vytvoření bitové kopie az* -najdete v části https://docs.microsoft.com/cli/azure/image#create
-* Vytvoření nového virtuálního počítače zadání nahraný virtuální pevný disk nebo spravovat bitové kopie disku jako disk operačního systému s *vytvořit virtuální počítač az* a parametr *– bitové kopie*
+* Nahrát hello virtuálního pevného disku s *az úložiště objektů blob nahrávání* -najdete v části [hello pomocí rozhraní příkazového řádku Azure s Azure Storage][storage-azure-cli]
+* (Volitelné) Vytvoření bitové kopie disku spravované z hello virtuálního pevného disku s *vytvoření bitové kopie az* -najdete v části https://docs.microsoft.com/cli/azure/image#create
+* Vytvoření nového virtuálního počítače zadání hello odesílané virtuálního pevného disku nebo Image disku spravované jako disk operačního systému s *vytvořit virtuální počítač az* a parametr *– bitové kopie*
 
 **Šablona**
 
-* Použít *sysprep* v systému Windows nebo *příkaz waagent-deprovision* v systému Linux ke generalizaci virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak zachytit virtuální počítač s Linuxem chcete použít jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
-* Nahrání virtuálního pevného disku pomocí prostředí Powershell nebo Azure CLI
-* (Volitelné) Vytvoření bitové kopie disku spravované z virtuálního pevného disku pomocí prostředí Powershell, rozhraní příkazového řádku Azure nebo portálu Azure
-* Nasaďte virtuální počítač pomocí šablony JSON odkazující na bitovou kopii virtuálního pevného disku, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) nebo pomocí bitové kopie disku spravovat, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).
+* Použití *sysprep* v systému Windows nebo *příkaz waagent-deprovision* na Linux toogeneralize virtuálního počítače – najdete v části [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak toocapture Virtuální počítač toouse Linux jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
+* Nahrát hello virtuálního pevného disku pomocí prostředí Powershell nebo rozhraní příkazového řádku Azure
+* (Volitelné) Vytvoření bitové kopie disku spravované z hello virtuálního pevného disku pomocí prostředí Powershell, rozhraní příkazového řádku Azure nebo hello portálu Azure
+* Nasazení hello virtuálních počítačů pomocí JSON šablony odkazující na hello image virtuálního pevného disku, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) nebo pomocí hello spravované Image disku, jak je znázorněno v [této šablony JSON příklad](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).
 
-#### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Při stahování virtuální pevné disky nebo spravovaných disků na místní
-Azure infrastruktura jako služba není jednosměrný ulici, kde pouze bude možné nahrát virtuální pevné disky a SAP systémy. Můžete přesunout SAP systémy z Azure zpět do na místní světě.
+#### <a name="downloading-vhds-or-managed-disks-tooon-premises"></a>Stahování virtuálních pevných disků nebo disků spravované tooon místní
+Azure infrastruktura jako služba není jednosměrný ulici pouze způsobená možné tooupload virtuální pevné disky a systémy SAP. Můžete přesunout SAP systémy z Azure zpět do hello, world místní i.
 
-Během doby stahování nemůže být virtuální pevné disky nebo disky spravované aktivní. I když stahování disky, které jsou připojené k virtuálním počítačům, musí virtuální počítač vypnout a navrácena. Pokud chcete stáhnout obsah databáze který pak by měla být používána k nastavení nového systému místní a pokud je přijatelné, že během doby stahování a instalace nového systému, aby systém v Azure může být stále provozní, se můžete vyhnout dlouho výpadek komprimované databáze zálohování na disk, jenom stažení tohoto disku místo také stahování základní virtuální počítač operačního systému.
+Během hello čas hello nemůže být stažení hello virtuálních pevných disků nebo disků spravované aktivní. I když stahování disky, které jsou připojené tooVMs, hello toobe potřeby virtuální počítač vypnout a navrácena. Pokud chcete pouze obsah, pak by se použít tooset do nového systému místní a pokud je možné, že během hello čas hello stáhnout a hello instalace hello nový systém, který hello systému v Azure může být stále provozní databáze hello toodownload , můžete dlouho výpadky provedením komprimované databáze zálohování na disk a stáhnout pouze tento disk místo také stahování hello základní virtuální počítač operačního systému.
 
 #### <a name="powershell"></a>PowerShell
 
   * Stahování se spravovaným diskem  
-  Musíte nejprve získat přístup k základní objekt blob spravované disku. Pak můžete zkopírovat základní objekt blob do nového účtu úložiště a stáhnout objekt blob z tohoto účtu úložiště.
+  Je nutné nejprve toohello přístup tooget základní blob hello spravované disku. Pak můžete zkopírovat hello základní tooa nového účtu úložiště blob a stažení z tohoto účtu úložiště objektů blob hello.
 
   ```powershell
   $access = Grant-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
   $key = (Get-AzureRmStorageAccountKey -ResourceGroupName <resource group> -Name <storage account name>)[0].Value
   $destContext = (New-AzureStorageContext -StorageAccountName <storage account name -StorageAccountKey $key)
   Start-AzureStorageBlobCopy -AbsoluteUri $access.AccessSAS -DestContainer <container name> -DestBlob <blob name> -DestContext $destContext
-  # Wait for blob copy to finish
+  # Wait for blob copy toofinish
   Get-AzureStorageBlobCopyState -Container <container name> -Blob <blob name> -Context $destContext
   Save-AzureRmVhd -SourceUri <blob in new storage account> -LocalFilePath <local file path> -StorageKey $key
-  # Wait for download to finish
+  # Wait for download toofinish
   Revoke-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
   ```
 
   * Stahování virtuální pevný disk  
-  Po zastavení systému SAP a virtuální počítač je vypnutý, můžete použít rutinu prostředí PowerShell AzureRmVhd uložit na místní cíl pro stažení disky VHD na světě místní. Aby bylo možné provést, že je nutné, aby adresa URL virtuálního pevného disku, které můžete najít v úložiště části portálu Azure (třeba k účtu úložiště a kontejneru úložiště, kde byl vytvořen virtuální pevný disk) a je nutné znát, kam zkopírovat virtuální pevný disk.
+  Jakmile je zastavena hello systému SAP a hello virtuální počítač je vypnutý, můžete použít rutiny prostředí PowerShell hello AzureRmVhd uložit na hello místního disků VHD hello toodownload target zpět toohello místní world. V pořadí toodo, je nutné hello URL hello virtuálního pevného disku, které můžete najít v hello "Úložiště v tématu" Dobrý den portálu Azure (třeba toonavigate toohello účet úložiště a hello kontejner úložiště kde hello VHD se vytvořil) a je nutné tooknow kde hello virtuálního pevného disku by měla být zkopírovat do.
 
-  Pak můžete použít příkaz definováním jednoduše parametr SourceUri jako adresu URL VHD, který chcete stáhnout a LocalFilePath jako fyzické umístění virtuálního pevného disku (včetně jeho název). Příkaz může vypadat podobně jako:
+  Potom můžete využít hello příkaz tak, že jednoduše definujete hello parametr SourceUri jako adresa URL hello toodownload hello virtuálního pevného disku a hello LocalFilePath jako hello fyzické umístění hello virtuálního pevného disku (včetně jeho název). příkaz Hello může vypadat podobně jako:
 
   ```powerhell
   Save-AzureRmVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Další podrobnosti rutiny AzureRmVhd uložit, zkontrolujte, zde <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
+  Další podrobnosti hello uložit AzureRmVhd rutiny, zkontrolujte, zde <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
 
 #### <a name="cli-20"></a>CLI 2.0
   * Stahování se spravovaným diskem  
-  Musíte nejprve získat přístup k základní objekt blob spravované disku. Pak můžete zkopírovat základní objekt blob do nového účtu úložiště a stáhnout objekt blob z tohoto účtu úložiště.
+  Je nutné nejprve toohello přístup tooget základní blob hello spravované disku. Pak můžete zkopírovat hello základní tooa nového účtu úložiště blob a stažení z tohoto účtu úložiště objektů blob hello.
   ```
   az disk grant-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --duration-in-seconds 3600
   az storage blob download --sas-token "<sas token>" --account-name <account name> --container-name <container name> --name <blob name> --file <local file>
@@ -1061,28 +1061,28 @@ Během doby stahování nemůže být virtuální pevné disky nebo disky spravo
   ```
 
   * Stahování virtuální pevný disk   
-  Po zastavení systému SAP a virtuální počítač je vypnutý, můžete použít příkaz příkazového řádku Azure CLI _úložiště azure blob stažení_ na místní cíl, který má stažení virtuální pevný disk disky zpět na místní world. Aby bylo možné provést, je třeba název a kontejneru virtuálního pevného disku, které můžete najít v části"úložiště" na portálu Azure (třeba k účtu úložiště a kontejneru úložiště, kde byl vytvořen virtuální pevný disk) a potřebujete vědět, kde má být virtuální pevný disk zkopírována.
+  Jakmile je zastavena hello systému SAP a hello virtuální počítač je vypnutý, můžete použít příkaz příkazového řádku Azure CLI hello _stažení objektu blob úložiště azure_ na cíli místní hello toodownload hello virtuálního pevného disku disky back toohello místní world. V pořadí toodo, že budete potřebovat hello název a hello kontejner hello virtuálního pevného disku, které můžete najít v hello "Úložiště v tématu" Dobrý den portálu Azure (třeba toonavigate toohello účet úložiště a hello kontejner úložiště kde hello VHD se vytvořil) a je nutné tooknow kde Hello virtuálního pevného disku by se měl zkopírovat do.
 
-  Pak můžete použít příkaz tak, že jednoduše definujete parametry objektu blob a kontejner virtuálního pevného disku stahování a cíl jako fyzické cílové umístění virtuálního pevného disku (včetně jeho název). Příkaz může vypadat podobně jako:
+  Potom můžete využít hello příkaz definováním jednoduše hello parametry blob a kontejner toodownload hello virtuálního pevného disku a cílové hello jako hello fyzické cílové umístění hello virtuálního pevného disku (včetně jeho název). příkaz Hello může vypadat podobně jako:
 
   ```
-  az storage blob download --name <name of the VHD to download> --container-name <container of the VHD to download> --account-name <storage account name of the VHD to download> --account-key <storage account key> --file <destination of the VHD to download>
+  az storage blob download --name <name of hello VHD toodownload> --container-name <container of hello VHD toodownload> --account-name <storage account name of hello VHD toodownload> --account-key <storage account key> --file <destination of hello VHD toodownload>
   ```
 
 ### <a name="transferring-vms-and-disks-within-azure"></a>Přenášení virtuální počítače a disky v rámci Azure
 #### <a name="copying-sap-systems-within-azure"></a>Kopírování SAP systémy v rámci Azure
-Systému SAP nebo i vyhrazený server databázového systému podpora SAP aplikační vrstva bude pravděpodobně obsahovat několik disků, které budou obsahovat buď operačního systému se binární soubory nebo soubory protokolu a data z databáze SAP. Funkci Azure kopírování disků ani Azure funkce ukládání disků na místní disk má synchronizační mechanismus, který by snímku více disků synchronně. Proto stav disků zkopírovaný nebo uložené i v případě, že těch, které jsou připojené proti stejného virtuálního počítače by lišit. To znamená, že v případě konkrétní toho, že logfile(s) obsažené v různých discích a různých dat databázi v end by být nekonzistentní.
+Systému SAP nebo i vyhrazený server databázového systému podpora aplikační vrstva SAP pravděpodobně sestávají z několik disků, které obsahují buď hello operačního systému s binárními soubory hello nebo hello data a soubory databáze SAP hello protokolu. Hello Azure funkce kopírování disků ani hello Azure funkce ukládání disků tooa místního disku má synchronizační mechanismus, který by snímky více disků synchronně. Proto stav hello hello zkopírovat nebo uložit disků i v případě, že těch, které jsou připojené proti hello stejného virtuálního počítače by být odlišné. To znamená, že v případě konkrétní hello toho, že různé datové a logfile(s) obsažené v různých disků hello hello databáze v hello end by být nekonzistentní.
 
-**Uzavření: Aby bylo možné kopírovat nebo uložení disků, které jsou součástí konfigurace aplikace SAP systému musíte zastavit v systému SAP a také muset vypnout nasazených virtuálních počítačů. Pak můžete zkopírovat nebo stáhnout sadu disků, aby buď vytvořit kopii systému SAP v Azure nebo místní.**
+**Uzavření: V pořadí toocopy nebo uložit disky, které jsou součástí konfigurace aplikace SAP systému musíte toostop hello SAP systému a také musí nasadit tooshut dolů hello virtuálních počítačů. Pouze pak můžete zkopírovat nebo stáhnout hello sadu disků tooeither vytvořte kopii hello systému SAP v Azure nebo místně.**
 
-Datové disky mohou být uloženy jako soubory virtuálního pevného disku v účtu úložiště Azure a může být přímo připojen k virtuálnímu počítači nebo použít jako obrázek. V takovém případě virtuálního pevného disku se zkopíruje do jiného umístění před se připojit k virtuálnímu počítači. Úplný název souboru VHD v Azure musí být jedinečný v rámci Azure. Jak už bylo zmíněno dříve již, je název druh třemi částmi název, který vypadá takto:
+Datové disky mohou být uloženy jako soubory virtuálního pevného disku v účtu úložiště Azure a může být přímo připojené tooa virtuálního počítače nebo použít jako obrázek. V takovém případě hello virtuálního pevného disku je umístění zkopírovaného tooanother teprve pak ji bude připojené toohello virtuálního počítače. Hello úplný název souboru virtuálního pevného disku hello v Azure musí být jedinečný v rámci Azure. Jak už bylo zmíněno dříve již, název hello je druh třemi částmi název, který vypadá takto:
 
     http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
 
-Datových disků může být také spravovat disky. V takovém případě spravované Disk se používá k vytvoření nového disku spravované před se připojit k virtuálnímu počítači. Název disku spravované musí být jedinečný v rámci skupiny prostředků.
+Datových disků může být také spravovat disky. V takovém případě hello spravované disku je použité toocreate nové spravované disku teprve pak ji bude připojené toohello virtuálního počítače. Název Hello hello spravované disku musí být jedinečný v rámci skupiny prostředků.
 
 ##### <a name="powershell"></a>PowerShell
-Rutiny prostředí Azure PowerShell můžete použít ke zkopírování virtuálního pevného disku, jak je znázorněno v [v tomto článku][storage-powershell-guide-full-copy-vhd]. Pokud chcete vytvořit nový Disk, který je spravovaný, pomocí New-AzureRmDiskConfig a New-AzureRmDisk jak je znázorněno v následujícím příkladu.
+Můžete použít toocopy rutin prostředí Azure PowerShell virtuální pevný disk, jak je znázorněno v [v tomto článku][storage-powershell-guide-full-copy-vhd]. toocreate nový Disk spravované, pomocí New-AzureRmDiskConfig a New-AzureRmDisk, jak ukazuje následující příklad hello.
 
 ```powershell
 $config = New-AzureRmDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
@@ -1090,7 +1090,7 @@ New-AzureRmDisk -ResourceGroupName <resource group name> -DiskName <disk name> -
 ```
 
 ##### <a name="cli-20"></a>CLI 2.0
-Rozhraní příkazového řádku Azure můžete kopírovat virtuální pevný disk, jak je znázorněno v [v tomto článku][storage-azure-cli-copy-blobs]. Chcete-li vytvořit nový Disk, který je spravovaný, použijte *vytvoření disku az* jak je znázorněno v následujícím příkladu.
+Můžete použít rozhraní příkazového řádku Azure toocopy virtuální pevný disk, jak je znázorněno v [v tomto článku][storage-azure-cli-copy-blobs]. toocreate nový Disk spravované, pomocí *vytvoření disku az* jak ukazuje následující příklad hello.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1104,26 +1104,26 @@ Profesionální edicí Průzkumníci úložiště Azure naleznete zde:
 * <http://www.cerebrata.com/>
 * <http://clumsyleaf.com/products/cloudxplorer>
 
-Kopii samotného virtuálního pevného disku v rámci účtu úložiště je proces, který trvá jenom pár sekund (podobně jako hardware sítě SAN vytváření snímků s opožděné a kopii na zápis). Až budete mít kopii souboru virtuálního pevného disku můžete připojit k virtuálnímu počítači nebo ho použít jako obrázek pro připojit k virtuálním počítačům kopie virtuálního pevného disku.
+Hello kopii samotného virtuálního pevného disku v rámci účtu úložiště je proces, který trvá jenom pár sekund (podobně jako tooSAN hardwaru vytváření snímků s opožděné a kopii na zápis). Až budete mít kopii souboru virtuálního pevného disku hello můžete připojit tooa virtuálního počítače nebo použijte jako tooattach image kopíruje hello virtuálního pevného disku toovirtual počítačů.
 
 ##### <a name="powershell"></a>PowerShell
 ```powershell
-# attach a vhd to a vm
+# attach a vhd tooa vm
 $vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -VhdUri <path to vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
+$vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -VhdUri <path toovhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
 $vm | Update-AzureRmVM
 
-# attach a managed disk to a vm
+# attach a managed disk tooa vm
 $vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -ManagedDiskId <managed disk id> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
 $vm | Update-AzureRmVM
 
-# attach a copy of the vhd to a vm
+# attach a copy of hello vhd tooa vm
 $vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name <disk name> -VhdUri <new path of vhd> -SourceImageUri <path to image vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption fromImage
+$vm = Add-AzureRmVMDataDisk -VM $vm -Name <disk name> -VhdUri <new path of vhd> -SourceImageUri <path tooimage vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption fromImage
 $vm | Update-AzureRmVM
 
-# attach a copy of the managed disk to a vm
+# attach a copy of hello managed disk tooa vm
 $vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
 $diskConfig = New-AzureRmDiskConfig -Location $vm.Location -CreateOption Copy -SourceUri <source managed disk id>
 $disk = New-AzureRmDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <resource group name>
@@ -1133,70 +1133,70 @@ $vm | Update-AzureRmVM
 ##### <a name="cli-20"></a>CLI 2.0
 ```
 
-# attach a vhd to a vm
-az vm unmanaged-disk attach --resource-group <resource group name> --vm-name <vm name> --vhd-uri <path to vhd>
+# attach a vhd tooa vm
+az vm unmanaged-disk attach --resource-group <resource group name> --vm-name <vm name> --vhd-uri <path toovhd>
 
-# attach a managed disk to a vm
+# attach a managed disk tooa vm
 az vm disk attach --resource-group <resource group name> --vm-name <vm name> --disk <managed disk id>
 
-# attach a copy of the vhd to a vm
-# this scenario is currently not possible with Azure CLI. A workaround is to manually copy the vhd to the destination.
+# attach a copy of hello vhd tooa vm
+# this scenario is currently not possible with Azure CLI. A workaround is toomanually copy hello vhd toohello destination.
 
-# attach a copy of a managed disk to a vm
+# attach a copy of a managed disk tooa vm
 az disk create --name <new disk name> --resource-group <resource group name> --location <location of target virtual machine> --source <source managed disk id>
 az vm disk attach --disk <new disk name or managed disk id> --resource-group <resource group name> --vm-name <vm name> --caching <caching option> --lun <lun, for example 0>
 ```
 
 #### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Kopírování disků mezi účty úložiště Azure
-Tuto úlohu nelze provést na portálu Azure. Můžete použít rutiny prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo prohlížeč úložiště jiných výrobců. Rutiny prostředí PowerShell nebo rozhraní příkazového řádku můžete vytvořit a spravovat objekty BLOB, které zahrnují možnost asynchronně zkopírovat objekty BLOB mezi různými účty úložiště a v oblastech v rámci předplatného Azure.
+Tuto úlohu nelze provést na hello portálu Azure. Můžete použít rutiny prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo prohlížeč úložiště jiných výrobců. Hello rutiny prostředí PowerShell nebo rozhraní příkazového řádku můžete vytvářet a spravovat objekty BLOB, mezi které patří objekty BLOB hello možnost tooasynchronously kopírování mezi různými účty úložiště a v oblastech v rámci hello předplatného Azure.
 
 ##### <a name="powershell"></a>PowerShell
 Můžete také zkopírovat virtuální pevné disky, mezi předplatnými. Další informace najdete v tématu [v tomto článku][storage-powershell-guide-full-copy-vhd].
 
-Základní tok logiku rutiny PS vypadá takto:
+základní tok Hello hello PS rutiny logiku vypadá takto:
 
-* Vytvoření kontextu pro účet úložiště **zdroj** účet úložiště s *New-AzureStorageContext* -najdete v části <https://msdn.microsoft.com/library/dn806380.aspx>
-* Vytvoření kontextu pro účet úložiště **cíl** účet úložiště s *New-AzureStorageContext* -najdete v části <https://msdn.microsoft.com/library/dn806380.aspx>
-* Spusťte kopírování pomocí
+* Vytvoření kontextu účtu úložiště pro hello **zdroj** účet úložiště s *New-AzureStorageContext* -najdete v části <https://msdn.microsoft.com/library/dn806380.aspx>
+* Vytvoření kontextu účtu úložiště pro hello **cíl** účet úložiště s *New-AzureStorageContext* -najdete v části <https://msdn.microsoft.com/library/dn806380.aspx>
+* Spustit hello kopírování pomocí
 
 ```powershell
 Start-AzureStorageBlobCopy -SrcBlob <source blob name> -SrcContainer <source container name> -SrcContext <variable containing context of source storage account> -DestBlob <target blob name> -DestContainer <target container name> -DestContext <variable containing context of target storage account>
 ```
 
-* Zkontrolujte stav kopírování ve smyčce s
+* Zkontrolujte stav hello kopie hello ve smyčce s
 
 ```powershell
 Get-AzureStorageBlobCopyState -Blob <target blob name> -Container <target container name> -Context <variable containing context of target storage account>
 ```
 
-* K virtuálnímu počítači připojte nový virtuální pevný disk, jak je popsáno výše.
+* Připojte hello nový virtuální pevný disk tooa virtuální počítač, jak je popsáno výše.
 
 Příklady najdete v tématu [v tomto článku][storage-powershell-guide-full-copy-vhd].
 
 ##### <a name="cli-20"></a>CLI 2.0
-* Spusťte kopírování pomocí
+* Spustit hello kopírování pomocí
 
 ```
 az storage blob copy start --source-blob <source blob name> --source-container <source container name> --source-account-name <source storage account name> --source-account-key <source storage account key> --destination-container <target container name> --destination-blob <target blob name> --account-name <target storage account name> --account-key <target storage account name>
 ```
 
-* Zkontrolujte stav, pokud kopie ve smyčce s
+* Zkontrolujte stav hello, pokud hello kopie ve smyčce s
 
 ```
 az storage blob show --name <target blob name> --container <target container name> --account-name <target storage account name> --account-key <target storage account name>
 ```
 
-* K virtuálnímu počítači připojte nový virtuální pevný disk, jak je popsáno výše.
+* Připojte hello nový virtuální pevný disk tooa virtuální počítač, jak je popsáno výše.
 
 Příklady najdete v tématu [v tomto článku][storage-azure-cli-copy-blobs].
 
 ### <a name="disk-handling"></a>Zpracování disku
 #### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>Virtuální počítač nebo disk strukturu pro nasazení SAP
-V ideálním případě by měl být zpracování struktury virtuálního počítače a přidružené disky velmi jednoduché. V místní instalace vyvinuté zákazníkům mnoho způsobů strukturování instalaci serveru.
+V ideálním případě hello zpracování struktury hello virtuálního počítače a hello přidružené disky by měly být velmi jednoduché. V místní instalace vyvinuté zákazníkům mnoho způsobů strukturování instalaci serveru.
 
-* Jeden základní disk, který obsahuje operační systém a všechny binární soubory databázového systému a/nebo SAP. Od března 2015 tento disk může být až 1TB velikosti místo starší omezení, která je omezený na 127 GB.
-* Soubor databáze SAP protokolu jeden nebo více discích, které obsahuje systému správy databáze a soubor protokolu databázového systému dočasné oblasti úložiště (Pokud databázového systému podporuje to). Pokud jsou požadavky IOPS protokolu databáze. vysoká, budete muset rozkládají víc disků, aby bylo dosaženo IOPS svazek potřebný.
-* Počet disků obsahující jeden nebo dva soubory databáze z databáze SAP a i soubory dočasná data databázového systému (Pokud databázového systému podporuje to).
+* Jeden základní disk, který obsahuje hello operačního systému a všechny binární soubory hello z hello databázového systému nebo SAP. Od března 2015, tento disk může být až too1TB velikost místo starší omezení, která je omezená too127GB.
+* Jeden nebo více discích, které obsahuje hello databázového systému soubor protokolu databáze SAP hello soubor protokolu hello hello oblast dočasného úložiště databázového systému (Pokud hello databázového systému podporuje to). Pokud jsou vysoké hello databáze protokolu IOPS požadavky, musíte toostripe více disků v pořadí tooreach hello IOPS svazek potřebný.
+* Počet disků obsahující jeden nebo dva soubory databáze z databáze SAP hello a hello databázového systému dočasná data i soubory (Pokud hello databázového systému podporuje to).
 
 ![Konfigurace referenčního virtuálního počítače Azure IaaS pro SAP][planning-guide-figure-1300]
 
@@ -1205,13 +1205,13 @@ V ideálním případě by měl být zpracování struktury virtuálního počí
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> U mnoha zákazníků jsme viděli konfigurace, například SAP a databázového systému binární soubory nebyly nainstalovanou na jednotce c:\ nainstalovaným operačním systémem. Existují různé důvody pro to, ale když jsme se zpět do kořenového adresáře, obvykle byl, jednotky byly malé a upgrady operačního systému před 10 až 15 let potřeba další místo. Obě podmínky dní příliš často už neplatí. Dnes jednotka c:\ lze mapovat na velkého objemu disků nebo virtuálních počítačů. Chcete-li zjednodušení nasazení v jejich struktura se doporučuje použít následující vzor nasazení SAP NetWeaver systémy v Azure
+> U mnoha zákazníků jsme viděli konfigurace, například SAP a databázového systému binární soubory nebyly nainstalovanou na jednotce c:\ hello kde hello operačního systému byla nainstalována. Existují různé důvody pro to, ale když jsme se zpět toohello kořenové, obvykle byl že hello jednotky byly malé a upgrady operačního systému před 10 až 15 let potřeba další místo. Obě podmínky dní příliš často už neplatí. Dnes jednotku c:\ hello lze mapovat na velkého objemu disků nebo virtuálních počítačů. V nasazeních pořadí tookeep jednoduché jejich struktury, je doporučeno toofollow následující vzor nasazení pro SAP NetWeaver systémy v Azure
 >
-> Stránkovací soubor operačního systému Windows musí být na jednotce D: (dočasnou disk)
+> stránkovací soubor operačního systému Windows Hello by měla být na hello D: jednotky (dočasnou disk)
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Umístěte swapfile Linux pod /mnt/mnt nebo prostředků v systému Linux, jak je popsáno v [v tomto článku][virtual-machines-linux-agent-user-guide]. Odkládací soubor lze nakonfigurovat v souboru konfigurace /etc/waagent.conf agenta systému Linux. Přidat nebo změnit následující nastavení:
+> Umístěte hello Linux swapfile pod /mnt/mnt nebo prostředků v systému Linux, jak je popsáno v [v tomto článku][virtual-machines-linux-agent-user-guide]. Hello odkládací soubor lze nakonfigurovat v souboru konfigurace hello hello /etc/waagent.conf agenta systému Linux. Přidat nebo změnit hello následující nastavení:
 >
 >
 
@@ -1220,20 +1220,20 @@ ResourceDisk.EnableSwap=y
 ResourceDisk.SwapSizeMB=30720
 ```
 
-Pokud chcete aktivovat změny, bude nutné restartovat agenta systému Linux s
+tooactivate hello změny, je nutné toorestart hello agenta systému Linux s
 
 ```
 sudo service waagent restart
 ```
 
-Přečtěte si prosím Poznámka SAP [1597355] další podrobnosti o jeho doporučená velikost
+Přečtěte si prosím Poznámka SAP [1597355] další podrobnosti o hello doporučené velikosti odkládacího souboru
 
 - - -
-Počet disků používat pro datové soubory databázového systému a typ úložiště Azure, jsou tyto disky hostované na by měl určit požadavky na IOPS a latence vyžaduje. Přesný kvóty jsou popsané v [v tomto článku (Linux)] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)][virtual-machines-sizes-windows].
+hello IOPS požadavků a hello latence požadované by měl určit Hello počet disků použitých jako hello databázového systému datové soubory a typ hello tyto disky jsou hostované v Azure Storage. Přesný kvóty jsou popsané v [v tomto článku (Linux)] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)][virtual-machines-sizes-windows].
 
-Prostředí nasazení SAP za poslední 2 roky nám výukové některé lekce, které jde vyhodnotit jako:
+Prostředí SAP nasazení přes hello poslední 2 roky nám výukové některé lekce, které jde vyhodnotit jako:
 
-* IOPS provoz do různých datových souborů není vždy stejná od stávajících systémů zákazníků může mít jinak velikost datové soubory představující jejich SAP databází. V důsledku ji vrátit na lépe používat konfiguraci RAID přes více disků pro soubory dat, které logické jednotky LUN carved mimo těch, které. Nebyly situacích, zejména s Azure Standard Storage, kde IOPS míra dosáhl kvóty jediný disk proti transakčního protokolu databázového systému. V takových situacích se doporučuje použít úložiště Premium Storage nebo případně agregování více standardního úložiště disků se softwaru RAID.
+* IOPS provoz toodifferent datových souborů není vždy hello stejné od stávajících systémů zákazníků může mít jinak velikost dat souborů představující jejich SAP databází. V důsledku zapnuta out toobe více disků tooplace hello datové soubory, které logické jednotky LUN carved mimo těch, které lépe pomocí konfiguraci RAID. Nebyly situacích, zejména s Azure Standard Storage, kde IOPS míra dosáhl kvóty hello jednoho disku proti hello databázového systému transakčního protokolu. V takových situacích se doporučuje použít hello úložiště Premium Storage nebo případně agregování více standardního úložiště disků se softwaru RAID.
 
 - - -
 > ![Windows][Logo_Windows] Windows
@@ -1249,136 +1249,136 @@ Prostředí nasazení SAP za poslední 2 roky nám výukové některé lekce, kt
 >
 
 - - -
-* Storage úrovně Premium se zobrazuje důležité lepší výkon, hlavně pro kritické transakce protokolu zápisy. Pro scénáře SAP, které budou poskytovat produkční, jako je třeba výkon důrazně doporučujeme používat VM-Series, které můžete využít Azure Premium Storage.
+* Storage úrovně Premium se zobrazuje důležité lepší výkon, hlavně pro kritické transakce protokolu zápisy. Pro scénáře SAP, které jsou očekávané toodeliver produkční, jako je třeba výkon důrazně doporučujeme toouse VM-Series, které můžete využít Azure Premium Storage.
 
-Mějte na paměti, disku, který obsahuje operační systém, a doporučujeme, binární soubory SAP a databáze (základní virtuální počítač), a není už omezený na 127GB. Velikost teď může mít až 1TB. To by měl být dostatek místa, aby všechny nezbytné souboru, včetně například SAP batch v protokolech úloh.
+Mějte na paměti této hello disku, který obsahuje hello operačního systému, a jako doporučujeme, hello binární soubory databáze SAP a hello (základní virtuální počítač) taky není už omezený too127GB. Teď může mít až too1TB velikost. To by měl být dost místa tookeep všechny hello včetně nezbytné souboru, například, SAP batch v protokolech úloh.
 
-Další návrhy a další podrobnosti, konkrétně pro virtuální počítače databázového systému, přečtěte si [Průvodce nasazením databázového systému][dbms-guide]
+Pro další návrhy a další podrobnosti, konkrétně pro virtuální počítače databázového systému, přečtěte si hello [Průvodce nasazením databázového systému][dbms-guide]
 
 #### <a name="disk-handling"></a>Zpracování disku
-Ve většině scénářů musíte vytvořit další disk za účelem nasazení databázi SAP do virtuálního počítače. Už jsme mluvili o aspektech na počet disků v kapitole [virtuální počítač nebo disk strukturu pro nasazení SAP] [ planning-guide-5.5.1] tohoto dokumentu. Portál Azure umožňuje připojit a odpojit disky po základní virtuální počítač nasazen. Připojit/Odpojit po virtuálního počítače a spuštěná, i když je zastavena, může být disky. Při připojení disku, na portálu Azure nabízí připojte prázdný disk nebo stávající disk, který v tuto chvíli není připojen k jiným virtuálním Počítačem.
+Ve většině případů potřebujete další disky toocreate v databázi SAP hello toodeploy pořadí do hello virtuálních počítačů. Už jsme mluvili o aspektech hello na počet disků v kapitole [virtuální počítač nebo disk strukturu pro nasazení SAP] [ planning-guide-5.5.1] tohoto dokumentu. Hello portál Azure umožňuje tooattach a odpojit disky po základní virtuální počítač nasazen. Hello disků může být připojit nebo odpojit po hello virtuálních počítačů a spuštěných i když je zastavena. Při připojení disku, hello portál Azure poskytuje tooattach prázdný disk nebo stávající disk, který v tuto chvíli není připojen tooanother virtuálních počítačů.
 
-**Poznámka:**: disky lze připojit pouze pro jeden virtuální počítač v daném okamžiku.
+**Poznámka:**: disky lze pouze připojené tooone virtuálních počítačů v každém okamžiku.
 
 ![Připojit / Odpojit disky s Azure Standard Storage][planning-guide-figure-1400]
 
-Během nasazení nového virtuálního počítače můžete rozhodnout, zda chcete spravovat disky nebo umístěte vaše disky na účtech úložiště Azure. Pokud chcete používat úložiště úrovně Premium, doporučujeme používat spravované disky.
+Během hello nasazení nového virtuálního počítače můžete rozhodnout, zda mají být toouse spravované disky nebo umístit vaše disky na účtech úložiště Azure. Pokud chcete toouse Storage úrovně Premium, doporučujeme používat spravované disky.
 
-Dále musíte rozhodnout, jestli chcete vytvořit nové a prázdný disk nebo jestli chcete vybrat existujícího disku, který se předtím nahrála a by měl být připojen virtuální počítač nyní.
+Dále je nutné toodecide, zda chcete, aby toocreate nové a prázdný disk nebo jestli chcete tooselect existujícího disku, který se předtím nahrála a měl by být nyní připojen toohello virtuálních počítačů.
 
-**Důležité**: můžete **nesmí** pomocí ukládání do mezipaměti hostitele s Azure Standard Storage. Nechat předvoleb mezipaměti hostitele na výchozí hodnotu NONE. S Azure Premium Storage byste měli povolit ukládání do mezipaměti pro čtení vlastnosti vstupně-výstupních operací je většinou přečtení jako typický vstupně-výstupní provoz proti datových souborů databáze. Pokud se soubor protokolu transakcí databáze je doporučeno bez ukládání do mezipaměti.
+**Důležité**: můžete **nesmí** má toouse ukládání do mezipaměti hostitele s Azure Standard Storage. Nechat hello mezipaměti hostitele předvoleb na výchozí hello none. S Azure Premium Storage byste měli povolit ukládání do mezipaměti pro čtení vlastnosti hello vstupně-výstupních operací je většinou přečtení jako typický vstupně-výstupní provoz proti datových souborů databáze. Pokud se soubor protokolu transakcí databáze je doporučeno bez ukládání do mezipaměti.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> [Tom, jak připojit datový disk na portálu Azure][virtual-machines-linux-attach-disk-portal]
+> [Jak tooattach dat na disku v hello portálu Azure][virtual-machines-linux-attach-disk-portal]
 >
-> Pokud jsou připojené disky, budete muset přihlásit k virtuálnímu počítači otevřete Správce disků systému Windows. Pokud automatického připojení není povolena podle doporučení v kapitole [nastavení automatického připojení pro připojené disky][planning-guide-5.5.3], je potřeba provést online a inicializované nově připojená svazku.
+> Pokud jsou připojené disky, musíte toolog v toohello virtuálních počítačů tooopen hello Správce disků systému Windows. Pokud automatického připojení není povolena podle doporučení v kapitole [nastavení automatického připojení pro připojené disky][planning-guide-5.5.3], hello nově připojená svazku musí toobe provést online a inicializován.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Pokud jsou připojené disky, budete muset přihlásit k virtuálnímu počítači a inicializace disky, jak je popsáno v [v tomto článku][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]
+> Pokud jsou připojené disky, potřebujete toolog v toohello virtuálního počítače a inicializace hello disků, jak je popsáno v [v tomto článku][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]
 >
 >
 
 - - -
-Pokud je nový disk prázdný disk, budete muset formátovat disk také. Pro formátování, zejména pro soubory protokolu a data databázového systému platí stejná doporučení pro úplné nasazení databázového systému.
+Pokud nový disk hello je prázdný disk, musíte také tooformat hello disku. Pro formátování, hlavně pro databázového systému hello dat a souborů protokolu stejná doporučení pro úplné nasazení hello platí databázového systému.
 
-Jak již bylo uvedeno v kapitole [The koncept virtuálního počítače Microsoft Azure][planning-guide-3.2], účet úložiště Azure neposkytuje nekonečné prostředky z hlediska vstupně-výstupních operací svazek, svazek IOPS a data. Obvykle databázového systému virtuální počítače jsou nejvíce ovlivněno. Může to být nejvhodnější použít samostatný účet úložiště pro každý virtuální počítač, pokud máte několik velký objem vstupně-výstupní operace virtuálních počítačů k nasazení, aby bylo možné zůstat v rámci limitu svazku účet úložiště Azure. Jinak budete muset v tématu jak můžou vyrovnávat těchto virtuálních počítačů mezi různými účty úložiště bez nedosáhli limitu každý jeden účet úložiště. Další podrobnosti, které jsou popsané v [Průvodce nasazením databázového systému][dbms-guide]. Tato omezení měli také mít na paměti pro čistá aplikace SAP virtuálních počítačů serveru nebo ostatních virtuálních počítačů, které nakonec může vyžadovat další virtuální pevné disky. Tato omezení neplatí, pokud používáte spravované disku. Pokud plánujete používat úložiště úrovně Premium, doporučujeme používat spravované disku.
+Jak již bylo uvedeno v kapitole [hello koncept virtuálního počítače Microsoft Azure][planning-guide-3.2], účet úložiště Azure neposkytuje nekonečné prostředky z hlediska vstupně-výstupních operací svazek, svazek IOPS a data. Obvykle databázového systému virtuální počítače jsou nejvíce ovlivněno. Pokud máte několik vysoké toodeploy virtuální počítače svazku vstupně-výstupních operací v pořadí toostay v hello limitu hello účet úložiště Azure svazek může být nejlepší toouse samostatný účet úložiště pro každý virtuální počítač. Jinak je nutné toosee jak můžou vyrovnávat těchto virtuálních počítačů mezi různými účty úložiště bez nedosáhli limitu hello každý jeden účet úložiště. Další podrobnosti, které jsou popsané v hello [Průvodce nasazením databázového systému][dbms-guide]. Tato omezení měli také mít na paměti pro čistá aplikace SAP virtuálních počítačů serveru nebo ostatních virtuálních počítačů, které nakonec může vyžadovat další virtuální pevné disky. Tato omezení neplatí, pokud používáte spravované disku. Pokud máte v plánu toouse Storage úrovně Premium, doporučujeme používat spravované disku.
 
-Jiné téma, které jsou důležité pro účty úložiště se, zda jsou virtuální pevné disky v účtu úložiště, získávání geograficky replikované. Geografická replikace povolená nebo zakázaná na úrovni účtu úložiště a ne na úrovni virtuálního počítače. Pokud je povoleno geografická replikace, virtuální pevné disky v rámci účtu úložiště by replikovat do jiného datového centra Azure v rámci stejné oblasti. Než se rozhodnete, že na tomto, musí si myslíte o následující omezení:
+Jiné téma, které jsou důležité pro účty úložiště se, zda jsou hello virtuálních pevných disků v účtu úložiště, získávání geograficky replikované. Geografická replikace povolená nebo zakázaná na hello úrovni účtu úložiště a ne na hello úroveň virtuálního počítače. Pokud je povoleno geografická replikace, hello hello virtuálních pevných disků v rámci hello účet úložiště se replikuje do jiného datového centra Azure v rámci stejné oblasti. Než se rozhodnete, že na tomto, měli zamyslet hello následující omezení:
 
-Azure geografická replikace nereplikuje IOs v chronologickém pořadí napříč více virtuálních pevných disků ve virtuálním počítači a funguje místně na každý virtuální pevný disk ve virtuálním počítači. Proto se replikují virtuální pevný disk, který představuje základní virtuální počítač a také všechny další virtuální pevné disky připojené k virtuálnímu počítači nezávisle na sobě navzájem. To znamená, že neexistuje žádná synchronizace mezi změny v různých virtuálních pevných disků. Fakt, že jsou replikovány IOs nezávisle na pořadí, ve kterém jsou zapsané znamená geografická replikace není hodnoty pro databázové servery, které mají své databáze distribuovány na více virtuálních pevných disků. Kromě databázového systému také mohou existovat další aplikace, které procesy zápisu nebo pracovat s daty v různých virtuálních pevných disků a kde je důležité udržovat pořadí změny. Pokud se požadavek, by nemělo být povoleno geografická replikace v Azure. Závisí na tom, jestli potřebujete nebo chcete geografická replikace pro sadu virtuálních počítačů, ale ne pro jinou sadu, můžete již zařadit virtuálních počítačů a jejich související virtuální pevné disky do jiné účty úložiště, které mají geografická replikace povolená nebo zakázaná.
+Azure geografická replikace nereplikuje hello IOs v chronologickém pořadí napříč více virtuálních pevných disků ve virtuálním počítači a funguje místně na každý virtuální pevný disk ve virtuálním počítači. Proto se replikují hello virtuální pevný disk, zda text hello představuje základní virtuálních počítačů a také všechny další toohello připojit virtuální pevné disky virtuálního počítače nezávisle na sobě navzájem. To znamená, že neexistuje žádná synchronizace mezi hello změny v hello jiný virtuální pevné disky. Hello skutečnost, že hello IOs se replikují nezávisle na hello pořadí, ve které jsou zapsané znamená geografická replikace není hodnoty pro databázové servery, které mají své databáze distribuovány na více virtuálních pevných disků. V přidání toohello databázového systému také mohou existovat další aplikace, které procesy zápisu nebo pracovat s daty v různých virtuálních pevných disků, a tam, kde je důležité tookeep hello pořadí změny. Pokud se požadavek, by nemělo být povoleno geografická replikace v Azure. Závisí na tom, jestli potřebujete nebo chcete geografická replikace pro sadu virtuálních počítačů, ale ne pro jinou sadu, můžete již zařadit virtuálních počítačů a jejich související virtuální pevné disky do jiné účty úložiště, které mají geografická replikace povolená nebo zakázaná.
 
 #### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Nastavení automatického připojení pro připojené disky
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Pro virtuální počítače, které jsou vytvořené pomocí vlastní Image nebo disky je potřeba zkontrolovat a může být nastaven parametr automatického připojení. Nastavení tohoto parametru vám umožní virtuální počítač po restartování nebo opětovné nasazení v Azure automaticky znovu připojit připojené připojené jednotky.
-> Parametr je nastaven pro Image poskytované Microsoft Azure Marketplace.
+> Pro virtuální počítače, které jsou vytvořené pomocí vlastní Image nebo disky, je nutné toocheck a nastavte parametr hello automatického připojení, které by mohly mít. Nastavení tohoto parametru vám umožní hello virtuálních počítačů po restartování nebo opětovné nasazení v Azure toomount hello připojen nebo připojené jednotky automaticky znovu.
+> Parametr Hello je nastaven pro bitové kopie hello od společnosti Microsoft v hello Azure Marketplace.
 >
-> Aby bylo možné nastavit automatického připojení, zkontrolujte v dokumentaci příkazového řádku spustitelného souboru diskpart.exe tady:
+> V pořadí tooset hello automatického připojení Zkontrolujte prosím hello dokumentaci hello příkazového řádku spustitelného souboru diskpart.exe tady:
 >
 > * [Možnosti příkazového řádku DiskPart](https://technet.microsoft.com/library/bb490893.aspx)
 > * [Automatického připojení](http://technet.microsoft.com/library/cc753703.aspx)
 >
-> Okno příkazového řádku systému Windows musí být otevřen jako správce.
+> okno příkazového řádku systému Windows Hello musí být otevřen jako správce.
 >
-> Pokud jsou připojené disky, budete muset přihlásit k virtuálnímu počítači otevřete Správce disků systému Windows. Pokud automatického připojení není povolena podle doporučení v kapitole [nastavení automatického připojení pro připojené disky][planning-guide-5.5.3], nově připojený svazek > je potřeba provést online a inicializované.
+> Pokud jsou připojené disky, musíte toolog v toohello virtuálních počítačů tooopen hello Správce disků systému Windows. Pokud automatického připojení není povolena podle doporučení v kapitole [nastavení automatického připojení pro připojené disky][planning-guide-5.5.3], hello nově připojený svazek > potřebuje toobe provést online a inicializován.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Je nutné inicializovat nově připojená prázdný disk, jak je popsáno v [v tomto článku][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux].
-> Musíte taky přidat do /etc/fstab nové disky.
+> Je třeba tooinitialize nově připojená prázdný disk, jak je popsáno v [v tomto článku][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux].
+> Budete také potřebovat tooadd /etc/fstab toohello nové disky.
 >
 >
 
 - - -
 ### <a name="final-deployment"></a>Poslední nasazení
-Pro konečné nasazení a jaké kroky, zejména s ohledem na nasazení SAP rozšířené monitorování, naleznete [Průvodce nasazením][deployment-guide].
+Hello konečné nasazení a přesné kroky, zejména s namapoval toohello nasazení SAP rozšířené monitorování, naleznete toohello [Průvodce nasazením][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Přístup k SAP systémy s operačním systémem v rámci virtuálních počítačů Azure
-Pro scénáře jenom pro Cloud můžete chtít připojit k těmto systémům SAP přes grafické uživatelské rozhraní SAP veřejného Internetu. Pro tyto případy musí provést následující postupy.
+Pro scénáře jenom pro Cloud, můžete tooconnect toothose SAP systémy přes hello veřejného Internetu pomocí grafického uživatelského rozhraní SAP. U těchto případech hello následující postupy potřebovat toobe použít.
 
-Později v dokumentu se budeme zabývat další hlavní scénáře, připojují k systémům SAP v nasazeních mezi různými místy, které mají připojení site-to-site (tunelového připojení sítě VPN) nebo Azure ExpressRoute připojení mezi místní systémy a systémy Azure.
+Později v hello dokument, který se budeme zabývat hello jiných hlavní scénáře, připojování tooSAP systémy v nasazeních mezi různými místy, které mají připojení site-to-site (tunelového připojení sítě VPN) nebo Azure ExpressRoute připojení mezi místní hello a Azure systémy.
 
-### <a name="remote-access-to-sap-systems"></a>Vzdálený přístup k SAP systémy
-Pomocí Azure Resource Manageru neobsahuje žádné výchozí koncové body už jako bývalé klasického modelu. Všechny porty virtuálního počítače Azure ARM jsou otevřené, dokud:
+### <a name="remote-access-toosap-systems"></a>Systémy tooSAP vzdáleného přístupu
+Pomocí Azure Resource Manageru neobsahuje žádné výchozí koncové body už jako hello bývalé klasického modelu. Všechny porty virtuálního počítače Azure ARM jsou otevřené, dokud:
 
-1. Žádné skupiny zabezpečení sítě je definována pro podsíť nebo síťové rozhraní. Síťový provoz na virtuálních počítačích Azure můžou být zabezpečené pomocí takzvané "skupin zabezpečení sítě". Další informace najdete v části [co je skupina zabezpečení sítě (NSG)?][virtual-networks-nsg]
-2. Pro síťové rozhraní, není definována žádná služba Vyrovnávání zatížení Azure   
+1. Žádné skupiny zabezpečení sítě je definována pro podsíť hello nebo hello síťové rozhraní. TooAzure provoz sítě virtuálních počítačů může být zabezpečené pomocí takzvané "skupin zabezpečení sítě". Další informace najdete v části [co je skupina zabezpečení sítě (NSG)?][virtual-networks-nsg]
+2. Pro síťové rozhraní hello není definována žádná služba Vyrovnávání zatížení Azure   
 
-Jak je popsáno v, najdete v části architektura rozdíl mezi klasického modelu a ARM [v tomto článku][virtual-machines-azure-resource-manager-architecture].
+V tématu hello architektura rozdíl mezi klasického modelu a ARM, jak je popsáno v [v tomto článku][virtual-machines-azure-resource-manager-architecture].
 
-#### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-for-cloud-only-scenario"></a>Konfigurace připojení k systému SAP a SAP grafického uživatelského rozhraní pro scénář jenom pro Cloud
-Podrobnosti najdete v tomto článku, který popisuje podrobnosti k tomuto tématu: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+#### <a name="configuration-of-hello-sap-system-and-sap-gui-connectivity-for-cloud-only-scenario"></a>Konfigurace hello připojení k systému SAP a SAP grafického uživatelského rozhraní pro scénář jenom pro Cloud
+Podrobnosti najdete v tomto článku, který popisuje téma toothis podrobnosti: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Změna nastavení brány Firewall v rámci virtuálního počítače
-Může být potřeba nakonfigurovat bránu firewall na virtuální počítače chcete povolit příchozí přenosy v systému SAP.
+Může být nutné tooconfigure hello brány firewall na vaše virtuální počítače tooallow příchozí provoz tooyour SAP systému.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Ve výchozím nastavení je zapnutá brána Firewall systému Windows v rámci Azure nasazených virtuálních počítačů. Nyní je třeba povolit otevřít Port SAP, jinak nebude moct připojit SAP grafické uživatelské rozhraní.
-> Použijte následující postup:
+> Hello brány Windows Firewall v rámci Azure nasazený virtuální počítač je ve výchozím nastavení zapnuta. Teď musíte tooallow hello SAP Port toobe otevřít, jinak hello SAP grafickým uživatelským rozhraním nebudou moct tooconnect.
+> toodo toto:
 >
-> * Otevřete ovládací panely\systém a zabezpečení\Brána Windows Firewall tak, aby 'upřesňující nastavení'.
+> * Otevřete ovládací panely\systém a zabezpečení\Brána Windows Firewall too'Advanced nastavení.
 > * Nyní klikněte pravým tlačítkem na příchozí pravidla a pokusit 'Nové pravidlo'.
-> * V následující průvodce pokusit vytvořit nové pravidlo 'Port'.
-> * V dalším kroku průvodce nechte nastavení na TCP a zadejte číslo portu, který chcete otevřít. Vzhledem k tomu, že je naše ID instance SAP 00, vzali jsme 3200. Pokud je vaše instance číslo jinou instanci, musí být otevřen port, který jste definovali dříve podle počtu instancí.
-> * V další části průvodce budete muset ponechat položku "Povolit připojení, zaškrtnutí.
-> * V dalším kroku průvodce budete muset definovat, zda se pravidlo vztahuje pro doménu, privátní a veřejné sítě. V případě potřeby pro vaše potřeby ho upravte. Ale připojují pomocí grafického uživatelského rozhraní SAP zvenku přes veřejnou síť, musíte mít pravidlo použije k veřejné síti.
-> * V posledním kroku průvodce název pravidla a uložte stisknutím 'Dokončit'
+> * V hello následující průvodce zvolili toocreate nové pravidlo 'Port'.
+> * V dalším kroku hello hello Průvodce ponechte nastavení hello na TCP a typ v požadované číslo portu hello tooopen. Vzhledem k tomu, že je naše ID instance SAP 00, vzali jsme 3200. Pokud je vaše instance číslo jinou instanci, musí být otevřen hello port, který jste definovali dříve podle čísla instance hello.
+> * V další části hello hello průvodce musíte tooleave hello položku "Povolit připojení, zaškrtnutí.
+> * V dalším kroku průvodce hello hello je nutné toodefine, zda text hello pravidlo pro doménu, privátní a veřejné sítě. Pokud potřebuje tooyour potřeby ho upravte. Ale připojení s grafickým uživatelským rozhraním SAP z hello mimo prostřednictvím hello veřejnou síť, musíte toohave hello pravidlo toohello veřejné síti.
+> * V posledním kroku hello hello průvodce název hello pravidla a uložte stisknutím kombinace kláves 'Dokončit'
 >
-> Pravidlo začne okamžitě platit.
+> pravidlo Hello začne okamžitě platit.
 >
 > ![Definice pravidla portu][planning-guide-figure-1600]
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Linux obrázků v Azure Marketplace nepovolujte iptables brány firewall ve výchozím nastavení a připojení k systému SAP, by měly fungovat. Pokud jste povolili iptables nebo jiná brána firewall, naleznete v dokumentaci iptables nebo použité brány firewall umožňující tcp příchozí přenosy na portu 32xx (kde xx je počet systému vašeho systému SAP).
+> Hello Linux obrázků v hello Azure Marketplace nepovolujte hello iptables brány firewall ve výchozím nastavení a hello připojení tooyour SAP systému, by měly fungovat. Pokud jste povolili iptables nebo jiná brána firewall, naleznete v dokumentaci toohello iptables nebo hello používá Brána firewall tooallow příliš příchozí přenosy tcp port 32xx (kde xx je číslo systému hello systému SAP).
 >
 >
 
 - - -
 #### <a name="security-recommendations"></a>Doporučení zabezpečení
-Grafické uživatelské rozhraní SAP nepřipojí k žádné z instance SAP (port 32xx), které jsou spuštěny, ale poprvé připojí přes port otevřít k procesu SAP zpráv serveru (port 36xx) okamžitě. V minulosti byl velmi stejný port používán serverem zpráva pro interní komunikaci na instancí aplikace. Aby se zabránilo místní aplikační servery nechtěně komunikaci se serverem zpráva v Azure lze změnit interní komunikační porty. Důrazně doporučujeme změnit interní komunikaci mezi zpráva serveru SAP a její instance aplikace na jiné číslo portu v systémech, které byly klonovat z místních systémů, jako je například klon vývoje pro projekt testování atd. To lze provést s výchozím parametrem profil:
+Hello grafickým uživatelským rozhraním SAP nepřipojí okamžitě tooany instance SAP hello (port 32xx), které jsou spuštěny, ale poprvé připojí přes SAP toohello otevřený port hello zpráva procesu serveru (port 36xx). V hello za velmi stejný port hello použilo zprávu server hello hello interní komunikaci toohello aplikace instancí. tooprevent místní aplikační servery v nechtěně komunikaci s server zpráv v Azure hello interní komunikační porty může být změněny. Důrazně doporučujeme toochange hello interní komunikaci mezi hello SAP zpráv serveru a jeho aplikace instancí tooa jiné číslo portu v systémech, které byly klonovat z místních systémů, jako je například klon vývoje pro testování projektu atd. To lze provést pomocí hello výchozí profil parametru:
 
 > rdisp/msserv_internal
 >
 >
 
-jak je uvedeno v [nastavení zabezpečení pro Server zpráv SAP](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm)
+jak je uvedeno v [nastavení zabezpečení pro SAP zprávu Server hello](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm)
 
 ## <a name="96a77628-a05e-475d-9df3-fb82217e8f14"></a>Koncepty čistě cloudové nasazení SAP instancí
 ### <a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>Jeden virtuální počítač s SAP NetWeaver demo a školení scénář
-![Systémem jednoho virtuálního počítače SAP ukázkový se stejnými názvy virtuálních počítačů, izolované ve službě Azure Cloud Services][planning-guide-figure-1700]
+![S jeden systémy ukázku SAP virtuálních počítačů s hello stejné názvy virtuálních počítačů, izolované ve službě Azure Cloud Services][planning-guide-figure-1700]
 
-V tomto scénáři (naleznete v kapitole [jenom pro Cloud] [ planning-guide-2.1] tohoto dokumentu) jsme implementujete typické školení nebo ukázkový scénář systému kde obsaženy dokončení školení nebo ukázkový scénář v jeden virtuální počítač. Předpokládáme, že nasazení se provádí prostřednictvím image šablony virtuálních počítačů. Také předpokládáme, že více tyto ukázkové školení potřeba virtuální počítače nasadit s virtuálními počítači, který má stejný název.
+V tomto scénáři (naleznete v kapitole [jenom pro Cloud] [ planning-guide-2.1] tohoto dokumentu) jsme implementujete typické školení nebo ukázkový scénář systému kde obsaženy hello dokončení školení nebo ukázkový scénář v jeden virtuální počítač. Předpokládáme, že nasazení hello se provádí prostřednictvím image šablony virtuálních počítačů. Také předpokládáme, že více tyto ukázkové/školení toobe potřeba virtuální počítače nasazené s hello virtuálních počítačů s hello stejný název.
 
-Předpokladem je, který jste vytvořili Image virtuálního počítače, jak je popsáno v některých částech kapitoly [přípravy virtuálních počítačů s SAP pro Azure] [ planning-guide-5.2] v tomto dokumentu.
+Hello předpokladem je, který jste vytvořili Image virtuálního počítače, jak je popsáno v některých částech kapitoly [přípravy virtuálních počítačů s SAP pro Azure] [ planning-guide-5.2] v tomto dokumentu.
 
-Posloupnost událostí implementovat scénář vypadá takto:
+Hello pořadí událostí tooimplement hello scénáře vypadá takto:
 
 ##### <a name="powershell"></a>PowerShell
 * Vytvořit novou skupinu prostředků pro každých šířku školení nebo demo
@@ -1387,14 +1387,14 @@ Posloupnost událostí implementovat scénář vypadá takto:
 $rgName = "SAPERPDemo1"
 New-AzureRmResourceGroup -Name $rgName -Location "North Europe"
 ```
-* Vytvořit nový účet úložiště, pokud nechcete používat spravované disky
+* Vytvořit nový účet úložiště, pokud nechcete, aby toouse spravované disky
 
 ```powershell
 $suffix = Get-Random -Minimum 100000 -Maximum 999999
 $account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
 ```
 
-* Vytvořte novou virtuální síť pro každý školení nebo ukázku šířku povolit využití stejný název hostitele a IP adres. Virtuální síť je chráněn skupinu zabezpečení sítě, který umožňuje pouze přenosy na portu 3389 povolit přístup ke vzdálené ploše a port 22 pro SSH.
+* Vytvořit novou virtuální síť pro každý školení nebo ukázku šířku tooenable hello využití hello stejný název hostitele a IP adresy. Skupinu zabezpečení sítě, který povoluje přístup ke vzdálené ploše 3389 tooenable tooport provozu a port 22 pro SSH je chráněn Hello virtuální sítě.
 
 ```powershell
 # Create a new Virtual Network
@@ -1406,27 +1406,27 @@ $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name Subnet1 -AddressPref
 $vnet = New-AzureRmVirtualNetwork -Name SAPERPDemoVNet -ResourceGroupName $rgName -Location "North Europe"  -AddressPrefix 10.0.1.0/24 -Subnet $subnetConfig
 ```
 
-* Vytvořit novou veřejnou IP adresu, která lze použít pro přístup k virtuálnímu počítači z Internetu
+* Vytvořit novou veřejnou IP adresu, která lze použít tooaccess hello virtuálnímu počítači z hello Internetu
 
 ```powershell
 # Create a public IP address with a DNS name
 $pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName -Location "North Europe" -DomainNameLabel $rgName.ToLower() -AllocationMethod Dynamic
 ```
 
-* Vytvoření nového síťového rozhraní pro virtuální počítač
+* Vytvoření nového síťového rozhraní pro virtuální počítač hello
 
 ```powershell
 # Create a new Network Interface
 $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
-* Vytvoření virtuálního počítače. Pro scénář jenom pro Cloud bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instance SAP NetWeaver ve tyto virtuální počítače budou stejné také. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače se stejným názvem. Výchozí účet 'správce systému Windows nebo "kořenový" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně s heslem. Velikost virtuálního počítače taky musí být definován.
+* Vytvoření virtuálního počítače. Pro scénář jenom pro Cloud hello bude mít každý virtuální počítač hello stejný název. Hello SAP SID hello SAP NetWeaver instance v těchto virtuálních počítačů bude stejné hello také. V rámci hello skupiny prostředků Azure, hello název hello virtuálního počítače potřebuje toobe jedinečné, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače s hello stejný název. Výchozí účet 'správce Windows Hello nebo "kořenový" pro Linux nejsou platné. Proto nové uživatelské jméno správce musí toobe definované společně s heslem. velikost Hello hello virtuálního počítače musí také toobe definované.
 
 ```powershell
 #####
-# Create a new virtual machine with an official image from the Azure Marketplace
+# Create a new virtual machine with an official image from hello Azure Marketplace
 #####
-$cred=Get-Credential -Message "Type the name and password of the local administrator account."
+$cred=Get-Credential -Message "Type hello name and password of hello local administrator account."
 $vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
 # select image
@@ -1445,9 +1445,9 @@ $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmc
 
 ```powershell
 #####
-# Create a new virtual machine with a VHD that contains the private image that you want to use
+# Create a new virtual machine with a VHD that contains hello private image that you want toouse
 #####
-$cred=Get-Credential -Message "Type the name and password of the local administrator account."
+$cred=Get-Credential -Message "Type hello name and password of hello local administrator account."
 $vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
 $vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
@@ -1455,9 +1455,9 @@ $vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
 $diskName="osfromimage"
 $osDiskUri=$account.PrimaryEndpoints.Blob.ToString() + "vhds/" + $diskName  + ".vhd"
 
-$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Windows
+$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path tooVHD that contains hello OS image> -Windows
 $vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
-#$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Linux
+#$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path tooVHD that contains hello OS image> -Linux
 #$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
 $vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
@@ -1468,7 +1468,7 @@ $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmc
 #####
 # Create a new virtual machine with a Managed Disk Image
 #####
-$cred=Get-Credential -Message "Type the name and password of the local administrator account."
+$cred=Get-Credential -Message "Type hello name and password of hello local administrator account."
 $vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
 $vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
@@ -1481,7 +1481,7 @@ $vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
 $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
-* Volitelně můžete přidat další disky a potřeby obsah obnovit. Upozorňujeme, že názvy všech objektů blob (adres URL pro objekty BLOB), musí být jedinečný v rámci Azure.
+* Volitelně můžete přidat další disky a potřeby obsah obnovit. Upozorňujeme, že názvy všech objektů blob (toohello adresy URL objektů BLOB), musí být jedinečný v rámci Azure.
 
 ```powershell
 # Optional: Attach additional VHD data disks
@@ -1495,7 +1495,7 @@ Add-AzureRmVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption em
 ```
 
 ##### <a name="cli"></a>Rozhraní příkazového řádku
-Následující příklad kódu lze v systému Linux. Pro systém Windows, proveďte pomocí prostředí PowerShell, jak je popsáno výše nebo přizpůsobit příklad používat % rgName % místo $rgName a nastavte proměnnou prostředí pomocí příkazu Windows *nastavit*.
+Následující příklad kódu Hello lze v systému Linux. Pro systém Windows, prosím buď pomocí prostředí PowerShell, jak je popsáno výše nebo přizpůsobit hello příklad toouse % rgName % místo $rgName a nastavte proměnnou prostředí hello pomocí příkazu Windows hello *nastavit*.
 
 * Vytvořit novou skupinu prostředků pro každých šířku školení nebo demo
 
@@ -1511,7 +1511,7 @@ az group create --name $rgName --location "North Europe"
 az storage account create --resource-group $rgName --location "North Europe" --kind Storage --sku Standard_LRS --name $rgNameLower
 ```
 
-* Vytvořte novou virtuální síť pro každý školení nebo ukázku šířku povolit využití stejný název hostitele a IP adres. Virtuální síť je chráněn skupinu zabezpečení sítě, který umožňuje pouze přenosy na portu 3389 povolit přístup ke vzdálené ploše a port 22 pro SSH.
+* Vytvořit novou virtuální síť pro každý školení nebo ukázku šířku tooenable hello využití hello stejný název hostitele a IP adresy. Skupinu zabezpečení sítě, který povoluje přístup ke vzdálené ploše 3389 tooenable tooport provozu a port 22 pro SSH je chráněn Hello virtuální sítě.
 
 ```
 az network nsg create --resource-group $rgName --location "North Europe" --name SAPERPDemoNSG
@@ -1522,19 +1522,19 @@ az network vnet create --resource-group $rgName --name SAPERPDemoVNet --location
 az network vnet subnet create --resource-group $rgName --vnet-name SAPERPDemoVNet --name Subnet1 --address-prefix 10.0.1.0/24 --network-security-group SAPERPDemoNSG
 ```
 
-* Vytvořit novou veřejnou IP adresu, která lze použít pro přístup k virtuálnímu počítači z Internetu
+* Vytvořit novou veřejnou IP adresu, která lze použít tooaccess hello virtuálnímu počítači z hello Internetu
 
 ```
 az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --location "North Europe" --dns-name $rgNameLower --allocation-method Dynamic
 ```
 
-* Vytvoření nového síťového rozhraní pro virtuální počítač
+* Vytvoření nového síťového rozhraní pro virtuální počítač hello
 
 ```
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
-* Vytvoření virtuálního počítače. Pro scénář jenom pro Cloud bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instance SAP NetWeaver ve tyto virtuální počítače budou stejné také. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače se stejným názvem. Výchozí účet 'správce systému Windows nebo "kořenový" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně s heslem. Velikost virtuálního počítače taky musí být definován.
+* Vytvoření virtuálního počítače. Pro scénář jenom pro Cloud hello bude mít každý virtuální počítač hello stejný název. Hello SAP SID hello SAP NetWeaver instance v těchto virtuálních počítačů bude stejné hello také. V rámci hello skupiny prostředků Azure, hello název hello virtuálního počítače potřebuje toobe jedinečné, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače s hello stejný název. Výchozí účet 'správce Windows Hello nebo "kořenový" pro Linux nejsou platné. Proto nové uživatelské jméno správce musí toobe definované společně s heslem. velikost Hello hello virtuálního počítače musí také toobe definované.
 
 ```
 #####
@@ -1556,10 +1556,10 @@ az vm create --resource-group $rgName --location "North Europe" --name SAPERPDem
 
 ```
 #####
-# Create a new virtual machine with a VHD that contains the private image that you want to use
+# Create a new virtual machine with a VHD that contains hello private image that you want toouse
 #####
-az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --os-type Windows --admin-username <username> --admin-password <password> --size Standard_D11 --use-unmanaged-disk --storage-account $rgNameLower --storage-container-name vhds --os-disk-name os --image <path to image vhd>
-#az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --os-type Linux --admin-username <username> --admin-password <password> --size Standard_D11 --use-unmanaged-disk --storage-account $rgNameLower --storage-container-name vhds --os-disk-name os --image <path to image vhd> --authentication-type password
+az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --os-type Windows --admin-username <username> --admin-password <password> --size Standard_D11 --use-unmanaged-disk --storage-account $rgNameLower --storage-container-name vhds --os-disk-name os --image <path tooimage vhd>
+#az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --os-type Linux --admin-username <username> --admin-password <password> --size Standard_D11 --use-unmanaged-disk --storage-account $rgNameLower --storage-container-name vhds --os-disk-name os --image <path tooimage vhd> --authentication-type password
 
 #####
 # Create a new virtual machine with a Managed Disk Image
@@ -1568,7 +1568,7 @@ az vm create --resource-group $rgName --location "North Europe" --name SAPERPDem
 #az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --admin-username <username> --admin-password <password> --size Standard_DS11_v2 --os-disk-name os --image <managed disk image id> --authentication-type password
 ```
 
-* Volitelně můžete přidat další disky a potřeby obsah obnovit. Upozorňujeme, že názvy všech objektů blob (adres URL pro objekty BLOB), musí být jedinečný v rámci Azure.
+* Volitelně můžete přidat další disky a potřeby obsah obnovit. Upozorňujeme, že názvy všech objektů blob (toohello adresy URL objektů BLOB), musí být jedinečný v rámci Azure.
 
 ```
 # Optional: Attach additional VHD data disks
@@ -1579,92 +1579,92 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 ```
 
 ##### <a name="template"></a>Šablona
-Můžete vytvořit šablony ukázkových šablon azure rychlý start úložišti na githubu.
+Můžete vytvořit šablony ukázka hello hello šablon azure rychlý start úložišti na githubu.
 
 * [Jednoduchý virtuální počítač s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [Jednoduchý virtuální počítač s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
 * [Virtuální počítač z bitové kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-### <a name="implement-a-set-of-vms-which-need-to-communicate-within-azure"></a>Implementovat sadu virtuálních počítačů, které je třeba pro komunikaci v rámci Azure
-Tento scénář jenom pro Cloud je typický scénář v nástroji školení a ukázkové účely kde software představující demo a školení scénář se šíří přes víc virtuálních počítačů. Různé komponenty nainstalované v různých virtuálních počítačů je třeba vzájemně komunikovat. Znovu v tomto scénáři nemáte žádnou místní síťová komunikace nebo mezi různými místy scénáři je potřeba.
+### <a name="implement-a-set-of-vms-which-need-toocommunicate-within-azure"></a>Implementovat sadu virtuálních počítačů, které vyžadují toocommunicate v rámci Azure
+Tento scénář jenom pro Cloud je typický scénář pro účely školení a ukázku, kde hello software představující hello demo a školení scénář rozložené v několika virtuálními počítači. Hello různé součásti nainstalované v hello jiné virtuální počítače nutné toocommunicate mezi sebou. Znovu v tomto scénáři nemáte žádnou místní síťová komunikace nebo mezi různými místy scénáři je potřeba.
 
-Tento scénář je rozšíření Instalace popsané v kapitole [jeden virtuální počítač s SAP NetWeaver demo a školení scénář] [ planning-guide-7.1] tohoto dokumentu. V takovém případě víc virtuálních počítačů se zařadí do existující skupiny prostředků. V následujícím příkladu se skládá povahu školení SAP ASC nebo SCS virtuálního počítače, virtuální počítač spuštěn databázového systému a aplikačního serveru SAP instance virtuálních počítačů.
+Tento scénář je rozšíření hello instalace popsané v kapitole [jeden virtuální počítač s SAP NetWeaver demo a školení scénář] [ planning-guide-7.1] tohoto dokumentu. Další virtuální počítače v tomto případě bude přidán tooan existující skupinu prostředků. Následující příklad hello školení na šířku se skládá z SAP ASC nebo SCS virtuálních počítačů, virtuální počítač spuštěn databázového systému a aplikačního serveru SAP instance virtuálních počítačů v hello.
 
-Než vytvoříte v tomto scénáři musíte vezměte v úvahu základní nastavení už se provést ve scénáři před.
+Než vytvoříte v tomto scénáři musíte toothink o základní nastavení už provést v případě hello před.
 
 #### <a name="resource-group-and-virtual-machine-naming"></a>Skupina prostředků a pojmenování virtuálního počítače
 Všechny názvy skupin prostředků musí být jedinečný. Vývoj vlastní schéma pojmenování prostředků, jako například `<rg-name`>-příponu.
 
-Název virtuálního počítače musí být jedinečný v rámci skupiny prostředků.
+název virtuálního počítače Hello má toobe jedinečný v rámci skupiny prostředků hello.
 
-#### <a name="set-up-network-for-communication-between-the-different-vms"></a>Nastavení sítě pro komunikaci mezi různé virtuální počítače
+#### <a name="set-up-network-for-communication-between-hello-different-vms"></a>Nastavení sítě pro komunikaci mezi hello různé virtuální počítače
 ![Sadu virtuálních počítačů v rámci virtuální sítě Azure][planning-guide-figure-1900]
 
-Abyste zabránili kolizím s klony ze stejné krajiny školení nebo ukázku, musíte vytvořit virtuální síť Azure pro každý na šířku. Překlad názvů DNS poskytovaný Azure nebo můžete nakonfigurovat vlastní DNS server mimo Azure (není možné dále zde popsané). V tomto scénáři jsme nekonfigurujte vlastní DNS. Pro všechny virtuální počítače uvnitř jednu virtuální síť Azure bude povolena komunikace přes názvy hostitelů.
+tooprevent pojmenování kolizí s klony hello stejné krajiny školení nebo ukázku, musíte pro každou šířku toocreate virtuální síť Azure. Překlad názvů DNS poskytovaný Azure nebo můžete nakonfigurovat vlastní DNS server mimo Azure (ne toobe další zde popsané). V tomto scénáři jsme nekonfigurujte vlastní DNS. Pro všechny virtuální počítače uvnitř jednu virtuální síť Azure bude povolena komunikace přes názvy hostitelů.
 
-Důvody k oddělení školení nebo ukázku krajiny tak, že virtuální sítě a ne jenom skupiny prostředků může být:
+Hello důvodů, proč tooseparate školení nebo ukázku krajiny tak, že virtuální sítě a ne jenom prostředků, které skupiny může být:
 
-* Povahu SAP jako nastavení potřebuje vlastní AD OpenLDAP a musí být součástí jednotlivých krajina Server domény.  
-* Na šířku SAP jako nastavení obsahuje součásti, které potřebujete k práci s pevné IP adresy.
+* Hello SAP šířku podle potřeby vlastní AD OpenLDAP a součástí toobe Server domény potřebám jednotlivých krajiny hello.  
+* na šířku SAP Hello nastavení má součásti tohoto potřeba toowork s pevné IP adresy.
 
-Další informace o virtuálních sítí Azure a jak se definovat naleznete v [v tomto článku][virtual-networks-create-vnet-arm-pportal].
+Další informace o virtuálních sítí Azure a jak toodefine je možné najít v [v tomto článku][virtual-networks-create-vnet-arm-pportal].
 
 ## <a name="deploying-sap-vms-with-corporate-network-connectivity-cross-premises"></a>Nasazení SAP virtuálních počítačů s připojením k podnikové síti (mezi různými místy)
-Spustit SAP šířku a chcete rozdělit nasazení mezi úplné obnovení vyšší kategorie servery databázového systému, místní virtualizované prostředí pro aplikaci vrstvy a menší vrstvě 2 nakonfigurovali SAP systémy a Azure IaaS. Základní předpokladem je, že je potřeba SAP systémy v rámci jednoho šířku SAP komunikaci mezi sebou a s mnoha další softwarové součásti nasazení ve společnosti, nezávisle na jejich nasazení formuláře. Taky by měl existovat žádné rozdíly zaváděné formuláře nasazení pro koncového uživatele propojení s grafickým uživatelským rozhraním SAP nebo dalších rozhraní. Tyto podmínky lze splnit, pouze když máme OpenLDAP Active Directory v místě a rozšířit do Azure systémů prostřednictvím připojení site na lokality nebo více-místě nebo privátní připojení, jako jsou Azure ExpressRoute služby DNS.
+Spuštění SAP šířku a chcete nasazení hello toodivide mezi úplné obnovení vyšší kategorie servery databázového systému, místní virtualizované prostředí pro aplikaci vrstvy a menší vrstvě 2 nakonfigurovali SAP systémy a Azure IaaS. Hello základní předpokladem je, že systémy SAP v rámci jednoho šířku SAP nutné toocommunicate mezi sebou a s mnoha další softwarové součásti nasazení ve společnosti hello, nezávisle na jejich nasazení formuláře. Taky by měl existovat žádné rozdíly zaváděné hello nasazení formuláře pro připojení s grafickým uživatelským rozhraním SAP nebo dalších rozhraní hello koncového uživatele. Tyto podmínky lze splnit jenom, když máme hello místní Active Directory nebo OpenLDAP a služby DNS rozšířené toohello Azure systémy prostřednictvím připojení site na lokality nebo více-místě nebo privátní připojení, jako jsou Azure ExpressRoute.
 
-Chcete-li získat další pozadí na podrobnosti implementace SAP v Azure, doporučujeme přečíst kapitoly [koncepty Cloud-Only nasazení SAP instancí] [ planning-guide-7] tohoto dokumentu, který vysvětluje některé konstrukce základy Azure a jak tyto musí být použit s SAP aplikací v Azure.
+V pořadí tooget informace na pozadí na podrobnosti implementace hello SAP v Azure, doporučujeme vám kapitoly tooread [koncepty Cloud-Only nasazení SAP instancí] [ planning-guide-7] tohoto dokumentu, která vysvětluje, Některé hello základy vytvoří Azure a jak tyto musí být použit s SAP aplikací v Azure.
 
 ### <a name="scenario-of-an-sap-landscape"></a>Scénář šířku SAP
-Mezi různými místy scénář lze zhruba popsat jako grafického níže:
+Hello napříč místním a externím může být zhruba podle jako hello grafiky níže:
 
 ![Připojení Site-to-Site mezi místními a prostředky Azure][planning-guide-figure-2100]
 
-Scénáře uvedené výše popisuje scénář, kde místní AD nebo OpenLDAP a DNS jsou rozšířené do Azure. Na straně místně je vyhrazený určitý rozsah IP adres podle předplatného Azure. Rozsah IP adres se přiřadí k virtuální síti Azure na straně Azure.
+scénář Hello uvedené výše popisuje scénář, kde hello místní AD nebo OpenLDAP a DNS jsou rozšířené tooAzure. Na straně místní hello je vyhrazený určitý rozsah IP adres podle předplatného Azure. Hello rozsah IP adres se přiřadí tooan Azure Virtual Network na hello Azure straně.
 
 #### <a name="security-considerations"></a>Aspekty zabezpečení
-Minimální požadavek je použití zabezpečené komunikace protokoly, jako je například protokol SSL/TLS pro přístup z prohlížeče nebo připojení VPN pro systém přístup ke službám Azure. Předpokladem je, že společností velmi jinak zpracovat připojení VPN mezi jejich podnikovou sítí a Azure. Některé společnosti mohou otevřít blankly všechny porty. Některé jiné společnosti, chcete mít velmi přesné v porty, které potřebují k otevírání, atd.
+Hello minimální požadavek je použití hello zabezpečený komunikační protokoly, jako je protokol SSL/TLS pro přístup z prohlížeče nebo připojení VPN pro systému získat přístup k toohello Azure services. Hello předpokladem je, společností velmi jinak zpracování hello připojení VPN mezi jejich podnikovou sítí a Azure. Některé společnosti mohou blankly otevřete všechny porty hello. Některé jiné společnosti může být vhodné toobe velmi přesné v porty, které potřebují tooopen atd.
 
-V následující tabulce typické SAP jsou uvedeny komunikační porty. V podstatě je pro otevření portu brány SAP dostatečná.
+V následující typické SAP hello tabulce jsou uvedeny komunikační porty. V podstatě je dostatečná tooopen hello portu brány SAP.
 
 | Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (min-max) | Komentář |
 | --- | --- | --- | --- | --- |
 | Dispečer |sapdp`<nn>` najdete v části * |3201 |3200 – 3299 |Dispečer SAP, používá SAP grafického uživatelského rozhraní pro systém Windows a Java |
 | Server zpráv |sapms`<sid`> najdete v části ** |3600 |volné sapms`<anySID`> |identifikátor SID = ID systému SAP |
 | brána |sapgw`<nn`> najdete v části * |3301 |Volné |Bráně SAP, používá pro komunikaci CPIC a RFC |
-| Směrovač SAP |sapdp99 |3299 |Volné |Pouze názvy služby CI (centrální instance) můžete přiřadit v /etc/services na libovolnou hodnotu po instalaci. |
+| Směrovač SAP |sapdp99 |3299 |Volné |Pouze názvy služby CI (centrální instance) můžete přiřadit v libovolné hodnotě /etc/services tooan po instalaci. |
 
 *) nn = čísla Instance SAP
 
 *) sid = ID systému SAP
 
 Podrobnější informace o porty vyžadované pro různé SAP produkty nebo služby, na základě produktů SAP naleznete zde <http://scn.sap.com/docs/DOC-17124>.
-Tento dokument je třeba v zařízení VPN, která je potřebná pro konkrétní produkty SAP a scénáře otevřít vyhrazené porty.
+Tento dokument je třeba možné tooopen vyhrazené porty potřebné pro scénáře a konkrétní produkty SAP zařízení VPN hello.
 
-Další bezpečnostní opatření při nasazení virtuálních počítačů v takovém scénáři může být k vytvoření [skupinu zabezpečení sítě] [ virtual-networks-nsg] k definování pravidel přístupu.
+Další bezpečnostní opatření při nasazení virtuálních počítačů v takovém scénáři může být toocreate [skupinu zabezpečení sítě] [ virtual-networks-nsg] toodefine pravidla přístupu.
 
 ### <a name="dealing-with-different-virtual-machine-series"></a>Práci s jinou sérii virtuálního počítače
-V průběhu posledních 12 měsíců Microsoft přidat mnoho další typy virtuálních počítačů, které se liší buď v počet Vcpu, paměti nebo důležitější na hardwaru, je spuštěn na. Ne všechny tyto virtuální počítače jsou podporovány v systému SAP (viz podporované typy virtuálních počítačů v Poznámka SAP [1928533]). Některé z těchto virtuálních počítačů na jiný hostitelský hardware generace spustit. V členitost z Azure – jednotka škálování získávání nasazených generace hardwaru tyto hostitele. Mohou nastat znamená případy, kdy nelze spustit, jiné velikosti virtuálních počítačů, které jste zvolili na stejné jednotky škálování. Skupiny dostupnosti je omezené možnosti span jednotek škálování závislosti na jiný hardware.  Například pokud chcete spustit databázového systému na virtuální počítače A5 A11 a aplikační vrstvu SAP na virtuálních počítačích G-Series, můžete by se vynutilo nasazení jednoho systému SAP nebo jiné systémy SAP v rámci jiné skupiny dostupnosti.
+V průběhu posledních 12 měsíců hello Microsoft přidat mnoho další typy virtuálních počítačů, které se liší buď v počet Vcpu, paměti nebo důležitější na hardwaru, je spuštěn na. Ne všechny tyto virtuální počítače jsou podporovány v systému SAP (viz podporované typy virtuálních počítačů v Poznámka SAP [1928533]). Některé z těchto virtuálních počítačů na jiný hostitelský hardware generace spustit. V hello členitosti z Azure – jednotka škálování získávání nasazených generace hardwaru tyto hostitele. Mohou nastat znamená případy, kdy hello různých zvolíte nelze spustit na velikosti virtuálních počítačů hello stejné jednotky škálování. Skupiny dostupnosti je omezená toospan hello možnosti, které jednotek škálování závislosti na jiný hardware.  Pro příklad, pokud chcete toorun hello databázového systému na virtuálních počítačích A5 A11 a hello SAP aplikační vrstvu na virtuálních počítačích G-Series, by byl vynutit toodeploy jednoho systému SAP nebo jiné systémy SAP v rámci jiné skupiny dostupnosti.
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Tisk na místní síťové tiskárny z instance SAP v Azure
 ##### <a name="printing-over-tcpip-in-cross-premises-scenario"></a>Tisk přes TCP/IP v napříč místním a externím
-Nastavení místní síťové tiskárny TCP/IP na základě virtuální počítač Azure se celkové stejné jako v podnikové síti, za předpokladu, že máte tunelové propojení VPN typu Site-To-Site nebo připojením ExpressRoute vytvořeno.
+Nastavení místní síťové tiskárny TCP/IP na základě virtuální počítač Azure se celkové hello stejné jako vaší podnikové síti, a to za předpokladu, že budete mít tunelové propojení VPN typu Site-To-Site nebo připojením ExpressRoute vytvořeno.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Použijte následující postup:
+> toodo toto:
 >
-> * Některé síťové tiskárny jsou součástí konfigurace průvodce, který usnadňuje nastavení tiskárny virtuální počítač Azure. Pokud žádný takový software Průvodce byl distribuován s tiskárnou "manuální" způsob, jak nastavit tiskárny je vytvořit nový port tiskárny TCP/IP.
+> * Některé síťové tiskárny se dodávají s Průvodce konfigurací, takže je easy tooset vaši tiskárnu ve virtuálním počítači Azure. Pokud žádný takový software Průvodce byl distribuován se tiskárny hello "Ruční" způsobem tooset tiskárnu hello je toocreate nový port tiskárny TCP/IP.
 > * Otevřete ovládací panely -> zařízení a tiskárny -> Přidat tiskárnu
 > * Zvolte možnost Přidat tiskárnu pomocí adresy protokolu TCP/IP nebo název hostitele
-> * Zadejte IP adresu tiskárny
+> * Zadejte IP adresu hello tiskárny hello
 > * Port tiskárny standardní 9100
-> * V případě potřeby nainstalujte příslušný ovladač tiskárny ručně.
+> * V případě potřeby nainstalujte ručně hello příslušný ovladač tiskárny.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> * pro Windows jenom postupujte jako standardní postup instalace síťové tiskárny
-> * postupujte podle veřejné Linux příručky pro [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) nebo [Red Hat a Oracle Linux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/sec-Printer_Configuration.html) o tom, jak přidat tiskárnu.
+> * jako k Windows právě podle hello standardní postup tooinstall síťové tiskárny
+> * postupujte podle hello veřejné Linux příručky pro [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) nebo [Red Hat a Oracle Linux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/sec-Printer_Configuration.html) o tooadd tiskárnu.
 >
 >
 
@@ -1672,14 +1672,14 @@ Nastavení místní síťové tiskárny TCP/IP na základě virtuální počíta
 ![Tisk v síti][planning-guide-figure-2200]
 
 ##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>Na hostiteli tiskárnu přes protokol SMB (sdílené tiskárny) mezi různými místy scénář
-Tiskárny na hostiteli nejsou kompatibilní sítě záměrné. Ale tiskárnu založené na hostiteli může být sdílen počítače v síti, dokud je tiskárna připojených k počítači používá technologii na. Připojení k vaší podnikové sítě Site-To-Site nebo ExpressRoute a sdílet místní tiskárny. Protokol SMB pro rozhraní NetBIOS místo DNS používá jako název služby. Název hostitele rozhraní NetBIOS se může lišit od název hostitele DNS. Standardní případem je, že název hostitele rozhraní NetBIOS a název hostitele DNS jsou identické. Doména DNS nemá smysl v oboru názvů pro rozhraní NetBIOS. Podle toho název hostitele DNS a doména DNS plně kvalifikovaný název hostitele DNS se nesmí používat v oboru názvů pro rozhraní NetBIOS.
+Tiskárny na hostiteli nejsou kompatibilní sítě záměrné. Ale tiskárnu založené na hostiteli může být sdílen počítače v síti, dokud tiskárny hello je připojený tooa používá technologii na počítač. Připojení k vaší podnikové sítě Site-To-Site nebo ExpressRoute a sdílet místní tiskárny. Hello protokolu SMB pro rozhraní NetBIOS místo DNS používá jako název služby. název hostitele rozhraní NetBIOS Hello se může lišit od název hostitele DNS hello. Hello standardní případem je, že jsou identické hello název hostitele rozhraní NetBIOS a název hostitele DNS hello. Doména DNS Hello nemá smysl v oboru názvů pro rozhraní NetBIOS hello. Podle toho hello plně kvalifikovaný název hostitele DNS skládající se z názvu hostitele DNS hello a doména DNS nesmí se používat v oboru názvů pro rozhraní NetBIOS hello.
 
-Sdílené tiskárny je identifikována jedinečný název v síti:
+sdílené tiskárny Hello je identifikována jedinečný název v síti hello:
 
-* Název hostitele protokolu SMB (vždycky potřeboval).
-* Název sdílené složky (vždycky potřeboval).
-* Název domény, pokud sdílená složka tiskárny není ve stejné doméně jako systém SAP.
-* Kromě toho uživatelské jméno a heslo může být nutné přístup do sdílené složky tiskárny.
+* Název hostitele SMB hello (vždycky potřeboval).
+* Název sdílené složky hello (vždycky potřeboval).
+* Název domény hello, pokud není sdílená složka tiskárny v hello stejné doméně jako SAP systému.
+* Uživatelské jméno a heslo navíc může být sdílené tiskárny požadované tooaccess hello.
 
 Postup:
 
@@ -1687,12 +1687,12 @@ Postup:
 > ![Windows][Logo_Windows] Windows
 >
 > Sdílet místní tiskárny.
-> Ve virtuálním počítači Azure otevřete Průzkumníka Windows a zadejte název sdílené složky tiskárny.
-> Průvodce instalací tiskárny vás provede procesem instalace.
+> V hello virtuálního počítače Azure otevřete Průzkumníka Windows hello a zadejte název sdílené složky hello hello tiskárny.
+> Průvodce instalací tiskárny vás provede hello procesu instalace.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Zde jsou některé příklady dokumentaci o konfiguraci síťové tiskárny v systému Linux nebo včetně kapitola ohledně tisku v systému Linux. Bude možné používat stejným způsobem jako virtuální počítač Azure Linux tak dlouho, dokud virtuální počítač je součástí sítě VPN:
+> Zde jsou některé příklady dokumentaci o konfiguraci síťové tiskárny v systému Linux nebo včetně kapitola ohledně tisku v systému Linux. Hello bude pracovat stejně jako virtuální počítač Azure Linux, pokud hello virtuální počítač je součástí sítě VPN:
 >
 > * SLES <_Share_or_Windows_Share https://en.opensuse.org/SDB:Printing_via_SMB_ (Samba)>
 > * RHEL nebo Oracle Linux <https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sec-Printer_Configuration.html#s1-printing-smb-printer>
@@ -1701,7 +1701,7 @@ Postup:
 
 - - -
 ##### <a name="usb-printer-printer-forwarding"></a>Tiskárny USB (přesměrování tiskárny)
-V Azure schopnost služby Vzdálená plocha uživatelům poskytnout přístup ke svým zařízením místní tiskárnu ve vzdálené relaci není k dispozici.
+V Azure hello schopnost hello služby Vzdálená plocha tooprovide uživatelům hello přístup zařízení místní tiskárnu tootheir ve vzdálené relaci není k dispozici.
 
 - - -
 > ![Windows][Logo_Windows] Windows
@@ -1712,115 +1712,115 @@ V Azure schopnost služby Vzdálená plocha uživatelům poskytnout přístup ke
 
 - - -
 #### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>Integrace SAP Azure systémů do oprava a systému pro přenos (TMS) v mezi různými místy
-SAP změn a přenosu systému (TMS) musí být nakonfigurován pro export a import žádost o přenos mezi systémy v povahu. Předpokládáme, že instance vývoj systému SAP (vývoj) nacházejí v Azure, zatímco kvality zajištění kvality a produktivitu systémy (PRD) jsou místní. Kromě toho předpokládáme, že existuje adresář centrální přenosu.
+Hello SAP změn a přenosu systému (TMS) tooexport toobe nakonfigurované potřeb a importovat žádost o přenos mezi systémy v hello na šířku. Předpokládáme, že instance hello vývoj systému SAP (vývoj) nacházejí v Azure, zatímco hello kvality zajištění kvality a produktivitu systémy (PRD) jsou místní. Kromě toho předpokládáme, že existuje adresář centrální přenosu.
 
-##### <a name="configuring-the-transport-domain"></a>Konfigurace domény přenosu
-Nakonfigurujte doménu přenosu systému, který jste určili jako řadič domény přenosu, jak je popsáno v [konfigurací řadiče domény přenos](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Systémový uživatel, bude vytvořen TMSADM a požadovaný cíl RFC se budou generovat. Tato připojení RFC pomocí transakce SM59 může zkontrolovat. Rozlišení názvů hostitelů musí být povolena napříč doménu přenosu.
+##### <a name="configuring-hello-transport-domain"></a>Konfigurace hello přenosu domény
+Nakonfigurujte doménu přenosu systému hello jste určili jako hello přenosu řadič domény, jak je popsáno v [hello konfigurace řadiče domény přenos](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Systémový uživatel, bude vytvořen TMSADM a hello požadované cílové RFC se budou generovat. Tato připojení RFC pomocí hello transakce SM59 může zkontrolovat. Rozlišení názvů hostitelů musí být povolena napříč doménu přenosu.
 
 Postup:
 
-* V tomto scénáři jsme se rozhodli, že v místním systému QAS bude CTS řadič domény. Volání transakce moduly STM. Zobrazí se dialogové okno TMS. Zobrazí se dialogové okno Konfigurace domény přenosu. (Toto dialogové okno se zobrazí pouze pokud jste ještě nenakonfigurovali přenosu domény.)
-* Ujistěte se, že se oprávnění automaticky vytvořený uživatel TMSADM (SM59 -> ABAP připojení -> TMSADM@E61.DOMAIN_E61 -> Podrobnosti o -> Utilities(M) -> autorizace Test). Úvodní obrazovka transakce moduly STM by měl zobrazit, že tento systém SAP teď funguje jako řadič domény přenosu jak je vidět tady:
+* V tomto scénáři jsme se rozhodli hello místního systému QAS bude řadič domény CTS hello. Volání transakce moduly STM. Zobrazí se dialogové okno TMS Hello. Zobrazí se dialogové okno Konfigurace domény přenosu. (Toto dialogové okno se zobrazí pouze pokud jste ještě nenakonfigurovali přenosu domény.)
+* Ujistěte se, tento uživatel hello automaticky vytvoří TMSADM oprávněný (SM59 -> ABAP připojení -> TMSADM@E61.DOMAIN_E61 -> Podrobnosti o -> Utilities(M) -> autorizace Test). úvodní obrazovka Hello transakce moduly STM by měl zobrazit, že tento systém SAP funguje teď jako hello řadiče domény hello přenosu, jak je vidět tady:
 
-![Úvodní obrazovka transakce moduly STM na řadiči domény][planning-guide-figure-2300]
+![Úvodní obrazovka transakce moduly STM na řadiči domény hello][planning-guide-figure-2300]
 
-#### <a name="including-sap-systems-in-the-transport-domain"></a>Včetně SAP systémy v doméně přenosu
-Pořadí včetně systému SAP v doméně přenosu vypadá takto:
+#### <a name="including-sap-systems-in-hello-transport-domain"></a>Včetně SAP systémy v hello přenosu domény
+posloupnost Hello včetně systému SAP v doméně přenosu vypadá takto:
 
-* V systému Vývojářů v Azure přejděte do systému pro přenos (klient 000) a volání transakce moduly STM. Vyberte další konfiguraci z dialogového okna a pokračujte zahrnují systému v doméně. Zadejte řadič domény jako cílový hostitel ([včetně SAP systémy v doméně přenosu](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). Systém čeká nyní mají být zahrnuty v doméně přenosu.
-* Z bezpečnostních důvodů budete muset poté přejděte zpět na řadiči domény, aby žádost potvrdit. Zvolte Přehled systému a schválit čekání systému. Potvrďte, řádku a konfigurace budou distribuována.
+* Na hello DEV systému v Azure přejděte systému pro přenos toohello (klient 000) a volání transakce moduly STM. Vyberte další konfiguraci z dialogového okna hello a pokračujte zahrnují systému v doméně. Zadejte hello řadiče domény jako cílový hostitel ([včetně SAP systémy v hello přenosu domény](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). Hello systému je nyní součástí domény přenosu hello toobe čekání.
+* Z bezpečnostních důvodů budete mít tooconfirm řadič domény back toohello toogo vaši žádost. Zvolte Přehled systému a schválit hello čekání systému. Potvrďte, že konfigurace řádku a hello hello budou distribuována.
 
-Tento systém SAP nyní obsahuje nezbytné informace o všechny ostatní systémy SAP v doméně přenosu. Ve stejnou dobu data adresu nového systému SAP se odesílají na všechny ostatní systémy SAP a je v systému SAP zadali v profilu přenosu programu řízení přenosu. Zkontrolujte, zda dokumenty RFC a přístup k adresáři přenosu domény fungovat.
+Tento systém SAP nyní obsahuje hello nezbytné informace o všech hello jiných systémů SAP v doméně přenosu hello. V hello stejný čas, hello adresu, kterou odešle data hello nového systému SAP tooall hello jiných systémů SAP a hello systému SAP je zadána v profilu přenosu hello hello přenos řízení programu. Zkontrolujte, zda dokumenty RFC a přístup k adresáři přenosu toohello hello domény fungovat.
 
-Pokračovat v konfiguraci vašeho systému přenosu obvyklým, jak je popsáno v dokumentaci k [změn a systému pro přenos](http://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
+Pokračovat v konfiguraci hello přenosu systému obvykle popsaného v dokumentaci k hello [změn a systému pro přenos](http://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
 
 Postup:
 
 * Ujistěte se, zda že je správně nakonfigurována vaše moduly STM místně.
-* Ujistěte se, že název hostitele řadiče domény, přenos se dají vyřešit virtuálního počítače na karet visa Azure a naopak.
+* Ujistěte se, že název hostitele hello hello přenosu řadič domény se dají vyřešit virtuálního počítače v Azure a naopak karet visa.
 * Volání transakce moduly STM -> Další konfigurace -> zahrnují systému v doméně.
-* Zkontrolujte připojení v na místním TMS systému.
+* Zkontrolujte připojení hello v hello na místním TMS systému.
 * Nakonfigurujte směrování přenosu, skupiny a vrstvy jako obvykle.
 
-V připojených site-to-site mezi různými místy scénáře, latenci mezi místními a Azure stále může být výrazně. Pokud jsme postupujte podle pořadí převod objekty prostřednictvím vývoj a testování systémů do produkčního prostředí nebo myslíte o použití přenosy nebo podpůrných balíčků na jiné systémy, zjistíte, že, závisí na umístění adresáře centrální přenosu, některé z systémů se setkají vysokou latencí čtení nebo zápis dat v adresáři centrální přenosu. Situaci je podobná SAP šířku konfigurace, kde se šíří různými systémy prostřednictvím různých datových střediscích s dlouhou vzdálenost mezi datovými centry.
+V připojených site-to-site mezi různými místy scénáře, hello latenci mezi místními a Azure stále může být výrazně. Pokud jsme postupujte podle hello posloupnost převod objekty prostřednictvím vývoj a testování tooproduction systémy nebo myslíte o použití přenosy nebo podporu balíčky toohello různými systémy, si myslíte, závisí na umístění hello hello centrální přenosu adresář, některé systémy hello se setkají vysokou latencí čtení nebo zápis dat v adresáři centrální přenosu hello. Hello situace je podobné tooSAP na šířku konfigurace, kde se šíří různými systémy hello prostřednictvím různých datových střediscích s dlouhou vzdálenost mezi datovými centry hello.
 
-Chcete-li vyřešit tyto latence a mají systémy fungovat Rychlé čtení nebo zápisu do nebo z adresáře přenosu, můžete nastavit dvěma doménami přenosu moduly STM (jeden pro místní a jeden systémech v Azure a propojit domén přenosu. Zkontrolujte prosím tuto dokumentaci, která vysvětluje principy za tento koncept v SAP TMS: <http://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
+V pořadí toowork kolem takové latence a mají hello systémy fungovat Rychlé čtení nebo zápis tooor z adresáře hello přenosu, můžete nastavit dvěma doménami přenosu moduly STM (jeden pro místní. a jednu s hello systémy v Azure a odkaz doménách přenosu hello Zkontrolujte prosím tuto dokumentaci, která vysvětluje principy hello za tento koncept v hello SAP TMS: <http://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/ 38dd924eb711d182bf0000e829fbfe/Frameset.htm>.
 
 Postup:
 
 * Nastavení domény přenosu v každém umístění (místní a Azure) pomocí transakce moduly STM <http://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* Odkaz domén s odkazem domény a potvrďte propojení mezi těmito dvěma doménami.
+* Domény hello propojení s doménou propojit a potvrďte hello propojení mezi dvěma doménami hello.
   <http://help.SAP.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/Content.htm>
-* Distribuují konfiguraci propojené systému.
+* Distribuujte hello konfigurace toohello propojené systému.
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>RFC provoz mezi instancemi SAP, které jsou umístěné v Azure a místními (mezi různými místy)
-RFC provoz mezi systémy, které jsou místně a v Azure potřebuje pracovat. Nastavit připojení transakci volání SM59 ve zdrojovém systému potřebujete-li definovat připojení k RFC směrem do cílového systému. Konfigurace je podobná standardní nastavení připojení k RFC.
+RFC provoz mezi systémy, které jsou místně a v Azure potřebuje toowork. tooset připojení volání transakce SM59 ve zdrojovém systému kde je nutné toodefine připojení k RFC směrem hello cílového systému. Konfigurace Hello je podobné toohello standardní nastavení připojení k RFC.
 
-Předpokládáme, že ve scénáři, mezi různými místy, virtuální počítače, které spuštění SAP systémy, které potřebují ke komunikaci mezi sebou jsou ve stejné doméně. Nastavení připojení k RFC mezi systémy SAP proto neliší od kroky instalace a vstupy ve scénářích místně.
+Předpokládáme, v případě mezi různými místy hello hello hello virtuálních počítačů, které spuštění SAP systémy, které je třeba toocommunicate mezi sebou jsou ve stejné doméně. Proto hello nastavení připojení k RFC mezi systémy SAP neliší od hello kroky instalace a vstupy ve scénářích místně.
 
 #### <a name="accessing-local-fileshares-from-sap-instances-located-in-azure-or-vice-versa"></a>Přístupem 'local' fileshares z instance SAP umístěná v Azure nebo naopak
-Instance SAP umístěný v Azure je nutné přístup ke sdíleným složkám, které jsou v rámci podnikové místní. Kromě toho místní instance SAP muset přístup ke sdíleným složkám, které jsou umístěny v Azure. Chcete-li povolit sdílené složky, musíte nakonfigurovat oprávnění a sdílení možnosti v místním systému. Ujistěte se, že otevřete porty pro připojení VPN nebo ExpressRoute mezi Azure a vaším datacentrem.
+Instance SAP umístěný v Azure potřebovat tooaccess sdílené složky, které jsou v rámci podnikové místní hello. Kromě toho místní instance SAP třeba tooaccess sdílené složky, které jsou umístěny v Azure. tooenable hello sdílených složek je třeba nakonfigurovat hello oprávnění a sdílení možnosti na místní systém hello. Ujistěte se, že porty hello tooopen na hello VPN nebo ExpressRoute připojení mezi Azure a vaším datacentrem.
 
 ## <a name="supportability"></a>Možnosti podpory
 ### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure monitorování řešení pro SAP
-Chcete-li povolit monitorování zvláště důležité systémy SAP v Azure SAP monitorování nástroje SAPOSCOL nebo Agent hostitele SAP získat data z hostitele virtuálního počítače služby Azure prostřednictvím rozšíření monitorování Azure pro SAP. Vzhledem k tomu, že požadavky pomocí SAP měla velmi specifické pro aplikace SAP, Microsoft rozhodla obecně implementovat požadovanou funkčnost do Azure, ale ponechte zákazníci nasazení komponenty potřebné monitorování a konfigurací pro své virtuální počítače spuštěné v Azure. Nasazení a životního cyklu správy monitorování součástí však bude možné většinou automatizovat, Azure.
+V pořadí tooenable hello monitorování zvláště důležité systémy SAP na Azure hello SAP nástroje monitorování SAPOSCOL nebo Agent hostitele SAP získat data z hostitele virtuálního počítače služby Azure hello prostřednictvím rozšíření monitorování Azure pro SAP. Vzhledem k tomu, že požadavky hello podle SAP měla velmi konkrétní tooSAP aplikace, Microsoft rozhodli není toogenerically implementace hello požadované funkce do Azure, ale ponechte pro zákazníky toodeploy hello potřeby monitorování součástí a konfigurace tootheir Virtuální počítače běžící v Azure. Nasazení a životního cyklu správu hello monitorování součásti však bude možné většinou automatizovat, Azure.
 
 #### <a name="solution-design"></a>Návrh řešení
-Řešení vyvinuté tak, aby povolit SAP monitorování je založen na architektuře agenta virtuálního počítače Azure a rámce pro rozšíření. Rada agenta virtuálního počítače Azure a rozšíření rámce je povolit instalaci softwaru aplikace k dispozici v galerii rozšíření virtuálního počítače Azure v rámci virtuálního počítače. Princip myšlenkou tento koncept je umožnit (v takových případech rozšíření monitorování Azure pro SAP), nasazení speciální funkce do virtuálního počítače a konfigurace takový software v době nasazení.
+řešení Hello vyvinuté tooenable SAP monitorování je založen na architektuře hello agenta virtuálního počítače Azure a rámce pro rozšíření. Rada Hello hello agenta virtuálního počítače Azure a rozšíření prostředí je tooallow instalaci softwaru aplikace k dispozici v galerii hello rozšíření virtuálního počítače Azure v rámci virtuálního počítače. Dobrý den zásadou, že je vhodné za tento koncept je tooallow (v případech, jako je hello rozšíření monitorování Azure pro SAP), hello nasazení speciální funkce do virtuálních počítačů a hello konfigurací takový software v době nasazení.
 
-'Azure agenta virtuálního počítače, umožňující zpracování konkrétní rozšíření virtuálního počítače Azure v rámci virtuálního počítače je vsunout do virtuálních počítačů Windows ve výchozím nastavení při vytváření virtuálního počítače na portálu Azure. V případě SUSE, Red Hat nebo Oracle Linux agent virtuálního počítače je již součástí bitové kopie Azure Marketplace. V případě, že jeden by nahrát virtuální počítač s Linuxem z místního do Azure agenta virtuálního počítače musí být nainstalován ručně.
+Hello 'Agent virtuálního počítače Azure, umožňující zpracování konkrétní rozšíření virtuálního počítače Azure v rámci hello virtuálního počítače je vloženy do virtuálních počítačů Windows ve výchozím nastavení při vytváření virtuálních počítačů v hello portálu Azure. V případě SUSE, Red Hat nebo Oracle Linux hello virtuálního počítače agent je již součástí bitové kopie Azure Marketplace. V případě, že jeden by nahrát virtuální počítač s Linuxem z agenta virtuálního počítače hello tooAzure místní má toobe nainstalován ručně.
 
-Základní stavební bloky řešení monitorování v Azure pro SAP vypadá jako tento:
+Hello základní stavební bloky hello monitorování řešení v Azure pro SAP vypadá takto:
 
 ![Součástí rozšíření Microsoft Azure][planning-guide-figure-2400]
 
-Jak je vidět ve výše uvedeném diagramu bloku, je jednou ze součástí sady řešení monitorování pro SAP hostitelem Image virtuálního počítače Azure a Azure Galerie rozšíření, která je globálně replikované úložiště, který je spravován nástrojem Azure Operations. Je zodpovědností týmem společné SAP/MS pracující na Azure implementace SAP pro práci s Azure operace publikování nové verze rozšíření monitorování Azure pro SAP.
+Jak je vidět v diagramu bloku hello výše, je jednou ze součástí sady řešení monitorování pro SAP hello hostitelem hello Image virtuálního počítače Azure a Azure Galerie rozšíření, která je globálně replikované úložiště, který je spravován nástrojem Azure Operations. Je zodpovědností hello hello společné práci na hello Azure implementace SAP toowork s Azure Operations toopublish nové verze hello rozšíření monitorování Azure pro SAP týmu SAP/MS.
 
-Když nasadíte nový virtuální počítač s Windows, Agent virtuálního počítače Azure se automaticky přidá do virtuálního počítače. Funkce tohoto agenta je ke koordinaci načítání a konfiguraci rozšíření Azure pro sledování systému SAP NetWeaver. Pro virtuální počítače s Linuxem agenta virtuálního počítače Azure je již součástí bitové kopie operačního systému Azure Marketplace.
+Při nasazování nového virtuálního počítače Windows hello Agent virtuálního počítače Azure se automaticky přidá do hello virtuálních počítačů. Funkce Hello tohoto agenta je toocoordinate hello načítání a konfiguraci hello rozšíření Azure pro sledování systému SAP NetWeaver. Pro virtuální počítače s Linuxem hello agenta virtuálního počítače Azure už je součástí hello Azure Marketplace bitové kopie operačního systému.
 
-Je však stále je třeba provést zákazník krok. Jedná se o povolování a konfiguraci kolekce výkonu. Proces související s konfigurací je automatizováno pomocí skriptu prostředí PowerShell nebo rozhraní příkazového řádku příkaz. Skript prostředí PowerShell můžete stáhnout na webu Microsoft Script Center Azure, jak je popsáno v [Průvodce nasazením][deployment-guide].
+Je však krok, který je pořád toobe provedený hello zákazníka. Toto je hello povolení a konfigurace hello výkonu kolekce. toohello konfigurace je automatizováno pomocí skriptu prostředí PowerShell nebo rozhraní příkazového řádku příkaz související s procesem Hello. Hello skript prostředí PowerShell lze stáhnout v hello Microsoft Azure Script Center, jak je popsáno v hello [Průvodce nasazením][deployment-guide].
 
-Přehled architektury řešení Azure monitorování pro SAP vypadá takto:
+Hello přehled architektury hello Azure monitorování řešení pro SAP vypadá takto:
 
 ![Řešení monitorování pro SAP NetWeaver Azure][planning-guide-figure-2500]
 
-**Přesný postup a podrobný postup pomocí těchto rutin prostředí PowerShell nebo rozhraní příkazového řádku příkaz během nasazení, postupujte podle pokynů v [Průvodce nasazením][deployment-guide].**
+**Hello přesný postupy tooand podrobný postup pomocí těchto rutin prostředí PowerShell nebo rozhraní příkazového řádku příkaz během nasazení, postupujte podle pokynů hello v hello [Průvodce nasazením][deployment-guide].**
 
 ### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>Integrace Azure nachází instance SAP do SAProuter
-Instance SAP běžící v Azure musí být také dostupný z SAProuter.
+Instance SAP běžící v Azure potřebovat toobe přístupné z SAProuter také.
 
 ![Připojení k síti SAP-směrovač][planning-guide-figure-2600]
 
-SAProuter umožňuje komunikaci TCP/IP mezi zúčastněné systémy, pokud neexistuje žádné přímé připojení IP. To poskytuje výhodu, že žádné připojení klient server mezi partnery komunikace je nutné na úrovni sítě. SAProuter naslouchá na portu 3299 ve výchozím nastavení.
-Chcete-li připojení instance SAP přes SAProuter dejte název SAProuter řetězec a hostitele s pokusy o připojení.
+SAProuter umožňuje hello TCP/IP komunikaci mezi zúčastněné systémy, pokud neexistuje žádné přímé připojení IP. To poskytuje hello výhodu, že žádné připojení klient server mezi partnery komunikace hello je nutné na úrovni sítě. Hello SAProuter naslouchá na portu 3299 ve výchozím nastavení.
+tooconnect SAP instance prostřednictvím SAProuter budete potřebovat toogive hello SAProuter řetězec a název hostitele s žádné tooconnect pokus.
 
 ## <a name="sap-netweaver-as-java"></a>SAP NetWeaver AS Java
-Dosavadní fokus dokument byl SAP NetWeaver obecně nebo SAP NetWeaver ABAP zásobníku. V této části malé jsou uvedeny konkrétní důležité informace týkající se zásobníku SAP Java. Jedním z nejdůležitějších aplikací Java SAP NetWeaver výhradně na základě je SAP podnikovém portálu. Další SAP NetWeaver na základě aplikací, jako SAP platformy a správce řešení SAP použít SAP NetWeaver ABAP i zásobníky Java. Proto určitě je potřeba vzít v úvahu zvláštní aspekty související se zásobníkem SAP NetWeaver Java také.
+Dosavadní hello fokus hello dokument byl SAP NetWeaver obecně nebo hello SAP NetWeaver ABAP zásobníku. V této části malé jsou uvedeny konkrétní aspekty hello SAP Java zásobníku. Jedním z nejdůležitějších SAP NetWeaver Java založený výhradně na aplikace hello je hello SAP podnikový portál. Další SAP NetWeaver na základě aplikací, jako SAP platformy a správce řešení SAP použít hello SAP NetWeaver ABAP i zásobníky Java. Proto určitě není nutné tooconsider specifické aspekty související toohello SAP NetWeaver Java zásobník také.
 
 ### <a name="sap-enterprise-portal"></a>SAP podnikového portálu
-Instalační program portálu SAP v virtuální počítač Azure se neliší od na místní instalace, pokud nasazujete ve scénářích mezi různými místy. Vzhledem k tomu, že DNS se provádí na místě, nastavení portu jednotlivých instancí lze provést jako nakonfigurované na místě. Doporučení a omezení popsaná v tomto dokumentu, pokud platí pro aplikaci jako SAP podnikový portál nebo zásobníku SAP NetWeaver Java obecně.
+Instalační program Hello SAP portálu v virtuální počítač Azure se neliší od na místní instalace, pokud nasazujete ve scénářích mezi různými místy. Od hello DNS se provádí na místě lze provést nastavení portu hello jednotlivých instancí hello jako nakonfigurované na místě. Hello doporučení a omezení popsaná v tomto dokumentu, pokud platí pro aplikaci jako SAP podnikový portál nebo hello SAP NetWeaver Java zásobníku obecně.
 
 ![Portál zveřejněné SAP][planning-guide-figure-2700]
 
-Scénář speciální nasazení podle někteří zákazníci je přímé expozice podnikový portál SAP k Internetu, zatímco hostitel virtuálního počítače je připojený k podnikové síti prostřednictvím tunelu site-to-site VPN nebo ExpressRoute. Pro tento případ budete muset Ujistěte se, že určité porty jsou otevřené a není blokován bránou firewall nebo skupiny zabezpečení. Stejné mechanismy by musela být použita, pokud se chcete připojit k instanci SAP Java z místního ve scénáři jenom pro Cloud.
+Scénář speciální nasazení podle někteří zákazníci je hello přímé expozice hello SAP podnikový portál toohello Internet, zatímco hello hostitele virtuálního počítače je připojený toohello podnikové síti pomocí tunelového připojení sítě VPN nebo ExpressRoute site-to-site. Pro tento případ máte toomake se, že určité porty jsou otevřené a není blokován bránou firewall nebo skupiny zabezpečení. Hello stejné mechanismy potřebovat toobe použijí, když chcete tooconnect tooan SAP Java instance z místní ve scénáři jenom pro Cloud.
 
-Počáteční portál identifikátor URI je http (s):`<Portalserver`>: 5XX00/irj, kde je port tvořen 50000 plus (Systemnumber x 100). Výchozí portálu URI SAP systém 00 `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. Další informace, podívejte se na <http://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
+Počáteční portál Hello identifikátor URI je http (s):`<Portalserver`>: 5XX00/irj, kde je hello port tvořen 50000 plus (Systemnumber x 100). Hello výchozí portálu URI SAP systém 00 je `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. Další informace, podívejte se na <http://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
 
 ![Konfigurace koncového bodu][planning-guide-figure-2800]
 
-Pokud chcete upravit adresu URL nebo porty SAP podnikového portálu, zkontrolujte Tato dokumentace:
+Pokud chcete toocustomize hello URL nebo porty SAP podnikového portálu, zkontrolujte Tato dokumentace:
 
 * [Změnit adresu URL portálu](http://wiki.scn.sap.com/wiki/display/EP/Change+Portal+URL)
 * [Změňte výchozí čísla portů, čísla portů portálu](http://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
 
 ## <a name="high-availability-ha-and-disaster-recovery-dr-for-sap-netweaver-running-on-azure-virtual-machines"></a>Vysoké dostupnosti (HA) a obnovení po havárii (DR) pro SAP NetWeaver spuštěna ve virtuálních počítačích Azure
 ### <a name="definition-of-terminologies"></a>Definice terminologie jsou
-Termín **vysokou dostupnost (HA)** obvykle souvisí s sada technologií, které minimalizují přerušení IT díky kontinuity podnikových procesů IT služeb prostřednictvím redundantní, odolný proti chybám nebo převzetí služeb při selhání chráněné komponenty uvnitř **stejné** datového centra. V našem případě v rámci jedné oblasti Azure.
+termín Hello **vysokou dostupnost (HA)** je obecně související tooa sady technologií, minimalizuje narušení IT díky kontinuity podnikových procesů IT služeb prostřednictvím redundantní, odolný proti chybám nebo převzetí služeb při selhání chráněné komponenty uvnitř hello **stejné** datového centra. V našem případě v rámci jedné oblasti Azure.
 
-**Zotavení po havárii (DR)** také cílí minimalizovat narušení služeb IT a jejich obnovení ale napříč **různých** datových center, které jsou obvykle umístěné stovky kilometrů rychle. V našem případě obvykle mezi různých oblastech Azure v rámci stejné geopolitické oblasti nebo jako zavedených vy jako zákazník.
+**Zotavení po havárii (DR)** také cílí minimalizovat narušení služeb IT a jejich obnovení ale napříč **různých** datových center, které jsou obvykle umístěné stovky kilometrů rychle. V našem případě obvykle mezi různých oblastech Azure v rámci hello stejné geopolitické oblasti nebo jako navázat vy jako zákazník.
 
 ### <a name="overview-of-high-availability"></a>Přehled vysokou dostupnost
-Jsme můžete oddělit diskuzi o SAP vysoké dostupnosti v Azure do dvou částí:
+Jsme můžete oddělit hello diskuzi o SAP vysoké dostupnosti v Azure do dvou částí:
 
 * **Vysoká dostupnost infrastruktury Azure**, například HA výpočetní (VM), sítě, úložiště atd. a jeho výhody pro zvýšení dostupnosti aplikací SAP.
 * **Vysoká dostupnost aplikace SAP**, například HA systému SAP softwarové součásti:
@@ -1830,12 +1830,12 @@ Jsme můžete oddělit diskuzi o SAP vysoké dostupnosti v Azure do dvou část�
 
 a jak je možné kombinovat s infrastrukturu Azure HA.
 
-SAP vysoké dostupnosti v Azure má některé rozdíly ve srovnání s SAP vysoké dostupnosti v místním fyzickém nebo virtuálním prostředí. Následující dokument z SAP popisuje standardní konfigurace s vysokou dostupností SAP ve virtualizovaném prostředí v systému Windows: <http://scn.sap.com/docs/DOC-44415>. Neexistuje žádné integrované sapinst SAP-HA konfigurace pro Linux jako existuje pro systém Windows. O SAP HA místní pro Linux najít další informace: <http://scn.sap.com/docs/DOC-8541>.
+SAP vysoké dostupnosti v Azure má některé rozdíly ve srovnání tooSAP vysoké dostupnosti v místním fyzickém nebo virtuálním prostředí. Hello v SAP následující dokumentu popisuje standardní konfigurace s vysokou dostupností SAP ve virtualizovaném prostředí v systému Windows: <http://scn.sap.com/docs/DOC-44415>. Neexistuje žádné integrované sapinst SAP-HA konfigurace pro Linux jako existuje pro systém Windows. O SAP HA místní pro Linux najít další informace: <http://scn.sap.com/docs/DOC-8541>.
 
 ### <a name="azure-infrastructure-high-availability"></a>Vysoká dostupnost infrastruktury Azure
-Není aktuálně single-VM SLA 99,9 %. Chcete-li získat představu, jak dostupnost jeden virtuální počítač může vypadat jako můžete jednoduše vytvořit produkt různé dostupné Azure SLA: <https://azure.microsoft.com/support/legal/sla/>.
+Není aktuálně single-VM SLA 99,9 %. tooget představu, jak hello dostupnost jeden virtuální počítač může vypadat jako můžete jednoduše vytvořit hello produkt hello různé dostupné Azure SLA: <https://azure.microsoft.com/support/legal/sla/>.
 
-Základ pro výpočet je 30 dní, měsíčně nebo 43 200 minut. Proto hodnotu 0,05 % výpadek odpovídá 21,6 minut. Dostupnost různé služby bude obvyklým způsobem, vynásobte následujícím způsobem:
+Hello základ pro výpočet hello je 30 dní, měsíčně nebo 43 200 minut. Proto hodnotu 0,05 % výpadek odpovídá too21.6 minut. Dostupnost hello hello různé služby bude obvyklým způsobem, vynásobte v hello následujícím způsobem:
 
 (Služba dostupnosti č. 1/100) * (služba dostupnosti č. 2/100) * (služba dostupnosti č. 3/100) *...
 
@@ -1844,25 +1844,25 @@ Například:
 (99,95/100) * (99,9/100) * (99,9/100) = 0.9975 nebo celkové dostupnosti 99.75 %.
 
 #### <a name="virtual-machine-vm-high-availability"></a>Vysoká dostupnost virtuálního počítače (VM)
-Existují dva typy událostí platformy Azure, které můžou ovlivnit dostupnost vašich virtuálních počítačů: plánované údržby a neplánovaná Údržba.
+Existují dva typy událostí platformy Azure, které můžou ovlivnit hello dostupnosti virtuálních počítačů: plánované údržby a neplánovaná Údržba.
 
-* Události plánované údržby jsou pravidelné aktualizace provedené microsoftem základní platformu Azure ke zlepšení celkové spolehlivosti, výkonu a zabezpečení infrastruktury platformy, které virtuální počítače spustit na.
-* Neplánovaná Údržba události dojít, když hardware nebo fyzické infrastruktuře základní virtuálního počítače došlo k chybě nějakým způsobem. To může zahrnovat selhání místní sítě, selhání místního disku nebo další selhání na úrovni racku. Když se taková selhání detekuje, platformu Azure automaticky migrovat virtuální počítač z není v pořádku fyzický server, který je hostitelem virtuálního počítače v pořádku fyzický server. Takové události se vyskytují jen vzácně, ale také můžou způsobit restartování vašeho virtuálního počítače.
+* Události plánované údržby jsou pravidelné aktualizace od společnosti Microsoft toohello základní platformu Azure tooimprove celkové spolehlivosti, výkonu a zabezpečení infrastruktury hello platformy, které virtuální počítače spustit na.
+* Neplánovaná Údržba události dojít, když hello hardware nebo fyzické infrastruktuře základní virtuálního počítače došlo k chybě nějakým způsobem. To může zahrnovat selhání místní sítě, selhání místního disku nebo další selhání na úrovni racku. Když se taková selhání detekuje, hello platformy Azure automaticky migruje virtuální počítač z hello není v pořádku fyzického serveru hostování fyzického serveru virtuálního počítače tooa v pořádku. Tyto události vyskytují jen vzácně, ale může také způsobit vaší tooreboot virtuálního počítače.
 
 Další podrobnosti najdete v této dokumentaci: <http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="azure-storage-redundancy"></a>Redundance úložiště Azure
-Data ve vašem účtu úložiště Microsoft Azure se vždycky replikují, aby zajistila stálost a vysoká dostupnost, splňuje smlouvy SLA pro úložiště Azure i při krátkodobém výpadku hardwaru.
+Hello data ve vašem účtu úložiště Microsoft Azure je vždy replikované tooensure odolnost a vysokou dostupnost, splňuje hello smlouvy SLA pro úložiště Azure i v hello vzhled selhání hardwaru.
 
-Vzhledem k tomu, že Azure Storage je ve výchozím nastavení uchovávání tři bitové kopie dat, RAID5 nebo RAID1 na více disků Azure nejsou potřebné.
+Vzhledem k tomu, že Azure Storage je ve výchozím nastavení uchovávání tři Image hello dat, RAID5 nebo RAID1 na více disků Azure nejsou potřebné.
 
 Další podrobnosti najdete v tomto článku: <http://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
-#### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>Využívá infrastrukturu Azure restartování virtuálního počítače lze dosáhnout "Vyšší dostupnosti" aplikací SAP
-Pokud se rozhodnete nepoužívat funkce jako je Windows Server Failover Clustering (WSFC) nebo kardiostimulátor v systému Linux (momentálně podporována pouze pro SLES 12 a vyšší), restartovat virtuální počítač Azure je použít k ochraně SAP systém proti plánovaných a neplánovaných výpadků infrastruktury Azure fyzického serveru a celkové základní platformy Azure.
+#### <a name="utilizing-azure-infrastructure-vm-restart-tooachieve-higher-availability-of-sap-applications"></a>Využitím Azure infrastruktury virtuální počítač restartovat tooAchieve "Vyšší dostupnost" aplikací SAP
+Pokud se rozhodnete není toouse funkce jako je Windows Server Failover Clustering (WSFC) nebo kardiostimulátor v systému Linux (momentálně podporována pouze pro SLES 12 a vyšší), restartovat virtuální počítač Azure je využívané tooprotect SAP systém proti plánovaných a neplánovaných výpadků hello Azure fyzický server infrastruktury a celkové základní platformy Azure.
 
 > [!NOTE]
-> Je důležité zmínit, že restartování virtuálního počítače Azure především chrání virtuální počítače a ne aplikace. Virtuální počítač restartovat nenabízí vysokou dostupnost pro aplikace SAP, ale nabízí systém určitá úroveň dostupnost infrastruktury a proto nepřímo "vyšší dostupnosti" systémů SAP. Je zde také žádné SLA pro dobu, kterou bude trvat restartovat virtuální počítač po plánovaném nebo neplánovaném hostitele výpadku. Tuto metodu, vysokou dostupnost, není proto vhodný pro důležité součásti systému SAP jako (A) SCS nebo databázového systému.
+> Je důležité toomention, restartovat virtuální počítač Azure především chrání virtuální počítače a ne aplikace. Virtuální počítač restartovat nenabízí vysokou dostupnost pro aplikace SAP, ale nabízí systém určitá úroveň dostupnost infrastruktury a proto nepřímo "vyšší dostupnosti" systémů SAP. Je zde také žádné SLA hello dobu bude trvat toorestart virtuální počítač po plánovaném nebo neplánovaném hostitele výpadku. Tuto metodu, vysokou dostupnost, není proto vhodný pro důležité součásti systému SAP jako (A) SCS nebo databázového systému.
 >
 >
 
@@ -1870,114 +1870,114 @@ Jiný element důležité infrastruktury pro zajištění vysoké dostupnosti je
 
 Místo uvedení všechny virtuální počítače do jedné jeden účet úložiště Azure, můžete použít také vyhrazeného úložiště účtů pro každý virtuální počítač a tímto způsobem zvýšit celkový dostupnosti virtuálních počítačů a SAP aplikace s použitím více nezávislých účtů úložiště Azure.
 
-Disky systému Azure spravované jsou automaticky umístěny v doméně selhání virtuálního počítače, které jsou připojené k. Zadáte-li dva virtuální počítače ve skupině dostupnosti nastavit a spravovat disky používat, platformu se postará o distribuci disky spravované do různých domén selhání také. Pokud plánujete používat úložiště úrovně Premium, důrazně doporučujeme také pomocí správy disků.
+Disky systému Azure spravované jsou automaticky umístěny v hello doména selhání hello virtuálního počítače, které jsou připojené k. Zadáte-li dva virtuální počítače ve skupině dostupnosti nastavit a spravovat disky používat, platformu hello se postará o distribuci hello spravované disky do různých domén selhání také. Pokud máte v plánu toouse Storage úrovně Premium, důrazně doporučujeme také pomocí správy disků.
 
 Ukázková architektura systému SAP NetWeaver, který používá infrastrukturu Azure HA a úložiště účtů může vypadat například takto:
 
-![Využívá infrastrukturu Azure HA k dosažení "vyšší" dostupnosti aplikace SAP][planning-guide-figure-2900]
+![Využívá infrastrukturu Azure "vyšší" dostupnosti HA tooachieve SAP aplikace][planning-guide-figure-2900]
 
 Ukázková architektura systému SAP NetWeaver používá infrastrukturu Azure HA a spravované disků může vypadat například takto:
 
-![Využívá infrastrukturu Azure HA k dosažení "vyšší" dostupnosti aplikace SAP][planning-guide-figure-2901]
+![Využívá infrastrukturu Azure "vyšší" dostupnosti HA tooachieve SAP aplikace][planning-guide-figure-2901]
 
-Pro důležité součásti SAP jsme dosáhnout následující, pokud:
+Pro důležité součásti SAP jsme dosáhnout následujících hello, pokud:
 
 * Vysoká dostupnost SAP aplikační servery (AS)
 
   Instance serveru SAP aplikace jsou redundantní komponenty. Každý SAP jako instance je nasazen na svůj vlastní virtuální počítač, který běží v jiné Azure selhání a upgradu domény (najdete v kapitolách [domén selhání] [ planning-guide-3.2.1] a [upgradu domény][planning-guide-3.2.2]). To je zajištěno pomocí sad dostupnosti Azure (naleznete v kapitole [skupiny dostupnosti Azure][planning-guide-3.2.3]). Potenciální nedostupnosti plánovaném nebo neplánovaném selhání Azure nebo doména Upgrade způsobí nedostupnosti omezenému počtu virtuálních počítačů s jejich SAP AS instancí.
 
-  Každý SAP jako instance je umístěn v svůj vlastní účet služby Azure Storage – potenciální nedostupnosti jeden účet úložiště Azure způsobí, že nejsou dostupné jenom jeden virtuální počítač s jeho SAP AS instance. Však Upozorňujeme, že je maximální počet účtů úložiště Azure v rámci jednoho předplatného Azure. Aby se zajistilo automatické spuštění (A) instance SCS po restartování virtuálního počítače, ujistěte se, že chcete nastavit parametr automatické spuštění v instanci (A) SCS spustit profil popsané v kapitole [pomocí automatické spuštění pro instance SAP][planning-guide-11.5].
+  Každý SAP jako instance je umístěn v svůj vlastní účet služby Azure Storage – potenciální nedostupnosti jeden účet úložiště Azure způsobí, že nejsou dostupné jenom jeden virtuální počítač s jeho SAP AS instance. Však Upozorňujeme, že je maximální počet účtů úložiště Azure v rámci jednoho předplatného Azure. Automatické spuštění tooensure (A) instance SCS po restartování počítače hello virtuálních počítačů, ujistěte se, profil popsané v kapitole spuštění tooset hello automatické spuštění parametr (A) instance SCS [pomocí automatické spuštění pro instance SAP] [ planning-guide-11.5].
   Přečtěte si také kapitoly [vysoká dostupnost pro SAP aplikační servery] [ planning-guide-11.4.1] další podrobnosti.
 
   I když používáte spravované disky, tyto disky jsou také uloženy v účtu úložiště Azure a může být k dispozici v případě výpadku úložiště.
 
 * *Vyšší* instance SCS dostupnosti SAP (A)
 
-  Zde jsme využívat Azure restartujte počítač k ochraně virtuálního počítače s nainstalovanou instanci SCS SAP (A). V případě plánované, nebo neplánované výpadky Azure servery, virtuální počítače se restartuje na jiném serveru k dispozici. Jak už bylo zmíněno dříve, restartovat virtuální počítač Azure především chrání virtuální počítače a ne aplikace, u této instance SCS případ (A). Prostřednictvím restartování virtuálního počítače je budete spojit nepřímo "vyšší dostupnosti" instance SCS SAP (A). K zajištění automatického spuštění instance (A) SCS po restartování virtuálního počítače, nezapomeňte nastavit automatické spuštění parametr v profilu spuštění instance (A) SCS popsané v kapitole [pomocí automatické spuštění pro instance SAP][planning-guide-11.5]. To znamená SCS (A) instance jako jeden bod z selhání (SPOF) spuštěné v jeden virtuální počítač bude určujícího faktor pro dostupnost celou šířku SAP.
+  Zde jsme využívat restartovat virtuální počítač Azure tooprotect hello virtuálního počítače s nainstalovanou instanci SCS SAP (A). V servery technologie hello případě plánované, nebo neplánované výpadky Azure, restartuje virtuální počítače na jiný server k dispozici. Jak už bylo zmíněno dříve, restartovat virtuální počítač Azure především chrání virtuální počítače a ne aplikace, v tomto případě hello (A) SCS instance. Prostřednictvím hello restartovat virtuální počítač je budete spojit nepřímo "vyšší dostupnosti" instance SCS SAP (A). Automatické spuštění tooinsure (A) instance SCS po restartování počítače hello virtuálních počítačů, ujistěte se, profil popsané v kapitole spuštění tooset parametr automatické spuštění v instanci (A) SCS [pomocí automatické spuštění pro instance SAP][planning-guide-11.5]. To znamená, že hello (A) SCS jako jeden bod z selhání (SPOF) spuštěné v jeden virtuální počítač bude instance hello určujícího Multi-Factor hello dostupnost celou šířku SAP hello.
 
 * *Vyšší* dostupnost serveru databázového systému
 
-  Zde podobný případ použití instance SCS SAP (A), můžeme využívat Azure restartujte počítač k ochraně virtuálního počítače s nainstalovaným softwarem databázového systému a jsme dosáhnout "vyšší dostupnosti" databázového systému softwaru prostřednictvím restartovat počítač.
-  Databázového systému spuštěné v jeden virtuální počítač je také SPOF a je určujícího faktor pro dostupnost celou šířku SAP.
+  Zde případ použití podobné instance toohello SCS SAP (A), jsme využití restartovat virtuální počítač Azure tooprotect hello virtuálních počítačů s nainstalovaným softwarem databázového systému a jsme dosáhnout "vyšší dostupnosti" databázového systému softwaru prostřednictvím restartování virtuálního počítače.
+  Databázového systému spuštěné v jeden virtuální počítač je také SPOF a je hello určujícího Multi-Factor hello dostupnost celou šířku SAP hello.
 
 ### <a name="sap-application-high-availability-on-azure-iaas"></a>SAP vysoké dostupnosti aplikace na Azure IaaS
-K dosažení úplné SAP systém vysoké dostupnosti, je potřeba chránit všechny důležité součásti systému SAP, příklad redundantní SAP aplikační servery a jedinečný součásti (například jediné místo poruchy) jako instance SCS SAP (A) a databázového systému.
+tooachieve úplné SAP systému vysokou dostupnost, potřebujeme tooprotect všechny důležité součásti systému SAP, pro příklad redundantní SAP aplikační servery a jedinečný součásti (například jediné místo poruchy) jako instance SCS SAP (A) a databázového systému.
 
 #### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>Vysoká dostupnost pro SAP aplikační servery
-Pro servery nebo dialogové okno instance aplikace SAP není potřeba myslet řešení konkrétní vysokou dostupnost. Redundance a tím jednoduše dosáhnout vysoké dostupnosti s dostatek z nich v různých virtuálních počítačů. Se musí všechny umístit do stejné Azure skupina dostupnosti předejdete, virtuální počítače mohou být aktualizovány v průběhu během plánované údržby. výpadků. Základní funkce, která je založena na jiné upgradu a domén selhání v rámci jednotky škálování Azure již byla zavedena v kapitole [upgradu domény][planning-guide-3.2.2]. Azure skupiny dostupnosti prezentovaly v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] tohoto dokumentu.
+Pro instancemi serverů nebo dialogové okno aplikace SAP hello není nezbytné toothink o řešení konkrétní vysokou dostupnost. Redundance a tím jednoduše dosáhnout vysoké dostupnosti s dostatek z nich v různých virtuálních počítačů. Budou všechny umístit do stejné skupiny dostupnosti Azure tooavoid, který hello virtuální počítače mohou být aktualizovány na hello hello současně během plánované údržby. výpadků. Hello základních funkcí, který je založen na jiné upgradu a domén selhání v rámci jednotky škálování Azure již byla zavedena v kapitole [upgradu domény][planning-guide-3.2.2]. Azure skupiny dostupnosti prezentovaly v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] tohoto dokumentu.
 
-Neexistuje žádné nekonečné počet selhání a upgradu domén, které je možné podle skupiny dostupnosti Azure, v rámci jednotky škálování služby Azure. To znamená, že uvedení počet virtuálních počítačů do jedné skupiny dostupnosti, dřív nebo později více než jeden virtuální počítač bude mít ve stejném selhání nebo upgradu domény.
+Neexistuje žádné nekonečné počet selhání a upgradu domén, které je možné podle skupiny dostupnosti Azure, v rámci jednotky škálování služby Azure. To znamená, že uvedení počet virtuálních počítačů do jedné skupiny dostupnosti, dřív nebo později více než jeden virtuální počítač skončilo v hello stejné selhání nebo upgradu domény.
 
-Nasazení několik instancí SAP aplikačních serverů v jejich vyhrazených virtuálních počítačích a za předpokladu, že My pět upgradu domény, na konci ukáže na následujícím obrázku. Maximální skutečný počet domén selhání a aktualizace v rámci skupiny dostupnosti může v budoucnu změnit:
+Nasazení několika aplikačního serveru SAP instancí v jejich vyhrazených virtuálních počítačích a za předpokladu, že My pět upgradu domény, na konci hello ukáže hello následující obrázek. Hello skutečný maximální počet domén selhání a aktualizace v rámci skupiny dostupnosti mohou změnit v budoucnu hello:
 
 ![HA SAP aplikačních serverů v Azure][planning-guide-figure-3000]
 
 Další podrobnosti najdete v této dokumentaci: <http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
-#### <a name="high-availability-for-the-sap-ascs-instance-on-windows"></a>Vysoká dostupnost pro instance SCS SAP (A) v systému Windows
-Windows Server Failover Cluster (WSFC) se často používané řešení ochrany instance SCS SAP (A). Také je integrovaný do sapinst v podobě "HA instalace". V tuto chvíli není schopen poskytnout funkce pro nastavení požadovaná clusteru převzetí služeb při selhání systému Windows Server stejným způsobem jako dokončení místní infrastruktury Azure.
+#### <a name="high-availability-for-hello-sap-ascs-instance-on-windows"></a>Vysoká dostupnost pro instance hello SCS SAP (A) v systému Windows
+Windows Server Failover Cluster (WSFC) je často používané řešení tooprotect hello SCS SAP (A) instance. Také je integrovaný do sapinst v podobě "HA instalace". V tuto chvíli hello infrastrukturu Azure není možné tooprovide hello funkce tooset až hello hello požadované clusteru převzetí služeb při selhání systému Windows Server stejným způsobem, jak se provádí na místě.
 
-Od ledna 2016 platformou Azure cloud s operačním systémem Windows nenabízí možnost použití sdíleného svazku clusteru na disku sdílena mezi dva virtuální počítače Azure.
+Od ledna 2016 hello Azure Cloudová platforma operačním systémem Windows hello neposkytuje hello možnost použití sdíleného svazku clusteru na disku sdílena mezi dva virtuální počítače Azure.
 
-Platným řešením, když je využití softwaru 3. stran, které poskytuje sdíleného svazku pomocí replikace synchronní a transparentní disku, který lze integrovat do služby WSFC. Tento přístup vyplývá, že pouze aktivním uzlu clusteru je moci jednu kopii disku v bodě v čase. Konfigurace je od ledna 2016 tento HA podporována k ochraně instanci SCS SAP (A) na Windows hostovaný operační systém na virtuálních počítačích Azure v kombinaci s 3rd softwarem s DataKeeper.
+Platným řešením, když je využití hello 3. stran softwaru, který poskytuje sdíleného svazku pomocí replikace synchronní a transparentní disku, který lze integrovat do služby WSFC. Tento postup znamená, že pouze hello aktivním uzlu clusteru je možné tooaccess jeden hello disk zkopíruje na bod v čase. Od ledna 2016 tento HA konfigurace je podporované tooprotect hello SAP (A) SCS instanci na Windows hostovaný operační systém na virtuálních počítačích Azure v kombinaci s 3rd softwarem s DataKeeper.
 
-Řešení s DataKeeper poskytuje prostředek sdíleného disku clusteru na clustery převzetí služeb při selhání systému Windows tak, že:
+Hello s DataKeeper řešení poskytuje sdílený disk clusteru prostředků tooWindows clustery převzetí služeb při selhání tak, že:
 
-* Další Azure virtuální pevný disk připojený ke každému z virtuálních počítačů (VM), které jsou v konfiguraci clusteru se systémem Windows
+* Další Azure virtuální pevný disk připojený tooeach hello virtuálních počítačů (VM), které jsou v konfiguraci clusteru se systémem Windows
 * Spuštěná na obou uzlech virtuálních počítačů s DataKeeper Cluster Edition
-* S s DataKeeper Cluster Edition nakonfigurovaný tak, že synchronně zrcadlí obsah další virtuální pevný disk připojený svazek ze zdrojové virtuální počítače na další virtuální pevný disk připojený svazek cílovém virtuálním počítači.
-* S DataKeeper je poskytuje abstrakci zdrojové a cílové místní svazky a jejich obchodní úpravu clusteru převzetí služeb při selhání systému Windows jako jeden sdílený disk.
+* S s DataKeeper Cluster Edition nakonfigurovaný tak, že synchronně zrcadlí hello obsah hello další virtuální pevný disk připojený svazek ze zdrojové virtuální počítače tooadditional virtuální pevný disk připojený svazku cílovém virtuálním počítači.
+* S DataKeeper je poskytuje abstrakci hello zdrojové a cílové místní svazky a jejich prezentace tooWindows clusteru převzetí služeb při selhání jako jeden sdílený disk.
 
-Můžete najít všechny podrobnosti o tom, jak nainstalovat s s DataKeeper a SAP v clusteru s podporou převzetí služeb při selhání systému Windows [Clustering SAP ASC instanci pomocí clusteru převzetí služeb při selhání systému Windows Server v Azure s DataKeeper s] [ ha-guide-classic] dokumentu white paper.
+Můžete najít všechny podrobnosti o tom, tooinstall clusteru s podporou převzetí služeb při selhání systému Windows se s DataKeeper a SAP v hello [Clustering SAP ASC instanci pomocí clusteru převzetí služeb při selhání systému Windows Server v Azure s DataKeeper s] [ ha-guide-classic]dokumentu white paper.
 
-#### <a name="high-availability-for-the-sap-ascs-instance-on-linux"></a>Vysoká dostupnost pro instance SCS SAP (A) v systému Linux
-Od prosince 2015 je zde také žádný ekvivalent sdíleného disku služby WSFC pro virtuální počítače s Linuxem v Azure. Alternativní řešení pomocí softwaru 3rdstrany jako s pro systém Windows ještě se neověřuje SAP systémem Linux v Azure.
+#### <a name="high-availability-for-hello-sap-ascs-instance-on-linux"></a>Vysoká dostupnost pro instance hello SCS SAP (A) v systému Linux
+Od prosince 2015 také není žádný disk ekvivalentní tooshared služby WSFC pro virtuální počítače s Linuxem v Azure. Alternativní řešení pomocí softwaru 3rdstrany jako s pro systém Windows ještě se neověřuje SAP systémem Linux v Azure.
 
-#### <a name="high-availability-for-the-sap-database-instance"></a>Vysoká dostupnost pro instanci databáze SAP
-Typické SAP databázového systému HA instalace je založena na dva databázového systému virtuální počítače, kde je funkce vysoké dostupnosti databázového systému používanou k replikaci dat od aktivní instance databázového systému do druhého virtuálního počítače do pasivní instance databázového systému.
+#### <a name="high-availability-for-hello-sap-database-instance"></a>Vysoká dostupnost pro instanci databáze SAP hello
+Hello typické SAP databázového systému HA instalace je založena na dva databázového systému virtuální počítače, kde se používá funkce vysoké dostupnosti databázového systému tooreplicate data z hello active databázového systému instance toohello druhé virtuálních počítačů do pasivní instance databázového systému.
 
-Funkci obnovení po havárii s vysokou dostupností a pro databázového systému obecně také konkrétní databázového systému jsou popsané v [Průvodce nasazením databázového systému][dbms-guide].
+Vysoká dostupnost a po havárii funkci obnovení pro databázového systému v obecné, jakož i konkrétní databázového systému jsou popsané v hello [Průvodce nasazením databázového systému][dbms-guide].
 
-#### <a name="end-to-end-high-availability-for-the-complete-sap-system"></a>Vysoká dostupnost začátku do konce pro dokončení SAP systému
+#### <a name="end-to-end-high-availability-for-hello-complete-sap-system"></a>Hello začátku do konce vysoká dostupnost pro celý systém SAP
 Následují dva příklady architektury dokončení SAP NetWeaver HA v Azure – jeden pro Windows a jeden pro Linux.
 
-Nespravované jen disky: koncepty, jak je popsáno níže pravděpodobně došlo k narušení trochu při nasazování mnoha systémů SAP a počet nasazených virtuálních počítačů jsou překračuje maximální limit účtů úložiště na jedno předplatné. V takových případech nutné virtuální pevné disky virtuálních počítačů a nelze jej zkombinovat v rámci jednoho účtu úložiště. Obvykle lze provést kombinací virtuální pevné disky SAP aplikační vrstvu virtuální počítače různých systémů SAP.  Také jsme kombinaci různých virtuální pevné disky různé databázového systému virtuální počítače různých systémů SAP v jednom účtu úložiště Azure. Tím zachování IOPS omezení účtech úložiště Azure v paměti (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
+Nespravované jen disky: hello koncepty, jak je popsáno níže může být nutné toobe ohrožené trochu při nasazování mnoha systémů SAP a hello počet nasazených virtuálních počítačů jsou vyšší než maximální limit hello účtů úložiště na jedno předplatné. V takových případech virtuální pevné disky virtuálních počítačů potřebovat toobe kombinaci v rámci jednoho účtu úložiště. Obvykle lze provést kombinací virtuální pevné disky SAP aplikační vrstvu virtuální počítače různých systémů SAP.  Také jsme kombinaci různých virtuální pevné disky různé databázového systému virtuální počítače různých systémů SAP v jednom účtu úložiště Azure. Tím uchování hello IOPS omezení účtů úložiště Azure v paměti (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
 ##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] HA v systému Windows
 ![Architektura HA aplikace SAP NetWeaver s SQL serverem v Azure IaaS][planning-guide-figure-3200]
 
-Následující Azure konstrukce se používají pro systém SAP NetWeaver k minimalizaci vlivu podle problémů s infrastrukturou a hostování opravy:
+Následující Azure konstrukce Hello se používají pro hello SAP NetWeaver systém toominimize dopad na problémy infrastruktury a hostitele opravy:
 
-* Celý systém je nasazen na Azure (požadováno – databázového systému vrstvy, (A) SCS instanci a dokončení aplikační vrstvu muset spustit ve stejném umístění).
-* Celý systém běží v rámci jednoho předplatného Azure (povinné).
-* Celý systém běží v rámci jedné virtuální sítě Azure (povinné).
-* Oddělení virtuální počítače jednoho systému SAP do tří skupiny dostupnosti je možné, i když všechny virtuální počítače, které patří do stejné virtuální síti.
+* celý systém Hello je nasazen na Azure (požadováno – databázového systému vrstvy, (A) SCS instanci a kompletní aplikaci vrstvy nutné toorun v hello stejné umístění).
+* celý systém Hello běží v rámci jednoho předplatného Azure (povinné).
+* celý systém Hello běží v rámci jedné virtuální sítě Azure (povinné).
+* Hello oddělení hello virtuální počítače jednoho systému SAP do tří skupiny dostupnosti je možné, i když všechny virtuální počítače hello patřící toohello stejné virtuální síti.
 * Všechny virtuální počítače spuštěné instance databázového systému SAP systémů jsou v jedné skupině dostupnosti. Předpokládáme, že existuje více než jeden virtuální počítač spuštěné instance databázového systému na systém od nativní vysokou dostupnost databázového systému, které se používají funkce, jako je SQL Server AlwaysOn nebo Oracle Data Guard.
-* Všechny virtuální počítače spuštěné instance databázového systému použít vlastní účet úložiště. Databázového systému souborů protokolu a data se replikují z jednoho účtu úložiště na jiný účet úložiště pomocí funkcí databázového systému vysoké dostupnosti, které se synchronizují data. Nedostupnosti jeden účet úložiště způsobí, že nedostupnosti jednoho uzlu clusteru serveru SQL Windows, ale ne celou službu systému SQL Server.
-* Všechny virtuální počítače spuštěné instance (A) SCS jednoho systému SAP se nacházejí v jedné skupině dostupnosti. Windows Server Failover Cluster (WSFC) je nakonfigurován v rámci těchto virtuálních počítačů k ochraně (A) SCS instance.
-* Všechny virtuální počítače spuštěné instance (A) SCS použít vlastní účet úložiště. (A) SCS instance soubory a složku globální SAP se replikují z jednoho účtu úložiště na jiný účet úložiště DataKeeper s replikací. Nedostupnosti jeden účet úložiště může způsobit nedostupnost jednoho (A) uzlu clusteru systému Windows SCS, ale ne celé (A) SCS služby.
-* VŠECHNY virtuální počítače představující vrstvu serveru SAP aplikace jsou ve třetí dostupnosti nastavit.
-* VŠECHNY virtuální počítače spuštěné SAP aplikační servery pomocí účtu úložiště. Nedostupnosti jeden SAP aplikačního serveru, kde nadále spouštět další SAP AS způsobí, že nedostupnosti jeden účet úložiště.
+* Všechny virtuální počítače spuštěné instance databázového systému použít vlastní účet úložiště. Databázového systému souborů protokolu a data se replikují z jeden účet tooanother úložiště účet úložiště pomocí funkcí databázového systému vysoké dostupnosti, které synchronizují hello data. Nedostupnosti jeden účet úložiště způsobí, že nedostupnosti jednoho uzlu clusteru serveru SQL Windows, ale není hello celou služby SQL Server.
+* Všechny virtuální počítače spuštěné instance (A) SCS jednoho systému SAP se nacházejí v jedné skupině dostupnosti. Uvnitř těchto virtuálních počítačů tooprotect hello (A) SCS instance je nakonfigurován Windows Server Failover Cluster (WSFC).
+* Všechny virtuální počítače spuštěné instance (A) SCS použít vlastní účet úložiště. (A) SCS instance soubory a složku globální SAP se replikují z jednoho účtu tooanother úložiště účtu úložiště DataKeeper s replikací. Nedostupnosti jeden účet úložiště může způsobit nedostupnost jednoho (A) SCS Windows uzlu clusteru, ale není hello celý (A) SCS služby.
+* VŠECHNY virtuální počítače hello představující vrstva hello SAP aplikačního serveru jsou ve třetí skupině dostupnosti.
+* VŠECHNY virtuální počítače hello spuštěné SAP aplikační servery pomocí účtu úložiště. Nedostupnosti jeden SAP aplikačního serveru, kde další SAP AS pokračovat toorun způsobí, že jeden účet úložiště nejsou dostupné.
 
-Následující obrázek ukazuje povahu stejné pomocí spravovaných disků.
+Hello následující obrázek ilustrované hello stejné šířku, používání spravované disků.
 
 ![Architektura HA aplikace SAP NetWeaver s SQL serverem v Azure IaaS][planning-guide-figure-3201]
 
 ##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] HA v systému Linux
-Architektura pro SAP HA v systému Linux v Azure je v podstatě stejný jako u Windows jak bylo popsáno výše. Od ledna 2016 neexistuje SAP (A) SCS HA řešení zatím nepodporuje v systému Linux v Azure
+Hello architektura pro SAP HA v systému Linux v Azure je v podstatě stejný jako u systému Windows jako výše popsané hello. Od ledna 2016 neexistuje SAP (A) SCS HA řešení zatím nepodporuje v systému Linux v Azure
 
-V důsledku od ledna 2016 systému SAP. Linux Azure nelze dosáhnout stejné dostupnosti jako systém SAP. Windows Azure z důvodu chybějících HA pro SCS (A) instanci a databázi SAP App Service Environment jedné instance.
+V důsledku jako leden 2016 nelze dosáhnout systému SAP. Linux Azure hello stejné dostupnosti jako systém SAP. Windows Azure z důvodu chybějících HA pro instanci SCS hello (A) a hello databázi SAP App Service Environment jedné instance.
 
 ### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Pomocí automatické spuštění pro instance SAP
-SAP nabízí funkce pro spustit instance SAP ihned po spuštění operačního systému v rámci virtuálního počítače. Přesný postup byly popsané v článku znalostní báze SAP [1909114]. Však není SAP doporučujeme, aby se použilo nastavení už, protože neexistuje žádný ovládací prvek v pořadí restartování instance, za předpokladu, že více než jeden virtuální počítač nebyl vliv nebo více instancí spustili na virtuální počítač. Za předpokladu, že Azure Typický scénář v virtuálního počítače a jeden virtuální počítač nakonec získávání restartování v případě jedné instance serveru aplikace SAP, automatické spuštění není skutečně kritické a lze je povolit přidáním tento parametr:
+SAP nabízí funkce hello instance SAP toostart okamžitě po spuštění hello hello operačního systému v rámci hello virtuálních počítačů. přesný postup Hello byly popsané v článku znalostní báze SAP [1909114]. Ale SAP není doporučujeme toouse hello nastavení už protože neexistuje ovládací prvek v pořadí hello restartování instance, za předpokladu, že tu vliv více než jeden virtuální počítač nebo více instancí spustili na virtuální počítač. Za předpokladu, že Azure Typický scénář v případě virtuálních počítačů a hello jednoho virtuálního počítače, nakonec získávání restartovat jedné instance serveru aplikace SAP, hello automatické spuštění není skutečně kritické a lze je povolit přidáním tento parametr:
 
     Autostart = 1
 
-Do profilu spustit instance SAP ABAP nebo Java.
+Do hello spustit profil hello instance SAP ABAP nebo Java.
 
 > [!NOTE]
-> Některé downfalls také může mít parametr automatické spuštění. Podrobněji parametr aktivuje spuštění SAP ABAP nebo Java instance při spuštění související služby Windows nebo Linuxem instance. Který určitě je případ, kdy se spustí operační systém. Ale restartování služby SAP jsou také běžné věcí, kterou funkce správy životního cyklu softwaru SAP jako součet nebo jiné aktualizace nebo aktualizace. Tyto funkce nejsou byla očekávána instance na všechny automaticky restartovat. Proto by mělo být zakázáno automatické spuštění parametr před spuštěním takových úloh. Parametr automatické spuštění také nepoužívejte pro instance SAP, které jsou Clusterované, jako jsou ASC/SCS/CI.
+> Parametr automatické spuštění Hello může mít také některé downfalls. Podrobněji aktivační události parametr hello hello spuštění instance SAP ABAP nebo Java při spuštění služby Windows nebo Linuxem hello instance související s hello. Že se nestane hello jistě, pokud se spustí hello operačního systému. Ale restartování služby SAP jsou také běžné věcí, kterou funkce správy životního cyklu softwaru SAP jako součet nebo jiné aktualizace nebo aktualizace. Tyto funkce nejsou byla očekávána instanci toobe na všechny automaticky restartuje. Proto by mělo být zakázáno automatické spuštění parametr hello před spuštěním takových úloh. Parametr automatické spuštění Hello nesmí použít také pro instance SAP, které jsou Clusterované, jako jsou ASC/SCS/CI.
 >
 >
 
@@ -1985,65 +1985,65 @@ Zjistit další informace o automatické spuštění pro SAP instance tady:
 
 * [Spuštění a zastavení SAP společně s vaší spuštění a zastavení serveru systému Unix](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
 * [Spuštění a zastavení SAP NetWeaver správy agentů](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [Postup povolení automatického spuštění HANA databáze](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [Jak tooenable automatické spuštění HANA databáze](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
 ### <a name="larger-3-tier-sap-systems"></a>Větší systémy SAP vrstvy 3
-Aspekty vysoké dostupnosti 3vrstvé SAP konfigurace neobdrželo již popsané v předchozích částech. Ale co o může být nasazený systémů, kde jsou požadavky na server databázového systému moc velká, aby ji v Azure, ale aplikační vrstvu SAP do Azure?
+Aspekty vysoké dostupnosti 3vrstvé SAP konfigurace neobdrželo již popsané v předchozích částech. Ale co o systémech, kde jsou příliš velké požadavky na server hello databázového systému toohave umístěná v Azure, ale může být nasazený aplikační vrstvu hello SAP do Azure?
 
 #### <a name="location-of-3-tier-sap-configurations"></a>Umístění konfigurace SAP vrstvy 3
-Není možné rozdělit aplikační vrstvě samostatně nebo aplikaci a databázového systému vrstvy mezi místními a Azure. Systému SAP je buď úplně nasadit místně nebo v Azure. Také se nepodporuje z aplikačních serverů, spusťte místní a jiná v Azure. Výchozí bod diskuse se. Můžeme také nejsou podporovány tak, aby měl komponenty databázového systému systému SAP a SAP vrstva aplikačního serveru, který je nasazen ve dvou různých oblastech Azure. Například databázového systému v západní USA a SAP aplikační vrstvu střed USA. Důvodem nejsou podporovány tyto konfigurace je latence citlivosti SAP NetWeaver architektury.
+Není podporované toosplit hello aplikační vrstvě sám sebe nebo aplikace hello a úroveň databázového systému mezi místními a Azure. Systému SAP je buď úplně nasadit místně nebo v Azure. Je také není podporované toohave některé hello aplikačních serverů spustit místně a jiná v Azure. To je výchozí bod hello diskusní hello. Můžeme také nejsou podpora toohave hello databázového systému součásti systému SAP a hello SAP aplikační server vrstvu nasazené ve dvou různých oblastech Azure. Například databázového systému v západní USA a SAP aplikační vrstvu střed USA. Důvodem nejsou podporovány tyto konfigurace je hello latence citlivosti hello SAP NetWeaver architektura.
 
-Ale v průběhu poslední rok center partnery vyvinuté společné umístění dat do oblasti Azure. Tyto společné umístění často se v velmi těsné blízkosti fyzické dat Azure centrech v rámci oblast Azure. Čekací doba, která je menší než 2 MS může způsobit krátkou vzdálenost a připojení prostředků ve společném umístění prostřednictvím ExpressRoute do Azure. V takových případech k vyhledání vrstvě databázového systému (včetně úložiště SAN nebo NAS) ve společném umístění a SAP aplikační vrstvu v Azure je možné. Od prosince 2015 nemáme všechna nasazení jako je například. Ale různých zákazníků, jejichž nasazení aplikace bez SAP již používáte takové přístupy.
+Průběhu hello data poslední rok vyvinuté partnery center společné umístění tooAzure oblasti. Tyto společné umístění často se v velmi těsné blízkosti toohello fyzické dat Azure centrech v rámci oblast Azure. Čekací doba, která je menší než 2 MS může způsobit krátkou vzdálenost Hello a připojení prostředků ve společném umístění hello prostřednictvím ExpressRoute do Azure. V takových případech je možné toolocate hello databázového systému vrstvy (včetně úložiště SAN nebo NAS) na společném umístění a hello SAP aplikační vrstvu v Azure. Od prosince 2015 nemáme všechna nasazení jako je například. Ale různých zákazníků, jejichž nasazení aplikace bez SAP již používáte takové přístupy.
 
 ### <a name="offline-backup-of-sap-systems"></a>Offline systémy zálohování SAP
-Závisí na konfiguraci SAP existuje vybrali (vrstvy 2 nebo 3 úrovně) může být potřeba zálohovat. Obsah virtuální počítač plus vytvořit zálohu databáze. Očekává se, že zálohy související databázového systému provádět pomocí metod databáze. Podrobný popis různých databází, najdete v [databázového systému průvodce][dbms-guide]. Na druhé straně SAP data můžete zálohovat offline způsobem (včetně k databázi obsahu) jak je popsáno v této části nebo online jak je popsáno v následující části.
+Závisí na hello SAP konfigurace vybrali (vrstvy 2 nebo 3 úrovně) existuje může být nutné tooback nahoru. obsah Hello hello virtuální počítač a toohave zálohu databáze hello. Hello související databázového systému zálohy jsou očekávané toobe provádět pomocí metod databáze. Podrobný popis pro hello různých databází, najdete v [databázového systému průvodce][dbms-guide]. Na dobrý den druhé straně, hello SAP data lze zálohovat offline způsobem (včetně hello databáze také obsah) jak je popsáno v této části nebo online jak je popsáno v další části hello.
 
-Zálohování offline by vyžadovaly v podstatě vypnutí virtuálního počítače prostřednictvím portálu Azure a kopírovat základní disk virtuálního počítače a všechny připojené disky na virtuální počítač. To by zachovávají bod čas Image virtuálního počítače a jeho přidružené disk. Doporučuje se pro kopírování v zálohování do jiný účet úložiště Azure. Proto postup popsaný v kapitole [kopírování disků mezi účty úložiště Azure] [ planning-guide-5.4.2] by použití tohoto dokumentu.
-Kromě ukončení pomocí portálu Azure, jeden můžete také provést pomocí prostředí Powershell nebo rozhraní příkazového řádku podle postupu popsaného tady: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+zálohování offline Hello by vyžadovaly v podstatě vypnutí hello virtuálních počítačů prostřednictvím hello portál Azure a kopii hello základní disk virtuálního počítače a všechny připojené disky toohello virtuálních počítačů. To by zachovávají bod v bitové kopii čas hello virtuálního počítače a jeho přidružené disk. Toocopy hello "zálohování" se doporučuje na jiný účet úložiště Azure. Proto hello postup popsaný v kapitole [kopírování disků mezi účty úložiště Azure] [ planning-guide-5.4.2] by použití tohoto dokumentu.
+Kromě hello vypnutí hello Azure pomocí portálu, jeden také provést pomocí prostředí Powershell nebo rozhraní příkazového řádku podle postupu popsaného tady: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
-Obnovení tohoto stavu by obsahovat odstranění základní virtuální počítač, jakož i původní disky virtuálního počítače základní a připojené disky, kopírování uložené disků zpět do původní účet úložiště nebo prostředek skupiny pro spravované disky a potom znovu nasazovat systému.
-Tento článek ukazuje příklad skriptu tento proces v prostředí Powershell: <http://www.westerndevs.com/azure-snapshots/>
+Obnovení tohoto stavu by obsahovat odstranění hello základní virtuální počítač také jako hello původní disky hello základní virtuální počítač a připojené disky, kopírování zpět hello uložené disky toohello původní účet úložiště nebo skupinu prostředků, pro spravované disky a pak opětovného nasazení hello systému.
+Tento článek ukazuje příklad, jak tooscript toto zpracování v prostředí Powershell: <http://www.westerndevs.com/azure-snapshots/>
 
-Zkontrolujte, zda nainstalovat novou licenci SAP, protože obnovování zálohování virtuálních počítačů, jak je popsáno výše vytvoří nový klíč hardwaru.
+Zkontrolujte, zda tooinstall novou licenci SAP vzhledem k tomu, že obnovování zálohování virtuálních počítačů, jak je popsáno výše vytvoří nový klíč hardwaru.
 
 ### <a name="online-backup-of-an-sap-system"></a>Online zálohování systému SAP
-Zálohování databázového systému se provádí pomocí metody specifické databázového systému, jak je popsáno v [databázového systému průvodce][dbms-guide].
+Zálohování hello databázového systému se provádí pomocí metody specifické databázového systému, jak je popsáno v hello [databázového systému průvodce][dbms-guide].
 
-Ostatní virtuální počítače v systému SAP lze zálohovat pomocí funkce zálohování virtuálních počítačů Azure. Zálohování virtuálního počítače Azure získali zavedená v rané fázi 2015 a mezitím je standardní metoda zálohování dokončení virtuálního počítače v Azure. Zálohování Azure ukládá zálohování v Azure a umožňuje obnovení virtuálního počítače znovu.
+Ostatní virtuální počítače v rámci hello systému SAP lze zálohovat pomocí funkce zálohování virtuálních počítačů Azure. Zálohování virtuálního počítače Azure získali zavedená v rané fázi 2015 a mezitím je standardní metoda tooback až dokončení virtuálního počítače v Azure. Zálohování Azure ukládá hello záloh v Azure a umožňuje obnovení virtuálního počítače znovu.
 
 > [!NOTE]
-> Od prosince 2015 pomocí zálohování virtuálních počítačů by neměly být jedinečné ID virtuálního počítače, který se používá pro SAP licencování. To znamená, že obnovení ze zálohy virtuálního počítače vyžaduje instalaci nový licenční klíč SAP jako obnovený virtuální počítač se považuje za nového virtuálního počítače a není to náhrada bývalé ta, která byla uložena.
+> Od prosince 2015 pomocí zálohování virtuálních počítačů by neměly být hello jedinečné ID virtuálního počítače, který se používá pro SAP licencování. To znamená, že obnovení ze zálohy virtuálního počítače vyžaduje instalaci nový licenční klíč SAP hello obnovit virtuální počítač se považuje toobe nového virtuálního počítače a není to náhrada bývalé ta, která byla uložena.
 >
 > ![Windows][Logo_Windows] Windows
 >
-> Teoreticky, virtuálních počítačů, které spuštění databáze lze zálohovat konzistentním způsobem také pokud databázového systému systém podporuje systému Windows VSS (služby Stínová kopie svazku <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>) jako je například SQL Server neexistuje.
-> Upozorňujeme však, založený na zálohování virtuálního počítače Azure, které v daném okamžiku obnoví databází nejsou možné. Proto doporučujeme provést zálohování databází s funkcemi databázového systému, aniž byste museli spoléhat na zálohování virtuálních počítačů Azure.
+> Teoreticky, virtuálních počítačů, které spuštění databáze lze zálohovat konzistentním způsobem také pokud hello databázového systému systém podporuje hello systému Windows VSS (služby Stínová kopie svazku <https://msdn.microsoft.com/library/windows/desktop/bb968832 (v=vs.85).aspx >) jako, například SQL Server neexistuje.
+> Upozorňujeme však, založený na zálohování virtuálního počítače Azure, které v daném okamžiku obnoví databází nejsou možné. Proto doporučujeme zálohování tooperform databází s funkcemi databázového systému, aniž byste museli spoléhat na zálohování virtuálních počítačů Azure.
 >
-> Abyste se seznámili s zálohování virtuálních počítačů Azure, spusťte zde: <https://docs.microsoft.com/azure/backup/backup-azure-vms>.
+> tooget obeznámeni s zálohování virtuálních počítačů Azure, spusťte zde: <https://docs.microsoft.com/azure/backup/backup-azure-vms>.
 >
-> Další možnosti se mají použít kombinaci aplikace Microsoft Data Protection Manager nainstalovat do virtuálního počítače Azure a Azure Backup k zálohování a obnovení databáze. Další informace naleznete zde: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>.  
+> Další možnosti jsou toouse kombinaci aplikace Microsoft Data Protection Manager nainstalovat do virtuálního počítače Azure a Azure Backup k zálohování a obnovení databáze. Další informace naleznete zde: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>.  
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Neexistuje žádný ekvivalent VSS systému Windows v systému Linux. Pouze konzistentními soubory zálohy jsou proto možná, ale není konzistentní s aplikací zálohování. Zálohování databázového systému SAP by mělo být provedeno pomocí funkce databázového systému. Systém souborů, které zahrnují data související s SAP lze uložit, například pomocí vkládání popsaný tady: <http://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Není žádná ekvivalentní tooWindows služby Stínová kopie svazku v systému Linux. Pouze konzistentními soubory zálohy jsou proto možná, ale není konzistentní s aplikací zálohování. Hello databázového systému SAP zálohování by mělo být provedeno pomocí funkce databázového systému. Hello systému souborů, které zahrnují data související s SAP hello lze uložit, například pomocí vkládání popsaný tady: <http://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 
 ### <a name="azure-as-dr-site-for-production-sap-landscapes"></a>Azure jako web zotavení po Havárii pro produkční prostředí SAP krajiny
-Rozšíření pro různé součásti kolem technologie Hyper-V, System Center a Azure od Mid 2014, povolit používání Azure jako lokalita zotavení po Havárii pro virtuální počítače spuštěné místní založené na technologii Hyper-V.
+Od Mid 2014 rozšíření toovarious součásti kolem technologie Hyper-V, System Center a Azure hello využití povolit ve službě Azure jako web zotavení po Havárii pro virtuální počítače spuštěné místní založené na technologii Hyper-V.
 
-Blog s podrobnostmi o tom, jak nasadit toto řešení je tady popisujeme: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
+Blog s podrobnostmi o tom, jak toodeploy toto řešení je tady popisujeme: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
 ## <a name="summary"></a>Souhrn
-Klíčové body vysoké dostupnosti pro SAP systémy v Azure jsou:
+Hello klíčové body vysoké dostupnosti pro SAP systémy v Azure jsou:
 
-* V tuto chvíli SAP jediný bod selhání nelze zabezpečit přesně stejně jako je možné ji provést v místním nasazení. Důvodem je, že sdíleného disku ještě nemůže být sestaven clustery v Azure bez použití softwaru 3. stran.
-* Pro vrstvu databázového systému, budete muset použít funkce databázového systému, který není závislý na sdílený disk clusteru technologie. Podrobnosti jsou dokumentovány v článku [databázového systému průvodce][dbms-guide].
-* Chcete-li minimalizovat dopad problémy v rámci domén selhání v Azure údržba infrastruktury nebo hostitele, byste měli používat skupiny dostupnosti Azure:
-  * Doporučujeme mít jednu sadu dostupnosti pro SAP aplikační vrstvu.
-  * Doporučuje se mít samostatnou sadu dostupnosti pro vrstvu databázového systému SAP.
-  * NENÍ doporučujeme použít stejnou sadu dostupnosti pro virtuální počítače různých systémů SAP.
-  * Doporučujeme použít prémiové disky spravované.
-* Pro účely zálohování vrstvy databázového systému SAP, zkontrolujte, zda [databázového systému průvodce][dbms-guide].
-* Zálohování instance SAP dialogové okno má moc smysl vzhledem k tomu, že je obvykle rychlejší znovu nasadit jednoduchý dialogu instancí.
-* Zálohování virtuálních počítačů, které obsahuje globální adresář systému SAP a s ním všechny profily různých instancí dává smysl a opakuje zálohování nebo, například funkce vkládání v systému Linux. Vzhledem k tomu, že jsou rozdíly mezi Windows Server 2008 (R2) a Windows Server 2012 (R2), které usnadňují zálohování pomocí novější systému Windows Server verze, doporučujeme spustit jako Windows hostovaný operační systém Windows Server 2012 (R2).
+* V tuto chvíli, hello SAP jediný bod selhání nelze zabezpečit přesně hello stejný způsobem, jak je možné ji provést v místním nasazení. Hello důvodem je, že sdílené diskové clustery nelze ještě být vytvořené v Azure bez použití hello 3. stran softwaru.
+* Pro vrstvu databázového systému hello musíte funkce toouse databázového systému, který není závislý na sdílený disk clusteru technologie. Podrobnosti jsou popsané v hello [databázového systému průvodce][dbms-guide].
+* dopad hello toominimize problémy v rámci domén selhání v hello Azure infrastruktury nebo hostitele údržby, byste měli používat skupiny dostupnosti Azure:
+  * Je doporučeno toohave, jednu sadu dostupnosti pro hello SAP aplikační vrstvu.
+  * Doporučujeme toohave sadu samostatné dostupnosti pro vrstvu databázového systému SAP hello.
+  * Doporučujeme není hello tooapply sadu stejné dostupnosti pro virtuální počítače různých systémů SAP.
+  * Doporučujeme disky spravované toouse Premium.
+* Pro účely zálohování hello databázového systému SAP vrstvy, zkontrolujte, zda text hello [databázového systému průvodce][dbms-guide].
+* Zálohování instance SAP dialogové okno má málo smysl, protože je to obvykle rychlejší instancí tooredeploy jednoduché dialogové okno.
+* Zálohování virtuálních počítačů, které obsahuje globální adresář hello hello systému SAP a s ním hello všechny profily hello různých instancí hello dává smysl a opakuje zálohování nebo, například funkce vkládání v systému Linux. Vzhledem k tomu, že jsou rozdíly mezi Windows Server 2008 (R2) a Windows Server 2012 (R2), které umožňují snadnější tooback díky hello uvolní novější systému Windows Server, doporučujeme toorun systému Windows Server 2012 (R2) jako Windows hostovaného operačního systému.
