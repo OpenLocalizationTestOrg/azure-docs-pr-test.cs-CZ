@@ -1,5 +1,5 @@
 ---
-title: "Správa schématu Azure SQL Database v aplikaci s více tenanty | Dokumentace Microsoftu"
+title: "schéma databáze SQL Azure aaaManage v víceklientské aplikace | Microsoft Docs"
 description: "Správa schématu pro více tenantů v aplikaci s více tenanty využívající službu Azure SQL Database"
 keywords: kurz k sql database
 services: sql-database
@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 78d76efb88bf11fa18a416b59e6f881539141232
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ea946e556808dabd60dd39cb8173d0512d4bddec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Správa schématu pro více klientů v Wingtip SaaS aplikace
+# <a name="manage-schema-for-multiple-tenants-in-hello-wingtip-saas-application"></a>Správa schématu pro více klientů v hello Wingtip SaaS aplikace
 
-[První kurz Wingtip SaaS](sql-database-saas-tutorial.md) ukazuje, jak zřídit databázi klienta a zaregistrovat v katalogu aplikací. Všechny aplikace, jako je aplikace Wingtip SaaS bude v průběhu času vyvíjejí a v některých případech bude vyžadovat změny databáze. Změny se mohou týkat nového nebo změněného schématu, nových nebo změněných referenčních dat a úloh spojených s pravidelnou údržbou databáze, které zajišťují optimální výkon aplikace. U SaaS aplikace musí být tyto změny nasazeny koordinovaně u potenciálně velkého počtu klientských databází. Pro tyto změny se v budoucnu klienta databáze musí být součástí procesu zřizování.
+Hello [první kurz Wingtip SaaS](sql-database-saas-tutorial.md) ukazuje, jak zřídit databázi klienta a zaregistrujte ho v katalogu hello aplikace hello. Podobně jako všechny aplikace hello Wingtip SaaS aplikace bude momentální v čase a v některých případech bude vyžadovat změny toohello databáze. Změny mohou zahrnovat nové nebo změněné schéma, nové nebo změněné referenčních dat a běžných databáze údržby úlohy tooensure optimální výkon. S aplikací SaaS třeba tyto změny toobe nasazený koordinovaným způsobem na potenciálně masivní firemního vozového klienta databází. Pro tyto změny toobe v budoucnosti klienta databáze, potřebují toobe součástí hello procesu zřizování.
 
-Tento kurz zkoumá dva scénáře: nasazení aktualizací referenčních dat u všech tenantů a opětovné ladění indexu u tabulky, která obsahuje referenční data. [Elastické úlohy](sql-database-elastic-jobs-overview.md) funkce se používá k provedení těchto operací napříč všech klientů a *zlaté* klienta databáze, která se používá jako šablonu pro nové databáze.
+Jsou zde popsány v tomto kurzu dva scénáře - nasazení aktualizací referenční data pro všechny klienty, a retuning indexu na hello tabulky obsahující hello referenční data. Hello [elastické úlohy](sql-database-elastic-jobs-overview.md) funkce je použité tooexecute těchto operací ve všech klientů a hello *zlaté* klienta databáze, která se používá jako šablonu pro nové databáze.
 
 V tomto kurzu se naučíte:
 
@@ -38,81 +38,81 @@ V tomto kurzu se naučíte:
 > * Vytvořit index tabulky ve všech databázích tenantů
 
 
-Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
+toocomplete splnění tohoto kurzu, ujistěte se, hello následující požadavky:
 
-* Adresář Wingtip SaaS aplikace je nasazená. Nasazení za méně než pět minut najdete v tématu [nasazení a seznamte se s Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
+* Hello Wingtip SaaS aplikace je nasazená. toodeploy za méně než pět minut, najdete v části [nasazení a seznamte se s hello Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Je nainstalovaná nejnovější verze SQL Server Management Studia (SSMS). [Stažení a instalace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+* je nainstalovaná nejnovější verze Hello systému SQL Server Management Studio (SSMS). [Stažení a instalace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-*Tento kurz používá funkce služby SQL Database, které fungují ve verzi Limited Preview (úlohy služby Elastic Database). Pokud chcete tento kurz absolvovat, pošlete ID svého předplatného na SaaSFeedback@microsoft.com. Jako předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato předběžná verze je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s ani nepodporuje.*
+*Tento kurz používá funkce hello služby databáze SQL, které jsou v omezené preview (úlohy elastické databáze). Pokud chcete v tomto kurzu toodo, zadejte svoje id předplatného tooSaaSFeedback@microsoft.com s předmětem = elastické úlohy Preview. Po přijetí potvrzení, že je povoleno vašeho předplatného, [stáhnout a nainstalovat nejnovější rutiny předběžné verze úlohy hello](https://github.com/jaredmoo/azure-powershell/releases). Tato předběžná verze je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s ani nepodporuje.*
 
 
-## <a name="introduction-to-saas-schema-management-patterns"></a>Úvod do principu správy schématu SaaS
+## <a name="introduction-toosaas-schema-management-patterns"></a>Úvod tooSaaS vzory Správa schématu
 
-Princip jednoho tenanta na databázi SaaS má řadu výhod, které vyplývají z výsledné izolace dat, ale současně přináší další komplikace spojené s údržbou a správou mnoha databází. Služba [Elastic Jobs](sql-database-elastic-jobs-overview.md) usnadňuje správu a řízení datové vrstvy SQL. Úlohy umožňují bezpečně a spolehlivě spouštět na skupině databází úkoly (skripty T-SQL), a to nezávisle na interakci nebo vstupech uživatele. Tento způsob je možné použít k nasazení schématu a k běžným změnám referenčních dat u všech tenantů v aplikaci. Službu Elastic Jobs můžete použít k údržbě *zlaté* kopie databáze, která slouží k vytváření nových tenantů, aby se vždy použilo nejnovější schéma a nejnovější referenční data.
+Hello jednoho klienta na databázi SaaS vzor výhody v mnoha směrech z izolace hello data, která způsobí, že, ale v hello současně zavádí další složitosti hello údržbu a správu velkého počtu databází. [Elastické úlohy](sql-database-elastic-jobs-overview.md) usnadňuje administraci a správu hello SQL datové vrstvy. Úlohy umožňují toosecurely a spolehlivě, spouštět úlohy (skriptů T-SQL) nezávislé na vstupu, nebo interakci uživatelů pro skupinu databází. Tato metoda může být použité toodeploy schéma a běžných změn referenčních dat napříč všechny klienty v aplikaci. Elastické úlohy lze také použít toomaintain *zlaté* kopii databáze hello používá toocreate nové klienty, zajištění vždy obsahuje nejnovější schématu a referenčních dat hello.
 
 ![obrazovka](media/sql-database-saas-tutorial-schema-management/schema-management.png)
 
 
 ## <a name="elastic-jobs-limited-preview"></a>Elastic Jobs verze Limited Preview
 
-K dispozici je nová verze služby Elastic Jobs. Jde o integrovanou funkci Azure SQL Database, která nevyžaduje další služby ani součásti. Tato nová verze služby Elastic Jobs je v současnosti ve verzi Limited Preview. Verze Limited Preview v současnosti podporuje prostředí PowerShell, které umožňuje vytvářet účty úloh, a příkazy T-SQL, které umožňují vytvářet a spravovat úlohy.
+K dispozici je nová verze služby Elastic Jobs. Jde o integrovanou funkci Azure SQL Database, která nevyžaduje další služby ani součásti. Tato nová verze služby Elastic Jobs je v současnosti ve verzi Limited Preview. Tato omezená preview aktuálně podporuje účty úlohy toocreate prostředí PowerShell a toocreate T-SQL a spravovat úlohy.
 
 > [!NOTE]
-> *Tento kurz používá funkce služby SQL Database, které fungují ve verzi Limited Preview (úlohy služby Elastic Database). Pokud chcete tento kurz absolvovat, pošlete ID svého předplatného na SaaSFeedback@microsoft.com. Jako předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato předběžná verze je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s ani nepodporuje.*
+> *Tento kurz používá funkce hello služby databáze SQL, které jsou v omezené preview (úlohy elastické databáze). Pokud chcete v tomto kurzu toodo, zadejte svoje id předplatného tooSaaSFeedback@microsoft.com s předmětem = elastické úlohy Preview. Po přijetí potvrzení, že je povoleno vašeho předplatného, [stáhnout a nainstalovat nejnovější rutiny předběžné verze úlohy hello](https://github.com/jaredmoo/azure-powershell/releases). Tato předběžná verze je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s ani nepodporuje.*
 
-## <a name="get-the-wingtip-application-scripts"></a>Získání skriptů aplikace Wingtip
+## <a name="get-hello-wingtip-application-scripts"></a>Získat hello Wingtip aplikační skripty
 
-Adresář Wingtip SaaS skripty a zdrojový kód aplikace, které jsou k dispozici v [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. [Postup stažení skripty Wingtip SaaS](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
+Hello Wingtip SaaS skripty a zdrojový kód aplikace jsou k dispozici v hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. [Kroky toodownload hello Wingtip SaaS skripty](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>Vytvoření databáze účtu úlohy a nového účtu úlohy
 
-Tento kurz vyžaduje, abyste k vytvoření databáze účtu úlohy a účtu úlohy použili PowerShell. Stejně jako MSDB a SQL Agent i služba Elastic Jobs ukládá definice úloh, stavy úloh a historii do Azure SQL Database. Jakmile vytvoříte účet úlohy, můžete hned začít vytvářet a monitorovat úlohy.
+Tento kurz vyžaduje, že abyste použili prostředí PowerShell toocreate hello úlohy databáze a úlohy účtu. Jako databázi MSDB a agenta serveru SQL databáze elastické úlohy používá Azure SQL toostore definice úlohy, stav úlohy a historie. Po vytvoření účtu hello úlohy můžete vytvořit a monitorujte úlohy, okamžitě.
 
-1. V **integrovaném skriptovacím prostředí (ISE) v prostředí PowerShell** otevřete skript ...\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1*.
-1. Stisknutím klávesy **F5** spusťte skript.
+1. Otevřete... \\Learning moduly\\Správa schématu\\*ukázku SchemaManagement.ps1* v hello **prostředí PowerShell ISE**.
+1. Stiskněte klávesu **F5** toorun hello skriptu.
 
-Skript *Demo-SchemaManagement.ps1* volá skript *Deploy-SchemaManagement.ps1*, který na serveru katalogu vytvoří databázi *S2* pojmenovanou **jobaccount**. Tento skript pak vytvoří účet úlohy a předá databázi jobaccount jako parametr volání vytvoření účtu úlohy.
+Hello *ukázku SchemaManagement.ps1* hello volání skriptu *nasadit SchemaManagement.ps1* skriptu toocreate *S2* databáze s názvem **jobaccount** na server hello katalogu. Pak vytvoří účet hello úlohy, předávání hello jobaccount databáze jako parametr toohello úlohy účet vytvoření volání.
 
-## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Vytvoření úlohy, která u všech tenantů nasadí nová referenční data
+## <a name="create-a-job-toodeploy-new-reference-data-tooall-tenants"></a>Vytvořit úlohu toodeploy nový odkaz datové tooall klientů
 
-Každá databáze tenanta zahrnuje sadu typů míst, které definují druh událostí hostovaných jako místo. V tomto příkladu nasadíte aktualizaci u všech databází tenantů. Aktualizace přidá dva další typy míst: *Motorcycle Racing* (Motocyklové závody) a *Swimming Club* (Plavecký klub). Tyto typy míst odpovídají obrázkům na pozadí zobrazeným v aplikaci událostí tenanta.
+Každá databáze klienta zahrnuje sadu místo typů, které definují hello druh události, které jsou hostované na místo. V tomto cvičení nasadit aktualizaci tooall hello klienta databází tooadd dva další místo typy: *Motorky Racing* a *křížovou kartou plaveckých*. Tyto typy místo odpovídají toohello obrázek pozadí, které se zobrazí v aplikaci události hello klienta.
 
-Klikněte na rozevírací nabídku Venue Type (Typ místa) a ověřte, že jako typ místa je k dispozici jen 10 možností. Konkrétně ověřte, že v seznamu není „Motorcycle Racing“ ani „Swimming Club“.
+Klikněte na tlačítko hello místo typu rozevírací nabídky a ověření, že jsou k dispozici jenom 10 možnosti Typ místo a konkrétně tento Motorky Racing a 'plaveckých křížovou kartou, nejsou zahrnuty v seznamu hello.
 
-Teď vytvoříte úlohu, která aktualizuje tabulku *VenueTypes* ve všech databázích tenantů a přidá do ní nové typy míst.
+Nyní vytvoříme úlohy tooupdate hello *VenueTypes* tabulky v všechny databáze hello klienta a přidat nové typy místo hello.
 
-K vytvoření nové úlohy použijeme sadu uložených systémových procedur úloh vytvořených v databázi jobaccount při vytvoření účtu úlohy.
+toocreate novou úlohu používáme sadu úloh, které systém uložené procedury v hello jobaccount databázi vytvořena, když byl vytvořen účet projektu hello.
 
-1. Otevřete SSMS a připojte se k serveru katalogu: server catalog-\<uživatel\>.database.windows.net
-1. Připojte se také k serveru tenanta: tenants1-\<uživatel\>.database.windows.net
-1. Přejděte k databázi *contosoconcerthall* na serveru *tenants1* a zadejte dotaz do tabulky *VenueTypes*, abyste si potvrdili, že v seznamu výsledků **není** *Motorcycle Racing* ani *Swimming Club*.
-1. Otevřete soubor …\\Learning Modules\\Schema Management\\DeployReferenceData.sql
-1. Upravit příkaz: nastavte @wtpUser = &lt;uživatele&gt; a nahraďte hodnotu uživatele použít při nasazení aplikace Wingtip
-1. Zkontrolujte, že jste připojeni k databázi jobaccount, a stisknutím klávesy **F5** spusťte skript.
+1. Otevřete aplikaci SSMS a připojit server katalogu toohello: katalogu -\<uživatele\>. database.windows.net serveru
+1. Také připojit server klienta toohello: tenants1 -\<uživatele\>. database.windows.net
+1. Procházet toohello *contosoconcerthall* databáze na hello *tenants1* serveru a dotaz hello *VenueTypes* tooconfirm tabulky, *Motorky Racing*  a *křížovou kartou plaveckých* **nejsou** v seznamu výsledků hello.
+1. Otevřete hello souboru... \\Učení moduly\\Správa schématu\\DeployReferenceData.sql
+1. Upravit příkaz hello: nastavte @wtpUser = &lt;uživatele&gt; a nahraďte hodnotu uživatele hello použít při nasazení aplikace Wingtip hello
+1. Ujistěte se, jsou připojené toohello jobaccount databáze a stiskněte klávesu **F5** pro spuštění skriptu hello
 
-* **sp\_add\_target\_group** vytvoří cílovou skupinu s názvem DemoServerGroup. Teď potřebujeme přidat cílové členy.
-* **SP\_přidat\_cíl\_skupiny\_člen** přidá *server* cíle typ člena, které považuje za všechny databáze v rámci tohoto serveru (Poznámka: Toto je tenants1-&lt; Uživatel&gt; server obsahující databáze klienta) v čase úlohy spuštění by měl být součástí úlohy, je přidání druhý *databáze* cíle typ člena, konkrétně "zlatá" databáze (basetenantdb) která se nachází v katalogu -&lt;uživatele&gt; serveru a nakonec jiné *databáze* cíle typ člena skupiny zahrnout adhocanalytics databázi, která se používá novější kurzu.
+* **SP\_přidat\_cíl\_skupiny** vytvoří hello cílová skupina DemoServerGroup, nyní potřebujeme tooadd cíl členy.
+* **SP\_přidat\_cíl\_skupiny\_člen** přidá *server* cíle typ člena, které považuje za všechny databáze v rámci tohoto serveru (Poznámka: Toto je hello tenants1-&lt; Uživatel&gt; server obsahující databáze klienta hello) v době úlohy spuštění by měl být součástí hello úlohy, je přidání druhý hello *databáze* cílové typ člena, konkrétně hello ("zlatá" databáze basetenantdb), se nachází v katalogu -&lt;uživatele&gt; serveru a nakonec jiné *databáze* cílové skupiny člena typu tooinclude hello adhocanalytics databázi, která se používá novější kurzu.
 * **sp\_add\_job** vytvoří úlohu s názvem „Reference Data Deployment“.
-* **SP\_přidat\_krok úlohy** vytvoří krok úlohy obsahující text příkazů T-SQL aktualizovat na referenční tabulku VenueTypes
-* Zbývající pohledy ve skriptu zobrazují existující objekty a monitorují provádění úlohy. Ke kontrole hodnota stavu v použijte tyto dotazy **životního cyklu** sloupec k určení, kdy úloha úspěšně dokončil všechny databáze klienta a dva další databáze, které obsahují na referenční tabulku.
+* **SP\_přidat\_krok úlohy** vytvoří obsahující T-SQL příkazu text tooupdate hello referenční tabulku, VenueTypes krok úlohy hello
+* Zbývající zobrazení Hello ve skriptu hello zobrazení hello existenci hello objekty a provádění úlohy monitorování. Tyto dotazy tooreview hello stav hodnotu použít v hello **životního cyklu** sloupec toodetermine při hello úloha úspěšně dokončí na všechny databáze klienta a hello dva další databáze, které obsahují hello referenční tabulku.
 
-1. V SSMS přejděte k databázi *contosoconcerthall* na serveru *tenants1* a zadejte dotaz do tabulky *VenueTypes*, abyste si potvrdili, že v seznamu výsledků teď **je** *Motorcycle Racing* i *Swimming Club*.
+1. V aplikaci SSMS, procházet toohello *contosoconcerthall* databáze na hello *tenants1* serveru a dotaz hello *VenueTypes* tooconfirm tabulky, *Motorky Racing* a *křížovou kartou plaveckých* **jsou** nyní v seznamu výsledků hello.
 
 
-## <a name="create-a-job-to-manage-the-reference-table-index"></a>Vytvoření úlohy pro správu indexu referenční tabulky
+## <a name="create-a-job-toomanage-hello-reference-table-index"></a>Vytvořte index úlohy toomanage hello Referenční tabulka
 
-Jde o podobné cvičení, jako bylo to předchozí. V tomto cvičení vytvoříme úlohu, která znovu sestaví index primárního klíče referenční tabulky. Jde o typickou operaci při správě databáze, kterou správce většinou provádí po načtení velkého objemu dat do tabulky.
+Podobné toohello předchozím cvičení, tento postup vytvoří indexem úlohy toorebuild hello na primární klíč tabulky hello odkaz, operace správy typické databáze Správce může provádět po zatížení velkých objemů dat do tabulky.
 
-K vytvoření úlohy použijeme stejné úlohy uložených procedur „system“.
+Vytvoření úlohy pomocí hello stejné úlohy "systém" uložené procedury.
 
-1. Otevřete aplikaci SSMS a připojte se k katalogu -&lt;uživatele&gt;. database.windows.net serveru
-1. Otevřete soubor …\\Learning Modules\\Schema Management\\OnlineReindex.sql.
-1. Klikněte pravým tlačítkem, vyberte připojení a připojení ke katalogu -&lt;uživatele&gt;. database.windows.net serveru, pokud ještě není připojen.
-1. Zkontrolujte, že jste připojeni k databázi jobaccount, a stisknutím klávesy F5 spusťte skript.
+1. Otevřete aplikaci SSMS a připojte toohello katalogu -&lt;uživatele&gt;. database.windows.net serveru
+1. Otevřete hello souboru... \\Učení moduly\\Správa schématu\\OnlineReindex.sql
+1. Klikněte pravým tlačítkem, vyberte připojení a připojení toohello katalogu -&lt;uživatele&gt;. database.windows.net serveru, pokud ještě není připojen.
+1. Zkontrolujte, jestli jsou připojené toohello jobaccount databáze a stiskněte klávesu F5 toorun hello skriptu
 
 * sp\_add\_job vytvoří novou úlohu s názvem „Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885“.
-* sp\_add\_jobstep vytvoří krok úlohy obsahující text příkazu T-SQL, který aktualizuje index.
+* SP\_přidat\_krok úlohy vytvoří krok úlohy hello obsahující T-SQL příkazu text tooupdate hello indexu
 
 
 
@@ -123,7 +123,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 
-> * Vytvořit účet úlohy pro dotazy do více tenantů
+> * Vytvořit účet tooquery úlohy v rámci více klientů
 > * Aktualizovat data ve všech databázích tenantů
 > * Vytvořit index tabulky ve všech databázích tenantů
 
@@ -132,6 +132,6 @@ V tomto kurzu jste se naučili:
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Další kurzy, které stavět na adresář Wingtip SaaS nasazení aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* [Další kurzy, které stavějí hello nasazení Wingtip SaaS aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Správa cloudových databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-overview.md)
 * [Vytvoření a správa databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-create-and-manage.md)

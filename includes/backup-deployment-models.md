@@ -1,4 +1,4 @@
-Služba Azure Backup má dva typy trezorů – trezor Backup a trezor Recovery Services. První byl trezor Backup. Po něm přišel trezor Recovery Services na podporu rozšířeného modelu nasazení Resource Manager. Společnost Microsoft doporučuje používat model nasazení Resource Manager, pokud výslovně nepotřebujete model nasazení Classic.
+Hello služby zálohování Azure má dva typy trezorů - hello úložiště záloh a trezoru služeb zotavení hello. první byla přijata Hello úložiště záloh. Potom hello trezor služeb zotavení pocházejí podél nasazení Resource Manager toosupport hello rozšířit. Společnost Microsoft doporučuje používat model nasazení Resource Manager, pokud výslovně nepotřebujete model nasazení Classic.
 
 | **Nasazení** | **Azure Portal** | **Trezor** |
 | --- | --- | --- |
@@ -6,7 +6,7 @@ Služba Azure Backup má dva typy trezorů – trezor Backup a trezor Recovery S
 | Resource Manager |[Azure](https://portal.azure.com) |Recovery Services |
 
 > [!NOTE]
-> Trezory Backup nemohou chránit řešení s modelem nasazení Resource Manager. Můžete ale použít trezor Recovery Services k ochraně serverů a virtuálních počítačů s modelem nasazení Classic.  
+> Trezory Backup nemohou chránit řešení s modelem nasazení Resource Manager. Můžete však použít služeb zotavení trezoru tooprotect classically nasazení serverů a virtuálních počítačů.  
 > 
 > 
 

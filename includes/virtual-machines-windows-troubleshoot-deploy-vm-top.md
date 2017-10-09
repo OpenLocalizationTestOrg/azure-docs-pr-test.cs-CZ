@@ -1,4 +1,4 @@
-Následující problémy mohou pomoci vyřešit problém. Pokud chcete spustit Poradce při potížích, projděte si tyto kroky:
+Hello následující nejdůležitější problémy mohou pomoci vyřešit problém. toostart řešení potíží, projděte si tyto kroky:
 
-- [Cluster nemůže podporovat požadovaná velikost virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
-- [Cluster nemá uvolnění prostředků](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)
+- [Hello clusteru nepodporuje hello požadovaná velikost virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
+- [Hello cluster nebude mít uvolnění prostředků](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)

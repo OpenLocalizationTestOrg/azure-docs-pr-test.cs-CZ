@@ -1,5 +1,5 @@
 ---
-title: "Optimalizace transakcí pro SQL Data Warehouse | Microsoft Docs"
+title: transakce aaaOptimizing pro SQL Data Warehouse | Microsoft Docs
 description: "Příručky nejlepších praktik o zápisu efektivní transakce aktualizace v Azure SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,36 +15,36 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a821161711db9460b7e10d3cf7ba498d711448b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="optimizing-transactions-for-sql-data-warehouse"></a>Optimalizace transakcí pro SQL Data Warehouse
-Tento článek vysvětluje, jak optimalizovat výkon transakcí kódu a současně minimalizujete její rizik dlouho odvolání.
+Tento článek vysvětluje, jak toooptimize hello výkonu transakcí kódu a současně minimalizujete její rizik dlouho odvolání.
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
-Transakce jsou důležitou součástí relační databázový stroj. SQL Data Warehouse používá při úpravě dat transakce. Tyto transakce může být explicitní nebo implicitní. Jeden `INSERT`, `UPDATE` a `DELETE` příkazy jsou všechny příklady implicitní transakce. Explicitní transakce jsou zapsány explicitně vývojáři pomocí `BEGIN TRAN`, `COMMIT TRAN` nebo `ROLLBACK TRAN` a jsou obvykle používány, pokud se více příkazů úpravy musí být vázáno společně v jedné jednotky atomic. 
+Transakce jsou důležitou součástí relační databázový stroj. SQL Data Warehouse používá při úpravě dat transakce. Tyto transakce může být explicitní nebo implicitní. Jeden `INSERT`, `UPDATE` a `DELETE` příkazy jsou všechny příklady implicitní transakce. Explicitní transakce jsou zapsány explicitně vývojáři pomocí `BEGIN TRAN`, `COMMIT TRAN` nebo `ROLLBACK TRAN` a jsou obvykle používány při více příkazů úpravy potřebovat toobe svázané společně v jedné jednotky atomic. 
 
-Azure SQL Data Warehouse potvrdí změny do databáze pomocí protokolů transakcí. Každý distribuční má svou vlastní transakčního protokolu. Zápisy protokolu transakce jsou automatické. Není nutná žádná konfigurace. Ale a zároveň zaručí se tento proces zápisu zavést režijní náklady v systému. Zápisem transakčně efektivní kódu můžete minimalizovat tomuto vlivu. Transakčně efektivní kód široce spadá do dvou kategorií.
+Azure SQL Data Warehouse potvrdí změny toohello databázi pomocí protokolů transakcí. Každý distribuční má svou vlastní transakčního protokolu. Zápisy protokolu transakce jsou automatické. Není nutná žádná konfigurace. A zároveň zaručí se tento proces zápisu hello ji v systému hello zavést režijní náklady. Zápisem transakčně efektivní kódu můžete minimalizovat tomuto vlivu. Transakčně efektivní kód široce spadá do dvou kategorií.
 
 * Pokud je to možné konstruktů minimální úroveň protokolování
-* Zpracování dat pomocí obor dávky, aby se zabránilo singulární dlouhotrvající transakce
-* Použít oddíl přepínání vzor pro velké změny v daném oddílu
+* Zpracování dat pomocí obor jednotném čísle tooavoid dávek dlouho běžící transakce
+* Použít oddíl přepínání vzor pro zadaný oddíl tooa velké změny
 
 ## <a name="minimal-vs-full-logging"></a>Minimální oproti úplné protokolování
-Na rozdíl od plně protokolovaných operací, které používají ke sledování každé změně řádek transakčního protokolu, minimálně protokolovaných operací uchovávání informací o přidělení rozsahu a pouze metadata změny. Proto minimální protokolování zahrnuje protokolování pouze informace, které je potřeba vrácení transakce v případě selhání nebo explicitní žádost (`ROLLBACK TRAN`). Jak informace je mnohem méně sledovat v protokolu transakcí, provede se lépe než podobné velikosti plně protokolovaných operací minimálně protokolovaných operací. Kromě toho protože méně zápisy přejděte transakčního protokolu, je generována mnohem menší množství dat protokolu a stejně tak více vstupně-výstupních operací efektivní.
+Na rozdíl od plně protokolovaných operací, které používají hello transakce protokolu tookeep sledovat všechny změny řádek, minimálně protokolovaných operací uchovávání informací o přidělení rozsahu a pouze metadata změny. Proto minimální protokolování zahrnuje protokolování pouze hello informace, které jsou požadované toorollback hello transakce v události hello selhání nebo explicitní požadavku (`ROLLBACK TRAN`). Jak informace je mnohem méně sledovat v protokolu transakcí hello, provede se lépe než podobné velikosti plně protokolovaných operací minimálně protokolovaných operací. Kromě toho protože méně zápisy přejděte hello transakčního protokolu, je generována mnohem menší množství dat protokolu a stejně tak více vstupně-výstupních operací efektivní.
 
-Omezení zabezpečení transakce se vztahují pouze na plně protokolovaných operací.
+omezení zabezpečení transakce Hello platit pouze operace toofully přihlášení.
 
 > [!NOTE]
-> Minimálně protokolovaných operací se účastnit explicitních transakcí. Jak jsou sledovat všechny změny v přidělení struktury, je možné vrátit minimálně protokolovaných operací. Je důležité si uvědomit, že změna "minimálně" protokolu není zrušení protokolu.
+> Minimálně protokolovaných operací se účastnit explicitních transakcí. Sledování všech změn v přidělení struktury, je možné tooroll zpět minimálně protokolována operace. Je důležité k jeho nastavení toounderstand, který změnu hello je "minimálně" není zrušení protokolu.
 > 
 > 
 
 ## <a name="minimally-logged-operations"></a>Minimálně protokolovaných operací
-Následující operace podporují minimálně protokolována:
+Hello následující operace jsou schopny minimálně protokolována:
 
 * VYTVOŘENÍ TABLE AS SELECT ([FUNKCE CTAS][CTAS])
 * PŘÍKAZ INSERT... VYBERTE
@@ -62,12 +62,12 @@ Následující operace podporují minimálně protokolována:
 -->
 
 > [!NOTE]
-> Operace přesunu dat interní (například `BROADCAST` a `SHUFFLE`) nemá vliv omezení zabezpečení transakce.
+> Operace přesunu dat interní (například `BROADCAST` a `SHUFFLE`) nemá vliv hello transakce bezpečnostní omezení.
 > 
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimální protokolování s hromadné načtení
-`CTAS`a `INSERT...SELECT` jsou obě hromadné operace zatížení. Ale obě jsou ovlivněné definici cílové tabulky a závisí na scénáři zatížení. Dole je tabulku, která vysvětluje, pokud hromadné operace plně nebo minimálně zaznamenán:  
+`CTAS`a `INSERT...SELECT` jsou obě hromadné operace zatížení. Však obě jsou ovlivněné definice hello cílové tabulky a závisí na scénáři zátěžového hello. Dole je tabulku, která vysvětluje, pokud hromadné operace plně nebo minimálně zaznamenán:  
 
 | Primární Index | Scénář zatížení | Režim protokolování |
 | --- | --- | --- |
@@ -78,22 +78,22 @@ Následující operace podporují minimálně protokolována:
 | Clusterovaný Index Columnstore |Velikost dávky > = 102,400 za oddílu zarovnán distribuce |**Minimální** |
 | Clusterovaný Index Columnstore |Velikost < 102,400 za oddílu zarovnán distribuční služby batch |Úplná |
 
-Je vhodné poznamenat, že všechny zápisy k aktualizaci sekundární nebo neclusterované indexy bude vždy plně protokolovaných operací.
+Je vhodné poznamenat, že všech zápisu, sekundární nebo neclusterované indexy tooupdate bude vždy plně zaznamenány operace.
 
 > [!IMPORTANT]
-> SQL Data Warehouse je 60 distribuce. Proto za předpokladu, že všechny řádky jsou rozloženy rovnoměrně a cílová v jeden oddíl, dávku muset obsahovat 6,144,000 řádky nebo větší minimálně protokolovaných při zápisu do clusterovaný Columnstore Index. Pokud tabulka je rozdělena na oddíly a řádky vkládání span hranice oddílů, budete potřebovat 6,144,000 řádky za hranice oddílu za předpokladu, že i distribuci dat. Každý oddíl v každém distribučním musí nezávisle překročit prahovou hodnotu činí 102 400 řádek pro vložení do distribuce minimálně protokolovaných.
+> SQL Data Warehouse je 60 distribuce. Proto za předpokladu, že všechny řádky jsou rozloženy rovnoměrně a cílová v jeden oddíl, vaše batch bude nutné toocontain 6,144,000 řádků nebo větší toobe minimálně zaznamená při zápisu tooa Index Columnstore clusteru. Pokud hello tabulka je rozdělena na oddíly a hello řádky vkládání span hranice oddílů, budete potřebovat 6,144,000 řádky za hranice oddílu za předpokladu, že i distribuci dat. Každý oddíl v každém distribučním musí přesahovat nezávisle hello činí 102 400 řádek pro prahovou hodnotu toobe vložení hello minimálně přihlášen distribuční hello.
 > 
 > 
 
-Načítání dat do tabulky neprázdný clusterovaný index často může obsahovat kombinaci plně protokolu a minimálně zaznamenané řádků. Clusterovaný index je vyrovnáváním stromu (b stromu) stránek. Pokud stránky zapisuje do již obsahuje sloupce z jiné transakci, pak tyto zápisy plně zaznamenán. Ale pokud stránka je prázdný pak zápis na této stránce minimálně zaznamenán.
+Načítání dat do tabulky neprázdný clusterovaný index často může obsahovat kombinaci plně protokolu a minimálně zaznamenané řádků. Clusterovaný index je vyrovnáváním stromu (b stromu) stránek. Pokud stránku hello zapisovaný tooalready obsahuje řádky z jiné transakci, pak tyto zápisy plně zaznamenán. Ale pokud stránku hello je prázdný pak hello zápisu toothat stránka bude minimálně protokolována.
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
-`DELETE`je plně protokolovaných operací.  Pokud potřebujete odstranit velké množství dat v tabulce nebo oddíl, často má smysl Další `SELECT` data chcete zachovat, která může běžet jako minimálně protokolovaných operací.  K tomu, vytvořit novou tabulku s [funkce CTAS][CTAS].  Po vytvoření použít [přejmenovat] [ RENAME] vyměnit vaše staré tabulky s nově vytvořené tabulky.
+`DELETE`je plně protokolovaných operací.  Pokud potřebujete toodelete velké množství dat v tabulce nebo oddílu, je často vhodnější příliš`SELECT` hello data chcete tookeep, který může běžet jako minimálně protokolovaných operací.  tooaccomplish, vytvořit novou tabulku s [funkce CTAS][CTAS].  Po vytvoření použít [přejmenovat] [ RENAME] tooswap se vaše staré tabulku s tabulkou hello nově vytvořený.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
 
---Step 01. Create a new table select only the records we want to kep (PromotionKey 2)
+--Step 01. Create a new table select only hello records we want tookep (PromotionKey 2)
 CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
@@ -113,20 +113,20 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
-RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
-RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
+--Step 02. Rename hello Tables tooreplace hello 
+RENAME OBJECT [dbo].[FactInternetSales]   too[FactInternetSales_old];
+RENAME OBJECT [dbo].[FactInternetSales_d] too[FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimalizace aktualizace
-`UPDATE`je plně protokolovaných operací.  Pokud je potřeba aktualizovat velký počet řádků v tabulce nebo oddíl může být často mnohem efektivnější pomocí minimálně protokolovaných operací, jako například [funkce CTAS] [ CTAS] Uděláte to tak.
+`UPDATE`je plně protokolovaných operací.  Pokud potřebujete tooupdate velký počet řádků v tabulce nebo oddíl může být často mnohem efektivnější toouse minimálně protokolovaných operací, jako [funkce CTAS] [ CTAS] toodo tak.
 
-V příkladu níže úplné tabulku aktualizace byl převeden na `CTAS` tak, aby minimální protokolování je možné.
+Příklad dole plném tabulka aktualizace byl v hello převedený tooa `CTAS` tak, aby minimální protokolování je možné.
 
-V takovém případě zpětně přidáváme částku slevy na prodeje v tabulce:
+V takovém případě zpětně přidáváme toohello prodejní částku slevu v tabulce hello:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing hello "Update". 
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
@@ -171,31 +171,31 @@ FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
 ;
 
---Step 02. Rename the tables
-RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
-RENAME OBJECT [dbo].[FactInternetSales_u] TO [FactInternetSales];
+--Step 02. Rename hello tables
+RENAME OBJECT [dbo].[FactInternetSales]   too[FactInternetSales_old];
+RENAME OBJECT [dbo].[FactInternetSales_u] too[FactInternetSales];
 
---Step 03. Drop the old table
+--Step 03. Drop hello old table
 DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Znovu vytvořit velké tabulky můžete využívat výhod pomocí funkce SQL Data Warehouse úlohy správy. Pro další podrobnosti naleznete v části úlohy správy v [souběžnosti] [ concurrency] článku.
+> Znovu vytvořit velké tabulky můžete využívat výhod pomocí funkce SQL Data Warehouse úlohy správy. Pro další podrobnosti naleznete v části Správa toohello zatížení v hello [souběžnosti] [ concurrency] článku.
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimalizace s přepnutí oddílu
-Při velkém měřítku úpravy uvnitř [tabulky oddílu][table partition], pak oddíl přepínání vzor díky spoustu smysl. Pokud úprava dat je důležité a zahrnuje více oddílů, pak jednoduše iterování přes oddíly dosáhne stejného výsledku.
+Při velkém měřítku úpravy uvnitř [tabulky oddílu][table partition], pak oddíl přepínání vzor díky spoustu smysl. Pokud hello úprava dat je důležité a rozsahy, lze dosáhnout více oddílů, pak se jednoduše iterování přes hello oddíly hello stejného výsledku.
 
-Postup provedení oddílu přepínače jsou následující:
+Hello kroky tooperform přepínač oddílu jsou následující:
 
 1. Vytvořte prázdnou na oddíl
-2. Tato aktualizace, proveďte funkce CTAS
-3. Přepínač existujících dat do výstupní tabulky
-4. Přepínač ve nová data
-5. Vyčistit data
+2. Proveďte hello aktualizace funkce CTAS
+3. Přepnout na hello existující data toohello se tabulka
+4. Přepínač ve hello nová data
+5. Vyčištění dat hello
 
-Však k identifikaci oddílů přepnout jsme bude nejprve nutné sestavení pomocné rutiny postup je dole. 
+Ale toohelp identifikovat tooswitch oddíly hello se nejdřív potřebujeme toobuild postup pomocníka například hello jeden níže. 
 
 ```sql
 CREATE PROCEDURE dbo.partition_data_get
@@ -241,12 +241,12 @@ OPTION (LABEL = 'dbo.partition_data_get : CTAS : #ptn_data')
 GO
 ```
 
-Tento postup maximalizuje opětovné použití kódu a udržuje přepnutí příklad kompaktnější oddílu.
+Tento postup maximalizuje opětovné použití kódu a udržuje přepnutí příklad kompaktnější hello oddílu.
 
-Následující kód ukazuje pět kroků uvedených výše k dosažení úplné oddíl přepínání rutiny.
+Hello kód níže ukazuje, že v pěti krocích hello zmíněné tooachieve úplné oddíl přepínání rutiny.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table tooswitch out hello data 
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -268,7 +268,7 @@ WHERE 1=2
 OPTION (LABEL = 'CTAS : Partition Switch IN : UPDATE')
 ;
 
---Create a partitioned aligned table and update the data in the select portion of the CTAS
+--Create a partitioned aligned table and update hello data in hello select portion of hello CTAS
 IF OBJECT_ID('[dbo].[FactInternetSales_in]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_in]
@@ -315,29 +315,29 @@ WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
 OPTION (LABEL = 'CTAS : Partition Switch IN : UPDATE')
 ;
 
---Use the helper procedure to identify the partitions
---The source table
+--Use hello helper procedure tooidentify hello partitions
+--hello source table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales',20030101
 DECLARE @ptn_nmbr_src INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_src
 
---The "in" table
+--hello "in" table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales_in',20030101
 DECLARE @ptn_nmbr_in INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_in
 
---The "out" table
+--hello "out" table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales_out',20030101
 DECLARE @ptn_nmbr_out INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_out
 
---Switch the partitions over
+--Switch hello partitions over
 DECLARE @SQL NVARCHAR(4000) = '
-ALTER TABLE [dbo].[FactInternetSales]    SWITCH PARTITION '+CAST(@ptn_nmbr_src AS VARCHAR(20))    +' TO [dbo].[FactInternetSales_out] PARTITION '    +CAST(@ptn_nmbr_out AS VARCHAR(20))+';
-ALTER TABLE [dbo].[FactInternetSales_in] SWITCH PARTITION '+CAST(@ptn_nmbr_in AS VARCHAR(20))    +' TO [dbo].[FactInternetSales] PARTITION '        +CAST(@ptn_nmbr_src AS VARCHAR(20))+';'
+ALTER TABLE [dbo].[FactInternetSales]    SWITCH PARTITION '+CAST(@ptn_nmbr_src AS VARCHAR(20))    +' too[dbo].[FactInternetSales_out] PARTITION '    +CAST(@ptn_nmbr_out AS VARCHAR(20))+';
+ALTER TABLE [dbo].[FactInternetSales_in] SWITCH PARTITION '+CAST(@ptn_nmbr_in AS VARCHAR(20))    +' too[dbo].[FactInternetSales] PARTITION '        +CAST(@ptn_nmbr_src AS VARCHAR(20))+';'
 EXEC sp_executesql @SQL
 
---Perform the clean-up
+--Perform hello clean-up
 TRUNCATE TABLE dbo.FactInternetSales_out;
 TRUNCATE TABLE dbo.FactInternetSales_in;
 
@@ -347,9 +347,9 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimalizovat protokolování s malé balíků
-Pro operace úpravy velkého množství dat má smysl rozdělit operaci do bloků dat nebo dávky k určení rozsahu pracovní jednotce.
+Pro operace úpravy velkého množství dat může být smysl operaci toodivide hello do bloků dat nebo dávek tooscope hello jednotky práce.
 
-Příklad pracovní najdete níže. Velikost dávky byla nastavena na trivial číslo chcete zvýraznit techniku. Ve skutečnosti bude podstatně větší velikost dávky. 
+Příklad pracovní najdete níže. velikost dávky Hello nastavený tooa trivial číslo toohighlight hello techniku. Ve skutečnosti bude podstatně větší velikost dávky hello. 
 
 ```sql
 SET NO_COUNT ON;
@@ -408,20 +408,20 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Pozastavení a škálování pokyny
-Azure SQL Data Warehouse umožňuje pozastavit, obnovit a škálovat datový sklad na vyžádání. Při pozastavení nebo škálovat datový sklad SQL je důležité si uvědomit, že jakékoli během letu transakce budou ukončeny okamžitě; způsobuje všechny otevřené transakce zpět. Pokud vaše úlohy vystavila dlouho běžící a nedokončené úprava dat před operace pozastavení nebo určený počet číslic, tento pracovní bude muset být vrátit zpět. To může mít vliv na čas potřebný k pozastavení nebo škálování databáze Azure SQL Data Warehouse. 
+Azure SQL Data Warehouse umožňuje pozastavit, obnovit a škálovat datový sklad na vyžádání. Při pozastavení nebo škálovat datový sklad SQL je důležité toounderstand, že jakékoli během letu transakce budou ukončeny okamžitě; způsobuje toobe všechny otevřené transakce vrácena zpět. Pokud vaše úlohy vystavila dlouho běžící a úpravy neúplná data předchozí toohello pozastavení nebo operaci škálování a potom tento pracovní potřebovat toobe odvolat. To může mít vliv na hello doba trvání toopause nebo škálování databáze Azure SQL Data Warehouse. 
 
 > [!IMPORTANT]
 > Obě `UPDATE` a `DELETE` jsou plně protokolovaných operací a tak tyto zpět/opakování operace může trvat výrazně déle, než ekvivalentní minimálně protokolována operace. 
 > 
 > 
 
-Scénář Nejlepší je umožnit v cestě data změny transakce dokončení před pozastavení nebo škálování SQL Data Warehouse. Ale to nemusí být vždy praktické. Pro zmírnění rizik dlouho vrácení zpět, zvažte jednu z následujících možností:
+scénář Nejlepší Hello je toolet v cestě data změny transakce v dokončení předchozí toopausing nebo škálování SQL Data Warehouse. Ale to nemusí být vždy praktické. riziko hello toomitigate dlouho vrácení zpět, vezměte v úvahu mezi hello následující možnosti:
 
 * Znovu zapsat dlouhotrvající operace pomocí [funkce CTAS][CTAS]
-* Operaci rozdělení do bloků; pracující na podmnožinu řádků
+* Operace hello rozdělení do bloků; pracující na podmnožinu řádků hello
 
 ## <a name="next-steps"></a>Další kroky
-V tématu [transakcí v SQL Data Warehouse] [ Transactions in SQL Data Warehouse] Další informace o úrovních izolace a omezení transakcí.  Přehled ostatní osvědčené postupy najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
+V tématu [transakcí v SQL Data Warehouse] [ Transactions in SQL Data Warehouse] toolearn Další informace o úrovních izolace a omezení transakcí.  Přehled ostatní osvědčené postupy najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

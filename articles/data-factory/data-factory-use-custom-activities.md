@@ -1,6 +1,6 @@
 ---
-title: "Použití vlastních aktivit v kanálu Azure Data Factory"
-description: "Zjistěte, jak vytvořit vlastní aktivity a použít je v kanál služby Azure Data Factory."
+title: "aaaUse vlastní aktivity v kanálu Azure Data Factory"
+description: "Zjistěte, jak toocreate vlastní aktivity a použijte je v kanál služby Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.openlocfilehash: f3d265f31cb653d32076747e586383d67bbccc41
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 23e33727b2160541ab40938ffd911fdd484b3daa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -36,18 +36,18 @@ ms.lasthandoff: 08/29/2017
 
 Existují dva typy aktivit, které můžete použít v kanál služby Azure Data Factory.
 
-- [Aktivity přesunu dat](data-factory-data-movement-activities.md) pro přesun dat mezi [podporovanými úložišti dat zdroj a jímka](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
-- [Aktivity transformace dat](data-factory-data-transformation-activities.md) k transformaci dat pomocí výpočetních služeb, například Azure HDInsight, Azure Batch a Azure Machine Learning. 
+- [Aktivity přesunu dat](data-factory-data-movement-activities.md) toomove dat mezi [podporovanými úložišti dat zdroj a jímka](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
+- [Aktivity transformace dat](data-factory-data-transformation-activities.md) tootransform dat pomocí výpočetních služeb například Azure HDInsight, Azure Batch a Azure Machine Learning. 
 
-Pro přesun dat do nebo z úložiště dat, který nepodporuje objekt pro vytváření dat, vytvořit **vlastní aktivity** s vlastní logiky přesun dat a použití aktivity v kanálu. Podobně transformace nebo zpracovat data způsobem, který není podporován službou Data Factory, vytvořte vlastní aktivity s vlastní logikou transformaci dat a použijte aktivitu v kanálu. 
+Vytvoření toomove data do nebo z úložiště dat, které objekt pro vytváření dat nepodporuje, **vlastní aktivity** s vlastní data přesun logiku a použití hello aktivitu v kanálu. Podobně tootransform nebo zpracování dat způsobem, který není podporován službou Data Factory vytvořit vlastní aktivity s vlastní logikou transformaci dat a použít hello aktivity v kanálu. 
 
-Můžete nakonfigurovat vlastní aktivity ke spuštění na **Azure Batch** fondu virtuálních počítačů nebo systémem Windows **Azure HDInsight** clusteru. Pokud používáte Azure Batch, můžete použít pouze existujícího fondu Azure Batch. Vzhledem k tomu, při použití HDInsight, můžete použít stávající cluster HDInsight nebo clusteru, který se automaticky vytvoří pro můžete na vyžádání za běhu.  
+Můžete nakonfigurovat vlastní aktivity toorun na **Azure Batch** fondu virtuálních počítačů nebo systémem Windows **Azure HDInsight** clusteru. Pokud používáte Azure Batch, můžete použít pouze existujícího fondu Azure Batch. Vzhledem k tomu, při použití HDInsight, můžete použít stávající cluster HDInsight nebo clusteru, který se automaticky vytvoří pro můžete na vyžádání za běhu.  
 
-Následující postup obsahuje podrobné pokyny pro vytváření vlastních aktivit rozhraní .NET a používání vlastní aktivity v kanálu. Průvodce používá **Azure Batch** propojené služby. Použití Azure HDInsight propojená služba místo, vytvoření propojené služby typu **HDInsight** (vlastní cluster HDInsight) nebo **HDInsightOnDemand** (Data Factory vytvoří cluster služby HDInsight na vyžádání). Potom nakonfigurujte vlastní aktivity používat propojená služba HDInsight. V tématu [použití Azure HDInsight propojené služby](#use-hdinsight-compute-service) část Podrobnosti o použití Azure HDInsight ke spuštění vlastní aktivity.
+Hello následující názorný postup obsahuje podrobné pokyny pro vytváření vlastních aktivit rozhraní .NET a používání hello vlastní aktivity v kanálu. návod Hello používá **Azure Batch** propojené služby. toouse Azure HDInsight propojená služba místo, vytvoření propojené služby typu **HDInsight** (vlastní cluster HDInsight) nebo **HDInsightOnDemand** (Data Factory vytvoří cluster služby HDInsight na vyžádání). Potom nakonfigurujte vlastní aktivity toouse hello propojené služby HDInsight. V tématu [použití Azure HDInsight propojené služby](#use-hdinsight-compute-service) část Podrobnosti o použití Azure HDInsight toorun hello vlastní aktivity.
 
 > [!IMPORTANT]
-> - Vlastní aktivity .NET spustit pouze na clusterech HDInsight se systémem Windows. Alternativní řešení pro toto omezení je pomocí mapy snížit aktivity ke spuštění vlastního kódu Java na clusteru HDInsight se systémem Linux. Další možností je použití fondu virtuálních počítačů služby Azure Batch ke spouštění vlastních aktivit místo použití clusteru HDInsight.
-> - Není možné používat pro přístup k místním zdrojům dat Brána pro správu dat z vlastních aktivit. V současné době [Brána pro správu dat](data-factory-data-management-gateway.md) podporuje pouze aktivity kopírování a aktivity uložené procedury v datové továrně.   
+> - vlastní aktivity .NET Hello spustit pouze na clusterech HDInsight se systémem Windows. Alternativní řešení pro toto omezení je toouse hello mapy snížit aktivity toorun vlastní Java kód na clusteru HDInsight se systémem Linux. Další možností je toouse fondu Azure Batch virtuální počítače toorun vlastních aktivit místo použití clusteru HDInsight.
+> - Není možné toouse Brána pro správu dat z vlastní aktivity tooaccess místní datové zdroje. V současné době [Brána pro správu dat](data-factory-data-management-gateway.md) podporuje pouze aktivity kopírování hello a aktivity uložené procedury v datové továrně.   
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Návod: vytvoření vlastní aktivity
 ### <a name="prerequisites"></a>Požadavky
@@ -55,39 +55,39 @@ Následující postup obsahuje podrobné pokyny pro vytváření vlastních akti
 * Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nainstalujte ji.
 
 ### <a name="azure-batch-prerequisites"></a>Požadavky Azure Batch
-V tomto návodu spusťte vlastní aktivitu .NET pomocí Azure Batch jako výpočetní prostředek. **Azure Batch** je platforma služby pro spuštění rozsáhlé paralelní a vysoce výkonné výpočty aplikace (HPC) efektivně v cloudu. Azure Batch plány výpočetně náročných na spravované spouštět **kolekci virtuálních počítačů**, a dokáže automaticky škálovat výpočetní prostředky ke splnění potřeb vašich úloh. V tématu [základy Azure Batch] [ batch-technical-overview] článku podrobnější přehled služby Azure Batch.
+V Průvodci hello spustíte vlastní aktivitu .NET pomocí Azure Batch jako výpočetní prostředek. **Azure Batch** je platforma služby pro spuštění rozsáhlé paralelní a vysoce výkonné aplikace (HPC) efektivně v hello cloud computing. Azure Batch plány toorun výpočetně náročných na spravované **kolekci virtuálních počítačů**, a dokáže automaticky škálovat výpočetní prostředky toomeet hello potřeby vašich úloh. V tématu [základy Azure Batch] [ batch-technical-overview] článku podrobnější přehled služby Azure Batch hello.
 
-Pro tento kurz vytvoření účtu Azure Batch s fondem virtuálních počítačů. Postup je následující:
+Hello kurzu vytvoříte účet Azure Batch se fondu virtuálních počítačů. Zde jsou kroky hello:
 
-1. Vytvoření **účtu Azure Batch** pomocí [portál Azure](http://portal.azure.com). V tématu [vytvoření a Správa účtu Azure Batch] [ batch-create-account] pokyny najdete v článku.
-2. Poznamenejte si název účtu Azure Batch, klíč účtu, identifikátor URI a název fondu. Je k vytvoření služby Azure Batch propojené potřebujete.
-    1. Na domovské stránce pro účet Azure Batch, uvidíte **URL** v následujícím formátu: `https://myaccount.westus.batch.azure.com`. V tomto příkladu **stránku Můj účet** je název účtu Azure Batch. Identifikátor URI, které můžete použít v definici propojené služby je adresa URL bez názvu účtu. Například: `https://<region>.batch.azure.com`.
-    2. Klikněte na tlačítko **klíče** v levé nabídce a zkopírujte **primární přístupový klíč**.
-    3. Chcete-li použít existující fond, klikněte na tlačítko **fondy** v nabídce a zapište **ID** fondu. Pokud nemáte existující fond, přejděte k dalšímu kroku.     
+1. Vytvoření **účtu Azure Batch** pomocí hello [portál Azure](http://portal.azure.com). V tématu [vytvoření a Správa účtu Azure Batch] [ batch-create-account] pokyny najdete v článku.
+2. Poznamenejte si název účtu Azure Batch hello, klíč účtu, identifikátor URI a název fondu. Musíte je toocreate služby Azure Batch propojený.
+    1. Na domovské stránce hello pro účet Azure Batch, uvidíte **URL** v hello následující formát: `https://myaccount.westus.batch.azure.com`. V tomto příkladu **stránku Můj účet** je název hello hello účtu Azure Batch. Identifikátor URI, které můžete použít v definici hello propojené služby je adresa URL hello bez názvu hello hello účtu. Například: `https://<region>.batch.azure.com`.
+    2. Klikněte na tlačítko **klíče** v levé nabídce hello a kopírování hello **primární přístupový klíč**.
+    3. Klikněte na existující fond, toouse **fondy** v nabídce hello a zapište hello **ID** hello fondu. Pokud nemáte existující fond, přesuňte toohello další krok.     
 2. Vytvoření **fondu Azure Batch**.
 
-   1. V [portál Azure](https://portal.azure.com), klikněte na tlačítko **Procházet** v levé nabídce a klikněte na **účty Batch**.
-   2. Vyberte svůj účet Azure Batch **účtu Batch** okno.
+   1. V hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **Procházet** v levé nabídce text hello a klikněte na tlačítko **účty Batch**.
+   2. Vyberte vaše hello tooopen účet Azure Batch **účtu Batch** okno.
    3. Klikněte na tlačítko **fondy** dlaždici.
-   4. V **fondy** okně klikněte na tlačítko Přidat na panelu nástrojů na Přidat fond.
-      1. Zadejte ID fondu (ID fondu). Poznámka: **ID fondu**; je nutné při vytváření řešení Data Factory.
-      2. Zadejte **Windows Server 2012 R2** pro nastavení řada operačního systému.
+   4. V hello **fondy** okně klikněte na tlačítko Přidat na panelu nástrojů tooadd hello fondu.
+      1. Zadejte ID fondu hello (ID fondu). Poznámka: hello **ID fondu hello**; je nutné při vytváření řešení Data Factory hello.
+      2. Zadejte **Windows Server 2012 R2** pro nastavení hello řada operačního systému.
       3. Vyberte **cenovou úroveň uzlu**.
-      4. Zadejte **2** jako hodnota **cíl vyhrazené** nastavení.
-      5. Zadejte **2** jako hodnota **maximální počet úloh na uzel** nastavení.
-   5. Kliknutím na tlačítko **OK** vytvořte fond.
-   6. Poznamenejte si **ID** fondu. 
+      4. Zadejte **2** jako hodnota pro hello **cíl vyhrazené** nastavení.
+      5. Zadejte **2** jako hodnota pro hello **maximální počet úloh na uzel** nastavení.
+   5. Klikněte na tlačítko **OK** toocreate hello fondu.
+   6. Zapište hello **ID** hello fondu. 
 
 
 
 ### <a name="high-level-steps"></a>Postup vysoké úrovně
-Zde jsou dva hlavní kroky, které můžete provádět v rámci tohoto návodu: 
+Zde jsou hello dva základní kroky, které můžete provádět v rámci tohoto návodu: 
 
 1. Vytvořte vlastní aktivitu, která obsahuje jednoduché datové transformaci/zpracování logiky.
-2. Vytvořte objekt pro vytváření dat Azure s kanál, který používá vlastní aktivity.
+2. Vytvořte objekt pro vytváření dat Azure s kanál, který používá vlastní aktivity hello.
 
 ### <a name="create-a-custom-activity"></a>Vytvoření vlastní aktivity
-Chcete-li vytvořit vlastní aktivity rozhraní .NET, vytvořte **knihovna tříd rozhraní .NET** projektu s třídou, která implementuje **IDotNetActivity** rozhraní. Toto rozhraní obsahuje pouze jednu metodu: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) a jeho podpis je:
+Vytvoření toocreate .NET vlastní aktivitu, **knihovna tříd rozhraní .NET** projektu s třídou, která implementuje **IDotNetActivity** rozhraní. Toto rozhraní obsahuje pouze jednu metodu: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) a jeho podpis je:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -98,41 +98,41 @@ public IDictionary<string, string> Execute(
 ```
 
 
-Tato metoda přebírá čtyř parametrů:
+Metoda Hello přijímá čtyř parametrů:
 
-- **linkedServices**. Tato vlastnost je vyčíslitelná seznam úložiště dat propojené služby odkazuje vstupní a výstupní datové sady pro aktivity.   
-- **datové sady**. Tato vlastnost je vyčíslitelná seznam vstupní a výstupní datové sady pro aktivity. Tento parametr můžete získat umístění a schémata definované vstupní a výstupní datové sady.
-- **aktivita**. Tato vlastnost představuje aktuální aktivity. Slouží pro přístup k rozšířené vlastnosti související s vlastní aktivity. V tématu [přístup rozšířené vlastnosti](#access-extended-properties) podrobnosti.
-- **protokolovač**. Tento objekt umožňuje psát komentáře ladění tento prostor v protokolu uživatele pro kanál.
+- **linkedServices**. Tato vlastnost je vyčíslitelná seznam úložiště dat propojené služby odkazuje vstupní a výstupní datové sady pro aktivitu hello.   
+- **datové sady**. Tato vlastnost je vyčíslitelná seznam vstupní a výstupní datové sady pro aktivitu hello. Můžete použít tento parametr tooget hello umístění a schémata definované vstupní a výstupní datové sady.
+- **aktivita**. Tato vlastnost představuje hello aktuální aktivity. Dá se použít tooaccess rozšířené vlastnosti související s hello vlastní aktivity. V tématu [přístup rozšířené vlastnosti](#access-extended-properties) podrobnosti.
+- **protokolovač**. Tento objekt umožňuje zapisovat ladění komentáře tento prostor v protokolu uživatele hello hello kanálu.
 
-Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně v budoucnu. Tato funkce není dosud implementována, takže vrátí prázdný slovník z metody.  
+Hello metoda vrátí slovník, který může být vlastní aktivity používané toochain společně v budoucnosti hello. Tato funkce není dosud implementována, takže vrátí prázdný slovník z metody hello.  
 
 ### <a name="procedure"></a>Postup
 1. Vytvoření **knihovna tříd rozhraní .NET** projektu.
    <ol type="a">
      <li>Spusťte <b>Visual Studio 2017</b> nebo <b>sady Visual Studio 2015</b> nebo <b>Visual Studio 2013</b> nebo <b>sady Visual Studio 2012</b>.</li>
-     <li>Klikněte na <b>Soubor</b>, přejděte na <b>Nový</b> a klikněte na <b>Projekt</b>.</li>
-     <li>Rozbalte <b>Šablony</b> a vyberte <b>Visual C#</b>. V tomto návodu použijete C#, ale můžete v kterémkoli jazyce platformy .NET vyvíjet vlastní aktivity.</li>
-     <li>Vyberte <b>knihovny tříd</b> ze seznamu typů projektu na pravé straně. V VS 2017, zvolte <b>knihovny tříd (rozhraní .NET Framework)</b> </li>
-     <li>Zadejte <b>MyDotNetActivity</b> pro <b>název</b>.</li>
-     <li>Vyberte <b>C:\ADFGetStarted</b> pro <b>umístění</b>.</li>
-     <li>Kliknutím na tlačítko <b>OK</b> vytvořte projekt.</li>
+     <li>Klikněte na tlačítko <b>soubor</b>, bod příliš<b>nový</b>a klikněte na tlačítko <b>projektu</b>.</li>
+     <li>Rozbalte <b>Šablony</b> a vyberte <b>Visual C#</b>. V tomto návodu použijete C#, ale můžete použít libovolné .NET jazyk toodevelop hello vlastní aktivity.</li>
+     <li>Vyberte <b>knihovny tříd</b> hello seznamu typů projektu na hello správné. V VS 2017, zvolte <b>knihovny tříd (rozhraní .NET Framework)</b> </li>
+     <li>Zadejte <b>MyDotNetActivity</b> pro hello <b>název</b>.</li>
+     <li>Vyberte <b>C:\ADFGetStarted</b> pro hello <b>umístění</b>.</li>
+     <li>Klikněte na tlačítko <b>OK</b> toocreate hello projektu.</li>
    </ol>
-2.Klikněte na tlačítko **nástroje**, přejděte na příkaz **Správce balíčků NuGet**a klikněte na tlačítko **Konzola správce balíčků**.
-3. V konzole Správce balíčků spustíte následující příkaz pro import **Microsoft.Azure.Management.DataFactories**.
+2.Klikněte na tlačítko **nástroje**, bod příliš**Správce balíčků NuGet**a klikněte na tlačítko **Konzola správce balíčků**.
+3. V hello Konzola správce balíčků, spustit následující příkaz tooimport hello **Microsoft.Azure.Management.DataFactories**.
 
     ```PowerShell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-4. Import **Azure Storage** balíčku NuGet do projektu.
+4. Import hello **Azure Storage** balíček NuGet v toohello projektu.
 
     ```PowerShell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
     > [!IMPORTANT]
-    > Spouštěč služby Data Factory vyžaduje 4.3 verzi WindowsAzure.Storage. Pokud přidáte odkaz na novější verzi sestavení Azure Storage ve vašem projektu vlastní aktivitu, zobrazí chybu, když aktivita provede. Chcete-li vyřešit chyby, najdete v části [izolace domény aplikace](#appdomain-isolation) části. 
-5. Přidejte následující **pomocí** příkazy ke zdrojovému souboru v projektu.
+    > Spouštěč služby Data Factory vyžaduje hello 4.3 verzi WindowsAzure.Storage. Pokud přidáte odkaz tooa novější verze sestavení Azure Storage ve vašem projektu vlastní aktivitu, zobrazí chybu když hello aktivita provede. Chyba hello tooresolve, najdete v části [izolace domény aplikace](#appdomain-isolation) části. 
+5. Přidejte následující hello **pomocí** příkazy toohello zdrojový soubor v projektu hello.
 
     ```csharp
 
@@ -157,24 +157,24 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. Změňte název **obor názvů** k **MyDotNetActivityNS**.
+6. Změnit název hello hello **obor názvů** příliš**MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-7. Změnit název třídy pro **MyDotNetActivity** a odvodí z **IDotNetActivity** rozhraní, jak je znázorněno v následující fragment kódu:
+7. Změňte název hello třídy hello příliš**MyDotNetActivity** a odvodí z hello **IDotNetActivity** rozhraní, jak je znázorněno v následujícím fragmentu kódu hello:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-8. Implementace (Přidat) **Execute** metodu **IDotNetActivity** rozhraní k **MyDotNetActivity** třídy a zkopírujte následující vzorový kód do metody.
+8. Implementace (Přidat) hello **Execute** metoda hello **IDotNetActivity** rozhraní toohello **MyDotNetActivity** hello třídy a zkopírujte následující ukázka kódu toohello metoda.
 
-    Následující příklad vrátí počet výskytů hledaný termín ("Microsoft") v jednotlivých objektů blob přidružený datový řez.
+    Hello následující příklad vrátí hello počet výskytů hello hledaný termín ("Microsoft") v jednotlivých objektů blob přidružený datový řez.
 
     ```csharp
     /// <summary>
-    /// Execute method is the only method of IDotNetActivity interface you must implement.
-    /// In this sample, the method invokes the Calculate method to perform the core logic.  
+    /// Execute method is hello only method of IDotNetActivity interface you must implement.
+    /// In this sample, hello method invokes hello Calculate method tooperform hello core logic.  
     /// </summary>
     
     public IDictionary<string, string> Execute(
@@ -188,7 +188,7 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
         DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
         string sliceStartString = dotNetActivity.ExtendedProperties["SliceStart"];
     
-        // to log information, use the logger object
+        // toolog information, use hello logger object
         // log all extended properties            
         IDictionary<string, string> extendedProperties = dotNetActivity.ExtendedProperties;
         logger.Write("Logging extended properties if any...");
@@ -201,23 +201,23 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
         // in this example, same storage is used for both input/output
         AzureStorageLinkedService inputLinkedService;
 
-        // get the input dataset
+        // get hello input dataset
         Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
     
-        // declare variables to hold type properties of input/output datasets
+        // declare variables toohold type properties of input/output datasets
         AzureBlobDataset inputTypeProperties, outputTypeProperties;
         
-        // get type properties from the dataset object
+        // get type properties from hello dataset object
         inputTypeProperties = inputDataset.Properties.TypeProperties as AzureBlobDataset;
     
         // log linked services passed in linkedServices parameter
         // you will see two linked services of type: AzureStorage
-        // one for input dataset and the other for output dataset 
+        // one for input dataset and hello other for output dataset 
         foreach (LinkedService ls in linkedServices)
             logger.Write("linkedService.Name {0}", ls.Name);
     
-        // get the first Azure Storate linked service from linkedServices object
-        // using First method instead of Single since we are using the same
+        // get hello first Azure Storate linked service from linkedServices object
+        // using First method instead of Single since we are using hello same
         // Azure Storage linked service for input and output.
         inputLinkedService = linkedServices.First(
             linkedService =>
@@ -225,21 +225,21 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
             inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
             as AzureStorageLinkedService;
     
-        // get the connection string in the linked service
+        // get hello connection string in hello linked service
         string connectionString = inputLinkedService.ConnectionString;
     
-        // get the folder path from the input dataset definition
+        // get hello folder path from hello input dataset definition
         string folderPath = GetFolderPath(inputDataset);
         string output = string.Empty; // for use later.
     
-        // create storage client for input. Pass the connection string.
+        // create storage client for input. Pass hello connection string.
         CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
         CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
     
-        // initialize the continuation token before using it in the do-while loop.
+        // initialize hello continuation token before using it in hello do-while loop.
         BlobContinuationToken continuationToken = null;
         do
-        {   // get the list of input blobs from the input storage client object.
+        {   // get hello list of input blobs from hello input storage client object.
             BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
                                      true,
                                      BlobListingDetails.Metadata,
@@ -248,50 +248,50 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
                                      null,
                                      null);
     
-            // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
-               // with the data slice. definition of the method is shown in the next step.
+            // Calculate method returns hello number of occurrences of
+            // hello search term (“Microsoft”) in each blob associated
+               // with hello data slice. definition of hello method is shown in hello next step.
     
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
     
         } while (continuationToken != null);
     
-        // get the output dataset using the name of the dataset matched to a name in the Activity output collection.
+        // get hello output dataset using hello name of hello dataset matched tooa name in hello Activity output collection.
         Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
 
-        // get type properties for the output dataset
+        // get type properties for hello output dataset
         outputTypeProperties = outputDataset.Properties.TypeProperties as AzureBlobDataset;
     
-        // get the folder path from the output dataset definition
+        // get hello folder path from hello output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path   
-        logger.Write("Writing blob to the folder: {0}", folderPath);
+        // log hello output folder path 
+        logger.Write("Writing blob toohello folder: {0}", folderPath);
     
-        // create a storage object for the output blob.
+        // create a storage object for hello output blob.
         CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
-        // write the name of the file.
+        // write hello name of hello file.
         Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     
-        // log the output file name
+        // log hello output file name
         logger.Write("output blob URI: {0}", outputBlobUri.ToString());
 
-        // create a blob and upload the output text.
+        // create a blob and upload hello output text.
         CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
-        logger.Write("Writing {0} to the output blob", output);
+        logger.Write("Writing {0} toohello output blob", output);
         outputBlob.UploadText(output);
     
-        // The dictionary can be used to chain custom activities together in the future.
+        // hello dictionary can be used toochain custom activities together in hello future.
         // This feature is not implemented yet, so just return an empty dictionary.  
     
         return new Dictionary<string, string>();
     }
     ```
-9. Přidejte následující metody pomocné rutiny: 
+9. Přidejte následující metody helper hello: 
 
     ```csharp
     /// <summary>
-    /// Gets the folderPath value from the input/output dataset.
+    /// Gets hello folderPath value from hello input/output dataset.
     /// </summary>
     
     private static string GetFolderPath(Dataset dataArtifact)
@@ -301,19 +301,19 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
             return null;
         }
 
-        // get type properties of the dataset   
+        // get type properties of hello dataset 
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
             return null;
         }
     
-        // return the folder path found in the type properties
+        // return hello folder path found in hello type properties
         return blobDataset.FolderPath;
     }
     
     /// <summary>
-    /// Gets the fileName value from the input/output dataset.   
+    /// Gets hello fileName value from hello input/output dataset.   
     /// </summary>
     
     private static string GetFileName(Dataset dataArtifact)
@@ -323,20 +323,20 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
             return null;
         }
     
-        // get type properties of the dataset
+        // get type properties of hello dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
             return null;
         }
     
-        // return the blob/file name in the type properties
+        // return hello blob/file name in hello type properties
         return blobDataset.FileName;
     }
     
     /// <summary>
-    /// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
-    /// and prepares the output text that is written to the output blob.
+    /// Iterates through each blob (file) in hello folder, counts hello number of instances of search term in hello file,
+    /// and prepares hello output text that is written toohello output blob.
     /// </summary>
     
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
@@ -355,14 +355,14 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
                                  where word.ToLowerInvariant() == searchTerm.ToLowerInvariant()
                                  select word;
                 int wordCount = matchQuery.Count();
-                output += string.Format("{0} occurrences(s) of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
+                output += string.Format("{0} occurrences(s) of hello search term \"{1}\" were found in hello file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
             }
         }
         return output;
     }
     ```
 
-    Metoda GetFolderPath vrací cestu ke složce, která odkazuje datovou sadu na a vrátí název objektu blob nebo soubor, který datová sada odkazuje na metodu GetFileName. Pokud jste havefolderPath definuje pomocí proměnných, například {Year}, {Month}, {Day} atd., metoda vrátí řetězec, protože je bez jejich nahrazení s hodnotami runtime. V tématu [přístup rozšířené vlastnosti](#access-extended-properties) část Podrobnosti o přístup k SliceStart, SliceEnd atd.    
+    Hello GetFolderPath metoda vrátí hello cesta toohello složky, která hello datová sada odkazuje tooand hello GetFileName metoda vrátí hello název hello objektů blob nebo souboru, který hello body datovou sadu. Pokud jste havefolderPath definuje pomocí proměnných, například {Year}, {Month}, {Day} atd., hello metoda vrátí hello řetězec, jako je bez jejich nahrazení s hodnotami modulu runtime. V tématu [přístup rozšířené vlastnosti](#access-extended-properties) část Podrobnosti o přístup k SliceStart, SliceEnd atd.    
 
     ```JSON
     "name": "InputDataset",
@@ -374,97 +374,97 @@ Metoda vrátí slovník, který slouží k řetězu vlastní aktivity společně
             "folderPath": "adftutorial/inputfolder/",
     ```
 
-    Metoda Calculate vypočítá počet instancí – klíčové slovo Microsoft ve vstupní soubory (objekty BLOB ve složce). Hledaný termín ("Microsoft") je pevně zakódovaná v kódu.
-10. Kompilace projektu. Klikněte na tlačítko **sestavení** z nabídky a klikněte na tlačítko **sestavit řešení**.
+    Hello Calculate metoda vypočítá hello počet instancí – klíčové slovo Microsoft v hello vstupní soubory (objekty BLOB ve složce hello). hledaný termín Hello ("Microsoft") je pevně zakódovaná v kódu hello.
+10. Kompilace projektu hello. Klikněte na tlačítko **sestavení** hello nabídky a klikněte na **sestavit řešení**.
 
     > [!IMPORTANT]
-    > Nastavit 4.5.2 verzi rozhraní .NET Framework jako cílové rozhraní pro svůj projekt: klikněte pravým tlačítkem na projekt a klikněte na tlačítko **vlastnosti** nastavit cílové rozhraní. Objekt pro vytváření dat nepodporuje vlastní aktivity, které jsou novější než 4.5.2 zkompilovat proti verze rozhraní .NET Framework.
+    > Nastavit 4.5.2 verzi rozhraní .NET Framework jako hello cílové rozhraní pro svůj projekt: klikněte pravým tlačítkem na projekt hello a klikněte na tlačítko **vlastnosti** tooset hello cílové rozhraní. Objekt pro vytváření dat nepodporuje vlastní aktivity, které jsou novější než 4.5.2 zkompilovat proti verze rozhraní .NET Framework.
 
-11. Spusťte **Průzkumníka Windows**a přejděte do **bin\debug** nebo **bin\release** složku v závislosti na typu sestavení.
-12. Vytvořte soubor zip **MyDotNetActivity.zip** obsahující všechny binární soubory v <project folder>\bin\Debug složka. Zahrnout **MyDotNetActivity.pdb** tak, aby získat další podrobnosti, jako je například číslo řádku ve zdrojovém kódu, která způsobila problém, pokud došlo k chybě. 
+11. Spusťte **Průzkumníka Windows**a přejděte příliš**bin\debug** nebo **bin\release** složku v závislosti na typu hello sestavení.
+12. Vytvořte soubor zip **MyDotNetActivity.zip** obsahující všechny binární soubory hello v hello <project folder>\bin\Debug složka. Zahrnout hello **MyDotNetActivity.pdb** tak, aby získat další podrobnosti, jako je například číslo řádku v hello zdrojového kódu, která způsobila problém hello, pokud došlo k chybě. 
 
     > [!IMPORTANT]
-    > Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni**, bez podsložek.
+    > Všechny soubory v souboru zip hello hello hello vlastní aktivity musí být v hello **top úroveň** s žádné podsložek.
 
     ![Binární výstupní soubory](./media/data-factory-use-custom-activities/Binaries.png)
 14. Vytvořte kontejner objektů blob s názvem **customactivitycontainer** Pokud ještě neexistuje. 
-15. Nahrát MyDotNetActivity.zip jako objekt blob customactivitycontainer v **pro obecné účely** úložiště objektů blob v Azure (úložiště objektů Blob není za provozu nebo nástrojů), který odkazuje AzureStorageLinkedService.  
+15. Nahrát MyDotNetActivity.zip jako customactivitycontainer toohello objektů blob v **pro obecné účely** úložiště objektů blob v Azure (úložiště objektů Blob není za provozu nebo nástrojů), který odkazuje AzureStorageLinkedService.  
 
 > [!IMPORTANT]
-> Pokud přidáte tento projekt aktivity .NET na řešení v sadě Visual Studio, který obsahuje projekt Data Factory a přidejte odkaz na rozhraní .NET projektu aktivity z projektu pro vytváření dat aplikace, není potřeba provádět poslední dva kroky ručně vytvoření souboru zip soubor a pak ho nahrát do úložiště objektů blob v Azure pro obecné účely. Když publikujete entity služby Data Factory pomocí sady Visual Studio, tyto kroky automaticky provádí proces publikování. Další informace najdete v tématu [projekt Data Factory v sadě Visual Studio](#data-factory-project-in-visual-studio) části.
+> Pokud přidáte toto rozhraní .NET aktivity projektu tooa řešení v sadě Visual Studio, který obsahuje projekt Data Factory a přidat odkaz na too.NET aktivity projekt z projektu aplikace hello objekt pro vytváření dat, není nutné tooperform hello poslední dva kroky ručně vytváření soubor zip Hello a pak ho nahrát toohello úložiště objektů blob v Azure pro obecné účely. Když publikujete entity služby Data Factory pomocí sady Visual Studio, tyto kroky automaticky provádí proces publikování hello. Další informace najdete v tématu [projekt Data Factory v sadě Visual Studio](#data-factory-project-in-visual-studio) části.
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Vytvoření kanálu s vlastní aktivity
-Vytvoření vlastní aktivity a nahrané do kontejneru objektů blob v souboru zip binární soubory služby **pro obecné účely** účet úložiště Azure. V této části vytvoříte objekt pro vytváření dat Azure s kanál, který používá vlastní aktivity.
+Vytvoření vlastní aktivity a nahrát soubor zip hello se binární soubory tooa kontejneru objektů blob v **pro obecné účely** účet úložiště Azure. V této části vytvoříte objekt pro vytváření dat Azure s kanál, který používá vlastní aktivity hello.
 
-Vstupní datové sady pro vlastní aktivita představuje objekty BLOB (soubory) ve složce customactivityinput adftutorial kontejneru ve službě blob storage. Výstupní datovou sadu aktivity představuje výstupní objekty BLOB ve složce customactivityoutput adftutorial kontejneru ve službě blob storage.
+vstupní datové sady Hello vlastní aktivity hello představuje objekty BLOB (soubory) ve složce customactivityinput hello adftutorial kontejneru v úložiště objektů blob hello. Hello výstupní datovou sadu aktivity hello představuje výstupní objekty BLOB ve složce customactivityoutput hello adftutorial kontejneru v úložiště objektů blob hello.
 
-Vytvoření **soubor.txt** soubor s následujícím obsahem a nahrajte ho do **customactivityinput** složky **adftutorial** kontejneru. Vytvoření kontejneru adftutorial, pokud ho ještě neexistuje. 
+Vytvoření **soubor.txt** soubor s hello následující obsahu a nahrajte ho příliš**customactivityinput** složky hello **adftutorial** kontejneru. Vytvoření kontejneru adftutorial hello, pokud ho ještě neexistuje. 
 
 ```
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-Vstupní složky odpovídá řez v Azure Data Factory i v případě, že složka obsahuje dvě nebo více souborů. Při zpracování každý řez v kanálu vlastní aktivita iteruje všechny objekty BLOB ve složce vstupní pro tento řez.
+vstupní složky Hello odpovídá tooa řez v Azure Data Factory i v případě, že složka hello obsahuje dvě nebo více souborů. Při zpracování kanálu hello se každý řez iteruje hello vlastní aktivity všech objektů BLOB hello v hello vstupní složky pro tento řez.
 
-Uvidíte, že jednu výstupní soubor s ve složce adftutorial\customactivityoutput s jedním nebo více řádky (stejný jako počet objektů BLOB ve složce vstupní):
+Uvidíte, že jednu výstupní soubor s ve složce adftutorial\customactivityoutput hello s jedním nebo více řádky (stejný jako počet objektů BLOB ve složce vstupní hello):
 
 ```
-2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
+2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2016-11-16-00/file.txt.
 ```
 
 
-Tady jsou kroky, které můžete provádět v této části:
+Zde jsou hello kroky, které můžete provést v této části:
 
 1. Vytvoření **objekt pro vytváření dat**.
-2. Vytvořit **propojené služby** fondu Azure Batch virtuálních počítačů, na který vlastní aktivita se spustí a úložišti Azure, který obsahuje objekty BLOB vstupu a výstupu.
-3. Vytvoření vstupní a výstupní **datové sady** které představují vstupní a výstupní vlastní aktivity.
-4. Vytvoření **kanálu** používající vlastní aktivity.
+2. Vytvoření **propojené služby** fondu Azure Batch hello virtuálních počítačů, na které hello vlastní aktivity spouští a hello Azure Storage, který obsahuje objekty BLOB vstupu a výstupu hello.
+3. Vytvoření vstupní a výstupní **datové sady** které představují vstupní a výstupní hello vlastní aktivity.
+4. Vytvoření **kanálu** používající hello vlastní aktivity.
 
 > [!NOTE]
-> Vytvořte **soubor.txt** a nahrajte ho do kontejneru objektů blob, pokud jste tak již neučinili. Pokyny naleznete v předchozí části.   
+> Vytvoření hello **soubor.txt** a nahrajte ho tooa kontejner objektů blob, pokud jste tak již neučinili. Najdete v pokynech v předcházející části hello.   
 
-### <a name="step-1-create-the-data-factory"></a>Krok 1: Vytvoření objektu pro vytváření dat
-1. Po přihlášení k portálu Azure, proveďte následující kroky:
-   1. V nabídce vlevo klikněte na **NOVÝ**.
-   2. Klikněte na tlačítko **Data + analýzy** v **nový** okno.
-   3. V okně **Analýza dat** klikněte na **Objekt pro vytváření dat**.
+### <a name="step-1-create-hello-data-factory"></a>Krok 1: Vytvoření objektu pro vytváření dat hello
+1. Po přihlášení toohello portálu Azure, hello následující kroky:
+   1. Klikněte na tlačítko **nový** v levé nabídce hello.
+   2. Klikněte na tlačítko **Data + analýzy** v hello **nový** okno.
+   3. Klikněte na tlačítko **Data Factory** na hello **analýzy dat** okno.
    
     ![Nové nabídky Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. V **nový objekt pro vytváření dat** okno, zadejte **CustomActivityFactory** pro název. Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: **název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte název objektu pro vytváření dat (například **yournameCustomActivityFactory**) a zkuste to znovu.
+2. V hello **nový objekt pro vytváření dat** okno, zadejte **CustomActivityFactory** pro hello název. Hello název objektu pro vytváření dat Azure hello musí být globálně jedinečný. Pokud se zobrazí chyba hello: **název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte hello název objektu pro vytváření dat hello (například **yournameCustomActivityFactory**) a zkuste vytvořit znovu.
 
     ![Nové okno Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Klikněte na tlačítko **název skupiny prostředků**a vyberte existující skupinu prostředků nebo vytvořte skupinu prostředků.
-4. Ověřte, že používáte správný **předplatné** a **oblast** místo, kam chcete objekt pro vytváření dat vytvořit.
-5. V okně **Nový objekt pro vytváření dat** klikněte na **Vytvořit**.
-6. Zobrazí objektu pro vytváření dat vytváří ve **řídicí panel** na portálu Azure.
-7. Po úspěšném vytvoření objektu pro vytváření dat, zobrazí se okno objekt pro vytváření dat, který zobrazuje obsah objektu pro vytváření dat.
+4. Ověřte, že používáte správné hello **předplatné** a **oblast** místo hello data factory toobe vytvořili.
+5. Klikněte na tlačítko **vytvořit** na hello **nový objekt pro vytváření dat** okno.
+6. Zobrazí hello objekt pro vytváření dat vytváří v hello **řídicí panel** z hello portálu Azure.
+7. Po úspěšném vytvoření objektu pro vytváření dat hello, zobrazí okno hello objekt pro vytváření dat, se zobrazí hello obsah objektu pro vytváření dat hello.
     
     ![Okno Objekt pro vytváření dat](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojených služeb
-Propojené služby propojují úložiště dat nebo výpočetní služby s objektem pro vytváření dat Azure. V tomto kroku propojíte svůj účet úložiště Azure a účet Azure Batch pro vytváření dat..
+Propojené služby propojují úložiště dat nebo výpočetní služby tooan pro vytváření dat Azure. V tomto kroku propojíte svůj účet úložiště Azure a účet Azure Batch tooyour služby data factory.
 
 #### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
-1. Klikněte na tlačítko **vytvořit a nasadit** na dlaždici **objekt pro vytváření dat** okno pro **CustomActivityFactory**. Zobrazí editoru služby Data Factory.
-2. Klikněte na tlačítko **nové datové úložiště** na příkaz panelu a vyberte **úložiště Azure**. V editoru by se měl zobrazit skript JSON pro vytvoření propojené služby Azure Storage.
+1. Klikněte na tlačítko hello **vytvořit a nasadit** na hello dlaždici **DATA FACTORY** okno pro **CustomActivityFactory**. Zobrazí hello editoru služby Data Factory.
+2. Klikněte na tlačítko **nové datové úložiště** na panelu příkazů hello a zvolte **úložiště Azure**. Měli byste vidět hello skript JSON pro vytvoření Azure Storage propojená služba v editoru hello.
     
     ![Nové datové úložiště - Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Nahraďte `<accountname>` s názvem účtu úložiště Azure a `<accountkey>` s přístupovým klíčem k účtu úložiště Azure. Informace o tom, jak získat přístupový klíč k úložišti, najdete v článku o [zobrazení, kopírování a opětovném vytváření přístupových klíčů úložiště](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+3. Nahraďte `<accountname>` s názvem účtu úložiště Azure a `<accountkey>` s přístupovým klíčem hello účtu úložiště Azure. toolearn tooget úložiště přístupu klíče najdete v tématu [zobrazení, kopírování a opětovné vytváření přístupových klíčů úložiště](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
     ![Úložiště Azure líbilo služby](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
-4. Propojenou službu nasadíte kliknutím na **Nasadit** na panelu příkazů.
+4. Klikněte na tlačítko **nasadit** na hello příkazovém řádku toodeploy hello propojené služby.
 
 #### <a name="create-azure-batch-linked-service"></a>Vytvoření služby Azure Batch propojené
-1. V editoru služby Data Factory, klikněte na tlačítko **... Další** na panelu příkazů klikněte na tlačítko **nový výpočet**a potom vyberte **Azure Batch** z nabídky.
+1. V editoru služby Data Factory hello, klikněte na **... Další** na panelu příkazů hello, klikněte na tlačítko **nový výpočet**a potom vyberte **Azure Batch** nabídce hello.
 
     ![Nový výpočet - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
-2. Skript JSON proveďte následující změny:
+2. Ujistěte se, hello následující skript JSON toohello změny:
 
-   1. Zadejte název účtu Azure Batch **accountName** vlastnost. **URL** z **okně účtu Azure Batch** je v následujícím formátu: `http://accountname.region.batch.azure.com`. Pro **batchUri** vlastností v kódu JSON, je třeba odebrat `accountname.` z adresy URL a použití `accountname` pro `accountName` vlastnost JSON.
-   2. Zadejte klíč účtu Azure Batch pro **accessKey** vlastnost.
-   3. Zadejte název fondu, který jste vytvořili v rámci požadavků pro **poolName** vlastnost. Můžete také zadat ID fondu namísto názvu fondu.
-   4. Zadejte Azure Batch URI **batchUri** vlastnost. Příklad: `https://westus.batch.azure.com`.  
-   5. Zadejte **AzureStorageLinkedService** pro **linkedServiceName** vlastnost.
+   1. Zadejte název účtu Azure Batch pro hello **accountName** vlastnost. Hello **URL** z hello **okně účtu Azure Batch** je ve formátu hello: `http://accountname.region.batch.azure.com`. Pro hello **batchUri** vlastnost hello JSON, bude nutné tooremove `accountname.` z adresy URL a použijte hello hello `accountname` pro hello `accountName` vlastnost JSON.
+   2. Zadejte klíč účtu Azure Batch hello pro hello **accessKey** vlastnost.
+   3. Zadejte název hello hello fondu, které jste vytvořili v rámci požadavků pro hello **poolName** vlastnost. Můžete také zadat hello ID fondu hello místo názvu hello hello fondu.
+   4. Zadejte identifikátor URI Azure Batch pro hello **batchUri** vlastnost. Příklad: `https://westus.batch.azure.com`.  
+   5. Zadejte hello **AzureStorageLinkedService** pro hello **linkedServiceName** vlastnost.
 
         ```json
         {
@@ -482,18 +482,18 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
         }
         ```
 
-       Pro **poolName** vlastnost, můžete také zadat ID fondu namísto názvu fondu.
+       Pro hello **poolName** vlastnost, můžete také zadat hello ID fondu hello místo názvu hello hello fondu.
 
       > [!IMPORTANT]
-      > Služba Data Factory nepodporuje možnost na vyžádání pro Azure Batch, stejně jako pro HDInsight. Vlastní fondu Azure Batch můžete použít pouze v objektu pro vytváření dat Azure.   
+      > Hello služba Data Factory nepodporuje možnost na vyžádání pro Azure Batch, stejně jako pro HDInsight. Vlastní fondu Azure Batch můžete použít pouze v objektu pro vytváření dat Azure.   
     
 
 ### <a name="step-3-create-datasets"></a>Krok 3: Vytvoření datové sady
-V tomto kroku vytvoříte datové sady, které představují vstupní a výstupní data.
+V tomto kroku vytvoříte datové sady toorepresent vstupní a výstupní data.
 
 #### <a name="create-input-dataset"></a>Vytvoření vstupní datové sady
-1. V **editoru** služby Data Factory klikněte na **... Další** na panelu příkazů klikněte na tlačítko **nová datová sada**a potom vyberte **úložiště objektů Azure Blob** z rozevírací nabídky.
-2. Nahraďte kód JSON v pravém podokně následujícím fragmentem kódu JSON:
+1. V hello **Editor** hello objekt pro vytváření dat, klikněte na tlačítko **... Další** na panelu příkazů hello, klikněte na tlačítko **nová datová sada**a potom vyberte **úložiště objektů Azure Blob** z rozevírací nabídky hello.
+2. Nahraďte hello JSON v pravém podokně hello hello následujícím fragmentu kódu JSON:
 
     ```json
     {
@@ -517,16 +517,16 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     }
     ```
 
-   Vytvoření kanálu dále v tomto návodu se časem spuštění: 2016-11-16T00:00:00Z a koncový čas: 2016-11-16T05:00:00Z. Je naplánována nevytvořila data každou hodinu, takže se pět řezy vstupní a výstupní (mezi **00**: -> 00:00 **05**: 00:00).
+   Vytvoření kanálu dále v tomto návodu se časem spuštění: 2016-11-16T00:00:00Z a koncový čas: 2016-11-16T05:00:00Z. Je naplánované tooproduce dat každou hodinu, takže se pět řezy vstupní a výstupní (mezi **00**: -> 00:00 **05**: 00:00).
 
-   **Frekvence** a **interval** vstupní datové sady je nastavený na **hodinu** a **1**, což znamená, že vstupní řez je k dispozici každou hodinu. V této ukázce je stejný soubor (soubor.txt) v intputfolder.
+   Hello **frekvence** a **interval** hello vstupní datové sady je nastavený příliš**hodinu** a **1**, což znamená, že hello vstupní řez je k dispozici každou hodinu. V této ukázce je hello stejný soubor (soubor.txt) v hello intputfolder.
 
-   Tady jsou časy zahájení pro každý řez, která je reprezentována SliceStart systémové proměnné ve výše uvedeném fragmentu JSON.
-3. Klikněte na tlačítko **nasadit** na panelu nástrojů vytvořit a nasadit **InputDataset**. Potvrďte, že se v záhlaví okna editoru zobrazila zpráva **ÚSPĚŠNÉ VYTVOŘENÍ TABULKY**.
+   Tady jsou hello času zahájení pro každý řez, která je reprezentována SliceStart systémové proměnné v hello výše fragmentu kódu JSON.
+3. Klikněte na tlačítko **nasadit** hello toocreate panelu nástrojů a nasadit hello **InputDataset**. Zkontrolujte, jestli hello **úspěšné vytvoření tabulky** zprávu na hello záhlaví hello Editor.
 
 #### <a name="create-an-output-dataset"></a>Vytvoření výstupní datové sady
-1. V **editoru služby Data Factory**, klikněte na tlačítko **... Další** na panelu příkazů klikněte na tlačítko **nová datová sada**a potom vyberte **úložiště objektů Azure Blob**.
-2. Skript JSON v pravém podokně nahraďte následující skript JSON:
+1. V hello **editoru služby Data Factory**, klikněte na tlačítko **... Další** na panelu příkazů hello, klikněte na tlačítko **nová datová sada**a potom vyberte **úložiště objektů Azure Blob**.
+2. Nahraďte hello skript JSON v pravém podokně hello hello následující skript JSON:
 
     ```JSON
     {
@@ -556,9 +556,9 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     }
     ```
 
-     Výstupní umístění je **adftutorial/customactivityoutput/** a název výstupního souboru je rrrr MM-dd-HH.txt, kde je rrrr MM-dd HH rok, měsíc, datum a hodinu řez se vytváří. V tématu [referenční informace pro vývojáře] [ adf-developer-reference] podrobnosti.
+     Výstupní umístění je **adftutorial/customactivityoutput/** a název výstupního souboru je rrrr MM-dd-HH.txt, kde je rrrr MM-dd HH hello rok, měsíc, datum a hodinu hello řez se vytváří. V tématu [referenční informace pro vývojáře] [ adf-developer-reference] podrobnosti.
 
-    Objekt blob nebo soubor výstupu se generuje pro každý vstupní řez. Zde je, jak je výstupní soubor s názvem pro každý řez. Výstupní soubory jsou generovány v jednu výstupní složky: **adftutorial\customactivityoutput**.
+    Objekt blob nebo soubor výstupu se generuje pro každý vstupní řez. Zde je, jak je výstupní soubor s názvem pro každý řez. Všechny soubory výstup hello vygenerují na jednu výstupní složky: **adftutorial\customactivityoutput**.
 
    | Řez | Čas spuštění | Výstupní soubor |
    |:--- |:--- |:--- |
@@ -568,12 +568,12 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
    | 4 |2016-11-16T03:00:00 |2016 11 16 03.txt |
    | 5 |2016-11-16T04:00:00 |2016 11 16 04.txt |
 
-    Mějte na paměti, že všechny soubory ve vstupní složky jsou součástí řez s časy zahájení uvedených výše. Při zpracování této řezu se vlastní aktivita prohledává každý soubor a vytvoří řádek ve výstupním souboru s počtem výskytů hledaný termín ("Microsoft"). Pokud jsou inputfolder tři soubory, se ve výstupním souboru pro každý hodinové řez tři řádky: 2016-11-16-00.txt 2016-11-16:01:00:00.txt atd.
-3. K nasazení **OutputDataset**, klikněte na tlačítko **nasadit** na panelu příkazů.
+    Mějte na paměti, že všechny soubory hello ve vstupní složky jsou součástí řez s časy zahájení hello uvedených výše. Při zpracování této řezu se vlastní aktivity hello prohledává každý soubor a vytvoří řádek v souboru výstup hello s hello počtu výskytů hledaný termín ("Microsoft"). Pokud existují tři soubory v hello inputfolder, jsou tři řádky v hello výstupní soubor pro každou hodinové řez: 2016-11-16-00.txt 2016-11-16:01:00:00.txt atd.
+3. toodeploy hello **OutputDataset**, klikněte na tlačítko **nasadit** na panelu příkazů hello.
 
-### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Vytvoření a spuštění kanálu, který používá vlastní aktivity
-1. V editoru služby Data Factory, klikněte na tlačítko **... Další**a potom vyberte **nový kanál** na panelu příkazů. 
-2. Nahraďte kód JSON v pravém podokně se následující skript JSON:
+### <a name="create-and-run-a-pipeline-that-uses-hello-custom-activity"></a>Vytvoření a spuštění kanálu, který používá vlastní aktivity hello
+1. V editoru služby Data Factory hello, klikněte na **... Další**a potom vyberte **nový kanál** na panelu příkazů hello. 
+2. Nahraďte hello JSON v pravém podokně hello hello následující skript JSON:
 
     ```JSON
     {
@@ -620,125 +620,125 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     }
     ```
 
-    Je třeba počítat s následujícím:
+    Všimněte si hello následující body:
 
-   * **Concurrency** je nastaven na **2** tak, aby dva řezy jsou zpracovávány paralelně 2 virtuální počítače ve fondu Azure Batch.
-   * V části aktivit je jedna aktivita a je typu: **DotNetActivity**.
-   * **AssemblyName** nastavena na název knihovny DLL: **MyDotnetActivity.dll**.
-   * **EntryPoint** je nastaven na **MyDotNetActivityNS.MyDotNetActivity**.
-   * **PackageLinkedService** je nastaven na **AzureStorageLinkedService** který odkazuje na úložiště objektů blob, který obsahuje soubor zip vlastní aktivity. Pokud používáte jiné účty Azure Storage pro vstupní a výstupní soubory a soubor zip vlastní aktivitu, vytvoříte jiné propojené služby Azure Storage. Tento článek předpokládá, že používáte stejný účet úložiště Azure.
-   * **PackageFile** je nastaven na **customactivitycontainer/MyDotNetActivity.zip**. Je ve formátu: containerforthezip/nameofthezip.zip.
-   * Vlastní aktivita přijímá **InputDataset** jako vstup a **OutputDataset** jako výstup.
-   * Vlastnost linkedServiceName vlastní aktivity odkazuje na **AzureBatchLinkedService**, která říká službě Azure Data Factory, který vlastní aktivita je potřeba spustit na virtuálních počítačích Azure Batch.
-   * **isPaused** je nastavena na **false** ve výchozím nastavení. Kanál se spustí okamžitě v tomto příkladu protože řezy spustit v minulosti. Tuto vlastnost lze nastavit na hodnotu true pozastavení kanálu a nastavte ji zpět na hodnotu false restartovat.
-   * **Spustit** čas a **end** časy jsou **pět** hodiny od sebe a řezy vytváří každou hodinu, takže pět řezy vytváří v kanálu.
-3. Chcete-li nasadit kanálu, klikněte na tlačítko **nasadit** na panelu příkazů.
+   * **Concurrency** je nastaven příliš**2** tak, aby dva řezy jsou zpracovávány paralelně 2 virtuální počítače ve fondu Azure Batch hello.
+   * V části aktivity hello je jedna aktivita a je typu: **DotNetActivity**.
+   * **AssemblyName** nastavena toohello název hello knihovny DLL: **MyDotnetActivity.dll**.
+   * **EntryPoint** je nastaven příliš**MyDotNetActivityNS.MyDotNetActivity**.
+   * **PackageLinkedService** je nastaven příliš**AzureStorageLinkedService** který odkazuje toohello úložiště objektů blob, který obsahuje soubor zip hello vlastní aktivity. Pokud používáte různé účty Azure Storage pro vstupní a výstupní soubory a hello soubor zip vlastní aktivitu, vytvoříte jiné propojené služby Azure Storage. Tento článek předpokládá, že používáte hello stejný účet úložiště Azure.
+   * **PackageFile** je nastaven příliš**customactivitycontainer/MyDotNetActivity.zip**. Je ve formátu hello: containerforthezip/nameofthezip.zip.
+   * vlastní aktivita Hello přijímá **InputDataset** jako vstup a **OutputDataset** jako výstup.
+   * Vlastnost linkedServiceName Hello vlastní aktivity hello ukazuje toohello **AzureBatchLinkedService**, která informuje Azure Data Factory hello vlastní aktivity musí toorun na virtuálních počítačích Azure Batch.
+   * **isPaused** vlastnost je nastavena příliš**false** ve výchozím nastavení. kanál Hello spustí hned v tomto příkladu, protože hello řezy spustit v posledních hello. Můžete nastavit tuto vlastnost tootrue toopause hello kanálu a nastavte ji zpět toofalse toorestart.
+   * Hello **spustit** čas a **end** časy jsou **pět** hodiny od sebe a řezy vytváří každou hodinu, takže pět řezy vytváří hello kanálu.
+3. toodeploy hello kanálu, klikněte na tlačítko **nasadit** na panelu příkazů hello.
 
-### <a name="monitor-the-pipeline"></a>Monitorování kanálu
-1. V okně Data Factory na webu Azure portal, klikněte na tlačítko **Diagram**.
+### <a name="monitor-hello-pipeline"></a>Monitorování kanálu hello
+1. V okně Data Factory hello v hello portálu Azure, klikněte na tlačítko **Diagram**.
 
     ![Dlaždice Diagram](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
-2. V zobrazení diagramu klikněte teď OutputDataset.
+2. V hello zobrazení diagramu klikněte teď hello OutputDataset.
 
     ![Zobrazení diagramu](./media/data-factory-use-custom-activities/diagram.png)
-3. Měli byste vidět, že pět Výstup řezy jsou ve stavu Připraveno. Pokud nejsou ve stavu Připraveno, nebyly byla vypracována ještě. 
+3. Měli byste vidět, že hello pět Výstup řezy jsou ve stavu Připraveno hello. Pokud nejsou ve stavu Připraveno hello, nebyly byla vypracována ještě. 
 
    ![Výstup řezy](./media/data-factory-use-custom-activities/OutputSlices.png)
-4. Ověřte, že jsou generovány výstupní soubory v úložišti objektů blob v **adftutorial** kontejneru.
+4. Ověřte, že jsou generovány hello výstupní soubory v úložišti objektů blob hello v hello **adftutorial** kontejneru.
 
    ![výstup z vlastní aktivity][image-data-factory-ouput-from-custom-activity]
-5. Pokud můžete otevřít výstupní soubor, byste měli vidět výstup podobný následující výstup:
+5. Pokud otevřete hello výstupního souboru, měli byste vidět, že hello výstup podobný toohello následující výstup:
 
     ```
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2016-11-16-00/file.txt.
     ```
-6. Použití [portál Azure] [ azure-preview-portal] nebo rutin prostředí Azure PowerShell sledovat vaše služby data factory, kanálů a datové sady. Zobrazí se zprávy z **ActivityLogger** v kódu vlastní aktivity v protokoly (konkrétně uživatel 0.log), které si můžete stáhnout z portálu nebo pomocí rutin.
+6. Použití hello [portál Azure] [ azure-preview-portal] nebo toomonitor rutin prostředí Azure PowerShell vaše služby data factory, kanálů a datové sady. Zobrazí se zprávy z hello **ActivityLogger** v kódu hello hello vlastní aktivity v protokolech hello (konkrétně uživatel 0.log), které si můžete stáhnout z portálu hello nebo pomocí rutin.
 
    ![stažení protokolů z vlastní aktivity][image-data-factory-download-logs-from-custom-activity]
 
 V tématu [monitorování a Správa kanálů](data-factory-monitor-manage-pipelines.md) podrobné pokyny pro monitorování datových sad a kanálů.      
 
 ## <a name="data-factory-project-in-visual-studio"></a>Projekt data Factory v sadě Visual Studio  
-Můžete vytvořit a publikovat entity služby Data Factory pomocí sady Visual Studio místo použití portálu Azure. Podrobné informace o vytváření a publikování entit služby Data Factory pomocí sady Visual Studio, najdete v části [sestavit svůj první kanál pomocí sady Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) a [kopírování dat z objektu Blob Azure do Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md) články.
+Můžete vytvořit a publikovat entity služby Data Factory pomocí sady Visual Studio místo použití portálu Azure. Podrobné informace o vytváření a publikování entit služby Data Factory pomocí sady Visual Studio, najdete v části [sestavit svůj první kanál pomocí sady Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) a [kopírování dat z Azure Blob tooAzure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md) články.
 
-Pokud vytváříte projekt Data Factory v sadě Visual Studio, proveďte následující kroky:
+Hello následující další kroky, pokud vytváříte projekt Data Factory v sadě Visual Studio:
  
-1. Přidejte do řešení sady Visual Studio, který obsahuje vlastní aktivity projektu projekt Data Factory. 
-2. Přidáte odkaz na projekt aktivity .NET z projekt Data Factory. Klikněte pravým tlačítkem na projekt Data Factory, přejděte na **přidat**a potom klikněte na **odkaz**. 
-3. V **přidat odkaz na** dialogové okno, vyberte **MyDotNetActivity** projektu a klikněte na tlačítko **OK**.
-4. Sestavení a publikování řešení.
+1. Přidejte toohello projekt Data Factory hello řešení sady Visual Studio, které obsahuje hello vlastní aktivity projektu. 
+2. Přidáte odkaz na toohello .NET aktivity projekt z projektu pro vytváření dat hello. Klikněte pravým tlačítkem na projekt Data Factory, přejděte příliš**přidat**a potom klikněte na **odkaz**. 
+3. V hello **přidat odkaz na** dialogové okno, vyberte hello **MyDotNetActivity** projektu a klikněte na tlačítko **OK**.
+4. Sestavení a publikování řešení hello.
 
     > [!IMPORTANT]
-    > Když publikujete entity služby Data Factory, soubor zip je pro vás automaticky vytvoří a je odeslán do kontejneru objektů blob: customactivitycontainer. Pokud kontejner objektů blob neexistuje, je vytvořeno automaticky příliš.  
+    > Když publikujete entity služby Data Factory, soubor zip je je automaticky vytvořen a je kontejner objektů blob nahrané toohello: customactivitycontainer. Pokud kontejner objektů blob hello neexistuje, je vytvořeno automaticky příliš.  
 
 
 ## <a name="data-factory-and-batch-integration"></a>Integrace služby Data Factory a Batch
-Služba Data Factory vytvoří úlohu ve službě Azure Batch s názvem: **adf poolname: xxx úlohy**. Klikněte na tlačítko **úlohy** v levé nabídce. 
+Hello služba Data Factory vytvoří úlohu ve službě Azure Batch s názvem hello: **adf poolname: xxx úlohy**. Klikněte na tlačítko **úlohy** hello levé nabídce. 
 
 ![Azure Data Factory - úlohy Batch](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
-Úloha se vytvoří při každém spuštění aktivity řezu. Pokud existují pět řezy, které jsou připravené ke zpracování, jsou v této úloze vytvořit pět úloh. Pokud existují několika výpočetních uzlech ve fondu Batch, dva nebo více řezů může běžet paralelně. Pokud > 1 je nastavena maximální úkolů na výpočetním uzlu, může mít více než jeden řez na stejném výpočetním spuštěna.
+Úloha se vytvoří při každém spuštění aktivity řezu. Pokud existují pět toobe připraven řezy, které se zpracovat, jsou v této úloze vytvořit pět úloh. Pokud existují několika výpočetních uzlech v hello fondu Batch, dva nebo více řezů může běžet paralelně. Pokud hello maximální úkolů na výpočetní uzel je nastaven příliš > 1, můžete také máte více než jeden řez systémem hello stejné výpočty.
 
 ![Azure Data Factory - úlohy Batch](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
 
-Následující diagram znázorňuje vztah mezi Azure Data Factory a dávkové úlohy.
+Hello následující diagram znázorňuje hello vztah mezi Azure Data Factory a dávkové úlohy.
 
 ![Objekt pro vytváření dat & Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
 
 ## <a name="troubleshoot-failures"></a>Řešení chyb
 Řešení potíží se skládá z několika základní techniky:
 
-1. Pokud se zobrazí následující chyba, můžete pomocí úložiště objektů blob aktivní/nástrojů místo použití úložiště objektů blob v Azure pro obecné účely. Nahrajte soubor zip **účet úložiště pro obecné účely Azure**. 
+1. Pokud se zobrazí následující chyba hello, můžete pomocí úložiště objektů blob aktivní/nástrojů místo použití úložiště objektů blob v Azure pro obecné účely. Nahrát tooa soubor zip hello **účet úložiště pro obecné účely Azure**. 
  
     ```
-    Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
+    Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of hello specified Azure Blob(s).
     ``` 
-2. Pokud se zobrazí následující chyba, zkontrolujte, zda název třídy v souboru CS odpovídá název zadaný pro **EntryPoint** vlastnost v kódu JSON kanálu. V tomto návodu je název třídy: MyDotNetActivity a vstupní bod v kódu JSON: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Pokud se zobrazí následující chyba hello, ověřte, že hello název třídy hello v hello CS odpovídá hello zadaný název souboru je pro hello **EntryPoint** vlastnost v kódu JSON kanálu hello. V návodu hello je název třídy hello: MyDotNetActivity a hello EntryPoint v hello JSON je: MyDotNetActivityNS. **MyDotNetActivity**.
 
     ```
-    MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
+    MyDotNetActivity assembly does not exist or doesn't implement hello type Microsoft.DataFactories.Runtime.IDotNetActivity properly
     ```
 
-   Pokud se názvy shodují, potvrďte, že jsou všechny binární soubory **kořenové složky** souboru zip. To znamená když otevřete soubor zip, měli byste vidět všechny soubory v kořenové složce, ne všechny podsložek.   
-3. Pokud vstupní řez není nastaven na **připraven**, potvrďte správnost struktuře vstupní složky a **soubor.txt** existuje ve vstupní složkách.
-3. V **Execute** metoda vlastní aktivity, použijte **IActivityLogger** objektu k protokolování informací, které vám pomůže vyřešit problémy. Zprávy zaznamenané objeví v souborech protokolu uživatele (jeden nebo více souborů s názvem: uživatel 0.log, 1.log uživatele, uživatel 2.log atd.).
+   Pokud se názvy hello shodují, potvrďte, že všechny binární soubory hello jsou v hello **kořenové složky** hello souboru zip. To znamená když otevřete soubor zip hello, měli byste vidět všechny soubory hello hello kořenové složky, není ve všech podsložek.   
+3. Pokud vstupní řez hello není nastaven příliš**připraven**, potvrďte správnost hello vstupní složky struktura a **soubor.txt** existuje ve vstupní složkách hello.
+3. V hello **Execute** metoda vlastní aktivity, použijte hello **IActivityLogger** toolog informace o objektu, který vám pomůže vyřešit problémy. zprávy Hello přihlášení zobrazí v souborech protokolů uživatele hello (jeden nebo více souborů s názvem: uživatel 0.log, 1.log uživatele, uživatel 2.log atd.).
 
-   V **OutputDataset** okně klikněte na tlačítko řez zobrazíte **datový ŘEZ** okno pro tento řez. Zobrazí **běh aktivit** pro tento řez. Měli byste vidět jednu aktivitu spustit řez. Pokud jste na panelu příkazů klikněte na tlačítko spustit, můžete spustit jiné aktivity při spuštění stejné řez.
+   V hello **OutputDataset** okně klikněte na tlačítko hello řez toosee hello **datový ŘEZ** okno pro tento řez. Zobrazí **běh aktivit** pro tento řez. Měli byste vidět jednu aktivitu spustit pro řez hello. Pokud kliknete na tlačítko spustit v hello příkazového řádku, můžete spustit jinou aktivitu spustit pro hello stejné řez.
 
-   Když kliknete na aktivity při spuštění, uvidíte **podrobnosti o spuštění aktivit** okno se seznamem souborů protokolu. Zobrazí zprávy zaznamenané v souboru user_0.log. Když dojde k chybě, zobrazí tři běh aktivit, protože počet opakování je nastavena na hodnotu 3 v kódu JSON kanálu nebo aktivity. Po kliknutí na tlačítko spustit aktivitu, zobrazí se soubory protokolů, které můžete zkontrolovat, chcete-li vyřešit chyby.
+   Po kliknutí na tlačítko hello aktivity při spuštění, se zobrazí hello **podrobnosti o spuštění aktivit** okno se seznamem souborů protokolu. Zobrazí zprávy zaznamenané v souboru user_0.log hello. Pokud dojde k chybě, uvidíte tři běh aktivit protože hello počet opakování je nastavena too3 v kanálu nebo aktivity hello JSON. Po kliknutí na tlačítko hello aktivity při spuštění, zobrazí hello soubory protokolů, abyste si prošli tootroubleshoot hello chyby.
 
-   V seznamu souborů protokolu, klikněte na **uživatele 0.log**. V pravém panelu jsou výsledky pomocí **IActivityLogger.Write** metoda. Pokud nevidíte všechny zprávy, zkontrolujte, zda máte další soubory protokolu s názvem: user_1.log, user_2.log atd. Kód nebyla úspěšná, jinak hodnota po poslední přihlášení zprávy.
+   V seznamu hello protokolových souborů, klikněte na tlačítko hello **uživatele 0.log**. V pravém panelu hello jsou výsledky hello pomocí hello **IActivityLogger.Write** metoda. Pokud nevidíte všechny zprávy, zkontrolujte, zda máte další soubory protokolu s názvem: user_1.log, user_2.log atd. Kód hello nebyla úspěšná, jinak hodnota po hello posledního přihlášení zpráva.
 
    Kromě toho zkontrolujte **systému 0.log** pro všechny chybové zprávy systému a výjimky.
-4. Zahrnout **PDB** souborů v souboru zip tak, aby podrobnosti o chybě informace, jako **zásobník volání** když dojde k chybě.
-5. Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni**, bez podsložek.
-6. Ujistěte se, že **assemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip), a **packageLinkedService** (by měla odkazovat na **pro obecné účely**úložiště objektů blob v Azure, který obsahuje soubor zip) jsou nastaveny na správný hodnoty.
-7. Pokud jste opravili chybu a chcete řez zpracovat znovu, klikněte na něj v okně **OutputDataset** pravým tlačítkem myši a potom klikněte na **Spustit**.
-8. Pokud se zobrazí následující chyba, používáte Azure Storage balíček verze > 4.3.0. Spouštěč služby Data Factory vyžaduje 4.3 verzi WindowsAzure.Storage. V tématu [izolace domény aplikace](#appdomain-isolation) části pro řešení, pokud musíte použít novější verzi sestavení Azure Storage. 
+4. Zahrnout hello **PDB** souborů v souboru zip hello tak, aby podrobnosti o chybě hello informace, jako **zásobník volání** když dojde k chybě.
+5. Všechny soubory v souboru zip hello hello hello vlastní aktivity musí být v hello **top úroveň** s žádné podsložek.
+6. Ujistěte se, že hello **assemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip), a **packageLinkedService** (by měla odkazovat toohello **pro obecné účely**úložiště objektů blob v Azure, která obsahuje soubor zip hello) jsou nastavené toocorrect hodnoty.
+7. Pokud můžete opravit chyby a chcete řez hello tooreprocess, klikněte pravým tlačítkem na hello řez ve hello **OutputDataset** a klikněte na **spustit**.
+8. Pokud se zobrazí následující chyba hello, používáte hello Azure Storage balíčku verze > 4.3.0. Spouštěč služby Data Factory vyžaduje hello 4.3 verzi WindowsAzure.Storage. V tématu [izolace domény aplikace](#appdomain-isolation) části pro řešení, pokud je nutné použít hello novější verze sestavení Azure Storage. 
 
     ```
-    Error in Activity: Unknown error in module: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.TypeLoadException: Could not load type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from assembly 'Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, 
+    Error in Activity: Unknown error in module: System.Reflection.TargetInvocationException: Exception has been thrown by hello target of an invocation. ---> System.TypeLoadException: Could not load type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from assembly 'Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, 
     ```
 
-    Pokud použijete 4.3.0 verzi balíčku Azure Storage, odeberte existující odkaz na balíček verze > 4.3.0 Azure Storage. Potom spusťte následující příkaz z konzoly Správce balíčků NuGet. 
+    Pokud používáte hello 4.3.0 verzi balíčku Azure Storage, odeberte hello existující odkaz tooAzure úložiště balíčku verze > 4.3.0. Potom spusťte následující příkaz z konzoly Správce balíčků NuGet hello. 
 
     ```PowerShell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
-    Sestavte projekt. Odstraňte ze složky bin\Debug Azure.Storage sestavením verze > 4.3.0. Vytvořte soubor zip s binární soubory a souboru PDB. Nahraďte původní soubor zip touto v kontejneru objektů blob (customactivitycontainer). Znovu spustit datové řezy, které se nezdařilo (klikněte pravým tlačítkem na řez a klikněte na tlačítko Spustit).   
-8. Vlastní aktivity nepoužívá **app.config** soubor ze svého balíčku. Proto pokud váš kód čte libovolné púřipojovací řetězce z konfiguračního souboru, ale nefunguje za běhu. Osvědčeným postupem při použití Azure Batch je pro uložení všech tajných klíčů v **Azure KeyVault**, použijte objekt služby založené na certifikátech k ochraně **keyvault**a distribuovat certifikát, který chcete Azure Batch fond. Vlastní aktivita .NET potom má přístup k tajným klíčům v trezoru za běhu. Toto řešení je obecný řešení a můžete škálovat k libovolnému typu tajný klíč, ne jenom připojovací řetězec.
+    Sestavení projektu hello. Odstraňte Azure.Storage sestavením verze > 4.3.0 ze složky bin\Debug hello. Vytvořte soubor zip s binární soubory a souboru PDB hello. Nahraďte původní soubor zip hello touto v kontejneru objektů blob hello (customactivitycontainer). Spusťte znovu hello řezy, které se nezdařilo (klikněte pravým tlačítkem na řez a klikněte na tlačítko Spustit).   
+8. vlastní aktivity Hello nepoužívá hello **app.config** soubor ze svého balíčku. Proto pokud váš kód čte libovolné púřipojovací řetězce z konfiguračního souboru hello, ale nefunguje za běhu. Hello osvědčený postup, při použití Azure Batch je toohold všech tajných klíčů v **Azure KeyVault**, používat služeb na základě certifikátu hlavní tooprotect hello **keyvault**a distribuovat certifikát hello tooAzure fondu služby Batch. Hello vlastní aktivity .NET pak k dispozici tajné klíče z hello KeyVault za běhu. Toto řešení je obecný řešení a můžete škálovat tooany typ tajný klíč, ne jenom připojovací řetězec.
 
-   Je snazší alternativní řešení (ale není z hlediska): můžete vytvořit **propojená služba Azure SQL** pomocí nastavení připojovacího řetězce, vytvořit datovou sadu, která používá propojené služby a řetězu datovou sadu jako fiktivní vstupní datové sady do vlastní aktivity .NET. Máte přístup připojovací řetězec propojené služby v kódu vlastní aktivity.  
+   Je snazší alternativní řešení (ale není z hlediska): můžete vytvořit **propojená služba Azure SQL** s nastavení připojovacího řetězce, vytvořit datovou sadu, zda text hello používá propojené služby a řetězu hello datovou sadu jako fiktivní vstupní datové sady toohello vlastní aktivity .NET. Můžete pak přístup hello propojené služby připojovací řetězec v kódu hello vlastní aktivity.  
 
 ## <a name="update-custom-activity"></a>Aktualizovat vlastní aktivitu
-Pokud aktualizujete kód vlastní aktivity, sestavte jej a nahrajte soubor zip, který obsahuje nové binární soubory do úložiště objektů blob.
+Pokud aktualizujete hello kód hello vlastní aktivity, sestavte jej a nahrajte hello soubor zip, který obsahuje nové úložiště objektů blob toohello binární soubory.
 
 ## <a name="appdomain-isolation"></a>Izolace domény aplikace
-V tématu [mezi ukázka AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) který ukazuje, jak vytvořit vlastní aktivity, které nejsou rozděleny do verze sestavení používá Spouštěče objekt pro vytváření dat (Příklad: WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x atd.).
+Najdete v části [mezi ukázka AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) který ukazuje, jak toocreate vlastní aktivitu, která není omezené tooassembly verze používané Spouštěče hello objekt pro vytváření dat (Příklad: WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x atd.).
 
 ## <a name="access-extended-properties"></a>Přístup rozšířené vlastnosti
-Je možné deklarovat rozšířených vlastností v kódu JSON, jak znázorňuje následující ukázka aktivity:
+V kódu JSON aktivity hello můžou deklarovat rozšířených vlastností, jak je znázorněno v hello následující ukázka:
 
 ```JSON
 "typeProperties": {
@@ -754,16 +754,16 @@ Je možné deklarovat rozšířených vlastností v kódu JSON, jak znázorňuje
 ```
 
 
-V příkladu jsou dvě rozšířené vlastnosti: **SliceStart** a **DataFactoryName**. Hodnota pro SliceStart je založená na proměnnou SliceStart systému. V tématu [systémové proměnné](data-factory-functions-variables.md) seznam podporovaných systémové proměnné. Hodnota DataFactoryName je pevně zakódovaná na CustomActivityFactory.
+V příkladu hello existují dvě rozšířené vlastnosti: **SliceStart** a **DataFactoryName**. Hodnota Hello SliceStart vychází hello SliceStart systémové proměnné. V tématu [systémové proměnné](data-factory-functions-variables.md) seznam podporovaných systémové proměnné. Hodnota Hello DataFactoryName je pevně tooCustomActivityFactory.
 
-Pro přístup k těmto rozšířené vlastnosti v **Execute** metoda, použít kód podobná následující kód:
+tooaccess tyto rozšířené vlastnosti v hello **Execute** metodu, pomocí kódu podobné toohello následující kód:
 
 ```csharp
-// to get extended properties (for example: SliceStart)
+// tooget extended properties (for example: SliceStart)
 DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
 string sliceStartString = dotNetActivity.ExtendedProperties["SliceStart"];
 
-// to log all extended properties                               
+// toolog all extended properties                               
 IDictionary<string, string> extendedProperties = dotNetActivity.ExtendedProperties;
 logger.Write("Logging extended properties if any...");
 foreach (KeyValuePair<string, string> entry in extendedProperties)
@@ -773,9 +773,9 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ```
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatické škálování služby Azure Batch
-Můžete také vytvořit fond Azure Batch s **škálování** funkce. Můžete například vytvořit fondu azure batch s 0 vyhrazených virtuálních počítačích a vzorec škálování na základě počtu úkolů čekajících na zpracování. 
+Můžete také vytvořit fond Azure Batch s **škálování** funkce. Můžete například vytvořit fondu azure batch s 0 vyhrazených virtuálních počítačích a vzorec škálování na základě hello počtu úkolů čekajících na zpracování. 
 
-Vzorec ukázka tady dosahuje následující chování: při vytvoření fondu, začne s virtuálním Počítačem 1. Metrika $PendingTasks definuje počet úloh v spuštěná + aktivní (zařazených do fronty) stavu.  Vzorec najde průměrný počet úkolů čekajících na zpracování v posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy překročí 25 virtuálních počítačů. Tak, jako jsou odeslány nové úkoly, fondu automaticky zvětšování a jako dokončení úkolů, virtuální počítače stane volné jeden po druhém a automatické škálování zmenšuje těchto virtuálních počítačů. startingNumberOfVMs a maxNumberofVMs lze upravit vašim potřebám.
+jednoduchý vzorec Hello dosahuje hello následující chování: při počátečním vytvoření fondu hello začíná 1 virtuální počítač. Metrika $PendingTasks definuje hello počet úloh v spuštěná + aktivní (zařazených do fronty) stavu.  Vzorec Hello najde hello průměrný počet úkolů čekajících na zpracování v hello posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy překročí 25 virtuálních počítačů. Tak, jako jsou odeslány nové úkoly, fondu automaticky zvětšování a jako dokončení úkolů, virtuální počítače stane volné jeden po druhém a automatické škálování hello zmenšuje těchto virtuálních počítačů. startingNumberOfVMs a maxNumberofVMs může být upravenou tooyour potřebám.
 
 Vzorec škálování:
 
@@ -789,37 +789,37 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 V tématu [automatické škálování výpočetních uzlů ve fondu Azure Batch](../batch/batch-automatic-scaling.md) podrobnosti.
 
-Pokud fondu používá výchozí [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), služba Batch může trvat 15 až 30 minut Příprava virtuálního počítače před spuštěním vlastní aktivity.  Pokud fondu používá jiný autoScaleEvaluationInterval, služba Batch může trvat autoScaleEvaluationInterval + 10 minut.
+Pokud fond hello používá výchozí hello [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), hello služba Batch může trvat 15 až 30 minut tooprepare hello virtuálních počítačů před spuštěním hello vlastní aktivity.  Pokud fond hello používá jiný autoScaleEvaluationInterval, může trvat hello služba Batch autoScaleEvaluationInterval + 10 minut.
 
 ## <a name="use-hdinsight-compute-service"></a>Pomocí HDInsight výpočetní služby
-V tomto návodu jste použili výpočetní Azure Batch pro spuštění vlastní aktivity. Můžete také použít vlastní cluster HDInsight se systémem Windows nebo mít objekt pro vytváření dat vytvořit na vyžádání clusteru HDInsight se systémem Windows a mít vlastní aktivity při spuštění v clusteru HDInsight. Zde jsou základní kroky pro použití clusteru HDInsight.
+V Průvodci hello používá Azure Batch výpočetní toorun hello vlastní aktivity. Můžete také použít vlastní cluster HDInsight se systémem Windows nebo mít objekt pro vytváření dat vytvořit na vyžádání clusteru HDInsight se systémem Windows a mít hello vlastní aktivity při spuštění v clusteru HDInsight hello. Tady jsou hlavní kroky hello pomocí clusteru služby HDInsight.
 
 > [!IMPORTANT]
-> Vlastní aktivity .NET spustit pouze na clusterech HDInsight se systémem Windows. Alternativní řešení pro toto omezení je pomocí mapy snížit aktivity ke spuštění vlastního kódu Java na clusteru HDInsight se systémem Linux. Další možností je použití fondu virtuálních počítačů služby Azure Batch ke spouštění vlastních aktivit místo použití clusteru HDInsight.
+> vlastní aktivity .NET Hello spustit pouze na clusterech HDInsight se systémem Windows. Alternativní řešení pro toto omezení je toouse hello mapy snížit aktivity toorun vlastní Java kód na clusteru HDInsight se systémem Linux. Další možností je toouse fondu Azure Batch virtuální počítače toorun vlastních aktivit místo použití clusteru HDInsight.
  
 
 1. Vytvoření služby Azure HDInsight propojený.   
-2. Použití HDInsight propojená služba místě **AzureBatchLinkedService** v kódu JSON kanálu.
+2. Použití HDInsight propojená služba místě **AzureBatchLinkedService** v hello kanálu JSON.
 
-Pokud chcete otestovat s návodu, změňte **spustit** a **end** časy pro kanál, tak, aby scénáře pomocí služby Azure HDInsight můžete otestovat.
+Pokud chcete, aby tootest její hello návod, změna **spustit** a **end** časy pro kanál hello tak, aby hello scénář s hello služby Azure HDInsight můžete otestovat.
 
 #### <a name="create-azure-hdinsight-linked-service"></a>Vytvoření propojené služby Azure HDInsight
-Služba Azure Data Factory podporuje vytváření clusteru na vyžádání a použít ho ke zpracování vstupu nevytvořila výstupní data. Můžete také vlastní cluster provést stejný. Pokud používáte cluster HDInsight na vyžádání, získá pro každý řez vytvořit cluster. Vzhledem k tomu, pokud chcete použít vlastní cluster HDInsight, cluster je připraven ke zpracování řezu se okamžitě. Proto když používáte cluster na vyžádání, nemusíte vidět výstupní data co když použijete vlastní cluster.
+Hello služby Azure Data Factory podporuje vytváření clusteru na vyžádání a použít ho tooprocess vstupní tooproduce výstupní data. Můžete také vlastní cluster tooperform hello stejné. Pokud používáte cluster HDInsight na vyžádání, získá pro každý řez vytvořit cluster. Vzhledem k tomu, pokud chcete použít vlastní cluster HDInsight, hello cluster je připraven hello tooprocess řez okamžitě. Proto když používáte cluster na vyžádání, nemusíte vidět hello výstupní data co když použijete vlastní cluster.
 
 > [!NOTE]
-> V době běhu instance aktivity .NET funguje pouze na jeden uzel pracovního procesu v clusteru HDInsight; nelze ji škálovat ke spuštění na víc uzlů. Více instancí .NET aktivity může běžet paralelně na různých uzlech clusteru HDInsight.
+> V době běhu instance aktivity .NET funguje pouze na jeden uzel pracovního procesu v clusteru HDInsight hello; nelze ji škálovat toorun ve více uzlech. Více instancí .NET aktivity může běžet paralelně na různých uzlech clusteru HDInsight hello.
 >
 >
 
-##### <a name="to-use-an-on-demand-hdinsight-cluster"></a>Na používání clusteru HDInsight na vyžádání
-1. V **portál Azure**, klikněte na tlačítko **vytvořit a nasadit** na domovské stránce objektu pro vytváření dat.
-2. V editoru služby Data Factory, klikněte na tlačítko **nový výpočet** z příkazového řádku a vyberte **clusteru HDInsight na vyžádání** z nabídky.
-3. Skript JSON proveďte následující změny:
+##### <a name="toouse-an-on-demand-hdinsight-cluster"></a>toouse clusteru HDInsight na vyžádání
+1. V hello **portál Azure**, klikněte na tlačítko **vytvořit a nasadit** domovské stránce objektu pro vytváření dat hello.
+2. V editoru služby Data Factory hello, klikněte na **nový výpočet** z příkazu hello panelu a vyberte možnost **clusteru HDInsight na vyžádání** nabídce hello.
+3. Ujistěte se, hello následující skript JSON toohello změny:
 
-   1. Pro **parametr clusterSize** vlastnost, zadejte velikost clusteru HDInsight.
-   2. Pro **timeToLive** vlastnost, zadejte, jak dlouho zákazníka může být nečinnosti, než se odstraní.
-   3. Pro **verze** vlastnost, zadejte verzi HDInsight, kterou chcete použít. Pokud vyloučíte tuto vlastnost, použije se nejnovější verzi.  
-   4. Pro **linkedServiceName**, zadejte **AzureStorageLinkedService**.
+   1. Pro hello **parametr clusterSize** vlastnost, zadejte velikost hello hello clusteru HDInsight.
+   2. Pro hello **timeToLive** vlastnost, zadejte, jak dlouho hello zákazníka může být nečinnosti, než se odstraní.
+   3. Pro hello **verze** vlastnost, zadejte verzi HDInsight hello chcete toouse. Pokud vyloučíte tuto vlastnost, použije se nejnovější verze hello.  
+   4. Pro hello **linkedServiceName**, zadejte **AzureStorageLinkedService**.
 
         ```JSON
         {
@@ -837,24 +837,24 @@ Služba Azure Data Factory podporuje vytváření clusteru na vyžádání a pou
         ```
 
     > [!IMPORTANT]
-    > Vlastní aktivity .NET spustit pouze na clusterech HDInsight se systémem Windows. Alternativní řešení pro toto omezení je pomocí mapy snížit aktivity ke spuštění vlastního kódu Java na clusteru HDInsight se systémem Linux. Další možností je použití fondu virtuálních počítačů služby Azure Batch ke spouštění vlastních aktivit místo použití clusteru HDInsight.
+    > vlastní aktivity .NET Hello spustit pouze na clusterech HDInsight se systémem Windows. Alternativní řešení pro toto omezení je toouse hello mapy snížit aktivity toorun vlastní Java kód na clusteru HDInsight se systémem Linux. Další možností je toouse fondu Azure Batch virtuální počítače toorun vlastních aktivit místo použití clusteru HDInsight.
 
-4. Propojenou službu nasadíte kliknutím na **Nasadit** na panelu příkazů.
+4. Klikněte na tlačítko **nasadit** na hello příkazovém řádku toodeploy hello propojené služby.
 
-##### <a name="to-use-your-own-hdinsight-cluster"></a>Použití vlastní cluster HDInsight:
-1. V **portál Azure**, klikněte na tlačítko **vytvořit a nasadit** na domovské stránce objektu pro vytváření dat.
-2. V **editoru služby Data Factory**, klikněte na tlačítko **nový výpočet** z příkazového řádku a vyberte **clusteru HDInsight** z nabídky.
-3. Skript JSON proveďte následující změny:
+##### <a name="toouse-your-own-hdinsight-cluster"></a>toouse vlastní cluster HDInsight:
+1. V hello **portál Azure**, klikněte na tlačítko **vytvořit a nasadit** domovské stránce objektu pro vytváření dat hello.
+2. V hello **editoru služby Data Factory**, klikněte na tlačítko **nový výpočet** z příkazu hello panelu a vyberte možnost **clusteru HDInsight** nabídce hello.
+3. Ujistěte se, hello následující skript JSON toohello změny:
 
-   1. Pro **clusterUri** vlastnost, zadejte adresu URL pro vaše prostředí HDInsight. Příklad: https://<clustername>.azurehdinsight.net/     
-   2. Pro **uživatelské jméno** vlastnost, zadejte uživatelské jméno, který má přístup ke clusteru HDInsight.
-   3. Pro **heslo** vlastnost, zadejte heslo pro uživatele.
-   4. Pro **LinkedServiceName** vlastnost, zadejte **AzureStorageLinkedService**.
-4. Propojenou službu nasadíte kliknutím na **Nasadit** na panelu příkazů.
+   1. Pro hello **clusterUri** vlastnost, zadejte adresu URL hello pro vaše prostředí HDInsight. Příklad: https://<clustername>.azurehdinsight.net/     
+   2. Pro hello **uživatelské jméno** vlastnost, zadejte uživatelské jméno hello, který má cluster HDInsight toohello přístup.
+   3. Pro hello **heslo** vlastnost, zadejte heslo hello hello uživatele.
+   4. Pro hello **LinkedServiceName** vlastnost, zadejte **AzureStorageLinkedService**.
+4. Klikněte na tlačítko **nasadit** na hello příkazovém řádku toodeploy hello propojené služby.
 
 V tématu [výpočetní propojené služby](data-factory-compute-linked-services.md) podrobnosti.
 
-V **kanálu JSON**, použití HDInsight (na vyžádání nebo vlastní) propojené služby:
+V hello **kanálu JSON**, použití HDInsight (na vyžádání nebo vlastní) propojené služby:
 
 ```JSON
 {
@@ -902,7 +902,7 @@ V **kanálu JSON**, použití HDInsight (na vyžádání nebo vlastní) propojen
 ```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>Vytvoření vlastní aktivity pomocí .NET SDK
-V tomto návodu v tomto článku vytvoříte objekt pro vytváření dat kanál, který používá vlastní aktivity pomocí portálu Azure. Následující kód ukazuje, jak vytvořit objekt pro vytváření dat pomocí .NET SDK. Můžete najít další podrobnosti o použití sady SDK k vytváření prostřednictvím kódu programu kanály v [vytvoření kanálu s aktivitou kopírování pomocí rozhraní API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md) článku. 
+V Průvodci hello v tomto článku vytvořit objekt pro vytváření dat kanál, který používá vlastní aktivity hello pomocí hello portálu Azure. Hello následující kód ukazuje, jak toocreate hello objekt pro vytváření dat pomocí .NET SDK. Můžete najít další podrobnosti o použití sady SDK tooprogrammatically vytvořit kanály v hello [vytvoření kanálu s aktivitou kopírování pomocí rozhraní API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md) článku. 
 
 ```csharp
 using System;
@@ -927,7 +927,7 @@ namespace DataFactoryAPITestApp
         {
             // create data factory management client
 
-            // TODO: replace ADFTutorialResourceGroup with the name of your resource group.
+            // TODO: replace ADFTutorialResourceGroup with hello name of your resource group.
             string resourceGroupName = "ADFTutorialResourceGroup";
 
             // TODO: replace APITutorialFactory with a name that is globally unique. For example: APITutorialFactory04212017
@@ -1072,7 +1072,7 @@ namespace DataFactoryAPITestApp
                         {
                             Description = "Use custom activity",
 
-                            // Initial value for pipeline's active period. With this, you won't need to set slice status
+                            // Initial value for pipeline's active period. With this, you won't need tooset slice status
                             Start = PipelineActivePeriodStartTime,
                             End = PipelineActivePeriodEndTime,
                             IsPaused = false,
@@ -1135,23 +1135,23 @@ namespace DataFactoryAPITestApp
             if (result != null)
                 return result.AccessToken;
 
-            throw new InvalidOperationException("Failed to acquire token");
+            throw new InvalidOperationException("Failed tooacquire token");
         }
     }
 }
 ```
 
 ## <a name="debug-custom-activity-in-visual-studio"></a>Ladění vlastní aktivity v sadě Visual Studio
-[Azure Data Factory - místní prostředí](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) ukázce na Githubu zahrnuje nástroj, který vám umožní ladit vlastní .NET aktivity v sadě Visual Studio.  
+Hello [Azure Data Factory - místní prostředí](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) ukázce na Githubu zahrnuje nástroj, který vám umožní toodebug vlastní .NET aktivity v sadě Visual Studio.  
 
 
 ## <a name="sample-custom-activities-on-github"></a>Ukázka vlastních aktivit na Githubu
 | Ukázka | Jaké vlastní aktivita provede |
 | --- | --- |
-| [Stažení programu HTTP Data](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Stahování dat z koncový bod HTTP do Azure Blob Storage pomocí vlastní C# aktivitu v datové továrně. |
+| [Stažení programu HTTP Data](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Stáhne data koncový bod HTTP tooAzure Blob Storage pomocí vlastní C# aktivitu v datové továrně. |
 | [Ukázka postojích Analysis služby Twitter.](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Vyvolá modelu Azure ML a proveďte analýzu postojích, vyhodnocování, předpovědi atd. |
 | [Spustit skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Vyvolá skript jazyka R spuštěním RScript.exe, který již má nainstalované R na clusteru HDInsight. |
-| [Mezi domény aplikace .NET aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Používá jiný sestavení verze z těch, které jsou používané Spouštěče objekt pro vytváření dat |
+| [Mezi domény aplikace .NET aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Používá jiný sestavení verze z těch, které jsou používané Spouštěče hello objekt pro vytváření dat |
 | [Zpracování modelu v Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Znovu zpracuje model v Azure Analysis Services. |
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md

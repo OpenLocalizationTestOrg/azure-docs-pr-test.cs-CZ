@@ -10,7 +10,7 @@ sql-database-service-tiers.md
 | --- | :---: |
 | Maximální počet DTU | 5 |
 | Maximální velikost databáze* |2 GB|
-| Maximální úložiště OLTP v paměti |– |
+| Maximální úložiště OLTP v paměti |Není k dispozici |
 | Maximální počet souběžných pracovních procesů (počet požadavků) |30 |
 | Maximální počet souběžných přihlášení |30 |
 | Maximální počet souběžných relací |300 |
@@ -21,7 +21,7 @@ sql-database-service-tiers.md
 | --- |---:| ---:|---:|---:|---:|
 | Maximální počet DTU | 10 | 20 | 50 | 100 |
 | Maximální velikost databáze* | 250 GB| 250 GB | 250 GB | 250 GB |
-| Maximální úložiště OLTP v paměti | Není dostupné. | Není dostupné. | Není dostupné. | – |
+| Maximální úložiště OLTP v paměti | Není dostupné. | Není dostupné. | Není dostupné. | Není k dispozici |
 | Maximální počet souběžných pracovních procesů (počet požadavků)| 60 | 90 | 120 | 200 |
 | Maximální počet souběžných přihlášení | 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
@@ -49,4 +49,4 @@ sql-database-service-tiers.md
 | Maximální počet souběžných relací | 30000| 30000| 30000| 30000|
 |||||||
 
-\* Maximální velikost databáze odkazuje na maximální velikost dat v databázi. 
+\*Maximální velikost databáze odkazuje toohello maximální velikost hello data v databázi hello. 

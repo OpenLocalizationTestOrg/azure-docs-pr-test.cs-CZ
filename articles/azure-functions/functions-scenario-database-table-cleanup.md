@@ -1,6 +1,6 @@
 ---
-title: "Pomocí Azure Functions provádět databázi úlohy čištění | Microsoft Docs"
-description: "Pomocí Azure Functions můžete naplánovat úlohu, která se připojuje k databázi SQL Azure a pravidelně čistí řádky."
+title: "Azure Functions tooperform aaaUse databázi vyčištění úloh | Microsoft Docs"
+description: "Použití Azure Functions tooschedule úlohu, která připojí tooAzure SQL Database tooperiodically čistí řádky."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -15,76 +15,76 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 6fd0e32374827b249f5aba1cbfc39117c88c6272
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 063a25fe8d14a75d54e9b72cec9fc1e25fa3ff44
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Používat Azure Functions k připojení k databázi SQL Azure
-Toto téma ukazuje, jak používat Azure Functions vytvořit naplánovanou úlohu, která vyčistí řádky v tabulce v Azure SQL Database. Nové funkce jazyka C# se vytvoří na základě šablony aktivační událost časovače předem definovaných na portálu Azure. Pro podporu tohoto scénáře, musíte taky nastavit připojovací řetězec databáze jako nastavení v aplikaci funkce. Tento scénář používá hromadné operace v databázi. Pokud chcete, aby funkce zpracovat jednotlivé operace CRUD v tabulce Mobile Apps, měli byste místo toho použít [Mobile Apps vazby](functions-bindings-mobile-apps.md).
+# <a name="use-azure-functions-tooconnect-tooan-azure-sql-database"></a>Použití Azure Functions tooconnect tooan Azure SQL Database
+Toto téma ukazuje, jak toouse Azure Functions toocreate naplánované úlohy, která vyčistí řádky v tabulce v Azure SQL Database. Hello nové C# funkce se vytvoří na základě šablony aktivační událost časovače předem definovaných v hello portálu Azure. toosupport v tomto scénáři je nutné také nastavit připojovací řetězec databáze jako nastavení v aplikaci funkce hello. Tento scénář používá hromadné operace hello databázi. toohave vaší funkce proces jednotlivé operace CRUD v tabulce Mobile Apps, měli byste místo toho použít [Mobile Apps vazby](functions-bindings-mobile-apps.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Toto téma používá funkci spustí časovač. Proveďte kroky v tématu [vytvořit funkci v Azure, který je aktivován časovač](functions-create-scheduled-function.md) verzi jazyka C# této funkce.   
++ Toto téma používá funkci spustí časovač. Dokončení hello kroky v tématu hello [vytvořit funkci v Azure, který je aktivován časovač](functions-create-scheduled-function.md) toocreate C# verze této funkce.   
 
-+ Příkaz Transact-SQL, který provádí hromadné operace čištění v tomto tématu se dozvíte **SalesOrderHeader** tabulky v ukázkové databáze AdventureWorksLT. K vytvoření ukázkové databáze AdventureWorksLT, proveďte kroky v tématu [vytvoření Azure SQL database na portálu Azure](../sql-database/sql-database-get-started-portal.md). 
++ Toto téma popisuje příkaz Transact-SQL, který spustí hromadné operace čištění hello **SalesOrderHeader** tabulky v ukázkové databáze AdventureWorksLT hello. ukázkové databáze AdventureWorksLT toocreate hello dokončení hello kroky v tématu hello [vytvoření Azure SQL database v hello portál Azure](../sql-database/sql-database-get-started-portal.md). 
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 
-Je nutné získat připojovací řetězec pro databázi, který jste vytvořili, když jste dokončili [vytvoření Azure SQL database na portálu Azure](../sql-database/sql-database-get-started-portal.md).
+Je třeba tooget hello připojovacího řetězce pro databázi hello jste vytvořili, když jste dokončili [vytvoření Azure SQL database v hello portál Azure](../sql-database/sql-database-get-started-portal.md).
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
  
-3. Vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
+3. Vyberte **databází SQL** z nabídky na levé straně hello a vyberte svou databázi na hello **databází SQL** stránky.
 
-4. Vyberte **zobrazit databázové připojovací řetězce** a zkopírujte kompletní **ADO.NET** připojovací řetězec.
+4. Vyberte **zobrazit databázové připojovací řetězce** a dokončení kopírování hello **ADO.NET** připojovací řetězec.
 
-    ![Zkopírujte připojovací řetězec ADO.NET.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
+    ![Zkopírujte připojovací řetězec ADO.NET hello.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
-## <a name="set-the-connection-string"></a>Nastavení připojovacího řetězce 
+## <a name="set-hello-connection-string"></a>Nastavit hello připojovací řetězec 
 
-Provádění funkcí v Azure je hostováno v aplikaci funkce. Je osvědčeným postupem k ukládání připojovacích řetězců a jiné tajné v aplikaci nastavení funkce. Pomocí nastavení aplikace zabraňuje náhodného zpřístupnění připojovacího řetězce s vašeho kódu. 
+Funkce aplikace hostuje hello provádění funkcí v Azure. Je nejlepší postup toostore připojovací řetězce a jiné tajné klíče v aplikaci nastavení funkce. Pomocí nastavení aplikace zabraňuje náhodného zpřístupnění hello připojovací řetězec s vašeho kódu. 
 
-1. Přejděte do aplikace funkce, který jste vytvořili [vytvořit funkci v Azure, který je aktivován časovač](functions-create-scheduled-function.md).
+1. Přejděte jste vytvořili aplikaci funkce tooyour [vytvořit funkci v Azure, který je aktivován časovač](functions-create-scheduled-function.md).
 
 2. Vyberte **funkce** > **nastavení aplikace**.
    
-    ![Nastavení aplikace pro funkce aplikace.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+    ![Nastavení aplikace pro funkce aplikace hello.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
 
-2. Přejděte dolů k položce **připojovací řetězce** a přidat připojovací řetězec pomocí nastavení uvedeného v tabulce.
+2. Posuňte se dolů příliš**připojovací řetězce** a přidat připojovací řetězec pomocí nastavení hello uvedených v tabulce hello.
    
-    ![Nastavení funkce aplikace přidáte připojovací řetězec.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+    ![Přidáte nastavení aplikace toohello funkce připojovacího řetězce.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
 
     | Nastavení       | Navrhovaná hodnota | Popis             | 
     | ------------ | ------------------ | --------------------- | 
-    | **Název**  |  sqldb_connection  | Slouží k přístupu uložené připojovací řetězec v kódu funkce.    |
-    | **Hodnota** | Řetězec zkopírovaný  | Po připojovací řetězec jste zkopírovali v předchozím oddílu. |
-    | **Typ** | SQL Database | Použijte výchozí připojení k databázi SQL. |   
+    | **Název**  |  sqldb_connection  | Použít tooaccess hello uložené připojovací řetězec v kódu funkce.    |
+    | **Hodnota** | Řetězec zkopírovaný  | Po hello připojovací řetězec jste zkopírovali v předchozím oddílu hello. |
+    | **Typ** | SQL Database | Pomocí připojení k databázi SQL výchozí hello. |   
 
 3. Klikněte na **Uložit**.
 
-Teď můžete přidat funkce kódu C#, která se připojuje k vaší databázi SQL.
+Teď můžete přidat hello C# funkce kód, který připojí tooyour databáze SQL.
 
 ## <a name="update-your-function-code"></a>Aktualizace kódu – funkce
 
-1. V aplikaci funkce vyberte funkce spustí časovač.
+1. V aplikaci funkce vyberte funkce aktivovaného časovačem hello.
  
-3. Přidejte následující odkazy na sestavení v horní části existující kód funkce:
+3. Přidejte následující odkazy na sestavení v horní části hello hello existující funkce kódu hello:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
 
-3. Přidejte následující `using` příkazy funkce:
+3. Přidejte následující hello `using` funkce toohello příkazy:
     ```cs
     using System.Configuration;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-4. Nahradit existující **spustit** funkce následujícím kódem:
+4. Nahradit stávající hello **spustit** funkce s hello následující kód:
     ```cs
     public static async Task Run(TimerInfo myTimer, TraceWriter log)
     {
@@ -97,7 +97,7 @@ Teď můžete přidat funkce kódu C#, která se připojuje k vaší databázi S
 
             using (SqlCommand cmd = new SqlCommand(text, conn))
             {
-                // Execute the command and log the # rows affected.
+                // Execute hello command and log hello # rows affected.
                 var rows = await cmd.ExecuteNonQueryAsync();
                 log.Info($"{rows} rows were updated");
             }
@@ -105,20 +105,20 @@ Teď můžete přidat funkce kódu C#, která se připojuje k vaší databázi S
     }
     ```
 
-    Tento ukázkový příkaz aktualizuje **stav** sloupec založen na datum expedice. 32 řádků dat je by měl aktualizovat.
+    Tento ukázkový příkaz aktualizuje hello **stav** sloupec založen na datum expedice hello. 32 řádků dat je by měl aktualizovat.
 
-5. Klikněte na tlačítko **Uložit**, sledovat **protokoly** windows pro další funkce spuštění a pak Poznámka: počet řádků v aktualizován **SalesOrderHeader** tabulky.
+5. Klikněte na tlačítko **Uložit**, sledovat hello **protokoly** windows pro hello další funkce spuštění a pak hello počet řádků v hello aktualizována Poznámka: **SalesOrderHeader** tabulky.
 
-    ![Zobrazte protokoly funkcí.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
+    ![Zobrazit protokoly funkcí hello.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku Další informace o použití funkce s Logic Apps pro integraci s jinými službami.
+Dále se naučíte, jak funguje toouse s Logic Apps toointegrate s jinými službami.
 
 > [!div class="nextstepaction"] 
 > [Vytvoří funkci, která se integruje s Logic Apps](functions-twitter-email.md)
 
-Další informace o funkcích najdete v následujících tématech:
+Další informace o funkcích najdete v tématu hello následující témata:
 
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)  
   Referenční informace pro programátory týkající se kódování funkcí a definování triggerů a vazeb.

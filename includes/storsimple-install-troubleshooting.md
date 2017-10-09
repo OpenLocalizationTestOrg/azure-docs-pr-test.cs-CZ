@@ -1,26 +1,26 @@
 <!--author=alkohli last changed: 03/17/16-->
 
 ## <a name="troubleshooting-update-failures"></a>Řešení potíží se selháním aktualizací
-**Co dělat, pokud se zobrazí oznámení o selhání kontrol před upgradem?**
+**Co dělat, když se zobrazí oznámení, že hello před upgradem kontroly se nezdařilo?**
 
-Pokud selže předběžná kontrola, nezapomeňte se podívat na podrobný oznamovací pruh v dolní části stránky. Najdete tam pokyny k předběžným kontrolám, které selhaly. Následující obrázek ukazuje instanci, ve které se takové oznámení zobrazilo. V tomto případě selhala kontrola stavu řadičů a kontrola stavu komponent. V části **Stav hardwaru** vidíte, že **Řadič 0** a **Řadič 1** vyžadují pozornost.
+Pokud předběžná kontrola selže, ujistěte se, že jste prohlédli hello podrobné oznamovací pruh v hello dolní části stránky hello. To obsahuje pokyny, jak předběžná kontrola toowhich se nezdařilo. Hello následující obrázek znázorňuje instanci, ve kterém se zobrazí toto oznámení. V takovém případě se nezdařily Kontrola stavu řadiče hello a kontrola stavu součásti hardwaru. V části hello **stavu hardwaru** části, můžete zobrazit, obě **řadič 0** a **řadič 1** součásti vyžadují pozornost.
 
   ![Selhání předběžné kontroly](./media/storsimple-install-troubleshooting/HCS_PreUpdateCheckFailed-include.png)
 
-Budete se muset ujistit, že jsou oba řadiče v pořádku a online. Také budete muset ověřit, že se všechny hardwarové komponenty v zařízení StorSimple zobrazují na stránce Údržba se stavem V pořádku. Potom se můžete pokusit nainstalovat aktualizace. Pokud se vám nedaří vyřešit problémy s hardwarovými komponentami, budete muset kontaktovat podporu Microsoftu, která vám pomůže s dalšími kroky.
+Budete potřebovat toomake se, že jsou oba řadiče v pořádku a online. Budete také potřebovat toomake jistotu, že všechny hello hardwarové součásti v zařízení StorSimple hello jsou zobrazeny toobe v pořádku na stránce údržby hello. Potom můžete zkusit tooinstall aktualizace. Pokud si nejste možné toofix hello hardwarové součásti problémy, bude nutné toocontact Microsoft Support pro další kroky.
 
-**Co dělat, pokud se zobrazí chybová zpráva „Nepovedlo se nainstalovat aktualizace“ s doporučením použít průvodce odstraňováním potíží s aktualizacemi k určení příčiny selhání?**
+**Co dělat, když se zobrazí chybová zpráva "Nelze instalovat aktualizace" a hello doporučení je aktualizace toohello toorefer řešení potíží s Průvodce toodetermine hello příčina selhání hello?**
 
-Pravděpodobnou příčinou je, že nemáte připojení k serverům Microsoft Update. Jedná se o ruční kontrolu, kterou je potřeba provést. Pokud ztratíte připojení k serveru aktualizace, vaše úloha aktualizace selže. Připojení můžete zkontrolovat spuštěním následující rutiny z rozhraní Windows PowerShell vašeho zařízení StorSimple:
+Jeden pravděpodobně příčinou může být nemají servery Microsoft Update toohello připojení. Toto je ruční kontrolu vyžadující toobe provést. Pokud ztratíte připojení k serveru aktualizací toohello, by vaše úloha aktualizace selhala. Hello připojení můžete zkontrolovat spuštěním následující rutiny z rozhraní Windows PowerShell hello zařízení StorSimple hello:
 
  `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter>`
 
-Spusťte rutinu na obou řadičích.
+Spusťte rutinu hello na oba řadiče.
 
-Pokud jste ověřili, že připojení existuje, a problém přetrvává, kontaktujte podporu Microsoftu, která vám pomůže s dalšími kroky.
+Pokud jste ověřili hello připojení existuje, a budete pokračovat toosee tento problém, kontaktujte prosím Microsoft Support pro další kroky.
 
-**Co dělat, pokud dojde k selhání při aktualizaci zařízení na verzi Update 4 a na obou řadičích je spuštěna verze Update 4?**
+**Co v případě selhání aktualizace zobrazí při aktualizaci vašeho zařízení tooUpdate 4 a oba řadiče hello běží aktualizace 4?**
 
-Počínaje verzí Update 4, pokud je na obou řadičích spuštěna stejná verze softwaru a dojde k selhání aktualizace, řadiče nepřejdou do režimu obnovení. Tato situace může nastat, pokud se na oba řadiče úspěšně nainstaluje oprava hotfix softwaru zařízení (aktualizace prvního řádu) ale ostatní opravy hotfix (aktualizace druhého a třetího řádu) ještě ne. Počínaje verzí Update 4 přejdou řadiče do režimu obnovení, pouze pokud jsou na nich spuštěné různé verze softwaru. 
+Spuštění aktualizace 4, pokud jsou oba řadiče hello hello spuštěna stejná verze softwaru, a pokud dojde selhání aktualizace, hello řadiče nepřecházejí do režimu obnovení. Tato situace může dojít, pokud hello opravu hotfix softwaru zařízení (update 1. pořadí) je použité tooboth hello řadiče úspěšně ale jiné opravy hotfix (pořadí 2 a 3. pořadí) jsou ještě toobe použít. Spuštění aktualizace 4, hello řadiče přejde do režimu obnovení pouze v případě, že hello dva řadiče se používají jiný software verze. 
 
-Pokud dojde k chybě aktualizace, i když je na obou řadičích spuštěna verze Update 4, doporučujeme několik minut počkat a potom aktualizaci zkusit provést znovu. Pokud bude opakovaný pokus neúspěšný, měli byste kontaktovat podporu Microsoftu.
+Pokud selhání aktualizace hello uživateli se zobrazí, když oba řadiče běží aktualizace 4, doporučujeme, abyste Počkejte několik minut a opakujte aktualizaci. Pokud neproběhne úspěšně hello opakování, jejich měli požádat Microsoft Support.

@@ -1,6 +1,6 @@
 ---
-title: "Obnovení dat do systému Windows Server nebo klienta Windows z Azure pomocí modelu nasazení classic | Microsoft Docs"
-description: "Zjistěte, jak obnovit ze systému Windows Server nebo klienta Windows."
+title: "hello aaaRestore data tooa systému Windows Server nebo klienta Windows Azure pomocí modelu nasazení classic | Microsoft Docs"
+description: "Zjistěte, jak toorestore z Windows serveru nebo klienta Windows."
 services: backup
 documentationcenter: 
 author: saurabhsensharma
@@ -14,227 +14,227 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4d1458d5233c4f55004ecfa95cbf7b3b18a03dde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>Obnovení souborů na serveru Windows nebo klientském počítači s využitím klasického modelu nasazení
+# <a name="restore-files-tooa-windows-server-or-windows-client-machine-using-hello-classic-deployment-model"></a>Obnovit soubory tooa Windows server nebo klientský počítač systému Windows pomocí modelu nasazení classic hello
 > [!div class="op_single_selector"]
 > * [Portál Classic](backup-azure-restore-windows-server-classic.md)
 > * [Azure Portal](backup-azure-restore-windows-server.md)
 >
 >
 
-Tento článek vysvětluje, jak obnovit data z úložiště záloh a obnovení serveru nebo počítači. Počínaje března 2017, můžete již nemohou vytvářet záloh na portálu classic.
+Tento článek vysvětluje, jak toorecover data ze zálohy trezoru a obnovte ji tooa serveru nebo počítači. Počínaje března 2017, můžete již nemohou vytvářet záloh na portálu classic hello.
 
 > [!IMPORTANT]
-> Nyní můžete trezory služby Backup upgradovat na trezory služby Recovery Services. Podrobnosti najdete v článku [Upgrade trezoru služby Backup na trezor služby Recovery Services](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft doporučuje, abyste upgradovali své trezory služby Backup na trezory služby Recovery Services.<br/> Od **15. října 2017** už nebude možné pomocí PowerShellu vytvářet trezory služby Backup. <br/> **Od 1. listopadu 2017**:
->- Všechny zbývající trezory služby Backup budou automaticky upgradovány na trezory služby Recovery Services.
->- Nebudete mít přístup k datům záloh na portálu Classic. Pro přístup k datům záloh v trezorech služby Recovery Services místo toho použijte Azure Portal.
+> Teď můžete upgradovat vaše trezory služeb tooRecovery trezory Backup. Podrobnosti najdete v tématu hello článku [upgradu tooa trezoru zálohování trezor služeb zotavení](backup-azure-upgrade-backup-to-recovery-services.md). Společnost Microsoft doporučuje tooupgrade zálohování trezory tooRecovery trezory služeb.<br/> **15. října 2017**, už nebude trezory Backup toocreate možné toouse prostředí PowerShell. <br/> **Od 1. listopadu 2017**:
+>- Všechny zbývající trezory Backup bude automaticky upgradovaný tooRecovery trezory služeb.
+>- Můžete nebudou moct tooaccess zálohovaných dat na portálu classic hello. Místo toho použijte hello Azure portálu tooaccess zálohovaných dat v trezory služeb zotavení.
 >
 
-Chcete-li obnovit data, použijte Průvodce obnovení dat v agentovi nástroje Microsoft Azure Recovery Services (MARS). Při obnovování dat, je možné:
+toorestore data, která používáte Průvodce obnovení dat hello v agentovi Microsoft Azure Recovery Services (MARS) hello. Při obnovování dat, je možné:
 
-* Obnovení dat na stejný počítač, ve kterém byly provedeny zálohy.
-* Obnovte data do alternativní počítače.
+* Obnovení dat toohello stejný počítač, ze které hello zálohy byly provedeny.
+* Obnovení dat tooan alternativní počítače.
 
-V lednu 2017 společnost Microsoft vydala Preview aktualizace agenta MARS. Společně s oprav chyb tato aktualizace umožňuje rychlé obnovení, která umožňuje připojit obnovení zapisovatelného snímku bodu jako svazek obnovení. Pak můžete zkoumat obnovení svazku a zkopírujte soubory do místního počítače a následné obnovení souborů.
+V lednu 2017 společnost Microsoft vydala agenta MARS toohello aktualizace verzi Preview. Společně s oprav chyb, tato aktualizace umožňuje rychlé obnovení, což vám umožní toomount obnovení zapisovatelného snímku bodu jako svazek obnovení. Pak můžete zkoumat hello obnovení svazku a zkopírujte soubory tooa místního počítače a následné obnovení souborů.
 
 > [!NOTE]
-> [Ledna 2017 Azure Backup aktualizace](https://support.microsoft.com/en-us/help/3216528?preview) je povinný, pokud chcete obnovit data pomocí funkce Rychlé obnovení. Zálohovaná data musí být chráněna v trezorů v národní prostředí, které jsou uvedené v článku podpory. Obrátit [ledna 2017 Azure Backup aktualizace](https://support.microsoft.com/en-us/help/3216528?preview) nejnovější seznam národních prostředí, které podporují rychlé obnovení. Rychlé obnovení je **není** aktuálně k dispozici ve všech národních prostředí.
+> Hello [ledna 2017 Azure Backup aktualizace](https://support.microsoft.com/en-us/help/3216528?preview) je povinný, pokud chcete, aby toouse rychlé obnovení dat toorestore. Hello zálohovaná data musí být chráněna v trezorů v uvedené v článku podpory hello národní prostředí. Poraďte se hello [ledna 2017 Azure Backup aktualizace](https://support.microsoft.com/en-us/help/3216528?preview) hello nejnovější seznam národních prostředí, které podporují rychlé obnovení. Rychlé obnovení je **není** aktuálně k dispozici ve všech národních prostředí.
 >
 
-Rychlé obnovení je k dispozici pro použití v trezory služeb zotavení v portálu Azure a trezory Backup na portálu classic. Pokud chcete použít rychlé obnovení, stažení aktualizace MARS a postupujte podle pokynů, které zmínili, rychlé obnovení.
+Rychlé obnovení je k dispozici pro použití v trezory služeb zotavení v hello portál Azure a trezory Backup portálu classic hello. Pokud chcete toouse rychlé obnovení, stažení aktualizace MARS hello a postupujte podle hello postupy, které zmínili, rychlé obnovení.
 
 
-## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>Obnovit data do stejného počítače pomocí funkce Rychlé obnovení
+## <a name="use-instant-restore-toorecover-data-toohello-same-machine"></a>Rychlé obnovení dat toohello toorecover použít stejný počítač
 
-Pokud jste omylem odstranit soubor a chcete obnovit do stejného počítače (ze kterého dochází k zálohování), následující kroky vám pomohou obnovit data.
+Pokud jste omylem odstranili toorestore souboru a chcete ho toohello stejného počítače (z které hello je odebrán zálohování), hello následující kroky vám pomůže obnovit hello data.
 
-1. Otevřete **Microsoft Azure Backup** přichycení v. Pokud si nejste jisti, kde byl nainstalován modul snap-in, hledání se počítač nebo server pro **Microsoft Azure Backup**.
+1. Otevřete hello **Microsoft Azure Backup** přichycení v. Pokud si nejste jisti, kam se nainstaloval hello modul snap-in, vyhledávat hello počítači nebo serveru pro **Microsoft Azure Backup**.
 
-    Desktopová aplikace by se ve výsledcích hledání.
+    aplikace na ploše Hello by se zobrazit ve výsledcích hledání hello.
 
-2. Klikněte na tlačítko **obnovit Data** spusťte průvodce.
+2. Klikněte na tlačítko **obnovit Data** toostart hello průvodce.
 
     ![Obnovení dat](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Na **Začínáme** , chcete-li obnovit data na stejném serveru nebo počítače, vyberte **tento server (`<server name>`)** a klikněte na tlačítko **Další**.
+3. Na hello **Začínáme** podokně, toorestore hello data toohello stejný server nebo počítač, vyberte **tento server (`<server name>`)** a klikněte na tlačítko **Další**.
 
-    ![Vyberte tuto možnost serveru k obnovení dat na stejný počítač](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
+    ![Vyberte tento server možnost toorestore hello data toohello stejný počítač](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. Na **vyberte režimu obnovení** podokně vyberte **jednotlivých souborů a složek** a pak klikněte na **Další**.
+4. Na hello **vyberte režimu obnovení** podokně vyberte **jednotlivých souborů a složek** a pak klikněte na **Další**.
 
     ![Procházet soubory](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
 
-5. Na **vyberte svazek a datum** podokně, vyberte svazek, který obsahuje soubory nebo složky, kterou chcete obnovit.
+5. Na hello **vyberte svazek a datum** podokně, vyberte hello svazku, který obsahuje hello soubory nebo složky, které chcete toorestore.
 
-    V kalendáři vyberte bod obnovení. Můžete obnovit z libovolného obnovení bodu v čase. Data v **tučné** označuje dostupnost alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z **čas** rozevírací nabídce.
+    Na hello kalendáři vyberte bod obnovení. Můžete obnovit z libovolného obnovení bodu v čase. Data v **tučné** znamenat hello dostupnost alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte hello konkrétní bod obnovení z hello **čas** rozevírací nabídce.
 
     ![Svazek a datum](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. Po zadání bodu obnovení pro obnovení, klikněte na tlačítko **připojit**.
+6. Jakmile jste vybrali toorestore bodu obnovení hello, klikněte na možnost **připojit**.
 
-    Zálohování Azure připojí bod místní obnovení a používá je jako svazek obnovení.
+    Zálohování Azure připojí bodu místní obnovení hello a používá je jako svazek obnovení.
 
-7. Na **procházení a obnovit soubory** podokně klikněte na tlačítko **Procházet** otevřete Průzkumníka Windows a soubory a složky, které chcete najít.
+7. Na hello **procházení a obnovit soubory** podokně klikněte na tlačítko **Procházet** tooopen Průzkumníka Windows a najít hello soubory a složky chcete.
 
     ![Možnosti obnovení](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. V Průzkumníku Windows zkopírujte soubory nebo složky, kterou chcete obnovit a vložit do libovolného umístění místní k serveru nebo počítači. Můžete otevřít nebo stream soubory přímo ze svazku obnovení a ověřte, že se obnoví správné verze.
+8. V Průzkumníku Windows, kopie hello soubory nebo složky toorestore a vložit je tooany umístění místní toohello serveru nebo počítači. Můžete otevřít nebo stream hello soubory přímo z hello obnovení svazku a ověření hello správné verze se obnoví.
 
-    ![Zkopírujte a vložte souborů a složek z připojeného svazku do místního umístění](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+    ![Kopírovat a vkládat soubory a složky z připojeného svazku toolocal umístění](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-9. Po dokončení obnovení souborů a složek, na **procházení a obnovení souborů** podokně klikněte na tlačítko **odpojení**. Pak klikněte na tlačítko **Ano** potvrďte, že chcete odpojit svazek.
+9. Po dokončení obnovení hello soubory nebo složky na hello **procházení a obnovení souborů** podokně klikněte na tlačítko **odpojení**. Pak klikněte na tlačítko **Ano** tooconfirm, které chcete toounmount hello svazku.
 
-    ![Odpojte Image svazku a potvrďte](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Odpojení hello svazku a potvrďte](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Pokud neklikejte na odpojení, zůstane svazek obnovení připojené šest hodin od okamžiku, kdy byla připojena. Žádná operace zálohování se spustí připojený svazek. Naplánované spuštění v době, kdy je svazek připojený, zálohování se spustí po obnovení svazku je odpojené.
+    > Pokud neklikejte na odpojení, zůstane hello obnovení svazku připojené šest hodin od času hello, pokud byla připojena. Žádná operace zálohování se spustí hello svazek je připojen. Všechny naplánované operace zálohování toorun během hello doby, kdy je připojen hello svazek, se spustí po obnovení svazku hello odpojené.
     >
 
 
-## <a name="recover-data-to-the-same-machine"></a>Obnovení dat na stejný počítač
-Pokud jste omylem odstranit soubor a chcete obnovit do stejného počítače (ze kterého dochází k zálohování), následující kroky vám pomohou obnovit data.
+## <a name="recover-data-toohello-same-machine"></a>Obnovení dat toohello stejný počítač
+Pokud jste omylem odstranili toorestore souboru a chcete ho toohello stejného počítače (z které hello je odebrán zálohování), hello následující kroky vám pomůže obnovit hello data.
 
-1. Otevřete **Microsoft Azure Backup** přichycení v.
-2. Klikněte na tlačítko **obnovit Data** inicializace pracovního postupu.
+1. Otevřete hello **Microsoft Azure Backup** přichycení v.
+2. Klikněte na tlačítko **obnovit Data** tooinitiate hello pracovního postupu.
 
     ![Obnovení dat](./media/backup-azure-restore-windows-server-classic/recover.png)
-3. Vyberte  **tento server (*yourmachinename*) ** možnost obnovení zálohy souboru ve stejném počítači.
+3. Vyberte hello  **tento server (*yourmachinename*) ** hello toorestore možnost zálohovat soubor na hello stejný počítač.
 
     ![Stejný počítač](./media/backup-azure-restore-windows-server-classic/samemachine.png)
-4. Zvolit **Procházet soubory** nebo **vyhledávání souborů**.
+4. Zvolte příliš**Procházet soubory** nebo **vyhledávání souborů**.
 
-    Ponechte výchozí možnost, pokud máte v plánu obnovení jeden nebo více souborů, jejichž cesta je známá. Pokud nejste jisti o struktura složek, ale chcete hledat soubor, vyberte **vyhledávání souborů** možnost. Pro účely této části se budeme pokračovat v výchozí možnost.
+    Ponechte výchozí možnost hello Pokud máte v plánu toorestore jeden nebo více souborů, jejichž cesta je známá. Pokud nejste jisti o hello struktura složek, ale chcete toosearch pro soubor, vyberte hello **vyhledávání souborů** možnost. Hello za účelem v této části budeme pokračovat s hello výchozí možnost.
 
     ![Procházet soubory](./media/backup-azure-restore-windows-server-classic/browseandsearch.png)
-5. Vyberte svazek, ze kterého chcete soubor obnovit.
+5. Vyberte svazek hello, ze kterého chcete soubor toorestore hello.
 
-    Můžete obnovit z libovolného bodu v čase. Data, které jsou v **tučné** v ovládacím prvku kalendář označuje dostupnost bodu obnovení. Jakmile je vybrat datum, na základě plán zálohování (a úspěch operace zálohování), můžete vybrat bod v čase, ze **čas** rozevírací nabídku.
+    Můžete obnovit z libovolného bodu v čase. Data, které jsou v **tučné** v ovládacím prvku Kalendář hello znamenat hello dostupnost bodu obnovení. Jakmile je vybrat datum, na základě vašeho plánu zálohování (a hello úspěch operace zálohování), můžete vybrat bod v čase, ze hello **čas** rozevírací nabídku.
 
     ![Svazek a datum](./media/backup-azure-restore-windows-server-classic/volanddate.png)
-6. Vyberte položky, které chcete obnovit. Můžete vybrat víc složek nebo souborů, které chcete obnovit.
+6. Vyberte položky toorecover hello. Můžete vybrat víc chcete toorestore složek nebo souborů.
 
     ![Výběr souborů](./media/backup-azure-restore-windows-server-classic/selectfiles.png)
-7. Zadejte parametry obnovení.
+7. Zadejte parametry obnovení hello.
 
     ![Možnosti obnovení](./media/backup-azure-restore-windows-server-classic/recoveroptions.png)
 
-   * Máte možnost obnovení do původního umístění (ve kterém soubor nebo složku, budou přepsána) nebo do jiného umístění ve stejném počítači.
-   * Pokud v cílovém umístění existuje soubor nebo složku, kterou chcete obnovit, můžete vytvořit kopie (dvě verze stejného souboru), přepisovat soubory v cílovém umístění nebo přeskočit obnovení souborů, které existují v cíl.
-   * Důrazně doporučujeme ponechat výchozí možnost obnovení seznamy ACL v souborech, které se obnovuje.
-8. Jakmile jsou k dispozici tyto vstupy, klikněte na možnost **Další**. Pracovní postup obnovení, který obnoví soubory k tomuto počítači, bude zahájena.
+   * Máte možnost obnovení původního umístění toohello (v které hello soubor nebo složku, budou přepsána) nebo tooanother umístění v hello stejný počítač.
+   * Pokud hello soubor nebo složku, toorestore existuje v cílovém umístění hello, můžete vytvořit kopie (hello dvě verze stejného souboru), přepsat hello soubory v cílovém umístění hello nebo přeskočit obnovení hello hello souborů, které existují v cílovém hello.
+   * Důrazně doporučujeme ponechat hello výchozí možnost obnovení hello seznamy ACL v hello soubory, které se obnovuje.
+8. Jakmile jsou k dispozici tyto vstupy, klikněte na možnost **Další**. Postup obnovení Hello, která obnoví hello soubory toothis počítač, začne.
 
-## <a name="recover-to-an-alternate-machine"></a>Obnovit na alternativní počítače
-Pokud dojde ke ztrátě celý server, můžete stále obnovit data z Azure Backup na jiný počítač. Následující kroky popisují pracovního postupu.  
+## <a name="recover-tooan-alternate-machine"></a>Obnovit tooan alternativní počítač
+Pokud dojde ke ztrátě celý server, stále můžete obnovit data z Azure Backup tooa jiný počítač. Následující kroky Hello znázorňují hello pracovního postupu.  
 
-Zahrnuje technologiím použitým v těchto kroků:
+zahrnuje Hello terminologie použitá v těchto kroků:
 
-* *Zdrojový počítač* – původní počítač, ze kterého bylo provedeno zálohování a který není aktuálně k dispozici.
-* *Cílový počítač* – počítače, do níž se obnovuje data.
-* *Ukázka trezoru* – úložiště záloh, ke kterému *zdrojový počítač* a *cílový počítač* jsou registrované. <br/>
+* *Zdrojový počítač* – pořízení hello původní počítač, ze které hello zálohy a který není aktuálně k dispozici.
+* *Cílový počítač* – hello počítač toowhich hello data obnovena.
+* *Ukázka trezoru* – hello zálohy trezoru toowhich hello *zdrojový počítač* a *cílový počítač* jsou registrované. <br/>
 
 > [!NOTE]
-> Zálohy vytvořené z počítače nelze obnovit v počítači, který běží starší verze operačního systému. Například pokud zálohy jsou převzaty z počítače s Windows 7, může být obnovena do systému Windows 8 nebo novější verze počítače. Naopak jsou však nemá hodnotu true.
+> Zálohy vytvořené z počítače nelze obnovit v počítači, který běží starší verze operačního systému hello. Například pokud zálohy jsou převzaty z počítače s Windows 7, může být obnovena do systému Windows 8 nebo novější verze počítače. Naopak hello jsou však nemá hodnotu true.
 >
 >
 
-1. Otevřete **Microsoft Azure Backup** přichycení v na *cílový počítač*.
-2. Ujistěte se, že *cílový počítač* a *zdrojový počítač* jsou registrované na stejné úložiště záloh.
-3. Klikněte na tlačítko **obnovit Data** inicializace pracovního postupu.
+1. Otevřete hello **Microsoft Azure Backup** přichycení v na hello *cílový počítač*.
+2. Ujistěte se, že hello *cílový počítač* a hello *zdrojový počítač* jsou registrované toohello stejné úložiště záloh.
+3. Klikněte na tlačítko **obnovit Data** tooinitiate hello pracovního postupu.
 
     ![Obnovení dat](./media/backup-azure-restore-windows-server-classic/recover.png)
 4. Vyberte **jiný server**
 
     ![Jiný Server](./media/backup-azure-restore-windows-server-classic/anotherserver.png)
-5. Zadejte soubor s přihlašovacími údaji trezoru, která odpovídá *ukázka trezoru*. Pokud soubor s přihlašovacími údaji trezoru je neplatný (nebo vypršela platnost), stáhněte si nový soubor přihlašovacích údajů trezoru z *ukázka trezoru* na portálu Azure classic. Jakmile je zadaný soubor s přihlašovacími údaji trezoru, se zobrazí úložiště záloh proti soubor s přihlašovacími údaji trezoru.
-6. Vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
+5. Zadejte soubor s přihlašovacími údaji trezoru hello odpovídající toohello *ukázka trezoru*. Pokud soubor s přihlašovacími údaji trezoru hello je neplatný (nebo vypršela platnost) stáhnout nový soubor s přihlašovacími údaji trezoru z hello *ukázka trezoru* v hello portál Azure classic. Jakmile je zadaný soubor s přihlašovacími údaji trezoru hello, se zobrazí úložiště záloh hello proti soubor s přihlašovacími údaji trezoru hello.
+6. Vyberte hello *zdrojový počítač* hello seznamu zobrazených počítačů.
 
     ![Seznam počítačů](./media/backup-azure-restore-windows-server-classic/machinelist.png)
-7. Vyberte buď **vyhledávání souborů** nebo **Procházet soubory** možnost. Pro účely této části se budeme používat **vyhledávání souborů** možnost.
+7. Vyberte buď hello **vyhledávání souborů** nebo **Procházet soubory** možnost. Hello za účelem v této části, použijeme hello **vyhledávání souborů** možnost.
 
     ![Search](./media/backup-azure-restore-windows-server-classic/search.png)
-8. Vyberte svazek a datum na další obrazovce. Vyhledávání pro název složka či soubor, který chcete obnovit.
+8. Vyberte svazek hello a datum na další obrazovce hello. Vyhledávání pro název složky nebo souboru hello chcete toorestore.
 
     ![Hledání položek](./media/backup-azure-restore-windows-server-classic/searchitems.png)
-9. Vyberte umístění, kde je nutné obnovit soubory.
+9. Vyberte hello umístění, kde hello soubory musí toobe obnovit.
 
     ![Obnovení umístění](./media/backup-azure-restore-windows-server-classic/restorelocation.png)
-10. Zadejte šifrovací heslo, které jste zadali během *zdrojový počítač* registraci *ukázka trezoru*.
+10. Zadejte šifrovací přístupové heslo hello, který jste zadali během *zdrojový počítač* registrace příliš*ukázka trezoru*.
 
     ![Šifrování](./media/backup-azure-restore-windows-server-classic/encryption.png)
-11. Jakmile je k dispozici vstup, klikněte na **obnovit**, která aktivuje obnovení do cílového umístění zadané zálohované soubory.
+11. Jakmile je k dispozici vstup hello, klikněte na možnost **obnovit**, které aktivační události hello obnovení hello zálohovat soubory toohello cíle zadaného.
 
-## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>K obnovení dat alternativní počítači použít rychlé obnovení
-Pokud dojde ke ztrátě celý server, můžete stále obnovit data z Azure Backup na jiný počítač. Následující kroky popisují pracovního postupu.
+## <a name="use-instant-restore-toorestore-data-tooan-alternate-machine"></a>Použít rychlé obnovení toorestore data tooan alternativní počítač
+Pokud dojde ke ztrátě celý server, stále můžete obnovit data z Azure Backup tooa jiný počítač. Následující kroky Hello znázorňují hello pracovního postupu.
 
-Zahrnuje technologiím použitým v těchto kroků:
+zahrnuje Hello terminologie použitá v těchto kroků:
 
-* *Zdrojový počítač* – původní počítač, ze kterého bylo provedeno zálohování a který není aktuálně k dispozici.
-* *Cílový počítač* – počítače, do níž se obnovuje data.
-* *Ukázka trezoru* – trezor služeb zotavení, ke kterému *zdrojový počítač* a *cílový počítač* jsou registrované. <br/>
+* *Zdrojový počítač* – pořízení hello původní počítač, ze které hello zálohy a který není aktuálně k dispozici.
+* *Cílový počítač* – hello počítač toowhich hello data obnovena.
+* *Ukázka trezoru* – hello toowhich trezoru služeb zotavení hello *zdrojový počítač* a *cílový počítač* jsou registrované. <br/>
 
 > [!NOTE]
-> Zálohování nelze obnovit do cílového počítače, který používá starší verzi operačního systému. Například převzat ze systému Windows 7, počítač může být obnovena záloha v systému Windows 8 nebo novější, počítače. Zálohy z počítače se systémem Windows 8 není možné obnovit do počítače Windows 7.
+> Zálohování nemůže být starší verzí operačního systému hello obnovené tooa cílový počítač. Například převzat ze systému Windows 7, počítač může být obnovena záloha v systému Windows 8 nebo novější, počítače. Zálohy z počítače se systémem Windows 8 nemůže být počítač obnovený tooa Windows 7.
 >
 >
 
-1. Otevřete **Microsoft Azure Backup** přichycení v na *cílový počítač*.
+1. Otevřete hello **Microsoft Azure Backup** přichycení v na hello *cílový počítač*.
 
-2. Ujistěte se, *cílový počítač* a *zdrojový počítač* jsou registrované ke stejnému trezoru služeb zotavení.
+2. Ujistěte se, hello *cílový počítač* a hello *zdrojový počítač* jsou registrované toohello trezoru stejné služeb zotavení.
 
-3. Klikněte na tlačítko **obnovit Data** otevřete **Průvodce obnovení dat**.
+3. Klikněte na tlačítko **obnovit Data** tooopen hello **Průvodce obnovení dat**.
 
     ![Obnovení dat](./media/backup-azure-restore-windows-server/recover.png)
 
-4. Na **Začínáme** podokně, vyberte **jiný server**
+4. Na hello **Začínáme** podokně, vyberte **jiný server**
 
     ![Jiný Server](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. Zadejte soubor s přihlašovacími údaji trezoru, která odpovídá *ukázka trezoru*a klikněte na tlačítko **Další**.
+5. Zadejte soubor s přihlašovacími údaji trezoru hello odpovídající toohello *ukázka trezoru*a klikněte na tlačítko **Další**.
 
-    Pokud soubor s přihlašovacími údaji trezoru je neplatný (nebo vypršela platnost), stáhněte si nový soubor přihlašovacích údajů trezoru z *ukázka trezoru* na portálu Azure. Po zadání přihlašovacích údajů platné úložiště, zobrazí se název odpovídajícího úložiště záloh.
+    Pokud soubor s přihlašovacími údaji trezoru hello je neplatný (nebo vypršela platnost), stáhněte si nový soubor s přihlašovacími údaji trezoru z hello *ukázka trezoru* v hello portálu Azure. Po zadání přihlašovacích údajů platné úložiště, zobrazí se název hello hello odpovídající úložiště záloh.
 
-6. Na **vyberte zálohování serveru** podokně, vyberte *zdrojový počítač* ze seznamu zobrazených počítačů a zadejte heslo. Pak klikněte na tlačítko **Další**.
+6. Na hello **vyberte zálohování serveru** podokně, vyberte hello *zdrojový počítač* hello seznamu zobrazených počítačů a zadejte přístupové heslo hello. Pak klikněte na tlačítko **Další**.
 
     ![Seznam počítačů](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. Na **vyberte režimu obnovení** podokně, vyberte **jednotlivých souborů a složek** a klikněte na tlačítko **Další**.
+7. Na hello **vyberte režimu obnovení** podokně, vyberte **jednotlivých souborů a složek** a klikněte na tlačítko **Další**.
 
     ![Search](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. Na **vyberte svazek a datum** podokně, vyberte svazek, který obsahuje soubory nebo složky, kterou chcete obnovit.
+8. Na hello **vyberte svazek a datum** podokně, vyberte hello svazku, který obsahuje hello soubory nebo složky, které chcete toorestore.
 
-    V kalendáři vyberte bod obnovení. Můžete obnovit z libovolného obnovení bodu v čase. Data v **tučné** označuje dostupnost alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z **čas** rozevírací nabídce.
+    Na hello kalendáři vyberte bod obnovení. Můžete obnovit z libovolného obnovení bodu v čase. Data v **tučné** znamenat hello dostupnost alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte hello konkrétní bod obnovení z hello **čas** rozevírací nabídce.
 
     ![Hledání položek](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
-9. Klikněte na tlačítko **připojit** místně připojit bod obnovení jako svazek obnovení na vaše *cílový počítač*.
+9. Klikněte na tlačítko **připojit** toolocally přípojného hello obnovení bodu jako svazek obnovení na vaše *cílový počítač*.
 
-10. Na **procházení a obnovit soubory** podokně klikněte na tlačítko **Procházet** otevřete Průzkumníka Windows a soubory a složky, které chcete najít.
+10. Na hello **procházení a obnovit soubory** podokně klikněte na tlačítko **Procházet** tooopen Průzkumníka Windows a najít hello soubory a složky chcete.
 
     ![Šifrování](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
-11. V Průzkumníku Windows, zkopírujte soubory nebo složky ze svazku obnovení a vložte je do vašeho *cílový počítač* umístění. Můžete otevřít nebo stream soubory přímo ze svazku obnovení a ověřte, že se obnoví správné verze.
+11. V Průzkumníku Windows, zkopírujte hello soubory nebo složky ze svazku obnovení hello a vložte je tooyour *cílový počítač* umístění. Můžete otevřít nebo stream hello soubory přímo z hello obnovení svazku a ověření hello správné verze se obnoví.
 
     ![Šifrování](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Po dokončení obnovení souborů a složek, na **procházení a obnovení souborů** podokně klikněte na tlačítko **odpojení**. Pak klikněte na tlačítko **Ano** potvrďte, že chcete odpojit svazek.
+12. Po dokončení obnovení hello soubory nebo složky na hello **procházení a obnovení souborů** podokně klikněte na tlačítko **odpojení**. Pak klikněte na tlačítko **Ano** tooconfirm, které chcete toounmount hello svazku.
 
     ![Šifrování](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Pokud neklikejte na odpojení, zůstane svazek obnovení připojené šest hodin od okamžiku, kdy byla připojena. Žádná operace zálohování se spustí připojený svazek. Naplánované spuštění v době, kdy je svazek připojený, zálohování se spustí po obnovení svazku je odpojené.
+    > Pokud neklikejte na odpojení, zůstane hello obnovení svazku připojené šest hodin od času hello, pokud byla připojena. Žádná operace zálohování se spustí hello svazek je připojen. Všechny naplánované operace zálohování toorun během hello doby, kdy je připojen hello svazek, se spustí po obnovení svazku hello odpojené.
     >
 
 
 ## <a name="next-steps"></a>Další kroky
 * [Azure Backup – nejčastější dotazy](backup-azure-backup-faq.md)
-* Přejděte [fórum Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=290933).
+* Navštivte hello [fóru služby Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
 ## <a name="learn-more"></a>Další informace
 * [Přehled služby Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=222425)

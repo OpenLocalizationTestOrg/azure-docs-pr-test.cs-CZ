@@ -1,20 +1,20 @@
 
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Přidat nebo upravit plán zálohování StorSimple
-1. Na obrazovce **Rychlý start** zařízení klikněte na kartu **Zásady zálohování**. Tím přejdete na stránku **Zásady zálohování**.
-2. V tabulkovém seznam zásad, vyberte a klikněte na zásadu, kterou chcete upravit.
-3. V části **Obecné**, můžete upravit název zásady zálohování.
-4. V části **plány**, klikněte na tlačítko **Spravovat plány** přidat nebo odebrat plány. V **spravovat plán** dialogové okno pole, postupujte takto:
+#### <a name="tooadd-or-modify-a-storsimple-backup-schedule"></a>tooadd nebo upravte plán zálohování StorSimple
+1. Na zařízení hello **rychlý Start** klikněte na tlačítko hello **zásady zálohování** kartě. Tím přejdete toohello **zásady zálohování** stránky.
+2. V tabulkovém seznamu hello hello zásad, vyberte a klikněte na hello zásady, které chcete tooedit.
+3. V části **Obecné**, můžete upravit název zásady zálohování hello.
+4. V části **plány**, klikněte na tlačítko **Spravovat plány** tooadd nebo odeberte plány. V hello **spravovat plán** dialogové okno pole, hello následující:
    
    1. Vyberte existující plán nebo vytvořte nový plán.
-   2. Vyberte typ zálohy jako místní nebo cloudový snímek.
-   3. Zadejte četnost zálohování, uchovávání a počáteční čas plánu.
-   4. Povolit nebo zakázat plán.
-   5. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) Chcete-li uložit změny plánu.
-5. V **svazky** část, přidat nebo odebrat svazky, které chcete tuto zásadu.
-6. Uložte změny do této zásady.
-7. Zobrazí se výzva k potvrzení. Klikněte na tlačítko **OK** zásady uložit.
+   2. Vyberte typ hello zálohování jako místní nebo cloudový snímek.
+   3. Zadejte hello četnost zálohování, uchovávání a počáteční čas plánu hello.
+   4. Povolit nebo zakázat plán hello.
+   5. Klikněte na ikonu zaškrtnutí hello ![ikona zaškrtnutí](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) toosave hello změny toohello plán.
+5. V hello **svazky** část, přidat nebo odebrat hello svazky toothis zásad.
+6. Uložte změny hello toothis zásad.
+7. Zobrazí se výzva k potvrzení. Klikněte na tlačítko **OK** toosave hello zásad.
 
-**Zásady zálohování** stránka bude aktualizována a uložte změny zásad.
+Hello **zásady zálohování** stránka bude aktualizované toosave hello změny toohello zásad.
 

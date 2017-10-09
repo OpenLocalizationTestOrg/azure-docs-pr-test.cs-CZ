@@ -1,4 +1,4 @@
-Úplné řadu pokyny vám pomůže pochopit všechny aspekty různých návrhu pro sestavení naše infrastrukturu aplikace v Azure:
+Hello úplné řadu pokyny vám pomůže pochopit, všechny hello různé aspekty návrhu pro sestavení naše infrastrukturu aplikace v Azure:
 
 * [Předplatné Azure a pokyny pro účty](../articles/virtual-machines/windows/infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Pokyny pro pojmenování infrastrukturu Azure](../articles/virtual-machines/windows/infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

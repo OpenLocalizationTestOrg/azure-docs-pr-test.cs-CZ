@@ -11,43 +11,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 78dbbe085fca26ad529c6262ba852f3c06ace404
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ff07b9954d5c2ce71ab0ffd0db49fde15f323586
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Deklarace identity mapování v Azure Active Directory (verze public preview)
 
 >[!NOTE]
->Tato funkce nahrazuje a nahrazuje [deklarací přizpůsobení](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization) dnes nabízených prostřednictvím portálu. Pokud upravíte deklarace identity pomocí portálu kromě metoda grafu nebo PowerShell zmíněné v tomto dokumentu na stejnou aplikaci, tokeny vydán pro s aplikací budou ignorovat konfigurace na portálu.
-Konfigurace provedená prostřednictvím metody popsané v tomto dokumentu se neprojeví v portálu.
+>Tato funkce nahrazuje a nahrazuje hello [deklarací přizpůsobení](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization) nabízeným přes portál hello ještě dnes. Pokud upravíte deklarace identity pomocí portálu hello kromě toohello metoda grafu nebo PowerShell zmíněné v tomto dokumentu na hello stejné aplikaci, tokeny vydané pro tuto aplikaci bude ignorovat hello konfigurací na portálu hello.
+Konfigurace provedená prostřednictvím metody hello zmíněné v tomto dokumentu se neprojeví v portálu hello.
 
-Tato funkce slouží k přizpůsobení deklarace identity vygenerované v tokeny pro konkrétní aplikace v jejich klienta ve Správci klientů. Deklarace identity mapování zásady, které můžete použít:
+Tato funkce používá klienta admins toocustomize hello deklarací vygenerované v tokeny pro konkrétní aplikaci daného klienta. Deklarace identity mapování zásady, které můžete použít:
 
 - Vyberte deklarace, které jsou součástí tokeny.
 - Vytvoření typů deklarací identity, které již neexistují.
-- Zvolte nebo změnit zdroj dat vygenerované v konkrétní deklarací identity.
+- Zvolte nebo změnit hello zdroj dat vygenerované v konkrétní deklarací identity.
 
 >[!NOTE]
->Tato funkce je aktuálně ve verzi public preview. Připravte se na obnovit nebo odeberte všechny změny. Tato funkce je k dispozici v libovolné předplatné služby Azure Active Directory (Azure AD) verzi public Preview. Když je tato funkce obecně dostupná, může vyžadovat některé aspekty funkce však předplatné služby Azure Active Directory premium.
+>Tato funkce je aktuálně ve verzi public preview. Připravit toorevert nebo odeberte všechny změny. Hello funkce je dostupná v libovolné předplatné služby Azure Active Directory (Azure AD) verzi public Preview. Když funkce hello je obecně dostupná, může vyžadovat některé aspekty funkcí hello však předplatné služby Azure Active Directory premium.
 
 ## <a name="claims-mapping-policy-type"></a>Mapování typu zásady deklarace identity
-Ve službě Azure AD **zásad** objekt představuje sadu pravidel vynucené u jednotlivých aplikací, nebo na všechny aplikace v organizaci. Každý typ zásad se strukturou jedinečnou sadu vlastností, které se pak použijí pro objekty, na které jsou přiřazeny.
+Ve službě Azure AD **zásad** objekt představuje sadu pravidel vynucené u jednotlivých aplikací, nebo na všechny aplikace v organizaci. Jednotlivé typy zásad obsahuje strukturu jedinečnou sadu vlastností, které jsou pak použita toowhich tooobjects, které jsou přiřazeni.
 
-Deklarace A mapování zásad je typ **zásad** objektu, která upraví deklarace identity vygenerované v tokeny vydané pro konkrétní aplikace.
+Deklarace A mapování zásad je typ **zásad** objekt, který upravuje hello deklarací vygenerované v tokeny vydané pro konkrétní aplikace.
 
 ## <a name="claim-sets"></a>Sady deklarací identity
 Existují určité sady deklarací identity, které definují, jak a kdy se používají v tokenech.
 
 ### <a name="core-claim-set"></a>Základní sady deklarací.
-Deklarace identity v sadě deklarací identity core jsou k dispozici v každé tokenu, bez ohledu na zásady. Tyto deklarace identity jsou také považovány za omezený a nemůže být upraven.
+Deklarace identity v základní hello deklarace sady jsou k dispozici v každé tokenu, bez ohledu na zásady. Tyto deklarace identity jsou také považovány za omezený a nemůže být upraven.
 
 ### <a name="basic-claim-set"></a>Sada základní deklarací identity
-Sada základní deklarací identity obsahuje deklarace identity, které jsou vygenerované ve výchozím nastavení pro tokeny (kromě základní sady deklarací). Tyto deklarace můžete tento parametr vynechán nebo upravit pomocí deklarace identity mapování zásad.
+Hello základní deklarace sada obsahuje deklarace identity hello vydávané ve výchozím nastavení pro tokeny (v sadě deklarací základní přidání toohello). Tyto deklarace můžete tento parametr vynechán nebo upravit pomocí deklarace identity hello mapování zásad.
 
 ### <a name="restricted-claim-set"></a>Sada deklarací identity s omezeným přístupem
-Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem. Zdroj dat nelze změnit, a při generování tyto deklarace identity, použije se žádná transformace.
+Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem. zdroj dat Hello nelze změnit, a při generování tyto deklarace identity, použije se žádná transformace.
 
 #### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabulka 1: JSON Web Token (JWT) omezené sady deklarací.
 |Typ deklarace identity (název)|
@@ -234,7 +234,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |http://schemas.microsoft.com/identity/Claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>Deklarace identity mapování vlastnosti zásad
-Pomocí vlastnosti deklarací, mapování na ovládací prvek deklarace, které jsou vygenerované zásad a kde jsou data pochází z. Pokud je nastavené žádné zásady, systém vydá obsahující základní sady deklarací identity, sadě základní deklarací identity a volitelné deklarace identity, které aplikace se rozhodli přijímat tokeny.
+Pomocí vlastností hello mapování zásad toocontrol deklarace, které jsou vygenerované a kde je hello data získaná z deklarací. Pokud je nastavené žádné zásady, hello systému vydává tokeny obsahující sadu deklarací hello jádra, hello základní sady deklarací a volitelné deklarace identity, které aplikace hello vybrána tooreceive.
 
 ### <a name="include-basic-claim-set"></a>Patří nastavení základní deklarace identity
 
@@ -242,13 +242,13 @@ Pomocí vlastnosti deklarací, mapování na ovládací prvek deklarace, které 
 
 **Datový typ:** logická hodnota (True nebo False)
 
-**Souhrn:** tato vlastnost určuje, zda sada základní deklarace identity je součástí tokeny vliv na tuto zásadu. 
+**Souhrn:** tato vlastnost určuje, zda sada hello základní deklarací identity je součástí tokeny vliv na tuto zásadu. 
 
-- Pokud je nastaven na hodnotu True, všechny deklarace identity v sadě základní deklarace identity jsou vygenerované v tokeny zásadami ovlivněná. 
-- Pokud nastaven na hodnotu False, deklarace identity v sadě deklarací identity základní nejsou v tokeny, pokud se zařazují jednotlivě ve vlastnosti deklarace identity schématu stejné zásady.
+- Pokud sada tooTrue, všechny deklarace identity v sadě hello základní deklarace identity jsou vygenerované v tokeny vliv hello zásad. 
+- Pokud sada tooFalse, deklarace identity v sadě deklarací základní hello nejsou ve tokeny hello, pokud se jednotlivě nepřidají ve vlastnosti schématu deklarace identity hello hello stejné zásady.
 
 >[!NOTE] 
->Deklarace identity v sadě deklarací identity core jsou k dispozici v každé tokenu, bez ohledu na to, co je tato vlastnost nastavená na. 
+>Deklarace identity v základní hello deklarace identity, jsou k dispozici v každé tokenu, bez ohledu na to, co je tato vlastnost nastavená na sadu. 
 
 ### <a name="claims-schema"></a>Schéma deklarace identity
 
@@ -256,28 +256,28 @@ Pomocí vlastnosti deklarací, mapování na ovládací prvek deklarace, které 
 
 **Datový typ:** JSON blob pomocí jedné nebo víc položek schématu deklarace identity
 
-**Souhrn:** definuje tato vlastnost deklarace, které se nacházejí v tokenech zásadami ovlivněná, kromě sady základní deklarace identity a základní sady deklarací.
-U jednotlivých deklarací identity položek schéma definované v této vlastnosti určité informace se vyžaduje. Je nutné zadat, kde jsou data pocházejí z (**hodnotu** nebo **ID zdrojového nebo pár**), a které deklarace identity data jsou vydávány jako (**deklarace identity typu**).
+**Souhrn:** definuje tato vlastnost deklarace, které se nacházejí v tokenech hello vliv hello zásad, kromě toohello základní sady deklarací a hello základní sady deklarací.
+U jednotlivých deklarací identity položek schéma definované v této vlastnosti určité informace se vyžaduje. Je nutné zadat, kde hello data pocházejí (**hodnotu** nebo **ID zdrojového nebo pár**), a který hello data deklarace identity jsou vydávány jako (**deklarace identity typu**).
 
 ### <a name="claim-schema-entry-elements"></a>Prvky schématu vstupní deklarace identity
 
-**Hodnota:** prvku hodnoty definuje statickou hodnotu jako data, která mají být vygenerované v deklaraci identity.
+**Hodnota:** hello hodnota elementu definuje statickou hodnotu jako toobe data hello vygenerované v hello deklarace identity.
 
-**ID zdrojového nebo pár:** elementy zdrojový a ID definovat, kde jsou data v deklaraci identity pochází z. 
+**ID zdrojového nebo pár:** hello zdroje a elementy ID definovat, kde jsou data hello v hello deklarace identity pochází z. 
 
-Element zdroje musí být nastaven na jednu z následujících: 
+Hello Source element musí být nastavena tooone hello následující: 
 
 
-- "user": data v deklaraci identity je vlastnost v objektu User. 
-- "aplikace": data v deklaraci identity je vlastnost v objektu služby aplikace (klient). 
-- "prostředek": data v deklaraci identity je vlastnost v objektu služby prostředků.
-- "cílová skupina": data v deklaraci identity je vlastnost v objektu služby, která je cílová skupina tokenu (klienta nebo prostředků-instanční objekt).
-- "společnost": data v deklaraci identity je vlastnost u objektu prostředku klienta společnosti.
-- "transformace": data v deklaraci identity je z transformace deklarace identity (viz část "Transformace deklarací identity" později v tomto článku). 
+- "user": hello data v hello deklarací identity je vlastnost v objektu User hello. 
+- "aplikace": hello data v hello deklarací identity je vlastnost v objektu služby hello aplikace (klient). 
+- "prostředek": hello data v hello deklarací identity je vlastnost na hello prostředků instanční objekt.
+- "cílová skupina": hello data v deklaraci hello je vlastnost na hello instanční objekt, který je cílová skupina hello hello tokenu (buď hello klienta nebo prostředek instanční objekt).
+- "společnost": hello data v hello deklarací identity je vlastnost v objektu společnosti hello prostředků klienta.
+- "transformace": hello data v hello deklarací identity je z transformace deklarace identity (viz část hello "transformace deklarace identity" později v tomto článku). 
 
-Pokud je zdroj transformace **TransformationID** element musí být součástí této deklarace identity definici.
+Pokud je zdroj hello transformace, hello **TransformationID** element musí být součástí této deklarace identity definici.
 
-ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro deklarace identity. V následující tabulce jsou uvedeny hodnoty ID, které jsou platné pro každou hodnotu zdroje.
+ID elementu Hello identifikuje, kterého je vlastnost na zdroji hello poskytuje hello hodnoty pro deklarace identity hello. Hello následující tabulka uvádí hello hodnoty ID, které jsou platné pro každou hodnotu zdroje.
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Hodnoty platné ID na zdroj
 |Zdroj|ID|Popis|
@@ -326,17 +326,17 @@ ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro dekla
 |aplikace, prostředků, cílová skupina|tags|Značka instančního objektu|
 |Společnost|tenantcountry|Země klienta|
 
-**TransformationID:** TransformationID element je třeba zadat pouze v případě, že element zdroj je nastaven na hodnotu "transformace".
+**TransformationID:** hello TransformationID element musí být zadané jenom v případě hello Source element nastavena příliš "transformace".
 
-- Tento element musí odpovídat ID elementu transformace položky v **ClaimsTransformation** vlastnost, která definuje, jak vygenerovat data pro tuto deklaraci.
+- Tento element musí odpovídat ID elementu hello hello transformace položky v hello **ClaimsTransformation** vlastnost, která definuje, jak se vygeneruje hello data pro tuto deklaraci.
 
-**Typ deklarace identity:** **JwtClaimType** a **SamlClaimType** elementy definovat, které deklarace identity odkazuje tato položka schématu deklarace identity.
+**Typ deklarace identity:** hello **JwtClaimType** a **SamlClaimType** elementy definovat, které deklarace identity odkazuje tato položka schématu deklarace identity.
 
-- JwtClaimType musí obsahovat název deklarace na být vygenerované v Jwt.
-- SamlClaimType musí obsahovat identifikátor URI deklarace identity pro vypuštění v tokenech SAML.
+- Hello JwtClaimType musí obsahovat název hello toobe deklarace identity hello vygenerované v Jwt.
+- Hello SamlClaimType musí obsahovat hello URI hello deklarace toobe vygenerované v tokeny SAML.
 
 >[!NOTE]
->Názvy a identifikátory URI deklarací identity v sadě s omezeným přístupem deklarací identity nelze použít u elementů typu deklarace identity. Další informace najdete v části "Výjimky a omezení" dále v tomto článku.
+>Názvy a identifikátory URI deklarací identity v hello omezený deklarací identity, sadu nelze použít pro elementy typu deklarace identity hello. Další informace najdete v tématu část "Výjimky a omezení" hello později v tomto článku.
 
 ### <a name="claims-transformation"></a>Transformace deklarace identity
 
@@ -344,38 +344,38 @@ ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro dekla
 
 **Datový typ:** objekt blob JSON, s jedné nebo víc položek transformace 
 
-**Souhrn:** pomocí této vlastnosti můžete použít běžné transformace pro zdroj dat, ke generování výstupní data pro deklarace zadané ve schématu deklarací identity.
+**Souhrn:** používat tato vlastnost tooapply běžné transformace toosource data, toogenerate hello výstupní data pro deklarace identity zadané v hello schématu deklarací identity.
 
-**ID:** odkazovat na tuto položku transformaci v položce schématu TransformationID deklarace identity pomocí ID elementu. Tato hodnota musí být jedinečný pro každý záznam transformaci v rámci této zásady.
+**ID:** použití hello ID elementu tooreference tato položka transformaci v hello položka schématu TransformationID deklarací identity. Tato hodnota musí být jedinečný pro každý záznam transformaci v rámci této zásady.
 
-**TransformationMethod:** TransformationMethod element identifikuje, které operace generování dat pro deklarace identity.
+**TransformationMethod:** hello TransformationMethod element identifikuje, kterou operaci se provádí toogenerate hello data hello deklarace identity.
 
-Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou definované pomocí **InputClaims**, **vstupní parametry** a **OutputClaims** elementy.
+Založené na metodě hello vybrané, se očekává sadu vstupy a výstupy. Tyto jsou definované za použití hello **InputClaims**, **vstupní parametry** a **OutputClaims** elementy.
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: Metody transformaci a očekávané vstupy a výstupy
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovače|outputClaim|Spojení vstup řetězce s použitím oddělovače v rozmezí. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaného prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|E-mailu|outputClaim|Extrahuje místní část e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne @ přihlašovací je nainstalován, pak bude vrácen orignal vstupní řetězec, jako je.|
+|ExtractMailPrefix|E-mailu|outputClaim|Extrahuje hello místní část e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Když není @ přihlašovací nachází, hello orignal vstupní řetězec je vrácena jako je.|
 
-**InputClaims:** použít InputClaims element k předání dat z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
+**InputClaims:** InputClaims element toopass hello data z tooa transformace deklarace identity schématu položky použít. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** je spojen s ID elementu vstupu schématu deklarace identity se najít odpovídající vstupní deklaraci identity. 
-- **TransformationClaimType** umožňuje poskytnout jedinečný název pro tento vstup. Tento název se musí shodovat s jedním z očekávané vstupů pro metodu transformace.
+- **ClaimTypeReferenceId** je spojen s ID elementu hello deklarace identity schématu položka toofind hello odpovídající vstupní deklaraci identity. 
+- **TransformationClaimType** je použité toogive vstup toothis jedinečný název. Tento název se musí shodovat s jedním hello očekává vstupy pro metodu transformace hello.
 
-**Vstupní parametry:** použít element vstupní parametry k předání konstantní hodnotu transformace. Má dva atributy: **hodnotu** a **ID**.
+**Vstupní parametry:** použít vstupní parametry element toopass transformace tooa konstantní hodnotu. Má dva atributy: **hodnotu** a **ID**.
 
-- **Hodnota** je skutečná konstantní hodnota mají být předány.
-- **ID** umožňuje poskytnout jedinečný název pro tento vstup. Tento název se musí shodovat s jedním z očekávané vstupů pro metodu transformace.
+- **Hodnota** je předán toobe skutečná konstantní hodnota hello.
+- **ID** je použité toogive vstup toothis jedinečný název. Tento název se musí shodovat s jedním hello očekává vstupy pro metodu transformace hello.
 
-**OutputClaims:** použijte OutputClaims element k ukládání dat generované transformaci a tie k položce schématu deklarace identity. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
+**OutputClaims:** použijte OutputClaims element toohold hello data generována transformaci a svázání se položka schématu tooa deklarace identity. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** je spojen s ID vstupu schématu deklarace identity k vyhledání příslušné výstupní deklarací identity.
-- **TransformationClaimType** umožňuje poskytnout jedinečný název pro tento výstup. Tento název se musí shodovat s jedním očekávané výstupy pro metodu transformace.
+- **ClaimTypeReferenceId** je spojen s ID hello hello deklarace identity schématu položka toofind hello deklarace identity odpovídající výstup.
+- **TransformationClaimType** je použité toogive výstup toothis jedinečný název. Tento název se musí shodovat s jedním výstupy hello očekávání pro metodu transformace hello.
 
 ### <a name="exceptions-and-restrictions"></a>Výjimky a omezení
 
-**SAML NameID a UPN:** atributů, ze kterých zdrojového hodnoty NameID a UPN a transformace deklarací identity, které jsou povoleny, jsou omezené.
+**SAML NameID a UPN:** hello atributů, ze kterých zdroje hello NameID a UPN hodnoty a hello deklarací transformace, které jsou povoleny, jsou omezené.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: Atributy povolena jako zdroj dat pro SAML NameID
 |Zdroj|ID|Popis|
@@ -404,104 +404,104 @@ Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou d
 |TransformationMethod|Omezení|
 | ----- | ----- |
 |ExtractMailPrefix|Žádný|
-|Spojit|Přípona je připojený k musí být ověřené domény klienta prostředků.|
+|Spojit|přípona Hello spojených musí být ověřené domény klienta prostředků hello.|
 
 ### <a name="custom-signing-key"></a>Vlastní podpisového klíče
-Vlastní podpisový klíč musí být přiřazeni k objektu zabezpečení služby pro deklarace identity mapování zásad se projeví. Tento klíč jsou podepsané všechny tokeny vydané, které má vliv zásady. Aplikace musí být nastaven na přijímání tokeny podepsaný pomocí tohoto klíče. To zajistí potvrzení, změnilo tokeny Tvůrce deklarace identity mapování zásad. To chrání aplikace z deklarací identity mapování zásady vytvořené pomocí nebezpečného actors.
+Vlastní podpisový klíč musí být přiřazen toohello objekt zabezpečení služby deklarací identity mapování zásad tootake vliv. Tento klíč jsou podepsané všechny tokeny vydané, které má vliv hello zásad. Aplikace musí být nakonfigurované tooaccept tokeny podepsaný pomocí tohoto klíče. Tím se zajistí, že potvrzení, že byl změněn tokeny pomocí Tvůrce hello hello deklarací mapování zásad. To chrání aplikace z deklarací identity mapování zásady vytvořené pomocí nebezpečného actors.
 
 ### <a name="cross-tenant-scenarios"></a>Scénáře napříč klienta
-Mapování zásad deklarace identity se nevztahují na uživatele typu Host. Pokud uživatel guest pokusí o přístup k aplikaci s deklarací, mapování zásad, které jsou přiřazené k jeho instanční objekt, je výchozí token vydán (zásada nemá žádný vliv).
+Mapování zásad deklarace identity se nevztahují tooguest uživatele. Pokud uživatel guest pokusů o tooaccess aplikace s deklaracemi identity mapování zásad přiřazené tooits služby objekt zabezpečení, se objeví hello výchozí token (hello zásada nemá žádný vliv).
 
 ## <a name="claims-mapping-policy-assignment"></a>Mapování přiřazení zásady deklarace identity
-Deklarace identity mapování zásad můžete přiřadit pouze hlavní objekty služby.
+Deklarace identity, že zásady mapování lze přiřadit pouze hlavní objekty tooservice.
 
 ### <a name="example-claims-mapping-policies"></a>Příklad deklarací mapování zásad
 
-Ve službě Azure AD je možné mnoho scénářů, pokud můžete přizpůsobit pro konkrétní službu objektů vygenerované v tokeny deklarací identity. V této části jsme provede několik běžných scénářů, které vám může pomoct pochopit, jak používat deklarace identity mapování typ zásad.
+Ve službě Azure AD je možné mnoho scénářů, pokud můžete přizpůsobit pro konkrétní službu objektů vygenerované v tokeny deklarací identity. V této části jsme provede několik běžných scénářů, které vám může pomoct pochopit, jak toouse hello deklarací typ mapování zásad.
 
 #### <a name="prerequisites"></a>Požadavky
-V následujících příkladech vytvářet, aktualizovat, propojení a odstranit zásady pro objekty služby. Pokud jste ještě Azure AD, doporučujeme vám, další informace o tom, jak získat klienta Azure AD, než budete pokračovat v těchto příkladech. 
+V následující příklady hello vytvářet, aktualizovat, propojení a odstranit zásady pro objekty služby. Pokud jste nový tooAzure AD, doporučujeme vám, další informace o tom, jak tooget na Azure AD klientů předtím, než budete pokračovat v těchto příkladech. 
 
-Chcete-li začít, proveďte následující kroky:
+tooget spuštění hello následující kroky:
 
 
-1. Stáhněte si nejnovější [verze public preview modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.127).
-2.  Pomocí příkazu Connect pro přihlášení k účtu správce služby Azure AD. Spusťte tento příkaz pokaždé, když zahájit novou relaci.
+1. Stáhněte si nejnovější hello [verze public preview modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.127).
+2.  Spusťte hello Connect příkaz toosign v tooyour účet správce Azure AD. Spusťte tento příkaz pokaždé, když zahájit novou relaci.
     
      ``` powershell
     Connect-AzureAD -Confirm
     
     ```
-3.  Pokud chcete zobrazit všechny zásady, které byly vytvořeny ve vaší organizaci, spusťte následující příkaz. Doporučujeme vám, spusťte tento příkaz po většinu operací v následujících scénářích, zkontrolujte, že vaše zásady vytváření podle očekávání.
+3.  toosee všechny zásady, které byly vytvořeny ve vaší organizaci, spusťte hello následující příkaz. Doporučujeme vám spustit tento příkaz po většinu operací v hello následující scénáře, očekává toocheck, který jako během vytváření zásad.
    
     ``` powershell
         Get-AzureADPolicy
     
     ```
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Příklad: Vytvořte a přiřaďte zásadu, která vynechejte základní deklarace identity z tokeny vydané instanční objekt.
-V tomto příkladu vytvoříte zásadu, která odebere tokeny vydané pro objekty propojené služby do základní sady deklarací.
+#### <a name="example-create-and-assign-a-policy-tooomit-hello-basic-claims-from-tokens-issued-tooa-service-principal"></a>Příklad: Vytvořte a přiřaďte zásad tooomit hello základní deklarace identity z tokeny vydané tooa instanční objekt.
+V tomto příkladu vytvoříte zásadu, která odebere sady základní deklarací hello tokeny vydané toolinked objekty služby.
 
 
-1. Vytvořte deklarace identity mapování zásad. Tato zásada, objekty ke konkrétnímu služby odebere základní sady z tokeny deklarací identity.
-    1. Chcete-li vytvořit zásadu, spusťte tento příkaz: 
+1. Vytvořte deklarace identity mapování zásad. Tato zásada, propojené toospecific objekty služby, odebere sady hello základní deklarací z tokenů.
+    1. toocreate hello zásady, spusťte tento příkaz: 
     
      ``` powershell
     New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims” -Type "ClaimsMappingPolicy"
     ```
-    2. Chcete zobrazit nové zásady a získat zásady ObjectId, spusťte následující příkaz:
+    2. toosee, které vaše nové zásady a zásady hello tooget ObjectId, spusťte hello následující příkaz:
     
      ``` powershell
     Get-AzureADPolicy
     ```
-2.  Přiřaďte zásady instančního objektu. Také je potřeba získat ObjectId služby hlavní. 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat Microsoft Graph. Nebo v Azure AD Graph Průzkumníku přihlášení k účtu Azure AD.
-    2.  Až budete mít ObjectId hlavní služby, spusťte následující příkaz:  
+2.  Přiřaďte hello zásad tooyour instanční objekt. Budete také potřebovat tooget hello ObjectId instanční objekt. 
+    1.  toosee objekty všechna firemní služby, se můžete dotazovat Microsoft Graph. Nebo v Azure AD Graph Explorer přihlaste tooyour účet Azure AD.
+    2.  Pokud máte hello ObjectId vaší služby hlavní, spusťte hello následující příkaz:  
      
      ``` powershell
-    Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+    Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
     ```
-#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Příklad: Vytvořte a přiřaďte zásadu, která zahrnuje EmployeeID a TenantCountry jako deklarace identity v tokenech vystaveno pro objekt služby.
-V tomto příkladu vytvoříte zásadu, která přidá EmployeeID a TenantCountry tokeny vydané objekty propojené služby. EmployeeID jsou vydávány jako typ deklarace identity názvu v tokeny SAML a tokeny Jwt. TenantCountry jsou vydávány jako typ deklarace země v tokeny SAML a tokeny Jwt. V tomto příkladu budeme nadále obsahují základní deklarace nastavit v tokenů.
+#### <a name="example-create-and-assign-a-policy-tooinclude-hello-employeeid-and-tenantcountry-as-claims-in-tokens-issued-tooa-service-principal"></a>Příklad: Vytvoření a přiřazení zásad tooinclude hello EmployeeID a TenantCountry jako deklarace identity v tokenech vystavený tooa instanční objekt.
+V tomto příkladu vytvoříte zásadu, která přidá hello EmployeeID a TenantCountry tootokens vydané toolinked objekty služby. Hello EmployeeID jsou vydávány jako typ deklarace identity názvu hello tokeny SAML a tokeny Jwt. Hello TenantCountry jsou vydávány jako typ tokeny SAML a tokeny Jwt deklarace země hello. V tomto příkladu abychom mohli pokračovat tooinclude hello základní deklarací nastavit hello tokenů.
 
-1. Vytvořte deklarace identity mapování zásad. Tato zásada, propojený s objekty konkrétní služby, přidá EmployeeID a TenantCountry deklarace do tokenů.
-    1. Chcete-li vytvořit zásadu, spusťte tento příkaz:  
+1. Vytvořte deklarace identity mapování zásad. Tato zásada, propojené toospecific objekty služby, přidá tootokens hello EmployeeID a TenantCountry deklarací identity.
+    1. toocreate hello zásady, spusťte tento příkaz:  
      
      ``` powershell
     New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
     ```
     
-    2. Chcete zobrazit nové zásady a získat zásady ObjectId, spusťte následující příkaz:
+    2. toosee, které vaše nové zásady a zásady hello tooget ObjectId, spusťte hello následující příkaz:
      
      ``` powershell  
     Get-AzureADPolicy
     ```
-2.  Přiřaďte zásady instančního objektu. Také je potřeba získat ObjectId služby hlavní. 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat Microsoft Graph. Nebo v Azure AD Graph Průzkumníku přihlášení k účtu Azure AD.
-    2.  Až budete mít ObjectId hlavní služby, spusťte následující příkaz:  
+2.  Přiřaďte hello zásad tooyour instanční objekt. Budete také potřebovat tooget hello ObjectId instanční objekt. 
+    1.  toosee objekty všechna firemní služby, se můžete dotazovat Microsoft Graph. Nebo v Azure AD Graph Explorer přihlaste tooyour účet Azure AD.
+    2.  Pokud máte hello ObjectId vaší služby hlavní, spusťte hello následující příkaz:  
      
      ``` powershell
-    Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+    Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
     ```
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Příklad: Vytvořte a přiřaďte zásadu, která používá transformaci deklarací identity v tokenech vystaveno pro objekt služby.
-V tomto příkladu vytvoříte zásadu, která vydá vlastní deklarace identity "JoinedData" Jwt vystaveno pro objekty propojené služby. Toto tvrzení obsahuje hodnotu vytvořený sloučením data uložená v atributu extensionattribute1 v objektu user s ".sandbox". V tomto příkladu jsme vyloučit základní sada v tokeny deklarací identity.
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-tooa-service-principal"></a>Příklad: Vytvořte a přiřaďte zásadu, která používá transformaci deklarací identity v tokeny vydané tooa instanční objekt.
+V tomto příkladu vytvoříte zásadu, která vydá vlastní deklarace "JoinedData", že tooJWTs vydané toolinked objekty služby. Toto tvrzení obsahuje hodnotu vytvořený sloučením hello data uložená v atributu extensionattribute1 hello u objektu uživatele hello s ".sandbox". V tomto příkladu jsme vyloučit hello základní deklarace identity, nastavte v tokenech hello.
 
 
-1. Vytvořte deklarace identity mapování zásad. Tato zásada, propojený s objekty konkrétní služby, přidá EmployeeID a TenantCountry deklarace do tokenů.
-    1. Chcete-li vytvořit zásadu, spusťte tento příkaz: 
+1. Vytvořte deklarace identity mapování zásad. Tato zásada, propojené toospecific objekty služby, přidá tootokens hello EmployeeID a TenantCountry deklarací identity.
+    1. toocreate hello zásady, spusťte tento příkaz: 
      
      ``` powershell
     New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformation":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"Id":"string2","Value":"sandbox"},{"Id":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample” -Type "ClaimsMappingPolicy"
     ```
     
-    2. Chcete zobrazit nové zásady a získat zásady ObjectId, spusťte následující příkaz: 
+    2. toosee, které vaše nové zásady a zásady hello tooget ObjectId, spusťte hello následující příkaz: 
      
      ``` powershell
     Get-AzureADPolicy
     ```
-2.  Přiřaďte zásady instančního objektu. Také je potřeba získat ObjectId služby hlavní. 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat Microsoft Graph. Nebo v Azure AD Graph Průzkumníku přihlášení k účtu Azure AD.
-    2.  Až budete mít ObjectId hlavní služby, spusťte následující příkaz: 
+2.  Přiřaďte hello zásad tooyour instanční objekt. Budete také potřebovat tooget hello ObjectId instanční objekt. 
+    1.  toosee objekty všechna firemní služby, se můžete dotazovat Microsoft Graph. Nebo v Azure AD Graph Explorer přihlaste tooyour účet Azure AD.
+    2.  Pokud máte hello ObjectId vaší služby hlavní, spusťte hello následující příkaz: 
      
      ``` powershell
-    Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+    Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
     ```

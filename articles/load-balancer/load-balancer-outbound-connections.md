@@ -1,6 +1,6 @@
 ---
-title: "Principy odchozí připojení v Azure | Microsoft Docs"
-description: "Tento článek vysvětluje, jak Azure umožňuje virtuálním počítačům komunikovat s služby veřejného Internetu."
+title: "odchozí připojení aaaUnderstanding v Azure | Microsoft Docs"
+description: "Tento článek vysvětluje, jak Azure umožňuje toocommunicate virtuálních počítačů služby veřejného Internetu."
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 5/31/2017
 ms.author: kumud
-ms.openlocfilehash: 03cb14b5710b6dd17599a3c4eab21380c76c2b40
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ffe59971b934a16c9f6f78e3b15869a0072320d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Principy odchozích připojení v Azure
 
-V Azure virtuální počítač (VM) může komunikovat s koncovými body mimo Azure ve veřejném adresním prostoru IP adres. Když virtuální počítač zahájí odchozího toku do cílového umístění v prostor veřejných IP adres, Azure mapuje privátní IP adresu Virtuálního počítače na veřejnou IP adresu a umožňuje připojit virtuální počítač návratový provoz.
+V Azure virtuální počítač (VM) může komunikovat s koncovými body mimo Azure ve veřejném adresním prostoru IP adres. Když virtuální počítač zahájí cíli tooa odchozího toku v prostor veřejných IP adres, Azure mapuje hello Virtuálního počítače privátní IP adresu tooa veřejnou IP adresu a umožňuje hello tooreach návratový provoz virtuálních počítačů.
 
-Azure poskytuje tři různých způsobů dosažení odchozí připojení. Každá z metod má svou vlastní možnosti a omezení. Zkontrolujte jednotlivé metody pečlivě na zvolit, které z nich vyhovuje vašim potřebám.
+Azure nabízí tři různé metody tooachieve odchozí připojení. Každá z metod má svou vlastní možnosti a omezení. Každá metoda zkontrolovat si důkladně toochoose, která vyhovuje vašim potřebám.
 
 | Scénář | Metoda | Poznámka |
 | --- | --- | --- |
 | Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádná Instance úroveň veřejná IP adresa) |Výchozí překládat pomocí SNAT |Azure přidruží veřejnou IP adresu pro překládat pomocí SNAT |
-| Vyrovnávání zatížení sítě virtuálních počítačů (žádná Instance úroveň veřejná IP adresa ve virtuálním počítači) |Překládat pomocí SNAT pomocí nástroje pro vyrovnávání zatížení |Azure používá veřejnou IP adresu služby Vyrovnávání zatížení pro překládat pomocí SNAT |
-| Virtuální počítač s Instance úroveň veřejnou IP adresu (s nebo bez nástroj pro vyrovnávání zatížení) |Překládat pomocí SNAT se nepoužívá. |Azure používá veřejné IP adresy přiřazené k virtuálnímu počítači |
+| Vyrovnávání zatížení sítě virtuálních počítačů (žádná Instance úroveň veřejná IP adresa ve virtuálním počítači) |Použití služby Vyrovnávání zatížení hello překládat pomocí SNAT |Azure používá veřejnou IP adresu hello nástroj pro vyrovnávání zatížení pro překládat pomocí SNAT |
+| Virtuální počítač s Instance úroveň veřejnou IP adresu (s nebo bez nástroj pro vyrovnávání zatížení) |Překládat pomocí SNAT se nepoužívá. |Azure používá hello veřejné IP adresy přiřazené toohello virtuálních počítačů |
 
-Pokud nechcete, aby virtuální počítač ke komunikaci s koncovými body mimo Azure ve veřejném adresním prostoru IP adres, můžete použít skupiny zabezpečení sítě (NSG) zablokovat přístup. Pomocí skupin Nsg je podrobněji popsána v [brání veřejného připojení](#preventing-public-connectivity).
+Pokud nechcete, aby toocommunicate virtuálních počítačů s koncovými body mimo Azure ve veřejném adresním prostoru IP adres, můžete použít skupiny zabezpečení sítě (NSG) tooblock přístup. Pomocí skupin Nsg je podrobněji popsána v [brání veřejného připojení](#preventing-public-connectivity).
 
 ## <a name="standalone-vm-with-no-instance-level-public-ip-address"></a>Samostatný virtuální počítač s žádné Instance úroveň veřejnou IP adresu
 
-V tomto scénáři virtuální počítač není součástí fondu vyrovnávání zatížení Azure a nemá adresu Instance úroveň veřejné IP (splnění), který je přiřazen. Když virtuální počítač se vytváří odchozího toku, překládá Azure privátní zdrojovou IP adresu odchozího toku veřejné Zdrojová IP adresa. Veřejnou IP adresu použitou pro tuto odchozího toku není Konfigurovatelný a nepočítá proti odběru limitu prostředků veřejné IP. Azure používá zdroje síťové adresy překlad (SNAT) a provést tuto funkci. Dočasné porty veřejné IP adresy se používají k rozlišení jednotlivých toky pochází ve virtuálním počítači. Překládat pomocí SNAT dynamicky přiděluje dočasné porty, když se vytváří toky. V tomto kontextu jsou dočasné porty používané pro překládat pomocí SNAT označovány jako porty překládat pomocí SNAT.
+V tomto scénáři hello virtuální počítač není součástí fondu vyrovnávání zatížení Azure a nemá o instanci úrovně veřejné IP splnění adresu přiřazenou tooit. Při hello virtuálního počítače vytvoří odchozí tok, znamená, že Azure hello privátní zdrojovou IP adresu hello odchozího toku tooa veřejné zdrojové IP adresy. Hello veřejnou IP adresu použitou pro tuto odchozího toku není Konfigurovatelný a nepočítá proti hello předplatné limitu prostředků veřejné IP. Azure používá zdroje síťové adresy překlad (SNAT) tooperform tuto funkci. Dočasné porty hello veřejné IP adresy jsou jednotlivé toků použít toodistinguish původce hello virtuálních počítačů. Překládat pomocí SNAT dynamicky přiděluje dočasné porty, když se vytváří toky. V tomto kontextu jsou hello dočasné porty používané pro překládat pomocí SNAT odkazované tooas překládat pomocí SNAT porty.
 
-Konečný prostředek, který může dojít k vyčerpání jsou porty překládat pomocí SNAT. Je důležité pochopit, jak se spotřebovávají. Jeden port překládat pomocí SNAT obsazením za toku do jedné cílové IP adresy. Pro více toků se stejnou IP adresou cílového využívá každý tok jediný port překládat pomocí SNAT. Tím se zajistí na toky jedinečná při pocházely ze stejné veřejnou IP adresu na stejnou cílovou IP adresu. Více toků jednotliví na jinou cílovou IP adresu využívají jediný port překládat pomocí SNAT na cílový. Cílovou IP adresu provede tyto toky jedinečný.
+Konečný prostředek, který může dojít k vyčerpání jsou porty překládat pomocí SNAT. Je důležité toounderstand, jak se spotřebovávají. Jeden port překládat pomocí SNAT obsazením podle toku tooa jedné cílové IP adresy. Pro více toků toohello stejnou cílovou IP adresu, každý tok využívá jediný port překládat pomocí SNAT. Tím se zajistí hello toky jedinečné v případě pochází z hello stejné veřejnou IP adresu toohello stejnou cílovou IP adresu. Více toků každou tooa jinou cílovou IP adresu používat jediný port překládat pomocí SNAT na cílový. Díky Hello cílové IP adresy je hello toky jedinečný.
 
-Můžete použít [analýzy protokolů pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [výstrahy protokoly událostí pro monitorování překládat pomocí SNAT portu vyčerpání zprávy](load-balancer-monitor-log.md#alert-event-log). Když vyčerpání prostředků překládat pomocí SNAT port, odchozí toky nezdaří, dokud překládat pomocí SNAT porty jsou vydal existující toky. Nástroj pro vyrovnávání zatížení používá časový limit nečinnosti 4minutové opětovného získání porty překládat pomocí SNAT.
+Můžete použít [analýzy protokolů pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [toomonitor výstrahy protokoly událostí pro zprávy vyčerpání port překládat pomocí SNAT](load-balancer-monitor-log.md#alert-event-log). Když vyčerpání prostředků překládat pomocí SNAT port, odchozí toky nezdaří, dokud překládat pomocí SNAT porty jsou vydal existující toky. Nástroj pro vyrovnávání zatížení používá časový limit nečinnosti 4minutové opětovného získání porty překládat pomocí SNAT.
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>Vyrovnávání zatížení sítě virtuálních počítačů s žádné Instance úroveň veřejnou IP adresu
 
-Virtuální počítač v tomto scénáři je součástí fondu vyrovnávání zatížení Azure.  Virtuální počítač nemá veřejnou IP adresu přiřazen. Prostředek pro vyrovnávání zatížení musí být nakonfigurované na pravidlo můžete propojit veřejnou IP front-endovou s fondem back-end.  Pokud nezadáte tuto konfiguraci, chování je, jak je popsáno v předchozí části pro [samostatný virtuální počítač s žádné Instance úroveň veřejnou IP adresu](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address).
+V tomto scénáři hello virtuální počítač je součástí fondu vyrovnávání zatížení Azure.  Hello virtuální počítač nemá veřejnou IP adresu přiřadit tooit. Hello prostředek pro vyrovnávání zatížení musí být nakonfigurované pravidlo toolink hello veřejnou IP front-endovou s fondem back-end hello.  Pokud nezadáte tuto konfiguraci, hello chování je, jak je popsáno v části hello výše pro [samostatný virtuální počítač s žádné Instance úroveň veřejnou IP adresu](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address).
 
-Při vyrovnávání zatížení sítě virtuálního počítače vytvoří odchozí tok, znamená, že Azure privátní zdrojovou IP adresu odchozího toku veřejnou IP adresu veřejnou front-endovou Vyrovnávání zatížení. Azure používá zdroje síťové adresy překlad (SNAT) a provést tuto funkci. Dočasné porty nástroje pro vyrovnávání zatížení veřejnou IP adresu se používají k rozlišení jednotlivých toky pochází ve virtuálním počítači. Překládat pomocí SNAT dynamicky přiděluje dočasné porty, když se vytváří odchozí toky. V tomto kontextu jsou dočasné porty používané pro překládat pomocí SNAT označovány jako porty překládat pomocí SNAT.
+Při hello Vyrovnávání zatížení sítě virtuálního počítače vytvoří odchozí tok, znamená, že Azure hello privátní zdrojovou IP adresu hello odchozího toku toohello veřejnou IP adresu hello veřejné Vyrovnávání zatížení, front-endu. Azure používá zdroje síťové adresy překlad (SNAT) tooperform tuto funkci. Dočasné porty Vyrovnávání zatížení hello veřejné IP adresy jsou jednotlivé toků použít toodistinguish původce hello virtuálních počítačů. Překládat pomocí SNAT dynamicky přiděluje dočasné porty, když se vytváří odchozí toky. V tomto kontextu jsou hello dočasné porty používané pro překládat pomocí SNAT odkazované tooas překládat pomocí SNAT porty.
 
-Konečný prostředek, který může dojít k vyčerpání jsou porty překládat pomocí SNAT. Je důležité pochopit, jak se spotřebovávají. Jeden port překládat pomocí SNAT obsazením za toku do jedné cílové IP adresy. Pro více toků se stejnou IP adresou cílového využívá každý tok jediný port překládat pomocí SNAT. Tím se zajistí na toky jedinečná při pocházely ze stejné veřejnou IP adresu na stejnou cílovou IP adresu. Více toků jednotliví na jinou cílovou IP adresu využívají jediný port překládat pomocí SNAT na cílový. Cílovou IP adresu provede tyto toky jedinečný.
+Konečný prostředek, který může dojít k vyčerpání jsou porty překládat pomocí SNAT. Je důležité toounderstand, jak se spotřebovávají. Jeden port překládat pomocí SNAT obsazením podle toku tooa jedné cílové IP adresy. Pro více toků toohello stejnou cílovou IP adresu, každý tok využívá jediný port překládat pomocí SNAT. Tím se zajistí hello toky jedinečné v případě pochází z hello stejné veřejnou IP adresu toohello stejnou cílovou IP adresu. Více toků každou tooa jinou cílovou IP adresu používat jediný port překládat pomocí SNAT na cílový. Díky Hello cílové IP adresy je hello toky jedinečný.
 
-Můžete použít [analýzy protokolů pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [výstrahy protokoly událostí pro monitorování překládat pomocí SNAT portu vyčerpání zprávy](load-balancer-monitor-log.md#alert-event-log). Když vyčerpání prostředků překládat pomocí SNAT port, odchozí toky nezdaří, dokud překládat pomocí SNAT porty jsou vydal existující toky. Nástroj pro vyrovnávání zatížení používá časový limit nečinnosti 4minutové opětovného získání porty překládat pomocí SNAT.
+Můžete použít [analýzy protokolů pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [toomonitor výstrahy protokoly událostí pro zprávy vyčerpání port překládat pomocí SNAT](load-balancer-monitor-log.md#alert-event-log). Když vyčerpání prostředků překládat pomocí SNAT port, odchozí toky nezdaří, dokud překládat pomocí SNAT porty jsou vydal existující toky. Nástroj pro vyrovnávání zatížení používá časový limit nečinnosti 4minutové opětovného získání porty překládat pomocí SNAT.
 
 ## <a name="vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer"></a>Virtuální počítač s adresu veřejná IP adresa na úrovni Instance (s nebo bez nástroj pro vyrovnávání zatížení)
 
-V tomto scénáři má virtuální počítač instanci úroveň veřejné IP splnění přiřazen. Nezáleží, jestli je virtuální počítač nebo ne vyrovnáváním zatížení. Pokud se používá splnění, se nepoužije zdrojový síťové adresy překlad (SNAT). Virtuální počítač používá splnění pro všechny odchozí toky. Pokud vaše aplikace iniciuje mnoho odchozí toky a dochází k vyčerpání překládat pomocí SNAT, měli byste zvážit přiřazení splnění předejdete omezení překládat pomocí SNAT.
+V tomto scénáři má hello virtuálních počítačů instanci úroveň veřejné IP splnění přiřazené tooit. Nezáleží, jestli hello virtuálního počítače je Vyrovnávané nebo ne. Pokud se používá splnění, se nepoužije zdrojový síťové adresy překlad (SNAT). Hello virtuální počítač používá hello splnění pro všechny odchozí toky. Pokud vaše aplikace iniciuje mnoho odchozí toky a dochází k vyčerpání překládat pomocí SNAT, měli byste zvážit přiřazení splnění tooavoid omezení překládat pomocí SNAT.
 
-## <a name="discovering-the-public-ip-used-by-a-given-vm"></a>Zjišťování veřejné IP adresy používané daného virtuálního počítače
+## <a name="discovering-hello-public-ip-used-by-a-given-vm"></a>Zjišťování hello veřejné IP adresy používané daného virtuálního počítače
 
-Existuje mnoho způsobů, jak určit IP adresu zdrojového veřejné odchozí připojení. OpenDNS poskytuje službu, která můžete zobrazit veřejnou IP adresu vašeho virtuálního počítače. Použití příkazu nslookup, můžete odeslat dotaz DNS pro název myip.opendns.com do překladače OpenDNS. Služba vrátí zdrojové IP adresy, který se používá k odeslání dotazu. Při spuštění následující dotaz z virtuálního počítače, je odpověď na veřejné IP adresy použít pro tento virtuální počítač.
+Existuje mnoho způsobů toodetermine hello veřejné zdrojovou IP adresu odchozí připojení. OpenDNS poskytuje službu, která lze zobrazit hello veřejnou IP adresu vašeho virtuálního počítače. Použití příkazu nslookup hello, můžete odeslat dotaz DNS pro hello název myip.opendns.com toohello OpenDNS překladač. Služba Hello vrací hello zdrojovou IP adresu, která byla použité toosend hello dotazu. Při spuštění hello následujících dotazu z virtuálního počítače je hello odpovědi hello používá veřejnou IP adresu pro tento virtuální počítač.
 
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventing-public-connectivity"></a>Nelze navázat připojení veřejného
 
-Někdy je žádoucí pro virtuální počítač povolit vytváření odchozího toku nebo může být požadavek na správu, které cíle je dostupný odchozí toky. V takovém případě použijete [skupiny zabezpečení sítě (NSG)](../virtual-network/virtual-networks-nsg.md) ke správě cílů, které mohou být využity virtuálního počítače. Když použijete skupinu NSG k virtuálnímu počítači s vyrovnáváním zatížení, je potřeba věnovat pozornost [výchozí značky](../virtual-network/virtual-networks-nsg.md#default-tags) a [výchozí pravidla](../virtual-network/virtual-networks-nsg.md#default-rules).
+Někdy je žádoucí pro virtuální počítač toobe povolené toocreate odchozího toku nebo může být požadavek toomanage, které cíle je dostupný odchozí toky. V takovém případě použijete [skupiny zabezpečení sítě (NSG)](../virtual-network/virtual-networks-nsg.md) toomanage hello cíle tohoto hello dosáhnout virtuálních počítačů. Když použijete skupinu NSG tooa Vyrovnávání zatížení sítě virtuálních počítačů, musíte toopay pozornost toohello [výchozí značky](../virtual-network/virtual-networks-nsg.md#default-tags) a [výchozí pravidla](../virtual-network/virtual-networks-nsg.md#default-rules).
 
-Je nutné zajistit, že virtuální počítač může přijímat žádosti o kontrolu stavu z nástroje pro vyrovnávání zatížení Azure. Pokud skupina NSG blokuje žádostí o stav testu z výchozí značka AZURE_LOADBALANCER, selže test stavu vašeho virtuálního počítače a virtuálního počítače je označena. Nástroj pro vyrovnávání zatížení zastaví odesílání nové toky do tohoto virtuálního počítače.
+Je nutné zajistit, že tento hello virtuálních počítačů může přijímat žádosti o kontrolu stavu z nástroje pro vyrovnávání zatížení Azure. Pokud NSG bloky stavu testu požadavků z hello AZURE_LOADBALANCER výchozí značka, váš test stavu virtuálního počítače se nezdaří a hello virtuálního počítače je označena. Nástroj pro vyrovnávání zatížení zastaví odesílání nové toky toothat virtuálních počítačů.
 
 ## <a name="limitations"></a>Omezení
 
 Pokud [více (veřejné) IP adresy, které jsou přidružené Vyrovnávání zatížení](load-balancer-multivip-overview.md), všechny tyto veřejné IP adresy jsou kandidátem pro odchozí toky.
 
-Azure používá nepodporovaný algoritmus můžete určit počet dostupných portů překládat pomocí SNAT na základě velikosti fondu.  To se nedá konfigurovat v tuto chvíli.
+Azure používá algoritmus toodetermine hello počet překládat pomocí SNAT porty, které jsou k dispozici na základě velikosti hello hello fondu.  To se nedá konfigurovat v tuto chvíli.
 
-Je důležité rememember, který počet dostupných portů překládat pomocí SNAT nepřekládá přímo k počtu připojení. Podrobnosti viz výše pro konkrétní na kdy a jak jsou přiděleny překládat pomocí SNAT porty a jak spravovat tento vyčerpatelným prostředek.
+Je důležité, že toorememember, který hello počet dostupných portů překládat pomocí SNAT nepřekládá přímo toonumber připojení. Viz výše pro konkrétní na při a jak jsou přiděleny překládat pomocí SNAT porty a toomanage tento vyčerpatelným prostředek.

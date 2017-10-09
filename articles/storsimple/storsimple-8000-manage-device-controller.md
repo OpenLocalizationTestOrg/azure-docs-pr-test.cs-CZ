@@ -1,6 +1,6 @@
 ---
-title: "Správa řadiče zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Naučte se zastavit, vypnout, restartovat nebo obnovit řadičů zařízení StorSimple."
+title: "řadiče zařízení řady StorSimple 8000 aaaManage | Microsoft Docs"
+description: "Zjistěte, jak toostop, restartovat, vypnout nebo obnovit vaše řadiče zařízení StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,130 +14,130 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 75c1bdb570967b6d1902697597f0b5bf3f4ffb7c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5c59582b7ccf7cfeae9e7efbd0e4df9dc1d3871c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Spravovat vaše řadiče zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje různé operace, které lze provést na řadiče zařízení StorSimple. Řadiče v zařízení StorSimple jsou řadiče redundantní (sdílené) v konfiguraci aktivní pasivní. V daném okamžiku jenom jeden řadič je aktivní a zpracovává všechny diskových a síťových operací. Jiný řadič je v pasivním režimu. V případě selhání řadič active řadičem pasivní automaticky stane aktivní.
+Tento kurz popisuje hello různé operace, které lze provést na řadiče zařízení StorSimple. Hello řadiče v zařízení StorSimple jsou řadiče redundantní (sdílené) v konfiguraci aktivní pasivní. V daném okamžiku jenom jeden řadič je aktivní a zpracovává všechny operace diskových a síťových hello. Hello jiný řadič je v pasivním režimu. Pokud se řadič active hello nezdaří, pasivní řadiče hello automaticky stane aktivní.
 
-Tento kurz zahrnuje podrobné pokyny ke správě řadiče zařízení pomocí:
+Tento kurz obsahuje podrobné pokyny toomanage hello zařízení řadiče pomocí:
 
-* **Řadiče** okna pro vaše zařízení ve službě StorSimple Manager zařízení.
+* **Řadiče** okna pro vaše zařízení v hello služby StorSimple Manager zařízení.
 * Prostředí Windows PowerShell pro StorSimple.
 
-Doporučujeme vám, že spravujete řadiče zařízení prostřednictvím služby StorSimple Manager zařízení. Pokud se akce lze provést pouze pomocí prostředí Windows PowerShell pro StorSimple, tento kurz provede poznamenejte si ho.
+Doporučujeme vám, že spravujete hello řadiče zařízení prostřednictvím služby StorSimple Manager zařízení hello. Pokud se akce lze provést pouze pomocí prostředí Windows PowerShell pro StorSimple, hello kurzu provede poznamenejte si ho.
 
 Po přečtení tohoto kurzu, budete moci:
 
 * Restartování nebo vypnutí řadič zařízení StorSimple
 * Vypněte zařízení StorSimple
-* Obnovit výchozí tovární nastavení v zařízení StorSimple
+* Obnovit výchozí toofactory zařízení StorSimple
 
 ## <a name="restart-or-shut-down-a-single-controller"></a>Restartování nebo vypnutí jediného kontroleru
-Řadič restartování nebo vypnutí není vyžadován jako součást operace normální systému. Operace vypnutí pro jedno zařízení řadiče jsou běžné pouze v případech, ve kterých hardwarová komponenta selhání zařízení vyžaduje nahrazení. V situaci, ve kterém ovlivňuje výkon nadměrného využití paměti nebo chybně fungující řadič může také vyžadovat restartování řadiče. Může také musíte restartovat řadič po úspěšné řadiče náhradní, pokud chcete povolit a testovací nahrazené kontroler.
+Řadič restartování nebo vypnutí není vyžadován jako součást operace normální systému. Operace vypnutí pro jedno zařízení řadiče jsou běžné pouze v případech, ve kterých hardwarová komponenta selhání zařízení vyžaduje nahrazení. V situaci, ve kterém ovlivňuje výkon nadměrného využití paměti nebo chybně fungující řadič může také vyžadovat restartování řadiče. Také můžete potřebovat toorestart řadič po úspěšné řadiče náhradní, pokud chcete tooenable a testovací kontroler hello nahradit.
 
-Restartování zařízení není rušivé iniciátorům připojené, za předpokladu, že je k dispozici pasivní řadič. Pokud není pasivní řadič k dispozici nebo zapnuté vypnout a potom restartování řadič active může vést k přerušení služby a výpadky.
+Restartování zařízení není rušivé tooconnected iniciátory, za předpokladu, že je k dispozici pasivní řadič hello. Pokud není k dispozici řadič pasivní nebo vypnutý, restartujte hello active řadič může vést k přerušení hello služby a výpadky.
 
 > [!IMPORTANT]
 > * **Běžícího řadiče nikdy odeberte fyzicky jako to může vést ke ztrátě redundance a k vyššímu riziku výpadku.**
-> * Následující postup platí jenom pro fyzického zařízení StorSimple. Informace o tom, jak spuštění, zastavení a restartování zařízení StorSimple cloudu najdete v tématu [pracovat s cloud zařízení](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance).
+> * Hello následující postup platí jenom toohello fyzického zařízení StorSimple. Informace o tom, jak toostart, zastavení a restartování hello cloudu zařízení StorSimple, najdete v části [pracovat s hello cloudu zařízení](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance).
 
-Můžete restartovat nebo vypnout řadič jedno zařízení prostřednictvím portálu Azure service Manager zařízení StorSimple nebo prostředí Windows PowerShell pro StorSimple.
+Můžete restartovat nebo vypnout řadič jedno zařízení prostřednictvím hello Azure portálu service Manager zařízení StorSimple hello nebo prostředí Windows PowerShell pro StorSimple.
 
-Ke správě řadičů zařízení z portálu Azure, proveďte následující kroky.
+toomanage řadičů zařízení z hello portál Azure, proveďte následující kroky hello.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Chcete-li restartovat nebo vypnout řadič v portálu Azure
-1. Přejděte ve službě StorSimple Manager zařízení **zařízení**. Vyberte zařízení ze seznamu zařízení. 
+#### <a name="toorestart-or-shut-down-a-controller-in-azure-portal"></a>toorestart nebo vypnutí řadič v portálu Azure
+1. Ve službě StorSimple Manager zařízení přejděte příliš**zařízení**. Vyberte zařízení ze seznamu hello zařízení. 
 
     ![Vyberte zařízení](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. Přejděte na **Nastavení > řadiče**.
+2. Přejděte příliš**Nastavení > řadiče**.
    
     ![Ověřte, zda jsou v pořádku řadiče zařízení StorSimple](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. V **řadiče** okno, ověřte, zda je stav oběma řadičům na vašem zařízení **stavu v pořádku**. Vyberte zařízení, klikněte pravým tlačítkem myši a pak vyberte **restartujte** nebo **vypnout**.
+3. V hello **řadiče** okno, ověřte, zda je stav hello oba řadiče hello na vašem zařízení **stavu v pořádku**. Vyberte zařízení, klikněte pravým tlačítkem myši a pak vyberte **restartujte** nebo **vypnout**.
 
     ![Vyberte restartování nebo vypnutí řadiče zařízení StorSimple](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. Úloha je vytvořena na restartování nebo vypnutí kontroleru a se zobrazí upozornění použít, pokud existuje. Chcete-li monitorovat restartování nebo vypnutí, přejděte na **služby > protokoly aktivity** a vyfiltrujte parametry, které jsou specifické pro vaši službu. Pokud řadič byl vypnutý, pak bude muset stisknutím tlačítka napájení zapnout řadičem ji zapnout.
+4. Úloha se vytvoří toorestart nebo vypněte hello řadič a se zobrazí upozornění použít, pokud existuje. toomonitor hello restartování nebo vypnutí, přejděte příliš**služby > protokoly aktivity** a vyfiltrujte službou konkrétní tooyour parametry. Pokud řadič byl vypnut, bude nutné toopush hello power tlačítko tooturn na hello řadiče tooturn ho na.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Chcete-li restartovat nebo vypnout řadič ve Windows Powershellu pro StorSimple
-Pomocí následujících kroků vypnout nebo restartovat jedním řadičem zařízení StorSimple z prostředí Windows PowerShell pro StorSimple.
+#### <a name="toorestart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>toorestart nebo vypnutí řadič ve Windows Powershellu pro StorSimple
+Proveďte následující kroky tooshut dolů hello nebo restartujte jeden řadič v zařízení StorSimple z hello prostředí Windows PowerShell pro StorSimple.
 
-1. Přístup k zařízení prostřednictvím konzoly sériového portu nebo relace Telnetu ze vzdáleného počítače. Pro připojení k řadič 0 nebo 1 řadiče, postupujte podle kroků v [použití klienta PuTTY k připojení ke konzole sériového portu zařízení](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. V nabídce konzoly sériového portu, zvolte možnost 1, **přihlásit úplný přístup**.
-3. Zpráva hlavičky, poznamenejte si řadiče jste připojeni k (řadič 0 nebo 1 řadič) a jestli je aktivní nebo pasivní řadič (pohotovostní).
+1. Přístup hello zařízení prostřednictvím konzoly sériového portu hello nebo relace Telnetu ze vzdáleného počítače. tooconnect tooController 0 nebo 1 řadiče, postupujte podle kroků hello v [konzoly sériového portu toohello zařízení tooconnect pro použití klienta PuTTY](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+2. V nabídce konzoly sériového portu hello, zvolte možnost 1, **přihlásit úplný přístup**.
+3. Hello zpráva hlavičky, poznamenejte si hello řadiče jsou příliš připojené (řadič 0 nebo 1 řadič) a jestli je hello aktivní nebo pasivní (pohotovostní) řadič hello.
    
-   * Chcete-li vypnout jeden řadič, v příkazovém řádku zadejte:
+   * tooshut dolů jediného kontroleru, hello řádku, zadejte:
      
        `Stop-HcsController`
      
-       Vypnutí řadiče, které jsou připojené do. Pokud zastavíte řadič active, pak zařízení převezme řadičem pasivní.
+       Vypne hello řadiče, které jsou připojené do. Pokud zastavíte hello aktivního řadiče, pak zařízení hello převezme toohello pasivní řadiče.
 
-   * Restartujte řadič do příkazového řádku zadejte:
+   * toorestart řadič hello řádku, zadejte:
      
        `Restart-HcsController`
      
-       Tím dojde k restartování řadiče, které jsou připojené do. Pokud restartujete řadič active, nezdaří se přes pasivní řadiče před restartováním počítače.
+       Tento řadič hello restartování, které jsou připojené do. Pokud restartujete hello aktivního řadiče, dojde k chybě přes řadič pasivní toohello před hello restartovat.
 
 ## <a name="shut-down-a-storsimple-device"></a>Vypněte zařízení StorSimple
 
-Tato část vysvětluje, jak vypnout spuštěný nebo selhání zařízení StorSimple ze vzdáleného počítače. Zařízení je vypnutý, poté, co se oba řadiče zařízení vypnut. Vypnutí zařízení se provádí, když zařízení, fyzicky přesunete nebo je vyřazeno z provozu.
+Tato část vysvětluje, jak tooshut dolů spuštěný nebo selhání zařízení StorSimple ze vzdáleného počítače. Zařízení je vypnutý, poté, co se oba řadiče zařízení hello vypnut. Vypnutí zařízení se provádí při hello je fyzicky přesunout, nebo zařízení je vyřazeno z provozu.
 
 > [!IMPORTANT]
-> Před vypnutím zařízení, zkontrolujte stav součásti zařízení. Přejděte do zařízení a pak klikněte na tlačítko **Nastavení > stavu hardwaru**. V **stav a hardwaru stavu** okno, ověřte, zda je stav DIODU všechny součásti zelená. Pouze v pořádku zařízení má zelený stav. Pokud vaše zařízení je vypínán dolů k nahrazení chybně fungující komponenty, zobrazí se sníženou (žlutý) stav pro příslušné součásti nebo se nezdařilo (červený).
+> Před vypnutím hello zařízení, zkontrolujte stav hello součástí hello zařízení. Přejděte tooyour zařízení a pak klikněte na tlačítko **Nastavení > stavu hardwaru**. V hello **stav a hardwaru stavu** okno, ověřte, zda je stav hello DIODU všech součástí hello zelená. Pouze v pořádku zařízení má zelený stav. Pokud vaše zařízení je vrácení vypnout tooreplace komponentu nepracuje správně, uvidíte se nezdařila (červený) nebo hello degradovaném stavu (žlutý) pro příslušné součásti.
 
 
-#### <a name="to-shut-down-a-storsimple-device"></a>Vypnutí zařízení StorSimple
+#### <a name="tooshut-down-a-storsimple-device"></a>tooshut dolů zařízení StorSimple
 
-1. Použití [restartování nebo vypnutí řadič](#restart-or-shut-down-a-single-controller) postup identifikovat a vypněte pasivní řadič na vašem zařízení. Tuto operaci může provést na portálu Azure nebo v prostředí Windows PowerShell pro StorSimple.
-2. Opakujte předchozí krok vypnout aktivní řadiče.
-3. Podívejte se musí nyní na pozadí roviny tohoto zařízení. Po dva řadiče jsou zcela vypnout, by měl být stav LED na obou řadičích blikat red. Pokud potřebujete vypnout zařízení zcela v tuto chvíli překlopit hlavní přepínače na napájení a chlazení moduly (PCMs) na pozici OFF. To by měl vypnout zařízení.
+1. Použití hello [restartování nebo vypnutí řadič](#restart-or-shut-down-a-single-controller) tooidentify postupu a vypnutí hello pasivní řadiče na vašem zařízení. Tuto operaci lze provést v hello portál Azure nebo v prostředí Windows PowerShell pro StorSimple.
+2. Opakujte hello výše tooshut krok dolů řadič active hello.
+3. Se musí nyní podíváte na hello zpět roviny tohoto zařízení hello. Po hello dva řadiče jsou zcela vypnout, hello stavu LED na oba řadiče hello by měl být blikat red. Pokud potřebujete v tuto chvíli tooturn vypnout hello zařízení zcela, flip hello power přepne na napájení a chlazení moduly (PCMs) toohello OFF pozici. To má vypnout hello zařízení.
 
-## <a name="reset-the-device-to-factory-default-settings"></a>V zařízení resetovat výchozí tovární nastavení
+## <a name="reset-hello-device-toofactory-default-settings"></a>Resetování hello zařízení toofactory výchozí nastavení
 
 > [!IMPORTANT]
-> Pokud potřebujete obnovit v zařízení výchozí tovární nastavení, obraťte se na Microsoft Support. Níže popsaný postup by měl použít pouze ve spojení s Microsoft Support.
+> Pokud potřebujete tooreset toofactory výchozí nastavení zařízení, obraťte se na Microsoft Support. níže popsaný postup Hello měli použít pouze ve spojení s Microsoft Support.
 
-Tento postup popisuje postup resetování zařízení s Microsoft Azure StorSimple výchozí tovární nastavení pomocí Windows Powershellu pro StorSimple.
-Když zařízení resetujete, odeberete všechna data a nastavení z celý cluster ve výchozím nastavení.
+Tento postup popisuje, jak tooreset vaše Microsoft Azure StorSimple toofactory výchozí nastavení zařízení pomocí Windows Powershellu pro StorSimple.
+Když zařízení resetujete, odeberete všechna data a nastavení z hello celý cluster ve výchozím nastavení.
 
-Proveďte následující postup resetování zařízení s Microsoft Azure StorSimple výchozí tovární nastavení:
+Proveďte následující kroky tooreset hello Microsoft Azure StorSimple zařízení toofactory výchozí nastavení:
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Chcete-li obnovit zařízení do výchozího nastavení v prostředí Windows PowerShell pro StorSimple
-1. Přístup k zařízení pomocí jeho konzoly sériového portu. Zkontrolujte zprávy a informační zpráva k zajištění, že jste připojeni k **Active** řadiče.
-2. V nabídce konzoly sériového portu, zvolte možnost 1, **přihlásit úplný přístup**.
-3. Do příkazového řádku zadejte následující příkaz k resetování celý cluster, odebrání všech nastavení řadiče, metadat a dat:
+### <a name="tooreset-hello-device-toodefault-settings-in-windows-powershell-for-storsimple"></a>tooreset hello toodefault nastavení zařízení v prostředí Windows PowerShell pro StorSimple
+1. Přístup k zařízení hello pomocí jeho konzoly sériového portu. Zkontrolujte hello banner zpráva tooensure se připojené toohello **Active** řadiče.
+2. V nabídce konzoly sériového portu hello, zvolte možnost 1, **přihlásit úplný přístup**.
+3. Hello řádku zadejte následující příkaz tooreset hello celý cluster, odebrání všech dat, metadat a řadič nastavení hello:
    
     `Reset-HcsFactoryDefault`
    
-    Chcete-li místo toho resetovat jediného kontroleru, použijte [resetování HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) rutiny s `-scope` parametr.)
+    tooinstead resetovat jediného kontroleru, použijte hello [resetování HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) rutiny s hello `-scope` parametru.)
    
-    Systém se restartuje vícekrát. Při obnovení byla úspěšně dokončena, budete upozorněni. V závislosti na modelu systému může trvat 45 – 60 minut pro zařízení s 8100 a 60 až 90 minut pro 8600 k dokončení tohoto procesu.
+    Hello systém se restartuje vícekrát. Při resetování hello byla úspěšně dokončena, budete upozorněni. V závislosti na modelu hello systému může trvat 45 – 60 minut pro zařízení s 8100 a 60 až 90 minut pro 8600 toofinish tohoto procesu.
    
 ## <a name="questions-and-answers-about-managing-device-controllers"></a>Otázky a odpovědi týkající se správy řadiče zařízení
-V této části jsme vytvořili souhrn některé nejčastější dotazy ohledně správy řadiče zařízení StorSimple.
+V této části jsme vytvořili souhrn některé hello nejčastější dotazy ohledně správy řadiče zařízení StorSimple.
 
-**Otázka:** Co se stane, když oběma řadičům na zařízení jsou v pořádku a zapnuté na a I restartování nebo vypnutí řadič active?
+**Otázka:** Co se stane, když oba hello řadiče na zařízení jsou v pořádku a zapnuté a I restartování nebo vypnutí řadič active hello?
 
-**Odpověď:** Pokud jsou oba řadiče v zařízení v pořádku a zapnuté, zobrazí se výzva k potvrzení. Můžete se rozhodnout pro:
+**Odpověď:** Pokud jsou obě hello řadiče v zařízení v pořádku a zapnuté, zobrazí se výzva k potvrzení. Můžete se rozhodnout pro:
 
-* **Restartujte řadič active** – oznamuje, že restartování řadič služby active způsobí převzetí služeb při selhání pasivní řadiče zařízení. Restartuje počítač řadiče.
-* **Vypnout aktivní řadiče** – oznamuje, že vypíná řadič active výsledkem výpadku. Musíte také stisknout tlačítko napájení v zařízení zapnout na řadiči.
+* **Restartujte řadič active hello** – upozornění se zobrazí restartování řadič active způsobila hello zařízení toofail toohello pasivní řadiče. Hello řadiče se restartuje.
+* **Vypnout aktivní řadiče** – oznamuje, že vypíná řadič active výsledkem výpadku. Musíte taky tlačítka napájení hello toopush na tooturn zařízení hello na řadiči hello.
 
-**Otázka:** Co se stane, pokud je k dispozici nebo je zapnuté pasivní řadič na zařízení vypnout a I restartování nebo vypnutí řadič active?
+**Otázka:** Co se stane, pokud hello pasivní řadiče v zařízení není k dispozici nebo zapnuté vypnout a I restartování nebo vypnutí řadič active hello?
 
-**Odpověď:** Pokud je pasivní řadič na vašem zařízení není k dispozici nebo zapnuté vypnout a zvolíte možnost:
+**Odpověď:** Pokud je pasivní řadič hello na vašem zařízení není k dispozici nebo zapnuté vypnout a vy zvolíte:
 
-* **Restartujte řadič active** – oznamuje, že budete pokračovat operaci způsobí dočasné přerušení služby, a budete vyzváni k potvrzení.
-* **Vypnout aktivní řadiče** – upozornění se zobrazí, budete pokračovat operaci výsledkem výpadku. Musíte taky tak, aby nabízel tlačítka napájení na jeden nebo oba řadiče zapnutí zařízení. Zobrazí se výzva k potvrzení.
+* **Restartujte řadič active hello** – oznamuje, že pokračování operace hello způsobí dočasné přerušení služby hello a zobrazí se výzva k potvrzení.
+* **Vypnout aktivní řadiče** – oznamuje, že pokračující operace hello výsledkem výpadku. Musíte taky tlačítka napájení hello toopush na jeden nebo oba řadiče tooturn na hello zařízení. Zobrazí se výzva k potvrzení.
 
-**Otázka:** Pokud nemá řadič restartování nebo vypnutí nepodaří průběhu?
+**Otázka:** Pokud nemá hello řadiče restartování nebo vypnutí nezdaří tooprogress?
 
 **Odpověď:** Restartování nebo vypnutí řadič může selhat, pokud:
 
@@ -147,17 +147,17 @@ V této části jsme vytvořili souhrn některé nejčastější dotazy ohledně
 
 **Otázka:** Jak můžete zjistit, pokud byl restartován nebo vypnut řadič?
 
-**Odpověď:** Můžete zkontrolovat stav řadiče v okně řadiče. Stav řadiče označí, zda řadič Probíhá restartování nebo vypnutí. Kromě toho **výstrahy** okno obsahovat informační výstrahu, pokud je řadičem restartování nebo vypnutí. Operace restart a vypnutí řadiče se také zaznamenávají v protokolech jsou. Další informace o jsou protokoly, přejděte na [zobrazit protokoly aktivity](storsimple-8000-service-dashboard.md#view-the-activity-logs).
+**Odpověď:** Můžete zkontrolovat stav řadiče hello v okně řadiče. Stav řadiče Hello se označuje, zda řadič v hello proces restartování nebo vypnutí. Kromě toho hello **výstrahy** okno obsahovat informační výstrahu, pokud řadiče hello je restartován nebo vypnut. Hello operacích restart a vypnutí řadiče se také zaznamenávají v protokolech jsou hello. Další informace o protokoly jsou přejděte příliš[zobrazit protokoly aktivity hello](storsimple-8000-service-dashboard.md#view-the-activity-logs).
 
-**Otázka:** Je k dispozici žádný vliv na vstupy/výstupy v důsledku řadiče převzetí služeb při selhání?
+**Otázka:** Je k dispozici žádné toohello dopad vstupně-výstupních operací v důsledku řadiče převzetí služeb při selhání?
 
-**Odpověď:** Připojení TCP mezi iniciátorů a aktivní řadiče se resetuje v důsledku řadiče převzetí služeb při selhání, ale se znovu vytvoří, když je pasivní řadič předpokládá operace. Během této operace může být pozastavení dočasných (méně než 30 sekund) v vstupně-výstupní aktivitu mezi iniciátorů a zařízení.
+**Odpověď:** připojení TCP Hello mezi iniciátorů a aktivní řadiče se resetuje v důsledku řadiče převzetí služeb při selhání, ale se znovu vytvoří, když pasivní řadiče hello předpokládá operaci. Během hello během této operace může být pozastavení dočasných (méně než 30 sekund) v vstupně-výstupní aktivitu mezi iniciátorů a hello zařízení.
 
-**Otázka:** Jak se vrátit Moje řadič služby po byla vypnout a odebrat?
+**Otázka:** Jak se poté, co byla vypnout a odebrat vrátit Moje řadiče tooservice?
 
-**Odpověď:** Pokud chcete vrátit řadič služby, je nutné vložit ji do skříň jak je popsáno v [nahradit modul řadiče zařízení StorSimple](storsimple-8000-controller-replacement.md).
+**Odpověď:** tooreturn tooservice řadiče, je nutné vložit ji do hello skříň jak je popsáno v [nahradit modul řadiče zařízení StorSimple](storsimple-8000-controller-replacement.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud narazíte na potíže s řadičů zařízení StorSimple, které nelze vyřešit pomocí postupů uvedených v tomto kurzu [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* Další informace o používání služby StorSimple Manager zařízení, přejděte na [použít službu StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Pokud narazíte na potíže s řadičů zařízení StorSimple, které nelze vyřešit pomocí hello postupy uvedené v tomto kurzu [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+* toolearn Další informace o používání služby StorSimple Manager zařízení hello, přejděte příliš[použití hello tooadminister service Manager zařízení StorSimple zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

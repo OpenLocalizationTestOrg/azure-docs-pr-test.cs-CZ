@@ -1,6 +1,6 @@
 ---
-title: "Pochopení registru identit Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – Popis registru identit služby IoT Hub a způsobu jeho použití ke správě svých zařízení. Obsahuje informace o import a export identit zařízení hromadně."
+title: registr identit Azure IoT Hub hello aaaUnderstand | Microsoft Docs
+description: "Příručka vývojáře – popis hello registru identit služby IoT Hub a jak toouse ho toomanage zařízení. Obsahuje informace o hello import a export identit zařízení hromadně."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,112 +15,112 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6e9c7b71fa6fc78f97c0144c735fc44778181d8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c9fe3730a4608e28c47807ecb42e13e73f6a2e80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Pochopení registru identit ve službě IoT hub.
+# <a name="understand-hello-identity-registry-in-your-iot-hub"></a>Pochopení hello registru identit ve službě IoT hub.
 
-Každé centrum IoT má registru identit, která uchovává informace o zařízení lze připojit ke službě IoT hub. Než se zařízení může připojit ke službě IoT hub, musí existovat položka pro toto zařízení v registru identit služby IoT hub. Zařízení musí ověřit také pomocí založené na přihlašovací údaje uložené v registru identit služby IoT hub.
+Každé centrum IoT má registru identit, která uchovává informace o zařízení hello povolené tooconnect toohello IoT hub. Než se zařízení může připojit tooan IoT hub, musí existovat položka pro toto zařízení v registru identit služby IoT hub hello. Zařízení musí také ověřovat službou IoT hub hello založené na přihlašovací údaje uložené v registru identit hello.
 
-ID zařízení, které jsou uložené v registru identit rozlišuje velká a malá písmena.
+ID zařízení Hello uložené v registru identit hello rozlišuje velká a malá písmena.
 
-Na vysoké úrovni je registru identit podporující REST kolekce prostředků identity zařízení. Když přidáte položku v registru identit, IoT Hub vytvoří sadu prostředků na zařízení, jako jsou fronty, který obsahuje neukládají zprávy typu cloud zařízení.
+Na vysoké úrovni je registr identit hello podporující REST kolekce prostředků identity zařízení. Když přidáte položku v registru identit hello, IoT Hub vytvoří sadu prostředků na zařízení, jako jsou hello fronty, který obsahuje neukládají zprávy typu cloud zařízení.
 
-### <a name="when-to-use"></a>Kdy je použít
+### <a name="when-toouse"></a>Když toouse
 
-Registr identit použijte, když potřebujete:
+Registr identit hello použijte, když potřebujete:
 
-* Zřizování zařízení, které se připojují ke službě IoT hub.
-* Řízení přístupu podle zařízení do koncových bodů rozbočovače na straně zařízení.
+* Zřizování zařízení, která se připojují tooyour IoT hub.
+* Řízení na zařízení přístup tooyour rozbočovače na zařízení přístupem koncových bodů.
 
 > [!NOTE]
-> Registr identity neobsahuje žádné metadata specifická pro aplikaci.
+> registr identit Hello neobsahuje žádné metadata specifická pro aplikaci.
 
 ## <a name="identity-registry-operations"></a>Operace registru identit
 
-Registr identit služby IoT Hub zpřístupní následující operace:
+Hello registru identit služby IoT Hub zpřístupní hello následující operace:
 
 * Vytvoření identity zařízení
 * Aktualizovat identita zařízení.
 * Načíst identitu zařízení podle ID
 * Odstranit identita zařízení.
-* Seznam až 1 000 identit
-* Exportovat všechny identity do Azure blob storage
+* Seznam si too1000 identity
+* Exportovat všechny úložiště objektů blob tooAzure identity
 * Import identit z Azure blob storage
 
 Všechny tyto operace můžete použít optimistickou metodu souběžného, jak je uvedeno v [RFC7232][lnk-rfc7232].
 
 > [!IMPORTANT]
-> Jediný způsob, jak načíst všechny identity v registru identit služby IoT hub je použití [exportovat] [ lnk-export] funkce.
+> Hello pouze způsob tooretrieve všechny identity v registru identit služby IoT hub je toouse hello [exportovat] [ lnk-export] funkce.
 
 Registr identit IoT Hub:
 
 * Neobsahuje žádné metadata aplikace.
-* Je přístupný jako slovník, pomocí **deviceId** jako klíč.
+* Je přístupný pomocí hello jako slovník, **deviceId** jako klíč hello.
 * Nepodporuje výrazovou dotazů.
 
-Řešení IoT obvykle obsahuje samostatné úložiště specifické pro řešení, který obsahuje metadata specifické pro aplikaci. Konkrétní řešení úložiště v inteligentní sestavování řešení by například záznam místnosti, ve kterém je nasazená teplotní snímač.
+Řešení IoT obvykle obsahuje samostatné úložiště specifické pro řešení, který obsahuje metadata specifické pro aplikaci. Například hello konkrétní řešení úložiště v inteligentní sestavování řešení by záznam hello místnosti, ve kterém je nasazená teplotní snímač.
 
 > [!IMPORTANT]
-> Registr identity lze použijte pouze pro správu zařízení a zajišťování operace. Vysoké propustnosti operace v době běhu nesmí závisí na provádění operací v registru identit. Například kontrola stavu připojení zařízení před odesláním příkazu není podporované vzor. Nezapomeňte zaškrtnout [míru omezení] [ lnk-quotas] pro registr identit a [prezenčního signálu zařízení] [ lnk-guidance-heartbeat] vzor.
+> Registr identit hello lze použijte pouze pro správu zařízení a zajišťování operace. Vysoké propustnosti operace v době běhu nesmí závisí na provádění operací v registru identit hello. Například kontrola stavu připojení hello zařízení před odesláním příkazu není podporované vzor. Ujistěte se, zda text hello toocheck [míru omezení] [ lnk-quotas] pro registr identit hello a hello [prezenčního signálu zařízení] [ lnk-guidance-heartbeat] vzor.
 
 ## <a name="disable-devices"></a>Zakažte zařízení
 
-Zařízení můžete zakázat aktualizací **stav** vlastnost identity v registru identit. Tato vlastnost se obvykle používá ve dvou scénářích:
+Zařízení můžete zakázat aktualizací hello **stav** vlastnost identity v registru identit hello. Tato vlastnost se obvykle používá ve dvou scénářích:
 
 * Během procesu zřizování orchestration. Další informace najdete v tématu [zřizování zařízení][lnk-guidance-provisioning].
 * Pokud z nějakého důvodu byste zvážit, dojde k ohrožení bezpečnosti nebo se staly neoprávněné zařízení.
 
 ## <a name="import-and-export-device-identities"></a>Import a export identit zařízení
 
-Identit zařízení hromadné z registru identit služby IoT hub, můžete exportovat pomocí asynchronních operací [koncový bod zprostředkovatele prostředků služby IoT Hub][lnk-endpoints]. Exportuje jsou dlouho běžící úlohy, které používají kontejner objektů blob zadané zákazníka k uložení dat identity zařízení přečíst z registru identit.
+Identit zařízení hromadné z registru identit služby IoT hub, můžete exportovat pomocí asynchronních operací na hello [koncový bod zprostředkovatele prostředků služby IoT Hub][lnk-endpoints]. Exportuje běží dlouho, že úlohy, které používají identitu dat zákazníka zadaný objekt blob kontejneru toosave zařízení přečíst z registru identit hello.
 
-Identit zařízení hromadné můžete importovat do registru identit služby IoT hub, pomocí asynchronních operací [koncový bod zprostředkovatele prostředků služby IoT Hub][lnk-endpoints]. Importy jsou dlouho běžící úlohy, které používají data v kontejneru objektů blob zadané zákazníka k zápisu dat identity zařízení do registru identit.
+Identit zařízení v registru identit hromadné tooan IoT hub společnosti, můžete importovat pomocí asynchronních operací na hello [koncový bod zprostředkovatele prostředků služby IoT Hub][lnk-endpoints]. Importy jsou dlouho běžící úlohy, které používají data v zákazníka zadaný objekt blob kontejneru toowrite zařízení identity dat do registru identit hello.
 
-* Podrobné informace o importu a exportu rozhraní API najdete v tématu [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis].
-* Další informace o spouštění import a export úloh najdete v tématu [hromadné správu identit zařízení IoT Hub][lnk-bulk-identity].
+* Podrobné informace o hello import a export rozhraní API najdete v tématu [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis].
+* toolearn informace o spuštění import a export úloh naleznete v tématu [hromadné správu identit zařízení IoT Hub][lnk-bulk-identity].
 
 ## <a name="device-provisioning"></a>Zřizování zařízení
 
-Data zařízení, která ukládá daného řešení IoT, závisí na konkrétní požadavky tohoto řešení. Ale minimálně, musí řešení úložiště identit zařízení a ověřovací klíče. Azure IoT Hub obsahuje registr identity, který může ukládat hodnoty pro každé zařízení, jako je například ID ověřovací klíče a stavové kódy. Řešení můžete použít jinými službami Azure, jako je například úložiště table, úložiště objektů blob nebo Cosmos DB k ukládání dat další zařízení.
+data Hello zařízení, která ukládá daného řešení IoT, závisí na hello specifické požadavky tohoto řešení. Ale minimálně, musí řešení úložiště identit zařízení a ověřovací klíče. Azure IoT Hub obsahuje registr identity, který může ukládat hodnoty pro každé zařízení, jako je například ID ověřovací klíče a stavové kódy. Řešení můžete použít jinými službami Azure, jako je například úložiště table, úložiště objektů blob nebo Cosmos DB toostore žádná další zařízení data.
 
-*Zřizování zařízení* je proces přidávání počáteční zařízení data do úložiště v řešení. Pokud chcete povolit nové zařízení pro připojení do vašeho centra, musíte přidat ID zařízení a klíče do registru identit služby IoT Hub. Jako součást procesu zřizování může být potřeba inicializovat data specifická pro zařízení v jiné řešení úložiště.
+*Zřizování zařízení* je hello proces přidávání úložiště toohello dat hello počáteční zařízení ve vašem řešení. tooenable nového centra tooyour tooconnect zařízení, je nutné přidat zařízení ID a klíče toohello registru identit služby IoT Hub. Jako součást procesu zřizování hello bude pravděpodobně nutné tooinitialize data specifická pro zařízení v jiné řešení úložiště.
 
 ## <a name="device-heartbeat"></a>Prezenční signál zařízení
 
-Registr identit služby IoT Hub obsahuje pole s názvem **connectionState**. Použít pouze **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz na pole v době běhu. Například dotazování **connectionState** pole ke kontrole, pokud je zařízení připojené před odesláním zprávy typu cloud zařízení nebo serveru služby SMS.
+Hello registru identit služby IoT Hub obsahuje pole s názvem **connectionState**. Používat pouze hello **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz hello pole za běhu. Například není dotaz hello **connectionState** toocheck pole, pokud je zařízení připojené před odesláním zprávy typu cloud zařízení nebo serveru služby SMS.
 
-Pokud je potřeba vědět, pokud je zařízení připojené, měli byste implementovat řešení IoT *prezenčního signálu vzor*.
+Pokud vaše řešení IoT potřebuje tooknow, pokud je zařízení připojené, měli byste implementovat hello *prezenčního signálu vzor*.
 
-Ve vzoru prezenčního signálu zařízení odesílá zprávy typu zařízení cloud alespoň jednou každých pevné množství času (například alespoň jednou za hodinu). Proto i v případě, že zařízení nemá žádná data k odeslání, stále odešle zprávu typu zařízení cloud prázdný (obvykle s vlastnost, která ji identifikuje jako prezenční signál). Na straně služby řešení udržuje mapu s poslední prezenční signál pro každé zařízení. Pokud řešení neobdrží zprávu prezenčního signálu v očekávaném čase ze zařízení, předpokládá, že došlo k potížím se zařízením.
+Ve vzoru prezenčního signálu hello hello zařízení odesílá zprávy typu zařízení cloud alespoň jednou každých pevné množství času (například alespoň jednou za hodinu). Proto i v případě, že zařízení nemá žádné toosend dat, ještě odešle zprávu typu zařízení cloud prázdný (obvykle s vlastnost, která ji identifikuje jako prezenční signál). Na straně služby hello hello řešení udržuje mapu s hello poslední prezenční signál pro každé zařízení. Pokud řešení hello neobdrží zprávu prezenčního signálu v rámci hello očekávaný čas z hello zařízení, předpokládá, že došlo k potížím s hello zařízení.
 
-Složitější implementace může obsahovat informace z [operations monitorování] [ lnk-devguide-opmon] k identifikaci zařízení, která se snaží připojit nebo komunikovat, ale selhání. Pokud implementujete vzoru prezenčního signálu, nezapomeňte zaškrtnout [IoT Hub kvóty a omezení][lnk-quotas].
+Složitější implementace může obsahovat informace o hello z [operations monitorování] [ lnk-devguide-opmon] tooidentify zařízení, které se pokoušíte tooconnect nebo komunikovat, ale selhání. Pokud implementujete hello prezenčního signálu vzor, ujistěte se, že toocheck [IoT Hub kvóty a omezení][lnk-quotas].
 
 > [!NOTE]
-> Pokud řešení IoT používá výhradně k určení, zda se k odesílání zpráv typu cloud zařízení stav připojení a zprávy nejsou všesměrové vysílání pro velké sady zařízení, zvažte použití jednodušší *krátkodobých čas vypršení platnosti* vzor. Tento vzor dosáhne stejného výsledku jako zachování registru stav připojení zařízení pomocí vzoru prezenčního signálu, aniž by byly efektivnější. Pokud budete požadovat potvrzení zprávy, IoT Hub vás může upozornit, které jsou o zařízení, která může přijímat zprávy, které nejsou.
+> Pokud připojení k hello používá řešení IoT stavu výhradně toodetermine jestli toosend zprávy typu cloud zařízení, a jsou zprávy není vysílání toolarge sady zařízení, zvažte použití hello jednodušší *krátkodobých čas vypršení platnosti* vzor. Tento vzor dosahuje hello stejný výsledek jako zachování registru stav připojení zařízení pomocí vzoru hello prezenčního signálu, aniž by byly efektivnější. Pokud budete požadovat potvrzení zprávy, IoT Hub vás můžou informovat o zařízení, která jsou možné tooreceive zprávy a které nejsou.
 
 ## <a name="device-lifecycle-notifications"></a>Oznámení životního cyklu zařízení
 
-IoT Hub můžete řešení IoT upozornit, když je vytvořené nebo odstraněné zasláním oznámení životního cyklu zařízení identitu zařízení. Uděláte to tak, musí vaše řešení IoT vytvořit trasu a nastavte zdroj dat na hodnotu *DeviceLifecycleEvents*. Ve výchozím nastavení jsou odeslána žádná oznámení životního cyklu, tedy předem neexistuje žádný takový trasy. Oznámení obsahuje vlastnosti a text.
+IoT Hub můžete řešení IoT upozornit, když je vytvořené nebo odstraněné zasláním oznámení životního cyklu zařízení identitu zařízení. toodo tedy řešení IoT potřebuje toocreate trasu a tooset hello zdroj dat rovná příliš*DeviceLifecycleEvents*. Ve výchozím nastavení jsou odeslána žádná oznámení životního cyklu, tedy předem neexistuje žádný takový trasy. Hello oznámení obsahuje vlastnosti a text.
 
-Vlastnosti: Vlastnosti zprávu systému mají předponu `'$'` symbol.
+Vlastnosti: Vlastnosti zprávu systému mají předponu hello `'$'` symbol.
 
 | Name (Název) | Hodnota |
 | --- | --- |
 $content – typ | application/json |
-$iothub-enqueuedtime |  Čas odeslání oznámení. |
+$iothub-enqueuedtime |  Čas odeslání oznámení hello |
 $iothub – zpráva – zdroj | deviceLifecycleEvents |
 $content – kódování | znakové sady UTF-8 |
 opType | **createDeviceIdentity** nebo **deleteDeviceIdentity** |
 hubName | Název centra IoT |
-deviceId | ID zařízení |
+deviceId | ID zařízení hello |
 operationTimestamp | Časové razítko ISO8601 operace |
 schéma zprávy iothub | deviceLifecycleNotification |
 
-Text: V této části je ve formátu JSON a představuje twin identity vytvořený zařízení. Například:
+Text: V této části je ve formátu JSON a představuje hello twin Dobrý den, vytvořili identitu zařízení. Například:
 
 ```json
 {
@@ -145,49 +145,49 @@ Text: V této části je ve formátu JSON a představuje twin identity vytvořen
 
 ## <a name="reference-topics"></a>Témata odkazů:
 
-Následující referenční témata poskytují další informace o registru identit.
+Hello následující odkazy na témata poskytují další informace o registru identit hello.
 
 ## <a name="device-identity-properties"></a>Vlastnosti identity zařízení
 
-Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
+Identit zařízení jsou reprezentovány jako dokumenty JSON s hello následující vlastnosti:
 
 | Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
-| deviceId |aktualizace požadované, jen pro čtení |Řetězec malá a velká písmena (až 128 znaků.) z alfanumerických znaků ASCII 7bitového + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
-| generationId |vyžaduje jen pro čtení |IoT hub generovaných, malá a velká písmena řetězec až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, pokud byla odstraněna a znovu vytvořena. |
-| Značka Etag |vyžaduje jen pro čtení |Řetězec představující na slabou značku ETag pro identitu zařízení dle [RFC7232][lnk-rfc7232]. |
+| deviceId |aktualizace požadované, jen pro čtení |Řetězec malá a velká písmena (až too128 znaků) z alfanumerických znaků ASCII 7bitového + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
+| generationId |vyžaduje jen pro čtení |IoT hub generovaných, malá a velká písmena řetězec až too128 znaků. Tato hodnota je použité toodistinguish zařízení s hello stejné **deviceId**, pokud byla odstraněna a znovu vytvořena. |
+| Značka Etag |vyžaduje jen pro čtení |Řetězec představující na slabou značku ETag pro hello identitu zařízení, jako za [RFC7232][lnk-rfc7232]. |
 | ověřování |Volitelné |Složené objekt obsahující informace a zabezpečení materiály ověřování. |
 | auth.symkey |Volitelné |Objekt složený obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Požadované |Slouží jako ukazatel přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení se může připojit. Pokud **zakázané**, toto zařízení nemá přístup k žádný koncový bod směřujících zařízení. |
-| statusReason |Volitelné |128 znaků dlouhý řetězec, který ukládá důvod stavu identity zařízení. Jsou povoleny všechny znaky UTF-8. |
-| statusUpdateTime |jen pro čtení |Dočasné ukazatele zobrazuje datum a čas poslední aktualizace stavu. |
-| Hodnota connectionState |jen pro čtení |Pole, která určuje stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje IoT Hub pohled na stav připojení zařízení. **Důležité**: Toto pole by měl použít pouze pro účely ladění nebo vývoj. Stav připojení je aktualizovat jenom pro zařízení pomocí MQTT nebo AMQP. Navíc je založena na úrovni protokolu příkazy ping (příkazy ping MQTT nebo AMQP příkazy ping) a může mít maximální zpoždění jenom 5 minut. Z těchto důvodů může být falešně pozitivních zjištění, například zařízení hlášené jako připojené, ale které jsou odpojené. |
-| connectionStateUpdatedTime |jen pro čtení |Byl aktualizován na dočasné ukazatel zobrazuje datum a čas posledního stavu připojení. |
-| lastActivityTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas poslední zařízení připojené, přijatých nebo odeslaných zprávu. |
+| status |Požadované |Slouží jako ukazatel přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, hello zařízení je povolený tooconnect. Pokud **zakázané**, toto zařízení nemá přístup k žádný koncový bod směřujících zařízení. |
+| statusReason |Volitelné |128 znaků dlouhý řetězec z tohoto důvodu hello úložiště pro stav identity zařízení hello. Jsou povoleny všechny znaky UTF-8. |
+| statusUpdateTime |jen pro čtení |Dočasné ukazatel zobrazující hello datum a čas poslední aktualizace stavu hello. |
+| Hodnota connectionState |jen pro čtení |Pole, která určuje stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje hello IoT Hub zobrazení stavu připojení zařízení hello. **Důležité**: Toto pole by měl použít pouze pro účely ladění nebo vývoj. Stav připojení Hello je aktualizovat jenom pro zařízení pomocí MQTT nebo AMQP. Navíc je založena na úrovni protokolu příkazy ping (příkazy ping MQTT nebo AMQP příkazy ping) a může mít maximální zpoždění jenom 5 minut. Z těchto důvodů může být falešně pozitivních zjištění, například zařízení hlášené jako připojené, ale které jsou odpojené. |
+| connectionStateUpdatedTime |jen pro čtení |Dočasné indikátor zobrazující poslední stav připojení hello čas a datum hello byl aktualizován. |
+| lastActivityTime |jen pro čtení |Dočasné indikátor zobrazující zařízení hello poslední čas a datum hello připojené, přijatých nebo odeslaných zprávu. |
 
 > [!NOTE]
-> Stav připojení může představovat pouze IoT Hub zobrazení stavu připojení. Aktualizace tohoto stavu může zpozdit, v závislosti na stavu sítě a konfigurace.
+> Stav připojení může představovat pouze hello IoT Hub zobrazení stavu hello hello připojení. Stav aktualizace toothis mohou se proto objevit v závislosti na stavu sítě a konfigurace.
 
 ## <a name="additional-reference-material"></a>Odkaz na další materiály
 
-Další témata referenční příručka vývojáře IoT Hub patří:
+Další témata referenční příručka vývojáře pro službu IoT Hub hello patří:
 
-* [Koncové body centra IoT] [ lnk-endpoints] popisuje různé koncových bodů, které každý IoT hub zpřístupní pro spuštění a management operace.
-* [Omezování a kvóty] [ lnk-quotas] popisuje kvóty a omezení chování, které se vztahují ke službě IoT Hub.
-* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] uvádí různé jazykové sady SDK můžete použít při vývoji aplikace zařízení a služby, které interakci s centrem IoT.
-* [IoT Hub dotazovací jazyk] [ lnk-query] popisuje dotazovací jazyk, můžete použít k načtení informací ze služby IoT Hub o úlohách a dvojčata zařízení.
-* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokol MQTT.
+* [Koncové body centra IoT] [ lnk-endpoints] popisuje hello různých koncových bodů, které každý IoT hub zpřístupní pro spuštění a management operace.
+* [Omezování a kvóty] [ lnk-quotas] popisuje hello kvót a omezování chování, které se vztahují toohello služby IoT Hub.
+* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] seznamy hello různé jazykové sady SDK můžete použít při vývoji aplikace zařízení a služby, které interakci s centrem IoT.
+* [IoT Hub dotazovací jazyk] [ lnk-query] popisuje hello dotazovací jazyk tooretrieve informace ze služby IoT Hub o úlohách a dvojčata zařízení můžete použít.
+* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokol MQTT hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili použití registru identit služby IoT Hub, může zajímat v následujících tématech Příručka vývojáře IoT Hub:
+Nyní jste se naučili, jak registru identit služby IoT Hub toouse hello, vás může zajímat hello následující témata Průvodce vývojáře IoT Hub:
 
-* [Řízení přístupu ke službě IoT Hub][lnk-devguide-security]
-* [Pomocí dvojčata zařízení synchronizovat stavu a konfigurace][lnk-devguide-device-twins]
+* [Řízení přístupu tooIoT rozbočovače][lnk-devguide-security]
+* [Používání stavu toosynchronize dvojčata zařízení a konfigurací][lnk-devguide-device-twins]
 * [Volání metody přímé na zařízení][lnk-devguide-directmethods]
 * [Plánování úloh na několika zařízeních][lnk-devguide-jobs]
 
-Pokud chcete vyzkoušet některé konceptů popsaných v tomto článku, může zajímat v následujícím kurzu IoT Hub:
+Pokud chcete tootry některé z hello konceptů popsaných v tomto článku, může být zájem o hello následující kurzu IoT Hub:
 
 * [Začínáme s Azure IoT Hub][lnk-getstarted-tutorial]
 

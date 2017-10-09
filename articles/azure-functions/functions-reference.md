@@ -1,6 +1,6 @@
 ---
-title: "Pokyny pro vývoj Azure Functions | Microsoft Docs"
-description: "Další koncepty Azure Functions a techniky, které potřebujete k vývoji funkce v Azure, ve všech programovací jazyky a vazeb."
+title: "aaaGuidance pro vývoj Azure Functions | Microsoft Docs"
+description: "Další koncepty Azure Functions hello a techniky, je nutné, aby toodevelop funkcí v Azure, ve všech programovací jazyky a vazeb."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: chrande
-ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 86d37dae5333f615faafc966e9da6e08e0a6354e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure funkce
-V Azure Functions se konkrétní funkce sdílet několik klíčových technických konceptech a součásti, bez ohledu na jazyk nebo vazby, které používáte. Před přechodem do učení podrobnosti, které jsou specifické pro daný jazyk nebo vazby, nezapomeňte si přečíst tento přehled, který se vztahuje na všechny z nich.
+V Azure Functions se konkrétní funkce sdílet několik klíčových technických konceptech a součásti, bez ohledu na jazyk hello nebo vazby, které používáte. Před přechodem do učení podrobnosti o konkrétní tooa danou jazyk nebo vazba být jisti tooread prostřednictvím tento přehled, která se použije tooall z nich.
 
-Tento článek předpokládá, že jste si již přečetli [přehled Azure Functions](functions-overview.md) a jsou obeznámeni s [WebJobs SDK koncepty, jako jsou aktivační události, vazby a JobHost runtime](../app-service-web/websites-dotnet-webjobs-sdk.md). Azure Functions je založena na WebJobs SDK. 
+Tento článek předpokládá, že jste si přečetli již hello [přehled Azure Functions](functions-overview.md) a jsou obeznámeni s [WebJobs SDK koncepty, jako jsou aktivační události, vazby a hello JobHost runtime](../app-service-web/websites-dotnet-webjobs-sdk.md). Azure Functions je založena na hello WebJobs SDK. 
 
 ## <a name="function-code"></a>Kód – funkce
-A *funkce* je primární koncept v Azure Functions. Psaní kódu pro funkce v jazyce podle vaší volby a uložte kódu a konfiguračních souborů ve stejné složce. Konfigurace má název `function.json`, která obsahuje konfigurační data JSON. Podporuje různé jazyky a každé z nich má mírně odlišné prostředí optimalizován pro daného jazyka. 
+A *funkce* je primární koncept hello v Azure Functions. Psaní kódu pro funkce v jazyce podle vaší volby a uložte hello kódu a konfigurační soubory v hello stejné složce. Konfigurace Hello jmenuje `function.json`, která obsahuje konfigurační data JSON. Podporuje různé jazyky a každé z nich má mírně odlišné prostředí optimalizované toowork nejvhodnější pro tento jazyk. 
 
-Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. Modul runtime používá tento soubor k určení události k monitorování a jak předat data do a ze spuštění funkce vrátit data. Následující příklad je function.json soubor.
+soubor function.json Hello definuje hello vazby funkcí a dalších nastavení konfigurace. modul runtime Hello používá tento soubor toodetermine hello události toomonitor a jak toopass dat do a vrátit data z funkce provádění. Hello následuje příklad souboru function.json.
 
 ```json
 {
@@ -47,68 +47,68 @@ Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. 
 }
 ```
 
-Nastavte `disabled` vlastnost `true` zabránit funkci spouštěna.
+Sada hello `disabled` vlastnost příliš`true` tooprevent hello funkce z spouštěna.
 
-`bindings` Vlastnost je, kde můžete konfigurovat triggerů a vazeb. Každou vazbu sdílí několik běžných nastavení a některá nastavení, které jsou specifické pro konkrétní typ vazby. Každé vazby vyžaduje následující nastavení:
+Hello `bindings` vlastnost je, kde můžete konfigurovat triggerů a vazeb. Každou vazbu sdílí několik běžných nastavení a některá nastavení, které jsou specifické tooa konkrétní typ vazby. Každé vazby vyžaduje hello následující nastavení:
 
 | Vlastnost | Hodnoty nebo typy | Komentáře |
 | --- | --- | --- |
 | `type` |Řetězec |Typ vazby. Například, `queueTrigger`. |
-| `direction` |v out |Určuje, zda vazby pro příjem dat do funkce nebo odeslání dat z funkce. |
-| `name` |Řetězec |Název, který se používá pro vázaných dat ve funkci. Pro jazyk C# to je název argumentu; pro jazyk JavaScript je klíče v seznamu klíč/hodnota. |
+| `direction` |v out |Určuje, zda hello vazby pro příjem dat do funkce hello nebo odeslání dat z funkce hello. |
+| `name` |Řetězec |Hello název, který se používá pro hello vázaných dat v hello funkce. Pro jazyk C# to je název argumentu; pro jazyk JavaScript to je hello klíče v seznamu klíč/hodnota. |
 
 ## <a name="function-app"></a>Funkce aplikace
-Funkce aplikace se skládá z jedné nebo více jednotlivých funkcí, které se spravují dohromady službou Azure App Service. Všechny funkce v aplikaci funkce sdílet stejnou cenový plán, průběžné nasazování a verze modulu runtime. Všechny funkce, které jsou napsané v různých jazycích mohou sdílet stejné aplikaci funkce. Funkce aplikace si můžete představit jako způsob, jak uspořádat a souhrnně spravovat funkcí. 
+Funkce aplikace se skládá z jedné nebo více jednotlivých funkcí, které se spravují dohromady službou Azure App Service. Všechny funkce hello ve sdílené složce, funkce aplikace hello stejné ceny plán, průběžné nasazování a verze modulu runtime. Funkce, které jsou napsané v může více jazyků, že všechny sdílené složky hello stejné funkce aplikace. Vezměte v úvahu funkce aplikace jako způsob tooorganize a souhrnně spravovat funkcí. 
 
 ## <a name="runtime-script-host-and-web-host"></a>Modul runtime (hostitel skriptu a webového hostitele)
-Modul runtime nebo hostitel skriptu, je základní sada WebJobs SDK hostitele, který naslouchá událostem, shromažďuje a odesílá data a nakonec spustí váš kód. 
+Hello runtime nebo skriptu hostitele, je hello základní sada WebJobs SDK hostitele, který naslouchá událostem, shromažďuje a odesílá data a nakonec spustí váš kód. 
 
-Pro usnadnění aktivace protokolu HTTP, je zde také webového hostitele, který je navržený pro sledovat na hostitelský modul pro skripty v produkčních scénářích. Má dva hostitele pomáhá izolovat hostitelský modul pro skripty z před ukončení provoz spravuje webového hostitele.
+aktivační události toofacilitate HTTP, je také webového hostitele, který je navrženou toosit před hello skriptu hostitele v produkčních scénářích. Má dva hostitele pomáhá tooisolate hello skriptu hostitele od provozu front-endu hello spravuje hello webového hostitele.
 
 ## <a name="folder-structure"></a>Struktura složek
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Při vytváření projektu pro nasazení funkce do aplikaci funkce ve službě Azure App Service, můžete tuto strukturu považovat kódu lokality. Můžete použít stávající nástroje, například průběžnou integraci a nasazení, nebo vlastní nasazení skriptů pro tuto činnost čas instalace balíčku nasazení nebo code transpilation.
+Při vytváření projektu pro nasazení funkce tooa funkce aplikace v Azure App Service, můžete tuto strukturu považovat kódu lokality. Můžete použít stávající nástroje, například průběžnou integraci a nasazení, nebo vlastní nasazení skriptů pro tuto činnost čas instalace balíčku nasazení nebo code transpilation.
 
 > [!NOTE]
-> Zajistěte, aby k nasazení vaší `host.json` souborů a složek přímo na fungovat `wwwroot` složky. Nezahrnovat `wwwroot` složky ve vašem nasazení. Jinak, v níž se `wwwroot\wwwroot` složek. 
+> Ujistěte se, že toodeploy vaše `host.json` složek souborů a funkce přímo toohello `wwwroot` složky. Nezahrnovat hello `wwwroot` složky ve vašem nasazení. Jinak, v níž se `wwwroot\wwwroot` složek. 
 > 
 > 
 
-## <a id="fileupdate"></a>Postup aktualizace soubory aplikace – funkce
-Editor funkce integrovaná v portálu Azure vám umožní aktualizovat *function.json* soubor a soubor kódu pro funkci. Nahrát nebo aktualizovat ostatní soubory, jako *package.json* nebo *project.json* nebo závislosti, budete muset použít jiné metody nasazení.
+## <a id="fileupdate"></a>Jak tooupdate funkce soubory aplikace
+editor Funkce Hello součástí hello portál Azure vám umožní aktualizovat hello *function.json* soubor a soubor hello kód pro funkci. tooupload nebo aktualizace jiných souborů, jako *package.json* nebo *project.json* nebo závislosti, máte toouse jiné metody nasazení.
 
-Funkce aplikace jsou postaveny na služby App Service, takže všechny [možnosti nasazení standardní webových aplikací](../app-service-web/web-sites-deploy.md) jsou také k dispozici pro funkce aplikace. Tady jsou některé metody, které můžete nahrát, nebo můžete aktualizovat soubory funkce aplikace. 
+Funkce aplikace jsou postaveny na aplikační služby, takže všechny hello [možnosti nasazení webové aplikace k dispozici toostandard](../app-service-web/web-sites-deploy.md) jsou také k dispozici pro funkce aplikace. Tady jsou některé metody, můžete použít tooupload nebo funkce aplikace soubory aktualizace. 
 
-#### <a name="to-use-app-service-editor"></a>Použití editoru služby aplikace
-1. Na portálu Azure Functions, klikněte na tlačítko **funkce nastavení aplikace**.
-2. V **Upřesnit nastavení** klikněte na tlačítko **přejděte na nastavení služby aplikace**.
+#### <a name="toouse-app-service-editor"></a>toouse Editor služby aplikace
+1. Na portálu Azure Functions hello, klikněte na tlačítko **funkce nastavení aplikace**.
+2. V hello **Upřesnit nastavení** klikněte na tlačítko **přejít nastavení služby tooApp**.
 3. Klikněte na tlačítko **aplikace služby Editor** v nabídce aplikace navigaci v části **nástroje pro vývoj**.
 4. Klikněte na tlačítko **přejděte**.
    
-   Po načtení Editor služby aplikace se zobrazí *host.json* složek souborů a funkce v části *wwwroot*. 
-5. Otevřít soubory, upravit nebo přetáhnout z vývojovém počítači k nahrání souborů.
+   Po načtení Editor služby aplikace se zobrazí hello *host.json* složek souborů a funkce v části *wwwroot*. 
+5. Tooedit otevřených souborů, nebo přetažení z vaší vývoj počítač tooupload souborů.
 
-#### <a name="to-use-the-function-apps-scm-kudu-endpoint"></a>Použít aplikaci funkce endpoint SCM (Kudu)
+#### <a name="toouse-hello-function-apps-scm-kudu-endpoint"></a>koncový bod toouse hello funkce aplikace SCM (Kudu)
 1. Přejděte do: `https://<function_app_name>.scm.azurewebsites.net`.
 2. Klikněte na tlačítko **ladění konzoly > CMD**.
-3. Přejděte na `D:\home\site\wwwroot\` aktualizace *host.json* nebo `D:\home\site\wwwroot\<function_name>` k aktualizaci souborů funkce.
-4. A přetáhněte soubor, který chcete nahrát do příslušné složky v mřížce souboru. Existují dvě oblasti v mřížce souboru, kde můžete vložit do souboru. Pro *.zip* soubory, zobrazí se pole s popiskem "Přetáhněte sem odeslání a rozbalte." Pro ostatní typy souborů vyřaďte v mřížce souboru, ale mimo pole "rozbalte".
+3. Přejděte příliš`D:\home\site\wwwroot\` tooupdate *host.json* nebo `D:\home\site\wwwroot\<function_name>` tooupdate soubory funkce.
+4. Přetažení myší souboru chcete tooupload do příslušné složky hello v mřížce souboru hello. Existují dvě oblasti v mřížce hello souboru, kde můžete vložit do souboru. Pro *.zip* soubory, zobrazí se pole s popiskem hello "Přetáhněte sem tooupload a rozbalte." Pro ostatní typy souborů vyřaďte hello soubor mřížky, ale mimo pole "rozbalte" hello.
 
-<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on hello consumption plan --DonnaM -->
 
-#### <a name="to-use-continuous-deployment"></a>Chcete-li použít průběžné nasazování.
-Postupujte podle pokynů v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md).
+#### <a name="toouse-continuous-deployment"></a>průběžné nasazování toouse
+Postupujte podle pokynů hello v tématu hello [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md).
 
 ## <a name="parallel-execution"></a>Paralelní provádění
-Dojde-li více spouštěcí událostí rychleji, než funkce jednovláknové runtime dokáže zpracovat, může modul runtime vyvolají funkci vícekrát paralelně.  Pokud funkce aplikace používá [spotřeba hostování plán](functions-scale.md#how-the-consumption-plan-works), může automaticky škálovat aplikaci funkce.  Každá instance funkce aplikace, jestli aplikace běží na spotřebu hostování plán nebo běžný [hostování plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), může zpracovat volání souběžných funkce paralelně pomocí více vláken.  Maximální počet souběžných funkce volání v každé instanci aplikace funkce se liší podle typu používá aktivační událost, jakož i prostředky využívané třídou jiných funkcí v rámci funkce aplikace.
+Dojde-li více spouštěcí událostí rychleji, než funkce jednovláknové runtime dokáže zpracovat, může hello runtime vyvolají funkci hello vícekrát paralelně.  Pokud funkce aplikace používá hello [spotřeba hostování plán](functions-scale.md#how-the-consumption-plan-works), může automaticky škálovat aplikaci funkce hello.  Každou instanci hello funkce aplikace, zda text hello aplikace běží hello spotřeba hostování plán nebo běžný [hostování plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), může zpracovat volání souběžných funkce paralelně pomocí více vláken.  maximální počet souběžných funkce volání v každé instanci funkce aplikace Hello se liší podle typu hello používá i hello prostředky využívané třídou jiných funkcí v rámci aplikace hello funkce aktivační události.
 
 ## <a name="functions-runtime-versioning"></a>Verze runtime funkce
 
-Můžete nakonfigurovat verzi modulu runtime její funkce pomocí `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace. Například hodnota "~ 1" označuje, že funkce aplikace bude používat 1 jako jeho hlavní verzi. Funkce aplikace upgradují na každý nový podverze při jejich vydání. Můžete zobrazit přesný verze funkce aplikace v rámci **nastavení** na portálu Azure.
+Můžete nakonfigurovat hello verzi modulu runtime funkce hello použijte hello `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace. Například hello hodnotu "~ 1" označuje, že funkce aplikace bude používat 1 jako jeho hlavní verzi. Funkce aplikace jsou upgradovaný tooeach nové podverze při jejich vydání. Hello přesnou verzi vaší aplikace funkce si můžete prohlédnout v hello **nastavení** ve hello portálu Azure.
 
 ## <a name="repositories"></a>Úložiště
-Kód pro Azure Functions je open source a uložené v úložišť GitHub:
+Hello kód pro Azure Functions je open source a uložené v úložišť GitHub:
 
 * [Azure Functions runtime](https://github.com/Azure/azure-webjobs-sdk-script/)
 * [Azure Functions na portálu](https://github.com/projectkudu/AzureFunctionsPortal)
@@ -125,12 +125,12 @@ Zde je tabulku všechny podporované vazby.
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace najdete v tématu hello následující prostředky:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Azure funkcí jazyka C# referenční informace pro vývojáře](functions-reference-csharp.md)
 * [Azure funkce F # referenční informace pro vývojáře](functions-reference-fsharp.md)
 * [Referenční informace pro vývojáře Azure funkce NodeJS](functions-reference-node.md)
 * [Azure funkce triggerů a vazeb](functions-triggers-bindings.md)
-* [Azure Functions: Cesty](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) na blog týmu Azure App Service. Historie jak byla vyvinuta Azure Functions.
+* [Azure Functions: hello cesty](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) na blog týmu Azure App Service hello. Historie jak byla vyvinuta Azure Functions.
 

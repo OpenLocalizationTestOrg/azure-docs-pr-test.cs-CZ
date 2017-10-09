@@ -1,6 +1,6 @@
 ---
-title: "Verze rozhraní API Azure Search | Microsoft Docs"
-description: "Zásady verze rozhraní API REST služby Azure Search a klientské knihovny sady .NET SDK."
+title: "aaaAPI verzích Azure Search | Microsoft Docs"
+description: "Zásady verze rozhraní API REST služby Azure Search a hello knihovny klienta v hello .NET SDK."
 services: search
 documentationcenter: 
 author: brjohnstmsft
@@ -14,24 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4fa722fad5577c6b254be7fa673eb240fff316a2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-versions-in-azure-search"></a>Verze rozhraní API ve službě Azure Search
-Služba Azure Search zavede funkce aktualizace pravidelně. Někdy, ale ne vždy vyžadují tyto aktualizace nám publikovat novou verzi našem rozhraní API pro zachování zpětné kompatibility. Publikování nové verze, můžete řídit, kdy a jak integrovat aktualizace služby search v kódu.
+Služba Azure Search zavede funkce aktualizace pravidelně. V některých případech, ale ne vždy tyto aktualizace nám vyžadují toopublish novou verzi naše rozhraní API toopreserve zpětné kompatibility. Publikování nové verze umožňuje toocontrol kdy a jak integrovat aktualizace služby search v kódu.
 
-Platí pravidlo pokusíme se publikování nové verze pouze v případě potřeby, protože se může týkat některé úsilí k upgradu kódu pro použití nové verze rozhraní API. Nová verze jsme bude publikovat, pouze pokud je potřeba změnit některých aspektů rozhraní API tak, aby dělí zpětné kompatibility. Tomu může dojít z důvodu opravy stávajících funkcí, nebo z důvodu nové funkce, které změnit stávající útoku na rozhraní API.
+Platí pokusíme toopublish nové verze pouze v případě potřeby, protože se může týkat některé tooupgrade úsilí toouse nové rozhraní API verze vašeho kódu. Nová verze jsme bude publikovat, pouze pokud bychom někdy potřebovali toochange některých aspektů hello API tak, aby dělí zpětné kompatibility. Tomu může dojít z důvodu opravy tooexisting funkce nebo z důvodu nové funkce, které změnit stávající útoku na rozhraní API.
 
-Jsme podle stejného pravidla pro aktualizace sady SDK. Následuje SDK služby Azure Search [sémantické verze](http://semver.org/) pravidla, která znamená, že jeho verze má tři části: hlavní, malé a číslo (například 1.1.0) sestavení. Vydáváme nové hlavní verzi sady SDK jenom v případě změny, které rozdělit zpětné kompatibility. Pro pevné funkce aktualizace jsme se zvýší na podverzi a pro oprav chyb jsme zvýší pouze verzi sestavení.
+Jsme podle hello stejná pravidla pro aktualizace sady SDK. Hello SDK služby Azure Search následuje hello [sémantické verze](http://semver.org/) pravidla, která znamená, že jeho verze má tři části: hlavní, malé a číslo (například 1.1.0) sestavení. Vydáváme nové hlavní verze hello SDK jenom v případě změny, které rozdělit zpětné kompatibility. Pro pevné funkce aktualizace jsme se zvýší hello podverze a pro oprav chyb jsme zvýší pouze hello verzi sestavení.
 
 > [!NOTE]
-> Instanci služby Azure Search podporuje několik verzí rozhraní REST API, včetně nejnovější. Můžete použít verzi, když je už nejnovějšího, ale doporučujeme migraci kód a použít nejnovější verzi. Při použití rozhraní REST API, musíte zadat verze rozhraní API v každé žádosti o prostřednictvím parametr api-version. Když pomocí sady .NET SDK, určuje verzi sady SDK používáte odpovídající verzi rozhraní REST API. Pokud používáte starší SDK, můžete spustit tento kód se žádné změny, i v případě, že je služba upgradovat pro podporu na novější verzi rozhraní API.
+> Instanci služby Azure Search podporuje několik verzí rozhraní REST API, včetně hello nejnovějšího. Toouse verze můžete pokračovat v případě, že je už hello nejnovějšího, ale doporučujeme migraci nejnovější verze vašeho kódu toouse hello. Při použití hello REST API, musíte zadat hello verze rozhraní API v každé žádosti o prostřednictvím parametr api-version hello. Při použití hello .NET SDK, určuje hello verzi hello SDK používáte hello odpovídající verzi systému hello REST API. Pokud používáte starší SDK, můžete dál toorun tento kód se žádné změny i v případě, že je služba hello upgradovaný toosupport novější rozhraní API verze.
 
 ## <a name="snapshot-of-current-versions"></a>Snímek aktuální verze
-Níže je snímek aktuální verze všech programovací rozhraní do služby Azure Search.
+Zde je snímek hello aktuální verze všech tooAzure programovací rozhraní vyhledávání.
 
 | Rozhraní | Nejnovější hlavní verzi | Status |
 | --- | --- | --- |
@@ -42,24 +42,24 @@ Níže je snímek aktuální verze všech programovací rozhraní do služby Azu
 | [Správa .NET SDK](https://aka.ms/search-mgmt-sdk) |2015-08-19 |Obecně k dispozici |
 | [Rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Obecně k dispozici |
 
-Pro rozhraní REST API, včetně `api-version` každé volání je vyžadována. To usnadňuje zacílit na konkrétní verzi, jako je například preview rozhraní API. Následující příklad ukazuje, jak `api-version` je zadán parametr:
+Pro hello rozhraní REST API, včetně hello `api-version` každé volání je vyžadována. Díky tomu snadno tootarget konkrétní verzi, jako je například preview rozhraní API. Hello následující příklad ukazuje, jak hello `api-version` je zadán parametr:
 
     GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2016-09-01
 
 > [!NOTE]
-> I když má každý požadavek `api-version`, doporučujeme použít stejnou verzi pro všechny požadavky rozhraní API. To platí hlavně při zavádění nové verze rozhraní API atributů a operací, které nejsou rozpoznány v předchozích verzích. Kombinování verze rozhraní API může mít nežádoucích důsledků a je nutno.
+> I když má každý požadavek `api-version`, doporučujeme použít hello stejnou verzi pro všechny požadavky rozhraní API. To platí hlavně při zavádění nové verze rozhraní API atributů a operací, které nejsou rozpoznány v předchozích verzích. Kombinování verze rozhraní API může mít nežádoucích důsledků a je nutno.
 >
-> Rozhraní API služby REST a REST API pro správu jsou verzí nezávisle na sobě navzájem. Každá podobnost v číslech verzí je náhodný.
+> Hello rozhraní API služby REST a REST API pro správu jsou verzí nezávisle na sobě navzájem. Každá podobnost v číslech verzí je náhodný.
 
-Obecně dostupné (nebo GA) rozhraní API lze použít v produkčním prostředí a podléhají smlouvy o úrovni služeb Azure. Verze Preview mají povolenými experimentálními funkcemi, které nejsou vždy migrovat do verze GA. **Důrazně nedoporučujeme používání preview rozhraní API v produkční aplikace.**
+Obecně dostupné (nebo GA) rozhraní API lze použít v produkčním prostředí a jsou subjektu tooAzure smlouvy o úrovni služeb. Verze Preview mají povolenými experimentálními funkcemi, které nejsou vždycky migrované tooa GA verze. **Důrazně nedoporučujeme používání preview rozhraní API v produkční aplikace.**
 
 ## <a name="about-preview-and-generally-available-versions"></a>O verze Preview a obecně k dispozici
-Služba Azure Search vždy předem uvolní povolenými experimentálními funkcemi přes rozhraní REST API nejprve pak prostřednictvím předprodejní verze sady SDK pro .NET.
+Služba Azure Search vždy předem uvolní povolenými experimentálními funkcemi prostřednictvím hello REST API nejprve pak prostřednictvím předprodejní verze nástroje hello .NET SDK.
 
-Funkce Preview se nezaručuje, že chcete migrovat do verze GA. Zatímco funkce verze GA jsou považovány za stabilní a pravděpodobně změnit s výjimkou malé zpětně kompatibilní opravy a vylepšení, jsou k dispozici pro testování a experimentování, s cílem shromažďování zpětné vazby na funkce návrhu a implementace funkce verze preview.
+Funkce Preview se nezaručuje, že toobe migrovat tooa GA verze. Zatímco funkce verze GA jsou považovány za stabilní a nepravděpodobný toochange s výjimkou hello malé zpětně kompatibilní opravy a vylepšení, jsou k dispozici pro testování a experimentování, s cílem hello shromažďování zpětné vazby na funkce preview funkce návrhu a implementace.
 
-Nicméně protože funkce preview se mohou změnit, doporučujeme proti zápisu produkčním kódu, který přebírá závislost na verze preview. Pokud používáte starší verzi preview, doporučujeme migraci do všeobecně dostupná verze (GA).
+Protože funkce preview jsou toochange předmětu, doporučujeme však proti zápisu produkčním kódu, který přebírá závislost na verze preview. Pokud používáte starší verzi preview, doporučujeme migraci toohello všeobecně dostupná (GA) verze.
 
-Pro .NET SDK: pokyny pro migraci kódu najdete na [Upgrade .NET SDK](search-dotnet-sdk-migration.md).
+Pro hello .NET SDK: pokyny pro migraci kódu najdete na [upgradu hello .NET SDK](search-dotnet-sdk-migration.md).
 
-Obecné dostupnosti znamená, že Azure Search je nyní v části smlouvu o úrovni služeb (SLA). Smlouva SLA naleznete na adrese [smlouvy o úrovni služeb Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Obecné dostupnosti znamená, že Azure Search je nyní v části hello smlouvu o úrovni služeb (SLA). Hello SLA naleznete na adrese [smlouvy o úrovni služeb Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

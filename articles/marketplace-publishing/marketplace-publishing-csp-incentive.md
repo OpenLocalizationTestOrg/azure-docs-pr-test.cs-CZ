@@ -1,6 +1,6 @@
 ---
-title: "Postup zobrazení a změna Incentive prodejce Cloud Solution Provider | Microsoft Docs"
-description: "Postup zobrazení a změnit vaši volbu pro Incentive prodejce zprostředkovatele kryptografických služeb"
+title: "aaaHow tooview a změňte hello Incentive prodejce poskytovatele Cloud Solution Provider | Microsoft Docs"
+description: "Jak tooview a změnit vaši volbu pro Incentive prodejce zprostředkovatele kryptografických služeb"
 services: marketplace-publishing
 documentationcenter: na
 author: DavidBosland
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: DavidBosland
-ms.openlocfilehash: d6e6e13f352dea5c27939c39ecb8be97bf6990ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4702d0167c38d100755a872f9b23e49cc7a46ba2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-the-azure-marketplace"></a>Zobrazení a změna Cloud Solution Provider "Prodejce Incentive" v Azure Marketplace
-15. března 2016 vytočit poskytovatelů Cloud Solution Providers (CSP) "Prodejce Incentive" k dispozici pro vydavatele Marketplace.  Výchozí nastavení je tato hodnota pobídkové **Ano**.  Jako vydavatel se rozhodnete výslovný nesouhlas s pobídkové programu.  Tento článek ukazuje, jak změnit nastavení v profilu vydavatele, takže je můžete výslovný nesouhlas s.
+# <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-hello-azure-marketplace"></a>Zobrazení a změna Cloud Solution Provider "Prodejce Incentive" v hello Azure Marketplace
+15. března 2016 vytočit poskytovatelů hello Cloud Solution Providers (CSP) "Prodejce Incentive" k dispozici tooMarketplace vydavatele.  Dobrý den, výchozí nastavení je tato hodnota pobídkové **Ano**.  Jako vydavatel můžete rozhodnout tooopt nesouhlas s programem pobídkové hello.  Tento článek ukazuje, jak toochange hello nastavení funkce vašeho profilu, vám může výslovný nesouhlas s.
 
-Chcete-li zobrazit nebo změnit stav "Prodejce Incentive", postupujte podle těchto kroků:
+tooview nebo změnit stav "Prodejce Incentive", postupujte takto:
 
-1. Přihlaste se k vaší [účet pro Microsoft Azure publikování](https://publish.windowsazure.com/workspace)
+1. Přihlaste se tooyour [účet pro Microsoft Azure publikování](https://publish.windowsazure.com/workspace)
 
    ![Profil cílová obrazovky][1]
 2. Klikněte na tlačítko **vydavatele**
 
    ![Profil cílová obrazovky - vydavatelů propojení][2]
-3. Všimněte si informace ve vašem profilu o CSP.  Je **přepnout vyslovte Ano nebo Ne** "Prodejce Incentive" - výchozí stav je "Ano".
+3. Všimněte si hello informace ve vašem profilu o CSP.  Je **přepínač toosay Ano nebo Ne** toohello "Prodejce Incentive" - hello výchozí stav je "Ano".
 
    ![Profil - vydavatele][3]
-4. Chcete-li změnit váš "prodejce Incentive" stav přístupu váš profil vydavatele poté vyberte a uložit zvoleného:
+4. toochange stav vaší "Prodejce Incentive" přístup k váš profil vydavatele poté vyberte a uložit zvoleného:
 
-   * Vyberte **Ano** zvolit k poskytování slevu 20 % CSP, kteří jsou následný aplikace a služby, které jste zobrazili v Azure Marketplace.  Nebo vyberte **ne** pro vyjádření výslovného nesouhlasu pobídkové programu.  V obou případech přijímá vydavatele než stejný výběr.
-   * Po provedení výběru zajistěte, aby kliknutí **Uložit** v pravém horním rohu.
+   * Vyberte **Ano** toochoose tooprovide hello slevu 20 % toohello zprostředkovatelů kryptografických služeb, kteří jsou následný hello aplikace a služby, které jste zobrazili v hello Azure Marketplace.  Nebo vyberte **ne** tooopt mimo tento pobídkové program.  V obou případu hello vydavatele přijímá hello stejné výběr.
+   * Po provedení výběru zajistěte, aby kliknutí **Uložit** v pravém horním rohu hello.
 
    ![Profil - vydavatelů - změna polí][4]
 

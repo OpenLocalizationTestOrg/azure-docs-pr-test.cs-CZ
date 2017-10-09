@@ -14,69 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 72514dabf3af0b282d1bb49c542c13f7095e03d8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8a64bd8f7c6eba8f6490e10fa62bef195b6b3d5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Scénáře nasazení a případy použití
 V této části se podíváme na několik scénářů a případy použití využívající Azure Active Directory (AD) Domain Services.
 
 ## <a name="secure-easy-administration-of-azure-virtual-machines"></a>Zabezpečení a snadné správy virtuální počítače Azure
-Azure Active Directory Domain Services můžete použít k efektivní způsobem spravovat virtuální počítače Azure. Virtuální počítače Azure je možné připojit k spravované doméně, a umožňuje používat svoje podnikové přihlašovací údaje AD k přihlášení. Tento přístup umožňuje vyhnout se přihlašovací údaje správy problémů, jako je například Správa účtů místního správce na všech virtuálních počítačích Azure.
+Virtuální počítače Azure můžete použít Azure Active Directory Domain Services toomanage zjednodušenou způsobem. Virtuální počítače Azure může být připojený k toohello spravované domény, a tak umožňuje toouse pověření toolog ve vaší podnikové AD. Tento přístup umožňuje vyhnout se přihlašovací údaje správy problémů, jako je například Správa účtů místního správce na všech virtuálních počítačích Azure.
 
-Virtuální počítače serveru, které jsou připojeny k spravované doméně lze také spravovat a zabezpečit pomocí zásad skupiny. Můžete používat směrné plány zabezpečení požadované na virtuálních počítačích Azure a zamknout je v souladu s pokyny pro podnikové zabezpečení. Například můžete použít možnosti správy zásad skupiny omezil typy aplikací, které může být spuštěn na těchto virtuálních počítačů.
+Virtuální počítače serveru, které jsou připojené k toohello spravované domény můžete také spravovat a zabezpečené pomocí zásad skupiny. Můžete provést požadované bezpečnostní směrné plány tooyour Azure virtuálních počítačů a jejich Zamknout v souladu s pokyny pro podnikové zabezpečení. Například můžete vytvořit zásady správy možnosti toorestrict hello typy skupin aplikací, které může být spuštěn na těchto virtuálních počítačů.
 
 ![Zjednodušená správa virtuálních počítačů Azure](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Jako servery a další infrastrukturou dosáhne ukončenou životností, přechází Contoso mnoho aplikací, které jsou teď hostované na místní do cloudu. Jejich aktuální standard IT vyžaduje, aby servery, které hostují firemní aplikace musí být připojený k doméně a spravovaná pomocí zásad skupiny. Společnosti Contoso správce IT upřednostní domény připojení k virtuálním počítačům nasazené v Azure, v zájmu snazší správy. V důsledku toho správcům a uživatelům se přihlásit pomocí svých podnikových přihlašovacích údajů. Ve stejnou dobu může být počítače nakonfigurované na dodržovat standardní hodnoty požadované bezpečnostní pomocí zásad skupiny. Contoso by raději nechcete mít k nasazení, monitorování a správě řadiče domény v Azure k zabezpečení virtuální počítače Azure. Azure AD Domain Services je proto skvělé přizpůsobit pro tento případ použití.
+Jako servery a další infrastrukturou dosáhne ukončenou životností, je mnoho aplikací, které jsou teď hostované na cloudové toohello místní přesunutí Contoso. Jejich aktuální standard IT vyžaduje, aby servery, které hostují firemní aplikace musí být připojený k doméně a spravovaná pomocí zásad skupiny. Společnosti Contoso správce IT upřednostní toodomain připojení virtuálních počítačů nasazených v Azure, správu toomake jednodušší. V důsledku toho správcům a uživatelům se přihlásit pomocí svých podnikových přihlašovacích údajů. V hello stejnou dobu, může být počítače nakonfigurované toocomply s směrné plány požadované zabezpečení pomocí zásad skupiny. Contoso přejete není toohave toodeploy, sledování a správě řadičů domény v Azure toosecure virtuální počítače Azure. Azure AD Domain Services je proto skvělé přizpůsobit pro tento případ použití.
 
 **Poznámky k nasazení**
 
-Mějte na paměti následující důležité skutečnosti pro tento scénář nasazení:
+Mějte na paměti následující důležité body pro tento scénář nasazení hello:
 
-* Ve výchozím nastavení spravovaných domén, které poskytuje Azure AD Domain Services poskytují struktura single ploché organizační jednotky (organizační jednotka). Všechny počítače připojené k doméně se nacházejí v jedné organizační jednotce ploché. Můžete ale vytvořit vlastní organizační jednotky.
-* Azure AD Domain Services podporuje jednoduchý zásad skupiny ve formě integrované objektu zásad skupiny každý pro uživatele a počítače kontejnery. Můžete vytvořit vlastní objekty zásad skupiny a směrovat je vlastní organizační jednotky.
-* Azure AD Domain Services podporuje základní schématu objektu počítače AD. Objekt počítače schéma nelze rozšířit.
+* Ve výchozím nastavení spravovaných domén, které poskytuje Azure AD Domain Services poskytují struktura single ploché organizační jednotky (organizační jednotka). Všechny počítače připojené k doméně se nacházejí v jedné organizační jednotce ploché. Můžete však zvolit toocreate vlastní organizační jednotky.
+* Azure AD Domain Services podporuje jednoduchý zásad skupiny v hello formu předdefinované objektu zásad skupiny každý hello uživatelů a počítačů kontejnery. Můžete vytvořit vlastní objekty zásad skupiny a směrovat je toocustom organizační jednotky.
+* Azure AD Domain Services podporuje hello základní počítač objekt schéma služby AD. Objekt počítače hello schéma nelze rozšířit.
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>Navýšení a shift místní aplikace, která používá ověřování vazby LDAP do služby infrastruktury Azure
+## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-tooazure-infrastructure-services"></a>Navýšení a shift místní aplikace, která používá tooAzure ověřování vazby LDAP služby infrastruktury
 ![Vazba LDAP](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
-Contoso má místní aplikace, který byl zakoupen od nezávislý dodavatel softwaru mnoha lety. Aplikace je aktuálně v režimu údržby pomocí ISV a žádají o změny aplikace je výtažkovými pro společnost Contoso. Tato aplikace má front-end založené na webu, který shromažďuje přihlašovací údaje uživatele pomocí webového formuláře a potom ověřuje uživatele pomocí vazby protokolu LDAP do podnikové služby Active Directory. Contoso chcete migrovat služby infrastruktury Azure v této aplikaci. Je žádoucí, že aplikace funguje podle jsou, bez nutnosti změny. Kromě toho uživatelé by měli být přístup ověřit pomocí jejich existující podnikové přihlašovací údaje a bez nutnosti přeučování uživatelům provádět akce, jinak. Jinými slovy koncoví uživatelé by měli být oblivious o kterém aplikace běží a migrace by měl být průhledná k nim.
+Contoso má místní aplikace, který byl zakoupen od nezávislý dodavatel softwaru mnoha lety. Hello aplikace je nyní v režimu údržby pomocí hello ISV a žádající aplikací toohello změny je výtažkovými pro společnost Contoso. Tato aplikace má front-end založené na webu, který shromažďuje přihlašovací údaje uživatele pomocí webového formuláře a potom ověřuje uživatele provedením toohello vazby LDAP podnikové služby Active Directory. Contoso byste chtěli toomigrate tooAzure tuto aplikaci služby infrastruktury. Je žádoucí, aby aplikace hello pracuje je, bez nutnosti změny. Uživatelé navíc musí být schopný tooauthenticate pomocí svých existujících podnikových přihlašovacích údajů a bez nutnosti tooretrain uživatelé toodo věci jinak. Jinými slovy koncoví uživatelé by měli být oblivious o kterém je spuštěna aplikace hello a hello migrace by měl být transparentní toothem.
 
 **Poznámky k nasazení**
 
-Mějte na paměti následující důležité skutečnosti pro tento scénář nasazení:
+Mějte na paměti následující důležité body pro tento scénář nasazení hello:
 
-* Ujistěte se, že aplikace není nutné upravit nebo zápisu do adresáře. LDAP oprávnění k zápisu do spravovaných domén, které poskytuje Azure AD Domain Services nepodporuje.
-* Nelze změnit hesla přímo na spravované domény. Koncoví uživatelé můžou změnit heslo, buď pomocí mechanismus pro změnu hesla pomocí samoobslužné služby Azure AD nebo s místním adresářem. Tyto změny jsou automaticky synchronizované a k dispozici ve spravované doméně.
+* Ujistěte se, že aplikace hello není nutné directory toohello toomodify a zápis. Domény toomanaged přístup pro zápis LDAP poskytované Azure AD Domain Services není podporována.
+* Nelze změnit hesla přímo na hello spravované domény. Koncoví uživatelé můžou změnit heslo, buď pomocí mechanismus pro změnu hesla pomocí samoobslužné služby Azure AD nebo proti hello místního adresáře. Tyto změny jsou automaticky synchronizované a k dispozici ve spravované doméně hello.
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-read-to-access-the-directory-to-azure-infrastructure-services"></a>Navýšení a shift místní aplikace, která používá LDAP čtení pro přístup k adresáři službám infrastruktury Azure
-Contoso má místní obchodní (LOB) aplikace, která byla vyvinuta téměř deset před. Tato aplikace je adresář clustery a fungují s Windows serverem AD. Aplikace používá protokolu LDAP (Lightweight Directory Access Protocol) ke čtení informací nebo atributy o uživatelů ze služby Active Directory. Aplikace není upravit atributy nebo jinak zapisovat do adresáře. Contoso chcete migrovat tuto aplikaci do služby infrastruktury Azure a vyřazení místní hardware stárnutí aktuálně hostuje tuhle aplikaci. Aplikace nemůže být přepsané téma, které používají moderní directory rozhraní API, například Azure AD Graph API založené na REST. Proto možnost navýšení a shift se požaduje, jímž aplikace se dají migrovat na spouštění v cloudu, bez úpravy kódu nebo přepsání aplikace.
+## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-read-tooaccess-hello-directory-tooazure-infrastructure-services"></a>Navýšení a shift místní aplikace, která používá LDAP číst tooaccess hello directory tooAzure služby infrastruktury
+Contoso má místní obchodní (LOB) aplikace, která byla vyvinuta téměř deset před. Tato aplikace je adresář clustery a byla navrženou toowork se systémem Windows Server AD. aplikace Hello používá protokolu LDAP (Lightweight Directory Access Protocol) tooread informace nebo atributy o uživatelů ze služby Active Directory. aplikace Hello nemá upravit atributy nebo jinak zapsat toohello adresáře. Contoso byste chtěli toomigrate tooAzure tuto aplikaci služby infrastruktury a vyřazení z provozu hello stárnutí místní hardware aktuálně hostuje tuhle aplikaci. aplikace Hello nemůže být přepsaná toouse moderní directory rozhraní API například hello založené na REST Azure AD Graph API. Proto možnost navýšení a shift se požaduje, jímž hello aplikace může být migrované toorun v cloudu hello bez úpravy kódu nebo přepisování aplikace hello.
 
 **Poznámky k nasazení**
 
-Mějte na paměti následující důležité skutečnosti pro tento scénář nasazení:
+Mějte na paměti následující důležité body pro tento scénář nasazení hello:
 
-* Ujistěte se, že aplikace není nutné upravit nebo zápisu do adresáře. LDAP oprávnění k zápisu do spravovaných domén, které poskytuje Azure AD Domain Services nepodporuje.
-* Ujistěte se, že aplikace není nutné vlastní nebo rozšířené schéma služby Active Directory. Rozšíření schématu nejsou podporovány v Azure AD Domain Services.
+* Ujistěte se, že aplikace hello není nutné directory toohello toomodify a zápis. Domény toomanaged přístup pro zápis LDAP poskytované Azure AD Domain Services není podporována.
+* Ujistěte se, že aplikace hello není nutné vlastní nebo rozšířené schéma služby Active Directory. Rozšíření schématu nejsou podporovány v Azure AD Domain Services.
 
-## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure-infrastructure-services"></a>Migrovat místní služba nebo démon aplikace do služby infrastruktury Azure
-Některé aplikace obsahovat několik vrstev, kde jeden z vrstvy potřebuje provést ověřených volání do vrstvy back-end, jako je například a databázové vrstvy. Účty služby Active Directory se běžně používají pro tyto případy použití. Můžete navýšení a shift takové aplikace služby infrastruktury Azure a používání Azure AD Domain Services pro potřeby identity z těchto aplikací. Můžete použít stejný účet služby, který je synchronizován z vašeho místního adresáře do Azure AD. Alternativně může nejprve vytvořit vlastní organizační jednotky a poté vytvořit samostatný účet služby v dané organizační jednotce, k nasazení těchto aplikací.
+## <a name="migrate-an-on-premises-service-or-daemon-application-tooazure-infrastructure-services"></a>Migrace místní služba nebo démon aplikace tooAzure služby infrastruktury
+Některé aplikace obsahovat několik vrstev, kde jeden hello vrstev musí tooperform ověřených volání tooa back-end vrstvy například a databázové vrstvy. Účty služby Active Directory se běžně používají pro tyto případy použití. Můžete navýšení a shift takové aplikace tooAzure služby infrastruktury a používání Azure AD Domain Services pro potřeby identity hello z těchto aplikací. Můžete zvolit toouse hello stejný účet služby, který je synchronizován se z vašeho místního adresáře tooAzure AD. Alternativně můžete nejdřív vytvořit vlastní organizační jednotky a poté vytvořit samostatný účet služby v dané organizační jednotce, toodeploy takové aplikace.
 
 ![Účet služby pomocí WIA](./media/active-directory-domain-services-scenarios/wia-service-account.png)
 
-Contoso má uživatelské softwarová aplikace úložiště, která zahrnuje front-end webové, SQL server a server back-end serveru FTP. Integrované v systému Windows ověřování účty služby se používá k ověření webového uživatelského rozhraní na serveru FTP. Front-end webový jsou nastaveny na Spustit jako účet služby. Back-end server je nakonfigurován k autorizaci přístupu z účtu služby pro webového uživatelského rozhraní. Contoso upřednostní není k k nasazení virtuálního počítače řadiče domény v cloudu a přesunout tuto aplikaci do služby infrastruktury Azure. Společnosti Contoso správce IT, můžete nasadit servery, které hostují webového uživatelského rozhraní, SQL server a server FTP na virtuálních počítačích Azure. Tyto počítače jsou pak připojeny k spravované doméně služby Azure AD Domain Services. Poté mohou používat stejný účet služby ve své místní adresář pro účely ověření aplikace. Tento účet služby je synchronizován k spravované doméně služby Azure AD Domain Services a je k dispozici pro použití.
+Contoso má uživatelské softwarová aplikace úložiště, která zahrnuje front-end webové, SQL server a server back-end serveru FTP. Integrované v systému Windows ověřování účtů služeb je použité tooauthenticate hello front-end webovém toohello FTP serveru. front-end webový Hello je nastavený toorun jako účet služby. Hello back-end server je nakonfigurován tooauthorize přístup z účtu služby hello pro front-end webové hello. Contoso upřednostní není toohave toodeploy virtuálního počítače řadiče domény v cloudu toomove hello tooAzure tuto aplikaci služby infrastruktury. Společnosti Contoso správci IT mohou nasadit servery hello hostování hello webový server front-end, systému SQL server a hello FTP server tooAzure virtuálních počítačů. Tyto počítače jsou pak tooan připojený k Azure AD Domain Services spravované domény. Pak můžete použít stejný účet služby ve své místní adresář pro účely ověření hello aplikace hello. Tento účet služby je spravované domény synchronizované toohello Azure AD Domain Services a je k dispozici pro použití.
 
 **Poznámky k nasazení**
 
-Mějte na paměti následující důležité skutečnosti pro tento scénář nasazení:
+Mějte na paměti následující důležité body pro tento scénář nasazení hello:
 
-* Ujistěte se, že aplikace bude používat uživatelské jméno a heslo pro ověřování. Azure AD Domain Services nepodporuje ověřování na základě certifikátů nebo čipová karta.
-* Nelze změnit hesla přímo na spravované domény. Koncoví uživatelé můžou změnit heslo, buď pomocí mechanismus pro změnu hesla pomocí samoobslužné služby Azure AD nebo s místním adresářem. Tyto změny jsou automaticky synchronizované a k dispozici ve spravované doméně.
+* Ujistěte se, že aplikace hello používá uživatelské jméno a heslo pro ověřování. Azure AD Domain Services nepodporuje ověřování na základě certifikátů nebo čipová karta.
+* Nelze změnit hesla přímo na hello spravované domény. Koncoví uživatelé můžou změnit heslo, buď pomocí mechanismus pro změnu hesla pomocí samoobslužné služby Azure AD nebo proti hello místního adresáře. Tyto změny jsou automaticky synchronizované a k dispozici ve spravované doméně hello.
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Windows Server vzdálené plochy nasazení v Azure
-Azure AD Domain Services můžete použít k poskytování spravované domény služby AD na vzdálené plochy servery nasazené v Azure.
+Můžete použít Azure AD Domain Services tooprovide spravované AD domain services tooyour vzdálené plochy servery nasazené v Azure.
 
-Další informace o tomto scénáři nasazení najdete v tématu Jak [integrovat Azure AD Domain Services v rámci vašeho nasazení vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).
+Další informace o tomto scénáři nasazení najdete v tématu Jak příliš[integrovat Azure AD Domain Services v rámci vašeho nasazení vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).

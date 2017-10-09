@@ -1,0 +1,2 @@
+Pokud není Azure problém řešený v tomto článku, navštivte hello fóra Azure na [MSDN a hello Stack Overflow](https://azure.microsoft.com/support/forums/). Můžete odeslat svůj problém v těchto fóra nebo post příliš[ @AzureSupport na Twitteru](https://twitter.com/AzureSupport). Je také odeslat žádost o podporu Azure. žádost o podporu na hello toosubmit [podporu Azure](https://azure.microsoft.com/support/options/) vyberte **získat podporu**.
+

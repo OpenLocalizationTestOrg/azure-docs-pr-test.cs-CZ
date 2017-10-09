@@ -1,12 +1,12 @@
-Pokud se vám nedaří připojit k virtuálnímu počítači přes připojení VPN, zkontrolujte následující:
+Pokud máte potíže s připojením tooa virtuálního počítače přes připojení k síti VPN, zkontrolujte následující hello:
 
 - Ověřte, že je úspěšně navázáno připojení VPN.
-- Ověřte, že se připojujete k privátní IP adrese virtuálního počítače.
-- Pokud se k virtuálnímu počítači můžete připojit s použitím privátní IP adresy, ale ne pomocí názvu počítače, ověřte, že jste správně nakonfigurovali DNS. Další informace o tom, jak funguje překlad IP adres pro virtuální počítače, najdete v tématu [Překlad IP adres pro virtuální počítače](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+- Ověřte, zda se připojujete toohello privátní IP adresu pro hello virtuálních počítačů.
+- Pokud připojíte toohello virtuálních počítačů pomocí hello privátní IP adresa, ale není hello název počítače, ověřte, že jste správně nakonfigurovali DNS. Další informace o tom, jak funguje překlad IP adres pro virtuální počítače, najdete v tématu [Překlad IP adres pro virtuální počítače](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-Pokud se připojujete přes Point-to-Site, zkontrolujte navíc následující položky:
+Jakmile se připojíte přes Point-to-Site, zkontrolujte následující další položky hello:
 
-- Pomocí příkazu ipconfig zkontrolujte IPv4 adresu přiřazenou adaptéru Ethernet na počítači, ze kterého se připojujete. Pokud je IP adresa v rámci rozsahu adres virtuální sítě, ke které se připojujete, nebo v rámci rozsahu adres VPNClientAddressPool, tato situace se označuje jako překrývající se adresní prostor. Když se adresní prostor tímto způsobem překrývá, síťový provoz nemá přístup do Azure a zůstane v místní síti.
-- Ověřte, že se po zadání IP adres serveru DNS pro virtuální síť vygeneroval balíček pro konfiguraci klienta VPN. Pokud jste aktualizovali IP adresy serveru DNS, vygenerujte a nainstalujte nový balíček pro konfiguraci klienta VPN.
+- Použijte 'ipconfig' toocheck hello IPv4 adresu přiřazenou toohello adaptér Ethernet na hello počítače, ze kterého se chcete připojit. Pokud hello IP adresa je v rámci rozsah adres hello hello virtuální síť, ke kterému se připojujete, nebo rozsah adres hello vaší VPNClientAddressPool, jedná se označují tooas překrývající se adresní prostor. Když adresní prostor se překrývá tímto způsobem, hello síťový provoz není dosáhnout Azure, zůstane v místní síti hello.
+- Ověřte, zda že tento balíček konfigurace klienta VPN hello bylo vygenerováno po IP adresy serverů DNS hello byly zadány pro hello virtuální sítě. Pokud jste aktualizovali IP adresy serverů DNS hello, generovat a nainstalovat nový balíček konfigurace klienta VPN.
 
-Další informace o řešení potíží s připojením ke vzdálené ploše najdete v tématu [Řešení potíží s připojením ke vzdálené ploše virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
+Další informace o odstraňování potíží s připojení ke vzdálené ploše najdete v tématu [tooa připojení vzdálené plochy řešení virtuálních počítačů](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).

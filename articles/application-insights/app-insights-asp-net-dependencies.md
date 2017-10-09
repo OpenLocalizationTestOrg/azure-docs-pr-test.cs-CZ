@@ -1,5 +1,5 @@
 ---
-title: "Závislost sledování ve službě Azure Application Insights | Microsoft Docs"
+title: "aaaDependency sledování ve službě Azure Application Insights | Microsoft Docs"
 description: "Analýza místního využití, dostupnosti a výkonu nebo webová aplikace Microsoft Azure s nástrojem Application Insights."
 services: application-insights
 documentationcenter: .net
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.openlocfilehash: 6e0b67ba98af27017901608dde4401600eb9957f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e72f5465462ae8e64363cbbaa62911aff636c504
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavte Application Insights: sledování závislostí
-A *závislostí* je externí komponenta, která je volána aplikace. Obvykle se jedná o službu volat pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří, jak dlouho aplikace čeká závislosti a jak často závislostí volání selže. Můžete prozkoumat konkrétní volání a propojovat je na požadavky a výjimkami.
+A *závislostí* je externí komponenta, která je volána aplikace. Obvykle se jedná o službu volat pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří, jak dlouho aplikace čeká závislosti a jak často závislostí volání selže. Můžete prozkoumat konkrétní volání a propojovat je toorequests a výjimky.
 
 ![ukázkové grafy](./media/app-insights-asp-net-dependencies/10-intro.png)
 
-Toto monitorování závislostí na více systémů pole sestavy aktuálně volání na tyto typy závislosti:
+monitorování závislostí na více systémů pole Hello aktuálně sestavy volání toothese typy závislosti:
 
 * Server
   * Databáze SQL
@@ -36,103 +36,103 @@ Toto monitorování závislostí na více systémů pole sestavy aktuálně vol�
 
 Monitorování funguje pomocí [bajtů kód instrumentace](https://msdn.microsoft.com/library/z9z62c29.aspx) kolem vybrané metody. Nároky na výkon je minimální.
 
-Můžete taky napsat vlastní volání sady SDK k monitorování Další závislosti, oba seznamy v kód klienta a serveru pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+Můžete taky napsat vlastní SDK volá toomonitor Další závislosti, v hello kód klienta a serveru, i pomocí hello [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 ## <a name="set-up-dependency-monitoring"></a>Nastavení monitorování závislostí
-Částečné závislostí informace jsou shromažďovány automaticky pomocí [Application Insights SDK](app-insights-asp-net.md). Chcete-li získat kompletní datový, nainstalujte příslušné agenta pro hostitelský server.
+Automaticky shromažďuje informace o závislostech částečné hello [Application Insights SDK](app-insights-asp-net.md). kompletní datový tooget, nainstalujte hello odpovídající agenta pro hostitelský server hello.
 
 | Platforma | Instalace |
 | --- | --- |
-| Server služby IIS |Buď [nainstalujte monitorování stavu na serveru](app-insights-monitor-performance-live-website-now.md) nebo [upgradu vaší aplikace rozhraní .NET Framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
-| Webové aplikace Azure |Ve webové aplikaci ovládacího panelu [otevřete okno Application Insights ve webové aplikaci ovládacího panelu](app-insights-azure-web-apps.md) a instalace zvolte, pokud se zobrazí výzva. |
+| Server služby IIS |Buď [nainstalujte monitorování stavu na serveru](app-insights-monitor-performance-live-website-now.md) nebo [upgradu vaší aplikace too.NET framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte hello [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
+| Webové aplikace Azure |Ve webové aplikaci ovládacího panelu [hello otevřete okno Application Insights ve vaší webové aplikace ovládacích panelů](app-insights-azure-web-apps.md) a instalace zvolte, pokud se zobrazí výzva. |
 | Cloudové služby Azure |[Úloha spuštění použití](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
-## <a name="where-to-find-dependency-data"></a>Kde najít data závislostí
+## <a name="where-toofind-dependency-data"></a>Kde toofind data závislostí
 * [Mapa aplikace](#application-map) vizualizuje závislosti mezi aplikací a sousedních součásti.
 * [Okna výkonu, prohlížeče a selhání](#performance-and-blades) zobrazit závislosti dat serveru.
 * [Okno prohlížečů](#ajax-calls) ukazuje volání AJAX z prohlížečů uživatelů.
-* [Klikněte na položku přes pomalé nebo chybných požadavků](#diagnose-slow-requests) zkontrolujte jejich závislost volání.
-* [Analýza](#analytics) lze použít k dotazování na data závislostí.
+* [Klikněte na položku přes pomalé nebo chybných požadavků](#diagnose-slow-requests) volá toocheck jejich závislost.
+* [Analýza](#analytics) lze použít tooquery data závislostí.
 
 ## <a name="application-map"></a>Mapa aplikace
-Mapa aplikace funguje jako vizuální pomůcka zjišťování závislostí mezi součástmi aplikace. Automaticky se generují z telemetrie z vaší aplikace. Tento příklad ukazuje volání AJAX z prohlížeče skriptů a volání REST z aplikace serveru dvě externích služeb.
+Mapa aplikace funguje jako vizuální pomůcka toodiscovering závislosti mezi hello komponent vaší aplikace. Automaticky se generují z hello telemetrie z vaší aplikace. Tento příklad ukazuje volání AJAX z hello prohlížeč skriptů a volání REST ze serveru hello aplikace tootwo externích služeb.
 
 ![Mapa aplikace](./media/app-insights-asp-net-dependencies/08.png)
 
-* **Přejděte z políčka** relevantní závislosti a jinými grafy.
-* **Připnout mapy** k [řídicí panel](app-insights-dashboards.md), kde budou plně funkční.
+* **Přejděte z oken hello** toorelevant závislostí a jinými grafy.
+* **PIN kód hello mapy** toohello [řídicí panel](app-insights-dashboards.md), kde budou plně funkční.
 
 [Další informace](app-insights-app-map.md).
 
 ## <a name="performance-and-failure-blades"></a>Výkon a selhání oken
-Okno výkon zobrazuje dobu trvání závislosti volání aplikace serveru. Není souhrnné graf a tabulku oddělených volání.
+Hello výkonu ukazovat hello trvání závislosti volání aplikace server hello. Není souhrnné graf a tabulku oddělených volání.
 
 ![Grafy závislostí okno výkonu.](./media/app-insights-asp-net-dependencies/dependencies-in-performance-blade.png)
 
-Proklikejte se prostřednictvím souhrnné grafy nebo položky, které se mají hledat nezpracovaná výskyty těchto volání.
+Proklikejte se prostřednictvím souhrnné grafy hello nebo hello tabulky položky toosearch nezpracovaná výskyty těchto volání.
 
 ![Instance volání závislostí](./media/app-insights-asp-net-dependencies/dependency-call-instance.png)
 
-**Počet selhání** se zobrazují na **selhání** okno. Selhání je jakýkoli návratový kód, který není v rozsahu 200-399, nebo neznámý.
+**Počet selhání** se zobrazují na hello **selhání** okno. Selhání je jakýkoli návratový kód, který není v rozsahu 200 hello-399, nebo neznámý.
 
 > [!NOTE]
-> **100 % selhání?** – Pravděpodobně to znamená, jsou jenom získávání dat částečné závislostí. Budete muset [nastavení monitorování závislostí vhodné pro vaši platformu](#set-up-dependency-monitoring).
+> **100 % selhání?** – Pravděpodobně to znamená, jsou jenom získávání dat částečné závislostí. Je třeba příliš[nastavit závislost monitorování platformy odpovídající tooyour](#set-up-dependency-monitoring).
 >
 >
 
 ## <a name="ajax-calls"></a>Volání AJAX
-V okně prohlížeče zobrazuje míru doba trvání a selhání volání AJAX z [JavaScript na webových stránkách](app-insights-javascript.md). Zobrazí se jako závislosti.
+Doba trvání hello se zobrazí okno prohlížeče Hello a míra selhání AJAX volání ze [JavaScript na webových stránkách](app-insights-javascript.md). Zobrazí se jako závislosti.
 
 ## <a name="diagnosis"></a>Diagnostika pomalé požadavků
-Každá událost požadavku je přidružen volání závislostí, výjimek a další události, které jsou sledovány, zatímco aplikace je zpracování požadavku. Takže pokud chybně provedli některé požadavky, můžete zjistit ať to je z důvodu zpomalení odezvy ze závislost.
+Každá žádost o událost souvisí s hello závislostí volání, výjimky a další události, které jsou sledovány při zpracování aplikace hello požadavku. Takže pokud chybně provedli některé požadavky, můžete zjistit ať to je z důvodu tooslow odpovědí z závislost.
 
 Projděme příklad této.
 
-### <a name="tracing-from-requests-to-dependencies"></a>Trasování z požadavky na závislosti
-Otevřete okno výkon a podívejte se na mřížky požadavků:
+### <a name="tracing-from-requests-toodependencies"></a>Trasování z toodependencies požadavky
+Otevřete okno výkon hello a podívejte se na hello mřížky požadavků:
 
 ![Seznam požadavků s průměry a počty](./media/app-insights-asp-net-dependencies/02-reqs.png)
 
-Horní jeden trvá velmi dlouho. Podívejme se, pokud jsme můžete zjistit, kde čas strávený.
+Hello nejvyšší, které jeden trvá velmi dlouho. Podívejme se, pokud jsme můžete zjistit, kde je hello čas strávený.
 
-Klikněte na daném řádku zobrazíte události jednotlivých žádostí:
+Klikněte na události jednotlivých žádostí toosee tento řádek:
 
 ![Seznam výskytů požadavku](./media/app-insights-asp-net-dependencies/03-instances.png)
 
-Kliknutím na jakoukoli instanci dlouho běžící další zkontrolovat a posuňte se dolů a volání vzdálené závislosti související s tuto žádost:
+Klikněte na všechny instance tooinspect dlouho běžící dál a posuňte se dolů toohello závislostí vzdáleného volání související toothis žádost:
 
-![Najít volání vzdálené závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-dependencies.png)
+![Najít volání tooRemote závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
-To vypadá většinu času údržby, které tento požadavek byl stráven v volání k místní službě.
+To vypadá většinu hello doba údržby, které tento požadavek byl stráven v místní službě tooa volání.
 
-Vyberte tento řádek získat další informace:
+Vyberte tento řádek tooget Další informace:
 
-![Klikněte na tlačítko prostřednictvím tohoto vzdáleného závislostí pro identifikaci, který](./media/app-insights-asp-net-dependencies/05-detail.png)
+![Klikněte na tlačítko prostřednictvím tohoto vzdáleného závislostí tooidentify hello který](./media/app-insights-asp-net-dependencies/05-detail.png)
 
-Vypadá to jde, kde je problém. Jsme jste přesně vymezená problém, takže teď jsme právě měli zjistit, proč tento volání trvá tak dlouho.
+Vypadá to jde, kde je problém hello. Jsme jste přesně vymezená problém hello, takže teď jsme právě měli toofind out proč tohoto volání trvá tak dlouho.
 
 ### <a name="request-timeline"></a>Časová osa požadavku
-V případě různých je volání žádné závislosti, které je zvláště dlouhý. Ale přepnutím na zobrazení časové osy, uvidíme, kde došlo k zpoždění v našem interní zpracování:
+V případě různých je volání žádné závislosti, které je zvláště dlouhý. Ale přepnutím zobrazení časové osy toohello uvidíme, kde došlo k hello zpoždění v našem interní zpracování:
 
-![Najít volání vzdálené závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-1.png)
+![Najít volání tooRemote závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-1.png)
 
-Nejspíš big mezera po první závislost volat, proto jsme by měl vypadat v našem kódu, uvidíte, proč je.
+Vypadá to, toobe big mezera po prvním volání závislostí hello, takže jsme by měl vypadat v našem kódu toosee, proč to znamená.
 
 ### <a name="profile-your-live-site"></a>Profil živý web
 
-Žádné představu, kde přejde čas? [Application Insights profileru](app-insights-profiler.md) trasování HTTP volání živý web a ukazuje, které funkce ve vašem kódu trvalo nejdelší dobu.
+Žádné představu, kde přejde hello čas? Hello [Application Insights profileru](app-insights-profiler.md) trasování HTTP volá tooyour živý web a ukazuje, které funkce ve vašem kódu trvalo hello nejdelší dobu.
 
 ## <a name="failed-requests"></a>Neúspěšné požadavky
-Neúspěšné požadavky může být také přidružen selhání volání závislosti. Jsme znovu, klikněte prostřednictvím sledovat problém.
+Neúspěšné požadavky může být také přidružen toodependencies volání se nezdařilo. Jsme znovu, můžete kliknutím prostřednictvím tootrack dolů hello problém.
 
-![Klikněte na graf neúspěšných požadavků](./media/app-insights-asp-net-dependencies/06-fail.png)
+![Klikněte na graf neúspěšných požadavků hello](./media/app-insights-asp-net-dependencies/06-fail.png)
 
-Proklikejte se k výskytu chybné žádosti a podívejte se na jeho přidružené události.
+Klikněte na tlačítko prostřednictvím tooan výskytem chybné žádosti a podívejte se na jeho přidružené události.
 
-![Klikněte na typ požadavku, klikněte na instanci systému na získat do jiného zobrazení stejné instance, klikněte na něj získat podrobnosti o výjimce.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
+![Klikněte na typ požadavku, klikněte na tlačítko hello tooget tooa různých zobrazení instance hello stejnou instanci, klikněte na podrobnosti o výjimce tooget.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analýza
-Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs.loganalytics.io/). Zde je několik příkladů:
+Můžete sledovat závislostí v hello [analýzy protokolů dotazu jazyka](https://docs.loganalytics.io/). Zde je několik příkladů:
 
 * Najděte žádné volání se nezdařilo závislost:
 
@@ -172,11 +172,11 @@ Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs
 
 
 ## <a name="custom-dependency-tracking"></a>Vlastní závislost sledování
-Standardní modul sledování závislosti automaticky zjišťuje externí závislosti, jako jsou databáze a rozhraní REST API. Ale můžete chtít některé další součásti považován stejným způsobem.
+standardní modul sledování závislostí Hello automaticky zjišťuje externí závislosti, jako jsou databáze a rozhraní REST API. Ale můžete chtít některé další součásti toobe zpracovávají v hello stejný způsobem.
 
-Můžete napsat kód, který odesílá informace o závislostech, používající stejný [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) používané standardní moduly.
+Můžete napsat kód, který odesílá informace o závislostech, pomocí stejné hello [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) používané standardní moduly hello.
 
-Například pokud vytvoříte kódu se sestavením, které nebylo napsat sami, může čas všechna volání, a zjistěte, jaký příspěvek umožňuje na váš doby odezvy. Pokud chcete, aby tato data zobrazí v grafech závislosti ve službě Application Insights, odeslat pomocí `TrackDependency`.
+Například pokud vytvoříte kódu se sestavením, že napíšete nebyla sami, může čas všechny tooit volání hello, případech toofind out jaký příspěvek umožňuje tooyour odpovědi. toohave tato data zobrazí v grafech závislostí hello ve službě Application Insights odeslat pomocí `TrackDependency`.
 
 ```C#
 
@@ -193,16 +193,16 @@ Například pokud vytvoříte kódu se sestavením, které nebylo napsat sami, m
             }
 ```
 
-Pokud chcete vypnout modul sledování standardní závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
+Pokud chcete tooswitch vypnout hello standardní závislost sledování modulu, odeberte hello tooDependencyTrackingTelemetryModule odkaz v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 *Závislost úspěch příznak vždycky zobrazí hodnotu PRAVDA nebo NEPRAVDA.*
 
 *Úplné to není znázorněné dotazu SQL.*
 
-* Upgrade na nejnovější verzi sady SDK. Pokud vaše verze .NET je menší než 4.6:
-  * Hostitele služby IIS: Nainstalujte [agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na hostitelských serverech.
-  * Webové aplikace Azure: Otevřete Application Insights v Ovládacích panelech webové aplikace a nainstalujte službu Application Insights.
+* Upgrade toohello nejnovější verzi hello SDK. Pokud vaše verze .NET je menší než 4.6:
+  * Hostitele služby IIS: Nainstalujte [agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na hostitelských serverech hello.
+  * Webové aplikace Azure: Otevřete Application Insights v hello webové aplikace ovládacích panelů a nainstalujte službu Application Insights.
 
 ## <a name="video"></a>Video
 

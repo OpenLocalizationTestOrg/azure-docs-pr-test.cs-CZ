@@ -1,5 +1,5 @@
 ---
-title: "Pomocí prostředí PowerShell vytvořit a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs"
+title: "tooCreate aaaUse prostředí PowerShell a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs"
 description: "Protokolovat Analytics používá data ze serverů v místní nebo cloudové infrastruktury. Můžete shromáždit data počítače z úložiště Azure generování Azure diagnostics."
 services: log-analytics
 documentationcenter: 
@@ -14,64 +14,64 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a6d66194204cc58de6aafb687a19fe9611e0c58e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
-Můžete použít [rutiny prostředí PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) k provádění různých funkcí v analýzy protokolů z příkazového řádku nebo v rámci skriptu.  Příklady úlohy, které můžete provést pomocí prostředí PowerShell:
+Můžete použít hello [rutiny prostředí PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) tooperform různé funkce v analýzy protokolů z příkazového řádku nebo v rámci skriptu.  Příklady hello úlohy, které můžete provádět pomocí prostředí PowerShell:
 
 * Vytvoření pracovního prostoru
 * Přidat nebo odebrat řešení
 * Import a export uložených hledání
 * Vytvořit skupinu počítačů
-* Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
+* Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows hello
 * Shromáždit čítače výkonu z počítačů se systémy Linux a Windows
 * Shromažďování událostí z syslog počítačů se systémem Linux 
 * Shromažďování událostí z protokolů událostí systému Windows
 * Shromažďovat vlastní protokoly událostí
-* Přidat agenta analýzy protokolů pro virtuální počítač Azure
-* Konfigurace analýzy protokolů pro data indexu shromažďována pomocí Azure diagnostics
+* Přidat hello log analytics agenta tooan virtuální počítač Azure
+* Konfigurace protokolu analýzy tooindex data shromážděná pomocí Azure diagnostics
 
-Tento článek obsahuje dvě ukázky kódu, které ilustrovat některé z funkcí, které lze provádět z prostředí PowerShell.  Můžete se podívat do [odkazu na rutiny Powershellu Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) pro další funkce.
+Tento článek obsahuje dvě ukázky kódu, které ilustrují některé hello funkce, které můžete provádět z prostředí PowerShell.  Může odkazovat toohello [odkazu na rutiny Powershellu Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) pro další funkce.
 
 > [!NOTE]
-> Analýzy protokolů volala dřív Operational Insights, proto je název používaný v rutiny.
+> Analýzy protokolů volala dřív Operational Insights, proto je hello název používaný v hello rutiny.
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-Tyto příklady fungovat s verzí 2.3.0 nebo později AzureRm.OperationalInsights modulu.
+Tyto příklady fungovat s verzí 2.3.0 nebo později hello AzureRm.OperationalInsights modulu.
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvořit a nakonfigurovat pracovní prostor Log Analytics
-Znázorňuje následující ukázka skriptu postup:
+Hello následující ukázka skriptu je znázorněný postup:
 
 1. Vytvoření pracovního prostoru
-2. Seznam dostupných řešení
-3. Přidat řešení do pracovního prostoru
+2. K dispozici řešení seznamu hello
+3. Přidání prostoru toohello řešení
 4. Importovat uložené hledání
 5. Export uložené hledání
 6. Vytvořit skupinu počítačů
-7. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
+7. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows hello
 8. Z počítače se systémem Linux shromáždit čítače výkonu logický Disk (% použitých uzlů; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení disku/s; Zápis disku/s)
 9. Shromažďovat události procesu syslog z počítače se systémem Linux
-10. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítače se systémem Windows
+10. Shromažďování událostí chyb a upozornění z hello protokolu událostí aplikace z počítače se systémem Windows
 11. Shromažďovat čítač výkonu paměť v MB k dispozici z počítače se systémem Windows
 12. Shromažďovat vlastní protokol 
 
 ```
 
 $ResourceGroup = "oms-example"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need toobe unique - Get-Random helps with this for hello example code
 $Location = "westeurope"
 
-# List of solutions to enable
+# List of solutions tooenable
 $Solutions = "Security", "Updates", "SQLAssessment"
 
-# Saved Searches to import
+# Saved Searches tooimport
 $ExportedSearches = @"
 [
     {
@@ -89,7 +89,7 @@ $ExportedSearches = @"
 ]
 "@ | ConvertFrom-Json
 
-# Custom Log to collect
+# Custom Log toocollect
 $CustomLog = @"
 {
     "customLogName": "sampleCustomLog1", 
@@ -127,14 +127,14 @@ $CustomLog = @"
     }
 "@
 
-# Create the resource group if needed
+# Create hello resource group if needed
 try {
     Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop
 } catch {
     New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location
 }
 
-# Create the workspace
+# Create hello workspace
 New-AzureRmOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List all solutions and their installation status
@@ -160,7 +160,7 @@ foreach ($search in $ExportedSearches) {
 # Create Computer Group based on a query
 New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
 
-# Create a computer group based on names (up to 5000)
+# Create a computer group based on names (up too5000)
 $computerGroup = """servername1.contoso.com"",""servername2.contoso.com"",""servername3.contoso.com"",""servername4.contoso.com"""
 New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Named Servers" -DisplayName "Named Servers" -Category "My Saved Searches" -Query $computerGroup -Version 1
 
@@ -186,8 +186,8 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 ```
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Konfigurace analýzy protokolů do indexu Azure diagnostics
-Pro monitorování bez agentů prostředků Azure, prostředky musí být Azure diagnostics povolené a nakonfigurované k zápisu do pracovního prostoru analýzy protokolů. Tento přístup přímo k Log Analytics odesílá data a nevyžaduje data k zápisu do účtu úložiště. Podporované prostředky zahrnují:
+## <a name="configuring-log-analytics-tooindex-azure-diagnostics"></a>Konfigurace tooindex analýzy protokolů Azure diagnostics
+Hello prostředky pro monitorování bez agentů prostředků Azure, je nutné toohave Azure diagnostics povolené a nakonfigurované toowrite tooa pracovní prostor analýzy protokolů. Tento přístup odešle data přímo tooLog analýzy a nevyžaduje toobe data zapsána tooa účet úložiště. Podporované prostředky zahrnují:
 
 | Typ prostředku | Logs | Metriky |
 | --- | --- | --- |
@@ -210,9 +210,9 @@ Pro monitorování bez agentů prostředků Azure, prostředky musí být Azure 
 | Weby               |     | Ano |
 | Webové serverové farmy        |     | Ano |
 
-Podrobnosti k dispozici metrik [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Podrobnosti hello k dispozici metrik hello najdete příliš[podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-Podrobnosti o dostupných protokolů, najdete v části [podporované služby a schématu pro diagnostické protokoly](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+Podrobnosti hello hello k dispozici protokoly najdete příliš[podporované služby a schématu pro diagnostické protokoly](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -222,27 +222,27 @@ $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUP
 Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-Můžete také použít rutinu předchozí ke shromažďování protokolů z prostředků, které se nacházejí v různých předplatných. Rutina je možné pracovat ve předplatných vzhledem k tomu, že zadáte id prostředku vytváření protokoly a protokoly jsou odeslána do pracovního prostoru.
+Můžete také použít hello předcházející rutiny toocollect protokoly z prostředků, které se nacházejí v různých předplatných. rutina Hello je možné toowork ve předplatných vzhledem k tomu, že zadání hello id prostředku obou hello vytváření protokoly a protokoly hello prostoru hello se odesílají do.
 
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>Konfigurace analýzy protokolů do indexu Azure diagnostics z úložiště
-Shromažďování dat protokolu z v rámci spuštěnou instanci classic cloudové služby nebo service fabric cluster, musíte nejprve zapíše data do úložiště Azure. Analýzy protokolů je nakonfigurovaný pro shromažďování protokolů z účtu úložiště. Podporované prostředky zahrnují:
+## <a name="configuring-log-analytics-tooindex-azure-diagnostics-from-storage"></a>Konfigurace tooindex analýzy protokolů Azure diagnostics z úložiště
+toocollect dat protokolu z v rámci spuštěnou instanci classic cloudové služby nebo service fabric cluster, musíte toofirst zápisu hello data tooAzure úložiště. Analýzy protokolů je pak nakonfigurovat toocollect hello protokoly z účtu úložiště hello. Podporované prostředky zahrnují:
 
 * Classic cloudových služeb (webové a pracovní role)
 * Clustery služby infrastruktury
 
-Následující příklad ukazuje postup:
+Následující příklad ukazuje, jak Hello na:
 
-1. Seznam existující účty úložiště a umístění, které bude analýzy protokolů indexu dat z
-2. Vytvořit konfiguraci, kterou chcete číst z účtu úložiště
-3. Aktualizace se nově vytvořená konfigurace data indexu z další umístění
-4. Odstranit nově vytvořenou konfiguraci
+1. Seznam hello existující účty úložiště a umístění, které bude analýzy protokolů indexu dat z
+2. Vytvoření konfigurace tooread z účtu úložiště
+3. Nově vytvořený konfigurační tooindex data z dalších místech hello aktualizace
+4. Odstranit konfiguraci nově vytvořeného hello
 
 ```
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
 $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to  
+# Update these two lines with hello storage account resource ID and hello storage account key for hello storage account you want tooLog Analytics too 
 $storageId = "/subscriptions/ec11ca60-1234-491e-5678-0ea07feae25c/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
@@ -255,12 +255,12 @@ New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resou
 # Update existing insight
 Set-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
 
-# Remove the insight
+# Remove hello insight
 Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" 
 
 ```
 
-Můžete taky uvedený skript ke shromažďování protokolů z účty úložiště v různých předplatných. Skript je možné pracovat ve předplatných vzhledem k tomu, že zadáváte id prostředků účtu úložiště a odpovídající přístupový klíč. Když změníte přístupový klíč, je potřeba aktualizovat náhled úložiště tak, aby měl nový klíč.
+Můžete také použít hello předcházející skriptu toocollect protokoly z účty úložiště v různých předplatných. vzhledem k tomu, že zadáváte id prostředků účtu úložiště hello a odpovídající přístupový klíč je Hello skript schopný toowork ve předplatných. Pokud změníte hello přístupový klíč, je potřeba tooupdate hello úložiště přehledy toohave hello nový klíč.
 
 
 ## <a name="next-steps"></a>Další kroky

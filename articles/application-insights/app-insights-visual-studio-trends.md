@@ -1,5 +1,5 @@
 ---
-title: "Analýza trendů v sadě Visual Studio | Dokumentace Microsoftu"
+title: "aaaAnalyzing trendy v sadě Visual Studio | Microsoft Docs"
 description: "Analyzujte, vizualizujte a zkoumejte trendy v telemetrii služby Application Insights v sadě Visual Studio."
 services: application-insights
 documentationcenter: .net
@@ -13,85 +13,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: bwren
-ms.openlocfilehash: 13fca37303296355ce601333b13110d04fa5fa4e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5c623ec040363f05e80ca927dc8855eb016adc99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analýza trendů v sadě Visual Studio
-Nástroj Trendy Application Insights vizualizuje průběžné změny důležitých telemetrických událostí ve vaší webové aplikaci. Díky tomu můžete rychle identifikovat problémy a anomálie. Nástroj Trendy vám dodá podrobnější diagnostické informace, abyste mohli zlepšit výkon aplikace, sledovat příčiny výjimek a získat přehledy z vlastních událostí.
+Nástroj trendy Application Insights Hello vizualizuje, jak důležité telemetrické události webové aplikace v průběhu času mění, dokážete rychle identifikovat problémy a anomálií. Pomocí propojení můžete toomore podrobné diagnostické informace, trendy vám může pomoct zlepšit výkon vaší aplikace, sledovat hello příčinami výjimek a odkrýt přehledy z vlastních událostí.
 
 ![Příklad okna nástroje Trendy](./media/app-insights-visual-studio-trends/app-insights-trends-hero-750.png)
 
 ## <a name="configure-your-web-app-for-application-insights"></a>Konfigurace webové aplikace pro Application Insights
 
-Pokud jste to ještě neudělali, [nakonfigurujte svou webovou aplikaci pro Application Insights](app-insights-overview.md). Umožní vám to odesílat telemetrii na portál Application Insights. Z něj čte telemetrii nástroj Trendy.
+Pokud jste to ještě neudělali, [nakonfigurujte svou webovou aplikaci pro Application Insights](app-insights-overview.md). To umožňuje, je portál Application Insights toohello toosend telemetrie. Nástroj trendy Hello přečte hello telemetrie z ní.
 
 Nástroj Trendy Application Insights je dostupný v sadě Visual Studio 2015 s aktualizací Update 3 a vyšší.
 
 ## <a name="open-application-insights-trends"></a>Otevření nástroje Trendy Application Insights
-Pokud chcete otevřít okno nástroje Trendy Application Insights, postupujte následovně:
+okno trendy Application Insights tooopen hello:
 
-* na panelu nástrojů Application Insights zvolte **Prozkoumat trendy telemetrie**, nebo
-* v místní nabídce projektu zvolte **Application Insights > Prozkoumat trendy telemetrie**, nebo
-* v řádku nabídek sady Visual Studio zvolte **Zobrazení > Ostatní okna > Trendy Application Insights**.
+* Pomocí tlačítka panelu nástrojů Application Insights hello, zvolte **prozkoumat trendy Telemetrie**, nebo
+* Hello projektu místní nabídce vyberte **Application Insights > prozkoumat trendy Telemetrie**, nebo
+* V řádku nabídek hello Visual Studio, vyberte příkaz **zobrazení > ostatní okna > trendy Application Insights**.
 
-Může se zobrazit výzva k výběru prostředku. Klikněte na **Vybrat prostředek**, přihlaste se pomocí předplatného Azure a potom v seznamu vyberte prostředek Application Insights, u kterého chcete analyzovat trendy telemetrie.
+Může se zobrazit výzva tooselect prostředku. Klikněte na tlačítko **vyberte prostředek**, přihlaste se pomocí předplatného Azure, a potom vyberte prostředek Application Insights hello seznamu, pro kterou chcete tooanalyze telemetrie trendy.
 
 ## <a name="choose-a-trend-analysis"></a>Výběr analýzy trendů
 ![Nabídka běžných typů analýz trendů](./media/app-insights-visual-studio-trends/app-insights-trends-1-750.png)
 
-Začněte výběrem jedné z pěti běžných analýz trendů, kde každá analyzuje data z posledních 24 hodin:
+Začínáme se tak, že zvolíte jednu z pěti běžné analýzy trendů, každý analýza dat z hello posledních 24 hodin:
 
-* **Prozkoumat problémy s výkonem požadavků serveru** – požadavky na vaši službu seskupené podle doby odezvy
-* **Analyzovat chyby v požadavcích serveru** – požadavky na vaši službu seskupené podle kódu odpovědi HTTP
-* **Prozkoumat výjimky v aplikaci** – výjimky služby seskupené podle typu výjimky
-* **Zkontrolovat výkon závislostí aplikace** – služby volané vaší službou seskupené podle doby odezvy
+* **Prozkoumat problémy s výkonem se vaše požadavky serveru** -vytvářeny požadavky služby tooyour, seskupené podle doby odezvy
+* **Analýza chyb ve své žádosti serveru** -vytvářeny tooyour služby, seskupené podle kódu odpovědi HTTP požadavky
+* **Zjištění výjimek hello ve vaší aplikaci** -výjimky z vaší služby, seskupené podle typ výjimky
+* **Kontrola výkonu hello závislostí vaší aplikace** -služby s názvem vaší službou seskupené podle doby odezvy
 * **Zkontrolovat vlastní události** – vlastní události, které jste pro svoji službu nastavili, seskupené podle typu události.
 
-Tyto předdefinované analýzy jsou dostupné i později prostřednictvím tlačítka **Zobrazit běžné typy analýzy telemetrie**, které se nachází v levém horním rohu okna Trendy.
+Předem předdefinované analýzy jsou k dispozici později z hello **zobrazit běžné typy telemetrie analýzy** tlačítka na hello levého horního rohu okna trendy hello.
 
 ## <a name="visualize-trends-in-your-application"></a>Vizualizace trendů v aplikaci
-Nástroj Trendy Application Insights pracuje s telemetrií vaší aplikace a vizualizuje z ní časové řady. Každá vizualizace časové řady zobrazuje jeden typ telemetrie (seskupený podle jedné vlastnosti takové telemetrie) za určité časové období. Můžete například zobrazit požadavky serveru za posledních 24 hodin seskupené podle země původu. V tomto příkladu každá bublina na vizualizaci představuje počet požadavků serveru pro určitou zemi/oblast během jedné hodiny.
+Nástroj Trendy Application Insights pracuje s telemetrií vaší aplikace a vizualizuje z ní časové řady. Každá vizualizace časové řady zobrazuje jeden typ telemetrie (seskupený podle jedné vlastnosti takové telemetrie) za určité časové období. Například můžete požadavků na server tooview seskupené podle hello země, ze kterého budou pochází, přes hello posledních 24 hodin. V tomto příkladu by každý bublin na hello vizualizace představují počet hello požadavky serveru pro některé země nebo oblast během jedné hodiny.
 
-Pomocí ovládacích prvků v horní části okna nastavte typy telemetrie, které chcete zobrazit. Nejdřív vyberte typy telemetrie, které vás zajímají:
+Pomocí ovládacích prvků hello hello horní části okna tooadjust hello jaké typy telemetrických dat zobrazení. Nejdřív vyberte hello telemetrie typy, které byste chtěli:
 
 * **Typ telemetrie** – požadavky serveru, výjimky, závislosti nebo vlastní události.
-* **Časový rozsah** – jakýkoli od posledních 30 minut po poslední 3 dny.
+* **Časové rozmezí** – kdekoli z hello posledních 30 minut toohello poslední 3 dny.
 * **Seskupit podle** – typ výjimky, ID problému, země/oblast a další.
 
-Potom klikněte na **Analyzovat telemetrii** a spusťte dotaz.
+Potom klikněte na **analyzovat Telemetrická** toorun hello dotazu.
 
-Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
+toonavigate mezi bublinách v hello vizualizaci:
 
-* Kliknutím vyberte bublinu, která aktualizuje filtry v dolní části okna a shrnuje jenom události, které nastaly během konkrétního časového období.
-* Poklikáním na bublinu přejděte do nástroje hledání a zobrazte všechny jednotlivé telemetrické události, které během tohoto časového období nastaly.
-* Pokud chcete zrušit výběr bubliny ve vizualizaci, podržte klávesu Ctrl a klikněte na bublinu.
+* Klikněte na tlačítko tooselect bubliny, která aktualizuje hello filtry dolnímu hello okna hello shrnutí jenom hello událostí, které nastaly v konkrétním časovém období
+* Dvakrát klikněte na nástroj bublin toonavigate toohello hledání a zobrazit všechny hello jednotlivých telemetrické události, k nimž došlo během tohoto časového období
+* CTRL + kliknutí bublin toode vyberte ho v hello vizualizace.
 
 > [!TIP]
-> Nástroj Trendy a nástroj hledání vám společně pomáhají mezi tisíci telemetrických událostí identifikovat příčiny problémů vaší služby. Pokud si vaši zákazníci například jedno odpoledne všimnou, že je odezva aplikace pomalejší, spusťte nástroj Trendy. Analyzujte požadavky na vaši službu za posledních několik hodin, seskupené podle doby odezvy. Zjistěte, jestli se neobjevil neobvykle velký cluster pomalých požadavků. Poklikáním na tuto bublinu přejdete do nástroje hledání, který se filtruje podle těchto událostí žádostí. Pomocí hledání můžete prozkoumat obsah těchto požadavků a přejít k problematickému kódu, abyste mohli problém vyřešit.
+> Hello trendy a hledání nástroje spolupracují toohelp přesné hello požadovaného problémy ve službě mezi tisíce telemetrické události. Pokud si vaši zákazníci například jedno odpoledne všimnou, že je odezva aplikace pomalejší, spusťte nástroj Trendy. Analýza požadavky služby tooyour přes hello několika posledních hodinách, seskupené podle doby odezvy. Zjistěte, jestli se neobjevil neobvykle velký cluster pomalých požadavků. Dvakrát klikněte tohoto bublin toogo toohello vyhledávání nástroje, události filtrovaný toothose žádostí. Z hledání, vám umožní zkoumat hello obsah těchto požadavků a přejděte toohello kód potřebný tooresolve hello problém.
 > 
 > 
 
 ## <a name="filter"></a>Filtr
-Pomocí ovládacích prvků filtru v dolní části okna můžete zjistit konkrétnější trendy. Pokud chcete filtr použít, klikněte na jeho název. Mezi různými filtry můžete rychle přepínat a zjišťovat tak trendy, které se můžou skrývat v konkrétní dimenzi telemetrie. Když filtr použijete v jedné dimenzi, například v typu výjimky, můžete na filtry v ostatních dimenzích stále klikat, i když jsou zobrazené šedě. Pokud chcete zrušit používání filtru, klikněte na něj znovu. Podržením klávesy Ctrl a následným klikáním můžete vybrat několik filtrů ve stejné dimenzi.
+Zjistit konkrétnější trendy s ovládacími prvky filtru hello v hello dolní části okna hello. tooapply filtr, klikněte na jeho název. Můžete rychle přepínat mezi trendy toodiscover různých filtrů, které může být skrytí v konkrétní dimenzi vaší telemetrie. Pokud použijete filtr ve funkci jednou dimenzí, jako je typ výjimky, zůstanou filtry v ostatních dimenzí můžete kliknout, i když se zobrazí šedě. tooun-použít filtr, klikněte na znovu. CTRL + kliknutí tooselect více filtrů v hello stejné dimenze.
 
 ![Filtry trendů](./media/app-insights-visual-studio-trends/TrendsFiltering-750.png)
 
-Jak postupovat, když chcete použít několik filtrů. 
+Co dělat, když chcete tooapply více filtrů? 
 
-1. Použijte první filtr. 
-2. Klikněte na tlačítko **Použít vybrané filtry a znova poslat dotaz** vedle názvu dimenze prvního filtru. Tím bude znovu odeslán dotaz na telemetrii a bude se týkat jenom událostí, které odpovídají prvnímu filtru. 
+1. Použijte první filtr hello. 
+2. Klikněte na tlačítko hello **použít vybrané filtry a dotazy znovu** tlačítko podle názvu hello hello dimenze první filtru. To bude dotaz znovu telemetrii pouze události, které odpovídají filtru první hello. 
 3. Použijte druhý filtr. 
-4. Proces opakujte tak dlouho, až trendy v konkrétní podmnožině telemetrie najdete. Například požadavky serveru s názvem „GET Home/Index“ *a* ty, které přišly z Německa *a* získaly stavový kód 500. 
+4. Opakujte hello proces toofind trendy v konkrétní podmnožiny telemetrie. Například požadavky serveru s názvem „GET Home/Index“ *a* ty, které přišly z Německa *a* získaly stavový kód 500. 
 
-Pokud chcete zrušit používání jednoho z těchto filtrů, klikněte u příslušné dimenze na tlačítko **Odstranit vybrané filtry a poslat dotaz znova**.
+tooun-použít jednu z těchto filtry, klikněte na hello **odebrat vybrané filtry a dotazy znovu** tlačítko pro dimenzi hello.
 
 ![Několik filtrů](./media/app-insights-visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Nalezení anomálií
-Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)**. Červené bubliny označují anomálie. Anomálie se definují jako bubliny s poměrem počty/procenta, který je vyšší než 2,1 násobek směrodatné odchylky poměru počty/procenta, ke kterým došlo v posledních dvou časových obdobích (48 hodin, pokud zobrazujete posledních 24 hodin atd.).
+Nástroj trendy Hello můžete zvýraznit bublinách události, které jsou neobvyklé porovnání tooother bublinách v hello stejné časové řady. V rozevírací nabídce hello typ zobrazení, zvolte **spočítá v sady času (zvýraznění anomálií)** nebo **procenta v sady času (zvýraznění anomálií)**. Červené bubliny označují anomálie. Anomálie jsou definovány jako bubliny s počty/procenta přesahující 2.1 časy hello směrodatnou odchylku hello počty nebo procentuální hodnoty, které došlo k chybě v hello po dvou časových období (48 hodin, pokud zobrazíte hello posledních 24 hodin, atd.).
 
 ![Barevné tečky označují anomálie.](./media/app-insights-visual-studio-trends/TrendsAnomalies-750.png)
 
@@ -103,7 +103,7 @@ Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání 
 ## <a name="next"></a>Další kroky
 |  |  |
 | --- | --- |
-| **[Práce s Application Insights v sadě Visual Studio](app-insights-visual-studio.md)**<br/>Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. |![Klikněte pravým tlačítkem myši na projekt a vyberte Application Insights, Vyhledávání](./media/app-insights-visual-studio-trends/34.png) |
+| **[Práce s Application Insights v sadě Visual Studio](app-insights-visual-studio.md)**<br/>Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. |![Klikněte pravým tlačítkem na projekt hello a vyberte Application Insights, vyhledávání](./media/app-insights-visual-studio-trends/34.png) |
 | **[Přidání dalších dat](app-insights-asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/app-insights-visual-studio-trends/64.png) |
-| **[Práce s portálem Application Insights](app-insights-dashboards.md)**<br/>Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
+| **[Práce s Application Insights portál hello](app-insights-dashboards.md)**<br/>Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
 

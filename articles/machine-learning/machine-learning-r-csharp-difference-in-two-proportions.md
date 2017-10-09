@@ -1,5 +1,5 @@
 ---
-title: "(nepoužívané) Rozdíl v testu proporce - Azure | Microsoft Docs"
+title: "AAA(Deprecated) rozdíl v testu proporce - Azure | Microsoft Docs"
 description: "(nepoužívané) Rozdíl v proporce testu"
 services: machine-learning
 documentationcenter: 
@@ -16,47 +16,47 @@ ms.date: 01/06/2017
 ms.author: aniedea
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: a08f91ca76eef2562caeb9eb64cec5e549ed2f5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 820aad377f9dec12b0ef455974aaa95f6e8d723a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-difference-in-proportions-test"></a>(nepoužívané) Rozdíl v proporce testu
 
 > [!NOTE]
-> Microsoft DataMarket se postupně vyřazuje z provozu a toto rozhraní API je zastaralá. 
+> Hello Microsoft DataMarket se postupně vyřazuje z provozu a toto rozhraní API je zastaralá. 
 > 
-> Můžete najít mnoho užitečné příklad experimentů a rozhraní API v [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Další informace o galerii najdete v tématu [sdílené složky a zjišťovat prostředky ve Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Mnoho užitečné příklad experimentů a rozhraní API můžete najít v hello [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Další informace o hello Galerie najdete v tématu [sdílené složky a zjišťovat prostředky ve hello Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Jsou dvě proporce statisticky různých? Předpokládejme, že uživatel chce k porovnání dvou filmy určit, pokud má jedna film výrazně vyšší poměr 'líbí, při porovnání na druhý. S ukázkovým velké může být statisticky velký rozdíl mezi proporce 0,50 a 0,51. Pomocí malé ukázkové nemusí být dostatek dat. určí, jestli je ve skutečnosti různých tyto poměr stran. 
+Jsou dvě proporce statisticky různých? Předpokládejme, že uživatel chce toodetermine toocompare dva filmy, pokud jeden film má podstatně vyšší poměr 'líbí, při porovnání toohello jiné. S ukázkovým velké může být statisticky velký rozdíl mezi proporce hello 0,50 a 0,51. Pomocí malé ukázkové pravděpodobně není dostatek dat toodetermine Pokud tyto proporce ve skutečnosti liší. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-To [webovou službu](https://datamarket.azure.com/dataset/aml_labs/prop_test) provádí předpoklad testu rozdíl ve dvou hodnot založena na vstup uživatele počet úspěchů a celkový počet pokusů pro skupiny 2 porovnání. V jeden z možných scénářů této webové služby může být volána v rámci filmová porovnání aplikace, která uživatele vyzve, zda mezi filmy je skutečně 'líbilo' častěji než druhý, na základě film hodnocení.
+To [webovou službu](https://datamarket.azure.com/dataset/aml_labs/prop_test) provádí předpoklad testu hello rozdíl dvou hodnot založena na vstup uživatele hello počet úspěchů a celkový počet pokusů pro skupiny porovnání hello 2 hello. V jeden z možných scénářů této webové služby může být volána v rámci filmová porovnání aplikace hello uživatele informuje, zda jeden filmy hello je skutečně 'líbilo' častěji než hello jiných, na základě film hodnocení.
 
-> Tato webová služba může spotřebovat uživateli – potenciálně prostřednictvím mobilní aplikace prostřednictvím webu, nebo i v místním počítači, třeba. Ale účelem webové služby je také slouží jako příklad použití Azure Machine Learning k vytvoření webové služby v kódu jazyka R. Zadání několika řádků kódu jazyka R a klikne na tlačítko v rámci Azure Machine Learning Studio můžete experimentu vytvořené pomocí kódu jazyka R a publikovat jako webovou službu. Webové služby můžete pak publikování na webu Azure Marketplace a spotřebovávají uživatelů a zařízení po celém světě s žádné nastavení infrastruktury autorem webové služby.
+> Tato webová služba může spotřebovat uživateli – potenciálně prostřednictvím mobilní aplikace prostřednictvím webu, nebo i v místním počítači, třeba. Ale hello účelem hello webové služby je také tooserve jako příklad, jak Azure Machine Learning lze použít toocreate webové služby v kódu jazyka R. Zadání několika řádků kódu jazyka R a klikne na tlačítko v rámci Azure Machine Learning Studio můžete experimentu vytvořené pomocí kódu jazyka R a publikovat jako webovou službu. Hello webové služby může být pak publikované toohello Azure Marketplace a využívat tak, že uživatelé a zařízení napříč hello, world s žádné nastavení infrastruktury autorem hello hello webové služby.
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Spotřeba webové služby
 Tato služba přijímá argumenty 4 a nepodporuje testování předpoklad z poměr stran.
 
-Vstupní argumenty jsou:
+Hello vstupní argumenty jsou:
 
 * Successes1 - počet událostí úspěšného v ukázce 1.
 * Successes2 - počet událostí úspěšného v ukázce 2.
 * Total1 – velikost vzorku 1.
 * Total2 – velikost vzorku 2.
 
-Výstup služby je výsledkem předpoklad testování společně s chi-square statistiky, df, p hodnota a deklarovaná čistá nebo hrubá v ukázkové 1/2 a interval spolehlivosti hranice.
+výstup Hello hello služby je hello výsledek hello předpoklad testování společně s hello chi-square statistiky, df, p hodnota a deklarovaná čistá nebo hrubá v ukázkové 1/2 a interval spolehlivosti hranice.
 
-> Tato služba jako hostované v Azure Marketplace je službou OData. To může být volána prostřednictvím metody POST nebo GET. 
+> Tato služba jako hostované na hello Azure Marketplace, je službou OData. To může být volána prostřednictvím metody POST nebo GET. 
 > 
 > 
 
-Existuje více způsobů využívání služby automatizovaně (je třeba aplikace [sem](http://microsoftazuremachinelearning.azurewebsites.net/DifferenceInProportionsTest.aspx)).
+Existuje více způsobů využívání služby hello automatizovaně (je třeba aplikace [sem](http://microsoftazuremachinelearning.azurewebsites.net/DifferenceInProportionsTest.aspx)).
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Spouštění kódu C# pro používání webové služby:
     public class Input
@@ -90,11 +90,11 @@ Existuje více způsobů využívání služby automatizovaně (je třeba aplika
 
 
 ## <a name="creation-of-web-service"></a>Vytvoření webové služby
-> Této webové služby byl vytvořen pomocí Azure Machine Learning. Pro bezplatnou zkušební verzi, jakož i úvodní videa na vytváření experimentů a [publikování webových služeb](machine-learning-publish-a-machine-learning-web-service.md), najdete v tématu [azure.com/ml](http://azure.com/ml). Níže je snímek obrazovky experimentu, který vytvořené pro každou z modulů v rámci experimentu webové služby a příklad kódu.
+> Této webové služby byl vytvořen pomocí Azure Machine Learning. Pro bezplatnou zkušební verzi, jakož i úvodní videa na vytváření experimentů a [publikování webových služeb](machine-learning-publish-a-machine-learning-web-service.md), najdete v tématu [azure.com/ml](http://azure.com/ml). Níže je snímek obrazovky hello experimentu, který vytvořili hello webové služby a příklad kódu pro každou hello modulů v rámci experimentu hello.
 > 
 > 
 
-Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen se dvěma [spustit skript jazyka R] [ execute-r-script] moduly. V první modul, který je definován schéma dat zatímco druhý modul používá příkaz prop.test v rámci R Pokud chcete provést test předpoklad 2 poměr stran. 
+Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen se dvěma [spustit skript jazyka R] [ execute-r-script] moduly. V modulu první hello je definována schéma dat hello, druhý modul hello používá příkaz prop.test hello v rámci R tooperform hello předpoklad testovací k 2 poměr stran. 
 
 ### <a name="experiment-flow"></a>Experiment toku:
 ![Tok experimentu][2]
@@ -102,7 +102,7 @@ Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen se 
 #### <a name="module-1"></a>Modul 1:
     ####Schema definition  
     data.set=data.frame(successes1=50,successes2=60,total1=100,total2=100);
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
     dataset1 = maml.mapInputPort(1) #read data from input port
 
 
@@ -110,8 +110,8 @@ Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen se 
     test=prop.test(c(dataset1$successes1[1],dataset1$successes2[1]),c(dataset1$total1[1],dataset1$total2[1])) #conduct hypothesis test
 
     result=data.frame(
-    result=ifelse(test$p.value<0.05,"The proportions are different!",
-    "The proportions aren't different statistically."),
+    result=ifelse(test$p.value<0.05,"hello proportions are different!",
+    "hello proportions aren't different statistically."),
     ChiSquarestatistic=round(test$statistic,2),df=test$parameter,
     pvalue=round(test$p.value,4),
     proportion1=round(test$estimate[1],4),
@@ -123,10 +123,10 @@ Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen se 
 
 
 ## <a name="limitations"></a>Omezení
-Toto je velmi jednoduchý příklad pro test rozdíl v poměru 2. Jak je vidět z výše uvedený ukázkový kód, je implementovaný zachycení žádné chyby a službu předpokládá, že se průběžné všech proměnných.
+Toto je velmi jednoduchý příklad pro test rozdíl v poměru 2. Jak je vidět z výše uvedený kód příklad hello, je implementovaný zachycení žádné chyby a hello služby předpokládá, že se všechny proměnné hello průběžné.
 
 ## <a name="faq"></a>Nejčastější dotazy
-Nejčastější dotazy o spotřebě webové služby nebo publikování na webu Azure Marketplace naleznete v části [zde](machine-learning-marketplace-faq.md).
+Nejčastější dotazy o spotřebě hello webové služby nebo publikování toohello Azure Marketplace naleznete v části [zde](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-difference-in-two-proportions/hyptest-img1.png
 [2]: ./media/machine-learning-r-csharp-difference-in-two-proportions/hyptest-img2.png

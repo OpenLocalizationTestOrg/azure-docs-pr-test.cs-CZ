@@ -1,5 +1,5 @@
 ---
-title: Integraci sady Azure Mobile Engagement Android SDK
+title: aaaAzure integraci sady Android SDK Mobile Engagement
 description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,28 +14,28 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
-ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4ab6143771bdc0758a548abb529d6bde98fc0e4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-integrate-engagement-reach-on-android"></a>Postup při integraci Engagement Reach pro Android
+# <a name="how-toointegrate-engagement-reach-on-android"></a>Jak tooIntegrate Engagement Reach pro Android
 > [!IMPORTANT]
-> Postupujte podle integrace postup popsaný v tom, jak integrovat Engagement Android dokumentu před těchto pokynů.
+> Postupujte podle hello integrace postup popsaný v hello jak tooIntegrate Engagement v systému Android dokumentu před těchto pokynů.
 > 
 > 
 
 ## <a name="standard-integration"></a>Standardní integrace
 
-Zkopírujte soubory prostředků Reach ze sady SDK do projektu:
+Zkopírujte soubory prostředků Reach z hello SDK do projektu:
 
-* Kopírování souborů `res/layout` složky doručit pomocí sady SDK do `res/layout` složky vaší aplikace.
-* Kopírování souborů `res/drawable` složky doručit pomocí sady SDK do `res/drawable` složky vaší aplikace.
+* Zkopírujte soubory hello z hello `res/layout` složky doručit s hello SDK do hello `res/layout` složky vaší aplikace.
+* Zkopírujte soubory hello z hello `res/drawable` složky doručit s hello SDK do hello `res/drawable` složky vaší aplikace.
 
 Upravit vaše `AndroidManifest.xml` souboru:
 
-* Přidejte následující část (mezi `<application>` a `</application>` značky):
+* Přidejte následující části hello (mezi hello `<application>` a `</application>` značky):
   
           <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
             <intent-filter>
@@ -78,47 +78,47 @@ Upravit vaše `AndroidManifest.xml` souboru:
               <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
             </intent-filter>
           </receiver>
-* Potřebujete tato oprávnění opakování systémová oznámení, které nebyly použity při spuštění (jinak zůstanou na disku, ale už se nezobrazí, je opravdu nutné zahrnout to).
+* Potřebujete tato oprávnění tooreplay systémová oznámení, které nebyly použity při spuštění (jinak zůstanou na disku, ale už se nezobrazí, skutečně máte tooinclude to).
   
           <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-* Určení ikony pro oznámení (v aplikaci a systému ty, které jsou i) používané kopírování a úpravy v následující části (mezi `<application>` a `</application>` značky):
+* Určení ikony pro oznámení (v aplikaci a systému ty, které jsou i) používané kopírování a úpravy hello následující části (mezi hello `<application>` a `</application>` značky):
   
           <meta-data android:name="engagement:reach:notification:icon" android:value="<name_of_icon_WITHOUT_file_extension_and_WITHOUT_'@drawable/'>" />
 
 > [!IMPORTANT]
-> Tato část se **povinné** Pokud máte v úmyslu používat systémová oznámení při vytváření kampaně Reach. Android zabrání systémová oznámení bez ikony se zobrazí. Proto pokud vynecháte v této části, koncoví uživatelé nebudou moci přijímat.
+> Tato část se **povinné** Pokud máte v úmyslu používat systémová oznámení při vytváření kampaně Reach. Android zabrání systémová oznámení bez ikony se zobrazí. Takže pokud není v této části vaši koncoví uživatelé nebudou moct tooreceive je.
 > 
 > 
 
-* Pokud vytvoříte kampaně s systémová oznámení pomocí velký obrázek, je nutné přidat následující oprávnění (po `</application>` značka) Pokud chybí:
+* Pokud vytvoříte kampaně s systémová oznámení pomocí velký obrázek, potřebujete následující oprávnění hello tooadd (po hello `</application>` značka) Pokud chybí:
   
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
           <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
   
   * V systému Android M a pokud aplikace cílí úroveň rozhraní API systému Android 23 nebo vyšší ``WRITE_EXTERNAL_STORAGE`` oprávnění vyžaduje schválení uživatelem. Přečtěte si prosím [v této části](mobile-engagement-android-integrate-engagement.md#android-m-permissions).
-* Pro systémová oznámení je můžete také zadat v kampaně Reach Pokud by se prstence nebo zavibrovat zařízení. U ho na spolupráci, budete muset zajistěte, aby deklarovaný následující oprávnění (po `</application>` značka):
+* Pro systémová oznámení, které můžete také zadat v hello dosáhnout kampaň, pokud by se prstence nebo zavibrovat hello zařízení. Pro něj toowork, máte jistotu deklarovaný hello následující oprávnění toomake (po hello `</application>` značka):
   
           <uses-permission android:name="android.permission.VIBRATE" />
   
-  Bez tohoto oprávnění zabrání Android systémových oznámení se zobrazí, pokud zkontroluje okruhu nebo možnost vibrate ve Správci kampaně Reach.
+  Bez tohoto oprávnění zabrání Android systémových oznámení se zobrazí v případě, že je zaškrtnuté hello prstenec nebo hello zavibrovat možnost v manažer kampaně Reach hello.
 
 ## <a name="native-push"></a>Nativního nabízení
-Teď, když jste nakonfigurovali modul Reach, budete muset nakonfigurovat nativního nabízení být schopný přijímat kampaně v zařízení.
+Teď, když jste nakonfigurovali modul Reach, je nutné tooconfigure nativního nabízení toobe možné tooreceive hello kampaně v zařízení hello.
 
 V systému Android podporujeme dvě služby:
 
-* Google Play zařízení: použití [Google Cloud Messaging] podle [jak integrovat GCM s Engagement průvodce](mobile-engagement-android-gcm-integrate.md) průvodce.
-* Zařízení Amazon: použití [Amazon Device Messaging] podle [jak integrovat ADM s Engagement průvodce](mobile-engagement-android-adm-integrate.md) průvodce.
+* Google Play zařízení: použití [Google Cloud Messaging] podle následující hello [jak tooIntegrate GCM s Engagement průvodce](mobile-engagement-android-gcm-integrate.md) průvodce.
+* Zařízení Amazon: použití [Amazon Device Messaging] podle následující hello [jak tooIntegrate ADM s Engagement průvodce](mobile-engagement-android-adm-integrate.md) průvodce.
 
-Pokud chcete zacílit Amazon a webu Google Play zařízení, jeho možné mít všechno uvnitř 1 AndroidManifest.xml/APK pro vývoj. Ale při odesílání do Amazon, pokud se najdou GCM kódu může zamítnutí vaší aplikace.
+Pokud chcete, aby tootarget Amazon a webu Google Play zařízení, jeho možných toohave všechno uvnitř 1 AndroidManifest.xml/APK pro vývoj. Ale při odesílání tooAmazon, pokud se najdou GCM kódu může zamítnutí vaší aplikace.
 
 V takovém případě byste měli používat více APKs.
 
-**Aplikace je nyní připraven přijmout a zobrazit kampaně reach!**
+**Aplikace je nyní připraven tooreceive a zobrazení kampaně reach!**
 
-## <a name="how-to-handle-data-push"></a>Postupy: zpracování datová oznámení
+## <a name="how-toohandle-data-push"></a>Jak nabízená toohandle dat
 ### <a name="integration"></a>Integrace
-Pokud chcete aplikace nebudou moct přijímat Reach datová oznámení, je nutné vytvořit podtřídou třídy `com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver` a odkazovat na jeho `AndroidManifest.xml` souboru (mezi `<application>` nebo `</application>` značky):
+Pokud chcete toobe vaší aplikací mít tooreceive Reach data nabízených oznámení, je třeba toocreate podtřídou třídy `com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver` a odkazujete v hello `AndroidManifest.xml` souboru (mezi hello `<application>` nebo `</application>` značky):
 
             <receiver android:name="<your_sub_class_of_com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver>"
               android:exported="false">
@@ -127,7 +127,7 @@ Pokud chcete aplikace nebudou moct přijímat Reach datová oznámení, je nutn�
               </intent-filter>
             </receiver>
 
-Pak můžete přepsat `onDataPushStringReceived` a `onDataPushBase64Received` zpětných volání. Zde naleznete příklad:
+Pak můžete přepsat hello `onDataPushStringReceived` a `onDataPushBase64Received` zpětných volání. Zde naleznete příklad:
 
             public class MyDataPushReceiver extends EngagementReachDataPushReceiver
             {
@@ -148,46 +148,46 @@ Pak můžete přepsat `onDataPushStringReceived` a `onDataPushBase64Received` zp
             }
 
 ### <a name="category"></a>Kategorie
-Kategorie parametr je volitelný při vytváření kampaň nabízených Data a umožňuje že vám data filtru nabízených oznámení. To je užitečné, pokud máte několik všesměrového vysílání příjemci zpracování různé typy dat nabízených oznámení, nebo pokud chcete push různých druhů z `Base64` dat a chcete určit jejich typů před analýzou je.
+Hello kategorie parametr je volitelný při vytváření kampaň nabízených Data a umožňuje že vám toofilter data nabízených oznámení. To je užitečné, pokud máte několik všesměrového vysílání příjemci zpracování různé typy dat nabízených oznámení, nebo pokud chcete různé typy toopush z `Base64` dat a chcete tooidentify jejich typů před analýzou je.
 
 ### <a name="callbacks-return-parameter"></a>Návratový parametr zpětných volání.
-Zde je několik doporučení správně zpracovat návratový parametr `onDataPushStringReceived` a `onDataPushBase64Received`:
+Tady jsou některé pokyny tooproperly popisovač hello návratový parametr `onDataPushStringReceived` a `onDataPushBase64Received`:
 
-* Všesměrového vysílání příjemce by měla vrátit `null` v zpětného volání, pokud ho nebude vědět, jak pro zpracování dat push. Kategorie používejte k určení, zda má váš všesměrového vysílání přijímač zpracovávat datová oznámení nebo ne.
-* Jeden z všesměrového vysílání příjemce by měla vrátit `true` v zpětného volání, pokud ji přijímá datová oznámení.
-* Jeden z všesměrového vysílání příjemce by měla vrátit `false` v zpětného volání, pokud rozpozná datová oznámení, ale zahodí z jakéhokoliv důvodu. Například vrátit `false` při přijatá data jsou neplatná.
-* Pokud jeden vysílání příjemce vrátí `true` při jiné jeden vrátí `false` pro stejné datová oznámení chování není definován, měli byste nikdy udělat.
+* Všesměrového vysílání příjemce by měla vrátit `null` v hello zpětného volání, pokud nebude vědět, jak nabízená toohandle data. Měli byste použít hello kategorie toodetermine zda přijímač všesměrového vysílání by měla řídit hello datová oznámení, nebo ne.
+* Jeden z hello všesměrového vysílání příjemce by měla vrátit `true` v hello zpětného volání, pokud ji přijímá hello datová oznámení.
+* Jeden z hello všesměrového vysílání příjemce by měla vrátit `false` v hello zpětného volání, pokud rozpozná hello datová oznámení, ale zahodí z jakéhokoliv důvodu. Například vrátit `false` při hello přijal data jsou neplatná.
+* Pokud jeden vysílání příjemce vrátí `true` při jiné jeden vrátí `false` pro hello stejné datová oznámení, hello chování není definován, měli byste nikdy udělat.
 
-Návratový typ se používá pouze pro Reach statistiky:
+Hello návratový typ se používá pouze pro hello Reach statistiky:
 
-* `Replied`se zvýší, pokud jeden z všesměrového vysílání příjemci vrácen buď `true` nebo `false`.
-* `Actioned`se zvýší, pouze v případě, že jeden všesměrového vysílání příjemci vrátil `true`.
+* `Replied`se zvýší, pokud jeden z všesměrového vysílání příjemci hello vrácen buď `true` nebo `false`.
+* `Actioned`se zvýší, pouze v případě, že jeden z hello vysílání příjemci vrátil `true`.
 
-## <a name="how-to-customize-campaigns"></a>Postup přizpůsobení kampaně
-Chcete-li přizpůsobit kampaní, můžete upravit rozložení poskytovaných v sadě SDK dosáhnout.
+## <a name="how-toocustomize-campaigns"></a>Jak toocustomize kampaně
+toocustomize kampaní, můžete upravit rozložení hello součástí hello Reach SDK.
 
-Měli byste zachovat všechny identifikátory použité v rozložení a typy zobrazení, která použijte identifikátor, hlavně pro zobrazení textu zobrazení bitové kopie a zachovat. Některá zobrazení se právě používají pro skrytí nebo zobrazení oblasti, tak jejich typ může být změněn. Pokud chcete změnit typ zobrazení v zadané rozložení Zkontrolujte zdrojový kód.
+Měli byste zachovat všechny identifikátory hello použité v hello rozložení a hello typy hello zobrazení, která použijte identifikátor, hlavně pro zobrazení textu zobrazení bitové kopie a zachovat. Některá zobrazení jsou právě používané toohide nebo zobrazit oblastí, jejich typ může být změněn. Pokud máte v úmyslu toochange hello typ zobrazení v hello zadat rozložení zkontrolujte hello zdrojového kódu.
 
 ### <a name="notifications"></a>Oznámení
 Existují dva typy oznámení: systém a v aplikaci oznámení, které používají různé rozložení soubory.
 
 #### <a name="system-notifications"></a>Systémová oznámení
-Chcete-li přizpůsobit systémová oznámení, budete muset použít **kategorie**. Můžete přejít na [kategorie](#categories).
+Systémová oznámení toocustomize potřebujete toouse hello **kategorie**. Můžete přeskočit příliš[kategorie](#categories).
 
 #### <a name="in-app-notifications"></a>Oznámení v aplikaci
-Ve výchozím nastavení, oznámení v aplikaci je zobrazení, která se dynamicky přidá do uživatelského rozhraní aktuální aktivity díky Android metoda `addContentView()`. Tomu se říká překrytí oznámení. Překryvy oznámení jsou skvělý pro rychlé integraci, protože nevyžadují, abyste upravili žádné rozložení v aplikaci.
+Ve výchozím nastavení, oznámení v aplikaci je zobrazení, které je dynamicky přidané toohello aktuální aktivity uživatelské rozhraní Děkujeme toohello Android metoda `addContentView()`. Tomu se říká překrytí oznámení. Překryvy oznámení jsou skvělý pro rychlé integraci, protože nevyžadují toomodify jste žádné rozložení v aplikaci.
 
-Pokud chcete upravit vzhled vaší překryvy oznámení, můžete jednoduše upravit soubor `engagement_notification_area.xml` vašim potřebám.
+Vzhled hello toomodify vaše překryvy oznámení, jednoduše soubor můžete upravit hello `engagement_notification_area.xml` tooyour potřebuje.
 
 > [!NOTE]
-> Soubor `engagement_notification_overlay.xml` je ten, který se používá k vytvoření oznámení překrytí, obsahuje soubor `engagement_notification_area.xml`. Můžete také přizpůsobit ho tak, aby vyhovovala vašim potřebám (například pro umístění oznamovací oblasti v rámci překrytí).
+> soubor Hello `engagement_notification_overlay.xml` je ten, který je použité toocreate hello oznámení překrytí, obsahuje soubor hello `engagement_notification_area.xml`. Můžete taky přizpůsobit ho toosuit vašim potřebám (například pro umístění hello oznamovací oblasti v rámci překrytí hello).
 > 
 > 
 
 ##### <a name="include-notification-layout-as-part-of-an-activity-layout"></a>Zahrnout rozložení oznámení jako součást rozložení aktivity
-Překryvy se výborně hodí pro rychlé integrace, ale můžete bylo nepraktické nebo mít vedlejší účinky ve zvláštních případech. Systém překrytí lze přizpůsobit na úrovni aktivity, a usnadňuje tak zabránit vedlejší účinky pro speciální aktivity.
+Překryvy se výborně hodí pro rychlé integrace, ale můžete bylo nepraktické nebo mít vedlejší účinky ve zvláštních případech. Hello překrytí systému lze přizpůsobit na úrovni aktivity, takže je easy tooprevent vedlejší účinky pro speciální aktivity.
 
-Můžete se rozhodnout zahrnout naše rozložení oznámení do vaší stávající rozložení díky Android **zahrnují** příkaz. Tady je příklad upravené `ListActivity` rozložení obsahující jenom `ListView`.
+Můžete rozhodnout tooinclude naše rozložení oznámení ve vaší stávající toohello Děkujeme rozložení Android **zahrnují** příkaz. Hello tady je příklad upravené `ListActivity` rozložení obsahující jenom `ListView`.
 
 **Před integraci sady Engagement:**
 
@@ -217,33 +217,33 @@ Můžete se rozhodnout zahrnout naše rozložení oznámení do vaší stávají
 
             </LinearLayout>
 
-V tomto příkladu jsme přidali nadřazený kontejner, protože původní rozložení použity zobrazení seznamu jako element nejvyšší úrovně. Jsme přidali i `android:layout_weight="1"` moct přidat zobrazení níže zobrazení seznamu nakonfigurované `android:layout_height="fill_parent"`.
+V tomto příkladu jsme přidali nadřazený kontejner, protože původní rozložení hello používá zobrazení seznamu jako nejvyšší úrovně element hello. Jsme přidali i `android:layout_weight="1"` toobe možné tooadd nakonfigurované níže zobrazení seznamu zobrazení `android:layout_height="fill_parent"`.
 
-Engagement Reach SDK automaticky zjistí, že rozložení oznámení je zahrnutá v této aktivitě a nepřidá překrytí pro tuto aktivitu.
+Hello Engagement Reach SDK automaticky rozpozná, že rozložení oznámení hello je součástí této aktivity a nepřidá překrytí pro tuto aktivitu.
 
 > [!TIP]
-> Pokud používáte ListActivity ve vaší aplikaci, bude reagovat na kliknutí na položky v zobrazení seznamu už zabránit viditelné překrytí Reach. Jedná se o známý problém. Chcete-li vyřešit tento problém, doporučujeme vám vložení rozložení oznámení v rozložení vlastní seznam aktivitu jako v předchozí ukázce aplikací.
+> Pokud používáte ve vaší aplikaci ListActivity, viditelné překrytí Reach zabrání reagující tooclicked položky v zobrazení seznamu hello už. Jedná se o známý problém. toowork tento problém vyřešit, doporučujeme vám tooembed hello oznámení rozložení v rozložení vlastní seznam aktivitu jako v předchozím příkladu hello.
 > 
 > 
 
 ##### <a name="disabling-application-notification-per-activity"></a>Zakázat oznámení aplikace na aktivitu
-Pokud nechcete, aby překrytí přidávaného do vaší aktivity, a pokud nezadáte rozložení oznámení ve vaší vlastní rozložení, můžete zakázat v překrytí pro tuto aktivitu v `AndroidManifest.xml` přidáním `meta-data` oddílu, jako v následujícím příkladu:
+Pokud nechcete, aby hello překrytí toobe přidány tooyour aktivity, a pokud nezadáte hello oznámení rozložení v vlastní rozložení, můžete zakázat hello překrytí pro tuto aktivitu v hello `AndroidManifest.xml` přidáním `meta-data` části stejně jako v nástroji následující hello Příklad:
 
             <activity android:name="SplashScreenActivity">
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
 #### <a name="categories"></a>Kategorie
-Při úpravě zadané rozložení upravíte vzhledu všechna oznámení. Kategorie umožňují definovat různé cílové vypadá (pravděpodobně chování) pro oznámení. Kategorie lze při vytváření kampaně Reach. Mějte na paměti, že kategorie vám také umožní přizpůsobit oznámení a hlasování, který je popsán dále v tomto dokumentu.
+Při úpravě hello zadat rozložení upravíte vzhled hello všechna oznámení. Kategorie povolit, že jste toodefine, které se různé cílové hledá oznámení (pravděpodobně chování). Kategorie lze při vytváření kampaně Reach. Mějte na paměti, že kategorie vám také umožní přizpůsobit oznámení a hlasování, který je popsán dále v tomto dokumentu.
 
-Chcete-li zaregistrovat kategorie obslužnou rutinu pro oznámení, přidejte volání při inicializaci aplikace.
+tooregister kategorie obslužnou rutinu pro oznámení, musíte tooadd volání při inicializaci aplikace hello.
 
 > [!IMPORTANT]
-> Přečtěte si upozornění o atribut android: proces \<android-sdk-engagement-process\> v tom, jak integrovat Engagement na Android tématu než budete pokračovat.
+> Přečtěte si upozornění hello o atribut android: proces hello \<android-sdk-engagement-process\> v hello jak tooIntegrate Engagement na Android tématu než budete pokračovat.
 > 
 > 
 
-Následující příklad předpokládá můžete potvrdí předchozí upozornění a použít podtřídou třídy `EngagementApplication`:
+Hello následující příklad předpokládá potvrzeny hello předchozího upozornění a použít podtřídou třídy `EngagementApplication`:
 
             public class MyApplication extends EngagementApplication
             {
@@ -256,13 +256,13 @@ Následující příklad předpokládá můžete potvrdí předchozí upozorněn
               }
             }
 
-`MyNotifier` Objektu je implementace obslužné rutiny kategorie oznámení. Jedná se buď implementaci `EngagementNotifier` rozhraní nebo dílčí třídu výchozí implementace: `EngagementDefaultNotifier`.
+Hello `MyNotifier` objekt je implementace hello hello oznámení kategorie obslužné rutiny. Jedná se buď implementaci hello `EngagementNotifier` rozhraní nebo dílčí třídu hello výchozí implementace: `EngagementDefaultNotifier`.
 
-Všimněte si, že téhož oznamovatele dokáže zpracovat několika kategorií je můžete zaregistrovat takto:
+Všimněte si, že hello téhož oznamovatele dokáže zpracovat několika kategorií, zaregistrujte je takto:
 
             reachAgent.registerNotifier(new MyNotifier(this), "myCategory", "myAnotherCategory");
 
-Pokud chcete nahradit výchozí implementace kategorie, můžete zaregistrovat implementaci jako v následujícím příkladu:
+tooreplace hello výchozí kategorie implementace implementaci jako můžete zaregistrovat v hello následující ukázka:
 
             public class MyApplication extends EngagementApplication
             {
@@ -275,14 +275,14 @@ Pokud chcete nahradit výchozí implementace kategorie, můžete zaregistrovat i
               }
             }
 
-Aktuální kategorie použitá v obslužné rutině se předá jako parametr v většinu metod, můžete přepsat v `EngagementDefaultNotifier`.
+aktuální kategorie Hello použitá v obslužné rutině se předá jako parametr v většinu metod, můžete přepsat v `EngagementDefaultNotifier`.
 
 Je předán buď jako `String` parametr nebo nepřímo v `EngagementReachContent` objekt, který má `getCategory()` metoda.
 
-Můžete změnit většinu oznámení procesu vytváření opětovná definice metody na `EngagementDefaultNotifier`, pro pokročilejší přizpůsobení klidně si prohlédněte v technické dokumentaci a zdrojový kód.
+Můžete změnit většinu proces vytváření oznámení hello opětovná definice metody na `EngagementDefaultNotifier`pro pokročilejší přizpůsobení myslíte, že volné tootake podívejte se v technické dokumentaci hello a hello zdrojového kódu.
 
 ##### <a name="in-app-notifications"></a>Oznámení v aplikaci
-Pokud chcete použít alternativní rozložení pro určitou kategorii, můžete to implementovat jako v následujícím příkladu:
+Pokud chcete toouse alternativní rozložení pro určitou kategorii, můžete to implementovat jako hello následující ukázka:
 
             public class MyNotifier extends EngagementDefaultNotifier
             {
@@ -324,7 +324,7 @@ Pokud chcete použít alternativní rozložení pro určitou kategorii, můžete
 
             </RelativeLayout>
 
-Jak vidíte, se liší od standardní jeden identifikátor zobrazit překrytí. Je důležité, aby každé rozložení použít jedinečný identifikátor pro překryvy.
+Jak vidíte, se liší od standardní hello jeden identifikátor zobrazit překrytí hello. Je důležité, aby každé rozložení použít jedinečný identifikátor pro překryvy.
 
 **Příklad `my_notification_area.xml` :**
 
@@ -406,14 +406,14 @@ Jak vidíte, se liší od standardní jeden identifikátor zobrazit překrytí. 
 
             </merge>
 
-Jak vidíte, se liší od standardní jeden identifikátoru oznámení oblasti zobrazení. Je důležité, že každé rozložení používá jedinečný identifikátor pro oznamovací oblasti.
+Jak vidíte, se liší od standardní hello jeden hello oznámení oblasti zobrazení identifikátor. Je důležité, že každé rozložení používá jedinečný identifikátor pro oznamovací oblasti.
 
-Tento jednoduchý příklad kategorie umožňuje aplikace (nebo v aplikaci) oznámení zobrazí v horní části obrazovky. Standardní identifikátory používané v oznamovací oblasti samotné jsme nezměnila.
+Tento jednoduchý příklad kategorie umožňuje aplikace (nebo v aplikaci) oznámení zobrazí v horní části hello obrazovky hello. Jsme nezměnila hello standardní identifikátory používané v oznamovací oblasti hello sám sebe.
 
-Pokud chcete změnit, který, budete muset znovu definovat `EngagementDefaultNotifier.prepareInAppArea` metoda. Podívejte se na technickou dokumentaci a na zdrojový kód se doporučuje `EngagementNotifier` a `EngagementDefaultNotifier` Pokud chcete tato úroveň rozšířené úpravy.
+Pokud chcete, aby toochange, že máte tooredefine hello `EngagementDefaultNotifier.prepareInAppArea` metoda. Je doporučeno toolook v hello technické dokumentace a zdrojový kód hello `EngagementNotifier` a `EngagementDefaultNotifier` Pokud chcete tato úroveň rozšířené úpravy.
 
 ##### <a name="system-notifications"></a>Systémová oznámení
-Tím, že rozšíří `EngagementDefaultNotifier`, můžete přepsat `onNotificationPrepared` ke změně oznámení, že byl připraven výchozí implementace.
+Tím, že rozšíří `EngagementDefaultNotifier`, můžete přepsat `onNotificationPrepared` tooalter hello oznámení, že byl připraven výchozí implementací hello.
 
 Například:
 
@@ -426,9 +426,9 @@ Například:
               return true;
             }
 
-Tento příklad vytvoří systémové oznámení pro obsah, se zobrazuje jako probíhající událost v případě, že se používá "probíhající" kategorie.
+Tento příklad vytvoří systémové oznámení pro obsah, se zobrazuje jako probíhající událost v případě, že se používá kategorie "probíhající" hello.
 
-Pokud chcete vytvořit `Notification` objektu od začátku, můžete se vrátit `false` metoda a volání `notify` sami na `NotificationManager`. V takovém případě je důležité, aby byl `contentIntent`, `deleteIntent` a identifikátor oznámení používá `EngagementReachReceiver`.
+Pokud chcete, aby toobuild hello `Notification` objektu od začátku, můžete se vrátit `false` toohello metoda a volání `notify` sami na hello `NotificationManager`. V takovém případě je důležité, aby byl `contentIntent`, `deleteIntent` a hello používá identifikátor oznámení `EngagementReachReceiver`.
 
 Tady je správný příklad takových implementace:
 
@@ -451,16 +451,16 @@ Tady je správný příklad takových implementace:
 
               /* Notify here instead of super class */
               NotificationManager manager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-              manager.notify(getNotificationId(content), myNotification); // notice the call to get the right identifier
+              manager.notify(getNotificationId(content), myNotification); // notice hello call tooget hello right identifier
 
               /* Return false, we notify ourselves */
               return false;
             }
 
 ##### <a name="notification-only-announcements"></a>Oznámení pouze oznámení
-Správu kliknutím na oznámení pouze oznámení lze přizpůsobit přepsáním `EngagementDefaultNotifier.onNotifAnnouncementIntentPrepared` k úpravě připraveného `Intent`. Pomocí této metody můžete snadno ladit příznaků.
+Hello správu hello kliknutím na oznámení pouze oznámení lze přizpůsobit přepsáním `EngagementDefaultNotifier.onNotifAnnouncementIntentPrepared` toomodify hello připravený `Intent`. Pomocí této metody můžete tootune hello příznaky snadno.
 
-Chcete-li například přidat `SINGLE_TOP` příznak:
+Například tooadd hello `SINGLE_TOP` příznak:
 
             @Override
             protected Intent onNotifAnnouncementIntentPrepared(EngagementNotifAnnouncement notifAnnouncement,
@@ -470,41 +470,41 @@ Chcete-li například přidat `SINGLE_TOP` příznak:
               return intent;
             }
 
-Pro starší verze zapojení uživatelů Pamatujte, že systémová oznámení bez akce URL teď spustí aplikaci pokud byl v pozadí, takže tato metoda může být volána s hlášení bez adresa URL akce. Měli byste zvážit, když přizpůsobení záměr.
+Pro starší verze zapojení uživatelů Pamatujte, že systémová oznámení bez akce URL teď spustí aplikace hello Pokud byl v pozadí, takže tato metoda může být volána s hlášení bez adresa URL akce. Měli byste zvážit, když přizpůsobení hello záměr.
 
 Můžete taky implementovat `EngagementNotifier.executeNotifAnnouncementAction` od začátku.
 
 ##### <a name="notification-life-cycle"></a>Oznámení životního cyklu
-Při použití výchozí kategorie, se nazývají některé metody životní cyklus na `EngagementReachInteractiveContent` do sestavy statistik objektu a aktualizovat stav kampaně:
+Při použití hello výchozí kategorie, se nazývají některé metody životní cyklus na hello `EngagementReachInteractiveContent` objektu tooreport statistiky a aktualizace hello kampaň stavu:
 
-* Když se zobrazí v aplikaci nebo put ve stavovém řádku oznámení `displayNotification` metoda je volána (který sestavy statistik) podle `EngagementReachAgent` Pokud `handleNotification` vrátí `true`.
-* Pokud se zavře oznámení, `exitNotification` metoda je volána, statistiky se použije v hlášení a další kampaně lze nyní zpracovat.
-* Po kliknutí na oznámení `actionNotification` je volána, statistiky se použije v hlášení a spuštění přidružené záměr.
+* Když hello oznámení se zobrazí v aplikaci nebo umístit do hello stavového řádku, hello `displayNotification` metoda je volána (který sestavy statistik) podle `EngagementReachAgent` Pokud `handleNotification` vrátí `true`.
+* Pokud se zavře hello oznámení, hello `exitNotification` metoda je volána, statistiky se použije v hlášení a další kampaně lze nyní zpracovat.
+* Po kliknutí na oznámení hello `actionNotification` je volána, statistiky se použije v hlášení a spuštění hello přidružené záměr.
 
-Pokud vaši implementaci `EngagementNotifier` obchází výchozí chování, budete muset pro volání těchto metod životní cyklus sami. Následující příklady ilustrují některých případech, kde přeskočí výchozí chování:
+Pokud vaši implementaci `EngagementNotifier` přeskočení hello výchozí chování, máte tyto metody životního cyklu pro toocall samotnými. Hello následující příklady ilustrují některých případech, kde přeskočí hello výchozí chování:
 
 * Nerozšíříte `EngagementDefaultNotifier`, například implementována kategorie zpracování od začátku.
-* Pro systémová oznámení overrode `onNotificationPrepared` a můžete změnit `contentIntent` nebo `deleteIntent` v `Notification` objektu.
-* Oznámení v aplikaci, overrode `prepareInAppArea`, je nutné namapovat minimálně `actionNotification` na jednu z vaší U.I ovládací prvky.
+* Pro systémová oznámení overrode hello `onNotificationPrepared` a můžete změnit `contentIntent` nebo `deleteIntent` v hello `Notification` objektu.
+* Oznámení v aplikaci, overrode `prepareInAppArea`, že toomap alespoň `actionNotification` tooone U.I ovládacích prvků.
 
 > [!NOTE]
-> Pokud `handleNotification` vyvolá výjimku, obsah se odstraní a `dropContent` je volána. To je uvedený v statistiky a další kampaně lze nyní zpracovat.
+> Pokud `handleNotification` vyvolá výjimku, hello obsahu se odstraní a `dropContent` je volána. To je uvedený v statistiky a další kampaně lze nyní zpracovat.
 > 
 > 
 
 ### <a name="announcements-and-polls"></a>Oznámení a hlasování
 #### <a name="layouts"></a>Rozložení
-Můžete upravit `engagement_text_announcement.xml`, `engagement_web_announcement.xml` a `engagement_poll.xml` soubory pro přizpůsobení textu oznámení, oznámení webové a hlasování.
+Můžete upravit hello `engagement_text_announcement.xml`, `engagement_web_announcement.xml` a `engagement_poll.xml` soubory toocustomize textu oznámení, oznámení webové a hlasování.
 
-Tyto soubory sdílet dvě běžné rozložení pro oblast nadpisu a oblasti tlačítka. Rozložení pro nadpis `engagement_content_title.xml` a použije eponymous drawable soubor pozadí. Rozložení pro tlačítek akce a ukončení `engagement_button_bar.xml` a použije eponymous drawable soubor pozadí.
+Tyto soubory sdílet dvě běžné rozložení pro oblast hello nadpisu a hello tlačítko oblasti. Hello rozložení pro nadpis hello `engagement_content_title.xml` a používá hello eponymous drawable soubor pro pozadí hello. Hello rozložení pro tlačítek akce a ukončení hello je `engagement_button_bar.xml` a používá hello eponymous drawable soubor pro pozadí hello.
 
-V hlasování, rozložení otázku a jejich možnosti jsou dynamicky zvětšený pomocí několikrát `engagement_question.xml` soubor rozložení pro otázky a `engagement_choice.xml` soubor pro výběr.
+V hlasování, hello otázku rozložení a jejich možnosti jsou dynamicky zvětšený pomocí několikrát hello `engagement_question.xml` rozložení souboru hello otázky a hello `engagement_choice.xml` souboru hello volby.
 
 #### <a name="categories"></a>Kategorie
 ##### <a name="alternate-layouts"></a>Alternativní rozložení
-Jako oznámení kategorie kampaně umožňuje mít alternativní rozložení pro oznámení a hlasování.
+Jako oznámení může být hello kampaň kategorie používané toohave alternativní rozložení pro oznámení a hlasování.
 
-Pokud chcete vytvořit kategorii pro text oznámení, například můžete rozšířit `EngagementTextAnnouncementActivity` a na něj odkazovat `AndroidManifest.xml` souboru:
+Například toocreate kategorii pro text oznámení, můžete rozšířit `EngagementTextAnnouncementActivity` a odkazovat na hello `AndroidManifest.xml` souboru:
 
             <activity android:name="com.your_company.MyCustomTextAnnouncementActivity">
               <intent-filter>
@@ -514,36 +514,36 @@ Pokud chcete vytvořit kategorii pro text oznámení, například můžete rozš
               </intent-filter>
             </activity>
 
-Všimněte si, že kategorie ve záměrné filtru se používá k zajištění rozdíl oproti výchozí aktivita oznámení.
+Všimněte si této kategorie hello v hello záměr filtr se používá toomake hello rozdíl oproti hello výchozí oznámení aktivita.
 
-Sady Reach SDK používá záměrné systému přeložit vpravo aktivity pro určitou kategorii a jeho spadne zpět na výchozí kategorie Pokud řešení se nezdařilo.
+Hello Reach SDK používá hello záměrné systému tooresolve hello vpravo aktivity pro určitou kategorii a jeho spadne zpět na výchozí kategorie hello Pokud hello řešení se nezdařilo.
 
-Je třeba implementovat `MyCustomTextAnnouncementActivity`, pokud chcete změnit rozložení (ale zachovat stejné identifikátory zobrazení), musíte se definice třídy, jako v následujícím příkladu:
+Pak máte tooimplement `MyCustomTextAnnouncementActivity`, pokud jste právě má toochange hello rozložení (ale zachovat stejné zobrazit identifikátory hello), máte právě toodefine hello třídy, jako třeba v hello následující ukázka:
 
             public class MyCustomTextAnnouncementActivity extends EngagementTextAnnouncementActivity
             {
               @Override
               protected String getLayoutName()
               {
-                return "my_text_announcement";  // tell super class to use R.layout.my_text_announcement
+                return "my_text_announcement";  // tell super class toouse R.layout.my_text_announcement
               }
             }
 
-Pokud chcete nahradit kategorii výchozí text oznámení, jednoduše nahradit `android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity"` podle vaší implementace.
+kategorie výchozí hello tooreplace textu oznámení, jednoduše nahradit `android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity"` podle vaší implementace.
 
 Podobně lze přizpůsobit web oznámení a hlasování.
 
-Pro web oznámení můžete rozšířit `EngagementWebAnnouncementActivity` a deklarovat si v aktivitu `AndroidManifest.xml` jako v následujícím příkladu:
+Pro web oznámení můžete rozšířit `EngagementWebAnnouncementActivity` a deklarovat vaše aktivity v hello `AndroidManifest.xml` stejně jako v nástroji hello následující ukázka:
 
             <activity android:name="com.your_company.MyCustomWebAnnouncementActivity">
               <intent-filter>
                 <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
                 <category android:name="my_category" />
-                <data android:mimeType="text/html" />    <!-- only difference with text announcements in the intent is the data mime type -->
+                <data android:mimeType="text/html" />    <!-- only difference with text announcements in hello intent is hello data mime type -->
               </intent-filter>
             </activity>
 
-Pro dotazování můžete rozšířit `EngagementPollActivity` a deklarovat vaší v `AndroidManifest.xml` jako v následujícím příkladu:
+Pro dotazování můžete rozšířit `EngagementPollActivity` a deklarovat vaší v hello `AndroidManifest.xml` stejně jako v nástroji hello následující ukázka:
 
             <activity android:name="com.your_company.MyCustomPollActivity">
               <intent-filter>
@@ -553,13 +553,13 @@ Pro dotazování můžete rozšířit `EngagementPollActivity` a deklarovat vaš
             </activity>
 
 ##### <a name="implementation-from-scratch"></a>Implementace od začátku
-Kategorie můžete implementovat vaše aktivity oznámení (a dotazování) bez jeden z rozšíření `Engagement*Activity` třídy poskytované Reach SDK. To je užitečné, například pokud chcete definovat rozložení, který nepoužívá stejnou zobrazení jako standardní rozložení.
+Kategorie můžete implementovat vaše aktivity oznámení (a dotazování) bez rozšíření mezi hello `Engagement*Activity` třídy poskytované hello Reach SDK. To je užitečné, například pokud budete chtít toodefine rozložení, který nepoužívá hello stejné zobrazení jako standardní rozložení hello.
 
-Jako pro přizpůsobení pokročilé oznámení, doporučujeme prohlédnout si zdrojový kód standardní implementace.
+Jako přizpůsobení pokročilé oznámení se doporučuje toolook v hello zdrojový kód standardní implementace hello.
 
-Tady jsou některé věci, třeba vzít v úvahu: Reach spustí aktivita konkrétní záměrem (odpovídající záměrné filtr) plus další parametr, který je identifikátor obsahu.
+Tady jsou některé věci tookeep pamatovat: Reach spustí aktivita hello konkrétní záměrem (odpovídající záměrné filtr toohello) plus další parametr, což je identifikátor obsahu hello.
 
-Chcete-li načíst objekt obsahu, který obsahovat pole, která jste zadali při vytváření kampaň na webu můžete postupujte takto:
+To můžete provést hello tooretrieve obsahu se objekt, který obsahovat hello pole, které jste zadali při vytváření hello kampaně na hello webu můžete:
 
             public class MyCustomTextAnnouncement extends EngagementActivity
             {
@@ -586,23 +586,23 @@ Chcete-li načíst objekt obsahu, který obsahovat pole, která jste zadali při
               }
             }
 
-Pro statistiku, byste měli hlásit obsah se zobrazí v `onResume` událostí:
+Pro statistiku, byste měli hlásit hello obsah se zobrazí v hello `onResume` událostí:
 
             @Override
             protected void onResume()
             {
-             /* Mark the content displayed */
+             /* Mark hello content displayed */
              mContent.displayContent(this);
              super.onResume();
             }
 
-Potom, nezapomeňte volat buď `actionContent(this)` nebo `exitContent(this)` v obsahu objektu před aktivity přejde do pozadí.
+Potom toocall buď nezapomeňte `actionContent(this)` nebo `exitContent(this)` v obsahu objektu hello před hello aktivity přejde do pozadí.
 
-Pokud nemůžete volat buď `actionContent` nebo `exitContent`, statistiky se neodešlou (tj. žádné analýzy kampaň) a je důležité, nebude další kampaně upozorněni, až po restartování procesu aplikace.
+Pokud nemůžete volat buď `actionContent` nebo `exitContent`, statistiky se neodešlou (tj. žádné analýzy kampaň hello) a další je nejdůležitější – hello další kampaně nebudete upozorněni, až po restartování procesu aplikace hello.
 
-Orientace nebo jiné změny konfigurace můžete provést kód složité určit, zda aktivity přejde do pozadí nebo Ne, standardní implementace zajišťuje obsah hlášení jako byl ukončen, pokud uživatel odejde aktivity (buď stisknutím `HOME`nebo `BACK`), ale ne, pokud se změní orientaci.
+Orientace nebo jiné změny konfigurace můžete provést hello kód složité toodetermine, zda hello aktivity přejde do pozadí nebo Ne, hello díky standardní implementace zda obsah hello hlášení jako opustil Pokud hello uživatel opustí hello aktivity, (buď Stisknutím `HOME` nebo `BACK`), ale ne v případě změny hello orientace.
 
-Tady je zajímavé součástí implementace:
+Tady je hello zajímavé součást hello implementace:
 
             @Override
             protected void onUserLeaveHint()
@@ -617,14 +617,14 @@ Tady je zajímavé součástí implementace:
               {
                 /*
                  * Exit content on exit, this is has no effect if another process method has already been
-                 * called so we don't have to check anything here.
+                 * called so we don't have toocheck anything here.
                  */
                 mContent.exitContent(this);
               }
               super.onPause();
             }
 
-Jak můžete vidět, pokud jste volali metodu `actionContent(this)` pak dokončení aktivity, `exitContent(this)` lze bezpečně volat bez nutnosti nijak neprojeví.
+Jak můžete vidět, pokud jste volali metodu `actionContent(this)` pak dokončení aktivity hello `exitContent(this)` lze bezpečně volat bez nutnosti nijak neprojeví.
 
 [here]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html

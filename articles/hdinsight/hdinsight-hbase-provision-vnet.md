@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit clustery HBase ve virtuální síti - Azure | Microsoft Docs"
-description: "Začínáme používat HBase v Azure HDInsight. Naučte se vytvářet clustery HDInsight HBase v Azure Virtual Network."
+title: "aaaCreate HBase clusterů ve virtuální síti - Azure | Microsoft Docs"
+description: "Začínáme používat HBase v Azure HDInsight. Zjistěte, jak toocreate HDInsight HBase clusterů ve virtuální síti Azure."
 keywords: 
 services: hdinsight,virtual-network
 documentationcenter: 
@@ -16,32 +16,32 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/17/2017
 ms.author: jgao
-ms.openlocfilehash: 668bd494ce3274188af56cf7d6253cec7af9abbc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 097338a5a650bb607a9f6f9ddb59bb88d098b56f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytvořit clustery HBase v HDInsight v Azure Virtual Network
-Naučte se vytvářet clustery Azure HDInsight HBase v [Azure Virtual Network][1].
+Zjistěte, jak toocreate Azure HDInsight HBase clusterů v [Azure Virtual Network][1].
 
-Integrace virtuální sítě může být nasazena clustery HBase na stejné virtuální síti jako aplikace, aby aplikace přímo komunikovat s HBase. Nabízí například tyto výhody:
+Clustery HBase integrace virtuální sítě, může být nasazený toohello stejné virtuální sítě jako aplikace tak, že aplikace může komunikovat přímo s HBase. Hello výhody patří:
 
-* Přímé připojení k webové aplikace do uzlů clusteru HBase, který umožňuje komunikaci prostřednictvím vzdálené procedury HBase Java volání rozhraní API (RPC).
+* Přímé připojení hello webové aplikace toohello uzlů tohoto clusteru hello HBase, který umožňuje komunikaci prostřednictvím vzdálené procedury HBase Java volání rozhraní API (RPC).
 * Zvýšení výkonu tak, že není provozu přejděte přes více bran a nástroje pro vyrovnávání zatížení.
-* Schopnost zpracovávat citlivé informace bezpečnější způsobem bez vystavení veřejný koncový bod.
+* Hello možnost tooprocess citlivé informace bezpečnější způsobem bez vystavení veřejný koncový bod.
 
 ### <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto kurzu musíte mít tyto položky:
+Než začnete tento kurz, musíte mít hello následující položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Pracovní stanice s prostředím Azure PowerShell**. V tématu [instalace a použití prostředí Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
 
 ## <a name="create-hbase-cluster-into-virtual-network"></a>Vytvoření clusteru HBase do virtuální sítě
-V této části vytvoříte clusteru s podporou systémem Linux HBase s závislý účet Azure Storage virtuální síti Azure pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Další metody vytváření clusterů a Principy nastavení, najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Další informace o používání šablonu při vytváření clusterů systému Hadoop v HDInsight najdete v tématu [vytvoření Hadoop clusterů v HDInsight pomocí šablony Azure Resource Manager](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
+V této části vytvoříte clusteru s podporou systémem Linux HBase s hello závislý účet Azure Storage virtuální síti Azure pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Další metody vytváření clusterů a principy hello nastavení, najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití šablony toocreate Hadoop clusterů v HDInsight, najdete v části [vytvoření Hadoop clusterů v HDInsight pomocí šablony Azure Resource Manager](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 
 > [!NOTE]
-> Některé vlastnosti jsou pevně zakódovaná do šablony. Například:
+> Některé vlastnosti jsou pevně zakódovaná do šablony hello. Například:
 >
 > * **Umístění**: východní USA 2
 > * **Verze clusteru:** 3.5
@@ -52,66 +52,66 @@ V této části vytvoříte clusteru s podporou systémem Linux HBase s závisl�
 > * **Název podsítě**: subnet1
 > * **Rozsah adres podsítě**: 10.0.0.0/24
 >
-> &lt;Název clusteru > se nahradí název clusteru, poskytují při použití šablony.
+> &lt;Název clusteru > se nahradí název clusteru hello poskytují při použití šablony hello.
 >
 >
 
-1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Šablona se nachází v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
+1. Klikněte na tlačítko hello následující šablony hello tooopen bitové kopie v hello portálu Azure. Šablona Hello se nachází v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Z **vlastní nasazení** okno, zadejte následující vlastnosti:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+2. Z hello **vlastní nasazení** okno, zadejte hello následující vlastnosti:
 
-   * **Předplatné**: Vyberte předplatné Azure použité k vytvoření clusteru HDInsight, závislý účet úložiště a virtuální síť Azure.
+   * **Předplatné**: Vyberte předplatné Azure použité clusteru HDInsight hello toocreate, hello závislý účet úložiště a hello virtuální síť Azure.
    * **Skupina prostředků**: vyberte **vytvořit nový**a zadejte nový název skupiny prostředků.
-   * **Umístění:** Vyberte umístění pro skupinu prostředků.
-   * **Název clusteru**: Zadejte název pro cluster Hadoop, který se má vytvořit.
-   * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je **admin**.
-   * **Uživatelské jméno a heslo SSH**: výchozí uživatelské jméno **sshuser**.  Můžete ho změnit.
-   * **Souhlasím s podmínek a ujednání uvedené výše**: (vyberte)
-3. Klikněte na **Koupit**. Vytvoření clusteru trvá přibližně 20 minut. Jakmile je vytvořen cluster, můžete kliknout na okně clusteru na portálu a otevřete jej.
+   * **Umístění**: Vyberte umístění pro skupinu prostředků hello.
+   * **Název clusteru**: Zadejte název toobe clusteru Hadoop hello vytvořili.
+   * **Přihlašovací jméno a heslo clusteru**: hello výchozí přihlašovací jméno je **správce**.
+   * **SSH uživatelské jméno a heslo**: výchozí uživatelské jméno hello **sshuser**.  Můžete ho změnit.
+   * **Souhlasím toohello podmínky a ujednání hello výše uvedených**: (vyberte)
+3. Klikněte na **Koupit**. Trvá přibližně 20 minut toocreate cluster. Po vytvoření clusteru hello můžete kliknout na okno hello clusteru v portálu tooopen hello ho.
 
-Po dokončení tohoto kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Postup odstranění clusteru naleznete v tématu [Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure](hdinsight-administer-use-management-portal.md#delete-clusters).
+Po dokončení kurzu hello můžete chtít toodelete hello clusteru. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že hello poplatky za hello clusteru jsou mnohokrát víc než hello poplatky za úložiště, dává ekonomický smysl clustery toodelete které nejsou používána. Pokyny hello odstranění clusteru najdete v tématu [hello spravovat Hadoop clusterů v HDInsight pomocí portálu Azure](hdinsight-administer-use-management-portal.md#delete-clusters).
 
-Pokud chcete začít pracovat s nového clusteru HBase, můžete použít postupy v nalezen [Začínáme používat HBase s Hadoop v HDInsight](hdinsight-hbase-tutorial-get-started.md).
+toobegin práce s nového clusteru HBase, můžete použít postupy hello najít v [Začínáme používat HBase s Hadoop v HDInsight](hdinsight-hbase-tutorial-get-started.md).
 
-## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>Připojte se ke clusteru HBase pomocí rozhraní API RPC Java HBase
-1. Vytváření infrastruktury jako služby (IaaS) virtuální počítač do stejné virtuální síti Azure a stejné podsíti. Pokyny pro vytvoření nového virtuálního počítače IaaS, najdete v části [vytvořit virtuální počítač spuštěný Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md). Když postupovat podle kroků v tomto dokumentu, musíte použít následující hodnoty pro konfiguraci sítě:
+## <a name="connect-toohello-hbase-cluster-using-hbase-java-rpc-apis"></a>Připojte toohello cluster HBase pomocí rozhraní API RPC Java HBase
+1. Vytváření infrastruktury jako služby (IaaS) virtuální počítač do hello stejnou virtuální síť Azure a hello stejné podsíti. Pokyny pro vytvoření nového virtuálního počítače IaaS, najdete v části [vytvořit virtuální počítač spuštěný Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md). Pokud následující hello kroky v tomto dokumentu, je nutné použít následující hodnoty pro konfiguraci sítě hello hello:
 
    * **Virtuální síť**: &lt;název clusteru >-virtuální síť
    * **Podsíť**: subnet1
 
    > [!IMPORTANT]
-   > Nahraďte &lt;název clusteru > s názvem, který jste použili při vytváření clusteru HDInsight v předchozích krocích.
+   > Nahraďte &lt;název clusteru > s názvem hello jste použili při vytváření clusteru HDInsight hello v předchozích krocích.
    >
    >
 
-   Pomocí těchto hodnot, virtuální počítač je umístěn ve stejné virtuální síť a podsíť jako HDInsight cluster. Tato konfigurace umožňuje, aby spolu navzájem přímo komunikovat. Existuje způsob vytvoření clusteru HDInsight pomocí prázdné hraniční uzel. Hraničního uzlu slouží ke správě clusteru.  Další informace najdete v tématu [použít prázdný edge uzly v HDInsight](hdinsight-apps-use-edge-node.md).
+   Pomocí těchto hodnot, hello je umístěn virtuální počítač v hello stejné virtuální síť a podsíť jako hello clusteru HDInsight. Tato konfigurace umožňuje jejich toodirectly vzájemně komunikovat. Neexistuje způsob, jak toocreate clusteru HDInsight bez prázdný hraniční uzel. Hello hraniční uzel může být použité toomanage hello clusteru.  Další informace najdete v tématu [použít prázdný edge uzly v HDInsight](hdinsight-apps-use-edge-node.md).
 
-2. Při použití aplikace v jazyce Java se vzdáleně připojit k HBase, musíte použít plně kvalifikovaný název domény (FQDN). Určí, musíte si příponu DNS specifickou pro připojení clusteru HBase. K tomu, můžete použít jednu z následujících metod:
+2. Při vzdáleném použití tooHBase tooconnect aplikace Java, musíte použít hello plně kvalifikovaný název domény (FQDN). toodetermine, musíte získat hello příponu DNS specifickou pro připojení clusteru HBase hello. toodo, můžete použít jednu z následujících metod hello:
 
-   * Volat pomocí Ambari pomocí webového prohlížeče:
+   * Použití webové prohlížeče toomake volání rozhraní Ambari:
 
-     Přejděte na https://&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / hostitelem? minimal_response = true. Se změní soubor JSON s přípony DNS.
-   * Použijte Ambari web:
+     Procházet toohttps: / /&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / hostitelem? minimal_response = true. Se změní soubor JSON s hello přípony DNS.
+   * Použití webu Ambari hello:
 
-     1. Přejděte na https://&lt;ClusterName >. azurehdinsight.net.
-     2. Klikněte na tlačítko **hostitele** v hlavní nabídce.
-   * Použití Curl volání REST:
+     1. Procházet příliš https://&lt;ClusterName >. azurehdinsight.net.
+     2. Klikněte na tlačítko **hostitele** hello hlavní nabídce.
+   * Použijte volání REST toomake Curl:
 
     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-     V datech JavaScript Object Notation (JSON) vrátil vyhledejte položku "název_hostitele". Obsahuje plně kvalifikovaný název domény pro uzly v clusteru. Například:
+     V hello JavaScript Object Notation (JSON) data vrácená vyhledejte položku "název_hostitele" hello. Obsahuje hello plně kvalifikovaný název domény pro hello uzly v clusteru hello. Například:
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
          ...
 
-     Část začínající název clusteru pro název domény je příponu DNS. Například mycluster.b1.cloudapp.net.
+     část Hello hello domény název začíná název clusteru hello je hello příponu DNS. Například mycluster.b1.cloudapp.net.
    * Použití Azure Powershell
 
-     Pomocí následujícího skriptu prostředí Azure PowerShell k registraci **Get-ClusterDetail** funkce, které lze použít k vrácení příponu DNS:
+     Použití hello následující hello tooregister skriptu prostředí Azure PowerShell **Get-ClusterDetail** funkce, které lze použít tooreturn příponu DNS hello:
 
     ```powershell
         function Get-ClusterDetail(
@@ -131,29 +131,29 @@ Pokud chcete začít pracovat s nového clusteru HBase, můžete použít postup
         {
         <#
             .SYNOPSIS
-            Displays information to facilitate an HDInsight cluster-to-cluster scenario within the same virtual network.
+            Displays information toofacilitate an HDInsight cluster-to-cluster scenario within hello same virtual network.
             .Description
-            This command shows the following 4 properties of an HDInsight cluster:
+            This command shows hello following 4 properties of an HDInsight cluster:
             1. ZookeeperQuorum (supports only HBase type cluster)
-                Shows the value of HBase property "hbase.zookeeper.quorum".
+                Shows hello value of HBase property "hbase.zookeeper.quorum".
             2. ZookeeperClientPort (supports only HBase type cluster)
-                Shows the value of HBase property "hbase.zookeeper.property.clientPort".
+                Shows hello value of HBase property "hbase.zookeeper.property.clientPort".
             3. HBaseRestServers (supports only HBase type cluster)
-                Shows a list of host FQDNs that run the HBase REST server.
+                Shows a list of host FQDNs that run hello HBase REST server.
             4. FQDNSuffix (supports all cluster types)
-                Shows the FQDN suffix of hosts in the cluster.
+                Shows hello FQDN suffix of hosts in hello cluster.
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName ZookeeperQuorum
-            This command shows the value of HBase property "hbase.zookeeper.quorum".
+            This command shows hello value of HBase property "hbase.zookeeper.quorum".
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName ZookeeperClientPort
-            This command shows the value of HBase property "hbase.zookeeper.property.clientPort".
+            This command shows hello value of HBase property "hbase.zookeeper.property.clientPort".
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName HBaseRestServers
-            This command shows a list of host FQDNs that run the HBase REST server.
+            This command shows a list of host FQDNs that run hello HBase REST server.
             .EXAMPLE
             Get-ClusterDetail -ClusterDnsName {clusterDnsName} -Username {username} -Password {password} -PropertyName FQDNSuffix
-            This command shows the FQDN suffix of hosts in the cluster.
+            This command shows hello FQDN suffix of hosts in hello cluster.
         #>
 
             $DnsSuffix = ".azurehdinsight.net"
@@ -205,33 +205,33 @@ Pokud chcete začít pracovat s nového clusteru HBase, můžete použít postup
         }
     ```
 
-     Po spuštění skriptu prostředí Azure PowerShell, použijte následující příkaz vrátit příponu DNS pomocí **Get-ClusterDetail** funkce. Při použití tohoto příkazu, zadejte název clusteru HDInsight HBase, správce jméno a heslo správce.
+     Po spouštění skriptu prostředí Azure PowerShell text hello, použijte hello následující příkaz příponu DNS hello tooreturn pomocí hello **Get-ClusterDetail** funkce. Při použití tohoto příkazu, zadejte název clusteru HDInsight HBase, správce jméno a heslo správce.
 
     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
     ```
 
-     Tento příkaz vrátí příponu DNS. Například **yourclustername.b4.internal.cloudapp.net**.
+     Tento příkaz vrátí hello příponu DNS. Například **yourclustername.b4.internal.cloudapp.net**.
 
 
 <!--
-3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
+3.    Change hello primary DNS suffix configuration of hello virtual machine. This enables hello virtual machine tooautomatically resolve hello host name of hello HBase cluster without explicit specification of hello suffix. For example, hello *workernode0* host name will be correctly resolved tooworkernode0 of hello HBase cluster.
 
-    To make the configuration change:
+    toomake hello configuration change:
 
-    1. RDP into the virtual machine.
-    2. Open **Local Group Policy Editor**. The executable is gpedit.msc.
+    1. RDP into hello virtual machine.
+    2. Open **Local Group Policy Editor**. hello executable is gpedit.msc.
     3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
-    - Set **Primary DNS Suffix** to the value obtained in step 2:
+    - Set **Primary DNS Suffix** toohello value obtained in step 2:
 
         ![hdinsight.hbase.primary.dns.suffix][img-primary-dns-suffix]
     4. Click **OK**.
-    5. Reboot the virtual machine.
+    5. Reboot hello virtual machine.
 -->
 
-Chcete-li ověřit, že virtuální počítač může komunikovat s clusterem HBase, použijte příkaz `ping headnode0.<dns suffix>` z virtuálního počítače. Například headnode0.mycluster.b1.cloudapp.net příkazu ping.
+tooverify, který hello virtuální počítač může komunikovat s hello HBase cluster, použijte příkaz hello `ping headnode0.<dns suffix>` z hello virtuálního počítače. Například headnode0.mycluster.b1.cloudapp.net příkazu ping.
 
-Tyto informace používat v aplikaci Java, můžete podle kroků v [použít Maven k sestavení aplikací Java, které používají HBase s HDInsight (Hadoop)](hdinsight-hbase-build-java-maven.md) k vytvoření aplikace. Chcete-li mít aplikaci připojit ke vzdálenému serveru HBase, změňte **hbase-site.xml** soubor v tomto příkladu má použít plně kvalifikovaný název domény pro Zookeeper. Například:
+toouse tyto informace v aplikaci Java, můžete provést kroky hello v [aplikací Java toobuild použít Maven, které používají HBase s HDInsight (Hadoop)](hdinsight-hbase-build-java-maven.md) toocreate aplikace. aplikace hello toohave připojení vzdáleného serveru HBase tooa, změňte hello **hbase-site.xml** soubor v této hello toouse příklad plně kvalifikovaný název domény pro Zookeeper. Například:
 
     <property>
         <name>hbase.zookeeper.quorum</name>
@@ -239,12 +239,12 @@ Tyto informace používat v aplikaci Java, můžete podle kroků v [použít Mav
     </property>
 
 > [!NOTE]
-> Další informace o překladu názvů v Azure najdete v části virtuální sítě, včetně toho, jak používat vlastní server DNS [rozlišení DNS (Name)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+> Další informace o překladu názvů v Azure virtuální sítě včetně jak toouse vlastního serveru DNS, najdete v části [rozlišení DNS (Name)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak vytvořit HBase cluster. Další informace naleznete v tématu:
+V tomto kurzu jste se naučili jak toocreate HBase cluster. toolearn více, najdete v části:
 
 * [Začínáme s HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Použít prázdný edge uzly v HDInsight](hdinsight-apps-use-edge-node.md)
@@ -295,7 +295,7 @@ V tomto kurzu jste zjistili, jak vytvořit HBase cluster. Další informace nale
 
 [img-dns-surffix]: ./media/hdinsight-hbase-provision-vnet/DNSSuffix.png
 [img-primary-dns-suffix]: ./media/hdinsight-hbase-provision-vnet/PrimaryDNSSuffix.png
-[img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Podrobnosti o zřizování pro nový cluster HBase"
-[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Použití akce skriptu k přizpůsobení HBase cluster"
+[img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Podrobnosti o zřizování pro nový cluster HBase hello"
+[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Pomocí akce skriptu toocustomize HBase cluster"
 
 [azure-preview-portal]: https://portal.azure.com

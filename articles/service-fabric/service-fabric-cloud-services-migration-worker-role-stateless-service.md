@@ -1,6 +1,6 @@
 ---
-title: "Převést aplikací Azure Cloud Services na mikroslužeb | Microsoft Docs"
-description: "Tato příručka porovná bezstavové služby Cloud Services – webové a rolí pracovního procesu a Service Fabric můžete migrovat z cloudové služby do Service Fabric."
+title: "aaaConvert toomicroservices aplikací Azure Cloud Services | Microsoft Docs"
+description: "Tato příručka porovná Cloud Services – webové a rolí pracovního procesu a toohelp bezstavové služby Service Fabric migrovat z cloudové služby tooService prostředků infrastruktury."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c43b11623b2ba7f6069782a8b7e030c82572a6e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodu Web a rolí pracovního procesu na bezstavové služby Service Fabric
-Tento článek popisuje, jak migrovat Service Fabric bezstavové služby Cloud Services – webové a rolí pracovního procesu. Je to ta nejjednodušší cesta migrace z cloudové služby na Service Fabric pro aplikace, jejichž přehled architektury přechází zůstane zhruba stejná.
+# <a name="guide-tooconverting-web-and-worker-roles-tooservice-fabric-stateless-services"></a>Průvodce tooconverting Web a rolí pracovního procesu tooService Fabric bezstavové služby
+Tento článek popisuje, jak toomigrate vaše cloudové služby Web a rolí pracovního procesu tooService Fabric bezstavové služby. Toto je nejjednodušší cesta migrace hello z cloudové služby tooService prostředků infrastruktury pro aplikace, jejichž přehled architektury přechází toostay zhruba hello stejné.
 
-## <a name="cloud-service-project-to-service-fabric-application-project"></a>Projekt cloudové služby na projekt aplikace Service Fabric
- Projekt cloudové služby a aplikace Service Fabric projektu mají podobnou strukturou a obě představují jednotky nasazení pro vaši aplikaci – to znamená, že každý definovat kompletní balíček, který je nasazen na spuštění vaší aplikace. Cloudové služby projektu obsahuje jeden nebo více webu nebo rolí pracovního procesu. Podobně projektu aplikace Service Fabric obsahuje jednu nebo více služeb. 
+## <a name="cloud-service-project-tooservice-fabric-application-project"></a>Cloudové služby projektu tooService prostředků infrastruktury aplikace projektu
+ Projekt cloudové služby a aplikace Service Fabric projektu mají podobnou strukturou a obě představují hello nasazení jednotky pro vaše aplikace – to znamená, že každý definují hello kompletní balíček, který je nasazený toorun vaší aplikace. Cloudové služby projektu obsahuje jeden nebo více webu nebo rolí pracovního procesu. Podobně projektu aplikace Service Fabric obsahuje jednu nebo více služeb. 
 
-Rozdíl je, že projekt cloudové služby páry v odstupu nasazení s nasazení virtuálního počítače a proto obsahuje nastavení konfigurace virtuálního počítače v, zatímco aplikace Service Fabric projektu definuje pouze aplikace, která bude nasazena na sadu existující virtuální počítače v clusteru Service Fabric. Samotný cluster Service Fabric je nasazen pouze jednou, prostřednictvím šablonu Resource Manageru nebo prostřednictvím portálu Azure a do zařízení můžete nasadit několik aplikací Service Fabric.
+Hello rozdíl je, že párům projekt cloudové služby hello hello nasazení aplikace se nasazení virtuálního počítače a proto obsahuje nastavení konfigurace virtuálního počítače v, zatímco projektu aplikace Service Fabric hello pouze definuje aplikaci, která bude nasazena Sada tooa existujících virtuálních počítačů v clusteru Service Fabric. samotný cluster Service Fabric Hello je nasazen pouze jednou, buď prostřednictvím šablonu Resource Manageru nebo prostřednictvím hello portál Azure a více Service Fabric může být aplikace nasazeny tooit.
 
 ![Porovnání projektu Service Fabric a cloudové služby][3]
 
-## <a name="worker-role-to-stateless-service"></a>Role pracovního procesu pro bezstavové služby
-Role pracovního procesu koncepčně, představuje bezstavového zatížení, což znamená, každá instance úlohy je stejný jako a můžete kdykoli směrovat požadavky na jakoukoli instanci. Každá instance neočekává se, mějte na paměti, předchozí požadavek. Stav, který zpracovává zatížení spravuje úložiště služby externí stavu, například Azure Table Storage nebo Azure DB dokumentu. V Service Fabric tento typ úlohy je reprezentována bezstavové služby. Nejjednodušším přístupem při migraci Role pracovního procesu na Service Fabric lze provést převod kód Role pracovního procesu pro bezstavové služby.
+## <a name="worker-role-toostateless-service"></a>Služba toostateless Role pracovního procesu
+Role pracovního procesu koncepčně, představuje bezstavového zatížení, což znamená, každá instance úlohy hello je stejný jako a požadavky se dají směrované tooany instance kdykoli. Každá instance není očekávaný tooremember hello předchozí požadavek. Stav této úlohy hello funguje na spravuje úložiště služby externí stavu, například Azure Table Storage nebo Azure DB dokumentu. V Service Fabric tento typ úlohy je reprezentována bezstavové služby. Nejjednodušší způsob toomigrating Hello tooService Role pracovního procesu Fabric lze provést převod tooa kód Role pracovního procesu bezstavové služby.
 
-![Role pracovního procesu pro bezstavové služby][4]
+![TooStateless Role pracovního procesu služby][4]
 
-## <a name="web-role-to-stateless-service"></a>Webovou roli na bezstavové služby
-Podobně jako u Role pracovního procesu, webové Role také reprezentuje bezstavového zatížení, a proto koncepčně je příliš lze mapovat na bezstavové služby Service Fabric. Ale na rozdíl od webových rolí, Service Fabric nepodporuje službu IIS. K migraci webové aplikace z webové Role bezstavové služby vyžaduje první přesun webové rozhraní, které může být samoobslužně hostovaná a není závislá na System.Web, například 1 jádro ASP.NET nebo služby IIS.
+## <a name="web-role-toostateless-service"></a>Webová služba toostateless Role
+Podobné tooWorker Role, webové Role také reprezentuje bezstavového zatížení, a proto koncepčně příliš může být namapované tooa bezstavové služby Service Fabric. Ale na rozdíl od webových rolí, Service Fabric nepodporuje službu IIS. toomigrate webovou aplikaci z bezstavové služby Role webový tooa vyžaduje první přesunutí tooa webové rozhraní, které může být samoobslužně hostovaná a není závislá na System.Web, například 1 jádro ASP.NET nebo služby IIS.
 
 | **Aplikace** | **Podporuje se** | **Cesty migrace** |
 | --- | --- | --- |
-| ASP.NET – webové formuláře |Ne |Převést na MVC ASP.NET Core 1 |
-| ASP.NET MVC |Pomocí nástroje Migrace |Upgrade na technologii ASP.NET pro základní 1 MVC |
+| ASP.NET – webové formuláře |Ne |Převést tooASP.NET základní 1 MVC |
+| ASP.NET MVC |Pomocí nástroje Migrace |Upgrade tooASP.NET základní 1 MVC |
 | Webové rozhraní API technologie ASP.NET |Pomocí nástroje Migrace |Použít vlastním hostováním server nebo ASP.NET Core 1 |
 | ASP.NET Core 1 |Ano |Není k dispozici |
 
@@ -105,17 +105,17 @@ namespace Stateless1
 
 ```
 
-Mají obě primární "spustit" přepsání ve kterém se má začít zpracování. Combine služby Service Fabric `Run`, `Start`, a `Stop` do jeden vstupní bod, `RunAsync`. Služby by měl začínat práce při `RunAsync` spustí a by se měla zastavit při práci `RunAsync` signalizace CancellationToken metody. 
+Mají obě primární "spustit" přepsání ve které toobegin zpracování. Combine služby Service Fabric `Run`, `Start`, a `Stop` do jeden vstupní bod, `RunAsync`. Služby by měl začínat práce při `RunAsync` spustí a by se měla zastavit pracovat, když hello `RunAsync` signalizace CancellationToken metody. 
 
-Existuje několik hlavní rozdíly mezi životního cyklu a životního cyklu služeb rolí pracovního procesu a Service Fabric:
+Existuje několik hlavní rozdíly mezi hello životního cyklu a životního cyklu služeb rolí pracovního procesu a Service Fabric:
 
-* **Životní cyklus:** největších rozdíl je, že Role pracovního procesu je virtuální počítač, a proto je životního cyklu vázaný na virtuální počítač, který zahrnuje události spustí nebo zastaví virtuální počítač. Služba Service Fabric má životního cyklu, která je oddělená od životního cyklu virtuálních počítačů, takže neobsahuje události spuštění nebo zastavení, hostitel virtuálního počítače nebo počítače, protože nesouvisí.
-* **Doba života:** instance Role pracovního procesu bude recyklovat, pokud `Run` metoda ukončí. `RunAsync` Na dokončení ale můžete spustit metoda ve službě Service Fabric a instance služby zůstanou nahoru. 
+* **Životní cyklus:** hello největších rozdílem je, že Role pracovního procesu je virtuální počítač a stejně tak životního cyklu vázanou toohello virtuální počítač, který zahrnuje události spustí nebo zastaví hello virtuálních počítačů. Služba Service Fabric má životního cyklu, která je oddělená od životního cyklu hello virtuálních počítačů, takže nebude obsahovat událostí při hello hostitele virtuálního počítače nebo počítače spuštění a zastavení, protože nesouvisí.
+* **Doba života:** instance Role pracovního procesu bude recyklovat, pokud hello `Run` metoda ukončí. Hello `RunAsync` metoda ve službě Service Fabric ale můžete spustit toocompletion a instance služby hello zůstanou nahoru. 
 
-Service Fabric představuje vstupní bod instalaci volitelné komunikace pro služby, které naslouchat žádostem klienta. Vstupní bod RunAsync i komunikace jsou volitelné přepsání v Service Fabric služeb – vaše služba rozhodnout komunikovat pouze na požadavky klientů, nebo jenom spustit smyčku zpracování, nebo obojí -, které je důvod, proč je dovoleno metodě RunAsync ukončení bez restartování instance služby, protože může být nadále naslouchat žádostem klienta.
+Service Fabric představuje vstupní bod instalaci volitelné komunikace pro služby, které naslouchat žádostem klienta. Hello RunAsync i komunikace vstupní bod jsou volitelné přepsání v Service Fabric služeb - služby může zvolit tooonly naslouchání tooclient požadavky, nebo spustit pouze smyčku zpracování, nebo obě -, které je důvod, proč hello metodě RunAsync je povoleno tooexit bez restartování instance služby hello, protože ho může pokračovat toolisten pro požadavky klientů.
 
 ## <a name="application-api-and-environment"></a>Aplikace rozhraní API a prostředí
-Cloudové služby prostředí rozhraní API poskytuje informace a funkce pro aktuální instanci virtuálního počítače a také informace o další instance rolí virtuálních počítačů. Obsahuje informace o jeho modulu runtime Service Fabric a některé informace o uzlu služby je v aktuálně spuštěna. 
+Hello cloudové služby prostředí rozhraní API poskytuje informace a funkce pro hello aktuální instance virtuálního počítače a také informace o další instance rolí virtuálních počítačů. Service Fabric obsahuje informace související s tooits runtime a některé informace o hello uzlu služby je v aktuálně spuštěna. 
 
 | **Úloha prostředí** | **Cloud Services** | **Service Fabric** |
 | --- | --- | --- |
@@ -126,17 +126,17 @@ Cloudové služby prostředí rozhraní API poskytuje informace a funkce pro akt
 | Událost souběžných změny |`RoleEnvironment` |Není k dispozici |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
-Nastavení konfigurace v cloudové služby jsou nastavené pro roli virtuálního počítače a pro všechny instance dané role virtuálních počítačů. Tato nastavení jsou páry klíč hodnota nastavená v souborech ServiceConfiguration.*.cscfg a je možné přistupovat přímo prostřednictvím RoleEnvironment. V Service Fabric nastavení jednotlivě pro každou službu a pro každou aplikaci, nikoli k virtuálnímu počítači, protože virtuální počítač může být hostitelem více služeb a aplikací. Služba se skládá ze tří balíčky:
+Nastavení konfigurace v cloudové služby jsou nastavené pro roli virtuálního počítače a použít tooall instance dané role virtuálních počítačů. Tato nastavení jsou páry klíč hodnota nastavená v souborech ServiceConfiguration.*.cscfg a je možné přistupovat přímo prostřednictvím RoleEnvironment. V Service Fabric nastavení se týká jednotlivě tooeach služby a aplikace tooeach, nikoli tooa virtuální počítač, protože virtuální počítač může být hostitelem více služeb a aplikací. Služba se skládá ze tří balíčky:
 
-* **Kód:** obsahuje služby spustitelné soubory, binární soubory, knihovny DLL a všechny soubory, které služba potřebuje ke spuštění.
+* **Kód:** obsahuje hello služby spustitelné soubory, binární soubory, knihovny DLL a další soubory služba potřebuje toorun.
 * **Konfigurace:** všechny konfigurační soubory a nastavení služby.
-* **Data:** statických dat soubory spojené s touto službou.
+* **Data:** statických dat soubory spojené s hello služby.
 
-Každý z těchto balíčků může být nezávisle verzí a upgradovaný. Podobně jako cloudové služby, konfigurační balíček je možné programově přistupovat pomocí rozhraní API a události jsou k dispozici oznámení službu ke změně konfigurace balíčku. Soubor souborech Settings.xml slouží pro klíč hodnota konfigurace a programový přístup podobná části Nastavení aplikace v souboru App.config. Ale na rozdíl od cloudové služby, konfigurační balíček Service Fabric může obsahovat všechny konfigurační soubory v libovolném formátu toho, jestli je XML, JSON, YAML nebo vlastní binární formát. 
+Každý z těchto balíčků může být nezávisle verzí a upgradovaný. Podobné tooCloud služby, konfigurační balíček je možné programově přistupovat pomocí rozhraní API a události jsou k dispozici toonotify hello službu ke změně konfigurace balíčku. Soubor souborech Settings.xml slouží pro klíč hodnota konfigurace a programový přístup podobné toohello aplikace v oddílu nastavení souboru App.config. Ale na rozdíl od cloudové služby, konfigurační balíček Service Fabric může obsahovat všechny konfigurační soubory v libovolném formátu toho, jestli je XML, JSON, YAML nebo vlastní binární formát. 
 
 ### <a name="accessing-configuration"></a>Přístup ke konfiguraci
 #### <a name="cloud-services"></a>Cloud Services
-Nastavení konfigurace ze ServiceConfiguration.*.cscfg je možné přistupovat prostřednictvím `RoleEnvironment`. Tato nastavení jsou globálně dostupnou pro všechny instance rolí v jednom nasazení cloudové služby.
+Nastavení konfigurace ze ServiceConfiguration.*.cscfg je možné přistupovat prostřednictvím `RoleEnvironment`. Tato nastavení jsou globálně dostupnou tooall instancí rolí ve hello stejného nasazení cloudové služby.
 
 ```C#
 
@@ -145,9 +145,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Každá služba má svůj vlastní balíček individuální konfigurace. Všechny aplikace v clusteru je dostupné žádné předdefinované mechanismus pro globální nastavení konfigurace. Pokud používáte Service Fabric speciální souborech Settings.xml konfigurační soubor v rámci konfigurace balíčku, hodnoty v souborech Settings.xml lze přepsat na úrovni aplikace, aby možné nastavení konfigurace na úrovni aplikace.
+Každá služba má svůj vlastní balíček individuální konfigurace. Všechny aplikace v clusteru je dostupné žádné předdefinované mechanismus pro globální nastavení konfigurace. Pokud používáte Service Fabric speciální souborech Settings.xml konfigurační soubor v rámci konfigurace balíčku, hodnoty v souborech Settings.xml lze přepsat na úrovni aplikace hello, aby možné nastavení konfigurace na úrovni aplikace.
 
-Nastavení konfigurace se přistupuje v rámci každá instance služby prostřednictvím služby `CodePackageActivationContext`.
+Nastavení konfigurace se přistupuje v rámci každá instance služby prostřednictvím služby hello `CodePackageActivationContext`.
 
 ```C#
 
@@ -168,7 +168,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ### <a name="configuration-update-events"></a>Události aktualizace konfigurace
 #### <a name="cloud-services"></a>Cloud Services
-`RoleEnvironment.Changed` Událostí se používá k upozornění všechny instance rolí, když dojde ke změně v prostředí, například o změně konfigurace. To umožňuje využívat aktualizace konfigurace bez recyklace instance rolí nebo restartování pracovní proces.
+Hello `RoleEnvironment.Changed` událostí je použité toonotify v hello prostředí, například o změně konfigurace dojde při změně všech instancí rolí. Toto je aktualizace konfigurace použité tooconsume bez recyklace instance rolí nebo restartování pracovní proces.
 
 ```C#
 
@@ -176,7 +176,7 @@ RoleEnvironment.Changed += RoleEnvironmentChanged;
 
 private void RoleEnvironmentChanged(object sender, RoleEnvironmentChangedEventArgs e)
 {
-   // Get the list of configuration changes
+   // Get hello list of configuration changes
    var settingChanges = e.Changes.OfType<RoleEnvironmentConfigurationSettingChange>();
 foreach (var settingChange in settingChanges) 
    {
@@ -187,9 +187,9 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Každý typ tři balíček ve službě - kód, konfigurace a Data - mít události, které instanci služby balíček aktualizace, přidat nebo odebrat. Služby mohou obsahovat více balíčků každého typu. Služba může mít například více balíčků konfigurace se každý jednotlivě verzí a rozšiřitelný. 
+Každý hello tři typy balíčků ve službě - kód, konfigurace a Data - mít události, které instanci služby balíček aktualizace, přidat nebo odebrat. Služby mohou obsahovat více balíčků každého typu. Služba může mít například více balíčků konfigurace se každý jednotlivě verzí a rozšiřitelný. 
 
-Tyto události jsou k dispozici využívat změny v balíčky služeb bez restartování instance služby.
+Tyto události jsou k dispozici tooconsume změny v balíčky služeb bez restartování instance služby hello.
 
 ```C#
 
@@ -205,7 +205,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ```
 
 ## <a name="startup-tasks"></a>Spuštění úlohy
-Spuštění úlohy se akcí, které předtím, než aplikaci spustí. Úloha spuštění se obvykle používá ke spouštění skriptů instalace použitím zvýšených oprávnění. Cloudové služby a Service Fabric podporu spuštění úloh. Hlavní rozdíl je, že v cloudové služby, úloha spuštění je vázaný na virtuální počítač protože je součástí instanci role, zatímco v Service Fabric úloha spuštění je vázaný na služby, která není vázaný na žádné konkrétní virtuální počítač.
+Spuštění úlohy se akcí, které předtím, než aplikaci spustí. Úloha spuštění je obvykle používanými toorun skripty instalace použitím zvýšených oprávnění. Cloudové služby a Service Fabric podporu spuštění úloh. Hello hlavní rozdíl je, že v cloudové služby, úloha spuštění se vázanou tooa virtuální počítač je součástí instanci role, zatímco v Service Fabric je úloha spuštění služby vázanou tooa, která není vázaná tooany konkrétní virtuální počítač.
 
 | Cloud Services | Service Fabric |
 | --- | --- | --- |
@@ -249,13 +249,13 @@ V Service Fabric je nakonfigurovaný vstupní bod spuštění pro službu v Serv
 ``` 
 
 ## <a name="a-note-about-development-environment"></a>Poznámka o vývojového prostředí
-Cloudové služby a služby infrastruktury jsou integrované s Visual Studio pomocí šablony projektů a podpora pro ladění, konfigurace a nasazení místně a do Azure. Cloudové služby a Service Fabric také poskytuje prostředí runtime místní vývoj. Rozdílem je, že při běhu vývoj cloudové služby emuluje prostředí Azure, ve kterém běží, Service Fabric nepoužívá emulátor – používá dokončení modulu runtime Service Fabric. Service Fabric prostředí, ve kterém můžete spustit na místním vývojovém počítači je stejné prostředí, ve kterém běží v produkčním prostředí.
+Cloudové služby a služby infrastruktury jsou integrované pomocí sady Visual Studio s šablony projektů a podpora pro ladění, konfigurace a nasazení místně a tooAzure. Cloudové služby a Service Fabric také poskytuje prostředí runtime místní vývoj. Hello rozdílem je, že při hello cloudové služby modulu runtime vývoj emuluje hello prostředí Azure, ve kterém běží, Service Fabric nepoužívá emulátor – používá hello dokončení modulu runtime Service Fabric. Hello Service Fabric prostředí, ve kterém můžete spustit na místním vývojovém počítači je hello stejné prostředí, které běží v produkčním prostředí.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o spolehlivé služby Service Fabric a základní rozdíly mezi cloudové služby a architektury aplikací Service Fabric, abyste pochopili, jak chcete využít výhod úplnou sadu funkcí Service Fabric.
+Další informace o Service Fabric Reliable Services a hello základní rozdíly mezi cloudové služby a toounderstand Architektura aplikace Service Fabric jak tootake výhod hello úplná sada funkcí Service Fabric.
 
 * [Začínáme se službami Reliable Services Service Fabric](service-fabric-reliable-services-quick-start.md)
-* [Koncepční Průvodce rozdíly mezi cloudovými službami a Service Fabric](service-fabric-cloud-services-migration-differences.md)
+* [Koncepční Průvodce toohello rozdíly mezi cloudové služby a Service Fabric](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

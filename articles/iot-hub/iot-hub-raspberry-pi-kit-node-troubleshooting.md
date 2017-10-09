@@ -1,6 +1,6 @@
 ---
-title: "Malinová Pi (C) připojit k Azure IoT – řešení potíží s | Microsoft Docs"
-description: "Řešení potíží s stránky pro prostředí malin pí Node.js"
+title: "Connect Raspberry PI (C) tooAzure IoT – řešení potíží s | Microsoft Docs"
+description: "Řešení potíží s stránky pro prostředí malin pí Node.js hello"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,61 +17,61 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: f9058068972ddbb674d3cd159948835dc88c4451
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f0807104550e8e53a132f7741564b33f1db17ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 ## <a name="hardware-issues"></a>Problémy s hardwarem
-### <a name="the-application-runs-well-but-the-led-is-not-blinking"></a>Aplikace běží správně, ale není blikat indikátor LED
-Tento problém je vždy související s konektivitou okruhu hardwaru. K identifikaci problémů použijte následující kroky:
+### <a name="hello-application-runs-well-but-hello-led-is-not-blinking"></a>aplikace Hello spustí i ale hello DIODU není blikat
+Tento problém je vždy související toohardware okruhu připojení. Použijte následující kroky tooidentify problémy hello:
 
-1. Zkontrolujte, že jste vybrali správný **GPIO** vaší karty. Dva porty musí být **GPIO zem (Pin 6)** a **GPIO 04 (Pin 7)**.
-2. Zkontrolujte správnost polarita z vaší Indikátor. Delší větev by měl být uveden **kladné**, anod pin.
-3. Použití **3.3v připnout** a **zem Pin** na malin pí 3. Pi považovat za power řadiče domény. Zkontrolujte, jestli DIODU funguje bez problémů.
+1. Zkontrolujte, že jste vybrali správný hello **GPIO** vaší karty. Hello dva porty by měl být **GPIO zem (Pin 6)** a **GPIO 04 (Pin 7)**.
+2. Zkontrolujte správnost hello polarita z vaší Indikátor. Hello delší větev by měl být uveden hello **kladné**, anod pin.
+3. Použití hello **3.3v připnout** a **zem Pin** na malin pí 3. Pi považovat za hello power řadiče domény. Zkontrolujte, zda že tento hello DIODU funguje bez problémů.
 
 ![Specifikace DIODU](media/iot-hub-raspberry-pi-lessons/troubleshooting/led_spec.png)
 
 ### <a name="other-hardware-issues"></a>Další potíže s hardwarem
-Informace o řešení běžných problémů na 3 malin platformy najdete v tématu [oficiální stránka řešení potíží](http://elinux.org/R-Pi_Troubleshooting).
+Informace o řešení běžných problémů na 3 malin platformy najdete v tématu hello [oficiální stránka řešení potíží](http://elinux.org/R-Pi_Troubleshooting).
 
 ## <a name="nodejs-package-issues"></a>Problémy balíčku Node.js
 ### <a name="no-response-during-gulp-tasks"></a>Žádná odpověď během gulp úlohy
-Pokud narazíte na problémy ve spuštěné úkoly gulp, můžete přidat `--verbose` možnost pro ladění. Zkuste ukončit aktuální gulp úlohy pomocí kombinace kláves Ctrl + C, a poté spusťte následující příkaz v okně konzoly zobrazíte zprávy ladění. Může se zobrazit podrobné chybové zprávy ve výstupu konzoly.
+Pokud narazíte na problémy ve spuštěné úkoly gulp, můžete přidat hello `--verbose` možnost pro ladění. Zkuste tooterminate aktuální gulp úlohy pomocí kombinace kláves Ctrl + C a poté spusťte následující příkaz v vaše zprávy ladění toosee okna konzoly hello. Může se zobrazit podrobné chybové zprávy ve výstupu konzoly.
 
 ```bash
 gulp --verbose
 ```
 
 ### <a name="device-discovery-issues"></a>Problémy zjišťování zařízení
-Pomoc při řešení běžných potíží s `devdisco` příkazu, zkontrolujte [readme](https://github.com/Azure/device-discovery-cli/blob/develop/readme.md).
+Pomoc při řešení běžných potíží s hello `devdisco` příkaz, zkontrolujte hello [readme](https://github.com/Azure/device-discovery-cli/blob/develop/readme.md).
 
 ### <a name="npm-issues"></a>npm problémy
-Zkuste aktualizovat vašeho balíčku npm pomocí následujícího příkazu:
+Zkuste tooupdate vašeho balíčku npm pomocí hello následující příkaz:
 
 ```bash
 npm install -g npm
 ```
 
-Pokud problém přetrvává, nechte komentáře na konci tohoto článku nebo vytvořte potíže Githubu v našem [úložiště ukázkové](https://github.com/Azure-Samples/iot-hub-node-raspberrypi-getting-started).
+Pokud problém hello stále existuje, ponechte komentáře na konci hello tohoto článku nebo vytvořit problém Githubu v našem [úložiště ukázkové](https://github.com/Azure-Samples/iot-hub-node-raspberrypi-getting-started).
 
 ## <a name="remote-debugging"></a>Vzdálené ladění
-### <a name="run-the-sample-application-in-debug-mode"></a>Spuštění ukázkové aplikace v režimu ladění
+### <a name="run-hello-sample-application-in-debug-mode"></a>Spuštění ukázkové aplikace hello v režimu ladění
 ```bash
 gulp run --debug
 ```
 
-Když modul ladění je připraven, měli byste vidět ```Debugger listening on port 5858``` ve výstupu konzoly.
+Když modul ladění hello je připraven, měli byste vidět ```Debugger listening on port 5858``` ve výstupu konzoly hello.
 
-### <a name="configure-visual-studio-code-to-connect-to-the-remote-device"></a>Konfigurace Visual Studio Code pro připojení k vzdálené zařízení
-1. Otevřete **ladění** panely na levé straně.
-2. Klikněte na tlačítko se zeleným **spustit ladění** tlačítko (F5). Visual Studio Code otevře soubor launch.json.
-3. Aktualizujte soubor launch.json s následujícím obsahem. Nahraďte `[device hostname or IP address]` s skutečné zařízení IP adresu nebo název hostitele.
+### <a name="configure-visual-studio-code-tooconnect-toohello-remote-device"></a>Konfigurace Visual Studio Code tooconnect toohello vzdáleném zařízení
+1. Otevřete hello **ladění** panely na levé straně hello.
+2. Klikněte na zelenou hello **spustit ladění** tlačítko (F5). Visual Studio Code otevře soubor launch.json.
+3. Aktualizujte soubor launch.json hello hello následující obsah. Nahraďte `[device hostname or IP address]` s hello skutečné zařízení IP adresu nebo název hostitele.
 
 > [!NOTE]
-> Můžete najít další informace o Visual Studio, ladění, [ladění ve Visual Studio Code](https://code.visualstudio.com/Docs/editor/debugging#_launchjson-attributes).
+> Další informace o ladění Visual Studio, hello toolearn naleznete příliš[ladění ve Visual Studio Code](https://code.visualstudio.com/Docs/editor/debugging#_launchjson-attributes).
 
 
 ```json
@@ -96,23 +96,23 @@ Když modul ladění je připraven, měli byste vidět ```Debugger listening on 
 
 ![Konfigurace vzdáleného ladění](media/iot-hub-raspberry-pi-lessons/troubleshooting/remote_debugging_configuration.png)
 
-### <a name="attach-to-the-remote-application"></a>Připojení k vzdálené aplikaci
-Klikněte na tlačítko se zeleným **spustit ladění** (F5) tlačítko Spustit ladění.
+### <a name="attach-toohello-remote-application"></a>Připojte toohello vzdálené aplikace
+Klikněte na zelenou hello **spustit ladění** ladění toostart tlačítko (F5).
 
-Čtení [JavaScript v produktu VS Code](https://code.visualstudio.com/docs/languages/javascript#_debugging) Další informace o ladicího programu.
+Čtení [JavaScript v produktu VS Code](https://code.visualstudio.com/docs/languages/javascript#_debugging) toolearn více informací o hello ladicí program.
 
 ![Vzdálené ladění interaktivní](media/iot-hub-raspberry-pi-lessons/troubleshooting/remote_debugging_interactive.png)
 
 ## <a name="azure-cli-issues"></a>Azure CLI problémy
-Rozhraní příkazového řádku Azure (Azure CLI) je buildu preview. K vyhledání řešení, můžete použít [průvodci instalaci Preview](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md).
+Hello rozhraní příkazového řádku Azure (Azure CLI) je buildu preview. tooseek řešení, můžete použít hello [průvodci instalaci Preview](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md).
 
-Pokud narazíte na všechny chyby pomocí nástroje souboru [problém](https://github.com/Azure/azure-cli/issues) v **problémy** část úložiště GitHub.
+Pokud narazíte na všechny chyby nástrojem hello, soubor [problém](https://github.com/Azure/azure-cli/issues) v hello **problémy** část úložiště GitHub hello.
 
-Pomoc při řešení běžných potíží, najdete [readme](https://github.com/Azure/azure-cli/blob/master/README.rst).
+Pomoc při řešení běžných potíží, zkontrolujte hello [readme](https://github.com/Azure/azure-cli/blob/master/README.rst).
 
 ## <a name="python-installation-issues"></a>Problémy instalace Python
 ### <a name="legacy-installation-issues-macos"></a>Problémy instalace starší verze (macOS)
-Když instalujete pip, oprávnění chyba se vyvolá, když starší balíčky jsou nainstalované s **su** oprávnění. K této situaci dochází, protože předchozí instalaci jazyka Python pomocí brew (macOS) není zcela odinstalována. Některé balíčky pip z předchozí instalace byly vytvořeny pomocí kořenového, což způsobí, že chyba oprávnění. Řešení je odebrat tyto balíčky nainstalované pomocí kořenového. Tuto úlohu dokončit pomocí následujících kroků:
+Když instalujete pip, oprávnění chyba se vyvolá, když starší balíčky jsou nainstalované s **su** oprávnění. K této situaci dochází, protože předchozí instalaci jazyka Python pomocí brew (macOS) není zcela odinstalována. Některé balíčky pip z předchozí instalace byly vytvořeny pomocí kořenového, což způsobí, že chyba oprávnění hello. Hello řešení je tooremove tyto balíčky nainstalované pomocí kořenového. Tento úkol použijte následující postup toocomplete hello:
 
 1. Přejděte na: /usr/local/lib/python2.7/site-packages
 2. Seznam balíčky vytvořené pomocí kořenového:`ls -l | grep root`
@@ -120,36 +120,36 @@ Když instalujete pip, oprávnění chyba se vyvolá, když starší balíčky j
 4. Přeinstalujte Python.
 
 ## <a name="azure-iot-hub-issues"></a>Azure IoT Hub problémy
-Pokud jste úspěšně zřídit služby Azure IoT hub pomocí rozhraní příkazového řádku Azure, musíte nástroj pro správu zařízení, které se připojují ke službě IoT hub, zkuste následující nástroje.
+Pokud jste úspěšně zřídit služby Azure IoT hub pomocí rozhraní příkazového řádku Azure, a je nutné zařízení hello toomanage nástroj, kteří se připojují tooyour IoT hub, zkuste hello následující nástroje.
 
 ### <a name="device-explorer"></a>Průzkumník zařízení
-[Explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nástroj spouští na místní počítač se systémem Windows a připojí se ke službě IoT hub v Azure. Komunikuje s následující [koncové body centra IoT](iot-hub-devguide.md):
+Hello [explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nástroj spouští na místní počítač se systémem Windows a připojí tooyour IoT hub v Azure. Komunikuje s následující hello [koncové body centra IoT](iot-hub-devguide.md):
 
 
-* *Správa identit zařízení* zřizovat a spravovat zařízení zaregistrovaná službou IoT hub.
-* *Zobrazí zařízení cloud* , můžete monitorovat zprávy odeslané ze zařízení do služby IoT hub.
-* *Odeslat cloud zařízení* tak mohou zasílat zprávy do zařízení ze služby IoT hub.
+* *Správa identit zařízení* tooprovision a spravovat zařízení zaregistrovaná službou IoT hub.
+* *Zobrazí zařízení cloud* , můžete monitorovat zprávy odeslané ze zařízení služby IoT hub tooyour.
+* *Odeslat cloud zařízení* tak zprávy lze odesílat tooyour zařízení ze služby IoT hub.
 
-Konfigurace připojovacího řetězce IoT hub v rámci tohoto nástroje můžete použít všechny jeho možnosti.
+Konfigurace připojovacího řetězce centra IoT v rámci této toouse nástroj všechny jeho možnosti.
 
 ### <a name="iothub-explorer"></a>iothub-explorer
-[iothub-explorer](https://github.com/Azure/iothub-explorer) je ukázkový nástroj víceplatformového rozhraní příkazového řádku ke správě zařízení. Nástroj můžete použít ke správě zařízení v registru identit, sledování zpráv typu zařízení cloud a odesílání zpráv typu cloud zařízení.
+[iothub-explorer](https://github.com/Azure/iothub-explorer) je nástroj příkazového řádku s více platformami ukázkové toomanage zařízení. Můžete používat hello nástroj toomanage hello zařízení v registru identit hello, sledování zpráv typu zařízení cloud a odesílání zpráv typu cloud zařízení.
 
-Chcete-li nainstalovat nejnovější verzi (předprodejní) nástroj iothub Průzkumník, spusťte následující příkaz v prostředí příkazového řádku:
+tooinstall hello poslední (předprodejní) verzi nástroje iothub-explorer hello, spusťte následující příkaz v prostředí příkazového řádku hello:
 
 ```bash
 npm install -g iothub-explorer@latest
 ```
 
-Chcete-li získat další informace o tom všechny příkazy iothub-explorer a jejich parametrů můžete následující příkaz:
+Můžete použít následující příkaz, že tooget další nápovědu o všech hello iothub-explorer spolu s jejich parametry hello:
 
 ```bash
 iothub-explorer help
 ```
 
 ### <a name="azure-portal"></a>portál Azure
-Úplné rozhraní příkazového řádku prostředí umožňuje vytvářet a spravovat všechny prostředky Azure. Můžete také použít [portál Azure](../azure-portal-overview.md) pomoci zřizování, spravovat a ladit vašich prostředků Azure.
+Úplné rozhraní příkazového řádku prostředí umožňuje vytvářet a spravovat všechny prostředky Azure. Můžete také toouse hello [portál Azure](../azure-portal-overview.md) toohelp zřizovat, spravovat a ladit vašich prostředků Azure.
 
 ## <a name="azure-storage-issues"></a>Azure problémů s úložištěm
-[Microsoft Azure Storage Explorer (preview)](http://storageexplorer.com) je samostatná aplikace od společnosti Microsoft, který můžete použít pro práci s daty Azure Storage ve Windows, systému macOS a Linux. Pomocí tohoto nástroje můžete připojit k tabulku a zobrazit data v ní. Tento nástroj slouží k řešení potíží vašeho úložiště Azure.
+[Microsoft Azure Storage Explorer (preview)](http://storageexplorer.com) je samostatná aplikace od Microsoftu, které můžete toowork s daty Azure Storage ve Windows, systému macOS a Linux. Pomocí tohoto nástroje můžete připojit tooyour tabulky a zobrazit data hello v ní. Můžete použít tento nástroj tootroubleshoot vaše problémů s úložištěm Azure.
 

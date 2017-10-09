@@ -1,6 +1,6 @@
 ---
-title: "Rady pro pochopení Azure IoT Hub kvóty a omezení | Microsoft Docs"
-description: "Příručka vývojáře – popis kvóty, které platí pro IoT Hub a očekávané chování omezení."
+title: "aaaUnderstand Azure IoT Hub kvót a omezování | Microsoft Docs"
+description: "Příručka vývojáře – popis hello kvóty, které se vztahují tooIoT rozbočovače a hello chování je očekávané omezení."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: dfe06ee6b8fadfe6d34397661c974181f870239e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 023fa29bfbfb1de35708d6d121a1c56b50adfed9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční dokumentace - IoT Hub kvóty a omezení
 
 ## <a name="quotas-and-throttling"></a>Kvóty a omezování
 Každé předplatné Azure může mít maximálně 10 centra IoT a nejvýše 1 volné rozbočovače.
 
-Každé centrum IoT je opatřen počet jednotek v konkrétní SKU (Další informace najdete v tématu [ceník služby Azure IoT Hub][lnk-pricing]). SKU a počet jednotek určit maximální denní kvóta zpráv, které můžete odeslat.
+Každé centrum IoT je opatřen počet jednotek v konkrétní SKU (Další informace najdete v tématu [ceník služby Azure IoT Hub][lnk-pricing]). Hello SKU a počet jednotek určit maximální denní kvóta hello zpráv, které můžete odeslat.
 
-Verze SKU také určuje omezení limity, které vynucuje IoT Hub na všechny operace.
+Hello SKU také určuje hello omezení, které vynucuje IoT Hub na všechny operace.
 
 ## <a name="operation-throttles"></a>Omezení operace
-Omezení operace jsou omezení míry, které se použijí v minutu rozsahy a jsou určeny, aby se zabránilo zneužití. Centrum IoT pokusí vyhnout vrací chyby, pokud je to možné, ale začne vrácení výjimky, pokud omezení porušení příliš dlouho.
+Omezení operace jsou omezení míry, které se použijí v hello minutu rozsahy a jsou určena tooavoid zneužití. Centrum IoT pokusí tooavoid vrací chyby, pokud je to možné, ale začne vrácení výjimky, pokud porušení omezení hello příliš dlouho.
 
-Následující tabulka obsahuje vynucené omezení. Hodnoty se vztahují k rozbočovači jednotlivých.
+Následující tabulka ukazuje hello Hello vynucuje omezení. Hodnoty se vztahují tooan jednotlivých rozbočovače.
 
 | Omezení | Volné a rozbočovače S1 | S2 rozbočovače | Centra S3 | 
 | -------- | ------- | ------- | ------- |
@@ -48,14 +48,14 @@ Následující tabulka obsahuje vynucené omezení. Hodnoty se vztahují k rozbo
 | Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (min/100/unit) | 1.67/sec/Unit (min/100/unit) | 83.33/sec/Unit (5000/minimální/unit) |
 | Propustnost operací úloh jednotlivých zařízení | 10 za sekundu | Maximálně 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
 
-Je důležité o vysvětlení, že *připojení zařízení* omezení řídí rychlost, jakou by bylo možné navázat nová připojení zařízení pomocí služby IoT hub. *Připojení zařízení* omezení neřídí maximální počet současně připojených zařízení. Omezení závisí na počtu jednotek, které jsou zřízené pro službu IoT hub.
+Je důležité tooclarify, který hello *připojení zařízení* omezení řídí hello rychlost, jakou by bylo možné navázat nová připojení zařízení pomocí služby IoT hub. Hello *připojení zařízení* omezení neřídí hello maximální počet současně připojených zařízení. omezení Hello závisí na hello počet jednotek, které jsou zřízené pro hello IoT hub.
 
-Pokud si zakoupíte jedné jednotky S1, například zobrazí omezení připojení 100 za sekundu. Proto se pokud chcete připojit 100 000 zařízení, trvá nejméně 1 000 sekund (přibližně 16 minut). Ale může mít libovolný počet současně připojených zařízení, máte zařízení zaregistrované v registru identit.
+Pokud si zakoupíte jedné jednotky S1, například zobrazí omezení připojení 100 za sekundu. Proto tooconnect 100 000 zařízení, jak dlouho trvá nejméně 1 000 sekund (přibližně 16 minut). Ale může mít libovolný počet současně připojených zařízení, máte zařízení zaregistrované v registru identit.
 
-Podrobné informace o IoT Hub omezení chování, naleznete v příspěvku blogu [IoT Hub, omezení a][lnk-throttle-blog].
+Podrobné informace o IoT Hub omezení chování, najdete v příspěvku blogu hello [IoT Hub, omezení a][lnk-throttle-blog].
 
 > [!NOTE]
-> V každém okamžiku je možné zvýšit kvóty nebo omezení limity zvýšit počet zřízené jednotky v služby IoT hub.
+> V každém okamžiku je možné tooincrease kvóty nebo omezení omezení zvýšením počtu hello zřízené jednotky v služby IoT hub.
 > 
 > [!IMPORTANT]
 > Operace s registrem identit jsou určeny k použití v správu zařízení a zřizování scénáře. Čtení nebo aktualizaci velký počet identit zařízení je podporována prostřednictvím [import a export úloh][lnk-importexport].
@@ -69,7 +69,7 @@ IoT Hub vynucuje jiné provozní omezení:
 | Operace | Omezení |
 | --------- | ----- |
 | Nahrávání souborů identifikátory URI | 10000 identifikátory URI SAS může být si pro účet úložiště najednou. <br/> Najednou může existovat 10 identifikátorů URI SAS/zařízení. |
-| Úlohy | Historie úlohy se uchovávají až do 30 dnů <br/> Maximální souběžných úloh je 1 (pro volné a S1, 5 (pro S2), 10 (pro S3). |
+| Úlohy | Historie úlohy se uchovávají až too30 dnů <br/> Maximální souběžných úloh je 1 (pro volné a S1, 5 (pro S2), 10 (pro S3). |
 | Další koncové body | Placené SKU centra asi 10 další koncové body. Volné centra skladová položka může mít jeden další koncový bod. |
 | Pravidla směrování zpráv | Placené SKU rozbočovače mají 100 pravidla směrování. Volné centra skladová položka může mít pět pravidla směrování. |
 | Zasílání zpráv typu zařízení cloud | Maximální velikost 256 KB |
@@ -77,14 +77,14 @@ IoT Hub vynucuje jiné provozní omezení:
 | Zasílání zpráv typu cloud zařízení | Maximální počet čekajících zpráv pro doručení je 50 |
 
 > [!NOTE]
-> Maximální počet zařízení, které se můžete připojit k jedné IoT hub je v současné době 500 000. Pokud chcete tento limit zvýšit, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
+> V současné době hello maximální počet zařízení se můžete připojit tooa jeden IoT hub je 500 000. Pokud chcete tento limit tooincrease, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="latency"></a>Latence
-Centrum IoT se snaží poskytovat s nízkou latencí pro všechny operace. Ale kvůli stavu sítě a dalších faktorů nepředvídatelným nemůže zaručit maximální latence. Při návrhu řešení, proveďte následující kroky:
+IoT Hub usiluje tooprovide s nízkou latencí pro všechny operace. Ale kvůli toonetwork podmínky a dalších faktorů nepředvídatelným nemůže zaručit maximální latence. Při návrhu řešení, proveďte následující kroky:
 
-* Vyvarujte se všechny předpoklady o maximální latence všechny operace služby IoT Hub.
-* Zřídit služby IoT hub v oblasti Azure, které je nejblíže k zařízení.
-* Zvažte použití Azure IoT Edge k provádění operací citlivý na latenci na zařízení nebo na bránu blízko zařízení.
+* Vyvarujte se všechny předpoklady o maximální latence hello všechny operace služby IoT Hub.
+* Zřídit služby IoT hub v zařízení nejbližší tooyour hello oblast Azure.
+* Zvažte použití Azure IoT Edge tooperform citlivý na latenci operací na hello zařízení nebo na Zavřít toohello zařízení brány.
 
 Víc jednotek služby IoT Hub ovlivnit omezení, jak je popsáno výše, ale neposkytuje žádné další latence výhody nebo záruky.
 Pokud se zobrazí neočekávané zvýšení latence operace, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření funkce aktivované webhookem GitHubu v Azure | Dokumentace Microsoftu"
-description: "Pomocí služby Azure Functions vytvoříte funkci bez serveru, která je vyvolána webhookem GitHubu."
+title: "aaaCreate funkce v Azure aktivovány webhook Githubu | Microsoft Docs"
+description: "Pomocí Azure Functions toocreate bez serveru funkci, která je vyvolat webhook Githubu."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 038bb4cf0a9278416261c05ddaa0ee97d83b63c5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8ffcde82c9310d749159ed53eab113658e38a030
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Vytvoření funkce aktivované webhookem GitHubu
 
-Naučte se vytvořit funkci, která se aktivuje požadavkem webhooku HTTP s datovou částí specifickou pro GitHub.
+Zjistěte, jak toocreate funkci, která se aktivuje požadavkem HTTP webhooku s datovou část specifický pro GitHub.
 
-![Funkce aktivovaná webhookem GitHubu na webu Azure Portal](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
+![Webhook Githubu aktivuje funkce v hello portálu Azure](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,61 +41,61 @@ Naučte se vytvořit funkci, která se aktivuje požadavkem webhooku HTTP s dato
 
 ![Aplikace Function App byla úspěšně vytvořena.](./media/functions-create-first-azure-function/function-app-create-success.png)
 
-Dál vytvoříte v nové aplikaci Function App funkci.
+Dál vytvořte funkci v nové funkce aplikace hello.
 
 <a name="create-function"></a>
 
 ## <a name="create-a-github-webhook-triggered-function"></a>Vytvoření funkce aktivované webhookem GitHubu
 
-1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte možnost **Vlastní funkce**. Zobrazí se kompletní sada šablon funkcí.
+1. Rozšířit funkce aplikace a klikněte na tlačítko hello  **+**  tlačítko vedle příliš**funkce**. Pokud je to první funkce hello ve vaší aplikaci funkce, vyberte **vlastní funkce**. Zobrazí se hello kompletní sada šablon funkcí.
 
-    ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
+    ![Funkce Rychlé spuštění stránku hello portálu Azure](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. Vyberte **WebHook Githubu** šablonu pro požadovaný jazyk. **Pojmenujte funkci** a pak vyberte **Vytvořit**.
+2. Vyberte hello **WebHook Githubu** šablonu pro požadovaný jazyk. **Pojmenujte funkci** a pak vyberte **Vytvořit**.
 
-     ![Vytvoření funkce aktivované webhookem GitHubu na webu Azure Portal](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+     ![Vytvoření webhooku se aktivuje funkce Githubu v hello portálu Azure](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
 
-3. V nové funkci klikněte na **</> Získat adresu URL funkce** a potom zkopírujte a uložte příslušné hodnoty. To samé udělejte s možností **</> Získat tajný klíč GitHubu**. Tyto hodnoty použijete ke konfiguraci webhooku na GitHubu.
+3. V nové funkce, klikněte na **URL funkce <> / Get**, zkopírujte a uložte hello hodnoty. Hello samé pro **tajný klíč <> / získat Githubu**. Použijte tyto hodnoty tooconfigure hello webhooku v Githubu.
 
-    ![Kontrola kódu funkce](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
+    ![Zkontrolujte kód funkce hello](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
 
 Dále vytvoříte webhook ve vašem úložišti GitHub.
 
-## <a name="configure-the-webhook"></a>Konfigurace webhooku
+## <a name="configure-hello-webhook"></a>Konfigurace webhooku hello
 
-1. V GitHubu přejděte do úložiště, které vlastníte. Můžete také použít libovolné úložiště, které máte rozvětvené. Pokud potřebujete úložiště rozvětvit, použijte stránku <https://github.com/Azure-Samples/functions-quickstart>.
+1. V Githubu přejděte tooa úložiště, který vlastníte. Můžete také použít libovolné úložiště, které máte rozvětvené. Pokud potřebujete toofork úložiště, použijte <https://github.com/Azure-Samples/functions-quickstart>.
 
 1. Klikněte na **Settings** (Nastavení), pak na **Webhooks** (Webhooky) a **Add webhook** (Přidat webhook).
 
     ![Přidání webhooku GitHubu](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. Použijte nastavení uvedené v tabulce a potom klikněte na **Přidat webhook**.
+1. Použití nastavení uvedeného v tabulce hello a pak klikněte na **přidat webhooku**.
 
-    ![Nastavení adresy URL a tajného klíče webhooku](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
+    ![Adresa URL webhooku hello sady a tajný klíč](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |---|---|---|
-| **Datová část adresy URL** | Zkopírovaná hodnota | Použijte hodnotu vrácenou příkazem **</> Získat adresu URL funkce**. |
-| **Tajný kód**   | Zkopírovaná hodnota | Použijte hodnotu vrácenou příkazem **</> Získat tajný kód GitHubu**. |
-| **Typ obsahu** | application/json | Funkce očekává datovou část JSON. |
-| Aktivační události | Nechat mě vybrat jednotlivé události | Chceme provést aktivaci jenom při událostech komentářů k problémům.  |
+| **Datová část adresy URL** | Zkopírovaná hodnota | Použít hello hodnoty vrácené **URL funkce <> / Get**. |
+| **Tajný kód**   | Zkopírovaná hodnota | Použít hello hodnoty vrácené **tajný klíč <> / získat Githubu**. |
+| **Typ obsahu** | application/json | Funkce Hello očekává datové části JSON. |
+| Aktivační události | Nechat mě vybrat jednotlivé události | Chceme jenom tootrigger na události komentář problém.  |
 | | Komentář k problému |  |
 
-Teď je webhook nakonfigurován tak, aby aktivoval vaši funkci v případě, že dojde k přidání nového komentáře k problému.
+Nyní, hello webhooku je funkce nakonfigurovaná tootrigger při přidání nové komentář problém.
 
-## <a name="test-the-function"></a>Testování funkce
+## <a name="test-hello-function"></a>Testování funkce hello
 
-1. Ve vašem úložišti GitHub otevřete kartu **Issues** (Problémy) v novém okně prohlížeče.
+1. V úložišti GitHub, otevřete hello **problémy** ve nové okno prohlížeče.
 
-1. V novém okně klikněte na **New Issue** (Nový problém), zadejte název a klikněte na **Submit new issue** (Odeslat nový problém).
+1. V novém okně hello, klikněte na tlačítko **nový problém**, zadejte název a potom klikněte na **odeslání nové problém**.
 
-1. U problému zadejte komentář a klikněte na tlačítko **Comment** (Komentář).
+1. V hello problém, zadejte komentář a klikněte na tlačítko **komentář**.
 
     ![Přidejte komentář k problému Githubu.](./media/functions-create-github-webhook-triggered-function/functions-github-webhook-add-comment.png)
 
-1. Vraťte se na portál a podívejte se do protokolů. Měli byste vidět položku trasování s textem nového komentáře.
+1. Přejděte zpět toohello portál a zobrazit protokoly hello. Měli byste vidět položku trasování s nový komentář textem hello.
 
-     ![Zobrazte si text komentáře v protokolech.](./media/functions-create-github-webhook-triggered-function/function-app-view-logs.png)
+     ![Zobrazit text komentáře hello v protokolech hello.](./media/functions-create-github-webhook-triggered-function/function-app-view-logs.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

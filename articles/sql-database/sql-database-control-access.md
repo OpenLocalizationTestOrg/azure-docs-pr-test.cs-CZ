@@ -1,6 +1,6 @@
 ---
-title: "Udělení přístupu k Azure SQL Database | Dokumentace Microsoftu"
-description: "Přečtěte si, jak udělit přístup ke službě Microsoft Azure SQL Database."
+title: "aaaGranting přístup tooAzure databáze SQL | Microsoft Docs"
+description: "Informace o udělení přístupu tooMicrosoft Azure SQL Database."
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,54 +16,54 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/06/2017
 ms.author: rickbyh
-ms.openlocfilehash: 0ca1ccd273317d67537d31724d566625a4eb2c85
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c32fafa7e98b731ff2f9bf4666da7e4a3145286
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-access-control"></a>Řízení přístupu ke službě Azure SQL Database
-Služba SQL Database zajišťuje zabezpečení řízením přístupu pomocí pravidel brány firewall omezujících připojení podle IP adresy, ověřovacích mechanismů vyžadujících po uživatelích prokázání identity a autorizačních mechanismů omezujících uživatelům přístup ke konkrétním akcím a datům. 
+tooprovide zabezpečení, databáze SQL řídí přístup s pravidla brány firewall omezení připojení pomocí IP adresy, vyžadování uživatelé tooprove mechanismy ověřování své identity a autorizace mechanismy omezení uživatelů toospecific akce a data. 
 
 > [!IMPORTANT]
-> Přehled funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md). Podívejte se kurz [zabezpečení vaší databázi SQL Azure](sql-database-security-tutorial.md).
+> Přehled funkcí zabezpečení hello SQL Database, najdete v části [Přehled zabezpečení SQL](sql-database-security-overview.md). Podívejte se kurz [zabezpečení vaší databázi SQL Azure](sql-database-security-tutorial.md).
 
 ## <a name="firewall-and-firewall-rules"></a>Brána firewall a pravidla brány firewall
-Microsoft Azure SQL Database poskytuje relační databázovou službu pro aplikace Azure a další internetové aplikace. Brána firewall pomáhá chránit vaše data tím, že brání veškerému přístupu k vašemu databázovému serveru, dokud neurčíte, které počítače k tomu mají oprávnění. Brána firewall uděluje přístup k databázím v závislosti na zdrojové IP adrese každého požadavku. Další informace najdete v tématu [Přehled pravidel brány firewall služby Azure SQL Database](sql-database-firewall-configure.md).
+Microsoft Azure SQL Database poskytuje relační databázovou službu pro aplikace Azure a další internetové aplikace. toohelp chránit vaše data, brány firewall zabránit všechny přístup tooyour databázový server, dokud nezadáte, které počítače mají oprávnění. brány firewall Hello uděluje přístup toodatabases podle hello pocházející IP adresu každého požadavku. Další informace najdete v tématu [Přehled pravidel brány firewall služby Azure SQL Database](sql-database-firewall-configure.md).
 
-Služba Azure SQL Database je dostupná jenom prostřednictvím portu TCP 1433. Pokud chcete z počítače získat přístup ke službě SQL Database, ověřte, že brána firewall vašeho klientského počítače umožňuje odchozí komunikaci TCP přes port TCP 1433. Pokud ho jiné aplikace nepotřebují, zablokujte na portu TCP 1433 příchozí připojení. 
+Hello služby Azure SQL Database je pouze k dispozici prostřednictvím portu TCP 1433. tooaccess databáze SQL z vašeho počítače, ujistěte se, že klientský počítač brány firewall umožňuje odchozí komunikaci TCP na portu TCP 1433. Pokud ho jiné aplikace nepotřebují, zablokujte na portu TCP 1433 příchozí připojení. 
 
-V rámci připojovacího procesu budou připojení virtuálních počítačů Azure přesměrována na jinou IP adresu a port, které jsou pro každou roli pracovního procesu jedinečné. Číslo portu je v rozsahu 11000 až 11999. Další informace o portech TCP naleznete v tématu [porty nad rámec 1433 pro technologii ADO.NET 4.5 a SQL Database2](sql-database-develop-direct-route-ports-adonet-v12.md).
+Jako součást procesu připojení hello připojení z virtuální počítače Azure jsou přesměrovaného tooa jinou IP adresu a port, jedinečné pro každou roli pracovního procesu. číslo portu Hello je v rozsahu hello od 11000 too11999. Další informace o portech TCP naleznete v tématu [porty nad rámec 1433 pro technologii ADO.NET 4.5 a SQL Database2](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 ## <a name="authentication"></a>Authentication
 
 SQL Database podporuje dva typy ověřování:
 
-* **Ověřování SQL,** které používá uživatelské jméno a heslo. Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Tyto přihlašovací údaje můžete použít k ověření a přihlášení k libovolné databázi na daném serveru jako vlastník databáze neboli „dbo“. 
-* **Ověřování pomocí Azure Active Directory,** které používá identity spravované v Azure Active Directory a je podporované u spravovaných a integrovaných domén. [Kdykoliv to půjde](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), použijte ověřování pomocí Active Directory (integrované zabezpečení). Pokud chcete k ověřování použít Azure Active Directory, musíte vytvořit jiného správce serveru, který se jmenuje „Azure AD admin“ a který smí spravovat uživatele a skupiny služby Azure AD. Tento správce také smí provádět všechny operace jako běžný správce serveru. Postup vytvoření účtu správce služby Azure AD, který umožňuje ověřování Azure Active Directory, najdete v tématu [Připojení ke službě SQL Database s ověřením přes Azure Active Directory](sql-database-aad-authentication.md).
+* **Ověřování SQL,** které používá uživatelské jméno a heslo. Když vytvoříte hello logický server pro databázi, jste zadali "serveru admin" přihlášení s uživatelské jméno a heslo. Pomocí těchto přihlašovacích údajů, můžete ověřovat tooany databáze na tomto serveru jako vlastník databáze hello nebo "dbo." 
+* **Ověřování pomocí Azure Active Directory,** které používá identity spravované v Azure Active Directory a je podporované u spravovaných a integrovaných domén. [Kdykoliv to půjde](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), použijte ověřování pomocí Active Directory (integrované zabezpečení). Pokud chcete toouse ověřování Azure Active Directory, musíte vytvořit jiný správce serveru názvem hello "Azure AD admin", který je povolen tooadminister Azure AD Uživatelé a skupiny. Tento správce také smí provádět všechny operace jako běžný správce serveru. V tématu [připojení tooSQL databáze pomocí pomocí Azure Active Directory Authentication](sql-database-aad-authentication.md) pro návod, jak toocreate tooenable Správce služby Azure AD ověřování Azure Active Directory.
 
-Databázový stroj zavře připojení, které jsou neaktivní déle než 30 minut. Připojení se musí znovu přihlásit, aby bylo možné ho použít. Trvale aktivní připojení ke službě SQL Database vyžadují opakovanou autorizaci (prováděnou databázovým strojem) nejméně každých 10 hodin. Databázový stroj se pokusí při opakované autorizaci použít původně zadané heslo, aby nebyl nutný zásah uživatele. Při resetování hesla ve službě SQL Database se kvůli zachování výkonu připojení znovu neověřuje, i když je důvodem resetování sdružování připojení. Toto chování se liší od místního SQL Serveru. Pokud se heslo od původního ověření připojení změnilo, musí se připojení ukončit a vytvořit nové připojení pomocí nového hesla. Uživatel s oprávněním `KILL DATABASE CONNECTION` může připojení ke službě SQL Database výslovně ukončit příkazem [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql).
+Hello databázový stroj zavře připojení, která zůstat v nečinnosti déle než 30 minut. Hello připojení znovu musí přihlášení před použitím. Nepřetržitě aktivních připojení tooSQL databáze vyžadovat opětovné ověření (provádí hello databázový stroj) minimálně každých 10 hodin. databázový stroj Hello pokusy o opětovné ověření pomocí hesla původně odeslaného hello a není třeba žádný uživatelský vstup. Z důvodů výkonu při vytvoření nového hesla v databázi SQL, hello připojení není vyjednání, i když hello připojení je ukončeno z důvodu tooconnection sdružování. To se liší od chování hello místní SQL Server. Pokud hello heslo bylo změněno, protože byl původně autorizován hello připojení, musí být ukončen hello připojení a vytvořit nové připojení pomocí hello nové heslo. Uživatel s hello `KILL DATABASE CONNECTION` oprávnění můžete explicitně ukončit připojení tooSQL databáze pomocí hello [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) příkaz.
 
-Uživatelské účty je možné vytvořit v hlavní databázi a udělit jim oprávnění ve všech databázích na serveru, nebo je lze vytvořit v samotné databázi (takové účty se nazývají uživatelé s omezením). Informace o vytváření a správě přihlašování najdete v tématu [Správa přihlašování](sql-database-manage-logins.md). Pokud chcete zlepšit přenositelnost a škálovatelnost, používejte uživatele databáze s omezením. Další informace o uživatelích s omezením najdete v tématech [Uživatelé databáze s omezením – vytvoření přenosné databáze](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), [CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) a [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases).
+Uživatelské účty lze vytvořit v hlavní databázi hello a může být přiřazeno oprávnění v všechny databáze na serveru hello, nebo je lze vytvořit v hello databáze (nazývané uživatelů s omezením). Informace o vytváření a správě přihlašování najdete v tématu [Správa přihlašování](sql-database-manage-logins.md). přenositelnost tooenhance a scalabilty, použijte škálovatelnost tooenhance uživatelé databáze s omezením. Další informace o uživatelích s omezením najdete v tématech [Uživatelé databáze s omezením – vytvoření přenosné databáze](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), [CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) a [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases).
 
-Doporučený postup je, aby aplikace k ověření používala vyhrazený účet – omezíte tak počet oprávnění udělených aplikaci a snížíte riziko škodlivých aktivit v případě ohrožení kódu aplikace útoky v podobě injektáže SQL. Doporučený postup je vytvořit [uživatele databáze s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), který umožňuje ověřit aplikaci přímo v databázi. 
+Jako osvědčený postup by aplikace měla použít vyhrazený účet tooauthenticate – tímto způsobem můžete omezit hello oprávnění udělená aplikaci toohello a snížení rizika hello škodlivých aktivit v případě kód aplikace je snadno napadnutelný tooa Injektáž SQL útok. Hello doporučený postup je toocreate [uživatele databáze s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), což umožňuje vaší aplikaci tooauthenticate přímo toohello databáze. 
 
 ## <a name="authorization"></a>Autorizace
 
-Autorizace určuje, co může uživatel provádět ve službě Azure SQL Database. Tyto možnosti jsou dané [členstvím v databázových rolích](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) a [oprávněními k databázi na úrovni objektů](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) vašeho účtu. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění. Účet správce serveru, který používáte k připojení, je členem skupiny db_owner. Tato skupina může s databází provádět všechny operace. Tento účet uložte kvůli nasazení upgradovaných schémat a dalším možnostem správy. Použijte účet „ApplicationUser“, který má omezenější oprávnění a umožňuje připojit se z aplikace k databázi s nejnižšími oprávněními, jaké aplikace potřebuje. Další informace najdete v tématu [Správa přihlašování](sql-database-manage-logins.md).
+Autorizace odkazuje toowhat může uživatel provádět v rámci Azure SQL Database, a tím je řízeno váš uživatelský účet databáze [členství v rolích](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) a [oprávnění na úrovni objektů](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine). Jako osvědčený postup byste měli udělit uživatelům hello nejnižší oprávnění potřebná. Hello účet správce serveru, ke kterému se připojujete se členem role db_owner, který má autority toodo nic v rámci hello databáze. Tento účet uložte kvůli nasazení upgradovaných schémat a dalším možnostem správy. Použít účet "ApplicationUser" hello s omezenější tooconnect oprávnění z vaší aplikace toohello databáze pomocí hello nejnižších oprávnění vyžadované vaší aplikace. Další informace najdete v tématu [Správa přihlašování](sql-database-manage-logins.md).
 
-K databázi `master` většinou potřebují mít přístup jenom správci. Pro rutinní přístup ke každé uživatelské databázi můžete použít databázové uživatele s omezením, kteří nejsou správci, ale jsou v každé databázi vytvoření. Když použijete tyto databázové uživatele s omezením, nepotřebujete v databázi `master` vytvářet přihlášení. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable).
+Obvykle potřebujete jenom správci přístup toohello `master` databáze. Rutiny přístup tooeach uživatele databáze by měla být prostřednictvím uživatelé bez oprávnění správce databáze s omezením vytvoření v každé databázi. Použijete-li uživatelé databáze s omezením, není nutné toocreate přihlášení v hello `master` databáze. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 
-Měli byste se seznámit s následujícími funkcemi, které jde použít k omezení nebo zvýšení oprávnění:   
-* K dočasnému bezpečnému zvýšení oprávnění můžete použít [zosobnění](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) a [přihlašování k modulům](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server).
+Měli seznámit s hello následující funkce, které lze použít toolimit nebo zvýšení oprávnění:   
+* [Zosobnění](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) a [podepisování modulu](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server) můžou být použité toosecurely zvýšení oprávnění dočasně.
 * K omezení řádků, ke kterým má uživatel přístup, můžete použít [zabezpečení na úrovni řádku](https://docs.microsoft.com/sql/relational-databases/security/row-level-security).
-* K omezení rizika ohrožení citlivých dat můžete použít [maskování dat](sql-database-dynamic-data-masking-get-started.md).
-* K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine).
+* [Maskování dat](sql-database-dynamic-data-masking-get-started.md) lze použít toolimit ohrožení citlivých dat.
+* [Uložené procedury](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) lze použít toolimit hello akce, které můžete provést na databázi hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md).
-- Další informace o pravidlech brány firewall najdete v tématu [pravidla brány Firewall](sql-database-firewall-configure.md).
-- Informace o uživateli a přihlašování najdete v tématu [Správa přihlašování](sql-database-manage-logins.md). 
+- Přehled funkcí zabezpečení hello SQL Database, najdete v části [Přehled zabezpečení SQL](sql-database-security-overview.md).
+- toolearn Další informace o pravidla brány firewall, najdete v části [pravidla brány Firewall](sql-database-firewall-configure.md).
+- toolearn o uživatelích a přihlášení, najdete v části [spravovat přihlášení](sql-database-manage-logins.md). 
 - Informace Proaktivní monitorování, naleznete v [auditování databáze](sql-database-auditing.md) a [detekce hrozeb databáze SQL](sql-database-threat-detection.md).
 - Podívejte se kurz [zabezpečení vaší databázi SQL Azure](sql-database-security-tutorial.md).

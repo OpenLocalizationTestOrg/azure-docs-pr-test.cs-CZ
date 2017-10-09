@@ -1,20 +1,20 @@
 ## <a name="public-ip-address"></a>Veřejná IP adresa
-Prostředek veřejné IP adresy obsahuje buď vyhrazené nebo dynamické internetové IP adresu. I když můžete vytvořit veřejnou IP adresu jako samostatný objekt, je třeba ji přidružit k jinému objektu skutečně použít adresu. Můžete přidružit veřejnou IP adresu, která nástroj pro vyrovnávání zatížení, aplikační bránu nebo síťový adaptér zajistit přístup k Internetu na tyto prostředky.  
+Prostředek veřejné IP adresy obsahuje buď vyhrazené nebo dynamické internetové IP adresu. I když můžete vytvořit veřejnou IP adresu jako samostatný objekt, je nutné tooassociate ho tooanother objekt tooactually použijte adresu hello. Můžete přidružit veřejnou IP adresu tooa služby Vyrovnávání zatížení, aplikační bránu nebo síťový adaptér tooprovide Internetu přístup k toothose prostředkům.  
 
 | Vlastnost | Popis | Ukázkové hodnoty |
 | --- | --- | --- |
-| **publicIPAllocationMethod** |Určuje, zda je adresa IP *statické* nebo *dynamické*. |static, dynamické |
-| **idleTimeoutInMinutes** |Definuje časový limit nečinnosti, s výchozí hodnotou 4 minuty. Pokud v tuto chvíli je přijatá žádné další pakety pro dané relace, relace je ukončena. |Libovolná hodnota od 4 do 30. |
-| **IP adresa** |Přiřazené objektu IP adresy. Toto je vlastnost jen pro čtení. |104.42.233.77 |
+| **publicIPAllocationMethod** |Určuje, zda text hello IP adresa je *statické* nebo *dynamické*. |static, dynamické |
+| **idleTimeoutInMinutes** |Definuje hello nečinnosti, po vypršení časového limitu, s výchozí hodnotou 4 minuty. Pokud v tuto chvíli je přijatá žádné další pakety pro dané relace, hello relace je ukončena. |Libovolná hodnota od 4 do 30. |
+| **IP adresa** |Tooobject přidělit IP adresu. Toto je vlastnost jen pro čtení. |104.42.233.77 |
 
 ### <a name="dns-settings"></a>Nastavení DNS
-Veřejné IP adresy mít podřízený objekt s názvem **dnsSettings** obsahující následující vlastnosti:
+Veřejné IP adresy mít podřízený objekt s názvem **dnsSettings** obsahující hello následující vlastnosti:
 
 | Vlastnost | Popis | Ukázkové hodnoty |
 | --- | --- | --- |
 | **domainNameLabel** |Hostitel s názvem používají pro překlad. |WWW, ftp, vm1 |
-| **plně kvalifikovaný název domény** |Plně kvalifikovaný název pro veřejnou IP adresu. |www.westus.cloudapp.Azure.com |
-| **reverseFqdn** |Plně kvalifikovaný název domény na IP adresu a je zaregistrován ve službě DNS, jako záznam PTR. |www.contoso.com. |
+| **plně kvalifikovaný název domény** |Plně kvalifikovaný název pro hello veřejnou IP adresu. |www.westus.cloudapp.Azure.com |
+| **reverseFqdn** |Název plně kvalifikované domény, který přeloží toohello IP adresy a je zaregistrován ve službě DNS, jako záznam PTR. |www.contoso.com. |
 
 Ukázka veřejnou IP adresu ve formátu JSON:
 
@@ -37,5 +37,5 @@ Ukázka veřejnou IP adresu ve formátu JSON:
 ### <a name="additional-resources"></a>Další zdroje
 * Přečtěte si další informace o [veřejné IP adresy](../articles/virtual-network/virtual-networks-reserved-public-ip.md).
 * Další informace o [instance úrovně veřejné IP adresy](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
-* Pro čtení [referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/mt163638.aspx) pro veřejné IP adresy.
+* Čtení hello [referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/mt163638.aspx) pro veřejné IP adresy.
 

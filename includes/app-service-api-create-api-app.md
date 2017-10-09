@@ -1,15 +1,15 @@
 
-Pomocí příkazu [az webapp create](/cli/azure/appservice/web#create) vytvořte [aplikaci API](../articles/app-service-api/app-service-api-apps-why-best-platform.md) v plánu služby App Service `myAppServicePlan`. 
+Vytvoření [aplikace API](../articles/app-service-api/app-service-api-apps-why-best-platform.md) v hello `myAppServicePlan` plán služby App Service se hello [az webapp vytvořit](/cli/azure/appservice/web#create) příkaz. 
 
-Tato webová aplikace poskytuje prostor pro hostování vašeho rozhraní API a adresu URL, na které si můžete nasazenou aplikaci zobrazit.
+Hello webovou aplikaci obsahuje hostování místa pro vaše rozhraní API a adresu URL tooview hello nasazené aplikace.
 
-V následujícím příkazu nahraďte *\<app_name >* jedinečným názvem. Pokud název `<app_name>` není jedinečný, zobrazí se chybová zpráva „Web se zadaným názvem <název_aplikace> již existuje“. Výchozí adresa URL webové aplikace je `https://<app_name>.azurewebsites.net`. 
+Následující příkaz a nahraďte v hello  *\<app_name >* s jedinečným názvem. Pokud `<app_name>` není jedinečný. získáte hello chybová zpráva "Web se zadaným názvem < název_aplikace > již existuje." Výchozí adresa URL webové aplikace hello je Hello `https://<app_name>.azurewebsites.net`. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI zobrazí podobné informace jako v následujícím příkladu:
+Po vytvoření webové aplikace hello hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka:
 
 ```json
 {

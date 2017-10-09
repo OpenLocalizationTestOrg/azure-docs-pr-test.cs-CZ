@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření smyčky a obory nebo debatch data v pracovních postupech - Azure Logic Apps | Microsoft Docs"
-description: "Vytvoření smyčky k iteraci v rámci dat, akce skupiny do oborů, nebo debatch data ke spuštění více pracovních postupů v Azure Logic Apps."
+title: "aaaCreate v cyklu a rozsahy nebo debatch data v pracovních postupech - Azure Logic Apps | Microsoft Docs"
+description: "Vytvoření smyčky tooiterate prostřednictvím data, akce skupiny do oborů, nebo debatch toostart dat více pracovních postupů v Azure Logic Apps."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e612ec2e83541f028916a07bf12c44e7b1f57ad1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Smyčky, obory a rozdělení dávek v Logic Apps
   
-Služba Logic Apps poskytuje několik způsobů, jak pracovat s poli, kolekcí, dávky a smyčky v pracovním postupu.
+Služba Logic Apps poskytuje několik způsobů toowork s pole, kolekce, listy a smyčky v pracovním postupu.
   
 ## <a name="foreach-loop-and-arrays"></a>Pole a smyčka typu ForEach
   
-Služba Logic Apps umožňuje smyčky v rámci sady dat a provedení akce pro každou položku.  To je možné prostřednictvím `foreach` akce.  V návrháři, můžete přidat pro každou smyčku.  Až vyberete pole, která si přejete iterace, můžete začít přidáním akce.  Aktuálně jste omezeni na jenom jednu akci za smyčka typu foreach, ale toto omezení se zruší, v následujících týdnech.  V rámci smyčky začnete jednou zadejte, co má probíhat na každou hodnotu pole.
+Služba Logic Apps můžete tooloop v rámci sady dat a provedení akce pro každou položku.  To je možné prostřednictvím hello `foreach` akce.  V Návrháři hello, můžete zadat tooadd pro každou smyčku.  Po výběru hello pole, které chcete tooiterate přes, můžete začít přidáním akce.  Aktuálně jsou omezené tooonly jednu akci za smyčka typu foreach, ale toto omezení se zruší, pokud hello přicházející týdny.  Jednou v rámci smyčky hello můžete začít toospecify co má probíhat na každou hodnotu pole hello.
 
 Pokud používáte zobrazení kódu, můžete zadat, pro každou smyčku jako níže.  Toto je příklad pro každou smyčku, která odešle e-mail pro každý e-mailovou adresu, která obsahuje 'microsoft.com.:
 
@@ -66,11 +66,11 @@ Pokud používáte zobrazení kódu, můžete zadat, pro každou smyčku jako n�
 }
 ```
   
-  A `foreach` akce iterovat přes maticových až 5000 řádků.  Každé iteraci spustí paralelně ve výchozím nastavení.  
+  A `foreach` akce můžete iterace v polích až too5 000 řádků.  Každé iteraci spustí paralelně ve výchozím nastavení.  
 
 ### <a name="sequential-foreach-loops"></a>Sekvenční smyčky ForEach
 
-Chcete-li povolit smyčka typu foreach provést postupně, `Sequential` by měla být přidána možnost operaci.
+tooenable tooexecute smyčka typu foreach postupně, hello `Sequential` by měla být přidána možnost operaci.
 
 ``` json
 "forEach_email": {
@@ -83,9 +83,9 @@ Chcete-li povolit smyčka typu foreach provést postupně, `Sequential` by měla
   
 ## <a name="until-loop"></a>Dokud smyčky
   
-  Dokud je splněna podmínka, můžete provést akci nebo posloupnost akcí.  Nejběžnější scénáře je volání koncový bod, dokud nezískáte odpověď, kterou hledáte.  V návrháři, můžete přidat dokud smyčky.  Po přidání akce uvnitř smyčky, můžete nastavit ukončovací podmínky, jakož i smyčky omezení.  Mezi cykly smyčky dochází ke zpoždění 1 minuta.
+  Dokud je splněna podmínka, můžete provést akci nebo posloupnost akcí.  Hello nejběžnější scénáře volá koncový bod dokud nezískáte hello odpovědi, které hledáte.  V Návrháři hello, můžete zadat tooadd dokud smyčky.  Po přidání akce uvnitř hello smyčky, vám může nastavit hello ukončovací podmínky, stejně jako hello omezení smyčky.  Mezi cykly smyčky dochází ke zpoždění 1 minuta.
   
-  Pokud používáte zobrazení kódu, můžete zadat dokud smyčky jako níže.  Toto je příklad volání koncový bod protokolu HTTP, dokud text odpovědi má hodnotu "Dokončeno".  Když se dokončí buď 
+  Pokud používáte zobrazení kódu, můžete zadat dokud smyčky jako níže.  Toto je příklad volání koncový bod protokolu HTTP, dokud hello odpovědi má hodnotu hello "Dokončeno".  Když se dokončí buď 
   
   * Odpověď HTTP má stav "dokončeno.
   * To nezkusí 1 hodinu
@@ -117,9 +117,9 @@ Chcete-li povolit smyčka typu foreach provést postupně, `Sequential` by měla
   
 ## <a name="spliton-and-debatching"></a>SplitOn a debatching
 
-Někdy se může zobrazit pole položek, které chcete debatch a spustit pracovní postup, na položku aktivační událost.  Můžete to provést prostřednictvím `spliton` příkaz.  Ve výchozím nastavení, pokud vaše swagger aktivační událost určuje datové části, která je pole `spliton` přidá a spustit na položku start.  SplitOn lze přidat pouze pro aktivační událost.  To lze ručně nakonfigurované nebo přepsání v definici zobrazení kódu.  Nyní můžete debatch SplitOn maticových až 5 000 položek.  Nemůže mít `spliton` a také implementovat vzor synchronní odpovědi.  Jakýkoli pracovní postup, který volá má `response` akce kromě `spliton` spustí asynchronně a odeslat okamžitého `202 Accepted` odpovědi.  
+Někdy se může zobrazit pole položek chcete toodebatch a spustit pracovní postup, na položku aktivační událost.  Můžete to provést prostřednictvím hello `spliton` příkaz.  Ve výchozím nastavení, pokud vaše swagger aktivační událost určuje datové části, která je pole `spliton` přidá a spustit na položku start.  SplitOn lze přidat pouze tooa aktivační události.  To lze ručně nakonfigurované nebo přepsání v definici zobrazení kódu.  Nyní můžete SplitOn debatch pole nahoru too5 000 položek.  Nemůže mít `spliton` a také implementovat vzor hello synchronní odpovědi.  Jakýkoli pracovní postup, který volá má `response` akce kromě příliš`spliton` spustí asynchronně a odeslat okamžitého `202 Accepted` odpovědi.  
 
-SplitOn lze zadat v zobrazení kódu jako v následujícím příkladu.  To přijímá pole položek a debatches na každém řádku.
+SplitOn lze zadat v zobrazení kódu jako hello následující ukázka.  To přijímá pole položek a debatches na každém řádku.
 
 ```
 {
@@ -139,7 +139,7 @@ SplitOn lze zadat v zobrazení kódu jako v následujícím příkladu.  To při
 
 ## <a name="scopes"></a>Obory
 
-Je možné seskupit sérii akcí společně s použitím oboru.  To je obzvláště užitečné pro implementace zpracování výjimek.  V Návrháři můžete přidat nový obor a začnete přidávat všechny akce v rámci ho.  Můžete definovat obory v zobrazení kódu takto:
+Je možné toogroup sérii akcí společně s použitím oboru.  To je obzvláště užitečné pro implementace zpracování výjimek.  V Návrháři hello můžete přidat nový obor a začnete přidávat všechny akce v rámci ho.  Můžete definovat obory v zobrazení kódu jako hello následující:
 
 
 ```

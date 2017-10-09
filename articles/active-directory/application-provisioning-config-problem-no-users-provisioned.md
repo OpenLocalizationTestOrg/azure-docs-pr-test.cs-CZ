@@ -1,6 +1,6 @@
 ---
-title: "Žádní uživatelé jsou se zřídí k aplikaci Galerie Azure AD | Microsoft Docs"
-description: "Postup řešení běžných problémů s potýkají při nevidíte uživatelé zobrazovaných v na Azure AD Application Gallery jste nakonfigurovali pro zřizování uživatelů s Azure AD"
+title: "Uživatelé aaaNo probíhá aplikace Galerie zřízené tooan Azure AD | Microsoft Docs"
+description: "Jak potýkají tootroubleshoot běžné problémy při nevidíte uživatelé zobrazovaných v na Azure AD Application Gallery jste nakonfigurovali pro zřizování uživatelů s Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: asteen
-ms.openlocfilehash: 30db71c0706de1dcc0d48fb72fa5d62475a14ba7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4d9693a202ed657e1de5571b50e5d499bef1bb3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Žádní uživatelé jsou se zřídí k aplikaci Galerie Azure AD
+# <a name="no-users-are-being-provisioned-tooan-azure-ad-gallery-application"></a>Žádní uživatelé probíhá aplikace Galerie zřízené tooan Azure AD
 
-Jakmile automatické zřizování byl nakonfigurován pro aplikace (včetně ověřování, zda jsou platná aplikaci přihlašovacích údajů zadaných do služby Azure AD se připojit k aplikaci). Potom uživatelů nebo skupin se zřizují do aplikace a je určen podle následujících akcí:
+Jednou automatické zřizování byl nakonfigurován pro aplikace (včetně ověřování, zda text hello aplikace přihlašovací údaje tooAzure AD tooconnect toohello aplikace jsou platné). Potom uživatelů nebo skupin jsou zřízené toohello aplikace a je dáno hello následující věci:
 
--   Které uživatelé a skupiny byly **přiřazené** do aplikace. Další informace o přiřazení najdete v tématu [přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+-   Které uživatelé a skupiny byly **přiřazené** toohello aplikace. Další informace o přiřazení najdete v tématu [přiřadit aplikaci enterprise uživatele nebo skupinu tooan v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
--   Zda **mapování atributů** jsou povolené a nakonfigurované pro synchronizaci platné atributy z Azure AD do aplikace. Další informace o mapování atributů najdete v tématu [přizpůsobení zřizování atribut mapování uživatelů pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
+-   Zda **mapování atributů** jsou povolené a nakonfigurované toosync platné atributy z toohello aplikace Azure AD. Další informace o mapování atributů najdete v tématu [přizpůsobení zřizování atribut mapování uživatelů pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
 
 -   Zda je **oboru filtru** přítomen, který je filtrování uživatelů na základě konkrétní atribut hodnot. Další informace o filtry oborů najdete v tématu [zřizování aplikace na základě atributů s filtry oborů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters).
 
-Při sledování, zda uživatelé nejsou se zřídí, projděte si protokoly auditu ve službě Azure AD a vyhledejte položky protokolu pro konkrétního uživatele.
+Při sledování, zda uživatelé nejsou se zřídí, projděte si protokoly auditu hello ve službě Azure AD a vyhledejte položky protokolu pro konkrétního uživatele.
 
-Zřizování protokolů auditu na portálu Azure v přístupné **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování** kartě. Filtrovat protokoly **zřizování účtu** kategorii zobrazíte jen zřizování události pro tuto aplikaci. Můžete vyhledat uživatele podle "Odpovídající ID" nakonfigurovaný pro ně v mapování atributů. Například, pokud jste nakonfigurovali "hlavní název uživatele" nebo "e-mailovou adresu" jako odpovídající atribut na straně Azure AD a uživatel není zřizování má hodnotu "audrey@contoso.com". Pak vyhledejte v protokolech auditu "audrey@contoso.com" a kontrola a vrácena žádná položka.
+Hello zřizování protokoly auditu je přístupná v hello portál Azure, v hello **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování**kartě. Filtr hello přihlásí hello **zřizování účtu** kategorie tooonly najdete v části hello zřizování události pro tuto aplikaci. Můžete vyhledat uživatele podle hello "odpovídající ID" nakonfigurovaný pro ně v mapování atributů hello. Například, pokud jste nakonfigurovali hello "hlavní název uživatele" nebo "e-mailovou adresu" jako hello odpovídající atribut na straně hello Azure AD, a tím zřizování uživatelů hello má hodnotu "audrey@contoso.com". Pak vyhledejte protokoly auditu hello "audrey@contoso.com" a kontrola a vrácena žádná položka.
 
-Protokoly zřizování auditu záznam všechny operace provádí zřizování služby, včetně dotazování Azure AD pro přiřazené uživatele, které jsou v oboru pro zřizování, dotazování cílové aplikace existenci uživatelům, porovnávání uživatelských objektů mezi systémem. Potom přidání, aktualizace nebo zakázat účet uživatele v cílovém systému podle porovnání.
+Hello zřizování auditu protokoly záznam všech hello operace provedené hello zřizování služby, včetně dotazování Azure AD pro přiřazené uživatele, které jsou v oboru pro zřizování, dotazování hello cílové aplikace hello existence tyto uživatele, porovnání hello uživatelské objekty mezi hello systému. Potom přidání, aktualizace nebo zakázat hello uživatelský účet v cílovém systému hello na základě porovnání hello.
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné problémových oblastí se zřizováním vzít v úvahu
+## <a name="general-problem-areas-with-provisioning-tooconsider"></a>Obecné problémových oblastí se zřizováním tooconsider
 
-Níže je seznam obecné problémových oblastí, které můžete rozbalit Pokud máte představu o kde začít.
+Níže uvádíme seznam hello obecné problémových oblastí, které můžete rozbalit Pokud máte představu o kde toostart.
 
-* [Zřizování služby nezobrazí spuštění](#provisioning-service-does-not-appear-to-start)
+* [Zřizování služby nezobrazí toostart](#provisioning-service-does-not-appear-to-start)
 * [Protokoly auditu, že uživatelé jsou přeskočeny a není zajišťováno, i když jsou přiřazeny](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>Zřizování služby nezobrazí spuštění
+## <a name="provisioning-service-does-not-appear-toostart"></a>Zřizování služby nezobrazí toostart
 
-Pokud nastavíte **Stav zřizování** být **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;zřizování** části portálu Azure. Ale žádné další podrobnosti o stavu jsou zobrazena na této stránce po následné znovu načte, je pravděpodobné, že služba běží, avšak nedokončil ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jakým operacím služby provádí, a pokud nejsou žádné chyby.
+Pokud nastavíte hello **Stav zřizování** toobe **na** v hello **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;Zřizování** části hello portálu Azure. Ale žádné další podrobnosti o stavu jsou zobrazena na této stránce po následné znovu načte, je pravděpodobné, že hello služba běží, ale nebyl dokončen ještě počáteční synchronizaci. Zkontrolujte hello **protokoly auditu** popsané výše toodetermine jaké operace hello služba pracuje, a pokud nejsou žádné chyby.
 
 >[!NOTE]
->Počáteční synchronizace může trvat od 20 minut několik hodin v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Následné synchronizace po počáteční synchronizace je rychlejší, jako službu zřizování ukládá vodoznaky, které představují stav obou systémů po počáteční synchronizaci. To zvyšuje výkon následné synchronizace.
+>Počáteční synchronizace může trvat hodiny tooseveral 20 minut, v závislosti na velikosti hello hello adresář Azure AD a hello počet uživatelů v oboru pro zřizování. Následné synchronizace po počáteční synchronizaci hello je rychlejší, jako hello zřizování služby ukládá vodoznaky, které představují hello stav obou systémů po počáteční synchronizaci hello. To zvyšuje výkon následné synchronizace.
 >
 >
 
 ## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Protokoly auditu, že uživatelé jsou přeskočeny a není zajišťováno i když jsou přiřazeny
 
-Když uživatel se zobrazí jako "přeskočen" v protokolech auditu, je velmi důležité Číst rozšířené podrobnosti v protokolu zprávy a určete důvod. Níže jsou uvedeny běžné příčiny a řešení:
+Když uživatel se zobrazí jako "přeskočen" v protokolech auditu hello, je velmi důležité tooread hello Rozšířené podrobnosti v hello protokolu zpráv toodetermine hello důvod. Níže jsou uvedeny běžné příčiny a řešení:
 
--   **Byl nakonfigurován oboru filtru** **, je filtrování uživatele podle hodnota atributu**. Další informace o filtry oborů najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+-   **Byl nakonfigurován oboru filtru** **, je filtrování hello uživatele podle hodnota atributu**. Další informace o filtry oborů najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
 
--   **Uživatel je "není oprávněn efektivně".** Pokud se zobrazí tato konkrétní chybová zpráva, je to, protože došlo k potížím s uživatelský záznam přiřazení uložené ve službě Azure AD. Opravte tento problém, zrušte přiřazení uživatele (nebo skupiny) z aplikace a znovu přiřadit. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+-   **uživatel Hello nárok "není efektivně".** Pokud se zobrazí tato konkrétní chybová zpráva, je to, protože došlo k potížím s hello uživatele přiřazení záznam uložené ve službě Azure AD. toofix-li tento problém, zrušte přiřazení z aplikace hello hello uživatele (nebo skupiny) a znovu přiřadit. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
--   **Požadovaný atribut nebyl nalezen nebo není vyplněná pro uživatele.** Důležité vzít v úvahu při nastavování zřizování být zkontrolujte a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatele (nebo skupiny) vlastnosti toku z Azure AD k aplikaci. To zahrnuje nastavení "odpovídající vlastnost", které použít k jednoznačné identifikaci a odpovídají uživatele nebo skupiny mezi těmito dvěma systémy. Další informace o tomto procesu důležité najdete v tématu [přizpůsobení zřizování atribut mapování uživatelů pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
+-   **Požadovaný atribut nebyl nalezen nebo není vyplněná pro uživatele.** Tooconsider důležité při nastavování zřizování být tooreview a konfigurace mapování atributů hello a pracovní postupy, které definují vlastnosti toku z Azure AD toohello aplikace které uživatele (nebo skupiny). To zahrnuje nastavení hello "odpovídající vlastnost", který se použité toouniquely identifikovat a odpovídají uživatele nebo skupiny mezi hello dvěma systémy. Další informace o tomto procesu důležité najdete v tématu [přizpůsobení zřizování atribut mapování uživatelů pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
 
-  * **Mapování pro skupiny atributů:** zřizování název skupiny a údaje skupiny, kromě členy, pokud pro některé aplikace podporován. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny ukazuje **zřizování** kartě. Pokud je povoleno zřizování skupiny, nezapomeňte si projít mapování atributů k zajištění, že na odpovídající pole je používána pro "Odpovídající ID". Může to být alias zobrazovaný název nebo e-mailu), protože skupiny a její členy nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněná skupiny ve službě Azure AD.
+  * **Mapování pro skupiny atributů:** zřizování hello skupiny názvů a skupinových podrobnosti v přidání toohello členy, pokud pro některé aplikace podporován. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním hello **mapování** pro objekty skupiny uvedené v hello **zřizování** kartě. Pokud zřizování skupiny je povolena, ujistěte se, že tooreview hello atribut mapování tooensure na odpovídající pole se používá pro hello "odpovídající ID". Může to být hello zobrazovaný název nebo e-mailu alias), jak hello skupiny a její členy nelze zřídit Pokud hello odpovídající vlastnost je prázdný nebo není vyplněná skupiny ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 [Synchronizace Azure AD Connect: Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md)

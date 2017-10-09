@@ -1,6 +1,6 @@
 ---
-title: "Použití sdílené přístupové podpisy (SAS) ve službě Azure Storage | Microsoft Docs"
-description: "Naučte se používat sdílené přístupové podpisy (SAS) pro delegování přístupu k prostředkům Azure Storage, včetně objektů BLOB, fronty, tabulky a soubory."
+title: "aaaUsing sdílené přístupové podpisy (SAS) ve službě Azure Storage | Microsoft Docs"
+description: "Přečtěte si toouse sdíleného přístupu podpisy (SAS) toodelegate přístup tooAzure prostředků úložiště, včetně objektů BLOB, fronty, tabulky a soubory."
 services: storage
 documentationcenter: 
 author: mmacy
@@ -14,80 +14,80 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: marsma
-ms.openlocfilehash: ae944eae4e62132e47bf9069d83817a1a6779ff7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53e06c78fbfdaa5fd209add719995ef2a6bc8f61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
-Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený přístup k objektům v účtu úložiště pro ostatní klienty bez vystavení klíč účtu. V tomto článku jsme poskytovat přehled o modelu SAS, SAS osvědčené postupy a podívejte se na některé příklady.
+Sdílený přístupový podpis (SAS) vám poskytne způsob toogrant omezený přístup tooobjects ve vašem účtu úložiště tooother klientů bez vystavení klíč účtu. V tomto článku jsme poskytovat přehled o modelu hello SAS, SAS osvědčené postupy a podívejte se na některé příklady.
 
-Další příklady kódu pomocí SAS nad rámec těch, které jsou tu popsané, najdete v části [Začínáme s Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) a ostatních vzorků, které jsou k dispozici v [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovny. Stažení ukázkových aplikací a jejich spuštění nebo procházet kód na Githubu.
+Další příklady kódu pomocí SAS nad rámec těch, které jsou tu popsané, najdete v části [Začínáme s Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) a ostatních vzorků, které jsou k dispozici v hello [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovny. Můžete stáhnout hello ukázkové aplikace a jejich spuštění nebo procházet kód hello na Githubu.
 
 ## <a name="what-is-a-shared-access-signature"></a>Co je sdílený přístupový podpis?
-Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště bez sdílení klíče účtu. Toto je klíče bod použití sdílených přístupových podpisů ve svých aplikacích – SAS je zabezpečení způsob, jak sdílet svým prostředkům úložiště bez kompromisů klíče účtu.
+Sdílený přístupový podpis poskytuje Delegovaný přístup tooresources ve vašem účtu úložiště. S SAS můžete udělit, že klienti přístup k tooresources ve vašem účtu úložiště bez sdílení klíče účtu. Toto je použití sdílených přístupových podpisů ve svých aplikacích – SAS hello klíče bod je bezpečný tooshare svým prostředkům úložiště bez kompromisů klíče účtu.
 
 [!INCLUDE [storage-account-key-note-include](../../includes/storage-account-key-note-include.md)]
 
-SAS vám poskytuje podrobnou kontrolu nad typ přístupu, kterou byste udělit klientům, kteří mají SAS, včetně:
+SAS vám poskytuje podrobnou kontrolu nad hello typ přístupu, kterou byste udělit tooclients, kteří mají hello SAS, včetně:
 
-* Interval, za které je platný, včetně počáteční čas a čas vypršení platnosti SAS.
-* Oprávnění udělená pomocí SAS. SAS pro objekt blob může například udělit pro čtení a zápisu oprávnění k tomuto objektu blob ale oprávnění k odstranění.
-* Volitelné IP adresu nebo rozsah IP adres, ze kterých Azure Storage bude přijímat SAS. Například můžete určit rozsah IP adres, které patří do vaší organizace.
-* Protokol, přes který bude přijímat Azure Storage SAS. Tento volitelný parametr můžete omezit přístup ke klientům pomocí protokolu HTTPS.
+* interval Hello, přes které hello SAS platný, včetně hello počáteční čas a čas vypršení platnosti hello.
+* Hello oprávnění udělují hello SAS. Například SAS pro objekt blob může udělit pro čtení a zápisu objektů blob toothat oprávnění, ale oprávnění k odstranění.
+* Volitelné IP adresu nebo rozsah IP adres, od kterých bude přijímat Azure Storage hello SAS. Například můžete určit rozsah IP adres, které patří tooyour organizace.
+* Hello protokol, přes který bude přijímat Azure Storage hello SAS. Můžete použít tento volitelný parametr tooclients přístup toorestrict pomocí protokolu HTTPS.
 
 ## <a name="when-should-you-use-a-shared-access-signature"></a>Když budete používat sdílený přístupový podpis?
-Pokud chcete poskytnout přístup k prostředkům ve vašem účtu úložiště libovolnému klientovi, které nevykazují přístupových klíčů k účtu úložiště, můžete použít SAS. Váš účet úložiště zahrnuje jak primární a sekundární přístupový klíč, které obě udělit přístup správce ke svému účtu a všechny prostředky v něm. Vystavení některý z nich otevře účet tak, aby možnost škodlivý nebo nedbalosti použití. Sdílené přístupové podpisy zadejte bezpečné alternativu, která umožňuje klientům čtení, zápisu a odstranění dat ve vašem účtu úložiště podle oprávnění, která jste explicitně udělí oprávnění a bez nutnosti klíč účtu.
+SAS můžete použít, pokud chcete přístup tooresources tooprovide v klientské tooany účtu úložiště není každý má váš účet úložiště přístupové klíče. Váš účet úložiště zahrnuje jak primární a sekundární přístupový klíč, které obě udělte účtu přístup pro správu tooyour a všechny prostředky v něm. Vystavení některý z nich otevře toohello možnost škodlivý nebo nedbalosti použití vašeho účtu. Sdílené přístupové podpisy zadejte bezpečné alternativu, která umožňuje klientům tooread, zápisu a odstranění dat ve vašem účtu úložiště podle toohello oprávnění, které jste explicitně udělí oprávnění a bez nutnosti klíč účtu.
 
-Běžný scénář, kde je užitečné SAS je služba, kde uživatelé číst a zapisovat svá vlastní data do účtu úložiště. Ve scénáři, kde účet úložiště ukládá data o uživatele existují dva vzory typické návrhu:
+Běžný scénář, kde je užitečné SAS je služba, kde uživatelé pro čtení a zápis účet úložiště tooyour svá vlastní data. Ve scénáři, kde účet úložiště ukládá data o uživatele existují dva vzory typické návrhu:
 
-1. Klienti nahrávání a stahování dat přes službu proxy serveru front-end, který provádí ověřování. Tuto službu front-endu proxy nabízí výhodu v podobě povolení ověření obchodní pravidla, ale pro velké objemy dat nebo vysoký počet transakcí, vytváření služby, který můžete přizpůsobit tak, aby odpovídaly vyžádání může být nákladné nebo obtížná.
+1. Klienti nahrávání a stahování dat přes službu proxy serveru front-end, který provádí ověřování. Tuto službu front-endu proxy musí výhod hello povolení ověření obchodní pravidla, ale pro velké objemy dat nebo vysoký počet transakcí, vytváření služby, který dokáže vyhovět toomatch vyžádání může být nákladné nebo obtížná.
 
   ![Diagram scénáře: Front-end proxy služby][sas-storage-fe-proxy-service]
 
-1. Jednoduché služby ověřuje klienta podle potřeby a pak vygeneruje SAS. Jakmile klient obdrží SAS, můžete přímo s definována SAS a pro interval povolený SAS oprávnění přístupu k prostředkům účet úložiště. SAS snižuje potřebu směrování všechna data prostřednictvím služby proxy serveru front-end.
+1. Jednoduché služby ověří hello klienta podle potřeby a pak vygeneruje SAS. Po hello klient obdrží hello SAS, můžete přímo s definována hello SAS a pro interval hello povolenou hello SAS hello oprávnění přístupu k prostředkům účet úložiště. Hello SAS snižuje potřebu hello směrování všechna data prostřednictvím hello proxy front-endové služby.
 
   ![Diagram scénáře: SAS zprostředkovatel služby][sas-storage-provider-service]
 
-Mnoho reálných služby mohou používat hybridní tyto dva přístupy. Například některá data mohou zpracovat a ověřit prostřednictvím proxy serveru front-end, zatímco jiné dat je uložit nebo číst přímo pomocí SAS.
+Mnoho reálných služby mohou používat hybridní tyto dva přístupy. Například některá data mohou zpracovat a ověřit prostřednictvím hello front-end proxy serveru, zatímco jiné dat je uložit nebo číst přímo pomocí SAS.
 
-Kromě toho budete muset použít SAS pro ověření zdroje objektu v operaci kopírování v některých scénářích:
+Kromě toho budete potřebovat toouse objekt SAS tooauthenticate hello zdroje v operaci kopírování v některých scénářích:
 
-* Pokud kopírujete objekt blob do jiného objektu blob, který se nachází v jiný účet úložiště, musíte použít SAS k ověření zdroje objektu blob. Volitelně můžete SAS k ověření cílový objekt blob také.
-* Při kopírování souboru do jiného souboru, který se nachází v jiný účet úložiště, musíte použít SAS k ověření zdrojový soubor. Volitelně můžete SAS k ověření cílového souboru.
-* Při kopírování objektu blob do souboru nebo soubor do objektu blob, musíte použít SAS k ověření zdroje objektu, i v případě, že zdrojové a cílové objekty jsou umístěny ve stejném účtu úložiště.
+* Pokud kopírujete objekt blob tooanother objektů blob, který se nachází v jiný účet úložiště, musíte použít SAS tooauthenticate hello zdrojový objekt blob. Volitelně můžete SAS tooauthenticate hello cílového objektu blob i.
+* Při kopírování souboru tooanother soubor, který se nachází v jiný účet úložiště, musíte použít SAS tooauthenticate hello zdrojového souboru. Volitelně můžete SAS tooauthenticate hello cílového souboru i.
+* Při kopírování souboru tooa blob nebo soubor tooa objekt blob, musíte použít objekt SAS tooauthenticate hello zdroje i v případě, že hello zdrojové a cílové objekty jsou umístěny v rámci hello stejný účet úložiště.
 
 ## <a name="types-of-shared-access-signatures"></a>Druhy sdílených přístupových podpisů
 Můžete vytvořit dva druhy sdílených přístupových podpisů:
 
-* **SAS služby.** SAS služby deleguje přístup k prostředku jen v jedné službě úložiště: službě Blob, Queue, Table nebo File. V tématu [vytváření SAS služby](https://msdn.microsoft.com/library/dn140255.aspx) a [příklady SAS služby](https://msdn.microsoft.com/library/dn140256.aspx) podrobné informace o vytváření token SAS služby.
-* **SAS účtu.** Účet SAS delegáti přístup k prostředkům v jedné nebo více službách úložiště. Všechny operace, které jsou dostupné přes SAS služby jsou dostupné prostřednictvím SAS účtu. Kromě toho s účtem SAS, můžete delegovat přístup k operace, které platí pro danou službu, jako například **vlastnosti služby Get/Set** a **získat statistiky služby**. Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. V tématu [vytváření SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx) podrobné informace o vytváření tokenu SAS účtu.
+* **SAS služby.** Delegáti SAS služby Hello přístup k prostředku tooa jen v jedné služby úložiště hello: hello služby objektů Blob, fronty, tabulka nebo souboru. V tématu [vytváření SAS služby](https://msdn.microsoft.com/library/dn140255.aspx) a [příklady SAS služby](https://msdn.microsoft.com/library/dn140256.aspx) podrobné informace o vytváření hello token SAS služby.
+* **SAS účtu.** Delegáti SAS účtu Hello přístup tooresources v jedné nebo více služeb úložiště hello. Všechny operace hello dostupný přes SAS služby jsou dostupné prostřednictvím SAS účtu. Kromě toho s účtem hello SAS, můžete delegovat přístup toooperations, které se vztahují tooa danou službu, jako například **vlastnosti služby Get/Set** a **získat statistiky služby**. Můžete taky delegovat přístup tooread, zápisu a operace odstranění pro kontejnery objektů blob, tabulky, fronty a sdílených složek, které se nedá vymezit přes SAS služby. V tématu [vytváření SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx) podrobné informace o vytváření tokenu SAS účtu hello.
 
 ## <a name="how-a-shared-access-signature-works"></a>Jak funguje sdílený přístupový podpis
-Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje na jeden nebo více prostředků úložiště a obsahuje token, který obsahuje speciální sadu parametry dotazu. Token Určuje, jak můžete získat přístup k prostředkům na klientem. Jeden z parametrů dotazu, podpisu, se vytvářejí na základě parametrů SAS a podepsaný pomocí klíč účtu. Tento podpis úložiště Azure slouží k ověřování SAS.
+Sdílený přístupový podpis je podepsaný identifikátor URI, který ukazuje tooone nebo další prostředky úložiště a obsahuje token, který obsahuje speciální sadu parametry dotazu. Hello token Určuje, jak hello může přistupovat k prostředkům klientem hello. Jeden z parametrů dotazu hello, hello podpis, se vytvářejí na základě parametrů hello SAS a podepsaný pomocí hello klíč účtu. Tento podpis používá Azure Storage tooauthenticate hello SAS.
 
-Tady je příklad identifikátoru URI SAS, zobrazuje identifikátor URI a tokenu SAS:
+Tady je příklad identifikátor URI SAS, identifikátor URI prostředku hello zobrazující a tokenu SAS hello:
 
 ![Komponenty identifikátoru URI SAS][sas-storage-uri]
 
-SAS token je řetězec vygenerujete na *klienta* straně (najdete v článku [příklady SAS](#sas-examples) části Příklady kódu). Token SAS, který generovat s Klientská knihovna pro úložiště, například není sledována úložiště Azure žádným způsobem. Můžete vytvořit neomezený počet tokeny SAS na straně klienta.
+Hello SAS token je řetězec vygenerovat v hello *klienta* straně (viz hello [příklady SAS](#sas-examples) části Příklady kódu). Token SAS, který generovat s hello Klientská knihovna pro úložiště, například není sledována úložiště Azure žádným způsobem. Můžete vytvořit neomezený počet tokeny SAS na straně klienta hello.
 
-Když klient poskytuje identifikátor URI SAS pro úložiště Azure jako součást požadavku, služba zkontroluje parametry SAS a definice virů, aby ověřte, zda je platný pro ověření žádosti. Pokud službu ověřuje, že podpis je platný, pak je požadavek ověřen. Jinak je žádost odmítnuta s kódem chyby 403 (zakázáno).
+Pokud klient zajišťuje tooAzure identifikátor URI SAS úložiště jako součást požadavku, služba hello zkontroluje hello SAS parametry a podpis tooverify, zda je platný pro ověření žádosti hello. Pokud služba hello ověřuje, že je tento podpis hello platný, je žádost hello ověřit. Jinak je odmítnuta žádost hello s kódem chyby 403 (zakázáno).
 
 ## <a name="shared-access-signature-parameters"></a>Sdílený přístupový podpis parametry
-SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také provést několik parametrů, aby se liší.
+SAS účtu Hello tokeny SAS služby zahrnují některé společné parametry a také provést několik parametrů, aby se liší.
 
-### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Parametry, které jsou společné pro SAS účtu a tokeny SAS služby
-* **Verze rozhraní API** volitelný parametr, který určuje verzi služby úložiště používat k provedení požadavku.
-* **Verze služby** povinný parametr, který určuje verzi služby úložiště používat k ověření žádosti.
-* **Počáteční čas.** Toto je čas, kdy začne platit SAS. Čas zahájení pro sdílený přístupový podpis je volitelný. Pokud čas spuštění je vynechán, SAS je hned platná. Čas spuštění musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z`.
-* **Čas vypršení platnosti.** Toto je čas, po jejímž uplynutí SAS již není platný. Osvědčené postupy doporučujeme, abyste zadejte čas vypršení platnosti pro SAS, nebo přidružit k zásadám uložené přístup. Čas vypršení platnosti musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z` (Další informace níže).
-* **Oprávnění.** Oprávnění určená v SAS znamenat jakým operacím klienta můžete provést u prostředků úložiště pomocí SAS. K dispozici oprávnění se liší pro SAS účtu a SAS služby.
-* **IP.** Volitelný parametr, který určuje IP adresu nebo rozsah IP adres mimo Azure (naleznete v části [stav konfigurace relace směrování](../expressroute/expressroute-workflows.md#routing-session-configuration-state) pro Express Route) ze kterého tak, aby přijímal požadavky.
-* **Protokol.** Volitelný parametr, který určuje protokol, povolené pro žádost. Možné hodnoty jsou protokolů HTTPS a HTTP (`https,http`), který je pouze výchozí hodnotu, nebo HTTPS (`https`). Všimněte si, že HTTP jenom není povolenou hodnotu.
-* **Podpis.** Podpis se vytvářejí na základě ostatní parametry zadaný jako součást tokenu a pak se zašifrují. Slouží k ověření SAS.
+### <a name="parameters-common-tooaccount-sas-and-service-sas-tokens"></a>Společné parametry tooaccount SAS a tokeny SAS služby
+* **Verze rozhraní API** volitelný parametr, který určuje hello úložiště verze toouse tooexecute hello žádost o služby.
+* **Verze služby** povinný parametr, který určuje hello úložiště verze toouse tooauthenticate hello žádost o služby.
+* **Počáteční čas.** Toto je hello čas, na které hello SAS vstupuje v platnost. čas zahájení Hello pro sdílený přístupový podpis je volitelný. Pokud čas spuštění je vynechán, hello SAS je hned platná. Hello počáteční čas musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z`.
+* **Čas vypršení platnosti.** Toto je hello čas, po jejímž uplynutí hello SAS již není platný. Osvědčené postupy doporučujeme, abyste zadejte čas vypršení platnosti pro SAS, nebo přidružit k zásadám uložené přístup. Hello čas vypršení platnosti musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z` (Další informace níže).
+* **Oprávnění.** Hello oprávnění určená v hello SAS znamenat jakým operacím hello klienta můžete provést u prostředků úložiště hello pomocí hello SAS. K dispozici oprávnění se liší pro SAS účtu a SAS služby.
+* **IP.** Volitelný parametr, který určuje IP adresu nebo rozsah IP adres mimo Azure (části hello [stav konfigurace relace směrování](../expressroute/expressroute-workflows.md#routing-session-configuration-state) pro Express Route) z které tooaccept požadavky.
+* **Protokol.** Volitelný parametr, který určuje protokol, hello povolené pro žádost. Možné hodnoty jsou protokolů HTTPS a HTTP (`https,http`), který je pouze hello výchozí hodnotu, nebo HTTPS (`https`). Všimněte si, že HTTP jenom není povolenou hodnotu.
+* **Podpis.** podpis Hello se vytvářejí na základě hello další parametry, zadaný jako součást tokenu a pak se zašifrují. Použije se tooauthenticate hello SAS.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parametry pro token SAS služby
 * **Úložiště prostředků.** Úložiště prostředků, pro které můžete delegovat přístup se službou SAS patří:
@@ -97,17 +97,17 @@ SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také
   * Tabulky a rozsahy adres entity tabulky.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Parametry pro token SAS účtu
-* **Služba nebo služby.** SAS účtu můžete delegovat přístup k jednomu nebo více službách úložiště. Například můžete vytvořit účet SAS, delegáti přístup ke službě Blob a souboru. Nebo můžete vytvořit SAS, delegáti přístup k všechny čtyři služeb (objekt Blob, fronty, tabulky a soubor).
-* **Typy prostředků úložiště.** Účet SAS se vztahuje na jeden nebo více tříd prostředky úložiště, nikoli konkrétní prostředek. Můžete vytvořit SAS pro delegování přístupu k účtu:
-  * API úrovně služeb, které se nazývají proti prostředků účtu úložiště. Mezi příklady patří **vlastnosti služby Get/Set**, **získat statistiky služby**, a **seznamu kontejnery nebo fronty nebo tabulky nebo sdílené složky**.
-  * Kontejner úrovni rozhraní API, které se nazývají u těchto objektů kontejneru pro každou službu: blob kontejnery, front, tabulky a sdílené složky. Mezi příklady patří **vytvoření nebo odstranění kontejneru**, **vytvoření nebo odstranění fronty**, **vytvoření nebo odstranění tabulky**, **vytvoření nebo odstranění sdílené složky**a  **Seznam objektů BLOB nebo souborů a adresářů**.
+* **Služba nebo služby.** SAS účtu můžete delegovat přístup tooone nebo více služeb úložiště hello. Například můžete vytvořit účet SAS, delegáti přístup toohello služby objektů Blob a souboru. Nebo můžete vytvořit SAS, delegáti přístup tooall čtyři služby (objekt Blob, fronty, tabulky a soubor).
+* **Typy prostředků úložiště.** SAS účtu vztahuje tooone nebo další třídy prostředků úložiště, nikoli konkrétní prostředek. Můžete vytvořit účtu SAS toodelegate přístup do:
+  * API úrovně služeb, které se nazývají proti prostředků účtu úložiště hello. Mezi příklady patří **vlastnosti služby Get/Set**, **získat statistiky služby**, a **seznamu kontejnery nebo fronty nebo tabulky nebo sdílené složky**.
+  * Kontejner úrovni rozhraní API, které se nazývají u hello kontejneru objektů pro každou službu: blob kontejnery, front, tabulky a sdílené složky. Mezi příklady patří **vytvoření nebo odstranění kontejneru**, **vytvoření nebo odstranění fronty**, **vytvoření nebo odstranění tabulky**, **vytvoření nebo odstranění sdílené složky**a  **Seznam objektů BLOB nebo souborů a adresářů**.
   * API úrovni objektů, které se nazývají proti objekty BLOB, fronty zpráv, entity tabulky a soubory. Například **Put Blob**, **dotazu Entity**, **získat zprávy**, a **vytvořit soubor**.
 
 ## <a name="examples-of-sas-uris"></a>Příklady identifikátorů URI SAS
 
 ### <a name="service-sas-uri-example"></a>Příklad identifikátor URI SAS služby
 
-Tady je příklad služby identifikátor URI SAS, který poskytuje oprávnění čtení a zápisu do objektu blob. Dojde-li jednotlivých součástí identifikátoru URI pochopit, jak přispívá ke SAS v tabulce:
+Tady je příklad služby identifikátor URI SAS, která poskytuje čtení a zápisu objektů blob tooa oprávnění. Tabulka Hello rozpis jednotlivých součástí hello URI toounderstand jak přispívá toohello SAS:
 
 ```
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
@@ -115,19 +115,19 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 
 | Name (Název) | Část SAS | Popis |
 | --- | --- | --- |
-| Identifikátor URI objektu BLOB |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adresa objektu blob. Všimněte si, že pomocí protokolu HTTPS se důrazně doporučuje. |
-| Verze služby úložiště |`sv=2015-04-05` |Pro úložiště služby verze 2012-02-12 a novější, tento parametr určuje verze se má použít. |
-| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete SAS platit okamžitě, vynechejte čas spuštění. |
+| Identifikátor URI objektu BLOB |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adresa Hello hello objektů blob. Všimněte si, že pomocí protokolu HTTPS se důrazně doporučuje. |
+| Verze služby úložiště |`sv=2015-04-05` |Pro úložiště služby verze 2012-02-12 a novější, tento parametr určuje toouse verze hello. |
+| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete hello SAS toobe platný okamžitě, vynechejte hello počáteční čas. |
 | Čas vypršení platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadat ve formátu času UTC. |
-| Prostředek |`sr=b` |Daný prostředek k objektu blob. |
-| Oprávnění |`sp=rw` |Oprávnění udělená pomocí sdíleného přístupového podpisu zahrnout Read (r) a zápis (w). |
-| Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Rozsah IP adres, ze kterých budou přijímány žádost. |
+| Prostředek |`sr=b` |prostředek Hello je objekt blob. |
+| Oprávnění |`sp=rw` |Hello oprávnění udělují hello SAS zahrnují Read (r) a zápis (w). |
+| Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Hello rozsah IP adres, ze kterých budou přijímány žádost. |
 | Protocol (Protokol) |`spr=https` |Jsou povoleny pouze požadavky pomocí protokolu HTTPS. |
-| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Používá k ověření přístupu k objektu blob. Podpis je klíčem HMAC, vypočítán na řetězec k podepsání a klíč pomocí algoritmus SHA256 a pak zakódován pomocí kódování Base64. |
+| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Použít tooauthenticate přístup toohello objektů blob. podpis Hello je klíčem HMAC, vypočítán na řetězec k podepsání a klíč pomocí algoritmus SHA256 hello a pak zakódován pomocí kódování Base64. |
 
 ### <a name="account-sas-uri-example"></a>Příklad identifikátor URI pro SAS účtu
 
-Tady je příklad účtu SAS, který používá stejné společné parametry na tokenu. Vzhledem k tomu, že tyto parametry jsou popsané výše, nejsou popsané v tomto poli. Jenom parametry, které jsou specifické pro účet, který SAS, které jsou popsané v následující tabulce.
+Tady je příklad účtu SAS, hello používá stejné společné parametry na hello tokenu. Vzhledem k tomu, že tyto parametry jsou popsané výše, nejsou popsané v tomto poli. Pouze hello parametry, které jsou specifické tooaccount SAS jsou popsány v tabulce hello.
 
 ```
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
@@ -135,42 +135,42 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 
 | Name (Název) | Část SAS | Popis |
 | --- | --- | --- |
-| Identifikátor URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Objekt Blob koncový bod služby, s parametry pro získávání vlastnosti služby (Pokud je volána s GET) nebo nastavení vlastností služby (při volání sadou). |
-| Služby |`ss=bf` |SAS se vztahuje na služby objektů Blob a souborů |
-| Typy prostředků |`srt=s` |SAS se vztahuje k operacím na úrovni služby. |
-| Oprávnění |`sp=rw` |Oprávnění udělit přístup k operacích čtení a zápisu. |
+| Identifikátor URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Hello koncový bod služby objektů Blob, s parametry pro získávání vlastnosti služby (Pokud je volána s GET) nebo nastavení vlastností služby (při volání sadou). |
+| Služby |`ss=bf` |Hello SAS platí toohello objektů Blob a souborové služby |
+| Typy prostředků |`srt=s` |operace na úrovni tooservice se vztahuje Hello SAS. |
+| Oprávnění |`sp=rw` |Hello oprávnění udělují přístup tooread a operací zápisu. |
 
-Vzhledem k tomu, že oprávnění jsou omezeny na úrovni služby, jsou přístupné operací s Tento SAS **získat vlastnosti objektu Blob služby** (čtení) a **nastavit vlastnosti služby objektů Blob** (zápisu). Ale a jiný zdroj v URI stejný token SAS také může delegovat přístup k **získat statistiky služby objektů Blob** (načíst).
+Vzhledem k tomu, že oprávnění jsou omezeny toohello úrovně služby, přístupný operací s Tento SAS jsou **získat vlastnosti objektu Blob služby** (čtení) a **nastavit vlastnosti služby objektů Blob** (zápisu). Ale a jiný zdroj v URI hello stejný token SAS mohou být také příliš použít přístup toodelegate**získat statistiky služby objektů Blob** (načíst).
 
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>Řízení SAS se zásadami uložené přístupu
 Sdílený přístupový podpis může trvat dvě formy:
 
-* **Ad hoc SAS:** když vytvoříte ad hoc SAS, čas zahájení, čas vypršení platnosti a oprávnění pro SAS se všechny zadaný identifikátor URI SAS (nebo v případě, kdy je čas spuštění vynechán odvozených). Tento typ SAS se dá vytvořit jako SAS účtu nebo SAS služby.
-* **SAS se zásadami přístupu uložené:** zásadu uložené přístupu je definovaný na kontejner prostředku--kontejner objektů blob, tabulky, fronty, nebo sdílení – souborů a slouží ke správě omezení pro jeden nebo více sdílených přístupových podpisů. Pokud přidružíte SAS se zásadami přístupu uložené, zdědí SAS omezení – čas spuštění, čas vypršení platnosti a--definována pro zásady uložené přístupu oprávnění.
+* **Ad hoc SAS:** při vytváření ad hoc SAS, čas spuštění hello, čas vypršení platnosti a oprávnění pro hello SAS jsou určené v hello identifikátor URI pro SAS (nebo implicitní v případě hello, kde je vynechán čas spuštění). Tento typ SAS se dá vytvořit jako SAS účtu nebo SAS služby.
+* **SAS se zásadami přístupu uložené:** zásadu uložené přístupu je definovaný na kontejner prostředku--kontejner objektů blob, tabulky, fronty, nebo sdílení – souborů a může být omezení použité toomanage pro jeden nebo více sdílených přístupových podpisů. Pokud přidružíte SAS se zásadami přístupu uložené, zdědí hello SAS hello omezení – čas spuštění hello, čas vypršení platnosti a--definována pro zásady přístupu hello uložené oprávnění.
 
 > [!NOTE]
 > SAS účtu musí být v současné době ad hoc SAS. Uložených přístupu zásady se ještě nepodporují pro SAS účtu.
 
-Rozdíl mezi dvěma formuláři je důležité pro jeden klíč scénář: odvolaných certifikátů. Protože identifikátor URI SAS je adresa URL, každý uživatel, který získá SAS, můžete použít bez ohledu na to, který byl původně vytvořen. Pokud veřejně publikována SAS, můžete použít kdokoli na světě. SAS udělí přístup k prostředkům všem uživatelům, kteří mají dokud jednu ze čtyř akcí se stane:
+Hello rozdíl mezi formuláři hello dva je důležité pro jeden klíč scénář: odvolaných certifikátů. Protože identifikátor URI SAS je adresa URL, každý uživatel, který získá hello SAS můžete použít, bez ohledu na to, který byl původně vytvořen. Pokud veřejně publikována SAS, můžete použít každý, vítáme. SAS uděluje přístup tooresources tooanyone každý má dokud jednu ze čtyř akcí se stane:
 
-1. Je dosaženo času vypršení platnosti, zadaný na SAS.
-2. Čas vypršení platnosti zadané v zásadách přístupu uložené odkazuje SAS je dosaženo (Pokud je odkazována zásadu uložené přístupu a určuje, že čas vypršení platnosti). Tato situace může nastat, protože uplyne, nebo úpravě zásad přístupu uložené, doba vypršení platnosti v minulosti, což je jeden způsob odvolání SAS.
-3. Zásady přístupu uložené odkazuje SAS je odstranit, což je další způsob odvolání SAS. Upozorňujeme, že pokud je znovu vytvořit zásady uložené přístupu se stejným názvem, všechny existující tokeny SAS bude znovu být platný podle oprávnění spojená s uložené přístup zásad (za předpokladu, že který neuplynul čas vypršení platnosti na sdíleného přístupového podpisu). Pokud se hodláte odvolání SAS, je nutné použít jiný název, pokud je znovu vytvořit zásady přístupu, doba vypršení platnosti v budoucnu.
-4. Znovu vygeneruje klíč účtu, který byl použit k vytvoření přidružení zabezpečení. Znovu vygenerovat klíč účtu způsobí, že všechny součásti aplikace pomocí tohoto klíče selhání k ověření, dokud se aktualizovány používat další platný účet klíč nebo klíč nově se znova vygeneroval účtu.
+1. čas vypršení platnosti Hello zadaný na hello dosaženo SAS.
+2. čas vypršení platnosti Hello zadaný v zásadách přístupu hello uložené odkazuje hello je dosaženo SAS, (Pokud je odkazována zásadu uložené přístupu a určuje, že čas vypršení platnosti). Tato situace může nastat, protože hello uplyne, nebo protože jste změnili hello uložené zásady přístupu, doba vypršení platnosti v minulosti, hello, což je jedním ze způsobů toorevoke hello SAS.
+3. Hello uložené zásady přístupu odkazuje hello odstranění SAS, který je jiný způsob toorevoke hello SAS. Všimněte si, že pokud je znovu vytvořit zásady přístupu hello uložené s přesně hello stejný název, všechny existující SAS tokeny budou znovu platné podle oprávnění toohello přidružen (za předpokladu, že čas vypršení platnosti hello na hello SAS neuplynul) uložené přístup zásad. Pokud jsou záměrné toorevoke hello SAS, mít jistotu toouse jiný název znovu hello zásady přístupu, doba vypršení platnosti v budoucnu hello.
+4. Hello klíč účtu, který byl použité toocreate hello SAS vygenerován znovu. Znovu vygenerovat klíč účtu způsobí, že všechny součásti aplikace pomocí tohoto klíče toofail tooauthenticate dokud jste aktualizovány toouse buď hello jiných platný účet nebo hello účet nově obnoveného klíče.
 
 > [!IMPORTANT]
-> Sdílený přístupový podpis identifikátor URI je spojena s účet klíč používaný k vytvoření podpisu a přidruženého uložené zásady přístupu (pokud existuje). Pokud je zadána žádná zásada uložené přístup, jediný způsob, jak odvolat sdílený přístupový podpis je změnit klíč účtu.
+> Sdílený přístupový podpis identifikátor URI je přidružen hello účet klíče používané toocreate hello podpisu a hello související zásady uložené přístupu (pokud existuje). Pokud je zadána žádná zásada uložené přístup, hello pouze způsob toorevoke sdílený přístupový podpis je klíč účtu toochange hello.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>Ověřování z klientské aplikace s SAS
-Klienta, která je vlastníkem SAS slouží k ověření požadavku vůči účet úložiště, pro kterou, které nemají klíče účtu SAS. SAS můžete zahrnout do připojovací řetězec nebo použití přímo z metodu, nebo odpovídající konstruktor.
+Klienta, která je vlastníkem SAS můžete použít hello SAS tooauthenticate požadavek účet úložiště, pro kterou, které nemají klíče účtu hello. SAS můžete zahrnout do připojovací řetězec nebo použití přímo z odpovídající konstruktor hello nebo metoda.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>Pomocí SAS v připojovacím řetězci
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Pomocí SAS v konstruktoru nebo – metoda
-Několik konstruktorů knihovny klienta Azure Storage a přetížení metody nabízejí parametr SAS, aby se můžete ověřit žádost o služby pomocí SAS.
+Několik konstruktorů knihovny klienta Azure Storage a přetížení metody nabízejí parametr SAS, aby se můžete ověřit žádost toohello služby pomocí SAS.
 
-Zde je například identifikátor URI SAS použít k vytvoření odkaz na objekt blob bloku. SAS poskytuje jenom přihlašovacích údajů nezbytných pro požadavek. Odkaz na objekt blob bloku se pak použije pro operaci zápisu:
+Zde identifikátor URI SAS je třeba použít toocreate tooa referenční – objekt blob bloku. Hello SAS poskytuje hello pouze přihlašovacích údajů nezbytných pro požadavek hello. odkaz na objekt blob bloku Hello se pak použije pro operaci zápisu:
 
 ```csharp
 string sasUri = "https://storagesample.blob.core.windows.net/sample-container/" +
@@ -179,8 +179,8 @@ string sasUri = "https://storagesample.blob.core.windows.net/sample-container/" 
 
 CloudBlockBlob blob = new CloudBlockBlob(new Uri(sasUri));
 
-// Create operation: Upload a blob with the specified name to the container.
-// If the blob does not exist, it will be created. If it does exist, it will be overwritten.
+// Create operation: Upload a blob with hello specified name toohello container.
+// If hello blob does not exist, it will be created. If it does exist, it will be overwritten.
 try
 {
     MemoryStream msWrite = new MemoryStream(Encoding.UTF8.GetBytes(blobContent));
@@ -212,45 +212,45 @@ catch (StorageException e)
 ```
 
 ## <a name="best-practices-when-using-sas"></a>Osvědčené postupy při použití SAS
-Při použití sdílených přístupových podpisů v aplikacích, budete muset mít na paměti dva potenciální rizika:
+Při použití sdílených přístupových podpisů v aplikacích, je třeba toobe vědět dva potenciální rizika:
 
 * Pokud SAS došlo k úniku, můžete použít libovolný uživatel, který získává, což může potenciálně ohrozit váš účet úložiště.
-* Pokud SAS poskytované vyprší platnost klientskou aplikaci a aplikace se nepodařilo načíst novou SAS ze služby, pak může být narušen funkcí aplikace.
+* Pokud vyprší platnost tooa klientská aplikace a aplikace hello je nelze tooretrieve nové SAS ze služby k dispozici SAS, může být narušen funkčnost hello aplikace.
 
-Následující doporučení pro použití sdílených přístupových podpisů můžete zmírnit tato rizika:
+Hello následující doporučení pro použití sdílených přístupových podpisů můžete zmírnit tato rizika:
 
-1. **Vždycky používají protokol HTTPS** k vytvoření nebo distribuovat SAS. Pokud SAS je předán přes protokol HTTP a zachycení, je možné číst SAS a použít jej jako určený uživatel může mít potenciálně ohrožení citlivých dat nebo aby vám umožnil poškození dat podle uživateli se zlými úmysly útočník provádění útok man-in-the-middle.
-2. **Odkaz na uložený zásady přístupu, kde je to možné.** Zásady přístupu uložené získáte možnost odvolat oprávnění bez nutnosti obnovit klíče účtu úložiště. Nastavit dobu platnosti na tyto velmi daleké budoucnosti (nebo nekonečné) a ujistěte se, že se pravidelně aktualizují přesune dále do budoucna.
-3. **Použijte ucelené časy vypršení platnosti na ad hoc SAS.** Tímto způsobem i když je ohrožení SAS, je platná pouze pro po krátkou dobu. Tento postup je zvlášť důležité, pokud nemůže odkazovat zásadu uložené přístupu. Ucelené časy vypršení platnosti také omezit množství dat, který lze zapisovat do objektu blob omezením čas nahrát do něj k dispozici.
-4. **Mají klienti automaticky obnovte SAS v případě potřeby.** Klienti musí obnovit SAS dobře před vypršením platnosti, aby bylo možné dobu opakovaných pokusů, pokud není k dispozici služba poskytující SAS. Pokud vaše SAS je určen pro použití pro malý počet okamžitou, krátkodobou operace, které se očekává, že být dokončeny v rámci dobu platnosti, pak to může být zbytečné, není-li třeba obnovit očekávaným SAS. Ale pokud máte klienta, který je pravidelně zajistit požadavky přes SAS, pak možnost vypršení platnosti dodává do play. Klíče význam je vyvážit potřebu SAS být krátkodobou (jako výše uvedená) s potřeba zajistit, že klient požaduje obnovení již v rané fázi dostatek (aby se zabránilo přerušení z důvodu vypršení platnosti před úspěšné obnovení sdíleného přístupového podpisu).
-5. **Pečlivě se časem spuštění SAS.** Pokud nastavíte čas zahájení pro SAS k **nyní**, z důvodu hodin zkreslit (rozdíly v aktuální čas podle různých počítačů), selhání může být dodržen občas u prvních několika minut. Obecně platí nastavte výchozí čas být alespoň 15 minut v minulosti. Nebo si ho nastavit vůbec, což znamená, že platný okamžitě ve všech případech. Obecně platí i pro také – čas vypršení platnosti mějte na paměti, můžete pozorovat až 15 minut od času zkosení v obou směrech na žádnou žádostí. Pro klienty pomocí verze REST před 2012-02-12 je maximální doba trvání SAS, která neodkazuje na zásadu uložené přístupu 1 hodinu a všechny zásady zadání dlouhodobější než, se nezdaří.
-6. **Buďte konkrétní prostředek nelze přistupovat.** Nejlepším postupem zabezpečení je poskytnout minimální požadovaná oprávnění uživatele. Když uživatel potřebuje pouze přístup pro čtení k jedné entity, pak jim udělte přístup pro čtení k této jedné entity a ne pro čtení, zápisu a odstraňování přístup k všechny entity. Navíc pomáhají zmenšit prostor škody, pokud SAS dojde k ohrožení bezpečnosti vzhledem k tomu SAS má méně do nesprávných rukou útočníka.
-7. **Pochopte, že váš účet bude účtován na jakékoli využití, včetně udělat pomocí SAS.** Pokud zadáte oprávnění k zápisu do objektu blob, uživatel může zvolit nahrát objekt blob 200GB. Pokud jste dali je také přístup pro čtení, se rozhodnout ho stáhnout 10krát, by docházelo 2 TB v náklady na celkový výstup za vás. Znovu zadejte omezenými oprávněními pro zmírnění potenciální akce uživatelé se zlými úmysly. Pomocí krátkodobou SAS snížit této hrozby (ale být s vědomím zkosení podél koncový čas hodiny).
-8. **Ověření dat zapsaných pomocí SAS.** Když klientské aplikace zapisuje data do účtu úložiště, mějte na paměti, že mohou být problémy s daty. Pokud vaše aplikace vyžaduje, aby se tato data ověřit nebo oprávnění předtím, než je připravený k použití, byste měli provést toto ověření po zapsání dat, a než bude použit v aplikaci. Tento postup také chrání před poškozený nebo škodlivý dat, zapisuje do vašeho účtu, uživatel, který správně získali SAS nebo uživatelem zneužitím uniklé SAS.
-9. **Nepoužívejte vždy SAS.** Někdy rizika spojená s konkrétní operaci u vašeho účtu úložiště převažují nad přínosy SAS. Pro tyto operace vytvoření služby střední vrstvy, který zapisuje do svého účtu úložiště po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší ke správě přístupu k jiným způsobem. Například, pokud chcete, aby všechny objekty BLOB v kontejneru veřejně čitelné, když vytváříte kontejneru Public, místo pro přístup k poskytování SAS každého klienta.
-10. **Použijte analytika úložiště do monitorování vaší aplikace.** Pomocí protokolování a metriky můžete sledovat všechny Špička při selhání ověřování kvůli výpadku ve službě zprostředkovatele SAS nebo nechtěnému odstranění zásady uložené přístupu. Najdete v článku [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) Další informace.
+1. **Vždycky používají protokol HTTPS** toocreate nebo distribuovat SAS. Pokud SAS je předán přes protokol HTTP a zachycení, útočník provádění útok man-in-the-middle je možné tooread hello SAS a použít jej jako hello zamýšlená uživatel může mít potenciálně nebezpečné citlivá data nebo aby vám umožnil poškození dat podle hello Uživatel se zlými úmysly.
+2. **Odkaz na uložený zásady přístupu, kde je to možné.** Udělení přístupu zásady hello možnost toorevoke oprávnění bez nutnosti klíče účtu úložiště hello tooregenerate uložené. Nastavení vypršení platnosti hello na velmi daleko v hello budoucí (nebo nekonečné) a ujistěte se, zda se pravidelně aktualizují toomove dále do budoucích hello.
+3. **Použijte ucelené časy vypršení platnosti na ad hoc SAS.** Tímto způsobem i když je ohrožení SAS, je platná pouze pro po krátkou dobu. Tento postup je zvlášť důležité, pokud nemůže odkazovat zásadu uložené přístupu. Ucelené časy vypršení platnosti také omezit hello množství dat, s možností zápisu objektů blob tooa omezením hello čas k dispozici tooupload tooit.
+4. **Mají klienti automaticky obnovte hello SAS v případě potřeby.** Klienti musí obnovit hello SAS dobře před vypršením platnosti hello v pořadí tooallow dobu opakovaných pokusů, pokud není k dispozici hello služba poskytující hello SAS. Pokud vaše SAS slouží toobe používá pro malý počet okamžitou, krátkodobou operace, které jsou očekává toobe dokončeny v rámci hello doba vypršení platnosti a potom to může být zbytečné hello SAS není správně toobe obnovit. Ale pokud máte klienta, který je pravidelně zajistit požadavky přes SAS, pak hello možnost vypršení platnosti dodává do play. Hello klíče pozornost je třeba hello toobalance pro hello SAS toobe krátkodobou (jako výše uvedená) s tooensure nutné hello, který hello klient požaduje obnovení již v rané fázi dostatek (tooavoid přerušení kvůli toohello SAS kterým vyprší platnost předchozí toosuccessful obnovení).
+5. **Pečlivě se časem spuštění SAS.** Pokud nastavíte čas zahájení hello pro SAS příliš**nyní**, pak z důvodu tooclock zkosení (rozdíly v aktuální čas podle toodifferent počítače), selhání může být dodržen občas pro hello první několik minut. Obecně platí nastavte hello počáteční čas toobe alespoň 15 minut v posledních hello. Nebo si ho nastavit vůbec, což znamená, že platný okamžitě ve všech případech. Hello obecně totéž platí i – čas tooexpiry mějte na paměti, můžete pozorovat až too15 minut od času zkosení v obou směrech na žádnou žádostí. Pro klienty pomocí REST verze předchozí too2012-02-12 hello maximální doba trvání SAS, která neodkazuje na zásadu uložené přístupu je 1 hodinu a všechny zásady zadání dlouhodobější než, se nezdaří.
+6. **Buďte konkrétní s toobe hello prostředku získat přístup.** Nejlepším způsobem zabezpečení je tooprovide uživatele s hello minimální požadovaná oprávnění. Když uživatel potřebuje pouze jednu entitu tooa přístup pro čtení, pak jim přidělte jednu entitu toothat přístup pro čtení a přístup není pro čtení, zápisu a odstraňování tooall entity. Navíc pomáhají zmenšit prostor hello škody, pokud SAS dojde k ohrožení bezpečnosti vzhledem k tomu hello SAS má méně hello rukou útočníka.
+7. **Pochopte, že váš účet bude účtován na jakékoli využití, včetně udělat pomocí SAS.** Pokud zadáte tooa oprávnění k zápisu objektů blob, můžete zvolit tooupload objekt blob 200GB. Pokud jste dali je také přístup pro čtení, vybírá toodownload ho 10krát, přijímají 2 TB odchozí stojí za vás. Znovu zadejte omezenými oprávněními toohelp zmírnit potenciální akce hello uživatelé se zlými úmysly. Použít krátkodobou SAS tooreduce této hrozby (ale být s vědomím zkosení podél hello koncový čas hodiny).
+8. **Ověření dat zapsaných pomocí SAS.** Když klientské aplikace zapíše data účtu úložiště tooyour, mějte na paměti, že mohou být problémy s daty. Pokud vaše aplikace vyžaduje, aby tento data být ověřen nebo oprávnění, než bude připravena toouse, byste měli provést toto ověření po zapsání hello dat, a než bude použit v aplikaci. Tento postup také chrání před poškozený nebo škodlivý data zapisovaný tooyour účtu, uživatel, který správně získali hello SAS nebo uživatelem zneužitím uniklé SAS.
+9. **Nepoužívejte vždy SAS.** Někdy hello rizika spojená s konkrétní operaci u vašeho účtu úložiště převáží nad hello výhod SAS. Pro tyto operace vytvoření služby střední vrstvy, který zapíše účet úložiště tooyour po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší přístup toomanage jinými způsoby. Například pokud chcete toomake všech objektů BLOB v kontejneru veřejně čitelné, můžete použít hello kontejneru Public, místo poskytnutí klienta tooevery SAS pro přístup.
+10. **Toomonitor Storage Analytics použijte vaši aplikaci.** Můžete použít protokolování a metriky tooobserve žádné špiček selhání ověřování kvůli výpadku tooan ve vaší SAS poskytovatele služby nebo toohello nechtěnému odebrání zásad přístupu uložené. V tématu hello [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) Další informace.
 
 ## <a name="sas-examples"></a>Příklady SAS
 Zde jsou některé příklady oba typy sdílené přístupové podpisy SAS účtu a SAS služby.
 
-Pokud chcete spustit tyto příklady C#, budete muset odkazují následující balíčky NuGet ve vašem projektu:
+toorun tyto příklady jazyka C#, je nutné tooreference hello následující balíčky NuGet ve vašem projektu:
 
-* [Azure Storage Client Library for .NET](http://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (pro použití účtu SAS).
+* [Azure Storage Client Library for .NET](http://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (toouse SAS účtu).
 * [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
-Další příklady, které ukazují, jak vytvořit a otestovat SAS naleznete v tématu [ukázky kódu Azure pro úložiště](https://azure.microsoft.com/documentation/samples/?service=storage).
+Další příklady, které ukazují, jak toocreate a testovací SAS, najdete v části [ukázky kódu Azure pro úložiště](https://azure.microsoft.com/documentation/samples/?service=storage).
 
 ### <a name="example-create-and-use-an-account-sas"></a>Příklad: Vytvoření a použití SAS účtu
-Následující příklad kódu vytvoří účet SAS, který je platný pro služby objektů Blob a soubor a klient získá oprávnění pro čtení, zápisu a seznam oprávnění k přístupu k rozhraním API úrovně služeb. SAS účtu omezuje protokol HTTPS, musí žádosti s protokolem HTTPS.
+Hello následující příklad kódu vytvoří účet SAS, který je platný pro hello Blob souborové služby a služby, a poskytuje hello klienta oprávnění pro čtení, zápisu a seznam oprávnění tooaccess úrovni služby rozhraní API. SAS účtu Hello omezuje tooHTTPS protokol hello, takže hello požadavek musí být provedeny s protokolem HTTPS.
 
 ```csharp
 static string GetAccountSASToken()
 {
-    // To create the account SAS, you need to use your shared key credentials. Modify for your account.
+    // toocreate hello account SAS, you need toouse your shared key credentials. Modify for your account.
     const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
-    // Create a new access policy for the account.
+    // Create a new access policy for hello account.
     SharedAccessAccountPolicy policy = new SharedAccessAccountPolicy()
         {
             Permissions = SharedAccessAccountPermissions.Read | SharedAccessAccountPermissions.Write | SharedAccessAccountPermissions.List,
@@ -260,23 +260,23 @@ static string GetAccountSASToken()
             Protocols = SharedAccessProtocol.HttpsOnly
         };
 
-    // Return the SAS token.
+    // Return hello SAS token.
     return storageAccount.GetSharedAccessSignature(policy);
 }
 ```
 
-Použití SAS účtu pro přístup k rozhraní API pro úroveň služby pro službu Blob, vytvořte objekt Blob klienta pomocí SAS a koncový bod úložiště objektů Blob pro váš účet úložiště.
+toouse hello účet SAS tooaccess úrovně služeb rozhraní API pro hello služby objektů Blob, vytvořit objekt Blob klienta pomocí hello SAS a hello koncový bod úložiště objektů Blob pro váš účet úložiště.
 
 ```csharp
 static void UseAccountSAS(string sasToken)
 {
-    // Create new storage credentials using the SAS token.
+    // Create new storage credentials using hello SAS token.
     StorageCredentials accountSAS = new StorageCredentials(sasToken);
-    // Use these credentials and the account name to create a Blob service client.
+    // Use these credentials and hello account name toocreate a Blob service client.
     CloudStorageAccount accountWithSAS = new CloudStorageAccount(accountSAS, "account-name", endpointSuffix: null, useHttps: true);
     CloudBlobClient blobClientWithSAS = accountWithSAS.CreateCloudBlobClient();
 
-    // Now set the service properties for the Blob client created with the SAS.
+    // Now set hello service properties for hello Blob client created with hello SAS.
     blobClientWithSAS.SetServiceProperties(new ServiceProperties()
     {
         HourMetrics = new MetricsProperties()
@@ -299,7 +299,7 @@ static void UseAccountSAS(string sasToken)
         }
     });
 
-    // The permissions granted by the account SAS also permit you to retrieve service properties.
+    // hello permissions granted by hello account SAS also permit you tooretrieve service properties.
     ServiceProperties serviceProperties = blobClientWithSAS.GetServiceProperties();
     Console.WriteLine(serviceProperties.HourMetrics.MetricsLevel);
     Console.WriteLine(serviceProperties.HourMetrics.RetentionDays);
@@ -308,33 +308,33 @@ static void UseAccountSAS(string sasToken)
 ```
 
 ### <a name="example-create-a-stored-access-policy"></a>Příklad: Vytvoření zásady uložené přístupu
-Následující kód vytvoří zásadu uložené přístup do kontejneru. Zásady přístupu můžete použít k určení omezení pro SAS služby na kontejneru nebo jeho objekty BLOB.
+Hello následující kód vytvoří zásadu uložené přístup do kontejneru. Můžete vytvořit hello přístup zásad toospecify omezení pro SAS na hello kontejneru služby nebo jeho objekty BLOB.
 
 ```csharp
 private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer container, string policyName)
 {
     // Create a new shared access policy and define its constraints.
-    // The access policy provides create, write, read, list, and delete permissions.
+    // hello access policy provides create, write, read, list, and delete permissions.
     SharedAccessBlobPolicy sharedPolicy = new SharedAccessBlobPolicy()
     {
-        // When the start time for the SAS is omitted, the start time is assumed to be the time when the storage service receives the request.
-        // Omitting the start time for a SAS that is effective immediately helps to avoid clock skew.
+        // When hello start time for hello SAS is omitted, hello start time is assumed toobe hello time when hello storage service receives hello request.
+        // Omitting hello start time for a SAS that is effective immediately helps tooavoid clock skew.
         SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
         Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.List |
             SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Create | SharedAccessBlobPermissions.Delete
     };
 
-    // Get the container's existing permissions.
+    // Get hello container's existing permissions.
     BlobContainerPermissions permissions = await container.GetPermissionsAsync();
 
-    // Add the new policy to the container's permissions, and set the container's permissions.
+    // Add hello new policy toohello container's permissions, and set hello container's permissions.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     await container.SetPermissionsAsync(permissions);
 }
 ```
 
 ### <a name="example-create-a-service-sas-on-a-container"></a>Příklad: Vytvoření SAS služby na kontejneru
-Následující kód vytvoří SAS do kontejneru. Pokud je zadaný název existující zásady uložené přístup, je přidružen SAS tuto zásadu. Pokud je k dispozici žádné uložené přístup zásady, kód vytvoří SAS ad-hoc v kontejneru.
+Hello následující kód vytvoří SAS do kontejneru. Pokud je zadaný název hello existující zásady uložené přístup, je přidružen hello SAS tuto zásadu. Pokud je k dispozici žádné uložené přístup zásady, hello kód vytvoří SAS ad-hoc hello kontejneru.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -344,17 +344,17 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
     // If no stored policy is specified, create a new access policy and define its constraints.
     if (storedPolicyName == null)
     {
-        // Note that the SharedAccessBlobPolicy class is used both to define the parameters of an ad-hoc SAS, and
-        // to construct a shared access policy that is saved to the container's shared access policies.
+        // Note that hello SharedAccessBlobPolicy class is used both toodefine hello parameters of an ad-hoc SAS, and
+        // tooconstruct a shared access policy that is saved toohello container's shared access policies.
         SharedAccessBlobPolicy adHocPolicy = new SharedAccessBlobPolicy()
         {
-            // When the start time for the SAS is omitted, the start time is assumed to be the time when the storage service receives the request.
-            // Omitting the start time for a SAS that is effective immediately helps to avoid clock skew.
+            // When hello start time for hello SAS is omitted, hello start time is assumed toobe hello time when hello storage service receives hello request.
+            // Omitting hello start time for a SAS that is effective immediately helps tooavoid clock skew.
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
             Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.List
         };
 
-        // Generate the shared access signature on the container, setting the constraints directly on the signature.
+        // Generate hello shared access signature on hello container, setting hello constraints directly on hello signature.
         sasContainerToken = container.GetSharedAccessSignature(adHocPolicy, null);
 
         Console.WriteLine("SAS for blob container (ad hoc): {0}", sasContainerToken);
@@ -362,46 +362,46 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
     }
     else
     {
-        // Generate the shared access signature on the container. In this case, all of the constraints for the
-        // shared access signature are specified on the stored access policy, which is provided by name.
-        // It is also possible to specify some constraints on an ad-hoc SAS and others on the stored access policy.
+        // Generate hello shared access signature on hello container. In this case, all of hello constraints for the
+        // shared access signature are specified on hello stored access policy, which is provided by name.
+        // It is also possible toospecify some constraints on an ad-hoc SAS and others on hello stored access policy.
         sasContainerToken = container.GetSharedAccessSignature(null, storedPolicyName);
 
         Console.WriteLine("SAS for blob container (stored access policy): {0}", sasContainerToken);
         Console.WriteLine();
     }
 
-    // Return the URI string for the container, including the SAS token.
+    // Return hello URI string for hello container, including hello SAS token.
     return container.Uri + sasContainerToken;
 }
 ```
 
 ### <a name="example-create-a-service-sas-on-a-blob"></a>Příklad: Vytvoření SAS služby na objekt blob
-Následující kód vytvoří SAS na objekt blob. Pokud je zadaný název existující zásady uložené přístup, je přidružen SAS tuto zásadu. Pokud je k dispozici žádné uložené přístup zásady, kód vytvoří SAS ad-hoc u objektu blob.
+Hello následující kód vytvoří SAS na objekt blob. Pokud je zadaný název hello existující zásady uložené přístup, je přidružen hello SAS tuto zásadu. Pokud je k dispozici žádné uložené přístup zásady, hello kód vytvoří SAS ad-hoc u objektu blob hello.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
 {
     string sasBlobToken;
 
-    // Get a reference to a blob within the container.
-    // Note that the blob may not exist yet, but a SAS can still be created for it.
+    // Get a reference tooa blob within hello container.
+    // Note that hello blob may not exist yet, but a SAS can still be created for it.
     CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
 
     if (policyName == null)
     {
         // Create a new access policy and define its constraints.
-        // Note that the SharedAccessBlobPolicy class is used both to define the parameters of an ad-hoc SAS, and
-        // to construct a shared access policy that is saved to the container's shared access policies.
+        // Note that hello SharedAccessBlobPolicy class is used both toodefine hello parameters of an ad-hoc SAS, and
+        // tooconstruct a shared access policy that is saved toohello container's shared access policies.
         SharedAccessBlobPolicy adHocSAS = new SharedAccessBlobPolicy()
         {
-            // When the start time for the SAS is omitted, the start time is assumed to be the time when the storage service receives the request.
-            // Omitting the start time for a SAS that is effective immediately helps to avoid clock skew.
+            // When hello start time for hello SAS is omitted, hello start time is assumed toobe hello time when hello storage service receives hello request.
+            // Omitting hello start time for a SAS that is effective immediately helps tooavoid clock skew.
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
             Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Create
         };
 
-        // Generate the shared access signature on the blob, setting the constraints directly on the signature.
+        // Generate hello shared access signature on hello blob, setting hello constraints directly on hello signature.
         sasBlobToken = blob.GetSharedAccessSignature(adHocSAS);
 
         Console.WriteLine("SAS for blob (ad hoc): {0}", sasBlobToken);
@@ -409,24 +409,24 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     }
     else
     {
-        // Generate the shared access signature on the blob. In this case, all of the constraints for the
-        // shared access signature are specified on the container's stored access policy.
+        // Generate hello shared access signature on hello blob. In this case, all of hello constraints for the
+        // shared access signature are specified on hello container's stored access policy.
         sasBlobToken = blob.GetSharedAccessSignature(null, policyName);
 
         Console.WriteLine("SAS for blob (stored access policy): {0}", sasBlobToken);
         Console.WriteLine();
     }
 
-    // Return the URI string for the container, including the SAS token.
+    // Return hello URI string for hello container, including hello SAS token.
     return blob.Uri + sasBlobToken;
 }
 ```
 
 ## <a name="conclusion"></a>Závěr
-Sdílené přístupové podpisy jsou užitečné pro zajištění omezené oprávnění k účtu úložiště na klienty, kteří by neměl mít klíč účtu. Jako takový jsou sice podstatná součást model zabezpečení pro všechny aplikace pomocí Azure Storage. Pokud budete postupovat podle osvědčených postupů, které jsou zde uvedeny, můžete zajistit větší flexibilita při přístupu k prostředkům ve vašem účtu úložiště, aniž by to ohrozilo zabezpečení aplikace SAS.
+Sdílené přístupové podpisy jsou užitečné pro zajištění tooyour tooclients účet úložiště, který by neměl mít klíč účtu hello omezenými oprávněními. Jako takový jsou sice podstatná součást hello model zabezpečení pro všechny aplikace pomocí Azure Storage. Pokud budete postupovat podle osvědčených postupů hello zde uvedeny, můžete ve vašem účtu úložiště SAS tooprovide větší flexibilitu tooresources přístup bez ohrožení zabezpečení hello vaší aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-* [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](storage-manage-access-to-resources.md)
+* [Správa toocontainers anonymní přístup pro čtení a objekty BLOB](storage-manage-access-to-resources.md)
 * [Delegování přístupu se sdíleným přístupovým podpisem](http://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Představení tabulky a fronty SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 

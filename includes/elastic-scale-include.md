@@ -1,0 +1,2 @@
+## <a name="additional-resources"></a>Další zdroje
+Není ještě pomocí nástroje elastické databáze? Podívejte se na naše [– Příručka Začínáme](../articles/sql-database/sql-database-elastic-scale-get-started.md).  Máte dotazy, kontaktujte toous na hello [SQL Database fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) a pro žádosti o funkce, přidejte je toohello [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).

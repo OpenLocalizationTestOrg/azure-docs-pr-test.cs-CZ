@@ -1,5 +1,5 @@
-#### <a name="to-shut-down-a-virtual-device"></a>Vypnutí virtuálního zařízení
-1. Přihlaste se na portál pro správu.
-2. Klikněte na **Virtuální počítače** a potom vyberte virtuální zařízení.
+#### <a name="tooshut-down-a-virtual-device"></a>tooshut dolů virtuálního zařízení
+1. Přihlaste se toohello portálu pro správu.
+2. Klikněte na tlačítko **virtuální počítače**, a pak vyberte hello virtuální zařízení.
 3. Klikněte na **Vypnout**.
 

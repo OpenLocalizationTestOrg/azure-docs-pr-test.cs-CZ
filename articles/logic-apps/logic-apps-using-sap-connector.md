@@ -1,6 +1,6 @@
 ---
-title: "Připojit do systému SAP místně v Azure Logic Apps | Microsoft Docs"
-description: "Připojit do systému SAP místní z pracovní postup aplikace logiky přes bránu místní data"
+title: "aaaConnect tooan místní systém SAP v Azure Logic Apps | Microsoft Docs"
+description: "Připojení systému SAP místní tooan z pracovní postup aplikace logiky prostřednictvím brány data místně hello"
 services: logic-apps
 author: padmavc
 manager: anneta
@@ -13,80 +13,80 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 594ec5fed337398bf931d396684630ee9f907d2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>Připojit do systému SAP místní z aplikace logiky s konektorem SAP 
+# <a name="connect-tooan-on-premises-sap-system-from-logic-apps-with-hello-sap-connector"></a>Připojení systému SAP místní tooan z aplikace logiky s konektorem SAP hello 
 
-Místní brána dat umožňuje spravovat data a bezpečný přístup k prostředkům, které jsou na místě. Toto téma ukazuje, jak připojit aplikace logiky do místního systému SAP. V tomto příkladu aplikace logiky požadavky IDOC přes protokol HTTP a odešle odpověď zpět.    
+Brána dat místní Hello vám umožňuje toomanage dat a bezpečný přístup k prostředkům, které jsou na místě. Toto téma ukazuje, jak je možné připojit logiku aplikace tooan v místním SAP systému. V tomto příkladu aplikace logiky požadavky IDOC přes protokol HTTP a odešle odpověď hello zpět.    
 
 > [!NOTE]
 > Aktuální omezení: 
-> - Aplikace logiky časového limitu, pokud nemáte dokončit všechny kroky potřebné pro odpověď v rámci [časový limit požadavku](./logic-apps-limits-and-config.md). V tomto scénáři může získat požadavky blokovány. 
-> - Nástroje pro výběr souborů nezobrazuje všechna dostupná pole. V tomto scénáři můžete ručně přidat cesty.
+> - Aplikace logiky časového limitu, pokud nemáte dokončit všechny kroky potřebné pro hello odpověď v rámci hello [časový limit požadavku](./logic-apps-limits-and-config.md). V tomto scénáři může získat požadavky blokovány. 
+> - Výběr souborů Hello nezobrazuje všechna dostupná pole hello. V tomto scénáři můžete ručně přidat cesty.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Instalace a konfigurace nejnovější [místní brána dat](https://www.microsoft.com/download/details.aspx?id=53127) verze 1.15.6150.1 nebo novější. [Jak se připojit k bráně místní data v aplikaci logiky](http://aka.ms/logicapps-gateway) jsou uvedené kroky. Brány musí být nainstalován v místním počítači, abyste mohli pokračovat.
+- Instalace a konfigurace hello nejnovější [místní brána dat](https://www.microsoft.com/download/details.aspx?id=53127) verze 1.15.6150.1 nebo novější. [Jak tooconnect toohello místní brána dat v aplikaci logiky](http://aka.ms/logicapps-gateway) seznamy hello kroky. Hello brány musí být nainstalován v místním počítači, abyste mohli pokračovat.
 
-- Stáhněte a nainstalujte nejnovější klientské knihovny SAP ve stejném počítači, kam jste nainstalovali bránu data gateway. Použijte některou z následujících verzí SAP: 
+- Stažení a instalace hello nejnovější SAP knihovny klienta na hello stejný počítač, kam jste nainstalovali bránu dat hello. Použijte některou z následujících verze SAP hello: 
     - Serveru SAP
-        - Libovolný Server SAP, který podporují konektor .NET (NCo) 3.0
+        - Jakýkoli Server SAP tuto podporu hello konektor .NET (NCo) 3.0
  
     - SAP klienta
         - Konektor .NET SAP (NCo) 3.0
 
-## <a name="add-triggers-and-actions-for-connecting-to-your-sap-system"></a>Přidat triggery a akce pro připojení k systému SAP
+## <a name="add-triggers-and-actions-for-connecting-tooyour-sap-system"></a>Přidat triggery a akce pro připojení tooyour systému SAP
 
-Konektor SAP má akce, ale není aktivační události. Ano jsme muset použít jiné aktivační událost při spuštění pracovního postupu. 
+konektor SAP Hello má akce, ale není aktivační události. Ano máme toouse jiné aktivační událost při spuštění hello hello pracovního postupu. 
 
-1. Přidat aktivační událost požadavků a odpovědí a potom vyberte **nový krok**.
+1. Přidat aktivační událost hello požadavků a odpovědí a potom vyberte **nový krok**.
 
-2. Vyberte **přidat akci**a potom vyberte konektor SAP zadáním `SAP` do pole hledání:    
+2. Vyberte **přidat akci**a potom vyberte hello SAP konektoru zadáním `SAP` v poli vyhledávání hello:    
 
      ![Vyberte Server aplikace SAP nebo Server zpráv SAP](media/logic-apps-using-sap-connector/sap-action.png)
 
-3. Vyberte [ **SAP aplikační Server** ](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [ **Server zpráv SAP**](http://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm), podle vašeho nastavení SAP. Pokud nemáte existující připojení, zobrazí se výzva k jeho vytvoření.
+3. Vyberte [ **SAP aplikační Server** ](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [ **Server zpráv SAP**](http://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm), podle vašeho nastavení SAP. Pokud nemáte existující připojení, jste výzvami toocreate jeden.
 
-   1. Vyberte **připojit prostřednictvím místní brána dat**a zadejte podrobnosti pro váš systém SAP:   
+   1. Vyberte **připojit prostřednictvím místní brána dat**a zadejte podrobnosti hello systému SAP:   
 
-       ![Přidat připojovací řetězec k SAP](media/logic-apps-using-sap-connector/picture2.png)  
+       ![Přidat připojovací řetězec tooSAP](media/logic-apps-using-sap-connector/picture2.png)  
 
-   2. V části **brány**vyberte existující bránu, nebo pokud chcete nainstalovat novou bránu, **instalaci brány**.
+   2. V části **brány**, vyberte existující bránu, nebo tooinstall novou bránu, vyberte **instalaci brány**.
 
         ![Instalace nové brány](media/logic-apps-using-sap-connector/install-gateway.png)
   
-   3. Když zadáte všechny podrobnosti, vyberte **vytvořit**. 
-   Služba Logic Apps nakonfiguruje a otestuje připojení, a ujistěte se, že připojení funguje správně.
+   3. Po zadání všech podrobností o hello vyberte **vytvořit**. 
+   Služba Logic Apps nakonfiguruje a otestuje připojení hello, a ujistěte se, zda text hello připojení funguje správně.
 
 4. Zadejte název pro připojení k prostředí SAP.
 
-5. Různé možnosti SAP jsou nyní k dispozici. Najít váš IDOC kategorie, vyberte ze seznamu. Ručně zadejte cestu a vyberte odpověď HTTP v **textu** pole:
+5. Nyní jsou k dispozici různé možnosti SAP Hello. toofind vaše IDOC kategorie, vyberte ze seznamu hello. Nebo ručně zadejte v hello cestu a vyberte hello HTTP odpovědi v hello **textu** pole:
 
      ![Akce SAP](media/logic-apps-using-sap-connector/picture3.png)
 
-6. Akce pro vytváření pro přidání **odpověď HTTP**. Zpráva odpovědi musí být z výstupu SAP.
+6. Hello akce pro vytváření pro přidání **odpověď HTTP**. zpráva odpovědi Hello by měla být z výstupu SAP hello.
 
-7. Uložte svou aplikaci logiky. Otestujte zasláním IDOC prostřednictvím adresy URL protokolu HTTP aktivační události. Po odeslání IDOC Čekejte na odpověď z aplikace logiky:   
+7. Uložte svou aplikaci logiky. Otestujte zasláním IDOC prostřednictvím adresy URL hello HTTP aktivační události. Po hello IDOC je odeslána Čekejte na odpověď hello z aplikace logiky hello:   
 
      > [!TIP]
-     > Podívejte se na postup [sledování funkce Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md).
+     > Podívat, jak příliš[sledování funkce Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md).
 
-Teď, když je konektor SAP přidal do aplikace logiky, prozkoumejte další funkce:
+Nyní, konektor SAP hello je přidali tooyour aplikace logiky, prozkoumejte další funkce:
 
 - BAPI
 - DOKUMENT RFC
 
 ## <a name="get-help"></a>Podpora
 
-Klást otázky, odpovídat na ně a poučit se ze zkušeností jiných uživatelů Azure Logic Apps můžete ve [fóru Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+tooask otázky, odpovědi na otázky a zjistěte, jaké další Azure Logic Apps uživatelé dělají, navštivte hello [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-Pokud chcete pomoci při vylepšování Azure Logic Apps a konektorů, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Azure Logic Apps](http://aka.ms/logicapps-wish).
+toohelp zlepšení Azure Logic Apps a konektory, hlasovat o nebo odeslání nápadů v hello [web pro zasílání názorů uživatele Azure Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak chcete ověřit, transformace a dalších funkcí jako BizTalk v [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md). 
-- [Připojení k místním datům](../logic-apps/logic-apps-gateway-connection.md) z aplikace logiky
+- Zjistěte, jak toovalidate, transformace a dalších funkcí jako BizTalk v hello [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md). 
+- [Připojení místní tooon dat](../logic-apps/logic-apps-gateway-connection.md) z aplikace logiky

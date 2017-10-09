@@ -1,6 +1,6 @@
 ---
-title: "Možnosti cloud zařízení Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – pokyny k použití metody přímé, dvojče zařízení požadované vlastnosti nebo zprávy typu cloud zařízení pro komunikaci typu cloud zařízení."
+title: "Možnosti aaaAzure IoT Hub cloud zařízení | Microsoft Docs"
+description: "Příručka vývojáře – pokyny k při toouse přímé metody, dvojče zařízení požadované vlastnosti nebo zprávy typu cloud zařízení pro komunikaci typu cloud zařízení."
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: elioda
-ms.openlocfilehash: e6cd4880c9bfcc670bd116d3dd8e5245d70f85cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb95445054fa2711e34fc1d928c3665e0246c81c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Pokyny komunikace cloud zařízení
-Služba IoT Hub zajišťuje tři možnosti aplikací pro zařízení vystavit funkcionalitu do back-end aplikace:
+Služba IoT Hub zajišťuje tři možnosti zařízení aplikace tooexpose funkce tooa back-end aplikace:
 
-* [Přímé metody] [ lnk-methods] pro komunikaci, které vyžadují okamžitou potvrzení výsledku. Přímé metody se často používají pro interaktivní kontroly zařízení, například zapnutí ventilátoru.
-* [Twin je potřeby vlastnosti] [ lnk-twins] pro dlouhodobé příkazy určené uvést do určitého zařízení požadovaného stavu. Například nastavte interval odesílání telemetrie na 30 minut.
-* [Zprávy typu cloud zařízení] [ lnk-c2d] jednosměrný oznámení do aplikace zařízení.
+* [Přímé metody] [ lnk-methods] pro komunikaci, které vyžadují okamžitou potvrzení hello výsledku. Přímé metody se často používají pro interaktivní kontroly zařízení, například zapnutí ventilátoru.
+* [Twin je potřeby vlastnosti] [ lnk-twins] pro dlouhodobé příkazy určené tooput hello zařízení do určitého požadovaného stavu. Například nastavte minut too30 určený v intervalu odeslání telemetrie hello.
+* [Zprávy typu cloud zařízení] [ lnk-c2d] pro aplikaci zařízení toohello jednosměrný oznámení.
 
-Zde je podrobné porovnání různých možností komunikace cloud zařízení.
+Zde je podrobné porovnání hello různé možnosti komunikace cloud zařízení.
 
 |  | Přímé metody | Požadované vlastnosti pro dvojici | Zprávy typu cloud zařízení |
 | ---- | ------- | ---------- | ---- |
-| Scénář | Příkazy, které vyžadují okamžitou potvrzení, například zapnutí ventilátoru. | Dlouho běžící příkazy se má převést zařízení do určité požadovaný stav. Například nastavte interval odesílání telemetrie na 30 minut. | Jednosměrné oznámení do aplikace zařízení. |
-| Tok dat | Obousměrné. Aplikace zařízení může reagovat na metodu hned. Back-end řešení obdrží výsledek kontextově na požadavek. | Jednosměrná. Aplikace zařízení obdrží oznámení s změnu vlastnosti. | Jednosměrná. Aplikace zařízení obdrží zprávu
-| Stálost | Odpojené zařízení nejsou kontaktovat. Back-end řešení je oznámeno, že zařízení není připojené. | Hodnoty vlastností v dvojče zařízení zůstanou zachovány. Zařízení se budou číst na další opětovné připojení. Hodnoty vlastností se dá načíst pomocí [IoT Hub dotazovací jazyk][lnk-query]. | Zprávy můžete uchovávat službou IoT Hub až 48 hodin. |
+| Scénář | Příkazy, které vyžadují okamžitou potvrzení, například zapnutí ventilátoru. | Dlouho běžící příkazy určené tooput hello zařízení do určité požadovaného stavu. Například nastavte minut too30 určený v intervalu odeslání telemetrie hello. | Jednosměrné oznámení toohello zařízení aplikace. |
+| Tok dat | Obousměrné. aplikace Hello zařízení může reagovat toohello metoda hned. back-end Hello řešení obdrží hello výsledek kontextově toohello požadavku. | Jednosměrná. aplikace Hello zařízení obdrží oznámení s změnu vlastnosti hello. | Jednosměrná. aplikace Hello zařízení obdrží zprávu hello
+| Stálost | Odpojené zařízení nejsou kontaktovat. back-end Hello řešení je oznámeno, že toto zařízení hello není připojený. | Hodnoty vlastností v hello dvojče zařízení zůstanou zachovány. Zařízení se budou číst na další opětovné připojení. Hodnoty vlastností se dá načíst pomocí hello [IoT Hub dotazovací jazyk][lnk-query]. | Zprávy mohou být uchovávány službou IoT Hub pro too48 hodin. |
 | Cíle | Pomocí jednoho zařízení **deviceId**, nebo více zařízení prostřednictvím [úlohy][lnk-jobs]. | Pomocí jednoho zařízení **deviceId**, nebo více zařízení prostřednictvím [úlohy][lnk-jobs]. | Jedno zařízení podle **deviceId**. |
-| Velikost | Až 8 KB požadavky a odpovědi 8KB. | Maximální požadované vlastnosti velikost je 8 KB. | Až 64 KB zprávy. |
+| Velikost | Až too8KB požadavky a odpovědi 8KB. | Maximální požadované vlastnosti velikost je 8 KB. | Až too64KB zprávy. |
 | frekvence | Vysoká. Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas]. | Střední. Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas]. | Nízká. Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas]. |
 | Protocol (Protokol) | Aktuálně dostupná jenom při použití MQTT. | Aktuálně dostupná jenom při použití MQTT. | K dispozici ve všech protokolů. Zařízení se musí dotazovat při použití protokolu HTTP. |
 
-Další informace o použití přímé metody, požadované vlastnosti a zprávy typu cloud zařízení v následujících kurzech:
+Zjistěte, jak toouse přímé metody, požadované vlastnosti a zprávy typu cloud zařízení v hello následující kurzy:
 
 * [Používat přímé metody][lnk-methods-tutorial], pro direct metody;
-* [Použijte požadované vlastnosti pro konfiguraci zařízení][lnk-twin-properties]pro dvojče zařízení je potřeby vlastnosti; 
+* [Použití zařízení tooconfigure požadované vlastnosti][lnk-twin-properties]pro dvojče zařízení je potřeby vlastnosti; 
 * [Odesílání zpráv typu cloud zařízení][lnk-c2d-tutorial], pro zprávy typu cloud zařízení.
 
 [lnk-twins]: iot-hub-devguide-device-twins.md

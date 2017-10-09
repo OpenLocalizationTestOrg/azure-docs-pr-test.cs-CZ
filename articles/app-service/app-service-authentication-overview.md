@@ -1,6 +1,6 @@
 ---
-title: "Ověřování a autorizace ve službě Azure App Service | Microsoft Docs"
-description: "Reference konceptu a Přehled ověřování / autorizace funkcí pro Azure App Service"
+title: "aaaAuthentication a autorizace ve službě Azure App Service | Microsoft Docs"
+description: "Reference konceptu a přehled hello ověřování / autorizace funkcí pro Azure App Service"
 services: app-service
 documentationcenter: 
 author: mattchenderson
@@ -14,144 +14,144 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc2074b16cce47b72b78ea7afeda89dbc4832166
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 ## <a name="what-is-app-service-authentication--authorization"></a>Co je aplikace služby ověřování / autorizace?
-Aplikace služby ověřování / autorizace je funkce, která poskytuje způsob, jak vaše aplikace k přihlášení uživatele, takže není nutné změnit kód na back-end aplikace. Poskytuje snadný způsob, jak chránit vaše aplikace a pracovat s daty na uživatele.
+Aplikace služby ověřování / autorizace je funkce, která poskytuje způsob, jak pro vaše aplikace toosign mezi uživateli, takže nemáte toochange kód na back-end aplikace hello. Poskytne tooprotect snadný způsob, jak vaše aplikace a pracovní uživatelská data.
 
-Služby App Service používá federovaných identit, ve kterém poskytovatel identity jiného výrobce uchovává účty a ověřuje uživatele. Aplikace spoléhá na informace o identitě poskytovatele tak, aby aplikace bude obsahovat tyto informace sám sebe. App Service podporuje pět poskytovatelů identit ihned: Azure Active Directory, Facebook, Google, Microsoft Account a Twitter. Aplikace můžete použít libovolný počet těchto poskytovatelů identit zajistit uživatelům s možnostmi pro jak přihlášení. Rozšířit integrovanou podporu, můžete integrovat jiného poskytovatele identity nebo [řešení vlastní identitu][custom-auth].
+Služby App Service používá federovaných identit, ve kterém poskytovatel identity jiného výrobce uchovává účty a ověřuje uživatele. aplikace Hello spoléhá na informace o identitě hello poskytovatele tak, aby hello aplikace nemá toostore tyto informace sám sebe. App Service podporuje pět poskytovatelů identit předinstalované hello: Azure Active Directory, Facebook, Google, Microsoft Account a Twitter. Aplikace můžete použít libovolný počet tyto tooprovide zprostředkovatelé identity uživatele možnosti pro jak přihlášení. tooexpand hello integrovanou podporu, můžete integrovat jiného poskytovatele identity nebo [řešení vlastní identitu][custom-auth].
 
-Pokud chcete začít hned, najdete v jednom z následujících kurzů:
+Pokud chcete spustit hned tooget, najdete v jednom z hello následující kurzy:
 
-* [Přidání ověřování do vaší aplikace pro iOS] [ iOS] (nebo [Android], [Windows], [Xamarin.iOS], [ Xamarin.Android], [Xamarin.Forms], nebo [Cordova])
+* [Přidat aplikaci iOS tooyour ověřování] [ iOS] (nebo [Android], [Windows], [Xamarin.iOS], [ Xamarin.Android], [Xamarin.Forms], nebo [Cordova])
 * [Ověřování uživatelů pro aplikace API v Azure App Service][apia-user]
 * [Začínáme s Azure App Service – část 2][web-getstarted]
 
 ## <a name="how-authentication-works-in-app-service"></a>Princip ověřování ve službě App Service
-Aby bylo možné ověřit pomocí jednoho z poskytovatelů identity, musíte nejprve konfigurovat zprostředkovatel identity vědět o vaší aplikaci. Poskytovatel identity bude potom zadejte ID a tajné klíče, které zadáte do služby App Service. Tím se dokončí vztahu důvěryhodnosti, aby služby App Service můžete ověřit kontrolní výrazy uživatele, jako je například ověřování tokenů, od zprostředkovatele identity.
+V pořadí tooauthenticate pomocí jednoho z poskytovatelů identit hello musíte nejdřív tooknow zprostředkovatele identity hello tooconfigure o vaší aplikaci. Zprostředkovatel identity Hello bude potom zadejte ID a tajné klíče, že zadáte tooApp služby. Vztah důvěryhodnosti hello tím dokončíte tak, aby služby App Service můžete ověřit kontrolní výrazy uživatele, jako je například ověřování tokenů, od poskytovatele identity hello.
 
-K přihlášení uživatele pomocí jednoho z těchto poskytovatelů, musí být uživatel přesměrován na koncový bod, který se přihlásí uživatele pro tohoto zprostředkovatele. Pokud zákazníci používají webový prohlížeč, může mít všechny neověřené uživatele na koncový bod, který se přihlásí uživatele automaticky nasměrovat služby App Service. Jinak, budete muset nasměrovat zákazníkům `{your App Service base URL}/.auth/login/<provider>`, kde `<provider>` je jedním z následujících hodnot: aad, facebook, google, microsoft nebo twitteru. Mobilní aplikace a API scénáře jsou vysvětlené v částech později v tomto článku.
+toosign v uživatele pomocí jednoho z těchto poskytovatelů přesměrovaného tooan koncový bod, který se přihlásí uživatele pro tohoto zprostředkovatele musí být uživatel hello. Pokud zákazníci používají webový prohlížeč, může mít všechny koncový bod neověřené uživatele toohello, který se přihlásí uživatele automaticky nasměrovat služby App Service. Jinak, budete potřebovat toodirect vašim zákazníkům příliš`{your App Service base URL}/.auth/login/<provider>`, kde `<provider>` je jedním z následujících hodnot hello: aad, facebook, google, microsoft nebo twitteru. Mobilní aplikace a API scénáře jsou vysvětlené v částech později v tomto článku.
 
-Uživatelé, kteří pracují s vaší aplikací prostřednictvím webového prohlížeče, bude mít soubor cookie nastavte tak, aby se může zůstat ověřený jako procházení vaší aplikace. U jiných typů klientů, jako je například mobile, webového tokenu JSON (JWT), která by měla zobrazit v `X-ZUMO-AUTH` záhlaví, budou vydané klienta. Klient pro mobilní aplikace sady SDK bude zpracovávat to pro vás. Alternativně tokenu identity Azure Active Directory nebo přístupový token může být přímo součástí `Authorization` záhlaví jako [tokenu nosiče](https://tools.ietf.org/html/rfc6750).
+Uživatelé, kteří pracují s vaší aplikací prostřednictvím webového prohlížeče, bude mít soubor cookie nastavte tak, aby se může zůstat ověřený jako procházení vaší aplikace. U jiných typů klientů, jako je například mobile, webového tokenu JSON (JWT), která by měla zobrazit v hello `X-ZUMO-AUTH` záhlaví, budou vydávat toohello klienta. Hello Mobile Apps klientskou sadu SDK bude zpracovávat to pro vás. Alternativně tokenu identity Azure Active Directory nebo přístupový token může být přímo součástí hello `Authorization` záhlaví jako [tokenu nosiče](https://tools.ietf.org/html/rfc6750).
 
-Služby App Service ověří všechny soubor cookie nebo token, který vaše aplikace vystavuje k ověřování uživatelů. Pokud chcete omezit, kdo má přístup k aplikaci, najdete v článku [autorizace](#authorization) později v tomto článku.
+Služby App Service ověří všechny soubor cookie nebo token, že vaše aplikace problémy tooauthenticate uživatele. toorestrict, kdo má přístup k vaší aplikaci, najdete v části hello [autorizace](#authorization) později v tomto článku.
 
 ### <a name="mobile-authentication-with-a-provider-sdk"></a>Mobilní ověření u poskytovatele sady SDK
-Jakmile je všechno nastavené na back-end, můžete upravit mobilních klientů se přihlásit pomocí služby App Service. Existují dva přístupy tady:
+Jakmile je všechno nastavené na back-end hello, můžete upravit toosign mobilních klientů pomocí služby App Service. Existují dva přístupy tady:
 
-* Pomocí sady SDK, který publikuje danou identitu zprostředkovatele k vytvoření identity a přístup do služby App Service.
-* Použijte jeden řádek kódu tak, aby klient SDK pro Mobile Apps můžete přihlásit uživatele.
+* Pomocí sady SDK, že danou identitu zprostředkovatele publikuje tooestablish identity a potom získat přístup k tooApp služby.
+* Použijte jeden řádek kódu tak, že hello Mobile Apps klientské sady SDK můžete přihlásit uživatele.
 
 > [!TIP]
-> Většina aplikace by měly používat poskytovatele sady SDK potřebujete jednotnější prostředí po přihlášení uživatelé, používat podporu aktualizace a získat další výhody, které určuje zprostředkovatele.
+> Většina aplikace by měly používat poskytovatele sady SDK tooget jednotnější prostředí po přihlášení uživatelé, podpora aktualizace toouse a tooget Určuje další výhody tohoto zprostředkovatele hello.
 > 
 > 
 
-Pokud používáte poskytovatele sady SDK, mohou uživatelé přihlašují k prostředí, které více úzce se integruje se službou operačního systému, který aplikace běží na. To také umožňuje token zprostředkovatele a některé informace o uživateli na straně klienta, takže je mnohem jednodušší graf rozhraní API přehledná a přizpůsobit činnost koncového uživatele. Čas od času na blogy a fóra, zobrazí se tento označuje jako "tok klienta" nebo "pohybu přesměruje klienta", protože kódu na straně klienta přihlášení uživatelů a kódem klientské má přístup k tokenu zprostředkovatele.
+Pokud používáte poskytovatele sady SDK, uživatelé se mohou přihlásit tooan prostředí, který se integruje s hello operačního systému více úzce aplikaci hello běží na. To také umožňuje token zprostředkovatele a některé informace o uživateli na hello klienta, což umožňuje mnohem jednodušší graf tooconsume rozhraní API a přizpůsobit hello uživatelské prostředí. Příležitostně na blogy a fóra zobrazí se tato odkazované tooas hello "tok klienta" nebo "přesměruje klienta pohybu" vzhledem k tomu, že kód na klientovi hello přihlášení uživatelů a kódem klientské hello má přístup tooa zprostředkovatele tokenu.
 
-Po získání tokenu zprostředkovatele musí být odeslány do služby App Service pro ověření. Po služby App Service ověří token, služby App Service vytvoří nové služby App Service token, který je vrácen do klienta. Mobilní aplikace klienta SDK obsahuje pomocné metody pro správu této exchange a automaticky připojit token pro všechny požadavky na back-end aplikace. Vývojáři mohou také ponechat odkaz na token zprostředkovatele, pokud se tak rozhodne.
+Po získání tokenu zprostředkovatele musí toobe odeslané tooApp služby pro ověření. Po služby App Service ověří hello token, služby App Service vytvoří nový token služby App Service, která je vrácena toohello klienta. Hello Mobile Apps klienta SDK obsahuje pomocné metody toomanage toto exchange a automaticky připojit hello tokenu tooall požadavky toohello aplikace back-end. Vývojáři mohou také ponechat token odkazu toohello zprostředkovatele, pokud se tak rozhodne.
 
 ### <a name="mobile-authentication-without-a-provider-sdk"></a>Mobilní ověřování bez poskytovatele sady SDK
-Pokud nechcete nastavit poskytovatele sady SDK, můžete povolit funkce Mobile Apps služby Azure App Service se můžete přihlásit. Mobilní aplikace klienta SDK se jim otevře webové zobrazení k poskytovateli dle vašeho výběru a přihlásit uživatele. Příležitostně na blogy a fóra, zobrazí se tomu taky říká "serveru pohybu" nebo "směrované serveru pohybu" vzhledem k tomu, že server spravuje proces, který se přihlásí uživatele, a klient SDK nikdy obdrží token zprostředkovatele.
+Pokud nechcete, aby tooset si poskytovatele sady SDK, můžete povolit funkce Mobile Apps hello toosign Azure App Service v za vás. Hello Mobile Apps klienta SDK bude otevřete poskytovatele webových zobrazení toohello dle vašeho výběru a přihlášení uživatele hello. Čas od času na blogy a fóra, uvidíte tento odkazované tooas hello "serveru pohybu" nebo "pohybu směrované serveru" protože hello server spravuje hello proces, který se přihlásí uživatele a klient hello SDK nikdy obdrží hello zprostředkovatele tokenu.
 
-Kód do začátku tento tok je obsažena v tomto kurzu ověřování pro každou platformu. Na konci tok tokenu služby App Service má klient SDK a token se automaticky přiloží k všechny požadavky na back-end aplikace.
+Kód toostart tento tok je zahrnuta v kurzu hello ověřování pro každou platformu. Na konci hello hello toku má klient hello SDK tokenu služby App Service a hello token je automaticky připojené tooall požadavky toohello aplikace back-end.
 
 ### <a name="service-to-service-authentication"></a>Ověřování služba-služba
-I když můžete uživatelům přístup k vaší aplikaci, můžete také důvěřovat jiná aplikace pro volání vlastní rozhraní API. Například můžete mít jednu webovou aplikaci volat rozhraní API v jiné webové aplikace. V tomto scénáři budete používat přihlašovací údaje pro účet služby místo přihlašovací údaje uživatele k získání tokenu. Je také označován jako účet služby *instanční objekt* v Azure Active Directory slangu a ověřování, který používá uvedený účet je také označován jako scénáři service-to-service.
+I když můžete udělit uživatelům přístup tooyour aplikace, můžete také důvěřovat jiné aplikace toocall vlastní rozhraní API. Například můžete mít jednu webovou aplikaci volat rozhraní API v jiné webové aplikace. V tomto scénáři použijte přihlašovací údaje pro účet služby místo tooget přihlašovací údaje uživatele token. Je také označován jako účet služby *instanční objekt* v Azure Active Directory slangu a ověřování, který používá uvedený účet je také označován jako scénáři service-to-service.
 
 > [!IMPORTANT]
 > Vzhledem k tomu mobilní aplikace běží v zařízení zákazníka, mobilní aplikace se *není* se počítají jako důvěryhodné aplikace a neměli používat k hlavní toku služby. Místo toho měli používat toku uživatele, který byl dříve podrobné.
 > 
 > 
 
-Pro scénáře service to service služby App Service chrání vaše aplikace pomocí služby Azure Active Directory. Volající aplikace právě musí zajistit Azure Active Directory služby hlavní autorizační token, který byl získán zadáním klienta ID a klienta tajný z Azure Active Directory. Příklad tohoto scénáře, který používá rozhraní API ASP.NET aplikace je vysvětleno v kurzu, [objekt zabezpečení ověřování služby pro aplikace API][apia-service].
+Pro scénáře service to service služby App Service chrání vaše aplikace pomocí služby Azure Active Directory. volající aplikace Hello právě musí tooprovide Azure Active Directory service hlavní autorizační token, který byl získán zadáním hello ID klienta a klient tajný z Azure Active Directory. Příklad tohoto scénáře, který používá rozhraní API ASP.NET aplikace je vysvětleno v kurzu hello [objekt zabezpečení ověřování služby pro aplikace API][apia-service].
 
-Pokud chcete použít ověřování služby App Service pro zpracování scénáři service-to-service, můžete použít klientské certifikáty nebo základní ověřování. Informace o klientské certifikáty v Azure najdete v tématu [jak do konfigurace TLS vzájemné ověřování pro webové aplikace](../app-service-web/app-service-web-configure-tls-mutual-auth.md). Informace o základní ověřování v technologii ASP.NET najdete v tématu [filtry ověřování ve webovém rozhraní API 2 ASP.NET](http://www.asp.net/web-api/overview/security/authentication-filters).
+Pokud chcete toouse toohandle ověřování služby App Service scénáři service-to-service, můžete použít klientské certifikáty nebo základní ověřování. Informace o klientské certifikáty v Azure najdete v tématu [jak tooConfigure vzájemné ověřování TLS pro webové aplikace](../app-service-web/app-service-web-configure-tls-mutual-auth.md). Informace o základní ověřování v technologii ASP.NET najdete v tématu [filtry ověřování ve webovém rozhraní API 2 ASP.NET](http://www.asp.net/web-api/overview/security/authentication-filters).
 
-Ověřování účtu služby z aplikace služby App Service logic do aplikace API je zvláštní případ, který je podrobně popsán v [používání vlastního rozhraní API hostovaného v App Service pomocí aplikací logiky](../logic-apps/logic-apps-custom-hosted-api.md).
+Ověřování účtu služby z aplikace služby App Service logic app tooan rozhraní API je zvláštní případ, který je podrobně popsán v [používání vlastního rozhraní API hostovaného v App Service pomocí aplikací logiky](../logic-apps/logic-apps-custom-hosted-api.md).
 
 ## <a name="authorization"></a>Princip ověřování ve službě App Service
-Máte plnou kontrolu nad požadavků, které můžete přístup k aplikaci. Aplikace služby ověřování / autorizace může být nakonfigurována s žádným z následujících chování:
+Máte plnou kontrolu nad hello požadavků, které můžete přístup k aplikaci. Aplikace služby ověřování / autorizace můžete nakonfigurovat pomocí některé z hello následující chování:
 
-* Povolit pouze ověřené žádosti k dosažení vaší aplikace.
+* Povolte pouze ověřené žádosti tooreach vaší aplikace.
   
-    Pokud prohlížeč obdrží požadavek na anonymní, přesměruje na stránku služby App Service pro zprostředkovatele identity, který zvolíte, aby uživatelé mohli podepsat. Pokud požadavek pochází z mobilního zařízení, je vrácená odpověď HTTP *401 – Neověřeno* odpovědi.
+    Pokud prohlížeč obdrží požadavek na anonymní, služby App Service přesměruje tooa stránku hello zprostředkovatele identity, který zvolíte, aby uživatelé mohli podepsat. Pokud hello požadavek pochází z mobilního zařízení, hello vrátí odpověď HTTP je *401 – Neověřeno* odpovědi.
   
-    Tato možnost nemusíte vůbec psaní jakéhokoli kódu ověřování ve vaší aplikaci. Pokud potřebujete jemnějšího autorizace, informace o uživateli je k dispozici pro váš kód.
-* Povolit všechny požadavky k dosažení vaší aplikace, ale ověření ověřené žádosti a předávají informace o ověřování v hlavičkách protokolu HTTP.
+    Tato možnost není nutné toowrite žádné ověřovací kód vůbec ve vaší aplikaci. Pokud potřebujete jemnějšího autorizace, informace o uživateli hello je k dispozici tooyour kódu.
+* Tooreach všechny požadavky, aby vaše aplikace, ale ověření ověřené žádosti a předávají informace o ověřování v hlavičkách hello protokolu HTTP.
   
-    Tato možnost odkládat údaje autorizačních rozhodnutích do kódu aplikace. Poskytuje větší flexibilitu při zpracování anonymních požadavků, ale budete muset psát kód.
-* Povolit všechny požadavky na přístup vaší aplikace a provádět žádnou akci na informace o ověřování v žádosti.
+    Tato možnost odkládat údaje kódu aplikace tooyour autorizační rozhodnutí. Poskytuje větší flexibilitu při zpracování anonymních požadavků, ale máte toowrite kódu.
+* Všechny požadavky tooreach, aby vaše aplikace a provádět žádnou akci na informace o ověřování v žádostech o hello.
   
-    V tomto případě, že ověřování / autorizace funkce je vypnutá. Úlohy ověřování a autorizace jsou zcela až kódu aplikace.
+    V takovém případě hello ověřování / autorizace funkce je vypnutá. Hello úlohy ověřování a autorizace jsou zcela tooyour kódu aplikace.
 
-Předchozí chování jsou řízeny **akci provést, když požadavek nebude ověřený** možnost na portálu Azure. Pokud se rozhodnete ** protokolu s *název zprostředkovatele* **, všechny požadavky nutné ověřit. **Povolit požadavku (žádná akce)** odkládat údaje rozhodnutí o autorizaci kódu, ale stále poskytuje informace o ověřování. Pokud chcete mít kódu zpracovat vše, můžete zakázat ověřování / autorizace funkce.
+předchozí chování Hello jsou řízeny hello **tootake akce, když požadavek nebude ověřený** možnost v hello portálu Azure. Pokud se rozhodnete ** protokolu s *název zprostředkovatele* **, všechny požadavky mít toobe ověření. **Povolit požadavku (žádná akce)** odkládat údaje hello autorizační rozhodnutí tooyour kód, ale stále poskytuje informace o ověřování. Pokud chcete, aby toohave váš kód zpracovat vše, můžete zakázat hello ověřování / autorizace funkce.
 
 ## <a name="working-with-user-identities-in-your-application"></a>Práce s identit uživatelů ve vaší aplikaci
-Služby App Service pomocí speciálními záhlavími předá některé informace o uživateli do vaší aplikace. Externí požadavky zakázat tyto hlavičky a se nachází v případě nastavit pouze pomocí aplikace služby ověřování / autorizace. Některé příklad hlavičky zahrnují:
+Služby App Service předá některé uživatelská informace tooyour aplikace pomocí speciálními záhlavími. Externí požadavky zakázat tyto hlavičky a se nachází v případě nastavit pouze pomocí aplikace služby ověřování / autorizace. Některé příklad hlavičky zahrnují:
 
 * X-MS-KLIENTA HLAVNÍ NÁZEV
 * X-MS-CLIENT-HLAVNÍ ID
 * X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN
 * X-MS-TOKEN-FACEBOOK-EXPIRES-ON
 
-Kód, který je napsán v libovolném jazyce nebo rozhraní můžete získat informace, které se musí z těchto hlavičky. Pro aplikace ASP.NET 4.6 **ClaimsPrincipal** bude automaticky nastavena s příslušnými hodnotami.
+Kód, který je napsán v libovolném jazyce nebo rozhraní můžete získat z těchto hlavičky hello informace, které potřebuje. Pro technologii ASP.NET 4.6 aplikace hello **ClaimsPrincipal** bude automaticky nastavena s příslušnými hodnotami hello.
 
-Aplikace můžete také získat podrobnosti další uživatele prostřednictvím HTTP GET na `/.auth/me` koncový bod vaší aplikace. Neplatný token, který je součástí požadavku vrátí datové části JSON s podrobnostmi o zprostředkovatele, který se používá, základní zprostředkovatel tokenu a některé další informace o uživateli. Server Mobile Apps sady SDK poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [jak používat Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), a [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Aplikace také můžete získat podrobnosti o další uživatele prostřednictvím HTTP GET na hello `/.auth/me` koncový bod vaší aplikace. Neplatný token, který je součástí požadavku hello se vrátit datové části JSON s podrobnostmi o hello zprostředkovatele, který se používá, hello základní zprostředkovatel tokenu a některé další informace o uživateli. Hello Mobile Apps server SDK zadejte pomocné metody toowork s těmito daty. Další informace najdete v tématu [jak toouse hello Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), a [pracovat s hello .NET back-end serveru SDK pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="documentation-and-additional-resources"></a>Dokumentace a další prostředky
 ### <a name="identity-providers"></a>Zprostředkovatelé identity
-Následující kurzy ukazují, jak nakonfigurovat App Service používat různá ověřovací zprostředkovatele:
+Dobrý den, jak následující kurzy zobrazit tooconfigure služby App Service toouse různá ověřovací zprostředkovatele:
 
-* [Postup konfigurace aplikace použít Azure Active Directory přihlášení][AAD]
-* [Postup konfigurace aplikace používat Facebook přihlášení][Facebook]
-* [Postup konfigurace aplikace používat Google přihlášení][Google]
-* [Postup konfigurace aplikace používat Account Microsoft přihlášení][MSA]
-* [Postup konfigurace aplikace používat přihlášení služby Twitter.][Twitter]
+* [Jak tooconfigure vaše aplikace toouse Azure Active Directory přihlášení][AAD]
+* [Jak tooconfigure vaše aplikace toouse Facebook přihlášení][Facebook]
+* [Jak tooconfigure vaše aplikace toouse Google přihlášení][Google]
+* [Jak tooconfigure vaše aplikace toouse Account Microsoft přihlášení][MSA]
+* [Jak tooconfigure vaše aplikace toouse Twitter přihlášení][Twitter]
 
-Pokud chcete používat systém identit než ty, které, pokud zde, můžete také použít [náhled podporu vlastního ověřování mobilní aplikace .NET serveru SDK][custom-auth], který může být použit v webové, mobilní aplikace aplikace, nebo rozhraní API.
+Pokud chcete toouse s identity systémem jiným než ty, které hello zadaný zde, můžete také použít hello [náhled podpora vlastní ověřování v server hello mobilní aplikace .NET SDK][custom-auth], který může být použit ve službě web apps mobilní aplikace, nebo rozhraní API.
 
 ### <a name="web-applications"></a>Webové aplikace
-Následující kurzy ukazují, jak přidat ověřování do webové aplikace:
+Hello následující kurzy ukazují, jak tooadd ověřování tooa webové aplikace:
 
 * [Začínáme s Azure App Service – část 2][web-getstarted]
 
 ### <a name="mobile-applications"></a>Mobilní aplikace
-Následující kurzy ukazují, jak přidat ověřování do mobilních klientů pomocí toku směrované serveru:
+Hello následující kurzy ukazují, jak tooadd ověřování tooyour mobilních klientů pomocí hello toku směrované serveru:
 
-* [Přidání ověřování do vaší aplikace pro iOS][iOS]
-* [Přidání ověřování do aplikace pro Android][Android]
-* [Přidání ověřování do aplikace pro Windows][Windows]
-* [Přidání ověřování do aplikace pro Xamarin.iOS][Xamarin.iOS]
-* [Přidání ověřování do aplikace Xamarin.Android][ Xamarin.Android]
-* [Přidání ověřování do aplikace Xamarin.Forms][Xamarin.Forms]
-* [Přidání ověřování do aplikace Cordova][Cordova]
+* [Přidání ověřování tooyour iOS aplikace][iOS]
+* [Přidat aplikaci pro Android ověřování tooyour][Android]
+* [Přidat aplikace pro Windows ověřování tooyour][Windows]
+* [Přidat ověřování aplikace Xamarin.iOS tooyour][Xamarin.iOS]
+* [Přidat ověřování aplikace Xamarin.Android tooyour][ Xamarin.Android]
+* [Přidat aplikaci Xamarin.Forms tooyour ověřování][Xamarin.Forms]
+* [Přidat aplikaci Cordova tooyour ověřování][Cordova]
 
-Pokud chcete použít toku přesměruje klienta pro Azure Active Directory, použijte v následujících zdrojích informací:
+Použijte hello následující prostředky, pokud chcete, aby toouse hello přesměruje klienta tok pro Azure Active Directory:
 
-* [Použít Active Directory Authentication Library pro iOS][ADAL-iOS]
-* [Použití knihovny pro ověřování služby Active Directory pro Android][ADAL-Android]
-* [Použití knihovny pro ověřování služby Active Directory pro Windows a Xamarin][ADAL-dotnet]
+* [Použití hello Active Directory Authentication Library pro iOS][ADAL-iOS]
+* [Použití hello Active Directory Authentication Library pro Android][ADAL-Android]
+* [Použít hello Active Directory Authentication knihovny pro systém Windows a Xamarin][ADAL-dotnet]
 
-Pokud chcete použít toku přesměruje klienta pro Facebook, použijte v následujících zdrojích informací:
+Použijte následující prostředky, pokud chcete, aby toouse hello přesměruje klienta tok pro Facebook hello:
 
-* [Použití sady SDK Facebook pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
+* [Použití hello Facebook SDK pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Pokud chcete použít pro Twitter toku přesměruje klienta, použijte v následujících zdrojích informací:
+Použijte následující prostředky, pokud chcete, aby toouse hello přesměruje klienta tok pro Twitter hello:
 
 * [Pomocí služby Twitter prostředků infrastruktury pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Pokud chcete použít pro Google toku přesměruje klienta, použijte v následujících zdrojích informací:
+Použijte následující prostředky, pokud chcete, aby toouse hello přesměruje klienta tok pro Google hello:
 
-* [Použití Google přihlášení sady SDK pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
+* [Použití hello Google přihlášení SDK pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
 ### <a name="api-applications"></a>Aplikace rozhraní API
-Následující kurzy ukazují, jak chránit vaše aplikace API:
+Dobrý den, jak následující kurzy zobrazit tooprotect vaše aplikace API:
 
 * [Ověřování uživatelů pro aplikace API v Azure App Service][apia-user]
 * [Objekt zabezpečení ověřování služby pro aplikace API v Azure App Service][apia-service]

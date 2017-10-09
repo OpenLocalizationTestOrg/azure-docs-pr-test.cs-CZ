@@ -1,6 +1,6 @@
 ---
-title: "Application Insights API pro vlastní události a metriky | Microsoft Docs"
-description: "Po zadání několika řádků kódu vložte do vaší aplikace nebo plochy zařízení, webové stránky nebo služby, sledovat využití a diagnostikovat problémy."
+title: "aaaApplication rozhraní API pro přehledy pro vlastní události a metriky | Microsoft Docs"
+description: "Vložte po zadání několika řádků kódu do vašeho zařízení nebo aplikace na ploše, webové stránky nebo služby, tootrack využití a diagnostikovat problémy."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,35 +13,35 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: bwren
-ms.openlocfilehash: e94c50de51612243386d89c5e0b3178a4f9cbd38
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f3d207a47bb4825efda806a19dd0c26540db7bdd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API pro vlastní události a metriky
 
-Vložte po zadání několika řádků kódu v aplikaci a zjistěte, co uživatelé dělají s ním nebo pro usnadnění diagnostiky problémů. Odesílat telemetrická data z aplikace zařízení a vzdálené ploše, webovými klienty a webové servery. Použití [Azure Application Insights](app-insights-overview.md) základní rozhraní API telemetrie k odeslání vlastní události a metriky a vlastní verzích standardní telemetrie. Toto rozhraní API je stejné rozhraní API, které použít standardní sběrače dat Application Insights.
+Vložte po zadání několika řádků kódu do vaší aplikace toofind se co uživatelé dělají s ním nebo toohelp diagnostikovat problémy. Odesílat telemetrická data z aplikace zařízení a vzdálené ploše, webovými klienty a webové servery. Použití hello [Azure Application Insights](app-insights-overview.md) základní rozhraní API telemetrie toosend vlastní události a metriky a vlastní verzích standardní telemetrie. Toto rozhraní API je hello stejné rozhraní API tohoto standardního hello Application Insights sběrače dat použít.
 
 ## <a name="api-summary"></a>Souhrn rozhraní API
-Rozhraní API je uniform pro všechny platformy kromě několik malé rozdíly.
+Hello rozhraní API je uniform pro všechny platformy kromě několik malé rozdíly.
 
 | Metoda | Použít pro |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Stránky, obrazovky, okna nebo formuláře. |
-| [`TrackEvent`](#trackevent) |Akce uživatelů a dalších událostí. Používá ke sledování chování uživatele nebo k monitorování výkonu. |
-| [`TrackMetric`](#trackmetric) |Měření výkonu, jako je například délky front, které nesouvisí s konkrétní události. |
-| [`TrackException`](#trackexception) |Protokolování výjimky pro diagnostiku. Sledování, kde k nim dojde ve vztahu k jiné událostí a zkontrolujte trasování zásobníku. |
-| [`TrackRequest`](#trackrequest) |Protokolování četnost a dobu trvání požadavky serveru pro analýzu výkonu. |
+| [`TrackEvent`](#trackevent) |Akce uživatelů a dalších událostí. Použít tootrack uživatele chování nebo toomonitor výkonu. |
+| [`TrackMetric`](#trackmetric) |Měření výkonu, jako je například délky fronty nesouvisejí toospecific události. |
+| [`TrackException`](#trackexception) |Protokolování výjimky pro diagnostiku. Sledování, kde ve vztahu tooother událostí a zkontrolujte trasování zásobníku. |
+| [`TrackRequest`](#trackrequest) |Protokolování hello četnost a dobu trvání požadavky serveru pro analýzu výkonu. |
 | [`TrackTrace`](#tracktrace) |Zprávy protokolů diagnostiky. Také můžete zaznamenat protokoly třetích stran. |
-| [`TrackDependency`](#trackdependency) |Protokolování doba trvání a četnost volání na externí komponenty, které závisí aplikace na. |
+| [`TrackDependency`](#trackdependency) |Doba trvání hello protokolování a četnost volání tooexternal komponent, které závisí aplikace na. |
 
-Můžete [připojení vlastnosti a metriky](#properties) pro většinu těchto volání telemetrie.
+Můžete [připojení vlastnosti a metriky](#properties) toomost těchto volání telemetrie.
 
 ## <a name="prep"></a>Než začnete
 Pokud nemáte k dispozici odkaz na Application Insights SDK ještě:
 
-* Přidejte Application Insights SDK do projektu:
+* Přidejte hello Application Insights SDK tooyour projektu:
 
   * [Projekt ASP.NET](app-insights-asp-net.md)
   * [Projektu Java](app-insights-java-get-started.md)
@@ -71,14 +71,14 @@ Vytvořit instanci `TelemetryClient` (s výjimkou v jazyce JavaScript webové st
 
 TelemetryClient je bezpečné pro přístup z více vláken.
 
-Doporučujeme použít instanci TelemetryClient pro každý modul vaší aplikace. Například můžete mít jednu instanci TelemetryClient ve službě web tak, aby odesílaly příchozích požadavků HTTP a druhý v třídě middleware sestavy obchodní logiky události. Můžete například nastavit vlastnosti `TelemetryClient.Context.User.Id` sledovat uživatele a relace, nebo `TelemetryClient.Context.Device.Id` identifikovat počítač. Tyto informace je připojený k všechny události, které odesílá instance.
+Doporučujeme použít instanci TelemetryClient pro každý modul vaší aplikace. Například můžete mít jednu instanci TelemetryClient ve vaší žádosti webové služby tooreport příchozí HTTP a druhý v události middleware třídy tooreport obchodní logiku. Můžete například nastavit vlastnosti `TelemetryClient.Context.User.Id` tootrack uživatelů a relací, nebo `TelemetryClient.Context.Device.Id` tooidentify hello počítače. Tyto informace jsou připojené tooall události, které hello zasílá instance.
 
 ## <a name="trackevent"></a>TrackEvent
-Ve službě Application Insights *vlastní události* je datový bod, který můžete zobrazit v [Průzkumníku metrik](app-insights-metrics-explorer.md) jako agregovaného počtu a v [diagnostické vyhledávání](app-insights-diagnostic-search.md) jako jednotlivé události. (Není souvisejících s MVC nebo jiných framework "události.")
+Ve službě Application Insights *vlastní události* je datový bod, který můžete zobrazit v [Průzkumníku metrik](app-insights-metrics-explorer.md) jako agregovaného počtu a v [diagnostické vyhledávání](app-insights-diagnostic-search.md) jako jednotlivé události. (Není související tooMVC nebo jiných framework "události.")
 
-Vložit `TrackEvent` volá ve vašem kódu počítat různé události. Jak často uživatelé vybrat konkrétní funkce, jak často budou dosáhnout určité cíle nebo možná četnosti provádění konkrétní typy chyb.
+Vložit `TrackEvent` volání do vašeho kódu toocount různé události. Jak často uživatelé vybrat konkrétní funkce, jak často budou dosáhnout určité cíle nebo možná četnosti provádění konkrétní typy chyb.
 
-Herní aplikace, například odeslání události vždy, když uživatel wins hra:
+Herní aplikace, například odeslání události vždy, když uživatel wins herní hello:
 
 *JavaScript*
 
@@ -96,45 +96,45 @@ Herní aplikace, například odeslání události vždy, když uživatel wins hr
 
     telemetry.trackEvent("WinGame");
 
-### <a name="view-your-events-in-the-microsoft-azure-portal"></a>Zobrazit události na portálu Microsoft Azure
-Chcete-li zobrazit počet událostí, otevřete [Průzkumníku metrik](app-insights-metrics-explorer.md) okně přidejte nový graf a vyberte **události**.  
+### <a name="view-your-events-in-hello-microsoft-azure-portal"></a>Zobrazit události v portálu Microsoft Azure hello
+toosee počet událostí, otevřete [Průzkumníku metrik](app-insights-metrics-explorer.md) okně přidejte nový graf a vyberte **události**.  
 
 ![Zobrazí počet vlastní události](./media/app-insights-api-custom-events-metrics/01-custom.png)
 
-Pro porovnání počty různé události, nastavte typ grafu **mřížky**a skupinu podle názvu událostí:
+počty hello toocompare různých událostí, nastavte typ grafu hello příliš**mřížky**a skupinu podle názvu událostí:
 
-![Nastavte typ grafu a seskupení](./media/app-insights-api-custom-events-metrics/07-grid.png)
+![Nastavte typ grafu hello a seskupení](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
-V mřížce klikněte na tlačítko prostřednictvím název události zobrazíte jednotlivé výskyty této události. Chcete-li zobrazit více podrobností – klikněte na kterýkoli z výskytů v seznamu.
+Na hello mřížky klikněte na tlačítko prostřednictvím události název toosee jednotlivé výskyty této události. toosee více podrobností – klikněte na kterýkoli z výskytů v seznamu hello.
 
-![Procházení událostí](./media/app-insights-api-custom-events-metrics/03-instances.png)
+![Procházení událostí hello](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
-Umožňuje zaměřit se na konkrétní události ve vyhledávání nebo Průzkumníku metrik, nastavte v okně filtru na názvy událostí, které vás zajímají:
+toofocus na konkrétní události ve vyhledávání nebo Průzkumníku metrik okno hello sada filtru toohello událostí názvy, které vás zajímají:
 
 ![Otevřete filtry, rozbalte název události a vyberte jednu nebo více hodnot](./media/app-insights-api-custom-events-metrics/06-filter.png)
 
 ### <a name="custom-events-in-analytics"></a>Vlastní události v Analytics
 
-Je k dispozici v telemetrii `customEvents` tabulky v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání `trackEvent(..)` ve vaší aplikaci. 
+telemetrie Hello je k dispozici v hello `customEvents` tabulky v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání příliš`trackEvent(..)` ve vaší aplikaci. 
 
-Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že 10 volání trackEvent(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, použijte proto použít kód jako `customEvent | summarize sum(itemCount)`.
+Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount hello zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že z 10 volání tootrackEvent() hello vzorkování proces přenášena pouze jeden z nich. tooget správný počet vlastních událostí, měli byste použít proto použít kód jako `customEvent | summarize sum(itemCount)`.
 
 
 ## <a name="trackmetric"></a>TrackMetric
 
-Application Insights můžete grafu metriky, které nejsou připojeny ke konkrétní události. Délka fronty může například sledovat v pravidelných intervalech. O metriky jednotlivými měřeními jsou méně důležité než variace a trendy a proto statistické grafy jsou užitečné.
+Application Insights můžete grafu metriky, které nejsou připojené tooparticular události. Délka fronty může například sledovat v pravidelných intervalech. O metriky jednotlivými měřeními hello jsou méně důležité než hello variace a trendy a proto statistické grafy jsou užitečné.
 
-Aby bylo možné odesílat metriky do služby Application Insights, můžete použít `TrackMetric(..)` rozhraní API. Existují dva způsoby, jak odeslat metriky: 
+V pořadí toosend metriky tooApplication statistiky, můžete použít hello `TrackMetric(..)` rozhraní API. Existují dva způsoby toosend metriky: 
 
-* Jednu hodnotu. Pokaždé, když provedete měření ve vaší aplikaci, odešlete s odpovídající hodnotou Application Insights. Předpokládejme například, že máte metriky popisující počet položek v kontejneru. V konkrétním časovém období můžete poprvé tři položky do kontejneru a potom odeberte dvě položky. Podle toho by volání `TrackMetric` dvakrát: první předání hodnota `3` a potom hodnotu `-2`. Application Insights ukládá obě hodnoty vaším jménem. 
+* Jednu hodnotu. Pokaždé, když provedete měření ve vaší aplikaci, můžete odeslat hello odpovídající hodnotu tooApplication statistiky. Předpokládejme například, že máte metriky popisující hello počet položek v kontejneru. V konkrétním časovém období můžete poprvé tři položky do kontejneru hello a potom odeberte dvě položky. Podle toho by volání `TrackMetric` dvakrát: první předání hello hodnotu `3` a pak hello hodnotu `-2`. Application Insights ukládá obě hodnoty vaším jménem. 
 
-* Agregace. Při práci s metriky, je každé jedno měření zájmu zřídka. Místo toho je důležité souhrn co se stalo v konkrétním časovém období. Takové souhrn nazývá _agregace_. V předchozím příkladu agregační metriky součet za toto období je `1` a počet hodnot metriky je `2`. Pokud použijete způsob agregace, pouze vyvolání `TrackMetric` jednou za časové období a odesílat agregované hodnoty. Toto je doporučený postup, vzhledem k tomu může významně snížit náklady a výkon režie odesláním méně datových bodů do služby Application Insights a stále shromažďovat všechny relevantní informace.
+* Agregace. Při práci s metriky, je každé jedno měření zájmu zřídka. Místo toho je důležité souhrn co se stalo v konkrétním časovém období. Takové souhrn nazývá _agregace_. V hello výše příklad hello agregační metriky součet za toto období je `1` a hello počet hodnot metriky hello je `2`. Při použití hello agregace přístup, pouze vyvolání `TrackMetric` jednou za časové období a odesílání hello agregované hodnoty. Toto je hello doporučenému přístupu vzhledem k tomu může významně snížit náklady na hello a výkonu režie odesláním méně dat. bodů tooApplication přehledy, a stále shromažďovat všechny relevantní informace.
 
 ### <a name="examples"></a>Příklady:
 
 #### <a name="single-values"></a>Jednotlivé hodnoty
 
-Odeslání jednoho metriky hodnoty:
+toosend jednu hodnotu metriky:
 
 *JavaScript*
 
@@ -153,7 +153,7 @@ Odeslání jednoho metriky hodnoty:
 
 #### <a name="aggregating-metrics"></a>Agregování metriky
 
-Doporučuje se agregovaná metrika před jejich odesláním z vaší aplikace, ke snížení šířky pásma, náklady a ke zlepšení výkonu.
+Před odesláním z vaší aplikace, tooreduce šířky pásma, náklady a tooimprove výkonu doporučujeme tooaggregate metriky.
 Tady je příklad totožný kódu:
 
 *C#*
@@ -216,7 +216,7 @@ namespace MetricAggregationExample
     }   // internal class MetricAggregator
 
     /// <summary>
-    /// Accepts metric values and sends the aggregated values at 1-minute intervals.
+    /// Accepts metric values and sends hello aggregated values at 1-minute intervals.
     /// </summary>
     public sealed class Metric : IDisposable
     {
@@ -252,24 +252,24 @@ namespace MetricAggregationExample
             {
                 try
                 {
-                    // Wait for end end of the aggregation period:
+                    // Wait for end end of hello aggregation period:
                     await Task.Delay(AggregationPeriod).ConfigureAwait(continueOnCapturedContext: false);
 
-                    // Atomically snap the current aggregation:
+                    // Atomically snap hello current aggregation:
                     MetricAggregator nextAggregator = new MetricAggregator(DateTimeOffset.UtcNow);
                     MetricAggregator prevAggregator = Interlocked.Exchange(ref _aggregator, nextAggregator);
 
                     // Only send anything is at least one value was measured:
                     if (prevAggregator != null && prevAggregator.Count > 0)
                     {
-                        // Compute the actual aggregation period length:
+                        // Compute hello actual aggregation period length:
                         TimeSpan aggPeriod = nextAggregator.StartTimestamp - prevAggregator.StartTimestamp;
                         if (aggPeriod.TotalMilliseconds < 1)
                         {
                             aggPeriod = TimeSpan.FromMilliseconds(1);
                         }
 
-                        // Construct the metric telemetry item and send:
+                        // Construct hello metric telemetry item and send:
                         var aggregatedMetricTelemetry = new MetricTelemetry(
                                 Name,
                                 prevAggregator.Count,
@@ -300,26 +300,26 @@ namespace MetricAggregationExample
 
 ### <a name="custom-metrics-in-metrics-explorer"></a>Vlastní metriky v Průzkumníku metrik
 
-Pokud chcete zobrazit výsledky, otevřete Průzkumníka metrik a přidejte nový graf. Upravte v grafu zobrazí vaše metriku.
+výsledky hello toosee, otevřete Průzkumníka metrik a přidejte nový graf. Upravte graf tooshow hello vaší metriku.
 
 > [!NOTE]
-> Vlastní metriku může trvat několik minut, než se objeví v seznamu dostupné metriky.
+> Vlastní metriku může trvat několik minut tooappear hello seznamu dostupné metriky.
 >
 
 ![Přidejte nový graf nebo vyberte graf a v části vlastní, vyberte vaše metrika](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
 ### <a name="custom-metrics-in-analytics"></a>Vlastní metriky v Analytics
 
-Je k dispozici v telemetrii `customMetrics` tabulky v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
-* `valueSum`-Toto je součet měření. Chcete-li získat střední hodnoty, vydělte `valueCount`.
-* `valueCount`-Počet měření, které byly agregovat do této `trackMetric(..)` volání.
+telemetrie Hello je k dispozici v hello `customMetrics` tabulky v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání příliš`trackMetric(..)` ve vaší aplikaci.
+* `valueSum`-Toto je součet hello hello měření. tooget hello střední hodnoty, dělení podle `valueCount`.
+* `valueCount`-hello počet měření, které byly agregovat do této `trackMetric(..)` volání.
 
 ## <a name="page-views"></a>Zobrazení stránky
-V aplikaci pomocí zařízení nebo webové stránky je odeslána telemetrická zobrazení stránky ve výchozím nastavení při načtení každé obrazovky nebo stránky. Ale můžete změnit, sledovat zobrazení stránky v další nebo různých časech. Například v aplikaci, která zobrazí karty nebo okna, můžete sledovat na stránce vždy, když uživatel otevře nové okno.
+V aplikaci pomocí zařízení nebo webové stránky je odeslána telemetrická zobrazení stránky ve výchozím nastavení při načtení každé obrazovky nebo stránky. Ale na další nebo jinou dobu můžete změnit této tootrack zobrazení stránky. Například v aplikaci, která zobrazí karty nebo okna, můžete tootrack stránky vždy, když uživatel hello otevře nové okno.
 
 ![Použití přehledu v okně Přehled](./media/app-insights-api-custom-events-metrics/appinsights-47usage-2.png)
 
-Data uživatele a relace se odešle jako vlastnosti společně s zobrazení stránky, uživatele a relace grafy pocházet zachování připojení při telemetrická zobrazení stránky.
+Data uživatele a relace je odeslána jako vlastnosti společně s zobrazení stránky, takže hello uživatele a relace grafy pocházet zachování připojení při telemetrická zobrazení stránky.
 
 ### <a name="custom-page-views"></a>Zobrazení vlastních stránek
 *JavaScript*
@@ -335,68 +335,68 @@ Data uživatele a relace se odešle jako vlastnosti společně s zobrazení str�
     telemetry.TrackPageView("GameReviewPage")
 
 
-Pokud máte několik karet v rámci jiné stránky HTML, můžete zadat adresu URL příliš:
+Pokud máte několik karet v rámci jiné stránky HTML, můžete zadat adresu URL hello příliš:
 
     appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 ### <a name="timing-page-views"></a>Zobrazení stránky časování
-Ve výchozím nastavení, časy hlášené jako **zobrazení času načítání stránky** se měří od, když prohlížeč odesílá požadavek, dokud se nazývá události načtení stránky v prohlížeči.
+Ve výchozím nastavení, časy hello hlášené jako **zobrazení času načítání stránky** se měří z při hello prohlížeč odešle požadavek hello, dokud se nazývá hello prohlížeče událostí načtení stránky.
 
 Místo toho můžete buď:
 
-* Nastavit explicitní doba trvání [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) volání: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
-* Použití zobrazení stránky časování volání `startTrackPage` a `stopTrackPage`.
+* Nastavit explicitní doba trvání v hello [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) volání: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
+* Použít hello stránky zobrazení časování volání `startTrackPage` a `stopTrackPage`.
 
 *JavaScript*
 
-    // To start timing a page:
+    // toostart timing a page:
     appInsights.startTrackPage("Page1");
 
 Tlačítka ...
 
-    // To stop timing and log the page:
+    // toostop timing and log hello page:
     appInsights.stopTrackPage("Page1", url, properties, measurements);
 
-Název, který použijete jako první parametr přidruží volání zahájení a ukončení. Výchozí název aktuální stránky.
+Hello název, který použijete jako první parametr hello přidruží hello spuštění a zastavení volání. Výchozí hodnota toohello název aktuální stránky.
 
-Výsledný doby zatížení stránky zobrazí v Průzkumníku metrik jsou odvozeny od interval mezi volání zahájení a ukončení. Je to na můžete jaké interval, ve skutečnosti čas.
+Výsledný načtení stránky Hello doby trvání zobrazí v Průzkumníku metrik, které jsou odvozeny od hello interval mezi hello spuštění a zastavení volání. Je to tooyou jaké interval, ve skutečnosti čas.
 
 ### <a name="page-telemetry-in-analytics"></a>Stránka telemetrie Analytics
 
 V [Analytics](app-insights-analytics.md) dvou tabulek zobrazit data z prohlížeče operace:
 
-* `pageViews` Tabulka obsahuje data o název adresy URL a stránky
-* `browserTimings` Tabulka obsahuje data o výkonu klienta, jako je například čas potřebný ke zpracování příchozích dat.
+* Hello `pageViews` tabulka obsahuje data o název adresy URL a stránku hello
+* Hello `browserTimings` tabulka obsahuje data o výkonu klienta, jako je doba tooprocess hello hello příchozích dat
 
-Vyhledání, jak dlouho trvá prohlížeče pro zpracování různých stránkách:
+toofind jak dlouho hello prohlížeče trvá tooprocess různé stránky:
 
 ```
 browserTimings | summarize avg(networkDuration), avg(processingDuration), avg(totalDuration) by name 
 ```
 
-Pro zjištění popularities různých prohlížečů:
+toodiscover hello popularities různých prohlížečů:
 
 ```
 pageViews | summarize count() by client_Browser
 ```
 
-Chcete-li přidružit zobrazení stránky k volání AJAX, spojení s závislosti:
+tooassociate stránky zobrazení tooAJAX volání, připojení k závislosti:
 
 ```
 pageViews | join (dependencies) on operation_Id 
 ```
 
 ## <a name="trackrequest"></a>TrackRequest
-Server SDK používá TrackRequest do protokolu HTTP žádosti.
+požadavky HTTP toolog TrackRequest používá Hello server SDK.
 
-Můžete také volat ho sami Pokud chcete simulovat požadavků v kontextu, kde nemáte modulu služby web spuštěn.
+Můžete také volat ho sami Pokud chcete, aby toosimulate požadavky v kontextu, kde nemáte hello webové služby modul spuštěn.
 
-Doporučeným způsobem, jak odesílat telemetrická data požadavku je ale, kde žádost funguje jako <a href="#operation-context">operační kontext</a>.
+Telemetrie požadavku toosend způsob, jak je, kde hello požadavek funguje jako však doporučeno hello <a href="#operation-context">operační kontext</a>.
 
 ## <a name="operation-context"></a>Operace kontextu
-Telemetrie položky můžete přidružit společně připojením k nim běžné ID operace. Standardní modulu Sledování žádostí o tomu pro výjimky a dalších událostí, které se odesílají během zpracování požadavku HTTP. V [vyhledávání](app-insights-diagnostic-search.md) a [Analytics](app-insights-analytics.md), ID vám pomůže snadno najít všechny události přidružené k požadavku.
+Telemetrie položky můžete přidružit společně připojením toothem běžné ID operace. Standardní modulu Sledování žádostí o Hello k tomu pro výjimky a dalších událostí, které se odesílají během zpracování požadavku HTTP. V [vyhledávání](app-insights-diagnostic-search.md) a [Analytics](app-insights-analytics.md), můžete použít hello ID tooeasily najít všechny události přidružené hello žádosti.
 
-Nejjednodušší způsob, jak nastavit ID je nastavit kontextu operace pomocí tohoto vzoru:
+Hello nejjednodušší způsob, jak tooset hello ID je tooset kontextu operace pomocí tohoto vzoru:
 
 *C#*
 
@@ -404,7 +404,7 @@ Nejjednodušší způsob, jak nastavit ID je nastavit kontextu operace pomocí t
 // Establish an operation context and associated telemetry item:
 using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
 {
-    // Telemetry sent in here will use the same operation ID.
+    // Telemetry sent in here will use hello same operation ID.
     ...
     telemetry.TrackTrace(...); // or other Track* calls
     ...
@@ -417,11 +417,11 @@ using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName
 } // When operation is disposed, telemetry item is sent.
 ```
 
-Společně s nastavení kontextu operace `StartOperation` vytvoří položku telemetrie typu, který určíte. Odešle položce telemetrie při vyřazení operaci, nebo pokud explicitně volání `StopOperation`. Pokud používáte `RequestTelemetry` jako typ telemetrická data, jeho trvání nastavena na se časový interval mezi zahájení a ukončení.
+Společně s nastavení kontextu operace `StartOperation` vytvoří položku telemetrie hello typu, který určíte. Odesláním telemetrie hello položky při vyřazení hello operaci, nebo pokud explicitně volání `StopOperation`. Pokud používáte `RequestTelemetry` jako typ hello telemetrická data, jeho trvání nastavena toohello časový interval mezi zahájení a ukončení.
 
-Kontexty operaci nelze vnořit. Pokud je již kontextu operace, pak je přidružen všechny obsažené položky, včetně položky vytvořené pomocí jeho ID `StartOperation`.
+Kontexty operaci nelze vnořit. Pokud je již kontextu operace, pak všechny položky hello obsažené, včetně hello položka vytvořená s přidružen jeho ID `StartOperation`.
 
-Do pole hledání kontext operace se používá k vytvoření **související položky** seznamu:
+Do pole hledání hello operaci kontext je použité toocreate hello **související položky** seznamu:
 
 ![Související položky](./media/app-insights-api-custom-events-metrics/21.png)
 
@@ -429,9 +429,9 @@ Další informace o vlastní operace sledování naleznete v tématu [aplikací 
 
 ### <a name="requests-in-analytics"></a>Požadavky v Analytics 
 
-V [Application Insights Analytics](app-insights-analytics.md), požadavky zobrazit nahoru v `requests` tabulky.
+V [Application Insights Analytics](app-insights-analytics.md), požadavky zobrazit nahoru v hello `requests` tabulky.
 
-Pokud [vzorkování](app-insights-sampling.md) je v operaci vlastnost itemCount zobrazí hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že 10 volání trackRequest(), proces vzorkování přenášena pouze jeden z nich. Správný počet požadavků a průměrné trvání segmentované podle požadavku názvy získáte pomocí kódu, jako:
+Pokud [vzorkování](app-insights-sampling.md) je v operaci vlastnost itemCount hello zobrazí hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že z 10 volání tootrackRequest() hello vzorkování proces přenášena pouze jeden z nich. tooget správný počet požadavků a průměrné trvání segmentované podle požadavku názvy, například použít kód:
 
 ```AIQL
 requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
@@ -439,12 +439,12 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
 
 
 ## <a name="trackexception"></a>TrackException
-Odesílání výjimky Application Insights:
+Odešlete výjimky tooApplication statistiky:
 
-* K [jejich počet](app-insights-metrics-explorer.md), jako údaje o četnosti problému.
-* K [Zkontrolujte jednotlivé výskyty](app-insights-diagnostic-search.md).
+* příliš[jejich počet](app-insights-metrics-explorer.md), jako údaje o četnosti hello problému.
+* příliš[Zkontrolujte jednotlivé výskyty](app-insights-diagnostic-search.md).
 
-Sestavy obsahují trasování zásobníku.
+Hello sestavy obsahují hello trasování zásobníku.
 
 *C#*
 
@@ -468,11 +468,11 @@ Sestavy obsahují trasování zásobníku.
        appInsights.trackException(ex);
     }
 
-Sady SDK catch množství výjimek automaticky, takže nemáte vždy volat TrackException explicitně.
+sady SDK Hello catch množství výjimek automaticky, takže není vždy nutné toocall TrackException explicitně.
 
-* ASP.NET: [napsat kód pro zachycení výjimky](app-insights-asp-net-exceptions.md).
+* ASP.NET: [napsat kód výjimky toocatch](app-insights-asp-net-exceptions.md).
 * J2EE: [výjimky jsou zachyceny automaticky](app-insights-java-get-started.md#exceptions-and-request-failures).
-* JavaScript: Výjimky jsou zachyceny automaticky. Pokud chcete zakázat automatické shromažďování, přidejte řádek fragment kódu, který vložte do své webové stránky:
+* JavaScript: Výjimky jsou zachyceny automaticky. Pokud chcete toodisable automatické shromažďování, Přidání fragmentu kódu toohello řádek, který vložte do své webové stránky:
 
     ```
     ({
@@ -483,22 +483,22 @@ Sady SDK catch množství výjimek automaticky, takže nemáte vždy volat Track
 
 ### <a name="exceptions-in-analytics"></a>Výjimky v Analytics
 
-V [Application Insights Analytics](app-insights-analytics.md), výjimky objeví v `exceptions` tabulky.
+V [Application Insights Analytics](app-insights-analytics.md), výjimky objeví v hello `exceptions` tabulky.
 
-Pokud [vzorkování](app-insights-sampling.md) je v provozu, `itemCount` vlastnost zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že 10 volání pro trackException() proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet výjimek segmentované podle typu výjimky, použijte kód, jako:
+Pokud [vzorkování](app-insights-sampling.md) je v provozu, hello `itemCount` vlastnost zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že z 10 volání tootrackException() hello vzorkování proces přenášena pouze jeden z nich. tooget správný počet výjimek oddělených typ výjimky, jako například použít kód:
 
 ```
 exceptions | summarize sum(itemCount) by type
 ```
 
-Většinu informací důležité zásobníku je již extrahován do samostatné proměnné, ale můžete vyžádat od sebe `details` struktura získat další. Vzhledem k tomu, že tato struktura je dynamický, by měl přetypovat na typ očekávaný výsledek. Například:
+Většina hello důležité informace zásobníku je již extrahován do samostatné proměnné, ale můžete vyžádat od sebe hello `details` struktura tooget Další. Vzhledem k tomu, že tato struktura je dynamický, by měl přetypování hello výsledek typu toohello očekáváte. Například:
 
 ```AIQL
 exceptions
 | extend method2 = tostring(details[0].parsedStack[1].method)
 ```
 
-Chcete-li výjimky přidružit jejich související požadavky, použijte spojení:
+výjimky tooassociate s jejich související požadavky, použijte spojení:
 
 ```
 exceptions
@@ -506,9 +506,9 @@ exceptions
 ```
 
 ## <a name="tracktrace"></a>TrackTrace
-Použijte TrackTrace k diagnostice potíží odesláním "záznam s popisem cesty" Application Insights. Můžete odesílat bloky diagnostických dat a je v zkontrolovat [diagnostické vyhledávání](app-insights-diagnostic-search.md).
+Použití TrackTrace toohelp diagnostikovat problémy odesláním "záznam s popisem cesty" tooApplication statistiky. Můžete odesílat bloky diagnostických dat a je v zkontrolovat [diagnostické vyhledávání](app-insights-diagnostic-search.md).
 
-[Přihlaste se adaptéry](app-insights-asp-net-trace-logs.md) používat toto rozhraní API k odesílání jiných výrobců protokoly na portál.
+[Přihlaste se adaptéry](app-insights-asp-net-trace-logs.md) používat tento portál toohello jiných výrobců protokoly toosend rozhraní API.
 
 *C#*
 
@@ -517,27 +517,27 @@ Použijte TrackTrace k diagnostice potíží odesláním "záznam s popisem cest
 
 Můžete hledat na obsah zprávy, ale (na rozdíl od hodnoty vlastností) nelze filtrovat na něm.
 
-Limit velikosti na `message` mnohem vyšší, než je limit na vlastnosti.
-Výhodou TrackTrace je, že můžete ukládat poměrně dlouho data ve zprávě. Můžete například kódovat následných dat existuje.  
+limit velikosti Hello na `message` je mnohem vyšší než limit hello na vlastnosti.
+Výhodou TrackTrace je, že můžete umístit relativně long – datový uvítací zprávu. Můžete například kódovat následných dat existuje.  
 
-Kromě toho můžete přidat úroveň závažnosti na zprávu. A, podobně jako ostatní telemetrických dat, můžete přidat hodnoty vlastností, které vám pomohou filtru nebo vyhledávání pro různé skupiny trasování. Například:
+Kromě toho můžete přidat zprávu tooyour úrovně závažnosti. A, podobně jako ostatní telemetrických dat, můžete přidat toohelp hodnoty vlastností, které filtrovat nebo vyhledávání pro různé skupiny trasování. Například:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-V [vyhledávání](app-insights-diagnostic-search.md), můžete pak snadno odfiltrovat všechny zprávy konkrétní závažnosti úrovně, které se vztahují ke konkrétní databázi.
+V [vyhledávání](app-insights-diagnostic-search.md), můžete pak snadno odfiltrovat všechny zprávy hello úrovně konkrétní závažnosti, které se týkají tooa konkrétní databáze.
 
 
 ### <a name="traces-in-analytics"></a>Trasování v Analytics
 
-V [Application Insights Analytics](app-insights-analytics.md), volání TrackTrace zobrazí v `traces` tabulky.
+V [Application Insights Analytics](app-insights-analytics.md), volání metod tooTrackTrace zobrazit hello `traces` tabulky.
 
-Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání `trackTrace()`, proces vzorkování přenášena pouze jeden z nich. Pokud chcete získat správný počet volání trasování, měli byste použít proto kódu, jako `traces | summarize sum(itemCount)`.
+Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount hello zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že 10 volání příliš`trackTrace()`, proces vzorkování hello přenášena pouze jeden z nich. tooget správný počet volání trasování, měli byste použít proto kódu, jako `traces | summarize sum(itemCount)`.
 
 ## <a name="trackdependency"></a>TrackDependency
-Volání TrackDependency použijte ke sledování doby odezvy a úspěšnost volání externí část kódu. Výsledky se zobrazí v grafech závislost na portálu.
+Použití hello TrackDependency volat tootrack hello odezvy a úspěšnosti volání tooan externí část kódu. Hello výsledky se zobrazí v grafech závislostí hello hello portálu.
 
 ```C#
 var success = false;
@@ -554,21 +554,21 @@ finally
 }
 ```
 
-Mějte na paměti, že zahrnují sady SDK serveru [závislostí modulu](app-insights-asp-net-dependencies.md) , zjišťuje a sleduje určitých volání závislosti automaticky – například k databázím a rozhraní REST API. Je třeba nainstalovat agenta na vašem serveru, aby se modul fungovat. Toto volání použijte, pokud chcete sledovat volání, které není catch automatizované sledování, nebo pokud nechcete, aby pro instalaci agenta.
+Mějte na paměti, tento server hello zahrnují sady SDK [závislostí modulu](app-insights-asp-net-dependencies.md) , zjišťuje a sleduje určitých volání závislosti automaticky – například toodatabases a rozhraní REST API. Máte tooinstall agenta na server toomake hello modul fungovat. Pokud chcete není catch tootrack volání, které hello automatizované sledování, nebo pokud nechcete, aby tooinstall hello agent použijete toto volání.
 
-Chcete-li vypnout standardní modul sledování závislostí, upravit [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) a odstraňte odkaz na `DependencyCollector.DependencyTrackingTelemetryModule`.
+Upravit tooturn vypnout hello standardní modul sledování závislostí, [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) a odstraňte odkaz hello příliš`DependencyCollector.DependencyTrackingTelemetryModule`.
 
 ### <a name="dependencies-in-analytics"></a>Závislosti v Analytics
 
-V [Application Insights Analytics](app-insights-analytics.md), trackDependency volá zobrazit `dependencies` tabulky.
+V [Application Insights Analytics](app-insights-analytics.md), trackDependency volání zobrazí v hello `dependencies` tabulky.
 
-Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že 10 volání trackDependency(), proces vzorkování přenášena pouze jeden z nich. Získat správný počet závislostí segmentované podle cílové součásti, například použijte kód:
+Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount hello zobrazuje hodnotu větší než 1. Pro příklad itemCount == 10 znamená, že z 10 volání tootrackDependency() hello vzorkování proces přenášena pouze jeden z nich. tooget správný počet závislostí segmentované podle cílové součásti, jako například použít kód:
 
 ```
 dependencies | summarize sum(itemCount) by target
 ```
 
-Chcete-li přidružit své žádosti související závislosti, použijte spojení:
+závislosti tooassociate s jejich související požadavky, použijte spojení:
 
 ```
 dependencies
@@ -576,7 +576,7 @@ dependencies
 ```
 
 ## <a name="flushing-data"></a>Probíhá vyprazdňování dat
-Za normálních okolností sady SDK odešle data v některých případech se rozhodli minimalizovat dopad na uživatele. Ale v některých případech můžete chtít vyprázdní vyrovnávací paměti – například pokud používáte sady SDK v aplikaci, která ukončí.
+Za normálních okolností hello SDK odešle data v některých případech vybrali toominimize hello dopad na uživatele hello. Ale v některých případech můžete tooflush hello vyrovnávací paměti – například pokud používáte hello SDK v aplikaci, která ukončí.
 
 *C#*
 
@@ -585,17 +585,17 @@ Za normálních okolností sady SDK odešle data v některých případech se ro
     // Allow some time for flushing before shutdown.
     System.Threading.Thread.Sleep(1000);
 
-Upozorňujeme, že je asynchronní pro funkce [kanálu telemetrii serveru](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
+Upozorňujeme, že je funkce hello asynchronní pro hello [kanálu telemetrii serveru](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
 
 ## <a name="authenticated-users"></a>Ověření uživatelé
 Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) identifikovat pomocí souborů cookie. Uživatel může počítají více než jednou, pokud budou přistupovat k vaší aplikace z v jiném počítači či prohlížeči, nebo pokud se soubory cookie odstranit.
 
-Pokud se uživatel přihlásí k aplikaci, můžete získat přesnější počet nastavením ID ověřený uživatel v prohlížeči kódu:
+Pokud se uživatel přihlašuje tooyour aplikace, můžete získat přesnější počet nastavením hello ověřit ID uživatele v hello prohlížeče kódu:
 
 *JavaScript*
 
 ```JS
-// Called when my app has identified the user.
+// Called when my app has identified hello user.
 function Authenticated(signInId) {
     var validatedId = signInId.replace(/[,;=| ]+/g, "_");
     appInsights.setAuthenticatedUserContext(validatedId);
@@ -616,11 +616,11 @@ V technologie ASP.NET MVC aplikace, například:
             </script>
         }
 
-Není nutné používat skutečné přihlašovací jméno uživatele. Pouze musí být ID, které jsou jedinečné pro daného uživatele. Nesmí obsahovat mezery ani znaky `,;=|`.
+Není nutné toouse hello skutečné přihlašovací jméno uživatele. Má pouze toobe ID, které je jedinečné toothat uživatele. Nesmí obsahovat mezery ani znaky hello `,;=|`.
 
-ID uživatele je také nastavit v souboru cookie relace a odesílá na server. Pokud je nainstalován server SDK, ID ověřený uživatel odešle jako součást vlastností kontextu telemetrie klient i server. Potom můžete filtrovat a hledání v něm.
+ID uživatele Hello je také nastavit v souboru cookie relace a odeslat toohello serveru. Pokud je nainstalován hello server SDK, hello ověřeného uživatele, které je odeslána jako součást vlastností kontextu hello telemetrie klient i server. Potom můžete filtrovat a hledání v něm.
 
-Pokud vaše aplikace skupin uživatelů do účtů, můžete předat také identifikátor k účtu (s stejné omezení znaků).
+Pokud vaše aplikace skupin uživatelů do účtů, můžete předat také identifikátor hello účtu (s hello znak stejné omezení).
 
       appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
@@ -629,17 +629,17 @@ V [Průzkumníku metrik](app-insights-metrics-explorer.md), můžete vytvořit g
 Můžete také [vyhledávání](app-insights-diagnostic-search.md) pro datové body klienta s účty a názvy konkrétního uživatele.
 
 ## <a name="properties"></a>Filtrování, vyhledávání a segmentace svá data pomocí vlastností
-Můžete přiřadit události vlastnosti a měření (a také k metrikám, stránka zobrazení, výjimky a další data telemetrie).
+Můžete připojit vlastnosti měření tooyour události (a také toometrics, zobrazení stránek, výjimky a další data telemetrie).
 
-*Vlastnosti* jsou řetězcové hodnoty, které můžete použít k filtrování telemetrie v sestavách využití. Například pokud vaše aplikace obsahuje několik hry, můžete připojit název hry pro každou jednotlivou událost tak, aby her, které jsou populárnější, si můžete zobrazit.
+*Vlastnosti* jsou řetězcové hodnoty, které můžete toofilter telemetrie v sestavách využití hello. Například pokud vaše aplikace obsahuje několik hry, můžete připojit hello název hello herní tooeach události tak, aby her, které jsou populárnější, si můžete zobrazit.
 
-Existuje omezení 8192 na délku řetězce. (Pokud chcete odeslat velké množství dat, použijte parametr zpráva [TrackTrace](#track-trace).)
+Existuje omezení 8192 na hello délka řetězce. (Pokud chcete toosend velké bloky dat, použijte parametr zprávy hello [TrackTrace](#track-trace).)
 
-*Metriky* jsou číselné hodnoty, které lze zobrazit graficky. Například můžete chtít zjistit, zda je k postupné zvýšení skóre, které vaše hráči dosáhnout. V grafech mohou být segmentovány podle vlastnosti, které se odesílají s událostí, tak, aby vám samostatný nebo skládaný grafy pro různé hry.
+*Metriky* jsou číselné hodnoty, které lze zobrazit graficky. Můžete například toosee Pokud dojde k postupné zvýšení skóre hello, které vaše hráči dosáhnout. grafy Hello mohou být segmentovány podle hello vlastnosti, které se odesílají s hello událostí tak, aby vám oddělení nebo skládaný grafy pro různé hry.
 
-Metriky hodnot, který se má zobrazit správně musí být větší než nebo rovna 0.
+Pro hodnoty metriky toobe správně zobrazen měly by být větší než nebo rovna too0.
 
-Některé [omezení počtu vlastností, hodnoty vlastností a metriky](#limits) , kterou můžete použít.
+Některé [omezení počtu hello vlastnosti, hodnoty vlastností a metriky](#limits) , kterou můžete použít.
 
 *JavaScript*
 
@@ -668,7 +668,7 @@ Některé [omezení počtu vlastností, hodnoty vlastností a metriky](#limits) 
     var metrics = new Dictionary <string, double>
        {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
 
-    // Send the event:
+    // Send hello event:
     telemetry.TrackEvent("WinGame", properties, metrics);
 
 
@@ -683,7 +683,7 @@ Některé [omezení počtu vlastností, hodnoty vlastností a metriky](#limits) 
     metrics.Add("Score", currentGame.Score)
     metrics.Add("Opponents", currentGame.OpponentCount)
 
-    ' Send the event:
+    ' Send hello event:
     telemetry.TrackEvent("WinGame", properties, metrics)
 
 
@@ -701,33 +701,33 @@ Některé [omezení počtu vlastností, hodnoty vlastností a metriky](#limits) 
 
 
 > [!NOTE]
-> Je třeba dbát na ve vlastnostech protokolu identifikovatelné osobní údaje.
+> Vezměte v potaz není toolog identifikovatelné osobní údaje ve vlastnostech.
 >
 >
 
-*Pokud jste použili metriky*, otevřete Průzkumníka metrik a vyberte metriku z **vlastní** skupiny:
+*Pokud jste použili metriky*, otevřete Průzkumníka metrik a vyberte metriku hello hello **vlastní** skupiny:
 
-![Otevřete Průzkumníka metrik, vyberte graf a vyberte metriku](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
+![Otevřete Průzkumníka metrik, vyberte hello grafu a vyberte metriku hello](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
 > [!NOTE]
-> Pokud vaše metrika se nezobrazí, nebo pokud **vlastní** záhlaví nejsou, zavřete okno Výběr a zkuste to znovu později. Metriky někdy může trvat hodinu mají agregovat prostřednictvím kanálu.
+> Pokud vaše metrika se nezobrazí, nebo pokud hello **vlastní** záhlaví není okno Výběr zavřít hello existuje a opakujte akci později. Metriky někdy může trvat hodinu toobe agregovat kanálem hello.
 
-*Pokud jste použili vlastnosti a metriky*, segmentovat metriku vlastností:
+*Pokud jste použili vlastnosti a metriky*, segmentovat hello metrika vlastností hello:
 
-![Nastavit seskupování a potom vyberte vlastnost pod Seskupit podle](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
+![Nastavit seskupování a potom vyberte vlastnost hello pod Seskupit podle](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
 
-*Ve vyhledávání diagnostiky*, můžete zobrazit vlastnosti a metriky jednotlivé výskyty události.
+*Ve vyhledávání diagnostiky*, můžete zobrazit vlastnosti hello a metriky jednotlivé výskyty události.
 
 ![Vyberte instance a pak vyberte "..."](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
 
-Použití **vyhledávání** pole zobrazíte výskytů události, které mají konkrétní hodnotu vlastnosti.
+Použití hello **vyhledávání** pole toosee výskytů události, které mají konkrétní hodnotu vlastnosti.
 
 ![Zadejte termín do vyhledávání](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
 
 [Další informace o vyhledávacích výrazech](app-insights-diagnostic-search.md).
 
-### <a name="alternative-way-to-set-properties-and-metrics"></a>Alternativní způsob, jak nastavit vlastnosti a metriky
-Pokud je pohodlnější, můžete shromáždit parametry události v samostatném objektu:
+### <a name="alternative-way-tooset-properties-and-metrics"></a>Alternativní způsob tooset vlastnosti a metriky
+Pokud je pohodlnější, můžete shromáždit hello parametry události v samostatném objektu:
 
     var event = new EventTelemetry();
 
@@ -741,15 +741,15 @@ Pokud je pohodlnější, můžete shromáždit parametry události v samostatné
     telemetry.TrackEvent(event);
 
 > [!WARNING]
-> Nemáte opakovaně použít stejnou instanci položky telemetrie (`event` v tomto příkladu) Track*() volat vícekrát. To může způsobit telemetrických dat k odeslání s nesprávná konfigurace.
+> Nemáte hello znovu použít stejnou instanci položky telemetrie (`event` v tomto příkladu) toocall Track*() vícekrát. To může způsobit telemetrie toobe odeslané s nesprávná konfigurace.
 >
 >
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Vlastní měření a vlastnosti v Analytics
 
-V [Analytics](app-insights-analytics.md), vlastní metriky a vlastnosti zobrazit v `customMeasurements` a `customDimensions` atributy každý záznam telemetrie.
+V [Analytics](app-insights-analytics.md), vlastní metriky a vlastnosti zobrazit v hello `customMeasurements` a `customDimensions` atributy každý záznam telemetrie.
 
-Například pokud jste přidali vlastnost s názvem "herní" k žádosti o telemetrie, tento dotaz počet výskytů různé hodnoty "herní" a zobrazit průměr vlastní metriky "skóre":
+Například pokud jste přidali vlastnost s názvem "hra" tooyour požadavku telemetrie, tento dotaz počty hello výskyty různé hodnoty "herní" a zobrazit hello průměr hello vlastní metriky "skóre":
 
 ```
 requests
@@ -758,19 +758,19 @@ requests
 
 Všimněte si, že:
 
-* Při extrahování hodnotu z customDimensions nebo customMeasurements JSON, má dynamické typ, a proto musíte vysílat `tostring` nebo `todouble`.
-* Vzít v úvahu možnost [vzorkování](app-insights-sampling.md), měli byste použít `sum(itemCount)`, nikoli `count()`.
+* Při extrahování hodnotu z hello customDimensions nebo customMeasurements JSON, má dynamické typ, a proto musíte vysílat `tostring` nebo `todouble`.
+* účet tootake Ahoj možnost vzniku [vzorkování](app-insights-sampling.md), měli byste použít `sum(itemCount)`, nikoli `count()`.
 
 
 
 ## <a name="timed"></a>Časování událostí
-Někdy budete chtít grafu doba potřebná k provedení akce. Například můžete chtít vědět, jak dlouho uživatelé proveďte vzít v úvahu volbám v hru. Můžete pro tento parametr měření.
+Někdy budete chtít toochart, jak dlouho trvá tooperform akce. Například můžete chtít tooknow jak dlouho uživatelé provádět tooconsider volby ve hře. To můžete pomocí parametru měření hello.
 
 *C#*
 
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
-    // ... perform the timed action ...
+    // ... perform hello timed action ...
 
     stopwatch.Stop();
 
@@ -781,13 +781,13 @@ Někdy budete chtít grafu doba potřebná k provedení akce. Například může
     var properties = new Dictionary <string, string>
        {{"signalSource", currentSignalSource.Name}};
 
-    // Send the event:
+    // Send hello event:
     telemetry.TrackEvent("SignalProcessed", properties, metrics);
 
 
 
 ## <a name="defaults"></a>Výchozí vlastnosti pro vlastní telemetrii
-Pokud chcete nastavit výchozí hodnoty vlastností pro některé vlastní události, které lze zadat, můžete je nastavit v instanci TelemetryClient. Jsou připojené každé položce telemetrie, který se odesílá z tohoto klienta.
+Pokud chcete tooset výchozí hodnoty vlastností pro některé hello vlastní události, které lze zadat, můžete je nastavit v instanci TelemetryClient. Jsou připojené tooevery telemetrie položek, který se odesílá z tohoto klienta.
 
 *C#*
 
@@ -795,14 +795,14 @@ Pokud chcete nastavit výchozí hodnoty vlastností pro některé vlastní udál
 
     var gameTelemetry = new TelemetryClient();
     gameTelemetry.Context.Properties["Game"] = currentGame.Name;
-    // Now all telemetry will automatically be sent with the context property:
+    // Now all telemetry will automatically be sent with hello context property:
     gameTelemetry.TrackEvent("WinGame");
 
 *Visual Basic*
 
     Dim gameTelemetry = New TelemetryClient()
     gameTelemetry.Context.Properties("Game") = currentGame.Name
-    ' Now all telemetry will automatically be sent with the context property:
+    ' Now all telemetry will automatically be sent with hello context property:
     gameTelemetry.TrackEvent("WinGame")
 
 *Java*
@@ -820,25 +820,25 @@ Pokud chcete nastavit výchozí hodnoty vlastností pro některé vlastní udál
 
 
 
-Jednotlivé telemetrii volání můžete přepsat výchozí hodnoty ve slovnících jejich vlastnosti.
+Jednotlivé telemetrii volání můžete přepsat výchozí hodnoty hello ve slovnících jejich vlastnosti.
 
 *Pro jazyk JavaScript webových klientů*, [pomocí jazyka JavaScript telemetrie inicializátory](#js-initializer).
 
-*Přidání vlastnosti do všech telemetrie*, včetně dat z modulů standardního shromažďování [implementovat `ITelemetryInitializer` ](app-insights-api-filtering-sampling.md#add-properties).
+*tooadd vlastnosti tooall telemetrie*, včetně dat hello z modulů standardního shromažďování [implementovat `ITelemetryInitializer` ](app-insights-api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Vzorkování, filtrování a zpracování telemetrie
-Můžete napsat kód pro zpracování telemetrie před odesláním ze sady SDK. Zpracování obsahuje data, která se odesílá z modulů standardní telemetrie, jako je shromažďování požadavků HTTP a kolekce závislost.
+Můžete napsat kód tooprocess telemetrie před odesláním z hello SDK. zpracování Hello obsahuje data, která se odesílá z modulů standardní telemetrie hello, jako je shromažďování požadavků HTTP a kolekce závislost.
 
-[Přidání vlastnosti](app-insights-api-filtering-sampling.md#add-properties) k telemetrie implementací `ITelemetryInitializer`. Můžete například přidat čísla verzí nebo vypočtené hodnoty od dalších vlastností.
+[Přidání vlastnosti](app-insights-api-filtering-sampling.md#add-properties) tootelemetry implementací `ITelemetryInitializer`. Můžete například přidat čísla verzí nebo vypočtené hodnoty od dalších vlastností.
 
-[Filtrování](app-insights-api-filtering-sampling.md#filtering) můžete změnit nebo zrušit telemetrie před odesláním ze sady SDK implementací `ITelemetryProcesor`. Můžete řídit, co se odesílá nebo se zahodí, ale budete muset účet pro vliv na vaše metriky. V závislosti na tom, jak zrušit položek může dojít ke ztrátě možnost přecházet mezi související položky.
+[Filtrování](app-insights-api-filtering-sampling.md#filtering) můžete změnit nebo zrušit telemetrie před odesláním z hello SDK implementací `ITelemetryProcesor`. Můžete řídit, co se odesílá nebo se zahodí, ale máte tooaccount pro hello vliv na vaše metriky. V závislosti na tom, jak zrušit položek může dojít ke ztrátě hello možnost toonavigate mezi související položky.
 
-[Vzorkování](app-insights-api-filtering-sampling.md) je zabalené řešení ke snížení objemu dat, který se odesílá z vaší aplikace na portál. Dělá to tak, aniž by to ovlivnilo zobrazených metrik. A dělá to tak, aniž by to ovlivnilo moct lépe diagnostikovat problémy tak, že přejdete mezi související položky jako výjimky, požadavky a zobrazení stránek.
+[Vzorkování](app-insights-api-filtering-sampling.md) je svazek zabalené řešení tooreduce hello dat, který se odesílá z portálu toohello aplikace. Dělá to tak, aniž by to ovlivnilo hello zobrazí metriky. A dělá to tak, aniž by to ovlivnilo problémů toodiagnose možnost přechodem mezi související položky jako výjimky, požadavky a zobrazení stránek.
 
 [Další informace](app-insights-api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Vypnutí telemetrie
-K *dynamicky zastavit a spustit* shromažďování a předávání telemetrie:
+příliš*dynamicky zastavit a spustit* hello shromažďování a předávání telemetrie:
 
 *C#*
 
@@ -849,10 +849,10 @@ K *dynamicky zastavit a spustit* shromažďování a předávání telemetrie:
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-K *zakázat vybrané standardní Kolektory*– například čítače výkonu, požadavky HTTP nebo závislosti – odstranit nebo komentář příslušné řádky v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). To provedete, například pokud chcete odeslat vlastní TrackRequest data.
+příliš*zakázat vybrané standardní Kolektory*– například čítače výkonu, požadavky HTTP nebo závislosti – odstranit nebo komentář hello relevantní řádků v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). To provedete, například pokud chcete toosend TrackRequest data.
 
 ## <a name="debug"></a>Režim vývojáře
-Během ladění, je užitečné používat telemetrie prostřednictvím kanálu je rychlé, aby mohli zobrazit výsledky okamžitě. Můžete také zprávy Další get, které vám pomůžou trasování všechny problémy s telemetrií. Vypněte ho v produkčním prostředí, protože mohou být zpomaleny vaší aplikace.
+Během ladění, je užitečné toohave telemetrie rychlé kanálem hello tak, aby se zobrazí výsledky okamžitě. Můžete také zprávy Další get, které vám pomůžou trasování všechny problémy s telemetrií hello. Vypněte ho v produkčním prostředí, protože mohou být zpomaleny vaší aplikace.
 
 *C#*
 
@@ -863,7 +863,7 @@ Během ladění, je užitečné používat telemetrie prostřednictvím kanálu 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="ikey"></a>Nastavení pro vybrané vlastní telemetrii klíč instrumentace
+## <a name="ikey"></a>Nastavení hello klíč instrumentace pro vybranou vlastní telemetrii
 *C#*
 
     var telemetry = new TelemetryClient();
@@ -872,9 +872,9 @@ Během ladění, je užitečné používat telemetrie prostřednictvím kanálu 
 
 
 ## <a name="dynamic-ikey"></a>Klíč dynamické instrumentace
-Abyste se vyhnuli kombinování až telemetrie z vývoj, testování a provozním prostředí, můžete [vytvořit samostatné prostředky Application Insights](app-insights-create-new-resource.md) a změnit jejich klíče, v závislosti na prostředí.
+tooavoid kombinování až telemetrie z vývoj, testování a provozním prostředí, můžete [vytvořit samostatné prostředky Application Insights](app-insights-create-new-resource.md) a změnit jejich klíče, v závislosti na prostředí hello.
 
-Místo získání klíč instrumentace z konfiguračního souboru, můžete ho nastavit v kódu. V metodě inicializace, jako jsou například souboru global.aspx.cs v službě ASP.NET nastavte:
+Místo získání klíč instrumentace hello z hello konfiguračního souboru, můžete ho nastavit v kódu. V metodě inicializace, jako jsou například souboru global.aspx.cs v službě ASP.NET nastavit hello:
 
 *C#*
 
@@ -892,7 +892,7 @@ Místo získání klíč instrumentace z konfiguračního souboru, můžete ho n
 
 
 
-Na webových stránkách můžete ho nastavit ze stavu webový server, než kódování oznámena do skriptu. Například ve webové stránky vygenerované v aplikaci ASP.NET:
+Na webových stránkách, můžete chtít tooset ze stavu hello webového serveru, než kódování oznámena do skriptu hello. Například ve webové stránky vygenerované v aplikaci ASP.NET:
 
 *JavaScript ve Razor*
 
@@ -908,30 +908,30 @@ Na webových stránkách můžete ho nastavit ze stavu webový server, než kód
 
 
 ## <a name="telemetrycontext"></a>TelemetryContext
-TelemetryClient má vlastnost kontext, který obsahuje hodnoty, které jsou odeslány společně s všechny telemetrická data. Za normálních okolností jsou nastavené moduly standardní telemetrie, ale můžete také nastavit jejich sami. Například:
+TelemetryClient má vlastnost kontext, který obsahuje hodnoty, které jsou odeslány společně s všechny telemetrická data. Za normálních okolností jsou nastavené moduly hello standardní telemetrie, ale můžete také nastavit jejich sami. Například:
 
     telemetry.Context.Operation.Name = "MyOperationName";
 
-Pokud jste nastavili některou z těchto hodnot sami, zvažte odebrání na příslušný řádek z [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)tak, aby vaše hodnoty a standardní hodnoty získat nerozumíte nemáte.
+Pokud jste nastavili některou z těchto hodnot sami, zvažte odebrání hello příslušný řádek z [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)tak, aby hodnoty a standardní hodnoty hello získat nerozumíte nemáte.
 
-* **Součást**: aplikace a její verzi.
-* **Zařízení**: Data o zařízení, na kterém je spuštěna aplikace. (Ve službě web apps, to je serveru nebo klientském zařízení, který se odesílá telemetrii z.)
-* **InstrumentationKey**: The Application Insights prostředků v Azure, kde se zobrazí telemetrii. Ho je obvykle zachyceny ze souboru ApplicationInsights.config.
-* **Umístění**: geografickém umístění zařízení.
-* **Operace**: ve službě web apps, aktuální žádost HTTP. V jiných typů aplikací můžete tento parametr můžete nastavit pro skupiny událostí společně.
+* **Součást**: hello aplikace a její verzi.
+* **Zařízení**: Data o hello zařízení, kde je spuštěna aplikace hello. (Ve službě web apps, to je hello serveru nebo klientského zařízení, které je odeslaný hello telemetrie.)
+* **InstrumentationKey**: hello prostředek Application Insights v Azure, kde se zobrazí hello telemetrie. Ho je obvykle zachyceny ze souboru ApplicationInsights.config.
+* **Umístění**: hello geografickém umístění zařízení hello.
+* **Operace**: ve službě web apps hello aktuální žádost HTTP. V jiných typů aplikací můžete nastavit tato toogroup události společně.
   * **ID**: generované hodnoty, které koreluje různých událostí, takže když si prohlédnout všechny události ve vyhledávání diagnostiky, můžete najít související položky.
-  * **Název**: identifikátor, obvykle adresu URL požadavku HTTP.
-  * **SyntheticSource**: není-li null nebo prázdný řetězec, který označuje, že zdroj žádosti bylo zjištěno, že robot nebo webový test. Ve výchozím nastavení je vyloučen z výpočtů v Průzkumníku metrik.
+  * **Název**: identifikátor, obvykle hello URL hello HTTP žádosti.
+  * **SyntheticSource**: Pokud není null nebo prázdný, řetězec, který určuje, které zdroj hello hello žádosti byl identifikován jako robot nebo webový test. Ve výchozím nastavení je vyloučen z výpočtů v Průzkumníku metrik.
 * **Vlastnosti**: vlastnosti, které se odesílají s všechny telemetrická data. Může být přepsána v jednotlivých sledovat * volání.
-* **Relace**: uživatelské relace. ID nastavena pro generovanou hodnotu, která je změněn, pokud uživatel nebyl aktivní po dobu.
+* **Relace**: hello uživatelské relace. Hello ID je nastaveno tooa generuje hodnotu, která se změní, když uživatel hello nebyl active nějakou dobu.
 * **Uživatel**: informace o uživateli.
 
 ## <a name="limits"></a>Omezení
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
-Abyste se vyhnuli stiskne omezení četnosti data, použijte [vzorkování](app-insights-sampling.md).
+tooavoid stiskne limit rychlosti hello data, použijte [vzorkování](app-insights-sampling.md).
 
-Chcete-li určit, jak dlouho se data ukládají najdete v tématu [uchovávání dat a ochrana osobních údajů](app-insights-data-retention-privacy.md).
+toodetermine jak dlouho data se ukládají, najdete v části [uchovávání dat a ochrana osobních údajů](app-insights-data-retention-privacy.md).
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 * [Rozhraní ASP.NET – reference](https://msdn.microsoft.com/library/dn817570.aspx)
@@ -951,10 +951,10 @@ Chcete-li určit, jak dlouho se data ukládají najdete v tématu [uchovávání
 ## <a name="questions"></a>Otázky
 * *Jaké výjimky může vyvolat volání Track_()?*
 
-    Žádné. Nemusíte zabalení je v klauzulích try-catch. Pokud sada SDK zaznamená problémy, bude protokolování zpráv ve výstupu konzoly ladění a--zprávy získat prostřednictvím – ve vyhledávání diagnostiky.
-* *Je k dispozici rozhraní REST API k získání dat z portálu?*
+    Žádné. Nepotřebujete toowrap je v klauzulích try-catch. Pokud hello SDK zaznamená problémy, bude protokolování zpráv ve výstupu konzoly hello ladění a – pokud hello zprávy získat prostřednictvím – ve vyhledávání diagnostiky.
+* *Je k dispozici rozhraní REST API tooget dat z portálu hello?*
 
-    Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Zahrnout další způsoby, jak extrahovat data [exportovat z analýz do Power BI](app-insights-export-power-bi.md) a [průběžné export](app-insights-export-telemetry.md).
+    Ano, hello [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Zahrnout další způsoby tooextract data [exportovat z Analytics tooPower BI](app-insights-export-power-bi.md) a [průběžné export](app-insights-export-telemetry.md).
 
 ## <a name="next"></a>Další kroky
 * [Hledání událostí a protokolů](app-insights-diagnostic-search.md)

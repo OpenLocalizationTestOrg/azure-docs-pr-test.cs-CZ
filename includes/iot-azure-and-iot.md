@@ -1,57 +1,57 @@
 
 # <a name="azure-and-internet-of-things"></a>Azure a internet věcí
 
-Vítejte v tématu Microsoft Azure a internet věcí (IoT). Tento článek představuje architekturu řešení IoT popisující běžné vlastnosti řešení IoT, které můžete nasadit pomocí služeb Azure. Řešení IoT vyžadují bezpečnou obousměrnou komunikaci mezi zařízeními, jejichž počet se může vyšplhat k milionům, a back-end řešení. Back-end řešení například může pomocí automatizované prediktivní analýzy odhalit další poznatky z datového proudu událostí ze zařízení do cloudu.
+Vítejte tooMicrosoft Azure a hello Internet věcí (IoT). Tento článek představuje architekturu řešení IoT popisující běžné vlastnosti řešení IoT, které můžete nasadit pomocí služeb Azure hello. Řešení IoT vyžadují zabezpečení, obousměrnou komunikaci mezi zařízeními, jejichž počet může jít v hello miliony a back-end řešení. Back-end řešení může například použít automatizované prediktivní analýzy toouncover statistiky z datového proudu událostí zařízení cloud.
 
-Služba Azure IoT Hub je klíčovým stavebním blokem při implementaci této architektury řešení IoT pomocí služeb Azure. Sada IoT Suite poskytuje kompletní, ucelené implementace této architektury pro konkrétní scénáře IoT. Příklad:
+Služba Azure IoT Hub je klíčovým stavebním blokem při implementaci této architektury řešení IoT pomocí služeb Azure. Sada IoT Suite poskytuje kompletní, ucelené implementace této architektury pro konkrétní scénáře IoT. Například:
 
-* Řešení *vzdáleného monitorování* umožňuje monitorovat stav zařízení, jako jsou například prodejní automaty.
-* Řešení *prediktivní údržby* pomáhá předvídat potřeby údržby zařízení, například čerpadel na vzdálených čerpacích stanicích, a zabraňuje neplánovaným výpadkům.
-* Řešení *připojené továrny* vám pomůže připojit a monitorovat průmyslová zařízení.
+* Hello *vzdálené monitorování* řešení vám umožní toomonitor hello stavu zařízení, třeba prodejních automatů.
+* Hello *prediktivní údržby* řešení vám usnadní tooanticipate údržby musí zařízení, například čerpadel na vzdálené čerpací stanici a tooavoid mimo plánované výpadky.
+* Hello *připojené factory* řešení vám pomůže tooconnect a monitorovat průmyslových zařízení.
 
 ## <a name="iot-solution-architecture"></a>Architektura řešení IoT
 
-Následující diagram ukazuje typickou architekturu řešení IoT. Diagram neobsahuje žádné konkrétní názvy služeb Azure, ale popisuje klíčové prvky v obecné architektuře řešení IoT. V této architektuře zařízení IoT shromažďují data, která odesílají do cloudové brány. Cloudová brána zpřístupní data pro zpracování dalším back-endovým službám, ze kterých se budou data prostřednictvím řídicího panelu nebo jiného prezentačního zařízení doručovat do dalších obchodních aplikací nebo k lidské obsluze.
+Hello následující diagram ukazuje typickou architekturu řešení IoT. Hello diagram nezahrnuje hello názvy konkrétním služby Azure, ale popisuje klíčové prvky hello v obecné architektuře řešení IoT. V této architektuře zařízení IoT shromažďují data odesílání tooa Cloudová brána. Hello Cloudová brána zpřístupní hello data pro zpracování i jiné služby back-end, ze kterých se data doručena tooother-obchodní aplikace nebo toohuman operátory prostřednictvím řídicího panelu nebo jiného prezentačního zařízení.
 
 ![Architektura řešení IoT][img-solution-architecture]
 
 > [!NOTE]
-> Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v systému Microsoft Azure][lnk-refarch].
+> Podrobné informace o architektuře IoT najdete v části hello [referenční architektura IoT Microsoft Azure][lnk-refarch].
 
 ### <a name="device-connectivity"></a>Připojení zařízení
 
-Zařízení v této architektuře řešení IoT odesílají telemetrická data, například odečty snímačů z čerpací stanice, do koncového bodu cloudu, kde jsou uloženy a zpracovány. Ve scénáři prediktivní údržby může back-end řešení použít datový proud s daty ze snímačů k určení, kdy konkrétní čerpadlo vyžaduje údržbu. Zařízení může také přijímat a reagovat na zprávy typu cloud-zařízení tak, že si přečte zprávy z koncového bodu cloudu. Ve scénáři prediktivní údržby může back-end řešení například odesílat zprávy jiným čerpadlům čerpací stanice, aby těsně před plánovaným začátkem údržby přesměrovala toky. Tento postup umožní pracovníkovi údržby začít s prací hned, jak dorazí na místo.
+Zařízení v této architektuře řešení IoT odesílají telemetrická data, například odečty snímačů z čerpací stanice, koncový bod cloudu tooa pro úložiště a zpracování. Ve scénáři prediktivní údržby může back-end hello řešení použít datový proud hello toodetermine data snímačů při konkrétní čerpadlo vyžaduje údržbu. Zařízení můžete také přijímat a odpovídat zprávy toocloud zařízení tak, že čtení zpráv z koncového bodu cloudu. Například v řešení pro scénář hello hello prediktivní údržby back-end může odesílat zprávy tooother čerpadel v hello čerpací stanice toobegin přesměrování spojnic toky těsně před údržbou toostart. Tento postup by Ujistěte se, že pracovníkem údržby hello může začít hned, jak dorazí.
 
-Jeden z největších problémů, kterým projekty IoT čelí, je způsob spolehlivého a bezpečného připojení zařízení k back-endu řešení. Zařízení IoT mají se srovnání s různými klienty, například s prohlížeči a mobilními aplikacemi, jiné vlastnosti. Zařízení IoT:
+Jednou z největších výzev hello projekty IoT čelí je jak tooreliably a bezpečné připojení zařízení toohello back-end řešení. Zařízení IoT mají různé vlastnosti jako porovnání tooother klientů, jako například prohlížečů a mobilních aplikací. Zařízení IoT:
 
 * Jsou často vestavěnými systémy bez lidské obsluhy.
 * Mohou být nasazená ve vzdálených umístěních, kam je fyzický přístup nákladný.
-* Můžou být dostupná jenom prostřednictvím back-endu řešení. Neexistuje jiný způsob práce se zařízením.
+* Můžou být dostupná jenom prostřednictvím back-end hello řešení. Není k dispozici žádné další způsob toointeract s hello zařízení.
 * Můžou mít omezené prostředky pro napájení a zpracování.
 * Můžou mít přerušované, pomalé nebo nákladné síťové připojení.
-* Můžou potřebovat chráněné, vlastní nebo průmyslové protokoly aplikací.
+* Může být nutné toouse aplikace vlastní, vlastní nebo průmyslové protokoly.
 * Můžou být vytvořená pomocí rozsáhlé sady oblíbených hardwarových a softwarových platforem.
 
-Kromě výše uvedených požadavků musí jakékoli řešení IoT zajistit také škálování, zabezpečení a spolehlivost. Výslednou sadu požadavků na připojení je obtížné implementovat pomocí tradičních technologií, jakými jsou webové kontejnery a zprostředkovatelé zasílání zpráv. Azure IoT Hub a sady SDK pro zařízení Azure IoT usnadňují implementace řešení, které tyto požadavky splňují.
+Kromě výše uvedených požadavků toohello, jakékoli řešení IoT musí zajistit také škálování, zabezpečení a spolehlivost. Hello výslednou sadu požadavků na připojení je obtížné tooimplement pomocí tradičních technologií, jakými jsou webové kontejnery a zprostředkovatelé zasílání zpráv. Azure IoT Hub a hello SDK pro zařízení Azure IoT, aby jednodušší tooimplement řešení, které splňují tyto požadavky.
 
-Zařízení může komunikovat přímo s koncovým bodem cloudové brány, nebo pokud zařízení nemůže používat žádné komunikační protokoly, které cloudová brána podporuje, může se připojit prostřednictvím zprostředkující brány. Například [brána protokolu Azure IoT ][lnk-protocol-gateway] může provádět překlad protokolu v případě, že zařízení nemohou použít žádný z protokolů, které služba IoT Hub podporuje.
+Zařízení může komunikovat přímo s bodem cloudové brány, nebo pokud zařízení hello nemůžete použít žádnou z hello komunikační protokoly, které hello cloudu brána podporuje, se může připojit prostřednictvím zprostředkující brány. Například hello [brány protokolu Azure IoT] [ lnk-protocol-gateway] můžete provádět překlad protokolu, pokud zařízení nemůžete použít žádnou z hello protokoly, které podporuje IoT Hub.
 
 ### <a name="data-processing-and-analytics"></a>Zpracování a analýza dat
 
-V rámci cloudu se většina dat zpracovává v back-endu řešení IoT, jedná se například o filtrování a agregování telemetrických dat a jejich směrování do dalších služeb. Back-end řešení IoT:
+V cloudu hello IoT back-end řešení je, kde většinu hello zpracování dat dojde, jako je například filtrování a agregování telemetrických dat a jeho tooother služby směrování. Hello back-endu IoT řešení:
 
-* Přijímá škálovaná telemetrická data ze všech zařízení a určuje, jak tato data zpracovávat a ukládat. 
-* Může vám umožnit odesílání příkazů z cloudu do určitého zařízení.
-* Poskytuje možnosti registrace zařízení, které vám umožní zřizování zařízení a kontrolu toho, která zařízení mají povolení k připojení k vaší infrastruktuře.
-* Umožňuje sledování stavu zařízení a sledování jejich aktivit.
+* Přijímá škálovaná telemetrická data ze zařízení a určuje, jak tooprocess a ukládat data. 
+* Můžete toosend příkazy z hello cloud toospecific zařízení.
+* Poskytuje možnosti registrace zařízení, které umožňují tooprovision zařízení a toocontrol zařízení, která jsou povolena tooconnect tooyour infrastruktury.
+* Umožňuje vám tootrack hello stavu zařízení a sledování jejich aktivit.
 
-Ve scénáři prediktivní údržby ukládá back-end řešení historická telemetrická data. Back-end řešení může pomocí těchto dat rozpoznat vzorce, které naznačují, že je třeba provést údržbu konkrétního čerpadla.
+Ve scénáři prediktivní údržby hello back-end hello řešení ukládá historická telemetrická data. back-end Hello řešení můžete použít tento vzorů tooidentify toouse dat, které ukazují potřebu údržby u konkrétního čerpadla.
 
-Řešení IoT může obsahovat smyčky automatické zpětné vazby. Analytický modul v back-endu řešení může například z telemetrických dat rozpoznat, že teplota konkrétního zařízení překračuje běžnou provozní úroveň. Řešení následně může do zařízení odeslat příkaz s pokyny k provedení nápravné akce.
+Řešení IoT může obsahovat smyčky automatické zpětné vazby. Analytický modul v back-end hello řešení můžete například určit z telemetrických dat, který je hello teplota konkrétního zařízení překračuje běžnou provozní úroveň. řešení Hello potom může odeslat příkaz toohello zařízení, pokyny tootake opravné akce.
 
 ### <a name="presentation-and-business-connectivity"></a>Prezentační a obchodní připojení
 
-Vrstva prezentačního a obchodního připojení umožňuje koncovým uživatelům pracovat s řešením IoT a se zařízeními. Umožňuje uživatelům zobrazit a analyzovat data shromážděná z jejich zařízení. Tato zobrazení můžou mít podobu řídicích panelů nebo sestav BI, které můžou zobrazit historická data i data téměř v reálném čase. Obsluha může například zkontrolovat stav konkrétní čerpací stanice a zobrazit všechny výstrahy vyvolané systémem. Tato vrstva také umožňuje integraci back-endu řešení IoT se stávajícími obchodními aplikacemi a jejich zapojení do podnikových obchodních procesů nebo pracovních postupů. Řešení prediktivní údržby se může integrovat například s plánovacím systémem, který zarezervuje návštěvu technika na čerpací stanici v případě, kdy řešení zjistí, že některé čerpadlo potřebuje údržbu.
+vrstva Hello prezentačního a obchodního připojení umožňuje koncovým uživatelům toointeract s hello řešení IoT a hello zařízení. Ji umožňuje uživatelům tooview a analyzovat hello data shromážděná z jejich zařízení. Tato zobrazení můžou mít hello formuláře řídicích panelů nebo sestav BI, které můžete zobrazit historická data i nebo téměř v reálném čase data. Operátor můžete například zkontrolovat hello stav konkrétní čerpací stanice a zobrazit všechny výstrahy vyvolané systémem hello. Tato vrstva také umožňuje integraci hello IoT back-end řešení s existující tootie-obchodní aplikace do podnikových obchodních procesů nebo pracovních postupů. Například řešení prediktivní údržby hello můžete integrovat s plánovacím systémem, že knihy pracovníkem toovisit čerpací stanice při hello řešení zjistí, že některé čerpadlo potřebuje údržbu.
 
 ![Řídicí panel řešení IoT][img-dashboard]
 

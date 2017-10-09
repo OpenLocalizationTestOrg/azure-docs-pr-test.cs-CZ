@@ -1,6 +1,6 @@
 ---
-title: "Úvod do funkce okno Stream Analytics | Microsoft Docs"
-description: "Další informace o tři funkce okna v Stream Analytics (přeskakujícího, vše, klouzavé)."
+title: "funkce analýzy okno tooStream aaaIntroduction | Microsoft Docs"
+description: "Další informace o hello tři okno funkce v Stream Analytics (přeskakujícího, vše, klouzavé)."
 keywords: "přeskakujícího okna, posuvném okně, posílání okna"
 documentationcenter: 
 services: stream-analytics
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: 09915ad747153210f655b152355c551046066a88
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7fc36eb9afb2b28e2791d925d26923145eb38074
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-stream-analytics-window-functions"></a>Úvod do okna Stream Analytics funkce
-V mnoha reálném čase streamování scénáře je potřeba provádět operace pouze na data obsažená v dočasné systému windows. Nativní podpora pro oddílová funkce je klíčovou funkcí Azure Stream Analytics, která přemísťuje se ručička na vývojáře produktivitu při vytváření úlohy zpracování komplexní datového proudu. Stream Analytics umožňuje vývojářům používat [ **Přeskakujícího**](https://msdn.microsoft.com/library/dn835055.aspx), [ **Hopping** ](https://msdn.microsoft.com/library/dn835041.aspx) a [ **posuvné** ](https://msdn.microsoft.com/library/dn835051.aspx) windows k provádění dočasné operací na datový proud. Je to, že všechny [okno](https://msdn.microsoft.com/library/dn835019.aspx) operations výstup výsledků na **end** okna. Výstup okna bude jedinou událost podle používá agregační funkci. Události budou mít časové razítko konce okna a všechny funkce okna jsou definovány s pevnou délkou. Nakonec je důležité si uvědomit, že je třeba používat všechny funkce okno v [ **GROUP BY** ](https://msdn.microsoft.com/library/dn835023.aspx) klauzule.
+# <a name="introduction-toostream-analytics-window-functions"></a>Funkce analýzy okno tooStream Úvod
+V mnoha reálném čase streamování scénáře je nutné tooperform operace pouze na hello data obsažená v dočasné systému windows. Nativní podpora pro oddílová funkce je klíčovou funkcí Azure Stream Analytics, která přemísťuje hello ručička na vývojáře produktivitu při vytváření úlohy zpracování komplexní datového proudu. Stream Analytics umožňuje vývojářům toouse [ **Přeskakujícího**](https://msdn.microsoft.com/library/dn835055.aspx), [ **Hopping** ](https://msdn.microsoft.com/library/dn835041.aspx) a [ **posuvné** ](https://msdn.microsoft.com/library/dn835051.aspx) dočasné operace tooperform systému windows na datový proud. Je to, že všechny [okno](https://msdn.microsoft.com/library/dn835019.aspx) operations výstup výsledků v hello **end** okna hello. výstup Hello okna hello bude jedinou událost podle hello používá agregační funkci. Hello událost může mít hello časové razítko konce hello okna hello a všechny funkce okna jsou definovány s pevnou délkou. Nakonec je důležité toonote, který se má použít všechny funkce okna v [ **GROUP BY** ](https://msdn.microsoft.com/library/dn835023.aspx) klauzule.
 
 ![Stream Analytics okno funkce koncepty](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
 ## <a name="tumbling-window"></a>Přeskakující okno
-Přeskakujícího okna, které funkce se používají pro segment datový proud do různých čas segmentů a provádět funkce proti, jako je například následující příklad. Klíče differentiators z Přeskakující okno se, že zopakují, se nepřekrývají, a událost nemůže patřit do více než jeden přeskakující okno.
+Přeskakující okno funkce jsou použité toosegment datový proud do různých čas segmentů a provádět funkce proti, jako je například následující příklad hello. Hello klíče differentiators z Přeskakující okno se, že zopakují, se nepřekrývají, a událost nemůže patřit toomore než jeden přeskakující okno.
 
 ![Funkce okno analýzy datového proudu přeskakujícího Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Skákající okno
-Skákající okno funkce směrování dál v čase prostřednictvím uplynutí určité doby. To může být snadno si je představit jako Přeskakující windows, které může dojít k překrytí, takže události můžou patřit do více než jednu sadu výsledků Hopping okno. Vytvoření okna Hopping stejné jako Přeskakující okno jeden by jednoduše zadejte velikost skoku tak, aby byla stejná jako velikost okna. 
+Skákající okno funkce směrování dál v čase prostřednictvím uplynutí určité doby. To může být snadno toothink z nich jako Přeskakující windows, které může dojít k překrytí, tak události můžou patřit toomore než jednu sadu výsledků Hopping okno. toomake okno Hopping hello stejné jako Přeskakující okno jednoduše by zadejte toobe velikost skoku hello hello stejná jako velikost okna hello. 
 
 ![Stream Analytics okno funkce skákající Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Posuvné okno
-Posuvné okno funkce, na rozdíl od Přeskakujícího nebo posílání windows, vytvořit výstup **pouze** při výskytu události. Každý okno bude mít aspoň jednu událost a okna nepřetržitě přesune dál € (Epsilon –). Jako posílání Windows události může patřit do více než jeden klouzavé okna.
+Posuvné okno funkce, na rozdíl od Přeskakujícího nebo posílání windows, vytvořit výstup **pouze** při výskytu události. Každý okno bude mít aspoň jednu událost a okno hello nepřetržitě přesune dál € (Epsilon –). Jako posílání Windows může patřit události toomore než jeden klouzavé interval.
 
 ![Stream Analytics okno funkce klouzavé Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -45,7 +45,7 @@ Posuvné okno funkce, na rozdíl od Přeskakujícího nebo posílání windows, 
 Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)

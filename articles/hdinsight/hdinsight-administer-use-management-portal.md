@@ -1,6 +1,6 @@
 ---
-title: "Správa clusterů Hadoop založených na systému Windows v prostředí HDInsight pomocí portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak spravovat služby HDInsight. Vytvoření clusteru HDInsight, otevřete konzolu pro interaktivní JavaScript a otevřete konzolu pro příkaz Hadoop."
+title: "hello aaaManage clustery založené na Windows Hadoop v HDInsight pomocí portálu Azure | Microsoft Docs"
+description: "Zjistěte, jak tooadminister služba HDInsight. Vytvoření clusteru HDInsight, otevřete hello interaktivní konzoly pro JavaScript a otevřete hello konzoly příkazu Hadoop."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,89 +16,89 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: f69fa4f838b22ccbb25186c08cac9744bb31c6d1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a237726b0e37a08005ce22e96581739e93edb050
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop založených na systému Windows v prostředí HDInsight pomocí portálu Azure
+# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-hello-azure-portal"></a>Správa clusterů systému Hadoop založené na systému Windows v prostředí HDInsight pomocí hello portálu Azure
 
-Pomocí [portál Azure][azure-portal], můžete vytvořit clustery se systémem Windows Hadoop v Azure HDInsight, změnit heslo uživatele Hadoop a povolit protokol RDP (Remote Desktop), aby příkaz Hadoop je k dispozici konzoly v clusteru.
+Pomocí hello [portál Azure][azure-portal], můžete vytvořit clustery se systémem Windows Hadoop v Azure HDInsight, změnit heslo uživatele Hadoop a povolení protokolu RDP (Remote Desktop), dostanete hello Hadoop příkaz konzoly v clusteru hello.
 
-Informace v tomto článku se vztahují pouze na clustery HDInsight se systémem Windows. Informace o správě clusterech se systémem Linux naleznete v tématu [Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure](hdinsight-administer-use-portal-linux.md).
+Hello informace v tomto článku se vztahuje pouze na základě tooWindow clusterů HDInsight. Informace o správě clusterech se systémem Linux naleznete v tématu [hello spravovat Hadoop clusterů v HDInsight pomocí portálu Azure](hdinsight-administer-use-portal-linux.md).
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je nutné, abyste před zahájením tohoto článku měli tyto položky:
+Před zahájením tohoto článku, musíte mít následující hello:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Účet služby Azure Storage** -clusteru HDInsight používá kontejner úložiště objektů Blob v Azure jako výchozí systém souborů. Další informace o tom, jak Azure Blob storage nabízí jednotné prostředí s clustery HDInsight najdete v tématu [použití Azure Blob Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md). Podrobnosti o vytvoření účtu Azure Storage najdete v tématu [postup vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
+* **Účet služby Azure Storage** -clusteru HDInsight používá kontejner úložiště objektů Blob v Azure jako hello výchozí systém souborů. Další informace o tom, jak Azure Blob storage nabízí jednotné prostředí s clustery HDInsight najdete v tématu [použití Azure Blob Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md). Podrobnosti o vytvoření účtu Azure Storage najdete v tématu [jak tooCreate účet úložiště](../storage/common/storage-create-storage-account.md).
 
-## <a name="open-the-portal"></a>Otevřete portál
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
-2. Po otevření portálu můžete:
+## <a name="open-hello-portal"></a>Otevřete hello portálu
+1. Přihlaste se příliš[https://portal.azure.com](https://portal.azure.com).
+2. Po otevření hello portálu můžete:
 
-   * Klikněte na tlačítko **nový** v levé nabídce na vytvoření nového clusteru:
+   * Klikněte na tlačítko **nový** z hello levé nabídce toocreate do nového clusteru:
 
        ![tlačítko Nový cluster HDInsight](./media/hdinsight-administer-use-management-portal/azure-portal-new-button.png)
-   * Klikněte na tlačítko **clustery HDInsight** v levé nabídce.
+   * Klikněte na tlačítko **clustery HDInsight** hello levé nabídce.
 
        ![Azure portálu tlačítko clusteru HDInsight](./media/hdinsight-administer-use-management-portal/azure-portal-hdinsight-button.png)
 
-     Pokud **HDInsight** nebude zobrazovat v nabídce vlevo, klikněte na tlačítko **Procházet**.
+     Pokud **HDInsight** není nezobrazí v levé nabídce hello, klikněte na tlačítko **Procházet**.
 
      ![Tlačítko Procházet clusteru Azure portálu](./media/hdinsight-administer-use-management-portal/azure-portal-browse-button.png)
 
 ## <a name="create-clusters"></a>Vytváření clusterů
-Postup vytvoření, pomocí portálu naleznete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Pokyny pro vytvoření hello použití hello portálu, najdete v části [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-HDInsight funguje s komponentami široký rozsah Hadoop. Seznam součástí, které byly ověřeny a podporovány, naleznete v části [jaká verze Hadoop je v Azure HDInsight](hdinsight-component-versioning.md). HDInsight můžete přizpůsobit pomocí jedné z následujících možností:
+HDInsight funguje s komponentami široký rozsah Hadoop. Seznam hello hello součásti, které byly ověřeny a podporovány, naleznete v části [jaká verze Hadoop je v Azure HDInsight](hdinsight-component-versioning.md). HDInsight můžete přizpůsobit pomocí jedné z hello následující možnosti:
 
-* Chcete-li spustit vlastní skripty, které můžete přizpůsobit cluster změnit konfiguraci clusteru nebo nainstalovat vlastní komponenty, například Giraph nebo Solr použití akce skriptu. Další informace najdete v tématu [clusteru HDInsight přizpůsobit pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md).
-* Při vytváření clusteru použijte vlastní nastavení parametrů clusteru v rozhraní .NET SDK HDInsight nebo Azure PowerShell. Tyto změny konfigurace se pak zachovají prostřednictvím dobu životnosti clusteru a nemá vliv reimages uzlu clusteru, které platformy Azure pravidelně provádí za účelem údržby. Další informace o používání vlastního nastavení parametrů clusteru najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-* Některé nativní součásti Java, jako je Mahout a možností konfigurace, můžete spustit v clusteru jako souborů JAR. Tyto soubory JAR můžete distribuovat do úložiště objektů Blob v Azure a odeslat ke clusterům HDInsight prostřednictvím mechanismy odesílání úloh Hadoop. Další informace najdete v tématu [Hadoop odeslání úlohy prostřednictvím kódu programu](hdinsight-submit-hadoop-jobs-programmatically.md).
+* Použití akce skriptu toorun vlastní skripty, které můžete přizpůsobit clusteru tooeither změnit konfiguraci clusteru nebo nainstalujte vlastní komponenty, například Giraph nebo Solr. Další informace najdete v tématu [clusteru HDInsight přizpůsobit pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md).
+* Použijte vlastní nastavení parametrů clusteru hello v hello SDK rozhraní .NET HDInsight nebo Azure PowerShell při vytváření clusteru. Tyto změny konfigurace se pak zachovají prostřednictvím hello životnost hello clusteru a nemá vliv reimages uzlu clusteru, které platformy Azure pravidelně provádí za účelem údržby. Další informace o používání parametrů přizpůsobení hello clusteru najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* Některé nativní součásti Java, jako je Mahout a s možností, lze spustit v clusteru hello jako JAR soubory. Tyto soubory JAR může být distribuované tooAzure úložiště objektů Blob a odeslat tooHDInsight clustery prostřednictvím mechanismy odesílání úloh Hadoop. Další informace najdete v tématu [Hadoop odeslání úlohy prostřednictvím kódu programu](hdinsight-submit-hadoop-jobs-programmatically.md).
 
   > [!NOTE]
-  > Pokud máte problémy s nasazením souborů JAR ke clusterům HDInsight nebo volání souborů JAR na clusterech HDInsight, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
+  > Pokud máte problémy s nasazení clusterů tooHDInsight souborů JAR nebo volání souborů JAR na clusterech HDInsight, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
   >
-  > Kaskádových není podporována v prostředí HDInsight a nejsou vhodné pro systém Microsoft Support. Seznam podporovaných součásti, najdete v části [co je nového ve verzích clusterů poskytovaných v HDInsight](hdinsight-component-versioning.md).
+  > Kaskádových není podporována v prostředí HDInsight a nejsou vhodné pro systém Microsoft Support. Seznam podporovaných součásti, najdete v části [co je nového ve verzích clusterů hello poskytovaných v HDInsight](hdinsight-component-versioning.md).
   >
   >
 
-Instalace vlastních softwaru v clusteru pomocí připojení ke vzdálené ploše není podporována. Neměli byste ukládat soubory na jednotkách hlavního uzlu, jak budou ztraceny, budete muset znovu vytvořit clustery. Doporučujeme ukládat soubory do úložiště objektů Blob v Azure. Úložiště objektů blob je trvalé.
+Instalace vlastní software na hello clusteru pomocí připojení ke vzdálené ploše není podporována. Neměli byste ukládat soubory na jednotkách hello hello hlavního uzlu, jak budou ztraceny, budete potřebovat toore-vytvořit clustery se hello. Doporučujeme ukládat soubory do úložiště objektů Blob v Azure. Úložiště objektů blob je trvalé.
 
 ## <a name="list-and-show-clusters"></a>Seznam a zobrazit clustery
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
-2. Klikněte na tlačítko **clustery HDInsight** v levé nabídce.
-3. Klikněte na název clusteru. Pokud je seznam clusteru dlouho, můžete použít možnosti filtrovat horní části stránky.
-4. Dvakrát klikněte na cluster ze seznamu a zobrazit podrobnosti.
+1. Přihlaste se příliš[https://portal.azure.com](https://portal.azure.com).
+2. Klikněte na tlačítko **clustery HDInsight** hello levé nabídce.
+3. Klikněte na název clusteru hello. Pokud seznam clusterů hello je dlouhý, můžete použít možnosti filtrovat na hello horní části stránky hello.
+4. Dvakrát klikněte na cluster z hello seznamu tooshow hello podrobnosti.
 
     **Nabídky a essentials**:
 
     ![Azure portálu essentials clusteru HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-essentials.png)
 
-   * Upravit nabídku, klikněte pravým tlačítkem na libovolné místo v nabídce a pak klikněte na tlačítko **přizpůsobit**.
-   * **Nastavení** a **všechna nastavení**: zobrazí **nastavení** okno pro cluster, který umožňuje zobrazit podrobné informace o konfiguraci pro cluster.
-   * **Řídicí panel**, **řídicí panel clusteru** a **adresy URL: Toto jsou všechny způsoby, jak přístup k řídicímu panelu clusteru, který je Ambari Web pro clustery se systémem Linux. -**Zabezpečené prostředí **: Zobrazí pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH).
-   * **Škálování clusteru**: umožňuje změnit počet uzlů pracovního procesu pro tento cluster.
-   * **Odstranit**: Odstraní clusteru.
+   * toocustomize hello nabídky, klikněte pravým tlačítkem na libovolné místo v nabídce hello a pak klikněte na tlačítko **přizpůsobit**.
+   * **Nastavení** a **všechna nastavení**: Zobrazí hello **nastavení** okně hello clusteru, což vám umožní tooaccess podrobné informace o konfiguraci pro hello cluster.
+   * **Řídicí panel**, **řídicí panel clusteru** a **adresy URL: Jedná se o všechny způsoby tooaccess hello řídicí panel clusteru, který je Ambari Web pro clustery se systémem Linux. -**Zabezpečené prostředí **: Ukazuje hello pokyny tooconnect toohello clusteru pomocí připojení Secure Shell (SSH).
+   * **Škálování clusteru**: umožňuje toochange hello počet uzlů pracovního procesu pro tento cluster.
+   * **Odstranit**: odstranění hello clusteru.
    * **Rychlý Start**: Zobrazí informace, které vám pomohou začněte používat HDInsight.
-   * ** Uživatele: Umožňuje nastavit oprávnění pro *portálu správy* tohoto clusteru pro ostatní uživatele ve vašem předplatném Azure.
+   * ** Uživatele: Umožňuje tooset oprávnění pro *portálu správy* tohoto clusteru pro ostatní uživatele ve vašem předplatném Azure.
 
      > [!IMPORTANT]
-     > To *pouze* ovlivňuje oprávnění a přístupová práva k tomuto clusteru na portálu Azure a nemá žádný vliv na který můžete připojit k nebo odesílání úloh do clusteru HDInsight.
+     > To *pouze* ovlivňuje oprávnění a cluster toothis v hello portál Azure a nemá žádný vliv na kdo se může připojit cluster HDInsight pro toohello tooor odeslání úlohy.
      >
      >
-   * **Značky**: značky umožňují nastavit páry klíč/hodnota k definování vlastní taxonomii cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a potom používat běžné hodnotu pro všechny služby související s konkrétní projekt.
-   * **Zobrazení Ambari**: odkazy na Ambari Web.
+   * **Značky**: značky povolit jste tooset klíč/hodnota páry toodefine vlastní taxonomii cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a potom používat běžné hodnotu pro všechny služby související s konkrétní projekt.
+   * **Zobrazení Ambari**: tooAmbari webové odkazy.
 
      > [!IMPORTANT]
-     > Ke správě služeb poskytovaných clusteru HDInsight, je nutné použít Ambari Web nebo Ambari REST API. Další informace o používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md).
+     > toomanage hello služby poskytované hello clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API hello. Další informace o používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md).
      >
      >
 
@@ -109,13 +109,13 @@ Instalace vlastních softwaru v clusteru pomocí připojení ke vzdálené ploš
 
     ![Azure portálu použití clusteru HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * **Vlastnosti**: zobrazení vlastností clusteru.
+   * **Vlastnosti**: Zobrazit vlastnosti clusteru hello.
    * **Identita AAD clusteru**:
-   * **Klíče k úložišti Azure**: Zobrazit výchozí účet úložiště a jeho klíčem. Účet úložiště je konfigurace během procesu vytváření clusteru.
-   * **Cluster přihlášení**: Změňte clusteru HTTP uživatelské jméno a heslo.
-   * **Externí Metaúložiště**: Zobrazit metaúložiště Hive a Oozie. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru.
-   * **Škálování clusteru**: Zvyšte a snižte počet uzlů pracovního procesu clusteru.
-   * **Vzdálená plocha**: Povolit a zakázat přístup ke vzdálené ploše (RDP) a nakonfigurovat uživatelské jméno protokolu RDP.  Uživatelské jméno protokolu RDP musí být odlišný od uživatelské jméno protokolu HTTP.
+   * **Klíče k úložišti Azure**: Zobrazit hello výchozí účet úložiště a jeho klíčem. účet úložiště Hello je konfigurace během procesu vytváření clusteru hello.
+   * **Cluster přihlášení**: Změňte hello clusteru HTTP uživatelské jméno a heslo.
+   * **Externí Metaúložiště**: Zobrazit hello metaúložiště Hive a Oozie. metaúložiště Hello se dá nakonfigurovat jenom během procesu vytváření clusteru hello.
+   * **Škálování clusteru**: Zvyšte a snížení hello počet uzlů pracovního procesu v clusteru.
+   * **Vzdálená plocha**: Povolit a zakázat přístup ke vzdálené ploše (RDP) a nakonfigurovat uživatelské jméno protokolu RDP hello.  uživatelské jméno protokolu RDP Hello se musí lišit od hello HTTP uživatelské jméno.
    * **Preferovaného partnera**:
 
      > [!NOTE]
@@ -124,114 +124,114 @@ Instalace vlastních softwaru v clusteru pomocí připojení ke vzdálené ploš
      >
 6. Klikněte na tlačítko **vlastnosti**:
 
-    V části vlastnosti jsou uvedeny následující:
+    oddíl properties Hello uvádí hello následující:
 
    * **Název hostitele**: název clusteru.
    * **Adresa URL clusteru**.
    * **Stav**: zahrnují byl zrušen, přijata, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, provozní, spuštěna, chyba, odstraňování, odstranit, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, ClusterCustomization CertRolloverQueued, ResizeQueued,
-   * **Oblast**: umístění Azure. Seznam podporovaných umístění Azure, najdete v článku **oblast** rozevírací pole se seznamem na [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
+   * **Oblast**: umístění Azure. Seznam podporovaných umístění Azure, najdete v části hello **oblast** rozevírací pole se seznamem na [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Data vytvořená**.
    * **Operační systém**: buď **Windows** nebo **Linux**.
    * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Verze**. V tématu [HDInsight verze](hdinsight-component-versioning.md)
    * **Předplatné**: název odběru.
    * **ID předplatného**.
-   * **Primární zdroj dat**. Účet úložiště objektů Blob v Azure použito jako výchozí systém souborů Hadoop.
+   * **Primární zdroj dat**. Hello účtu Azure Blob storage používá jako výchozí hello systému souborů Hadoop.
    * **Pracovní uzly cenová úroveň**.
    * **Hlavní uzel cenová úroveň**.
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
-Odstranění clusteru se neodstraní výchozí účet úložiště nebo všechny propojené účty úložiště. Clusteru můžete znovu vytvořit pomocí stejné účty úložiště a stejné metaúložiště.
+Odstranění clusteru se neodstraní hello výchozí účet úložiště nebo všechny propojené účty úložiště. Hello clusteru můžete znovu vytvořit pomocí hello stejné účty úložiště a hello stejné metaúložiště.
 
-1. Přihlaste se k [portál][azure-portal].
-2. Klikněte na tlačítko **Procházet vše** v levé nabídce klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
-3. Klikněte na tlačítko **odstranit** z hlavní nabídky a pak postupujte podle pokynů.
+1. Přihlaste se toohello [portál][azure-portal].
+2. Klikněte na tlačítko **Procházet vše** hello levé nabídce, klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
+3. Klikněte na tlačítko **odstranit** z hello horní nabídce a potom postupujte podle pokynů hello.
 
 Viz také [pozastavení nebo vypnutí clustery](#pauseshut-down-clusters).
 
 ## <a name="scale-clusters"></a>Škálování clusterů
-Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu používá cluster, který běží v Azure HDInsight bez nutnosti znovu vytvořit cluster.
+Hello clusteru škálování funkce vám umožní toochange hello počet uzlů pracovního procesu používá cluster, který běží v Azure HDInsight bez nutnosti toore – vytvoření clusteru hello.
 
 > [!NOTE]
-> Pouze clustery s HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí na verzi vašeho clusteru, můžete zkontrolovat stránku vlastností.  V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
+> Pouze clustery s HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí hello verze vašeho clusteru, můžete zkontrolovat hello stránku vlastností.  V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
 >
 >
 
-Dopad změny v počtu uzlů dat pro každý typ clusteru podporuje HDInsight:
+Hello dopad změny hello počet uzlů dat pro každý typ clusteru podporuje HDInsight:
 
 * Hadoop
 
-    Můžete bez problémů zvýšit počet uzlů pracovního procesu v clusteru Hadoop, který běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete také odeslány, když probíhá operace. Selhání v rámci operace škálování pohodlné zpracování tak, aby cluster zůstane vždy ve funkčním stavu.
+    Můžete zvýšit bezproblémově hello počet uzlů pracovního procesu v clusteru Hadoop, který běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete také odeslány, když probíhá operace hello. Selhání v rámci operace škálování pohodlné zpracování tak, aby hello clusteru vždy zůstává ve funkčním stavu.
 
-    Pokud se Hadoop cluster měřítko snížením počtu uzlů data, některé služby v clusteru restartovat. To způsobí, že všechny spuštěné a čeká se na úlohy selhání po dokončení operace škálování. Můžete, ale odešlete znovu úloh po dokončení operace.
+    Pokud se Hadoop cluster měřítko snížením hello počet uzlů data, některé služby hello v clusteru hello restartovat. To způsobí, že všechny spuštěné a čeká se na úlohy toofail na dokončení hello hello operace škálování. Po dokončení operace hello může, ale odešlete znovu hello úlohy.
 * HBase
 
-    Bezproblémově můžete přidávat nebo odebírat uzly do clusteru HBase, když je spuštěná. Místní servery jsou automaticky vyváženy během několika minut po dokončení operace škálování. Protokolování do headnode clusteru a spuštěním následujících příkazů z okna příkazového řádku však můžete také ručně vyvážit místní servery:
+    Můžete bezproblémově přidat nebo odebrat uzly clusteru HBase tooyour, když je spuštěná. Místní servery jsou automaticky vyváženy během několika minut od hello operace škálování. Po přihlášení do hello headnode clusteru a spuštěné hello následujících příkazů z okna příkazového řádku však můžete také ručně vyvážit hello místní servery:
 
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
 
-    Další informace o používání prostředí HBase naleznete v tématu]
+    Další informace o používání prostředí HBase hello najdete v tématu]
 * Storm
 
-    Můžete bezproblémově přidávat nebo odebírat uzly dat do clusteru Storm, když je spuštěná. Ale po úspěšném dokončení operace škálování, budete muset znovu vyvážit topologii.
+    Můžete bez problémů přidat nebo odebrat cluster Storm tooyour uzly dat je spuštěna. Ale po úspěšném dokončení hello operace škálování, budete potřebovat toorebalance hello topologie.
 
     Vyrovnává lze dosáhnout dvěma způsoby:
 
   * Storm webového uživatelského rozhraní
   * Nástroj pro rozhraní příkazového řádku (CLI)
 
-    Podrobnosti najdete [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
+    Podrobnosti najdete toohello [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
 
-    Uživatelské rozhraní Storm webu je k dispozici v clusteru HDInsight:
+    Hello Storm webového uživatelského rozhraní není k dispozici v clusteru HDInsight hello:
 
     ![Obnovte rovnováhu škálování HDInsight storm](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
-    Tady je příklad jak znovu vyvážit topologie Storm pomocí rozhraní příkazového řádku příkaz:
+    Tady je příklad jak toouse hello rozhraní příkazového řádku příkaz topologie Storm toorebalance hello:
 
-        ## Reconfigure the topology "mytopology" to use 5 worker processes,
-        ## the spout "blue-spout" to use 3 executors, and
-        ## the bolt "yellow-bolt" to use 10 executors
+        ## Reconfigure hello topology "mytopology" toouse 5 worker processes,
+        ## hello spout "blue-spout" toouse 3 executors, and
+        ## hello bolt "yellow-bolt" toouse 10 executors
         $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-**Škálování clusterů**
+**tooscale clustery**
 
-1. Přihlaste se k [portál][azure-portal].
-2. Klikněte na tlačítko **Procházet vše** v levé nabídce klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
-3. Klikněte na tlačítko **nastavení** z horní nabídce a pak klikněte na tlačítko **škálování clusteru**.
-4. Zadejte **číslo pracovní uzly**. Limit počtu uzlů clusteru se liší podle předplatných Azure. Obraťte se na podporu fakturace o navýšení limitu.  Informace o nákladech se projeví změny, které jste udělali počet uzlů.
+1. Přihlaste se toohello [portál][azure-portal].
+2. Klikněte na tlačítko **Procházet vše** hello levé nabídce, klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
+3. Klikněte na tlačítko **nastavení** z hello horní nabídce a pak klikněte na tlačítko **škálování clusteru**.
+4. Zadejte **číslo pracovní uzly**. limit Hello hello počtu uzlu clusteru se liší podle předplatných Azure. Obraťte se na fakturační limit hello tooincrease podpory.  informace o nákladech Hello se projeví změny hello provedené toohello počet uzlů.
 
     ![HDInsight Hadoop HBase, Storm Spark škálování](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>Pozastavení nebo vypnutí clustery
-Většina úloh Hadoop jsou dávkové úlohy, které jsou jen občas spustili. Pro většinu clusterů systému Hadoop jsou velké období clusteru není použitá ke zpracování. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán.
-Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Většina úloh Hadoop jsou dávkové úlohy, které jsou jen občas spustili. Většina clusterů systému Hadoop, jsou velké tečky času hello clusteru není používán pro zpracování. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán.
+Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že hello poplatky za hello clusteru jsou mnohokrát víc než hello poplatky za úložiště, dává ekonomický smysl clustery toodelete které nejsou používána.
 
-Existuje mnoho způsobů, které můžete naprogramovat proces:
+Existuje mnoho způsobů budete programu hello proces:
 
 * Uživatel pro vytváření dat Azure. V tématu [propojená služba Azure HDInsight](../data-factory/data-factory-compute-linked-services.md) a [transformovat a analyzovat pomocí Azure Data Factory](../data-factory/data-factory-data-transformation-activities.md) pro HDInsight na vyžádání a samoobslužné definované propojené služby.
 * Použití Azure PowerShell.  V tématu [analyzovat data zpoždění letu](hdinsight-analyze-flight-delay-data.md).
 * Použití Azure CLI. V tématu [Správa clusterů HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md).
 * Použití sady .NET SDK HDInsight. V tématu [úloh Hadoop odeslání](hdinsight-submit-hadoop-jobs-programmatically.md).
 
-Informace o cenách najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/). Pokud chcete odstranit cluster z portálu, přečtěte si téma [odstranění clusterů](#delete-clusters)
+Informace o cenách hello, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/). toodelete clusteru z hello portálu, najdete v části [odstranění clusterů](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>Uživatelské jméno změnit clusteru
-Cluster služby HDInsight může mít dva uživatelské účty. Uživatelský účet clusteru HDInsight se vytvoří během procesu vytváření. Můžete také vytvořit uživatelský účet protokolu RDP pro přístup ke clusteru pomocí protokolu RDP. V tématu [povolení vzdálené plochy](#connect-to-hdinsight-clusters-by-using-rdp).
+Cluster služby HDInsight může mít dva uživatelské účty. Hello uživatelský účet clusteru HDInsight se vytvoří během procesu vytváření hello. Můžete také vytvořit uživatelský účet protokolu RDP pro přístup ke clusteru hello prostřednictvím protokolu RDP. V tématu [povolení vzdálené plochy](#connect-to-hdinsight-clusters-by-using-rdp).
 
-**Chcete-li změnit HDInsight clusteru uživatelské jméno a heslo**
+**toochange hello HDInsight clusteru uživatelské jméno a heslo**
 
-1. Přihlaste se k [portál][azure-portal].
-2. Klikněte na tlačítko **Procházet vše** v levé nabídce klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
-3. Klikněte na tlačítko **nastavení** z horní nabídce a pak klikněte na tlačítko **clusteru přihlášení**.
-4. Pokud **clusteru přihlášení** byla povolena, musíte kliknout na **zakázat**a potom klikněte na **povolit** před změnou uživatelského jména a hesla...
-5. Změna **clusteru přihlašovací jméno** nebo **clusteru přihlašovacího hesla**a potom klikněte na **Uložit**.
+1. Přihlaste se toohello [portál][azure-portal].
+2. Klikněte na tlačítko **Procházet vše** hello levé nabídce, klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
+3. Klikněte na tlačítko **nastavení** z hello horní nabídce a pak klikněte na tlačítko **clusteru přihlášení**.
+4. Pokud **clusteru přihlášení** byla povolena, musíte kliknout na **zakázat**a potom klikněte na **povolit** před změnou hello uživatelské jméno a heslo...
+5. Změna hello **clusteru přihlašovací jméno** nebo hello **clusteru přihlašovacího hesla**a potom klikněte na **Uložit**.
 
     ![HDInsight změnit clusteru uživatel uživatelské jméno heslo http uživatele](./media/hdinsight-administer-use-management-portal/hdinsight.portal.change.username.password.png)
 
 ## <a name="grantrevoke-access"></a>Udělení nebo odvolání přístupu
-Clustery HDInsight mají následující webové služby HTTP (všechny tyto služby mají RESTful koncových bodů):
+Clustery HDInsight mít hello následující HTTP webové služby (všechny tyto služby mají RESTful koncových bodů):
 
 * ODBC
 * JDBC
@@ -239,51 +239,51 @@ Clustery HDInsight mají následující webové služby HTTP (všechny tyto slu�
 * Oozie
 * Templeton
 
-Ve výchozím nastavení jsou tyto služby oprávnění pro přístup. Vám může odvolání nebo udělit přístup z portálu Azure.
+Ve výchozím nastavení jsou tyto služby oprávnění pro přístup. Můžete můžete odvolat nebo udělit přístup hello z hello portálu Azure.
 
 > [!NOTE]
-> Pomocí udělení nebo odvolání přístupu, obnoví clusteru uživatelské jméno a heslo.
+> Pomocí udělení nebo odvolání přístupu hello, obnoví hello clusteru uživatelské jméno a heslo.
 >
 >
 
-**K udělení nebo odvolání přístup protokolu HTTP webové služby**
+**toogrant nebo odvolání HTTP webové služby přístupu**
 
-1. Přihlaste se k [portál][azure-portal].
-2. Klikněte na tlačítko **Procházet vše** v levé nabídce klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
-3. Klikněte na tlačítko **nastavení** z horní nabídce a pak klikněte na tlačítko **clusteru přihlášení**.
-4. Pokud **clusteru přihlášení** byla povolena, musíte kliknout na **zakázat**a potom klikněte na **povolit** před změnou uživatelského jména a hesla...
-5. Pro **uživatelské jméno přihlášení clusteru** a **clusteru přihlašovacího hesla**, zadejte nové uživatelské jméno a heslo (v uvedeném pořadí) pro cluster.
+1. Přihlaste se toohello [portál][azure-portal].
+2. Klikněte na tlačítko **Procházet vše** hello levé nabídce, klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
+3. Klikněte na tlačítko **nastavení** z hello horní nabídce a pak klikněte na tlačítko **clusteru přihlášení**.
+4. Pokud **clusteru přihlášení** byla povolena, musíte kliknout na **zakázat**a potom klikněte na **povolit** před změnou hello uživatelské jméno a heslo...
+5. Pro **uživatelské jméno přihlášení clusteru** a **clusteru přihlašovacího hesla**, zadejte hello nové uživatelské jméno a heslo (v uvedeném pořadí) pro hello cluster.
 6. Klikněte na **ULOŽIT**.
 
     ![HDInsight celkové odebrat přístup protokolu http webové služby](./media/hdinsight-administer-use-management-portal/hdinsight.portal.change.username.password.png)
 
-## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
-Každý cluster HDInsight má výchozí účet úložiště. Výchozí účet úložiště a jeho klíče pro cluster se zobrazí v části **nastavení**/**vlastnosti**/**klíčů k úložišti Azure**. V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
+## <a name="find-hello-default-storage-account"></a>Najít hello výchozí účet úložiště
+Každý cluster HDInsight má výchozí účet úložiště. Hello výchozí účet úložiště a jeho klíče pro cluster se zobrazí pod **nastavení**/**vlastnosti**/**klíčů k úložišti Azure**. V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
 
-## <a name="find-the-resource-group"></a>Najít skupinu prostředků
-V režimu Azure Resource Manager se vytvoří každý cluster HDInsight s skupinu prostředků Azure. Skupina prostředků Azure, který je součástí clusteru s podporou se zobrazí v:
+## <a name="find-hello-resource-group"></a>Najít skupinu prostředků hello
+V režimu Azure Resource Manager hello se vytvoří každý cluster HDInsight s skupinu prostředků Azure. Skupina prostředků Azure Hello, který je součástí clusteru s podporou tooappears v:
 
-* Seznam clusteru má **skupiny prostředků** sloupce.
+* seznam Hello clusteru má **skupiny prostředků** sloupce.
 * Cluster **základní** dlaždici.  
 
 V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
 
 ## <a name="open-hdinsight-query-console"></a>Otevřete konzolu HDInsight dotazu
-Konzole dotazu HDInsight zahrnuje následující funkce:
+Hello konzoly dotazu HDInsight zahrnuje hello následující funkce:
 
-* **Hive Editor**: grafickým uživatelským rozhraním A webové rozhraní pro odesílání úloh Hive.  V tématu [spouštění dotazů Hive pomocí konzole dotazu](hdinsight-hadoop-use-hive-query-console.md).
+* **Hive Editor**: grafickým uživatelským rozhraním A webové rozhraní pro odesílání úloh Hive.  V tématu [spouštění dotazů Hive pomocí hello dotazu konzoly](hdinsight-hadoop-use-hive-query-console.md).
 
     ![Editor portálu hive HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
 * **Historie úlohy**: úloh Hadoop monitorování.  
 
     ![Historie úlohy portálu HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
-    Klikněte na tlačítko **název dotazu** a zobrazit podrobnosti, včetně vlastnosti úlohy **dotaz úlohy**, a ** výstup úlohy. Můžete také stáhnout dotaz a výstup do pracovní stanice.
-* **Soubor prohlížeče**: Procházet výchozí účet úložiště a propojené účty úložiště.
+    Klikněte na tlačítko **název dotazu** tooshow hello podrobnosti, včetně vlastnosti úlohy **dotaz úlohy**, a ** výstup úlohy. Můžete také stáhnout hello dotazu a pracovní stanice tooyour výstup hello.
+* **Soubor prohlížeče**: Procházet hello výchozí účet úložiště a hello propojené účty úložiště.
 
     ![Procházet prohlížeče portálu souboru HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
-    Na tomto snímku  **<Account>**  typ označuje položku je účet úložiště Azure.  Klikněte na název účtu a vyhledejte soubory.
+    Na snímku obrazovky hello hello  **<Account>**  typ označuje položku hello je účet úložiště Azure.  Klikněte na tlačítko hello účet název toobrowse hello soubory.
 * **Uživatelské rozhraní Hadoop**.
 
     ![Portál HDInsight Hadoop uživatelského rozhraní](./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-ui.png)
@@ -294,69 +294,69 @@ Konzole dotazu HDInsight zahrnuje následující funkce:
     ![Portál HDInsight YARN uživatelského rozhraní](./media/hdinsight-administer-use-management-portal/hdinsight-yarn-ui.png)
 
 ## <a name="run-hive-queries"></a>Spuštění dotazů Hive
-Chcete-li spustili úlohy Hive z portálu, klikněte na tlačítko **Hive Editor** v konzole nástroje HDInsight dotazu. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
+úlohy Hive tooran z hello portálu, klikněte na tlačítko **Hive Editor** v hello HDInsight dotazu konzoly. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
-Monitorování úloh z portálu, klikněte na tlačítko **historie úlohy** v konzole nástroje HDInsight dotazu. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
+úlohy toomonitor z hello portálu, klikněte na tlačítko **historie úlohy** v hello HDInsight dotazu konzoly. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
 
 ## <a name="browse-files"></a>Procházet soubory
-Chcete-li procházet soubory uložené na výchozí účet úložiště a účty propojené úložiště, klikněte na tlačítko **prohlížeč souborů** v konzole nástroje HDInsight dotazu. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
+toobrowse soubory uložené v hello výchozí účet úložiště a hello propojené účty úložiště, klikněte na tlačítko **prohlížeč souborů** v hello HDInsight dotazu konzoly. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
 
-Můžete také **procházet systému souborů** nástroj z **uživatelského rozhraní Hadoop** v konzole nástroje HDInsight.  V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
+Můžete taky hello **procházet systém souborů hello** nástroj z hello **uživatelského rozhraní Hadoop** v konzole HDInsight hello.  V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
 
 ## <a name="monitor-cluster-usage"></a>Monitorování využití clusteru
-**Využití** části okna clusteru HDInsight se zobrazují informace o počet jader, které jsou k dispozici pro vaše předplatné pro použití s HDInsight, jakož i počet jader přidělené k tomuto clusteru a jak jsou přiděleny pro uzly v tomto clusteru. V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
+Hello **využití** části okna clusteru HDInsight hello se zobrazují informace o hello počet jader dostupné tooyour předplatné pro použití s HDInsight, jakož i hello počet jader přidělené toothis clusteru a jak jsou přidělené hello uzlů v tomto clusteru. V tématu [seznamu a zobrazit clustery](#list-and-show-clusters).
 
 > [!IMPORTANT]
-> Pokud chcete monitorovat služby poskytované clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API. Další informace o používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
+> toomonitor hello služby poskytované hello clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API hello. Další informace o používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
 >
 >
 
 ## <a name="open-hadoop-ui"></a>Otevřete uživatelské rozhraní pro Hadoop
-Monitorovat clusteru, procházet systému souborů a zkontrolujte protokoly, klikněte na tlačítko **uživatelského rozhraní Hadoop** v konzole nástroje HDInsight dotazu. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
+toomonitor hello clusteru, systém souborů hello Procházet a naleznete v protokolech, klikněte na **uživatelského rozhraní Hadoop** v hello HDInsight dotazu konzoly. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
 
 ## <a name="open-yarn-ui"></a>Otevřete Yarn uživatelského rozhraní
-Chcete-li použít uživatelské rozhraní Yarn, klikněte na tlačítko **uživatelském rozhraní Yarn** v konzole nástroje HDInsight dotazu. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
+Klikněte na tlačítko toouse Yarn uživatelské rozhraní, **uživatelském rozhraní Yarn** v hello HDInsight dotazu konzoly. V tématu [otevřeného dotazu HDInsight konzoly](#open-hdinsight-query-console).
 
-## <a name="connect-to-clusters-using-rdp"></a>Připojení ke clusterům pomocí protokolu RDP
-Přihlašovací údaje pro cluster, který jste zadali při jeho vytváření poskytnout přístup ke službám v clusteru, ale nechcete samotného clusteru pomocí vzdálené plochy. Přístup ke vzdálené ploše můžete zapnout při zřizování clusteru nebo po zřízení clusteru. Pokyny k povolení funkce Vzdálená plocha při vytváření naleznete v tématu [clusteru HDInsight se vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
+## <a name="connect-tooclusters-using-rdp"></a>Připojit tooclusters pomocí protokolu RDP
+Hello přihlašovací údaje pro hello clusteru, který jste zadali při jeho vytváření udělte přístup toohello služeb v hello clusteru, ale není toohello samotného clusteru pomocí vzdálené plochy. Přístup ke vzdálené ploše můžete zapnout při zřizování clusteru nebo po zřízení clusteru. Hello pokyny o povolení funkce Vzdálená plocha při vytváření najdete v tématu [clusteru HDInsight se vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
 
-**Chcete-li povolit vzdálená plocha**
+**tooenable vzdálené plochy**
 
-1. Přihlaste se k [portál][azure-portal].
-2. Klikněte na tlačítko **Procházet vše** v levé nabídce klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
-3. Klikněte na tlačítko **nastavení** z horní nabídce a pak klikněte na tlačítko **vzdálené plochy**.
+1. Přihlaste se toohello [portál][azure-portal].
+2. Klikněte na tlačítko **Procházet vše** hello levé nabídce, klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
+3. Klikněte na tlačítko **nastavení** z hello horní nabídce a pak klikněte na tlačítko **vzdálené plochy**.
 4. Zadejte **vyprší dne**, **uživatelské jméno vzdálené plochy** a **heslo vzdálené plochy**a potom klikněte na **povolit**.
 
     ![HDInsight povolit zakázat konfigurace vzdálené plochy](./media/hdinsight-administer-use-management-portal/hdinsight.portal.remote.desktop.png)
 
-    Výchozí hodnoty pro vyprší dne je za týden.
+    Hello výchozí hodnoty pro vyprší dne je za týden.
 
    > [!NOTE]
-   > .NET SDK služby HDInsight můžete použít také k povolení vzdálené plochy na clusteru. Použití **EnableRdp** metodu klientského objektu HDInsight následujícím způsobem: **klienta. EnableRdp (název clusteru, místo, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. Podobně zakázání vzdálené plochy na clusteru, můžete použít **klienta. DisableRdp (název clusteru, umístění)**. Další informace o těchto metodách v tématu [HDInsight .NET SDK – referenční informace](http://go.microsoft.com/fwlink/?LinkId=529017). Tuto možnost lze použít pouze pro clustery služby HDInsight v systému Windows.
+   > Můžete taky hello SDK rozhraní .NET HDInsight tooenable vzdálené plochy na clusteru. Použití hello **EnableRdp** metoda hello HDInsight klienta objektu ve hello následujícím způsobem: **klienta. EnableRdp (název clusteru, místo, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. Podobně toodisable vzdálené plochy na hello clusteru, můžete použít **klienta. DisableRdp (název clusteru, umístění)**. Další informace o těchto metodách v tématu [HDInsight .NET SDK – referenční informace](http://go.microsoft.com/fwlink/?LinkId=529017). Tuto možnost lze použít pouze pro clustery služby HDInsight v systému Windows.
    >
    >
 
-**K připojení ke clusteru pomocí protokolu RDP**
+**tooconnect tooa clusteru pomocí protokolu RDP**
 
-1. Přihlaste se k [portál][azure-portal].
-2. Klikněte na tlačítko **Procházet vše** v levé nabídce klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
-3. Klikněte na tlačítko **nastavení** z horní nabídce a pak klikněte na tlačítko **vzdálené plochy**.
-4. Klikněte na tlačítko **Connect** a postupujte podle pokynů. Pokud připojení je zakázat, musíte ji nejprve povolit. Zajistěte, aby pomocí vzdálené plochy uživatele uživatelského jména a hesla.  Nelze použít přihlašovací údaje uživatele clusteru.
+1. Přihlaste se toohello [portál][azure-portal].
+2. Klikněte na tlačítko **Procházet vše** hello levé nabídce, klikněte na tlačítko **clustery HDInsight**, klikněte na název clusteru.
+3. Klikněte na tlačítko **nastavení** z hello horní nabídce a pak klikněte na tlačítko **vzdálené plochy**.
+4. Klikněte na tlačítko **Connect** a postupujte podle pokynů hello. Pokud připojení je zakázat, musíte ji nejprve povolit. Ujistěte se, že pomocí hello vzdálené plochy uživatele, uživatelského jména a hesla.  Nelze použít pověření uživatele hello clusteru.
 
 ## <a name="open-hadoop-command-line"></a>Otevřete příkazový řádek Hadoop
-Připojte se ke clusteru pomocí vzdálené plochy a použijte příkazový řádek Hadoop, musíte nejprve povolíte přístup ke vzdálené ploše do clusteru jak je popsáno v předchozí části.
+tooconnect toohello clusteru pomocí vzdálené plochy a použití hello Hadoop příkazového řádku, musíte nejprve povolíte clusteru toohello přístupu ke vzdálené ploše jak je popsáno v předchozí části hello.
 
-**Chcete-li otevřít příkazový řádek Hadoop**
+**tooopen Hadoop příkazového řádku**
 
-1. Připojte se ke clusteru pomocí vzdálené plochy.
-2. Z plochy, klikněte dvakrát na **Hadoop příkazového řádku**.
+1. Připojte toohello cluster pomocí vzdálené plochy.
+2. Z plochy hello, dvakrát klikněte na **Hadoop příkazového řádku**.
 
     ![HDI. HadoopCommandLine][image-hadoopcommandline]
 
     Další informace o Hadoop příkazů najdete v tématu [Hadoop příkazy odkaz](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
-Název složky v předchozím snímku obrazovky má číslo verze Hadoop vložených. Číslo verze lze změnit v závislosti na verzi Hadoop komponenty nainstalované v clusteru. Proměnné prostředí Hadoop můžete použít k odkazování na těchto složek. Například:
+V předchozím snímku obrazovky hello název složky hello má číslo verze Hadoop hello vložených. číslo verze Hello můžete změněné na základě hello verzi komponent systému Hadoop hello nainstalovat na clusteru hello. Hadoop prostředí proměnné toorefer toothose složky můžete použít. Například:
 
     cd %hadoop_home%
     cd %hive_home%
@@ -366,7 +366,7 @@ Název složky v předchozím snímku obrazovky má číslo verze Hadoop vložen
     cd %hcatalog_home%
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili postup vytvoření clusteru HDInsight pomocí portálu a otevřete nástroj příkazového řádku Hadoop. Další informace naleznete v následujících článcích:
+V tomto článku jste se naučili jak hello toocreate clusteru HDInsight pomocí portálu, a jak tooopen hello nástroj příkazového řádku Hadoop. toolearn více, najdete v části hello následující články:
 
 * [Spravovat HDInsight pomocí prostředí Azure PowerShell](hdinsight-administer-use-powershell.md)
 * [Spravovat HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md)

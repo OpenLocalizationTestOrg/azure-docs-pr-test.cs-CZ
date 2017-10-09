@@ -1,6 +1,6 @@
 ---
-title: "Internet věcí osvědčené postupy zabezpečení | Microsoft Docs"
-description: "Tento článek poskytuje kurátorované seznam Microsoft Internet věcí osvědčené postupy zabezpečení a obecná doporučení."
+title: "aaaInternet osvědčené postupy zabezpečení věcí | Microsoft Docs"
+description: "Hello článek obsahuje seznam kurátorované Microsoft Internet věcí osvědčené postupy zabezpečení a obecná doporučení."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
-ms.openlocfilehash: 8efc0053458e338ac1afe98d9ce970c1d5cbfa81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ee31c912e8ac230ffa5efcd5b4c2b0b0713584f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="internet-of-things-security-best-practices"></a>Internet věcí osvědčené postupy zabezpečení
-Zabezpečení infrastruktury Internetu věcí (IoT) je důležité podnikem pro každý, kdo spojené s řešení IoT. Kvůli distribuovaná povaha těchto zařízení a počet zařízení související se situací dopad událostí zabezpečení související s ohrožení miliony zařízení IoT je netriviální a může mít rozšířeným dopad.
+Zabezpečení Internetu věcí (IoT) infrastruktura hello je důležité podniku pro každý, kdo spojené s řešení IoT. Distribuovaná povaha tato zařízení hello dopad událostí zabezpečení z důvodu hello počet zařízení zahrnutých a hello související toocompromise miliony zařízení IoT je netriviální a může mít rozšířeným dopad.
 
-Z tohoto důvodu musí IoT zabezpečení zabezpečení do hloubky přístup. Data musí být zabezpečené v cloudu a při jejich přesunu přes privátní a veřejné sítě. Metody musí být na místě bezpečně zřídit zařízeními IoT. Každou vrstvu ze zařízení k síti, do cloudu back-end vyžaduje silné zabezpečení záruky.
+Z tohoto důvodu musí IoT zabezpečení zabezpečení do hloubky přístup. Data potřebám toobe zabezpečení v cloudu hello a jak se přesune přes privátní a veřejné sítě. Metody potřebovat toobe v místě toosecurely zřídit hello zařízení IoT sami. Jednotlivé úrovně ze zařízení, toonetwork, toocloud back-end vyžaduje silné zabezpečení záruky.
 
-Osvědčené postupy IoT může být rozdělena následujícím způsobem:
+Osvědčené postupy IoT může rozdělené do hello následujícím způsobem:
 
 * Výrobce hardwaru IoT nebo integrátor
 * Vývojář řešení IoT
 * Nástroje pro nasazení řešení IoT
 * Operátor řešení IoT
 
-Tento článek shrnuje [Internetu z věcí osvědčené postupy zabezpečení](../iot-suite/iot-security-best-practices.md). Naleznete v tomto článku najdete podrobnější informace.
+Tento článek shrnuje [Internetu z věcí osvědčené postupy zabezpečení](../iot-suite/iot-security-best-practices.md). Podrobnější informace naleznete v článku toothat.
 
 ## <a name="iot-hardware-manufacturer-or-integrator"></a>Výrobce hardwaru IoT nebo integrátor
-Použijte následující osvědčené postupy, pokud jste IoT výrobce hardwaru nebo integrátor hardwaru:
+Pokud jste IoT výrobce hardwaru nebo integrátor hardwaru, držte se osvědčených postupů hello níže:
 
-* **Obor hardware a požadavky na minimální**: návrh hardwaru by měla zahrnovat nutných pro operaci hardwaru a nic další minimální funkce. 
-* **Ujistěte se, hardwaru manipulovat ověření**: sestavení v mechanismy pro zjistit případnou manipulaci fyzického hardwaru, jako je například otevírání krytu zařízení, odebrání součástí zařízení atd. 
+* **Obor požadavky na hardware toominimum**: návrh hardwaru hello by měla zahrnovat nutných pro operaci hello hardwaru a nic další minimální funkce. 
+* **Ujistěte se, hardwaru manipulovat ověření**: sestavení v mechanismy toodetect fyzické manipulaci hardwaru, jako je například otevírání hello zařízení titulní, odebrání součástí hello zařízení atd. 
 * **Sestavení kolem zabezpečený hardware**: Pokud [spotřebu](https://en.wikipedia.org/wiki/Cost_of_goods_sold) povolení, funkce zabezpečení, jako je zabezpečená a šifrovaná úložiště a na základě Trusted Platform Module TPM spouštěcí funkce sestavení.
-* **Zabezpečit upgrady**: upgrade firmwaru během životního cyklu zařízení je nevyhnutelné.
+* **Zabezpečit upgrady**: upgrade firmwaru během životního cyklu zařízení hello je nevyhnutelné.
 
 ## <a name="iot-solution-developer"></a>Vývojář řešení IoT
-Použijte následující osvědčené postupy, pokud jste vývojář řešení IoT:
+Pokud jste vývojář řešení IoT, držte se osvědčených postupů hello níže:
 
-* **Postupujte podle zabezpečené softwaru vývoj metodika**: vývoj zabezpečené softwaru vyžaduje základů přemýšlení o zabezpečení od zahájení projektu zcela k jeho implementaci, testování a nasazení.
-* **Vyberte software s otevřeným zdrojem dát pozor**: software s otevřeným zdrojem vám dává příležitost k rychlému vývoji řešení.
-* **Integrovat dát pozor**: řadu nedostatků zabezpečení softwaru existovat hranice knihovny a rozhraní API. 
+* **Postupujte podle zabezpečené softwaru vývoj metodika**: vývoj zabezpečené softwaru vyžaduje základů přemýšlíte o zabezpečení z hello zahájení projektu hello všechny hello způsob tooits implementace, testování a nasazení.
+* **Vyberte software s otevřeným zdrojem dát pozor**: software s otevřeným zdrojem vám dává příležitost tooquickly vývoj řešení.
+* **Integrovat dát pozor**: řadu nedostatků zabezpečení softwaru hello existovat hello hranice knihovny a rozhraní API. 
 
 ## <a name="iot-solution-deployer"></a>Nástroje pro nasazení řešení IoT
-Použijte následující osvědčené postupy, pokud jste deployer řešení IoT:
+Pokud jste deployer řešení IoT, držte se osvědčených postupů hello níže:
 
-* **Nasazení hardwaru bezpečně**: IoT nasazení může vyžadovat hardwaru, který má být nasazený v nezabezpečená umístění, například veřejné mezery nebo bez dohledu národní prostředí.
-* **Chránit ověřovací klíče**: během nasazování každé zařízení vyžaduje ID zařízení a související ověřovací klíče generované cloudové služby. Chránit tyto klíče fyzicky i po jeho nasazení. Všechny ohrožené klíč lze škodlivý zařízení jako ze stávajících zařízení.
+* **Nasazení hardwaru bezpečně**: IoT nasazení může vyžadovat toobe hardware nasazený v nezabezpečená umístění, například veřejné mezery nebo bez dohledu národní prostředí.
+* **Chránit ověřovací klíče**: během nasazování každé zařízení vyžaduje ID zařízení a související ověřovací klíče generované hello cloudové služby. Chránit tyto klíče fyzicky i po nasazení hello. Všechny ohrožené klíč lze toomasquerade škodlivý zařízení jako ze stávajících zařízení.
 
 ## <a name="iot-solution-operator"></a>Operátor řešení IoT
-Použijte následující osvědčené postupy, pokud jste operátor řešení IoT:
+Pokud jste operátor řešení IoT, držte se osvědčených postupů hello níže:
 
-* **Aktuálnost systémy**: Ujistěte se, operační systémy zařízení a všechny ovladače zařízení jsou aktualizovány na nejnovější verze. 
-* **Ochrana proti škodlivé aktivity**: Pokud operačního systému povolí, umístěte nejnovějších funkcích antivirový a proti malwaru na každý operační systém zařízení. 
-* **Audit často**: auditování IoT infrastruktury pro týkající se problémů je klíč při odpovědi na bezpečnostní incidenty v oblasti zabezpečení.
-* **Fyzicky ochrana infrastruktury IoT**: nejhorší zabezpečení útoky na infrastrukturu IoT spustily pomocí fyzický přístup k zařízením.
-* **Ochranu přihlašovacích údajů cloudu**: cloudové ověřování pověření použitá pro konfiguraci a provozní nasazení služby IoT jsou pravděpodobně nejjednodušší způsob, jak získat přístup a ohrozit systém IoT. 
+* **Udržování systémů až toodate**: Zkontrolujte aktualizované toohello nejnovější verze jsou operační systémy zařízení a všechny ovladače zařízení. 
+* **Ochrana proti škodlivé aktivity**: Pokud hello operačního systému povolí, umístěte hello nejnovější antivirový a antimalwarové funkce na každý operační systém zařízení. 
+* **Audit často**: auditování IoT infrastrukturu pro zabezpečení týkající se problémů je klíč při odpovědi toosecurity incidenty.
+* **Fyzicky ochrana hello IoT infrastruktury**: hello nejhorší zabezpečení útoky na infrastrukturu IoT spustily pomocí toodevices fyzický přístup.
+* **Ochranu přihlašovacích údajů cloudu**: cloudové ověřování pověření použitá pro konfiguraci a provozní nasazení služby IoT se pravděpodobně hello nejjednodušší způsob, jak toogain přístup a ohrozit systém IoT. 
 

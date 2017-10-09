@@ -1,5 +1,5 @@
 ---
-title: "Propojení aplikací a integrace dat s pracovními postupy – Azure Logic Apps | Dokumentace Microsoftu"
+title: "aaaConnect aplikace a data integrovat s pracovními postupy - Azure Logic Apps | Microsoft Docs"
 description: "Přečtěte si, jak vytvářet pracovní postupy a automatizovat procesy propojením aplikací a integraci dat pomocí služby Azure Logic Apps."
 author: kevinlam1
 manager: anneta
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/23/2017
 ms.author: klam
-ms.openlocfilehash: 64af585f81d39daaa5373d7cf080404ee5f1b037
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53d4e165bb2205ddd56c1950719389725267ddea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-are-logic-apps"></a>Co jsou Logic Apps?
-Logic Apps umožňují zjednodušení a implementaci škálovatelných integrací a pracovních postupů v cloudu. Nabízejí vizuálního návrháře pro modelování a automatizaci procesů jako řadu kroků, které nazýváme pracovním postupem.  Existuje mnoho cloudových i místních [konektorů](../connectors/apis-list.md), které můžete rychle integrovat do všech služeb a protokolů.  Aplikace logiky začíná triggerem (například „Když je přidán účet do aplikace Dynamics CRM“) a po jeho spuštění může začít mnoho kombinací akcí, převodů a podmíněné logiky.
+Aplikace logiky zadejte způsob toosimplify a implementovat škálovatelné integrace a pracovních postupů v cloudu hello. Poskytuje visual návrháře toomodel a automatizovat váš proces jako sérii kroků, které jsou známé jako pracovní postup.  Existují [mnoho konektory](../connectors/apis-list.md) napříč hello cloudové a místní tooquickly integrovat do různých služby a protokoly.  Aplikace logiky začíná aktivační událost (jako "při přidání účtu tooDynamics CRM') a po pálení můžete začít počet kombinací akcí, převody a logiku podmínku.
 
-Mezi výhody používání Logic Apps patří:  
+výhody Hello pomocí Logic Apps hello následující:  
 
-* úspora času, protože se navrhují komplexní procesy pomocí snadno použitelných návrhových nástrojů,
-* hladká implementace vzorů a pracovních postupů, které by jinak bylo obtížné v kódu implementovat.
+* Ukládání čas návrhu komplexní procesy používání nástrojů návrhu snadno toounderstand
+* Implementace bezproblémově vzory a pracovní postupy, které by jinak byly obtížné tooimplement v kódu
 * Začínáme rychle pomocí šablon
 * Přizpůsobení aplikace logiky pomocí vlastních rozhraní API, kódu a akcí
-* Připojení a synchronizace různorodých systémů, místních i v cloudu
+* Připojení a synchronizace mezi místními synchronisace různorodých systémů a hello cloudu
 * Sestavení ze služeb BizTalk Server, API Management, Azure Functions a Azure Service Bus s prvotřídní podporou integrace
 
-Logic Apps je plně spravovaná iPaaS (integrační platforma jako služba), která vývojářům umožňuje pracovat a nezatěžovat se přitom hostováním sestavených projektů, škálovatelností, dostupností a správou.  Logic Apps se škálují automaticky, aby vyhověly vašim nárokům.
+Služba Logic Apps je plně spravovaná iPaaS (integrace platforma jako služba) umožňuje vývojářům není toohave tooworry o vytváření hostování, škálovatelnost, dostupnost dat a správu.  Služba Logic Apps bude škálovat automaticky toomeet vyžádání.
 
 ![Návrhář aplikace na základě toku](media/logic-apps-what-are-logic-apps/LogicAppCapture2.png)
 
 Jak už bylo zmíněno, pomocí Logic Apps můžete automatizovat podnikové procesy. Zde je několik příkladů:  
 
-* Přesunutí souborů odeslaných na FTP server do úložiště Azure
+* Přesunutí souborů serveru FTP tooan nahrál do úložiště Azure
 * Objednávky procesů a tras ze všech místních i cloudových systémů
-* Sledujte všechny tweety týkající se určitého tématu, analyzujte myšlenku a vytvořte si upozornění a úkoly k položkám, které vyžadují další sledování.
+* Monitorovat všechny tweety o určité téma, analyzovat hello postojích a vytvářet výstrahy a úlohy pro položky, které vyžadují další nabídka.
 
-Podobné scénáře je možné konfigurovat ve všech vizuálních návrhářích bez nutnosti napsat jediný řádek kódu. Začněte [vytvářet své aplikace logiky hned teď][create].  Jakmile ji napíšete, můžete aplikaci logiky [rychle nasadit a překonfigurovat](../logic-apps/logic-apps-create-deploy-template.md) pro různá prostředí a oblasti.
+Scénáře, jako je to se dá nakonfigurovat vše z vizuálního návrháře hello a bez nutnosti napsat jediný řádek kódu. Začněte [vytvářet své aplikace logiky hned teď][create].  Jakmile ji napíšete, můžete aplikaci logiky [rychle nasadit a překonfigurovat](../logic-apps/logic-apps-create-deploy-template.md) pro různá prostředí a oblasti.
 
 ## <a name="why-logic-apps"></a>Proč Logic Apps?
-Logic Apps přinášejí do prostoru podnikových integrací rychlost a škálovatelnost.  Snadné používání návrháře, řada dostupných triggerů a akcí a výkonné nástroje pro správu výrazně zjednodušují centralizaci rozhraní API.  Firmy se vydávají směrem k digitalizaci a Logic Apps jim na této cestě umožňují propojit starší systémy s těmi nejmodernějšími.
+Služba Logic Apps přenese rychlost a škálovatelnost do prostoru integrace enterprise hello.  Hello snadné použití návrháře hello, řadu dostupných triggery a akce a výkonné nástroje pro správu zkontrolujte centralizuje vaše rozhraní API jednodušší než kdy dřív.  Jako podnikům přesunout směrem digitalization, Logic Apps můžete tooconnect starší verze a udržuje náskok systémy společně.
 
-Navíc můžete pomocí [účtu Enterprise Integration][biztalk] škálovat své integrační scénáře s využitím [zasílání zpráv XML][xml], [správy obchodních partnerů][tpm] a dalších funkcí.
+Kromě toho se naše [účet integrace Enterprise] [ biztalk] je možné škálovat scénářům integrace toomature hello výkon [zasílání zpráv XML] [ xml], [Správa obchodních partnerů][tpm]a další.
 
-* **Snadno použitelné návrhové nástroje** – Logic Apps je možné od začátku do konce navrhovat v prohlížeči nebo pomocí nástrojů sady Visual Studio. Začněte s triggerem – z jednoduchého plánu až po vytvoření problému v GitHubu. Pak pomocí rozsáhlé galerie konektorů můžete nastavit orchestraci libovolného počtu akcí.
-* **Snadné připojení rozhraní API** – I složité úkoly, které je možné snadno popsat, je těžké implementovat v kódu. Díky Logic Apps je propojení různorodých systémů jednoduché. Chcete propojit své cloudové marketingové řešení s lokálním účetním systémem? Chcete centralizovat zasílání zpráv mezi rozhraními API a systémy se sběrnicí Enterprise Service Bus? Aplikace logiky jsou ten nejrychlejší, nejspolehlivější způsob, jak dodat řešení těchto problémů.
-* **Rychlý začátek pomocí šablon** – Abychom vám pomohli začít, poskytujeme [galerii šablon][templates], které umožňují rychle vytvářet některá běžná řešení. Od pokročilých řešení B2B po jednoduché připojení SaaS, a dokonce i pár šablon vytvořených jen tak „pro zábavu“ – galerie je prostě nejrychlejší způsob, jak začít využívat sílu Logic Apps.
-* **Integrovaná rozšiřitelnost** – Nevidíte konektor, který potřebujete? Logic Apps jsou navrženy pro práci s vaším vlastním rozhraním API a kódem. Můžete snadno vytvořit vlastní aplikace API, které použijte jako vlastní konektor, nebo můžete volat [Azure Functions](https://functions.azure.com) a spustit fragmenty kódu na vyžádání. 
-* **Skutečně efektivní integrace** – Začněte lehce a řiďte svůj růst podle toho, jak se vyvíjí vaše potřeby. Služba Logic Apps dokáže snadno využít síly BizTalku. BizTalk je špičkové integrační řešení od Microsoftu, které umožňuje profesionálům v oblasti integrace vytvářet řešení, která potřebují. Další informace o [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md).
+* **Nástroje pro návrh snadno toouse** -Logic Apps je možné navrženou klient server v prohlížeči hello nebo s nástroji Visual Studio. Spusťte triggerem – od jednoduchého plánu toowhen, je vytvořena potíže Githubu. Potom nastavit orchestraci libovolného počtu akcí pomocí rozsáhlé Galerie konektorů hello.
+* **Připojení rozhraní API snadno** – i rozložitelné úkoly, které jsou snadno toodescribe jsou těžko tooimplement v kódu. Služba Logic Apps umožňuje snadno tooconnect různorodých systémů. Chcete tooconnect své cloudové marketingové řešení tooyour místní fakturačních systémů? Chcete toocentralize služby zasílání zpráv na rozhraní API a systémy se podnikové služby Service Bus? Aplikace logiky jsou hello nejrychlejší, nejspolehlivější způsob toodeliver řešení toothese problémy.
+* **Rychlý začátek pomocí šablon** -toohelp začnete nabízíme [galerii šablon] [ templates] máte toorapidly vytvářet některá běžná řešení. Od pokročilých řešení B2B toosimple připojení SaaS a dokonce i pár, které jsou právě "pro zábavu" – Galerie hello je nejrychlejší způsob, jak tooget hello začít s hello sílu Logic Apps.
+* **Zaručená rozšiřitelnost** -nezobrazí konektor hello potřebujete? Služba Logic Apps je navrženou toowork s vlastní rozhraní API a kódu; můžete snadno vytvořit vlastní toouse aplikace API jako vlastní konektor, nebo volání do [funkce Azure](https://functions.azure.com) tooexecute fragmenty kódu poptávky. 
+* **Skutečně efektivní integrace** – Začněte lehce a řiďte svůj růst podle toho, jak se vyvíjí vaše potřeby. Služba Logic Apps dokáže snadno využít síly BizTalku. BizTalk společnosti Microsoft odvětví úvodní integrace řešení tooenable integrace Odborníci v oblasti toobuild hello řešení, které potřebují hello. Další informace o hello [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).
 
 ## <a name="logic-app-concepts"></a>Koncepty Logic Apps
-Následující pojmy představují některé z klíčových součástí, které dohromady utváří prostředí Logic Apps. 
+Hello Toto jsou některé hello klíče částí, které tvoří hello prostředí Logic Apps. 
 
-* **Pracovní postup** – Logic Apps nabízí grafický způsob modelování firemních procesů jako posloupnosti kroků, tedy jako pracovní postup.
-* **Spravované konektory** – Aplikace logiky potřebují přístup k datům a službám. Spravované konektory se vytvářejí speciálně k tomu, aby vám pomohly s připojováním k datům a prací s nimi. Podívejte se na seznam konektorů, které jsou nyní dostupné mezi [spravovanými konektory][managedapis].
-* **Triggery** – Některé spravované konektory se mohou chovat i jako trigger. Trigger spouští novou instanci pracovního postupu na základě konkrétní události, například doručení e-mailu nebo změny v účtu Azure Storage.
-* **Akce** – Každému kroku, který je proveden po triggeru v pracovním postupu, se říká akce. Každá akce je obvykle namapovaná na operaci ve spravovaném konektoru nebo ve vlastních aplikacích API.
-* **Enterprise Integration Pack** – Služba Logic Apps zahrnuje možnosti z BizTalku a nabízí tak pokročilejší scénáře integrace. BizTalk je špičková platforma pro integraci od Microsoftu. Konektory Enterprise Integration Pack umožňují snadno zahrnout ověřování, transformaci a další funkce do pracovních postupů Logic App.
+* **Pracovní postup** -Logic Apps nabízí grafický způsob toomodel firemních procesů jako řadu kroků nebo pracovního postupu.
+* **Spravované konektory** – aplikace logiky potřebují přístup k toodata a službám. Spravovaných konektorů jsou vytvořené speciálně tooaid můžete při připojování tooand práce s daty. Zobrazit hello seznam konektorů, které jsou nyní dostupné v [spravovaných konektorů][managedapis].
+* **Triggery** – Některé spravované konektory se mohou chovat i jako trigger. Trigger spouští novou instanci pracovního postupu založeného na konkrétní události, například hello doručení e-mailu nebo změny v účtu úložiště Azure.
+* **Akce** -každý krok po hello triggeru ve workflow, se říká akce. Každá akce je obvykle namapována tooan operace na konektoru spravované nebo vlastní aplikace API.
+* **Enterprise Integration Pack** – Služba Logic Apps zahrnuje možnosti z BizTalku a nabízí tak pokročilejší scénáře integrace. BizTalk je špičková platforma pro integraci od Microsoftu. konektory Enterprise integračního balíčku Hello umožňují tooeasily zahrnují ověření, transformaci a další v pracovních postupech tooyour aplikace logiky.
 
 ## <a name="getting-started"></a>Začínáme
-* Pokud chcete začít s Logic Apps, postupujte podle kurzu [vytvoření aplikace logiky][create].  
+* tooget začít s Logic Apps, postupujte podle hello [vytvoření aplikace logiky] [ create] kurzu.  
 * [Zobrazení běžných příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md).
 * [S Logic Apps můžete automatizovat firemní procesy](http://channel9.msdn.com/Events/Build/2016/T694). 
-* [Zjistěte, jak integrovat své systémy s Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462).
+* [Zjistěte, jak tooIntegrate vaše systémy s Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
 
 [biztalk]: logic-apps-enterprise-integration-accounts.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md

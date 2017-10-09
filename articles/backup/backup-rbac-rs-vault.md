@@ -1,6 +1,6 @@
 ---
 title: "Spravovat zálohy pomocí řízení přístupu na základě Role Azure | Microsoft Docs"
-description: "Pomocí řízení přístupu na základě Role můžete spravovat přístup k zálohování management operace v trezoru služeb zotavení."
+description: "Pomocí operace správy toobackup přístup toomanage řízení přístupu na základě Role v trezoru služeb zotavení."
 services: backup
 documentationcenter: 
 author: trinadhk
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/22/2017
 ms.author: trinadhk;markgal
-ms.openlocfilehash: d0b6eb8eea8971eb8f80c6623f9a41a3692241b3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 26d034d152f9b77fc6d5b2ffd5ef2648b1797f46
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pomocí řízení přístupu na základě Role můžete spravovat body obnovení Azure Backup
-Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC, můžete v rámci týmu oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh.
+# <a name="use-role-based-access-control-toomanage-azure-backup-recovery-points"></a>Použít body obnovení Azure Backup toomanage řízení přístupu na základě Role
+Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC, můžete v rámci týmu oddělit povinností a udělit pouze hello množství toousers přístup, že potřebují tooperform svou práci.
 
 > [!IMPORTANT]
-> Role, které poskytuje Azure Backup jsou omezeny na akce, které lze provést na portálu Azure nebo rutin prostředí PowerShell trezor služeb zotavení. Akce prováděné v Azure zálohování uživatelské rozhraní agenta klienta nebo System center Data Protection Manager uživatelského rozhraní nebo uživatelské rozhraní serveru služby zálohování Azure jsou mimo kontrolu nad tyto role.
+> Role, které poskytuje Azure Backup jsou omezené tooactions, které lze provést na portálu Azure nebo rutin prostředí PowerShell trezor služeb zotavení. Akce prováděné v Azure zálohování uživatelské rozhraní agenta klienta nebo System center Data Protection Manager uživatelského rozhraní nebo uživatelské rozhraní serveru služby zálohování Azure jsou mimo kontrolu nad tyto role.
 
-Azure Backup poskytuje 3 předdefinovaných rolí k řízení operace zálohování správy. Další informace na [předdefinované role Azure RBAC](../active-directory/role-based-access-built-in-roles.md)
+Azure Backup poskytuje 3 předdefinované role toocontrol operace zálohování správy. Další informace na [předdefinované role Azure RBAC](../active-directory/role-based-access-built-in-roles.md)
 
-* [Zálohování Přispěvatel](../active-directory/role-based-access-built-in-roles.md#backup-contributor) – tato role má všechna oprávnění k vytváření a správě zálohování, vyjma případu vytvoření trezoru služeb zotavení a udělíte přístup k ostatním. Představte si tuto roli jako správce zálohování správy, který můžete provést každé operace zálohování správy.
-* [Operátor zálohování](../active-directory/role-based-access-built-in-roles.md#backup-operator) – tato role má oprávnění ke všem souborům Přispěvatel s výjimkou odebrání zásady zálohování pro zálohování a správa. Tato role je stejná jako Přispěvatel, s výjimkou destruktivní operace ji nemůžete provést, například při zastavení zálohování s odstranit data nebo odebrat registraci místních prostředků.
-* [Zálohování čtečky](../active-directory/role-based-access-built-in-roles.md#backup-reader) – tato role má oprávnění k zobrazení všechny operace zálohování správy. Představte si této role, která bude monitorování osoby.
+* [Zálohování Přispěvatel](../active-directory/role-based-access-built-in-roles.md#backup-contributor) – tato role má všechny toocreate oprávnění a Správa zálohování kromě vytvoření trezoru služeb zotavení a poskytnete tooothers přístup. Představte si tuto roli jako správce zálohování správy, který můžete provést každé operace zálohování správy.
+* [Operátor zálohování](../active-directory/role-based-access-built-in-roles.md#backup-operator) – tato role nemá oprávnění tooeverything Přispěvatel s výjimkou odebrání zálohování a Správa zásady zálohování. Tato role je ekvivalentní toocontributor, s výjimkou nemůže provádět destruktivní operace, jako je třeba zastavit zálohování s odstranit data nebo odebrat registraci místních prostředků.
+* [Zálohování čtečky](../active-directory/role-based-access-built-in-roles.md#backup-reader) – tato role nemá oprávnění tooview všechny operace zálohování správy. Představte si tuto roli toobe monitorování osoby.
 
-Pokud hledáte, můžete definovat vlastní role pro ještě větší kontrolu, přečtěte si postup [vytvářet vlastní role](../active-directory/role-based-access-control-custom-roles.md) v Azure RBAC.
+Pokud se díváte toodefine vlastní role pro ještě větší kontrolu, najdete v části Jak příliš[vytvářet vlastní role](../active-directory/role-based-access-control-custom-roles.md) v Azure RBAC.
 
 
 
-## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mapování zálohování předdefinované role pro správu záloh akce
-V následující tabulce zaznamená akce správy zálohování a odpovídající minimální role RBAC nutné k provedení této operace.
+## <a name="mapping-backup-built-in-roles-toobackup-management-actions"></a>Mapování akce správy toobackup předdefinované role zálohování
+Následující tabulka Hello zaznamená akce správy zálohování hello a odpovídající minimální role RBAC požadované tooperform tuto operaci.
 
 | Operace správy | Vyžaduje minimální role RBAC |
 | --- | --- |
 | Vytvoření trezoru služeb zotavení | Přispěvatel na skupinu prostředků úložiště |
 | Povolení zálohování virtuálních počítačů Azure | Operátor zálohování na trezor, Přispěvatel virtuálních počítačů na virtuálních počítačích |
 | Zálohování na vyžádání virtuálního počítače | Operátor zálohování |
-| Obnovení virtuálního počítače | Operátor zálohování, Přispěvatel skupiny prostředků, ve kterém se bude virtuální počítač a virtuální sítě na nasadí |
+| Obnovení virtuálního počítače | Operátor zálohování, Přispěvatel skupiny prostředků, ve kterém se bude virtuální počítač a virtuální sítě tooget nasazení |
 | Obnovení disky, jednotlivé soubory ze zálohy virtuálního počítače | Operátor zálohování |
 | Vytvořit zásady zálohování pro zálohování virtuálních počítačů Azure | Zálohování přispěvatele |
 | Upravit zásady zálohování zálohy virtuálního počítače Azure | Zálohování přispěvatele |
@@ -54,8 +54,8 @@ V následující tabulce zaznamená akce správy zálohování a odpovídající
 | Odstranit zaregistrovaná místně Windows serveru nebo klienta nebo SCDPM nebo Azure Backup Server | Zálohování přispěvatele |
 
 ## <a name="next-steps"></a>Další kroky
-* [Řízení přístupu na základě role](../active-directory/role-based-access-control-configure.md): Začínáme s RBAC na portálu Azure.
-* Zjistěte, jak spravovat přístup pomocí:
+* [Řízení přístupu na základě role](../active-directory/role-based-access-control-configure.md): Začínáme s RBAC v hello portálu Azure.
+* Zjistěte, jak přistupovat k toomanage se:
   * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)
   * [REST API](../active-directory/role-based-access-control-manage-access-rest.md)

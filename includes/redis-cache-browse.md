@@ -1,14 +1,14 @@
-K mezipamětem můžete na webu [Azure Portal](https://portal.azure.com) získat přístup v okně **Procházet**.
+Mezipaměti je přístupná v hello [portál Azure](https://portal.azure.com) pomocí hello **Procházet** okno.
 
 ![Okno procházení Azure Redis Cache](media/redis-cache-browse/redis-cache-browse.png)
 
-Pokud chcete zobrazit mezipaměti, klikněte na **Další služby > Mezipaměti Redis**. Pokud jste nedávno přešli na některou mezipaměť Redis, můžete přímo v seznamu kliknout na **Mezipaměti Redis**, aniž byste předtím museli kliknout na **Další služby**.
+Klikněte na své mezipaměti tooview **další služby > mezipaměti Redis**. Pokud jste nedávno přešli tooa Redis Cache, můžete kliknout na **mezipaměti Redis cache** přímo ze seznamu hello bez kliknutí na **další služby**.
 
-Pokud chcete zobrazit a nakonfigurovat nastavení určité mezipaměti, vyberte ji.
+Vybrat tooview hello potřeby mezipaměti a nakonfigurovat nastavení hello pro mezipaměť.
 
 ![Seznam mezipamětí Azure Redis v okně Procházet](media/redis-cache-browse/redis-caches.png)
 
-Mezipaměť můžete zobrazit a nakonfigurovat z okna **Mezipaměť Redis**.
+Můžete zobrazit a konfigurovat mezipaměti z hello **Redis Cache** okno.
 
 ![Všechna nastavení mezipaměti Redis](media/redis-cache-browse/redis-cache-blade.png)
 

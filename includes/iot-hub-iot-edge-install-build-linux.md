@@ -1,27 +1,27 @@
-## <a name="install-the-prerequisites"></a>Nainstalujte součásti
+## <a name="install-hello-prerequisites"></a>Instalace požadovaných součástí hello
 
-Postup v tomto kurzu se předpokládá, že používáte Ubuntu Linux.
+Hello postup v tomto kurzu se předpokládá, že používáte Ubuntu Linux.
 
-Otevřete prostředí a spusťte následující příkazy pro instalaci požadovaných balíčků:
+Otevřete prostředí a spusťte následující příkazy tooinstall hello požadované balíčky hello:
 
 ```bash
 sudo apt-get update
 sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
 ```
 
-V prostředí spusťte následující příkaz, který naklonujte úložiště Azure IoT Edge GitHub do místního počítače:
+V prostředí hello spusťte následující příkaz tooclone hello Azure IoT Edge Githubu úložiště tooyour místního počítače hello:
 
 ```bash
 git clone https://github.com/Azure/iot-edge.git
 ```
 
-## <a name="how-to-build-the-sample"></a>Postup pro sestavení ukázky
+## <a name="how-toobuild-hello-sample"></a>Jak toobuild hello ukázka
 
-Teď můžete sestavit IoT Edge runtime a ukázky na místním počítači:
+Teď můžete sestavit hello IoT Edge runtime a ukázky na místním počítači:
 
 1. Otevřete prostředí.
 
-1. Přejděte do kořenové složky místní kopie úložiště **iot-edge**.
+1. Přejděte toohello kořenovou složku v místní kopii hello **iot hranou** úložiště.
 
 1. Spusťte skript sestavení následujícím způsobem:
 
@@ -29,7 +29,7 @@ Teď můžete sestavit IoT Edge runtime a ukázky na místním počítači:
     tools/build.sh --disable-native-remote-modules
     ```
 
-Tento skript vytvoří v kořenové složce místní kopie úložiště **iot-edge** pomocí nástroje **cmake** složku **build** a vygeneruje soubor pravidel. Skript potom sestaví řešení a přeskočí při tom testy jednotek a celkové testy. Pokud chcete vytvořit a spouštění testování částí, přidat `--run-unittests` parametr. Pokud chcete sestavit a spustit testy koncová, přidat `--run-e2e-tests`.
+Tento skript používá **cmake** toocreate nástroj složky s názvem **sestavení** hello kořenové složky vaší místní kopii **iot hranou** úložiště a generování souboru pravidel. Hello skript potom vytvoří hello řešení, přeskočení testy částí a end tooend testy. Pokud chcete toobuild a spouštění testování částí hello, přidejte hello `--run-unittests` parametr. Pokud chcete toobuild a testy tooend hello end, přidejte hello `--run-e2e-tests`.
 
 > [!NOTE]
-> Pokaždé když spustíte skript **build.sh**, odstraní a potom znovu vytvoří složku **build** v kořenové složce místní kopie úložiště **iot-edge**.
+> Pokaždé, když spustíte hello **build.sh** skriptu, se odstraní a potom znovu vytvoří hello **sestavení** složky v kořenové složce hello místní kopii hello **iot hranou** úložiště.

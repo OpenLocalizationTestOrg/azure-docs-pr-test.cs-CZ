@@ -1,7 +1,7 @@
 
-Cílem tohoto tématu je pomoct vám s co nejrychlejším zahájením práce se službou Notification Hubs. Toto téma představuje velmi jednoduchý příklad vysílání, ve kterém se budeme soustředit na základní koncepty služby Notification Hubs.
+Hello cílem tohoto tématu je toohelp, které můžete začít používat co nejrychlejší centra oznámení. Toto téma představuje velmi jednoduchý příklad vysílání v pořadí tooconcentrate na hello základní koncepty služby Notification Hubs.
 
-Pokud už jste se se službou Notification Hubs seznámili, můžete si vlevo vybrat jiné téma nebo si prohlédnout související odkazy v části [Další kroky](#next-steps).
+Pokud jste již obeznámeni s Notification Hubs, se může má tooselect jiné téma hello vlevo nebo zobrazit hello odkazy v [další kroky](#next-steps).
 
-Záleží nám na vašem názoru. Pokud máte s tímto tématem nějaké potíže nebo byste nám chtěli doporučit vylepšení tohoto obsahu, napište svůj názor do spodní části stránky a my si ho rádi přečteme.
+Záleží nám na vašem názoru. Pokud máte jakékoli problémy dokončení tohoto tématu nebo doporučit vylepšení tohoto obsahu, by nám chcete sdělit svůj názor hello dolní části stránky hello.
 

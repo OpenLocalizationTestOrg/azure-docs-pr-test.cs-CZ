@@ -1,6 +1,6 @@
 ---
-title: "Použití Azure IoT Hub zařízení dvojici vlastností (.NET nebo uzel) | Microsoft Docs"
-description: "Jak používat dvojčata zařízení Azure IoT Hub pro konfiguraci zařízení. Použití zařízení Azure IoT SDK pro Node.js pro implementaci aplikace simulovaného zařízení a sady SDK pro .NET k implementaci aplikační služby, která upraví konfiguraci zařízení dvojče zařízení pomocí služby Azure IoT."
+title: "Vlastnosti twin zařízení Azure IoT Hub aaaUse (.NET nebo uzel) | Microsoft Docs"
+description: "Jak toouse Azure IoT Hub dvojčata zařízení tooconfigure zařízení. Používáte zařízení Azure IoT hello SDK pro Node.js tooimplement aplikace simulovaného zařízení a hello sady SDK služby Azure IoT pro rozhraní .NET tooimplement aplikační služby, která upraví konfiguraci zařízení pomocí dvojče zařízení."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: elioda
-ms.openlocfilehash: 78b4523fa7d0c056f84214429730a5df1bcdcef7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 840a1b2e45f4763131299577583aa89015dcdd1d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-desired-properties-to-configure-devices"></a>Použijte požadované vlastnosti pro konfiguraci zařízení
+# <a name="use-desired-properties-tooconfigure-devices"></a>Použití zařízení tooconfigure požadované vlastnosti
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-Na konci tohoto kurzu budete mít dvě aplikace konzoly:
+Na konci hello tohoto kurzu budete mít dvě aplikace konzoly:
 
-* **SimulateDeviceConfiguration.js**, aplikaci simulovaného zařízení, která čeká na aktualizace požadované konfigurace a oznámí stav procesu aktualizace simulované konfigurace.
-* **SetDesiredConfigurationAndQuery**, back-end aplikace .NET, která na zařízení nastaví požadované konfigurace a dotazuje proces aktualizace konfigurace.
+* **SimulateDeviceConfiguration.js**, aplikaci simulovaného zařízení, která čeká na aktualizace požadované konfigurace a sestavy hello stav procesu aktualizace simulované konfigurace.
+* **SetDesiredConfigurationAndQuery**, back-end aplikace .NET, která nastaví hello požadovaných konfigurací na zařízení a dotazů hello proces aktualizace konfigurace.
 
 > [!NOTE]
-> Článek [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o SDK služby Azure IoT, můžete použít k tvorbě aplikací, zařízení a back-end.
+> článek Hello [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o hello SDK služby Azure IoT, které můžete použít toobuild zařízení i back-end aplikace.
 > 
 > 
 
-K dokončení tohoto kurzu budete potřebovat následující:
+toocomplete tohoto kurzu potřebujete následující hello:
 
 * Visual Studio 2015 nebo Visual Studio 2017.
 * Node.js verze 0.10.x nebo novější.
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
 
-Pokud jste postupovali podle [začít pracovat s dvojčata zařízení] [ lnk-twin-tutorial] kurzu již máte služby IoT hub a identitu zařízení, která je volána **myDeviceId**. V takovém případě můžete přeskočit na [vytvoření aplikace simulovaného zařízení] [ lnk-how-to-configure-createapp] části.
+Pokud jste postupovali podle hello [začít pracovat s dvojčata zařízení] [ lnk-twin-tutorial] kurzu již máte služby IoT hub a identitu zařízení, která je volána **myDeviceId**. V takovém případě můžete přeskočit toohello [aplikaci simulovaného zařízení vytvořit hello] [ lnk-how-to-configure-createapp] části.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 <a id="#create-the-simulated-device-app"></a>
-## <a name="create-the-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
-V této části vytvoříte konzolovou aplikaci softwaru Node.js, která se připojuje k vaší hub jako **myDeviceId**, čeká na aktualizace požadované konfigurace a hlásí aktualizace na proces aktualizace simulované konfigurace.
+## <a name="create-hello-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení hello
+V této části vytvoříte konzolovou aplikaci softwaru Node.js, která se připojuje tooyour hub jako **myDeviceId**, čeká na aktualizace požadované konfigurace a v procesu aktualizace konfigurace hello simulated hlásí aktualizace.
 
-1. Vytvořit novou prázdnou složku s názvem **simulatedeviceconfiguration**. V **simulatedeviceconfiguration** složky, vytvořte nový soubor package.json pomocí následujícího příkazu na příkazovém řádku. Přijměte všechny výchozí hodnoty.
+1. Vytvořit novou prázdnou složku s názvem **simulatedeviceconfiguration**. V hello **simulatedeviceconfiguration** složky, vytvořte nový soubor package.json pomocí následujícího příkazu na příkazovém řádku hello. Přijměte všechny výchozí hodnoty hello.
    
     ```
     npm init
     ```
-1. Na příkazovém řádku v **simulatedeviceconfiguration** složky, spusťte následující příkaz k instalaci **azure-iot-device** a **azure-iot zařízení mqtt** balíčky:
+1. Na příkazovém řádku v hello **simulatedeviceconfiguration** složky, spusťte následující příkaz tooinstall hello hello **azure-iot-device** a **azure-iot zařízení mqtt**balíčky:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-1. Pomocí textového editoru, vytvořte novou **SimulateDeviceConfiguration.js** v soubor **simulatedeviceconfiguration** složky.
-1. Přidejte následující kód, který **SimulateDeviceConfiguration.js** souboru a nahraďte **{zařízení připojovací řetězec}** zástupného symbolu připojovacím řetězcem zařízení jste zkopírovali, když jste vytvořili **myDeviceId** identitu zařízení:
+1. Pomocí textového editoru, vytvořte novou **SimulateDeviceConfiguration.js** souboru v hello **simulatedeviceconfiguration** složky.
+1. Přidejte následující kód toohello hello **SimulateDeviceConfiguration.js** souboru a nahradit hello **{zařízení připojovací řetězec}** zástupný symbol hello zařízení připojovací řetězec jste zkopírovali, kdy jste Vytvořit hello **myDeviceId** identitu zařízení:
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -94,15 +94,15 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která se při
             }
         });
    
-    **Klienta** objekt poskytuje všechny metody požadované pro interakci s dvojčata zařízení ze zařízení. Tento kód inicializuje **klienta** objektu, načte dvojče zařízení pro **myDeviceId**a potom připojí obslužnou rutinu pro aktualizaci na *potřeby vlastnosti*. Obslužná rutina ověřuje, že se požadavku na změnu skutečné konfigurace tak, že porovnáte configIds, pak vyvolá metodu, která spustí tuto změnu konfigurace.
+    Hello **klienta** objekt zpřístupní všechny hello metody požadované toointeract s dvojčata zařízení z hello zařízení. Tento kód inicializuje hello **klienta** objektu, načte hello dvojče zařízení pro **myDeviceId**a potom připojí obslužnou rutinu pro aktualizaci hello na *potřeby vlastnosti*. Obslužná rutina Hello ověřuje, že se požadavku na změnu skutečné konfigurace tak, že porovnáte hello configIds, pak vyvolá metodu, která spustí hello změně konfigurace.
    
-    Všimněte si, že z důvodu zjednodušení tento kód používá výchozí pevně pro počáteční konfiguraci. Skutečné aplikace by pravděpodobně načíst tuto konfiguraci z místního úložiště.
+    Všimněte si, že pro hello zájmu jednoduchost, tento kód používá výchozí pevně pro počáteční konfiguraci hello. Skutečné aplikace by pravděpodobně načíst tuto konfiguraci z místního úložiště.
    
    > [!IMPORTANT]
-   > Události změny požadované vlastnosti jsou vždy vygenerované jednou na připojení zařízení. Ujistěte se, že zkontrolujte, zda je skutečný změnit ve vlastnostech požadované před provedením jakékoli akce.
+   > Události změny požadované vlastnosti jsou vždy vygenerované jednou na připojení zařízení. Zajistěte, aby se skutečné změnu v hodnotě hello toocheck požadovaných vlastností před provedením jakékoli akce.
    > 
    > 
-1. Přidejte následující metody před `client.open()` volání:
+1. Přidejte následující metody před hello hello `client.open()` volání:
    
         var initConfigChange = function(twin) {
             var currentTelemetryConfig = twin.properties.reported.telemetryConfig;
@@ -143,40 +143,40 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která se při
             });
         };
    
-    **InitConfigChange** metoda aktualizuje hlášené vlastnosti v objektu twin místní zařízení žádost o aktualizaci konfigurace a nastaví stav na **čekající**, pak aktualizuje dvojče zařízení na Služba. Po úspěšné aktualizaci dvojče zařízení, simuluje dlouhotrvající proces, který ukončí za běhu **completeConfigChange**. Tato metoda aktualizace místní hlášené vlastnosti nastavení stavu na **úspěch** a odebírání **pendingConfig** objektu. Pak aktualizuje dvojče zařízení ve službě.
+    Hello **initConfigChange** metoda aktualizace hello hlášené vlastnosti objektu twin hello místní zařízení s konfigurací hello aktualizovat požadavku a nastaví stav hello příliš**čekající**, pak aktualizací hello dvojče zařízení ve službě hello. Po úspěšné aktualizaci dvojče zařízení hello, simuluje dlouhotrvající proces, který ukončí v provádění hello **completeConfigChange**. Tato metoda aktualizace hello místní hlášené vlastnosti nastavení stavu hello příliš**úspěch** a odebírání hello **pendingConfig** objektu. Pak aktualizuje hello dvojče zařízení ve službě hello.
    
-    Hlášen uložit šířky pásma, která jsou aktualizovány vlastnosti tak, že zadáte pouze vlastnosti upravovat (s názvem **oprava** ve výše uvedeném kódu), místo nahrazení celý dokument.
+    Hlášen, toosave šířky pásma, jsou aktualizovány vlastnosti zadáním změnit pouze vlastnosti toobe hello (s názvem **oprava** v hello výše kódu), místo nahrazení hello celý dokument.
    
    > [!NOTE]
-   > V tomto kurzu není simulovat žádné chování pro aktualizace souběžných konfigurace. Některé procesy aktualizace konfigurace může být schopna přijmout změny konfigurace cílového aktualizace běží, některé může mít do fronty je a některé může odmítnout s chybový stav. Zajistěte, aby vzít v úvahu požadované chování pro vaše konkrétní konfiguraci a přidejte odpovídající logiku před zahájením změně konfigurace.
+   > V tomto kurzu není simulovat žádné chování pro aktualizace souběžných konfigurace. Některé procesy aktualizace konfigurace může být schopný tooaccommodate změn konfigurace cílového spuštěného hello aktualizace, některé může mít tooqueue je a některé by mohly odmítněte s chybový stav. Ujistěte se, že tooconsider hello požadované chování pro vaše konkrétní konfiguraci a přidejte odpovídající logiku hello před zahájením hello změně konfigurace.
    > 
    > 
-1. Spusťte aplikaci zařízení:
+1. Spuštění aplikace hello zařízení:
    
         node SimulateDeviceConfiguration.js
    
-    Měli byste vidět zprávu `retrieved device twin`. Nechte aplikaci spuštěnou.
+    Měli byste vidět zprávu hello `retrieved device twin`. Zachovat hello aplikace spuštěna.
 
-## <a name="create-the-service-app"></a>Vytvořit aplikaci aplikační služby
-V této části vytvoříte konzolovou aplikaci .NET, která aktualizuje *potřeby vlastnosti* na dvojče zařízení spojené s **myDeviceId** s nový objekt konfigurace telemetrie. Pak dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub a ukazuje rozdíl mezi požadované a oznámená konfigurace zařízení.
+## <a name="create-hello-service-app"></a>Vytvoření aplikace hello service
+V této části vytvoříte konzolovou aplikaci .NET této aktualizace hello *potřeby vlastnosti* na dvojče zařízení hello přidružené **myDeviceId** s nový objekt konfigurace telemetrie. Pak dotazuje dvojčata zařízení hello uložené ve hello IoT hub a ukazuje hello rozdíl mezi hello potřeby a který ohlásil konfigurace hello zařízení.
 
-1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Název projektu **SetDesiredConfigurationAndQuery**.
+1. V sadě Visual Studio, přidejte aktuální řešení Visual C# Windows klasický desktopový projekt toohello pomocí hello **konzolové aplikace** šablona projektu. Název projektu hello **SetDesiredConfigurationAndQuery**.
    
     ![Nový klasický desktopový projekt Visual C# pro systém Windows][img-createapp]
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **SetDesiredConfigurationAndQuery** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
-1. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **microsoft.azure.devices**, vyberte možnost **Instalovat**, nainstalujte balíček  **Microsoft.Azure.Devices** a přijměte podmínky používání. Tímto postupem se stáhne a nainstaluje [balíček NuGet sady SDK pro službu Azure IoT][lnk-nuget-service-sdk] a jeho závislosti a přidá se na něj odkaz.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **SetDesiredConfigurationAndQuery** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
+1. V hello **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **microsoft.azure.devices**, vyberte **nainstalovat** tooinstall Hello **Microsoft.Azure.Devices** balíček a přijměte podmínky použití hello. Tento postup stáhne, nainstaluje a přidá odkaz toohello [sady SDK služby Azure IoT] [ lnk-nuget-service-sdk] NuGet balíček a jeho závislé součásti.
    
     ![Okno Správce balíčků NuGet][img-servicenuget]
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Přidejte následující hello `using` příkazy hello horní části hello **Program.cs** souboru:
    
         using Microsoft.Azure.Devices;
         using System.Threading;
         using Newtonsoft.Json;
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem pro službu IoT Hub, kterou jste vytvořili v předchozí části.
+1. Přidejte následující pole toohello hello **Program** třídy. Nahraďte hodnotu zástupného symbolu hello hello připojovací řetězec služby IoT Hub pro hello rozbočovače, který jste vytvořili v předchozí části hello.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-1. Přidejte následující metodu do třídy **Program**:
+1. Přidejte následující metodu toohello hello **Program** třídy:
    
         static private async Task SetDesiredConfigurationAndQuery()
         {
@@ -217,37 +217,37 @@ V této části vytvoříte konzolovou aplikaci .NET, která aktualizuje *potře
             }
         }
    
-    **Registru** objekt poskytuje všechny metody požadované pro interakci s dvojčata zařízení ze služby. Tento kód inicializuje **registru** objektu, načte dvojče zařízení pro **myDeviceId**a pak aktualizuje jeho požadované vlastnosti nový objekt konfigurace telemetrie.
-    Poté se dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub každých 10 sekund a vytiskne konfigurace požadované a oznámená telemetrie. Odkazovat [IoT Hub dotazovací jazyk] [ lnk-query] se dozvíte, jak chcete generovat sestavy o bohaté na všech zařízeních.
+    Hello **registru** objekt zpřístupní všechny hello metody požadované toointeract s dvojčata zařízení ze služby hello. Tento kód inicializuje hello **registru** objektu, načte hello dvojče zařízení pro **myDeviceId**a pak aktualizuje jeho požadované vlastnosti nový objekt konfigurace telemetrie.
+    Poté vyžádá si dvojčata zařízení hello uložené ve hello IoT hub každých 10 sekund a výtisků hello potřeby a hlášené telemetrie konfigurace. Odkazovat toohello [IoT Hub dotazovací jazyk] [ lnk-query] toolearn jak toogenerate bohaté sestavy na všech zařízeních.
    
    > [!IMPORTANT]
-   > Tato aplikace se dotazuje služby IoT Hub pro ilustraci každých 10 sekund. Použijte dotazy na generování sestavy zobrazující se uživatelům prostřednictvím zařízení a ne ke zjištění změny. Pokud vaše řešení vyžaduje v reálném čase oznámení o události zařízení, použijte [twin oznámení][lnk-twin-notifications].
+   > Tato aplikace se dotazuje služby IoT Hub pro ilustraci každých 10 sekund. Použití dotazuje sestavy zobrazující se uživatelům toogenerate napříč mnoho zařízení a ne toodetect změny. Pokud vaše řešení vyžaduje v reálném čase oznámení o události zařízení, použijte [twin oznámení][lnk-twin-notifications].
    > 
    > 
-1. Nakonec do metody **Main** přidejte následující řádky:
+1. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         SetDesiredConfigurationAndQuery().Wait();
-        Console.WriteLine("Press any key to quit.");
+        Console.WriteLine("Press any key tooquit.");
         Console.ReadLine();
-1. V Průzkumníku řešení otevřete **nastavit projekty po spuštění...**  a zajistěte, aby **akce** pro **SetDesiredConfigurationAndQuery** je projekt **spustit**. Sestavte řešení.
-1. S **SimulateDeviceConfiguration.js** spuštěná, spusťte aplikaci .NET pomocí sady Visual Studio **F5** a měli byste vidět změnu z hlášené konfigurace **úspěch**k **čekající** k **úspěch** znova s novou aktivní poslat frekvenci pět minut místo 24 hodin.
+1. V Průzkumníku řešení hello, otevřete hello **nastavit projekty po spuštění...**  a ujistěte se, zda text hello **akce** pro **SetDesiredConfigurationAndQuery** je projekt **spustit**. Vytvoření řešení hello.
+1. S **SimulateDeviceConfiguration.js** spuštěna, spusťte aplikaci .NET hello pomocí sady Visual Studio **F5** a měli byste vidět hello změnu z hlášené konfigurace **úspěch** příliš**čekající** příliš**úspěch** znova s novou aktivní hello poslat frekvenci pět minut místo 24 hodin.
 
  ![Zařízení byl úspěšně nakonfigurován][img-deviceconfigured]
    
    > [!IMPORTANT]
-   > Není zpoždění až několik minut mezi operaci sestavy zařízení a výsledek dotazu. To je umožnit dotazu infrastruktury pro práci na velmi velký rozsah. Načtení konzistentní zobrazení používají twin jedno zařízení **getDeviceTwin** metoda v **registru** třídy.
+   > Není zpoždění až minutu tooa mezi hello zařízení sestavy operace a výsledek dotazu hello. Toto je tooenable hello dotazu infrastruktury toowork ve velmi velkém rozsahu. tooretrieve konzistentní zobrazení twin jedno zařízení použít hello **getDeviceTwin** metoda v hello **registru** třídy.
    > 
    > 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu nastavíte požadované konfigurace jako *potřeby vlastnosti* z řešení back-end a napsali aplikace na zařízení ke zjištění této změny a simulovat aktualizace vícekrokový proces reporting její stav prostřednictvím hlášení Vlastnosti.
+V tomto kurzu nastavíte požadované konfigurace jako *potřeby vlastnosti* z řešení hello back-end a napsali toodetect aplikace zařízení, která změnit a simulace aktualizace vícekrokový proces reporting její stav prostřednictvím hello hlášené Vlastnosti.
 
-Použijte v následujících zdrojích informací další postup:
+Použití hello následující toolearn prostředky jak pro:
 
-* odesílat telemetrická data ze zařízení pomocí [Začínáme se službou IoT Hub] [ lnk-iothub-getstarted] kurzu
-* naplánovat nebo udělat operace u velkých sad zařízení najdete [plán a všesměrového vysílání úlohy] [ lnk-schedule-jobs] kurzu.
-* kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatele), s [použít přímé metody] [ lnk-methods-tutorial] kurzu.
+* odesílat telemetrická data ze zařízení s hello [Začínáme se službou IoT Hub] [ lnk-iothub-getstarted] kurzu
+* naplánovat nebo provádět operace u velkých sad zařízení najdete v části hello [plán a všesměrového vysílání úlohy] [ lnk-schedule-jobs] kurzu.
+* kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatele), s hello [použít přímé metody] [ lnk-methods-tutorial] kurzu.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-twin-how-to-configure/servicesdknuget.png

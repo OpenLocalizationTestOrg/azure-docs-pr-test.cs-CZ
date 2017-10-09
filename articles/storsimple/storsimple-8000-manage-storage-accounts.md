@@ -1,6 +1,6 @@
 ---
-title: "Spravovat vaše zařízení StorSimple přihlašovací údaje pro řadu zařízení Microsoft Azure StorSimple 8000 | Microsoft Docs"
-description: "Vysvětluje, jak můžete použít stránku konfigurace Správce zařízení StorSimple můžete přidávat, upravovat, odstraňovat nebo otočit zabezpečení klíče pro účet úložiště."
+title: "aaaManage vašeho účtu úložiště, StorSimple přihlašovací údaje pro řadu zařízení Microsoft Azure StorSimple 8000 | Microsoft Docs"
+description: "Vysvětluje, jak můžete použít hello tooadd stránku konfigurace Správce zařízení StorSimple, úpravy, odstranění nebo otáčení hello zabezpečení klíče pro účet úložiště."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 132ee46509b39db4d1b97b0f1077800a253e8da9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použít službu StorSimple Manager zařízení ke správě přihlašovací údaje účtu úložiště
+# <a name="use-hello-storsimple-device-manager-service-toomanage-your-storage-account-credentials"></a>Použít toomanage služby StorSimple Manager zařízení hello přihlašovací údaje účtu úložiště
 
 ## <a name="overview"></a>Přehled
 
-**Konfigurace** část v okně service Manager zařízení StorSimple představuje všechny parametry globální služby, které lze vytvořit ve službě StorSimple Manager zařízení. Tyto parametry lze použít pro všechna zařízení připojená k službu a zahrnují:
+Hello **konfigurace** část v okně service Manager zařízení StorSimple hello představuje všechny parametry hello globální služby, které lze vytvořit v hello služby StorSimple Manager zařízení. Tyto parametry mohou být použité tooall hello zařízení připojené toohello službu a zahrnují:
 
 * Přihlašovací údaje účtu úložiště
 * Šablony šířky pásma 
 * Záznamy řízení přístupu 
 
-Tento kurz vysvětluje, jak přidat, upravit, nebo odstranit přihlašovací údaje pro účet úložiště nebo otočit zabezpečení klíče pro účet úložiště.
+Tento kurz vysvětluje, jak tooadd, upravit, nebo odstranit přihlašovací údaje pro účet úložiště nebo otočit hello zabezpečení klíče pro účet úložiště.
 
  ![Seznam přihlašovacích údajů účtu úložiště](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
-Účty úložiště obsahovat přihlašovací údaje, které zařízení StorSimple se používá pro přístup k účtu úložiště pomocí poskytovatele cloudových služeb. Pro účty úložiště Microsoft Azure jsou tyto přihlašovací údaje, jako je například název účtu a primární přístupový klíč. 
+Účty úložiště obsahovat hello přihlašovací údaje, které hello tooaccess používá zařízení StorSimple vašeho účtu úložiště pomocí poskytovatele cloudových služeb. Pro účty úložiště Microsoft Azure jsou tyto přihlašovací údaje, jako je například název účtu hello a hello primární přístupový klíč. 
 
-Na **přihlašovacích údajů účtu úložiště** okno, všechny účty úložiště, které jsou vytvořené pro fakturace předplatného se zobrazí v tabulkovém formátu, který obsahuje následující informace:
+Na hello **přihlašovacích údajů účtu úložiště** okno, všechny úložiště účty, které jsou vytvořené pro hello fakturace předplatného se zobrazí ve formátu tabulky obsahující hello následující informace:
 
-* **Název** – jedinečný název přiřazen k účtu, pokud byla vytvořena.
-* **Povoleno zabezpečení SSL** – jestli SSL je povolená a komunikace zařízení cloud je přes zabezpečený kanál.
-* **Používá** – počet svazků pomocí účtu úložiště.
+* **Název** – hello účet toohello přiřazen jedinečný název, pokud byla vytvořena.
+* **Povoleno zabezpečení SSL** – jestli hello je povolen protokol SSL a zařízení cloud komunikace přes zabezpečený kanál hello.
+* **Používá** – hello počtu svazků, pomocí účtu úložiště hello.
 
-Nejběžnější úlohy související s účty úložiště, které lze provést jsou:
+Hello nejběžnější úlohy související toostorage účty, které lze provést jsou:
 
 * Přidání účtu úložiště 
 * Upravit účet úložiště 
@@ -53,59 +53,59 @@ Nejběžnější úlohy související s účty úložiště, které lze provést
 
 Existují tři typy účtů úložiště, které lze použít s zařízení StorSimple.
 
-* **Účty úložiště automaticky generovaný** – jak již název naznačuje, tento typ účtu úložiště se automaticky generuje při prvním vytvoření služby. Další informace o tom, jak vytvořit účet úložiště, najdete v části [krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md). 
-* **Účty úložiště v předplatném služby** – Toto jsou účty úložiště Azure, které jsou přidruženy ke stejnému předplatnému jako službu. Další informace o tom, jak tyto úložiště vytvoření účtů, najdete v části [o účtech úložiště Azure](../storage/common/storage-create-storage-account.md). 
-* **Účty úložiště mimo předplatné služby** – Toto jsou účty úložiště Azure, které nejsou přidružené k vaší službě a pravděpodobně existovala předtím, než byla služba vytvořena.
+* **Účty úložiště automaticky generovaný** – jak hello název naznačuje, tento typ účtu úložiště se automaticky generuje při prvním vytvoření služby hello. toolearn Další informace o tom, jak tento účet úložiště je vytvořen, najdete v části [krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md). 
+* **Účty úložiště v předplatném služby hello** – Toto jsou účty hello úložiště Azure, které jsou přidruženy hello stejného předplatného jako u služby hello. toolearn Další informace o vytváření tyto účty úložiště, najdete v části [o účtech úložiště Azure](../storage/common/storage-create-storage-account.md). 
+* **Účty úložiště mimo předplatné služby hello** – jedná se o hello účty úložiště Azure, které nejsou přidruženy služby, a pravděpodobně byl vytvořen před hello služba byla vytvořena.
 
 ## <a name="add-a-storage-account"></a>Přidání účtu úložiště
 
-Můžete přidat účet úložiště tím, že poskytuje jedinečný popisný název a přihlašovací údaje přístup, které jsou propojeny s účet úložiště (s poskytovateli zadané cloudové služby). Máte také možnost povolení režimu zabezpečené sockets layer (SSL) vytvořte zabezpečený kanál pro síťovou komunikaci mezi vaším zařízením a cloudem.
+Můžete přidat účet úložiště poskytuje jedinečný popisný název a přístup k pověření, které jsou propojené toohello účet úložiště (s hello poskytovatele zadané cloudové služby). Máte také možnost hello povolení hello secure Sockets Layer (SSL) layer režimu toocreate zabezpečený kanál pro síťovou komunikaci mezi vaše zařízení a hello cloudu.
 
-Můžete vytvořit více účtů pro daný cloud poskytovatele služeb. Upozorňujeme ale, že po vytvoření účtu úložiště nemůžete změnit poskytovatele cloudové služby.
+Můžete vytvořit více účtů pro daný cloud poskytovatele služeb. Mějte na paměti, ale, že po vytvoření účtu úložiště nemůžete změnit hello poskytovatele cloudové služby.
 
-Během ukládání je účet úložiště, služba se pokouší komunikovat s poskytovatele cloudových služeb. V tuto chvíli se ověřit přihlašovací údaje a řádného materiálu přístupu, kterou jste zadali. Účet úložiště se vytvoří pouze v případě, že je ověřování úspěšné. Pokud se ověřování nezdaří, se zobrazí příslušná chybová zpráva.
+Při uložení hello účet úložiště služby hello pokusí toocommunicate s poskytovatele cloudových služeb. v tuto chvíli bude ověřen Hello přihlašovací údaje a materiálu hello přístupu, kterou jste zadali. Účet úložiště se vytvoří pouze v případě, že hello ověření úspěšné. Pokud hello ověřování selže, se zobrazí příslušná chybová zpráva.
 
-Chcete-li přidat přihlašovací údaje účtu úložiště Azure pomocí následujících postupů:
+Použijte následující postupy přihlašovací údaje účtu úložiště Azure tooadd hello:
 
-* Chcete-li přidat přihlašovací údaje účtu úložiště, který má stejné předplatné jako služba Správce zařízení
-* Chcete-li přidat pověření účtu úložiště Azure, který je mimo předplatné služby Správce zařízení
+* hello tooadd pověření účtu úložiště, který má stejné předplatné jako služba hello Správce zařízení
+* tooadd pověření účtu úložiště Azure, který je mimo předplatné služby hello Správce zařízení
 
 [!INCLUDE [add-a-storage-account-update2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
-#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Chcete-li přidat pověření účtu úložiště Azure mimo předplatné služby StorSimple Manager zařízení
+#### <a name="tooadd-an-azure-storage-account-credential-outside-of-hello-storsimple-device-manager-service-subscription"></a>tooadd pověření účtu úložiště Azure mimo předplatné služby StorSimple Manager zařízení hello
 
-1. Přejděte do služby StorSimple Manager zařízení, vyberte a dvakrát na ni klikněte. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovacích údajů účtu úložiště** v rámci **konfigurace** části. Rutina Vypíše seznam existující pověření účtu úložiště přidružený k službě StorSimple Manager zařízení.
+1. Přejděte tooyour služby StorSimple Manager zařízení, vyberte a dvakrát na ni klikněte. Tím se otevře hello **přehled** okno.
+2. Vyberte **přihlašovacích údajů účtu úložiště** v rámci hello **konfigurace** části. Rutina Vypíše seznam existující pověření účtu úložiště přidružené hello služby StorSimple Manager zařízení.
 3. Klikněte na tlačítko **Přidat**.
-4. V **přidat přihlašovací údaje účtu úložiště** okno, postupujte takto:
+4. V hello **přidat přihlašovací údaje účtu úložiště** okně hello následující:
    
     1. Pro **předplatné**, vyberte **jiných**.
    
-    2. Zadejte název svoje přihlašovací údaje účtu úložiště Azure.
+    2. Zadejte jméno hello svoje přihlašovací údaje účtu úložiště Azure.
    
-    3. V **přístupový klíč účtu úložiště** textové pole, zadejte primární přístupový klíč pro svoje přihlašovací údaje účtu úložiště Azure. Tento klíč, přejděte ke službě Azure Storage vyberte svoje přihlašovací údaje účtu úložiště a klikněte na **spravovat klíče účtu**. Nyní můžete zkopírovat primární přístupový klíč.
+    3. V hello **přístupový klíč účtu úložiště** textového pole zadejte hello primární přístupový klíč pro svoje přihlašovací údaje účtu úložiště Azure. tooget tomto klíče, přejděte toohello služby Azure Storage, vyberte svoje přihlašovací údaje účtu úložiště a klikněte na tlačítko **spravovat klíče účtu**. Nyní můžete zkopírovat hello primární přístupový klíč.
    
-    4. Chcete-li povolit protokol SSL, klikněte na tlačítko **povolit** tlačítko vytvořte zabezpečený kanál pro síťovou komunikaci mezi služby StorSimple Manager zařízení a cloudem. Klikněte **zakázat** tlačítko pouze v případě, že pracujete v privátním cloudu.
+    4. tooenable SSL, klikněte na tlačítko hello **povolit** tlačítko toocreate zabezpečený kanál pro síťovou komunikaci mezi vaší cloudové služby a hello Správce zařízení StorSimple. Klikněte na tlačítko hello **zakázat** tlačítko pouze v případě, že pracujete v privátním cloudu.
    
-    5. Klikněte na tlačítko **Přidat**. Upozornění se zobrazí po přihlašovací údaje účtu úložiště se úspěšně vytvořil.
+    5. Klikněte na tlačítko **Přidat**. Upozornění se zobrazí po hello přihlašovací údaje účtu úložiště se úspěšně vytvořil.
 
-5. Přihlašovací údaje účtu nově vytvořené úložiště se zobrazí v okně služby Správce konfigurace zařízení StorSimple v části **přihlašovacích údajů účtu úložiště**.
+5. nově vytvořený Hello přihlašovací údaje účtu úložiště se zobrazí v okně služby Správce konfigurace zařízení StorSimple hello pod **přihlašovacích údajů účtu úložiště**.
    
 
 
 ## <a name="edit-a-storage-account"></a>Upravit účet úložiště
 
-Můžete upravit účet úložiště, který je používán kontejner svazků. Pokud chcete upravit účet úložiště, který se právě používá, je možné upravit pouze pole přístupový klíč pro účet úložiště. Můžete zadat nový přístupový klíč úložiště a uložte aktualizovaná nastavení.
+Můžete upravit účet úložiště, který je používán kontejner svazků. Pokud chcete upravit účet úložiště, který je aktuálně používán, hello pouze pole k dispozici toomodify je hello přístupový klíč pro účet úložiště hello. Můžete zadat hello nové úložiště přístupový klíč a uložit hello aktualizovat nastavení.
 
-#### <a name="to-edit-a-storage-account"></a>Chcete-li upravit účet úložiště
+#### <a name="tooedit-a-storage-account"></a>tooedit účet úložiště
 
-1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
+1. Přejděte služby StorSimple Manager zařízení tooyour. V hello **konfigurace** klikněte na tlačítko **přihlašovacích údajů účtu úložiště**.
 
     ![Přihlašovací údaje účtu úložiště](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
-2. V **přihlašovacích údajů účtu úložiště** okno ze seznamu přihlašovacích údajů účtu úložiště, vyberte a klikněte na jeden, který chcete upravit. 
+2. V hello **přihlašovacích údajů účtu úložiště** , ze seznamu hello přihlašovacích údajů účtu úložiště, vyberte a klikněte na jednu chcete tooedit hello. 
 
-3. Můžete upravit **povolit šifrování SSL** výběr. Můžete také kliknout na **více...**  a pak vyberte **synchronizace přístupový klíč pro otočit** klíče pro přístup k účtu úložiště. Přejděte na [klíče otočení účtů úložiště](#key-rotation-of-storage-accounts) Další informace o tom, jak provést střídání klíče. Jakmile změníte nastavení, klikněte na tlačítko **Uložit**. 
+3. Můžete upravit hello **povolit šifrování SSL** výběr. Můžete také kliknout na **více...**  a pak vyberte **synchronizace přístup klíče toorotate** klíče pro přístup k účtu úložiště. Přejděte příliš[klíče otočení účtů úložiště](#key-rotation-of-storage-accounts) Další informace o tom, jak tooperform klíče otočení. Po změně nastavení hello kliknutím **Uložit**. 
 
     ![Uložte upravený úložiště pověření](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
 
@@ -113,69 +113,69 @@ Můžete upravit účet úložiště, který je používán kontejner svazků. P
 
     ![Potvrďte změny](./media/storsimple-8000-manage-storage-accounts/editstorageacct4.png)
 
-Nastavení budou aktualizovány a uloženy pro váš účet úložiště. 
+nastavení Hello bude aktualizován a uložit pro váš účet úložiště. 
 
 ## <a name="delete-a-storage-account"></a>Odstranění účtu úložiště
 
 > [!IMPORTANT]
-> Účet úložiště můžete odstranit pouze v případě, že není používán kontejner svazků. Pokud účet úložiště je používán kontejner svazků, nejprve odstranit kontejner svazků a pak odstraňte přidruženého účtu úložiště.
+> Účet úložiště můžete odstranit pouze v případě, že není používán kontejner svazků. Pokud účet úložiště je používán kontejner svazků, nejprve odstranit kontejner svazků hello a pak odstraňte hello přidruženého účtu úložiště.
 
-#### <a name="to-delete-a-storage-account"></a>Chcete odstranit účet úložiště
+#### <a name="toodelete-a-storage-account"></a>toodelete účet úložiště
 
-1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
+1. Přejděte služby StorSimple Manager zařízení tooyour. V hello **konfigurace** klikněte na tlačítko **přihlašovacích údajů účtu úložiště**.
 
-2. V tabulkovém seznam účtů úložiště najeďte myší na účet, který chcete odstranit. Klikněte pravým tlačítkem a vyvolání v místní nabídce klikněte na tlačítko **odstranit**.
+2. V hello tabulkového seznamu účtů úložiště pozastavte ukazatel myši nad hello účet chcete toodelete. Klikněte pravým tlačítkem na tooinvoke hello kontextovou nabídku a klikněte na tlačítko **odstranit**.
 
     ![Odstranit přihlašovací údaje pro účet úložiště](./media/storsimple-8000-manage-storage-accounts/deletestorageacct1.png)
 
-3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** Chcete-li pokračovat v odstraňování. Tabulkové výpis budou aktualizovány tak, aby odrážely změny.
+3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** toocontinue s hello odstranění. tabulkový výčet Hello bude aktualizované tooreflect hello změny.
 
     ![Potvrzení odstranění](./media/storsimple-8000-manage-storage-accounts/deletestorageacct2.png)
 
 ## <a name="key-rotation-of-storage-accounts"></a>Střídání klíče účtů úložiště
 
-Z bezpečnostních důvodů střídání klíčů je často požadavek v datových centrech. Každé předplatné Microsoft Azure může mít jeden nebo více účtů úložiště. Přístup do těchto účtů řídí předplatného a přístupových klíčů pro každý účet úložiště. 
+Z bezpečnostních důvodů střídání klíčů je často požadavek v datových centrech. Každé předplatné Microsoft Azure může mít jeden nebo více účtů úložiště. toothese účty pro přístup k Hello řídí hello předplatné a přístupové klíče pro každý účet úložiště. 
 
-Při vytváření účtu úložiště vygeneruje Microsoft Azure dva 512bitové přístupové klíče k úložišti, které se používají pro ověření při přístupu k účtu úložiště. Máte dva přístupové klíče k úložišti, můžete vygenerovat klíče bez přerušení poskytování vaší služby úložiště nebo přístupu k této službě. Klíč, který se právě používá, je *primární* a zálohování klíč se označuje jako *sekundární* klíč. Jeden z těchto dvou klíčů musí zadat, když zařízení s Microsoft Azure StorSimple přistupuje k poskytovatele cloudových služeb úložiště.
+Při vytváření účtu úložiště vygeneruje Microsoft Azure dva 512bitové přístupové klíče k úložišti používané pro ověřování při přístupu k účtu úložiště hello. Máte dva přístupové klíče k úložišti můžete tooregenerate hello klíče bez přerušení tooyour úložiště služby a služby toothat přístup. Hello klíč, který je aktuálně používán je hello *primární* klíč a hello klíč ze zálohy je hello odkazované tooas *sekundární* klíč. Jeden z těchto dvou klíčů musí zadat, když zařízení s Microsoft Azure StorSimple přistupuje k poskytovatele cloudových služeb úložiště.
 
 ## <a name="what-is-key-rotation"></a>Co je střídání klíčů?
 
-Obvykle se aplikace používají pouze jeden z klíčů přistupovat k datům. Po určité době dobu může mít vaše aplikace přepnout na používání druhý klíč. Poté, co jste přepnuli aplikace k sekundární klíč, můžete vyřadit z provozu první klíč a pak vygenerovat nový klíč. Pomocí dvou klíčů tímto způsobem umožňuje vaší aplikace přístup k datům, aniž by docházelo k výpadkům.
+Obvykle se aplikace použít pouze jednu z hello klíče tooaccess vaše data. Po určité době dobu může mít vaše aplikace přejít toousing hello druhý klíč. Po Přepnuli jste sekundární klíč vaší aplikace toohello, můžete vyřadit z provozu hello první klíč a pak vygenerovat nový klíč. Pomocí dvou klíčů hello tímto způsobem umožňuje vaší aplikace přístup k toohello datům bez by docházelo k výpadkům.
 
-Klíče účtu úložiště jsou vždy uloženy ve službě v šifrovaném formátu. To však mohou obnovit přes službu StorSimple Manager zařízení. Služby mohou získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účtů vytvořených v rámci služby úložiště a také výchozí účty úložiště vygeneruje, když služba service Manager zařízení StorSimple nejprve vytvořit. Služby StorSimple Manager zařízení bude vždy získat tyto klíče z portálu Azure classic a uložit je do šifrované způsobem.
+klíče účtu úložiště Hello byly vždy uloženy ve hello služby v šifrovaném formátu. To však můžete resetovat prostřednictvím hello služby StorSimple Manager zařízení. Hello služby můžete získat hello primární klíč a sekundární klíč pro všechny účty úložiště ve hello stejného předplatného, včetně účtů vytvořených v rámci služby úložiště hello a také účty úložiště výchozí hello generované hello při hello Správce zařízení StorSimple Služba byla nejprve vytvořit. Hello služby StorSimple Manager zařízení bude vždy získat tyto klíče z hello portál Azure classic a uložit je šifrovaný způsobem.
 
 ## <a name="rotation-workflow"></a>Otočení pracovního postupu
 
-Microsoft Azure správce můžete znovu vygenerovat nebo změnit primární nebo sekundární klíč tak, že přímý přístup k účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služby StorSimple Manager zařízení automaticky nezná tuto změnu.
+Správce s Microsoft Azure můžete znovu vygenerovat nebo změnit primární nebo sekundární klíč hello tak, že přímý přístup k účtu úložiště hello (prostřednictvím služby Microsoft Azure Storage hello). Hello služby StorSimple Manager zařízení automaticky nezná tuto změnu.
 
-K informování služby StorSimple Manager zařízení změny, budete potřebovat přístup ke službě StorSimple Manager zařízení přístup k účtu úložiště a potom synchronizovat primární nebo sekundární klíč (podle toho, která byla změněna). Tato služba pak získá nejnovější klíč, zašifruje klíče a odešle zašifrovaný klíč do zařízení.
+tooinform služby StorSimple Manager zařízení hello hello změny, budete potřebovat službu StorSimple Manager zařízení hello tooaccess, přístup k účtu úložiště hello a potom synchronizovat primární nebo sekundární klíč hello (podle toho, který byl změněn). Služba Hello pak získá hello nejnovější klíč, zašifruje hello klíče a odešle hello šifrované klíče toohello zařízení.
 
-#### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service"></a>K synchronizaci klíčů pro účty úložiště ve stejném předplatném jako služba 
-1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
-2. V tabulkovém seznam účtů úložiště, klikněte na ten, který chcete upravit. 
+#### <a name="toosynchronize-keys-for-storage-accounts-in-hello-same-subscription-as-hello-service"></a>hello toosynchronize klíče pro účty úložiště ve stejném předplatném jako služba hello 
+1. Přejděte služby StorSimple Manager zařízení tooyour. V hello **konfigurace** klikněte na tlačítko **přihlašovacích údajů účtu úložiště**.
+2. Z hello tabulkové seznam účtů úložiště, klikněte na tlačítko hello jeden, které chcete toomodify. 
 
     ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey1.png)
 
-3. Klikněte na tlačítko **... Další** a pak vyberte **synchronizace přístupový klíč pro otočit**.   
+3. Klikněte na tlačítko **... Další** a pak vyberte **synchronizace přístup klíče toorotate**.   
 
     ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
-4. Ve službě Správce zařízení StorSimple budete muset aktualizovat klíč, který byl dříve změněn ve službě Microsoft Azure Storage. Pokud primární přístupový klíč byl změněn (znova vygeneroval), vyberte **primární** klíč. Pokud se sekundární klíč byl změněn, vyberte **sekundární** klíč. Klikněte na tlačítko **klíč synchronizace**.
+4. Hello služby StorSimple Manager zařízení je nutné tooupdate hello klíč, který byl dříve změněn v hello služby Microsoft Azure Storage. Pokud byl změněn hello primární přístupový klíč (znova vygeneroval), vyberte **primární** klíč. Pokud byl změněn hello sekundární klíč, vyberte **sekundární** klíč. Klikněte na tlačítko **klíč synchronizace**.
       
       ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
-Po úspěšně sycnhronized klíč, budete upozorněni.
+Po úspěšně sycnhronized hello klíč, budete upozorněni.
 
-#### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>K synchronizaci klíčů pro účty úložiště mimo předplatné služby
-1. Na **služby** klikněte na tlačítko **konfigurace** kartě.
+#### <a name="toosynchronize-keys-for-storage-accounts-outside-of-hello-service-subscription"></a>toosynchronize klíčů pro účty úložiště mimo předplatné služby hello
+1. Na hello **služby** klikněte na tlačítko hello **konfigurace** kartě.
 2. Klikněte na tlačítko **přidat či upravit účty úložiště**.
-3. V dialogovém okně postupujte takto:
+3. V dialogu hello hello následující:
    
-   1. Vyberte účet úložiště s přístupový klíč, který chcete aktualizovat.
-   2. Budete muset aktualizovat přístupový klíč úložiště ve službě StorSimple Manager zařízení. V takovém případě se zobrazí přístupový klíč úložiště. Zadejte nový klíč v **přístupový klíč účtu úložiště** pole. 
+   1. Vyberte hello účet úložiště s hello přístupový klíč, které chcete tooupdate.
+   2. Budete potřebovat tooupdate hello přístupový klíč k úložišti v hello služby StorSimple Manager zařízení. V takovém případě se zobrazí hello úložiště přístupový klíč. Zadejte nový klíč hello v hello **přístupový klíč účtu úložiště** pole. 
    3. Uložte provedené změny. Nyní je třeba aktualizovat přístupový klíč účtu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [zabezpečení zařízení StorSimple](storsimple-8000-security.md).
-* Další informace o [pomocí služby StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Další informace o [pomocí hello tooadminister service Manager zařízení StorSimple zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

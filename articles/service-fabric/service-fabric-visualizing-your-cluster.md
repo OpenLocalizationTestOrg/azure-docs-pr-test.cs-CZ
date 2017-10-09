@@ -1,5 +1,5 @@
 ---
-title: "Vizualizace vašeho clusteru pomocí Service Fabric Explorer | Microsoft Docs"
+title: "aaaVisualizing do clusteru pomocí Service Fabric Explorer | Microsoft Docs"
 description: "Service Fabric Explorer je webový nástroj pro kontrolu a správa cloudových aplikací a uzly v clusteru s podporou Microsoft Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,84 +14,84 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: ryanwi
-ms.openlocfilehash: 789793a7f50170188d688881a9178546c3074018
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 73adc4fc254cf6b949b4419b02a046cee3f6a83d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
-Service Fabric Explorer je webový nástroj pro kontrolu a Správa aplikací a uzly v clusteru služby Azure Service Fabric. Service Fabric Explorer je hostován přímo v rámci clusteru, tak, aby byl vždy k dispozici, bez ohledu na to, kde běží vaše clusteru.
+Service Fabric Explorer je webový nástroj pro kontrolu a Správa aplikací a uzly v clusteru služby Azure Service Fabric. Service Fabric Explorer je hostován přímo v rámci clusteru hello, tak, aby byl vždy k dispozici, bez ohledu na to, kde běží vaše clusteru.
 
 ## <a name="video-tutorial"></a>Videokurz
 
-Informace o použití Service Fabric Explorer najdete v následujícím videu Microsoft Virtual Academy:
+toolearn, jak sledovat toouse Service Fabric Explorer hello následující video Microsoft Virtual Academy:
 
 [<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
-## <a name="connect-to-service-fabric-explorer"></a>Připojení k Service Fabric Exploreru
-Pokud jste postupovali podle pokynů [Příprava vývojového prostředí](service-fabric-get-started.md), Service Fabric Explorer můžete spustit v místním clusteru přechodem na http://localhost: 19080/Explorer.
+## <a name="connect-tooservice-fabric-explorer"></a>Připojit tooService Fabric Exploreru
+Pokud jste postupovali podle pokynů hello příliš[Příprava vývojového prostředí](service-fabric-get-started.md), Service Fabric Explorer můžete spustit v místním clusteru tak, že přejdete toohttp://localhost:19080 / Explorer.
 
-## <a name="understand-the-service-fabric-explorer-layout"></a>Pochopení rozložení Service Fabric Exploreru
-Pomocí stromové struktury nalevo můžete přejít pomocí Service Fabric Exploreru. Řídicí panel clusteru v kořenu stromu, obsahuje přehled clusteru, včetně shrnutí stavu uzlu a aplikace.
+## <a name="understand-hello-service-fabric-explorer-layout"></a>Pochopení hello Service Fabric Explorer rozložení
+Pomocí stromové struktury hello na levé straně hello můžete přejít pomocí Service Fabric Exploreru. V kořenovém hello hello stromu řídicí panel clusteru hello obsahuje přehled clusteru, včetně shrnutí stavu uzlu a aplikace.
 
 ![Řídicí panel clusteru Service Fabric Exploreru][sfx-cluster-dashboard]
 
-### <a name="view-the-clusters-layout"></a>Zobrazit rozložení clusteru
-Uzly v clusteru Service Fabric se umístí napříč dvourozměrná mřížku domén selhání a upgradu domény. Toto umístění zaručuje, že vaše aplikace zachovány k dispozici v případě selhání hardwaru a upgrady aplikací. Můžete zobrazit, jak aktuální cluster rozložená pomocí mapy clusteru.
+### <a name="view-hello-clusters-layout"></a>Zobrazit rozložení hello clusteru
+Uzly v clusteru Service Fabric se umístí napříč dvourozměrná mřížku domén selhání a upgradu domény. Toto umístění zajistí, že vaše aplikace zůstanou dostupné i v hello přítomnost selhání hardwaru a upgrady aplikací. Můžete zobrazit, jak aktuální cluster hello rozložená pomocí hello clusteru mapy.
 
 ![Mapa clusteru Service Fabric Exploreru][sfx-cluster-map]
 
 ### <a name="view-applications-and-services"></a>Zobrazení aplikace a služby
-Cluster obsahuje dva podstromy: jeden pro aplikace a druhý pro uzly.
+Hello cluster obsahuje dva podstromy: jeden pro aplikace a druhý pro uzly.
 
-Zobrazení aplikací můžete procházet logické hierarchie Service Fabric: aplikace, služby, oddíly a repliky.
+Můžete použít toonavigate zobrazení aplikace hello prostřednictvím hierarchie logické Service Fabric: aplikace, služby, oddíly a repliky.
 
-V příkladu níže aplikace **Moje aplikace** se skládá ze dvou služeb **MyStatefulService** a **WebService**. Vzhledem k tomu **MyStatefulService** je stavová, obsahuje oddíl s jeden primární a dva sekundární repliky. Naopak WebSvcService je bezstavové a obsahuje jednu instanci.
+V příkladu hello níže hello aplikace **Moje aplikace** se skládá ze dvou služeb **MyStatefulService** a **WebService**. Vzhledem k tomu **MyStatefulService** je stavová, obsahuje oddíl s jeden primární a dva sekundární repliky. Naopak WebSvcService je bezstavové a obsahuje jednu instanci.
 
 ![Zobrazení aplikace Service Fabric Exploreru][sfx-application-tree]
 
-Na každé úrovni stromu hlavním podokně zobrazí příslušné informace o položce. Například se zobrazí stav a verze pro konkrétní službu.
+Na každé úrovni stromu hello hello hlavním podokně zobrazí příslušné informace o položce hello. Například můžete zobrazit stav hello a verze pro konkrétní službu.
 
 ![Podokno essentials Service Fabric Exploreru][sfx-service-essentials]
 
-### <a name="view-the-clusters-nodes"></a>Zobrazení uzlů clusteru
-Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód. Přesněji řečeno uvidíte, které repliky jsou aktuálně spuštěné existuje.
+### <a name="view-hello-clusters-nodes"></a>Zobrazení uzlů clusteru hello
+zobrazení uzlu Hello zobrazuje fyzické rozložení hello hello clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód. Přesněji řečeno uvidíte, které repliky jsou aktuálně spuštěné existuje.
 
 ## <a name="actions"></a>Akce
-Service Fabric Explorer nabízí rychlý způsob, jak vyvolání akce na uzly, aplikace a služby v rámci clusteru.
+Service Fabric Explorer nabízí rychlý způsob tooinvoke akce na uzly, aplikace a služby v rámci clusteru.
 
-Chcete-li odstranit instanci aplikace, například ze stromu na levé straně zvolte aplikaci a poté zvolte **akce** > **odstranit aplikaci**.
+Například toodelete instance aplikace zvolte aplikace hello ze stromu hello na levé straně hello a potom zvolte **akce** > **odstranit aplikaci**.
 
 ![Odstranění aplikace v Service Fabric Exploreru][sfx-delete-application]
 
 > [!TIP]
-> Kliknutím na tlačítko se třemi tečkami vedle jednotlivých prvků můžete provádět stejné akce.
+> Můžete provést klepnutím na další prvek tooeach hello třemi tečkami hello stejné akce.
 >
 >
 
-Následující tabulka uvádí akce, které jsou dostupné u jednotlivých entit:
+Hello následující tabulka uvádí hello akce dostupné u jednotlivých entit:
 
 | **Entity** | **Akce** | **Popis** |
 | --- | --- | --- |
-| Typ aplikace |Zrušit zřízení typu |Odebere balíček aplikace z úložiště bitových kopií clusteru. Vyžaduje nejdřív odstranit všechny aplikacím daného typu. |
-| Aplikace |Odstranění aplikace |Odstraňte aplikaci, včetně všech jejích služeb a jejich stavu (pokud existuje). |
-| Služba |Odstranění služby |Odstraňte službu a její stav (pokud existuje). |
-| Node |Aktivovat |Aktivujte uzlu. |
-| Node | Deaktivovat (Pozastavit) | Pozastavení uzlu v jejím aktuálním stavu. Služby pokračovat ke spuštění, ale Service Fabric nepřesouvá proaktivně nic na nebo vypněte ho Pokud je třeba, aby se zabránilo nekonzistenci výpadku nebo data. Tato akce se obvykle používá k povolení ladění služeb v konkrétním uzlu zajistit, že není přesunout během kontroly. | |
-| Node | Deaktivovat (restartovat) | Bezpečně přesunete všechny služby v paměti vypnout uzlu a trvalé services zavřete. Obvykle nepoužívá, pokud hostitelské procesy nebo počítač musí restartovat. | |
-| Node | Deaktivovat (odebrat data) | Bezpečně zavřete všechny služby spuštěné na uzlu po sestavení dostatečná k výměně za chodu repliky. Typicky používá při uzlu (nebo aspoň jeho úložiště) jsou mimo Komise trvale přijata. | |
-| Node | Odeberte stav uzlu | Odebrání znalosti repliky uzlu z clusteru. Obvykle používá, když už selhání uzlu se považuje neopravitelné. | |
-| Node | Restartování | Simulace selhání uzlu restartováním uzlu. Další informace [sem](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps) | |
+| Typ aplikace |Zrušit zřízení typu |Odebere balíček aplikace hello z úložiště bitových kopií hello clusteru. Vyžaduje všechny aplikace toobe tento typ nejdřív odstranit. |
+| Aplikace |Odstranění aplikace |Odstraňte hello aplikace, včetně všech jejích služeb a jejich stavu (pokud existuje). |
+| Služba |Odstranění služby |Odstraňte hello service a její stav (pokud existuje). |
+| Node |Aktivovat |Aktivujte hello uzlu. |
+| Node | Deaktivovat (Pozastavit) | Pozastavení hello uzel v jejím aktuálním stavu. Služby pokračovat toorun, ale Service Fabric nepřesouvá proaktivně nic na nebo vypněte ho Pokud je požadovaná tooprevent výpadku nebo data můžou být nekonzistentní. Tato akce je obvykle používanými tooenable ladění služeb na tooensure konkrétním uzlu, který není přesunout během kontroly. | |
+| Node | Deaktivovat (restartovat) | Bezpečně přesunete všechny služby v paměti vypnout uzlu a trvalé services zavřete. Obvykle se používá při hello hostitelské procesy nebo toobe nutné počítač restartovat. | |
+| Node | Deaktivovat (odebrat data) | Bezpečně zavřete všechny služby běží na uzlu hello po sestavení dostatečná k výměně za chodu repliky. Typicky používá při uzlu (nebo aspoň jeho úložiště) jsou mimo Komise trvale přijata. | |
+| Node | Odeberte stav uzlu | Odeberte znalosti repliky uzlu z clusteru hello. Obvykle používá, když už selhání uzlu se považuje neopravitelné. | |
+| Node | Restartování | Simulace selhání uzlu restartováním hello uzlu. Další informace [sem](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps) | |
 
-Vzhledem k tomu, že mnoho akce jsou destruktivní, můžete být vyzváni k potvrzení vašich představ, před dokončením akce.
+Vzhledem k tomu, že mnoho akce jsou destruktivní, můžete být vyzváni tooconfirm vašich představ, před dokončením akce hello.
 
 > [!TIP]
-> Každou akci, která lze provádět pomocí Service Fabric Explorer můžete provést i pomocí prostředí PowerShell nebo rozhraní REST API, jak povolit automatizaci.
+> Každou akci, která lze provádět pomocí Service Fabric Explorer můžete provést i pomocí prostředí PowerShell nebo rozhraní REST API, tooenable automatizace.
 >
 >
 
-Můžete také Service Fabric Explorer pro vytvoření instancí aplikace daný typ a verze aplikace. Vyberte typ aplikace, v zobrazení stromu a pak klikněte na **vytvořit instanci aplikace** odkaz vedle verze byste chtěli v pravém podokně.
+Můžete taky instancí aplikace Service Fabric Explorer toocreate pro daný typ a verze aplikace. Zvolte typ aplikace hello hello stromové zobrazení, a klikněte na hello **vytvořit instanci aplikace** další verze toohello odkaz byste chtěli v pravém podokně hello.
 
 ![Vytvoření instance aplikace v Service Fabric Exploreru][sfx-create-app-instance]
 
@@ -100,20 +100,20 @@ Můžete také Service Fabric Explorer pro vytvoření instancí aplikace daný 
 >
 >
 
-## <a name="connect-to-a-remote-service-fabric-cluster"></a>Připojení ke vzdálené clusteru Service Fabric
-Pokud znáte koncový bod clusteru a že máte dostatečná oprávnění k Service Fabric Explorer máte přístup z libovolného prohlížeče. Je to proto, že je právě jiné službě, která běží v clusteru Service Fabric Exploreru.
+## <a name="connect-tooa-remote-service-fabric-cluster"></a>Připojte tooa vzdálený cluster Service Fabric
+Pokud znáte koncový bod hello clusteru a že máte dostatečná oprávnění k Service Fabric Explorer máte přístup z libovolného prohlížeče. Je to proto Service Fabric Explorer je právě jiné službě, která běží v clusteru hello.
 
-### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>Zjistit koncový bod Service Fabric Explorer pro vzdálený cluster
-K dosažení pro daný cluster Service Fabric Exploreru, přejděte v prohlížeči na:
+### <a name="discover-hello-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>Zjistit koncový bod Service Fabric Explorer hello vzdáleného clusteru
+tooreach Service Fabric Explorer pro daný cluster, přejděte v prohlížeči na:
 
 http://&lt;vašeho clusteru endpoint&gt;: 19080/Explorer
 
-Azure v rámci clusterů úplnou adresu URL je také k dispozici v podokně clusteru essentials na portálu Azure.
+Azure v rámci clusterů hello úplnou adresu URL je také k dispozici v podokně essentials clusteru hello hello portálu Azure.
 
-### <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
-Ke svému clusteru Service Fabric pomocí certifikátů nebo pomocí Azure Active Directory (AAD) můžete řídit přístup klienta.
+### <a name="connect-tooa-secure-cluster"></a>Připojte tooa zabezpečené cluster
+Můžete ovládat klienta přístup tooyour cluster Service Fabric pomocí certifikátů nebo pomocí Azure Active Directory (AAD).
 
-Pokud se pokusíte připojit k Service Fabric Explorer na clusteru s podporou zabezpečení, pak v závislosti na konfiguraci clusteru budete se budete muset certifikát klienta k dispozici nebo se přihlaste pomocí AAD.
+Když zkusíte tooconnect tooService Fabric Explorer na clusteru s podporou zabezpečení, pak v závislosti na konfiguraci clusteru hello máte být toopresent vyžaduje klientský certifikát nebo přihlášení pomocí AAD.
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled testovatelnosti](service-fabric-testability-overview.md)

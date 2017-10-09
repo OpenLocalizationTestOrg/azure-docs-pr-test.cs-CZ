@@ -1,19 +1,19 @@
 
 <!-- A-series, Av2-series, D-series, Dv2-series, DS-series*, DSv2-series* -->
 
-- Virtuální počítače A-series a Av2-series je možné nasadit na celou řadu typů hardwaru a procesorů. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače.
+- Hello A-series a Av2-series virtuálních počítačů můžete nasadit na různé typy hardwaru a procesory. velikost Hello je omezen na hello hardware, výkon toooffer konzistentní procesoru pro hello spuštěna instance, bez ohledu na to hello hardwaru, který je nasazen na základě. toodetermine hello fyzický hardware na kterém je nasazený této velikosti, dotaz hello virtuální hardware z v rámci hello virtuálního počítače.
 
-- Virtuální počítače D-series slouží ke spouštění aplikací, které potřebují vyšší výpočetní výkon a krátkodobý vysoký diskový výkon. Virtuální počítače řady D-series mají rychlejší procesory, vyšší poměr paměti na virtuální procesor a jednotky SSD (solid-state-drive) pro dočasný disk. Podrobnosti najdete v oznámení na blogu Azure: [Nové velikosti virtuálních počítačů D-Series](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
+- Virtuální počítače, D-series jsou navrženou toorun aplikace, které potřebují vyšší výpočetní výkon a výkon dočasné disku. Virtuální počítače D-series zadejte rychlejších procesorů vyšší poměr paměti pro virtuální procesory a na jednotku SSD (SSD) pro dočasným diskovým hello. Podrobnosti najdete v tématu hello oznámení na hello Azure blog [nové velikosti virtuálního počítače D-Series](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
 
-- Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Využívá nejnovější generaci procesorů Intel Xeon® E5-2673 v3 (Haswell) s frekvencí 2,4 GHz, kterou může technologie Intel Turbo Boost 2.0 zvýšit až na 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+- Dv2-series, pokračovací toohello původní D-series, funkce výkonnější procesor. Hello Dv2-series procesoru je asi 35 % rychlejší než hello D-series procesoru. Je založena na hello nejnovější generace 2.4 v3® GHz Intel Xeon E5-2673 procesoru (Haswell) a s hello Intel Turbo nárůst technologie 2.0, můžete přejít do too3.1 GHz. má Hello Dv2-series hello stejné konfigurace paměti a disku jako hello D-series.
 
-- Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť. Informace o velikostech virtuálních počítačů vhodnějších pro produkční aplikace najdete v tématu (Velikosti virtuálních počítačů)[virtual-machines-size-specs.md] a informace o cenách virtuálních počítačů najdete v tématu [Ceny virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/).
+- Hello úroveň basic velikosti jsou především pro vývoj úlohy a dalších aplikací, které nevyžadují zatížení vyrovnávání, automatické škálování nebo náročné na paměť virtuálních počítačů. Informace o velikostech virtuálních počítačů vhodnějších pro produkční aplikace najdete v tématu (Velikosti virtuálních počítačů)[virtual-machines-size-specs.md] a informace o cenách virtuálních počítačů najdete v tématu [Ceny virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="dsv3-series"></a>Dsv3-series
 
 ACU: 160–190
 
-Velikosti Dsv3-series jsou založeny na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell), jejichž frekvence se s technologií Intel Turbo Boost 2.0 může zvýšit až na 3,5 GHz, a používají službu Storage úrovně Premium. Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
+Dsv3-series velikosti jsou založené na hello 2.3 v4® GHz Intel XEON E5-2673 procesoru (Broadwell) a mohou dosáhnout 3.5GHz s Intel Turbo nárůst technologie 2.0 a používat úložiště úrovně premium. Hello Dsv3-series velikosti nabízejí kombinaci virtuální procesory, paměť a dočasné úložiště pro většinu úlohy v produkčním prostředí.
 
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
@@ -28,9 +28,9 @@ Velikosti Dsv3-series jsou založeny na procesorech 2,3 GHz Intel XEON® E5-267
 
 ACU: 160–190
 
-Velikosti Dv3-series jsou založeny na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) a s technologií Intel Turbo Boost 2.0 se jejich frekvence může zvýšit až na 3,5 GHz. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
+Dv3-series velikosti jsou založené na hello 2.3 v4® GHz Intel XEON E5-2673 procesoru (Broadwell) a můžete dosáhnout 3.5GHz s Intel Turbo nárůst technologie 2.0. Hello Dv3-series velikosti nabízejí kombinaci virtuální procesory, paměť a dočasné úložiště pro většinu úlohy v produkčním prostředí.
 
-Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Storage úrovně Premium, použijte velikosti Dsv3. Měřiče cen a účtování pro velikosti Dsv3 jsou stejné jako pro Dv3-series. 
+Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. toouse prémiové disky úložiště, použijte hello Dsv3 velikosti. Hello ceny a fakturace měřidla Dsv3 velikostí hello jsou stejné jako Dv3-series. 
 
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
@@ -129,10 +129,10 @@ ACU: 50–100
 | Standard_A7 |8 |56 |605 |16 |16×500 |4 / 2 000 |
 <br>
 
-* Velikost A0 využívá fyzický hardware na maximum. Pouze pro tuto konkrétní velikost můžou výkon vašich spuštěných úloh ovlivnit jiná zákaznická nasazení. Relativní výkon je popsaný níže jako očekávaný základ, přičemž se dá očekávat variabilita přibližně 15 procent.
+* hello A0 velikost je povolená odebíraných na fyzickém hardwaru hello. Pro jenom tato konkrétní velikost jiné zákaznických nasazení může mít vliv na výkon hello spuštěné úlohy. relativní výkon Hello popsané níže jako základní hello očekávání, předmět tooan přibližnou variabilita 15 procent.
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Velikosti Standard A0–A4 při použití rozhraní příkazového řádku a PowerShellu
-V klasickém modelu nasazení se některé názvy virtuálních počítačů s prostředím příkazového řádku a PowerShellu trochu liší:
+V modelu nasazení classic hello se mírně liší v rozhraní příkazového řádku a prostředí PowerShell některé názvy velikost virtuálního počítače:
 
 * Standard_A0 je ExtraSmall 
 * Standard_A1 je Small

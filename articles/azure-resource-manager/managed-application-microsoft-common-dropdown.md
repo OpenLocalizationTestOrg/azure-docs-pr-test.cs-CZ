@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace rozevírací prvek uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Common.DropDown uživatelského rozhraní pro spravované aplikace Azure"
+title: "element uživatelského rozhraní rozevírací seznam spravovaných aplikací aaaAzure | Microsoft Docs"
+description: "Popisuje hello elementu Microsoft.Common.DropDown uživatelského rozhraní pro spravované aplikace Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: a769e14efbae928b811fa1f1b1c2d4fba3c7692b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c07a48ad66b8e8b7fd8f59561776ecb1fc6224f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Element Microsoft.Common.DropDown uživatelského rozhraní
 Výběr ovládacího prvku s rozevíracím seznamu. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](managed-application-publishing.md).
@@ -50,10 +50,10 @@ Výběr ovládacího prvku s rozevíracím seznamu. Pomocí tohoto prvku při [v
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Popisek pro `constraints.allowedValues` je zobrazený text pro položku, a jeho hodnota může být výstupní hodnotu elementu při výběru.
-- -Li zadána, výchozí hodnota musí být součástí štítek `constraints.allowedValues`. Pokud není zadaný, první položky v `constraints.allowedValues` je vybrána. Výchozí hodnota je **null**.
+- Popisek Hello `constraints.allowedValues` je hello zobrazený text pro položku, a jeho hodnota může být hodnota výstup hello hello elementu při výběru.
+- -Li zadána, hello výchozí hodnota musí být součástí štítek `constraints.allowedValues`. Pokud není zadaný, hello první položky v `constraints.allowedValues` je vybrána. Hello výchozí hodnota je **null**.
 - `constraints.allowedValues`musí obsahovat alespoň jednu položku.
-- Tento element nepodporuje `constraints.required` vlastnost. Emulovat toto chování, přidejte položku s popisek a hodnota `""` (prázdný řetězec) k `constraints.allowedValues`.
+- Tento element nepodporuje hello `constraints.required` vlastnost. tooemulate toto chování přidat položku s popisek a hodnota `""` (prázdný řetězec) příliš`constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json
@@ -61,6 +61,6 @@ Výběr ovládacího prvku s rozevíracím seznamu. Pomocí tohoto prvku při [v
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](managed-application-overview.md).
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Úvod toomanaged aplikace naleznete v [Azure spravovaných aplikací – přehled](managed-application-overview.md).
+* Úvod toocreating uživatelského rozhraní definice naleznete v tématu [Začínáme s CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](managed-application-createuidefinition-elements.md).

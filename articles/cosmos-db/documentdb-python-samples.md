@@ -1,5 +1,5 @@
 ---
-title: "Příklady DocumentDB Python rozhraní API pro Azure Cosmos DB | Microsoft Docs"
+title: "Příklady Python aaaDocumentDB rozhraní API pro Azure Cosmos DB | Microsoft Docs"
 description: "Najít příklady Python pro běžné úlohy v Azure DB Cosmos, včetně operace CRUD na githubu."
 keywords: "Příklady Python"
 services: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2016
 ms.author: moderakh
-ms.openlocfilehash: d1577eeeb8fe8007394431ce70a1c7a6ee61776b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8f240782b0997f2d32b68d310dc6f4ff6cb36d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python příklady
 > [!div class="op_single_selector"]
@@ -30,25 +30,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Ukázka řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) úložiště GitHub. Tento článek obsahuje:
+Ukázka řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí hello [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) úložiště GitHub. Tento článek obsahuje:
 
-* Odkazy na úlohy v jednotlivých souborů projektu příklad Python. 
-* Odkazy na související rozhraní API odkazovat na obsah.
+* Soubory projektu odkazy toohello úlohy v každé hello Python příkladu. 
+* Odkazy toohello související obsah referenční dokumentace rozhraní API.
 
 **Požadavky**
 
-1. Je třeba Azure účet, který chcete použít tyto příklady Python:
-   * Můžete si [otevřít účet Azure zdarma](https://azure.microsoft.com/pricing/free-trial/): Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. Až je vypotřebujete, můžete si účet nechat a dál používat bezplatné služby Azure, například Websites. Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby.
+1. Je třeba tyto příklady Python toouse účet Azure:
+   * Můžete [zdarma otevřít účet Azure](https://azure.microsoft.com/pricing/free-trial/): získáte kredity, můžete použít tootry na placené služby Azure a i po jejich použití až můžete hello účet ponechat a používat bezplatné služby Azure, jako jsou weby. Platební karty nikdy odečte, není-li explicitně změnit nastavení a požádejte toobe účtovat.
      * Můžete [aktivovat výhody předplatitele Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): Visual Studio vaše předplatné vám dává kredity každý měsíc, které můžete použít pro placené služby Azure.
-2. Musíte taky [Python SDK](documentdb-sdk-python.md). 
+2. Musíte taky hello [Python SDK](documentdb-sdk-python.md). 
    
    > [!NOTE]
-   > Každá ukázka je samostatný, nastaví sám a vyčistí po sám sebe. Jako takový ukázky vydat několik volání [document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Pokaždé, když k tomu je vaše předplatné bude účtován na 1 hodinu využití na úroveň výkonu kolekce vytváří. 
+   > Každá ukázka je samostatný, nastaví sám a vyčistí po sám sebe. Jako takový hello ukázky vydat více volání příliš[document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Pokaždé, když k tomu je vaše předplatné bude účtován na 1 hodinu využití za hello úroveň výkonu kolekce hello vytváří. 
    > 
    > 
 
 ## <a name="database-examples"></a>Příklady databáze
-[Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) soubor [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) projektu ukazuje, jak provádět následující úlohy.
+Hello [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) souboru hello [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -59,7 +59,7 @@ Ukázka řešení, která provádět operace CRUD a dalších běžných operac�
 | [Odstranění databáze](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/DatabaseManagement/Program.py#L113-L126) |[document_client. Metodu DeleteDatabase](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html) |
 
 ## <a name="collection-examples"></a>Příklady kolekce
-[Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) soubor [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) projektu ukazuje, jak provádět následující úlohy.
+Hello [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) souboru hello [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |

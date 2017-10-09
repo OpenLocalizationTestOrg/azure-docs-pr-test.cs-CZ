@@ -1,31 +1,31 @@
-## <a name="view-the-telemetry"></a>Zobrazení telemetrie
+## <a name="view-hello-telemetry"></a>Zobrazení telemetrie hello
 
-Pi malin nyní odesílá telemetrii do řešení vzdáleného monitorování. Můžete zobrazit telemetrii na řídicí panel řešení. Na řídicím panelu řešení také mohou zasílat zprávy do vaší malin pí.
+Hello malin platformy je nyní odesílání telemetrie toohello řešení vzdáleného monitorování. Můžete zobrazit telemetrii hello na řídicí panel řešení hello. Můžete také odeslat zprávy tooyour malin pí z řídicí panel řešení hello.
 
-- Přejděte na řídicí panel řešení.
-- Vyberte zařízení v **zařízení do zobrazení** rozevíracího seznamu.
-- Telemetrie z platformy malin zobrazí na řídicím panelu.
+- Přejděte toohello řídicí panel řešení.
+- Vyberte zařízení v hello **zařízení tooView** rozevíracího seznamu.
+- Hello telemetrie z hello malin platformy zobrazí na řídicím panelu hello.
 
-![Zobrazení telemetrie z malin platformy][img-telemetry-display]
+![Zobrazení telemetrie z hello malin platformy][img-telemetry-display]
 
-## <a name="act-on-the-device"></a>Fungovat na zařízení
+## <a name="act-on-hello-device"></a>Fungovat na zařízení hello
 
-Na řídicím panelu řešení můžete volat metody na vaše malin pí. Když pí malin připojí k řešení vzdáleného monitorování, odešle informace o metodách, které podporuje.
+Z řídicího panelu řešení hello můžete volat metody na vaše malin pí. Když hello malin pí připojí toohello řešení vzdáleného monitorování, odešle informace o metodách hello, kterou podporuje.
 
-- Na řídicím panelu řešení, klikněte na tlačítko **zařízení** přejděte **zařízení** stránky. Vyberte vaše Malinová platformy v **seznam zařízení**. Zvolte **metody**:
+- Na řídicím panelu řešení hello, klikněte na tlačítko **zařízení** toovisit hello **zařízení** stránky. Vyberte platformy vaší malin v hello **seznam zařízení**. Zvolte **metody**:
 
     ![Seznam zařízení na řídicím panelu][img-list-devices]
 
-- Na **vyvolání metody** vyberte **LightBlink** v **metoda** rozevíracího seznamu.
+- Na hello **vyvolání metody** vyberte **LightBlink** v hello **metoda** rozevíracího seznamu.
 
-- Zvolte **InvokeMethod**. Indikátor LED připojený k blikání malin pí několikrát. Aplikace na platformy malin odešle na potvrzení zpět na řídicí panel řešení:
+- Zvolte **InvokeMethod**. Hello DIODU připojen toohello, které platformy malin bliká několikrát. aplikace Hello na hello malin pí odešle řídicí panel řešení back toohello potvrzení:
 
     ![Zobrazit historii – metoda][img-method-history]
 
-- Můžete přepnout Indikátor zapnout a vypnout pomocí **ChangeLightStatus** metoda s **LightStatusValue** nastavena na **1** pro na nebo **0** pro vypnout.
+- Můžete přepnout hello DIODU zapnout a vypnout pomocí hello **ChangeLightStatus** metoda s **LightStatusValue** nastavit příliš**1** pro na nebo **0** pro vypnout.
 
 > [!WARNING]
-> Pokud necháte řešení vzdáleného monitorování spuštěné v účtu Azure, se vám účtuje v době spuštění. Další informace o snížení spotřeby průběhu řešení vzdáleného monitorování najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config]. Odstraňte předkonfigurované řešení z účtu Azure, když přestanete používat.
+> Pokud necháte hello vzdálené monitorování řešení, které jsou spuštěné v účtu Azure, se vám účtuje hello, když ji spustí. Další informace o snížení spotřeby při hello vzdálené monitorování spustí řešení najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config]. Po dokončení používat, odstraňte hello předkonfigurované řešení z účtu Azure.
 
 
 [img-telemetry-display]: media/iot-suite-raspberry-pi-kit-view-telemetry/telemetry.png

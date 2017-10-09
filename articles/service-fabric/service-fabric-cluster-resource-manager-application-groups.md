@@ -1,6 +1,6 @@
 ---
-title: "Správce prostředků clusteru služby Fabric - skupin aplikací | Microsoft Docs"
-description: "Přehled funkcí skupiny aplikací na portálu Service Fabric clusteru Resource Manager"
+title: "aaaService správce prostředků infrastruktury Cluster - skupin aplikací | Microsoft Docs"
+description: "Přehled hello funkce skupiny aplikací v hello správce prostředků clusteru Service Fabric"
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7fc61731c8df2a0c3dc5b77ae718b41c240f9233
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b4f068862d962b53a0b3ea813b89bb13ee395681
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
-Správce prostředků clusteru Service Fabric obvykle spravuje prostředky clusteru tak, že se zatížení (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v rámci clusteru. Service Fabric spravuje kapacitu uzly v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacity pracovní velká pro řadu úloh, ale vzorů, které hodně využívají různé instance aplikace Service Fabric někdy předány další požadavky. Například můžete chtít:
+# <a name="introduction-tooapplication-groups"></a>Úvod tooApplication skupiny
+Správce prostředků clusteru Service Fabric obvykle spravuje prostředky clusteru tak, že se zatížení hello (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v rámci clusteru hello. Service Fabric spravuje kapacitu hello hello uzlů v clusteru hello a hello clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacity pracovní velká pro řadu úloh, ale vzorů, které hodně využívají různé instance aplikace Service Fabric někdy předány další požadavky. Například můžete chtít:
 
-- Záložní některé kapacita v uzlech v clusteru pro služby v rámci některé instance s názvem aplikace
-- Omezit celkový počet uzlů, které služby v rámci instance s názvem aplikace běží na (namísto šíří je po celý cluster)
-- Definování kapacity v samotné omezit počet služeb nebo spotřeby celkový počet prostředků služeb je uvnitř instanci s názvem aplikace
+- Záložní některé kapacita hello uzlů v clusteru hello hello služeb v rámci některé instance s názvem aplikace
+- Omezit hello celkový počet uzlů, které hello služeb v rámci instance s názvem aplikace běží na (namísto šíří je po celý cluster hello)
+- Definovat kapacity na samotnou instanci s názvem aplikace hello toolimit hello počet služeb nebo celková spotřeba prostředků hello služeb je uvnitř
 
-Pro splnění těchto požadavků, správce prostředků clusteru Service Fabric podporuje funkci skupiny aplikací.
+toomeet tyto požadavky hello správce prostředků clusteru Service Fabric podporuje funkci skupiny aplikací.
 
-## <a name="limiting-the-maximum-number-of-nodes"></a>Omezení maximální počet uzlů
-Nejjednodušší případ použití kapacity aplikace je při instanci aplikace musí být omezeno na určité maximální počet uzlů. Tím dojde ke konsolidaci všechny služby v rámci této instance aplikace na se stanoveným počtem počítačů. Konsolidace je užitečné, když se pokoušíte předpovědi nebo cap využití fyzických prostředků prostřednictvím služeb v rámci dané aplikace s názvem instance. 
+## <a name="limiting-hello-maximum-number-of-nodes"></a>Omezení hello maximální počet uzlů
+Hello nejjednodušší případ použití kapacity aplikace je když instance aplikace potřebuje toobe omezené tooa určité maximální počet uzlů. Tím dojde ke konsolidaci všechny služby v rámci této instance aplikace na se stanoveným počtem počítačů. Konsolidace je užitečné, když se snažíte toopredict nebo cap využití fyzických prostředků hello služby v rámci dané aplikace s názvem instance. 
 
-Následující obrázek znázorňuje instance aplikace s i bez maximální počet uzlů, které jsou definované:
+Hello následující obrázek ukazuje instanci aplikace a bez maximální počet uzlů, které jsou definované:
 
 <center>
 ![Instance aplikace definování maximální počet uzlů][Image1]
 </center>
 
-V levém příkladu aplikace nemá maximální počet uzlů, které jsou definované a má tři služby. Správce prostředků clusteru má na všech replik rozloženy šesti dostupných uzlů k dosažení nejlepší vyrovnávání v clusteru (výchozí nastavení). V pravém příkladu vidíte stejnou aplikaci omezena na tři uzly.
+V levém příkladu hello hello aplikace nemá maximální počet uzlů, které jsou definované a má tři služby. Hello správce prostředků clusteru má na všech replik rozloženy šesti dostupných uzlů tooachieve hello vyvážit v clusteru hello (hello výchozí chování). V pravém příkladu hello vidíme hello stejnou aplikaci omezený počet uzlů toothree.
 
-Parametr, který určuje toto chování se nazývá MaximumNodes. Tento parametr můžete nastavit při vytváření aplikace, nebo aktualizovat pro instanci aplikace, která je již spuštěna.
+Hello parametr, který určuje toto chování se nazývá MaximumNodes. Tento parametr můžete nastavit při vytváření aplikace, nebo aktualizovat pro instanci aplikace, která je již spuštěna.
 
 PowerShell
 
@@ -65,15 +65,15 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 
 ```
 
-V rámci sada uzlů správce prostředků clusteru není zárukou toho, jaké objekty služby získat umístit společně nebo získat uzlů, které používá.
+V rámci hello sada uzlů hello správce prostředků clusteru není zárukou toho, jaké objekty služby získat umístit společně nebo získat uzlů, které používá.
 
 ## <a name="application-metrics-load-and-capacity"></a>Aplikace metriky zatížení a kapacity
-Skupiny aplikací, které umožňují definovat metriky, které jsou přidružené k dané aplikaci s názvem instance a tuto instanci aplikace kapacity pro tyto metriky. Metriky aplikace vám umožňují sledovat, rezervace a omezit spotřeby prostředků služeb v této instanci aplikace.
+Skupiny aplikací také umožní toodefine metriky přidružené k dané aplikaci s názvem instance a tuto instanci aplikace kapacity pro tyto metriky. Metriky aplikace povolí tootrack rezervy a omezování spotřeby prostředků hello hello služeb v této instanci aplikace.
 
 Pro jednotlivé aplikace metriky existují dvě hodnoty, které lze nastavit:
 
-- **Celková kapacita aplikace** – toto nastavení představuje celkovou kapacitu aplikace pro konkrétní metriky. Správce prostředků clusteru zakáže vytváření všech nových služeb v rámci této instance aplikace, které by způsobily celkové zatížení překročí tuto hodnotu. Řekněme například, instance aplikace měla kapacitou 10 a již obsahuje pět zatížení. Vytvoření služby se zatížením celkový výchozí 10 by povoleny.
-- **Maximální kapacita uzlu** – toto nastavení určuje maximální celkové zatížení pro danou aplikaci na jednom uzlu. Pokud zatížení prochází přes tuto kapacitu, správce prostředků clusteru přesune repliky do dalších uzlů, tak, aby snížení zatížení.
+- **Celková kapacita aplikace** – toto nastavení představuje celkové kapacity hello hello aplikace pro konkrétní metriky. Hello správce prostředků clusteru zakáže hello vytváření všech nových služeb v rámci této instance aplikace, které by způsobily celkové zatížení tooexceed tuto hodnotu. Řekněme například, instanci aplikace hello měl kapacitou 10 a již obsahuje pět zatížení. Vytvoření Hello služby se zatížením celkový výchozí 10 by povoleny.
+- **Maximální kapacita uzlu** – toto nastavení určuje maximální celkové zatížení hello hello aplikace v jednom uzlu. Pokud zatížení prochází přes tuto kapacitu, hello správce prostředků clusteru přesune uzly tooother repliky tak, aby snížení technologie hello zatížení.
 
 
 Prostředí PowerShell:
@@ -99,19 +99,19 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
 ## <a name="reserving-capacity"></a>Rezervaci kapacity
-Jiné běžně používá pro skupiny aplikací, které je potřeba zajistit, že prostředky v rámci clusteru jsou vyhrazené pro instanci dané aplikaci. Místo je vyhrazená vždy při vytvoření instance aplikace.
+Jiné běžně používá pro skupin aplikací je tooensure že hello prostředků v rámci clusteru jsou vyhrazené pro instanci dané aplikaci. místo Hello je vyhrazena vždy při vytvoření instance aplikace hello.
 
-Pro aplikace, se stane okamžitě vyhrazením místa v clusteru i v případě:
-- instance aplikace je vytvořena, ale nemá žádné služby, v něm ještě
-- počet služeb v rámci instance aplikace na změní pokaždé, když 
-- služby existuje, ale nejsou využívání prostředků 
+Pro aplikace hello se stane okamžitě vyhrazením místa v clusteru hello i v případě:
+- instance aplikace Hello je vytvořen, ale nemá žádné služby, v něm ještě
+- pokaždé, když se změní Hello počet služeb v rámci instance aplikace hello 
+- Hello služby existuje, ale nejsou spotřebovávat hello prostředků 
 
 Rezervování prostředků pro instanci aplikace vyžaduje zadání další dva parametry: *MinimumNodes* a *NodeReservationCapacity*
 
-- **MinimumNodes** -Určuje minimální počet uzlů, které by neměl být spuštěný instanci aplikace.  
-- **NodeReservationCapacity** – toto nastavení je za Metrika pro aplikaci. Hodnota je velikost této metrika vyhrazené pro aplikace v každém uzlu kde, spouštění služeb v této aplikaci.
+- **MinimumNodes** -definuje hello minimální počet uzlů, které aplikace hello by neměl být spuštěný instance.  
+- **NodeReservationCapacity** – toto nastavení je za Metrika pro aplikaci hello. Hodnota Hello je hello množství tuto metriku vyhrazené pro aplikace hello v každém uzlu, kde to hello služby v této aplikaci spusťte.
 
-Kombinování **MinimumNodes** a **NodeReservationCapacity** zaručuje rezervace minimální zatížení pro danou aplikaci v rámci clusteru. Pokud existuje méně zbývající kapacity v clusteru než celkový rezervace vyžaduje, vytvoření aplikace se nezdaří. 
+Kombinování **MinimumNodes** a **NodeReservationCapacity** zaručuje rezervace minimální zatížení pro hello aplikací v rámci clusteru hello. Pokud je menší zbývající kapacity hello clusteru než hello celkový rezervace je povinná, vytvoření aplikace hello nezdaří. 
 
 Podívejme se na příklad rezervaci kapacity:
 
@@ -119,11 +119,11 @@ Podívejme se na příklad rezervaci kapacity:
 ![Instance aplikace definování rezervované kapacity][Image2]
 </center>
 
-V levém příkladu aplikace nemají žádné aplikace kapacity definované. Správce prostředků clusteru vyrovnává všechno podle běžných pravidel.
+V levém příkladu hello aplikace nemají žádné aplikace kapacity definované. Hello správce prostředků clusteru vyrovnává všechno podle toonormal pravidla.
 
-V příkladu na pravé straně Řekněme, že Application1 byl vytvořen s následujícími nastaveními:
+V příkladu hello na pravém hello Řekněme, že Application1 byl vytvořen s hello následující nastavení:
 
-- MinimumNodes nastavena na dvě
+- MinimumNodes nastavit tootwo
 - Metrika definovaná pomocí aplikace
   - NodeReservationCapacity 20
 
@@ -151,10 +151,10 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-Service Fabric rezervuje kapacitu na dva uzly pro Application1 a neumožňuje služby z Application2 využívat tuto kapacitu, i když nejsou že žádné zatížení spotřebovává služby uvnitř Application1 v době. Tato vyhrazená aplikace kapacita považuje za spotřebované a započítává zbývající kapacity v tomto uzlu a v rámci clusteru.  Rezervace bude odečtena z zbývající kapacity clusteru okamžitě, ale odečtením vyhrazené spotřeby z kapacity konkrétním uzlu jenom v případě, že je alespoň jedna služba objekt je umístěn na něm. Tento novější rezervace umožňuje flexibilitu a lepší využití prostředků vzhledem k tomu, že prostředky jsou vyhrazeny pouze na uzlech v případě potřeby.
+Service Fabric rezervuje kapacitu na dva uzly pro Application1 a neumožňuje služby od Application2 tooconsume tuto kapacitu i v případě, že nejsou že žádné zatížení je spotřebovávanou službami hello uvnitř Application1 během hello. Tato vyhrazená aplikace kapacita považuje za spotřebované a započítává hello zbývající kapacity v tomto uzlu a v rámci clusteru hello.  Hello rezervace je odečtena od hello zbývající kapacita clusteru okamžitě, ale hello vyhrazené spotřeba je odečtena od hello kapacitu konkrétním uzlu jenom v případě, že je alespoň jedna služba objekt je umístěn na něm. Tento novější rezervace umožňuje flexibilitu a lepší využití prostředků vzhledem k tomu, že prostředky jsou vyhrazeny pouze na uzlech v případě potřeby.
 
-## <a name="obtaining-the-application-load-information"></a>Získávání informací o zatížení aplikace
-Pro každou aplikaci, která má kapacitu aplikace definovaná pro jeden nebo více metriky, které můžete získat informace o agregační zatížení hlášené repliky jeho služby.
+## <a name="obtaining-hello-application-load-information"></a>Získávání informací o zatížení aplikace hello
+Pro každou aplikaci, která má kapacitu aplikace definovaná pro jeden nebo více metriky můžete získat hello informace o hello agregační zatížení hlášené repliky jeho služby.
 
 Prostředí PowerShell:
 
@@ -175,22 +175,22 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 }
 ```
 
-ApplicationLoad dotaz vrátí základní informace o kapacitě aplikace, která byla zadaná pro aplikaci. Tyto informace zahrnují informace, které uzly minimální a maximální počet uzlů a číslo, který je aktuálně zabírá aplikace. Zahrnuje taky informace o jednotlivých metrika zatížení aplikací, včetně:
+Hello ApplicationLoad dotaz vrátí hello základní informace o kapacitě aplikace, která byla zadaná pro aplikaci hello. Tyto informace zahrnují informace o hello uzly minimální a maximální počet uzlů a hello číslo, které je aktuálně zabírá aplikace hello. Zahrnuje taky informace o jednotlivých metrika zatížení aplikací, včetně:
 
-* Název metriky: Název metriky.
-* Rezervaci kapacity: Kapacity clusteru, která je vyhrazena v clusteru pro tuto aplikaci.
+* Název metriky: Název metriky hello.
+* Rezervaci kapacity: Clusteru rezervace kapacity v hello clusteru pro tuto aplikaci.
 * Zatížení aplikací: Celkový počet zatížení replik podřízené této aplikace.
 * Aplikace kapacity: Maximální povolená hodnota zatížení aplikace.
 
 ## <a name="removing-application-capacity"></a>Odebrání aplikace kapacity
-Jakmile aplikace kapacity parametry jsou nastavené pro aplikace, budou se dá odebrat pomocí rozhraní API pro aktualizaci aplikace nebo rutiny Powershellu. Například:
+Jakmile hello kapacity aplikace parametry jsou nastavené pro aplikace, budou se dá odebrat pomocí rozhraní API pro aktualizaci aplikace nebo rutiny Powershellu. Například:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
 
 ```
 
-Tento příkaz odebere z instance aplikace na všechny aplikace kapacity správy parametry. To zahrnuje MinimumNodes, MaximumNodes a metriky aplikace, pokud existuje. Efekt příkazu se okamžitě. Po dokončení tohoto příkazu, správce prostředků clusteru použije výchozí chování pro správu aplikací. Parametry kapacity aplikace mohou být zadané znovu prostřednictvím `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
+Tento příkaz odebere všechny parametry kapacity správy aplikací z instance aplikace hello. To zahrnuje MinimumNodes, MaximumNodes a metriky aplikace hello, pokud existuje. účinek Hello hello příkazu se okamžitě. Po dokončení tohoto příkazu hello správce prostředků clusteru používá hello výchozí chování pro správu aplikací. Parametry kapacity aplikace mohou být zadané znovu prostřednictvím `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
 
 ### <a name="restrictions-on-application-capacity"></a>Omezení kapacity aplikace
 Existuje několik omezení kapacity aplikace parametry, které je nutné dodržovat. Pokud nejsou chyby ověření žádné změny proběhnout.
@@ -198,21 +198,21 @@ Existuje několik omezení kapacity aplikace parametry, které je nutné dodržo
 - Všechny parametry celé číslo musí být nezáporné číslo.
 - MinimumNodes, nikdy musí být větší než MaximumNodes.
 - Pokud jsou definovány kapacity pro metrika zatížení, musí se postupujte tato pravidla:
-  - Uzel rezervaci kapacity nesmí být větší než maximální kapacita uzlu. Nelze například omezení kapacity pro metriku "Procesoru" v uzlu a dvě jednotky a akci tak, aby vyhradil tři jednotky na každém uzlu.
-  - Pokud je zadán MaximumNodes, nesmí být větší než celková kapacita aplikace produktu MaximumNodes a maximální kapacita uzlu. Předpokládejme například že maximální kapacita uzlu pro metrika zatížení, "Procesor" je nastavena na 8. Také se stát, že nastavíte maximální počet uzlů na 10. V takovém případě celková kapacita aplikace musí být větší než 80 pro tato metrika zatížení.
+  - Uzel rezervaci kapacity nesmí být větší než maximální kapacita uzlu. Například nelze omezit hello kapacity pro metriku hello "Procesoru" v hello uzlu tootwo jednotky a akci tooreserve tři jednotky na každém uzlu.
+  - Pokud MaximumNodes není zadaný, nesmí být větší než celková kapacita aplikace hello produktu MaximumNodes a maximální kapacita uzlu. Předpokládejme například že hello maximální kapacita uzlu pro metrika zatížení, "Procesor" je nastavena tooeight. Také se stát, že nastavíte hello too10 maximální počet uzlů. V takovém případě celková kapacita aplikace musí být větší než 80 pro tato metrika zatížení.
 
-Omezení se vynucují, jak při vytváření aplikací a aktualizací.
+jak při vytváření aplikací a aktualizací, vynutí se omezení Hello.
 
-## <a name="how-not-to-use-application-capacity"></a>Jak nepoužívat kapacity aplikace
-- Nepokoušejte se použít funkce skupiny aplikací k omezení aplikace _konkrétní_ dílčí sadu uzlů. Jinými slovy, můžete určit, že je aplikace spuštěná na nejvíce pět uzlů, ale není konkrétní pět uzlů, které v clusteru. Chovaly aplikaci ke konkrétní uzly lze dosáhnout pomocí omezení umístění pro služby.
-- Nepokoušejte se použít aplikaci kapacitu k zajištění, že dvě služby z stejná aplikace budou umístěny v stejným uzlům. Místo toho použít [spřažení](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) nebo [omezení umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+## <a name="how-not-toouse-application-capacity"></a>Jak toouse kapacity aplikace
+- Nepokoušejte toouse hello skupiny aplikací funkce tooconstrain hello aplikace tooa _konkrétní_ dílčí sadu uzlů. Jinými slovy, můžete zadat, že aplikace hello funguje na nejvíce pět uzlů, ale není konkrétní pět uzlů, které v clusteru hello. Chovaly aplikaci toospecific uzly lze dosáhnout pomocí omezení umístění pro služby.
+- Nepokoušejte tooensure kapacity aplikace hello toouse, že dvě služby z hello stejná aplikace se umístí na hello stejným uzlům. Místo toho použít [spřažení](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) nebo [omezení umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
-- Chcete-li zjistit, o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
-- Začít od začátku a [získejte Úvod do Service Fabric clusteru správce prostředků](service-fabric-cluster-resource-manager-introduction.md)
+- toofind si o tom, jak hello správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru hello, podívejte se na článek hello na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
+- Začít od začátku hello a [získat Úvod toohello správce prostředků clusteru Service Fabric](service-fabric-cluster-resource-manager-introduction.md)
 - Další informace o fungování metriky obecně, přečtěte si [metriky zatížení Service Fabric](service-fabric-cluster-resource-manager-metrics.md)
-- Správce prostředků clusteru má mnoho možností pro popis clusteru. Další informace o nich, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
+- Hello správce prostředků clusteru má mnoho možností pro popisující hello clusteru. toofind Další informace o jejich, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

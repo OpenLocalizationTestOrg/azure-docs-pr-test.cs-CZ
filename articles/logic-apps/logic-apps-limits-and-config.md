@@ -1,6 +1,6 @@
 ---
-title: "Omezení aplikace logiky a konfigurace | Microsoft Docs"
-description: "Přehled limity služby a hodnoty konfigurace, které jsou k dispozici pro Logic Apps."
+title: "aaaLogic aplikace omezení a konfigurace | Microsoft Docs"
+description: "Přehled hello limity služby a hodnoty konfigurace, které jsou k dispozici pro Logic Apps."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: da23bd9fe71a0c41bc236b55bc9f56e123a9d77a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 739509afe5c9a7b7e946ba3571951264127e5297
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logic-app-limits-and-configuration"></a>Omezení a konfigurace aplikací logiky
 
-Toto je informace o aktuální omezení a podrobnosti o konfiguraci pro Azure Logic Apps.
+Toto je informace o aktuální omezení hello a podrobnosti o konfiguraci pro Azure Logic Apps.
 
 ## <a name="limits"></a>Omezení
 
@@ -47,22 +47,22 @@ Toto jsou omezení pro jednoho volání požadavků a konektor protokolu HTTP.
 
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
-|Opakované pokusy|10| Výchozí hodnota je 4. Můžete nakonfigurovat [opakujte parametr zásad](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Maximální zpoždění při opakování|1 hodina|Můžete nakonfigurovat [opakujte parametr zásad](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Minimální zpoždění při opakování|5 s|Můžete nakonfigurovat [opakujte parametr zásad](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Opakované pokusy|10| Výchozí hodnota je 4. Můžete nakonfigurovat s hello [opakujte parametr zásad](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Maximální zpoždění při opakování|1 hodina|Můžete nakonfigurovat s hello [opakujte parametr zásad](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Minimální zpoždění při opakování|5 s|Můžete nakonfigurovat s hello [opakujte parametr zásad](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
 
 ### <a name="run-duration-and-retention"></a>Doba trvání spuštění a jejich uchovávání
 
-Toto jsou omezení u jednoho logiku aplikace spustit.
+Následují hello omezení u jednoho logiku aplikace spustit.
 
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
 |Doba trvání spuštění|90 dnů||
-|Uchování úložiště|90 dnů|Od doby běhu start|
+|Uchování úložiště|90 dnů|Od hello počáteční čas spuštění|
 |Interval opakování min.|1 sekundu|| 15 sekund pro logic apps se plán služby App Service
 |Maximální interval opakování|500 dnů||
 
-Pokud byste měli být delší než doba trvání spuštění nebo omezení uchování úložiště v normálním zpracování toku [kontaktujte nás](mailto://logicappsemail@microsoft.com) tak, aby bylo možné pomoci vašim požadavkům.
+Pokud očekáváte, že doba trvání nebo úložiště omezení uchování spustit v normálním zpracování toku tooexceed [kontaktujte nás](mailto://logicappsemail@microsoft.com) tak, aby bylo možné pomoci vašim požadavkům.
 
 
 ### <a name="looping-and-debatching-limits"></a>Ve smyčce a debatching omezení
@@ -71,10 +71,10 @@ Toto jsou omezení pro aplikace logiky jeden spustit.
 
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
-|Foreach – položky|100,000|Můžete použít [dotaz akce](../connectors/connectors-native-query.md) vyfiltrujete větší pole, podle potřeby|
+|Foreach – položky|100,000|Můžete použít hello [dotaz akce](../connectors/connectors-native-query.md) toofilter větší pole podle potřeby|
 |Dokud iterací|5,000||
 |SplitOn položky|100,000||
-|ForEach paralelismus|50| Výchozí hodnota je 20. Můžete nastavit na sekvenční foreach přidáním `"operationOptions": "Sequential"` k `foreach` akce nebo konkrétní úroveň pomocí paralelismus`runtimeConfiguration`|
+|ForEach paralelismus|50| Výchozí hodnota je 20. Sekvenční foreach tooa můžete nastavit tak, že přidáte `"operationOptions": "Sequential"` toohello `foreach` akce nebo konkrétní úroveň pomocí paralelismus`runtimeConfiguration`|
 
 
 ### <a name="throughput-limits"></a>Omezení propustnosti
@@ -84,12 +84,12 @@ Toto jsou omezení pro instanci jednoho logiku aplikace.
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
 |Akce spuštěních za 5 minut |100,000|Můžete rozdělit zatížení mezi více aplikacemi podle potřeby|
-|Souběžných volání odchozí akce |~2,500|Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby|
-|Modul runtime koncový bod souběžných příchozí volání |~1,000|Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby|
+|Souběžných volání odchozí akce |~2,500|Snižte počet souběžných požadavků nebo snižte dobu trvání hello podle potřeby|
+|Modul runtime koncový bod souběžných příchozí volání |~1,000|Snižte počet souběžných požadavků nebo snižte dobu trvání hello podle potřeby|
 |Modul runtime koncový bod čtení volání za 5 minut |60,000|Můžete rozdělit zatížení mezi více aplikacemi podle potřeby|
 |Koncový bod runtime vyvolat volání za 5 minut |45,000|Můžete rozdělit zatížení mezi více aplikacemi podle potřeby|
 
-Pokud budete chtít překročí toto omezení v normálním zpracování nebo chcete spustit testování zatížení, které může být delší než tento limit pro určitou dobu, [kontaktujte nás](mailto://logicappsemail@microsoft.com) tak, aby bylo možné pomoci vašim požadavkům.
+Pokud očekáváte tooexceed tento limit v normálním zpracování nebo chcete toorun zátěžové testování, který může být delší než tento limit pro určitou dobu, [kontaktujte nás](mailto://logicappsemail@microsoft.com) tak, aby bylo možné pomoci vašim požadavkům.
 
 ### <a name="definition-limits"></a>Definice omezení
 
@@ -97,8 +97,8 @@ Toto jsou omezení pro definici aplikace logiky jeden.
 
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
-|Akce za pracovního postupu|500|Vnořené pracovní postupy a rozšířit tento limit, podle potřeby můžete přidat|
-|Povolené akce hloubky vnoření|8|Vnořené pracovní postupy a rozšířit tento limit, podle potřeby můžete přidat|
+|Akce za pracovního postupu|500|Vnořené pracovní postupy tooextend můžete přidat tento limit, podle potřeby|
+|Povolené akce hloubky vnoření|8|Vnořené pracovní postupy tooextend můžete přidat tento limit, podle potřeby|
 |Pracovní postupy na oblast na předplatné|1000||
 |Aktivační události za pracovního postupu|10||
 |Přepínač oboru případech limit|25||
@@ -112,26 +112,26 @@ Toto jsou omezení pro definici aplikace logiky jeden.
 
 ### <a name="integration-account-limits"></a>Limity účtu integrace
 
-Toto jsou omezení pro artefakty přidány do integrace účtu
+Toto jsou omezení pro artefakty přidat toointegration účtu
 
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
-|Schéma|8 MB|Můžete použít [identifikátor URI objektu blob](logic-apps-enterprise-integration-schemas.md) odeslat soubory větší než 2 MB |
+|Schéma|8 MB|Můžete použít [identifikátor URI objektu blob](logic-apps-enterprise-integration-schemas.md) tooupload soubory větší než 2 MB |
 |Mapu (soubor XSLT)|2 MB| |
 |Modul runtime koncový bod čtení volání za 5 minut |60,000|Můžete rozdělit zatížení mezi více účtů podle potřeby|
 |Koncový bod runtime vyvolat volání za 5 minut |45,000|Můžete rozdělit zatížení mezi více účtů podle potřeby|
 |Koncový bod runtime sledování volání za 5 minut |45,000|Můžete rozdělit zatížení mezi více účtů podle potřeby|
-|Koncový bod runtime blokování souběžných volání |~1,000|Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby|
+|Koncový bod runtime blokování souběžných volání |~1,000|Snižte počet souběžných požadavků nebo snižte dobu trvání hello podle potřeby|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Velikost zprávy protokoly B2B (AS2, X12, EDIFACT)
 
-Toto jsou limity pro protokoly B2B
+Následují hello limity pro protokoly B2B
 
 |Name (Název)|Omezení|Poznámky|
 |----|----|----|
-|AS2|50 MB|Použít kódování a dekódování|
-|X12|50 MB|Použít kódování a dekódování|
-|EDIFACT|50 MB|Použít kódování a dekódování|
+|AS2|50 MB|Použít toodecode a kódování|
+|X12|50 MB|Použít toodecode a kódování|
+|EDIFACT|50 MB|Použít toodecode a kódování|
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -139,7 +139,7 @@ Toto jsou limity pro protokoly B2B
 
 #### <a name="logic-app-service"></a>Služba Logic App Service
 
-Volání z aplikace logiky přímo (který je prostřednictvím [HTTP](../connectors/connectors-native-http.md) nebo [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) nebo jiné požadavky HTTP, které pocházejí z zadaná IP adresa v následujícím seznamu:
+Volání z aplikace logiky přímo (tedy prostřednictvím [HTTP](../connectors/connectors-native-http.md) nebo [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) nebo jiné požadavky HTTP pocházet z hello IP adresu určenou v hello následující seznamu:
 
 |Oblasti aplikace logiky|Odchozí IP|
 |-----|----|
@@ -168,7 +168,7 @@ Volání z aplikace logiky přímo (který je prostřednictvím [HTTP](../connec
 
 #### <a name="connectors"></a>Konektory
 
-Volání z [konektor](../connectors/apis-list.md) pocházet z zadaná IP adresa v následujícím seznamu:
+Volání z [konektor](../connectors/apis-list.md) pocházet z hello IP adresu určenou v hello následující seznamu:
 
 |Oblasti aplikace logiky|Odchozí IP|
 |-----|----|
@@ -198,7 +198,7 @@ Volání z [konektor](../connectors/apis-list.md) pocházet z zadaná IP adresa 
 
 ## <a name="next-steps"></a>Další kroky  
 
-- Chcete-li začít s Logic Apps, postupujte [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md) kurzu.  
+- tooget začít s Logic Apps, postupujte podle hello [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md) kurzu.  
 - [Zobrazení běžných příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md).
 - [S Logic Apps můžete automatizovat firemní procesy](http://channel9.msdn.com/Events/Build/2016/T694). 
-- [Zjistěte, jak integrovat své systémy s Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462).
+- [Zjistěte, jak tooIntegrate vaše systémy s Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)

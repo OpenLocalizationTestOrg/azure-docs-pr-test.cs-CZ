@@ -1,10 +1,10 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-exit-maintenance-mode"></a>Chcete-li ukončit režim údržby
-1. Na příkazovém řádku zadejte:
+#### <a name="tooexit-maintenance-mode"></a>tooexit režimu údržby
+1. Hello příkazového řádku zadejte:
    
      `Exit-HcsMaintenanceMode`
-2. Zobrazí se zpráva s upozorněním a potvrzovací zpráva. Typ **Y** pro ukončení režimu údržby.
+2. Zobrazí se zpráva s upozorněním a potvrzovací zpráva. Typ **Y** tooexit režimu údržby.
    
-    Oba řadiče se restartuje. Po dokončení restartování se zobrazí další zpráva označující, že zařízení je v normálním režimu.
+    Oba řadiče se restartuje. Po dokončení restartování hello se zobrazí další zprávu oznamující, že toto zařízení hello je v normálním režimu.
 

@@ -1,24 +1,24 @@
 ### <a name="record-names"></a>Názvy záznamů
 
-V Azure DNS se záznamy zadávají pomocí relativních názvů. „Plně kvalifikovaný“ *název* domény (FQDN) obsahuje název zóny, zatímco „relativní“ název ho *neobsahuje.* Například relativní název záznamu „www“ v zóně „contoso.com“ dává plně kvalifikovaný název záznamu www.contoso.com.
+V Azure DNS se záznamy zadávají pomocí relativních názvů. A *plně kvalifikovaný* název domény (FQDN) obsahuje hello název zóny, zatímco *relativní* název ho neobsahuje. Například hello relativní název záznamu "www" v zóně hello "contoso.com" dává hello záznam plně kvalifikovaný název "www.contoso.com".
 
-Záznam**** „vrcholu“ je záznam DNS v kořeni (nebo „vrcholu“) zóny DNS. Například v zóně DNS nazvané „contoso.com“ má název vrcholu také plně kvalifikovaný název „contoso.com“ (někdy se označuje jako *základní* doména).  Podle konvence se k vyjádření záznamů vrcholu používá relativní název '@'.
+*Vrcholu* záznam je záznam DNS na kořenové hello (nebo *vrcholu*) zóny DNS. Například v zóně DNS hello "contoso.com", vytvoří se záznam vrcholu má také plně kvalifikovaný název "contoso.com" hello (to se někdy nazývá *holé* domény).  Podle konvence hello relativní název ' @' je použité toorepresent vrcholu záznamy.
 
 ### <a name="record-types"></a>Typy záznamů
 
-Každý záznam DNS má název a typ. Záznamy jsou uspořádány do různých typů podle dat, která obsahují. Nejběžnějším typem je záznam „A“, který mapuje název na adresu IPv4. Dalším běžným typem záznamu je „MX“, který mapuje název na poštovní server.
+Každý záznam DNS má název a typ. Záznamy jsou uspořádány do různých typů podle toohello data, která obsahují. Hello nejběžnějším typem je záznam "A", ve který mapuje název tooan adresu IPv4. Jiné obecným typem je záznam "MX", který mapuje název tooa poštovní server.
 
 Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV a TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Sady záznamů
 
-Někdy můžete potřebovat vytvořit víc než jeden záznam DNS s daným názvem a typem. Předpokládejme například, že web „www.contoso.com“ je hostovaný na dvou různých IP adresách. Tento web vyžaduje dva různé záznamy A, jeden pro každou IP adresu. Tady je příklad sady záznamů:
+Někdy musíte toocreate více než jeden záznam DNS s daným názvem a typem. Předpokládejme například, že webovou stránku hello "www.contoso.com" je hostovaný na dvou různých IP adres. Hello web vyžaduje dva různé záznamy A, jeden pro každou IP adresu. Tady je příklad sady záznamů:
 
     www.contoso.com.        3600    IN    A    134.170.185.46
     www.contoso.com.        3600    IN    A    134.170.188.221
 
-Azure DNS spravuje všechny záznamy DNS pomocí *sady záznamů*. Sada záznamů (známá také jako sada *záznamů* „prostředků“) je kolekce záznamů DNS v zóně, které mají stejný název a jsou stejného typu. Většina sad záznamů obsahuje jediný záznam. Příklady jako ten výše, kde sada záznamů obsahuje více než jeden záznam, však nejsou výjimkou.
+Azure DNS spravuje všechny záznamy DNS pomocí *sady záznamů*. Sady záznamů (také označované jako *prostředků* sady záznamů) hello kolekce záznamů DNS v zóně, které mají stejný název a jsou hello hello stejného typu. Většina sad záznamů obsahuje jediný záznam. Ale příklady jako hello jeden výše, ve kterém sada záznamů obsahuje více než jeden záznam, nejsou.
 
-Předpokládejme třeba, že už jste vytvořili záznam A „www“ v zóně „contoso.com“, který odkazuje na IP adresu 134.170.185.46 (první záznam výše).  Když budete chtít vytvořit druhý záznam, bude potřeba tento záznam přidat do existující sady záznamů, ne vytvořit další sadu záznamů.
+Například předpokládejme, že jste již vytvořili záznam "www" v hello zóně "contoso.com", odkazující toohello IP adres "134.170.185.46, (hello první záznam výše).  toocreate hello druhý záznam, který byste přidali, zaznamenejte stávajícího záznamu toohello nastavit, nikoli vytvořit další sady záznamů.
 
-Výjimkou jsou typy záznamů SOA a CNAME. Standardy DNS nedovolují pro tyto typy více záznamů se stejným názvem, proto tyto sady záznamů můžou obsahovat jenom po jednom záznamu.
+Hello SOA a typy záznamů CNAME jsou výjimkami. standardech DNS Hello nepovolují více záznamů s hello stejný název pro tyto typy, proto může obsahovat tyto sady záznamů pouze jeden záznam.

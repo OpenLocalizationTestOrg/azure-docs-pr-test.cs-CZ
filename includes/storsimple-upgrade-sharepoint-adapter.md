@@ -1,33 +1,33 @@
 <!--author=SharS last changed: 9/17/15-->
 
-### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Upgradovat SharePoint 2010 pro službu SharePoint 2013 a potom nainstalovat adaptér StorSomple pro službu SharePoint
+### <a name="upgrade-sharepoint-2010-toosharepoint-2013-and-then-install-hello-storsomple-adapter-for-sharepoint"></a>Upgradovat SharePoint 2010 tooSharePoint 2013 a potom nainstalovat hello StorSomple adaptéru pro službu SharePoint
 > [!IMPORTANT]
-> Všechny soubory, které byly dříve přesunuty do externího úložiště prostřednictvím RBS nebudete mít k dispozici, dokud je dokončen upgrade a je RBS funkce znovu povolena. Pokud chcete omezit dopad uživatele, proveďte všechny upgrade nebo přeinstalaci během plánované údržby.
+> Všechny soubory, které byly dříve přesunout úložiště tooexternal prostřednictvím RBS nebudou k dispozici, dokud neskončí hello upgradu a hello RBS funkce je znovu povolena. uživatel toolimit vliv, proveďte všechny upgrade nebo přeinstalaci během plánované údržby.
 > 
 > 
 
-#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>K upgradu služby SharePoint 2010 na SharePoint 2013 a potom nainstalujte adaptér
-1. Ve farmě služby SharePoint 2010 Všimněte si, cesta k úložišti objektů BLOB pro externalized objekty BLOB a databáze obsahu, pro které je RBS povolená. 
-2. Nainstalujte a nakonfigurujte nové farmy serverů Sharepointu 2013. 
-3. Přesun databáze, aplikace a kolekce webů z farmy SharePoint 2010 do nové farmy serverů Sharepointu 2013. Pokyny, přejděte na [přehled procesu upgradu na SharePoint 2013](https://technet.microsoft.com/library/cc262483.aspx).
-4. Instalace adaptéru StorSimple pro SharePoint v nové farmě. Přejděte na [instalovat adaptér StorSimple pro službu SharePoint](#install-the-storsimple-adapter-for-sharepoint) postupy.
-5. Pomocí informací, které jste si poznamenali v kroku 1, povolte RBS pro stejnou sadu databází obsahu a zadat stejnou cestu úložiště objektů BLOB, která byla použita při instalaci serveru SharePoint 2010. Přejděte na [konfigurace RBS](#configure-rbs) postupy. Po dokončení tohoto kroku, dříve externalized soubory musí být přístupný z nové farmy. 
+#### <a name="tooupgrade-sharepoint-2010-toosharepoint-2013-and-then-install-hello-adapter"></a>tooSharePoint tooupgrade SharePoint 2010, 2013 a potom nainstalujte adaptér hello
+1. Ve farmě služby SharePoint 2010 hello Poznámka hello BLOB Uložit cestu pro hello externalized objekty BLOB a hello databáze obsahu, pro které je RBS povolená. 
+2. Nainstalujte a nakonfigurujte hello nové farmy serverů Sharepointu 2013. 
+3. Přesun databáze, aplikace a kolekce webů z hello SharePoint 2010 farmy toohello nové farmy serverů Sharepointu 2013. Pokyny najdete příliš[přehled procesu upgradu tooSharePoint hello 2013](https://technet.microsoft.com/library/cc262483.aspx).
+4. Nainstalujte hello adaptér StorSimple pro SharePoint v nové farmě hello. Přejděte příliš[hello instalaci adaptéru StorSimple pro službu SharePoint](#install-the-storsimple-adapter-for-sharepoint) postupy.
+5. Pomocí informací o hello, kterou jste si poznamenali v kroku 1, povolte RBS hello stejná sada databází obsahu a zadejte hello stejný objekt BLOB Uložit cestu, která byla použita při instalaci hello SharePoint 2010. Přejděte příliš[konfigurace RBS](#configure-rbs) postupy. Po dokončení tohoto kroku, musí být přístupný z nové farmy hello dříve externalized soubory. 
 
-### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>Upgrade adaptéru StorSimple pro službu SharePoint
+### <a name="upgrade-hello-storsimple-adapter-for-sharepoint"></a>Upgrade hello adaptér StorSimple pro službu SharePoint
 > [!IMPORTANT]
-> Měli byste naplánovat tento upgrade proběhnout během plánované údržby z následujících důvodů:
+> Měli byste naplánovat tento upgrade toooccur během plánované údržby pro hello následujících důvodů:
 > 
-> * Externalized obsah dříve nebudete mít k dispozici, dokud bude znovu nainstalován adaptér.
-> * Veškerý obsah, nahrán do lokality po odinstalaci předchozí verze adaptéru StorSimple pro službu SharePoint, ale před instalací nové verze, bude uložen v databázi obsahu. Potřebujete přesunout obsah do zařízení StorSimple, po instalaci nový adaptér. Můžete použít Microsoft` RBS Migrate()` rutiny prostředí PowerShell, které jsou součástí služby SharePoint k přenosu obsahu. Další informace najdete v tématu [migraci obsahu do nebo z RBS](https://technet.microsoft.com/library/ff628255.aspx). 
+> * Externalized obsah dříve nebudete mít k dispozici, dokud bude znovu nainstalován adaptér hello.
+> * Žádný obsah nahrát toohello lokality po odinstalaci hello předchozí verzi hello adaptér StorSimple pro službu SharePoint, ale před instalací nové verze hello, budou uloženy v databázi obsahu hello. Budete potřebovat toomove zařízení StorSimple obsahu toohello po instalaci hello nový adaptér. Můžete použít hello Microsoft` RBS Migrate()` rutiny prostředí PowerShell, které jsou součástí obsahu hello toomigrate služby SharePoint. Další informace najdete v tématu [migraci obsahu do nebo z RBS](https://technet.microsoft.com/library/ff628255.aspx). 
 > 
 > 
 
-#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>Upgrade adaptéru StorSimple pro službu SharePoint
-1. Odinstalujte předchozí verzi zařízení StorSimple adaptéru pro službu SharePoint.
+#### <a name="tooupgrade-hello-storsimple-adapter-for-sharepoint"></a>tooupgrade hello adaptér StorSimple pro službu SharePoint
+1. Odinstalujte předchozí verze hello StorSimple adaptéru pro službu SharePoint.
    
    > [!NOTE]
-   > Tato akce automaticky zakáže RBS v databázích obsahu. Existující objekty BLOB, ale bude zůstanou v zařízení StorSimple. Protože je zakázán RBS a objekty BLOB nebyly migrována zpět do databáze obsahu, všechny požadavky pro tyto objekty BLOB se nezdaří. 
+   > Tato akce automaticky zakáže RBS v databázích obsahu hello. Existující objekty BLOB se však zůstane na zařízení StorSimple hello. Protože je zakázané RBS a objekty BLOB hello nebyly migrované back toohello databáze obsahu, všechny požadavky pro tyto objekty BLOB se nezdaří. 
    > 
    > 
-2. Nainstalujte nový adaptér StorSimple pro službu SharePoint. Nový adaptér databáze obsahu, které byly dříve povolit nebo zakázat pro RBS automaticky rozpozná a použije předchozí nastavení.
+2. Instalace hello nový adaptér StorSimple pro službu SharePoint. nový adaptér Hello hello databáze obsahu, které byly dříve povolit nebo zakázat pro RBS automaticky rozpozná a použije hello předchozí nastavení.
 

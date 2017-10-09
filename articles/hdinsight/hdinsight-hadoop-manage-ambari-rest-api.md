@@ -1,6 +1,6 @@
 ---
-title: "Sledování a správě Hadoop pomocí Ambari REST API – Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Ambari ke sledování a správě clusterů systému Hadoop v prostředí Azure HDInsight. V tomto dokumentu se dozvíte, jak pomocí Ambari REST API, která je součástí clusterů HDInsight."
+title: "aaaMonitor a spravovat Hadoop pomocí Ambari REST API – Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toouse Ambari toomonitor a správě clusterů systému Hadoop v prostředí Azure HDInsight. V tomto dokumentu se dozvíte, jak toouse hello Ambari REST API, která je součástí HDInsight clustery."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,51 +16,51 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 7960d83bce22d4f671d61e9aaf55561bc24308f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1866a77c8e402231bccbcfba7174253aca41339b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Správa clusterů HDInsight pomocí Ambari REST API
+# <a name="manage-hdinsight-clusters-by-using-hello-ambari-rest-api"></a>Správa clusterů HDInsight pomocí Ambari REST API hello
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Naučte se používat rozhraní Ambari REST API pro správu a sledování clusterů systému Hadoop v prostředí Azure HDInsight.
+Zjistěte, jak toouse hello toomanage Ambari REST API a monitorování clusterů systému Hadoop v prostředí Azure HDInsight.
 
-Apache Ambari zjednodušuje správu a sledování clusteru Hadoop tím, že poskytuje snadno použít webového uživatelského rozhraní a rozhraní REST API. Ambari je obsažena v clusterech HDInsight, které používají operační systém Linux. Ambari slouží ke sledování clusteru a udělat změny konfigurace.
+Apache Ambari zjednodušuje hello Správa a sledování clusteru Hadoop tím, že poskytuje snadno toouse webového uživatelského rozhraní a REST API. Ambari je obsažena v clusterech HDInsight, které používají operační systém Linux hello. Můžete použít Ambari toomonitor hello clusteru a udělat změny konfigurace.
 
 ## <a id="whatis"></a>Co je Ambari
 
-[Apache Ambari](http://ambari.apache.org) poskytuje webové uživatelské rozhraní, které lze použít ke zřízení, správě a sledování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací pomocí [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](http://ambari.apache.org) poskytuje webové uživatelské rozhraní, které může být použité tooprovision, správu a sledování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací s použitím hello [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Ambari je dostupné ve výchozím nastavení s clustery HDInsight se systémem Linux.
 
-## <a name="how-to-use-the-ambari-rest-api"></a>Jak používat Ambari REST API
+## <a name="how-toouse-hello-ambari-rest-api"></a>Jak toouse hello Ambari REST API
 
 > [!IMPORTANT]
-> Informace a příklady v tomto dokumentu vyžadují clusteru služby HDInsight, který používá operační systém Linux. Další informace najdete v tématu [Začínáme s HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+> Hello informace a příklady v tomto dokumentu vyžadují clusteru služby HDInsight, který používá operační systém Linux. Další informace najdete v tématu [Začínáme s HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
-Příklady v tomto dokumentu jsou uvedeny pro prostředí Bourne (bash) a prostředí PowerShell. Bash, který se příklady byly testovány s GNU bash 4.3.11, ale by měly spolupracovat s další součásti pro Unix. Příklady prostředí PowerShell byly testovány s PowerShell 5.0, ale by měla fungovat s prostředí PowerShell 3.0 nebo vyšší.
+Hello příklady v tomto dokumentu jsou uvedené pro prostředí Bourne hello (bash) a prostředí PowerShell. Hello bash, který se příklady byly testovány s GNU bash 4.3.11, ale by měly spolupracovat s další součásti pro Unix. Příklady prostředí PowerShell Hello byly testovány s PowerShell 5.0, ale by měla fungovat s prostředí PowerShell 3.0 nebo vyšší.
 
-Pokud se používá __Bourne prostředí__ (Bash), musíte mít nainstalované tyto položky:
+Pokud používáte hello __Bourne prostředí__ (Bash), musíte mít nainstalované tyto položky hello:
 
-* [cURL](http://curl.haxx.se/): cURL je nástroj, který slouží k práci s rozhraními API REST z příkazového řádku. V tomto dokumentu se používá ke komunikaci s Ambari REST API.
+* [cURL](http://curl.haxx.se/): cURL je nástroj, který lze použít toowork pomocí rozhraní REST API z příkazového řádku hello. V tomto dokumentu je použité toocommunicate s hello Ambari REST API.
 
-Jestli používáte Bash nebo prostředí PowerShell, musí také mít [jq](https://stedolan.github.io/jq/) nainstalována. Jq je nástroj pro práci s dokumenty JSON. Používá se v **všechny** příklady Bash a **jeden** příklady prostředí PowerShell.
+Jestli používáte Bash nebo prostředí PowerShell, musí také mít [jq](https://stedolan.github.io/jq/) nainstalována. Jq je nástroj pro práci s dokumenty JSON. Používá se v **všechny** hello příklady Bash a **jeden** hello příklady prostředí PowerShell.
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Základní identifikátor URI pro Ambari Rest API
 
-Základní identifikátor URI pro Ambari REST API v HDInsight je https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, kde **CLUSTERNAME** je název clusteru.
+Hello základní identifikátor URI pro hello Ambari REST API v HDInsight je https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, kde **CLUSTERNAME** je hello názvem vašeho clusteru.
 
 > [!IMPORTANT]
-> Sice velká a malá písmena název clusteru v části název (FQDN) plně kvalifikované domény identifikátor URI (CLUSTERNAME.azurehdinsight.net), jsou ostatní události v identifikátoru URI malá a velká písmena. Například pokud je název clusteru `MyCluster`, platné identifikátory URI jsou následující:
+> Při plně kvalifikovaný název clusteru hello v hello domény (FQDN) je součástí názvu hello identifikátor URI (CLUSTERNAME.azurehdinsight.net) nerozlišuje, jsou ostatní události v hello URI malá a velká písmena. Například pokud je název clusteru `MyCluster`, jsou platné identifikátory URI hello následující:
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/MyCluster`
 >
 > `https://MyCluster.azurehdinsight.net/api/v1/clusters/MyCluster`
 > 
-> Následující identifikátory URI vrátí chybovou zprávu, protože název druhého výskytu není správnou velikost.
+> Hello následující identifikátory URI vrátí chybovou zprávu, protože není hello hello druhého výskytu textu hello název opravte případu.
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster`
 >
@@ -68,22 +68,22 @@ Základní identifikátor URI pro Ambari REST API v HDInsight je https://CLUSTER
 
 ### <a name="authentication"></a>Authentication
 
-Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Použijte název účtu správce (výchozí hodnota je **správce**) a heslo, které jste zadali při vytváření clusteru.
+Připojení tooAmbari v HDInsight vyžaduje protokol HTTPS. Název účtu správce hello použít (výchozí hodnota hello je **správce**) a heslo, které jste zadali při vytváření clusteru.
 
 ## <a name="examples-authentication-and-parsing-json"></a>Příklady: Ověřování a analýza JSON
 
-Následující příklady ukazují, jak vytvořit požadavek GET na základní Ambari REST API:
+Hello následující příklady ukazují, jak toomake požadavek GET hello základní Ambari REST API:
 
 ```bash
 curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
 ```
 
 > [!IMPORTANT]
-> Příklady Bash v tomto dokumentu provést následující předpoklady:
+> Hello Bash příklady v tomto dokumentu provést hello následující předpoklady:
 >
-> * Výchozí hodnota je přihlašovací jméno pro cluster `admin`.
-> * `$PASSWORD`obsahuje heslo pro přihlášení příkaz HDInsight. Tuto hodnotu můžete nastavit pomocí `PASSWORD='mypassword'`.
-> * `$CLUSTERNAME`obsahuje název clusteru. Tuto hodnotu můžete nastavit pomocí`set CLUSTERNAME='clustername'`
+> * hello výchozí hodnota je Hello přihlašovací jméno pro hello cluster `admin`.
+> * `$PASSWORD`obsahuje hello heslo pro hello příkaz přihlášení HDInsight. Tuto hodnotu můžete nastavit pomocí `PASSWORD='mypassword'`.
+> * `$CLUSTERNAME`obsahuje název hello hello clusteru. Tuto hodnotu můžete nastavit pomocí`set CLUSTERNAME='clustername'`
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
@@ -92,12 +92,12 @@ $resp.Content
 ```
 
 > [!IMPORTANT]
-> Příklady prostředí PowerShell v tomto dokumentu provést následující předpoklady:
+> Příklady prostředí PowerShell Hello v tomto dokumentu provést hello následující předpoklady:
 >
-> * `$creds`je objekt přihlašovacích údajů, který obsahuje přihlašovací jméno správce a heslo pro cluster. Tuto hodnotu můžete nastavit pomocí `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` a poskytování pověření při zobrazení výzvy.
-> * `$clusterName`je řetězec, který obsahuje název clusteru. Tuto hodnotu můžete nastavit pomocí `$clusterName="clustername"`.
+> * `$creds`je objekt přihlašovacích údajů, který obsahuje hello správce přihlašovací jméno a heslo pro hello cluster. Tuto hodnotu můžete nastavit pomocí `$creds = Get-Credential -UserName "admin" -Message "Enter hello HDInsight login"` a poskytnout pověření hello po zobrazení výzvy.
+> * `$clusterName`je řetězec, který obsahuje název hello hello clusteru. Tuto hodnotu můžete nastavit pomocí `$clusterName="clustername"`.
 
-Oba příklady vrátit dokument JSON, který začíná informace podobně jako v následujícím příkladu:
+Oba příklady vrátit dokument JSON, který začíná informace podobné toohello následující ukázka:
 
 ```json
 {
@@ -121,14 +121,14 @@ Oba příklady vrátit dokument JSON, který začíná informace podobně jako v
 
 ### <a name="parsing-json-data"></a>Analýza dat JSON
 
-Následující příklad používá `jq` analyzovat odpověď dokumentu JSON a zobrazuje pouze `health_report` informace z výsledků.
+Hello následující příklad používá `jq` tooparse hello dokumentu JSON odpovědi a zobrazit pouze hello `health_report` informace z výsledků hello.
 
 ```bash
 curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
 | jq '.Clusters.health_report'
 ```
 
-Prostředí PowerShell 3.0 a vyšší poskytuje `ConvertFrom-Json` rutiny, která převádí dokumentu JSON na objekt, který je snazší s ním pracovat z prostředí PowerShell. Následující příklad používá `ConvertFrom-Json` lze zobrazit pouze `health_report` informace z výsledků.
+Prostředí PowerShell 3.0 a vyšší poskytuje hello `ConvertFrom-Json` rutiny, která převádí hello dokumentu JSON na objekt, který je snazší toowork s z prostředí PowerShell. Hello následující příklad používá `ConvertFrom-Json` toodisplay pouze hello `health_report` informace z výsledků hello.
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
@@ -138,13 +138,13 @@ $respObj.Clusters.health_report
 ```
 
 > [!NOTE]
-> Při většina příklady v tomto dokumentu `ConvertFrom-Json` zobrazíte elementy z dokumentu odpovědi [Ambari aktualizace konfigurace](#example-update-ambari-configuration) příklad používá jq. Jq se používá v tomto příkladu můžete vytvořit novou šablonu z dokumentu JSON odpovědi.
+> Při většina příklady v tomto dokumentu `ConvertFrom-Json` toodisplay elementy z dokumentu odpovědi hello hello [Ambari aktualizace konfigurace](#example-update-ambari-configuration) příklad používá jq. Jq se používá v této tooconstruct příklad novou šablonu z dokumentu odpovědi JSON hello.
 
-Úplný přehled rozhraní REST API, najdete v části [Ambari API odkaz V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Úplný referenční hello REST API, najdete v části [Ambari API odkaz V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-## <a name="example-get-the-fqdn-of-cluster-nodes"></a>Příklad: Získat plně kvalifikovaný název domény uzlů clusteru
+## <a name="example-get-hello-fqdn-of-cluster-nodes"></a>Příklad: Získání hello plně kvalifikovaný název domény uzlů clusteru
 
-Při práci s HDInsight, musíte znát název plně kvalifikované domény (FQDN) uzlu clusteru. Můžete snadno získat plně kvalifikovaný název domény pro různé uzly v clusteru pomocí následující příklady:
+Při práci s HDInsight, může být nutné tooknow hello plně kvalifikovaný název domény (FQDN) uzlu clusteru. Můžete snadno načíst hello plně kvalifikovaný název domény pro hello různé uzly v clusteru hello pomocí hello následující příklady:
 
 * **Všechny uzly**
 
@@ -202,14 +202,14 @@ Při práci s HDInsight, musíte znát název plně kvalifikované domény (FQDN
     $respObj.host_components.HostRoles.host_name
     ```
 
-## <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Příklad: Získáte interní IP adresu z uzlů clusteru
+## <a name="example-get-hello-internal-ip-address-of-cluster-nodes"></a>Příklad: Získat hello interní IP adresu z uzlů clusteru
 
 > [!IMPORTANT]
-> IP adresy vrácené v příkladech v této části nejsou přímo přístupné přes internet. Jsou dostupné v rámci virtuální sítě Azure, která obsahuje clusteru HDInsight.
+> Hello IP adresy vrácený hello příklady v této části nejsou přímo přístupné přes hello Internetu. Jsou dostupné v rámci hello virtuální síť Azure, která obsahuje clusteru HDInsight hello.
 >
 > Další informace o práci s HDInsight a virtuální sítě najdete v tématu [možnosti rozšíření HDInsight pomocí vlastních Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
-Chcete-li najít IP adresu, musíte znát interní plně kvalifikovaný název domény (FQDN) uzlů clusteru. Jakmile máte plně kvalifikovaný název domény, pak můžete získat IP adresu hostitele. Následující příklady nejprve dotaz Ambari pro všechny uzly hostitelského plně kvalifikovaný název domény, a poté dotaz Ambari pro IP adresu každého hostitele.
+toofind hello IP adresu, musíte znát hello interní plně kvalifikovaný název domény (FQDN) hello uzly clusteru. Jakmile máte hello plně kvalifikovaný název domény, pak můžete získat adresu IP hello hello hostitele. Hello následující příklady nejprve vyhledat Ambari hello plně kvalifikovaný název domény všech uzlů hello hostitele, a poté dotazu Ambari hello IP adresu každého hostitele.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -233,11 +233,11 @@ foreach($item in $respObj.items) {
 }
 ```
 
-## <a name="example-get-the-default-storage"></a>Příklad: Získat výchozí úložiště
+## <a name="example-get-hello-default-storage"></a>Příklad: Získat hello výchozí úložiště
 
-Při vytváření clusteru služby HDInsight, musíte použít účet úložiště Azure nebo Data Lake Store jako výchozí úložiště pro cluster. Ambari slouží k načtení těchto informací po vytvoření clusteru. Například pokud chcete pro čtení a zápis dat do kontejneru mimo HDInsight.
+Při vytváření clusteru služby HDInsight, musíte použít účet úložiště Azure nebo Data Lake Store jako hello výchozí úložiště clusteru hello. Můžete použít Ambari tooretrieve tyto informace po vytvoření clusteru hello. Například pokud chcete, aby kontejner toohello tooread a zápis dat mimo HDInsight.
 
-Následující příklady načíst výchozí konfigurace úložiště z clusteru:
+Hello následující příklady načtení hello výchozí úložiště konfigurace z clusteru hello:
 
 ```bash
 curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -252,15 +252,15 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
 > [!IMPORTANT]
-> Tyto příklady vrátí první konfigurace platí na serveru (`service_config_version=1`) obsahující tyto informace. Pokud je načíst hodnotu, která byla změněna po vytvoření clusteru, musíte do seznamu verze konfigurace a načíst nejnovější.
+> Tyto příklady vrátit hello první použitá konfigurace toohello server (`service_config_version=1`) obsahující tyto informace. Pokud je načíst hodnotu, která byla změněna po vytvoření clusteru, může potřebovat verze konfigurace hello toolist a načíst hello nejnovějšího.
 
-Vrácená hodnota je podobný jedné z následujících příkladech:
+Vrácená hodnota Hello je podobné tooone hello následující příklady:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Tato hodnota určuje, zda cluster používá účet úložiště Azure pro výchozí úložiště. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů blob v účtu úložiště. Kontejner je kořenem HDFS kompatibilní úložiště pro cluster.
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Tato hodnota značí, že tento cluster hello používá účet úložiště Azure pro výchozí úložiště. Hello `ACCOUNTNAME` hodnota je hello název účtu úložiště hello. Hello `CONTAINER` část je název hello hello kontejneru objektů blob v účtu úložiště hello. kontejner Hello je hello kořenovém hello HDFS kompatibilní úložiště pro hello cluster.
 
-* `adl://home`– Tato hodnota určuje, jestli cluster používá Azure Data Lake Store pro výchozí úložiště.
+* `adl://home`– Tato hodnota značí, že tento cluster hello používá pro výchozí úložiště Azure Data Lake Store.
 
-    Pokud chcete najít název účtu Data Lake Store, použijte následující příklady:
+    toofind hello název účtu Data Lake Store, použijte následující příklady hello:
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -274,9 +274,9 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    Vrácená hodnota je podobná `ACCOUNTNAME.azuredatalakestore.net`, kde `ACCOUNTNAME` je název účtu Data Lake Store.
+    Hello návratová hodnota je podobný příliš`ACCOUNTNAME.azuredatalakestore.net`, kde `ACCOUNTNAME` je název hello hello účtu Data Lake Store.
 
-    Pokud chcete najít adresář v Data Lake Store, který obsahuje úložiště pro cluster, použijte následující příklady:
+    adresář hello toofind v Data Lake Store, který obsahuje hello úložiště pro cluster hello hello použijte následující příklady:
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -290,15 +290,15 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    Vrácená hodnota je podobná `/clusters/CLUSTERNAME/`. Tato hodnota je cestu v rámci účtu Data Lake Store. Tato cesta je kořenový adresář systému HDFS kompatibilní souborů pro cluster. 
+    Hello návratová hodnota je podobný příliš`/clusters/CLUSTERNAME/`. Tato hodnota je cestu v rámci hello účtu Data Lake Store. Tato cesta je hello kořenovém hello systém HDFS kompatibilní souborů pro hello cluster. 
 
 > [!NOTE]
-> `Get-AzureRmHDInsightCluster` Rutiny poskytované [prostředí Azure PowerShell](/powershell/azure/overview) také vrátí informace o úložiště pro cluster.
+> Hello `Get-AzureRmHDInsightCluster` rutiny poskytované [prostředí Azure PowerShell](/powershell/azure/overview) také hello vrátí informace o úložiště pro hello cluster.
 
 
 ## <a name="example-get-configuration"></a>Příklad: Get konfigurace
 
-1. Získání konfigurace, které jsou k dispozici pro váš cluster.
+1. Získáte hello konfigurace, které jsou k dispozici pro váš cluster.
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
@@ -310,7 +310,7 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     $respObj.Content
     ```
 
-    Tento příklad vrátí dokumentu JSON, který obsahuje aktuální konfiguraci (identifikovaný *značky* hodnotu) pro součásti nainstalované v clusteru. Následující příklad je výňatek ze s daty vrácenými z typu clusteru Spark.
+    Tento příklad vrátí dokumentu JSON obsahující aktuální konfiguraci hello (identifikovaný hello *značky* hodnotu) pro hello součásti nainstalovat na clusteru hello. Hello následující příklad je výňatek ze hello data vrácená z typu clusteru Spark.
    
    ```json
    "spark-metrics-properties" : {
@@ -330,7 +330,7 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
    }
    ```
 
-2. Získáte konfiguraci pro součást, která vás zajímá. V následujícím příkladu nahraďte `INITIAL` s hodnota značky vrácená z předchozí požadavek.
+2. Získáte hello konfiguraci pro součást hello, která vás zajímá. Následující příklad, nahraďte v hello `INITIAL` s hello Příznak Hodnota vrácená z hello předchozí požadavek.
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
@@ -342,11 +342,11 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     $resp.Content
     ```
 
-    Tento příklad vrátí dokumentu JSON, který obsahuje aktuální konfiguraci `core-site` součásti.
+    Tento příklad vrátí dokumentu JSON, který obsahuje aktuální konfiguraci hello hello `core-site` součásti.
 
 ## <a name="example-update-configuration"></a>Příklad: Aktualizace konfigurace
 
-1. Získejte aktuální konfiguraci, která Ambari ukládá jako "požadovanou konfiguraci":
+1. Získejte aktuální konfiguraci hello, která Ambari ukládá jako hello "požadované konfigurace":
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
@@ -357,7 +357,7 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
         -Credential $creds
     ```
 
-    Tento příklad vrátí dokumentu JSON, který obsahuje aktuální konfiguraci (identifikovaný *značky* hodnotu) pro součásti nainstalované v clusteru. Následující příklad je výňatek ze s daty vrácenými z typu clusteru Spark.
+    Tento příklad vrátí dokumentu JSON obsahující aktuální konfiguraci hello (identifikovaný hello *značky* hodnotu) pro hello součásti nainstalovat na clusteru hello. Hello následující příklad je výňatek ze hello data vrácená z typu clusteru Spark.
    
     ```json
     "spark-metrics-properties" : {
@@ -377,9 +377,9 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     }
     ```
    
-    Z tohoto seznamu, je nutné zkopírovat název součásti (například **spark\_thrift\_sparkconf** a **značky** hodnotu.
+    Z tohoto seznamu, je třeba název hello toocopy hello součásti (například **spark\_thrift\_sparkconf** a hello **značky** hodnotu.
 
-2. Načíst konfiguraci pro součást a značky pomocí následujících příkazů:
+2. Načtení hello konfigurace pro součást hello a značky pomocí hello následující příkazy:
    
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
@@ -396,21 +396,21 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     ```
 
     > [!NOTE]
-    > Nahraďte **spark thrift-sparkconf** a **počáteční** pomocí součásti a značky, který chcete načíst konfiguraci pro.
+    > Nahraďte **spark thrift-sparkconf** a **počáteční** pomocí součásti hello a značky, který chcete tooretrieve hello konfigurace pro.
    
-    Jq slouží k zapnutí data načtená z HDInsight do nové šablony konfigurace. Tyto příklady konkrétně, proveďte následující akce:
+    Jq je použité tooturn hello data načtená z HDInsight do nové šablony konfigurace. Konkrétně proveďte tyto příklady hello následující akce:
    
-    * Vytvoří jedinečnou hodnotu obsahující řetězec "verze" a data, která je uložena v `newtag`.
+    * Vytvoří jedinečnou hodnotu obsahující hello řetězec "verze" a hello data, která je uložena v `newtag`.
 
-    * Vytvoří dokument kořenové pro nové požadované konfigurace.
+    * Vytvoří dokument kořenové pro hello nové požadované konfigurace.
 
-    * Získá obsah `.items[]` pole a přidá ho **desired_config** element.
+    * Získá hello obsah hello `.items[]` pole a přidává ji pod hello **desired_config** element.
 
-    * Odstraní `href`, `version`, a `Config` prvky, jako tyto prvky nejsou potřebné odeslat novou konfiguraci.
+    * Odstranění hello `href`, `version`, a `Config` prvky, jako tyto prvky nejsou potřebné toosubmit novou konfiguraci.
 
-    * Přidá `tag` element s hodnotou `version#################`. Číselnou část je založena na aktuální datum. Každá konfigurace musí mít jedinečný kód.
+    * Přidá `tag` element s hodnotou `version#################`. číselnou část Hello je založena na hello aktuální datum. Každá konfigurace musí mít jedinečný kód.
      
-    Nakonec k uložení dat `newconfig.json` dokumentu. Struktura dokumentu by měla vypadat podobně jako v následujícím příkladu:
+    Nakonec hello budou uložena data toohello `newconfig.json` dokumentu. Struktura dokumentu Hello by měla vypadat podobně jako toohello následující ukázka:
      
      ```json
     {
@@ -428,14 +428,14 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     }
     ```
 
-3. Otevřete `newconfig.json` dokumentu a změnit nebo přidat hodnoty v `properties` objektu. Následující příklad změní hodnotu `"spark.yarn.am.memory"` z `"1g"` k `"3g"`. Přidává také `"spark.kryoserializer.buffer.max"` s hodnotou `"256m"`.
+3. Otevřete hello `newconfig.json` dokumentu a změnit nebo přidat hodnoty v hello `properties` objektu. Hello následující příklad změny hello hodnotu `"spark.yarn.am.memory"` z `"1g"` příliš`"3g"`. Přidává také `"spark.kryoserializer.buffer.max"` s hodnotou `"256m"`.
    
         "spark.yarn.am.memory": "3g",
         "spark.kyroserializer.buffer.max": "256m",
    
-    Jakmile dokončíte provedení změny, uložte soubor.
+    Jakmile dokončíte provedení změny, uložte soubor hello.
 
-4. Použijte následující příkazy k odeslání do Ambari aktualizovanou konfiguraci.
+4. Použijte následující příkazy toosubmit hello aktualizovat konfiguraci tooAmbari hello.
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
@@ -451,13 +451,13 @@ Vrácená hodnota je podobný jedné z následujících příkladech:
     $resp.Content
     ```
    
-    Tyto příkazy odeslat obsah **newconfig.json** souboru do clusteru jako nový požadované konfigurace. Požadavek vrátí dokumentu JSON. **VersionTag** element v tomto dokumentu by měl shodovat s verzí, které jste odeslali, a **konfigurací** objekt obsahuje změny konfigurace, které jste požádali.
+    Tyto příkazy odeslat obsah hello hello **newconfig.json** souborů toohello clusteru, jako jsou třeba konfigurace nové požadovaného hello. žádost o Hello vrátí dokumentu JSON. Hello **versionTag** element v tomto dokumentu by měl odpovídat verzi hello odeslání a hello **konfigurací** objekt obsahuje změny konfigurace hello požadujete.
 
 ### <a name="example-restart-a-service-component"></a>Příklad: Restartovat součást služby
 
-Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu Spark označuje, že je nutné restartovat předtím, než se projeví se nová konfigurace. Restartujte službu pomocí následujících kroků.
+Nyní když se podíváte na webovému uživatelskému rozhraní Ambari hello, hello službu Spark ukazuje, že ji vyžaduje toobe hello novou konfiguraci můžete projeví až po restartování. Pomocí následujících kroků toorestart hello služby hello.
 
-1. Pokud chcete povolit režim údržby pro službu Spark, použijte následující:
+1. Použijte následující tooenable režimu údržby pro hello službu Spark hello:
 
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -474,7 +474,7 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
     $resp.Content
     ```
    
-    Tyto příkazy poslat dokument JSON na server, který zapne režimu údržby. Můžete ověřit, že služba je nyní v režimu údržby pomocí následující žádosti o:
+    Tyto příkazy Odeslat server toohello dokumentu JSON, který zapne režimu údržby. Můžete ověřit, hello služby je nyní v režimu údržby pomocí hello následující požadavek:
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -489,9 +489,9 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
     $respObj.ServiceInfo.maintenance_state
     ```
    
-    Vrácená hodnota je `ON`.
+    Hello vrácená hodnota je `ON`.
 
-2. Chcete-li vypnout službu vedle, použijte následující:
+2. Pak pomocí hello následující tooturn vypnout hello služby:
 
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -508,7 +508,7 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
     $resp.Content
     ```
     
-    Odpověď je stejný jako v následujícím příkladu:
+    odpověď Hello je podobné toohello následující ukázka:
    
     ```json
     {
@@ -521,9 +521,9 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
     ```
     
     > [!IMPORTANT]
-    > `href` Hodnoty vrácené tento identifikátor URI používá interní IP adresu uzlu clusteru. Pokud chcete použít z mimo cluster, nahraďte část '10.0.0.18:8080' plně kvalifikovaný název domény clusteru. 
+    > Hello `href` hodnoty vrácené tento identifikátor URI používá hello interní IP adresu hello uzlu clusteru. toouse hello plně kvalifikovaný název domény clusteru hello z mimo hello clusteru, nahraďte část hello '10.0.0.18:8080'. 
     
-    Následující příkazy načíst stav žádosti:
+    Následující příkazy Hello načíst stav hello hello žádosti:
 
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -538,9 +538,9 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
     $respObj.Requests.request_status
     ```
 
-    Odpověď z `COMPLETED` označuje, že žádost byla dokončena.
+    Odpověď z `COMPLETED` označuje dokončení této žádosti hello.
 
-3. Po dokončení předchozí požadavek, použijte následující spuštění služby.
+3. Po dokončení předchozí požadavek hello, použijte následující služby hello toostart hello.
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -555,9 +555,9 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
     ```
-    Služba teď používá nová konfigurace.
+    Služba Hello teď používá hello novou konfiguraci.
 
-4. Nakonec použijte následující vypnutí režimu údržby.
+4. Nakonec použijte hello následující tooturn vypnout režimu údržby.
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -575,5 +575,5 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
 
 ## <a name="next-steps"></a>Další kroky
 
-Úplný přehled rozhraní REST API, najdete v části [Ambari API odkaz V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Úplný referenční hello REST API, najdete v části [Ambari API odkaz V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 

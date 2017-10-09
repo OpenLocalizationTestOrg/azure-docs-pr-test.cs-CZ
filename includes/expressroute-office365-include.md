@@ -1,9 +1,9 @@
-ExpressRoute poskytuje připojení privátní sítě ke cloudovým službám Microsoftu. Služby infrastruktury a platformy spuštěné v Azure často využívají adresování síťové architektury a výkonové požadavky. Proto doporučujeme podnikům používat ExpressRoute pro Azure.
+ExpressRoute poskytuje připojení k privátní síti tooMicrosoft cloudové služby. Služby infrastruktury a platformy spuštěné v Azure často využívají adresování síťové architektury a výkonové požadavky. Proto doporučujeme podnikům používat ExpressRoute pro Azure.
 
-Nabídky softwaru jako služby, jako například Office 365 a Dynamics 365, byly vytvořené pro bezpečný a spolehlivý přístup přes internet.  Proto doporučujeme použití ExpressRoute pro tyto aplikace pouze v konkrétních scénářích.
+Software jako nabídky služeb, jako je Office 365 a Dynamics 365 byly vytvořeny toobe získávat přístup k bezpečně a spolehlivě hello Internetu.  Proto doporučujeme použití ExpressRoute pro tyto aplikace pouze v konkrétních scénářích.
 
 > [!IMPORTANT]
-> Přístup k Azure přes ExpressRoute je **doporučený** pro všechny podniky. Pokyny k získání přístupu k Office 365 přes ExpressRoute najdete na adrese [http://aka.ms/ExpressRouteOffice365](http://aka.ms/ExpressRouteOffice365).
+> Pomocí ExpressRoute tooaccess Azure je **doporučená** pro všechny podniky. Pokyny k použití ExpressRoute tooaccess Office 365 najdete v článku [http://aka.ms/ExpressRouteOffice365](http://aka.ms/ExpressRouteOffice365).
 > 
 > 
 

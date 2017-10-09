@@ -1,6 +1,6 @@
 ---
-title: "Správa zón DNS v Azure DNS - prostředí PowerShell | Microsoft Docs"
-description: "Můžete spravovat zóny DNS pomocí Azure Powershell. Tento článek popisuje, jak k aktualizaci, odstranění a vytvoření zóny DNS na Azure DNS"
+title: "aaaManage DNS zóny v Azure DNS - prostředí PowerShell | Microsoft Docs"
+description: "Můžete spravovat zóny DNS pomocí Azure Powershell. Tento článek popisuje, jak tooupdate, odstraňte a vytvořte zóny DNS na Azure DNS"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
-ms.openlocfilehash: 92f1da660d875c76d5d826669d6c1d12018c3d0a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 261b89f72213aa9784034d47ff9d1c55a4e80d65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-dns-zones-using-powershell"></a>Správa zón DNS pomocí prostředí PowerShell
+# <a name="how-toomanage-dns-zones-using-powershell"></a>Jak toomanage zóny DNS pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-dnszones-portal.md)
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-Tento článek ukazuje, jak spravovat zóny DNS pomocí prostředí Azure PowerShell. Můžete také spravovat zóny DNS pomocí napříč platformami [rozhraní příkazového řádku Azure](dns-operations-dnszones-cli.md) nebo portálu Azure.
+Tento článek ukazuje, jak toomanage DNS zóny pomocí prostředí Azure PowerShell. Můžete také spravovat zóny DNS pomocí hello napříč platformami [rozhraní příkazového řádku Azure](dns-operations-dnszones-cli.md) nebo hello portálu Azure.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -36,15 +36,15 @@ Tento článek ukazuje, jak spravovat zóny DNS pomocí prostředí Azure PowerS
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-Zóna DNS se vytvoří pomocí rutiny `New-AzureRmDnsZone`.
+Zóny DNS je vytvořená pomocí hello `New-AzureRmDnsZone` rutiny.
 
-Následující příklad vytvoří zónu DNS s názvem *contoso.com* ve skupině prostředků s názvem *MyResourceGroup*:
+Hello následující příklad vytvoří zónu DNS s názvem *contoso.com* v hello skupinu prostředků s názvem *MyResourceGroup*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [Azure Resource Manager značky](dns-zones-records.md#tags), *project = demo* a *env = test*:
+Hello následující příklad ukazuje, jak toocreate DNS zóny se dvěma [Azure Resource Manager značky](dns-zones-records.md#tags), *project = demo* a *env = test*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -52,7 +52,7 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Ta
 
 ## <a name="get-a-dns-zone"></a>Získat zóny DNS
 
-Chcete-li načíst zónu DNS, použijte `Get-AzureRmDnsZone` rutiny. Tato operace vrátí objekt zóny DNS odpovídající stávající zónu v Azure DNS. Objekt obsahuje data o zóny (například počet sad záznamů), ale neobsahuje sady záznamů, sami (viz `Get-AzureRmDnsRecordSet`).
+tooretrieve zóny DNS, použijte hello `Get-AzureRmDnsZone` rutiny. Tato operace vrátí objekt odpovídající tooan existující zónu v Azure DNS zóny DNS. Hello objektu obsahuje data o hello zóny (například hello počet sad záznamů), ale neobsahuje sad záznamů hello sami (viz `Get-AzureRmDnsRecordSet`).
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
@@ -69,13 +69,13 @@ MaxNumberOfRecordSets : 5000
 
 ## <a name="list-dns-zones"></a>Seznam zón DNS
 
-Díky vynechání název zóny z `Get-AzureRmDnsZone`, můžete vytvořit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zóny.
+Díky vynechání název zóny hello z `Get-AzureRmDnsZone`, můžete vytvořit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zóny.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-Díky vynechání název zóny a názvu skupiny prostředků z `Get-AzureRmDnsZone`, můžete vytvořit výčet všech zón v rámci předplatného Azure.
+Díky vynechání hello název zóny a název skupiny prostředků hello z `Get-AzureRmDnsZone`, můžete vytvořit výčet všech zón v hello předplatného Azure.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone
@@ -83,24 +83,24 @@ $zoneList = Get-AzureRmDnsZone
 
 ## <a name="update-a-dns-zone"></a>Aktualizaci zóny DNS
 
-Prostředek zónu DNS můžete měnit pomocí `Set-AzureRmDnsZone`. Tato rutina nelze aktualizovat všechny sady záznamů DNS v rámci zóny (viz [postup záznamy DNS spravovat](dns-operations-recordsets.md)). Toto pravidlo se používá pouze k aktualizaci vlastností prostředku zóny sám sebe. Vlastnosti zapisovatelné zóny jsou aktuálně omezená na [Azure Resource Manager, značky' pro daný prostředek zóny](dns-zones-records.md#tags).
+Změní tooa prostředků zónu DNS můžete provést pomocí `Set-AzureRmDnsZone`. Tato rutina nelze aktualizovat všechny hello sad záznamů DNS v rámci zóny hello (najdete v části [jak záznamy DNS tooManage](dns-operations-recordsets.md)). Použije se jenom tooupdate vlastnosti prostředku zóny hello, sám sebe. Vlastnosti Hello zapisovatelné zóny jsou aktuálně omezená toohello [Azure Resource Manager, značky' pro prostředek zóny hello](dns-zones-records.md#tags).
 
-Použijte jednu z následujících dvou způsobů k aktualizaci zóny DNS:
+Použijte jednu z následujících dvou způsobů tooupdate hello zónu DNS:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Zadejte zóny pomocí skupině název a prostředku zóny
+### <a name="specify-hello-zone-using-hello-zone-name-and-resource-group"></a>Zadejte hello zóny pomocí hello zóny název nebo skupině prostředků
 
-Tento přístup nahradí hodnoty zadané existující zóna značky.
+Tento přístup nahradí hello hodnoty zadané existující zóna značky hello.
 
 ```powershell
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Zadejte zóny pomocí objekt $zone
+### <a name="specify-hello-zone-using-a-zone-object"></a>Zadejte hello zóny pomocí objekt $zone
 
-Tento postup načte existující objekt zóny, upraví značek a pak potvrdí změny. Tímto způsobem je možné zachovat stávající značky.
+Tento přístup načte hello existující objekt zóny, upraví hello značky a pak provádí změny hello. Tímto způsobem je možné zachovat stávající značky.
 
 ```powershell
-# Get the zone object
+# Get hello zone object
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 # Remove an existing tag
@@ -113,61 +113,61 @@ $zone.Tags.Add("status","approved")
 Set-AzureRmDnsZone -Zone $zone
 ```
 
-Při použití `Set-AzureRmDnsZone` s objektem $zone [kontroluje Etag](dns-zones-records.md#etags) zajišťují souběžných změny se nepřepíšou. Můžete použít nepovinný `-Overwrite` přepínač tak, aby potlačit těchto kontrol.
+Při použití `Set-AzureRmDnsZone` s objektem $zone [kontroluje Etag](dns-zones-records.md#etags) používají tooensure souběžných změny se nepřepíšou. Můžete použít hello volitelné `-Overwrite` přepínač toosuppress těchto kontrol.
 
 ## <a name="delete-a-dns-zone"></a>Odstranit zónu DNS
 
-Zóny DNS lze odstranit pomocí `Remove-AzureRmDnsZone` rutiny.
+Zóny DNS lze odstranit pomocí hello `Remove-AzureRmDnsZone` rutiny.
 
 > [!NOTE]
-> Odstranění zóny DNS se také odstraní všechny záznamy DNS v rámci zóny. Tuto operaci nelze vrátit zpět. Pokud je zóna DNS se používá, službám pomocí zóny selže při odstranění zóny.
+> Odstranění zóny DNS také odstraní všechny záznamy DNS v rámci zóny hello. Tuto operaci nelze vrátit zpět. Pokud zónu DNS hello se používá, službám pomocí hello zóny se nezdaří, při odstranění zóny hello.
 >
->Chcete-li chránit proti náhodnému zóny odstranění, přečtěte si téma [jak chránit zóny DNS a záznamy](dns-protect-zones-recordsets.md).
+>najdete v části tooprotect proti náhodnému zóny odstranění [jak tooprotect DNS zóny a zaznamenává](dns-protect-zones-recordsets.md).
 
 
-Použijte jednu z následujících dvou způsobů, jak odstranit zónu DNS:
+Použijte jednu z následujících dvou způsobů toodelete hello zónu DNS:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Zadejte zóny pomocí názvu zóny a název skupiny prostředků
+### <a name="specify-hello-zone-using-hello-zone-name-and-resource-group-name"></a>Zadejte hello zóny pomocí hello název zóny a název skupiny prostředků
 
 ```powershell
 Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Zadejte zóny pomocí objekt $zone
+### <a name="specify-hello-zone-using-a-zone-object"></a>Zadejte hello zóny pomocí objekt $zone
 
-Můžete zadat pásmo, které chcete odstranit pomocí `$zone` objekt vrácený `Get-AzureRmDnsZone`.
+Můžete zadat toobe zóny hello odstranit pomocí `$zone` objekt vrácený `Get-AzureRmDnsZone`.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 Remove-AzureRmDnsZone -Zone $zone
 ```
 
-Místo předávány jako parametr lze také přesměrovat objekt zóny:
+Hello zóny objekt lze také přesměrovat místo předávány jako parametr:
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
 
 ```
 
-Stejně jako u `Set-AzureRmDnsZone`, zadání pomocí zóny `$zone` objektu umožňuje Značka Etag kontroly, aby se zajistilo, souběžných změny nebudou odstraněny. Použití `-Overwrite` přepínač tak, aby potlačit těchto kontrol.
+Stejně jako u `Set-AzureRmDnsZone`, zadání hello pomocí zóny `$zone` objektu umožňuje Značka Etag kontroluje změny souběžných tooensure nebudou odstraněny. Použití hello `-Overwrite` přepínač toosuppress těchto kontrol.
 
 ## <a name="confirmation-prompts"></a>Potvrzení výzvy
 
-`New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, A `Remove-AzureRmDnsZone` rutiny všechny podporují potvrzení výzvy.
+Hello `New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, a `Remove-AzureRmDnsZone` rutiny všechny podporují potvrzení výzvy.
 
-Obě `New-AzureRmDnsZone` a `Set-AzureRmDnsZone` výzvu k potvrzení, pokud `$ConfirmPreference` proměnné předvoleb prostředí PowerShell má hodnotu `Medium` nebo nižší. Z důvodu potenciálně vysoký dopad odstranit zónu DNS `Remove-AzureRmDnsZone` rutiny zobrazí výzvu k potvrzení, pokud `$ConfirmPreference` proměnná prostředí PowerShell nemá žádnou hodnotu než `None`.
+Obě `New-AzureRmDnsZone` a `Set-AzureRmDnsZone` výzvu k potvrzení v případě hello `$ConfirmPreference` proměnné předvoleb prostředí PowerShell má hodnotu `Medium` nebo nižší. Z důvodu potenciálně vysoký dopad toohello odstranit zónu DNS hello `Remove-AzureRmDnsZone` rutiny vyzve k potvrzení, pokud hello `$ConfirmPreference` proměnná prostředí PowerShell nemá žádnou hodnotu než `None`.
 
-Protože výchozí hodnota pro `$ConfirmPreference` je `High`, pouze `Remove-AzureRmDnsZone` vyzve k potvrzení ve výchozím nastavení.
+Od hello výchozí hodnota pro `$ConfirmPreference` je `High`, pouze `Remove-AzureRmDnsZone` vyzve k potvrzení ve výchozím nastavení.
 
-Můžete přepsat aktuální `$ConfirmPreference` nastavení pomocí `-Confirm` parametr. Pokud zadáte `-Confirm` nebo `-Confirm:$True` , rutina vás vyzve k potvrzení před jeho spuštění. Pokud zadáte `-Confirm:$False` , rutina nezobrazí výzvu k potvrzení.
+Můžete přepsat hello aktuální `$ConfirmPreference` nastavení pomocí hello `-Confirm` parametr. Pokud zadáte `-Confirm` nebo `-Confirm:$True` , hello rutina vás vyzve k potvrzení před jeho spuštění. Pokud zadáte `-Confirm:$False` , rutina hello nezobrazí výzvu k potvrzení.
 
 Další informace o `-Confirm` a `$ConfirmPreference`, najdete v části [o proměnné předvoleb](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [spravovat sady záznamů a záznamy](dns-operations-recordsets.md) ve vaší zóně DNS.
+Zjistěte, jak příliš[spravovat sady záznamů a záznamy](dns-operations-recordsets.md) ve vaší zóně DNS.
 <br>
-Zjistěte, jak [delegování domény do Azure DNS](dns-domain-delegation.md).
+Zjistěte, jak příliš[delegovat tooAzure vaší domény DNS](dns-domain-delegation.md).
 <br>
-Zkontrolujte [Azure DNS PowerShell referenční dokumentaci k nástroji](/powershell/module/azurerm.dns).
+Zkontrolujte hello [Azure DNS PowerShell referenční dokumentaci k nástroji](/powershell/module/azurerm.dns).
 

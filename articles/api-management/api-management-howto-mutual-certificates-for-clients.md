@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení rozhraní API klienta pomocí certifikátu ověřování ve službě API Management - Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak zabezpečit přístup k rozhraní API pomocí klientských certifikátů"
+title: "aaaSecure rozhraní API pomocí ověření klientského certifikátu ve službě API Management - Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toosecure přístup tooAPIs pomocí klientských certifikátů"
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.openlocfilehash: d3d51d0575a6d2dacced931601d48eb1e51a4051
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6ff78bda3d429829da79d0dc4d652f19669cc919
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Zabezpečení rozhraní API pomocí klienta pro ověřování pomocí certifikátu ve službě API Management
+# <a name="how-toosecure-apis-using-client-certificate-authentication-in-api-management"></a>Jak toosecure rozhraní API pomocí klientských certifikátů ověřování v API Management
 
-API Management poskytuje schopnost zabezpečit přístup k rozhraní API (tj. klienta k API Management) pomocí klientských certifikátů. V současné době můžete zkontrolovat kryptografický otisk certifikátu klienta pro požadovanou hodnotu. Můžete také zkontrolovat kryptografický otisk pro existující certifikátů odeslaných do rozhraní API Management.  
+Služba API Management nabízí hello schopností toosecure přístup tooAPIs (tj, klient tooAPI Management) pomocí klientských certifikátů. V současné době můžete zkontrolovat hello kryptografický otisk certifikátu klienta pro požadovanou hodnotu. Můžete také zkontrolovat, že kryptografický otisk hello před existující certifikáty načtený tooAPI správy.  
 
-Informace o zabezpečení přístupu ke službě back endové rozhraní API pomocí klientských certifikátů (tj, rozhraní API správy na back-end) najdete v tématu [jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
+Informace o zabezpečení služby back-end toohello přístup rozhraní API pomocí klientských certifikátů (tj, API Management tooback-end) najdete v tématu [jak toosecure back endové služby pomocí klientského certifikátu ověřování](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
 
-## <a name="checking-the-expiration-date"></a>Kontrola datum vypršení platnosti
+## <a name="checking-hello-expiration-date"></a>Kontrola, zda text hello datum vypršení platnosti
 
-Níže zásady mohou být konfigurovány ke kontrole, pokud vypršela platnost certifikátu:
+Níže zásad může být nakonfigurované toocheck, pokud vypršela platnost certifikátu hello:
 
 ```
 <choose>
@@ -39,9 +39,9 @@ Níže zásady mohou být konfigurovány ke kontrole, pokud vypršela platnost c
 </choose>
 ```
 
-## <a name="checking-the-issuer-and-subject"></a>Kontrola vystavitele a předmět
+## <a name="checking-hello-issuer-and-subject"></a>Kontrola, zda text hello vystavitele a předmět
 
-Ke kontrole vystavitele a předmět certifikátu klienta lze nakonfigurovat následující zásady:
+Níže zásad může být nakonfigurované toocheck hello vystavitele a předmět certifikátu klienta:
 
 ```
 <choose>
@@ -53,9 +53,9 @@ Ke kontrole vystavitele a předmět certifikátu klienta lze nakonfigurovat nás
 </choose>
 ```
 
-## <a name="checking-the-thumbprint"></a>Kontrola kryptografický otisk
+## <a name="checking-hello-thumbprint"></a>Kontrola, zda text hello kryptografický otisk
 
-Níže zásady můžete nakonfigurovat zkontrolujte kryptografický otisk certifikátu klienta:
+Níže zásad může být nakonfigurované toocheck hello kryptografický otisk certifikátu klienta:
 
 ```
 <choose>
@@ -67,9 +67,9 @@ Níže zásady můžete nakonfigurovat zkontrolujte kryptografický otisk certif
 </choose>
 ```
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Kontrola kryptografický otisk před certifikáty nahrán do rozhraní API Management
+## <a name="checking-a-thumbprint-against-certificates-uploaded-tooapi-management"></a>Kontrola kryptografický otisk před certifikáty nahrán tooAPI správy
 
-Následující příklad ukazuje, jak zkontrolujte kryptografický otisk certifikátu klienta vůči certifikátů odeslaných do rozhraní API správy: 
+Hello následující příklad ukazuje, jak nahrát toocheck hello kryptografický otisk certifikátu klienta před certifikáty tooAPI správy: 
 
 ```
 <choose>
@@ -84,6 +84,6 @@ Následující příklad ukazuje, jak zkontrolujte kryptografický otisk certifi
 
 ## <a name="next-step"></a>Další krok
 
-*  [Jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
-*  [Postup nahrání certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
+*  [Jak toosecure back endové služby pomocí klientského certifikátu ověřování](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
+*  [Jak tooupload certifikáty](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
 

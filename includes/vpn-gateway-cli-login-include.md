@@ -1,16 +1,16 @@
-Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/#login) a postupujte podle pokynů na obrazovce. Další informace o přihlašování najdete v tématu [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
+Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů. Další informace o přihlašování najdete v tématu [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 
 ```azurecli
 az login
 ```
 
-Pokud máte více než jedno předplatné Azure, vypište předplatná pro daný účet.
+Pokud máte více než jedno předplatné, zobrazí seznam hello předplatná pro účet hello.
 
 ```azurecli
 az account list --all
 ```
 
-Určete předplatné, které chcete použít.
+Zadejte hello předplatné, které chcete toouse.
 
 ```azurecli
 az account set --subscription <replace_with_your_subscription_id>

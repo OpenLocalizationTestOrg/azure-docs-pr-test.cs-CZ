@@ -1,6 +1,6 @@
 ---
-title: "Publikování aplikace pružiny spouštěcí jako kontejner Docker pomocí nástrojů Azure pro IntelliJ | Microsoft Docs"
-description: "Zjistěte, jak publikovat webovou aplikaci do služby Microsoft Azure jako kontejner Docker pomocí nástrojů Azure pro IntelliJ."
+title: "hello aaaPublish pružiny spouštěcí aplikace jako kontejner Docker pomocí nástrojů Azure pro IntelliJ | Microsoft Docs"
+description: "Zjistěte, jak hello toopublish tooMicrosoft webové aplikace Azure jako kontejner Docker pomocí nástrojů Azure pro IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,75 +14,75 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm
-ms.openlocfilehash: b771238934183c953615ac33c42a275d80657556
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8964cb33fd8f61a39f091633ae9074d9658232fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a>Publikování aplikace pružiny spouštěcí jako kontejner Docker pomocí nástrojů Azure pro IntelliJ
+# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-hello-azure-toolkit-for-intellij"></a>Publikování aplikace pružiny spouštěcí jako kontejner Docker pomocí hello Azure Toolkit pro IntelliJ
 
-[Pružiny Framework] open-source řešení, které pomáhá vytvářet aplikace na podnikové úrovni vývojáře v jazyce Java. Jedním z dalších oblíbených projektů, které je vytvořené v horní části daného platformy je [pružiny spouštěcí], který poskytuje zjednodušenou metodu pro vytvoření samostatné aplikace Java.
+Hello [pružiny Framework] open-source řešení, které pomáhá vytvářet aplikace na podnikové úrovni vývojáře v jazyce Java. Jeden z hello oblíbených další projekty, které je vytvořené v horní části daného platformy je [pružiny spouštěcí], který poskytuje zjednodušenou metodu pro vytvoření samostatné aplikace Java.
 
-[Docker] je do řešení open source, který pomáhá vývojářům automatizovat nasazení, škálování a správu svých aplikací, které jsou spuštěny v kontejnerech.
+[Docker] je do řešení open source, který pomáhá vývojářům automatizovat nasazení hello, škálování a správu svých aplikací, které jsou spuštěny v kontejnerech.
 
-Tento kurz vás provede kroky nasazení spouštěcí pružiny aplikace jako kontejner Docker do služby Microsoft Azure pomocí sady nástrojů Azure pro IntelliJ.
+Tento kurz vás provede kroky toodeploy hello pružiny spouštěcí aplikace jako tooMicrosoft kontejner Docker Azure pomocí hello Azure Toolkit pro IntelliJ.
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="clone-the-default-spring-boot-docker-repo"></a>Naklonujte úložiště Docker spouštěcí pružiny výchozí
+## <a name="clone-hello-default-spring-boot-docker-repo"></a>Klonování úložiště Docker spouštěcí pružiny výchozí hello
 
-Následující postup vás provede procesem klonování úložiště Docker spouštěcí pružiny pomocí IntelliJ. Pokud chcete použít příkazový řádek, přečtěte si téma [nasazení pružiny spuštění aplikace v systému Linux v Azure Container Service][Deploy Spring Boot on Linux in ACS].
+Hello následující postup vás provede procesem klonování úložiště Docker spouštěcí pružiny hello pomocí IntelliJ. Pokud chcete toouse příkazového řádku, najdete v části [nasazení pružiny spuštění aplikace v systému Linux v Azure Container Service][Deploy Spring Boot on Linux in ACS].
 
 1. Otevřete IntelliJ.
 
-1. Na úvodní obrazovce, vyberte **Githubu** možnost **rezervovat z verzí** seznamu.
+1. Na úvodní obrazovce hello vyberte hello **Githubu** možnost v hello **rezervovat z verzí** seznamu.
 
    ![Možnost GitHub pro správu verzí][CL01]
 
-1. Zadejte přihlašovací údaje, pokud se zobrazí výzva k přihlášení.
+1. Zadejte přihlašovací údaje, pokud jste výzvami toolog v.
 
-   * Pokud používáte uživatelské jméno a heslo pro přihlášení ke Githubu:
+   * Pokud používáte toolog uživatelského jména a hesla v tooGitHub:
 
       ![Dialogové okno pro zadání Githubu uživatelské jméno a heslo][CL02a]
 
-   * Pokud používáte token do protokolu Githubu:
+   * Pokud používáte tokenu toolog v tooGitHub:
 
       ![Dialogové okno pro zadání token Githubu][CL02b]
 
-1. Zadejte **https://github.com/spring-guides/gs-spring-boot-docker.git** úložišti adresy URL, zadejte místní cestu a informace o složce a pak klikněte na tlačítko **klon**.
+1. Zadejte **https://github.com/spring-guides/gs-spring-boot-docker.git** hello úložišti adresy URL, zadejte místní cestu a informace o složce a pak klikněte na tlačítko **klon**.
 
    ![Dialogové okno klonování úložiště][CL03]
 
-1. Když se zobrazí výzva k vytvoření projektu IntelliJ, vyberte **ne**.
+1. Když se zobrazí výzva toocreate IntelliJ projekt, vyberte **ne**.
 
-   ![Odmítnutí k vytvoření projektu IntelliJ][CL04]
+   ![Odmítnutí toocreate projektu IntelliJ][CL04]
 
-1. Na úvodní stránce klikněte na tlačítko **Importovat projekt**.
+1. Na úvodní stránku hello, klikněte na tlačítko **Importovat projekt**.
 
    ![Import výběru projektů][CL05]
 
-1. Vyhledejte cestu, do které jste naklonovali úložiště pružiny spouštěcí, vyberte **dokončení** složku kořenové a pak klikněte na tlačítko **OK**.
+1. Vyhledejte cestu hello, které jste naklonovali úložiště pružiny spouštěcí hello, vyberte hello **dokončení** ve složce hello kořenové a pak klikněte na tlačítko **OK**.
 
    ![Vyberte složku pro import][CL06]
 
 1. Když se zobrazí výzva, vyberte **vytvoření projektu z existujících zdrojů**.
 
-   ![Možnost vytváření projektů z existujícího zdroje][CL07]
+   ![Možnost toocreate projektu z existujících zdrojů][CL07]
 
-1. Zadejte název projektu nebo přijměte výchozí nastavení, ověřte správnou cestu **dokončení** složku a pak klikněte na tlačítko **Další**.
+1. Zadejte název projektu nebo přijměte výchozí hello, ověřte správnou cestu toohello hello **dokončení** složku a pak klikněte na tlačítko **Další**.
 
-   ![Zadejte název projektu][CL08]
+   ![Zadejte název projektu hello][CL08]
 
 1. Přizpůsobit všechny adresáře pro import a pak klikněte na tlačítko **Další**.
 
    ![Zvolte adresáře][CL09]
 
-1. Zkontrolujte knihoven importovat, a pak klikněte na **Další**.
+1. Zkontrolujte tooimport hello knihovny a pak klikněte na tlačítko **Další**.
 
    ![Zkontrolujte projektu knihovny][CL10]
 
-1. Zkontrolujte struktura modulu a pak klikněte na tlačítko **Další**.
+1. Zkontrolujte struktura hello modulu a pak klikněte na tlačítko **Další**.
 
    ![Zkontrolujte struktura modulu][CL11]
 
@@ -94,19 +94,19 @@ Následující postup vás provede procesem klonování úložiště Docker spou
 
    ![Tlačítko Dokončit][CL13]
 
-IntelliJ importuje pružiny spouštěcí aplikace jako projekt a zobrazí strukturu po dokončení importu.
+IntelliJ importuje hello pružiny spouštěcí aplikace jako projekt a zobrazí hello struktura po dokončení importu hello.
 
 ![Spuštění aplikace Spring v IntelliJ][CL14]
 
 ## <a name="build-your-spring-boot-app"></a>Sestavení vaší pružiny spouštěcí aplikace
 
-### <a name="build-the-app-by-using-the-maven-pom"></a>Sestavení aplikace pomocí Maven POM
+### <a name="build-hello-app-by-using-hello-maven-pom"></a>Sestavení aplikace hello pomocí hello Maven POM
 
-1. Pokud už není otevřený, otevřete okno nástroje Maven. Klikněte na tlačítko **zobrazení** > **nástroj Windows** > **projekty Maven**.
+1. Pokud už není otevřený, otevřete okno nástroje Maven hello. Klikněte na tlačítko **zobrazení** > **nástroj Windows** > **projekty Maven**.
 
    ![Nástroje systému Windows a projekty Maven příkazy][BU01]
 
-1. V okně nástroje Maven, klikněte pravým tlačítkem na **balíček** a vyberte **spustit Build Maven**. (Pokud projekt Maven nezobrazí automaticky, klikněte **znovu naimportovat** ikonu na panelu nástrojů Maven.)
+1. V okně nástroje Maven hello, klikněte pravým tlačítkem na **balíček** a vyberte **spustit Build Maven**. (Pokud projekt Maven nezobrazí automaticky, klikněte na tlačítko hello **znovu naimportovat** ikonu na panelu nástrojů hello Maven.)
 
    ![Spusťte příkaz Maven Build][BU02]
 
@@ -116,7 +116,7 @@ IntelliJ importuje pružiny spouštěcí aplikace jako projekt a zobrazí strukt
 
 ### <a name="create-a-deployment-ready-artifact"></a>Vytvoření artefaktu připravené pro nasazení
 
-K publikování aplikace pružiny spouštěcí, musíte vytvořit artefakt připravené pro nasazení. Použijte k tomu následující postup:
+toopublish pružiny spouštěcí aplikace, budete potřebovat toocreate artefaktů připravené pro nasazení. Použijte hello následující kroky:
 
 1. Otevřete projekt webové aplikace v IntelliJ.
 
@@ -124,11 +124,11 @@ K publikování aplikace pružiny spouštěcí, musíte vytvořit artefakt přip
 
    ![Struktura projekt – příkaz][ART01]
 
-1. Klikněte na zelenou plus (**+**) symbol, který chcete přidat artefakt, klikněte na tlačítko **JAR**a potom klikněte na **prázdný**.
+1. Klikněte na zelenou plus hello (**+**) symbolů tooadd artefakt, klikněte na tlačítko **JAR**a potom klikněte na **prázdný**.
 
    ![Přidat artefakt][ART02]
 
-1. Zadejte název vaší artefaktů při vytváření nezapomeňte přidat příponu ".jar" a pak zadejte cílovou složku pro výstupní Maven.
+1. Název vašeho artefaktů přičemž zajistěte, aby není tooadd hello rozšíření ".jar" a pak zadejte hello cílovou složku pro výstupní Maven hello.
 
    ![Zadejte vlastnosti artefaktů][ART03]
 
@@ -136,13 +136,13 @@ K publikování aplikace pružiny spouštěcí, musíte vytvořit artefakt přip
 
    a. Klikněte na tlačítko **vytvoření manifestu**.
 
-      ![Klikněte na tlačítko Vytvořit Manifest][ART04a]
+      ![Klikněte na tlačítko Vytvořit Manifest hello][ART04a]
 
-   b. Výchozí cesta pro artefaktu a potom na tlačítko **OK**.
+   b. Zvolte hello výchozí cesta pro hello artefaktů a pak klikněte na tlačítko **OK**.
 
       ![Zadejte cestu artefaktů][ART04b]
 
-   c. Klikněte na tlačítko se třemi tečkami (**...** ) najít hlavní třídy.
+   c. Klikněte na tlačítko se třemi tečkami hello (**...** ) toolocate hello hlavní třídy.
 
       ![Vyhledejte hlavní – třída][ART04c]
 
@@ -152,65 +152,65 @@ K publikování aplikace pružiny spouštěcí, musíte vytvořit artefakt přip
 
 1. Klikněte na **OK**.
 
-   ![Zavřete dialogové okno struktura projektu][ART05]
+   ![Zavřete dialogové okno projektu struktura hello][ART05]
 
 > [!NOTE]
-> Další informace o vytváření artefakty v IntelliJ najdete v tématu [konfigurace artefakty] na webu JetBrains.
+> Další informace o vytváření artefakty v IntelliJ najdete v tématu [konfigurace artefakty] na webu JetBrains hello.
 >
 
-### <a name="build-the-artifact-for-deployment"></a>Sestavení artefaktů pro nasazení
+### <a name="build-hello-artifact-for-deployment"></a>Sestavení hello artefaktů pro nasazení
 
 1. Klikněte na tlačítko **sestavení**a potom klikněte na **artefakty**.
 
    ![Příkaz artefaktů sestavení][BU04]
 
-1. Když **sestavení artefaktů** místní nabídce klikněte na tlačítko **sestavení**.
+1. Když hello **sestavení artefaktů** místní nabídce klikněte na tlačítko **sestavení**.
 
    ![Sestavení artefaktů kontextové nabídky][BU05]
 
-IntelliJ by měl zobrazit dokončené artefakt Spring spuštění aplikace v okně nástroje projektu.
+IntelliJ by měl zobrazovat hello dokončit artefaktů pro vaši aplikaci pružiny spouštěcí v okně nástroje projektu hello.
 
    ![Vytvořený artefaktů][BU06]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Publikování webové aplikace do Azure pomocí kontejner Docker
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a>Publikovat tooAzure vaší webové aplikace pomocí kontejner Docker
 
-1. Pokud nejste přihlášeni k účtu Azure, postupujte podle kroků v [přihlášení pokyny pro Azure Toolkit IntelliJ][Azure Sign In for IntelliJ].
+1. Pokud nejste přihlášeni tooyour účet Azure, postupujte podle kroků hello v [přihlášení pokyny pro hello Azure Toolkit IntelliJ][Azure Sign In for IntelliJ].
 
-1. V okně nástroje prohlížeči projektu klikněte pravým tlačítkem na projekt a potom vyberte **Azure** > **publikovat jako kontejner Docker**.
+1. V okně nástroje hello prohlížeči projektu klikněte pravým tlačítkem na projekt hello a vyberte **Azure** > **publikovat jako kontejner Docker**.
 
    ![Publikovat jako příkaz kontejner Docker][PU01]
 
-1. Když **nasadit kontejner Docker v Azure** se zobrazí dialogové okno, jsou zobrazeny všechny existující hostitelů Docker. Pokud se rozhodnete nasadit do existující hostitele, můžete přeskočit ke kroku 4. Jinak použijte následující kroky pro vytvoření hostitele:
+1. Když hello **nasadit kontejner Docker v Azure** se zobrazí dialogové okno, jsou zobrazeny všechny existující hostitelů Docker. Pokud si zvolíte toodeploy tooan existující hostitele, můžete přeskočit toostep 4. Jinak použijte následující kroky toocreate hostitele hello:
 
-   a. Klikněte na zelenou plus (**+**) symbol.
+   a. Klikněte na zelenou plus hello (**+**) symbol.
 
       ![Přidat nový hostitel Docker][PU02]
 
-   b. Když **vytvořit hostitelů Docker** zobrazí se dialogové okno, můžete přijmout výchozí hodnoty nebo můžete zadat vlastní nastavení pro nové Docker hostitele. (Podrobný popis různá nastavení, najdete v části [publikovat webovou aplikaci jako kontejner Docker pomocí nástrojů Azure pro IntelliJ][Publish Container with Azure Toolkit].) Klikněte na tlačítko **Další** jste zadali při nastavení, které chcete použít.
+   b. Když hello **vytvořit hostitelů Docker** zobrazí se dialogové okno, můžete zvolit výchozí hello tooaccept nebo můžete zadat vlastní nastavení pro nové Docker hostitele. (Podrobný popis hello různá nastavení, najdete v části [publikovat webovou aplikaci jako kontejner Docker pomocí hello Azure Toolkit pro IntelliJ][Publish Container with Azure Toolkit].) Klikněte na tlačítko **Další** jste zadali při které toouse nastavení.
 
       ![Zadejte možnosti hostitelů Docker][PU03a]
 
-   c. Můžete použít existující přihlašovací údaje z trezoru služby Azure klíče, nebo můžete zadat nový Docker přihlašovací údaje. Klikněte na tlačítko **Dokončit** když nastavíte možnosti.
+   c. Můžete vybrat toouse existující přihlašovací údaje z trezoru služby Azure klíče nebo můžete tooenter nové Docker přihlašovací údaje. Klikněte na tlačítko **Dokončit** když nastavíte možnosti.
 
       ![Zadejte přihlašovací údaje hostitelů Docker][PU03b]
 
 1. Vyberte Docker hostiteli a pak klikněte na **Další**.
 
-   ![Vyberte hostitel Docker používat][PU04]
+   ![Vyberte toouse hostitelů Docker hello][PU04]
 
-1. Na poslední stránce **nasadit kontejner Docker v Azure** dialogové okno pole, určete následující možnosti:
+1. Na poslední stránce hello hello **nasadit kontejner Docker v Azure** dialogovém okně zadejte hello následující možnosti:
 
-   a. Můžete zadat vlastní název kontejneru, který bude hostovat vaše kontejner Docker nebo můžete přijmout výchozí nastavení.
+   a. Můžete toospecify vlastní název pro hello kontejneru, který bude hostovat vaše kontejner Docker nebo můžete přijmout výchozí hello.
 
-   b. Zadejte porty protokolu TCP pro svého hostitele docker pomocí následující syntaxe: *[externí port]*:*[interní port]*. Například **80:8080** určuje externí port 80 a výchozí vnitřní pružiny spouštěcí port 8080.
+   b. Zadejte porty TCP hello pro svého hostitele docker pomocí následující syntaxe hello: *[externí port]*:*[interní port]*. Například **80:8080** určuje externí port 80 a hello výchozí vnitřní pružiny spouštěcí port 8080.
    
-      Pokud jste upravili interní port (například úpravou souboru application.yml), je třeba zadat číslo portu pro správné směrování v Azure.
+      Pokud jste upravili interní port (například úpravou souboru application.yml hello), je třeba číslo portu hello toospecify pro správné směrování toooccur hello v Azure.
 
    c. Po nakonfigurování těchto možností, klikněte na tlačítko **Dokončit**.
 
    ![Nasadit kontejner Docker v Azure][PU05]
 
-1. Po dokončení publikování sady nástrojů Azure protokol činnosti Azure zobrazí **publikováno** stavu.
+1. Po dokončení publikování hello Azure Toolkit hello protokol činnosti Azure zobrazí **publikováno** hello stavu.
 
    ![Byla úspěšně nasazena hostitelů Docker][PU06]
 
@@ -218,7 +218,7 @@ IntelliJ by měl zobrazit dokončené artefakt Spring spuštění aplikace v okn
 
 [!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
-Další informace o další metody pro vytváření aplikací pružiny spouštěcí pomocí IntelliJ najdete v tématu [vytváření projektů spouštěcí pružiny](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) na webu JetBrains.
+toolearn o další metody pro vytváření aplikací pružiny spouštěcí pomocí IntelliJ, najdete v části [vytváření projektů spouštěcí pružiny](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) na webu JetBrains hello.
 
 <!-- URL List -->
 
@@ -229,7 +229,7 @@ Další informace o další metody pro vytváření aplikací pružiny spouště
 [Docker]: https://www.docker.com/
 [Publish Container with Azure Toolkit]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
 [pružiny spouštěcí]: http://projects.spring.io/spring-boot/
-[Pružiny Framework]: https://spring.io/
+[pružiny Framework]: https://spring.io/
 
 <!-- IMG List -->
 

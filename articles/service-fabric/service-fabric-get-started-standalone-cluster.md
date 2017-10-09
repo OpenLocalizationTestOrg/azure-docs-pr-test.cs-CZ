@@ -1,6 +1,6 @@
 ---
-title: "Nastavení samostatného clusteru Azure Service Fabric | Dokumentace Microsoftu"
-description: "Můžete vytvořit samostatný vývojový cluster se třemi uzly spuštěnými ve stejném počítači. Po dokončení tohoto nastavení budete umět sestavit cluster s více počítači."
+title: "aaaSet clusteru Azure Service Fabric samostatné | Microsoft Docs"
+description: "Vytvoření clusteru s podporou samostatné vývoj s tři uzly systémem hello stejný počítač. Po dokončení této instalace, bude připravená toocreate clusteru s více počítači."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e4d0ea9fc3b8475160bd8ed19fd3716463791cc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Vytvoření vašeho prvního samostatného clusteru Service Fabric
-Samostatný cluster Service Fabric můžete vytvořit v každém virtuálním nebo fyzickém počítači se systémem Windows Server 2012 R2 nebo Windows Server 2016, a to místně nebo v cloudu. Tento rychlý postup vám pomůže vytvořit samostatný vývojový cluster za několik minut.  Po provedení postupu budete mít cluster se třemi uzly, který běží v jednom počítači a do kterého můžete nasazovat aplikace.
+Můžete vytvořit samostatný cluster Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server 2012 R2 nebo Windows Server 2016, místní nebo v cloudu hello. Tento rychlý start vám pomůže toocreate samostatný cluster s podporou vývoj právě za několik minut.  Po provedení postupu budete mít cluster se třemi uzly, který běží v jednom počítači a do kterého můžete nasazovat aplikace.
 
 ## <a name="before-you-begin"></a>Než začnete
-Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](http://go.microsoft.com/fwlink/?LinkId=730690).  Rozbalte instalační balíček do složky na počítači nebo virtuálním počítači, kde nastavujete vývojový cluster.  Obsah instalačního balíčku je podrobně popsán [zde](service-fabric-cluster-standalone-package-contents.md).
+Service Fabric nabízí instalaci balíčku toocreate Service Fabric samostatné clustery.  [Stáhnout instalační balíček hello](http://go.microsoft.com/fwlink/?LinkId=730690).  Rozbalte hello instalace tooa složku balíčku na hello počítač nebo virtuální počítač, kde nastavujete hello vývojový cluster.  jsou podrobně popsány Hello obsah instalačního balíčku hello [zde](service-fabric-cluster-standalone-package-contents.md).
 
-Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslušném počítači oprávnění správce. Service Fabric nelze nainstalovat na řadič domény.
+Správce clusteru Hello nasazení a konfigurace clusteru hello musí mít oprávnění správce na počítači hello. Service Fabric nelze nainstalovat na řadič domény.
 
-## <a name="validate-the-environment"></a>Ověření prostředí
-Skript *TestConfiguration.ps1* v samostatném balíčku se používá jako analyzátor s osvědčenými postupy pro ověření, jestli je možné cluster nasadit do daného prostředí. V článku [Příprava nasazení](service-fabric-cluster-standalone-deployment-preparation.md) jsou vypsány předpoklady a požadavky prostředí. Spusťte skript a ověřte, jestli můžete vývojový cluster vytvořit:
+## <a name="validate-hello-environment"></a>Ověření hello prostředí
+Hello *TestConfiguration.ps1* skript v balíčku samostatné hello slouží jako nejlepší toovalidate analyzátor postupy, zda clusteru můžou být nasazené na dané prostředí. [Příprava nasazení](service-fabric-cluster-standalone-deployment-preparation.md) seznamy hello požadavky a požadavky na prostředí. Spusťte skript tooverify hello, pokud můžete vytvořit cluster vývoj hello:
 
 ```powershell
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
 ```
-## <a name="create-the-cluster"></a>Vytvoření clusteru
-Několik ukázkových konfiguračních souborů clusteru se nainstaluje spolu s instalačním balíčkem. Soubor *ClusterConfig.Unsecure.DevCluster.json* představuje nejjednodušší konfiguraci clusteru: nezabezpečený cluster se třemi uzly spuštěnými v jednom počítači.  Další konfigurační soubory popisují clustery s jedním nebo více počítači zabezpečené pomocí certifikátů X.509 nebo s použitím zabezpečení systému Windows.  Nemusíte upravovat žádná výchozí nastavení konfigurace pro tento kurz, ale projděte si konfigurační soubor a seznamte se s nastavením.  Část **nodes** popisuje tři uzly v clusteru: název, IP adresa, [typ uzlu, doména selhání a upgradovací doména](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  Část **properties** definuje [zabezpečení, úroveň spolehlivosti, shromažďování diagnostických dat a typy uzlů](service-fabric-cluster-manifest.md#cluster-properties) pro cluster.
+## <a name="create-hello-cluster"></a>Vytvoření clusteru hello
+Několik ukázkových clusteru konfiguračních souborů jsou nainstalovány s hello instalační balíček. *ClusterConfig.Unsecure.DevCluster.json* je nejjednodušší konfiguraci clusteru hello: nezabezpečená, tři uzly clusteru se systémem na jednom počítači.  Další konfigurační soubory popisují clustery s jedním nebo více počítači zabezpečené pomocí certifikátů X.509 nebo s použitím zabezpečení systému Windows.  Nemáte potřebovat toomodify hello výchozí konfigurace nastavení pro tento kurz, ale projděte hello konfiguračního souboru a seznamte se s hello nastavení.  Hello **uzly** část popisuje hello tři uzly v clusteru hello: název, IP adresa, [typ uzlu, doména selhání a upgradu domény](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  Hello **vlastnosti** oddíl definuje hello [zabezpečení, úroveň spolehlivosti, diagnostiky kolekce a typy uzlů](service-fabric-cluster-manifest.md#cluster-properties) pro hello cluster.
 
-Tento cluster není zabezpečený.  Každý se může anonymně připojit a provádět operace správy, proto by produkční clustery vždy měly být zabezpečené pomocí certifikátů X.509 nebo zabezpečení systému Windows.  Zabezpečení se konfiguruje jenom při vytváření clusteru a není možné povolit zabezpečení po vytvoření clusteru.  V článku [Zabezpečení clusteru](service-fabric-cluster-security.md) najdete další informace o zabezpečení clusteru Service Fabric.  
+Tento cluster není zabezpečený.  Každý se může anonymně připojit a provádět operace správy, proto by produkční clustery vždy měly být zabezpečené pomocí certifikátů X.509 nebo zabezpečení systému Windows.  Zabezpečení je nakonfigurovaná pouze při vytváření clusteru a není možné tooenable zabezpečení po vytvoření clusteru hello.  Čtení [zabezpečení clusteru](service-fabric-cluster-security.md) toolearn Další informace o zabezpečení clusteru Service Fabric.  
 
-Chcete-li vytvořit vývojový cluster se třemi uzly, spusťte skript *CreateServiceFabricCluster.ps1* z relace prostředí PowerShell správce:
+toocreate hello vývoj tři uzly clusteru, spusťte hello *CreateServiceFabricCluster.ps1* skriptu z relace prostředí PowerShell správce:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-Balíček běhového prostředí Service Fabric se automaticky stáhne a nainstaluje v době vytváření clusteru.
+balíček modulu runtime Service Fabric Hello je automaticky stáhnout a nainstalovat v době vytváření clusteru.
 
-## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
-Vývojový cluster se třemi uzly je nyní spuštěn. Modul PowerShell ServiceFabric se instaluje spolu s modulem runtime.  Ověřit, že je cluster spuštěn, můžete ze stejného počítače nebo ze vzdáleného počítače s modulem runtime Service Fabric.  Rutina [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) vytvoří připojení ke clusteru.   
+## <a name="connect-toohello-cluster"></a>Připojte toohello cluster
+Vývojový cluster se třemi uzly je nyní spuštěn. Hello modulu ServiceFabric PowerShell se instaluje s hello runtime.  Můžete ověřit, že hello clusteru je spuštěn z hello stejný počítač nebo ze vzdáleného počítače pomocí modulu runtime Service Fabric hello.  Hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutina vytvoří cluster toohello připojení.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-Další příklady připojení ke clusteru najdete v článku [Připojení k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md). Po připojení ke clusteru zobrazte pomocí rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) seznam uzlů v clusteru a stavové informace pro každý uzel. Položka **HealthState** by měla mít pro každý uzel hodnotu *OK*.
+V tématu [clusteru zabezpečené připojení tooa](service-fabric-connect-to-secure-cluster.md) pro další příklady připojování tooa clusteru. Po připojování toohello clusteru pomocí hello [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) rutiny toodisplay seznam uzlů v clusteru a stavové informace pro každý uzel hello. Položka **HealthState** by měla mít pro každý uzel hodnotu *OK*.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -65,30 +65,30 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Vizualizace clusteru pomocí Service Fabric Exploreru
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která běží v clusteru. Můžete k ní přistupovat prostřednictvím prohlížeče, pokud přejdete na adresu [http://localhost:19080/Explorer](http://localhost:19080/Explorer). 
+## <a name="visualize-hello-cluster-using-service-fabric-explorer"></a>Vizualizace hello clusteru pomocí Service Fabric Exploreru
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která běží v clusteru hello, kterým můžete přistupovat pomocí prohlížeče tak, že přejdete příliš[http://localhost: 19080/Explorer](http://localhost:19080/Explorer). 
 
-Řídicí panel clusteru poskytuje přehled o clusteru včetně souhrnu stavu aplikací a uzlů. Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód.
+řídicí panel clusteru Hello obsahuje přehled clusteru, včetně shrnutí stavu uzlu a aplikace. zobrazení uzlu Hello zobrazuje fyzické rozložení hello hello clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód.
 
 ![Service Fabric Explorer][service-fabric-explorer]
 
-## <a name="remove-the-cluster"></a>Odebrání clusteru
-Chcete-li cluster odebrat, spusťte skript *RemoveServiceFabricCluster.ps1* prostředí PowerShell ze složky balíčku a předejte mu cestu ke konfiguračnímu souboru JSON. Volitelně můžete určit umístění pro protokol odstranění.
+## <a name="remove-hello-cluster"></a>Odebrat hello cluster
+tooremove clusteru, spusťte hello *RemoveServiceFabricCluster.ps1* skript prostředí PowerShell ze složky balíčku hello a předejte jí hello cesta toohello JSON konfigurační soubor. Volitelně můžete zadat umístění pro protokol hello hello odstranění.
 
 ```powershell
-# Removes Service Fabric cluster nodes from each computer in the configuration file.
+# Removes Service Fabric cluster nodes from each computer in hello configuration file.
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -Force
 ```
 
-Pokud chcete z počítače odebrat modul runtime Service Fabric, spusťte následující skript prostředí PowerShell ze složky balíčku.
+tooremove runtime Service Fabric hello z hello počítači, spusťte následující skript prostředí PowerShell ze složky balíčku hello hello.
 
 ```powershell
-# Removes Service Fabric from the current computer.
+# Removes Service Fabric from hello current computer.
 .\CleanFabric.ps1
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste nastavili samostatný vývojový cluster, zkuste následující články:
+Teď, když jste nastavili vývojový samostatný cluster, zkuste hello následující články:
 * [Nastavení samostatného clusteru s více počítači](service-fabric-cluster-creation-for-windows-server.md) a povolení zabezpečení
 * [Nasazení aplikací s použitím prostředí PowerShell](service-fabric-deploy-remove-applications.md)
 

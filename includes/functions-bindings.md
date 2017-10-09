@@ -15,6 +15,6 @@
 
 (\* -Všechny aktivační události přidruženy vstupní data)
 
-(\**-HTTP výstup vazba vyžaduje aktivační procedury HTTP)
+(\**-hello HTTP výstup vazba vyžaduje aktivační procedury HTTP)
 
 

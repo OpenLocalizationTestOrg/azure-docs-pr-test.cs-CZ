@@ -1,6 +1,6 @@
 ---
-title: "Přehled Microsoft Azure StorSimple Data Manager | Microsoft Docs"
-description: "Obsahuje přehled služby StorSimple Manager dat (soukromém náhledu)."
+title: "Přehled Azure StorSimple Data Manager aaaMicrosoft | Microsoft Docs"
+description: "Poskytuje přehled hello služby StorSimple Manager dat (soukromém náhledu)."
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-ms.openlocfilehash: aedb44610fe57055851538b9dbdb810e66e58d73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d29f7d26be9f2b36857526bdea770d991cece6c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-data-manager-overview-private-preview"></a>Přehled Data Manager zařízení StorSimple (soukromém náhledu).
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure StorSimple je řešení hybridní cloudové úložiště, které řeší složitosti nestrukturovaných dat běžně spojovaných se sdílenými složkami. StorSimple používá úložiště v cloudu jako rozšíření v případě místních řešení a automaticky úrovně dat mezi místní úložiště a úložiště v cloudu. Integrovat ochranu dat, místní a cloudových snímků, eliminuje potřebu rozrůstající infrastruktury úložiště. Archivace a zotavení po havárii je také bezproblémové s cloudem, který funguje jako mimo pracoviště.
+Microsoft Azure StorSimple je řešení hybridní cloudové úložiště, které adresy hello složitosti nestrukturovaných dat běžně spojovaných se sdílenými složkami. StorSimple používá úložiště v cloudu jako rozšíření hello místní řešení a automaticky úrovně dat napříč hello místní úložiště a úložiště v cloudu. Integrovat ochranu dat, místní a cloudových snímků, eliminuje nutnost hello rozrůstající infrastruktury úložiště. Archivace a zotavení po havárii je také bezproblémové hello cloudu, který funguje jako mimo pracoviště.
 
-Služba transformace dat, která Představujeme v tomto dokumentu, můžete bezproblémově přistupovat k StorSimple dat v cloudu. Tato služba poskytuje rozhraní API extrahovat data z StorSimple a prezentovat si ho k jiným službám Azure ve formátech, můžete snadno využívat. Formátů podporovaných v této verzi preview jsou Azure BLOB a prostředky Azure Media Services. Tato transformace umožňuje snadno propojit až službám, jako je Azure Media Services, Azure HDInsight, Azure Machine Learning a Azure Search fungovat data na místní zařízení řady StorSimple 8000.
+Hello služba transformace dat, která Představujeme v tomto dokumentu, umožní vám tooseamlessly přístup hello StorSimple dat v cloudu hello. Tato služba poskytuje rozhraní API tooextract data ze zařízení StorSimple a je k dispozici tooother Azure services v formáty, které můžete snadno využívat. Hello formátů podporovaných v této verzi preview jsou Azure BLOB a prostředky Azure Media Services. Tato transformace umožňuje vám tooeasily přenosová až službám, jako je Azure Media Services, Azure HDInsight, Azure Machine Learning a Azure Search toooperate data na místní zařízení řady StorSimple 8000.
 
 Podrobný Blokový diagram ilustrující to jsou uvedeny níže.
 
 ![Vysokoúrovňový diagram](./media//storsimple-data-manager-overview/high-level-diagram.png)
 
-Tento dokument popisuje, jak zaregistrovat privátní Preview verzi této služby. Také vysvětluje, jak lze pomocí této služby pro psaní aplikací, které používají StorSimple data a jinými službami Azure v cloudu.
+Tento dokument popisuje, jak zaregistrovat privátní Preview verzi této služby. Také vysvětluje, jak lze pomocí této aplikace toowrite služby, které používají StorSimple data a jinými službami Azure v cloudu hello.
 
 ## <a name="sign-up-for-data-manager-preview"></a>Zaregistrujte si Data Manager preview
-Ještě než si zaregistrujete do služby Data Manager, přečtěte si následující požadavky.
+Ještě než si zaregistrujete služby hello Data Manager, zkontrolujte hello následující požadavky.
 
 ### <a name="prerequisites"></a>Požadavky
 
 Toto cvičení předpokládá, že máte
 * Aktivní předplatné Azure.
-* přístup k registrované zařízení StorSimple 8000 řady zařízení
-* všechny klíče přidružené k zařízení řady StorSimple 8000.
+* zaregistrované zařízení řady StorSimple 8000 tooa přístup
+* všechny hello klíče přidružené zařízení řady StorSimple 8000 hello.
 
 ### <a name="sign-up"></a>Registrace
 
-Data Manager zařízení StorSimple je v privátní Preview verzi. Proveďte následující kroky se zaregistrovat v privátní Preview verzi této služby:
+Hello StorSimple Data Manager je v privátní Preview verzi. Proveďte následující kroky toosign pro privátní Preview verzi této služby hello:
 
-1.  Přihlaste se k portálu Azure s příponou StorSimple Manager dat na: [https://aka.ms/HybridDataManager](https://aka.ms/HybridDataManager). Přihlaste se pomocí přihlašovacích údajů Azure.
+1.  Přihlaste se k hello portál Azure s příponou hello StorSimple Manager dat na: [https://aka.ms/HybridDataManager](https://aka.ms/HybridDataManager). Použijte toolog vaše přihlašovací údaje Azure v.
 
-2.  Klikněte  **+**  ikona vytvoření služby. Klikněte na tlačítko **úložiště** a pak klikněte na **najdete v článku všechny** v okně, které se otevře.
+2.  Klikněte na tlačítko hello  **+**  toocreate ikonu služby. Klikněte na tlačítko **úložiště** a pak klikněte na **najdete v článku všechny** v okně hello, které se otevře.
 
     ![Ikona Data Manager StorSimple vyhledávání](./media/storsimple-data-manager-overview/search-data-manager-icon.png)
 
-3. Zobrazí ikona StorSimple Data Manager.
+3. Zobrazí ikona hello StorSimple Data Manager.
 
     ![Vyberte ikonu pro StorSimple Data Manager](./media/storsimple-data-manager-overview/select-data-manager-icon.png)
 
-4. Klikněte na ikonu StorSimple Manager dat a pak klikněte na **vytvořit**. Vyberte předplatné, které chcete povolit privátní Preview verzi a potom klikněte na **zapsat se!**
+4. Klikněte na ikonu StorSimple Manager dat a pak klikněte na **vytvořit**. Vyberte předplatné hello má tooenable hello privátní Preview verzi a potom klikněte na **zapsat se!**
 
     ![Zapsat se](./media/storsimple-data-manager-overview/sign-me-up.png)
 
-5. Tím se odešle požadavek na základní desce můžete. Nemůžeme se zaváděním je co nejdříve. Když je vaše předplatné povolená, můžete vytvořit služby StorSimple Data Manager.
+5. Tím se odešle požadavek tooonboard můžete. Nemůžeme se zaváděním je co nejdříve. Když je vaše předplatné povolená, můžete vytvořit služby StorSimple Data Manager.
 
-6. Snadno přístup ke službě StorSimple Manager dat, klikněte na ikonu hvězdičky. Chcete-li připnout do vašich oblíbených položek.
+6. tooeasily přístup služby StorSimple Manager dat hello, klikněte na ikonu hvězdičky toopin hello ho tooyour Oblíbené položky.
 
     ![Správci StorSimple Data Access](./media/storsimple-data-manager-overview/access-data-managers.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Data Manager zařízení StorSimple pomocí uživatelského rozhraní pro transformaci dat](storsimple-data-manager-ui.md).
+[Pomocí uživatelského rozhraní Správce dat StorSimple tootransform dat](storsimple-data-manager-ui.md).

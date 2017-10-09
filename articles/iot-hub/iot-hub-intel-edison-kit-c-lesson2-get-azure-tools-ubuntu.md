@@ -1,5 +1,5 @@
 ---
-title: "Connect Intel Edison (C) k Azure IoT - lekci 2: nástroje Azure (Ubuntu) | Microsoft Docs"
+title: "Connect Intel Edison (C) tooAzure IoT - lekci 2: nástroje Azure (Ubuntu) | Microsoft Docs"
 description: "Nainstalujte na Ubuntu Python a rozhraní příkazového řádku Azure (Azure CLI)."
 services: iot-hub
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 897ab63af85a1f830ed49084ce7c3e74c84a4cc9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a7691c13d43aa6dfff24adf2b470728d5266713e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-ubuntu-1604"></a>Získat nástroje Azure (Ubuntu 16.04)
 > [!div class="op_single_selector"]
@@ -30,23 +30,23 @@ ms.lasthandoff: 07/11/2017
 > * [systému macOS 10.10][macos]
 
 ## <a name="what-you-will-do"></a>Co provedete
-Nainstalujte rozhraní příkazového řádku Azure (Azure CLI). Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky][troubleshooting].
+Nainstalujte hello rozhraní příkazového řádku Azure (Azure CLI). Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
-* Postup instalace rozhraní příkazového řádku Azure.
-* Postup přidání podskupině IoT rozhraní příkazového řádku Azure.
+* Jak tooinstall hello rozhraní příkazového řádku Azure.
+* Jak tooadd podskupině hello rozhraní příkazového řádku Azure IoT.
 
 ## <a name="what-you-need"></a>Co potřebujete
 * Počítač s Ubuntu s připojením k Internetu.
 * Aktivní předplatné Azure. Pokud účet nemáte, můžete vytvořit [Bezplatný zkušební účet](http://azure.microsoft.com/pricing/free-trial/) za několik minut.
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-Rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure, umožňuje pracovat přímo z příkazového řádku pro zřizování a správu prostředků.
+## <a name="install-hello-azure-cli"></a>Nainstalujte hello rozhraní příkazového řádku Azure
+Hello rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure, takže se budete toowork přímo z vašeho tooprovision příkazového řádku a spravovat prostředky.
 
-Pokud chcete nainstalovat nejnovější rozhraní příkazového řádku Azure, postupujte takto:
+tooinstall hello nejnovější rozhraní příkazového řádku Azure, postupujte takto:
 
-1. Spusťte následující příkazy v okno terminálu. Může trvat pět minut, chcete-li nainstalovat rozhraní příkazového řádku Azure.
+1. Spusťte následující příkazy v okno terminálu hello. Může trvat pět minut tooinstall hello rozhraní příkazového řádku Azure.
 
    ```bash
    sudo apt-get update
@@ -57,18 +57,18 @@ Pokud chcete nainstalovat nejnovější rozhraní příkazového řádku Azure, 
    sudo pip install --upgrade azure-cli
    sudo pip install --upgrade azure-cli-iot
    ```
-2. Ověřte instalaci tak, že spustíte následující příkaz:
+2. Hello instalaci ověřte spuštěním hello následující příkaz:
 
    ```bash
    az iot -h
    ```
 
-Pokud k úspěšnému dokončení instalace, měli byste vidět následující výstup.
+Měli byste vidět, že hello následující výstup, pokud hello instalace byla úspěšně dokončena.
 
 ![Výstup, který označuje úspěch](media/iot-hub-intel-edison-lessons/lesson2/az_iot_help_ubuntu.png)
 
 ## <a name="summary"></a>Souhrn
-Instalaci rozhraní příkazového řádku Azure. Svůj další úkol je vytvoření vaší Azure IoT hub a zařízení identity pomocí rozhraní příkazového řádku Azure.
+Jste nainstalovali hello rozhraní příkazového řádku Azure. Svůj další úkol je toocreate Azure IoT hub a pomocí identity zařízení hello rozhraní příkazového řádku Azure.
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvoření služby IoT hub a zaregistrujte Intel Edison][create-your-iot-hub-and-register-intel-edison]

@@ -1,6 +1,6 @@
 ---
-title: "Hodnocení aplikace Service Fabric se analýza protokolů Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Můžete vytvořit řešení Service Fabric v analýzy protokolů pomocí prostředí PowerShell pro vyhodnocení rizik a stavu Service Fabric aplikací, micro-services, uzly a clustery."
+title: "aaaAssess aplikace Service Fabric se analýza protokolů Azure pomocí prostředí PowerShell | Microsoft Docs"
+description: "Hello Service Fabric řešení můžete použít v analýzy protokolů pomocí prostředí PowerShell tooassess hello rizika a stavu aplikací Service Fabric, micro-services, uzly a clustery."
 services: log-analytics
 documentationcenter: 
 author: niniikhena
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: nini
-ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3f6d6c0df02d6d453b77e50b75b64bf7eb73bbbf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>Vyhodnocení aplikace Azure Service Fabric a micro-services pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -30,51 +30,51 @@ ms.lasthandoff: 08/18/2017
 
 ![Symbol Service Fabric](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
 
-Tento článek popisuje, jak používat řešení Service Fabric v analýzy protokolů pro identifikaci a řešení potíží s napříč cluster Service Fabric. Pomáhá můžete zjistit, jak Service Fabric uzly fungují a jak vašim aplikacím a službám micro běží.
+Tento článek popisuje, jak toouse hello řešení Service Fabric v toohelp Log Analytics identifikovat a řešit problémy mezi cluster Service Fabric. Pomáhá můžete zjistit, jak Service Fabric uzly fungují a jak vašim aplikacím a službám micro běží.
 
-Service Fabric řešení používá Azure Diagnostics data z virtuálních počítačů služby infrastruktury, shromažďováním těchto dat z Azure WAD tabulek. Analýzy protokolů potom načte následující události Service Fabric framework:
+Hello Service Fabric řešení používá Azure Diagnostics data z virtuálních počítačů služby infrastruktury, shromažďováním těchto dat z Azure WAD tabulek. Analýzy protokolů potom načte hello následující události Service Fabric framework:
 
 - **Události spolehlivé služby**
 - **Události objektu actor**
 - **Provozní události**
 - **Vlastní události trasování událostí pro Windows**
 
-Řídicí panel řešení Service Fabric zobrazuje můžete významné problémy a relevantní události ve vašem prostředí Service Fabric.
+řídicí panel řešení Service Fabric Hello zobrazuje můžete významné problémy a relevantní události ve vašem prostředí Service Fabric.
 
-## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
-Postupujte podle těchto tří jednoduché kroky k instalaci a konfiguraci řešení:
+## <a name="installing-and-configuring-hello-solution"></a>Instalace a konfigurace řešení hello
+Postupujte podle těchto tří jednoduché kroky tooinstall a nakonfigurujte hello řešení:
 
-1. Přidružte předplatného Azure, které jste použili k vytvoření všechny prostředky clusteru, včetně účtů úložiště s pracovního prostoru. V tématu [začít pracovat s analýzy protokolů](log-analytics-get-started.md) informace o vytváření pracovního prostoru analýzy protokolů.
-2. Konfigurace analýzy protokolů můžete shromažďovat a zobrazovat protokoly Service Fabric.
-3. Povolte řešení Service Fabric v pracovním prostoru.
+1. Přidružte hello předplatné Azure použité toocreate všechny prostředky clusteru, včetně účtů úložiště s pracovního prostoru. V tématu [začít pracovat s analýzy protokolů](log-analytics-get-started.md) informace o vytváření pracovního prostoru analýzy protokolů.
+2. Nakonfigurujte toocollect analýzy protokolů a zobrazit protokoly Service Fabric.
+3. Povolte hello řešení Service Fabric v pracovním prostoru.
 
-## <a name="configure-log-analytics-to-collect-and-view-service-fabric-logs"></a>Konfigurace analýzy protokolů můžete shromažďovat a zobrazovat protokoly Service Fabric
-V této části se dozvíte, postup konfigurace analýzy protokolů pro načtení protokoly Service Fabric. Protokoly umožňují zobrazit, analyzovat a řešení problémů v clusteru nebo v aplikací a služeb spuštěných v daném clusteru pomocí portálu OMS.
+## <a name="configure-log-analytics-toocollect-and-view-service-fabric-logs"></a>Nakonfigurujte toocollect analýzy protokolů a zobrazit protokoly Service Fabric
+V této části se dozvíte, jak tooconfigure analýzy protokolů tooretrieve Service Fabric protokoly. protokoly Hello umožňují tooview, analyzovat a řešení problémů v clusteru nebo v hello aplikací a služeb spuštěných v daném clusteru pomocí portálu OMS hello.
 
 > [!NOTE]
-> Konfigurace rozšíření Azure Diagnostics odeslat protokoly pro úložiště tabulek. Tabulky se musí shodovat co hledá analýzy protokolů. Další informace najdete v tématu [postup shromažďování protokolů pomocí Azure Diagnostics](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md). Příklady nastavení konfigurace v tomto článku ukazují, že jste názvy tabulek úložiště by měla být. Jakmile diagnostiky je nastavený na clusteru a odesílá protokoly na účet úložiště, dalším krokem je konfigurace analýzy protokolů pro shromažďování těchto protokolů.
+> Nakonfigurujte hello Azure Diagnostics rozšíření tooupload hello protokoly pro úložiště tabulek. Hello tabulky se musí shodovat co hledá analýzy protokolů. Další informace najdete v tématu [jak toocollect protokoly s Azure Diagnostics](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md). Hello konfigurace nastavení příklady v tomto článku zobrazit, jaké názvy hello hello úložiště by měla být tabulky. Jakmile diagnostiky je nastavený na hello clusteru a odesílá účet úložiště tooa protokoly, hello dalším krokem je tooconfigure analýzy protokolů toocollect tyto protokoly.
 >
 >
 
-Ujistěte se, že aktualizujete **EtwEventSourceProviderConfiguration** tématu **template.json** soubor pro přidání položek pro nové EventSources před použitím konfigurace aktualizovat spuštěním **deploy.ps1**. Tabulka pro nahrávání je stejný jako (ETWEventTable). V tuto chvíli můžete číst analýzy protokolů jenom události trasování událostí pro Windows aplikace z *WADETWEventTable* tabulky.
+Ujistěte se, že aktualizujete hello **EtwEventSourceProviderConfiguration** část v hello **template.json** souboru tooadd záznamy pro nové EventSources před použitím konfigurace hello aktualizovat hello spuštění **deploy.ps1**. Hello tabulky pro nahrávání hello stejné jako (ETWEventTable). Momentálně hello, analýzy protokolů můžete číst data jenom události trasování událostí aplikace na hello *WADETWEventTable* tabulky.
 
-Tyto nástroje jsou používány k provádění některých operací v této části:
+Hello tyto nástroje jsou použité tooperform některé operace hello v této části:
 
 * Azure PowerShell
 * [Operations Management Suite](http://www.microsoft.com/oms)
 
-### <a name="configure-a-log-analytics-workspace-to-show-the-cluster-logs"></a>Konfigurovat pracovní prostor analýzy protokolů zobrazit protokoly clusteru
+### <a name="configure-a-log-analytics-workspace-tooshow-hello-cluster-logs"></a>Konfigurace analýzy protokolů prostoru tooshow hello clusteru protokolů
 
-Po vytvoření pracovního prostoru analýzy protokolů, nakonfigurujte v pracovním prostoru protokoly z tabulky úložiště Azure pro vyžádání obsahu. Potom spusťte následující skript prostředí PowerShell:
+Po vytvoření pracovního prostoru analýzy protokolů, nakonfigurujte hello prostoru toopull protokoly z tabulky úložiště Azure hello. Potom spusťte následující skript prostředí PowerShell hello:
 
 ```
 <#
-    This script will configure an Operations Management Suite workspace (previously called an Operational Insights workspace) to read Diagnostics from an Azure Storage account.
+    This script will configure an Operations Management Suite workspace (previously called an Operational Insights workspace) tooread Diagnostics from an Azure Storage account.
     It will enable all supported data types (currently Service Fabric Events, ETW Events and IIS Logs).
     It supports Resource Manager storage accounts.
-    If you have more than one Azure Subscription, you will be prompted for the subscription to configure.
-    If you have more than one Log Analytics workspace you will be prompted for the workspace to configure.
-    It will then look through your Service Fabric clusters, and configure your Log Analytics workspace to read Diagnostics from storage accounts that are connected to that cluster and have diagnostics enabled.
+    If you have more than one Azure Subscription, you will be prompted for hello subscription tooconfigure.
+    If you have more than one Log Analytics workspace you will be prompted for hello workspace tooconfigure.
+    It will then look through your Service Fabric clusters, and configure your Log Analytics workspace tooread Diagnostics from storage accounts that are connected toothat cluster and have diagnostics enabled.
 #>
 
 try
@@ -94,7 +94,7 @@ function Select-Subscription {
              0 {Write-Error "No Operations Management Suite workspaces found"}
              1 {return $allSubscriptions}
         default {
-            $uiPrompt = "Enter the number corresponding to the Azure subscription you would like to work with.`n"
+            $uiPrompt = "Enter hello number corresponding toohello Azure subscription you would like toowork with.`n"
 
             $count = 1
             foreach ($subscription in $allSubscriptions) {
@@ -117,7 +117,7 @@ function Select-Workspace {
         0 {Write-Error "No Operations Management Suite workspaces found. `n"}
         1 {return $allWorkspaces}
         default {
-            $uiPrompt = "Enter the number corresponding to the workspace you want to configure.`n"
+            $uiPrompt = "Enter hello number corresponding toohello workspace you want tooconfigure.`n"
             $count = 1
             foreach ($workspace in $allWorkspaces) {
                 $uiPrompt += "$count. " + $workspace.Name + " (" + $workspace.CustomerId + ")`n"
@@ -141,15 +141,15 @@ function Check-ETWProviderLogging {
          Write-Debug ("ID: $id Provider: $provider ExpectedTable $expectedTable ActualTable $table")
          if ( ($table -eq $null) -or ($table -eq ""))  
          {
-             Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics to write to $expectedTable.")
+             Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics toowrite too$expectedTable.")
          }  
          elseif ( $table -ne $expectedTable )
          {
-             Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
+             Write-Warning ("$id $provider events are being written too$table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
          }  
          else
          {
-             Write-Verbose "$id $provider events are being written to WAD$expectedTable (Correct configuration.)"
+             Write-Verbose "$id $provider events are being written tooWAD$expectedTable (Correct configuration.)"
          }
  }
 
@@ -183,7 +183,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
          $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration
      } else
      {
-         Write-Error "Unable to parse Azure Diagnostics setting for $id"
+         Write-Error "Unable tooparse Azure Diagnostics setting for $id"
              Write-Warning ("$id does not have diagnostics enabled")
      }
      foreach ($provider in $serviceFabricProviderList)  
@@ -223,7 +223,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
 
 function Select-StorageAccount {
     $allResources = Get-AzureRmResource #pulls in all resources
-    $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"}) #pulls in all service fabric clusters in the resource
+    $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"}) #pulls in all service fabric clusters in hello resource
     $storageAccountList = @()
     foreach($cluster in $serviceFabricClusters) {
         Write-Host("Checking cluster: " + $cluster.Name)
@@ -256,7 +256,7 @@ function Select-StorageAccount {
                             }
                         catch
                             {
-                                # HTTP Not Found is returned if the storage insight doesn't exist
+                                # HTTP Not Found is returned if hello storage insight doesn't exist
                             }
                         if ($existingConfig) {                         
                                   [array]$Tables = $existingConfig.Tables
@@ -270,7 +270,7 @@ function Select-StorageAccount {
                                                Write-Host "$table is already configured.`n";
                                              }
                                       }
-                                      # If any of the tables from the table list are not already monitored, then we add them
+                                      # If any of hello tables from hello table list are not already monitored, then we add them
                                    if($dirty -eq $true) {
                                            Set-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -Tables $Tables
                                            Write-Host "Updating Storage Insight. `n"
@@ -297,12 +297,12 @@ $workspace = Select-Workspace
 $storageAccount = Select-StorageAccount
 ```
 
-Po dokončení konfigurace pracovní prostor analýzy protokolů pro čtení z tabulky Azure ve vašem účtu úložiště, přihlaste se k portálu Azure. Vyberte pracovní prostor analýzy protokolů z **všechny prostředky**. Zobrazí se počet připojení do pracovního prostoru protokol účtu úložiště. Vyberte **protokol účtu úložiště** dlaždici. Projděte si seznam protokol účtu úložiště k ověření, že váš účet úložiště je připojený k správné pracovního prostoru.
+Po dokončení konfigurace tooread pracovní prostor analýzy protokolů hello z hello Azure tabulek v účtu úložiště, přihlaste se toohello portálu Azure. Vyberte pracovní prostor analýzy protokolů hello z **všechny prostředky**. Zobrazí se počet Hello prostoru toohello protokoly připojené účet úložiště. Vyberte hello **protokol účtu úložiště** dlaždici. Zkontrolujte seznam hello tooverify protokoly účet úložiště, že váš účet úložiště je připojený toohello správné prostoru.
 
 ![Protokol účtu úložiště](./media/log-analytics-service-fabric/sf1.png)
 
-## <a name="enable-the-service-fabric-solution"></a>Povolit řešení Service Fabric
-Pomocí následujícího skriptu přidat do pracovního prostoru analýzy protokolů řešení. Spusťte skript prostředí PowerShell, pomocí předplatného Azure, který je přidružen pracovní prostor analýzy protokolů, který chcete povolit řešení v Service Fabric.
+## <a name="enable-hello-service-fabric-solution"></a>Povolit řešení hello Service Fabric
+Použijte následující skript tooadd hello řešení tooyour pracovní prostor analýzy protokolů hello. Spusťte skript hello v prostředí PowerShell, pomocí hello předplatné Azure, který je přidružen hello pracovní prostor analýzy protokolů, který požadujete tooenable hello Service Fabric řešení.
 
 ```
 function Select-Subscription {
@@ -312,7 +312,7 @@ function Select-Subscription {
              0 {Write-Error "No Operations Management Suite workspaces found"}
              1 {return $allSubscriptions}
         default {
-            $uiPrompt = "Enter the number corresponding to the Azure subscription you would like to work with.`n"
+            $uiPrompt = "Enter hello number corresponding toohello Azure subscription you would like toowork with.`n"
             $count = 1
             foreach ($subscription in $allSubscriptions) {
                 $uiPrompt += "$count. " + $subscription.SubscriptionName + " (" + $subscription.SubscriptionId + ")`n"
@@ -333,7 +333,7 @@ function Select-Workspace {
         0 {Write-Error "No Operations Management Suite workspaces found"}
         1 {return $allWorkspaces}
         default {
-            $uiPrompt = "Enter the number corresponding to the workspace you want to configure.`n"
+            $uiPrompt = "Enter hello number corresponding toohello workspace you want tooconfigure.`n"
             $count = 1
             foreach ($workspace in $allWorkspaces) {
                 $uiPrompt += "$count. " + $workspace.Name + " (" + $workspace.CustomerId + ")`n"
@@ -353,12 +353,12 @@ $workspace = Select-Workspace
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -IntelligencePackName "ServiceFabric" -Enabled $true
 ```
 
-Jakmile povolíte řešení, dlaždice Service Fabric se přidá k Log Analytics *přehled* stránky. Stránce zobrazuje zobrazení významné problémy, jako je například runAsync selhání a zrušení, k nimž došlo v posledních 24 hodin.
+Jakmile povolíte hello řešení, dlaždice hello Service Fabric se přidá tooyour analýzy protokolů *přehled* stránky. Hello stránka zobrazuje zobrazení významné problémy, jako je například runAsync selhání a zrušení, ke kterým došlo v hello posledních 24 hodin.
 
 ![Dlaždice Service Fabric](./media/log-analytics-service-fabric/sf2.png)
 
 ### <a name="view-service-fabric-events"></a>Zobrazit události Service Fabric
-Klikněte **Service Fabric** dlaždici otevřete řídicí panel Service Fabric. Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec uvádí top 10 události podle počtu odpovídající kritériím tento sloupec pro zadaný časový rozsah. Můžete spustit hledání protokolu, které poskytuje celý seznam kliknutím **zobrazit všechny** v pravé dolní jednotlivých sloupců, nebo kliknutím na záhlaví sloupce.
+Klikněte na tlačítko hello **Service Fabric** řídicí panel dlaždice tooopen hello Service Fabric. řídicí panel Hello zahrnuje hello sloupce v tabulce hello. Každý sloupec uvádí hello top 10 události pomocí počet odpovídajících, že kritéria sloupce pro hello zadaný časový rozsah. Můžete spustit hledání protokolu, které poskytuje celý seznam hello kliknutím **zobrazit všechny** v pravém dolním hello jednotlivých sloupců, nebo klikněte na záhlaví sloupce hello.
 
 | **Události Service Fabric** | **Popis** |
 | --- | --- |
@@ -372,30 +372,30 @@ Klikněte **Service Fabric** dlaždici otevřete řídicí panel Service Fabric.
 
 ![Řídicí panel Service Fabric](./media/log-analytics-service-fabric/sf4.png)
 
-Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Service Fabric:
+Hello následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Service Fabric:
 
 | Platforma | Přímé agenta | Agent nástroje Operations Manager | Azure Storage | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 minut |
 
 > [!NOTE]
-> Změnit rozsah události s **dat podle posledních sedmi dnů** v horní části řídicího panelu. Můžete také zobrazit události generované během posledních sedmi dnů, jeden den nebo šest hodin. Nebo můžete vybrat **vlastní** zadat vlastní období.
+> Změnit rozsah hello událostí s **dat podle posledních sedmi dnů** hello horní části řídicího panelu hello. Můžete také zobrazit události generované v rámci hello posledních sedmi dnů, jeden den nebo šest hodin. Nebo můžete vybrat **vlastní** toospecify vlastní období.
 >
 >
 
 ## <a name="troubleshoot-your-service-fabric-and-log-analytics-configuration"></a>Řešení potíží s konfiguraci Service Fabric a analýzy protokolů
-Pokud potřebujete ověřit konfiguraci analýzy protokolů, protože nelze zobrazit data události v analýzy protokolů, použijte následující skript. Provede následující akce:
+Pokud potřebujete tooverify konfiguraci analýzy protokolů vzhledem k tomu, že jsou data události nelze tooview v analýzy protokolů, použijte následující skript hello. Provede hello následující akce:
 
 1. Načte konfiguraci diagnostiky Service Fabric
-2. Kontroluje data zapsaná do tabulek
-3. Ověřuje, jestli je ke čtení z tabulky nakonfigurovaná analýzy protokolů
+2. Kontroluje data zapsaná do tabulek hello
+3. Ověřuje, že analýzy protokolů je nakonfigurované tooread z tabulek hello
 
 ```
 <#
     Verify Service Fabric and Log Analytics configuration
     1. Read Service Fabric diagnostics configuration
-    2. Check for data being written into the tables
-    3. Verify Log Analytics is configured to read from the tables
+    2. Check for data being written into hello tables
+    3. Verify Log Analytics is configured tooread from hello tables
 
     Supported tables:
     WADServiceFabricReliableActorEventTable
@@ -404,7 +404,7 @@ Pokud potřebujete ověřit konfiguraci analýzy protokolů, protože nelze zobr
     WADETWEventTable
 
     Script will write a warning for every misconfiguration detected
-    To see items that are correctly configured set $VerbosePreference="Continue"
+    toosee items that are correctly configured set $VerbosePreference="Continue"
 #>
 Param
 (
@@ -421,7 +421,7 @@ $WADtables = @("WADServiceFabricReliableActorEventTable",
                )
 
 <#
-    Check if OMS Log Analytics is configured to index service fabric events from the specified table
+    Check if OMS Log Analytics is configured tooindex service fabric events from hello specified table
 #>
 
 function Check-OMSLogAnalyticsConfiguration {
@@ -439,26 +439,26 @@ function Check-OMSLogAnalyticsConfiguration {
 
         if ("WADServiceFabric*EventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured tooindex service fabric actor, service and operational events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured tooindex service fabric actor, service and operational events from " + $storageAccount.Name)
         }
         if ("WADETWEventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured tooindex service fabric application events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured tooindex service fabric application events from " + $storageAccount.Name)
         }
     } else
     {
-        Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + "is not configured to read service fabric events from " + $storageAccount.Name)
+        Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + "is not configured tooread service fabric events from " + $storageAccount.Name)
     }    
 }
 
 <#
-    Check Azure table storage to confirm there is recent data written by Service Fabric
+    Check Azure table storage tooconfirm there is recent data written by Service Fabric
 #>
 
 function Check-TablesForData {
@@ -490,7 +490,7 @@ function Check-TablesForData {
             Write-Debug $entities
             if ($entities.Count -gt 0)
             {
-                Write-Verbose ("Data was written to $table in " + $storageAccount.ResourceName + "after $recently")
+                Write-Verbose ("Data was written too$table in " + $storageAccount.ResourceName + "after $recently")
             } else
             {
                 Write-Warning ("No data after $recently is in  $table in " + $storageAccount.ResourceName)
@@ -503,7 +503,7 @@ function Check-TablesForData {
 }
 
 <#
-    Check if ETW provider is configured to log events to the expected table storage
+    Check if ETW provider is configured toolog events toohello expected table storage
 #>
 function Check-ETWProviderLogging {
     param(
@@ -515,15 +515,15 @@ function Check-ETWProviderLogging {
         Write-Debug ("ID: $id Provider: $provider ExpectedTable $expectedTable ActualTable $table")
         if ( ($table -eq $null) -or ($table -eq ""))
         {
-            Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics to write to $expectedTable.")
+            Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics toowrite too$expectedTable.")
         }
         elseif ( $table -ne $expectedTable )
         {
-            Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
+            Write-Warning ("$id $provider events are being written too$table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
         }
         else
         {
-            Write-Verbose "$id $provider events are being written to WAD$expectedTable (Correct configuration.)"
+            Write-Verbose "$id $provider events are being written tooWAD$expectedTable (Correct configuration.)"
         }
 }
 
@@ -560,7 +560,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
         $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration
     } else
     {
-        Write-Error "Unable to parse Azure Diagnostics setting for $id"
+        Write-Error "Unable tooparse Azure Diagnostics setting for $id"
         Write-Warning ("$id does not have diagnostics enabled")
     }
 
@@ -618,7 +618,7 @@ $OMSworkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.Operational
 
 if ($OMSworkspace.Name -ne $workspaceName)
 {
-    Write-Error ("Unable to find Log Analytics Workspace " + $workspaceName)
+    Write-Error ("Unable toofind Log Analytics Workspace " + $workspaceName)
 }
 
 $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"})
@@ -650,4 +650,4 @@ foreach($storageAccount in $storageAccountsToCheck)
 
 
 ## <a name="next-steps"></a>Další kroky
-* Použití [protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) zobrazíte podrobné data události Service Fabric.
+* Použití [protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) tooview podrobná data události Service Fabric.

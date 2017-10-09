@@ -1,6 +1,6 @@
-* V části **Přidat server vCenter** zadejte popisný název pro hostitele vSphere nebo server vCenter, a poté zadejte IP adresu nebo plně kvalifikovaný název domény serveru. Pokud vaše servery VMware nejsou konfigurované k naslouchání požadavkům na jiném portu, ponechte port 443. Vyberte účet, který se má připojit k serveru VMware vCenter nebo vSphere ESXi. Klikněte na tlačítko **OK**.
+* V **přidat vCenter**, zadejte popisný název pro hello vSphere hostitele nebo vCenter server a pak zadejte hello IP adresu nebo plně kvalifikovaný název domény serveru hello. Pokud jsou vaše servery VMware nakonfigurovaná toolisten pro požadavky na jiném portu nechte hello port 443. Vyberte hello účtu, který je tooconnect toohello VMware vCenter nebo vSphere ESXi serveru. Klikněte na **OK**.
 
     ![VMware](./media/site-recovery-add-vcenter/vmware-server.png)
 
    > [!NOTE]
-   > Pokud přidáváte server VMware vCenter nebo hostitele VMware vSphere pomocí účtu, který nemá oprávnění správce na serveru vCenter nebo serveru hostitele, ujistěte se, že má účet povolená tato oprávnění: Datové centrum, Úložiště dat, Složka, Hostitel, Síť, Prostředek, Virtuální počítač a Distribuovaný přepínač vSphere. Kromě toho server VMware vCenter potřebuje povolené oprávnění Zobrazení úložišť.
+   > Pokud přidáváte hello VMware vCenter server nebo VMware vSphere hostitele pomocí účtu, který nemá oprávnění správce na serveru vCenter nebo hostitelů hello, ujistěte se, zda má účet hello těchto oprávnění povoleno: síť datového centra, úložiště, složky, hostitele, , Prostředek, virtuální počítač a vSphere distribuované přepínače. Kromě toho hello VMware vCenter server potřebuje oprávnění povolená zobrazení hello úložiště.

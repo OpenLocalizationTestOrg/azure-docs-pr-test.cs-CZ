@@ -1,14 +1,14 @@
-Pomocí příkazu [az appservice plan create](/cli/azure/appservice/plan#create) vytvořte plán služby App Service.
+Vytvořte plán služby App Service s hello [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#create) příkaz.
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-Následující příklad vytvoří plán služby App Service s názvem `myAppServicePlan` v cenové úrovni **Free**:
+Hello následující příklad vytvoří plán služby App Service s názvem `myAppServicePlan` v hello **volné** cenové úrovně:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-Po vytvoření plánu služby App Service se v rozhraní příkazového řádku Azure zobrazí podobné informace jako v následujícím příkladu:
+Po vytvoření hello plán služby App Service, hello rozhraní příkazového řádku Azure ukazuje následující příklad podobné toohello informace:
 
 ```json
 { 

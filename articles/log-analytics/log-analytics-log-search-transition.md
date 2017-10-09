@@ -1,6 +1,6 @@
 ---
-title: "Azure Log Analytics dotazu jazyka – tahák | Microsoft Docs"
-description: "Tento článek obsahuje pomoc při přechodu do nové dotazovací jazyk pro analýzu protokolu, pokud jste již obeznámeni s starší verze jazyka."
+title: "aaaAzure analýzy protokolů dotazu jazyka tahák | Microsoft Docs"
+description: "Tento článek obsahuje pomoc na přechod toohello nové dotazovací jazyk pro analýzu protokolu, pokud jste již obeznámeni s jazykem hello starší verze."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 10b7f3ad23d9c5451bc7ff82b8927c260230f6da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8b4ee3d0b5e1ec8a9f95a09e0ad9835615ad1342
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Přechod na nový dotaz jazyk Azure Log Analytics
+# <a name="transitioning-tooazure-log-analytics-new-query-language"></a>Přechod nové dotazovacího jazyka pro tooAzure analýzy protokolů
 
 > [!NOTE]
-> Můžete si přečíst další informace o nové analýzy protokolů dotazu jazyka a získat postup upgradu pracovního prostoru v upgradu vaší [pracovní prostor analýzy protokolů Azure na nové hledání protokolu](log-analytics-log-search-upgrade.md).
+> Můžete si přečíst další informace o hello nové analýzy protokolů dotazu jazyka a získat hello postup tooupgrade pracovního prostoru v upgradu vaší [hledání protokolů toonew pracovní prostor analýzy protokolů Azure](log-analytics-log-search-upgrade.md).
 
-Tento článek obsahuje pomoc při přechodu do nové dotazovací jazyk pro analýzu protokolu, pokud jste již obeznámeni s starší verze jazyka.
+Tento článek obsahuje pomoc na přechod toohello nové dotazovací jazyk pro analýzu protokolu, pokud jste již obeznámeni s jazykem hello starší verze.
 
 ## <a name="language-converter"></a>Převaděč jazyk
 
-Pokud jste obeznámeni s starší verze analýzy protokolů dotazovací jazyk, je nejjednodušší způsob, jak vytvořit stejný dotaz v požadovaném jazyce pomocí převaděče jazyk, který je nainstalován na portálu hledání protokolů při převodu pracovního prostoru.  Pomocí převaděč je jednoduché, zadáním v starší verze dotaz top textového pole a pak levým na **převést**.  Můžete buď klikněte na tlačítko Hledat spustit dotaz nebo kopírovat a vložit jej používat někde jinde.
+Pokud jste obeznámeni s hello dotazovacího jazyka pro starší verze analýzy protokolů, hello nejjednodušší toocreate hello stejný dotaz v jazyce nové hello je toouse hello převaděč jazyk, bude nainstalován do portálu hledání protokolů hello při převodu pracovního prostoru.  Pomocí převaděče hello je jednoduché, zadáním v starší verze dotaz hello nejvyšší textového pole a pak levým na **převést**.  Můžete buď klikněte na tlačítko hello vyhledávací tlačítko toorun hello dotaz nebo kopírování a vložte jej toouse ho někde jinde.
 
 ![Převaděč jazyk](media/log-analytics-log-search-upgrade/language-converter.png)
 
 
 ## <a name="cheat-sheet"></a>Tahák
 
-Následující tabulka uvádí srovnání mezi celou řadu běžných dotazů na ekvivalentní příkazy mezi novou a starší verze dotazovací jazyk v Azure Log Analytics.
+Hello následující tabulka uvádí srovnání mezi celou řadu běžných dotazů tooequivalent příkazy mezi hello nové a starší verze dotazovací jazyk v Azure Log Analytics.
 
 | Popis | Starší verze | Nový |
 |:--|:--|:--|
@@ -61,5 +61,5 @@ Následující tabulka uvádí srovnání mezi celou řadu běžných dotazů na
 
 
 ## <a name="next-steps"></a>Další kroky
-- Podívejte se [kurz na zápis dotazů](https://go.microsoft.com/fwlink/?linkid=856078) pomocí nového dotazu jazyka.
-- Odkazovat [referenční příručka jazyka dotazů](https://go.microsoft.com/fwlink/?linkid=856079) podrobné informace o příkazu, operátory a funkce pro nové dotazovací jazyk.  
+- Podívejte se [kurz na zápis dotazů](https://go.microsoft.com/fwlink/?linkid=856078) pomocí dotazovacího jazyka pro nové hello.
+- Odkazovat toohello [referenční příručka jazyka dotazů](https://go.microsoft.com/fwlink/?linkid=856079) podrobné informace o příkazu, operátory a funkce pro hello nové dotazovací jazyk.  

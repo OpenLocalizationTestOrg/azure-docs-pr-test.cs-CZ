@@ -1,6 +1,6 @@
 ---
-title: "Šablony profilu uživatele ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky profilu uživatele v portálu pro vývojáře ve službě Azure API Management."
+title: "AAA \"šablony profilu uživatele ve službě Azure API Management | Microsoft Docs\""
+description: "Zjistěte, jak se obsah hello toocustomize hello profilu uživatele stránky v hello portál pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9a11bd5800068a5725ab2f099043993bff0b28d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8f153b310221164809acf58e4af236928ceb41d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilu uživatele ve službě Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránky profilu uživatele v portálu pro vývojáře.  
+ Hello šablony v této části Povolit toocustomize hello obsah hello stránek profilu uživatele na portál pro vývojáře hello.  
   
 -   [Profil](#Profile)  
   
@@ -34,10 +34,10 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 -   [Aktualizovat informace o účtu](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous. Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony. Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="Profile"></a>Profil  
- **Profil** šablona umožňuje přizpůsobit oddíl profilu uživatele stránky profilu uživatele v portálu pro vývojáře.  
+ Hello **profil** šablona vám umožní oddíl profilu uživatele toocustomize hello hello stránce profilu uživatele v portálu pro vývojáře hello.  
   
  ![Stránku profilu uživatele](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM uživatelský profil stránky")  
   
@@ -99,21 +99,21 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ### <a name="data-model"></a>Datový model  
   
 > [!NOTE]
->  [Profil](#Profile), [aplikace](#Applications), a [odběry](#Subscriptions) šablony sdílet stejný datový model a přijímat data stejné šablony.  
+>  Hello [profil](#Profile), [aplikace](#Applications), a [odběry](#Subscriptions) šablony sdílet hello stejný datový model a přijímat hello stejná data šablony.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|FirstName|Řetězec|Křestní jméno aktuálního uživatele.|  
-|Příjmení|Řetězec|Příjmení aktuálního uživatele.|  
-|NázevSpolečnosti|Řetězec|Název společnosti aktuálního uživatele.|  
-|addresserEmail|Řetězec|E-mailovou adresu stávajícího uživatele.|  
-|developersUsageStatisticsLinkk|Řetězec|Relativní adresu URL chcete zobrazit analýzu pro aktuálního uživatele.|  
-|odběry|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Odběry pro aktuálního uživatele.|  
-|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace je aktuální uživatel.|  
-|changePasswordUrl|Řetězec|Relativní adresa URL aktuální uživatel heslo změnit.|  
-|changeNameOrEmailUrl|Řetězec|Relativní adresa URL Chcete-li změnit název a e-mailu pro aktuálního uživatele.|  
-|canChangePassword|Logická hodnota|Jestli aktuální uživatel může změnit své heslo.|  
-|isSystemUser|Logická hodnota|Jestli má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
+|FirstName|Řetězec|Křestní jméno hello aktuálního uživatele.|  
+|Příjmení|Řetězec|Příjmení hello aktuálního uživatele.|  
+|NázevSpolečnosti|Řetězec|Název společnosti Hello hello aktuálního uživatele.|  
+|addresserEmail|Řetězec|E-mailová adresa hello aktuálního uživatele.|  
+|developersUsageStatisticsLinkk|Řetězec|Analýzy tooview relativní adresa URL pro aktuálního uživatele hello.|  
+|odběry|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Hello odběry pro aktuálního uživatele hello.|  
+|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Hello aplikace hello aktuálního uživatele.|  
+|changePasswordUrl|Řetězec|Hello relativní adresa URL toochange hello aktuální heslo uživatele.|  
+|changeNameOrEmailUrl|Řetězec|Dobrý den, relativní název hello toochange adresy URL a e-mailu pro aktuálního uživatele hello.|  
+|canChangePassword|Logická hodnota|Jestli hello aktuální uživatel může změnit své heslo.|  
+|isSystemUser|Logická hodnota|Jestli hello aktuální uživatel je členem jedné z předdefinovaných hello [skupiny](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -130,7 +130,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -153,7 +153,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -182,7 +182,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="Subscriptions"></a>Odběry  
- **Odběry** šablony můžete vytvořit vlastní nastavení v části předplatná stránky profilu uživatele v portálu pro vývojáře.  
+ Hello **odběry** šablona vám umožní toocustomize hello odběry oddílu hello stránce profilu uživatele v portálu pro vývojáře hello.  
   
  ![Stránku odběru uživatele](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "stránku odběru APIM uživatele")  
   
@@ -313,28 +313,28 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Tato šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [zrušení předplatného](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Datový model  
   
 > [!NOTE]
->  [Profil](#Profile), [aplikace](#Applications), a [odběry](#Subscriptions) šablony sdílet stejný datový model a přijímat data stejné šablony.  
+>  Hello [profil](#Profile), [aplikace](#Applications), a [odběry](#Subscriptions) šablony sdílet hello stejný datový model a přijímat hello stejná data šablony.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|FirstName|Řetězec|Křestní jméno aktuálního uživatele.|  
-|Příjmení|Řetězec|Příjmení aktuálního uživatele.|  
-|NázevSpolečnosti|Řetězec|Název společnosti aktuálního uživatele.|  
-|addresserEmail|Řetězec|E-mailovou adresu stávajícího uživatele.|  
-|developersUsageStatisticsLinkk|Řetězec|Relativní adresu URL chcete zobrazit analýzu pro aktuálního uživatele.|  
-|odběry|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Odběry pro aktuálního uživatele.|  
-|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace je aktuální uživatel.|  
-|changePasswordUrl|Řetězec|Relativní adresa URL aktuální uživatel heslo změnit.|  
-|changeNameOrEmailUrl|Řetězec|Relativní adresa URL Chcete-li změnit název a e-mailu pro aktuálního uživatele.|  
-|canChangePassword|Logická hodnota|Jestli aktuální uživatel může změnit své heslo.|  
-|isSystemUser|Logická hodnota|Jestli má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
+|FirstName|Řetězec|Křestní jméno hello aktuálního uživatele.|  
+|Příjmení|Řetězec|Příjmení hello aktuálního uživatele.|  
+|NázevSpolečnosti|Řetězec|Název společnosti Hello hello aktuálního uživatele.|  
+|addresserEmail|Řetězec|E-mailová adresa hello aktuálního uživatele.|  
+|developersUsageStatisticsLinkk|Řetězec|Analýzy tooview relativní adresa URL pro aktuálního uživatele hello.|  
+|odběry|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Hello odběry pro aktuálního uživatele hello.|  
+|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Hello aplikace hello aktuálního uživatele.|  
+|changePasswordUrl|Řetězec|Hello relativní adresa URL toochange hello aktuální heslo uživatele.|  
+|changeNameOrEmailUrl|Řetězec|Dobrý den, relativní název hello toochange adresy URL a e-mailu pro aktuálního uživatele hello.|  
+|canChangePassword|Logická hodnota|Jestli hello aktuální uživatel může změnit své heslo.|  
+|isSystemUser|Logická hodnota|Jestli hello aktuální uživatel je členem jedné z předdefinovaných hello [skupiny](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -351,7 +351,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -374,7 +374,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -403,7 +403,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="Applications"></a>Aplikace  
- **Aplikace** šablony můžete vytvořit vlastní nastavení v části předplatná stránky profilu uživatele v portálu pro vývojáře.  
+ Hello **aplikace** šablona vám umožní toocustomize hello odběry oddílu hello stránce profilu uživatele v portálu pro vývojáře hello.  
   
  ![Stránky aplikací účtu uživatele](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM uživatelský účet stránky aplikací")  
   
@@ -476,28 +476,28 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Tato šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [Akce aplikace](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Datový model  
   
 > [!NOTE]
->  [Profil](#Profile), [aplikace](#Applications), a [odběry](#Subscriptions) šablony sdílet stejný datový model a přijímat data stejné šablony.  
+>  Hello [profil](#Profile), [aplikace](#Applications), a [odběry](#Subscriptions) šablony sdílet hello stejný datový model a přijímat hello stejná data šablony.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|FirstName|Řetězec|Křestní jméno aktuálního uživatele.|  
-|Příjmení|Řetězec|Příjmení aktuálního uživatele.|  
-|NázevSpolečnosti|Řetězec|Název společnosti aktuálního uživatele.|  
-|addresserEmail|Řetězec|E-mailovou adresu stávajícího uživatele.|  
-|developersUsageStatisticsLinkk|Řetězec|Relativní adresu URL chcete zobrazit analýzu pro aktuálního uživatele.|  
-|odběry|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Odběry pro aktuálního uživatele.|  
-|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace je aktuální uživatel.|  
-|changePasswordUrl|Řetězec|Relativní adresa URL aktuální uživatel heslo změnit.|  
-|changeNameOrEmailUrl|Řetězec|Relativní adresa URL Chcete-li změnit název a e-mailu pro aktuálního uživatele.|  
-|canChangePassword|Logická hodnota|Jestli aktuální uživatel může změnit své heslo.|  
-|isSystemUser|Logická hodnota|Jestli má aktuální uživatel je členem jedné z předdefinovaných [skupiny](api-management-key-concepts.md#groups).|  
+|FirstName|Řetězec|Křestní jméno hello aktuálního uživatele.|  
+|Příjmení|Řetězec|Příjmení hello aktuálního uživatele.|  
+|NázevSpolečnosti|Řetězec|Název společnosti Hello hello aktuálního uživatele.|  
+|addresserEmail|Řetězec|E-mailová adresa hello aktuálního uživatele.|  
+|developersUsageStatisticsLinkk|Řetězec|Analýzy tooview relativní adresa URL pro aktuálního uživatele hello.|  
+|odběry|Kolekce [předplatné](api-management-template-data-model-reference.md#Subscription) entity.|Hello odběry pro aktuálního uživatele hello.|  
+|aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Hello aplikace hello aktuálního uživatele.|  
+|changePasswordUrl|Řetězec|Hello relativní adresa URL toochange hello aktuální heslo uživatele.|  
+|changeNameOrEmailUrl|Řetězec|Dobrý den, relativní název hello toochange adresy URL a e-mailu pro aktuálního uživatele hello.|  
+|canChangePassword|Logická hodnota|Jestli hello aktuální uživatel může změnit své heslo.|  
+|isSystemUser|Logická hodnota|Jestli hello aktuální uživatel je členem jedné z předdefinovaných hello [skupiny](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -514,7 +514,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -537,7 +537,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -566,7 +566,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="UpdateAccountInfo"></a>Aktualizovat informace o účtu  
- **Informace o účtu Uodate** šablona umožňuje přizpůsobit **aktualizovat informace o účtu** stránku v portálu pro vývojáře.  
+ Hello **informace o účtu Uodate** šablona vám umožní toocustomize hello **aktualizovat informace o účtu** stránku v portálu pro vývojáře hello.  
   
  ![Uživatel účet údaje vývojář stránky portálu šablony](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM uživatele účtu údaje vývojář stránky portálu šablony")  
   
@@ -623,4 +623,4 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

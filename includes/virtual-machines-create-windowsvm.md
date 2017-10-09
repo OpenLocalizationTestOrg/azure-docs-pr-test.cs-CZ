@@ -1,45 +1,45 @@
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
 
-2. Začněte v levém horním rohu a klikněte na **Nový > Compute > Windows Server 2016 Datacenter**.
+2. Spuštění v levé horní části hello, klikněte na tlačítko **nový > výpočetní > Windows Server 2016 Datacenter**.
 
-    ![Přechod k imagím virtuálních počítačů Azure na portálu](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
+    ![Přejděte Image virtuálního počítače Azure toohello hello portálu](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
-3. Ve Windows Serveru 2016 Datacenter vyberte model nasazení Classic. Klikněte na Vytvořit.
+3. Na Windows Server 2016 Datacenter hello vyberte model nasazení Classic hello. Klikněte na Vytvořit.
 
-    ![Snímek obrazovky zobrazující image virtuálního počítače Azure dostupné na Portálu](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)
+    ![Snímek obrazovky zobrazující Image virtuálního počítače Azure hello v hello portálu k dispozici](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)
 
 ## <a name="1-basics-blade"></a>1. Okno Základy
 
-Okno Základy požaduje informace pro správu virtuálního počítače.
+okno základy Hello požadavků pro správu informace o virtuálním počítači hello.
 
-1. Zadejte **název** pro virtuální počítač. Virtuální počítač v tomto příkladu má název _HeroVM_. Název musí mít 1 až 15 znaků a nesmí obsahovat speciální znaky.
+1. Zadejte **název** hello virtuálního počítače. V příkladu hello _HeroVM_ je název hello hello virtuálního počítače. Hello název musí mít 1 až 15 znaků a nesmí obsahovat speciální znaky.
 
-2. Zadejte **uživatelské jméno** a silné **heslo**, které se použijí k vytvoření místního účtu ve virtuálním počítači. Místní účet slouží k přihlášení k virtuálnímu počítači a jeho správě. Uživatelské jméno v tomto příkladu je _azureuser_.
+2. Zadejte **uživatelské jméno** a silné **heslo** , které jsou používané toocreate místní účet hello virtuálních počítačů. Hello místní účet se používá toosign v tooand spravovat hello virtuálních počítačů. V příkladu hello _azureuser_ je hello uživatelské jméno.
 
- Heslo musí mít 8 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Přečtěte si další informace o [požadavcích na uživatelské jméno a heslo](../articles/virtual-machines/windows/faq.md).
+ Hello heslo musí mít 8-123 znaků a musí splňovat tři mimo hello čtyři následující požadavky na složitost: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Přečtěte si další informace o [požadavcích na uživatelské jméno a heslo](../articles/virtual-machines/windows/faq.md).
 
-3. **Předplatné** je volitelné. Jedním z běžných nastavení jsou průběžné platby.
+3. Hello **předplatné** je volitelný. Jedním z běžných nastavení jsou průběžné platby.
 
-4. Vyberte existující **skupinu prostředků** nebo zadejte název nové skupiny prostředků. Skupina prostředků v tomto příkladu má název _HeroVMRG_.
+4. Vyberte existující **skupiny prostředků** nebo název typu hello nové. V příkladu hello _HeroVMRG_ je hello název skupiny prostředků hello.
 
-5. Vyberte **umístění** datového centra Azure, kde chcete virtuální počítač spustit. V tomto příkladu je použité umístění **Východní USA**.
+5. Vyberte datové centrum Azure **umístění** místo toorun hello virtuálních počítačů. V příkladu hello **východní USA** hello umístění.
 
-6. Až to budete mít, přejděte kliknutím na **OK** k dalšímu oknu.
+6. Až budete hotovi, klikněte na tlačítko **Další** toocontinue toohello další okno.
 
-    ![Snímek obrazovky, který zobrazuje nastavení v okně Základy pro konfiguraci virtuálního počítače Azure](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)
+    ![Snímek obrazovky, který zobrazuje nastavení hello na hello okno základy pro konfiguraci virtuálního počítače Azure](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)
 
 ## <a name="2-size-blade"></a>2. Okno Velikost
 
-Okno Velikost určuje konfigurační detaily virtuálního počítače a zobrazuje různé možnosti, jako je operační systém, počet procesorů, typ diskového úložiště a odhadované měsíční náklady na využití.  
+Velikost okna Hello identifikuje podrobnosti konfigurace hello hello virtuálních počítačů a uvádí různé volby, které zahrnují operačního systému, počet procesorů, typ disku úložiště a odhadované měsíční náklady na využití.  
 
-Zvolte velikost virtuálního počítače a poté pokračujte kliknutím na **Vybrat**. V tomto příkladu je použitý virtuální počítač s velikostí _DS1_\__V2 Standard_.
+Zvolte velikost virtuálního počítače a pak klikněte na tlačítko **vyberte** toocontinue. V tomto příkladu _DS1_\__V2 standardní_ je hello velikost virtuálního počítače.
 
-  ![Snímek obrazovky okna Velikost zobrazující velikosti virtuálního počítače Azure, ze kterých můžete vybírat](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)
+  ![Snímek obrazovky okna velikost hello, který ukazuje hello velikosti virtuálního počítače Azure, které můžete vybrat](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)
 
 
 ## <a name="3-settings-blade"></a>3. Okno Nastavení
 
-Okno Nastavení vyžaduje možnosti úložiště a sítě. Můžete přijmout výchozí nastavení. Azure v případě potřeby vytvoří odpovídající položky.
+okno nastavení Hello požadavků možností úložiště a síť. Můžete přijmout výchozí nastavení hello. Azure v případě potřeby vytvoří odpovídající položky.
 
 Pokud jste vybrali velikost virtuálního počítače, která to podporuje, a jako typ disku vyberete Premium (SSD), můžete vyzkoušet službu Azure Storage úrovně Premium.
 
@@ -47,10 +47,10 @@ Jakmile budete se změnami hotovi, klikněte na **OK**.
 
 ## <a name="4-summary-blade"></a>4. Okno Souhrn
 
-Okno Souhrn zobrazuje nastavení zadaná v předchozích oknech. Až budete připravení vytvořit image, klikněte na **OK**.
+Souhrn okno Hello uvádí hello nastavení zadané v předchozích oken hello. Klikněte na tlačítko **OK** až budete připravené toomake hello image.
 
- ![Sestava okna Souhrn s konkrétními nastaveními virtuálního počítače](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
+ ![Sestava souhrnu okna poskytnutí zadaná nastavení hello virtuálního počítače](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
 
-Po vytvoření se nový virtuální počítač zobrazí na portálu v části **Všechny prostředky** a na řídicím panelu se zobrazí dlaždice tohoto virtuálního počítače. Současně se vytvoří a zobrazí odpovídající účet služby a cloudová služba. Virtuální počítač i cloudová služba se automaticky spustí a jejich stav bude uvedený jako **spuštěný**.
+Po vytvoření virtuálního počítače hello hello portál uvádí hello nového virtuálního počítače v části **všechny prostředky**a zobrazí dlaždice hello virtuálního počítače na řídicím panelu hello. Hello odpovídající cloudové služby a účet úložiště se taky vytvořit a uvedené. Automaticky spustit hello virtuálního počítače a cloudové služby a jejich stav je uveden jako **systémem**.
 
- ![Konfigurace agenta virtuálního počítače a koncových bodů virtuálního počítače](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)
+ ![Konfigurace agenta virtuálního počítače a hello koncových bodů hello virtuálního počítače](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)

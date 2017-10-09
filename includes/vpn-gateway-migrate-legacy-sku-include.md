@@ -1,16 +1,16 @@
 > [!NOTE]
-> * Při migraci ze staré skladové položky na novou se změní veřejná IP adresa brány VPN.
-> * Brány VPN Classic není možné migrovat na nové skladové položky. Brány VPN Classic můžou používat pouze starší (staré) skladové položky.
+> * Brána sítě VPN Hello veřejná IP adresa se změní při migraci z původní tooa SKU nové SKU.
+> * Nelze migrovat classic toohello brány VPN nové SKU. Classic VPN Gateway může používat jenom hello starší verze (starý) SKU.
 > 
 
-Při přechodu ze starých řad skladových položek na nové není možné měnit velikost bran VPN Azure. Pokud máte brány VPN v modelu nasazení Resource Manageru, které používají starší verze SKU, můžete migrovat na nové SKU. Pokud chcete provést migraci, odstraňte stávající bránu VPN pro vaši virtuální síť a potom vytvořte novou.
+Nelze změnit velikost Azure VPN Gateway mezi hello staré SKU a hello nové rodiny SKU. Pokud máte brány sítě VPN v modelu nasazení Resource Manager hello, které používají starší verzi hello hello SKU, můžete migrovat toohello nové SKU. toomigrate, odstraňte existující bránu VPN hello vaší virtuální sítě, a vytvořte novou.
 
 Pracovní postup migrace:
 
-1. Odeberte všechna připojení k bráně virtuální sítě.
-2. Odstraňte starou bránu VPN.
-3. Vytvořte novou bránu VPN.
-4. Aktualizujte místní zařízení VPN novou IP adresou brány VPN (pro připojení typu Site-to-Site).
-5. Aktualizujte hodnotu IP adresy brány pro všechny místní síťové brány typu VNet-to-VNet, které se připojují k této bráně.
-6. Stáhněte nové klientské balíčky konfigurace klienta VPN pro klienty P2S, kteří se připojují k virtuální síti přes tuto bránu VPN.
-7. Znovu vytvořte všechna připojení k bráně virtuální sítě.
+1. Odeberte všechny brány virtuální sítě toohello připojení.
+2. Odstraňte staré brány VPN hello.
+3. Vytvořte novou bránu VPN hello.
+4. Aktualizujte vaše místní zařízení VPN s hello novou IP adresu brány VPN (pro připojení Site-to-Site).
+5. Aktualizujte hello brány IP adresu hodnotu pro všechny brány místní sítě VNet-to-VNet, která se budou připojovat toothis brány.
+6. Stáhněte nové balíčky konfigurace klienta VPN pro P2S klienti připojení virtuální sítě toohello prostřednictvím této brány VPN.
+7. Znovu vytvořte bránu virtuální sítě toohello hello připojení.

@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobit přihlašovací stránka ve službě Azure Active Directory | Microsoft Docs"
-description: "Informace o postupu přidání firemního brandingu na stránky Azure přihlášení"
+title: "vaše přihlášení stránku hello Azure Active Directory aaaCustomize | Microsoft Docs"
+description: "Zjistěte, jak tooadd na stránce firemního brandingu toohello Azure přihlášení"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 27590c018ea55e9793246c7a4cab10f934ea502b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 151521e3b9cbc6a438a589735058fbff78443cf8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Přidání firemního brandingu na přihlašovací stránku ve službě Azure Active Directory
-Mnoho společností chce předcházet zmatení uživatele a upřednostňuje jednotný vzhled všech webů a služeb, které spravují. Tato funkce poskytuje Azure Active Directory tím, že se můžete přizpůsobit vzhled stránky přihlášení s svoje firemní logo a vlastní barevná schémata. Přihlašovací stránka je stránka, která se zobrazí při přihlášení k Office 365 nebo jiné webové aplikace, které používají Azure AD jako zprostředkovatele identity. Budete používat tuto stránku k zadání pověření.
+# <a name="add-company-branding-tooyour-sign-in-page-in-hello-azure-active-directory"></a>Přidání firemního brandingu tooyour přihlašovací stránky v hello Azure Active Directory
+tooavoid nedorozuměním mnoho společností má tooapply konzistentní vzhled a chování ve všech hello webů a služeb, které spravují. Tato funkce poskytuje Azure Active Directory tak, že umožní toocustomize hello vzhled hello přihlašovací stránka s svoje firemní logo a vlastní barevná schémata. přihlašovací stránku Hello je hello stránka, která se zobrazí při přihlášení tooOffice 365 nebo jiné webové aplikace, které používají Azure AD jako zprostředkovatele identity. Budete používat tuto stránku tooenter přihlašovacích údajů.
 
-Pokud chcete na této stránce zobrazit značku, barvy a další přizpůsobitelné prvky vaší společnosti, prohlédněte si následující obrázky, abyste pochopili rozdíl mezi oběma prostředími.
+Pokud chcete tooshow vaší společnosti značku, barvy a další přizpůsobitelné prvky na této stránce, najdete v části hello následující obrázky toounderstand hello rozdíl mezi oběma prostředími hello.
 
-Následující snímek obrazovky ukazuje příklad přihlašovací stránky Office 365 na stolním počítači **před** přizpůsobením:
+Následující snímek obrazovky ukazuje příklad stránky přihlašovací hello Office 365 na stolním počítači a Hello **před** přizpůsobení:
 
 ![Přihlašovací stránka Office 365 před přizpůsobením](./media/active-directory-branding-custom-signon-azure-portal/sign-in-page-before-customization.png)
 
-Následující snímek obrazovky ukazuje příklad přihlašovací stránky Office 365 na stolním počítači **po** přizpůsobení:
+Následující snímek obrazovky ukazuje příklad stránky přihlašovací hello Office 365 na stolním počítači a Hello **po** přizpůsobení:
 
 ![Přihlašovací stránka Office 365 po přizpůsobení](./media/active-directory-branding-custom-signon-azure-portal/sign-in-page-after-customization.png)
 
-## <a name="customizing-the-sign-in-page"></a>Přizpůsobení přihlašovací stránky
-Pokud potřebujete v prohlížeči otevřít cloudové aplikace a služby, které si vaše organizace předplatila, obvykle použijete přihlašovací stránku.
+## <a name="customizing-hello-sign-in-page"></a>Přizpůsobení přihlašovací stránku hello
+Pokud potřebujete přístup založené na prohlížeči tooyour cloudových aplikací a služeb, které vaše organizace předplatila, obvykle použijete přihlašovací stránku hello.
 
-Pokud jste přihlašovací stránku změnili, může se taková změna projevit až za hodinu.
+Pokud jste použili změny tooyour přihlašovací stránky, může trvat až hodinu tooan tooappear změny hello.
 
 Přihlašovací stránka ve vaší firemní úpravě se zobrazí jenom tehdy, když službu navštívíte pomocí adresy URL konkrétního klienta, například https://outlook.com/**contoso**.com nebo https://mail.**contoso**.com.
 
 Když službu navštívíte pomocí adresy URL, která se neváže ke konkrétnímu klientu (např: https://mail.office365.com), zobrazí se přihlašovací stránka bez firemní úpravy. V tomto případě se branding zobrazí až potom, co zadáte ID uživatele nebo vyberete dlaždici uživatele.
 
 > [!NOTE]
-> * Název domény musí zobrazovat jako "Aktivní" v **domén** část portálu Azure, ve kterém jste branding nakonfigurovali. Další informace najdete v tématu [přidat vlastní názvy domén](active-directory-domains-add-azure-portal.md).
-> * Branding přihlašovací stránky se nepřenáší na spotřebitelskou přihlašovací stránku Microsoftu. Pokud se přihlásíte pomocí účtu Microsoft, mohou se zobrazit seznam uživatelských dlaždic vykreslí Azure AD partnerské, ale branding vaší organizace nevztahuje na stránku účtu Microsoft přihlásit.
+> * Název domény musí zobrazovat jako "Aktivní" v hello **domén** část hello portálu Azure, ve kterém jste branding nakonfigurovali. Další informace najdete v tématu [přidat vlastní názvy domén](active-directory-domains-add-azure-portal.md).
+> * Branding přihlašovací stránky se nepřenáší toohello spotřebitelskou přihlašovací stránku společnosti Microsoft. Pokud se přihlásíte pomocí účtu Microsoft, mohou se zobrazit seznam uživatelských dlaždic vykreslí Azure AD partnerské, ale hello branding vaší organizace se nevztahuje toohello stránky účtu Microsoft přihlásit.
 >
 >
 
-Na přihlašovací stránce umožňuje zaškrtávací políčko **Zůstat přihlášeni**, aby příslušný uživatel zůstal přihlášen i po zavření a dalším spuštění prohlížeče.
+Na stránku přihlášení hello **zůstat přihlášeni** políčko umožňuje uživatele tooremain, při jejich zavřete a znovu ho otevřete svého prohlížeče přihlášený.
 
    ![Zůstat přihlášeni](./media/active-directory-branding-custom-signon-azure-portal/01.png)
 
-Na životnost relace to vliv nemá. Příslušné zaškrtávací políčko na přihlašovací stránce služby Azure Active Directory lze skrýt.
-Jestli se zobrazí zaškrtávací políčko závisí na nastavení **zůstat přihlášeni zakázáno**.
+Na životnost relace to vliv nemá. Můžete skrýt hello zaškrtávací políčko je na hello Azure Active Directory přihlašovací stránky.
+Jestli se zobrazí zaškrtávací políčko hello závisí na nastavení hello **zůstat přihlášeni zakázáno**.
 
    ![Zůstat přihlášeni](./media/active-directory-branding-custom-signon-azure-portal/02.png)
 
-Skrýt políčka, konfigurací tohoto nastavení **Ano**.
+toohide hello zaškrtávací políčko, nakonfigurujte toto nastavení příliš**Ano**.
 
 > [!NOTE]
-> Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, zda uživatelé mohou toto políčko zaškrtnout. Pokud je nastavíte jako skryté, mohou se vašim uživatelům zobrazovat další (neočekávané) výzvy k přihlášení.
+> Některé funkce služby SharePoint Online a Office 2010, závisí na uživatele, je možné toocheck toto políčko. Pokud nakonfigurujete toto nastavení toohidden, může se uživatelům zobrazí další a neočekávané výzvy toosign v.
 >
 >
 
-**Postup přidání firemního brandingu na adresáře:**
+**tooadd firemního brandingu tooyour adresář:**
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Správa uživatelů otevírání](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
-3. Na **uživatelů a skupin** vyberte **firemní branding**.
-4. Na **uživatelé a skupiny - firemní branding** okně, vyberte **upravit** příkaz.
+3. Na hello **uživatelů a skupin** vyberte **firemní branding**.
+4. Na hello **uživatelé a skupiny - firemní branding** okně, vyberte hello **upravit** příkaz.
 
     ![Upravit vlastní branding](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
-5. Upravte prvky, které chcete přizpůsobit. Všechny prvky jsou volitelné.
+5. Upravte prvky hello chcete toocustomize. Všechny prvky jsou volitelné.
 6. Klikněte na **Uložit**.
 
-Může trvat až jednu hodinu pro všechny změny, které jste udělali na přihlašovací stránku branding zobrazí.
+Může to trvat až hodinu tooan pro všechny změny provedené toohello přihlašovací stránka brandingu tooappear.
 
 ## <a name="next-steps"></a>Další kroky
 [Přidání brandingu firmy konkrétní jazyk](active-directory-branding-localize-azure-portal.md)

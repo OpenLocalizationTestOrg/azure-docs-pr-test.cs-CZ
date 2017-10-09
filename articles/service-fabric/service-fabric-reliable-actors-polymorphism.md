@@ -1,6 +1,6 @@
 ---
-title: "Polymorfismus v rámci Reliable Actors | Microsoft Docs"
-description: "Vytvoření hierarchie nástroje rozhraní .NET a typy v rozhraní framework Reliable Actors znovu použít funkce a definice rozhraní API."
+title: aaaPolymorphism v hello Reliable Actors framework | Microsoft Docs
+description: "Vytvoření hierarchie nástroje rozhraní .NET a typy v hello Reliable Actors framework tooreuse funkce a definice rozhraní API."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 36a59a41b2261369a2062c76ef90aebf7e24a221
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed9ec442595bd9a5e48c9af1f6aac003439b81f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfismus v rámci Reliable Actors
-Rozhraní framework Reliable Actors umožňuje vytvářet, kteří používají řadu se stejné techniky, které byste použili v objektově orientované návrhu. Jeden z těchto postupů je polymorfismus, která umožňuje typy a rozhraní dědění z více zobecněn nadřazené položky. Dědičnost v rámci Reliable Actors obvykle následuje model rozhraní .NET s několika další omezení. V případě Java či Linux postupuje modelu Java.
+# <a name="polymorphism-in-hello-reliable-actors-framework"></a>Polymorfismus v hello Reliable Actors framework
+Hello Reliable Actors, které vám toobuild, kteří používají řadu umožní framework hello stejné techniky, které byste použili v objektově orientované návrhu. Jeden z těchto postupů je polymorfismus, která umožňuje typy a rozhraní tooinherit z více zobecněn nadřazené položky. Dědičnost v hello Reliable Actors framework obecně následuje hello .NET model s několika další omezení. V případě Java či Linux postupuje hello Java modelu.
 
 ## <a name="interfaces"></a>Rozhraní
-Rozhraní framework Reliable Actors, musíte definovat alespoň jedno rozhraní k implementaci podle vašeho typu objektu actor. Toto rozhraní se používá ke generování třídu proxy, které je možné ke komunikaci s vaší aktéři klienty. Rozhraní může dědit vlastnosti z dalších rozhraní, dokud všechny rozhraní, které je implementované typ objektu actor a všech jejích nadřazených tříd nakonec odvozena od IActor(C#) nebo Actor(Java). IActor(C#) a Actor(Java) jsou definované platformy základní rozhraní pro aktéři v rozhraní .NET a Javu. Příklad classic polymorfismus pomocí tvarů proto může vypadat přibližně takto:
+Hello Reliable Actors framework vyžaduje, abyste toodefine toobe alespoň jedno rozhraní implementované vašeho typu objektu actor. Toto rozhraní je použité toogenerate proxy třídu, která mohou být využívána toocommunicate klienti se vaše účastníky. Rozhraní může dědit vlastnosti z dalších rozhraní, dokud všechny rozhraní, které je implementované typ objektu actor a všech jejích nadřazených tříd nakonec odvozena od IActor(C#) nebo Actor(Java). IActor(C#) a Actor(Java) jsou hello definované platformy základní rozhraní pro aktéři v hello rozhraní .NET a Javu. Příklad classic polymorfismus hello použití tvarů proto může vypadat přibližně takto:
 
 ![Rozhraní hierarchie aktéři obrazce][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Typy
-Můžete také vytvořit hierarchii objektu actor typů, které jsou odvozeny od základní třídy objektu Actor, kterou poskytuje platformu. V případě tvarů, můžete mít na základní `Shape`(C#) nebo `ShapeImpl`typu (Java):
+Můžete také vytvořit hierarchii objektu actor typů, které jsou odvozeny od hello základní objektu Actor třídu, která poskytuje platformu hello. V případě hello tvarů, můžete mít na základní `Shape`(C#) nebo `ShapeImpl`typu (Java):
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -48,7 +48,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Subtypes z `Shape`(C#) nebo `ShapeImpl`(Java) můžete přepsat metody od základní.
+Subtypes z `Shape`(C#) nebo `ShapeImpl`(Java) můžete přepsat metody ze základní hello.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -91,11 +91,11 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Poznámka: `ActorService` atributu pro typ objektu actor. Tento atribut informuje rozhraní spolehlivé objektu Actor, že by měl automaticky vytvořit službu pro hostování aktéři tohoto typu. V některých případech můžete chtít vytvořit základní typ, který je určený výhradně pro sdílení funkce s podtypů a nebude nikdy používat k vytváření instancí konkrétní aktéři. V takových případech byste měli použít `abstract` – klíčové slovo indikující, že se nikdy vytvoří objekt actor na základě tohoto typu.
+Poznámka: hello `ActorService` atribut typu objektu actor hello. Tento atribut informuje hello spolehlivé objektu Actor framework, že by měl automaticky vytvořit službu pro hostování aktéři tohoto typu. V některých případech může přát toocreate základní typ, který je určený výhradně pro sdílení funkce s podtypů a nebude nikdy použité tooinstantiate konkrétní aktéři. V takových případech byste měli použít hello `abstract` tooindicate – klíčové slovo, které nikdy vytvoříte objekt actor na základě tohoto typu.
 
 ## <a name="next-steps"></a>Další kroky
-* V tématu [jak rozhraní Reliable Actors využívá platformy Service Fabric](service-fabric-reliable-actors-platform.md) zajistit spolehlivost, škálovatelnost a konzistentním stavu.
-* Další informace o [životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md).
+* V tématu [jak hello Reliable Actors framework využívá platformy Service Fabric hello](service-fabric-reliable-actors-platform.md) tooprovide spolehlivost, škálovatelnost a konzistentním stavu.
+* Další informace o hello [životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->
 

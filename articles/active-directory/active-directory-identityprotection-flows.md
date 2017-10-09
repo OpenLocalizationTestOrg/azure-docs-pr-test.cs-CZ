@@ -1,6 +1,6 @@
 ---
-title: "Přihlášení vyskytne s Azure AD Identity Protection | Microsoft Docs"
-description: "Poskytuje přehled činnost koncového uživatele při Identity Protection má omezeny nebo opraven uživatele nebo když služby Multi-Factor authentication je potřeba zásady."
+title: "aaaSign v prostředí s Azure AD Identity Protection | Microsoft Docs"
+description: "Obsahuje přehled hello uživatelské prostředí, když má omezeny nebo opraven uživatele nebo když je službu Multi-Factor authentication požadované zásady ochrany identit."
 services: active-directory
 keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e45936280b51fb2e54012a688fceddcc8dabe984
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fbdca5b86ed93d0a2f2b6df1dd0150da9c0c85c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Možnosti přihlášení s Azure AD Identity Protection
 S Azure Active Directory Identity Protection můžete:
 
-* vyžaduje, aby uživatel zaregistrovat pro službu Multi-Factor authentication
+* vyžadovat tooregister uživatele u služby Multi-Factor authentication
 * zpracování rizikové přihlášení a ohrožení zabezpečení uživatelů
 
-Odpověď systému na tyto problémy má dopad na možnosti přihlášení pro uživatele, protože právě přímo přihlášení tím, že poskytuje uživatelské jméno a heslo nebude už možné. Další kroky jsou požadovány pro uživatele bezpečně zpět do firmy.
+vzhledem k tomu, že právě přímo přihlášení zadáním uživatelského jména a hesla nebude možné už Hello odpověď problémy toothese hello systému má vliv na uživatele přihlašování uživatelů. Další kroky jsou požadované tooget uživatele bezpečně zpět do firmy.
 
 Toto téma poskytuje přehled možností přihlašování uživatele pro všechny případy, které se můžou vyskytnout.
 
@@ -47,65 +47,65 @@ Toto téma poskytuje přehled možností přihlašování uživatele pro všechn
 * Ohrožení bezpečnosti účtu blokován
 
 ## <a name="multi-factor-authentication-registration"></a>Registrace služby Multi-Factor authentication
-Nejlepších výsledků v obou případech tok obnovení ohrožení bezpečnosti účtu a rizikové tok přihlášení, je, když uživatel může samoobslužné obnovení. Pokud jsou uživatelé zaregistrovaní pro službu Multi-Factor authentication, už mají telefonní číslo přidružené k účtu, který slouží k předávání výzvy zabezpečení. Žádné pomoc HelpDesk nebo správce zapojení je potřebný k obnovení před ohrožením účet. Proto se důrazně doporučujeme pro vaši uživatelé zaregistrovat u služby Multi-Factor authentication. 
+Dobrý den nejlepší uživatelské prostředí pro obě, hello tok obnovení ohrožení bezpečnosti účtu a hello rizikové toku přihlášení, je, když uživatel hello můžete samoobslužné obnovení. Pokud jsou uživatelé zaregistrovaní pro službu Multi-Factor authentication, už mají telefonní číslo přidružené ke svému účtu, který lze použít toopass výzvy zabezpečení. Žádné pomoc HelpDesk nebo správce zapojení je potřebné toorecover před ohrožením účet. Proto má vysokou doporučuje tooget uživatelům zaregistrovat u služby Multi-Factor authentication. 
 
 Správci můžou:
 
-* Nastavte zásady, které vyžaduje, aby uživatelé nastavit své účty pro další ověření zabezpečení. 
-* Povolit přeskočení registrace služby Multi-Factor authentication po dobu 30 dnů, v případě, že chtějí umožnit uživateli a období odkladu před registrací.
+* Nastavte zásady, které vyžaduje další bezpečnostní ověření uživatelé tooset svých účtů. 
+* Povolit přeskočení registrace služby Multi-Factor authentication pro až too30 dnů v případě, že chtějí uživatelé toogive období odkladu před registrací.
 
-**Registrace služby Multi-Factor authentication má tři kroky:**
+**registrace služby Multi-Factor authentication Hello má tři kroky:**
 
-1. V prvním kroku uživatel obdrží oznámení o požadavku na nastavení účtu službu Multi-Factor authentication. 
+1. V prvním kroku hello hello uživatel získá oznámení o hello požadavek tooset hello účtu službu Multi-Factor authentication. 
    
     ![Náprava](./media/active-directory-identityprotection-flows/140.png "nápravy")
-2. Pokud chcete nastavit vícefaktorové ověřování, musíte vědět, jak chcete kontaktovat systém.
+2. Služba Multi-Factor authentication tooset nahoru, je nutné toolet hello systému vědět, jak chcete toobe kontaktovat.
    
     ![Náprava](./media/active-directory-identityprotection-flows/141.png "nápravy")
-3. Odešle systému může být obtížné jste a potřebujete, aby odpovídal.
+3. Hello systému odesílá výzva tooyou a je třeba toorespond.
    
     ![Náprava](./media/active-directory-identityprotection-flows/142.png "nápravy")
 
 ## <a name="risky-sign-in-recovery"></a>Obnovení rizikové přihlášení
-Jestliže správce konfiguroval zásady pro přihlášení rizika, ovlivnění uživatelé upozorněni při pokusu o přihlášení. 
+Jestliže správce konfiguroval zásady pro přihlášení rizika, hello vliv na uživatele upozorněni snaží toosign-in. 
 
-**Rizikové toku přihlášení má dva kroky:** 
+**Hello rizikové přihlášení toku má dva kroky:** 
 
-1. Uživatel je informován něco neobvyklého zjistilo o jejich přihlášení, jako je například přihlašujete z nového místa, zařízení nebo aplikace. 
+1. uživatel Hello je informován něco neobvyklého zjistilo o jejich přihlášení, jako je například přihlašujete z nového místa, zařízení nebo aplikace. 
    
     ![Náprava](./media/active-directory-identityprotection-flows/120.png "nápravy")
-2. Uživatel musí k prokázání své identity tím řešení bezpečnostní kontroly. Pokud je uživatel zaregistrován u služby Multi-Factor authentication potřebují k odezvě na zabezpečovací kód, abyste své telefonní číslo. Vzhledem k tomu, že toto je jenom rizikové přihlášení a ohrožení bezpečnosti účtu, uživatel nebude muset změnit heslo v tomto toku. 
+2. uživatel Hello je požadovaná tooprove svou identitu řešení zabezpečení výzvu. Pokud je uživatel hello zaregistrován u služby Multi-Factor authentication potřebují tooround cestě zabezpečení kód tootheir telefonní číslo. Vzhledem k tomu, že toto je jenom rizikové přihlášení a ohrožení bezpečnosti účtu, hello uživatel nebude mít toochange hello heslo v tomto toku. 
    
     ![Náprava](./media/active-directory-identityprotection-flows/121.png "nápravy")
 
 ## <a name="risky-sign-in-blocked"></a>Rizikové přihlášení blokován
-Můžete také správci nastavit přihlášení riziko zásady pro blokování uživatele při přihlášení v závislosti na úroveň rizika. Koncoví uživatelé musí získat odblokuje, obraťte se na správce nebo odbornou pomoc nebo se mohou zkuste se přihlásit ze známé umístění nebo zařízení. Samoobslužné obnovení pomocí řešení služby Multi-Factor authentication není možné v tomto případě.
+Můžete také správci tooset riziko přihlášení uživatelů tooblock zásady při přihlašování v závislosti na úroveň rizika hello. tooget odblokováno, koncoví uživatelé musí obraťte se na správce nebo HelpDesk, nebo se mohou zkuste se přihlásit ze známé umístění nebo zařízení. Samoobslužné obnovení pomocí řešení služby Multi-Factor authentication není možné v tomto případě.
 
 ![Náprava](./media/active-directory-identityprotection-flows/200.png "nápravy")
 
 ## <a name="compromised-account-recovery"></a>Obnovení ohrožení bezpečnosti účtu
-Když je nakonfigurován uživatelských zásad zabezpečení riziko, uživatele, kteří splní uživatele riziko úroveň určená v zásadách (a proto se předpokládá, že dojde k ohrožení) musí projít tok obnovení ohrožení zabezpečení uživatele, než se můžete přihlásit. 
+Když je nakonfigurován uživatelských zásad zabezpečení riziko, uživatele, kteří splní hello uživatele riziko úroveň určená v zásadách hello (a proto se předpokládá, že dojde k ohrožení) musí projít tok obnovení ohrožení hello uživatele předtím, než se můžete přihlásit. 
 
-**Tok obnovení ohrožení zabezpečení uživatele má tři kroky:**
+**tok obnovení ohrožení Hello uživatel má tři kroky:**
 
-1. Uživatel je informován, že jejich zabezpečení účtu je ohrožena kvůli podezřelé aktivity nebo úniku přihlašovacích údajů.
+1. uživatel Hello je informován, že jejich zabezpečení účtu je ohrožena kvůli podezřelé aktivity nebo úniku přihlašovacích údajů.
    
     ![Náprava](./media/active-directory-identityprotection-flows/101.png "nápravy")
-2. Uživatel musí k prokázání své identity tím řešení bezpečnostní kontroly. Pokud je uživatel zaregistrován u služby Multi-Factor authentication může samoobslužné obnovení před ohrožením.. Bude nutné k odezvě na zabezpečovací kód, abyste své telefonní číslo. 
+2. uživatel Hello je požadovaná tooprove svou identitu řešení zabezpečení výzvu. Pokud je uživatel hello zaregistrován u služby Multi-Factor authentication může samoobslužné obnovení před ohrožením.. Potřebují tooround cestě zabezpečení kód tootheir telefonní číslo. 
    
    ![Náprava](./media/active-directory-identityprotection-flows/110.png "nápravy")
-3. Nakonec uživatel bude muset změnit své heslo, protože někdo jiný měl přístup ke svému účtu. 
+3. Nakonec hello uživatele je vynucené toochange své heslo, protože někdo jiný měl účet pro přístup k tootheir. 
    Níže jsou snímky obrazovky toto prostředí.
    
    ![Náprava](./media/active-directory-identityprotection-flows/111.png "nápravy")
 
 ## <a name="compromised-account-blocked"></a>Ohrožení bezpečnosti účtu blokován
-Uživatel musí získat uživatele, který byl zablokován pomocí zásad zabezpečení riziko uživatele odblokováno, obraťte se na správce nebo HelpDesk. Samoobslužné obnovení pomocí řešení služby Multi-Factor authentication není možné v tomto případě.
+tooget uživatel, který byl zablokován pomocí zásad zabezpečení riziko uživatele odblokováno, hello uživatele obraťte se na správce nebo odbornou pomoc. Samoobslužné obnovení pomocí řešení služby Multi-Factor authentication není možné v tomto případě.
 
 ![Náprava](./media/active-directory-identityprotection-flows/104.png "nápravy")
 
 ## <a name="reset-password"></a>Resetování hesla
-Pokud jsou ohrožené uživatelé blokováni v přihlášení, Správce může generovat dočasné heslo pro ně. Uživatelé budou muset změnit své heslo při příštím přihlášení.
+Pokud jsou ohrožené uživatelé blokováni v přihlášení, Správce může generovat dočasné heslo pro ně. Hello uživatelé budou mít toochange své heslo při příštím přihlášení.
 
 ![Náprava](./media/active-directory-identityprotection-flows/160.png "nápravy")
 

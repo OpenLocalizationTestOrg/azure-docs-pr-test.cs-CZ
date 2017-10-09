@@ -1,6 +1,6 @@
 ---
-title: "Šifrování svůj obsah pomocí šifrování úložiště pomocí rozhraní REST API pro AMS"
-description: "Zjistěte, jak k zašifrování obsahu pomocí šifrování úložiště pomocí rozhraní REST API pro AMS."
+title: "aaaEncrypting svůj obsah pomocí šifrování úložiště pomocí rozhraní REST API pro AMS"
+description: "Zjistěte, jak tooencrypt svůj obsah pomocí šifrování úložiště pomocí rozhraní REST API pro AMS."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 1979f5bf5e8cab88dab5fba49018afacf24504b3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d5f8cb8dd1dcded76c9fededccc772d8102ccbad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování svůj obsah pomocí šifrování úložiště
 
-Důrazně doporučujeme k šifrování vašeho obsahu místně pomocí 256bitového šifrování AES 256 a nahrajte ho do Azure Storage kde bude uložený v zašifrované podobě.
+Důrazně doporučujeme tooencrypt vašeho obsahu místně pomocí standardu AES 256 bitů šifrování a nahrajte ho tooAzure úložiště, kde bude uložený v zašifrované podobě.
 
-Tento článek přináší přehled o šifrování úložiště AMS a ukazuje, jak nahrát obsah šifrování úložiště:
+Tento článek poskytuje přehled o šifrování úložiště AMS a ukazuje, jak úložiště hello tooupload šifrovat obsah:
 
 * Vytvořte klíč obsahu.
-* Vytvořte Asset. Nastavte AssetCreationOption StorageEncryption při vytváření prostředku.
+* Vytvořte Asset. Při vytváření hello Asset nastavte hello AssetCreationOption tooStorageEncryption.
   
-     Šifrované prostředky musí být přidružen klíčů k obsahu.
-* Klíč k obsahu na odkaz pro daný prostředek.  
-* Nastavení šifrování souvisejících parametrů na AssetFile entity.
+     Šifrované prostředky mít toobe spojená s obsahu.
+* Odkaz hello obsahu klíče toohello asset.  
+* Nastavení šifrování hello souvisejících parametrů na hello AssetFile entity.
 
 ## <a name="considerations"></a>Požadavky 
 
-Pokud chcete doručovat šifrované asset úložiště, musíte nakonfigurovat zásady doručení assetu. Před asset Streamovat, server datových proudů odebere šifrování úložiště a datové proudy svůj obsah pomocí zadaného doručování zásad. Další informace najdete v tématu [konfigurace zásad doručení Assetu](media-services-rest-configure-asset-delivery-policy.md).
+Pokud chcete toodeliver asset šifrované úložiště, musíte nakonfigurovat zásady doručení assetu hello. Před Streamovat asset hello streamování šifrování úložiště hello odebere server a datových proudů svůj obsah pomocí hello zadat zásady pro doručení. Další informace najdete v tématu [konfigurace zásad doručení Assetu](media-services-rest-configure-asset-delivery-policy.md).
 
 Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md). 
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-toomedia-services"></a>Připojení služby tooMedia
 
-Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
+>Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
 
 ## <a name="storage-encryption-overview"></a>Šifrování úložiště – přehled
-Šifrování úložiště AMS platí **AES PEV.cenu** režim šifrování pro celý soubor.  Režim PEV.cenu AES je blok šifer, které můžete šifrovat libovolné délce dat bez nutnosti odsazení. Funguje šifrování čítač blok s AES – algoritmus a XOR končící na-ing výstup AES s daty se zašifrovat nebo dešifrovat.  Čítač bloku používá je vytvořený tak, že zkopírujete hodnotu InitializationVector bajtů 0 až 7 hodnota čítače a bajtů 8 až 15 hodnota čítače je nastaven na hodnotu nula. Čítač bloku 16 bajtů bajtů (tj. nejméně významný bajtů) 8 až 15 slouží jako celé číslo bez znaménka jednoduché 64bitová verze, která se zvýší, jedna pro každou další blok dat zpracovat a je uložen v síťovém pořadí bajtů. Pamatujte, že pokud toto celé číslo nedosáhne maximální hodnoty (0xFFFFFFFFFFFFFFFF) zvyšování ho resetovat čítač bloku na nula (v bajtech 8 až 15) bez vlivu 64 bitů čítače (tj. bajty 0 až 7).   Chcete-li zajistit bezpečnost šifrování AES-PEV.cenu režimu, musí být jedinečný pro každý soubor InitializationVector hodnotu pro daný identifikátor klíče pro každý klíč k obsahu a soubory musí být menší než 2 ^ 64 bloky délku.  To je potřeba zajistit, že hodnota čítače se nikdy znovu použije k danému klíči. Další informace o režimu PEV.cenu najdete v tématu [této stránce wikiwebu](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (článku na wiki používá termín "Nonce" místo "InitializationVector").
+šifrování úložiště Hello AMS platí **AES PEV.cenu** režim šifrování toohello celý soubor.  Režim PEV.cenu AES je blok šifer, které můžete šifrovat libovolné délce dat bez nutnosti odsazení. Ho funguje tak, že čítač blok s hello AES – algoritmus a potom XOR-ing hello výstup AES s hello data tooencrypt šifrování nebo dešifrování.  blok čítač Hello používá je vytvořený tak, že zkopírujete hello hodnotu hello InitializationVector toobytes 0 too7 hodnoty čítače hello a too15 bajtů 8 hello čítač hodnoty jsou nastaveny toozero. Hello 16 bajtů čítač bloku too15 bajtů 8 (tj. bajty hello nejméně významný) se používají jako celé číslo bez znaménka jednoduché 64bitová verze, která se zvýší, jedna pro každou další blok zpracování dat a je udržována v síťovém pořadí bajtů. Všimněte si, že pokud toto celé číslo dosáhne hello maximální hodnotu (0xFFFFFFFFFFFFFFFF) pak zvyšování ho obnoví hello bloku čítač toozero (too15 bajtů 8) bez ovlivnění hello jiných 64bitová verze čítače hello (tj. too7 0 bajtů).   V rámci pořadí toomaintain hello zabezpečení šifrování AES-PEV.cenu hello režimu hello InitializationVector hodnotu pro daný identifikátor klíče pro každý klíč k obsahu musí být jedinečný pro každý soubor a soubory musí být menší než 2 ^ 64 bloky délku.  Toto je tooensure, která hodnota čítače se nikdy opětovně použít s daným klíčem. Další informace o režimu PEV.cenu hello najdete v tématu [této stránce wikiwebu](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (článek na wikiwebu hello používá hello termín "Nonce" místo "InitializationVector").
 
-Použití **šifrování úložiště** k zašifrování obsahu místně pomocí standardu AES 256 bitů šifrování a nahrajte ho do Azure Storage kde bude uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou automaticky bez šifrování umístěny do systému souborů EFS před kódování a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je, když chcete zabezpečit vysoké kvality souborů vstupními médii pomocí silného šifrování v klidovém stavu na disku.
+Použití **šifrování úložiště** tooencrypt obsahu místně pomocí standardu AES 256 bitů šifrování a nahrajte ho tooAzure úložiště, kde je uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou automaticky bez šifrování a umístit do předchozí tooencoding systému souborů EFS a volitelně znovu zašifrovat předchozí toouploading zpět v podobě nového výstupního prostředku. Hello případem primárního použití šifrování úložiště je, pokud chcete toosecure rest souborů vysoké kvality vstupními médii pomocí silného šifrování na disku.
 
-Aby bylo možné poskytovat asset šifrované úložiště, musíte nakonfigurovat zásady doručení assetu, aby věděl Media Services může způsob doručení obsahu. Před asset Streamovat, server datových proudů odebere šifrování úložiště a datové proudy svůj obsah pomocí zadaného doručování zásad (například AES, běžným šifrováním nebo žádné šifrování).
+Toodeliver order asset šifrované úložiště musíte nakonfigurovat zásady doručení assetu hello tak Media Services vědět, jak chcete toodeliver, obsah. Před Streamovat asset hello streamování šifrování úložiště hello odebere server a datových proudů svůj obsah pomocí hello zadat zásady pro doručení (například AES, běžným šifrováním nebo žádné šifrování).
 
 ## <a name="create-contentkeys-used-for-encryption"></a>Vytvoření ContentKeys pro šifrování
-Šifrované prostředky musí být přidružen úložiště šifrovací klíč. Je nutné vytvořit klíč obsahu, který se má použít pro šifrování před vytvořením soubory prostředků. Tato část popisuje postup vytvoření klíče k obsahu.
+Šifrované prostředky mít toobe přidružené úložiště šifrovací klíč. Je nutné vytvořit toobe hello obsahu klíče pro šifrování před vytvořením hello soubory prostředků. Tato část popisuje, jak toocreate klíč obsahu.
 
-Následují obecné kroky pro generování obsahu klíčů, které se spojují s prostředky, které chcete šifrovat. 
+Hello následují obecné kroky pro generování obsahu klíčů, které se spojují s prostředky, které chcete toobe zašifrovaná. 
 
 1. Šifrování úložiště náhodně Generovat klíč standardu AES 32 bajtů. 
    
-    Bude jím klíč k obsahu pro váš asset, což znamená, že všechny soubory přidružené k této asset bude nutné použít stejný klíč k obsahu během dešifrování. 
-2. Volání [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metod k získání správného certifikátu X.509, který použije k zašifrování obsahu klíče.
-3. Zašifrování obsahu klíče pomocí veřejného klíče certifikátu X.509. 
+    Bude jím hello klíč obsahu pro váš asset, což znamená, všechny soubory, které jsou spojené s tohoto prostředku bude potřebovat toouse hello stejný klíč obsahu během dešifrování. 
+2. Volání hello [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metody tooget hello správné certifikátu X.509, který musí být použité tooencrypt klíč obsahu.
+3. Šifrování klíče obsahu hello veřejným klíčem hello certifikát X.509. 
    
-   Media Services .NET SDK používá RSA s OAEP při provádění šifrování.  Vidíte příklad rozhraní .NET v [EncryptSymmetricKeyData funkce](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Vytvoří hodnotu kontrolního součtu vypočítává pomocí identifikátoru klíče a klíč obsahu. Následující příklad .NET vypočítá kontrolního součtu pomocí identifikátoru GUID části identifikátoru klíče a vymazat obsah klíče.
+   Media Services .NET SDK používá RSA s OAEP při provádění šifrování hello.  Vidíte příklad rozhraní .NET v hello [EncryptSymmetricKeyData funkce](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Vytvoří hodnotu kontrolního součtu vypočítává pomocí identifikátoru klíče hello a klíč obsahu. Hello následující ukázka .NET vypočítá kontrolního součtu hello pomocí hello GUID součástí identifikátoru klíče hello a hello zrušte klíč obsahu.
 
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
         {
@@ -74,8 +74,8 @@ Následují obecné kroky pro generování obsahu klíčů, které se spojují s
 
             byte[] encryptedKeyId = null;
 
-            // Checksum is computed by AES-ECB encrypting the KID
-            // with the content key.
+            // Checksum is computed by AES-ECB encrypting hello KID
+            // with hello content key.
             using (AesCryptoServiceProvider rijndael = new AesCryptoServiceProvider())
             {
                 rijndael.Mode = CipherMode.ECB;
@@ -93,22 +93,22 @@ Následují obecné kroky pro generování obsahu klíčů, které se spojují s
             return Convert.ToBase64String(retVal);
         }
 
-1. Vytvořte klíč obsahu se **EncryptedContentKey** (převést na řetězec s kódováním base64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, a **kontrolního součtu** hodnoty, které jste dostali v předchozích krocích.
+1. Vytvořte klíč obsahu hello s hello **EncryptedContentKey** (převést řetězec s kódováním toobase64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, a **kontrolního součtu** hodnoty, které jste dostali v předchozích krocích.
 
-    Šifrování úložiště by měla zahrnovat následující vlastnosti v textu požadavku.
+    Šifrování úložiště hello zahrnovat následující vlastnosti by v textu žádosti hello.
 
     Vlastnost text žádosti    | Popis
     ---|---
-    ID | ContentKey Id, které jsme si generovat v následujícím formátu "nb:kid:UUID:<NEW GUID>".
-    ContentKeyType | Toto je typ obsahu klíče jako celé číslo pro tento klíč obsahu. Jsme předejte hodnotu 1 pro šifrování úložiště.
-    EncryptedContentKey | Vytvoříme novou hodnotu obsahu klíče, což je hodnota 256 bitů (32 bajtů). Že je klíč zašifrovaný pomocí certifikátu X.509 šifrování úložiště, který načteme ze služby Microsoft Azure Media Services spuštěním požadavek HTTP GET pro GetProtectionKeyId a GetProtectionKey metody. Jako příklad, viz následující kód .NET: **EncryptSymmetricKeyData** metoda definované [zde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-    ProtectionKeyId | Jedná se o ochranu id klíče pro certifikát X.509 šifrování úložiště, který slouží k šifrování naše klíč obsahu.
-    ProtectionKeyType | Jedná se o typ šifrování pro ochranu klíč, který slouží k šifrování klíče obsahu. Tato hodnota je StorageEncryption(1) pro náš příklad.
-    Kontrolní součet |Algoritmus MD5 počítané kontrolního součtu pro klíč k obsahu. Výpočet je šifrování obsahu Id obsahu klíčem. Příklad kódu ukazuje, jak k výpočtu kontrolního součtu.
+    ID | Hello ContentKey Id, které se vygeneruje označována pomocí hello následující formátu, "nb:kid:UUID:<NEW GUID>".
+    ContentKeyType | Toto je typ obsahu klíče hello jako celé číslo pro tento klíč obsahu. Jsme předejte hello hodnotu 1 pro šifrování úložiště.
+    EncryptedContentKey | Vytvoříme novou hodnotu obsahu klíče, což je hodnota 256 bitů (32 bajtů). Hello je klíč zašifrovaný pomocí hello úložiště šifrování X.509 certifikátu, který načteme ze služby Microsoft Azure Media Services spuštěním požadavek HTTP GET pro hello GetProtectionKeyId a GetProtectionKey metody. Jako příklad najdete v části hello následující kód .NET: hello **EncryptSymmetricKeyData** metoda definované [zde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+    ProtectionKeyId | To je hello ochrany id klíče pro hello úložiště šifrovací X.509 certifikát, který byl použité tooencrypt naše klíč obsahu.
+    ProtectionKeyType | Toto je typ šifrování hello hello ochrany klíče, který byl klíč obsahu použité tooencrypt hello. Tato hodnota je StorageEncryption(1) pro náš příklad.
+    Kontrolní součet |Hello MD5 počítané kontrolního součtu pro klíč obsahu hello. Výpočet je šifrování obsahu hello Id obsahu klíčem hello. Hello příklad kódu ukazuje, jak toocalculate hello kontrolního součtu.
 
 
-### <a name="retrieve-the-protectionkeyid"></a>Načtení ProtectionKeyId
-Následující příklad ukazuje, jak načíst ProtectionKeyId, kryptografický otisk certifikátu pro certifikát, který je nutné použít při šifrování klíče obsahu. Proveďte tento krok, abyste měli jistotu, že už máte příslušný certifikát na počítači.
+### <a name="retrieve-hello-protectionkeyid"></a>Načtení hello ProtectionKeyId
+Hello následující příklad ukazuje, jak tooretrieve hello ProtectionKeyId, kryptografický otisk certifikátu pro certifikát hello, které musí použít při šifrování klíče obsahu. Proveďte tento krok toomake jistotu, že už máte příslušný certifikát hello na počítači.
 
 Žádost:
 
@@ -138,8 +138,8 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-### <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Získání ProtectionKey ProtectionKeyId
-Následující příklad ukazuje, jak načíst pomocí ProtectionKeyId certifikátu X.509, který že jste dostali v předchozím kroku.
+### <a name="retrieve-hello-protectionkey-for-hello-protectionkeyid"></a>Načtení hello ProtectionKey pro hello ProtectionKeyId
+Hello následující příklad ukazuje, jak certifikát X.509 hello tooretrieve pomocí hello ProtectionKeyId jste obdrželi v předchozím kroku hello.
 
 Žádost:
 
@@ -172,12 +172,12 @@ Odpověď:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-### <a name="create-the-content-key"></a>Vytvořte klíč obsahu
-Po načíst certifikát X.509 a používá svůj veřejný klíč k šifrování vašeho obsahu klíče, vytvoření **ContentKey** entity a sady jeho vlastnost hodnoty odpovídajícím způsobem.
+### <a name="create-hello-content-key"></a>Vytvořte klíč obsahu hello
+Po načíst certifikát X.509 hello a používá svůj veřejný klíč tooencrypt vašeho obsahu klíče, vytvoření **ContentKey** entity a sady jeho vlastnost hodnoty odpovídajícím způsobem.
 
-Jedna z hodnot musí nastavit při vytváření obsahu je typ klíče. V případě šifrování úložiště hodnota je '1'. 
+Jedna z hodnot hello musí nastavit při vytváření hello obsahu, že je klíč hello typu. V případě hello šifrování úložiště hello hodnota je '1'. 
 
-Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** nastavit šifrování úložiště ("1") a **ProtectionKeyType** nastaven na hodnotu "0" k označení, že klíč ochrany Id je kryptografický otisk certifikátu X.509.  
+Následující příklad ukazuje, jak Hello toocreate **ContentKey** s **ContentKeyType** nastavení pro šifrování úložiště ("1") a hello **ProtectionKeyType** nastavit příliš "0" tooindicate, který hello ochrany klíče Id je kryptografický otisk certifikátu X.509 hello.  
 
 Žádost
 
@@ -227,7 +227,7 @@ Odpověď:
     "Checksum":"calculated checksum"}
 
 ## <a name="create-an-asset"></a>Vytvořit prostředek
-Následující příklad ukazuje, jak vytvořit prostředek.
+Následující příklad ukazuje, jak Hello toocreate prostředek.
 
 **Požadavek HTTP**
 
@@ -245,7 +245,7 @@ Následující příklad ukazuje, jak vytvořit prostředek.
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující:
+V případě úspěchu se vrátí hello následující:
 
     HTP/1.1 201 Created
     Cache-Control: no-cache
@@ -273,8 +273,8 @@ V případě úspěchu se vrátí následující:
        "StorageAccountName":"storagetestaccount001"
     }
 
-## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey přidružit prostředek
-Po vytvoření ContentKey, přidružte ho Asset pomocí operace $links, jak je znázorněno v následujícím příkladu:
+## <a name="associate-hello-contentkey-with-an-asset"></a>Přidružit hello ContentKey prostředek
+Po vytvoření hello ContentKey, přidružte ho Asset pomocí operace hello $links, jak ukazuje následující příklad hello:
 
 Žádost:
 
@@ -295,11 +295,11 @@ Odpověď:
     HTTP/1.1 204 No Content 
 
 ## <a name="create-an-assetfile"></a>Vytvoření AssetFile
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entity představuje soubor video nebo zvuk, který je uložený v kontejneru objektů blob. Soubor asset je vždy přidružena k assetu a prostředek může obsahovat mnoho soubory asset. Media Services Encoder úloh selže, pokud objekt souboru asset není spojen s digitálnímu souboru v kontejneru objektů blob.
+Hello [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entity představuje soubor video nebo zvuk, který je uložený v kontejneru objektů blob. Soubor asset je vždy přidružena k assetu a prostředek může obsahovat mnoho soubory asset. Hello Media Services Encoder úloh selže, pokud objekt souboru asset není spojen s digitálnímu souboru v kontejneru objektů blob.
 
-Všimněte si, že **AssetFile** instance a samotný mediální soubor jsou dva odlišné objekty. AssetFile instance obsahuje metadata o souboru média, zatímco souboru média obsahuje samotný mediální obsah.
+Všimněte si, že hello **AssetFile** instance a hello samotný mediální soubor jsou dva odlišné objekty. Hello AssetFile instance obsahuje metadata o hello soubor média, zatímco soubor média hello obsahuje hello samotný mediální obsah.
 
-Po odeslání souboru digitálního média do kontejneru objektů blob, kterou použijete **SLOUČENÍ** HTTP žádost o aktualizaci AssetFile s informacemi o souboru média (v tomto tématu není znázorněné). 
+Po odeslání souboru digitálního média do kontejneru objektů blob, budete používat hello **SLOUČENÍ** HTTP žádost tooupdate hello AssetFile s informacemi o souboru média (v tomto tématu není znázorněné). 
 
 **Požadavek HTTP**
 

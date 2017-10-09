@@ -1,6 +1,6 @@
 ---
-title: "Nastavení prostředí vědecké účely dat v Azure | Microsoft Docs"
-description: "Nastavení dat vědecké účely prostředí v Azure pro použití v procesu Team dat vědecké účely."
+title: "aaaSet datové vědy prostředí v Azure | Microsoft Docs"
+description: "Nastavení dat vědecké účely prostředí v Azure pro použití v hello proces vědecké účely dat týmu."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: bradsev
-ms.openlocfilehash: 4f2f66288428aa0aa41abb40ce0e43c4848543ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 11e16416296d687c15fdaf17558aebc2d04737c9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Nastavení prostředí vědeckého zkoumání dat pro použití v rámci vědeckého zpracování týmových dat
-Proces vědecké účely Team dat používá různé vědě prostředí datových pro úložiště, zpracování a analýzu dat.. Patří mezi ně Azure Blob Storage, několik typů virtuálních počítačích Azure, clustery HDInsight (Hadoop) a pracovních prostorů Azure Machine Learning. Rozhodnutí o prostředí, ve kterém používat závisí na typu a objemu dat modelovat a cílového místa pro tato data v cloudu. 
+# <a name="set-up-data-science-environments-for-use-in-hello-team-data-science-process"></a>Nastavit data vědecké účely prostředí pro použití v hello procesu Team dat vědecké účely
+Hello proces vědecké účely Team dat používá různé vědě prostředí datových hello úložiště, zpracování a analýzu dat.. Patří mezi ně Azure Blob Storage, několik typů virtuálních počítačích Azure, clustery HDInsight (Hadoop) a pracovních prostorů Azure Machine Learning. cíl pro tato data v cloudu hello cílové Hello rozhodnutí o prostředí, ve kterém toouse závisí na typu hello a objemu dat toobe modelovány a hello. 
 
-* Pokyny na otázky, které vzít v úvahu při tomto rozhodnutí najdete v tématu [plánování vašeho Azure Machine Learning Data vědecké účely prostředí](machine-learning-data-science-plan-your-environment.md). 
-* Katalog některého z následujících scénářů se můžete setkat při provádění pokročilou analýzu, najdete v části [scénáře pro proces Team Data vědecké účely](machine-learning-data-science-plan-sample-scenarios.md)
+* Pokyny na otázky tooconsider při tomto rozhodnutí najdete v tématu [plánování vašeho Azure Machine Learning Data vědecké účely prostředí](machine-learning-data-science-plan-your-environment.md). 
+* Katalog některé scénáře hello se můžete setkat při provádění pokročilou analýzu, najdete v části [scénáře pro hello procesu Team dat vědecké účely](machine-learning-data-science-plan-sample-scenarios.md)
 
-Tato nabídka odkazy na témata, které popisují, jak nastavit různé vědě prostředí datových používá proces tým datové vědy.
+Tato nabídka propojí tootopics, které popisují, jak tooset až hello různé vědě prostředí datových používají v hello proces vědecké účely dat týmu.
 
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-**Microsoft Data vědecké účely virtuálního počítače (DSVM)** je také k dispozici jako image virtuálních počítačů (VM) Azure. Tento virtuální počítač je předem nainstalovaný a nakonfigurovaný s několik oblíbených nástrojů, které se běžně používají k analýze dat a strojové učení. DSVM je k dispozici v systému Windows a Linux. Další informace najdete v tématu [Úvod do cloudových dat vědecké účely virtuálního počítače pro systémy Linux a Windows](machine-learning-data-science-virtual-machine-overview.md).
+Hello **Microsoft Data vědecké účely virtuálního počítače (DSVM)** je také k dispozici jako image virtuálních počítačů (VM) Azure. Tento virtuální počítač je předem nainstalovaný a nakonfigurovaný s několik oblíbených nástrojů, které se běžně používají k analýze dat a strojové učení. Hello DSVM je k dispozici v systému Windows a Linux. Další informace najdete v tématu [toohello Úvod cloudových dat vědecké účely virtuálního počítače pro systémy Linux a Windows](machine-learning-data-science-virtual-machine-overview.md).
 

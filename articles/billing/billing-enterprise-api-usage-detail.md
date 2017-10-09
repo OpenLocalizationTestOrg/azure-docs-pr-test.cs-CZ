@@ -1,6 +1,6 @@
 ---
-title: "Azure fakturace Enterprise rozhraní API – podrobnosti o použití | Microsoft Docs"
-description: "Další informace o využití fakturace Azure a RateCard rozhraní API, které poskytují přehled o využívání prostředků Azure a trendy."
+title: "aaaAzure fakturace Enterprise rozhraní API – podrobnosti o použití | Microsoft Docs"
+description: "Další informace o využití fakturace Azure a RateCard rozhraní API, které jsou používané tooprovide přehled o využívání prostředků Azure a trendy."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 5b49220e6eb27544dba54255ee88c56ad79c3141
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: def0805008261df5872f015db3d2b26e47d25569
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---usage-details"></a>Rozhraní API pro vytváření sestav pro podnikové zákazníky – podrobnosti o použití
 
-Rozhraní API podrobnosti o využití nabízí denní rozpis těchto spotřebované počty a odhadované poplatky podle zápisu. Výsledek také obsahuje informace o instancích, měřidla a oddělení. Rozhraní API můžete položit dotaz na fakturační období nebo zadaný počáteční a koncové datum. 
+Hello podrobnosti o použití rozhraní API nabízí denní rozpis těchto spotřebované počty a odhadované poplatky podle zápisu. výsledek Hello také obsahuje informace o instancích, měřidla a oddělení. Hello rozhraní API můžete položit dotaz na fakturační období nebo zadaný počáteční a koncové datum. 
 ## <a name="consumption-apis"></a>Rozhraní API spotřeba
 
 
 ##<a name="request"></a>Žádost 
-Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, je vrácena data pro aktuální fakturační období. Vlastní časových rozsahů lze určit spuštění a ukončení datum parametry, které jsou ve formátu RRRR MM-dd. Maximální podporovaný časový rozsah je 36 měsíců.  
+Nejsou zadány společných vlastností hlavičky, které je třeba přidat toobe [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, pak data pro aktuální fakturaci hello období vrácena. Vlastní časových rozsahů lze určit hello spuštění a ukončení datum parametry, které jsou v hello formát rrrr MM-dd. maximální podporovaný časový rozsah Hello je 36 měsíců.  
 
 |Metoda | Identifikátor URI požadavku|
 |-|-|
@@ -37,12 +37,12 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 |GET|https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / usagedetailsbycustomdate? startTime = 2017-01-01 & endTime = 2017-01-10|
 
 > [!Note]
-> Pokud chcete používat verzi preview rozhraní API, nahraďte v2 v1 v výše uvedenou adresu URL.
+> verze preview hello toouse rozhraní API, nahraďte v2 v1 v hello výše adresy URL.
 >
 
 ## <a name="response"></a>Odpověď
 
-> Z důvodu potenciálně velkého objemu dat výsledek je stránkovaného sady. Pokud je k dispozici, určuje vlastnost nextLink odkaz na další stránku dat. Pokud na odkaz je prázdná, označuje to, že je poslední stránky. 
+> Z důvodu potenciálně velkého objemu dat hello výsledek toohello je stránkovaného sady. Vlastnost nextLink Hello, pokud existuje, určuje hello odkaz na další stránku hello data. Pokud hello odkaz je prázdná, označuje to, že je poslední stránku hello. 
 <br/>
 
     {
@@ -92,42 +92,42 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 
 |Název vlastnosti| Typ| Popis
 |-|-|-|
-|id| Řetězec| Jedinečné Id pro volání rozhraní API. |
-|data| Pole JSON| Pole pro každý instance\meter denní podrobnosti o použití.|
-|odkaz nextLink| Řetězec| Pokud jsou dostupné další stránky dat odkaz nextLink odkazuje na URL pro návrat na další stránku data. |
+|id| Řetězec| Hello jedinečné Id pro volání rozhraní API hello. |
+|data| Pole JSON| Pole pro každý instance\meter denní podrobnosti o použití Hello.|
+|odkaz nextLink| Řetězec| Pokud jsou dostupné další stránky s daty hello nextLink body toohello URL tooreturn hello další dat. |
 |ID účtu| celá čísla| Zastaralé pole. Dispozici z důvodu zpětné kompatibility. |
 |productId| celá čísla| Zastaralé pole. Dispozici z důvodu zpětné kompatibility. |
 |resourceLocationId| celá čísla| Zastaralé pole. Dispozici z důvodu zpětné kompatibility. |
 |consumedServiceID| celá čísla| Zastaralé pole. Dispozici z důvodu zpětné kompatibility. |
 |departmentId| celá čísla| Zastaralé pole. Dispozici z důvodu zpětné kompatibility. |
-|accountOwnerEmail| Řetězec| E-mailový účet vlastníka účtu. |
-|název účtu| Řetězec| Zákazník zadaný název účtu. |
+|accountOwnerEmail| Řetězec| E-mailový účet hello vlastníka účtu. |
+|název účtu| Řetězec| Zákazník zadaný název účtu hello. |
 |serviceAdministratorId| Řetězec| E-mailovou adresu z Správce služeb. |
 |subscriptionId| celá čísla| Zastaralé pole. Dispozici z důvodu zpětné kompatibility. |
-|subscriptionGuid| Řetězec| Globální jedinečný identifikátor pro předplatné. |
-|Název_předplatného| Řetězec| Název odběru. |
-|Datum| Řetězec| Datum, kdy došlo k využívání. |
-|Produktu| Řetězec| Další informace o měřidla. Příklad: A1 systému Windows (VM) - Asie a Tichomoří – východ|
-|meterId| Řetězec| Identifikátor pro monitorování, které vygenerované využití. |
-|meterCategory| Řetězec| Služba platformy Azure, která byla použita. |
-|meterSubCategory| Řetězec| Definuje typ služby Azure, který může mít vliv na rychlost. Příklad: A1 virtuálních počítačů (jiný systém než Windows|
-|meterRegion| Řetězec| Určuje polohu datového centra. U některých služeb vycházejí ceny z umístění datového centra. |
-|meterName| Řetězec| Název měřidla. |
-|consumedQuantity| Double| Množství monitorování, které bylo spotřebováno. |
-|resourceRate| Double| Míra použít na fakturovatelný jednotku. |
-|Náklady| Double| Poplatků, které vznikly pro měřidla. |
-|resourceLocation| Řetězec| Identifikuje datacenter, kde je spuštěna měřidla. |
-|consumedService| Řetězec| Služba platformy Azure, která byla použita. |
-|identifikátor instanceId| Řetězec| Tento identifikátor je název prostředku nebo plně kvalifikovaný ID prostředku. Další informace najdete v tématu [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) |
+|subscriptionGuid| Řetězec| Globální jedinečný identifikátor pro předplatné hello. |
+|Název_předplatného| Řetězec| Název odběru hello. |
+|Datum| Řetězec| Hello datum, kdy došlo k využívání. |
+|Produktu| Řetězec| Další informace o měření hello. Příklad: A1 systému Windows (VM) - Asie a Tichomoří – východ|
+|meterId| Řetězec| identifikátor Hello měřidlo hello vygenerované využití. |
+|meterCategory| Řetězec| Hello služby platformy Azure, která byla použita. |
+|meterSubCategory| Řetězec| Definuje typ hello služby Azure, který může mít vliv na rychlost hello. Příklad: A1 virtuálních počítačů (jiný systém než Windows|
+|meterRegion| Řetězec| Určuje umístění hello hello datacenter pro určité služby, které jsou za cenu na základě umístění datového centra. |
+|meterName| Řetězec| Název měřidla hello. |
+|consumedQuantity| Double| Hello množství hello monitorování, které bylo spotřebováno. |
+|resourceRate| Double| míra Hello použít na fakturovatelný jednotku. |
+|Náklady| Double| Hello poplatků, které vznikly pro měření hello. |
+|resourceLocation| Řetězec| Identifikuje hello datacenter se spuštěným systémem měření hello. |
+|consumedService| Řetězec| Hello služby platformy Azure, která byla použita. |
+|identifikátor instanceId| Řetězec| Tento identifikátor je hello název prostředku hello nebo hello plně kvalifikovaný ID prostředku. Další informace najdete v tématu [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) |
 |serviceInfo1| Řetězec| Metadata pro interní služby Azure. |
 |serviceInfo2| Řetězec| Například typ image pro virtuální počítač a název poskytovatele internetových služeb pro ExpressRoute. |
 |additionalInfo| Řetězec| Metadata specifická pro služby. Například bitové kopie typ pro virtuální počítač. |
 |tags| Řetězec| Zákazník přidat značky. Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags). |
 |storeServiceIdentifier| Řetězec| Tento sloupce se nepoužije. Dispozici z důvodu zpětné kompatibility. |
-|DepartmentName| Řetězec| Název oddělení. |
-|CostCenter| Řetězec| Nákladové středisko, které je přidružené využití. |
-|unitOfMeasure| Řetězec| Určuje jednotku, která služba je účtován v. Příklad: GB, hodin, 10 000 s. |
-|Skupina prostředků| Řetězec| Skupinu prostředků, ve které je nasazený měření spuštěný v. Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
+|DepartmentName| Řetězec| Název oddělení hello. |
+|CostCenter| Řetězec| Nákladové středisko Hello hello využití je přidružen. |
+|unitOfMeasure| Řetězec| Identifikuje hello jednotku, která je účtován hello služby v. Příklad: GB, hodin, 10 000 s. |
+|Skupina prostředků| Řetězec| v které hello nasazené měření běží ve skupině prostředků Hello. Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
 <br/>
 ## <a name="see-also"></a>Viz také
 

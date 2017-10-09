@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace oznámení a e-mailových šablon ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak konfigurace oznámení a e-mailových šablon ve službě Azure API Management."
+title: "aaaConfigure oznámení a e-mailových šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak tooconfigure oznámení a e-mailových šablon ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,63 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 3d8b74e32059cfc1a4c3a8fc7d3bd04676ee80c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc23289c25a1641992b73cb955099b3f207b6968
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurace oznámení a e-mailových šablon ve službě Azure API Management
-API Management nabízí možnost konfigurace oznámení pro konkrétní události a nakonfigurovat e-mailových šablon, které se používají ke komunikaci s správci a vývojáři instance služby API Management. Toto téma ukazuje, jak nakonfigurovat oznámení události, k dispozici a obsahuje základní informace o konfiguraci e-mailových šablon pro tyto události.
+# <a name="how-tooconfigure-notifications-and-email-templates-in-azure-api-management"></a>Jak tooconfigure oznámení a e-mailových šablon ve službě Azure API Management
+Služba API Management nabízí možnost hello tooconfigure oznámení pro konkrétní události a tooconfigure hello e-mailové šablony, které jsou používané toocommunicate s hello správci a vývojáři instance služby API Management. Toto téma ukazuje, jak tooconfigure oznámení pro hello k dispozici události a poskytuje přehled o konfiguraci e-mailových šablon hello používá pro tyto události.
 
 ## <a name="publisher-notifications"></a>Konfigurace vydavatele oznámení
-Chcete-li konfigurovat oznámení, klikněte na tlačítko **portál vydavatele** služby API Management na portálu Azure. Tím přejdete na portál vydavatele služby API Management.
+tooconfigure oznámení, klikněte na tlačítko **portál vydavatele** v hello portál Azure pro služby API Management. Tím přejdete portál vydavatele toohello API Management.
 
 ![Portál vydavatele][api-management-management-console]
 
 > [!NOTE] 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si článek [Vytvoření instance API Management][Create an API Management service instance] v kurzu [Začínáme se službou Azure API Management][Get started with Azure API Management].
+> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Začínáme s Azure API Management] [ Get started with Azure API Management] kurzu.
 
-Klikněte na tlačítko **oznámení** z **API Management** nabídky na levé straně, chcete-li zobrazit dostupné oznámení.
+Klikněte na tlačítko **oznámení** z hello **API Management** nabídce hello zbývajících tooview hello k dispozici oznámení.
 
 ![Vydavatele oznámení][api-management-publisher-notifications]
 
-Následující seznam událostí může být nakonfigurována pro oznámení.
+Následující seznam událostí Hello lze nakonfigurovat pro oznámení.
 
-* **Žádostí o odběr (které vyžadují schválení)** -příjemců zadané e-mailu a uživatelé dostanou e-mailová oznámení o odběru požadavky pro rozhraní API produkty, které vyžadují schválení.
-* **Nová předplatná** -příjemců zadané e-mailu a uživatelé dostanou e-mailová oznámení o nových předplatných rozhraní API produktu.
-* **Žádosti o aplikace Galerie** -příjemců zadané e-mailu a uživatelé obdrží e-mailová oznámení při nové aplikace se odešlou do Galerie aplikací.
-* **SKRYTÁ** -příjemců zadané e-mailu a uživatelé budou obdrží e-mailu skrytá kopii všechny e-maily odesílané pro vývojáře.
-* **Nový problém nebo komentář** – příjemců zadané e-mailu a uživatelé dostanou e-mailová oznámení, když nový problém nebo komentář je odesíláno na portál pro vývojáře.
-* **Zprávu zavřete účtu** -příjemců zadané e-mailu a uživatelé dostanou e-mailová oznámení po uzavření účtu.
-* **Blížící limit kvóty předplatného** -následující příjemců e-mailu a uživatelé obdrží e-mailová oznámení při použití předplatné získá brzy bude dosaženo kvóty využití.
+* **Žádostí o odběr (které vyžadují schválení)** – hello příjemců zadané e-mailu a uživatelé obdrží e-mailová oznámení o odběru požadavky pro rozhraní API produkty, které vyžadují schválení.
+* **Nová předplatná** – hello příjemců zadané e-mailu a uživatelé obdrží e-mailová oznámení o nových předplatných rozhraní API produktu.
+* **Žádosti o aplikace Galerie** – hello příjemců zadané e-mailu a uživatelé obdrží e-mailová oznámení, když nové aplikace jsou odeslaná toohello galerii aplikací.
+* **SKRYTÁ** – hello příjemců zadané e-mailu a uživatelé budou obdrží e-mailu skrytá kopii všech e-maily odesílané toodevelopers.
+* **Nový problém nebo komentář** – hello příjemců zadané e-mailu a uživatelé obdrží oznámení e-mailu, když nový problém nebo komentář je odesíláno na portál pro vývojáře hello.
+* **Zprávu zavřete účet** – hello příjemců zadané e-mailu a uživatelé obdrží e-mailová oznámení po uzavření účtu.
+* **Blížící limit kvóty předplatného** – hello následující příjemců e-mailu a uživatelé obdrží e-mailová oznámení, když využití předplatné získá zavřít toousage kvóty.
 
-U každé události lze zadat příjemců e-mailu pomocí e-mailovou adresu textového pole nebo můžete vybrat uživatele ze seznamu.
+U každé události lze zadat příjemců e-mailu pomocí hello e-mailovou adresu textového pole nebo můžete vybrat uživatele ze seznamu.
 
-Pokud chcete zadat e-mailové adresy, které mají být informování, zadejte je do textového pole e-mailovou adresu. Pokud máte více e-mailové adresy, oddělte je čárkami.
+toospecify hello e-mailové adresy toobe oznámení, zadejte je do hello e-mailová adresa. Pokud máte více e-mailové adresy, oddělte je čárkami.
 
 ![Příjemců oznámení][api-management-email-addresses]
 
-K určení uživatelů, aby se zobrazilo oznámení, klikněte na tlačítko **přidat příjemce**, zaškrtněte políčko vedle položky uživatelé upozorněni, a klikněte na **OK**.
+toospecify hello uživatelé toobe oznámení, klikněte na tlačítko **přidat příjemce**, zaškrtněte políčko hello vedle hello uživatelé toobe oznámení a klikněte na **OK**.
 
 > [!NOTE] 
-> V seznamu se zobrazí pouze správci.
+> V seznamu hello jsou zobrazeny pouze správci.
 
 
-Po dokončení konfigurace příjemců oznámení, klikněte na tlačítko **Uložit** použít aktualizované oznámení příjemci.
+Po dokončení konfigurace hello příjemců oznámení, klikněte na tlačítko **Uložit** tooapply hello aktualizovat příjemců oznámení.
 
 > [!NOTE] 
-> Pokud přejdete směrem od **vydavatele oznámení** kartě portálu vydavatele upozorní vás, pokud existují neuložené změny.
+> Pokud přejdete pryč z hello **vydavatele oznámení** portál vydavatele hello karta upozorní vás, pokud existují neuložené změny.
 
 
 ## <a name="email-templates"></a>Konfigurovat e-mailových šablon
-API Management poskytuje e-mailových šablon pro e-mailové zprávy, které se odesílají při správě a používání služby. Následující e-mailové šablony jsou k dispozici.
+API Management poskytuje e-mailových šablon pro hello e-mailové zprávy, které se odesílají v kurzu hello správě a používání služby hello. Následující e-mailových šablon Hello jsou k dispozici.
 
 * Odeslání aplikace Galerie schválení
 * Písmeno farewell vývojáře
 * Limit kvóty vývojáře blíží oznámení
 * Pozvat uživatele
-* Nový komentář přidat problému
+* Nový komentář přidat tooan problém
 * Nový problém přijat
 * Nové předplatné aktivované
 * Potvrzení odběru obnovit
@@ -79,11 +79,11 @@ API Management poskytuje e-mailových šablon pro e-mailové zprávy, které se 
 
 Tyto šablony se dá změnit podle potřeby.
 
-Chcete-li zobrazit a konfigurovat e-mailových šablon pro vaše instance služby API Management, klikněte na tlačítko **oznámení** z **API Management** nabídky na levé straně a vyberte **e-mailových šablon**kartě.
+tooview a nakonfigurovat hello e-mailových šablon pro vaše instance služby API Management, klikněte na tlačítko **oznámení** z hello **API Management** nabídce vlevo hello a vyberte hello **e-mailových šablon**  kartě.
 
 ![Šablony e-mailů][api-management-email-templates]
 
-Chcete-li zobrazit nebo upravit šablonu, vyberte ho z **šablony** rozevíracího seznamu.
+tooview nebo konkrétní šablonu upravit, vyberte ji ze hello **šablony** rozevíracího seznamu.
 
 ![Seznam šablon e-mailů][api-management-email-templates-list]
 
@@ -91,14 +91,14 @@ Každý e-mailové šablony má předmět ve formátu prostého textu a definice
 
 ![Editor šablony e-mailu][api-management-email-template]
 
-**Parametry** seznam obsahuje seznam parametrů, které v případě vložit do předmětu nebo textu, bude nahrazen určenou hodnotu, při odeslání e-mailu. Pokud chcete vložit parametr, umístěte kurzor, kde chcete parametru přejděte a klikněte na šipku nalevo od názvu parametru.
+Hello **parametry** seznam obsahuje seznam parametrů, které v případě vloženy do hello předmět ani text, bude nahrazené hello určené hodnotu, při odeslání e-mailu hello. tooinsert parametr, umístěte kurzor hello, kde chcete toogo hello parametr a klikněte na tlačítko hello šipku toohello nalevo od názvu parametru hello.
 
-Klikněte na tlačítko **Preview** nebo **odeslat testovací** zobrazíte jak e-mailu bude vypadat nebo odeslat testovací e-mail.
+Klikněte na tlačítko **Preview** nebo **odeslat testovací** toosee jak hello e-mailu bude vypadat nebo odeslat testovací e-mail.
 
 > [!NOTE] 
-> Parametry nejsou nahrazené skutečnými hodnotami při zobrazení náhledu nebo odeslání testu.
+> Hello parametry nejsou nahrazené skutečnými hodnotami při zobrazení náhledu nebo odeslání testu.
 
-Chcete-li uložit změny do šablony e-mailu, klikněte na tlačítko **Uložit**, nebo zrušit změny, klikněte na tlačítko **zrušit**.
+toosave hello změny toohello e-mailové šablony, klikněte na tlačítko **Uložit**, nebo klikněte na tlačítko toocancel hello změny **zrušit**.
  
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
@@ -114,8 +114,8 @@ Chcete-li uložit změny do šablony e-mailu, klikněte na tlačítko **Uložit*
 [Configure publisher notifications]: #publisher-notifications
 [Configure email templates]: #email-templates
 
-[How to create and use groups]: api-management-howto-create-groups.md
-[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
+[How toocreate and use groups]: api-management-howto-create-groups.md
+[How tooassociate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance

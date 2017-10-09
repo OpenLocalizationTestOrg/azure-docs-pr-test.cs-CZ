@@ -1,6 +1,6 @@
 ---
-title: "Povolit připojení ke vzdálené ploše pro roli v cloudových služeb Azure | Microsoft Docs"
-description: "Postup konfigurace aplikace služby azure cloud umožňující připojení ke vzdálené ploše"
+title: "aaaEnable připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services | Microsoft Docs"
+description: "Jak tooconfigure vaše azure cloudové služby aplikace tooallow připojení ke vzdálené ploše"
 services: cloud-services
 documentationcenter: 
 author: mmccrory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
-ms.openlocfilehash: 0ff7fde5f3753aa6a24fb0af54d68d0dc0bd96a4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 55d7043df571c2e88b04aa9ef01dc8ae1d6784f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Povolit připojení ke vzdálené ploše pro roli v cloudové služby Azure
 > [!div class="op_single_selector"]
@@ -29,46 +29,46 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Vzdálená plocha umožňuje přístup k ploše role, která běží v Azure. Připojení ke vzdálené ploše můžete odstraňovat a diagnostikovat problémy s aplikací, když je spuštěná.
+Vzdálená plocha umožňuje tooaccess hello ploše role, která běží v Azure. Můžete použít tootroubleshoot připojení vzdálené plochy a diagnostikovat problémy s vaší aplikací, když je spuštěná.
 
-Můžete povolit připojení ke vzdálené ploše v příslušné roli během vývoje zahrnutím moduly vzdálené plochy v definice služby nebo můžete povolit vzdálené plochy prostřednictvím vzdálené plochy rozšíření. Použití rozšíření vzdálené plochy, protože vzdálená plocha můžete povolit i poté, co je aplikace nasazena, aniž by museli znovu nasaďte aplikaci je žádoucí.
+Můžete povolit připojení ke vzdálené ploše v příslušné roli během vývoje začleněním modulů hello vzdálené plochy v definice služby nebo můžete zvolit tooenable vzdálené plochy prostřednictvím hello rozšíření vzdálené plochy. Hello žádoucí je toouse hello vzdálené plochy rozšíření jako Vzdálená plocha můžete povolit i po nasazení aplikace hello bez nutnosti tooredeploy vaší aplikace.
 
-## <a name="configure-remote-desktop-from-the-azure-portal"></a>Konfigurace vzdálené plochy z portálu Azure
-Portál Azure používá vzdálené plochy rozšíření přístup, takže Vzdálená plocha můžete povolit i poté, co je aplikace nasazená. **Vzdálené plochy** okno pro cloudové služby umožňuje povolit vzdálené plochy, změňte místní účet správce používá k připojení k virtuálním počítačům, certifikát používané v ověřování a nastavit datum vypršení platnosti.
+## <a name="configure-remote-desktop-from-hello-azure-portal"></a>Konfigurace vzdálené plochy z hello portálu Azure
+Hello portál Azure používá přístup vzdálené plochy rozšíření hello, takže Vzdálená plocha můžete povolit i po nasazení aplikace hello. Hello **vzdálené plochy** okno pro cloudové služby vám umožní tooenable vzdálené plochy, změna hello místní účet správce používá tooconnect toohello virtuální počítače, hello certifikátu používané v ověřování a nastavte hello Datum vypršení platnosti.
 
-1. Klikněte na tlačítko **cloudové služby**, klikněte na název cloudové služby a pak klikněte na tlačítko **vzdálené plochy**.
+1. Klikněte na tlačítko **cloudové služby**, klikněte na název hello hello cloudové služby a pak klikněte na tlačítko **vzdálené plochy**.
 
     ![Cloudové služby Vzdálená plocha](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
-2. Zvolte, zda chcete povolit vzdálená plocha pro jednotlivé role nebo pro všechny role, pak změňte hodnotu přepínači na **povoleno**.
+2. Zvolte, zda jste tooenable vzdálené plochy pro jednotlivé role nebo pro všechny role, a potom změnit hodnotu hello hello přepínači příliš**povoleno**.
 
-3. Vyplňte požadovaná pole pro uživatelské jméno, heslo, vypršení platnosti a certifikát.
+3. Vyplňte pole hello požadované pro uživatelské jméno, heslo, vypršení platnosti a certifikát.
 
     ![Cloudové služby Vzdálená plocha](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Details.png)
 
    > [!WARNING]
-   > Všechny instance role se restartuje, při prvním povolení služby Vzdálená plocha a klikněte na tlačítko OK (zaškrtnutí). Abyste zabránili restartování, musí být nainstalovaný certifikát použitý k šifrování hesla v roli. Abyste zabránili restartování, [nahrát certifikát pro cloudové služby](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) a pak se vraťte do tohoto dialogového okna.
+   > Všechny instance role se restartuje, při prvním povolení služby Vzdálená plocha a klikněte na tlačítko OK (zaškrtnutí). tooprevent restartu hello certifikátů používaných tooencrypt hello heslo musí být nainstalován na hello role. tooprevent restartování, [nahrát certifikát pro cloudové služby hello](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) a pak se vraťte toothis dialogu.
    >
    >
-3. V **role**, vyberte roli, kterou chcete aktualizovat nebo vyberte **všechny** u všech rolí.
+3. V **role**, vyberte roli hello tooupdate nebo vyberte **všechny** u všech rolí.
 
-4. Po dokončení aktualizace vaše konfigurace, klikněte na tlačítko **Uložit**. Bude trvat několik minut, než je připraven přijmout připojení instance role.
+4. Po dokončení aktualizace vaše konfigurace, klikněte na tlačítko **Uložit**. To bude trvat chvíli instance role jsou připravené tooreceive připojení.
 
 ## <a name="remote-into-role-instances"></a>Vzdálené do instance rolí
-Jakmile povolíte vzdálené plochy na rolích, můžete zahájit připojení přímo z portálu Azure:
+Po povolení vzdálené plochy na hello role můžete zahájit připojení přímo z portálu Azure hello:
 
-1. Klikněte na tlačítko **instance** otevřete **instance** okno.
+1. Klikněte na tlačítko **instance** tooopen hello **instance** okno.
 2. Vyberte instanci role, která má nakonfigurované připojení ke vzdálené ploše.
-3. Klikněte na tlačítko **Connect** stáhnout soubor RDP pro instanci role.
+3. Klikněte na tlačítko **Connect** souboru toodownload protokolu RDP pro instanci role hello.
 
     ![Cloudové služby Vzdálená plocha](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
-4. Klikněte na tlačítko **otevřete** a potom **Connect** spustit připojení ke vzdálené ploše.
+4. Klikněte na tlačítko **otevřete** a potom **připojit** toostart hello připojení vzdálené plochy.
 
 >[!NOTE]
-> Pokud cloudové služby nachází za skupinu NSG, musíte vytvořit pravidla, která povolí komunikaci na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Instance cloudové služby jsou Vyrovnávané, takže nemůže přímo řídit kterou instanci pro připojení k.  *RemoteForwarder* a *RemoteAccess* agenty spravovat provoz protokolu RDP a umožňují klientu odesílat soubor cookie s RDP a zadejte jednotlivé instance pro připojení k.  *RemoteForwarder* a *RemoteAccess* agentů vyžadují tento port **20000*** otevřít, což může být zablokován, pokud máte skupinu NSG.
+> Pokud cloudové služby nachází za skupinu NSG, může být nutné toocreate pravidla, která umožňují přenosy na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Cloudové služby instance jsou vyrovnáváním, zatížení, takže nemůže přímo řídit které tooconnect instance k.  Hello *RemoteForwarder* a *RemoteAccess* agenty spravovat provoz protokolu RDP a povolit hello klienta toosend soubor cookie s RDP a zadejte jednotlivé instance tooconnect k.  Hello *RemoteForwarder* a *RemoteAccess* agentů vyžadují tento port **20000*** otevřít, což může být zablokován, pokud máte skupinu NSG.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-[Postup konfigurace cloudové služby](cloud-services-how-to-configure.md)
+[Jak tooConfigure cloudové služby](cloud-services-how-to-configure.md)
 [cloudových služeb časté otázky – vzdálené plochy](cloud-services-faq.md)

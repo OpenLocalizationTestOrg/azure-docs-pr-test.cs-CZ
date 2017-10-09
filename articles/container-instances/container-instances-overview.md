@@ -1,5 +1,5 @@
 ---
-title: "Přehled služby Azure Container Instances | Dokumentace Azure"
+title: "aaaAzure kontejner instancí přehled | Dokumentace Azure"
 description: "Vysvětlení služby Azure Container Instances"
 services: container-instances
 documentationcenter: 
@@ -17,21 +17,21 @@ ms.workload: na
 ms.date: 07/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 3fb230c6b16a57e3650abf2000acdfe944cd633c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c0662ede1260b15d9841bfc2c3c4cec4c30338d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
-Kontejnery se rychle stávají upřednostňovaným způsobem balení, nasazování a správy cloudových aplikací. Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob provozování kontejneru v Azure. Není přitom nutné zřizovat žádné virtuální počítače nebo využívat služby vyšší úrovně. 
+Kontejnery se stávají rychle hello upřednostňovaný způsob, jak toopackage, nasadit a spravovat cloudové aplikace. Azure instancí kontejnerů nabízí hello nejrychlejší a nejjednodušší způsob, jak toorun kontejner v Azure, bez nutnosti tooprovision všechny virtuální počítače a bez nutnosti tooadopt vyšší úrovně služby. 
 
-Azure Container Instances je skvělým řešením pro jakýkoli scénář, který může fungovat v izolovaných kontejnerech, včetně jednoduchých aplikací, automatizace úkolů a úloh sestavení. Pro scénáře, kde potřebujete úplnou orchestraci kontejnerů, včetně zjišťování služeb napříč více kontejnery, automatického škálování a koordinovaných upgradů aplikací, doporučujeme službu [Azure Container Service](https://docs.microsoft.com/azure/container-service/).
+Azure Container Instances je skvělým řešením pro jakýkoli scénář, který může fungovat v izolovaných kontejnerech, včetně jednoduchých aplikací, automatizace úkolů a úloh sestavení. Pro scénáře, kde nepotřebují orchestration kontejneru, včetně zjišťování služby napříč více kontejnerů, automatické škálování a upgrady koordinované aplikací doporučujeme hello [Azure Container Service](https://docs.microsoft.com/azure/container-service/).
 
 ## <a name="fast-startup-times"></a>Rychlé časy spuštění
 
-Kontejnery nabízejí významné výhody při spouštění oproti virtuálním počítačům. Se službou Azure Container Instances můžete v Azure spustit kontejner během několika sekund a bez nutnosti zřizovat a spravovat virtuální počítače.
+Kontejnery nabízejí významné výhody při spouštění oproti virtuálním počítačům. Kontejner instancemi Azure můžete v sekundách bez nutnosti tooprovision hello spusťte kontejner v Azure a spravovat virtuální počítače.
 
 ## <a name="hypervisor-level-security"></a>Zabezpečení na úrovni hypervisoru
 
@@ -39,24 +39,24 @@ Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správn
 
 ## <a name="custom-sizes"></a>Vlastní velikosti
 
-Kontejnery jsou obvykle optimalizované pro spouštění jenom jedné aplikace, ale konkrétní požadavky těchto aplikací se můžou značně lišit. Se službou Azure Container Instances si můžete vyžádat přesně to, co potřebujete z hlediska procesorových jader a paměti. Platíte podle toho, co si vyžádáte, a účtuje se po sekundách, takže můžete podrobně optimalizovat náklady podle vašich potřeb.
+Kontejnery jsou obvykle optimalizované toorun, který se může značně lišit právě jednu aplikaci, ale hello konkrétním potřebám těchto aplikací. Se službou Azure Container Instances si můžete vyžádat přesně to, co potřebujete z hlediska procesorových jader a paměti. Platí podle co budete požadovat, se účtují podle hello druhé, tak můžete jemně optimalizovat výdajů na základě potřeb.
 
 ## <a name="public-ip-connectivity"></a>Připojení pomocí veřejné IP adresy
 
-Se službou Azure Container Instances můžete své kontejnery zveřejnit přímo na internetu s použitím veřejné IP adresy. V budoucnu plánujeme možnosti sítě rozšířit o integraci s virtuálními sítěmi, nástroji pro vyrovnávání zatížení a dalšími základními částmi síťové infrastruktury Azure.
+Instancemi kontejner Azure můžou zpřístupnit kontejnerů přímo toohello internet s veřejnou IP adresu. V budoucích hello jsme bude rozbalte naše sítě integrace tooinclude možnosti s virtuálními sítěmi, zatížení nástroje pro vyrovnávání a dalšími částmi základní hello Azure síťové infrastruktury.
 
 ## <a name="persistent-storage"></a>Trvalé úložiště
 
-Pro načtení a uložení stavu pomocí služby Azure Container Instances nabízíme přímé připojení sdílených složek Azure.
+tooretrieve a zachování stavu s instancemi Azure kontejneru, nabízíme přímé připojení z Azure souborů sdílených složek.
 
 ## <a name="linux-and-windows-containers"></a>Kontejnery Windows a Linuxu
 
-Se službou Azure Container Instances můžete plánovat kontejnery Windows i Linuxu pomocí stejného rozhraní API. Jednoduše určíte základní typ operačního systému a všechno ostatní je stejné.
+Kontejner instancemi Azure můžete naplánovat systému Windows a Linux kontejnery s hello stejné rozhraní API. Jednoduše znamenat hello základní typ operačního systému a všem ostatním identické.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 
-Azure Container Instances podporuje plánování skupin více kontejnerů, které sdílejí hostitelský počítač, místní síť, úložiště a životní cyklus. Díky tomu můžete kombinovat hlavní aplikaci s dalšími, které zastávají podpůrnou roli, jako je například protokolování.
+Azure Container Instances podporuje plánování skupin více kontejnerů, které sdílejí hostitelský počítač, místní síť, úložiště a životní cyklus. Díky tomu můžete toocombine hlavní aplikace s ostatními funguje v roli podpůrné například protokolování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si nasazení kontejneru do Azure jediným příkazem s využitím naší [příručky Rychlý start](container-instances-quickstart.md).
+Vyzkoušejte nasazení kontejneru tooAzure pomocí jednoduchého příkazu naše [Průvodce rychlým zahájením](container-instances-quickstart.md).

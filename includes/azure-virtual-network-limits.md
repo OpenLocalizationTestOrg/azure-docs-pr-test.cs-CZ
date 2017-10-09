@@ -1,4 +1,4 @@
-<a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné.
+<a name="virtual-networking-limits-classic"></a>Hello následující omezení platí jenom pro síťové prostředky, které jsou spravované prostřednictvím modelu nasazení classic hello jedno předplatné.
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -18,7 +18,7 @@
 | Seznamy řízení přístupu (ACL) koncového bodu |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Síťová omezení – Azure Resource Manager
-Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné.
+Hello následující omezení platí jenom pro síťové prostředky, které jsou spravované prostřednictvím Správce Azure Resource Manager na oblast na předplatné.
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -44,5 +44,5 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Kořenové certifikáty typu Point-to-Site na službu VPN Gateway |20 |20 |
 | Sekundární konfigurace IP na virtuální síť |1000 |kontaktovat podporu |
 
-Pokud potřebujete navýšit výchozí omezení, [kontaktujte podporu](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
+[Obraťte se na podporu](../articles/azure-supportability/resource-manager-core-quotas-request.md ) v případě, že potřebujete omezení tooincrease z výchozí.
 

@@ -1,6 +1,6 @@
 ---
-title: "Další kroky pro vytvoření projektu Service Fabric | Microsoft Docs"
-description: "Tento článek obsahuje odkazy na sadu úloh vývoj jádra pro Service Fabric"
+title: "Další kroky aaaService Fabric projektu vytvoření | Microsoft Docs"
+description: "Tento článek obsahuje odkazy tooa sadu základní vývojářských úloh pro Service Fabric"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: rwike77
-ms.openlocfilehash: 74019850c507902d9ef7ec47a364fff234aaf32b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 45598bfabedf280fba8af449ef920f40b409a609
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Vaše aplikace Service Fabric a další kroky
-Vaše aplikace Azure Service Fabric byla vytvořena. Tento článek popisuje způsob vytvoření projektu a některé potenciální další kroky.
+Vaše aplikace Azure Service Fabric byla vytvořena. Tento článek popisuje způsob vytvoření hello projektu a některé potenciální další kroky.
 
 ## <a name="your-application"></a>Vaše aplikace
-Každé nové aplikace zahrnuje projekt aplikace. Může mít jeden nebo dva další projekty, v závislosti na typu služby vybrali.
+Každé nové aplikace zahrnuje projekt aplikace. Může mít jeden nebo dva další projekty, v závislosti na typu hello služby vybrali.
 
-### <a name="the-application-project"></a>Projekt aplikace
-Projekt aplikace se skládá z:
+### <a name="hello-application-project"></a>projekt aplikace Hello
+projekt aplikace Hello se skládá z:
 
-* Sada odkazů na služby, které tvoří vaši aplikaci.
-* Tři publikační profily (1uzlu místní, 5uzlu místní a cloudové), které můžete použít ke správě předvoleb pro práci s různých prostředích – například předvolby týkající se koncový bod clusteru a zda k provedení upgradu nasazení ve výchozím nastavení.
-* Soubory tři parametr aplikace (stejné jako výše), můžete použít ke správě konfigurace specifické pro prostředí aplikace, například počet oddílů pro vytvoření pro službu.
-* Skript nasazení, který můžete použít k nasazení aplikace z příkazového řádku nebo jako součást automatizované průběžnou integraci a nasazení kanálu.
-* Manifest aplikace, která popisuje aplikace. Ve složce ApplicationPackageRoot můžete najít v manifestu.
+* Sada služeb toohello odkazy, které tvoří vaši aplikaci.
+* Tři publikační profily (1uzlu místní, 5uzlu místní a cloudové), které můžete použít toomaintain předvolby pro práci s různých prostředích – například koncový bod clusteru související tooa předvolby a jestli tooperform upgradujte nasazení ve výchozím nastavení.
+* Tři soubory parametrů aplikace (stejné jako výše), které můžete použít konfigurace toomaintain konkrétní prostředí aplikace, například hello počet oddílů toocreate pro službu.
+* Skript nasazení, které můžete použít toodeploy aplikace z příkazového řádku hello nebo jako součást automatizované průběžnou integraci a nasazení kanálu.
+* manifest aplikace Hello, která popisuje aplikace hello. Hello manifest najdete ve složce ApplicationPackageRoot hello.
 
 ### <a name="stateless-service"></a>Bezstavové služby
-Při přidání nové bezstavové služby Visual Studio přidá do vašeho řešení, které zahrnuje typ následníky projektu služby `StatelessService`. Služba zvýší místní proměnné v čítače.
+Při přidání nové bezstavové služby Visual Studio. přidá řešení tooyour projekt služby, který zahrnuje typ následníky `StatelessService`. Služba Hello zvýší místní proměnné v čítače.
 
 ### <a name="stateful-service"></a>Stavové služby
-Když přidáte novou stavové služby, Visual Studio přidá do vašeho řešení, které zahrnuje typ následníky projektu služby `StatefulService`. Služba zvýší čítače v jeho `RunAsync` metoda a ukládá výsledky v `ReliableDictionary`.
+Když přidáte novou stavové služby, Visual Studio přidá řešení tooyour projekt služby, který zahrnuje typ následníky `StatefulService`. Hello služby zvýší čítače v jeho `RunAsync` metoda a úložišť hello vést `ReliableDictionary`.
 
 ### <a name="actor-service"></a>Služby objektu actor
-Při přidání nového objektu actor spolehlivé, Visual Studio přidá do vašeho řešení dva projekty: objektu actor projekt a projekt rozhraní.
+Při přidání nového objektu actor spolehlivé, Visual Studio přidá dva projekty tooyour řešení: objektu actor projekt a projekt rozhraní.
 
-Poskytuje metody pro nastavení projektu objektu actor a získávání hodnotu počítadla, která je spolehlivě uloženy v rámci objektu actor stavu. Rozhraní projektu poskytuje rozhraní, které má být vyvolán objektu actor můžete použít jiné služby.
+poskytuje metody pro nastavení Hello objektu actor projektu a získávání hello hodnotu počítadla, která je spolehlivě uloženy v rámci stavu objektu actor hello. Hello rozhraní projektu poskytuje rozhraní, aby další služby můžete použít objektu actor tooinvoke hello.
 
 ### <a name="stateless-web-api"></a>Bezstavové webového rozhraní API
-Bezstavové projekt webového rozhraní API poskytuje základní webová služba, která slouží k otevření aplikace externím klientům. Další informace o projektu strukturovaná, najdete v části [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md).
+Hello bezstavové projekt webového rozhraní API poskytuje základní webové služby, které můžete použít tooopen vaši klienti tooexternal aplikace. Další informace o tom, jak hello projektu strukturovaná, najdete v části [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md).
 
 
 ### <a name="aspnet-core"></a>Jádro ASP.NET
-Sada Service Fabric SDK obsahuje stejnou sadu ASP.NET Core šablony, které jsou k dispozici pro samostatné projektů ASP.NET Core: prázdná, [webového rozhraní API][aspnet-webapi], a [webové aplikace][aspnet-webapp].
+Hello Service Fabric SDK poskytuje stejné sady ASP.NET Core šablon, které jsou k dispozici pro samostatnou projektů ASP.NET Core hello: prázdná, [webového rozhraní API][aspnet-webapi], a [webové aplikace][aspnet-webapp].
 
 ### <a name="guest-executables-and-guest-containers"></a>Spustitelné soubory a hostů kontejnery hosta
 
-Service Fabric, guest, je služba, která není vytvořené s nástroji programovací modely platformu. Binární soubory pro Host můžete balíček buď [přímo v balíčku aplikace](service-fabric-deploy-existing-app.md) nebo [prostřednictvím bitovou kopii kontejneru](service-fabric-deploy-container.md). V obou případech Visual Studio vytvoří artefakty potřebné v **ApplicationPackageRoot** složku projekt aplikace. Visual Studio nebude vytvořit nový projekt služby, protože kód již existuje jinde. Pokud chcete ke správě vašich projektů hosta spolu s projekt aplikace Service Fabric, můžete je přidat do stejného řešení, Visual Studio.
+Service Fabric, guest, je služba, která není vytvořené s nástroji programovací modely hello platformy. Binární soubory hello můžete balíček pro hosta buď [přímo v balíčku aplikace hello](service-fabric-deploy-existing-app.md) nebo [prostřednictvím bitovou kopii kontejneru](service-fabric-deploy-container.md). V obou případech Visual Studio vytvoří hello artefakty potřebné v hello **ApplicationPackageRoot** složku projekt aplikace hello. Visual Studio nebude vytvořit nový projekt služby, protože hello kód již existuje jinde. Pokud chcete toomanage vaše hosta projekty spolu s hello projekt aplikace Service Fabric, můžete je přidat toohello stejné řešení sady Visual Studio.
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="create-an-azure-cluster"></a>Vytvoření clusteru služby Azure
-Sada Service Fabric SDK poskytuje místní cluster pro vývoj a testování. Pokud chcete vytvořit cluster v Azure, najdete v části [nastavení cluster Service Fabric na portálu Azure][create-cluster-in-portal].
+Hello Service Fabric SDK poskytuje místní cluster pro vývoj a testování. toocreate cluster v Azure, najdete v části [nastavení cluster Service Fabric z portálu Azure hello][create-cluster-in-portal].
 
-### <a name="publish-your-application-to-azure"></a>Publikování aplikace do Azure
-Můžete publikovat svoji aplikaci přímo ze sady Visual Studio do clusteru služby Azure. Další informace, jak zjistit, [publikování aplikace do Azure][publish-app-to-azure].
+### <a name="publish-your-application-tooazure"></a>Publikování tooAzure vaší aplikace
+Můžete publikovat aplikaci přímo v sadě Visual Studio tooan clusteru Azure. Postup naleznete v tématu toolearn [publikování vaší aplikace tooAzure][publish-app-to-azure].
 
-### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
-Service Fabric Explorer nabízí snadný způsob, jak vizualizace clusteru, včetně nasazené aplikace a fyzické rozložení. Další informace najdete v tématu [vizualizace vašeho clusteru pomocí Service Fabric Explorer][visualize-with-sfx].
+### <a name="use-service-fabric-explorer-toovisualize-your-cluster"></a>Použijte váš cluster Service Fabric Explorer toovisualize
+Service Fabric Explorer nabízí snadný způsob toovisualize cluster, včetně nasazené aplikace a fyzické rozložení. Další, najdete v části toolearn [vizualizace vašeho clusteru pomocí Service Fabric Explorer][visualize-with-sfx].
 
 ### <a name="version-and-upgrade-your-services"></a>Verze a upgradujte vašim službám
-Service Fabric umožňuje nezávislé Správa verzí a upgrade nezávislých služeb v aplikaci. Další informace najdete v tématu [Správa verzí a upgrade vašich služeb][app-upgrade-tutorial].
+Service Fabric umožňuje nezávislé Správa verzí a upgrade nezávislých služeb v aplikaci. Další, najdete v části toolearn [Správa verzí a upgrade vašich služeb][app-upgrade-tutorial].
 
 ### <a name="configure-continuous-integration-with-visual-studio-team-services"></a>Konfigurace průběžnou integraci s Visual Studio Team Services
-Informace o tom, jak můžete nastavit průběžnou integraci proces pro vaši aplikaci Service Fabric, najdete v části [nakonfigurovat průběžnou integraci s Visual Studio Team Services][ci-with-vso].
+toolearn způsobu průběžnou integraci procesu můžete nastavit pro vaši aplikaci Service Fabric najdete v [nakonfigurovat průběžnou integraci s Visual Studio Team Services][ci-with-vso].
 
 <!-- Links -->
 [add-web-frontend]: service-fabric-add-a-web-frontend.md

@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Vývoj s DocumentDB rozhraní API v rozhraní .NET | Microsoft Docs"
-description: "Naučte se vyvíjet s rozhraním API Azure Cosmos DB DocumentDB pomocí rozhraní .NET"
+title: "Azure Cosmos DB: Vývoj pomocí hello DocumentDB rozhraní API v rozhraní .NET | Microsoft Docs"
+description: "Zjistěte, jak toodevelop s rozhraním API Azure Cosmos DB DocumentDB pomocí rozhraní .NET"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -16,19 +16,19 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 2eed74ae9bd173b0944ec190dfe5d9a4bdc54c37
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0d3d17afa782054c8fdf3cbac421e5a5d0a6800c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmosdb-develop-with-the-documentdb-api-in-net"></a>Azure CosmosDB: Vývoj s DocumentDB rozhraní API v rozhraní .NET
+# <a name="azure-cosmosdb-develop-with-hello-documentdb-api-in-net"></a>Azure CosmosDB: Vývoj pomocí hello DocumentDB rozhraní API v rozhraní .NET
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento kurz ukazuje, jak vytvořit účet Azure Cosmos DB pomocí portálu Azure a pak vytvořte databázi dokumentů a kolekce s [klíč oddílu](documentdb-partition-data.md#partition-keys) pomocí [DocumentDB .NET API](documentdb-introduction.md). Definováním klíč oddílu, když vytvoříte kolekci, je připraven aplikace pak moci bez obtíží škálujte podle rozšiřujícího se vaše data. 
+Tento kurz ukazuje, jak toocreate účtu Azure Cosmos DB pomocí hello portálu Azure a pak vytvořte databázi dokumentů a kolekce s [klíč oddílu](documentdb-partition-data.md#partition-keys) pomocí hello [DocumentDB .NET API](documentdb-introduction.md). Definováním klíč oddílu, když vytvoříte kolekci, vaše aplikace je připravená tooscale pak moci bez obtíží s růstem vaše data. 
 
-Tento kurz se zaměřuje na tyto úlohy pomocí [DocumentDB .NET API](documentdb-sdk-dotnet.md):
+Tento kurz zahrnuje hello následující úlohy pomocí hello [DocumentDB .NET API](documentdb-sdk-dotnet.md):
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB
@@ -41,20 +41,20 @@ Tento kurz se zaměřuje na tyto úlohy pomocí [DocumentDB .NET API](documentdb
 > * Odstranění databáze
 
 ## <a name="prerequisites"></a>Požadavky
-Ujistěte se prosím, že máte následující:
+Přesvědčte se, že máte následující hello:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/). 
-    * Alternativně můžete použít [emulátoru DB Cosmos Azure](local-emulator.md) pro účely tohoto kurzu, pokud chcete použít místní prostředí, které emuluje služby Azure DocumentDB pro účely vývoje.
+    * Alternativně můžete použít hello [emulátoru DB Cosmos Azure](local-emulator.md) pro účely tohoto kurzu, pokud chcete toouse místní prostředí, které emuluje služby Azure DocumentDB hello pro účely vývoje.
 * Sadu [Visual Studio](http://www.visualstudio.com/).
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.
+Začněme vytvořením účtu Azure Cosmos DB v hello portálu Azure.
 
 > [!TIP]
-> * Již máte účet Azure Cosmos DB? Pokud ano, přeskočit na [nastavit řešení sady Visual Studio](#SetupVS)
-> * Měli jste účet Azure DocumentDB? Pokud ano, váš účet je teď účet Azure Cosmos DB a můžete přeskočit na [nastavit řešení sady Visual Studio](#SetupVS).  
-> * Pokud používáte emulátor DB Cosmos Azure, postupujte podle kroků v [emulátoru DB Cosmos Azure](local-emulator.md) nastavit emulátoru a přeskočit na [nastavení řešení v nástroji Visual Studio](#SetupVS). 
+> * Již máte účet Azure Cosmos DB? Pokud ano, přeskočit příliš[nastavit řešení sady Visual Studio](#SetupVS)
+> * Měli jste účet Azure DocumentDB? Pokud ano, váš účet je teď účet Azure Cosmos DB a můžete přeskočit příliš[nastavit řešení sady Visual Studio](#SetupVS).  
+> * Pokud používáte hello emulátoru DB Cosmos Azure, postupujte podle kroků hello v [emulátoru DB Cosmos Azure](local-emulator.md) toosetup hello emulátoru a přeskočit příliš[nastavení řešení v nástroji Visual Studio](#SetupVS). 
 >
 >
 
@@ -62,26 +62,26 @@ Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.
 
 ## <a id="SetupVS"></a>Nastavení řešení v sadě Visual Studio
 1. Otevřete na svém počítači sadu **Visual Studio**.
-2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt**.
-3. V **nový projekt** dialogovém okně, vyberte **šablony** / **Visual C#** / **konzolovou aplikaci (rozhraní .NET Framework)** , pojmenujte svůj projekt a potom klikněte na **OK**.
-   ![Snímek obrazovky okna Nový projekt](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-new-project-2.png)
+2. Na hello **soubor** nabídce vyberte možnost **nový**a potom zvolte **projektu**.
+3. V hello **nový projekt** dialogovém okně, vyberte **šablony** / **Visual C#** / **konzolovou aplikaci (rozhraní .NET Framework)**, pojmenujte svůj projekt a pak klikněte na tlačítko **OK**.
+   ![Snímek obrazovky okna Nový projekt hello](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-new-project-2.png)
 
-4. V **Průzkumníku řešení** klikněte pravým tlačítkem na novou konzolovou aplikaci v rámci řešení sady Visual Studio a pak klikněte na **Spravovat balíčky NuGet**.
+4. V hello **Průzkumníku řešení**, klikněte pravým tlačítkem na novou konzolovou aplikaci, která je v části řešení sady Visual Studio, a pak klikněte na tlačítko **spravovat balíčky NuGet...**
     
-    ![Snímek obrazovky místní nabídky projektu](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-manage-nuget-pacakges.png)
-5. V **NuGet** , klikněte na **Procházet**a typ **documentdb** do vyhledávacího pole.
+    ![Snímek obrazovky znázorňující hello právo místní nabídky pro hello projektu](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-manage-nuget-pacakges.png)
+5. V hello **NuGet** , klikněte na **Procházet**a typ **documentdb** hello vyhledávacího pole.
 <!---stopped here--->
-6. Najděte ve výsledcích **Microsoft.Azure.DocumentDB** a klikněte na **Nainstalovat**.
-   Je třeba ID balíčku klientské knihovny Azure Cosmos DB [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB).
-   ![Snímek obrazovky nabídky NuGet pro vyhledání Azure Cosmos DB Client SDK](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-manage-nuget-pacakges-2.png)
+6. V rámci hello výsledky najít **Microsoft.Azure.DocumentDB** a klikněte na tlačítko **nainstalovat**.
+   ID balíčku Hello hello Azure Cosmos DB klientské knihovny je [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB).
+   ![Snímek obrazovky hello nabídky NuGet pro vyhledání Azure Cosmos DB Client SDK](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-manage-nuget-pacakges-2.png)
 
-    Pokud se vám zobrazí zpráva týkající se kontroly změn řešení, klikněte na **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
+    Pokud se zobrazí zpráva o Kontrola řešení toohello změny, klikněte na tlačítko **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
 
-## <a id="Connect"></a>Přidejte odkazy na projekt
-Příklady zbývajících kroků v tomto kurzu poskytují fragmenty kódu rozhraní API DocumentDB nutná k vytváření a aktualizují Azure Cosmos DB prostředky ve vašem projektu.
+## <a id="Connect"></a>Přidání odkazů tooyour projektu
+Hello zbývající kroky v tento kurz zadejte hello DocumentDB API kód fragmenty požadované toocreate a aktualizace Azure Cosmos DB prostředky ve vašem projektu.
 
-Nejprve přidejte tyto odkazy na aplikace.
-<!---These aren't added by default when you install the pkg?--->
+Nejprve přidejte tyto odkazy tooyour aplikace.
+<!---These aren't added by default when you install hello pkg?--->
 
 ```csharp
 using System.Net;
@@ -100,17 +100,17 @@ private const string PrimaryKey = "<your primary key>";
 private DocumentClient client;
 ```
 
-Potom head zpátky [portál Azure](https://portal.azure.com) získat adresu URL koncového bodu a primární klíč. Adresa URL koncového bodu a primární klíč jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
+Potom, head zpět toohello [portál Azure](https://portal.azure.com) tooretrieve adresu URL koncového bodu a primární klíč. Adresa URL koncového bodu Hello a primární klíč jsou nutné pro vaše aplikace toounderstand kde tooconnect a u Azure Cosmos DB tootrust připojení vaší aplikace.
 
-Na portálu Azure přejděte ke svému účtu Azure Cosmos DB, klikněte na **klíče**a potom klikněte na **klíče pro čtení a zápis**.
+V hello portálu Azure, přejděte tooyour Azure Cosmos DB účet, klikněte na **klíče**a potom klikněte na **klíče pro čtení a zápis**.
 
-Zkopírujte URI z portálu a vložte ji přes `<your endpoint URL>` v souboru program.cs. Poté zkopírujte primární klíč z portálu a vložte ji přes `<your primary key>`. Nezapomeňte odebrat `<` a `>` z hodnoty.
+Zkopírujte z portálu hello hello URI a vložte ho přes `<your endpoint URL>` v souboru program.cs hello. Pak hello primární klíč z portálu hello kopírování a vložení prostřednictvím `<your primary key>`. Se, zda text hello tooremove `<` a `>` z hodnoty.
 
-![Snímek obrazovky portálu Azure používá v kurzu NoSQL k vytvoření konzolové aplikace jazyka C#. Zobrazuje účet Azure Cosmos DB s klíče v okně účtu Azure Cosmos DB a hodnotami URI a primární klíč v okně klíče](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-keys.png)
+![Snímek obrazovky portálu Azure hello používá toocreate kurzu NoSQL hello konzolovou aplikaci C#. Zobrazuje účet Azure Cosmos DB s hello klíče v okně účtu Azure Cosmos DB hello a hello URI a primární klíč zvýrazněnými hodnotami v okně klíče hello](./media/tutorial-develop-documentdb-dotnet/nosql-tutorial-keys.png)
 
-## <a id="instantiate"></a>Vytvoření instance DocumentClient
+## <a id="instantiate"></a>Vytvoření instance DocumentClient hello
 
-Teď vytvořte novou instanci třídy **DocumentClient**.
+Teď vytvořte novou instanci třídy hello **DocumentClient**.
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -118,33 +118,33 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>Vytvoření databáze
 
-Dále vytvořte Azure DB Cosmos [databáze](documentdb-resources.md#databases) pomocí [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metoda nebo [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metodu  **DocumentClient** třídy z [DocumentDB .NET SDK](documentdb-sdk-dotnet.md). Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+Dále vytvořte Azure DB Cosmos [databáze](documentdb-resources.md#databases) pomocí hello [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metoda nebo [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metoda hello  **DocumentClient** třídy z hello [DocumentDB .NET SDK](documentdb-sdk-dotnet.md). Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi hello.
 
 ```csharp
 await client.CreateDatabaseAsync(new Database { Id = "db" });
 ```
 ## <a name="decide-on-a-partition-key"></a>Vyberte klíč oddílu 
 
-Kolekce jsou kontejnery pro ukládání dokumentů. Jsou logické prostředky a můžete [span jeden nebo více fyzických oddílů](partition-data.md). A [klíč oddílu](documentdb-partition-data.md) je vlastnost (nebo cestu) v rámci vaší dokumenty, které slouží k distribuci dat mezi servery nebo oddíly. Všechny dokumenty se stejným klíčem oddílu ukládají do stejného oddílu. 
+Kolekce jsou kontejnery pro ukládání dokumentů. Jsou logické prostředky a můžete [span jeden nebo více fyzických oddílů](partition-data.md). A [klíč oddílu](documentdb-partition-data.md) je vlastnost (nebo cestu) v rámci vaší dokumenty, které je použité toodistribute data mezi servery hello nebo oddíly. Všechny dokumenty se stejným klíčem oddílu jsou uložené v hello hello stejného oddílu. 
 
-Rozhodnutí o důležité, aby předtím, než vytvoříte kolekci, je určení klíč oddílu. Klíče oddílů jsou vlastnosti (nebo cestu) ve vaší dokumenty, které můžete používat k distribuci dat mezi několika servery nebo oddíly Azure Cosmos DB. Cosmos DB hashuje hodnotu klíče oddílu a hash výsledek používá k určení oddílu pro uložení dokumentů. Všechny dokumenty se stejným klíčem oddílu ukládají do stejného oddílu a klíče oddílů nelze změnit po vytvoření kolekce. 
+Klíč oddílu je určení důležité rozhodnutí toomake před vytvořením kolekce. Klíče oddílů jsou vlastnosti (nebo cestu) v rámci vaší dokumenty, které se dají používat Azure Cosmos DB toodistribute data mezi více servery nebo oddíly. Cosmos DB hashuje hodnotu klíče oddílu hello a používá hello rozdělí výsledek toodetermine hello oddílu v které toostore hello dokumentu. Všechny dokumenty se stejným klíčem oddílu jsou uložené v hello hello stejného oddílu a klíče oddílů nelze změnit po vytvoření kolekce. 
 
-V tomto kurzu vytvoříme nastavit klíč oddílu na `/deviceId` tak, aby všechna data pro jedno zařízení je uložen v jeden oddíl. Chcete vybrat klíč oddílu, který má velký počet hodnot, z nichž každý se používají v o stejnou frekvenci zajistit, že Cosmos DB můžete vyrovnávat zatížení, podle vašich dat roste a dosáhnout úplnou propustnost kolekce. 
+V tomto kurzu vytvoříme klíč oddílu hello tooset příliš`/deviceId` , který hello všechna data hello pro jedno zařízení je uložený v jeden oddíl. Chcete-li toochoose klíč oddílu, který má velký počet hodnot, z nichž každý se používají v o hello stejnou frekvenci tooensure Cosmos DB můžete vyrovnávat zatížení jako data zvětšování a dosáhnout úplné propustnosti hello hello kolekce. 
 
-Další informace o oddílech najdete v tématu [postup oddílu a škálování v Azure Cosmos DB?](partition-data.md) 
+Další informace o oddílech najdete v tématu [jak toopartition a škálování v Azure Cosmos DB?](partition-data.md) 
 
 ## <a id="CreateColl"></a>Vytvoření kolekce 
 
-Teď, když jsme si vědomi naše klíč oddílu `/deviceId`, umožňuje vytvořit [kolekce](documentdb-resources.md#collections) pomocí [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metoda nebo [CreateDocumentCollectionIfNotExistsAsync ](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metodu **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a všechny přidružené logiky Javascriptové aplikace. 
+Teď, když jsme si vědomi naše klíč oddílu `/deviceId`, umožňuje vytvořit [kolekce](documentdb-resources.md#collections) pomocí hello [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metoda nebo [ CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metoda hello **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a všechny přidružené logiky Javascriptové aplikace. 
 
 > [!WARNING]
-> Vytvoření kolekce hradí, jako jsou rezervování propustnost pro aplikace komunikovat s Azure Cosmos DB. Další podrobnosti, navštivte naše [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)
+> Vytvoření kolekce hradí, jako jsou rezervování propustnost pro hello toocommunicate aplikací s Azure Cosmos DB. Další podrobnosti, navštivte naše [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)
 > 
 > 
 
 ```csharp
-// Collection for device telemetry. Here the JSON property deviceId is used  
-// as the partition key to spread across partitions. Configured for 2500 RU/s  
+// Collection for device telemetry. Here hello JSON property deviceId is used  
+// as hello partition key toospread across partitions. Configured for 2500 RU/s  
 // throughput and an indexing policy that supports sorting against any  
 // number or string property. .
 DocumentCollection myCollection = new DocumentCollection();
@@ -157,10 +157,10 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 2500 });
 ```
 
-Tato metoda umožňuje volání Azure Cosmos DB a služby zřizuje počet oddílů podle propustnosti, požadované rozhraní REST API. Propustnost kolekce můžete změnit, protože výkon musí momentální pomocí sady SDK nebo [portál Azure](set-throughput.md).
+Tato metoda díky rozhraní REST API volání tooAzure Cosmos DB a hello služby zřizuje počet oddílů založené na požadovaný propustnost hello. Výkon vašich potřeb momentální pomocí hello SDK nebo hello můžete změnit hello propustnost kolekce [portál Azure](set-throughput.md).
 
 ## <a id="CreateDoc"></a>Vytvoření dokumentů JSON
-Umožňuje vložit některé dokumenty JSON do Azure Cosmos DB. [Dokument](documentdb-resources.md#documents) je možné vytvořit pomocí metody [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Tato ukázka třída obsahuje zařízení, čtení a volání CreateDocumentAsync vložit nového zařízení čtení do kolekce.
+Umožňuje vložit některé dokumenty JSON do Azure Cosmos DB. A [dokumentu](documentdb-resources.md#documents) lze vytvořit pomocí hello [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metoda hello **DocumentClient** třídy. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Tato ukázka třída obsahuje čtení zařízení a tooinsert tooCreateDocumentAsync volání nové zařízení čtení do kolekce.
 
 ```csharp
 public class DeviceReading
@@ -185,8 +185,8 @@ public class DeviceReading
     public double MetricValue;
   }
 
-// Create a document. Here the partition key is extracted 
-// as "XMS-0001" based on the collection definition
+// Create a document. Here hello partition key is extracted 
+// as "XMS-0001" based on hello collection definition
 await client.CreateDocumentAsync(
     UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new DeviceReading
@@ -201,10 +201,10 @@ await client.CreateDocumentAsync(
 ```
 ## <a name="read-data"></a>Čtení dat
 
-Umožňuje čtení dokumentu svým klíč oddílu a Id pomocí metody ReadDocumentAsync. Všimněte si, že čtení obsahují hodnotu PartitionKey (odpovídající `x-ms-documentdb-partitionkey` hlavička požadavku v rozhraní REST API).
+Umožňuje číst dokument hello svým klíč oddílu a Id pomocí metody ReadDocumentAsync hello. Všimněte si, že čtení hello obsahují hodnotu PartitionKey (odpovídající toohello `x-ms-documentdb-partitionkey` hlavička požadavku v hello REST API).
 
 ```csharp
-// Read document. Needs the partition key and the Id to be specified
+// Read document. Needs hello partition key and hello Id toobe specified
 Document result = await client.ReadDocumentAsync(
   UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
@@ -214,10 +214,10 @@ DeviceReading reading = (DeviceReading)(dynamic)result;
 
 ## <a name="update-data"></a>Aktualizace dat
 
-Teď umožňuje aktualizovat některé data pomocí metody ReplaceDocumentAsync.
+Teď umožňuje aktualizovat některé data pomocí metody ReplaceDocumentAsync hello.
 
 ```csharp
-// Update the document. Partition key is not required, again extracted from the document
+// Update hello document. Partition key is not required, again extracted from hello document
 reading.MetricValue = 104;
 reading.ReadingTime = DateTime.UtcNow;
 
@@ -228,17 +228,17 @@ await client.ReplaceDocumentAsync(
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Teď umožňuje odstranit dokument klíčem oddílu a id pomocí metody DeleteDocumentAsync.
+Teď umožňuje odstranit dokument klíčem oddílu a id pomocí metody DeleteDocumentAsync hello.
 
 ```csharp
-// Delete a document. The partition key is required.
+// Delete a document. hello partition key is required.
 await client.DeleteDocumentAsync(
   UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
 ## <a name="query-partitioned-collections"></a>Dotaz na dělené kolekce
 
-Pro dotazování dat v kolekcích oddílů Azure Cosmos DB automaticky směruje dotaz na oddíly odpovídající hodnoty klíče oddílu zadaných ve filtru (pokud existují). Například tento dotaz se směruje na právě oddílu klíč oddílu "XMS-0001".
+Když dotazujete dat v kolekcích oddílů, Azure Cosmos DB automaticky trasy hello oddíly query toohello odpovídající hodnoty klíče toohello oddílu zadané ve filtru hello (pokud existují). Tento dotaz je například směrované toojust hello oddílu obsahující hello klíč oddílu "XMS-0001".
 
 ```csharp
 // Query using partition key
@@ -247,7 +247,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-Následující dotaz na klíč oddílu (DeviceId) nemá filtr a je fanned pro všechny oddíly, kde je u indexu oddílu spustit. Všimněte si, že budete muset určit EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` v rozhraní REST API) tak, aby měl sady SDK při spuštění dotazu napříč oddíly.
+Hello následující dotaz na klíč oddílu hello (DeviceId) nemá filtr a je fanned na oddíly tooall němž se spustí před hello oddílu indexu. Všimněte si, že máte toospecify hello EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` v hello REST API) toohave hello SDK tooexecute dotazu napříč oddíly.
 
 ```csharp
 // Query across partition keys
@@ -258,7 +258,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 ```
 
 ## <a name="parallel-query-execution"></a>Provádění paralelního dotazu
-Azure Cosmos databáze DocumentDB SDK 1.9.0 a vyšší možnosti provádění paralelního dotazu podpory, které umožňují provádět dotazy s nízkou latencí pro dělené kolekce, i v případě, že potřebují k touch velký počet oddílů. Například následující dotaz je nakonfigurována pro spuštění paralelně napříč oddíly.
+Hello Azure Cosmos databáze DocumentDB SDK 1.9.0 a výše podpory možnosti provádění paralelního dotazu, které umožňují s nízkou latencí tooperform dotazy proti dělené kolekce, i v případě, že potřebují tootouch velký počet oddílů. Následující dotaz hello je například nakonfigurované toorun paralelně napříč oddíly.
 
 ```csharp
 // Cross-partition Order By queries
@@ -269,15 +269,15 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .OrderBy(m => m.MetricValue);
 ```
     
-Provádění paralelního dotazu můžete spravovat pomocí ladění následující parametry:
+Provádění paralelního dotazu můžete spravovat pomocí ladění hello následující parametry:
 
-* Nastavením `MaxDegreeOfParallelism`, můžete řídit stupně paralelního zpracování tedy maximální počet souběžných síťové připojení k kolekce oddíly. Pokud nastavíte na hodnotu -1, stupně paralelního zpracování spravuje sady SDK. Pokud `MaxDegreeOfParallelism` není zadaný, nebo je nastavený na 0, což je výchozí hodnota, bude jedno síťové připojení k oddílům kolekce.
-* Nastavením `MaxBufferedItemCount`, můžete kompromisy využití paměti dotazu latence a na straně klienta. Pokud tento parametr vynecháte nebo tuto možnost nastavíte na hodnotu -1, počet položek do vyrovnávací paměti při provádění paralelního dotazu, které spravuje sady SDK.
+* Nastavením `MaxDegreeOfParallelism`, můžete řídit hello stupně paralelního zpracování tedy hello maximální počet souběžných síťové připojení toohello kolekce oddílů. Pokud nastavíte příliš-1, hello stupně paralelního zpracování spravuje hello SDK. Pokud hello `MaxDegreeOfParallelism` není zadaný, nebo nastavte too0, což je výchozí hodnota hello, bude oddíly kolekce toohello na jedné síťové připojení.
+* Nastavením `MaxBufferedItemCount`, můžete kompromisy využití paměti dotazu latence a na straně klienta. Pokud tento parametr vynecháte, nebo nastavte příliš-1, hello počet položek do vyrovnávací paměti při provádění paralelního dotazu, které spravuje hello SDK.
 
-Zadaný stav stejné kolekce, paralelní dotaz vrátí výsledky ve stejném pořadí jako sériové provádění. Při provádění dotazu mezi oddílu, který zahrnuje řazení (ORDER BY a/nebo horní), DocumentDB SDK vydá dotaz paralelně napříč oddíly a sloučí částečně seřazená výsledky na straně klienta k vytvoření globální seřazené výsledky.
+Zadané hello stejného stavu hello kolekce paralelní dotaz vrátí výsledky v hello stejné pořadí jako sériové provádění. Při provádění dotazu mezi oddílu, který zahrnuje řazení (ORDER BY a/nebo horní), hello DocumentDB SDK vydá dotaz hello paralelně napříč oddíly a sloučí částečně seřazená má za následek hello klientské straně tooproduce globálně řazení výsledků.
 
 ## <a name="execute-stored-procedures"></a>Provedení uložené procedury
-Nakonec můžete provést jednotlivé transakce na dokumenty se stejným ID zařízení, například pokud jste údržbě agregace nebo nejnovější stav zařízení do jednoho dokumentu přidáním následující kód do projektu.
+Nakonec můžete provést jednotlivé transakce na dokumenty s hello stejné ID zařízení, například pokud jste zachování agregace nebo hello nejnovější stav zařízení do jednoho dokumentu přidáním hello následující kód tooyour projektu.
 
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
@@ -286,18 +286,18 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     "XMS-001-FE24C");
 ```
 
-A je to! ty jsou hlavními součástmi Azure Cosmos DB aplikaci, která používá klíč oddílu efektivně škálovat distribuci dat mezi oddílů.  
+A je to! ty jsou hello hlavními součástmi Azure Cosmos DB aplikaci, která používá distribuční oddílu klíče tooefficiently škálování dat napříč oddíly.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nechcete pokračovat v používání této aplikace, odstraňte všechny prostředky, které jsou vytvořené v tomto kurzu na portálu Azure pomocí následujících kroků:
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené v tomto kurzu v hello portál Azure s hello následující kroky:
 
-1. Z nabídky na levé straně na portálu Azure, klikněte na tlačítko **skupiny prostředků** a pak klikněte na jedinečný název prostředku, který jste vytvořili. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na tlačítko hello jedinečný název hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující: 
+V tomto kurzu provedete krok hello následující: 
 
 > [!div class="checklist"]
 > * Vytvoření účtu Azure Cosmos DB
@@ -309,7 +309,7 @@ V tomto kurzu jste provést následující:
 > * Odstranit dokumentu
 > * Odstranit databázi
 
-Teď můžete pokračovat v dalším kurzu a další data importovat do účtu Cosmos DB. 
+Teď můžete pokračovat dalším kurzu toohello a importovat další data tooyour Cosmos DB účtu. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s objektem blob storage a Visual Studio připojené služby (cloudové služby) | Microsoft Docs"
-description: "Jak začít používat úložiště objektů Blob v Azure v projektu cloudové služby v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby"
+title: "aaaGet začít s úložiště objektů blob a Visual Studio připojených služeb (cloudové služby) | Microsoft Docs"
+description: "Jak tooget spustit po připojení tooa účet úložiště pomocí sady Visual Studio připojené služby používat úložiště objektů Blob v Azure v projektu cloudové služby v sadě Visual Studio"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: e154c81ef3765a3c006b3c27a979be881f14d0ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 62fb7fcff0a90008859ebe23755f13ef0555e380
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Blob Storage a Visual Studio připojené služby (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak začít pracovat s Azure Blob Storage po vytvoření nebo odkazuje účet úložiště Azure pomocí sady Visual Studio **přidat připojení služby** dialogové okno v sadě Visual Studio cloudové služby projektu. Ukážeme vám přístupu a vytvoření kontejnerů objektů blob a jak provádět běžné úkoly, jako odesílání, výpis a stahování objekty BLOB. Ukázky jsou napsané v jazyce C\# a použít [Microsoft Azure Storage Client Library pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Tento článek popisuje, jak tooget pracovat s Azure Blob Storage po vytvoření nebo odkazovaný účet úložiště Azure pomocí sady Visual Studio hello **přidat připojení služby** dialogové okno v sadě Visual Studio cloudové služby projektu. Ukážeme vám jak tooaccess a vytvoření kontejnerů objektů blob a jak tooperform běžné úkoly jako odesílání, výpis a stahování objekty BLOB. Hello ukázky jsou napsané v jazyce C\# a používat hello [Microsoft Azure Storage Client Library pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-Azure Blob Storage je služba pro ukládání velkého objemu nestrukturovaných dat, která je přístupná z kdekoliv na světě prostřednictvím protokolu HTTP nebo HTTPS. Jediného objektu blob může mít libovolnou velikost. Objekty BLOB může být třeba bitové kopie, soubory audia a videa, nezpracovaná data a soubory dokumentu.
+Azure Blob Storage je služba pro ukládání velkého objemu nestrukturovaných dat, který lze přistupovat z libovolné místo v hello, world pomocí protokolů HTTP nebo HTTPS. Jediného objektu blob může mít libovolnou velikost. Objekty BLOB může být třeba bitové kopie, soubory audia a videa, nezpracovaná data a soubory dokumentu.
 
-Stejně jako soubory live ve složkách, za provozu v kontejnerech objektů BLOB storage. Po vytvoření úložiště můžete vytvořit jeden nebo více kontejnerů v úložišti. Například v úložiště, který se nazývá "Výstřižků", vytvoříte kontejnerů v úložišti názvem "Image" k ukládání obrázků a jiné názvem "zvuk" k uložení zvukových souborů. Po vytvoření kontejnerů, můžete odeslat soubory jednotlivých objektů blob k nim.
+Stejně jako soubory live ve složkách, za provozu v kontejnerech objektů BLOB storage. Po vytvoření úložiště vytvoříte jeden nebo více kontejnerů v úložišti hello. Například v úložiště, který se nazývá "Výstřižků", vytvoříte kontejnerů v úložišti hello názvem "Image" toostore obrázky a jiné názvem "zvuk" toostore zvukových souborů. Po vytvoření kontejnerů hello můžete nahrát toothem soubory jednotlivých objektů blob.
 
 * Další informace o programu manipulace s objekty BLOB najdete v tématu [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage-dotnet-how-to-use-blobs.md).
 * Obecné informace o službě Azure Storage najdete v tématu [úložiště dokumentace](https://azure.microsoft.com/documentation/services/storage/).
@@ -36,46 +36,46 @@ Stejně jako soubory live ve složkách, za provozu v kontejnerech objektů BLOB
 * Další informace o programování aplikace ASP.NET najdete v tématu [ASP.NET](http://www.asp.net).
 
 ## <a name="access-blob-containers-in-code"></a>Kontejnery objektů blob přístup v kódu
-K programovému přístupu ke objektů BLOB v projekty cloudových služeb, musíte přidat následující položky, pokud nejsou již existuje.
+tooprogrammatically přístup k objektům BLOB v projekty cloudových služeb, je nutné tooadd hello následující položky, pokud nejsou již existuje.
 
-1. Přidejte následující deklarace oborů názvů kódu do horní části souboru žádné C# ve které chcete k programovému přístupu ke službě Azure Storage.
+1. Přidejte následující kód obor názvů deklarace toohello horní části souboru žádné C# ve kterém chcete tooprogrammatically přístupu Azure Storage hello.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Získání **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure.
+2. Získání **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Následující kód tooget hello použití hello připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure hello.
    
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
-3. Získání **CloudBlobClient** objekt, který má odkazovat na existující kontejner ve vašem účtu úložiště.
+3. Získání **CloudBlobClient** objektu tooreference existující kontejner ve vašem účtu úložiště.
    
         // Create a blob client.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-4. Získání **CloudBlobContainer** objekt, který má odkazovat na konkrétní objekt blob kontejneru.
+4. Získání **CloudBlobContainer** tooreference kontejner objektů blob konkrétní objekt.
    
-        // Get a reference to a container named "mycontainer."
+        // Get a reference tooa container named "mycontainer."
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
 > [!NOTE]
-> Použijte všechny uvedeném v předchozím postupu před uvedeném v následujících částech kódu kódu.
+> Použijte všechny hello kódu uvedené v předchozím postupu hello před uvedeném v následující části hello hello kódu.
 > 
 > 
 
 ## <a name="create-a-container-in-code"></a>Vytvořit kontejner v kódu
 > [!NOTE]
-> Některé rozhraní API, které provádět volání se do služby Azure Storage v ASP.NET jsou asynchronní. V tématu [asynchronní programování s Async a Await](http://msdn.microsoft.com/library/hh191443.aspx) Další informace. Kód v následujícím příkladu se předpokládá, že používáte asynchronní programování metody.
+> Některé rozhraní API, které provádět volání out tooAzure úložiště v ASP.NET jsou asynchronní. V tématu [asynchronní programování s Async a Await](http://msdn.microsoft.com/library/hh191443.aspx) Další informace. Hello kód v hello následující příklad předpokládá, že používáte asynchronní programování metody.
 > 
 > 
 
-Pokud chcete vytvořit kontejner ve vašem účtu úložiště, musíte udělat je přidáte volání **CreateIfNotExistsAsync** jako v následujícím kódu:
+toocreate kontejneru v účtu úložiště, stačí toodo je přidejte volání příliš**CreateIfNotExistsAsync** jako hello následující kód:
 
     // If "mycontainer" doesn't exist, create it.
     await container.CreateIfNotExistsAsync();
 
 
-Soubory v kontejneru zpřístupnit všem uživatelům, můžete nastavit kontejner, aby se veřejné pomocí následující kód.
+toomake hello soubory v rámci hello kontejneru dostupné tooeveryone, můžete nastavit kontejner toobe hello veřejné pomocí hello následující kód.
 
     await container.SetPermissionsAsync(new BlobContainerPermissions
     {
@@ -83,26 +83,26 @@ Soubory v kontejneru zpřístupnit všem uživatelům, můžete nastavit kontejn
     });
 
 
-Kdokoli na Internetu může vidět objekty BLOB ve veřejném kontejneru, ale můžete upravit nebo odstranit pouze v případě, že máte příslušný přístupový klíč.
+Kdokoli na hello Internetu může vidět objekty BLOB ve veřejném kontejneru, ale můžete upravit nebo odstranit pouze v případě, že máte příslušný přístupový klíč hello.
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
-Úložiště Azure podporuje objekty BLOB bloku a objekty BLOB stránky. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.
+Úložiště Azure podporuje objekty BLOB bloku a objekty BLOB stránky. Ve většině případů hello je objekt blob bloku hello doporučená toouse typu.
 
-Když chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a použijte ho k získání odkazu objektu blob bloku. Jakmile získáte odkaz na objekt blob, můžete k němu nahrát jakýkoli proud dat voláním metody **UploadFromStream**. Tahle operace vytvoří objekt blob, pokud ještě dříve neexistoval, nebo ho přepíše, pokud už existoval. Následující příklad ukazuje, jak nahrát objekt blob do kontejneru, zároveň předpokládá, že kontejner byl již vytvořen.
+tooupload objekt blob bloku souboru tooa získejte odkaz na kontejner a použít ho tooget odkaz na objekt blob bloku. Až budete mít odkaz na objekt blob, můžete nahrát jakýkoli proud dat tooit pomocí volání hello **UploadFromStream** metoda. Tato operace vytvoří hello blob, pokud nebyla dříve neexistuje, nebo ho přepíše, pokud neexistuje. Následující příklad ukazuje, jak Hello tooupload objekt blob do kontejneru a předpokládá, že hello kontejner byl již vytvořen.
 
-    // Retrieve a reference to a blob named "myblob".
+    // Retrieve a reference tooa blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-    // Create or overwrite the "myblob" blob with contents from a local file.
+    // Create or overwrite hello "myblob" blob with contents from a local file.
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
         blockBlob.UploadFromStream(fileStream);
     }
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
-Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít metodu kontejneru **ListBlobs** a načíst objekty blob a/nebo obsažené adresáře. Pro přístup k bohaté sadě vlastností a metod vrácené **IListBlobItem**, musíte vysílat na **CloudBlockBlob**, **CloudPageBlob**, nebo  **CloudBlobDirectory** objektu. Pokud je typ neznámý, můžete použít kontrolu typu a zjistit, na který typ vysílat. Následující kód ukazuje, jak načíst a na výstupu zobrazit identifikátor URI pro každou položku v kontejneru **photos**:
+## <a name="list-hello-blobs-in-a-container"></a>Seznam hello objekty BLOB v kontejneru
+toolist hello objekty BLOB v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít hello kontejneru **ListBlobs** metoda tooretrieve hello objekty BLOB a/nebo obsažené adresáře. tooaccess hello bohatou sadu vlastností a metod vrácené **IListBlobItem**, musíte vysílat tooa **CloudBlockBlob**, **CloudPageBlob**, nebo  **CloudBlobDirectory** objektu. Pokud typ hello neznámý, můžete použít typ kontroly toodetermine které toocast jeho. Hello následující kód ukazuje, jak tooretrieve a výstup hello URI pro každou položku v hello **fotografie** kontejneru:
 
-    // Loop over items within the container and output the length and URI.
+    // Loop over items within hello container and output hello length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, false))
     {
         if (item.GetType() == typeof(CloudBlockBlob))
@@ -127,7 +127,7 @@ Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz n
         }
     }
 
-Jak je znázorněno v předchozí ukázce kódu, služby objektů blob obsahuje koncepci adresáře v rámci kontejnery také. Toto je tak, aby můžete uspořádat, objektů BLOB do více stromové struktury. Můžete zvolit například následující sadu objektů blob bloku v kontejneru s názvem **photos**:
+Jak ukazuje předchozí příklad hello, má služby objektů blob hello hello konceptu adresáře v rámci kontejnery také. Toto je tak, aby můžete uspořádat, objektů BLOB do více stromové struktury. Zvažte například následující sadu objektů BLOB bloku v kontejneru nazvaném hello **fotografie**:
 
     photo1.jpg
     2010/architecture/description.txt
@@ -138,22 +138,22 @@ Jak je znázorněno v předchozí ukázce kódu, služby objektů blob obsahuje 
     2011/architecture/description.txt
     2011/photo7.jpg
 
-Při volání **ListBlobs** na kontejneru (jako v předchozím příkladu), vrátí kolekce obsahuje **CloudBlobDirectory** a **CloudBlockBlob** objekty představují adresáře a objekty BLOB obsažené na nejvyšší úrovni. Zde je výsledný výstup:
+Při volání **ListBlobs** hello kontejneru (jako v předchozím příkladu hello), obsahuje kolekci hello vrátil **CloudBlobDirectory** a **CloudBlockBlob** objekty představující hello adresáře a objekty BLOB obsažené na nejvyšší úrovni hello. Zde je výsledný výstup hello:
 
     Directory: https://<accountname>.blob.core.windows.net/photos/2010/
     Directory: https://<accountname>.blob.core.windows.net/photos/2011/
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-Volitelně můžete nastavit parametr **UseFlatBlobListing** metody **ListBlobs** na hodnotu **pravda**. Výsledkem je každý objekt blob se vrátí jako **CloudBlockBlob**, bez ohledu na to adresáře. Tady je volání **ListBlobs**:
+Volitelně můžete nastavit hello **UseFlatBlobListing** parametr z hello **ListBlobs** metodu **true**. Výsledkem je každý objekt blob se vrátí jako **CloudBlockBlob**, bez ohledu na to adresáře. Zde je hello volání příliš**ListBlobs**:
 
-    // Loop over items within the container and output the length and URI.
+    // Loop over items within hello container and output hello length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, true))
     {
        ...
     }
 
-a tady jsou výsledky:
+a tady jsou výsledky hello:
 
     Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
     Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
@@ -167,20 +167,20 @@ a tady jsou výsledky:
 Další informace najdete v tématu [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
-Když chcete stáhnout objekty blob, nejdřív načtěte odkaz objektu blob a potom spusťte volání metody **DownloadToStream**. Následující příklad používá metodu **DownloadToStream** k přenosu obsahu objektu blob na objekt proudu, který potom můžete zachovat trvale v místním souboru.
+toodownload objekty BLOB, nejdřív načtěte odkaz na objekt blob a pak zavolají hello **DownloadToStream** metoda. Hello následující příklad používá hello **DownloadToStream** metoda tootransfer hello blob obsah tooa objektu stream, potom můžete zachovat tooa místního souboru.
 
-    // Get a reference to a blob named "photo1.jpg".
+    // Get a reference tooa blob named "photo1.jpg".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-    // Save blob contents to a file.
+    // Save blob contents tooa file.
     using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
     {
         blockBlob.DownloadToStream(fileStream);
     }
 
-Můžete také použít metodu **DownloadToStream** a stáhnout obsah objektu blob jako textový řetězec.
+Můžete taky hello **DownloadToStream** metoda toodownload hello obsah objektu blob jako textový řetězec.
 
-    // Get a reference to a blob named "myblob.txt"
+    // Get a reference tooa blob named "myblob.txt"
     CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
     string text;
@@ -191,36 +191,36 @@ Můžete také použít metodu **DownloadToStream** a stáhnout obsah objektu bl
     }
 
 ## <a name="delete-blobs"></a>Odstranění objektů blob
-Chcete-li odstranit objekt blob, nejdřív získejte odkaz na objekt blob a potom volejte **odstranit** metoda.
+toodelete objekt blob, nejdřív získejte odkaz na objekt blob a potom zavolejte **odstranit** metoda.
 
-    // Get a reference to a blob named "myblob.txt".
+    // Get a reference tooa blob named "myblob.txt".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
-    // Delete the blob.
+    // Delete hello blob.
     blockBlob.Delete();
 
 
 ## <a name="list-blobs-in-pages-asynchronously"></a>Asynchronní zobrazení seznamu objektů blob na stránkách
-Když provádíte výpis velkého počtu objektů blob nebo chcete mít přehled o počtu výsledků, které vrátíte v rámci jedné operace výpisu, můžete vytvořit seznam objektů blob na stránkách s výsledky. Tento příklad ukazuje, jak vracet výsledky na stránkách asynchronně tak, aby čekání na vrácení velké sady výsledků neblokovalo provádění.
+Pokud provádíte výpis velkého počtu objektů BLOB nebo chcete toocontrol hello počet výsledků, které vrátíte v rámci jedné operace výpisu, můžete vytvořit seznam objektů blob na stránkách s výsledky. Tento příklad ukazuje, jak tooreturn výsledky na stránkách asynchronně, takže čekání tooreturn velké sady výsledků neblokovalo provádění.
 
-Tento příklad ukazuje plochý výpis objektu blob, můžete ale také provést hierarchický výpis nastavením parametru **useFlatBlobListing** metody **ListBlobsSegmentedAsync** na **false**.
+Tento příklad ukazuje výpis plochého objektu blob ale můžete také provést hierarchický výpis podle nastavení hello **useFlatBlobListing** parametr hello **ListBlobsSegmentedAsync** metoda příliš **false**.
 
-Vzhledem k tomu, že metoda ukázky volá asynchronní metodu, musí být uvedena klíčovým slovem **async** a musí vrátit objekt **Úloha**. Klíčové slovo await, určené pro metodu **ListBlobsSegmentedAsync** pozastaví spuštění metody ukázky až do dokončení úlohy vytváření seznamu.
+Protože hello metoda ukázky volá asynchronní metodu, musí být uvedena s hello **asynchronní** – klíčové slovo a musí vrátit **úloh** objektu. await – klíčové slovo zadané pro hello Hello **ListBlobsSegmentedAsync** pozastaví spuštění metody ukázky hello až do dokončení úlohy vytváření seznamu hello.
 
     async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
     {
-        // List blobs to the console window, with paging.
+        // List blobs toohello console window, with paging.
         Console.WriteLine("List blobs in pages:");
 
         int i = 0;
         BlobContinuationToken continuationToken = null;
         BlobResultSegment resultSegment = null;
 
-        // Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
-        // When the continuation token is null, the last page has been returned and execution can exit the loop.
+        // Call ListBlobsSegmentedAsync and enumerate hello result segment returned, while hello continuation token is non-null.
+        // When hello continuation token is null, hello last page has been returned and execution can exit hello loop.
         do
         {
-            // This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
+            // This overload allows control of hello page size. You can return all remaining results by passing null for hello maxResults parameter,
             // or by calling a different overload.
             resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
             if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
@@ -230,7 +230,7 @@ Vzhledem k tomu, že metoda ukázky volá asynchronní metodu, musí být uveden
             }
             Console.WriteLine();
 
-            //Get the continuation token.
+            //Get hello continuation token.
             continuationToken = resultSegment.ContinuationToken;
         }
         while (continuationToken != null);

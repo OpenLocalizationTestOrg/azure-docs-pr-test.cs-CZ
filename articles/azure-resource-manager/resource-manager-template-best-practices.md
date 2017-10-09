@@ -1,5 +1,5 @@
 ---
-title: "Osvědčené postupy pro vytváření šablon Resource Manager | Microsoft Docs"
+title: "aaaBest postupy pro vytváření šablon Resource Manageru | Microsoft Docs"
 description: "Pokyny pro zjednodušit vaše šablony Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ec9bbe218c4f2c6a92ca44b5e9c9c71029e22151
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Osvědčené postupy pro vytváření šablon Azure Resource Manageru
-Tyto pokyny vám pomůžou vytvořit šablony Azure Resource Manager, které jsou spolehlivé a snadno se používá. Pokyny jsou pouze návrhy. Nejsou požadavky, pokud není uvedeno jinak. Váš scénář může vyžadovat varianta jednu z následujících přístupy nebo příklady.
+Tyto pokyny vám pomůžou vytvořit šablony Azure Resource Manager, které jsou toouse spolehlivé a snadné. Hello pokyny jsou pouze návrhy. Nejsou požadavky, pokud není uvedeno jinak. Váš scénář může vyžadovat varianta mezi hello následující přístupy nebo příklady.
 
 ## <a name="resource-names"></a>Názvy prostředků
 Obecně platí pracujete s tři typy názvy prostředků ve službě Správce prostředků:
 
 * Názvy prostředků, které musí být jedinečný.
-* Názvy prostředků, které nemusí být jedinečný, ale můžete rozhodnout pro poskytnutí název, který vám pomůže určit prostředek na základě kontextu.
+* Názvy prostředků, které nejsou nezbytné toobe jedinečné, ale zvolíte tooprovide název, který vám může pomoct identifikovat prostředků na základě kontextu.
 * Názvy prostředků, které mohou být obecný.
 
  Informace o omezení přístupu názvem prostředků najdete v tématu [doporučená zásady vytváření názvů pro prostředky Azure](../guidance/guidance-naming-conventions.md).
@@ -47,9 +47,9 @@ Je nutné zadat název jedinečný prostředek pro jakýkoli typ prostředku, kt
 
 <sup>1</sup> názvy účtů úložiště musí být také malými písmeny, 24 znaků nebo méně, a nemusí být všechny pomlčky.
 
-Pokud zadáte parametr pro název prostředku, musí se při nasazení prostředku zadejte jedinečný název. Volitelně můžete vytvořit proměnné, která se používá [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkce při generování názvu. 
+Pokud zadáte parametr pro název prostředku, musí se při nasazení prostředků hello zadejte jedinečný název. Volitelně můžete vytvořit proměnné, která používá hello [uniqueString()](resource-group-template-functions-string.md#uniquestring) toogenerate název funkce. 
 
-Můžete také chtít přidat předponu nebo příponu k **uniqueString** výsledek. Úprava jedinečný název můžete další snadno identifikovat typ prostředku z názvu. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí následující proměnnou:
+Také může má tooadd předponu nebo příponu toohello **uniqueString** výsledek. Změny hello jedinečný název můžete další snadno identifikovat typ prostředku hello z názvu hello. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí hello následující proměnné:
 
 ```json
 "variables": {
@@ -58,7 +58,7 @@ Můžete také chtít přidat předponu nebo příponu k **uniqueString** výsle
 ```
 
 ### <a name="resource-names-for-identification"></a>Názvy prostředků pro identifikaci
-Některé typy prostředků, které můžete chtít názvu, ale jejich názvy nemusí být jedinečný. Pro tyto typy prostředků můžete zadat název, který identifikuje prostředek kontextu a typ prostředku. Zadejte popisný název, který pomáhá identifikovat prostředku v seznamu prostředků. Pokud budete muset použít jiný název prostředku pro jiné nasazení, můžete použít parametr pro název:
+Některé typy prostředků můžete chtít tooname, avšak jejich názvy nemáte toobe jedinečný. Pro tyto typy prostředků můžete zadat název, který identifikuje prostředek kontextu hello a typ prostředku hello. Zadejte popisný název, který pomáhá identifikovat hello prostředku v seznamu prostředků. Pokud potřebujete toouse název jiného prostředku pro jiné nasazení, můžete použít parametr pro název hello:
 
 ```json
 "parameters": {
@@ -66,13 +66,13 @@ Některé typy prostředků, které můžete chtít názvu, ale jejich názvy ne
         "type": "string",
         "defaultValue": "demoLinuxVM",
         "metadata": {
-            "description": "The name of the VM to create."
+            "description": "hello name of hello VM toocreate."
         }
     }
 }
 ```
 
-Pokud není nutné předávat název během nasazení, můžete použít proměnné: 
+Pokud nepotřebujete toopass v názvu během nasazení, můžete použít proměnné: 
 
 ```json
 "variables": {
@@ -91,7 +91,7 @@ Můžete taky použít hodnotu pevně:
 ```
 
 ### <a name="generic-resource-names"></a>Obecný zdroj názvy
-Pro typy prostředků, které většinou přistupovat prostřednictvím jiného prostředku můžete použít obecný název, který je pevně zakódovaná v šabloně. Například můžete nastavit standardní, obecný název pravidla brány firewall na serveru SQL server:
+Pro typy prostředků, které většinou přistupovat prostřednictvím jiného prostředku můžete použít obecný název, který je pevně zakódovaná v šabloně hello. Například můžete nastavit standardní, obecný název pravidla brány firewall na serveru SQL server:
 
 ```json
 {
@@ -102,24 +102,24 @@ Pro typy prostředků, které většinou přistupovat prostřednictvím jiného 
 ```
 
 ## <a name="parameters"></a>Parametry
-Při práci s parametry, může být užitečné následující informace:
+Hello následující informace mohou být užitečné při práci s parametry:
 
 * Minimalizujte využití parametrů. Pokud je to možné, použijte proměnnou nebo literálovou hodnotou. Použijte parametry jenom pro tyto scénáře:
    
-   * Nastavení, které chcete použít variace podle prostředí (SKU, velikost, kapacity).
-   * Názvy prostředků, které chcete určit pro snazší identifikaci.
-   * Hodnoty, které používáte k provedení dalších úloh (například správce uživatelské jméno).
+   * Nastavení, které chcete toouse variace podle tooenvironment (SKU, velikost, kapacity).
+   * Názvy prostředků, který má toospecify pro snazší identifikaci.
+   * Hodnoty, že používáte často toocomplete další úkoly (například správce uživatelské jméno).
    * Tajné klíče (jako jsou hesla).
-   * Číslo nebo pole hodnot, který má použít při vytváření více instancí typu prostředku.
+   * číslo Hello nebo pole hodnoty toouse při vytváření více instancí typu prostředku.
 * Použijte formát camelCase pro názvy parametrů.
-* Zadejte popis všechny parametry v metadatech:
+* Zadejte popis všechny parametry v metadatech hello:
 
    ```json
    "parameters": {
        "storageAccountType": {
            "type": "string",
            "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
+               "description": "hello type of hello new storage account created toostore hello VM disks."
            }
        }
    }
@@ -133,7 +133,7 @@ Při práci s parametry, může být užitečné následující informace:
             "type": "string",
             "defaultValue": "Standard_GRS",
             "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
+                "description": "hello type of hello new storage account created toostore hello VM disks."
             }
         }
    }
@@ -146,13 +146,13 @@ Při práci s parametry, může být užitečné následující informace:
        "secretValue": {
            "type": "securestring",
            "metadata": {
-               "description": "The value of the secret to store in the vault."
+               "description": "hello value of hello secret toostore in hello vault."
            }
        }
    }
    ```
 
-* Pokud je to možné, nepoužívejte parametr k určení umístění. Místo toho použijte **umístění** vlastnost skupiny prostředků. Pomocí **resourceGroup () .location** výraz pro všechny vaše prostředky, v prostředcích v šabloně nasazených ve stejném umístění jako pro skupinu prostředků:
+* Pokud je to možné, nepoužívejte parametr toospecify umístění. Místo toho použijte hello **umístění** vlastnost hello skupiny prostředků. Pomocí hello **resourceGroup () .location** výraz pro všechny prostředky, prostředky v šabloně hello nasadí hello stejné umístění jako skupina prostředků hello:
    
    ```json
    "resources": [
@@ -166,16 +166,16 @@ Při práci s parametry, může být užitečné následující informace:
    ]
    ```
    
-   Pokud typ prostředku je podporován pouze omezený počet umístění, můžete chtít zadat platné umístění přímo v šabloně. Pokud musíte použít **umístění** parametr, že hodnota parametru co nejvíce sdílet s prostředky, které by mohly být ve stejném umístění. Tím se minimalizují počet, který uživatelé vyzváni k zadání informace o umístění.
-* Vyhněte se použití parametr nebo proměnná pro verze rozhraní API pro typ prostředku. Vlastnosti prostředku a hodnoty se může lišit podle čísla verze. IntelliSense v editoru kódu nemůže určit správné schéma verze rozhraní API je nastavena na parametr nebo proměnná. Místo toho pevný kódu rozhraní API verze v šabloně.
+   Pokud typ prostředku je podporován pouze omezený počet umístění, můžete chtít toospecify platné umístění přímo v šabloně hello. Pokud musíte použít **umístění** parametr, že hodnota parametru co nejvíce sdílet s prostředky, které jsou pravděpodobně toobe v hello stejné umístění. Tím se minimalizují hello počet oznámení, která jsou uživatelé vyzváni tooprovide informace o umístění.
+* Vyhněte se použití parametr nebo proměnná pro hello verze rozhraní API pro typ prostředku. Vlastnosti prostředku a hodnoty se může lišit podle čísla verze. IntelliSense v editoru kódu nemůže určit správné schéma hello verze rozhraní API hello nastavena tooa parametr nebo proměnná. Místo toho pevně hello verze rozhraní API v šabloně hello.
 
 ## <a name="variables"></a>Proměnné
-Při práci s proměnnými, může být užitečné následující informace:
+Hello následující informace mohou být užitečné při práci s proměnnými:
 
-* Použití proměnných hodnot, které je nutné použít více než jednou v šabloně. Pokud hodnota je použit pouze jednou, hodnotu pevně usnadňuje šablony čtení.
-* Nelze použít [odkaz](resource-group-template-functions-resource.md#reference) fungovat v **proměnné** část šablony. **Odkaz** funkce odvozuje svou hodnotu z prostředku stav modulu runtime. Proměnné jsou však vyřešeny během počáteční analýzy šablony. Konstrukce hodnoty kterém musí **odkaz** funkce přímo v **prostředky** nebo **výstupy** část šablony.
+* Proměnné lze použijte pro hodnoty, je nutné toouse více než jednou v šabloně. Pokud hodnota je použit pouze jednou, hodnotě pevně je snazší tooread vaší šablony.
+* Nemůžete použít hello [odkaz](resource-group-template-functions-resource.md#reference) funkce v hello **proměnné** části hello šablony. Hello **odkaz** funkce odvozuje svou hodnotu z stav modulu runtime hello prostředků. Proměnné jsou však vyřešen během počáteční analýzy hello šablony hello. Vytvoření hodnot, které je třeba hello **odkaz** funkce přímo v hello **prostředky** nebo **výstupy** části hello šablony.
 * Zahrnout proměnné pro názvy prostředků, které musí být jedinečný, jak je popsáno v [názvy prostředků](#resource-names).
-* Proměnné můžete seskupovat do komplexních objektů. Použití **variable.subentry** formátu k odkazování hodnotu z komplexního objektu. Seskupování proměnných vám mohou pomoci sledovat související proměnné. Také zlepšuje čitelnost šablony. Tady je příklad:
+* Proměnné můžete seskupovat do komplexních objektů. Použití hello **variable.subentry** formátu tooreference hodnotu komplexního objektu. Seskupování proměnných vám mohou pomoci sledovat související proměnné. Také zlepšuje čitelnost hello šablony. Tady je příklad:
    
    ```json
    "variables": {
@@ -206,9 +206,9 @@ Při práci s proměnnými, může být užitečné následující informace:
      Pokročilé příklady používání komplexních objektů jako proměnné najdete v tématu [sdílet stavu v šablonách Azure Resource Manager](best-practices-resource-manager-state.md).
 
 ## <a name="resources"></a>Zdroje
-Při práci s prostředky, může být užitečné následující informace:
+Hello následující informace mohou být užitečné při práci s prostředky:
 
-* Chcete-li jiné přispěvatele pochopit účel prostředku, zadejte **komentáře** pro každý zdroj v šabloně:
+* toohelp jiné přispěvatele pochopit účel hello hello prostředku, zadejte **komentáře** pro všechny prostředky v šabloně hello:
    
    ```json
    "resources": [
@@ -217,14 +217,14 @@ Při práci s prostředky, může být užitečné následující informace:
          "type": "Microsoft.Storage/storageAccounts",
          "apiVersion": "2016-01-01",
          "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
+         "comments": "This storage account is used toostore hello VM disks.",
          ...
      }
    ]
    ```
 
-* Chcete-li přidat metadata k prostředkům můžete použít značky. Metadata použijte k přidání informací o vašich prostředků. Například můžete přidat metadata k zaznamenání fakturačních údajů pro prostředek. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
-* Pokud používáte *veřejný koncový bod* ve vaší šabloně (například Azure Blob storage veřejný koncový bod), *proveďte pevné kódování* obor názvů. Použití **odkaz** funkce, která se dynamicky načíst obor názvů. Tento postup můžete použít k nasazení šablony do prostředí jiný obor názvů veřejné beze změny ručně koncového bodu v šabloně. Verze rozhraní API se nastaví na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
+* Můžete použít tooresources metadata tooadd značky. Použijte tooadd informací o vašich prostředků. Například můžete přidat metadata toorecord fakturačních údajů pro prostředek. Další informace najdete v tématu [pomocí značky tooorganize vašich prostředků Azure](resource-group-using-tags.md).
+* Pokud používáte *veřejný koncový bod* ve vaší šabloně (například Azure Blob storage veřejný koncový bod), *proveďte pevné kódování* hello oboru názvů. Použití hello **odkaz** funkce toodynamically načíst hello oboru názvů. Tento přístup toodeploy hello šablony toodifferent veřejné obor názvů prostředí můžete použít beze změny ručně hello koncového bodu v šabloně hello. Nastavit hello rozhraní API verze toohello stejnou verzi, kterou používáte pro účet úložiště hello v šabloně:
    
    ```json
    "osDisk": {
@@ -235,7 +235,7 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
    
-   Pokud účet úložiště je nasazen do stejné šablony, kterou vytváříte, není potřeba zadat obor názvů zprostředkovatele, když odkazujete na prostředek. Toto je zjednodušenou syntaxi:
+   Pokud účet úložiště hello je nasazena v hello stejné šablony, kterou vytváříte, není nutné obor názvů zprostředkovatele hello toospecify když odkazujete hello prostředků. Toto je hello zjednodušenou syntaxi:
    
    ```json
    "osDisk": {
@@ -246,7 +246,7 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
    
-   Pokud máte jiné hodnoty v šabloně, které jsou nakonfigurovány pro použití veřejného obor názvů, změňte tyto hodnoty tak, aby odrážela stejné **odkaz** funkce. Například můžete nastavit **storageUri** vlastnost diagnostického profilu virtuálního počítače:
+   Pokud máte další hodnoty v šabloně, které jsou nakonfigurované toouse veřejné obor názvů, tyto hodnoty změnit tooreflect hello stejné **odkaz** funkce. Například můžete nastavit hello **storageUri** vlastnost diagnostického profilu virtuálního počítače hello:
    
    ```json
    "diagnosticsProfile": {
@@ -268,16 +268,16 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
 
-* Přiřaďte veřejné IP adresy k virtuálnímu počítači jenom v případě, že aplikace vyžaduje. Pro připojení k virtuálnímu počítači (VM) pro ladění, nebo pro správu nebo správu účely, použijte příchozích pravidel NAT, bránu virtuální sítě nebo jumpbox.
+* Přiřaďte veřejné IP adresy tooa virtuální počítač jenom v případě, že aplikace vyžaduje. tooconnect tooa virtuální počítač (VM) pro ladění, nebo pro správu nebo správu účely, použijte příchozích pravidel NAT, bránu virtuální sítě nebo jumpbox.
    
-     Další informace o připojení k virtuálním počítačům, najdete v tématu:
+     Další informace o připojení toovirtual počítače najdete v tématu:
    
    * [Spustit virtuální počítače pro architekturu N-vrstvá v Azure](../guidance/guidance-compute-n-tier-vm.md)
    * [Nastavit přístup WinRM pro virtuální počítače ve službě Správce prostředků Azure](../virtual-machines/windows/winrm.md)
-   * [Externí přístup k virtuálnímu počítači povolit pomocí portálu Azure](../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [Povolit externí přístup k virtuálnímu počítači pomocí prostředí PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Povolit externí přístup k virtuálním počítačům s Linuxem pomocí rozhraní příkazového řádku Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
-* **DomainNameLabel** vlastnost pro veřejné IP adresy musí být jedinečný. **DomainNameLabel** hodnota musí být v rozmezí 3 až 63 znaků a postupujte podle pravidla určeného tento regulární výraz: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Protože **uniqueString** funkce generuje řetězec, který je 13 znaků, **dnsPrefixString** parametr je omezený na 50 znaků:
+   * [Povolit tooyour externí přístup virtuálních počítačů pomocí hello portálu Azure](../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [Povolit tooyour externí přístup virtuálních počítačů pomocí prostředí PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
+   * [Povolit externí přístup tooyour virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+* Hello **domainNameLabel** vlastnost pro veřejné IP adresy musí být jedinečný. Hello **domainNameLabel** hodnota musí být v rozmezí 3 až 63 znaků a postupujte podle pravidla hello určeného tento regulární výraz: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Protože hello **uniqueString** funkce generuje řetězec, který je 13 znaků, hello **dnsPrefixString** parametr je omezená too50 znaků:
 
    ```json
    "parameters": {
@@ -285,7 +285,7 @@ Při práci s prostředky, může být užitečné následující informace:
            "type": "string",
            "maxLength": 50,
            "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+               "description": "hello DNS label for hello public IP address. It must be lowercase. It should match hello following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
            }
        }
    },
@@ -294,7 +294,7 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
 
-* Když přidáte heslo k rozšíření vlastních skriptů, použijte **commandToExecute** vlastnost **protectedSettings** vlastnost:
+* Když přidáte rozšíření vlastních skriptů tooa a heslo, používat hello **commandToExecute** vlastnost hello **protectedSettings** vlastnost:
    
    ```json
    "properties": {
@@ -314,12 +314,12 @@ Při práci s prostředky, může být užitečné následující informace:
    ```
    
    > [!NOTE]
-   > K zajištění, že tajné klíče se šifrují, pokud jsou předávány jako parametry pro virtuální počítače a rozšíření, použijte **protectedSettings** vlastnost relevantní rozšíření.
+   > tooensure, které jsou tajné klíče šifrují, pokud jsou předávány jako parametry tooVMs a rozšíření, použijte hello **protectedSettings** vlastnost hello relevantní rozšíření.
    > 
    > 
 
 ## <a name="outputs"></a>Výstupy
-Pokud používáte šablonu pro vytvoření veřejné IP adresy, patří **výstupy** oddíl, který vrátí podrobnosti IP adresy a plně kvalifikovaný název domény (FQDN). Výstupní hodnoty můžete použít k snadnému načtení podrobností o veřejné IP adresy a plně kvalifikované názvy domény po nasazení. Když odkazujete na prostředek, použijte verzi rozhraní API, který jste použili k jeho vytvoření: 
+Pokud chcete použít veřejné IP adresy toocreate šablony, patří **výstupy** oddíl, který vrátí podrobnosti hello IP adresy a hello plně kvalifikovaný název domény (FQDN). Po nasazení můžete použít výstup hodnoty tooeasily načíst podrobnosti o veřejné IP adresy a plně kvalifikované názvy domén. Když odkazujete hello prostředků, použijte hello rozhraní API verze, kterou jste použili toocreate ho: 
 
 ```json
 "outputs": {
@@ -335,25 +335,25 @@ Pokud používáte šablonu pro vytvoření veřejné IP adresy, patří **výst
 ```
 
 ## <a name="single-template-vs-nested-templates"></a>Jediné šabloně vs. vnořené šablony
-K nasazení řešení, můžete použít jednu šablonu nebo hlavní šablonu s více vnořených šablon. Vnořené šablony jsou společné pro pokročilejší scénáře. Pomocí šablony vnořené nabízí následující výhody:
+toodeploy řešení, můžete použít jednu šablonu nebo hlavní šablonu s více vnořených šablon. Vnořené šablony jsou společné pro pokročilejší scénáře. Pomocí šablony vnořené poskytuje, hello následující výhody:
 
 * Lze rozčlenit řešení do cílové součásti.
 * Vnořené šablon s jinou hlavní šablony můžete znovu použít.
 
-Pokud chcete použít vnořené šablony, můžete pomocí následujících pokynů standardizovat návrhu šablony. Tyto pokyny jsou založené na [vzory pro navrhování šablon Azure Resource Manageru](best-practices-resource-manager-design-templates.md). Doporučujeme, abyste k návrhu, který má následující šablony:
+Pokud si zvolíte toouse vnořené šablony, hello následující pokyny vám může pomoct standardizovat návrhu šablony. Tyto pokyny jsou založené na [vzory pro navrhování šablon Azure Resource Manageru](best-practices-resource-manager-design-templates.md). Doporučujeme, abyste k návrhu, který má hello následující šablony:
 
-* **Hlavní šablonu** (azuredeploy.json). Používejte pro vstupní parametry.
-* **Sdílené prostředky šablony**. Použít k nasazení sdílené prostředky, které používají jiné prostředky (například virtuální sítě a dostupnost sady). Použití **dependsOn** výraz, který se ujistěte, že tato šablona nasazen před další šablony.
-* **Volitelné prostředků šablony**. Použijte k nasazení podmíněně prostředky v závislosti na parametr (například jumpbox).
-* **Šablony prostředků člen**. Každý typ instance v aplikační vrstvě má svou vlastní konfiguraci. V rámci vrstvy můžete definovat typy jiné instance. (Například nejprve vytvoří cluster a další instance jsou přidány do existujícího clusteru.) Každý typ instance má svou vlastní šablonu nasazení.
-* **Skripty**. Široce opakovaně použitelné skripty platí pro každý typ instance (například inicializovat a formát další disky). Vlastní skripty, které vytvoříte za účelem přizpůsobení konkrétní se liší, na základě typu instance.
+* **Hlavní šablonu** (azuredeploy.json). Používejte pro vstupní parametry hello.
+* **Sdílené prostředky šablony**. Použití toodeploy sdílené prostředky, které používají jiné prostředky (například virtuální sítě a dostupnost sady). Použití hello **dependsOn** tooensure výrazu, tuto šablonu je nasadit před další šablony.
+* **Volitelné prostředků šablony**. Použití tooconditionally nasadit prostředky v závislosti na parametr (například jumpbox).
+* **Šablony prostředků člen**. Každý typ instance v aplikační vrstvě má svou vlastní konfiguraci. V rámci vrstvy můžete definovat typy jiné instance. (Například hello první instance vytvoří cluster a další instance jsou přidány toohello existujícího clusteru.) Každý typ instance má svou vlastní šablonu nasazení.
+* **Skripty**. Široce opakovaně použitelné skripty platí pro každý typ instance (například inicializovat a formát další disky). Vlastní skripty, které vytvoříte za účelem přizpůsobení konkrétní se liší, v závislosti na typu instance hello.
 
 ![Vnořené šablony](./media/resource-manager-template-best-practices/nestedTemplateDesign.png)
 
 Další informace najdete v tématu [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 
-## <a name="conditionally-link-to-nested-templates"></a>Podmíněná propojení vnořené šablon
-Podmíněná propojení vnořené šablon můžete parametr. Parametr stane součástí identifikátor URI pro šablonu:
+## <a name="conditionally-link-toonested-templates"></a>Podmíněná propojení toonested šablony
+Můžete použít parametr tooconditionally odkaz toonested šablonách. Parametr Hello stane součástí hello identifikátor URI pro šablonu hello:
 
 ```json
 "parameters": {
@@ -387,12 +387,12 @@ Podmíněná propojení vnořené šablon můžete parametr. Parametr stane sou�
 ```
 
 ## <a name="template-format"></a>Formát šablony
-Je dobrým zvykem předat šablony prostřednictvím validátor JSON. Validátor můžete odebrat nadbytečné čárkami, kulaté závorky a hranaté závorky, které může způsobit chybu během nasazení. Zkuste [JSONLint](http://jsonlint.com/) nebo linter balíček pro své oblíbené úpravou prostředí (Visual Studio Code, Atom, Sublime Text, Visual Studio).
+Je dobrým zvykem toopass šablony prostřednictvím validátor JSON. Validátor můžete odebrat nadbytečné čárkami, kulaté závorky a hranaté závorky, které může způsobit chybu během nasazení. Zkuste [JSONLint](http://jsonlint.com/) nebo linter balíček pro své oblíbené úpravou prostředí (Visual Studio Code, Atom, Sublime Text, Visual Studio).
 
-Je také vhodné pro vaše struktury JSON pro lepší čitelnost. Můžete vytvořit balíček formátovací modul JSON pro vaše místní editor. V sadě Visual Studio k formátování dokumentu, stiskněte **Ctrl + K, Ctrl + D**. V sadě Visual Studio Code stiskněte **Alt + Shift + F**. Pokud vaše místní editor nebude formátu dokumentu, můžete použít [online formátování](https://www.bing.com/search?q=json+formatter).
+Je také vhodné tooformat vaše struktury JSON pro lepší čitelnost. Můžete vytvořit balíček formátovací modul JSON pro vaše místní editor. V sadě Visual Studio, tooformat hello dokumentu, stiskněte klávesu **Ctrl + K, Ctrl + D**. V sadě Visual Studio Code stiskněte **Alt + Shift + F**. Pokud vaše místní editor nebude formátu hello dokumentu, můžete použít [online formátování](https://www.bing.com/search?q=json+formatter).
 
 ## <a name="next-steps"></a>Další kroky
 * Pokyny na architekturu řešení virtuálních počítačů najdete v tématu [spustit virtuální počítač s Windows v Azure](../guidance/guidance-compute-single-vm.md) a [spuštění virtuálního počítače s Linuxem v Azure](../guidance/guidance-compute-single-vm-linux.md).
 * Informace o nastavení účtu úložiště, najdete v části [kontrolní seznam výkonu a škálovatelnosti Azure Storage](../storage/common/storage-performance-checklist.md).
-* Další informace o tom, jak mohou organizace pomocí Správce prostředků efektivně spravovat odběry, najdete v části [Azure enterprise vygenerované uživatelské rozhraní: doporučený předplatné zásad správného řízení](resource-manager-subscription-governance.md).
+* toolearn o tom, jak podniku můžete použít tooeffectively Resource Manager můžete spravovat odběry, najdete v části [Azure enterprise vygenerované uživatelské rozhraní: doporučený předplatné zásad správného řízení](resource-manager-subscription-governance.md).
 

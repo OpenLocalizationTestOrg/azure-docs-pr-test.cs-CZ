@@ -1,6 +1,6 @@
 ---
-title: "Azure fakturace Enterprise rozhraní API | Microsoft Docs"
-description: "Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure a si vyžádá data spotřeby prostřednictvím kódu programu."
+title: "aaaAzure fakturace Enterprise rozhraní API | Microsoft Docs"
+description: "Další informace o vytváření sestav rozhraní API, která umožňují Enterprise Azure zákazníků toopull spotřeby dat prostřednictvím kódu programu hello."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: e3a5f9bcd6b54a51c29df649f1ae8ac185b153a1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 017cecc57ad6bdeb402b5d9d57fc95df9b033a42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
-Rozhraní API pro vytváření sestav umožňují zákazníky, kteří Enterprise Azure prostřednictvím kódu programu vyžádání využívání a fakturační údaje do nástrojů pro analýzu dat upřednostňované. 
+Hello rozhraní API pro vytváření sestav povolit Enterprise Azure zákazníků tooprogrammatically vyžádání využívání a fakturační údaje do upřednostňovaných dat nástrojů pro analýzu. 
 
-## <a name="enabling-data-access-to-the-api"></a>Povolení přístupu k datům v rozhraní API
-* **Generovat nebo načíst klíč rozhraní API** - protokolu v podnikovém portálu a postupujte podle kurzu v části Nápověda - Reporting rozhraní API. V první části v tomto článku nápovědy vysvětluje, jak vygenerovat nebo načíst klíč rozhraní API pro zadaný registrace.
-* **Předávání klíče v rozhraní API** – klíč rozhraní API musí být předán pro každé volání pro ověřování a autorizaci. Následující vlastnost musí být hlavičkami protokolu HTTP
+## <a name="enabling-data-access-toohello-api"></a>Povolení toohello API služby data access
+* **Generovat nebo načíst klíč hello rozhraní API** - protokolu v toohello Enterprise portal a postupujte podle hello kurzu v části Nápověda - Reporting rozhraní API. první část Hello podle tohoto článku nápovědy vysvětluje, jak zadat toogenerate nebo načíst klíč hello rozhraní API pro hello registrace.
+* **Předávání klíče v hello rozhraní API** -hello API klíč musí toobe předaná pro každé volání pro ověřování a autorizaci. Hello následující vlastnost potřebuje toobe toohello HTTP hlavičky
 
 |Klíč hlavičky požadavku | Hodnota|
 |-|-|
-|Autorizace| Zadejte hodnotu v tomto formátu: **nosiče {API_KEY}** <br/> Příklad: nosiče eyr... 09|
+|Autorizace| Zadejte hodnotu hello v tomto formátu: **nosiče {API_KEY}** <br/> Příklad: nosiče eyr... 09|
 
 ## <a name="consumption-apis"></a>Rozhraní API spotřeba
-Koncový bod Swagger je k dispozici [sem](https://consumption.azure.com/swagger/ui/index) pro rozhraní API popsané, pod kterou by měl povolit snadno introspection rozhraní API a generovat klientské sady SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](http://swagger.io/swagger-codegen/). Data od 1 pravděpodobně 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
+Koncový bod Swagger je k dispozici [sem](https://consumption.azure.com/swagger/ui/index) pro hello rozhraní API popsané, pod kterou by měl povolit snadno introspection hello rozhraní API a hello možnost toogenerate klientskou sadu SDK pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [ Swagger CodeGen](http://swagger.io/swagger-codegen/). Data od 1 pravděpodobně 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
 
-* **Souhrn a vyrovnávat** – [vyrovnávat a souhrn rozhraní API](billing-enterprise-api-balance-summary.md) nabízí měsíční souhrnné informace o zůstatky, nové nákupy, poplatky za služby Azure Marketplace, přizpůsobení a Nadlimitní poplatky.
+* **Souhrn a vyrovnávat** – hello [vyrovnávat a souhrn rozhraní API](billing-enterprise-api-balance-summary.md) nabízí měsíční souhrnné informace o zůstatky, nové nákupy, poplatky za služby Azure Marketplace, přizpůsobení a Nadlimitní poplatky.
 
-* **Podrobnosti o použití** – [podrobnosti o použití rozhraní API](billing-enterprise-api-usage-detail.md) nabízí denní rozpis těchto spotřebované počty a odhadované poplatky podle zápisu. Výsledek také obsahuje informace o instancích, měřidla a oddělení. Rozhraní API můžete položit dotaz na fakturační období nebo zadaný počáteční a koncové datum. 
+* **Podrobnosti o použití** – hello [podrobnosti o použití rozhraní API](billing-enterprise-api-usage-detail.md) nabízí denní rozpis těchto spotřebované počty a odhadované poplatky podle zápisu. výsledek Hello také obsahuje informace o instancích, měřidla a oddělení. Hello rozhraní API můžete položit dotaz na fakturační období nebo zadaný počáteční a koncové datum. 
 
-* **Úložiště Marketplace poplatků** – [Marketplace úložiště poplatků API](billing-enterprise-api-marketplace-storecharge.md) vrátí rozdělení na základě využití marketplace poplatky za den pro zadaný fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou součástí).
+* **Úložiště Marketplace poplatků** – hello [Marketplace úložiště poplatků API](billing-enterprise-api-marketplace-storecharge.md) vrací hello na základě využití marketplace poplatky rozpis podle dne pro hello zadané fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou součástí) .
 
-* **Ceník** – [Price Sheet API](billing-enterprise-api-pricesheet.md) umožňuje použít rychlost pro každé monitorování dané registraci a fakturační období. 
+* **Ceník** – hello [Price Sheet API](billing-enterprise-api-pricesheet.md) poskytuje hello použít rychlost pro každé monitorování pro hello daného registrace a fakturační období. 
 
 ## <a name="helper-apis"></a>Pomocná rozhraní API
- **Seznam fakturační období** – [fakturační období API](billing-enterprise-api-billing-periods.md) vrátí seznam hodnot fakturační období, která mají data energie pro zadanou registraci v obráceném chronologickém pořadí. Každé období obsahuje vlastnost odkazuje na trasu rozhraní API pro čtyři sady dat – BalanceSummary, UsageDetails, Marketplace poplatky a ceníku.
+ **Seznam fakturační období** – hello [fakturační období API](billing-enterprise-api-billing-periods.md) vrátí seznam hodnot fakturační období, které mají datům o spotřebě pro hello zadané v chronologickém pořadí zpětného zápisu. Každé období obsahuje vlastnost odkazující toohello trasu rozhraní API pro hello čtyři sady dat – BalanceSummary, UsageDetails, Marketplace poplatky a ceníku.
 
 
 ## <a name="api-response-codes"></a>Kódy odpovědí rozhraní API  

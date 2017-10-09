@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobení clusterů HDInsight pomocí bootstrap - Azure | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit clusterů HDInsight pomocí bootstrap."
+title: "aaaCustomize clusterů HDInsight pomocí bootstrap – Azure | Microsoft Docs"
+description: "Zjistěte, jak toocustomize HDInsight clusterů pomocí bootstrap."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c7a6fafa90eac66774d564c82c926c662baf784c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0029680fd1aa0e9e6aa9cdf667256c31b7ddc565
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
-V některých případech je vhodné nakonfigurovat konfigurační soubory, které zahrnují:
+V některých případech je vhodné tooconfigure hello konfigurační soubory, které zahrnují:
 
 * clusterIdentity.xml
 * Core-site.xml
@@ -42,7 +42,7 @@ V některých případech je vhodné nakonfigurovat konfigurační soubory, kter
 * webhcat site.xml
 * yarn-site.xml
 
-Chcete-li použít bootstrap třemi způsoby:
+Existují tři metody toouse bootstrap:
 
 * Použití Azure Powershell
 * Použití sady .NET SDK
@@ -50,12 +50,12 @@ Chcete-li použít bootstrap třemi způsoby:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-Informace o instalaci další součásti v clusteru HDInsight v době vytvoření najdete v tématu:
+Informace o instalaci další součásti v clusteru HDInsight při vytváření hello najdete v tématu:
 
 * [Přizpůsobení clusterů HDInsight pomocí akce skriptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-Následující kód PowerShell upraví konfiguraci Hive:
+Následující kód PowerShell Hello přizpůsobí konfigurace Hive:
 
     # hive-site.xml configuration
     $hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
@@ -80,19 +80,19 @@ Následující kód PowerShell upraví konfiguraci Hive:
 
 Dokončení funkční skript prostředí PowerShell najdete v [příloha A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample).
 
-**Chcete-li ověřit změny:**
+**Změna tooverify hello:**
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V levé nabídce klikněte na tlačítko **clustery HDInsight**. Pokud ho nevidíte, klikněte na tlačítko **další služby** první.
-3. Klikněte na cluster, který jste právě vytvořili pomocí skriptu prostředí PowerShell.
-4. Klikněte na tlačítko **řídicí panel** z horní části okna otevřete uživatelské rozhraní Ambari.
-5. Klikněte na tlačítko **Hive** v levé nabídce.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. V levé nabídce hello, klikněte na **clustery HDInsight**. Pokud ho nevidíte, klikněte na tlačítko **další služby** první.
+3. Klikněte na tlačítko hello clusteru, které jste právě vytvořili pomocí skriptu prostředí PowerShell hello.
+4. Klikněte na tlačítko **řídicí panel** z hello horní části okna tooopen hello hello uživatelského rozhraní Ambari.
+5. Klikněte na tlačítko **Hive** hello levé nabídce.
 6. Klikněte na tlačítko **HiveServer2** z **Souhrn**.
-7. Klikněte **konfigurací** kartě.
-8. Klikněte na tlačítko **Hive** v levé nabídce.
-9. Klikněte **Upřesnit** kartě.
+7. Klikněte na tlačítko hello **konfigurací** kartě.
+8. Klikněte na tlačítko **Hive** hello levé nabídce.
+9. Klikněte na tlačítko hello **Upřesnit** kartě.
 10. Posuňte se dolů a potom rozbalte **rozšířené hive lokality**.
-11. Vyhledejte **hive.metastore.client.socket.timeout** v oddílu.
+11. Vyhledejte **hive.metastore.client.socket.timeout** v části hello.
 
 Některé další ukázky k přizpůsobení další konfigurační soubory:
 
@@ -111,7 +111,7 @@ Některé další ukázky k přizpůsobení další konfigurační soubory:
 Další informace najdete v tématu s názvem blog Azim Uddin [vytváření clusteru HDInsight přizpůsobení](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx).
 
 ## <a name="use-net-sdk"></a>Použití sady .NET SDK
-V tématu [vytvořit systémem Linux clusterů v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+V tématu [hello vytvořit systémem Linux clusterů v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
 ## <a name="use-resource-manager-template"></a>Pomocí Správce prostředků šablony
 Bootstrap můžete použít v šabloně Resource Manager:
@@ -129,7 +129,7 @@ Bootstrap můžete použít v šabloně Resource Manager:
 ![HDInsight Hadoop přizpůsobí clusteru bootstrap šablony Azure Resource Manageru](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Viz také
-* [Vytvoření clusterů systému Hadoop v HDInsight] [ hdinsight-provision-cluster] obsahuje pokyny k vytvoření clusteru HDInsight pomocí jiné možnosti vlastního nastavení.
+* [Vytvoření clusterů systému Hadoop v HDInsight] [ hdinsight-provision-cluster] obsahuje pokyny, jak clusteru toocreate HDInsight pomocí jiné možnosti vlastního nastavení.
 * [Vývoj skriptů akce skriptu pro HDInsight][hdinsight-write-script]
 * [Nainstalovat a používat Spark v HDInsight clustery][hdinsight-install-spark]
 * [Nainstalovat a používat R na clustery HDInsight][hdinsight-install-r]
@@ -181,10 +181,10 @@ Tento skript prostředí PowerShell vytvoří HDInsight cluster a přizpůsobí 
     $ErrorActionPreference = "Stop"
 
     ####################################
-    # Connect to Azure
+    # Connect tooAzure
     ####################################
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{Login-AzureRmAccount}
     #endregion
@@ -198,7 +198,7 @@ Tento skript prostředí PowerShell vytvoří HDInsight cluster a přizpůsobí 
         -Name  $resourceGroupName `
         -Location $location
 
-    Write-Host "Creating the default storage account and default blob container ..."  -ForegroundColor Green
+    Write-Host "Creating hello default storage account and default blob container ..."  -ForegroundColor Green
     New-AzureRmStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
@@ -213,7 +213,7 @@ Tento skript prostředí PowerShell vytvoří HDInsight cluster a přizpůsobí 
                                     -StorageAccountKey $defaultStorageAccountKey
     New-AzureStorageContainer `
         -Name $defaultBlobContainerName `
-        -Context $defaultStorageContext #use the cluster name as the container name
+        -Context $defaultStorageContext #use hello cluster name as hello container name
 
     ####################################
     # Create a configuration object
@@ -249,7 +249,7 @@ Tento skript prostředí PowerShell vytvoří HDInsight cluster a přizpůsobí 
         -Config $config
 
     ####################################
-    # Verify the cluster
+    # Verify hello cluster
     ####################################
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 

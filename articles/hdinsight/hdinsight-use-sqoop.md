@@ -1,6 +1,6 @@
 ---
-title: "Spuštění úloh Apache Sqoop s Azure HDInsight (Hadoop) | Microsoft Docs"
-description: "Další informace o použití prostředí Azure PowerShell z pracovní stanice Sqoop import a export mezi clusteru Hadoop a Azure SQL database."
+title: "aaaRun Apache Sqoop úlohy s Azure HDInsight (Hadoop) | Microsoft Docs"
+description: "Zjistěte, jak toouse prostředí Azure PowerShell z pracovní stanice toorun Sqoop import a export mezi clusteru Hadoop a Azure SQL database."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -17,34 +17,34 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8e77153493b6f37f5f48116b86bad6b25a50d1a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bdac507704937d77921c9c13d70aa2434c7e3be4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Další informace o použití Sqoop v HDInsight k importu a exportu mezi HDInsight cluster a Azure SQL database nebo databáze systému SQL Server.
+Zjistěte, jak toouse Sqoop v HDInsight tooimport a export mezi HDInsight cluster a Azure SQL database nebo databáze systému SQL Server.
 
-I když Hadoop je přirozené volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může také být potřeba zpracování strukturovaných dat, která je uložená v relačních databází.
+I když Hadoop je přirozené volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může také existovat nutnost tooprocess strukturovaná data uložená v relačních databází.
 
-[Sqoop] [ sqoop-user-guide-1.4.4] je nástroj sloužící k přenosu dat mezi clusterů systému Hadoop a relačními databázemi. Můžete ho pro import dat ze systému správy relačních databází (RDBMS), jako je SQL Server, MySQL a Oracle do systému souborů Hadoop distributed (HDFS), transformovat data v Hadoop pomocí MapReduce nebo Hive a poté exportujte data zpět do relační. V tomto kurzu použijete databázi systému SQL Server pro relační databázi.
+[Sqoop] [ sqoop-user-guide-1.4.4] je tootransfer nástroj navržený dat mezi clusterů systému Hadoop a relačními databázemi. Můžete ji použít tooimport data ze systému správy relačních databází (RDBMS), jako je SQL Server, MySQL a Oracle do systému souborů Hadoop distributed hello (HDFS), transformovat hello data v Hadoop pomocí MapReduce nebo Hive a poté exportujte hello data zpět do RELAČNÍ. V tomto kurzu použijete databázi systému SQL Server pro relační databázi.
 
-Sqoop verze, které jsou podporovány v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů poskytovaných v HDInsight?][hdinsight-versions]
+Sqoop verze, které jsou podporovány v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů hello poskytovaných v HDInsight?][hdinsight-versions]
 
-## <a name="understand-the-scenario"></a>Pochopit scénáře
+## <a name="understand-hello-scenario"></a>Pochopení hello scénář
 
-HDInsight cluster se dodává s ukázková data. Můžete použít následující dva ukázky:
+HDInsight cluster se dodává s ukázková data. Pomocí následujících dvou vzorcích hello:
 
-* Soubor protokolu log4j, která se nachází v */example/data/sample.log*. Tyto protokoly jsou extrahovány ze souboru:
+* Soubor protokolu log4j, která se nachází v */example/data/sample.log*. Hello následující protokoly se extrahují z hello souboru:
   
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
-* Hive tabulku s názvem *hivesampletable*, který odkazuje na datový soubor nacházející se v */hive/warehouse/hivesampletable*. Tabulka obsahuje některé data mobilních zařízení. 
+* Hive tabulku s názvem *hivesampletable*, který odkazuje na hello datový soubor nacházející se v */hive/warehouse/hivesampletable*. Hello tabulka obsahuje některé data mobilních zařízení. 
   
   | Pole | Datový typ |
   | --- | --- |
@@ -60,86 +60,86 @@ HDInsight cluster se dodává s ukázková data. Můžete použít následujíc�
   | ID relace |bigint |
   | sessionpagevieworder |bigint |
 
-Nejprve exportujete *sample.log* a *hivesampletable* do Azure SQL database nebo SQL Server a pak import tabulka, která obsahuje data mobilních zařízení zpět do HDInsight pomocí následující cesty:
+Nejprve exportujete *sample.log* a *hivesampletable* toohello Azure SQL database nebo tooSQL serveru a pak import hello tabulku, která obsahuje data mobilních zařízení hello zálohování tooHDInsight pomocí hello následující cestu:
 
     /tutorials/usesqoop/importeddata
 
 ## <a name="create-cluster-and-sql-database"></a>Vytvoření clusteru a databáze SQL
-V této části se dozvíte, jak vytvořit cluster, databáze SQL a schémata databáze SQL pro spuštění kurz pomocí portálu Azure a šablonu Azure Resource Manager. Šablony lze nalézt v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablony Resource Manageru volá souboru bacpac balíček pro nasazení schémata tabulek do databáze SQL.  Balíček souboru bacpac se nachází v kontejneru veřejného objektu blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít pro soubory souboru bacpac kontejner privátní, použijte následující hodnoty v šabloně:
+Tato část uvádí, jak toocreate cluster, databáze SQL a hello SQL databáze, schémata pro spuštěné hello kurz používání hello portál Azure a šablonu Azure Resource Manager. Hello šablony lze nalézt v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). šablony Resource Manageru Hello volá souboru bacpac balíček toodeploy hello tabulky schémata tooSQL databáze.  Hello souboru bacpac balíčku se nachází v kontejneru veřejného objektu blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete pro soubory souboru bacpac hello toouse kontejner privátní, použijte následující hodnoty v šabloně hello hello:
    
         "storageKeyType": "Primary",
         "storageKey": "<TheAzureStorageAccountKey>",
 
-Pokud chcete používat prostředí Azure PowerShell k vytvoření clusteru a databázi SQL, najdete v části [příloha A](#appendix-a---a-powershell-sample).
+Pokud dáváte přednost toouse prostředí Azure PowerShell toocreate hello clusteru a hello SQL Database, najdete v části [příloha A](#appendix-a---a-powershell-sample).
 
-1. Kliknutím na následující obrázek otevřete šablonu Resource Manageru na portálu Azure.         
+1. Klikněte na tlačítko hello následující tooopen image šablony Resource Manageru v hello portálu Azure.         
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy tooAzure"></a>
    
 
-2. Zadejte následující vlastnosti:
+2. Zadejte hello následující vlastnosti:
 
     - **Předplatné**: Zadejte předplatné Azure.
     - **Skupina prostředků**: Vytvořte novou skupinu prostředků Azure, nebo vyberte existující skupinu prostředků.  Skupina prostředků je pro účely správy.  Je kontejner pro objekty.
     - **Umístění**: Vyberte oblast.
-    - **Název clusteru**: Zadejte název pro Hadoop cluster.
-    - **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je admin.
+    - **Název clusteru**: Zadejte název pro hello Hadoop cluster.
+    - **Přihlašovací jméno a heslo clusteru**: hello výchozí přihlašovací jméno je admin.
     - **Uživatelské jméno a heslo SSH**.
     - **Databáze SQL serveru přihlašovací jméno a heslo**.
-    - **_artifacts umístění**: použijte výchozí hodnotu, pokud chcete používat svůj vlastní soubor backpac v jiném umístění.
+    - **_artifacts umístění**: používání hello výchozí hodnotu, pokud chcete, aby toouse backpac souboru v jiném umístění.
     - **_artifacts umístění Sas Token**: ponechat prázdné.
-    - **Název souboru souboru Bacpac**: použijte výchozí hodnotu, pokud chcete používat svůj vlastní soubor backpac.
+    - **Název souboru souboru Bacpac**: používání hello výchozí hodnotu, pokud chcete, aby toouse souboru backpac.
      
-     Následující hodnoty jsou pevně kódovaný v části proměnných:
+     Hello následující hodnoty jsou pevně kódovaný v části proměnných hello:
      
      | Výchozí název účtu úložiště | <CluterName>úložiště |
      | --- | --- |
      | Název serveru databáze SQL Azure |<ClusterName>DBServer |
      | Název databáze SQL Azure |<ClusterName>DB |
      
-     Zapište tyto hodnoty.  Budete je potřebovat později v kurzu.
+     Zapište tyto hodnoty.  Budete potřebovat později v kurzu hello.
 
-3. Klikněte na možnost **OK** a uložte parametry.
+3 klikněte na tlačítko **OK** toosave hello parametry.
 
-4. Z okna **Vlastní nasazení** klikněte na rozevírací pole **Skupina prostředků** a pak klikněte na tlačítko **Nový** a vytvořte novou skupinu prostředků. Skupina prostředků je kontejner, který seskupuje cluster, účet závislého úložiště a další propojené prostředky skupin.
+4. z hello **vlastní nasazení** okně klikněte na tlačítko **skupiny prostředků** rozevírací pole a pak klikněte na **nový** toocreate novou skupinu prostředků. Hello skupina prostředků je kontejner, který seskupuje hello cluster, účet závislého úložiště hello a další propojené prostředky.
 
 5. Klikněte na tlačítko **Smluvní podmínky** a pak klikněte na tlačítko **Vytvořit**.
 
-6. Klikněte na **Vytvořit**. Zobrazí se nová dlaždice s názvem odeslání nasazení pro šablonu nasazení. Vytvoření clusteru a databáze SQL trvá přibližně 20 minut.
+6. Klikněte na **Vytvořit**. Zobrazí se nová dlaždice s názvem odeslání nasazení pro šablonu nasazení. Trvá přibližně 20 minut toocreate hello clusteru a databáze SQL.
 
-Pokud chcete použít existující databázi Azure SQL nebo Microsoft SQL Server
+Pokud se rozhodnete toouse existující databázi Azure SQL nebo Microsoft SQL Server
 
-* **Databáze SQL Azure**: musíte nakonfigurovat pravidlo brány firewall pro server databáze Azure SQL pro povolení přístupu z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
+* **Databáze SQL Azure**: musíte nakonfigurovat pravidlo brány firewall pro přístup k Azure SQL database serveru tooallow hello z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall hello najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Ve výchozím nastavení Azure SQL database umožňuje připojení z Azure služby, jako je Azure HDInsight. Pokud toto nastavení brány firewall je zakázáno, musíte ji povolit z portálu Azure. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidel brány firewall, najdete v části [vytvořit a nakonfigurovat databázi SQL][sqldatabase-create-configue].
+  > Ve výchozím nastavení Azure SQL database umožňuje připojení z Azure služby, jako je Azure HDInsight. Pokud toto nastavení brány firewall je zakázáno, je třeba tooenable z hello portálu Azure. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidel brány firewall, najdete v části [vytvořit a nakonfigurovat databázi SQL][sqldatabase-create-configue].
   > 
   > 
-* **SQL Server**: Pokud váš cluster HDInsight je ve stejné virtuální síti v Azure jako systém SQL Server, můžete použít kroky v tomto článku pro import a export dat k databázi systému SQL Server.
+* **SQL Server**: Pokud je váš cluster HDInsight na hello stejné virtuální síti v Azure jako systém SQL Server, můžete použít kroky hello Tento článek tooimport a export dat tooa databáze SQL serveru.
   
   > [!NOTE]
   > HDInsight podporuje pouze na základě umístění virtuální sítě a aktuálně nefunguje s virtuálních sítích založených na skupinu vztahů.
   > 
   > 
   
-  * Vytvoření a konfigurace virtuální sítě najdete v tématu [vytvoření virtuální sítě pomocí portálu Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+  * toocreate a konfigurace virtuální sítě, najdete v části [vytvoření virtuální sítě pomocí portálu Azure hello](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
     
-    * Pokud používáte systém SQL Server ve vašem datovém centru, je nutné nakonfigurovat virtuální síti jako *site-to-site* nebo *point-to-site*.
+    * Pokud používáte systém SQL Server ve vašem datovém centru, je nutné nakonfigurovat hello virtuální síti jako *site-to-site* nebo *point-to-site*.
       
       > [!NOTE]
-      > Pro **point-to-site** virtuální sítě, SQL Server musí používat klienta VPN konfigurace aplikace, která je k dispozici z **řídicí panel** konfigurace virtuální sítě Azure.
+      > Pro **point-to-site** virtuální sítě, SQL Server musí používat klienta VPN hello konfigurace aplikace, která je k dispozici z hello **řídicí panel** konfigurace virtuální sítě Azure.
       > 
       > 
-    * Při použití systému SQL Server na virtuální počítač Azure, lze použít žádnou konfiguraci virtuální sítě, pokud je virtuální počítač, který je hostitelem SQL serveru členem stejné virtuální síti jako HDInsight.
-  * Vytvoření clusteru HDInsight ve virtuální síti naleznete v tématu [vytvoření Hadoop clusterů v HDInsight pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md)
+    * Při použití systému SQL Server na virtuální počítač Azure, lze použít všechny konfigurace virtuální sítě, pokud hello virtuálního počítače, který je hostitelem SQL serveru je členem hello stejné virtuální síti jako HDInsight.
+  * toocreate clusteru služby HDInsight ve virtuální síti, najdete v části [vytvoření Hadoop clusterů v HDInsight pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md)
     
     > [!NOTE]
-    > SQL Server musíte také povolit ověřování. Pokud chcete provést kroky v tomto článku, je nutné použít přihlášení systému SQL Server.
+    > SQL Server musíte také povolit ověřování. Musíte použít SQL Server hello toocomplete přihlášení kroky v tomto článku.
     > 
     > 
 
 ## <a name="run-sqoop-jobs"></a>Spuštění úloh Sqoop
-HDInsight Sqoop úlohy můžete spustit pomocí různých metod. Následující tabulku použijte k rozhodování, jakou metodu je pro vás nejvhodnější a potom klepněte na odkaz návod.
+HDInsight Sqoop úlohy můžete spustit pomocí různých metod. Pomocí hello následující toodecide tabulku, která metoda je pro vás nejvhodnější a potom postupujte podle hello odkaz návod.
 
 | **Použít** Pokud chcete... | .. .an **interaktivní** prostředí | ... **batch** zpracování | .. při to **clusteru operačního systému** | .. .from to **klientský operační systém** |
 |:--- |:---:|:---:|:--- |:--- |
@@ -148,26 +148,26 @@ HDInsight Sqoop úlohy můžete spustit pomocí různých metod. Následující 
 | [Azure PowerShell](hdinsight-hadoop-use-sqoop-powershell.md) |&nbsp; |✔ |Linux nebo Windows |Windows |
 
 ## <a name="limitations"></a>Omezení
-* Hromadné export - s Linuxovým systémem HDInsight, Sqoop konektor umožňuje exportovat data do systému Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
-* Dávkování - s HDInsight se systémem Linux, při použití `-batch` přepnout při vložení, Sqoop provádí více vloží místo dávkování operace insert.
+* Hromadně export - s Linuxovým systémem HDInsight, hello Sqoop konektor používaný tooexport data tooMicrosoft systému SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
+* Dávkování - s HDInsight se systémem Linux, při použití hello `-batch` přepnout při vložení, Sqoop provádí více vloží místo dávkování operace insert hello.
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste se naučili postup použití nástroje Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak toouse Sqoop. toolearn více, najdete v části:
 
 * [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
 * [Použijte Oozie s HDInsight][hdinsight-use-oozie]: použití Sqoop akce v pracovním postupu Oozie.
-* [Analýza dat zpoždění letu pomocí HDInsight][hdinsight-analyze-flight-data]: použití Hive k analýze letu zpoždění dat a pak pomocí Sqoop exportovat data do Azure SQL database.
-* [Nahrání dat do HDInsight][hdinsight-upload-data]: Najít další metody pro odesílání dat do HDInsight nebo Azure Blob storage.
+* [Analýza dat zpoždění letu pomocí HDInsight][hdinsight-analyze-flight-data]: použití Hive letu tooanalyze zpoždění data a pak použijte Sqoop tooexport data tooan Azure SQL database.
+* [Nahrání dat tooHDInsight][hdinsight-upload-data]: Najít další metody pro odesílání dat tooHDInsight/Azure Blob storage.
 
 ## <a name="appendix-a---a-powershell-sample"></a>Příloha A - ukázku prostředí PowerShell
-Ukázku v prostředí PowerShell provede následující kroky:
+Ukázkové prostředí PowerShell Hello provádí hello následující kroky:
 
-1. Připojte k Azure.
+1. Připojte tooAzure.
 2. Vytvořte skupinu prostředků Azure. Další informace najdete v tématu [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md)
 3. Vytvoření serveru Azure SQL Database, Azure SQL database a dvě tabulky. 
    
-    Pokud místo toho používat SQL Server, použijte následující příkazy k vytvoření tabulky:
+    Pokud místo toho používat SQL Server, použijte následující příkazy toocreate hello tabulky hello:
    
         CREATE TABLE [dbo].[log4jlogs](
          [t1] [nvarchar](50),
@@ -191,41 +191,41 @@ Ukázku v prostředí PowerShell provede následující kroky:
          [sessionid] [bigint],
          [sessionpagevieworder][bigint])
    
-    Nejjednodušší způsob, jak podívejte se na databáze a tabulky je pomocí sady Visual Studio. Databázový server a databáze může být prověřen pomocí portálu Azure.
+    Hello nejjednodušší způsob, jak tooexamine hello databáze a tabulky je toouse Visual Studio. Hello databázového serveru a hello databáze může být prověřen pomocí hello portálu Azure.
 4. Vytvoření clusteru HDInsight.
    
-    K prozkoumání clusteru, můžete portál Azure nebo Azure PowerShell.
-5. Předběžně zpracovat zdrojového datového souboru.
+    tooexamine hello clusteru, můžete použít hello portál Azure nebo Azure PowerShell.
+5. Předběžně zpracovat hello zdrojového datového souboru.
    
-    V tomto kurzu můžete exportovat soubor protokolu log4j (soubor s oddělovači) a tabulku Hive do Azure SQL database. Souboru s oddělovači se nazývá */example/data/sample.log*. V tomto kurzu jste viděli několik ukázky log4j protokolů. V souboru protokolu existují některé prázdné řádky a některé řádky vypadat přibližně takto:
+    V tomto kurzu můžete exportovat soubor protokolu log4j (soubor s oddělovači) a databázi Azure SQL tooan tabulku Hive. Hello souboru s oddělovači se nazývá */example/data/sample.log*. V kurzu hello jste viděli několik ukázky log4j protokolů. V souboru protokolu hello existují některé prázdné řádky a podobné toothese některé řádky:
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
    
-    To je v pořádku pro další příklady, které používají tato data, ale před jsme můžete importovat do Azure SQL database nebo SQL Server jsme musíte odebrat tyto výjimky. Sqoop export se nezdaří, pokud je prázdný řetězec nebo čáry s méně elementů než počet elementů pole definovaná v tabulce databáze Azure SQL. Tabulka log4jlogs má 7 řetězec typu pole.
+    To je v pořádku pro další příklady, které používají tato data, ale před jsme můžete importovat do hello Azure SQL database nebo SQL Server jsme musíte odebrat tyto výjimky. Sqoop export se nezdaří, pokud je prázdný řetězec nebo čáry s méně než hello počet polí definovaných v tabulce databáze Azure SQL hello elementy. Tabulka log4jlogs Hello má 7 řetězec typu pole.
    
-    Tento postup vytvoří nový soubor v clusteru: tutorials/usesqoop/data/sample.log. Pro zjištění změny datového souboru, můžete portál Azure, nástroji Průzkumník Azure Storage nebo Azure PowerShell. [Začínáme s HDInsight] [ hdinsight-get-started] má ukázka kódu pro použití Azure PowerShell k stažení souboru a zobrazit obsah souboru.
-6. Exportujte soubor dat databáze Azure SQL.
+    Tento postup vytvoří nový soubor v clusteru hello: tutorials/usesqoop/data/sample.log. tooexamine hello upravené datový soubor, můžete použít hello portálu Azure, nástroji Průzkumník Azure Storage nebo Azure PowerShell. [Začínáme s HDInsight] [ hdinsight-get-started] má kód ukázkové pro použití prostředí Azure PowerShell toodownload soubor a zobrazit obsah souboru hello.
+6. Exportujte databáze Azure SQL data souboru toohello.
    
-    Zdrojový soubor je tutorials/usesqoop/data/sample.log. V tabulce, kde se data se exportují do nazývá log4jlogs.
+    zdrojový soubor Hello je tutorials/usesqoop/data/sample.log. Tabulka Hello kde hello dat je exportovaný toois nazývá log4jlogs.
    
    > [!NOTE]
-   > Než informace o připojovacím řetězci by měl pracovní postup v této části pro Azure SQL database nebo SQL Server. Tyto kroky testovali pomocí následující konfigurace:
+   > Než informace o připojovacím řetězci by měly fungovat hello kroky v této části pro Azure SQL database nebo SQL Server. Tyto kroky testovali pomocí hello následující konfigurace:
    > 
-   > * **Konfigurace point-to-site virtuální síť Azure**: virtuální sítě připojen k serveru SQL Server v privátním datacentru clusteru HDInsight. V tématu [konfigurace VPN typu Point-to-Site v portálu pro správu](../vpn-gateway/vpn-gateway-point-to-site-create.md) Další informace.
+   > * **Konfigurace point-to-site virtuální síť Azure**: virtuální síť připojená hello HDInsight clusteru tooa systému SQL Server v privátním datacentru. V tématu [konfigurace VPN typu Point-to-Site v hello portálu pro správu](../vpn-gateway/vpn-gateway-point-to-site-create.md) Další informace.
    > * **Azure HDInsight 3.1**: najdete v části [vytvoření Hadoop clusterů v HDInsight pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md) informace o vytváření clusteru s podporou ve virtuální síti.
-   > * **SQL Server 2014**: nakonfigurovaná tak, aby povolit ověřování a spouštění klienta VPN konfigurační balíček se bezpečně připojit k virtuální síti.
+   > * **SQL Server 2014**: nakonfigurovali tooallow ověřování a spuštěné hello VPN klienta konfigurace balíčku tooconnect bezpečně toohello virtuální sítě.
    > 
    > 
-7. Exportujte tabulky Hive k databázi Azure SQL.
-8. Importujte tabulky mobiledata ke clusteru HDInsight.
+7. Exportujte databáze Azure SQL toohello tabulku Hive.
+8. Importujte clusteru HDInsight toohello tabulky mobiledata hello.
    
-    Pro zjištění změny datového souboru, můžete portál Azure, nástroji Průzkumník Azure Storage nebo Azure PowerShell.  [Začínáme s HDInsight] [ hdinsight-get-started] má ukázka kódu o použití prostředí Azure PowerShell k stažení souboru a zobrazit obsah souboru.
+    tooexamine hello upravené datový soubor, můžete použít hello portálu Azure, nástroji Průzkumník Azure Storage nebo Azure PowerShell.  [Začínáme s HDInsight] [ hdinsight-get-started] má kód ukázkové o použití prostředí Azure PowerShell toodownload soubor a zobrazit obsah souboru hello.
 
-### <a name="the-powershell-sample"></a>Ukázku v prostředí PowerShell
-    # Prepare an Azure SQL database to be used by the Sqoop tutorial
+### <a name="hello-powershell-sample"></a>Ukázka Hello prostředí PowerShell
+    # Prepare an Azure SQL database toobe used by hello Sqoop tutorial
 
-    #region - provide the following values
+    #region - provide hello following values
 
     $subscriptionID = "<Enter your Azure Subscription ID>"
 
@@ -292,8 +292,8 @@ Ukázku v prostředí PowerShell provede následující kroky:
     # Treat all errors as terminating
     $ErrorActionPreference = "Stop"
 
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{Login-AzureRmAccount}
     #endregion
@@ -334,8 +334,8 @@ Ukázku v prostředí PowerShell provede následující kroky:
             -StartIpAddress $workstationIPAddress `
             -EndIpAddress $workstationIPAddress
 
-        #To allow other Azure services to access the server add a firewall rule and set both the StartIpAddress and EndIpAddress to 0.0.0.0. 
-        #Note that this allows Azure traffic from any Azure subscription to access the server.
+        #tooallow other Azure services tooaccess hello server add a firewall rule and set both hello StartIpAddress and EndIpAddress too0.0.0.0. 
+        #Note that this allows Azure traffic from any Azure subscription tooaccess hello server.
         New-AzureRmSqlServerFirewallRule `
             -ResourceGroupName $resourceGroupName `
             -ServerName $sqlDatabaseServerName `
@@ -368,13 +368,13 @@ Ukázku v prostředí PowerShell provede následující kroky:
     #endregion
 
     #region - Create tables
-    Write-Host "Creating the log4jlogs table and the mobiledata table ..." -ForegroundColor Green
+    Write-Host "Creating hello log4jlogs table and hello mobiledata table ..." -ForegroundColor Green
 
     $conn = New-Object System.Data.SqlClient.SqlConnection
     $conn.ConnectionString = $sqlDatabaseConnectionString
     $conn.Open()
 
-    # Create the log4jlogs table and index
+    # Create hello log4jlogs table and index
     $cmd = New-Object System.Data.SqlClient.SqlCommand
     $cmd.Connection = $conn
     $cmd.CommandText = $cmdCreateLog4jTable
@@ -382,7 +382,7 @@ Ukázku v prostředí PowerShell provede následující kroky:
     $cmd.CommandText = $cmdCreateLog4jClusteredIndex
     $cmd.ExecuteNonQuery()
 
-    # Create the mobiledata table and index
+    # Create hello mobiledata table and index
     $cmd.CommandText = $cmdCreateMobileTable
     $cmd.ExecuteNonQuery()
     $cmd.CommandText = $cmdCreateMobileDataClusteredIndex
@@ -395,16 +395,16 @@ Ukázku v prostředí PowerShell provede následující kroky:
 
     #region - Create HDInsight cluster
 
-    Write-Host "Creating the HDInsight cluster and the dependent services ..." -ForegroundColor Green
+    Write-Host "Creating hello HDInsight cluster and hello dependent services ..." -ForegroundColor Green
 
-    # Create the default storage account
+    # Create hello default storage account
     New-AzureRmStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
         -Location $location `
         -Type Standard_LRS
 
-    # Create the default Blob container
+    # Create hello default Blob container
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
                                     -Name $defaultStorageAccountName)[0].Value
@@ -415,7 +415,7 @@ Ukázku v prostředí PowerShell provede následující kroky:
         -Name $defaultBlobContainerName `
         -Context $defaultStorageAccountContext 
 
-    # Create the HDInsight cluster
+    # Create hello HDInsight cluster
     $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
     $httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
 
@@ -431,47 +431,47 @@ Ukázku v prostředí PowerShell provede následující kroky:
         -DefaultStorageAccountKey $defaultStorageAccountKey `
         -DefaultStorageContainer $defaultBlobContainerName 
 
-    # Validate the cluster
+    # Validate hello cluster
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
     #endregion
 
-    #region - pre-process the source file
+    #region - pre-process hello source file
 
-    Write-Host "Preprocessing the source file ..." -ForegroundColor Green
+    Write-Host "Preprocessing hello source file ..." -ForegroundColor Green
 
     # This procedure creates a new file with $destBlobName
     $sourceBlobName = "example/data/sample.log"
     $destBlobName = "tutorials/usesqoop/data/sample.log"
 
-    # Define the connection string
+    # Define hello connection string
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
 
-    # Create block blob objects referencing the source and destination blob.
+    # Create block blob objects referencing hello source and destination blob.
     $storageAccount = [Microsoft.WindowsAzure.Storage.CloudStorageAccount]::Parse($storageConnectionString)
     $storageClient = $storageAccount.CreateCloudBlobClient();
     $storageContainer = $storageClient.GetContainerReference($defaultBlobContainerName)
     $sourceBlob = $storageContainer.GetBlockBlobReference($sourceBlobName)
     $destBlob = $storageContainer.GetBlockBlobReference($destBlobName)
 
-    # Define a MemoryStream and a StreamReader for reading from the source file
+    # Define a MemoryStream and a StreamReader for reading from hello source file
     $stream = New-Object System.IO.MemoryStream
     $stream = $sourceBlob.OpenRead()
     $sReader = New-Object System.IO.StreamReader($stream)
 
-    # Define a MemoryStream and a StreamWriter for writing into the destination file
+    # Define a MemoryStream and a StreamWriter for writing into hello destination file
     $memStream = New-Object System.IO.MemoryStream
     $writeStream = New-Object System.IO.StreamWriter $memStream
 
-    # Pre-process the source blob
+    # Pre-process hello source blob
     $exString = "java.lang.Exception:"
     while(-Not $sReader.EndOfStream){
         $line = $sReader.ReadLine()
         $split = $line.Split(" ")
 
-        # remove the "java.lang.Exception" from the first element of the array
+        # remove hello "java.lang.Exception" from hello first element of hello array
         # for example: java.lang.Exception: 2012-02-03 19:11:02 SampleClass8 [WARN] problem finding id 153454612
         if ($split[0] -eq $exString){
-            #create a new ArrayList to remove $split[0]
+            #create a new ArrayList tooremove $split[0]
             $newArray = [System.Collections.ArrayList] $split
             $newArray.Remove($exString)
 
@@ -480,23 +480,23 @@ Ukázku v prostředí PowerShell provede následující kroky:
             $line = $newArray -join(" ")
         }
 
-        # remove the lines that has less than 7 elements
+        # remove hello lines that has less than 7 elements
         if ($split.count -ge 7){
             write-host $line
             $writeStream.WriteLine($line)
         }
     }
 
-    # Write to the destination blob
+    # Write toohello destination blob
     $writeStream.Flush()
     $memStream.Seek(0, "Begin")
     $destBlob.UploadFromStream($memStream)
 
     #endregion
 
-    #region - export a log file from the cluster to the SQL database
+    #region - export a log file from hello cluster toohello SQL database
 
-    Write-Host "Preprocessing the source file ..." -ForegroundColor Green
+    Write-Host "Preprocessing hello source file ..." -ForegroundColor Green
 
     $tableName_log4j = "log4jlogs"
 

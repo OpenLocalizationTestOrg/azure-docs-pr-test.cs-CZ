@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Je SCP.Net verze použitá v projektu musí shodovat s verzí Storm v clusteru HDInsight. Pomocí následující tabulky můžete určit verzi, které byste měli používat:
+> Hello SCP.Net verze použitá v projektu musí odpovídat hello Storm verzi nachází v clusteru HDInsight. Použijte následující tabulku toodetermine, která verze byste měli používat hello:
 > 
 > | HDInsight verze | Apache Storm verze | SCP.NET verze | Výchozí Mono verze |
 > |:---:|:---:|:---:|:---:|

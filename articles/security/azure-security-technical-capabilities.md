@@ -1,6 +1,6 @@
 ---
-title: "Technické možnosti zabezpečení Azure | Microsoft Docs"
-description: "Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise."
+title: "technické možnosti zabezpečení aaaAzure | Microsoft Docs"
+description: "Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru a dolů automaticky toomeet hello potřebám vaší aplikace nebo enterprise."
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
-ms.openlocfilehash: 2983ce5c068e5188fb70ffc9443ce58d6c188c50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a0ef17883be54dab4cb6b597204f3197dc05c28c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
-Pomůže Azure aktuální a potenciální zákazníky, pochopit a využívat různé související se zabezpečením možnosti dostupné v a které obaluje platformě Azure, společnost Microsoft vyvinula řadu dokumenty White Paper, zabezpečení přehledy, osvědčené postupy a kontrolní seznamy. Témata v rozsahu z hlediska spektra a hloubky a jsou pravidelně aktualizovány. Tento dokument je součástí této řady dle souhrnu v následující části abstraktní. Další informace o této série zabezpečení Azure naleznete na adrese (URL).
+tooassist aktuální a potenciální zákazníci Azure pochopit a využívat hello různé související se zabezpečením možnosti dostupné v a okolního hello platformě Azure, společnost Microsoft vyvinula řadu dokumenty White Paper, zabezpečení přehledy, osvědčené postupy a Kontrolní seznamy. témata Hello rozsahu z hlediska spektra a hloubky a jsou pravidelně aktualizovány. Tento dokument je součástí této řady dle souhrnu v hello abstraktní části. Další informace o této série zabezpečení Azure naleznete na adrese (URL).
 
 ## <a name="azure-platform"></a>Platforma Azure
 
-[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) cloudové platformy se skládá z infrastruktury a aplikační služby, s použitím integrovaného datové služby a pokročilou analýzu a nástroje pro vývojáře a služby hostované v rámci veřejného cloudu dat společnosti Microsoft centrech. Zákazníci používat Azure pro mnoho různých kapacity a scénáře, od základní výpočty, síť a úložiště, mobilní a webové aplikace služby úplné cloudu scénářů, jako je Internet věcí a lze použít s technologiích s otevřeným zdrojem a nasadit jako hybridní cloud nebo hostovaným v rámci datového centra zákazníka. Azure poskytuje technologie cloud jako stavební bloky, abyste ušetřili náklady, společností inovacemi. Zajistěte rychle a aktivně spravovat systémy. Pokud sestavení nebo migrovat IT prostředky do poskytovatele cloudových služeb, jsou spoléhat na dané organizace dalo k ochraně vašich aplikací a dat se službami a ovládací prvky poskytují ke správě zabezpečení vaše cloudové prostředky.
+[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) cloudové platformy se skládá z infrastruktury a aplikační služby, s použitím integrovaného datové služby a pokročilou analýzu a nástroje pro vývojáře a služby hostované v rámci veřejného cloudu dat společnosti Microsoft centrech. Zákazníci používat Azure pro mnoho různých kapacity a scénářů, na základní výpočetní, sítě a úložiště, toomobile webové aplikace služby, toofull cloudu scénáře, jako je Internet věcí a se dají použít s technologiích s otevřeným zdrojem a nasadit jako hybridní cloud nebo hostovaným v rámci datového centra zákazníka. Azure poskytuje technologie cloud jako stavební bloky toohelp společnosti ušetřili náklady, inovacemi. Zajistěte rychle a aktivně spravovat systémy. Pokud sestavení nebo migrovat poskytovatele cloudové tooa IT prostředky, se spoléháte na dané organizace dalo tooprotect vaší aplikace a data se službami hello a ovládací prvky hello poskytují zabezpečení hello toomanage vaše cloudové prostředky.
 
-Microsoft Azure je pouze výpočetní zprostředkovatele cloudu, který nabízí aplikace zabezpečené a konzistentní platformy a infrastruktury jako služba pro týmy pro práci v rámci své skillsets jiný cloud a úrovně složitost projektu, se službami integrované dat a analýz, které odkrýt intelligence z dat bez ohledu na existuje napříč společnosti Microsoft a jiných společností než Microsoft platforem, otevřete rozhraní a nástroje, poskytuje volba pro integraci s místním i nasazení cloudové služby Azure v místních datových center cloudu. V rámci důvěryhodné cloudu Microsoftu zákazníci spoléhají na Azure špičkový zabezpečení, spolehlivost, dodržování předpisů, ochrany osobních údajů a valná sítě osoby, partneři a procesy pro podporu organizace v cloudu.
+Microsoft Azure je hello pouze cloudové výpočetní zprostředkovatele, který nabízí aplikace zabezpečené a konzistentní platformy a infrastruktury jako služba pro toowork týmy v rámci své skillsets jiný cloud a úrovně projektu složitost integrované daty služby a analýzy, která odkrýt intelligence z dat bez ohledu na existuje napříč společnosti Microsoft a jiných společností než Microsoft platforem, otevřete rozhraní a nástroje, poskytuje volba pro integraci s místní i cloudové služby Azure v rámci nasazení cloudu místních datových center. Jako součást hello důvěryhodné cloudu Microsoftu zákazníci spoléhají na Azure špičkový zabezpečení, spolehlivost, dodržování předpisů, ochrany osobních údajů a hello velká síti osoby, partneři a procesy toosupport organizace v cloudu hello.
 
 Microsoft Azure můžete:
 
-- Urychlit inovací s cloudem.
+- Urychlit inovací hello cloudu.
 
 - & Aplikace se statistickými Power obchodních rozhodnutí.
 
@@ -42,40 +42,40 @@ Microsoft Azure můžete:
 
 ## <a name="scope"></a>Rozsah
 
-Ústředním bodem tohoto dokumentu se vztahuje na funkce zabezpečení a funkce podporu Microsoft Azure základní komponenty, a to [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [databází SQL Azure Microsoft](https://docs.microsoft.com/azure/sql-database/), [model virtuálního počítače Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/    )a nástroje a infrastruktura, která ho všechny spravovat. Tento dokument white paper se zaměřují na Microsoft Azure technické možnosti k dispozici jako zákazníky ke splnění jejich role při ochraně zabezpečení a ochrana osobních údajů svých dat.
+Hello ústředním bodem tohoto dokumentu se vztahuje na funkce zabezpečení a funkce podporu Microsoft Azure základní komponenty, konkrétně [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [databází SQL Azure Microsoft](https://docs.microsoft.com/azure/sql-database/), [Model virtuálního počítače Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/  )a hello nástroje a infrastruktura, která ho všechny spravovat. Tento dokument white paper soustředit na k dispozici tooyou technických možností Microsoft Azure jako zákazníci toofulfil jejich role při ochraně hello zabezpečení a ochrana osobních údajů svých dat.
 
-Význam vysvětlení tohoto modelu sdílenou odpovědnost je nezbytné pro zákazníky, kteří jsou přechodu do cloudu. Poskytovatelé cloudové nabízejí značné výhody pro zabezpečení a dodržování předpisů úsilí, ale tyto výhody nejsou zbaveny zákazník z ochranu svých uživatelů, aplikací a nabídek služeb.
+Hello význam vysvětlení tohoto modelu sdílenou odpovědnost je nezbytné pro zákazníky, kteří jsou přesunutí toohello cloudu. Poskytovatelé cloudové nabízejí značné výhody pro zabezpečení a dodržování předpisů úsilí, ale tyto výhody nejsou zbaveny hello zákazníkem už od ochranu svých uživatelů, aplikací a nabídek služeb.
 
-Pro řešení IaaS zákazník zodpovídá nebo má sdílenou odpovědnost pro zabezpečení a správu operačního systému, konfiguraci sítě, aplikace, identity, klientů a data.  Sestavení řešení PaaS na IaaS nasazení, zákazník stále zodpovídá nebo má sdílenou odpovědnost pro zabezpečení a správu aplikací, identity, klienty a data. Pro řešení SaaS, Nonetheless, i nadále řízeni zákazníka. Musí zajistit správnou klasifikaci dat, a sdílejí zodpovědnost za správu svých uživatelů a zařízení koncový bod.
+Pro řešení IaaS hello zákazník zodpovídá nebo má sdílenou odpovědnost pro zabezpečení a správu hello operačního systému, konfiguraci sítě, aplikace, identity, klientů a data.  Řešení PaaS sestavení na IaaS nasazení, zákazník hello stále zodpovídá nebo má sdílenou odpovědnost pro zabezpečení a správu aplikací, identity, klienty a data. Pro řešení SaaS, Nonetheless, pokračuje hello zákazníka toobe odpovědnost za. Musí zajistit správnou klasifikaci dat, a sdílejí zodpovědnost toomanage svých uživatelů a zařízení koncový bod.
 
-Tento dokument neposkytuje podrobné pokrytí všech souvisejících součástí platformy Microsoft Azure jako jsou weby Azure, Azure Active Directory, HDInsight, Media Services a dalším službám, které jsou na základě na základní komponenty. I když je k dispozici minimální úroveň obecné informace, se předpokládá čtečky obeznámeni s základní koncepty Azure, jak je popsáno v dalších odkazů na od společnosti Microsoft a součástí odkazů uvedených v tomto dokumentu.
+Tento dokument neposkytuje podrobné pokrytí všech hello související komponenty platformy Microsoft Azure, například weby Azure, Azure Active Directory, HDInsight, Media Services a dalším službám, které jsou na základě na základní komponenty hello. I když je k dispozici minimální úroveň obecné informace, se předpokládá čtečky obeznámeni s základní koncepty Azure, jak je popsáno v dalších odkazů na od společnosti Microsoft a součástí odkazů uvedených v tomto dokumentu.
 
 
-## <a name="available-security-technical-capabilities-to-fulfil-user-customer-responsibility---big-picture"></a>K dispozici zabezpečení technických možností plnit odpovědnost uživatele (zákazníka) - přehled
+## <a name="available-security-technical-capabilities-toofulfil-user-customer-responsibility---big-picture"></a>K zabezpečení technické možnosti toofulfil uživatele (zákazníka) odpovědnost – přehled
 
-Microsoft Azure poskytuje služby, které pomáhají zákazníkům splňovaly potřeby zabezpečení, ochrany osobních údajů a dodržování předpisů. Následující obrázek pomůže popisují různé služby Azure k dispozici pro uživatele k vytvoření infrastruktury zabezpečení a dodržování aplikace na základě oborových standardů.
+Microsoft Azure poskytuje služby, které pomáhají zákazníkům splňovat hello zabezpečení, ochrany osobních údajů a dodržování předpisů potřebám. Hello následující obrázek, který pomáhá popisují různé služby Azure k dispozici pro uživatele toobuild Infrastruktura zabezpečení a dodržování aplikace na základě oborových standardů.
 
 ![K dispozici zabezpečení technické možnosti Big obrázek](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig1.png)
 
 ## <a name="manage-and-control-identity-and-user-access-protect"></a>Spravovat a řídit, identity a přístup (chránit)
 
-Azure pomáhá chránit firmy a osobní údaje tím, že vám ke správě identit uživatelů a přihlašovacích údajů a řízení přístupu.
+Azure pomáhá chránit firmy a osobní údaje povolením jste toomanage identity uživatelů a přihlašovacích údajů a řízení přístupu.
 
 ### <a name="azure-active-directory"></a>Azure active directory
 
-Microsoft identit a přístupu řešení Nápověda pro správu IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu, povolení další úrovně ověřování, jako je vícefaktorové ověřování a zásady podmíněného přístupu. Monitorování podezřelé aktivity přes pokročilé zabezpečení vytváření sestav a auditování, výstrahy, pomáhá zmírnit potenciální potíže se zabezpečením. [Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) poskytuje jednotné přihlašování k tisícům cloudové aplikace (SaaS) a přístup k webové aplikace můžete spustit místně.
+Microsoft identit a přístupu řešení Nápověda pro správu IT chránit tooapplications přístup a prostředky v podnikovém datovém centru hello a do cloudu hello povolení další úrovně ověřování, jako je vícefaktorové ověřování a podmíněného zásady přístupu. Monitorování podezřelé aktivity přes pokročilé zabezpečení vytváření sestav a auditování, výstrahy, pomáhá zmírnit potenciální potíže se zabezpečením. [Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) poskytuje jeden toothousands přihlášení (SaaS) cloudových aplikací a aplikací tooweb přístup spustit místně.
 
-Výhody zabezpečení služby Azure Active Directory (AD), zahrnují možnost:
+Výhody zabezpečení služby Azure Active Directory (AD) zahrnují možnost hello:
 
 - Vytvořit a spravovat jedinou identitu pro každého uživatele v rámci podniku hybridní udržování synchronizace uživatele, skupiny a zařízení.
 
-- Zadejte jednoho přístupového přihlašování pro vaše aplikace, včetně tisícům předem integrovaných aplikací SaaS.
+- Zadejte přístup přihlášení tooyour aplikace včetně tisícům předem integrovaných aplikací SaaS.
 
 - Povolit aplikaci přístup k zabezpečení vynucením vícefaktorového ověřování založeného na pravidlech pro místní i cloudové aplikace.
 
-- Poskytnout zabezpečený vzdálený přístup k místním webovým aplikacím prostřednictvím proxy aplikace služby Azure AD.
+- Poskytování zabezpečeného vzdáleného přístupu tooon místní webové aplikace prostřednictvím proxy aplikace služby Azure AD.
 
-[Portál služby Azure active directory](http://aad.portal.azure.com/) je k dispozici součástí portálu azure. Z tohoto řídicího panelu můžete získat přehled o stavu vaší organizace a snadno ponořte do Správa adresáře, uživatele nebo přístup k aplikaci.
+[Portál služby Azure active directory](http://aad.portal.azure.com/) je k dispozici součástí portálu azure. Z tohoto řídicího panelu můžete získat přehled o stavu hello vaší organizace a snadno ponořte do Správa hello adresáře, uživatele nebo přístup k aplikaci.
 
 ![Azure active directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -97,63 +97,63 @@ Toto jsou základní možnosti správy identit Azure:
 
 #### <a name="single-sign-on"></a>Jednotné přihlašování
 
-[Jednotné přihlašování (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) znamená nebudete mít přístup k všechny aplikace a prostředky, které musíte udělat podnikání, po přihlášení pouze jednou pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, budete potřebovat, aniž by musel být vyžadovaný k ověření (zadejte například heslo) ještě jednou.
+[Jednotné přihlašování (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) znamená, je možné tooaccess všechny hello aplikace a prostředky, které potřebujete toodo podnikání, po přihlášení pouze jednou pomocí jediného uživatelského účtu. Jakmile se přihlásíte, můžete přístup všechny aplikace hello budete potřebovat, aniž by musel být požadované tooauthenticate (zadejte například heslo) ještě jednou.
 
-Mnoho organizací závisí software jako služba (SaaS) aplikace například Office 365, pole a Salesforce pro produktivita koncového uživatele. Historicky pracovníci IT potřebný jednotlivě vytvářet a aktualizovat uživatelské účty v každé aplikaci SaaS a uživatelé museli Zapamatovat heslo pro každou aplikaci SaaS.
+Mnoho organizací závisí software jako služba (SaaS) aplikace například Office 365, pole a Salesforce pro produktivita koncového uživatele. V minulosti tooindividually IT pracovníci potřeba vytvářet a aktualizovat uživatelské účty v každé aplikaci SaaS, a uživatelé měli tooremember heslo pro každou aplikaci SaaS.
 
-[Azure AD rozšiřuje místní služby Active Directory do cloudu](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), povolení uživatelům používat jejich primární účet organizace, nejen Přihlaste se k jejich zařízení připojených k doméně a prostředkům společnosti, ale také všechny webu a aplikace SaaS, které jsou potřebné pro své úlohy.
+[Azure AD rozšiřuje místní služby Active Directory do cloudu hello](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), povolíte uživatelům toouse jejich organizace primární účet toonot pouze přihlášení tootheir zařízení připojených k doméně a prostředkům společnosti, ale také všechny hello webu a aplikace SaaS potřebné pro své úlohy.
 
-Jenom uživatelé nemají ke správě více sad uživatelských jmen a hesel, přístup k aplikaci lze automaticky zřízeného nebo zrušte zřízené na základě organizační skupiny a jejich stav jako zaměstnanec. [Azure AD, představuje ovládací prvky zásad správného řízení zabezpečení a přístup](https://docs.microsoft.com/azure/active-directory/active-directory-sso-integrate-saas-apps) které umožňují centrálně spravovat přístup uživatelů v rámci aplikací SaaS.
+Jenom uživatelé nemají toomanage více sad uživatelských jmen a hesel, přístup k aplikaci lze automaticky zřízeného nebo zrušte zřízené na základě organizační skupiny a jejich stav jako zaměstnanec. [Azure AD, představuje ovládací prvky zásad správného řízení zabezpečení a přístup](https://docs.microsoft.com/azure/active-directory/active-directory-sso-integrate-saas-apps) , umožňují toocentrally spravovat přístup uživatelů v rámci aplikací SaaS.
 
 #### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
-[Azure Multi-Factor authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) je metoda ověřování, který vyžaduje použití víc než jednu metodu ověřování a přidá velmi důležitou druhou vrstvu zabezpečení uživatelská přihlášení a transakce. [MFA pomáhá chránit](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works) přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování přes celou řadu možností ověření – telefonní hovor, textová zpráva nebo mobilní aplikace oznámení nebo ověřovací kód a třetích stran tokeny OAuth.
+[Azure Multi-Factor authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) je metoda ověřování, který vyžaduje hello použití více než jednu metodu ověřování a přidá velmi důležitou druhou vrstvu zabezpečení toouser přihlášení a transakce. [MFA pomáhá chránit](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works) přístup toodata a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování přes celou řadu možností ověření – telefonní hovor, textová zpráva nebo mobilní aplikace oznámení nebo ověřovací kód a třetích stran tokeny OAuth.
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Sledování zabezpečení, výstrahy a sestavy na základě learning počítače
 
-Sledování zabezpečení a výstrah a na základě learning sestav počítače, které identifikují nekonzistentní přístupové vzorce vám umožní chránit vaši firmu. Přístup k Azure Active Directory a sestavy využití, které slouží k získat přehled o integrity a zabezpečení adresáři vaší organizace. Tyto informace a správce directory pomohou určit, kde může být bezpečnostním rizikům, tak, aby adekvátní můžete naplánovat zmírnění.
+Sledování zabezpečení a výstrah a na základě learning sestav počítače, které identifikují nekonzistentní přístupové vzorce vám umožní chránit vaši firmu. Můžete použít Azure Active Directory přístup a použití sestav toogain přehled hello integrity a zabezpečení adresáře vaší organizace. Tyto informace a správce directory pomohou určit, kde může být bezpečnostním rizikům, tak, aby se adekvátní naplánovat toomitigate těchto rizik.
 
-Na portálu Azure classic nebo prostřednictvím [Azure Active directory portálu](http://aad.portal.azure.com/), [sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) jsou rozdělené do následujících způsobů:
+V hello portál Azure classic nebo prostřednictvím [Azure Active directory portálu](http://aad.portal.azure.com/), [sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) jsou rozdělené do hello následující způsoby:
 
-- Sestavy anomálií – obsahovat přihlášení události, které je neobvyklé. Naším cílem je mít budete vědět, tyto aktivity a díky kterému budete moci rozhodnout, zda je podezřelé události.
+- Sestavy anomálií – obsahovat přihlášení, jsme našli toobe neobvyklé události. Naším cílem je toomake si vědom tyto aktivity a díky kterému budete mít toodecide toobe o tom, zda je událost podezřelé.
 
 - Integrované sestavy aplikací – poskytují přehled o tom, jak cloudové aplikace jsou používány ve vaší organizaci. Azure Active Directory umožňuje integraci s tisíci cloudových aplikací.
 
-- Zprávy o chybách – označení chyb, které mohou nastat při zřizování účtů k externím aplikacím.
+- Zprávy o chybách – znamenat chyby, které mohou nastat při zřizování účtů tooexternal aplikace.
 
 - Uživatelská sestavy – zobrazí zařízení nebo přihlášení v data aktivit pro konkrétního uživatele.
 
-- Protokoly aktivity – obsahovat záznam všech auditované události v posledních 24 hodin, posledních 7 dnů, nebo posledních 30 dnů a změny aktivity skupiny a aktivita resetování a registraci hesla.
+- Protokoly aktivity – obsahovat záznam všech auditované události v rámci hello posledních 24 hodin, 7 dní, nebo posledních 30 dnů a změny aktivity skupiny a poslední aktivita resetování a registraci hesla.
 
 #### <a name="consumer-identity-and-access-management"></a>Správa identit a přístupu zákazníků
 
-[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) je služba správy vysoce dostupný, globální, identity pro určených aplikace, která je škálovatelná pro stovky milionů identit. Dá se integrovat do mobilních i webových platforem. Zákazníci se můžou ke všem vašim aplikacím přihlašovat přes přizpůsobitelné prostředí pomocí svých existujících účtů v sociálních sítích nebo pomocí nově vytvořených přihlašovacích údajů.
+[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) je vysokou dostupností, globální, služba identity management určených aplikací, škáluje toohundreds milionů identit. Dá se integrovat do mobilních i webových platforem. Uživatele mohou přihlásit tooall aplikace prostřednictvím přizpůsobitelné pomocí svých účtů na sociálních nebo vytvořením nové přihlašovací údaje.
 
-V minulosti, vývojáři aplikace, kteří chtěli [registrace a přihlašování uživatelů](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview) do svých aplikací mít by napsali vlastní kód. A použili by místní databáze nebo systémy k ukládání uživatelských jmen a hesel. Azure Active Directory B2C nabízí lepší způsob, jak integrovat správu identit uživatelů do aplikací s pomocí bezpečné, na standardech postavené platformy a velké sady rozšiřitelných zásad vaší organizace.
+V hello za příliš vývojáři aplikací[registrace a přihlašování uživatelů](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview) do svých aplikací mít by napsali vlastní kód. A použili by místní databáze nebo systémy toostore uživatelských jmen a hesel. Azure Active Directory B2C nabízí vaší organizace lepší způsob toointegrate správu identit uživatelů do aplikace pomocí hello zabezpečené, na standardech postavené platformy a velké sady rozšiřitelných zásad.
 
 Pokud používáte Azure Active Directory B2C, vaši uživatelé mohou zaregistrovat do pro vaše aplikace pomocí svých účtů na sociálních (Facebook, Google, Amazon, LinkedIn) nebo vytvořením nové přihlašovací údaje (e-mailovou adresu a heslo, nebo uživatelské jméno a heslo).
 
 Registrace zařízení
 
-[Registrace zařízení služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview) je základem pro zařízení na základě [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview) scénáře. Když je zařízení registrováno, poskytuje Azure Active Directory Device Registration zařízení s identitou, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a jeho atributy pak lze použít k vynucení zásad podmíněného přístupu u aplikací, které jsou hostovány na cloudu a v místním úložišti.
+[Registrace zařízení služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview) je hello základ pro zařízení na základě [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview) scénáře. Když je zařízení registrováno, poskytuje Azure Active Directory Device Registration hello zařízení s identitou, která je použité tooauthenticate hello zařízení při přihlášení uživatele hello. Hello ověření zařízení a atributy hello hello zařízení, lze potom použít tooenforce zásady podmíněného přístupu pro aplikace, které jsou hostované v cloudu hello a místní.
 
-V kombinaci s [správu mobilních zařízení (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) řešení, jako je například Intune, budou atributy zařízení ve službě Azure Active Directory jsou aktualizovány o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. 
+V kombinaci s [správu mobilních zařízení (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) řešení, jako je například Intune, hello atributy zařízení ve službě Azure Active Directory jsou aktualizovány o další informace o zařízení hello. Díky tomu můžete toocreate pravidla podmíněného přístupu, které vynucují přístup ze zařízení toomeet vaše standardy zabezpečení a dodržování předpisů.
 
 #### <a name="privileged-identity-management"></a>Správa privilegovaných identit
 
-[Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) umožňuje spravovat, řídit a monitorovat privilegované identity a přístup k prostředkům ve službě Azure AD a také další služeb Microsoft online services jako je Office 365 nebo Microsoft Intune.
+[Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) vám umožní spravovat, řídit a monitorovat privilegované identity a přístup k tooresources ve službě Azure AD a také další služeb Microsoft online services jako je Office 365 nebo Microsoft Intune.
 
-Uživatelé někdy potřebovat provádět privilegované operace v Azure nebo Office 365 prostředků nebo jiných aplikací SaaS. To často znamená, že organizace mají jim dát trvalé privilegovaného přístupu ve službě Azure AD. Toto je rostoucí bezpečnostní riziko pro hostované cloudové prostředky, protože organizace nelze monitorovat dostatečně tyto činnosti uživatelů s jejich oprávněními správce. Kromě toho pokud uživatelský účet s privilegovaného přístupu je ohrožen, že jeden porušení zabezpečení by mohlo mít vliv jejich celkové zabezpečení cloudu. Azure AD Privileged Identity Management pomáhá vyřešit toto riziko.
+Uživatelé někdy potřebují toocarry out privilegované operace v Azure nebo Office 365 prostředků nebo jiných aplikací SaaS. Často to znamená organizace mají toogive je trvalé privilegovaný přístup v Azure AD. Toto je rostoucí bezpečnostní riziko pro hostované cloudové prostředky, protože organizace nelze monitorovat dostatečně tyto činnosti uživatelů s jejich oprávněními správce. Kromě toho pokud uživatelský účet s privilegovaného přístupu je ohrožen, že jeden porušení zabezpečení by mohlo mít vliv jejich celkové zabezpečení cloudu. Azure AD Privileged Identity Management pomáhá tooresolve toto riziko.
 
 Azure AD Privileged Identity Management vám umožní:
 
 - Uvidíte, kteří uživatelé jsou správci Azure AD
 
-- Povolit na vyžádání "právě v čase" pro správu přístup k Online službám společnosti Microsoft, jako třeba Office 365 a Intune
+- Povolit na vyžádání "právě v čase" tooMicrosoft přístup pro správu Online služeb, jako třeba Office 365 a Intune
 
 - Získání sestavy o historii přístup správce a změny v přiřazení správců
 
-- Získání výstrahy týkající se přístupu k privilegované role.
+- Dostávat upozornění na přístup tooa privilegované role
 
 #### <a name="identity-protection"></a>Ochrana identit
 
@@ -161,60 +161,60 @@ Azure AD Privileged Identity Management vám umožní:
 
 ## <a name="secured-resource-access-in-azure"></a>Přístup k zabezpečeným prostředkům v Azure
 
-Spustí se z hlediska fakturační řízení přístupu v Azure. Vlastník účtu Azure, navštivte stránky přístup [centra účtů Azure](https://account.windowsazure.com/subscriptions), je správce účtu (AA). Předplatné je kontejner pro fakturaci, ale také slouží jako hranice zabezpečení: každého předplatného se služby správce (SA), který můžete přidat, odebrat a úpravy prostředků v tomto předplatném Azure pomocí [portál Azure classic](https://manage.windowsazure.com/). Výchozí SA nového předplatného je AA, ale AA změnit přidružení zabezpečení v centru účtů Azure.
+Spustí se z hlediska fakturační řízení přístupu v Azure. Hello vlastníka účtu Azure, získat přístup, když přejdete hello [centra účtů Azure](https://account.windowsazure.com/subscriptions), je hello správce účtu (AA). Předplatné je kontejner pro fakturaci, ale také slouží jako hranice zabezpečení: každého předplatného se službu správce (SA), který můžete přidat, odebrat a úpravy prostředků Azure v tomto předplatném pomocí hello [portál Azure classic](https://manage.windowsazure.com/). Výchozí SA Hello nového předplatného je hello AA, ale hello AA můžete změnit hello SA v hello centra účtů Azure.
 
 ![Přístup k zabezpečeným prostředkům v Azure](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
-Odběry mají také přidružení s adresářem. Adresář definuje sadu uživatelů. Může jít o uživatele z práce nebo škola vytvořený adresář, nebo může se jednat o externí uživatele (to znamená, Accounts Microsoft). Odběry jsou přístupné pro podmnožinu těchto directory uživatelů, kteří mají přiřazený jako služba správce nebo Spolusprávce (CA); Jedinou výjimkou je, že starší verze důvodů Accounts Microsoft (dříve Windows Live ID) může být přiřazen jako SA nebo certifikační Autority bez se nachází v adresáři.
+Odběry mají také přidružení s adresářem. Hello directory definuje sadu uživatelů. Může jít o uživatele z hello práci nebo ve škole, který vytvořil adresář hello a může se jednat o externí uživatele (to znamená, Accounts Microsoft). Odběry jsou přístupné pro podmnožinu těchto directory uživatelů, kteří mají přiřazený jako služba správce nebo Spolusprávce (CA); Hello pouze výjimkou je, že starší verze důvodů Accounts Microsoft (dříve Windows Live ID) může být přiřazen jako SA nebo certifikační Autority bez se nachází v adresáři hello.
 
-Zaměřené na zabezpečení společnosti by měla soustředit na poskytnutí zaměstnanci přesný oprávnění, které potřebují. Účet, který se útočníci můžou zpřístupnit příliš mnoho oprávnění. Příliš málo oprávnění znamená, že zaměstnanci nelze práci efektivně. [Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) pomůže vyřešit tento problém tak, že nabídka vyladění správy přístupu pro Azure.
+Zaměřené na zabezpečení společnosti by měla soustředit na poskytnutí zaměstnanci hello přesný oprávnění, které potřebují. Příliš mnoho oprávnění můžou zpřístupnit tooattackers účtu. Příliš málo oprávnění znamená, že zaměstnanci nelze práci efektivně. [Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) pomůže vyřešit tento problém tak, že nabídka vyladění správy přístupu pro Azure.
 
 ![Přístup k zabezpečeným prostředkům ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-Pomocí RBAC, můžete v rámci týmu oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění v vašeho předplatného Azure nebo prostředky, můžete povolit jenom určité akce. Například použijte funkci RBAC umožníte jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databází SQL v rámci stejného předplatného.
+Pomocí RBAC, můžete v rámci týmu oddělit povinností a udělit pouze hello množství toousers přístup, že potřebují tooperform svou práci. Namísto udělení každý uživatel neomezený oprávnění v vašeho předplatného Azure nebo prostředky, můžete povolit jenom určité akce. Například použijte RBAC toolet jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat SQL databáze, v rámci hello stejné předplatné.
 
 ![Přístup k zabezpečeným prostředkům v Azure(RBAC)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
 ## <a name="azure-data-security-and-encryption-protect"></a>Zabezpečení dat Azure a šifrování (Ochrana)
 
-Jeden z klíčů do ochrany dat v cloudu je monitorování účtů pro možné stavy, která může nastat vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Azure data šifrování osvědčené postupy pro zabezpečení a doporučení být kolem stavy následující data.
+Jeden z hello klíče toodata ochrany v cloudu hello je monitorování účtů pro hello možné stavy, která může nastat vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Zabezpečení dat Azure a šifrování se podle doporučení hello kolem hello následující stavy dat.
 
 - Na rest: To zahrnuje všechny informace, které kontejnerů, objektů úložiště a typy, které existují staticky na fyzickém médiu, být ho magnetické nebo optický disk.
 
-- Na cestě: Když data přenášena mezi komponenty, umístění nebo programy, jako třeba přes síť, přes service bus (z lokálního prostředí do cloudu a naopak, včetně hybridních připojení, jako je například ExpressRoute), nebo během vstupu a výstupu, ho je představit jako za provozu.
+- Na cestě: Při se přenosu dat mezi komponenty, umístění nebo programy, například přes síť hello přes service bus (z místní toocloud a naopak, včetně hybridních připojení, jako je například ExpressRoute), nebo při vstupu a výstupu proces, ho je představit jako za provozu.
 
 ### <a name="encryption--rest"></a>Šifrování @ rest
 
-K dosažení šifrování v klidovém stavu každého z následujících akcí:
+tooachieve šifrování v klidovém stavu každého z následujících hello:
 
-Podpora alespoň jeden z doporučené šifrování modely k šifrování dat popsané v následující tabulce.
+Nejméně jedna z hello doporučená šifrování modely popsané v následující data tabulky tooencrypt hello podporovat.
 
 | Modely šifrování |  |  |  |
 | ----------------  | ----------------- | ----------------- | --------------- |
 | Šifrování na serveru | Šifrování na serveru | Šifrování na serveru | Šifrování klienta
 | Šifrování na straně serveru pomocí klíče spravované služby | Šifrování na straně serveru pomocí Customer-Managed klíčů v Azure Key Vault | Šifrování na straně serveru pomocí klíčů zákazníků spravovat místní |
-| • Azure zprostředkovatelé prostředků provádět operace šifrování a dešifrování <br> • Microsoft spravuje klíče <br>• Úplné cloudu funkce | • Azure zprostředkovatelé prostředků provádět operace šifrování a dešifrování<br>• Zákazníka ovládací prvky klíče přes Azure Key Vault<br>• Úplné cloudu funkce | • Azure zprostředkovatelé prostředků provádět operace šifrování a dešifrování <br>• Zákazníka klíče místní ovládací prvky <br> • Úplné cloudu funkce| • Služeb azure nejde zobrazit dešifrovaná data <br>• Zákazníkům zachovat klíče místně (nebo v jiné zabezpečené úložiště). Klíče nejsou k dispozici ke službám Azure <br>• Snížit cloudu funkce|
+| • Azure zprostředkovatelé prostředků provádět operace šifrování a dešifrování hello <br> • Microsoft spravuje hello klíče <br>• Úplné cloudu funkce | • Azure zprostředkovatelé prostředků provádět operace šifrování a dešifrování hello<br>• Zákazníka ovládací prvky klíče přes Azure Key Vault<br>• Úplné cloudu funkce | • Azure zprostředkovatelé prostředků provádět operace šifrování a dešifrování hello <br>• Zákazníka klíče místní ovládací prvky <br> • Úplné cloudu funkce| • Služeb azure nejde zobrazit dešifrovaná data <br>• Zákazníkům zachovat klíče místně (nebo v jiné zabezpečené úložiště). Klíče nejsou k dispozici tooAzure služby <br>• Snížit cloudu funkce|
 
 ### <a name="enabling-encryption-at-rest"></a>Povolení šifrování v klidovém stavu
 
 **Identifikujte všechny umístění úložiště dat**
 
-K šifrování všech dat je cílem šifrování v klidovém stavu. Díky tomu eliminuje možnost chybí důležitá data nebo všechny trvalou umístění. Výčet všech dat uložených v aplikaci. 
+cílem Hello šifrování v klidovém stavu je tooencrypt všechna data. Díky tomu eliminuje hello možnost chybí důležitá data nebo všechny trvalou umístění. Výčet všech dat uložených v aplikaci. 
 
 > [!Note] 
-> Nejen "application data" nebo "PII, ale žádná data týkající se aplikace včetně účet metadata (předplatné mapování, informace o smlouvě, PII).
+> Nejen "application data" nebo "PII, ale žádná data týkající se tooapplication včetně účet metadata (předplatné mapování, informace o smlouvě, PII).
 
-Zvažte, jaké úložiště, který používáte pro ukládání dat. Například:
+Zvažte, co jste ukládá používají toostore data. Například:
 
 - Externího úložiště (například SQL Azure Documentdb, HDInsights, Data Lake, atd.)
 
 - Dočasné úložiště (žádné místní mezipaměť obsahující data klienta)
 
-- Mezipaměť v paměti (možné zařadit do stránkovacího souboru.)
+- Mezipaměť v paměti (možné zařadit do hello stránkovacího souboru.)
 
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Využít existující šifrování prostřednictvím rest podpory v Azure
+### <a name="leverage-hello-existing-encryption-at-rest-support-in-azure"></a>Využít existující šifrování hello prostřednictvím rest podpory v Azure
 
-Pro každý úložiště, které používáte využívejte existující šifrování prostřednictvím podpory Rest.
+Pro každý úložiště, které používáte využívají hello existující šifrování v podporu Rest.
 
 - Azure Storage: Viz [šifrování služby úložiště Azure pro Data v klidovém stavu](https://docs.microsoft.com/azure/storage/storage-service-encryption),
 
@@ -226,77 +226,77 @@ Pro virtuální počítač a místní úložiště disku použijte Azure Disk En
 
 IaaS
 
-Služby virtuálních počítačů IaaS (Windows nebo Linux) by měl používat [Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) k šifrování svazků obsahující data zákazníků.
+Služby virtuálních počítačů IaaS (Windows nebo Linux) by měl používat [Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) tooencrypt svazky obsahující data zákazníků.
 
 PaaS v2
 
-Služby provozované na PaaS v2 Service Fabric pomocí šifrování disku Azure pro sadu škálování virtuálního počítače [VMSS] k šifrování jejich virtuální počítače PaaS v2.
+Služby provozované na PaaS v2 Service Fabric pomocí šifrování disku Azure pro sadu škálování virtuálního počítače [VMSS] tooencrypt jejich virtuální počítače PaaS v2.
 
 PaaS v1
 
-Azure Disk Encryption není aktuálně podporována u na PaaS v1. Proto musíte použít šifrování na úrovni aplikace k šifrování trvalých dat v klidovém stavu.  To zahrnuje, ale není omezeno na data aplikací, dočasné soubory, protokoly a výpisy stavu systému.
+Azure Disk Encryption není aktuálně podporována u na PaaS v1. Proto je nutné použít aplikaci úroveň šifrování tooencrypt trvalá data v klidovém stavu.  To zahrnuje, ale není omezeno na data aplikací, dočasné soubory, protokoly a výpisy stavu systému.
 
-Většina služeb mají pokusit o využít šifrování zprostředkovatele prostředku úložiště. Některé služby mají udělat explicitní šifrování, například všechny trvalé materiál klíče (certifikáty, kořenové / hlavní klíče) musí být uložen v Key Vault.
+Většina služeb mají pokusit o šifrování hello tooleverage zprostředkovatele prostředku úložiště. Některé služby mají toodo explicitní šifrování, například všechny trvalé materiál klíče (certifikáty, kořenové / hlavní klíče) musí být uložen v Key Vault.
 
-Pokud podporujete šifrování na straně služby spravované zákazníkem klíče je potřeba způsob, jak zákazník k získání klíče do us. Podporované a doporučený způsob, jak to udělat integrací trezoru službou klíč s Azure (AZURE). V takovém případě zákazníků můžete přidávat a spravovat jejich klíče v Azure Key Vault. Zákazník může Naučte se používat službou AZURE prostřednictvím [Začínáme s Key Vault](http://go.microsoft.com/fwlink/?linkid=521402).
+Pokud podporujete šifrování na straně služby spravované zákazníkem klíče je potřeba toobe způsob, jak pro hello zákazníka tooget hello klíč toous. Hello podporované a doporučeno způsob toodo integrací trezoru službou klíč s Azure (AZURE). V takovém případě zákazníků můžete přidávat a spravovat jejich klíče v Azure Key Vault. Další zákazník jak toouse službou AZURE prostřednictvím [Začínáme s Key Vault](http://go.microsoft.com/fwlink/?linkid=521402).
 
-Při integraci s Azure Key Vault, byste přidali kód pro klíč požádat službou AZURE v případě potřeby k dešifrování.
+toointegrate s Azure Key Vault, měli byste přidat kód toorequest klíč z službou AZURE v případě potřeby k dešifrování.
 
-- V tématu [Azure Key Vault – krok za krokem](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) informace o tom, jak integrovat se službou AZURE.
+- V tématu [Azure Key Vault – krok za krokem](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) informace o tom, toointegrate se službou AZURE.
 
-Pokud podporujete zákazníka spravované klíče, potřebujete poskytovat UX pro zákazníka na zadejte Key Vault (nebo identifikátor URI trezoru klíčů) pro použití.
+Pokud podporujete zákazníka spravované klíče, potřebujete tooprovide UX pro hello zákazníka toospecify které toouse Key Vault (nebo identifikátor URI trezoru klíčů).
 
-Jak šifrování v klidovém stavu zahrnuje šifrování hostitele, dat infrastruktury a klientů, ztrátě klíče z důvodu chyby systému nebo škodlivé aktivity by mohly znamenat šifrovaná data je ztraceny. Proto je důležité, aby šifrování v řešení Rest má scénáře obnovení po havárii komplexní odolné vůči selhání systému a podezřelé aktivity.
+Jak šifrování v klidovém stavu zahrnuje hello šifrování dat hostitele, infrastruktury a klientů, hello ztrátě hello klíče z důvodu selhání toosystem nebo škodlivé aktivity může znamenat, dojde ke ztrátě všech dat hello zašifrovaná. Proto je důležité, zda má šifrování na Rest řešení obnovení po havárii komplexní scénáře selhání odolné toosystem a podezřelé aktivity.
 
-Služby, které implementují šifrování v klidovém stavu jsou obvykle přesto náchylné k šifrovacím klíčům nebo bez šifrování dat ponechána na hostitelské jednotce (například v souboru stránky hostitelský operační systém.) Služby musí proto zkontrolujte, že svazek hostitele pro jejich služby se šifrují. Pro usnadnění tohoto výpočetní team aktivoval nasazení šifrování hostitele, který používá [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP a rozšíření pro službu DCM a agenta pro šifrování svazku hostitele.
+Služby, které implementují šifrování v klidovém stavu jsou obvykle přesto náchylné toohello šifrovací klíče nebo data ponechána nešifrované podobě na jednotce hello hostitele (například v hello soubor stránky hello hostitele operačního systému.) Proto služby zajistit, aby byl hello svazek hostitele pro jejich služby se šifrují. toofacilitate tento tým výpočetní aktivoval nasazení hello šifrování hostitele, který používá [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP a rozšíření toohello DCM služby a agent tooencrypt hello svazek hostitele.
 
 Většina služeb jsou implementovány na standardní virtuálních počítačích Azure. Tyto služby by měl získat [hostitele šifrování](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) automaticky při výpočetní povolí ho. Pro služby spuštěné v výpočetní spravované clustery hostitelů je povolené šifrování automaticky jako je Windows Server 2016 nasazuje.
 
 ### <a name="encryption-in-transit"></a>Šifrování během přenosu
 
-Základní součástí strategie ochrany dat by měly být ochrany dat během přenosu. Vzhledem k tomu, že se data přenášejí a zpět z mnoha umístění, obecné doporučení je vždy používat protokoly SSL/TLS pro výměnu dat v různých umístěních. V některých případech můžete chtít izolovat celý komunikační kanál mezi místní a cloudové infrastruktury pomocí virtuální privátní sítě (VPN).
+Základní součástí strategie ochrany dat by měly být ochrany dat během přenosu. Vzhledem k tomu, že se data přenášejí a zpět z mnoha umístění, hello obecné doporučení je vždy použít data tooexchange protokoly SSL/TLS v různých umístěních. V některých případech může být vhodné tooisolate hello celý komunikační kanál mezi místní a cloudové infrastruktury pomocí virtuální privátní sítě (VPN).
 
 Pro přesun mezi vaší místní infrastruktury a Azure data měli byste zvážit příslušná bezpečnostní opatření, například HTTPS nebo VPN.
 
-Organizace, které je potřeba zabezpečit přístup z více pracovní stanice nachází v místě k Azure, použijte [Azure site-to-site VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-site-to-site-create).
+Pro organizace, které potřebují toosecure přístup z více tooAzure nacházejí na místních pracovní stanice, použijte [Azure site-to-site VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-site-to-site-create).
 
-Organizace, které je potřeba zabezpečit přístup z jedné pracovní stanice nachází v místě k Azure, použijte [Point-to-Site VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-point-to-site-create).
+Organizace, které potřebují přístup toosecure z jedné pracovní stanice nachází místní tooAzure, použijte [Point-to-Site VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-point-to-site-create).
 
-Větších datových sad se dají přesunout přes vyhrazené vysokorychlostní propojení WAN, jako [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pokud chcete použít ExpressRoute, můžete také šifrování dat na úrovni aplikace pomocí [SSL/TLS](https://support.microsoft.com/kb/257591) nebo jiné protokoly pro zvýšení ochrany.
+Větších datových sad se dají přesunout přes vyhrazené vysokorychlostní propojení WAN, jako [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pokud si zvolíte toouse ExpressRoute, můžete také šifrování dat hello hello úrovni aplikace pomocí [SSL/TLS](https://support.microsoft.com/kb/257591) nebo jiné protokoly pro zvýšení ochrany.
 
-Pokud jsou interakci s Azure Storage prostřednictvím portálu Azure, všechny transakce dojít přes HTTPS. [Rozhraní API REST úložiště](https://msdn.microsoft.com/library/azure/dd179355.aspx) přes HTTPS můžete použít také pro interakci s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
+Pokud jsou interakci s Azure Storage prostřednictvím hello portálu Azure, všechny transakce dojít přes HTTPS. [Rozhraní API REST úložiště](https://msdn.microsoft.com/library/azure/dd179355.aspx) přes protokol HTTPS může být také použít toointeract s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
 
-Organizace, které se nepodařilo ochranu přenášených dat budou náchylnější pro [útokům man-in-the-middle](https://technet.microsoft.com/library/gg195821.aspx), [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a zneužití relace. Prvním krokem při přístupu k důvěrných dat může být tyto útoky.
+Organizace, které nesplní tooprotect přenášených dat budou náchylnější pro [útokům man-in-the-middle](https://technet.microsoft.com/library/gg195821.aspx), [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a zneužití relace. Tyto útoky lze získat přístup k datům tooconfidential hello prvním krokem.
 
-Další informace o Azure VPN možnost přečíst v článku [plánování a návrhu pro bránu VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
+Další informace o Azure VPN možnost přečíst článek hello [plánování a návrhu pro bránu VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 ### <a name="enforce-file-level-data-encryption"></a>Vynutit šifrování dat na úrovni souborů
 
-[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) používá zásady šifrování, identity a autorizace, které pomáhají zabezpečit soubory a e-mailu. Azure RMS funguje napříč více zařízeními – telefony, tablety a počítače pomocí ochrany v rámci vaší organizace i mimo vaši organizaci. Tato možnost je možné, protože Azure RMS přidá úroveň ochrany, která zůstává s daty, i když opustí prostory vaší organizace.
+[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) toohelp zásady šifrování, identity a autorizace používá zabezpečit soubory a e-mailu. Azure RMS funguje napříč více zařízeními – telefony, tablety a počítače pomocí ochrany v rámci vaší organizace i mimo vaši organizaci. Tato možnost je možné, protože Azure RMS přidá úroveň ochrany, která zůstává s hello data, i když opustí prostory vaší organizace.
 
-Pokud používáte službu Azure RMS k ochraně souborů, používáte standardní kryptografie s plnou podporu systému [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). Pokud využíváte Azure RMS pro ochranu dat, máte záruku, že zůstane ochrana se souborem, i v případě, že se zkopíruje do úložiště, které není pod kontrolou oddělení IT, třeba do cloudového úložiště. Stejné dojde souborů sdílených prostřednictvím e-mailu, je soubor chráněný jako příloha k e-mailovou zprávu s pokyny, jak chráněnou přílohu otevřít.
-Při plánování pro Azure RMS přijetí doporučujeme následující:
+Pokud používáte Azure RMS tooprotect vaše soubory, používáte standardní kryptografie s plnou podporu systému [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). Pokud využíváte Azure RMS pro ochranu dat, máte hello záruku toho, že hello je ochrana stále hello souborem, i když je zkopírovaný toostorage, který není pod kontrolou hello oddělení IT, třeba do cloudového úložiště. Hello stejné dochází u souborů, které sdílejí prostřednictvím e-mailu, hello soubor je chráněn jako e-mailovou zprávu tooan přílohy, s pokyny, jak tooopen hello chráněné přílohy.
+Při plánování pro Azure RMS přijetí doporučujeme hello následující:
 
-- Nainstalujte [aplikace sdílení RMS](https://technet.microsoft.com/library/dn339006.aspx). Tato aplikace se integruje s Office aplikace nainstalováním Office doplňku tak, aby uživatelé mohli snadno chránit soubory přímo.
+- Nainstalujte hello [aplikace sdílení RMS](https://technet.microsoft.com/library/dn339006.aspx). Tato aplikace se integruje s Office aplikace nainstalováním Office doplňku tak, aby uživatelé mohli snadno chránit soubory přímo.
 
-- Nakonfigurujte aplikace a služby pro podporu Azure RMS
+- Nakonfigurujte aplikace a toosupport služby Azure RMS
 
 - Vytvoření [vlastní šablony](https://technet.microsoft.com/library/dn642472.aspx) , podle vlastních podnikových požadavků. Příklad: šablonu pro horní tajných dat, která má být použita v všechny hlavní tajný klíč související s e-mailů.
 
-Organizace, které jsou slabé na [klasifikace dat](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) a ochranu souborů může být náchylnější k úniku dat. Bez ochrany správný soubor nebude možné získat obchodní údaje, sledovat zneužití a zabránit škodlivým přístupem k souborům organizace.
+Organizace, které jsou slabé na [klasifikace dat](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) a ochranu souborů může být náchylnější úniku toodata. Bez ochrany správný soubor organizace nebude mít tooobtain podnikových statistik, monitorování možného zneužití a zabránit toofiles škodlivým přístupem.
 
 > [!Note]
-> Další informace o Azure RMS přečíst v článku [Začínáme se službou Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
+> Další informace o Azure RMS pomocí přečtení článku hello [Začínáme se službou Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
 
 ## <a name="secure-your-application-protect"></a>Zabezpečení vaší aplikace (Ochrana)
-Sice zodpovídají za zabezpečení infrastruktury a platformy, které vaše aplikace běží v Azure, je vaší povinností zabezpečit vaše vlastní aplikace. Jinými slovy musíte k vývoji, nasadit a spravovat kódu aplikace a obsah zabezpečené způsobem. Bez tohoto kódu aplikace nebo obsah může být zranitelný vůči hrozbám.
+Sice zodpovídají za zabezpečení hello infrastruktury a platformy, které vaše aplikace běží v Azure, je vaše odpovědnosti toosecure vaše vlastní aplikace. Jinými slovy, budete potřebovat toodevelop, nasazovat a spravovat kódu aplikace a obsah zabezpečené způsobem. Bez tohoto kódu aplikace nebo obsah může být snadno napadnutelný toothreats.
 
 ### <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 [Brány firewall webových aplikací (firewall webových aplikací)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) je funkce [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) poskytuje centralizovanou ochrany webových aplikací z běžných zneužití a ohrožení zabezpečení.
 
-Firewall webových aplikací je založený na základě [základní sady pravidel OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
+Brány firewall webových aplikací je na základě pravidel z hello [sady pravidel základní OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Jsou běžné mezi tyto zneužitím prostřednictvím injektáže SQL, skriptování mezi weby útoků tooname pár. Zabránění takové útoky v kódu aplikace může být náročné což může vyžadovat přísných Údržba, opravy a monitorování v několika vrstev topologie aplikace hello. Brány firewall centralizované webových aplikací pomáhá zkontrolujte mnohem jednodušší správu zabezpečení a nabízí lepší záruku tooapplication správci proti hrozbám nebo vniknutí. Řešení firewall webových aplikací můžete rovněž reagovat ohrožení zabezpečení tooa rychlejší podle opravy známých ohrožení zabezpečení do centrálního umístění a zabezpečení těchto jednotlivých webových aplikací. Existující application Gateway může být snadno převedený tooa webové aplikace povolena brána firewall aplikační brány.
 
-Mezi běžné webové zranitelnosti, proti kterým firewall webových aplikací chrání, patří tyto:
+Některé z běžných chyb webové hello které brány firewall webových aplikací chrání před zahrnuje:
 
 - Ochrana před útoky prostřednictvím injektáže SQL.
 
@@ -313,62 +313,62 @@ Mezi běžné webové zranitelnosti, proti kterým firewall webových aplikací 
 - Detekce časté nesprávné konfigurace aplikace (tedy Apache, IIS, atd.)
 
 > [!Note]
-> Podrobnější seznam pravidel a jejich ochrany naleznete v následujících [základní sady pravidel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview#core-rule-sets):
+> Podrobnější seznam pravidel a jejich ochrany naleznete v následujících hello [základní sady pravidel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview#core-rule-sets):
 
-Azure také poskytuje několik snadno použitelné funkce, které pomáhají zabezpečit příchozí a odchozí přenosy pro vaši aplikaci. Azure pomáhá zákazníkům zabezpečit svůj kód aplikace poskytnutím externě k dispozici také funkce ke kontrole chyb zabezpečení webové aplikace.
+Azure také poskytuje několik snadno použitelné funkce toohelp zabezpečit příchozí a odchozí přenosy pro vaši aplikaci. Azure pomáhá zákazníkům zabezpečit svůj kód aplikace poskytnutím externě k dispozici také funkce tooscan webové aplikace pro chyby zabezpečení.
 
 - [Zabezpečte svoji webovou aplikaci pomocí různých způsobů ověřování a autorizace](https://docs.microsoft.com/azure/app-service-web/web-sites-authentication-authorization)
 
     - [Nastavení ověřování Azure Active Directory pro vaši aplikaci](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
 
-- [Zabezpečení přenosu do vaší aplikace povolením Transport Layer Security (TLS/SSL) - HTTPS](https://docs.microsoft.com/azure/app-service-web/web-sites-configure-ssl-certificate)
+- [Zabezpečení provozu tooyour aplikace povolením Transport Layer Security (TLS/SSL) - HTTPS](https://docs.microsoft.com/azure/app-service-web/web-sites-configure-ssl-certificate)
 
     - [Vynutit veškerý příchozí provoz přes připojení HTTPS](http://microsoftazurewebsitescheatsheet.info/)
 
   - [Povolit zabezpečení striktní přenosu (HSTS)](http://microsoftazurewebsitescheatsheet.info/#enable-http-strict-transport-security-hsts)
 
 
-- [Omezit přístup k aplikaci tak, že IP adresa klienta](http://microsoftazurewebsitescheatsheet.info/#filtering-traffic-by-ip)
+- [Omezit přístup tooyour aplikace tak, že IP adresa klienta](http://microsoftazurewebsitescheatsheet.info/#filtering-traffic-by-ip)
 
-- [Omezit přístup k aplikaci tak, že chování klienta - požadavek četnost a souběžnost](http://microsoftazurewebsitescheatsheet.info/#dynamic-ip-restrictions)
+- [Omezit přístup tooyour aplikace tak, že chování klienta - požadavek četnost a souběžnost](http://microsoftazurewebsitescheatsheet.info/#dynamic-ip-restrictions)
 
 - [Kontrola kódu webové aplikace pro chyby pomocí Tinfoil Security Scanning.](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)
 
-- [Konfigurace vzájemné ověřování TLS vyžadovat klientské certifikáty pro připojení k vaší webové aplikace](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)
+- [Konfigurace TLS vzájemné ověřování toorequire klientské certifikáty tooconnect tooyour webové aplikace](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)
 
-- [Konfigurovat certifikát klienta pro použití z vaší aplikace pro zabezpečené připojení k externím prostředkům](https://azure.microsoft.com/blog/using-certificates-in-azure-websites-applications/)
+- [Konfigurovat certifikát klienta pro použití z vaší aplikace toosecurely připojení tooexternal prostředků](https://azure.microsoft.com/blog/using-certificates-in-azure-websites-applications/)
 
-- [Odebrat záhlaví standardní server předejdete nástroje z tímto způsobem vaší aplikace](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
+- [Odebrání nástrojů pro standardní server hlavičky tooavoid z tímto způsobem vaší aplikace](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 
 - [Bezpečně připojte vaše aplikace s prostředky v privátní síti prostřednictvím sítě VPN Point-To-Site](https://docs.microsoft.com/azure/app-service-web/web-sites-integrate-with-vnet)
 
 - [Bezpečně připojte vaše aplikace s prostředky v privátní síti používáte hybridní připojení](https://docs.microsoft.com/azure/app-service-web/web-sites-hybrid-connection-get-started)
 
-Aplikační služba Azure používá stejné Antimalwarové řešení používá Azure Cloud Services a virtuálních počítačů. Další informace o tom najdete v tématu naše [antimalwarových dokumentaci](https://docs.microsoft.com/azure/security/azure-security-antimalware).
+Azure App Service používá hello stejné Antimalwarové řešení používá Azure Cloud Services a virtuálních počítačů. toolearn Další informace najdete v tooour [antimalwarových dokumentaci](https://docs.microsoft.com/azure/security/azure-security-antimalware).
 
 ## <a name="secure-your-network-protect"></a>Zabezpečení sítě (Ochrana)
-Microsoft Azure obsahuje robustní síťové infrastruktury pro podporu aplikací a služeb požadavky na připojení. Připojení k síti je možné mezi prostředky, které jsou umístěné v Azure, mezi místními a Azure hostovaným prostředkům a do a z Internetu a Azure.
+Microsoft Azure obsahuje robustní sítě toosupport infrastruktury, aplikace a požadavky na připojení služby. Připojení k síti je možné mezi prostředky, které jsou umístěné v Azure, mezi místními a Azure hostované prostředky a tooand z hello Internet a Azure.
 
-[Azure síťové infrastruktury](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines) umožňuje bezpečně připojit k dalším s prostředky Azure [virtuální sítě (virtuální sítě)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Virtuální síť je reprezentace vlastní sítě v cloudu. Virtuální síť je to logická izolace sítě cloudu Azure vyhrazeného pro vaše předplatné. Virtuální sítě může připojit k místní sítě.
+Hello [Azure síťové infrastruktury](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines) umožňuje toosecurely můžete připojit prostředky Azure tooeach jiné s [virtuální sítě (virtuální sítě)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Virtuální síť je reprezentace vlastní sítě v cloudu hello. Virtuální síť je to logická izolace hello cloudu Azure síť vyhrazený tooyour předplatného. Můžete propojit virtuální sítě tooyour místní sítě.
 
 ![Zabezpečení sítě (Ochrana)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
-Pokud potřebujete řízení úrovně přístupu k základní síti (na základě IP adresy a protokoly TCP nebo UDP), pak můžete použít [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg). Skupina zabezpečení sítě (NSG) je základní stavových paketů filtrování brány firewall a umožňuje vám k řízení přístupu na základě [5 řazené kolekce členů](https://www.techopedia.com/definition/28190/5-tuple).
+Pokud potřebujete řízení úrovně přístupu k základní síti (podle IP adresy a hello TCP nebo UDP protokoly) a pak můžete použít [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg). Skupina zabezpečení sítě (NSG) je základní stavových paketů filtrování brány firewall a umožňuje toocontrol přístup na základě [5 řazené kolekce členů](https://www.techopedia.com/definition/28190/5-tuple).
 
-Azure sítě podporuje přizpůsobit chování směrování síťového provozu ve virtuálních sítí Azure. To provedete tak, že nakonfigurujete [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) v Azure.
+Azure sítě podporuje hello možnost toocustomize hello směrování chování pro síťový provoz na virtuálních sítí Azure. To provedete tak, že nakonfigurujete [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) v Azure.
 
-[Vynuceného tunelování](https://www.petri.com/azure-forced-tunneling) mechanismus, můžete zajistit, že vaše služby nejsou povolené k navázání připojení k zařízení na Internetu.
+[Vynuceného tunelování](https://www.petri.com/azure-forced-tunneling) je mechanismus, který můžete použít tooensure, které vaše služby nejsou povoleny tooinitiate toodevices připojení na hello Internetu.
 
-Azure podporuje vyhrazené propojení WAN připojení k síti na pracovišti a virtuální síť Azure s [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction). Propojení mezi Azure a váš web používá vyhrazené připojení, které se nepřenášejí prostřednictvím veřejného Internetu. Pokud vaše aplikace Azure běží v několik datových center, můžete použít [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) pro směrování požadavků od uživatelů inteligentně napříč instancí aplikace. Můžete také směrovat provoz do služby nejsou spuštěny v Azure, pokud jsou přístupné z Internetu.
+Azure podporuje vyhrazený propojení WAN připojení tooyour do místní sítě a virtuální síť Azure s [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction). Hello propojení mezi Azure a váš web používá vyhrazené připojení, které nejde přes hello veřejného Internetu. Pokud vaše aplikace Azure běží v několik datových center, můžete použít [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) tooroute žádosti od uživatelů inteligentně mezi instancemi aplikace hello. Také je možné směrovat provoz tooservices není spuštěna v Azure, pokud jsou přístupné z Internetu hello.
 
 ## <a name="virtual-machine-security-protect"></a>Virtuální počítač zabezpečení (Ochrana)
 
 [Virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/) umožňuje nasadit širokou škálu řešení výpočetní agilní způsobem. Díky podpoře systémů Windows, Linux, SQL Server, Oracle, IBM, SAP a Azure BizTalk Services můžete nasadit jakoukoli úlohu a jakýkoli jazyk skoro v každém operačním systému.
 
-V Azure, můžete použít [antimalwarový software](https://docs.microsoft.com/azure/security/azure-security-antimalware) od dodavatelů zabezpečení, jako je Microsoft, Symantec, Trend Micro a Kaspersky ochrana virtuálních počítačů ze škodlivých souborů, adwaru a dalšími hrozbami.
+V Azure, můžete použít [antimalwarový software](https://docs.microsoft.com/azure/security/azure-security-antimalware) od dodavatelů zabezpečení, jako je Microsoft, Symantec, Trend Micro a Kaspersky tooprotect virtuálních počítačů ze škodlivých souborů, adwaru a dalšími hrozbami.
 
-Antimalware od Microsoftu pro Azure Cloud Services a virtuální počítače je funkce ochrany v reálném čase, který pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Antimalware od Microsoftu poskytuje konfigurovat výstrahy, když označuje, že škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v Azure systémech.
+Antimalware od Microsoftu pro Azure Cloud Services a virtuální počítače je funkce ochrany v reálném čase, který pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Antimalware od Microsoftu poskytuje konfigurovat výstrahy, když známé tooinstall pokusy o škodlivého nebo nežádoucího softwaru, sám sebe nebo spustit v Azure systémech.
 
 [Zálohování Azure](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) škálovatelné řešení, které chrání data aplikací s nulové kapitálovými investicemi a minimálními provozní náklady. Chyby aplikací můžou poškodit vaše data a lidské omyly zase můžou způsobit chyby v aplikacích. S Azure Backup jsou chráněné virtuální počítače s Windows a Linux.
 
@@ -376,67 +376,67 @@ Antimalware od Microsoftu pro Azure Cloud Services a virtuální počítače je 
 
 ## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>Zajištění dodržování předpisů: cloudových služeb z důvodu kontrolní seznam opatrností (Ochrana)
 
-Microsoft vyvinul [cloudové služby kvůli opatrností kontrolního seznamu](https://aka.ms/cloudchecklist.download) umožňující organizacím uplatňovat kvůli opatrností podle svého uvážení přesunout do cloudu. Poskytuje strukturu pro organizaci všech velikost a typ – privátní podnikům a organizacím veřejných, včetně government na všech úrovních a neziskové organizace – k identifikaci svých vlastních výkonu, služby, Správa dat a cíle zásad správného řízení a požadavky. To umožňuje, aby porovnání nabídek poskytovatelů služeb jiný cloud, nakonec které tvoří základ pro smlouvy o cloudových služeb.
+Microsoft vyvinul [hello cloudové služby kvůli opatrností kontrolní seznam](https://aka.ms/cloudchecklist.download) toohelp organizace náležitou opatrností stejně jako se zvažte přesunutí toohello cloudu. Poskytuje strukturu pro organizaci všech velikost a typ – privátní podnikům a organizacím veřejných, včetně government na všech úrovních a neziskové organizace – tooidentify vlastní výkonu, služby, Správa dat a cíle zásad správného řízení a požadavky. To jim umožňuje toocompare hello nabídky poskytovatelů služeb jiný cloud, nakonec které tvoří základ hello pro smlouvy o cloudových služeb.
 
-V seznamu úkolů poskytuje rozhraní, aby klauzule pomocí klauzule s novou standardní mezinárodní pro cloudové služby smlouvy, ISO/IEC 19086. Tento standard poskytuje sada důležité informace pro organizace, aby mohl snadněji rozhodnutí o přijetí cloudu a vytvořit běžné základů pro porovnání nabídek služeb cloudu.
+kontrolní seznam Hello poskytuje rozhraní, aby klauzule pomocí klauzule s novou standardní mezinárodní pro cloudové služby smlouvy, ISO/IEC 19086. Tento standard poskytuje sada důležité informace týkající se organizace toohelp je rozhodnutí o přijetí cloudu a vytvořte běžné základů pro porovnání nabídek služeb cloudu.
 
-V seznamu úkolů zvýší úroveň důkladně vetted přesunout do cloudu a poskytuje pokyny strukturovaných a konzistentní, opakovatelných přístup pro výběr poskytovatele cloudové služby.
+kontrolní seznam Hello zvýší úroveň důkladně vetted přesunutí toohello cloudu, poskytuje strukturovaných pokyny a konzistentní, opakovatelných přístup pro výběr poskytovatele cloudové služby.
 
-Přijetí cloudu je již jednoduše technologie rozhodnutí. Protože touch kontrolní seznam požadavků na každý aspekt organizace, slouží o svolání všechny klíče interní-rozhodují – ředitel IT a ředitel zabezpečení informací, jakož i právní, riziko Odborníci v oblasti správy, nákup a dodržování předpisů. Tím se zvyšuje efektivita rozhodovací proces a základů rozhodnutí v zvukové reasoning, což snižuje pravděpodobnost nepředpokládaného roadblocks přijetí.
+Přijetí cloudu je již jednoduše technologie rozhodnutí. Protože touch kontrolní seznam požadavků na každý aspekt organizace, budou sloužit tooconvene všechny klíče interní-rozhodují – hello ředitel IT a ředitel zabezpečení informací, jakož i právní, riziko Odborníci v oblasti správy, nákup a dodržování předpisů. Tím se zvyšuje efektivita hello hello rozhodovací proces a základů rozhodnutí v zvuk odůvodnění, což snižuje pravděpodobnost hello nepředpokládaného roadblocks tooadoption.
 
-Kromě toho, v seznamu úkolů:
+Kromě toho hello kontrolní seznam:
 
-- Zpřístupní klíče diskusní témata pro vedoucí pracovníky na začátku procesu přijetí cloudu.
+- Zpřístupní klíče diskusní témata pro vedoucí pracovníky na hello začátku procesu přijetí hello cloudu.
 
-- Podporuje důkladné obchodní diskusí o předpisy a cíle organizace pro zabezpečení dat, ochrany osobních údajů a identifikovatelné osobní údaje (PII).
+- Podporuje důkladné obchodní diskusí o předpisy a hello cíle organizace pro ochrany osobních údajů, identifikovatelné osobní údaje (PII) a data zabezpečení.
 
 - Pomáhá organizacím identifikovat všechny potenciální problémy, které mohou ovlivnit projekt cloudové.
 
-- Poskytuje sadu otázky, konzistentní s stejných podmínek, definice, metriky a výsledek pro každého zprostředkovatele zjednodušit proces porovnání nabídek z poskytovatele různých cloudových služeb.
+- Poskytuje sadu otázky se hello konzistentní stejných podmínek, definice, metriky a výsledek pro každého zprostředkovatele toosimplify hello proces porovnání nabídek z poskytovatele různých cloudových služeb.
 
 ## <a name="azure-infrastructure-and-application-security-validation-detect"></a>Azure ověření zabezpečení infrastruktury a aplikací (zjistit)
 
-[Zabezpečení provozu Azure](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na službách, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure.
+[Zabezpečení provozu Azure](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje toohello služeb, ovládací prvky a funkce dostupné toousers pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure.
 
 ![ověření zabezpečení (zjistit)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Zabezpečení provozu Azure je založený na rozhraní, které zahrnuje poznatky získané při různých možnostech, které jsou jedinečné pro společnosti Microsoft, včetně Microsoft SDL Security Development Lifecycle (), programu Microsoft zabezpečení odpovědi Centre a hloubkové povědomí o povahu hrozeb počítačové bezpečnosti.
+Zabezpečení provozu Azure je založený na rozhraní, které zahrnuje hello poznatky získané při různých možnostech, které jsou jedinečné tooMicrosoft, včetně hello Microsoft SDL Security Development Lifecycle (), hello Centre odpovědi zabezpečení Microsoft program a hloubkové povědomí o šířku threat počítačové bezpečnosti hello.
 
 ### <a name="microsoft-operations-management-suiteoms"></a>Microsoft operations management suite(OMS)
 
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je řešení pro správu IT pro hybridní cloud. Použitá samostatně nebo rozšířit existující nasazení produktu System Center, OMS vám dává flexibilní a řízení pro správu cloudové infrastruktury.
+[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je hello řešení pro správu IT pro hello hybridní cloud. Použít samostatně nebo tooextend, které vám vaše stávající nasazení produktu System Center, OMS hello maximální flexibilitu a řízení pro správu cloudové infrastruktury.
 
 ![Microsoft operations management suite(OMS)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-S OMS můžete spravovat libovolnou instancí ve všech cloudu, včetně místní, Azure, AWS, Windows Server, Linux, VMware a OpenStack, při nižších nákladech, než konkurenční řešení. Vytvořené pro první cloudu world, OMS nabízí nové přístup ke správě vaší organizace tedy nejrychlejší a nákladově nejefektivnější způsob přizpůsobení nové úlohy, aplikace a cloudové prostředí a splňují nové obchodní příležitosti.
+S OMS můžete spravovat libovolnou instancí ve všech cloudu, včetně místní, Azure, AWS, Windows Server, Linux, VMware a OpenStack, při nižších nákladech, než konkurenční řešení. Vytvořené pro první cloudu hello, world, OMS nabízí nový způsob toomanaging při vaší organizace, která je hello nejrychlejší, nákladově nejefektivnější způsob nové obchodní toomeet vyzve a zohlednit nové úlohy, aplikace a cloudové prostředí.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) poskytuje služby monitorování pro OMS získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) poskytuje služby monitorování pro OMS získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data můžou zahrnovat události, údaje o výkonu nebo vlastní data poskytnutá prostřednictvím hello rozhraní API. Jakmile získány, je k dispozici pro výstrahy, analýzu a export dat hello.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
-Tato metoda umožňuje konsolidovat data z různých zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
+Tato metoda vám umožní tooconsolidate data z různých zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje hello shromažďování dat hello od hello akce prováděné na tato data tak, aby všechny akce jsou k dispozici tooall druhy dat.
 
 ### <a name="azure-security-center"></a>Azure security center
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá zabránit, zjišťovat a odpovědět toothreats s lepší přehled a kontrolu nad hello zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
-Služba Security Center analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol.
+Security Center analyzuje stav zabezpečení hello vaše prostředky Azure tooidentify potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol hello.
 
 Příklady obsahují:
 
-- Zřizování antimalwaru, aby se pomohl identifikovat a odebrat škodlivý software
+- Zřizování antimalwaru, toohelp identifikovat a odebrat škodlivý software
 
-- Konfigurace skupin zabezpečení sítě a pravidla pro řízení přenosu do virtuálních počítačů
+- Konfigurace sítě zabezpečení skupiny a pravidel toocontrol provoz tooVMs
 
-- Zřizování firewallů webových aplikací, které pomáhají bránit útokům zaměřeným na vaše webové aplikace
+- Zřizování firewallů webových aplikací toohelp bránit proti útokům, které cílí na vaše webové aplikace
 
 - Nasazení chybějících aktualizací systému
 
-- Adresování konfigurací operačního systému, které neodpovídají doporučeným standardním hodnotám
+- Adresování konfigurací operačního systému, které neodpovídají hello doporučená standardních hodnot
 
-Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
+Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vaše prostředky Azure, hello sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
 
 - Ohrožené virtuální počítače komunikaci s známé škodlivé IP adresy
 
@@ -448,25 +448,25 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 ### <a name="azure-monitor"></a>Azure monitorování
 
-[Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) poskytuje odkazy na informace na konkrétní typy prostředků. Nabízí vizualizace, dotaz, směrování, výstrahy, automatické škálování a automatizace na datům umístěným jak infrastrukturu Azure (protokol aktivit) a každý jednotlivých prostředků Azure (diagnostických protokolů).
+[Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) poskytuje tooinformation ukazatele na konkrétní typy prostředků. Nabízí vizualizace, dotaz, směrování, výstrahy, automatické škálování a automatizace na data z hello infrastrukturu Azure (protokol aktivit) a každý jednotlivých prostředků Azure (diagnostických protokolů).
 
-Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou.
+Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje tooensure data, která vaše aplikace zůstává nahoru a spuštěn v dobrém stavu. Pomáhá také můžete toostave vypnout potenciální problémy a řešení potíží s uplynulou těch, které jsou.
 
-![Azure monitorování](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig10.png) kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Dané znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
+![Azure monitorování](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig10.png) kromě toho můžete použít monitorování hlubšímu porozumění toogain data o vaší aplikaci. Dané znalosti můžete vám pomohou tooimprove výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
 
-Auditování zabezpečení sítě je důležité pro zjišťování chyb zabezpečení sítě a zajištění dodržování zabezpečení IT a modelu regulačních zásad správného řízení. Pomocí zobrazení skupiny zabezpečení můžete načíst nakonfigurovaná skupina zabezpečení sítě a pravidel zabezpečení, jakož i pravidla efektivní zabezpečení. Seznam pravidel, použít můžete určit, že porty, které jsou otevřené a ss sítě ohrožení zabezpečení.
+Auditování zabezpečení sítě je důležité pro zjišťování chyb zabezpečení sítě a zajištění dodržování zabezpečení IT a modelu regulačních zásad správného řízení. Pomocí zobrazení skupiny zabezpečení je může načíst skupinu zabezpečení sítě a zabezpečení pravidla hello nakonfigurované, stejně jako hello pravidla efektivní zabezpečení. Hello seznam pravidel použít můžete určit, že hello porty, které jsou otevřené a ss sítě ohrožení zabezpečení.
 
 ### <a name="network-watcher"></a>Sledovací proces sítě
 
-[Sledovací proces sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) je místní služba, která umožňuje sledovat a diagnostikovat podmínky na úrovni sítě v, do a z Azure. Diagnostika sítě a k dispozici sledovací proces sítě vizualizace nástroje vám pomůžou pochopit, diagnostikovat a získáte přehled o k síti v Azure. Tato služba obsahuje zachytáváním paketů, další směrování, IP tok ověření, zobrazení skupiny zabezpečení, tok protokolů NSG. Scénář úrovně monitorování poskytuje pohledu koncové síťových prostředků, na rozdíl od monitorování jednotlivých síťových prostředků.
+[Sledovací proces sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) je místní služba, která vám umožní toomonitor a diagnostikovat podmínky na úrovni sítě v, do a z Azure. Diagnostika sítě a k dispozici sledovací proces sítě vizualizace nástroje vám pomůžou pochopit, diagnostikovat a získat statistiky tooyour sítě v Azure. Tato služba obsahuje zachytáváním paketů, další směrování, IP tok ověření, zobrazení skupiny zabezpečení, tok protokolů NSG. Scénář úrovně monitorování obsahuje zobrazení tooend end síťovým prostředkům v monitorování kontrast tooindividual sítě prostředků.
 
 ### <a name="storage-analytics"></a>Analýza služby Storage
 
-[Analytika úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) můžete ukládat metriky, které zahrnují agregované transakce statistiky a kapacity data o požadavcích služby úložiště. Transakce jsou hlášeny na úrovni operace rozhraní API, a také na úrovni služby úložiště a hlásí kapacity na úrovni služby úložiště. Metriky dat slouží k analýze využití služby úložiště, diagnostikovat problémy s požadavky na služby úložiště a zlepšit výkon aplikací, které používají službu.
+[Analytika úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) můžete ukládat metriky, které zahrnují data statistiky a kapacity agregované transakcí týkající se požadavků tooa úložiště služby. Transakce jsou v úrovni operaci hello rozhraní API, a také na úrovni služby úložiště hello a hlásí kapacity na úrovni služby úložiště hello. Metriky dat můžete použít tooanalyze využití služby úložiště, diagnostikovat problémy s požadavků na službu úložiště hello a tooimprove hello výkon aplikací, které používají služby přístup.
 
 ### <a name="application-insights"></a>Application insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelný služba Správa výkonu aplikace (APM) pro vývojáře, kteří ve více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje nástroje výkonné analytics při diagnostice problémů a zjistit, co uživatelé dělají s vaší aplikací. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje u aplikací na široké škále platforem, jako jsou .NET, Node.js a J2EE, a to hostovaných lokálně i v cloudu. Se integruje s váš proces devOps a má spojovací body na různé nástroje pro vývoj.
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelný služba Správa výkonu aplikace (APM) pro vývojáře, kteří ve více platformách. Použít toomonitor za provozu webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Zahrnuje výkonné analytics nástroje toohelp diagnostikovat problémy a toounderstand co uživatelé dělají s vaší aplikací. Je navržen toohelp neustále průběžně zlepšují výkon a použitelnost. Funguje pro aplikace na širokou škálu platforem včetně .NET, Node.js a J2EE, hostovaný místně nebo v cloudu hello. Se integruje s váš proces devOps a má připojovací body tooa různé nástroje pro vývoj.
 
 Monitoruje tyto parametry:
 
@@ -474,7 +474,7 @@ Monitoruje tyto parametry:
 
 - **Míra závislosti, doby odezvy a míra selhání** – Zjistěte, jestli vás nezpomalují externí služby.
 
-- **Výjimky** – analyzovat souhrnných statistik, nebo vyberte určité instance a přejít k podrobnostem trasování zásobníku a související požadavky. Hlásí se výjimky serveru i prohlížeče.
+- **Výjimky** – analyzovat statistiku hello agregován, nebo vyberte určité instance a přejít k podrobnostem hello trasování zásobníku a související požadavky. Hlásí se výjimky serveru i prohlížeče.
 
 - **Zobrazení a načítání stránek** – Tyto informace hlásí prohlížeče uživatelů.
 
@@ -488,31 +488,31 @@ Monitoruje tyto parametry:
 
 - **Protokoly trasování diagnostiky** z vaší aplikace – umožňují zjistit korelaci mezi požadavky a událostmi trasování.
 
-- **Vlastní události a metriky** napíšete sami v kód klienta nebo serveru ke sledování obchodní události, jako například položek prodaných, nebo hry won.
-Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) umožňuje pracovat s prostředky ve vašem řešení jako se skupinou.
+- **Vlastní události a metriky** napíšete sami v kódu hello klienta nebo serveru, tootrack obchodní události, jako je například položek prodaných nebo hry won.
+Hello infrastrukturu aplikace obvykle tvoří celá řada komponent, může být virtuální počítač, účet úložiště a virtuální síti, nebo webové aplikace, databáze, databázový server a služby 3. stran. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete toodeploy, spravovat a monitorovat jako skupinu. [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) vám umožní toowork s hello prostředky ve vašem řešení jako se skupinou.
 
-Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
+Můžete nasadit, aktualizovat nebo odstranit všechny hello prostředky pro vaše řešení v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje zabezpečení, auditování a označování funkce toohelp spravovat prostředky po nasazení.
 
-**Výhody použití Resource Manager**
+**Hello výhody použití Resource Manager**
 
 Resource Manager poskytuje několik výhod:
 
-- Můžete všechny prostředky pro vaše řešení nasadit, spravovat a monitorovat jako skupinu a nemusíte je zpracovávat jednotlivě.
+- Můžete nasadit, spravovat a monitorovat všechny hello prostředky pro vaše řešení jako skupina, nikoli zpracovávat jednotlivě.
 
-- Můžete svoje řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
+- Můžete opakovaně nasadit řešení v celém hello životního cyklu a mít přitom jistotu, že vaše prostředky jsou nasazeny v konzistentním stavu.
 
 - Infrastrukturu můžete spravovat pomocí deklarativních šablon místo skriptů.
 
-- Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
+- Můžete definovat hello závislosti mezi prostředky, takže se nasadí ve správném pořadí hello.
 
-- Můžete využít řízení přístupu pro všechny služby ve vaší skupině prostředků, protože do platformy pro správu je nativně integrováno řízení přístupu na základě role (RBAC).
+- Služby tooall řízení přístupu můžete použít ve vaší skupině prostředků, protože do platformy pro správu hello je nativně integrováno řízení přístupu na základě Role (RBAC).
 
-- Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
+- Můžete použít značky tooresources toologically uspořádat všechny prostředky hello ve vašem předplatném.
 
-- Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
+- Můžete zpřehlednit fakturaci vaší organizace zobrazením náklady pro skupinu prostředků, sdílení hello stejnou značku.
 
 > [!Note]
-> Resource Manager poskytuje nový způsob nasazení a správy vašich řešení. Pokud jste použili dřívější model nasazení a chcete další informace o změnách, přečtěte si téma [nasazení Resource Manager principy a nasazení classic](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model).
+> Resource Manager poskytuje nový způsob toodeploy a správy vašich řešení. Pokud jste použili hello dřívější model nasazení a chcete toolearn o změnách hello naleznete [nasazení Resource Manager principy a nasazení classic](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model).
 
 ## <a name="next-steps"></a>Další kroky
 

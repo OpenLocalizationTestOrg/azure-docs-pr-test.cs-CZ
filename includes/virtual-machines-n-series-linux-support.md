@@ -16,5 +16,5 @@
 
 
 > [!WARNING] 
-> Instalace softwaru třetích stran na produkty Red Hat může mít vliv na podmínky podpory Red Hat. Informace najdete v [článku znalostní báze Red Hat](https://access.redhat.com/articles/1067).
+> Instalace softwaru třetích stran na Red Hat produkty mohou ovlivnit podmínkami podpory Red Hat hello. V tématu hello [Red Hat Knowledge Base, článek](https://access.redhat.com/articles/1067).
 >

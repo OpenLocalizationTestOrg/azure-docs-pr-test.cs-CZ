@@ -1,6 +1,6 @@
 ---
-title: "Připojení počítače se systémem Windows k analýze protokolů Azure | Microsoft Docs"
-description: "Tento článek popisuje kroky pro počítače se systémem Windows ve vaší místní infrastruktuře připojení ke službě Analýza protokolů pomocí přizpůsobená verze z monitorování agenta MMA (Microsoft)."
+title: "aaaConnect Windows počítače tooAzure Log Analytics | Microsoft Docs"
+description: "Tento článek ukazuje počítače se systémem Windows hello hello kroky tooconnect ve vaší místní infrastruktury toohello analýzy protokolů služby pomocí přizpůsobená verze hello Microsoft Monitoring Agent (MMA)."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -15,55 +15,55 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48a0eaeb10d406d551c9e5870edde06809bd7544
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7e15f9eeb0440bd2f6557d7215df701526e4f9aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítače se systémem Windows do služby analýzy protokolů Azure
+# <a name="connect-windows-computers-toohello-log-analytics-service-in-azure"></a>Připojení Windows počítače toohello analýzy protokolů služby v Azure
 
-Tento článek popisuje kroky pro připojení počítače se systémem Windows ve vaší místní infrastruktuře k pracovním prostorům, OMS pomocí přizpůsobená verze z monitorování agenta MMA (Microsoft). Musíte nainstalovat a připojit agentů pro všechny počítače, které chcete, aby pro ně k odesílání dat do služby analýzy protokolů a prohlížení a provádění akcí na těchto datech zařadit do provozu. Každý agent můžete zprávu několik pracovních prostorů.
+Tento článek popisuje kroky hello počítače se systémem Windows tooconnect pracovních prostorů tooOMS místní infrastruktury, pomocí přizpůsobená verze hello Microsoft Monitoring Agent (MMA). Potřebujete tooinstall a agentů pro všechny počítače hello má tooonboard, aby služba toosend data toohello analýzy protokolů a tooview a postupovat podle dat připojit. Každý agent může hlásit toomultiple pracovních prostorů.
 
 Můžete nainstalovat agenty pomocí instalačního programu, příkazového řádku nebo pomocí požadovaného stavu konfigurace (DSC) ve službě Azure Automation.  
 
 >[!NOTE]
-Pro virtuální počítače běžící v Azure, můžete zjednodušit instalace pomocí [rozšíření virtuálního počítače](log-analytics-azure-vm-extension.md).
+Pro virtuální počítače běžící v Azure, můžete zjednodušit instalace pomocí hello [rozšíření virtuálního počítače](log-analytics-azure-vm-extension.md).
 
-Agent na počítačích s připojením k Internetu pomocí připojení k Internetu k odesílání dat do OMS. Pro počítače, které nemají připojení k Internetu, můžete použít proxy server nebo [OMS brány](log-analytics-oms-gateway.md).
+Na počítačích s připojením k Internetu hello agent používá hello připojení toohello Internet toosend data tooOMS. Pro počítače, které nemají připojení k Internetu, můžete použít server proxy nebo hello [OMS brány](log-analytics-oms-gateway.md).
 
-Připojení počítače se systémem Windows k OMS je jednoduchý pomocí tří jednoduché kroky:
+Připojení počítače tooOMS vašeho systému Windows je jednoduchý pomocí tří jednoduché kroky:
 
-1. Stáhněte si instalační soubor agenta z portálu OMS
-2. Instalace agenta pomocí metodu, kterou si zvolíte
-3. Konfiguraci agenta nebo přidejte další pracovní prostory, v případě potřeby
+1. Stáhněte instalační soubor agenta hello z portálu OMS hello
+2. Instalace agenta hello pomocí zvolené metodě hello
+3. Konfigurace agenta hello nebo přidejte další pracovní prostory, v případě potřeby
 
-Následující diagram znázorňuje vztah mezi OMS a počítačů s Windows po instalaci a nakonfigurovali agenty.
+Hello následující diagram znázorňuje hello vztah mezi počítače se systémem Windows a OMS po nainstalovat a nakonfigurovat agenty.
 
 ![OMS-direct agenta – diagram](./media/log-analytics-windows-agents/oms-direct-agent-diagram.png)
 
-Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete konfigurovat počítače pro připojení k bráně OMS. Další informace a postup pro konfiguraci serverů pro komunikaci přes bránu OMS ke službě OMS najdete v tématu [počítače připojit k OMS pomocí brány OMS](log-analytics-oms-gateway.md).
+Pokud vaše zásady zabezpečení IT neumožňují počítače ve vaší síti tooconnect toohello Internetu, můžete nakonfigurovat vaše počítače tooconnect toohello OMS brány. Další informace a na tom, jak tooconfigure toocommunicate vaše servery prostřednictvím brány OMS toohello OMS služby, najdete v části kroky [připojit počítače tooOMS pomocí hello OMS brány](log-analytics-oms-gateway.md).
 
 ## <a name="system-requirements-and-required-configuration"></a>Požadavky na systém a požadované konfiguraci
-Před instalací nebo nasadit agenty, ujistěte se, že splňujete požadavky následující podrobnosti.
+Před instalací nebo nasadit agenty, zkontrolujte následující podrobnosti tooensure hello požadavky splňujete hello.
 
-- OMS MMA můžete nainstalovat pouze na počítačích se systémem Windows Server 2008 SP 1 nebo novější nebo Windows 7 SP1 nebo novější.
+- Hello OMS MMA můžete nainstalovat pouze na počítačích se systémem Windows Server 2008 s aktualizací SP 1 nebo novější nebo Windows 7 SP1 nebo novější.
 - Budete potřebovat předplatné Azure.  Další informace najdete v tématu [začít pracovat s analýzy protokolů](log-analytics-get-started.md).
-- Každý počítač se systémem Windows musí být schopni připojit k Internetu pomocí protokolu HTTPS nebo k bráně OMS. Toto připojení může být direct, prostřednictvím proxy serveru nebo přes bránu OMS.
-- OMS MMA můžete nainstalovat na samostatných počítačů, serverů a virtuálních počítačů. Pokud chcete se připojit k OMS virtuálních počítačů hostovaných v Azure, najdete v části [virtuálních počítačích Azure připojit k analýze protokolů](log-analytics-azure-vm-extension.md).
-- Agenta je potřeba použít port 443 protokolu TCP pro různé prostředky.
+- Každý počítač se systémem Windows musí být schopný tooconnect toohello Internetu pomocí protokolu HTTPS nebo toohello OMS brány. Toto připojení může být direct, prostřednictvím proxy serveru, nebo prostřednictvím hello OMS brány.
+- Hello OMS MMA můžete nainstalovat na samostatných počítačů, serverů a virtuálních počítačů. Pokud chcete tooOMS tooconnect virtuálních počítačů hostovaných v Azure, najdete v části [tooLog virtuální počítače Azure připojit Analytics](log-analytics-azure-vm-extension.md).
+- Hello agent potřebuje toouse port 443 protokolu TCP pro různé prostředky.
 
 ### <a name="network"></a>Síť
 
-Pro agenty se systémem Windows pro připojení k a zaregistrovat službu OMS musí mít přístup k síťovým prostředkům, včetně čísla portů a adres URL domény.
+Pro Windows agenty tooconnect tooand registrace službou hello OMS musí mít přístup k prostředkům toonetwork, včetně hello čísla portů a adres URL domény.
 
-- U proxy serverů musíte zajistit konfiguraci příslušných prostředků proxy serveru v nastavení agenta.
-- Pro brány firewall, které omezují přístup k Internetu vám nebo vaší sítě technici nutné nakonfigurovat bránu firewall tak, aby povolovala přístup k OMS. V nastavení agenta nemusíte nic konfigurovat.
+- Pro proxy servery budete potřebovat tooensure, který hello odpovídající proxy serveru, které prostředky jsou nakonfigurované v nastavení agenta.
+- Pro brány firewall, které omezují přístup toohello Internet, vám nebo vaší sítě technici potřebovat tooconfigure tooOMS přístup toopermit vaší brány firewall. V nastavení agenta nemusíte nic konfigurovat.
 
-V následující tabulce najdete přehled prostředků potřebných pro komunikaci.
+Hello následující tabulka ukazuje prostředky potřebné pro komunikaci.
 
 >[!NOTE]
->Některé z těchto prostředků zmínili Operational Insights, která byla předchozí název pro analýzu protokolu.
+>Některé z následujících prostředků hello zmínili Operational Insights, která byla předchozí název pro analýzu protokolu.
 
 | Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS |
 |---|---|---|
@@ -74,59 +74,59 @@ V následující tabulce najdete přehled prostředků potřebných pro komunika
 
 
 
-## <a name="download-the-agent-setup-file-from-oms"></a>Stáhněte si instalační soubor agenta z OMS
-1. Na portálu OMS na **přehled** klikněte na **nastavení** dlaždici.  Klikněte **připojené zdroje** v horní části.  
+## <a name="download-hello-agent-setup-file-from-oms"></a>Stáhněte instalační soubor agenta hello od OMS
+1. Na portálu OMS hello, na hello **přehled** klikněte na tlačítko hello **nastavení** dlaždici.  Klikněte na tlačítko hello **připojené zdroje** karty v horní části hello.  
     ![Karta připojené zdroje](./media/log-analytics-windows-agents/oms-direct-agent-connected-sources.png)
-2. Klikněte na tlačítko **servery Windows** a pak klikněte na **stáhnout agenta Windows** vztahuje na typ procesoru počítače stáhnout instalační soubor.
-3. Na pravé straně **ID pracovního prostoru**, klikněte na ikonu kopírování a vložení ID do poznámkového bloku.
-4. Na pravé straně **primární klíč**, klikněte na ikonu kopírování a vložení klíč do poznámkového bloku.     
+2. Klikněte na tlačítko **servery Windows** a pak klikněte na **stáhnout agenta Windows** použít tooyour počítač procesor typ toodownload hello instalační soubor.
+3. Na hello napravo od **ID pracovního prostoru**, klikněte na ikonu hello kopírování a vložení hello ID do poznámkového bloku.
+4. Na hello napravo od **primární klíč**, klikněte na ikonu hello kopírování a vložení hello klíč do poznámkového bloku.     
 
-## <a name="install-the-agent-using-setup"></a>Instalace agenta pomocí instalačního programu
-1. Spusťte instalační program a nainstalujte agenta na počítači, který chcete spravovat.
-2. Na úvodní stránce klikněte na tlačítko **Další**.
-3. Na stránce Licenční podmínky, přečtěte si licenční a pak klikněte na tlačítko **souhlasím**.
-4. Na stránce cílovou složku změnit nebo ponechat výchozí instalační složku a pak klikněte na tlačítko **Další**.
-5. Na stránce Možnosti instalace agenta můžete připojit agenta k Azure Log Analytics (OMS), Operations Manager, nebo můžete nechat volby prázdné Pokud chcete provést konfiguraci agenta později. Klikněte na **Další**.   
-    - Pokud jste zvolili pro připojení k Azure Log Analytics (OMS), vložte **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** který jste zkopírovali do poznámkového bloku v předchozím postupu a pak klikněte na tlačítko **další** .  
+## <a name="install-hello-agent-using-setup"></a>Nainstalujte agenta hello pomocí instalačního programu
+1. Spusťte instalační program tooinstall hello agenta na počítači, které chcete toomanage.
+2. Na úvodní stránku hello, klikněte na tlačítko **Další**.
+3. Na stránce hello licenční podmínky přečíst hello licencí a pak klikněte na **souhlasím**.
+4. Na stránce hello cílovou složku, změnit nebo zachovat hello výchozí instalační složku a pak klikněte na tlačítko **Další**.
+5. Na stránce Možnosti instalace agenta hello můžete zvolit tooconnect hello agenta tooAzure Log Analytics (OMS), Operations Manager, nebo můžete nechat hello volby prázdné budete chtít tooconfigure hello později. Klikněte na **Další**.   
+    - Pokud jste zvolili tooconnect tooAzure analýzy protokolů (OMS), vložte hello **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** zkopírovali v předchozím postupu hello do poznámkového bloku a pak klikněte na  **Další**.  
         ![Vložte ID pracovního prostoru a primární klíč](./media/log-analytics-windows-agents/connect-workspace.png)
-    - Pokud jste vybrali možnost připojení k nástroji Operations Manager, zadejte **název skupiny pro správu**, **serveru pro správu** název, a **Port serveru pro správu**a potom klikněte na **Další**. Na stránce účet akce agenta zvolit účet místní systém nebo účet místní domény a pak klikněte na tlačítko **Další**.  
+    - Pokud jste zvolili tooconnect tooOperations správce, zadejte hello **název skupiny pro správu**, **serveru pro správu** název, a **Port serveru pro správu**a potom klikněte na **Další**. Na stránce hello účet akce agenta, zvolte hello místní systémový účet nebo účet místní domény a pak klikněte na tlačítko **Další**.  
         ![Konfigurace skupiny pro správu](./media/log-analytics-windows-agents/oms-mma-om-setup01.png)![účet akce agenta](./media/log-analytics-windows-agents/oms-mma-om-setup02.png)
 
-6. Na stránce Připraveno k instalaci, zkontrolujte vybrané možnosti a pak klikněte na tlačítko **nainstalovat**.
-7. Konfigurace byla úspěšně dokončena stránky, klikněte na tlačítko **Dokončit**.
-8. Po dokončení **agenta Microsoft Monitoring Agent** se zobrazí v **ovládací panely**. Můžete zkontrolovat konfiguraci existuje a ověřte, zda agent je připojena k provozní přehledy (OMS). Při připojení k OMS, agent zobrazí zpráva s oznámením: **Microsoft Monitoring Agent úspěšně připojil ke službě Microsoft Operations Management Suite.**
+6. Na stránce Připraveno tooInstall hello zkontrolujte vybrané možnosti a pak klikněte na tlačítko **nainstalovat**.
+7. Na hello konfigurace byla úspěšně dokončena stránky, klikněte na tlačítko **Dokončit**.
+8. Po dokončení hello **agenta Microsoft Monitoring Agent** se zobrazí v **ovládací panely**. Můžete zkontrolovat konfiguraci existuje a ujistěte se, že tento agent hello připojené tooOperational přehledy (OMS). Když připojené tooOMS hello agenta zobrazí zpráva s oznámením: **hello agenta Microsoft Monitoring Agent byl úspěšně připojen toohello služby Microsoft Operations Management Suite.**
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-Následující postup slouží ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent pomocí Ovládacích panelů. Budete muset použít tento postup pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Je-li to váš případ, podívejte se na další postup [Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
+Můžete použít následující postup tooconfigure nastavení proxy serveru pro hello Microsoft Monitoring Agent pomocí ovládacích panelů hello. Toouse musíte pro každý server, tento postup. Pokud máte mnoho serverů, je nutné, aby tooconfigure, může pro vás snadnější toouse skriptu tooautomate tohoto procesu. Pokud ano, najdete v dalším postupu hello [tooconfigure nastavení proxy serveru pro hello Microsoft Monitoring Agent pomocí skriptu](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
 
-### <a name="to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-control-panel"></a>Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí Ovládacích panelů
+### <a name="tooconfigure-proxy-settings-for-hello-microsoft-monitoring-agent-using-control-panel"></a>nastavení proxy serveru tooconfigure hello Microsoft Monitoring Agent pomocí ovládacích panelů
 1. Otevřete **Ovládací panely**.
 2. Otevřete **Microsoft Monitoring Agent**.
-3. Klikněte na kartu **Nastavení proxy serveru**.  
+3. Klikněte na tlačítko hello **nastavení proxy serveru** kartě.  
     ![karta nastavení proxy serveru](./media/log-analytics-windows-agents/proxy-direct-agent-proxy.png)
-4. Zaškrtněte políčko **Použít proxy server** a zadejte adresu URL a v případě potřeby i číslo portu, podobně jako v příkladu výše. Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro přístup k proxy serveru.
+4. Vyberte **použít proxy server** a zadejte adresu URL hello a čísla portu, pokud je potřebné, podobně jako toohello příkladu. Pokud proxy server vyžaduje ověřování, zadejte hello uživatelské jméno a heslo tooaccess hello proxy serveru.
 
 
-### <a name="verify-agent-connectivity-to-oms"></a>Ověření připojení agenta k OMS
+### <a name="verify-agent-connectivity-toooms"></a>Ověřte připojení tooOMS agenta
 
-Snadno můžete ověřit, zda jsou agenty komunikaci s OMS následujícím postupem:
+Snadno můžete ověřit, zda jsou agenty komunikaci s OMS pomocí hello následující postup:
 
-1.  Na počítači s agentem Windows otevřete ovládací panely.
+1.  Otevřete ovládací panely v počítači hello s agentem Windows hello.
 2.  Otevřete agenta Microsoft Monitoring Agent.
-3.  Klikněte na kartu Azure Log Analytics (OMS).
-4.  Ve sloupci Stav byste měli vidět, že agent úspěšně připojené ke službě Operations Management Suite.
+3.  Klikněte na kartu hello Azure Log Analytics (OMS).
+4.  Ve sloupci Stav hello měli byste vidět, že tento agent hello připojení úspěšně toohello služby Operations Management Suite.
 
 ![připojení agenta](./media/log-analytics-windows-agents/mma-connected.png)
 
 
-### <a name="to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script"></a>Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu
-Zkopírujte následující ukázku kódu, aktualizujte ji pomocí informací specifických pro vaše prostředí, uložte ji s příponou názvu souboru PS1 a následně tento skript spusťte na každém počítači, který se připojuje přímo ke službě OMS.
+### <a name="tooconfigure-proxy-settings-for-hello-microsoft-monitoring-agent-using-a-script"></a>nastavení proxy serveru tooconfigure hello Microsoft Monitoring Agent pomocí skriptu
+Zkopírujte hello následující ukázkové, jej aktualizovat s informace o konkrétní tooyour prostředí, uložit s příponou PS1 a spusťte skript hello na každém počítači, který se připojuje přímo toohello OMS služby.
 
     param($ProxyDomainName="http://proxy.contoso.com:80", $cred=(Get-Credential))
 
-    # First we get the Health Service configuration object.  We need to determine if we
-    #have the right update rollup with the API we need.  If not, no need to run the rest of the script.
+    # First we get hello Health Service configuration object.  We need toodetermine if we
+    #have hello right update rollup with hello API we need.  If not, no need toorun hello rest of hello script.
     $healthServiceSettings = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 
     $proxyMethod = $healthServiceSettings | Get-Member -Name 'SetProxyInfo'
@@ -142,38 +142,38 @@ Zkopírujte následující ukázku kódu, aktualizujte ji pomocí informací spe
 
     $ProxyUserName = $cred.username
 
-    Write-Output "Setting proxy to $ProxyDomainName with proxy username $ProxyUserName."
+    Write-Output "Setting proxy too$ProxyDomainName with proxy username $ProxyUserName."
     $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetNetworkCredential().password)
 
 
 
-## <a name="install-the-agent-using-the-command-line"></a>Instalace agenta pomocí příkazového řádku
-- Upravit a potom použijte následující příklad pro instalaci agenta pomocí příkazového řádku. V příkladu provede plně bezobslužnou instalaci.
+## <a name="install-hello-agent-using-hello-command-line"></a>Nainstalujte agenta hello hello příkazového řádku
+- Upravit a pak použijte následující příklad tooinstall hello agenta pomocí příkazového řádku hello hello. Příklad Hello provede plně bezobslužnou instalaci.
 
     >[!NOTE]
-    Pokud chcete provést upgrade agenta, budete muset použít analýzy protokolů skriptování rozhraní API. Najdete v další části Postup při upgradu agenta.
+    Pokud chcete, aby tooupgrade agenta, je třeba toouse hello analýzy protokolů skriptování rozhraní API. Najdete v další části tooupgrade hello agenta.
 
     ```dos
     MMASetup-AMD64.exe /Q:A /R:N /C:"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1"
     ```
 
-Agent používá IExpress jako jeho Self-Extractor pomocí `/c` příkaz. Zobrazí se přepínače příkazového řádku v [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a aktualizujte příklad podle svých potřeb.
+Hello agent používá IExpress jako jeho Self-Extractor pomocí hello `/c` příkaz. Můžete zobrazit hello přepínače příkazového řádku na [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizaci hello příklad toosuit vašim potřebám.
 
 |MMA specifické možnosti                   |Poznámky         |
 |---------------------------------------|--------------|
-|ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurace agenta tak, aby odesílaly pracovního prostoru                |
-|OPINSIGHTS_WORKSPACE_ID                | Id pracovního prostoru (guid) pro pracovní prostor pro přidání                    |
-|OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru se používá k ověření původně s pracovním prostoru |
-|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Zadejte cloudovém prostředí, kde se nachází v pracovním prostoru <br> 0 = komerční cloudu azure (výchozí) <br> 1 = azure Government |
-|OPINSIGHTS_PROXY_URL               | Identifikátor URI pro proxy server používat |
-|OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřený server proxy |
-|OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup ověřený server proxy |
+|ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurovat hello agenta tooreport tooa prostoru                |
+|OPINSIGHTS_WORKSPACE_ID                | Id pracovního prostoru (guid) pro tooadd prostoru hello                    |
+|OPINSIGHTS_WORKSPACE_KEY               | Klíče používané tooinitially prostoru ověřování pomocí pracovního prostoru hello |
+|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Zadejte hello cloudového prostředí, kde se nachází hello prostoru <br> 0 = komerční cloudu azure (výchozí) <br> 1 = azure Government |
+|OPINSIGHTS_PROXY_URL               | Identifikátor URI pro hello proxy toouse |
+|OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno tooaccess ověřený server proxy |
+|OPINSIGHTS_PROXY_PASSWORD               | Heslo tooaccess ověřený server proxy |
 
 >[!NOTE]
-Abyste se vyhnuli stiskne maximální délku příkazového řádku IExpress, nainstalujte agenta se žádný pracovní prostor nakonfigurované a potom pomocí skriptu pro nastavení konfigurace pro pracovní prostor.
+tooavoid stiskne hello příkazového řádku maximální délku IExpress, nainstalujte agenta hello se žádný pracovní prostor nakonfigurované a pak používat konfigurace tooset skript pro hello prostoru.
 
 >[!NOTE]
-Pokud dojde `Command line option syntax error.` při použití `OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE` parametr, můžete použít následující alternativní řešení:
+Pokud dojde `Command line option syntax error.` při použití hello `OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE` parametr, můžete použít hello následující alternativní řešení:
 ```dos
 MMASetup-AMD64.exe /C /T:.\MMAExtract
 cd .\MMAExtract
@@ -181,7 +181,7 @@ setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1
 ```
 
 ## <a name="add-a-workspace-using-a-script"></a>Přidat pracovní prostor pomocí skriptu
-Přidáte pracovní prostor pomocí rozhraní API skriptování agenta analýzy protokolů v následujícím příkladu:
+Přidáte pracovní prostor pomocí skriptování API agenta hello analýzy protokolů hello následující ukázka:
 
 ```PowerShell
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -189,7 +189,7 @@ $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
 $mma.ReloadConfiguration()
 ```
 
-Pokud chcete přidat do pracovního prostoru v Azure pro US Government, použijte následující ukázka skriptu:
+tooadd pracovního prostoru v Azure US Government, použijte hello následující ukázka skriptu:
 ```PowerShell
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.AddCloudWorkspace($workspaceId, $workspaceKey, 1)
@@ -197,11 +197,11 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
-Pokud jste použili příkazového řádku nebo skriptu dříve pro instalaci nebo konfiguraci agenta, `EnableAzureOperationalInsights` byl nahrazen `AddCloudWorkspace`.
+Pokud jste použili hello příkazového řádku nebo skriptu dříve tooinstall nebo konfiguraci agenta hello `EnableAzureOperationalInsights` byl nahrazen `AddCloudWorkspace`.
 
-## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Instalace agenta pomocí DSC v Azure Automation.
+## <a name="install-hello-agent-using-dsc-in-azure-automation"></a>Instalace agenta hello pomocí DSC v Azure Automation.
 
-Následující ukázkový skript můžete použít k instalaci agenta pomocí ve službě Azure Automation DSC. Tento příklad nainstaluje agenta nástroje 64-bit, identifikovaný `URI` hodnotu. Můžete taky 32bitová verze nahrazením hodnota identifikátoru URI. Identifikátory URI pro obě verze jsou:
+Můžete použít následující skript příklad tooinstall hello agenta pomocí ve službě Azure Automation DSC hello. Příklad Hello nainstaluje hello 64bitový agent, identifikovaný hello `URI` hodnotu. Můžete taky hello 32bitová verze nahrazením hello hodnota identifikátoru URI. Hello identifikátory URI pro obě verze jsou:
 
 - 64bitový agent Windows - https://go.microsoft.com/fwlink/?LinkId=828603
 - 32bitový agent Windows - https://go.microsoft.com/fwlink/?LinkId=828604
@@ -210,11 +210,11 @@ Následující ukázkový skript můžete použít k instalaci agenta pomocí ve
 >[!NOTE]
 Tento postup a skriptu příklad neprovede upgrade existujícího agenta.
 
-1. Import xPSDesiredStateConfiguration DSC modulu z [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
-2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavit *OPSINSIGHTS_WS_ID* ID pracovního prostoru analýzy protokolů OMS a sadu *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
-3.  Pomocí následujícího skriptu a uložte ho jako MMAgent.ps1
-4.  Upravit a potom použijte následující příklad pro instalaci agenta pomocí ve službě Azure Automation DSC. Importujte MMAgent.ps1 do Azure Automation pomocí rozhraní Azure Automation nebo rutinu.
-5.  Přiřadíte konfigurace uzlu. Během 15 minut uzlu zkontroluje konfiguraci a MMA vložena do uzlu.
+1. Import hello xPSDesiredStateConfiguration DSC modul z [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
+2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavit *OPSINSIGHTS_WS_ID* ID pracovního prostoru analýzy protokolů OMS tooyour a nastavte *OPSINSIGHTS_WS_KEY* toohello primární klíč pracovního prostoru.
+3.  Použít následující skript a uložte ho jako MMAgent.ps1 hello
+4.  Upravit a pak pomocí hello následující příklad tooinstall hello agenta pomocí DSC ve službě Azure Automation. Importujte MMAgent.ps1 do Azure Automation pomocí rozhraní Azure Automation hello nebo rutinu.
+5.  Přiřaďte toohello konfigurace uzlu. Během 15 minut uzel hello zkontroluje konfiguraci a hello MMA se posune toohello uzlu.
 
 ```PowerShell
 Configuration MMAgent
@@ -253,9 +253,9 @@ Configuration MMAgent
 
 ```
 
-### <a name="get-the-latest-productid-value"></a>Získat nejnovější hodnotu ProductId
+### <a name="get-hello-latest-productid-value"></a>Získat nejnovější hodnotu ProductId hello
 
-`ProductId value` MMAgent.ps1 skript je jedinečné pro jednotlivé verze agenta. Při publikování aktualizovaná verze všech agentů, změní se hodnota ProductId. Takže když ProductId v budoucnu změní, můžete najít pomocí jednoduchého skriptu verze agenta. Až budete mít nejnovější verze agenta nainstalovat na testovací server, můžete použít následující skript k získání nainstalované ProductId hodnoty. Pomocí nejnovější ProductId hodnoty, můžete aktualizovat hodnotu ve skriptu MMAgent.ps1.
+Hello `ProductId value` v hello MMAgent.ps1 skript je jedinečný tooeach verze agenta. Při publikování aktualizovaná verze všech agentů, změní se hello ProductId hodnotu. Ano při hello ProductId změn v hello budoucí, můžete nalézt hello verze agenta pomocí jednoduchého skriptu. Až budete mít nejnovější verze agenta hello nainstalovaná na testovací server, můžete použít následující skript tooget hello nainstalován ProductId hodnota hello. Pomocí hodnoty nejnovější ProductId hello, můžete aktualizovat hodnotu hello v hello MMAgent.ps1 skriptu.
 
 ```PowerShell
 $InstalledApplications  = Get-ChildItem hklm:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
@@ -281,41 +281,41 @@ foreach ($Application in $InstalledApplications)
 ```
 
 ## <a name="configure-an-agent-manually-or-add-additional-workspaces"></a>Nakonfigurujte agenta ručně, nebo přidejte další pracovní prostory
-Pokud jste nainstalovali agenty, ale nenakonfigurovali nebo pokud chcete agenta tak, aby odesílaly několik pracovních prostorů, můžete použít následující informace pro povolení agenta nebo překonfigurujte. Po dokončení konfigurace agenta, bude zaregistrovat službu agenta a získají potřebné informace o konfiguraci a sady management Pack, které obsahují informace o řešení.
+Pokud jste nainstalovali agenty, ale nenakonfigurovali nebo pokud chcete hello agenta tooreport toomultiple pracovní prostory, můžete použít následující informace tooenable agenta hello nebo překonfigurování. Po dokončení konfigurace agenta hello, bude zaregistrujte službou hello agenta a získají potřebné informace o konfiguraci a sady management Pack, které obsahují informace o řešení.
 
-1. Po instalaci agenta Microsoft Monitoring Agent, otevřete **ovládací panely**.
-2. Otevřete **agenta Microsoft Monitoring Agent** a klikněte **Azure Log Analytics (OMS)** kartě.   
-3. Klikněte na tlačítko **přidat** otevřete **přidat pracovní prostor Log Analytics** pole.
-4. Vložení **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** kterou jste zkopírovali do poznámkového bloku v předchozím postupu pro pracovní prostor, který chcete přidat a pak klikněte na **OK**.  
+1. Po instalaci agenta Microsoft Monitoring Agent hello, otevřete **ovládací panely**.
+2. Otevřete **agenta Microsoft Monitoring Agent** a pak klikněte na tlačítko hello **Azure Log Analytics (OMS)** kartě.   
+3. Klikněte na tlačítko **přidat** tooopen hello **přidat pracovní prostor Log Analytics** pole.
+4. Vložení hello **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** zkopírovali do poznámkového bloku v předchozím postupu pro hello prostoru má tooadd a pak klikněte na tlačítko **OK**.  
     ![Konfigurace služby Operational Insights](./media/log-analytics-windows-agents/add-workspace.png)
 
-Po shromáždění dat z počítačů monitorovaných agentem, počet počítačů monitorovaných pomocí OMS se zobrazí na portálu OMS na **připojené zdroje** kartě v **nastavení** jako **servery Připojení**.
+Po shromáždění dat z počítačů monitorovaných agentem hello hello počet počítačů monitorovaných pomocí OMS objeví na portálu OMS hello na hello **připojené zdroje** kartě v **nastavení** jako  **Připojené servery**.
 
 
-## <a name="to-disable-an-agent"></a>Chcete-li zakázat agenta
-1. Po instalaci agenta, otevřete **ovládací panely**.
-2. Otevřete Microsoft Monitoring Agent a klikněte **Azure Log Analytics (OMS)** kartě.
+## <a name="toodisable-an-agent"></a>toodisable agenta
+1. Po instalaci agenta hello, otevřete **ovládací panely**.
+2. Otevřete Microsoft Monitoring Agent a pak klikněte na tlačítko hello **Azure Log Analytics (OMS)** kartě.
 3. Vyberte pracovní prostor a pak klikněte na tlačítko **odebrat**. Tento krok opakujte pro všechny jiné pracovní prostory.
 
 
-## <a name="optionally-configure-agents-to-report-to-an-operations-manager-management-group"></a>Volitelně nakonfigurujte agenty informuje o skupině pro správu nástroje Operations Manager
+## <a name="optionally-configure-agents-tooreport-tooan-operations-manager-management-group"></a>Volitelně můžete nakonfigurujte skupinu správy agentů tooreport tooan nástroje Operations Manager
 
-Pokud používáte nástroje Operations Manager v infrastruktuře IT, můžete také použít agenta MMA jako agenta nástroje Operations Manager.
+Pokud používáte nástroje Operations Manager v infrastruktuře IT, můžete také použít agenta MMA hello jako agenta nástroje Operations Manager.
 
-### <a name="to-configure-mma-agents-to-report-to-an-operations-manager-management-group"></a>Konfigurace agentů MMA informuje o skupině pro správu nástroje Operations Manager
-1.  Na počítači, kde je nainstalován agent, otevřete **ovládací panely**.  
-2.  Otevřete **agenta Microsoft Monitoring Agent** a klikněte **nástroje Operations Manager** karta.  
+### <a name="tooconfigure-mma-agents-tooreport-tooan-operations-manager-management-group"></a>skupinu správy nástroje Operations Manager tooreport tooconfigure MMA agenty tooan
+1.  Otevřete v počítači hello kde je nainstalován hello agent **ovládací panely**.  
+2.  Otevřete **agenta Microsoft Monitoring Agent** a pak klikněte na tlačítko hello **nástroje Operations Manager** kartě.  
     ![Karta Microsoft Monitoring Agent Operations Manager](./media/log-analytics-windows-agents/om-mg01.png)
 3.  Pokud vaše servery nástroje Operations Manager integrace se službou Active Directory, klikněte na tlačítko **automaticky aktualizovat přiřazení skupin pro správu ze služby AD DS**.
-4.  Klikněte na tlačítko **přidat** otevřete **přidat skupinu pro správu** dialogové okno.  
+4.  Klikněte na tlačítko **přidat** tooopen hello **přidat skupinu pro správu** dialogové okno.  
     ![Přidat skupinu pro správu agenta Microsoft Monitoring Agent](./media/log-analytics-windows-agents/oms-mma-om02.png)
-5.  V **název skupiny pro správu** zadejte název skupiny pro správu.
-6.  V **primární server pro správu** zadejte název počítače primární server pro správu.
-7.  V **port serveru pro správu** zadejte číslo portu TCP.
-8.  V části **účet akce agenta**, zvolte účet místní systém nebo účet místní domény.
-9.  Klikněte na tlačítko **OK** zavřete **přidat skupinu pro správu** dialogové okno a pak klikněte na tlačítko **OK** zavřete **vlastnosti agenta monitorování Microsoft** Dialogové okno.
+5.  V **název skupiny pro správu** pole, hello název typu skupiny pro správu.
+6.  V hello **primární server pro správu** pole, zadejte název počítače hello hello primární server pro správu.
+7.  V hello **port serveru pro správu** pole, číslo portu TCP hello typu.
+8.  V části **účet akce agenta**, zvolte hello místní systémový účet nebo účet místní domény.
+9.  Klikněte na tlačítko **OK** tooclose hello **přidat skupinu pro správu** dialogové okno a pak klikněte na tlačítko **OK** tooclose hello **Microsoft Monitoring Agent vlastnosti**dialogové okno.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Článek [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md) popisuje přidání funkcí a shromažďování dat.
+- [Přidat řešení pro analýzu protokolu z hello řešení Galerie](log-analytics-add-solutions.md) tooadd funkce a shromáždění dat.

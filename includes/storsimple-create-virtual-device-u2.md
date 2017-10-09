@@ -1,28 +1,28 @@
-#### <a name="to-create-a-virtual-device"></a>Vytvoření virtuálního zařízení
-1. Na portálu Azure přejděte do služby **StorSimple Manager**.
-2. Přejděte na stránku **Zařízení**. V dolní části stránky **Zařízení** klikněte na **Vytvořit virtuální zařízení**.
-3. V dialogovém okně **Vytvořit virtuální zařízení** zadejte následující podrobnosti.
+#### <a name="toocreate-a-virtual-device"></a>toocreate virtuálního zařízení
+1. V hello portálu Azure, přejděte toohello **StorSimple Manager** služby.
+2. Přejděte toohello **zařízení** stránky. Klikněte na tlačítko **vytvořit virtuální zařízení** dole hello hello **zařízení** stránky.
+3. V hello **dialogové okno vytvořit virtuální zařízení**, zadejte následující podrobnosti hello.
    
     ![Vytvoření virtuálního zařízení StorSimple](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
    
    1. **Název** – jedinečný název virtuálního zařízení.
-   2. **Model** – zvolte model virtuálního zařízení. Toto pole se zobrazí, jenom pokud používáte verzi Update 2 nebo novější. Model zařízení 8010 nabízí úložiště Standard Storage 30 TB a model 8020 úložiště Premium Storage 64 TB. Pokud chcete nasadit zařízení pro scénáře obnovování položek ze záloh,
-   3. zadejte 8010. Pokud chcete nasadit zařízení zajišťující úlohy s vysokými požadavky na výkon a nízkou latenci nebo sloužící jako sekundární zařízení pro zotavení po havárii, vyberte 8020.
-   4. **Verze** – zvolte verzi virtuálního zařízení. Pokud je vybrán model zařízení 8020, uživateli se nezobrazí pole verze. Pokud všechna fyzická zařízení registrovaná ve službě používají verzi Update 1 (nebo novější), tato možnost chybí. Toto pole se zobrazí, jenom když ve stejné službě používáte kombinaci fyzických zařízení s verzí starší než Update 1 a s verzí Update 1 nebo novější. Protože verze virtuálního zařízení určuje, ze kterého virtuálního zařízení můžete převzít služby při selhání či klonovat, je důležité vybrat správnou verzi virtuálního zařízení. Vyberte:
+   2. **Model** – zvolte model virtuálního zařízení hello hello. Toto pole se zobrazí, jenom pokud používáte verzi Update 2 nebo novější. Model zařízení 8010 nabízí úložiště Standard Storage 30 TB a model 8020 úložiště Premium Storage 64 TB. Pokud chcete nasadit zařízení pro scénáře obnovování položek ze záloh,
+   3. toodeploy scénáře úrovně načítání položek ze zálohy. Vyberte 8020 toodeploy vysoký výkon, úloh s nízkou latencí nebo používat jako sekundární zařízení pro zotavení po havárii.
+   4. **Verze** – zvolte verzi hello hello virtuální zařízení. Pokud je vybrán model zařízení 8020, pak pole verze hello nebude předkládané toohello uživatele. Tato možnost je chybí Pokud všechny hello fyzického zařízení registrovaná ve službě běží Update 1 (nebo novější). Toto pole se zobrazí jenom v případě, že máte směs před aktualizací 1 a Update 1 fyzického zařízení zaregistrovaná s hello stejné služby. Zadaný hello verzi virtuálního zařízení hello určí, které fyzické zařízení můžete převzetí služeb při selhání či klonovat, je důležité vytvořit příslušnou verzi virtuálního zařízení hello. Vyberte:
       
       * Verzi Update 0.3, pokud budete provádět převzetí služeb při selhání nebo zotavení při havárii z fyzického zařízení s verzí Update 0.3 nebo starší. 
       * Verzi Update 1, pokud budete provádět převzetí služeb při selhání nebo klonování z fyzického zařízení s verzí Update 1 nebo novější. 
-   5. **Virtuální síť** – zadejte virtuální síť, kterou chcete používat s tímto virtuálním zařízením. Při použití služby Premium Storage (Update 2 nebo novější) je nutné vybrat virtuální síť, která je podporována účtem služby Premium Storage. Nepodporované virtuální sítě se v seznamu zobrazí šedě. Pokud vyberete nepodporovanou virtuální síť, zobrazí se upozornění. 
-   6. **Účet úložiště pro vytvoření virtuálního zařízení** – vyberte účet úložiště, který bude uchovávat image virtuálního zařízení během zřizování. Tento účet úložiště by měl být ve stejné oblasti jako virtuální zařízení a virtuální síť. Neměl by se používat k ukládání dat do fyzického ani virtuálního zařízení. Ve výchozím nastavení se za tímto účelem vytvoří nový účet úložiště. Pokud však víte, že už máte účet úložiště vhodný k tomuto účelu, můžete ho vybrat v seznamu. Při vytváření prémiového virtuálního zařízení se v rozevíracím seznamu zobrazí jenom účty služby Premium Storage. 
+   5. **Virtuální síť** – zadejte virtuální síť, které chcete toouse s tímto virtuálním zařízením. Pokud používáte Premium Storage (Update 2 nebo novější), je nutné vybrat virtuální síť, která je podporována s hello účet služby Premium Storage. v rozevíracím seznamu hello zobrazí šedě Hello nepodporované virtuální sítě. Pokud vyberete nepodporovanou virtuální síť, zobrazí se upozornění. 
+   6. **Účet úložiště pro vytvoření virtuálního zařízení** – vyberte image účtu storage toohold hello hello virtuálního zařízení během zřizování. Tento účet úložiště by měl být v hello stejné oblasti jako virtuální zařízení hello a virtuální sítě. Není vhodné jej použít pro ukládání dat hello fyzické nebo virtuální zařízení hello. Ve výchozím nastavení se za tímto účelem vytvoří nový účet úložiště. Ale pokud víte, že už máte účet úložiště, který je vhodný k tomuto účelu, můžete vybrat ji ze seznamu hello. Při vytváření prémiového virtuálního zařízení, hello rozevíracím seznamu se zobrazí jenom účty úložiště Premium. 
       
       > [!NOTE]
-      > Virtuální zařízení můžete používat jenom s účty služby Azure Storage. Ostatní poskytovatele cloudových služeb, například Amazon, HP a OpenStack (které podporuje fyzické zařízení), virtuální zařízení StorSimple nepodporuje.
+      > Hello virtuálního zařízení můžete pracovat pouze s účty úložiště Azure hello. Ostatní poskytovatele cloudových služeb například Amazon, HP a OpenStack (které jsou podporovány pro fyzické zařízení hello) nejsou podporovány pro virtuální zařízení StorSimple hello.
       > 
       > 
-   7. Zaškrtnutím příslušného políčka potvrďte, že jste seznámeni s tím, že data uložená ve virtuálním zařízení budou hostována v datovém centru Microsoftu. Pokud používáte jenom fyzické zařízení, váš šifrovací klíč se uchovává se zařízením, a Microsoft proto nemůže data dešifrovat. 
+   7. Klikněte na tlačítko zaškrtnutí tooindicate hello, který víte, že se bude hostovat hello data uložená na virtuální zařízení hello v datacentru společnosti Microsoft. Pokud používáte jenom fyzické zařízení, váš šifrovací klíč se uchovává se zařízením, a Microsoft proto nemůže data dešifrovat. 
       
-       Při použití virtuálního zařízení jsou šifrovací i dešifrovací klíče uloženy v Microsoft Azure. Další informace najdete v článku o [bezpečnostních aspektech použití virtuálního zařízení](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security).
-   8. Kliknutím na ikonu zaškrtnutí vytvořte virtuální zařízení. Zřízení zařízení může trvat zhruba 30 minut.
+       Při použití virtuálního zařízení hello šifrovací klíč a hello dešifrovací klíč jsou uložené ve službě Microsoft Azure. Další informace najdete v článku o [bezpečnostních aspektech použití virtuálního zařízení](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security).
+   8. Klikněte na tlačítko hello zkontrolujte ikonu toocreate hello virtuální zařízení. Hello zařízení může trvat přibližně 30 minut toobe zřízený.
       
       ![Fáze vytváření virtuálního zařízení StorSimple](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
 

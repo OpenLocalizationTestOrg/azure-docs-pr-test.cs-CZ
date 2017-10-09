@@ -1,5 +1,5 @@
 ---
-title: "Implementovat víceklientské aplikace SaaS s Azure SQL Database | Microsoft Docs"
+title: "aaaImplement víceklientské aplikace SaaS s Azure SQL Database | Microsoft Docs"
 description: "Implementujte víceklientské aplikace SaaS s Azure SQL Database."
 services: sql-database
 documentationcenter: 
@@ -16,23 +16,23 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/08/2017
 ms.author: AyoOlubek
-ms.openlocfilehash: 0aea69d86a51c38c99a72f46737de1eea27bef83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b87b8f296e2c20a8f674b56375f43fdc92df76d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-a-multi-tenant-saas-application-using-azure-sql-database"></a>Implementace víceklientské aplikace SaaS používání Azure SQL Database
 
-Víceklientské aplikace je aplikace hostované v cloudovém prostředí a který poskytuje stejnou sadu služeb stovkami nebo tisíci klienty, kteří sdílet nebo vidět uživatele toho druhého data. Příkladem je aplikace SaaS, která poskytuje služby klientům v prostředí hostovaných v cloudu. Tento model izoluje data pro každého klienta a optimalizuje rozdělení prostředků pro náklady. 
+Hello stejné nastavení služby toohundreds nebo tisíce klienty, kteří sdílet nebo vidět uživatele toho druhého data, která poskytuje víceklientské aplikace je aplikace hostované v cloudovém prostředí. Příkladem je aplikace SaaS, která poskytuje služby tootenants v prostředí hostovaných v cloudu. Tento model izoluje hello dat pro každého klienta a optimalizuje distribučního hello prostředků pro náklady. 
 
-Tento kurz ukazuje, jak vytvořit aplikaci SaaS víceklientské používání Azure SQL Database.
+Tento kurz ukazuje, jak toocreate aplikaci SaaS víceklientské používání Azure SQL Database.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Nastavení prostředí pro databázi pro podporu víceklientské aplikace SaaS, pomocí vzoru databáze za klienta
+> * Nastavení databáze prostředí toosupport víceklientské aplikace SaaS, pomocí vzoru databáze za klienta hello
 > * Vytvoření klienta katalogu
-> * Zřídit klienta databázi a její registrace v katalogu klienta
+> * Zřídit klienta databázi a její registrace v katalogu klienta hello
 > * Nastavení ukázkové aplikace Java 
 > * Přístup k klienta databází jednoduchou konzolovou aplikaci Java
 > * Odstranění klienta
@@ -41,23 +41,23 @@ Pokud nemáte předplatné Azure, [vytvořit bezplatný účet](https://azure.mi
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, zkontrolujte, zda že máte:
+toocomplete tento kurz, ověřte zda máte:
 
-* Nainstalovaná nejnovější verze prostředí PowerShell a [nejnovější sadu Azure PowerShell SDK](http://azure.microsoft.com/downloads/)
+* Hello nainstalovanou nejnovější verzi prostředí PowerShell a hello [nejnovější sadu Azure PowerShell SDK](http://azure.microsoft.com/downloads/)
 
-* Nainstalovat nejnovější verzi [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Instalace SQL Server Management Studio také nainstaluje nejnovější verzi SQLPackage, nástroje příkazového řádku, které je možné automatizovat řadu úloh vývoj databáze.
+* Nejnovější verze nainstalované hello [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Instalaci SQL Server Management Studio se nainstaluje také hello nejnovější verzi SQLPackage, nástroje příkazového řádku, které můžou být použité tooautomate řadu úloh vývoj databáze.
 
-* Nainstalována [Java Runtime Environment (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) a [nejnovější JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nainstalovaný na počítači. 
+* Nainstalované hello [Java Runtime Environment (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) a hello [nejnovější JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nainstalovaný na počítači. 
 
-* Nainstalovat [Apache Maven](https://maven.apache.org/download.cgi). Maven se použije ke správě závislosti, vytváření, testování a spuštění ukázkového projektu Java
+* Nainstalovat [Apache Maven](https://maven.apache.org/download.cgi). Použije se maven toohelp Správa závislostí, vytváření, testování a spuštění projektu Java ukázka hello
 
 ## <a name="set-up-data-environment"></a>Nastavení prostředí pro data
 
-Bude zřizování databáze za klienta. Model databáze za klienta poskytuje izolaci mezi klienty, s minimálními DevOps náklady na nejvyšší úrovni. K optimalizaci nákladů prostředků cloudu, budete se také zřizovat klienta databází do pružného fondu, která umožňuje optimalizovat výkon ceny pro skupinu databází. Další informace o jiné databázi zřizování modely [zde](sql-database-design-patterns-multi-tenancy-saas-applications.md#multi-tenant-data-models).
+Bude zřizování databáze za klienta. model databáze za klienta Hello poskytuje nejvyšší úroveň izolace mezi klienty, s malé náklady na DevOps hello. toooptimize hello nákladů prostředků cloudu, můžete se také zřizovat hello klienta databází do pružného fondu, což vám umožní toooptimize hello ceny výkonu pro skupinu databází. toolearn o jiné databázi zřizování modely [zde](sql-database-design-patterns-multi-tenancy-saas-applications.md#multi-tenant-data-models).
 
-Postupujte podle těchto kroků můžete vytvořit SQL server a fondu elastické databáze, který bude hostitelem všechny databáze klienta. 
+Postupujte podle těchto kroků toocreate systému SQL server a fondu elastické databáze, který bude hostitelem všechny databáze klienta. 
 
-1. Vytvoření proměnné, které chcete ukládat hodnoty, které se použijí ve zbývající části tohoto kurzu. Nezapomeňte upravit proměnnou IP adres, aby obsahovala IP adresu 
+1. Vytváření proměnných toostore hodnoty, které se použijí v hello zbytek hello kurzu. Ujistěte se, že toomodify hello IP adresu proměnné tooinclude IP adresa 
    
    ```PowerShell 
    # Set an admin login and password for your database
@@ -69,15 +69,15 @@ Postupujte podle těchto kroků můžete vytvořit SQL server a fondu elastické
    $tenant1 = "geolamice"
    $tenant2 = "ranplex"
    
-   # Store current client IP address (modify to include your IP address)
+   # Store current client IP address (modify tooinclude your IP address)
    $startIpAddress = 0.0.0.0 
    $endIpAddress = 0.0.0.0
    ```
    
-2. Přihlášení k Azure a vytvoření SQL server a elastického fondu 
+2. Přihlášení tooAzure a vytvořte SQL server a elastického fondu 
    
    ```PowerShell
-   # Login to Azure 
+   # Login tooAzure 
    Login-AzureRmAccount
    
    # Create resource group 
@@ -105,9 +105,9 @@ Postupujte podle těchto kroků můžete vytvořit SQL server a fondu elastické
    
 ## <a name="create-tenant-catalog"></a>Vytvořit katalog klienta 
 
-V aplikaci SaaS více klientů je důležité vědět, se uloží informace pro klienta. Běžně je uložen v databázi katalogu. Databáze katalogu se používá k ukládání mapování mezi klientem a databáze, ve kterém je uložený dat daného klienta.  Základní vzor platí jak pro více klientů nebo databázi jednoho klienta se používá.
+V aplikaci SaaS více klientů je důležité tooknow se uloží informace pro klienta. Běžně je uložen v databázi katalogu. databáze katalogu Hello je použité toohold mapování mezi klientem a databáze, ve kterém je uložený dat daného klienta.  Základní vzor Hello platí jak pro více klientů nebo databázi jednoho klienta se používá.
 
-Postupujte podle těchto kroků k vytvoření databáze katalogu pro ukázkovou aplikaci SaaS.
+Postupujte podle těchto kroků toocreate databáze katalogu pro aplikace SaaS ukázka hello.
 
 ```PowerShell
 # Create empty database in pool
@@ -116,7 +116,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
     -DatabaseName "tenantCatalog" `
     -ElasticPoolName "myElasticPool"
 
-# Create table to track mapping between tenants and their databases
+# Create table tootrack mapping between tenants and their databases
 $commandText = "
 CREATE TABLE Tenants
 (
@@ -138,7 +138,7 @@ Invoke-SqlCmd `
 ```
 
 ## <a name="provision-database-for-tenant1-and-register-in-tenant-catalog"></a>Zřídit databázi pro 'tenant1' a zaregistrovat v katalogu klienta 
-Zřídit databázi pro nového klienta, tenant1' a registraci tohoto klienta v katalogu pomocí prostředí Powershell. 
+Pomocí prostředí Powershell tooprovision databáze pro nového klienta, tenant1' a registraci tohoto klienta v katalogu hello. 
 
 ```PowerShell
 # Create empty database in pool for 'tenant1'
@@ -147,7 +147,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
     -DatabaseName $tenant1 `
     -ElasticPoolName "myElasticPool"
 
-# Create table WhoAmI and insert tenant name into the table 
+# Create table WhoAmI and insert tenant name into hello table 
 $commandText = "
 CREATE TABLE WhoAmI (TenantName NVARCHAR(128) NOT NULL);
 INSERT INTO WhoAmI VALUES ('Tenant $tenant1');"
@@ -161,7 +161,7 @@ Invoke-SqlCmd `
     -Query $commandText `
     -EncryptConnection
 
-# Register 'tenant1' in the tenant catalog 
+# Register 'tenant1' in hello tenant catalog 
 $commandText = "
 INSERT INTO Tenants VALUES ('$tenant1', '$tenant1');"
 Invoke-SqlCmd `
@@ -175,7 +175,7 @@ Invoke-SqlCmd `
 ```
 
 ## <a name="provision-database-for-tenant2-and-register-in-tenant-catalog"></a>Zřídit databázi pro 'tenant2' a zaregistrovat v katalogu klienta
-Zřídit databázi pro nového klienta, tenant2' a registraci tohoto klienta v katalogu pomocí prostředí Powershell. 
+Pomocí prostředí Powershell tooprovision databáze pro nového klienta, tenant2' a registraci tohoto klienta v katalogu hello. 
 
 ```PowerShell
 # Create empty database in pool for 'tenant2'
@@ -184,7 +184,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName "myResourceGroup" `
     -DatabaseName $tenant2 `
     -ElasticPoolName "myElasticPool"
 
-# Create table WhoAmI and insert tenant name into the table 
+# Create table WhoAmI and insert tenant name into hello table 
 $commandText = "
 CREATE TABLE WhoAmI (TenantName NVARCHAR(128) NOT NULL);
 INSERT INTO WhoAmI VALUES ('Tenant $tenant2');"
@@ -198,7 +198,7 @@ Invoke-SqlCmd `
     -Query $commandText `
     -EncryptConnection
 
-# Register tenant 'tenant2' in the tenant catalog 
+# Register tenant 'tenant2' in hello tenant catalog 
 $commandText = "
 INSERT INTO Tenants VALUES ('$tenant2', '$tenant2');"
 Invoke-SqlCmd `
@@ -213,13 +213,13 @@ Invoke-SqlCmd `
 
 ## <a name="set-up-sample-java-application"></a>Nastavte ukázkovou aplikaci Java 
 
-1. Vytvořte projekt maven. V okně příkazového řádku zadejte následující příkaz:
+1. Vytvořte projekt maven. V okně příkazového řádku zadejte následující hello:
    
    ```
    mvn archetype:generate -DgroupId=com.microsoft.sqlserver -DartifactId=mssql-jdbc -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
    
-2. Přidejte tuto závislost, úroveň jazyka a sestavení možnost pro podporu manifestu souborů v JAR do souboru pom.xml:
+2. Přidejte tuto závislost, úroveň jazyka a sestavení možnost toosupport manifestu souborů v souboru pom.xml toohello JAR:
    
    ```XML
    <dependency>
@@ -251,7 +251,7 @@ Invoke-SqlCmd `
    </build>
    ```
 
-3. Přidejte následující kód do soubor App.java:
+3. Přidejte následující hello do soubor App.java hello:
 
    ```java 
    package com.sqldbsamples;
@@ -306,7 +306,7 @@ Invoke-SqlCmd `
    
    System.out.println(" " + CMD_QUERY + " <NAME> - connect and tenant query tenant <NAME>");
    
-   System.out.println(" " + CMD_QUIT + " - quit the application\n");
+   System.out.println(" " + CMD_QUIT + " - quit hello application\n");
    
    try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
    
@@ -352,7 +352,7 @@ Invoke-SqlCmd `
    
    private static void listTenants() {
    
-   // List all tenants that currently exist in the system
+   // List all tenants that currently exist in hello system
    
    String sql = "SELECT TenantName FROM Tenants";
    
@@ -380,7 +380,7 @@ Invoke-SqlCmd `
    
    private static void queryTenant(String name) {
    
-   // Query the data that was previously inserted into the primary database from the geo replicated database
+   // Query hello data that was previously inserted into hello primary database from hello geo replicated database
    
    String url = null;
    
@@ -445,21 +445,21 @@ Invoke-SqlCmd `
    }
    ```
 
-4. Uložte soubor.
+4. Uložte soubor hello.
 
-5. Přejděte do konzoly příkazu a provést
+5. Přejděte toocommand konzoly a provést
 
    ```bash
    mvn package
    ```
 
-6. Po dokončení spuštěním následujících příkazů spusťte aplikaci 
+6. Po dokončení spuštění následující aplikace hello toorun hello 
    
    ```
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
    ```
    
-Pokud úspěšně proběhne, výstup bude vypadat například takto:
+Pokud úspěšně proběhne, bude výstup Hello vypadat například takto:
 
 ```
 ############################
@@ -474,15 +474,15 @@ LIST - list tenants
 
 QUERY <NAME> - connect and tenant query tenant <NAME>
 
-QUIT - quit the application
+QUIT - quit hello application
 
-* List the tenants
+* List hello tenants
 
 * Query tenants you created
 ```
 
 ## <a name="delete-first-tenant"></a>Odstranit první klienta 
-Pomocí prostředí PowerShell můžete odstranit položku databáze a katalog klienta pro prvního klienta.
+Pomocí prostředí PowerShell toodelete hello klienta databáze a katalog položky pro prvního klienta hello.
 
 ```PowerShell
 # Remove 'tenant1' from catalog 
@@ -502,15 +502,15 @@ Remove-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" `
     -DatabaseName $tenant1
 ```
 
-Zkuste se připojit k 'tenant1' pomocí aplikace Java. Zobrazí se chyba oznamující, že klient neexistuje.
+Pokuste se připojit pomocí 'tenant1' příliš hello aplikace v jazyce Java. Zobrazí se chyba oznamující, že tento klient hello neexistuje.
 
 ## <a name="next-steps"></a>Další kroky 
 
 V tomto kurzu jste se dozvěděli na:
 > [!div class="checklist"]
-> * Nastavení prostředí pro databázi pro podporu víceklientské aplikace SaaS, pomocí vzoru databáze za klienta
+> * Nastavení databáze prostředí toosupport víceklientské aplikace SaaS, pomocí vzoru databáze za klienta hello
 > * Vytvoření klienta katalogu
-> * Zřídit klienta databázi a její registrace v katalogu klienta
+> * Zřídit klienta databázi a její registrace v katalogu klienta hello
 > * Nastavení ukázkové aplikace Java 
 > * Přístup k klienta databází jednoduchou konzolovou aplikaci Java
 > * Odstranění klienta

@@ -1,6 +1,6 @@
 ---
-title: "Virtuální počítač SQL připojení do služby Azure Search | Microsoft Docs"
-description: "Povolit šifrované připojení a nakonfigurujte bránu firewall, aby umožňovaly připojení k systému SQL Server na virtuální počítač Azure (VM) z indexer na Azure Search."
+title: "aaaSQL virtuálního počítače připojení tooAzure vyhledávání | Microsoft Docs"
+description: "Povolit šifrované připojení a nakonfigurujte hello brány firewall tooallow připojení tooSQL Server na virtuální počítač Azure (VM) z indexer na Azure Search."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -14,77 +14,77 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1f0db8a2812b0a7d012e58bb873c4b2b29fa1338
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurovat spojení z indexer Azure Search na SQL Server na virtuálním počítači Azure
-Jak jsme uvedli v [připojení databáze SQL Azure do Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuálních počítačích SQL Azure** pro zkrácení) je podporováno ve službě Azure Search je ale několik předpoklady související se zabezpečením, která se postará o první. 
+# <a name="configure-a-connection-from-an-azure-search-indexer-toosql-server-on-an-azure-vm"></a>Konfigurujte připojení z tooSQL indexer Azure Search Server na virtuálním počítači Azure
+Jak jsme uvedli v [tooAzure připojení Azure SQL Database vyhledávání pomocí indexery](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuálních počítačích SQL Azure** pro zkrácení) je podporuje Azure Search, ale existuje několik předpokladů souvisejících s zabezpečení tootake péče o první. 
 
-**Doba trvání úkolu:** asi 30 minut za předpokladu, že jste již nainstalovali certifikát ve virtuálním počítači.
+**Doba trvání úkolu:** asi 30 minut za předpokladu, že jste již nainstalovali certifikát na hello virtuálních počítačů.
 
 ## <a name="enable-encrypted-connections"></a>Povolit šifrované připojení
-Vyhledávání systému Azure vyžaduje šifrovaný kanál pro všechny požadavky indexer přes veřejný připojení k Internetu. V této části jsou uvedené kroky, aby tato práce.
+Vyhledávání systému Azure vyžaduje šifrovaný kanál pro všechny požadavky indexer přes veřejný připojení k Internetu. Tato část obsahuje kroky toomake hello činnost.
 
-1. Zkontrolujte vlastnosti certifikát, který chcete ověřit, jestli název předmětu plně kvalifikovaný název domény (FQDN) virtuálního počítače Azure. Chcete-li zobrazit vlastnosti můžete použít nástroje, jako je CertUtils nebo modulu snap-in Certifikáty. Plně kvalifikovaný název domény můžete získat z části Essentials okně služby virtuálních počítačů v **veřejných IP adres a DNS název popisku** pole, [portál Azure](https://portal.azure.com/).
+1. Zkontrolujte vlastnosti hello název subjektu hello certifikátu tooverify hello hello plně kvalifikovaný název domény (FQDN) hello virtuálního počítače Azure. Můžete použít nástroje, jako je CertUtils nebo hello vlastnosti hello tooview modul snap-in Certifikáty. Hello plně kvalifikovaný název domény můžete získat z části Essentials hello virtuálních počítačů služby okno na v hello **veřejných IP adres a DNS název popisku** pole v hello [portál Azure](https://portal.azure.com/).
    
-   * Pro virtuální počítače vytvořené pomocí novější **Resource Manager** šablony, plně kvalifikovaný název domény je formátováno jako `<your-VM-name>.<region>.cloudapp.azure.com`. 
-   * Pro starší virtuální počítače vytvořené jako **Classic** virtuálních počítačů, plně kvalifikovaný název domény je formátováno jako `<your-cloud-service-name.cloudapp.net>`. 
-2. Konfigurace serveru SQL pro použití certifikátu pomocí Editoru registru (regedit). 
+   * Pro virtuální počítače vytvořené pomocí hello novější **Resource Manager** šablony, hello plně kvalifikovaný název domény je formátováno jako `<your-VM-name>.<region>.cloudapp.azure.com`. 
+   * Pro starší virtuální počítače vytvořené jako **Classic** virtuálních počítačů, hello plně kvalifikovaný název domény je formátováno jako `<your-cloud-service-name.cloudapp.net>`. 
+2. Konfigurace systému SQL Server toouse hello certifikát pomocí hello Editor registru (regedit). 
    
-    I když Správce konfigurace systému SQL Server se často používá pro tuto úlohu, nelze ho použít pro tento scénář. Importovaný certifikát nenajde protože plně kvalifikovaný název domény virtuálního počítače na platformě Azure se neshoduje se plně kvalifikovaný název domény, počítáno od virtuálního počítače (označuje domény jako místní počítač nebo doménu sítě, ke které je připojený). Když se názvy neshodují, použijte k určení certifikátu regedit.
+    I když Správce konfigurace systému SQL Server se často používá pro tuto úlohu, nelze ho použít pro tento scénář. Nenajde, že hello importovat certifikát, protože hello plně kvalifikovaný název domény hello virtuálního počítače na platformě Azure se neshoduje se hello plně kvalifikovaný název domény, počítáno od hello virtuálních počítačů (označuje hello domény jako hello místního počítače nebo hello síťové domény toowhich, který je připojen). Když se názvy neshodují, používejte regedit toospecify hello certifikát.
    
-   * V editoru registru, vyhledejte tento klíč registru: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
+   * V editoru registru, vyhledejte klíč registru toothis: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
      
-     `[MSSQL13.MSSQLSERVER]` Částí se liší podle verze a instance název. 
-   * Nastavte hodnotu **certifikát** klíče k **kryptografický otisk** certifikátu protokolu SSL, který jste importovali do virtuálního počítače.
+     Hello `[MSSQL13.MSSQLSERVER]` částí se liší podle verze a instance název. 
+   * Nastavte hodnotu hello hello **certifikát** klíče toohello **kryptografický otisk** certifikátu protokolu SSL hello jste naimportovali toohello virtuálních počítačů.
      
-     Chcete-li získat kryptografický otisk, některé lépe než jiné několika způsoby. Pokud zkopírujete z **certifikáty** modul snap-in konzoly MMC, budete pravděpodobně vyzvedne, až bude neviditelná úvodní znak [jak je popsáno v tomto článku podpory](https://support.microsoft.com/kb/2023869/), což vede k chybě při pokusu o připojení . Existuje několik alternativní řešení pro odstranění tohoto problému. Nejjednodušší je smažte vše přes a znovu zadejte první znak kryptografický otisk odebrat úvodní znak v poli hodnota klíče v editoru registru. Alternativně můžete jiný nástroj pro kopírování kryptografický otisk.
-3. Udělení oprávnění k účtu služby. 
+     Existuje několik způsobů tooget hello kryptografický otisk, některé lépe než jiné. Při kopírování z hello **certifikáty** modul snap-in konzoly MMC, budete pravděpodobně vyzvedne, až bude neviditelná úvodní znak [jak je popsáno v tomto článku podpory](https://support.microsoft.com/kb/2023869/), což vede k chybě při pokusu o připojení. Existuje několik alternativní řešení pro odstranění tohoto problému. Hello nejjednodušší je toobackspace nad a znovu zadejte hello první znak hello kryptografický otisk tooremove hello úvodní znak v poli hodnota klíče hello v editoru registru. Alternativně můžete použít kryptografickým otiskem jiný nástroj toocopy hello.
+3. Udělte oprávnění účtu služby toohello. 
    
-    Ujistěte se, že účet služby SQL Server je udělena příslušná oprávnění na privátní klíč certifikátu protokolu SSL. Pokud jste přehlédnout, tento krok, nebude spustit systém SQL Server. Můžete použít **certifikáty** modul snap-in nebo **CertUtils** pro tuto úlohu.
-4. Restartujte službu SQL Server.
+    Zkontrolujte, zda text hello účet služby SQL Server je udělena příslušná oprávnění na hello privátní klíč certifikátu protokolu SSL hello. Pokud jste přehlédnout, tento krok, nebude spustit systém SQL Server. Můžete použít hello **certifikáty** modul snap-in nebo **CertUtils** pro tuto úlohu.
+4. Restartujte službu SQL Server hello.
 
-## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurace připojení k systému SQL Server ve virtuálním počítači
-Po nastavení šifrované připojení vyžaduje Azure Search, existují další kroky konfigurace vnitřní k systému SQL Server na virtuálních počítačích Azure. Pokud jste tak ještě neučinili, dalším krokem je dokončení konfigurace pomocí kterékoli z těchto článků:
+## <a name="configure-sql-server-connectivity-in-hello-vm"></a>Konfigurace připojení k SQL serveru v hello virtuálních počítačů
+Po nastavení hello šifrované připojení vyžaduje Azure Search, existují další konfigurační kroky vnitřní tooSQL serveru na virtuálních počítačích Azure. Pokud jste tak ještě neučinili, hello dalším krokem je konfigurace toofinish pomocí kterékoli z těchto článků:
 
-* Pro **Resource Manager** virtuálních počítačů, najdete v části [připojení SQL serveru virtuálnímu počítači na platformě Azure pomocí Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
-* Pro **Classic** virtuálních počítačů, najdete v části [připojit k SQL serveru virtuálního počítače na Azure Classic](../virtual-machines/windows/classic/sql-connect.md).
+* Pro **Resource Manager** virtuálních počítačů, najdete v části [připojit tooa virtuálního počítače systému SQL Server v Azure pomocí Správce prostředků](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* Pro **Classic** virtuálních počítačů, najdete v části [připojit tooa virtuálního počítače systému SQL Server na Azure Classic](../virtual-machines/windows/classic/sql-connect.md).
 
-Konkrétně projděte si část v jednotlivých článků "propojení prostřednictvím Internetu".
+Konkrétně, projděte si část hello v jednotlivých článků pro "internet připojující se přes hello".
 
-## <a name="configure-the-network-security-group-nsg"></a>Konfigurovat skupinu zabezpečení sítě (NSG)
-Není konfigurace NSG a odpovídající koncového bodu Azure nebo seznamu řízení přístupu (ACL) pro zpřístupnění svého virtuálního počítače Azure jiných stran. Pravděpodobné, že jste to před nastavená na Povolit vlastní logiky aplikace pro připojení k virtuálnímu počítači Azure SQL. Je pro připojení k Azure Search, aby virtuální počítač SQL Azure žádné jiné. 
+## <a name="configure-hello-network-security-group-nsg"></a>Konfigurace hello skupina zabezpečení sítě (NSG)
+Není tooconfigure hello NSG a odpovídající koncového bodu Azure nebo seznamu řízení přístupu (ACL) toomake vaší strany přístupné tooother virtuálního počítače Azure. Pravděpodobné, že kroky dokončíte před tooallow vlastní aplikace logiky tooconnect tooyour virtuální počítač SQL Azure. Je nejsou jiné u Azure Search připojení tooyour virtuální počítač SQL Azure. 
 
-Odkazy dole poskytují pokyny NSG konfigurace pro nasazení virtuálních počítačů. Použijte tyto pokyny k seznamu ACL koncového bodu Azure SEarch na základě jeho IP adresy.
+Hello odkazy níže poskytují pokyny NSG konfigurace pro nasazení virtuálních počítačů. Použijte tyto pokyny že tooacl koncový bod Azure SEarch na základě jeho IP adresy.
 
 > [!NOTE]
 > Pro informace viz [co je skupina zabezpečení sítě?](../virtual-network/virtual-networks-nsg.md)
 > 
 > 
 
-* Pro **Resource Manager** virtuálních počítačů, najdete v části [postup vytvoření skupiny Nsg pro nasazení ARM](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
-* Pro **Classic** virtuálních počítačů, najdete v části [postup vytvoření skupiny Nsg pro nasazení Classic](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* Pro **Resource Manager** virtuálních počítačů, najdete v části [jak toocreate skupiny Nsg pro nasazení ARM](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+* Pro **Classic** virtuálních počítačů, najdete v části [jak toocreate skupiny Nsg pro nasazení Classic](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
-IP adresy může představovat několik výzvy, které jsou snadno překonat Pokud víte o problému a potenciální řešení. Zbývající části poskytuje doporučení pro zpracování problémy související s IP adresami v seznamu ACL.
+IP adresy může představovat několik výzvy, které jsou snadno překonat, pokud jste si vědomi hello problému a potenciální řešení. zbývající části Hello poskytuje doporučení pro zpracování problémy související tooIP adresy v hello seznamu ACL.
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>Omezení přístupu na IP adresu služby vyhledávání
-Důrazně doporučujeme omezit přístup na IP adresu služby search v seznamu ACL, místo provedení virtuální počítače Azure SQL celý otevřené žádné požadavky na připojení. Můžete snadno získat IP adresu příkazem ping plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net`) služby search.
+#### <a name="restrict-access-toohello-search-service-ip-address"></a>Omezit přístup toohello vyhledávání služby IP adresu
+Důrazně doporučujeme omezit hello přístup toohello IP adresu služby search v hello seznamu ACL místo provedení virtuální počítače Azure SQL celý otevřete tooany žádosti o připojení. Můžete snadno zjistit hello IP adresu pomocí příkazu ping hello plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net`) služby search.
 
 #### <a name="managing-ip-address-fluctuations"></a>Správa IP adres kolísání
-Pokud vaši službu vyhledávání má jenom jednu jednotku vyhledávání (to znamená, jednu repliku a jeden oddíl), IP adresa se změní v průběhu běžné služby restartování zneplatnění existující ACL s IP adresou vaši službu vyhledávání.
+Pokud vaši službu vyhledávání má jenom jednu jednotku vyhledávání (to znamená, jednu repliku a jeden oddíl), hello IP adresa se změní v průběhu běžné služby restartování zneplatnění existující ACL s IP adresou vaši službu vyhledávání.
 
-Jedním ze způsobů, aby se zabránilo chybě následné připojení je použít víc než jednu repliku a jeden oddíl ve službě Azure Search. Tím se zvyšuje náklady, ale také řeší problém IP adresu. Ve službě Azure Search neměnit IP adresy, když máte více než jednu jednotku vyhledávání.
+Jedním ze způsobů tooavoid hello následné připojení chyba je jedna replika a toouse víc než jeden oddíl ve službě Azure Search. Tím se zvyšuje náklady na hello, ale také řeší problém adresu IP hello. Ve službě Azure Search neměnit IP adresy, když máte více než jednu jednotku vyhledávání.
 
-Druhý postup je povolit připojení k selhání a potom znovu nakonfigurovat seznamy ACL v této skupině. V průměru můžete očekávat, že IP adresy, chcete-li změnit každých několik týdnů. Pro zákazníky, kteří řízené indexu na základě jen zřídka může být vhodným tento přístup.
+Druhý přístup je tooallow hello připojení toofail a překonfigurujte hello seznamy ACL v hello NSG. V průměru můžete očekávat, že IP adresy toochange každých několik týdnů. Pro zákazníky, kteří řízené indexu na základě jen zřídka může být vhodným tento přístup.
 
-Třetí přístup přijatelná (ale zvlášť zabezpečené) slouží k zadání rozsah IP adres oblasti Azure, kde je zřízený vaši službu vyhledávání. Seznam rozsahů IP adres, ze kterých se veřejné IP adresy přidělené prostředky Azure je publikován v [rozsahy IP Datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
+Třetí přístup přijatelná (ale zvlášť zabezpečené) je toospecify hello rozsah IP adres hello oblast Azure, kde je zřízený vaši službu vyhledávání. Hello seznam rozsahů IP adres, ze kterých se veřejné IP adresy přidělené prostředky tooAzure je publikován v [rozsahy IP Datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
 
-#### <a name="include-the-azure-search-portal-ip-addresses"></a>Zahrnout IP adresy portálu Azure Search
-Pokud používáte portál Azure k vytvoření indexer, logiky na portálu Azure Search také potřebuje přístup k virtuálnímu počítači Azure SQL při vytváření. IP adresy portálu Azure search najdete otestováním pomocí `stamp2.search.ext.azure.com`.
+#### <a name="include-hello-azure-search-portal-ip-addresses"></a>Zahrnout hello Azure Search portálu IP adresy
+Pokud používáte hello Azure portálu toocreate indexer, logiky na portálu Azure Search také musí přístup tooyour virtuální počítač SQL Azure při vytváření. IP adresy portálu Azure search najdete otestováním pomocí `stamp2.search.ext.azure.com`.
 
 ## <a name="next-steps"></a>Další kroky
-S konfigurací stranou můžete nyní zadejte SQL Server na virtuálním počítači Azure jako zdroj dat pro indexer Azure Search. V tématu [připojení databáze SQL Azure do Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) Další informace.
+S konfigurací mimo hello způsob nyní můžete určit systému SQL Server na virtuálním počítači Azure jako hello zdroj dat pro indexer Azure Search. V tématu [tooAzure připojení Azure SQL Database vyhledávání pomocí indexery](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) Další informace.
 

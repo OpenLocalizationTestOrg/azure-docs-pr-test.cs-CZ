@@ -1,38 +1,38 @@
-## <a name="view-the-solution-dashboard"></a>Zobrazení řídicího panelu řešení
+## <a name="view-hello-solution-dashboard"></a>Zobrazení řídicí panel řešení hello
 
-Přes řídicí panel řešení můžete spravovat nasazené řešení. Můžete například zobrazit telemetrická data, přidat zařízení a volat metody.
+řídicí panel řešení Hello umožňuje toomanage hello nasazené řešení. Můžete například zobrazit telemetrická data, přidat zařízení a volat metody.
 
-1. Až bude zřizování dokončeno a dlaždice předkonfigurovaného řešení bude hlásit **Připraveno**, zvolte **Spustit**. Na nové kartě se otevře portál předkonfigurovaného řešení vzdáleného monitorování.
+1. Když je hello zřizování dokončeno a dlaždice hello pro předkonfigurované řešení označuje **připravené**, zvolte **spusťte** tooopen vzdálené monitorování řešení portálu na nové kartě.
 
-    ![Spuštění předkonfigurovaného řešení][img-launch-solution]
+    ![Spusťte hello předkonfigurované řešení][img-launch-solution]
 
-1. Ve výchozím nastavení se na portálu řešení zobrazuje *řídicí panel*. Do jiných oblastní portálu řešení můžete přecházet pomocí nabídky na levé straně stránky.
+1. Ve výchozím nastavení, hello portálu řešení zobrazuje hello *řídicí panel*. Můžete procházet tooother oblasti hello portál řešení pomocí hello nabídky na levé straně stránky hello hello.
 
     ![Řídicí panel předkonfigurovaného řešení vzdáleného monitorování][img-menu]
 
 ## <a name="add-a-device"></a>Přidání zařízení
 
-Aby se zařízení mohlo připojit k předkonfigurovanému řešení, musí se identifikovat ve službě IoT Hub pomocí platných přihlašovacích údajů. Přihlašovací údaje zařízení můžete zjistit z řídicího panelu řešení. Přihlašovací údaje zařízení vložíte do klientské aplikace později v tomto kurzu.
+Pro zařízení tooconnect toohello předkonfigurované řešení, se musí identifikovat tooIoT centra pomocí platných přihlašovacích údajů. Přihlašovací údaje hello zařízení můžete načíst z řídicí panel řešení hello. Přihlašovací údaje zařízení hello zahrnete do klientské aplikace později v tomto kurzu.
 
-Pokud jste tak již neučinili, přidejte vlastní zařízení pro vaše řešení vzdáleného monitorování. Pomocí následujících kroků na řídicím panelu řešení:
+Pokud jste tak již neučinili, přidejte vlastní zařízení tooyour řešení vzdáleného monitorování. Proveďte následující kroky v řídicí panel řešení hello hello:
 
-1. V levém dolním rohu řídicího panelu klikněte na **Přidat zařízení**.
+1. V hello levém dolním rohu hello řídicí panel, klikněte na **přidání zařízení**.
 
    ![Přidání zařízení][1]
 
-1. Na panelu **Vlastní zařízení** klikněte na **Přidat nové**.
+1. V hello **vlastní zařízení** panelu, klikněte na tlačítko **přidat nový**.
 
    ![Přidání vlastního zařízení][2]
 
-1. Vyberte možnost **Definovat vlastní ID zařízení**. Zadejte ID zařízení, jako **rasppi**, klikněte na tlačítko **Zkontrolujte ID** ověření již nepoužili název ve vašem řešení a potom klikněte na **vytvořit** ke zřízení zařízení.
+1. Vyberte možnost **Definovat vlastní ID zařízení**. Zadejte ID zařízení, jako **rasppi**, klikněte na tlačítko **Zkontrolujte ID** tooverify již nepoužili hello název ve vašem řešení a potom klikněte na **vytvořit** tooprovision hello zařízení.
 
    ![Přidání ID zařízení][3]
 
-1. Poznamenejte si přihlašovací údaje zařízení (**ID zařízení**, **název hostitele centra IoT**, a **klíč zařízení**). Klientské aplikace na platformy malin musí tyto hodnoty pro připojení k řešení vzdáleného monitorování. Potom klikněte na **Done** (Hotovo).
+1. Zkontrolujte zařízení hello Poznámka: přihlašovací údaje (**ID zařízení**, **název hostitele centra IoT**, a **klíč zařízení**). Klientské aplikace na hello malin platformy musí tyto hodnoty tooconnect toohello řešení vzdáleného sledování. Potom klikněte na **Done** (Hotovo).
 
     ![Zobrazení přihlašovacích údajů zařízení][4]
 
-1. V seznamu zařízení na řídicím panelu řešení vyberte své zařízení. Pak na panelu **Podrobnosti o zařízení** klikněte na **Povolit zařízení**. Stav vašeho zařízení je teď **Spuštěno**. Řešení vzdáleného monitorování teď může z vašeho zařízení přijímat telemetrii a vyvolávat v něm metody.
+1. Vyberte zařízení v seznamu zařízení hello v řídicí panel řešení hello. Potom v hello **podrobnosti o zařízení** panelu, klikněte na tlačítko **povolit zařízení**. Hello stav zařízení je nyní **systémem**. řešení vzdáleného monitorování Hello teď můžete přijímat telemetrická data ze zařízení a volat metody na hello zařízení.
 
 [img-launch-solution]: media/iot-suite-raspberry-pi-kit-view-solution/launch.png
 [img-menu]: media/iot-suite-raspberry-pi-kit-view-solution/menu.png

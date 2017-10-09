@@ -1,6 +1,6 @@
 ---
-title: "Rozšíření prostředí HDInsight pomocí virtuální sítě - Azure | Microsoft Docs"
-description: "Naučte se používat pro připojení HDInsight k jiným cloudovým prostředkům nebo prostředkům ve vašem datovém centru Azure Virtual Network"
+title: "aaaExtend prostředí HDInsight pomocí virtuální sítě - Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse Azure Virtual Network tooconnect HDInsight tooother cloudové prostředky nebo prostředky ve vašem datovém centru"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,173 +15,173 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: larryfr
-ms.openlocfilehash: 380423ec42ad4905c73fcd57501102e9f7062e81
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ba80be4d9f280c6c62fa8acc996ef5f921acdbbd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí virtuální síť Azure
 
-Další informace o použití prostředí HDInsight pomocí [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Použití virtuální sítě Azure umožňuje následující scénáře:
+Zjistěte, jak toouse HDInsight s [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Použití virtuální sítě Azure umožňuje hello následující scénáře:
 
-* Připojení k HDInsight přímo z místní sítě.
+* Připojení tooHDInsight přímo z místní sítě.
 
-* Připojování k datům HDInsight ukládá v Azure virtuální sítě.
+* Připojení HDInsight toodata ukládá v Azure virtuální sítě.
 
-* Přímý přístup k služby Hadoop, které nejsou k dispozici veřejně přes internet. Například Kafka rozhraní API nebo rozhraní API HBase Java.
+* Přímo hello přístupem služby Hadoop, které nejsou k dispozici veřejně přes internet. Například Kafka rozhraní API nebo hello HBase Java API.
 
 > [!WARNING]
-> Informace v tomto dokumentu vyžaduje znalosti o protokolu TCP/IP v síti. Pokud nejste obeznámeni s prací v síti TCP/IP, by měla spolupracovat s uživatelem, který je před provedením změny produkční sítě.
+> Hello informace v tomto dokumentu vyžaduje znalosti o protokolu TCP/IP v síti. Pokud nejste obeznámeni s prací v síti TCP/IP, by měla spolupracovat s uživatelem, který je před provedením změny tooproduction sítě.
 
 ## <a name="planning"></a>Plánování
 
-Tady jsou otázky, které je nutné zodpovědět při plánování instalace HDInsight ve virtuální síti:
+Hello následují hello otázky, které je nutné zodpovědět při plánování tooinstall HDInsight ve virtuální síti:
 
-* Potřebujete k instalaci HDInsight do existující virtuální síť? Nebo můžete vytvořit novou síť?
+* Potřebujete tooinstall HDInsight do existující virtuální síť? Nebo můžete vytvořit novou síť?
 
-    Pokud používáte stávající virtuální síť, musíte změnit síťovou konfiguraci, před instalací HDInsight. Další informace najdete v tématu [přidat HDInsight k existující virtuální síti](#existingvnet) části.
+    Pokud používáte stávající virtuální síť, musíte konfigurace sítě hello toomodify před instalací HDInsight. Další informace najdete v tématu hello [přidat HDInsight tooan existující virtuální síť](#existingvnet) části.
 
-* Opravdu chcete připojit virtuální síť obsahující HDInsight k jiné virtuální síti nebo v místní síti?
+* Chcete tooconnect hello virtuální sítě obsahující HDInsight tooanother virtuální sítě nebo v místní síti?
 
-    Snadno pracovat s prostředky v sítích, můžete vytvořit vlastní DNS a nakonfigurujte předávání DNS. Další informace najdete v tématu [připojení více sítí](#multinet) části.
+    tooeasily práci s prostředky v sítích, můžete potřebovat toocreate vlastní DNS a nakonfigurujte předávání DNS. Další informace najdete v tématu hello [připojení více sítí](#multinet) části.
 
-* Chcete omezit či přesměrování příchozích a odchozích přenosů do HDInsight
+* Chcete, aby toorestrict či přesměrování příchozích a odchozích přenosů tooHDInsight?
 
-    HDInsight musí mít neomezený komunikace s konkrétní IP adresy v datového centra Azure. Existují také několik portů, které musí být povoleno přes brány firewall pro komunikaci klienta. Další informace najdete v tématu [řízení síťového provozu](#networktraffic) části.
+    HDInsight musí mít neomezený komunikace s konkrétní IP adresy v hello datového centra Azure. Existují také několik portů, které musí být povoleno přes brány firewall pro komunikaci klienta. Další informace najdete v tématu hello [řízení síťového provozu](#networktraffic) části.
 
-## <a id="existingvnet"></a>Přidání HDInsight do existující virtuální síť
+## <a id="existingvnet"></a>Přidat HDInsight tooan existující virtuální síť
 
-Pokud chcete zjistit, jak přidat nové HDInsight do existující virtuální síť Azure, postupujte podle kroků v této části.
+Jak používat hello kroky v této části toodiscover tooadd nové tooan HDInsight existující virtuální síť Azure.
 
 > [!NOTE]
 > Nelze přidat stávající cluster HDInsight do virtuální sítě.
 
-1. Používáte pro virtuální síť klasický nebo modelu nasazení Resource Manager?
+1. Používáte pro virtuální síť hello klasický nebo modelu nasazení Resource Manager?
 
     HDInsight 3.4 a větší vyžaduje virtuální sítě Resource Manager. Dřívějších verzích HDInsight vyžaduje klasickou virtuální síť.
 
-    Pokud vaší stávající sítě klasickou virtuální síť, musíte vytvořit virtuální síť Resource Manager a potom připojení dvě. [Připojení virtuální sítě classic k nové virtuální sítě](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
+    Pokud vaší stávající sítě klasickou virtuální síť, musíte vytvořit virtuální sítě Resource Manager a potom se připojte hello dva. [Připojení klasické virtuální sítě toonew virtuálních sítí](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
-    Jakmile připojený, HDInsight v síti Resource Manager nainstalovaný mohou komunikovat s prostředky v síti classic.
+    Jakmile připojený, HDInsight v síti Resource Manager hello nainstalovaný mohou komunikovat s prostředky v síti classic hello.
 
-2. Používáte vynucené tunelování? Vynucené tunelování je nastavení podsítě, které vynutí odchozí přenosy z Internetu do zařízení pro kontroly a protokolování. HDInsight nepodporuje vynucené tunelování. Buď odeberte vynucené tunelování před instalací HDInsight do podsítě, nebo vytvořit novou podsíť pro HDInsight.
+2. Používáte vynucené tunelování? Vynucené tunelování je nastavení podsítě, které vynutí odchozí internetové přenosy tooa zařízení pro kontroly a protokolování. HDInsight nepodporuje vynucené tunelování. Buď odeberte vynucené tunelování před instalací HDInsight do podsítě, nebo vytvořit novou podsíť pro HDInsight.
 
-3. Používáte skupiny zabezpečení sítě, trasy definované uživatelem nebo virtuální síťové zařízení k omezení přenosu do nebo z virtuální sítě?
+3. Používáte skupiny zabezpečení sítě, trasy definované uživatelem nebo virtuální síťové zařízení toorestrict provoz do nebo z hello virtuální sítě?
 
-    Jako spravovanou službu vyžaduje HDInsight neomezený přístup k několika IP adresy v datového centra Azure. Povolit komunikaci se tyto IP adresy, aktualizujte všechny existující skupiny zabezpečení sítě nebo trasy definované uživatelem.
+    Jako spravovanou službu vyžaduje HDInsight neomezený přístup tooseveral IP adresy v hello datového centra Azure. tooallow komunikace se tyto IP adresy, aktualizovat všechny existující skupiny zabezpečení sítě nebo trasy definované uživatelem.
 
-    HDInsight je hostitelem více služeb, které používají různé porty. Nejsou blokovány přenosy na těchto portech. Seznam portů pro tvorbu přes virtuální zařízení brány firewall, naleznete v části [zabezpečení](#security) části.
+    HDInsight je hostitelem více služeb, které používají různé porty. Provoz toothese porty nejsou blokovány. Seznam portů tooallow přes virtuální zařízení brány firewall, naleznete v části hello [zabezpečení](#security) části.
 
-    Pokud chcete vyhledat existující konfiguraci zabezpečení, použijte následující příkazy prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure:
+    toofind existující konfiguraci zabezpečení, hello použijte následující příkazy prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure:
 
     * Skupiny zabezpečení sítě
 
         ```powershell
-        $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
+        $resourceGroupName = Read-Input -Prompt "Enter hello resource group that contains hello virtual network used with HDInsight"
         get-azurermnetworksecuritygroup -resourcegroupname $resourceGroupName
         ```
 
         ```azurecli-interactive
-        read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
+        read -p "Enter hello name of hello resource group that contains hello virtual network: " RESOURCEGROUP
         az network nsg list --resource-group $RESOURCEGROUP
         ```
 
-        Další informace najdete v tématu [odstraňování skupin zabezpečení sítě](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) dokumentu.
+        Další informace najdete v tématu hello [odstraňování skupin zabezpečení sítě](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) dokumentu.
 
         > [!IMPORTANT]
-        > Pravidla skupiny zabezpečení sítě jsou použity v pořadí podle priority pravidel. První pravidlo, který odpovídá vzorku provoz se použije a žádné jiné se použijí pro tento přenos. Pravidla pořadí od nejvíce projektovou na omezenou. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) dokumentu.
+        > Pravidla skupiny zabezpečení sítě jsou použity v pořadí podle priority pravidel. Hello první pravidlo, které odpovídá vzoru provoz hello platí a žádné jiné se použijí pro tento přenos. Pravidla pořadí od nejvíce projektovou tooleast projektovou. Další informace najdete v tématu hello [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) dokumentu.
 
     * Trasy definované uživatelem
 
         ```powershell
-        $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
+        $resourceGroupName = Read-Input -Prompt "Enter hello resource group that contains hello virtual network used with HDInsight"
         get-azurermroutetable -resourcegroupname $resourceGroupName
         ```
 
         ```azurecli-interactive
-        read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
+        read -p "Enter hello name of hello resource group that contains hello virtual network: " RESOURCEGROUP
         az network route-table list --resource-group $RESOURCEGROUP
         ```
 
-        Další informace najdete v tématu [řešení potíží s trasy](../virtual-network/virtual-network-routes-troubleshoot-portal.md) dokumentu.
+        Další informace najdete v tématu hello [řešení potíží s trasy](../virtual-network/virtual-network-routes-troubleshoot-portal.md) dokumentu.
 
-4. Vytvoření clusteru HDInsight a vyberte virtuální síť Azure během konfigurace. Porozumět procesu vytváření clusteru, postupujte podle kroků v následujících dokumentech:
+4. Vytvoření clusteru HDInsight a vyberte hello Azure Virtual Network během konfigurace. Použijte hello kroky v následujícím procesu vytváření clusteru hello toounderstand dokumenty hello:
 
-    * [Vytvoření HDInsight pomocí webu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)
+    * [Vytvoření HDInsight pomocí hello portálu Azure](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [Vytvoření HDInsight pomocí Azure PowerShellu](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
     * [Vytvoření HDInsight pomocí Azure CLI 1.0](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Vytvoření HDInsight pomocí šablony Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
-  > Přidání HDInsight k virtuální síti je krok volitelné konfiguraci. Je nutné vybrat virtuální síť, při konfiguraci clusteru.
+  > Přidání HDInsight tooa virtuální síť se na krok volitelné konfiguraci. Zda tooselect hello virtuální sítě se při konfiguraci clusteru hello.
 
 ## <a id="multinet"></a>Připojení více sítí
 
-Největší výzvou s konfigurací s více sítě je překlad mezi sítěmi.
+Hello největších problém s konfigurací s více sítě je překlad mezi sítěmi hello.
 
-Azure poskytuje překlad názvů pro služby Azure, které jsou nainstalovány ve virtuální síti. Toto řešení předdefinovaným názvem umožňuje HDInsight pro připojení v následujících zdrojích informací s použitím platný plně kvalifikovaný název domény (FQDN):
+Azure poskytuje překlad názvů pro služby Azure, které jsou nainstalovány ve virtuální síti. Toto řešení předdefinovaným názvem umožňuje toohello tooconnect HDInsight následující prostředky pomocí platný plně kvalifikovaný název domény (FQDN):
 
-* Jakémukoli prostředku, který je dostupný na Internetu. Například microsoft.com, google.com.
+* Hello jakémukoli prostředku, který je dostupný na Internetu. Například microsoft.com, google.com.
 
-* Jakémukoli prostředku, který je ve stejné virtuální síti Azure, pomocí __interní název DNS__ prostředku. Například pokud používáte překlad výchozí, následuje příklad interní DNS názvy přiřazené k pracovním uzlům HDInsight:
+* Jakémukoli prostředku, který je v hello stejnou virtuální síť Azure, pomocí hello __interní název DNS__ hello prostředku. Například při použití hello výchozí název řešení, jsou hello následující příklad interní DNS názvy přiřazené tooHDInsight pracovní uzly:
 
     * wn0 hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
     * wn2 hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Obě tyto uzly může komunikovat přímo s a jiné uzly v HDInsight pomocí interní názvy DNS.
 
-Rozlišení názvů výchozí nemá __není__ povolit HDInsight překládat názvy prostředků v sítích, které jsou připojeny k virtuální síti. Například je společné pro připojení k místní síti do virtuální sítě. S pouze výchozí název řešení HDInsight nemají přístup k prostředkům v místní síti podle názvu. Naopak je také nastavena hodnota true, prostředky ve vaší místní síti nemají přístup k prostředkům ve virtuální síti podle názvu.
+rozlišení názvů výchozí Hello nemá __není__ povolit HDInsight tooresolve hello názvy prostředků v sítích, které jsou připojené k toohello virtuální sítě. Například je běžné toojoin místní sítě toohello virtuální sítě. S pouze hello výchozí překlad IP adres HDInsight nemají přístup k prostředkům v místní síti hello podle názvu. Hello opačné je také nastavena hodnota true, prostředky ve vaší místní síti nemají přístup k prostředkům ve virtuální síti hello podle názvu.
 
 > [!WARNING]
-> Musíte vytvořit vlastního serveru DNS a konfigurovat virtuální sítě, abyste ho použít před vytvořením clusteru HDInsight.
+> Musíte vytvořit hello vlastního serveru DNS a konfigurovat virtuální sítě toouse hello jej před vytvořením hello clusteru HDInsight.
 
-Chcete-li povolit překlad mezi virtuální sítě a prostředky v připojené k sítím, musíte provést následující akce:
+tooenable překlad mezi hello virtuální sítě a prostředky v připojené k sítím, je třeba provést hello následující akce:
 
-1. Vytvoření vlastního serveru DNS ve virtuální síti Azure, kam chcete nainstalovat HDInsight.
+1. Vytvoření vlastního serveru DNS v hello virtuální sítě Azure, kam budete tooinstall HDInsight.
 
-2. Konfigurace virtuální sítě pro použití vlastního serveru DNS.
+2. Nakonfigurujte hello virtuální sítě toouse hello vlastního serveru DNS.
 
-3. Najít že přiřazené přípona DNS pro vaši virtuální síť Azure. Tato hodnota je podobná `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o hledání přípon DNS, najdete v článku [příklad: vlastní DNS](#example-dns) části.
+3. Najde hello přiřazené přípona DNS pro vaši virtuální síť Azure. Tato hodnota je příliš podobné`0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o zjištění hello příponu DNS, najdete v části hello [příklad: vlastní DNS](#example-dns) části.
 
-4. Konfigurace předávání mezi servery DNS. Konfigurace závisí na typu vzdálené sítě.
+4. Konfigurace předávání mezi servery DNS hello. Konfigurace Hello závisí na typu hello vzdálené sítě.
 
-    * Pokud vzdálené sítě do místní sítě, nakonfigurujte DNS takto:
+    * Pokud hello vzdálené sítě do místní sítě, nakonfigurujte DNS takto:
         
-        * __Vlastní DNS__ (ve virtuální síti):
+        * __Vlastní DNS__ (ve virtuální síti hello):
 
-            * Předat dál požadavků pro přípony DNS virtuální sítě do Azure rekurzivní překladač (168.63.129.16). Zpracovává požadavky na prostředky ve virtuální síti Azure
+            * Předat dál požadavků pro přípony DNS hello hello virtuální sítě toohello Azure rekurzivní překladač (168.63.129.16). Azure zpracovává požadavky na prostředky ve virtuální síti hello
 
-            * Předávání všech ostatních požadavků na místní server DNS. Místní DNS zpracovává všechny ostatní požadavky na rozlišení názvů, i požadavky na internetové prostředky, jako je například Microsoft.com.
+            * Předat dál všechny ostatní požadavky toohello místní server DNS. Hello místního DNS zpracovává všechny ostatní požadavky na rozlišení názvů, i požadavky na internetové prostředky, jako je například Microsoft.com.
 
-        * __Místní DNS__: předávat požadavky pro příponu DNS virtuální sítě do vlastního serveru DNS. Vlastního serveru DNS se potom předá do překladače Azure rekurzivní.
+        * __Místní DNS__: předávat požadavky pro hello virtuální sítě DNS přípona toohello vlastního serveru DNS. Hello vlastního serveru DNS potom předává toohello Azure rekurzivní překladač.
 
-        Tato požadavky na konfiguraci tras pro plně kvalifikované názvy domény, které obsahují příponu DNS virtuální sítě do vlastního serveru DNS. Zpracovává všechny požadavky (i pro veřejné internetové adresy) na místním serveru DNS.
+        Tato požadavky na konfiguraci tras pro plně kvalifikované názvy domény, které obsahují příponu DNS hello hello virtuální sítě toohello vlastního serveru DNS. Server DNS místní hello zpracovává všechny požadavky (i pro veřejné internetové adresy).
 
-    * Pokud je vzdálené síť jinou virtuální sítí Azure, nakonfigurujte DNS následujícím způsobem:
+    * Pokud vzdálené sítě hello jinou virtuální sítí Azure, nakonfigurujte DNS následujícím způsobem:
 
         * __Vlastní DNS__ (v každé virtuální sítě):
 
-            * Požadavky pro příponu DNS virtuální sítě se předávají do vlastní servery DNS. Služba DNS v každé virtuální sítě je zodpovědná za řešení prostředky ve své síti.
+            * Požadavky pro příponu DNS hello hello virtuální sítě jsou předávány toohello vlastní servery DNS. Hello DNS v každé virtuální sítě je zodpovědná za řešení prostředky ve své síti.
 
-            * Předávání všech ostatních požadavků na Azure rekurzivní překladač. Rekurzivní překladač zodpovídá za řešení místní a prostředků z Internetu.
+            * Předávání všech dalších překladač Azure rekurzivní toohello požadavky. rekurzivní překladač Hello je zodpovědná za řešení místní a prostředků z Internetu.
 
-        DNS server pro každou síť předá požadavky na druhý, na základě přípony DNS. Ostatní požadavky jsou vyřešeny pomocí Azure rekurzivní překladač.
+        server DNS Hello pro každou síť, předává žádosti o toohello jiných, podle přípony DNS. Další požadavky se přeloží pomocí překladače Azure rekurzivní hello.
 
-    Příklad každé konfiguraci, naleznete v části [příklad: vlastní DNS](#example-dns) části.
+    Příklad každé konfiguraci, naleznete v části hello [příklad: vlastní DNS](#example-dns) části.
 
-Další informace najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) dokumentu.
+Další informace najdete v tématu hello [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) dokumentu.
 
-## <a name="directly-connect-to-hadoop-services"></a>Připojovat přímo k služby Hadoop
+## <a name="directly-connect-toohadoop-services"></a>Připojovat přímo tooHadoop služby
 
-Většina dokumentace v HDInsight předpokládá, že máte přístup ke clusteru přes internet. Pro příklad, který můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejný brány, která není k dispozici, pokud jste použili skupiny Nsg nebo udr k omezení přístupu z Internetu.
+Většina dokumentace v HDInsight předpokládá, že máte přístup toohello clusteru přes hello Internetu. Například, že se můžete připojit toohello clusteru https://CLUSTERNAME.azurehdinsight.net. Tuto adresu používá hello veřejné bránu, která není k dispozici, pokud jste použili skupiny Nsg nebo hello udr toorestrict přístupu z Internetu.
 
-Pro připojení k Ambari a další webové stránky prostřednictvím virtuální sítě, použijte následující kroky:
+tooconnect tooAmbari a jiné webové stránky prostřednictvím hello virtuální sítě, použijte hello následující kroky:
 
-1. Pokud chcete zjistit, interní plně kvalifikované názvy domény (FQDN) uzlů clusteru HDInsight, použijte jednu z následujících metod:
+1. toodiscover hello interní plně kvalifikované názvy domény (FQDN) hello uzly clusteru HDInsight, použijte jednu z následujících metod hello:
 
     ```powershell
-    $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
+    $resourceGroupName = "hello resource group that contains hello virtual network used with HDInsight"
 
     $clusterNICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
 
@@ -200,44 +200,44 @@ Pro připojení k Ambari a další webové stránky prostřednictvím virtuáln�
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    V seznamu uzlů vrátil najít plně kvalifikovaný název domény pro hlavních uzlech a použít plně kvalifikované názvy domény pro připojení k Ambari a dalších webových služeb. Například použít `http://<headnode-fqdn>:8080` pro přístup k Ambari.
+    V seznamu hello uzlů vrátil najít hello plně kvalifikovaný název domény pro hello hlavních uzlech a použitím tooAmbari tooconnect hello plně kvalifikované názvy domény a dalších webových služeb. Například použít `http://<headnode-fqdn>:8080` tooaccess Ambari.
 
     > [!IMPORTANT]
-    > Některé služby hostované o hlavních uzlech aktivní pouze na jednom uzlu současně. Pokud se pokusíte přístup k službě jeden hlavního uzlu a vrátí chybu 404, přepněte do jiného hlavního uzlu.
+    > Některé služby hostované v uzlech head hello aktivní pouze na jednom uzlu současně. Pokud se pokusíte přístup k službě na jeden hlavní uzel a vrátí chybu 404, přepínač toohello jiných hlavního uzlu.
 
-2. Zjistit uzel a port, který je k dispozici na služby, najdete v článku [porty používané služby Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+2. uzel hello toodetermine a port, který služba je k dispozici, najdete v části hello [porty používané služby Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 
 ## <a id="networktraffic"></a>Řízení síťového provozu
 
-Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících metod:
+Síťový provoz v Azure Virtual Network se dá řídit pomocí hello následující metody:
 
-* **Skupin zabezpečení sítě** (NSG) vám umožní filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) dokumentu.
+* **Skupin zabezpečení sítě** (NSG) umožňují toofilter příchozí a odchozí přenosy toohello sítě. Další informace najdete v tématu hello [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) dokumentu.
 
     > [!WARNING]
     > HDInsight nepodporuje omezení odchozí provoz.
 
-* **Trasy definované uživatelem** (UDR) definovat tok přenosů mezi prostředky v síti. Další informace najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
+* **Trasy definované uživatelem** (UDR) definovat tok přenosů mezi prostředky v síti hello. Další informace najdete v tématu hello [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
 
-* **Síťových virtuálních zařízení** replikace funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v tématu [síťových zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
+* **Síťových virtuálních zařízení** replikovat hello funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v tématu hello [síťových zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
-Jako spravovanou službu vyžaduje HDInsight neomezený přístup ke službám Azure stavu a správu v cloudu Azure. Pokud používáte skupiny Nsg a udr, je nutné zajistit, že HDInsight tyto služby můžete stále komunikovat s HDInsight.
+Jako spravované služby HDInsight vyžaduje služby stavu a správu tooAzure neomezený přístup v hello cloudu Azure. Pokud používáte skupiny Nsg a udr, je nutné zajistit, že HDInsight tyto služby můžete stále komunikovat s HDInsight.
 
-HDInsight poskytuje služby na několika portech. Při použití brány firewall virtuální zařízení, musí umožňovat komunikaci na portech používaných pro tyto služby. Další informace najdete v části [požadované porty].
+HDInsight poskytuje služby na několika portech. Pokud používáte virtuální zařízení brány firewall, musíte povolit přenosy na hello porty používané pro tyto služby. Další informace najdete v části hello [požadované porty].
 
 ### <a id="hdinsight-ip"></a>Prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem
 
-Pokud máte v úmyslu používat **skupin zabezpečení sítě** nebo **trasy definované uživatelem** k řízení síťových přenosů, proveďte následující akce před instalací HDInsight:
+Pokud máte v úmyslu používat **skupin zabezpečení sítě** nebo **trasy definované uživatelem** toocontrol přenos v síti, proveďte následující akce před instalací HDInsight hello:
 
-1. Určete oblast Azure, který chcete použít pro HDInsight.
+1. Identifikujte hello oblast Azure, abyste naplánovali toouse pro HDInsight.
 
-2. Určete IP adresy, které vyžadují HDInsight. Další informace najdete v tématu [IP adresy, které vyžadují HDInsight](#hdinsight-ip) části.
+2. Identifikujte hello IP adresy potřeba v prostředí HDInsight. Další informace najdete v tématu hello [IP adresy, které vyžadují HDInsight](#hdinsight-ip) části.
 
-3. Vytvoření nebo úprava skupiny zabezpečení sítě nebo trasy definované uživatelem, které chcete nainstalovat HDInsight do podsítě.
+3. Vytvoření nebo úprava skupiny zabezpečení sítě hello nebo trasy definované uživatelem hello podsítě, abyste naplánovali tooinstall HDInsight do.
 
-    * __Skupin zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy.
-    * __Trasy definované uživatelem__: vytvoření směrování pro každou IP adresu a nastavení __typ dalšího směrování__ k __Internet__.
+    * __Skupin zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z hello IP adres.
+    * __Trasy definované uživatelem__: Vytvoření trasy tooeach IP adresy a nastavte hello __typ dalšího směrování__ too__Internet__.
 
-Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem naleznete v následující dokumentaci:
+Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem najdete v části hello následující dokumentaci:
 
 * [Skupina zabezpečení sítě](../virtual-network/virtual-networks-nsg.md)
 
@@ -245,18 +245,18 @@ Další informace o skupinách zabezpečení sítě nebo trasy definované uživ
 
 #### <a name="forced-tunneling"></a>Vynucené tunelování
 
-Vynucené tunelování je uživatelem definované konfigurace směrování, kde veškerý provoz z podsítě musí v určité síti nebo umístění, jako například do místní sítě. HDInsight nemá __není__ podporu vynuceného tunelování.
+Vynucené tunelování je konfigurace směrování definovaný uživatelem, kde veškerý provoz z podsítě je vynucené tooa určitého síťového umístění nebo umístění, jako například do místní sítě. HDInsight nemá __není__ podporu vynuceného tunelování.
 
 ## <a id="hdinsight-ip"></a>Požadované IP adresy
 
 > [!IMPORTANT]
-> Stav a správu služeb Azure musí být schopen komunikovat s HDInsight. Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, povolí provoz z IP adres pro tyto služby k dosažení HDInsight.
+> Hello Azure stavu a služby pro správu musí být schopný toocommunicate s HDInsight. Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, povolí provoz z hello IP adres pro tyto tooreach služby HDInsight.
 >
-> Pokud nepoužijete skupin zabezpečení sítě nebo trasy definované uživatelem pro řízení provozu, můžete ignorovat v této části.
+> Pokud nepoužijete skupin zabezpečení sítě nebo trasy definované uživatelem toocontrol přenosů, můžete ignorovat v této části.
 
-Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, musíte povolit přenosy z Azure stavu a správu služeb k dosažení HDInsight. Použijte následující postup k vyhledání IP adresy, které musí být povoleno:
+Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, musíte povolit přenosy z hello Azure stavu a správu služeb tooreach HDInsight. Použijte následující postup toofind hello IP adresy, které musí být povoleno hello:
 
-1. Vždy musí povolit provoz z následujících IP adres:
+1. Vždy musí povolit provoz z hello následující IP adresy:
 
     | IP adresa | Povolené portu | Směr |
     | ---- | ----- | ----- |
@@ -265,10 +265,10 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     | 168.61.48.131 | 443 | Příchozí |
     | 138.91.141.162 | 443 | Příchozí |
 
-2. Pokud váš cluster HDInsight v jednom z následujících oblastí, musíte povolit přenosy z IP adresy uvedené pro oblast:
+2. Pokud váš cluster HDInsight v jednom z následujících oblastí hello, musíte povolit přenosy z hello IP adresy uvedené pro oblast hello:
 
     > [!IMPORTANT]
-    > Pokud není uvedené oblast Azure, kterou používáte, pak použijte pouze čtyři IP adresy z kroku 1.
+    > Pokud není uvedené hello oblast Azure, který používáte, pak použijte jenom hello čtyři IP adresy z kroku 1.
 
     | Země | Oblast | Povolené IP adresy | Povolené portu | Směr |
     | ---- | ---- | ---- | ---- | ----- |
@@ -297,15 +297,15 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     | &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | 443 | Příchozí |
     | &nbsp; | Západní USA 2 | 52.175.211.210</br>52.175.222.222 | 443 | Příchozí |
 
-    Informace o IP adresy pro Azure Government, najdete v článku [Azure Government Intelligence + analýzy](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
+    Informace o hello IP adresy toouse pro Azure Government, najdete v části hello [Azure Government Intelligence + analýzy](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
 
-3. Pokud používáte vlastního serveru DNS s vaší virtuální síti, musíte také povolit přístup z __168.63.129.16__. Tato adresa se Azure rekurzivní překladač. Další informace najdete v tématu [překlad názvů pro virtuální počítače a Role instance](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
+3. Pokud používáte vlastního serveru DNS s vaší virtuální síti, musíte také povolit přístup z __168.63.129.16__. Tato adresa se Azure rekurzivní překladač. Další informace najdete v tématu hello [překlad názvů pro virtuální počítače a Role instance](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
-Další informace najdete v tématu [řízení síťového provozu](#networktraffic) části.
+Další informace najdete v tématu hello [řízení síťového provozu](#networktraffic) části.
 
 ## <a id="hdinsight-ports"></a>Požadované porty
 
-Pokud máte v úmyslu používat síť **virtuální zařízení brány firewall** zabezpečit virtuální síť, musíte povolit odchozí přenosy na následující porty:
+Pokud máte v úmyslu používat síť **virtuální zařízení brány firewall** toosecure hello virtuální síť, musíte povolit odchozí přenosy na hello následující porty:
 
 * 53
 * 443
@@ -313,44 +313,44 @@ Pokud máte v úmyslu používat síť **virtuální zařízení brány firewall
 * 11000-11999
 * 14000-14999
 
-Seznam portů pro určité služby, najdete v článku [porty používané služby Hadoop v HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+Seznam portů pro určité služby, najdete v části hello [porty používané služby Hadoop v HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 
-Další informace o pravidlech brány firewall pro virtuální zařízení, najdete v článku [virtuální zařízení scénář](../virtual-network/virtual-network-scenario-udr-gw-nva.md) dokumentu.
+Další informace o pravidlech brány firewall pro virtuální zařízení, najdete v části hello [virtuální zařízení scénář](../virtual-network/virtual-network-scenario-udr-gw-nva.md) dokumentu.
 
 ## <a id="hdinsight-nsg"></a>Příklad: skupin zabezpečení sítě s HDInsight
 
-Příklady v této části ukazují, jak vytvořit skupiny pravidla, která umožňují HDInsight ke komunikaci se službami Azure správu zabezpečení sítě. Před použitím v příkladech, upravte IP adresy tak, aby odpovídala těm, které jsou pro oblast Azure, kterou používáte. Tyto informace můžete najít [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
+Příklady Hello v této části ukazují, jak skupinu zabezpečení sítě toocreate pravidel, které umožňují služby Azure pro HDInsight toocommunicate s hello. Před použitím hello příklady, upravte hello IP adresy toomatch hello ty, které jsou pro hello oblast Azure, který používáte. Tyto informace můžete najít v hello [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
 
 ### <a name="azure-resource-management-template"></a>Šablony Azure Správa prostředků
 
-Následující šablony správy prostředků vytvoří virtuální síť, která omezuje příchozí provoz, ale povoluje provoz z IP adresy, které vyžadují HDInsight. Tato šablona vytvoří HDInsight cluster také ve virtuální síti.
+Hello následující Správa prostředků šablona vytvoří virtuální síť, která omezuje příchozí provoz, ale umožňuje přenos z hello IP adres vyžadují HDInsight. Tato šablona vytvoří cluster služby HDInsight také ve virtuální síti hello.
 
 * [Nasazení zabezpečených virtuální síť Azure a cluster systému HDInsight Hadoop](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
 > [!IMPORTANT]
-> Změna IP adresy použité v tomto příkladu tak, aby odpovídaly oblasti Azure, který používáte. Tyto informace můžete najít [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
+> Změnit hello IP adresy použité v této příklad toomatch hello oblast Azure, který používáte. Tyto informace můžete najít v hello [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Pomocí následujícího skriptu prostředí PowerShell k vytvoření virtuální sítě, která omezuje příchozí provoz a umožňuje přenos z IP adres pro oblast Severní Evropa.
+Použijte následující toocreate skript prostředí PowerShell virtuální síť, která omezuje příchozí provoz a umožňuje provoz z hello IP adres pro oblast Severní Evropa hello hello.
 
 > [!IMPORTANT]
-> Změna IP adresy použité v tomto příkladu tak, aby odpovídaly oblasti Azure, který používáte. Tyto informace můžete najít [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
+> Změnit hello IP adresy použité v této příklad toomatch hello oblast Azure, který používáte. Tyto informace můžete najít v hello [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
-$resourceGroupName = "Replace with the resource group the virtual network is in"
-$subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
-# Get the Virtual Network object
+$resourceGroupName = "Replace with hello resource group hello virtual network is in"
+$subnetName = "Replace with hello name of hello subnet that you plan toouse for HDInsight"
+# Get hello Virtual Network object
 $vnet = Get-AzureRmVirtualNetwork `
     -Name $vnetName `
     -ResourceGroupName $resourceGroupName
-# Get the region the Virtual network is in.
+# Get hello region hello Virtual network is in.
 $location = $vnet.Location
-# Get the subnet object
+# Get hello subnet object
 $subnet = $vnet.Subnets | Where-Object Name -eq $subnetName
 # Create a Network Security Group.
-# And add exemptions for the HDInsight health and management services.
+# And add exemptions for hello HDInsight health and management services.
 $nsg = New-AzureRmNetworkSecurityGroup `
     -Name "hdisecure" `
     -ResourceGroupName $resourceGroupName `
@@ -432,9 +432,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
         -Access Deny `
         -Priority 500 `
         -Direction Inbound
-# Set the changes to the security group
+# Set hello changes toohello security group
 Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
-# Apply the NSG to the subnet
+# Apply hello NSG toohello subnet
 Set-AzureRmVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
     -Name $subnetName `
@@ -443,9 +443,9 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 ```
 
 > [!IMPORTANT]
-> Tento příklad ukazuje, jak přidat pravidla, která povolí příchozí komunikaci na požadované IP adresy. Neobsahuje na pravidlo můžete omezit příchozí přístup z jiných zdrojů.
+> Tento příklad ukazuje, jak tooadd pravidla tooallow příchozí přenosy na hello požadované IP adresy. Neobsahuje toorestrict pravidlo příchozí přístup z jiných zdrojů.
 >
-> Následující příklad ukazuje, jak povolit přístup SSH z Internetu:
+> Hello následující příklad ukazuje, jak přistupovat k tooenable SSH ze hello Internetu:
 >
 > ```powershell
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
@@ -453,20 +453,20 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pomocí následujících kroků vytvořte virtuální síť, která omezuje příchozí provoz, ale povoluje provoz z IP adresy, které vyžadují HDInsight.
+Pomocí následujících kroků toocreate virtuální síť, která omezuje příchozí provoz, ale umožňuje přenos z hello IP adres vyžadují HDInsight hello.
 
-1. Použijte následující příkaz k vytvoření nové skupiny zabezpečení sítě s názvem `hdisecure`. Nahraďte **RESOURCEGROUPNAME** ke skupině prostředků, který obsahuje virtuální síť Azure. Nahraďte **umístění** s umístěním (oblastí), která byla skupina vytvořena v.
+1. Hello použijte následující příkaz toocreate novou skupinu zabezpečení sítě s názvem `hdisecure`. Nahraďte **RESOURCEGROUPNAME** s hello skupinu prostředků, který obsahuje hello Azure Virtual Network. Nahraďte **umístění** s umístěním (oblastí), hello této skupiny hello byl vytvořen v.
 
     ```azurecli
     az network nsg create -g RESOURCEGROUPNAME -n hdisecure -l LOCATION
     ```
 
-    Po vytvoření skupiny, zobrazí informace o nové skupiny.
+    Po vytvoření skupiny hello zobrazí informace o nové skupiny hello.
 
-2. Následující informace vám pomůžou přidat pravidla pro novou skupinu zabezpečení sítě, které umožní příchozí komunikaci na portu 443 ze služby Azure HDInsight stavu a správu. Nahraďte **RESOURCEGROUPNAME** s názvem skupiny prostředků, který obsahuje virtuální síť Azure.
+2. Použijte následující tooadd pravidla toohello novou skupinu zabezpečení sítě, povolit příchozí komunikaci na portu 443 z hello stavu a správu služby Azure HDInsight hello. Nahraďte **RESOURCEGROUPNAME** s názvem hello hello skupiny prostředků, která obsahuje hello Azure Virtual Network.
 
     > [!IMPORTANT]
-    > Změna IP adresy použité v tomto příkladu tak, aby odpovídaly oblasti Azure, který používáte. Tyto informace můžete najít [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
+    > Změnit hello IP adresy použité v této příklad toomatch hello oblast Azure, který používáte. Tyto informace můžete najít v hello [prostředí HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) části.
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -478,30 +478,30 @@ Pomocí následujících kroků vytvořte virtuální síť, která omezuje př�
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n block --protocol "*" --source-port-range "*" --destination-port-range "*" --source-address-prefix "Internet" --destination-address-prefix "VirtualNetwork" --access "Deny" --priority 500 --direction "Inbound"
     ```
 
-3. Pro načtení jedinečný identifikátor pro tuto skupinu zabezpečení sítě, použijte následující příkaz:
+3. tooretrieve hello jedinečný identifikátor pro tuto skupinu zabezpečení sítě, použijte následující příkaz hello:
 
     ```azurecli
     az network nsg show -g RESOURCEGROUPNAME -n hdisecure --query 'id'
     ```
 
-    Tento příkaz vrátí hodnotu podobná následující text:
+    Tento příkaz vrátí hodnotu podobné toohello následující text:
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
 
-    Pokud nejste očekávané výsledky, použijte dvojité uvozovky kolem id v příkazu.
+    Pokud neobdržíte hello očekávané výsledky, použijte dvojité uvozovky kolem id v příkazu hello.
 
-4. Chcete-li použít skupinu zabezpečení sítě k podsíti, použijte následující příkaz. Nahraďte __GUID__ a __RESOURCEGROUPNAME__ hodnoty s těmi vrácené z předchozího kroku. Nahraďte __VNETNAME__ a __SUBNETNAME__ s název virtuální sítě a název podsítě, který chcete vytvořit.
+4. Použijte následující příkaz tooapply hello zabezpečení skupiny tooa podsíti hello. Nahraďte hello __GUID__ a __RESOURCEGROUPNAME__ hodnoty s hello ty, které jsou vráceny z předchozího kroku hello. Nahraďte __VNETNAME__ a __SUBNETNAME__ s hello název virtuální sítě a název podsítě, které chcete toocreate.
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUPNAME --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
     ```
 
-    Po dokončení tohoto příkazu můžete nainstalovat HDInsight do virtuální sítě.
+    Po dokončení tohoto příkazu můžete nainstalovat HDInsight do hello virtuální sítě.
 
 > [!IMPORTANT]
-> Tyto kroky otevíraly jenom přístup k službě HDInsight stavu a správu v cloudu Azure. Jiný přístup ke clusteru HDInsight z mimo virtuální síť je blokována. Pokud chcete povolit přístup mimo virtuální síť, musíte přidat další pravidla skupiny zabezpečení sítě.
+> Tyto kroky pouze otevřete přístup toohello stavu a správu Služba HDInsight na hello cloudu Azure. Všechny ostatní přístup toohello clusteru HDInsight z hello mimo virtuální síť je blokována. tooenable přístup mimo hello virtuální sítě, musíte přidat další pravidla skupiny zabezpečení sítě.
 >
-> Následující příklad ukazuje, jak povolit přístup SSH z Internetu:
+> Hello následující příklad ukazuje, jak přistupovat k tooenable SSH ze hello Internetu:
 >
 > ```azurecli
 > az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
@@ -511,50 +511,50 @@ Pomocí následujících kroků vytvořte virtuální síť, která omezuje př�
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Překlad mezi virtuální sítí a připojené místní sítě
 
-Tento příklad vytvoří následující předpoklady:
+Tento příklad vytvoří hello následující předpoklady:
 
-* Máte virtuální síť Azure, která je připojena k místní síti pomocí brány VPN.
+* Máte virtuální síť Azure, který je připojený tooan místní síti pomocí brány VPN.
 
-* Vlastního serveru DNS ve virtuální síti běží jako operační systém Linux nebo Unix.
+* Hello vlastního serveru DNS ve virtuální síti hello běží jako hello operačního systému Linux nebo Unix.
 
-* [Vytvoření vazby](https://www.isc.org/downloads/bind/) je nainstalován na vlastního serveru DNS.
+* [Vytvoření vazby](https://www.isc.org/downloads/bind/) je nainstalován na serveru DNS pro vlastní hello.
 
-Na vlastního serveru DNS ve virtuální síti:
+Na hello vlastního serveru DNS ve virtuální síti hello:
 
-1. Použití Azure PowerShell nebo rozhraní příkazového řádku Azure k nalezení přípona DNS virtuální sítě:
+1. Použití Azure PowerShell nebo rozhraní příkazového řádku Azure toofind hello příponu DNS virtuální sítě hello:
 
     ```powershell
-    $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
+    $resourceGroupName = Read-Input -Prompt "Enter hello resource group that contains hello virtual network used with HDInsight"
     $NICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
 
     ```azurecli-interactive
-    read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
+    read -p "Enter hello name of hello resource group that contains hello virtual network: " RESOURCEGROUP
     az network nic list --resource-group $RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Na vlastního serveru DNS pro virtuální síť, použijte následující text jako obsah `/etc/bind/named.conf.local` souboru:
+2. Na hello vlastního serveru DNS pro virtuální síť hello, použijte následující text jako hello obsah hello hello `/etc/bind/named.conf.local` souboru:
 
     ```
-    // Forward requests for the virtual network suffix to Azure recursive resolver
+    // Forward requests for hello virtual network suffix tooAzure recursive resolver
     zone "0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net" {
         type forward;
         forwarders {168.63.129.16;}; # Azure recursive resolver
     };
     ```
 
-    Nahraďte `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` hodnotu s příponou DNS virtuální sítě.
+    Nahraďte hello `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` hodnotu s hello příponu DNS virtuální sítě.
 
-    Tato konfigurace směrovat všechny požadavky na DNS pro příponu DNS virtuální sítě na Azure rekurzivní překladač.
+    Tato konfigurace směrovat všechny požadavky na DNS pro příponu DNS hello hello virtuální sítě toohello Azure rekurzivní překladač.
 
-2. Na vlastního serveru DNS pro virtuální síť, použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+2. Na hello vlastního serveru DNS pro virtuální síť hello, použijte následující text jako hello obsah hello hello `/etc/bind/named.conf.options` souboru:
 
     ```
-    // Clients to accept requests from
-    // TODO: Add the IP range of the joined network to this list
+    // Clients tooaccept requests from
+    // TODO: Add hello IP range of hello joined network toothis list
     acl goodclients {
-        10.0.0.0/16; # IP address range of the virtual network
+        10.0.0.0/16; # IP address range of hello virtual network
         localhost;
         localnets;
     };
@@ -566,75 +566,75 @@ Na vlastního serveru DNS ve virtuální síti:
 
             allow-query { goodclients; };
 
-            # All other requests are sent to the following
+            # All other requests are sent toohello following
             forwarders {
-                192.168.0.1; # Replace with the IP address of your on-premises DNS server
+                192.168.0.1; # Replace with hello IP address of your on-premises DNS server
             };
 
             dnssec-validation auto;
 
-            auth-nxdomain no;    # conform to RFC1035
+            auth-nxdomain no;    # conform tooRFC1035
             listen-on { any; };
     };
     ```
     
-    * Nahraďte `10.0.0.0/16` hodnotu s rozsah IP adres vaší virtuální sítě. Tato položka umožňuje název řešení požadavků adresy v tomto rozsahu.
+    * Nahraďte hello `10.0.0.0/16` hodnotu s hello rozsah IP adres vaší virtuální sítě. Tato položka umožňuje název řešení požadavků adresy v tomto rozsahu.
 
-    * Přidat rozsah IP adres místní sítě, aby `acl goodclients { ... }` oddílu.  položka umožňuje požadavky na rozlišení názvů z prostředků v místní síti.
+    * Přidat rozsah IP adres hello místní sítě toohello hello `acl goodclients { ... }` části.  položka umožňuje požadavky na rozlišení názvů z prostředků v hello do místní sítě.
     
-    * Nahraďte hodnotu `192.168.0.1` s IP adresou serveru DNS na místě. Tato položka směrování všech ostatních požadavků na DNS na místní server DNS.
+    * Nahradí hodnotu hello `192.168.0.1` hello IP adresu serveru DNS na místě. Tato položka směrovat všechny požadavky toohello místní DNS servery DNS.
 
-3. Pokud chcete používat konfiguraci, restartujte vazby. Například, `sudo service bind9 restart`.
+3. Konfigurace hello toouse, restartujte vazby. Například, `sudo service bind9 restart`.
 
-4. Přidejte do místní server DNS pro podmíněné předávání. Nakonfigurujte pro podmíněné předávání na odesílání žádostí pro příponu DNS z kroku 1 na vlastního serveru DNS.
+4. Přidání serveru DNS pro podmíněné předávání toohello místně. Nakonfigurujte požadavky toosend pro podmíněné předávání hello hello přípony DNS z kroku 1 toohello vlastního serveru DNS.
 
     > [!NOTE]
-    > V dokumentaci pro váš software DNS pro konkrétní o tom, jak přidat server pro podmíněné předávání.
+    > Dokumentaci hello softwaru DNS pro konkrétní na postupy pro tooadd pro podmíněné předávání.
 
-Po dokončení těchto kroků se můžete připojit k prostředkům v síti, buď pomocí plně kvalifikovaných názvů domény (FQDN). HDInsight můžete nainstalovat do virtuální sítě.
+Po dokončení těchto kroků, se můžete připojit tooresources v síti, buď pomocí plně kvalifikovaných názvů domény (FQDN). HDInsight můžete nainstalovat do virtuální sítě hello.
 
 ### <a name="name-resolution-between-two-connected-virtual-networks"></a>Překlad mezi dvěma připojené virtuální sítě
 
-Tento příklad vytvoří následující předpoklady:
+Tento příklad vytvoří hello následující předpoklady:
 
 * Máte dvě virtuální sítě Azure, které jsou připojené pomocí brány VPN nebo partnerský vztah.
 
-* Vlastní server DNS v obě sítě běží jako operační systém Linux nebo Unix.
+* Hello vlastního serveru DNS v obě sítě běží jako hello operačního systému Linux nebo Unix.
 
-* [Vytvoření vazby](https://www.isc.org/downloads/bind/) je nainstalován na vlastních serverech DNS.
+* [Vytvoření vazby](https://www.isc.org/downloads/bind/) je nainstalován na hello vlastní servery DNS.
 
-1. Použití Azure PowerShell nebo rozhraní příkazového řádku Azure k nalezení příponu DNS obě virtuální sítě:
+1. Použití Azure PowerShell nebo rozhraní příkazového řádku Azure toofind hello příponu DNS obě virtuální sítě:
 
     ```powershell
-    $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
+    $resourceGroupName = Read-Input -Prompt "Enter hello resource group that contains hello virtual network used with HDInsight"
     $NICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
 
     ```azurecli-interactive
-    read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
+    read -p "Enter hello name of hello resource group that contains hello virtual network: " RESOURCEGROUP
     az network nic list --resource-group $RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Použít následující text jako obsah `/etc/bind/named.config.local` souboru na vlastního serveru DNS. Tuto změnu proveďte na serveru DNS vlastní obě virtuální sítě.
+2. Použití hello následující text jako hello obsah hello `/etc/bind/named.config.local` souboru na hello vlastního serveru DNS. Tuto změnu proveďte na hello vlastního serveru DNS v obě virtuální sítě.
 
     ```
-    // Forward requests for the virtual network suffix to Azure recursive resolver
+    // Forward requests for hello virtual network suffix tooAzure recursive resolver
     zone "0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net" {
         type forward;
-        forwarders {10.0.0.4;}; # The IP address of the DNS server in the other virtual network
+        forwarders {10.0.0.4;}; # hello IP address of hello DNS server in hello other virtual network
     };
     ```
 
-    Nahraďte `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` hodnotu s příponu DNS __jiných__ virtuální sítě. Tato položka směruje požadavky pro příponu DNS vzdálené sítě na vlastní DNS v síti.
+    Nahraďte hello `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` hodnotu s příponu DNS hello hello __jiných__ virtuální sítě. Tato položka směruje požadavky pro příponu DNS hello hello vzdálených síťových toohello vlastní DNS v síti.
 
-3. Na vlastní servery DNS v obě virtuální sítě, použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+3. Na hello vlastní servery DNS v obě virtuální sítě, použijte následující text jako hello obsah hello hello `/etc/bind/named.conf.options` souboru:
 
     ```
-    // Clients to accept requests from
+    // Clients tooaccept requests from
     acl goodclients {
-        10.1.0.0/16; # The IP address range of one virtual network
-        10.0.0.0/16; # The IP address range of the other virtual network
+        10.1.0.0/16; # hello IP address range of one virtual network
+        10.0.0.0/16; # hello IP address range of hello other virtual network
         localhost;
         localnets;
     };
@@ -652,24 +652,24 @@ Tento příklad vytvoří následující předpoklady:
 
             dnssec-validation auto;
 
-            auth-nxdomain no;    # conform to RFC1035
+            auth-nxdomain no;    # conform tooRFC1035
             listen-on { any; };
     };
     ```
     
-    * Nahraďte `10.0.0.0/16` a `10.1.0.0/16` hodnot pomocí IP adresy rozsahů virtuálních sítí. Tato položka umožňuje prostředky v každé sítě odesílá požadavky na servery DNS.
+    * Nahraďte hello `10.0.0.0/16` a `10.1.0.0/16` hodnoty s hello IP adres, rozsahy virtuálních sítí. Tato položka umožňuje prostředky v každé sítě toomake požadavky hello serverů DNS.
 
-    Překladač Azure rekurzivní zpracovává všechny žádosti, které nejsou pro přípony DNS virtuální sítě (například microsoft.com).
+    Všechny žádosti, které nejsou pro přípony DNS hello hello virtuálních sítí (například microsoft.com) se zpracovává souborem hello Azure rekurzivní překladač.
 
-4. Pokud chcete používat konfiguraci, restartujte vazby. Například `sudo service bind9 restart` na obou serverech DNS.
+4. Konfigurace hello toouse, restartujte vazby. Například `sudo service bind9 restart` na obou serverech DNS.
 
-Po dokončení těchto kroků se můžete připojit k prostředkům ve virtuální síti pomocí plně kvalifikovaných názvů domény (FQDN). HDInsight můžete nainstalovat do virtuální sítě.
+Po dokončení těchto kroků, se můžete připojit tooresources ve virtuální síti hello pomocí plně kvalifikovaných názvů domény (FQDN). HDInsight můžete nainstalovat do virtuální sítě hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Příklad začátku do konce konfigurace HDInsight pro připojení k místní síti, najdete v části [HDInsight připojit k místní síti](./connect-on-premises-network.md).
+* Příklad začátku do konce konfigurace HDInsight tooconnect tooan do místní sítě, naleznete v části [připojit HDInsight tooan do místní sítě](./connect-on-premises-network.md).
 
-* Další informace o virtuálních sítí Azure, najdete v článku [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
+* Další informace o virtuálních sítí Azure, najdete v části hello [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
 
 * Další informace o skupinách zabezpečení sítě najdete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
 

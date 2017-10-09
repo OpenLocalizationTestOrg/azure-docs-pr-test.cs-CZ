@@ -1,42 +1,42 @@
-## <a name="download-install-and-register-the-azure-backup-agent"></a>Stažení, instalace a registrace agenta Azure Backup
-Po vytvoření trezoru zálohování Azure, je třeba nainstalovat agenta na všechny vaše Windows počítače (Windows Server, klient systému Windows, server System Center Data Protection Manager nebo počítače serveru Azure Backup), které povoluje zálohování dat a aplikací do Azure.
+## <a name="download-install-and-register-hello-azure-backup-agent"></a>Stažení, instalace a registrace agenta Azure Backup hello
+Po vytvoření trezoru zálohování Azure hello, měla nainstalovat agenta na všechny vaše Windows počítače (Windows Server, klient systému Windows, server System Center Data Protection Manager nebo počítače serveru Azure Backup), které povoluje zálohování dat a aplikací tooAzure.
 
-1. Přihlaste se k [portálu pro správu](https://manage.windowsazure.com/)
-2. Klikněte na tlačítko **služeb zotavení**, zvolte úložiště záloh, které chcete zaregistrovat serveru. Zobrazí se stránka rychlý Start pro tento trezor záloh.
+1. Přihlaste se toohello [portálu pro správu](https://manage.windowsazure.com/)
+2. Klikněte na tlačítko **služeb zotavení**, pak vyberte hello úložiště záloh, které chcete tooregister se serverem. Zobrazí se stránka Hello rychlý Start pro tento trezor záloh.
    
     ![Rychlý start](./media/backup-install-agent/quickstart.png)
-3. Na stránce Rychlý Start klikněte na **klienta pro systém Windows Server nebo System Center Data Protection Manager nebo Windows** možnost pod **stáhnout agenta**. Klikněte na tlačítko **Uložit** a zkopírujte ho do místního počítače.
+3. Na stránce Rychlý Start hello klikněte hello **klienta pro systém Windows Server nebo System Center Data Protection Manager nebo Windows** možnost pod **stáhnout agenta**. Klikněte na tlačítko **Uložit** toocopy ho toohello místního počítače.
    
     ![Uložit agenta](./media/backup-install-agent/agent.png)
-4. Po instalaci agenta, poklikejte na MARSAgentInstaller.exe spustíte instalaci agenta Azure Backup agent. Vyberte instalační složku a pomocné složky, které jsou potřebné pro agenta. Zadané umístění mezipaměti musí mít volné místo, který je nejméně 5 % zálohovaná data.
-5. Pokud používáte proxy server pro připojení k Internetu, v **konfiguraci proxy serveru** obrazovky, zadejte podrobnosti o proxy serveru. Pokud používáte ověřený server proxy, zadejte uživatelské jméno a heslo podrobnosti na této obrazovce.
-6. Agent Azure Backup nainstaluje rozhraní .NET Framework 4.5 a prostředí Windows PowerShell (Pokud není k dispozici již) pro dokončení instalace.
-7. Po instalaci agenta, klikněte na **přejít k registraci** tlačítko pokračujte s pracovním postupem.
+4. Po instalaci agenta hello dvakrát klikněte na tlačítko MARSAgentInstaller.exe toolaunch hello instalace agenta Azure Backup hello. Vyberte instalační složku hello a pomocné složky, které jsou potřebné pro agenta hello. Zadané umístění mezipaměti Hello musí mít volné místo, který je nejméně 5 % hello zálohovaná data.
+5. Pokud používáte proxy serveru tooconnect toohello Internetu, v hello **konfiguraci proxy serveru** obrazovky, zadejte podrobnosti o serveru proxy hello. Pokud používáte ověřený server proxy, zadejte podrobnosti uživatelského jména a hesla hello na této obrazovce.
+6. agent Azure Backup Hello nainstaluje rozhraní .NET Framework 4.5 a prostředí Windows PowerShell (Pokud není k dispozici již) toocomplete hello instalaci.
+7. Jakmile je nainstalován hello agent, klikněte na možnost hello **pokračovat tooRegistration** toocontinue tlačítko s pracovním postupem hello.
    
    ![Registrace](./media/backup-install-agent/register.png)
-8. Na obrazovce přihlašovací údaje trezoru vyhledejte a vyberte soubor s přihlašovacími údaji trezoru, který byl dříve staženy.
+8. V úvodní obrazovka přihlašovací údaje trezoru vyhledejte tooand vyberte hello trezoru pověření souboru, který byl dříve staženy.
    
     ![Přihlašovací údaje trezoru](./media/backup-install-agent/vc.png)
    
-    Soubor s přihlašovacími údaji je platná pouze pro 48 hodin (po jeho stažení z portálu). Pokud dojde k chybě v této plánováním obrazovce (například "soubor s přihlašovacími údaji poskytuje vypršela"), přihlášení k portálu Azure a znovu stáhnout soubor s přihlašovacími údaji.
+    soubor s přihlašovacími údaji trezoru Hello je platná pouze pro 48 hodin (po jeho stažení z portálu hello). Pokud narazíte na chyby na této obrazovce (například "přihlašovací údaje trezoru poskytnuté souboru vypršela platnost"), přihlášení toohello portál Azure a přihlašovací údaje trezoru hello stažení souboru znovu.
    
-    Ujistěte se, že je soubor s přihlašovacími údaji k dispozici v umístění, která je přístupná instalační program aplikace. Pokud narazíte na přístup související chyby, zkopírujte soubor s přihlašovacími údaji do dočasného umístění v tomto počítači a operaci opakujte.
+    Ujistěte se, že soubor přihlašovacích údajů trezoru hello je k dispozici v umístění, která je přístupná hello instalační program aplikace. Pokud narazíte na přístup k související chyby, přihlašovací údaje trezoru hello kopírování souboru tooa dočasného umístění v tomto počítači a opakujte operaci hello.
    
-    Pokud dojde k chybě neplatný úložiště přihlašovacích údajů (např. "Neplatné přihlašovací údaje úložiště") soubor je buď poškozený nebo nemá mít poslední přihlašovací údaje související se službou obnovení. Opakujte operaci po stažení nový soubor s přihlašovacími údaji trezoru z portálu. Tato chyba je zpravidla se zobrazí, pokud uživatel klikne na **přihlašovací údaje trezoru Stáhnout** možnost na portálu Azure rychle po sobě. V takovém případě je platný pouze druhý soubor přihlašovacích údajů trezoru.
-9. V **nastavení šifrování** obrazovky, můžete buď vygenerovat přístupové heslo nebo zadat přístupové heslo (minimálně 16 znaků). Nezapomeňte uložit heslo v zabezpečeném umístění.
+    Pokud dojde k chybě neplatný úložiště přihlašovacích údajů (např "Neplatné přihlašovací údaje úložiště") hello soubor je buď poškozený nebo nemá poslední přihlašovací údaje hello přidruženy službou obnovení hello. Opakujte operaci hello po stažení nový soubor s přihlašovacími údaji trezoru z portálu hello. Tato chyba je zpravidla se zobrazí, pokud hello uživatel klikne na hello **přihlašovací údaje trezoru Stáhnout** možnost v hello portál Azure, rychle po sobě. V takovém případě je platný pouze hello druhý soubor pověření pro úložiště.
+9. V hello **nastavení šifrování** obrazovky, můžete buď vygenerovat přístupové heslo nebo zadat přístupové heslo (minimálně 16 znaků). Mějte na paměti, toosave hello heslo v zabezpečeném umístění.
    
     ![Šifrování](./media/backup-install-agent/encryption.png)
    
    > [!WARNING]
-   > Pokud heslo ztratíte nebo zapomenete; Microsoft vám nemůže pomoci obnovit zálohovaná data. Koncový uživatel vlastní šifrovací přístupové heslo a Microsoft nemá přehled přístupové heslo používané koncovým uživatelem. Uložte soubor na bezpečné místo, jako je vyžadována během operace obnovení.
+   > Pokud hello přístupové heslo ztratíte nebo zapomenete; Microsoft vám nemůže pomoci obnovit zálohovaná data hello. koncový uživatel Hello vlastní hello šifrovací přístupové heslo a Microsoft nemá přehled hello přístupové heslo používané hello koncového uživatele. Uložte soubor hello v zabezpečeném umístění, jako je vyžadována během operace obnovení.
    > 
    > 
-10. Po kliknutí **Dokončit** tlačítko, počítač se úspěšně registrovaný k úložišti a je nyní připraven pro spuštění zálohování na Microsoft Azure.
-11. Při použití samostatných Microsoft Azure Backup můžete upravit nastavení určené během pracovního postupu registrace kliknutím na **změnit vlastnosti** možnost v Azure Backup konzoly mmc modul snap-in.
+10. Po kliknutí na tlačítko hello **Dokončit** tlačítko, hello počítač je registrovaný úspěšně toohello trezoru a můžete je teď připravený toostart zálohování tooMicrosoft Azure.
+11. Při použití samostatných Microsoft Azure Backup můžete upravit hello nastavení určené během pracovního postupu registrace hello kliknutím na hello **změnit vlastnosti** možnost v hello Azure Backup konzoly mmc snap in.
     
     ![Změnit vlastnosti](./media/backup-install-agent/change.png)
     
-    Případně, pokud používáte Data Protection Manager, můžete upravit nastavení určené během pracovního postupu registrace kliknutím **konfigurace** možnost výběrem **Online** pod **Správu** kartě.
+    Případně, pokud používáte Data Protection Manager, můžete upravit hello nastavení určené během pracovního postupu registrace hello kliknutím hello **konfigurace** možnost výběrem **Online** pod hello **Správy** kartě.
     
     ![Konfigurace služby Azure Backup](./media/backup-install-agent/configure.png)
 

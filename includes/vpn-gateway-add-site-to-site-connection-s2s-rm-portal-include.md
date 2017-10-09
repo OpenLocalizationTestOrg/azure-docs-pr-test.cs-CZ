@@ -1,16 +1,16 @@
-1. Přejděte do okna brány virtuální sítě a otevřete ho. K oknu se dostanete několika způsoby. V našem příkladu jsme se k bráně VNet1GW dostali tak, že jsme přešli na **TestVNet1 -> Přehled -> Připojená zařízení -> VNet1GW**.
-2. V okně brány VNet1GW klikněte na **Připojení**. V horní části okna Připojení klikněte na **+Přidat** a otevřete okno **Přidat připojení**.
+1. Přejděte tooand hello otevřete okno pro bránu virtuální sítě. Existuje několik způsobů toonavigate. V našem příkladu jsme přešli toohello brány: VNet1GW' přechodem příliš**virtuální sítě TestVNet1 -> Přehled -> připojeno zařízení -> VNet1GW**.
+2. V okně hello VNet1GW, klikněte na tlačítko **připojení**. Hello horní části okna hello připojení, klikněte na tlačítko **+ přidat** tooopen hello **přidat připojení** okno.
 
     ![Vytvoření připojení typu site-to-site](./media/vpn-gateway-add-site-to-site-connection-s2s-rm-portal-include/connection1.png)
 
-3. V okně **Přidat připojení** vyplňte hodnoty a vytvořte připojení.
+3. Na hello **přidat připojení** okno vyplňte hello hodnoty toocreate připojení.
 
   - **Název**: Zadejte název připojení. V našem příkladu používáme název **VNet1toSite2**.
   - **Typ připojení**: Vyberte **Site-to-site (IPSec)**.
-  - **Brána virtuální sítě**: Tato hodnota je pevně daná, protože se připojujete z této brány.
-  - **Brána místní sítě**: Klikněte na **Zvolit bránu místní sítě** a vyberte bránu místní sítě, kterou chcete použít. V našem příkladu používáme **Site2**.
-  - **Sdílený klíč**: Tato hodnota musí odpovídat hodnotě, kterou používáte pro místní zařízení VPN. V příkladu jsme použili „abc123“, ale můžete (a měli byste) používat něco složitějšího. Důležité je, aby hodnota, kterou zde zadáte, byla stejná jako hodnota, kterou jste zadali při konfiguraci zařízení VPN.
-  - Hodnoty položek **Předplatné**, **Skupina prostředků** a **Umístění** jsou pevné.
+  - **Brána virtuální sítě:** má pevnou hodnotu hello, protože se připojují z této brány.
+  - **Brána místní sítě:** klikněte na tlačítko **zvolit bránu místní sítě** a vyberte hello brány místní sítě, které chcete toouse. V našem příkladu používáme **Site2**.
+  - **Sdílený klíč:** zde hello hodnota musí odpovídat hello hodnotu, která používáte pro vaše místní zařízení VPN. V příkladu hello jsme použili 'abc123', ale můžete (a měli) použít něco složitější. Důležité: co je tuto hodnotu hello, který zde určíte Hello musí být hello stejnou hodnotu, kterou jste zadali při konfiguraci zařízení VPN.
+  - Hello zbývající hodnoty pro **předplatné**, **skupiny prostředků**, a **umístění** jsou pevné.
 
-4. Vytvořte připojení kliknutím na **OK**. Na obrazovce bude blikat text *Vytváří se připojení*.
-5. Připojení si můžete zobrazit v okně **Připojení** brány virtuální sítě. Stav se změní z *Neznámý* na *Připojování* a potom na *Úspěch*.
+4. Klikněte na tlačítko **OK** toocreate připojení. Uvidíte *vytváření připojení* flash na úvodní obrazovka.
+5. Hello připojení si můžete prohlédnout v hello **připojení** okno hello brány virtuální sítě. Hello stav přejde z *neznámé* příliš*připojení*a potom příliš*úspěšné*.

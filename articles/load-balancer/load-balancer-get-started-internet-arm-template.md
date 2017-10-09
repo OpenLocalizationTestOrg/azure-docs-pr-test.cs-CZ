@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření nástroje pro vyrovnávání zatížení připojeného k internetu – šablony Azure | Dokumentace Microsoftu"
-description: "Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení v Resource Manageru pomocí šablony"
+title: "Vyrovnávání zatížení aaaCreate internetové - šablony Azure | Microsoft Docs"
+description: "Zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže ve Správci prostředků pomocí šablony"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d829000e63515814b192f3f8256e3b8637bb3a34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2bce8cb87303838f3bc732d51228ab46d8015552
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Vytvoření internetového nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -32,20 +32,20 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Resource Manager. Případně [zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí modelu nasazení Classic](load-balancer-get-started-internet-classic-portal.md).
+Tento článek se týká modelu nasazení Resource Manager hello. Můžete také [zjistěte, jak toocreate přístupem Internetu pro vyrovnávání zátěže pomocí modelu nasazení classic](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="deploy-the-template-by-using-click-to-deploy"></a>Nasazení šablony pomocí metody Click to Deploy
+## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Nasazení šablony hello pomocí klikněte na tlačítko toodeploy
 
-Ukázková šablona, která je k dispozici ve veřejném úložišti, používá soubor parametrů obsahující výchozí hodnoty, které se použijí k vygenerování výše popsaného scénáře. Pokud chcete nasadit tuto šablonu pomocí metody Click to Deploy, pokračujte na [tento odkaz](http://go.microsoft.com/fwlink/?LinkId=544801), klikněte na **Nasadit do Azure**, v případě potřeby nahraďte výchozí hodnoty parametrů, a pokračujte podle pokynů na portálu.
+Hello Ukázka šablony k dispozici v úložišti na veřejné hello používá parametr souboru, který obsahuje hello výchozí hodnoty používané toogenerate hello scénář popsaný výše. toodeploy pomocí této šablony, klikněte na toodeploy, postupujte podle [tento odkaz](http://go.microsoft.com/fwlink/?LinkId=544801), klikněte na tlačítko **nasazení tooAzure**, nahraďte hello výchozí hodnoty parametrů v případě potřeby a postupujte podle pokynů hello hello portálu.
 
-## <a name="deploy-the-template-by-using-powershell"></a>Nasazení šablony pomocí prostředí PowerShell
+## <a name="deploy-hello-template-by-using-powershell"></a>Nasazení šablony hello pomocí prostředí PowerShell
 
-Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShell, použijte následující postup.
+toodeploy hello šablonu, kterou jste stáhli pomocí prostředí PowerShell, postupujte podle následujících kroků hello.
 
-1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
-2. Spusťte rutinu **New-AzureRmResourceGroupDeployment**, která pomocí šablony vytvoří skupinu prostředků.
+1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, projděte si téma [jak tooInstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů hello všechny toohello hello způsob ukončení toosign do Azure a vybrat své předplatné.
+2. Spustit hello **New-AzureRmResourceGroupDeployment** hello rutiny toocreate skupinu prostředků pomocí šablony.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
@@ -53,23 +53,23 @@ Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShe
         -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Nasazení šablony pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Nasazení šablony hello pomocí hello rozhraní příkazového řádku Azure
 
-Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, použijte následující postup.
+šablony hello toodeploy pomocí hello rozhraní příkazového řádku Azure, postupujte podle kroků hello níže.
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
-2. Spuštěním příkazu **azure config mode** přejděte do režimu Resource Manager, jak vidíte níže.
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) a postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
+2. Spustit hello **azure konfigurace režim** příkaz tooswitch tooResource Manager režimu, jak je uvedeno níže.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Toto je očekávaný výstup výše uvedeného příkazu:
+    Tady je hello očekávaný výstup výše hello příkazu:
 
         info:    New mode is arm
 
-3. V prohlížeči přejděte na [Šablonu pro rychlý start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules), zkopírujte obsah souboru JSON a vložte jej do nového souboru v počítači. V tomto scénáři byste zkopírovali níže uvedené hodnoty do souboru s názvem **c:\lb\azuredeploy.parameters.json**.
-4. Spuštěním rutiny **azure group deployment create** nasaďte nový nástroj pro vyrovnávání zatížení pomocí šablony a souborů parametrů, které jste stáhli a upravili v předchozích krocích. Seznam uvedený za výstupem vysvětluje použité parametry.
+3. V prohlížeči přejděte příliš[hello šablony rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules)hello obsah souboru json hello zkopírujte a vložte do nového souboru v počítači. V tomto scénáři by kopírování hello hodnoty menší než tooa soubor s názvem **c:\lb\azuredeploy.parameters.json**.
+4. Spustit hello **vytvoření skupiny azure nasazení** rutiny toodeploy hello nový nástroj pro vyrovnávání zatížení pomocí šablony hello a parametr souborů, které jste stáhli a upravili v předchozích krocích. Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.
 
     ```azurecli
     azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'

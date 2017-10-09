@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure Container Service – spravovat DC/OS | Microsoft Docs"
+title: "kurz pro službu kontejneru aaaAzure – spravovat DC/OS | Microsoft Docs"
 description: "Kurz pro Azure Container Service – spravovat DC/OS"
 services: container-service
 documentationcenter: 
@@ -17,41 +17,41 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e93f782c26c32f97749e817ec59ee3c2ecb7e119
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b91c433bfd7e48ec405cc62be1486d9d4662839d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Kurz pro Azure Container Service – spravovat DC/OS
 
-DC/OS poskytuje distribuované platformu pro spuštění moderní a kontejnerizované aplikace. S Azure Container Service zřizování provozní připravený cluster DC/OS je jednoduchý a rychlé. Tento úvodní informace, které základní kroky potřebné k nasazení clusteru DC/OS a spuštění základní úlohy.
+DC/OS poskytuje distribuované platformu pro spuštění moderní a kontejnerizované aplikace. S Azure Container Service zřizování provozní připravený cluster DC/OS je jednoduchý a rychlé. Tento úvodní podrobnosti základní kroky potřebné toodeploy clusteru DC/OS a spuštění základní úlohy.
 
 > [!div class="checklist"]
 > * Vytvoření clusteru služby ACS DC/OS
-> * Připojení ke clusteru
-> * Instalace rozhraní příkazového řádku DC/OS
-> * Nasazení aplikace do clusteru
-> * Škálování aplikace v clusteru
-> * Škálování uzly clusteru DC/OS
+> * Připojte toohello cluster
+> * Nainstalujte hello rozhraní příkazového řádku DC/OS
+> * Nasazení clusteru toohello aplikace
+> * Škálování aplikace na clusteru hello
+> * Škálování uzly clusteru DC/OS hello
 > * Základní správu DC/OS
-> * Odstranění clusteru DC/OS
+> * Odstranění clusteru DC/OS hello
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje hello Azure CLI verze verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-dcos-cluster"></a>Vytvoření clusteru DC/OS
 
-Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Nejprve vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *westeurope*.
+Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *westeurope* umístění.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Dále vytvořte cluster DC/OS s [vytvořit acs az](/cli/azure/acs#create) příkaz.
+Dále vytvořte cluster DC/OS s hello [vytvořit acs az](/cli/azure/acs#create) příkaz.
 
-Následující příklad vytvoří cluster DC/OS s názvem *myDCOSCluster* a vytvoří klíče SSH, pokud dosud neexistují. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
+Hello následující příklad vytvoří cluster DC/OS s názvem *myDCOSCluster* a vytvoří klíče SSH, pokud dosud neexistují. toouse konkrétní nastavení klíčů, použijte hello `--ssh-key-value` možnost.  
 
 ```azurecli
 az acs create \
@@ -61,17 +61,17 @@ az acs create \
   --generate-ssh-keys
 ```
 
-Po několika minutách se příkaz dokončí a vrátí informace o nasazení.
+Po několika minutách hello příkaz dokončí a vrátí informace o nasazení hello.
 
-## <a name="connect-to-dcos-cluster"></a>Připojení ke clusteru DC/OS
+## <a name="connect-toodcos-cluster"></a>Připojení clusteru tooDC/OS
 
-Po vytvoření clusteru DC/OS, může být přistupuje prostřednictvím tunelového propojení SSH. Spusťte následující příkaz, který vrátí veřejnou IP adresu hlavního serveru DC/OS. Tato IP adresa je uložené v proměnné a používat v dalším kroku.
+Po vytvoření clusteru DC/OS, může být přistupuje prostřednictvím tunelového propojení SSH. Spusťte následující příkaz tooreturn hello veřejnou IP adresu hlavního serveru DC/OS hello hello. Tato IP adresa je uložené v proměnné a používat v dalším kroku hello.
 
 ```azurecli
 ip=$(az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
 ```
 
-Vytvoření tunelu SSH, spusťte následující příkaz a postupujte podle na obrazovce pokyny. Pokud port 80 je již používán, příkaz se nezdaří. Aktualizace tunelových port na jedno není ve použití, například `85:localhost:80`. 
+toocreate hello tunelového propojení SSH, spusťte následující příkaz hello a podle pokynů hello na obrazovce. Pokud port 80 je již používán, hello příkaz se nezdaří. Aktualizace hello tunelovým propojením tooone port není používán, jako například `85:localhost:80`. 
 
 ```azurecli
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
@@ -79,13 +79,13 @@ sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 
 ## <a name="install-dcos-cli"></a>Instalace rozhraní příkazového řádku DC/OS
 
-Instalace pomocí rozhraní příkazového řádku DC/OS [az acs orchestrátoru DC/OS instalace rozhraní příkazového řádku](/azure/acs/dcos#install-cli) příkaz. Pokud používáte Azure CloudShell, rozhraní příkazového řádku DC/OS je již nainstalován. Pokud používáte Azure CLI v systému macOS nebo Linux, může být potřeba spustit příkaz s sudo.
+Instalace rozhraní příkazového řádku DC/OS hello pomocí hello [az acs orchestrátoru DC/OS instalace rozhraní příkazového řádku](/azure/acs/dcos#install-cli) příkaz. Pokud používáte Azure CloudShell, hello rozhraní příkazového řádku DC/OS je již nainstalován. Pokud používáte hello rozhraní příkazového řádku Azure v systému macOS nebo Linux, bude pravděpodobně nutné příkaz hello toorun s sudo.
 
 ```azurecli
 az acs dcos install-cli
 ```
 
-Před použitím rozhraní příkazového řádku s clusterem, je nutné nakonfigurovat na použití tunelového propojení SSH. Uděláte to tak, spusťte následující příkaz, nastavení portu, v případě potřeby.
+Před hello rozhraní příkazového řádku lze použít s hello clusteru musí být nakonfigurované toouse tunelové propojení SSH hello. toodo tak, spusťte následující příkaz, úpravě hello portu v případě potřeby hello.
 
 ```azurecli
 dcos config set core.dcos_url http://localhost
@@ -93,7 +93,7 @@ dcos config set core.dcos_url http://localhost
 
 ## <a name="run-an-application"></a>Spuštění aplikace
 
-Výchozí hodnota plánování mechanismus pro cluster služby ACS DC/OS je Marathon. Marathon slouží ke spuštění aplikace a správu stavu aplikace na clusteru DC/OS. Při plánování aplikace přes Marathon, vytvořte soubor s názvem **marathon app.json**a zkopírujte do něj následující obsah. 
+Výchozí hodnota Hello plánování mechanismus pro cluster služby ACS DC/OS je Marathon. Marathonu je použité toostart aplikace a spravovat stav hello hello aplikace v clusteru DC/OS hello. tooschedule aplikaci přes Marathon, vytvořte soubor s názvem **marathon app.json**, a kopírování hello do něj následující obsah. 
 
 ```json
 {
@@ -121,19 +121,19 @@ Výchozí hodnota plánování mechanismus pro cluster služby ACS DC/OS je Mara
 }
 ```
 
-Spusťte následující příkaz, který naplánovat spuštění aplikace v clusteru DC/OS.
+Spusťte následující příkaz tooschedule hello aplikace toorun na clusteru DC/OS hello hello.
 
 ```azurecli
 dcos marathon app add marathon-app.json
 ```
 
-Pokud chcete zobrazit stav nasazení pro aplikaci, spusťte následující příkaz.
+toosee hello stav nasazení pro aplikaci hello, spusťte následující příkaz hello.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Když **úlohy** hodnota sloupce přepíná z *0 nebo 1* k *1 nebo 1*, nasazení aplikace byla dokončena.
+Když hello **úlohy** hodnota sloupce přepíná z *0 nebo 1* příliš*1 nebo 1*, nasazení aplikace byla dokončena.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
@@ -142,7 +142,7 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 ## <a name="scale-marathon-application"></a>Škálování aplikací Marathon
 
-V předchozím příkladu byla vytvořena jedna instance aplikace. K aktualizaci tohoto nasazení tak, aby byly k dispozici tři instance aplikace, otevře **marathon app.json** souboru a aktualizujte vlastnost instance na 3.
+V předchozím příkladu hello byla vytvořena jedna instance aplikace. Toto nasazení tak, aby byly k dispozici tři instance aplikace hello otevře hello tooupdate **marathon app.json** souboru a aktualizovat too3 vlastnost instance hello.
 
 ```json
 {
@@ -170,19 +170,19 @@ V předchozím příkladu byla vytvořena jedna instance aplikace. K aktualizaci
 }
 ```
 
-Aktualizace aplikace pomocí `dcos marathon app update` příkaz.
+Aktualizovat aplikaci hello pomocí hello `dcos marathon app update` příkaz.
 
 ```azurecli
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
-Pokud chcete zobrazit stav nasazení pro aplikaci, spusťte následující příkaz.
+toosee hello stav nasazení pro aplikaci hello, spusťte následující příkaz hello.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Když **úlohy** hodnota sloupce přepíná z *1/3* k *3/1*, nasazení aplikace byla dokončena.
+Když hello **úlohy** hodnota sloupce přepíná z *1/3* příliš*3/1*, nasazení aplikace byla dokončena.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
@@ -191,11 +191,11 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 ## <a name="run-internet-accessible-app"></a>Spuštění aplikace dostupné pro internet
 
-Clusteru ACS DC/OS se skládá z dvě sady uzlu, jeden veřejný, která je přístupná v síti internet a jeden privátní, která není přístupná v síti internet. Výchozí sada je privátní uzly, který byl použit v posledním příkladu.
+Hello clusteru ACS DC/OS se skládá ze dvou sad uzlu, hello jeden veřejný, která je přístupná na Internetu, a jeden privátní, která není přístupná na hello Internetu. Hello výchozí sada je hello privátní uzlů, která byla použita v posledním příkladu hello.
 
-Chcete-li aplikaci dostupný na Internetu, nasaďte do sady veřejné uzlu. K tomu, dát `acceptedResourceRoles` objektu hodnotu `slave_public`.
+toomake aplikaci přístupné na hello internet, je nasadit sady toohello veřejné uzlu. toodo tedy poskytnout hello `acceptedResourceRoles` objektu hodnotu `slave_public`.
 
-Vytvořte soubor s názvem **nginx public.json** a zkopírujte do něj následující obsah.
+Vytvořte soubor s názvem **nginx public.json** a kopírování hello do něj následující obsah.
 
 ```json
 {
@@ -227,33 +227,33 @@ Vytvořte soubor s názvem **nginx public.json** a zkopírujte do něj následuj
 }
 ```
 
-Spusťte následující příkaz, který naplánovat spuštění aplikace v clusteru DC/OS.
+Spusťte následující příkaz tooschedule hello aplikace toorun na clusteru DC/OS hello hello.
 
 ```azurecli 
 dcos marathon app add nginx-public.json
 ```
 
-Získáte veřejnou IP adresu clusteru veřejných agentů DC/OS.
+Získáte hello veřejnou IP adresu hello agentů veřejné clusteru DC/OS.
 
 ```azurecli 
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
-Procházení na tuto adresu vrátí výchozí web NGINX.
+Procházení toothis adresu vrátí hello výchozí NGINX lokality.
 
 ![NGINX](./media/container-service-dcos-manage-tutorial/nginx.png)
 
 ## <a name="scale-dcos-cluster"></a>Škálování clusteru DC/OS
 
-V předchozích příkladech byla aplikace škálovat na více instancí. DC/OS infrastruktury můžete škálovat také k zajištění vyšší nebo nižší výpočetní kapacity. To lze provést pomocí [škálování služby acs az]() příkaz. 
+V předchozích příkladech hello aplikace se dokončilo toomultiple instance. Hello DC/OS infrastruktury může být také škálovat tooprovide více nebo méně výpočetní kapacitu. To lze provést pomocí hello [škálování služby acs az]() příkaz. 
 
-Pokud chcete zobrazit aktuální počet agentů DC/OS, použijte [zobrazit acs az](/cli/azure/acs#show) příkaz.
+toosee hello aktuální počet agentů DC/OS použijte hello [zobrazit acs az](/cli/azure/acs#show) příkaz.
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-Chcete-li zvýšit počet 5, použijte [škálování služby acs az](/cli/azure/acs#scale) příkaz. 
+tooincrease hello počet too5, použijte hello [škálování služby acs az](/cli/azure/acs#scale) příkaz. 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -261,7 +261,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>Odstranění clusteru DC/OS
 
-Pokud již nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#delete) příkaz, který má-li odebrat skupinu prostředků, clusteru DC/OS a všechny související prostředky.
+Pokud již nepotřebujete, můžete použít hello [odstranění skupiny az](/cli/azure/group#delete) příkaz skupiny prostředků hello tooremove clusteru DC/OS a všechny související prostředky.
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait
@@ -269,18 +269,18 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili o základní úlohy správy DC/OS, včetně následujících. 
+V tomto kurzu jste se naučili o základní úlohy správy DC/OS, včetně následujících hello. 
 
 > [!div class="checklist"]
 > * Vytvoření clusteru služby ACS DC/OS
-> * Připojení ke clusteru
-> * Instalace rozhraní příkazového řádku DC/OS
-> * Nasazení aplikace do clusteru
-> * Škálování aplikace v clusteru
-> * Škálování uzly clusteru DC/OS
-> * Odstranění clusteru DC/OS
+> * Připojte toohello cluster
+> * Nainstalujte hello rozhraní příkazového řádku DC/OS
+> * Nasazení clusteru toohello aplikace
+> * Škálování aplikace na clusteru hello
+> * Škálování uzly clusteru DC/OS hello
+> * Odstranění clusteru DC/OS hello
 
-Přechodu na v dalším kurzu se dozvíte o aplikaci v DC/OS v Azure Vyrovnávání zatížení. 
+ADVANCE toohello další kurz toolearn o načtení vyrovnávání aplikace v DC/OS v Azure. 
 
 > [!div class="nextstepaction"]
 > [Vyrovnávání zatížení aplikací](container-service-load-balancing.md)

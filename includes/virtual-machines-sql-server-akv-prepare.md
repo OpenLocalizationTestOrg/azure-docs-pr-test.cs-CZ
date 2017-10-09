@@ -1,34 +1,33 @@
 ## <a name="prepare-for-akv-integration"></a>Příprava pro integrace se službou AZURE
-Použití Azure Key Vault integrace ke konfiguraci virtuálního počítače SQL serveru, existuje několik předpokladů: 
+Azure Key Vault integrace tooconfigure toouse váš virtuální počítač SQL Server existuje několik předpokladů: 
 
 1. [Instalace prostředí Azure Powershell](#install-azure-powershell)
 2. [Vytvoření služby Azure Active Directory](#create-an-azure-active-directory)
 3. [Vytvoření trezoru klíčů](#create-a-key-vault)
 
-Následující části popisují tyto požadavky a informace, které je třeba shromáždit později rutin prostředí PowerShell.
+Hello následující části popisují tyto požadavky a hello informace, které potřebujete rutiny prostředí PowerShell hello toocollect toolater spustit.
 
 ### <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
-Ujistěte se, že jste nainstalovali nejnovější sadu Azure PowerShell SDK. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
+Ujistěte se, že máte nainstalovanou hello nejnovější sadu Azure PowerShell SDK. Další informace najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ### <a name="create-an-azure-active-directory"></a>Vytvoření služby Azure Active Directory
-Nejdřív je potřeba mít [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) v rámci vašeho předplatného. Mezi řadu výhod to umožňuje udělit oprávnění k trezoru klíčů pro některé uživatele a aplikace.
+Nejprve je třeba toohave [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) v rámci vašeho předplatného. Mezi řadu výhod můžete toogrant oprávnění tooyour trezor klíčů pro některé uživatele a aplikace.
 
-V dalším kroku zaregistrujte aplikaci v AAD. Tím získáte účet instanční objekt, který má přístup k trezoru klíčů, který bude potřebovat virtuálního počítače. V článku Azure Key Vault, můžete najít tyto kroky v [zaregistrovat aplikaci s Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) oddílu, nebo můžete zobrazit kroky se snímky obrazovky v **získat identity pro oddílu aplikace**  z [tomto příspěvku na blogu](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Před dokončením těchto kroků, mějte na paměti, která potřebujete shromáždit tyto informace během této registrace, který je potřeba později, když povolíte na virtuální počítač SQL Azure Key Vault integrace.
+V dalším kroku zaregistrujte aplikaci v AAD. Tím získáte účet instanční objekt, který má přístup tooyour trezoru klíčů který potřebovat virtuálního počítače. V článku hello Azure Key Vault, můžete najít tyto kroky v hello [zaregistrovat aplikaci s Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) oddílu, nebo můžete zobrazit kroky hello se snímky obrazovky v hello **získat identity pro aplikace hello část** z [tomto příspěvku na blogu](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Před dokončením těchto kroků, mějte na paměti, je nutné, aby toocollect hello následující informace během této registrace, který je potřeba později, když povolíte na virtuální počítač SQL Azure Key Vault integrace.
 
-* Po přidání aplikace najít **ID klienta** na **konfigurace** kartě. 
-    ![ID klienta Azure Active Directory](./media/virtual-machines-sql-server-akv-prepare/aad-client-id.png)
+* Po přidání aplikace hello najde hello **ID klienta** na hello **konfigurace** kartě.   ![ID klienta Azure Active Directory](./media/virtual-machines-sql-server-akv-prepare/aad-client-id.png)
   
-    ID klienta je přiřazen později **$spName** parametr (Service Principal name) ve skriptu prostředí PowerShell povolit Azure Key Vault integraci. 
-* Navíc při provádění těchto kroků při vytváření klíče zkopírujte tajný klíč pro váš klíč znázorněné na následujícím snímku obrazovky. Tento klíč tajný klíč je přiřazen později **$spSecret** parametr (Service Principal tajný klíč) ve skriptu prostředí PowerShell.  
+    ID klienta Hello je přiřazen novější toohello **$spName** parametr (Service Principal name) ve tooenable skript prostředí PowerShell hello Azure Key Vault integrace. 
+* Navíc při provádění těchto kroků při vytváření klíče zkopírujte hello tajný klíč pro klíč znázorněné v hello následující snímek obrazovky. Tento klíč tajný klíč je přiřazen novější toohello **$spSecret** parametr (Service Principal tajný klíč) ve skriptu PowerShell hello.  
     ![Tajný klíč služby Azure Active Directory](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
-* Je nutné autorizovat toto nové ID klienta do mají následující přístupová oprávnění: **šifrování**, **dešifrovat**, **wrapKey**, **unwrapKey**, **přihlašovací**, a **ověřte**. To lze provést pomocí [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) rutiny. Další informace najdete v části [autorizovat aplikaci pro použití klíče nebo tajného klíče](../articles/key-vault/key-vault-get-started.md#authorize).
+* Je nutné autorizovat tento nový klient ID toohave hello následující oprávnění k přístupu: **šifrování**, **dešifrovat**, **wrapKey**, **unwrapKey**, **přihlašovací**, a **ověřte**. To lze provést pomocí hello [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) rutiny. Další informace najdete v části [autorizovat hello aplikace toouse hello klíče nebo tajného klíče](../articles/key-vault/key-vault-get-started.md#authorize).
 
 ### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
-Abyste mohli používat Azure Key Vault pro ukládání klíčů, které chcete použít pro šifrování v virtuálního počítače, potřebujete přístup k trezoru klíčů. Pokud již jste nenastavili trezoru klíčů, vytvořte ho pomocí následujících kroků v [Začínáme s Azure Key Vault](../articles/key-vault/key-vault-get-started.md) tématu. Před dokončením těchto kroků, Všimněte si, že některé informace, které je třeba během toto nastavení, shromažďovat budete později potřebovat když povolíte na virtuální počítač SQL Azure Key Vault integrace.
+Pořadí toouse Azure Key Vault toostore hello klíče, které budete používat pro šifrování v virtuálního počítače je nutné trezoru klíčů tooa přístup. Pokud již jste nenastavili trezoru klíčů, vytvořte ho pomocí následujících kroků hello v hello [Začínáme s Azure Key Vault](../articles/key-vault/key-vault-get-started.md) tématu. Před dokončením těchto kroků, Všimněte si, že některé informace, které budete potřebovat toocollect během toto nastavení, je potřeba později když povolíte na virtuální počítač SQL Azure Key Vault integrace.
 
-Když získáte vytvořením krok trezoru klíčů, Všimněte si vrácený **vaultUri** vlastnosti, která je adresa URL trezoru klíčů. V příkladu v tomto kroku, vidíte níže, že název trezoru klíčů je ContosoKeyVault proto adresu URL trezoru klíčů by být https://contosokeyvault.vault.azure.net/.
+Když získáte toohello vytvořit krok trezoru klíčů, vrátí Poznámka hello **vaultUri** vlastnost, která je adresa URL trezoru klíčů hello. V zadané v tomto kroku níže uvedeném příkladu hello název trezoru klíčů hello je ContosoKeyVault, proto hello URL trezoru klíčů by https://contosokeyvault.vault.azure.net/.
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-Adresa URL trezoru klíčů je přiřazen později **$akvURL** parametr ve skriptu prostředí PowerShell povolit Azure Key Vault integraci.
+Adresa URL trezoru klíčů Hello je přiřazen novější toohello **$akvURL** parametr v tooenable skript prostředí PowerShell hello Azure Key Vault integrace.
 

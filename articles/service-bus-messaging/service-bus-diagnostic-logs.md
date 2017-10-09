@@ -1,6 +1,6 @@
 ---
-title: "Diagnostické protokoly služby Azure Service Bus | Microsoft Docs"
-description: "Zjistěte, jak pro nastavení diagnostické protokoly pro Service Bus v Azure."
+title: "diagnostické protokoly aaaAzure Service Bus | Microsoft Docs"
+description: "Zjistěte, jak tooset až diagnostické protokoly pro Service Bus v Azure."
 keywords: 
 documentationcenter: .net
 services: service-bus-messaging
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
-ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e48d6eaba6e865ae39f5b07ed6cd53d74c92e2ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
 
 Pro Azure Service Bus můžete zobrazit dva typy protokolů:
-* **[Protokoly aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povolena.
-* **[Diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Můžete nakonfigurovat diagnostické protokoly bohatší informace o všechno, co se děje v rámci úlohy. Diagnostické protokoly titulní aktivit od okamžiku, kdy úloha je vytvořena až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází při běhu úlohy.
+* **[Protokoly aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Tyto protokoly obsahují informace o operace provedené na úlohu. Hello protokoly jsou vždy povolena.
+* **[Diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Můžete nakonfigurovat diagnostické protokoly bohatší informace o všechno, co se děje v rámci úlohy. Diagnostické protokoly titulní aktivity z hello, když se vytvoří úloha hello až do odstranění hello úlohy, včetně aktualizací a aktivity, ke kterým dojde během hello úloha běží.
 
 ## <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
 
-Diagnostické protokoly jsou zakázané ve výchozím nastavení. Pokud chcete povolit diagnostické protokoly, proveďte následující kroky:
+Diagnostické protokoly jsou zakázané ve výchozím nastavení. diagnostické protokoly tooenable, proveďte následující kroky hello:
 
-1.  V [portál Azure](https://portal.azure.com)v části **monitorování + správu**, klikněte na tlačítko **protokolů diagnostiky**.
+1.  V hello [portál Azure](https://portal.azure.com)v části **monitorování + správu**, klikněte na tlačítko **protokolů diagnostiky**.
 
-    ![Okno navigace k diagnostickým protokolům](./media/service-bus-diagnostic-logs/image1.png)
+    ![Protokoly toodiagnostic navigačním okně](./media/service-bus-diagnostic-logs/image1.png)
 
-2. Klikněte na prostředek, který chcete monitorovat.  
+2. Klikněte na tlačítko hello prostředků, které chcete toomonitor.  
 
 3.  Klikněte na tlačítko **zapněte diagnostiku**.
 
@@ -45,23 +45,23 @@ Diagnostické protokoly jsou zakázané ve výchozím nastavení. Pokud chcete p
 
     ![změnit stav diagnostických protokolů](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Nastavit cíl archiv, který chcete zjistit. například účet úložiště, centra událostí nebo analýza protokolů Azure.
+5.  Sada hello archivu cíl, který chcete zjistit. například účet úložiště, centra událostí nebo analýza protokolů Azure.
 
-6.  Uložte nové nastavení diagnostiky.
+6.  Uložte nové nastavení diagnostiky hello.
 
-Nové nastavení se projeví ve přibližně 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cíl, na **protokolů diagnostiky** okno.
+Nové nastavení se projeví ve přibližně 10 minut. Potom protokolů se objeví v archivace cílové hello nakonfigurované na hello **protokolů diagnostiky** okno.
 
-Další informace o konfiguraci diagnostiky, najdete v článku [přehled Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Další informace o konfiguraci diagnostiky najdete v tématu hello [přehled Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostické protokoly schématu
 
-Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, které používají formát popsaný v následující části.
+Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každá položka má polí s řetězcem, které používají formát hello je popsaný v následující části hello.
 
 ## <a name="operational-logs-schema"></a>Schéma operační protokoly
 
-Přihlásí **OperationalLogs** kategorie zachycení, co se stane, že během operace služby Service Bus. Konkrétně tyto protokoly zachytit typ operace, včetně vytváření fronty, prostředky využívané a stav operace.
+Přihlásí hello **OperationalLogs** kategorie zachycení, co se stane, že během operace služby Service Bus. Tyto protokoly konkrétně zaznamenání hello typ operace, včetně vytváření fronty, prostředky používá a hello stav operace hello.
 
-Řetězce formátu JSON operační protokol obsahovat prvky uvedené v následující tabulce:
+Řetězce formátu JSON operační protokol obsahovat prvky uvedené v následující tabulce hello:
 
 Name (Název) | Popis
 ------- | -------
@@ -93,7 +93,7 @@ Tady je příklad protokol provozní řetězce formátu JSON:
 
 ## <a name="next-steps"></a>Další kroky
 
-Po kliknutí následující odkazy na další informace o službě Service Bus:
+Navštivte hello následující odkazy toolearn více o službě Service Bus:
 
-* [Úvod do služby Service Bus](service-bus-messaging-overview.md)
+* [Úvod tooService sběrnice](service-bus-messaging-overview.md)
 * [Začínáme se službou Service Bus](service-bus-dotnet-get-started-with-queues.md)

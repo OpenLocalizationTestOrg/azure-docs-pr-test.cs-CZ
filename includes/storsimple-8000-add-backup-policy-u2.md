@@ -1,42 +1,42 @@
 <!--author=alkohli last changed: 02/10/17-->
 
-#### <a name="to-add-a-storsimple-backup-policy"></a>Přidání zásady zálohování StorSimple
+#### <a name="tooadd-a-storsimple-backup-policy"></a>tooadd zásady zálohování StorSimple
 
-1. Přejděte ke svému zařízení StorSimple a klikněte na **Zásady zálohování**.
+1. Přejděte tooyour zařízení StorSimple a klikněte na tlačítko **zálohování zásad**.
 
-2. V okně **Zásady zálohování** klikněte na panelu příkazů na **Přidat zásadu**.
+2. V hello **zálohování zásad** okně klikněte na tlačítko **+ přidat zásadu** z příkazového řádku hello.
    
     ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
 
-3. V okně **Vytvořit zásadu zálohování** proveďte následující kroky:
+3. V hello **vytvořit zásady zálohování** okně hello následující kroky:
    
-   1. Pole **Vybrat zařízení** se automaticky vyplní podle zařízení, které jste vybrali.
+   1. **Vyberte zařízení** se automaticky vyplní podle vybraného zařízení hello.
    
-   2. Zadejte **Název zásady** zálohování, který obsahuje 3 až 150 znaků. Po vytvoření už zásadu není možné přejmenovat.
+   2. Zadejte **Název zásady** zálohování, který obsahuje 3 až 150 znaků. Po vytvoření zásady hello nelze přejmenovat hello zásad.
        
-   3. Pokud chcete k této zásadě zálohování přiřadit svazky, vyberte **Přidat svazky** a potom v tabulkovém výpisu svazků zaškrtnutím políček přiřaďte této zásadě zálohování jeden nebo několik svazků.
+   3. tooassign svazky toothis zásady zálohování, vyberte **Přidat svazky** a z hello tabulkové seznam svazků, klikněte na tlačítko hello zaškrtávací pole nebo polí tooassign jeden nebo více svazků toothis zálohování zásad.
 
        ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
-   4. Pokud chcete pro tuto zásadu zálohování nadefinovat plán, klikněte na **První plán** a potom upravte následující parametry:
+   4. Klikněte na tlačítko toodefine plán pro tyto zásady zálohování **nejdřív naplánovat** a potom upravte hello následující parametry:
 
        ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
        1. Jako **Typ snímku** vyberte **Cloud** nebo **Místní**.
 
-       2. Určete frekvenci záloh (zadejte počet a vyberte z rozevíracího seznamu buď **Dny**, nebo **Týdny**).
+       2. Označuje hello frekvenci záloh (zadejte číslo a potom zvolte **dní** nebo **týdny** z rozevíracího seznamu hello.
 
        3. Zadejte plán uchovávání.
 
-       4. Zadejte čas a datum zahájení platnosti zásady zálohování.
+       4. Zadejte čas a datum zásady zálohování toobegin hello.
 
-       5. Kliknutím na **OK** nadefinujte plán.
+       5. Klikněte na tlačítko **OK** toodefine hello plán.
 
-   5. Kliknutím na **Vytvořit** vytvořte zásadu zálohování.
+   5. Klikněte na tlačítko **vytvořit** toocreate zásady zálohování.
 
        ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
-   6. Po vytvoření zásady zálohování se zobrazí oznámení. Nově přidaná zásada se zobrazí v tabulkovém zobrazení v okně **Zásady zálohování**.
+   6. Zobrazí se upozornění při vytváření zásady zálohování hello. Nově přidaná Hello zásada se zobrazí v tabulkovém zobrazení hello na hello **zásady zálohování** okno.
 
        ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

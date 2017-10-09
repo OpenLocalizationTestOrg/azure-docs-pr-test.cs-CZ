@@ -1,6 +1,6 @@
 ---
-title: "Pomocí šablony Azure Resource Manager vytvořit a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs"
-description: "Šablony Azure Resource Manager můžete použít k vytvoření a konfigurace analýzy protokolů pracovních prostorů."
+title: "tooCreate šablony Azure Resource Manager aaaUse a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs"
+description: "Můžete použít toocreate šablony Azure Resource Manager a nakonfigurovat pracovní prostory analýzy protokolů."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,43 +14,43 @@ ms.devlang: json
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: richrund
-ms.openlocfilehash: 505b741d14c594b22108298466c646bf723ce2d4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8f413e982f5eeed73f463524ff6f239f26c9127
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Spravovat pomocí šablony Azure Resource Manager analýzy protokolů
-Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory analýzy protokolů. Mezi příklady úloh, které můžete provádět s šablonami patří:
+Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) toocreate a konfigurace analýzy protokolů pracovních prostorů. Příklady hello úlohy, které můžete provádět pomocí šablon:
 
 * Vytvoření pracovního prostoru
 * Přidat řešení
 * Vytvoření uložených hledání
 * Vytvořit skupinu počítačů
-* Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
+* Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows hello
 * Shromáždit čítače výkonu z počítačů se systémy Linux a Windows
 * Shromažďování událostí z syslog počítačů se systémem Linux 
 * Shromažďování událostí z protokolů událostí systému Windows
 * Shromažďovat vlastní protokoly událostí
-* Přidat agenta analýzy protokolů pro virtuální počítač Azure
-* Konfigurace analýzy protokolů pro data indexu shromažďována pomocí Azure diagnostics
+* Přidat hello log analytics agenta tooan virtuální počítač Azure
+* Konfigurace protokolu analýzy tooindex data shromážděná pomocí Azure diagnostics
 
-Tento článek obsahuje šablonu vzorků, které ilustrovat některé konfigurace, kterou můžete provést z šablony.
+Tento článek obsahuje šablonu vzorků, které ilustrovat některé z hello konfigurace, které můžete provést z šablony.
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvořit a nakonfigurovat pracovní prostor Log Analytics
-Znázorňuje následující ukázka šablony postup:
+Hello následující ukázka šablony je znázorněný postup:
 
 1. Vytvořit pracovní prostor, včetně nastavení uchovávání dat
-2. Přidat řešení do pracovního prostoru
+2. Přidání prostoru toohello řešení
 3. Vytvoření uložených hledání
 4. Vytvořit skupinu počítačů
-5. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
+5. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows hello
 6. Z počítače se systémem Linux shromáždit čítače výkonu logický Disk (% použitých uzlů; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení disku/s; Zápis disku/s)
 7. Shromažďovat události procesu syslog z počítače se systémem Linux
-8. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítače se systémem Windows
+8. Shromažďování událostí chyb a upozornění z hello protokolu událostí aplikace z počítače se systémem Windows
 9. Shromažďovat čítač výkonu paměť v MB k dispozici z počítače se systémem Windows
 10. Shromažďovat vlastní protokol 
-11. Shromažďovat protokoly služby IIS a protokoly událostí systému Windows zapsaných správcem Azure diagnostiky do účtu úložiště
+11. Shromažďovat protokoly služby IIS a podle účtu úložiště Azure diagnostics tooa zapisují protokoly událostí systému Windows
 
 ```
 {
@@ -95,13 +95,13 @@ Znázorňuje následující ukázka šablony postup:
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
         "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
+          "description": "Name of hello storage account with Azure diagnostics output"
         }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
         "type": "string",
         "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
+          "description": "hello resource group name containing hello storage account with Azure diagnostics output"
         }
     }
   },
@@ -426,12 +426,12 @@ Znázorňuje následující ukázka šablony postup:
 }
 
 ```
-### <a name="deploying-the-sample-template"></a>Nasazení ukázkové šablony
-Pokud chcete nasadit šablonu ukázka:
+### <a name="deploying-hello-sample-template"></a>Nasazení šablony ukázka hello
+toodeploy hello Ukázka šablony:
 
-1. Například uložit do souboru připojené vzorku`azuredeploy.json` 
-2. Upravit šablonu, kterou chcete mít požadovaná konfigurace
-3. Nasazení šablony pomocí Powershellu nebo příkazového řádku
+1. Například uložit do souboru připojené ukázka hello`azuredeploy.json` 
+2. Hello šablony toohave hello konfiguraci, které chcete upravit
+3. Použití prostředí PowerShell nebo hello šablony hello toodeploy příkazového řádku
 
 #### <a name="powershell"></a>PowerShell
 `New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
@@ -444,15 +444,15 @@ azure group deployment create <my-resource-group> <my-deployment-name> --Templat
 
 
 ## <a name="example-resource-manager-templates"></a>Příklad Resource Manager šablony
-Galerie pro šablonu Azure rychlý start zahrnuje několik šablon pro analýzy protokolů, včetně:
+Galerie šablon Azure rychlý start Hello obsahuje několik šablon pro analýzy protokolů, včetně:
 
-* [Nasazení virtuálního počítače se systémem Windows s rozšířením VM analýzy protokolů](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [Nasazení virtuálního počítače s Linuxem pomocí rozšíření virtuálního počítače analýzy protokolů](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Nasazení virtuálního počítače s Windows hello rozšíření virtuálního počítače analýzy protokolů](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Nasazení virtuálního počítače s Linuxem hello rozšíření virtuálního počítače analýzy protokolů](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Monitorování pomocí existujícímu pracovnímu prostoru analýzy protokolů Azure Site Recovery.](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Monitorování pomocí existujícímu pracovnímu prostoru analýzy protokolů Azure Web Apps](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Monitorování pomocí existujícímu pracovnímu prostoru analýzy protokolů Azure SQL](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
 * [Nasazení clusteru Service Fabric a monitorování s existující pracovní prostor analýzy protokolů](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [Nasazení clusteru Service Fabric a vytvořit pracovní prostor analýzy protokolů ho chcete sledovat](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [Nasazení clusteru Service Fabric a vytvořte toomonitor pracovní prostor analýzy protokolů ho](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasazení agentů do virtuálních počítačů Azure pomocí šablony Resource Manageru](log-analytics-azure-vm-extension.md)

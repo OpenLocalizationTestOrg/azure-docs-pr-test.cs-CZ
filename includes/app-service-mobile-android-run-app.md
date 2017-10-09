@@ -1,9 +1,9 @@
 
-1. Navštivte [Azure Portal]. Klikněte na **Procházet vše** > **Mobilní aplikace** > prostředí back-end, které jste právě vytvořili. V nastavení mobilní aplikace klikněte na **Rychlý start** > **Android**. V části **Configure your client application** (Konfigurace klientské aplikace) klikněte na **Stáhnout**. Tím stáhnete dokončený projekt Android pro aplikaci přednastavenou k připojení k vašemu prostředí back-end. 
-2. Otevřete projekt v **Android Studiu** pomocí možnosti **Importovat projekt (Eclipse ADT, Gradle atd.)**. Nezapomeňte vybrat tuto možnost importu, abyste se vyhnuli případným chybám JDK.
-3. Stisknutím tlačítka **Spustit aplikaci** sestavíte projekt a spustíte aplikaci v simulátoru Androidu.
-4. V aplikaci zadejte smysluplný text, třeba *Dokončit kurz*, a klikněte na tlačítko Přidat. Tím odešlete do prostředí back-end v Azure, které jste předtím vytvořili, požadavek POST. Prostředí back-end vloží data z požadavku do tabulky SQL TodoItem a vrátí informace o nově uložených položkách do mobilní aplikace. Mobilní aplikace zobrazí tato data v seznamu. 
+1. Navštivte hello [portálu Azure]. Klikněte na tlačítko **Procházet vše** > **Mobile Apps** > hello back-end, který jste právě vytvořili. V nastavení mobilní aplikace hello, klikněte na tlačítko **rychlý Start** > **Android)**. V části **Configure your client application** (Konfigurace klientské aplikace) klikněte na **Stáhnout**. Tím stáhnete dokončený projekt Android předem nakonfigurovaná tooconnect tooyour back-endu aplikace. 
+2. Hello otevřete projekt pomocí **Android Studio**pomocí **Importovat projekt (Eclipse ADT, Gradle atd.)** . Ujistěte se, že provedete tento výběr tooavoid import případným chybám JDK.
+3. Stiskněte klávesu hello **spuštění "aplikace"** tlačítko toobuild hello projektu a spusťte hello aplikaci v simulátoru Androidu hello.
+4. Hello aplikace zadejte smysluplný text, například *hello dokončení kurzu* a pak klikněte na tlačítko "Přidat" hello. Tím se odešle toohello požadavek POST Azure back-end, které jste nasadili dříve. Hello back-end vloží data z požadavku hello je do hello tabulky TodoItem SQL a vrátí informace o hello nově uloženy položky zpět toohello mobilní aplikace. mobilní aplikace Hello zobrazí tato data v seznamu hello. 
    
     ![](./media/app-service-mobile-android-quickstart/mobile-quickstart-startup-android.png)
 
-[Azure Portal]: https://portal.azure.com/
+[portálu Azure]: https://portal.azure.com/

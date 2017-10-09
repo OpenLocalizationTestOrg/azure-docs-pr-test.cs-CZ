@@ -1,26 +1,26 @@
-Nejčastější dotazy týkající se propojení VNet-to-VNet se vztahují k připojení služby VPN Gateway. Pokud hledáte informace o VNet Peering, přečtěte si téma [Partnerské vztahy virtuálních sítí](../articles/virtual-network/virtual-network-peering-overview.md).
+Nejčastější dotazy týkající se propojení VNet-to-VNet Hello platí tooVPN připojení brány. Pokud hledáte informace o VNet Peering, přečtěte si téma [Partnerské vztahy virtuálních sítí](../articles/virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Účtuje se v Azure provoz mezi virtuálními sítěmi?
 
-Při použití připojení brány VPN je provoz mezi virtuálními sítěmi v rámci stejné oblasti bezplatný v obou směrech. V případě různých oblastí je výchozí přenos VNet-to-VNet zpoplatněn jako odchozí přenos dat mezi virtuálními sítěmi podle zdrojových oblastí. Podrobnosti najdete na [stránce s cenami služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/). Pokud virtuální sítě propojujete pomocí partnerského vztahu virtuálních sítí místo služby VPN Gateway, podívejte se na [stránku s cenami služby Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network/).
+Provoz VNet-to-VNet v rámci hello stejné oblasti je obou směrech zdarma při použití připojení k bráně VPN. Pro různé oblasti VNet-to-VNet odchozí provoz je pověřen hello odchozí mezi virtuálními sazby za přenos dat podle zdrojových oblastí hello. Odkazovat toohello [brány VPN stránce s cenami](https://azure.microsoft.com/pricing/details/vpn-gateway/) podrobnosti. Pokud se připojujete vaší virtuální sítě pomocí virtuální sítě partnerský vztah, nikoli brány sítě VPN, přečtěte si téma hello [virtuální sítě stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>Prochází provoz VNet-to-VNet přes internet?
+### <a name="does-vnet-to-vnet-traffic-travel-across-hello-internet"></a>Cestují provoz VNet-to-VNet přes hello Internetu?
 
-Ne. Provoz VNet-to-VNet se přenáší prostřednictvím páteřní struktury systému Microsoft Azure, nikoli po internetu.
+Ne. Provoz VNet-to-VNet se přenáší po hello páteřní Microsoft Azure, hello Internetu.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Je provoz VNet-to-VNet bezpečný?
 
 Ano, je chráněn šifrováním s použitím protokolu IPsec/IKE.
 
-### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>Je k propojení virtuálních sítí potřeba zařízení VPN?
+### <a name="do-i-need-a-vpn-device-tooconnect-vnets-together"></a>Společně tooconnect zařízení VPN virtuální sítě potřeba?
 
 Ne. Propojení více virtuálních sítí Azure nevyžaduje žádná zařízení VPN, pokud není vyžadována možnost připojení mezi různými místy.
 
-### <a name="do-my-vnets-need-to-be-in-the-same-region"></a>Je nutné, aby virtuální sítě byly ve stejné oblasti?
+### <a name="do-my-vnets-need-toobe-in-hello-same-region"></a>Můj virtuální sítě nutná toobe v hello stejné oblasti?
 
-Ne. Virtuální sítě se můžou nacházet ve stejné oblasti (umístění) Azure nebo v různých oblastech.
+Ne. Hello virtuální sítě může být v hello oblastí Azure stejný nebo jiný (umístění).
 
-### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>Pokud virtuální sítě nejsou ve stejném předplatném, musí být přidružené ke stejnému tenantovi AD?
+### <a name="if-hello-vnets-are-not-in-hello-same-subscription-do-hello-subscriptions-need-toobe-associated-with-hello-same-ad-tenant"></a>Pokud hello virtuálních sítí nejsou v hello stejné předplatné, odběry hello potřebují toobe přidružený klientovi hello stejnou AD?
 
 Ne.
 
@@ -32,7 +32,7 @@ Ano. Možnost připojení k virtuální síti je možné využívat současně s
 
 Viz tabulka [Požadavky na bránu](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements).
 
-### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>Je možné použít VNet-to-VNet k propojení virtuálních počítačů nebo cloudových služeb mimo virtuální síť?
+### <a name="can-i-use-vnet-to-vnet-tooconnect-vms-or-cloud-services-outside-of-a-vnet"></a>Můžete použít VNet-to-VNet tooconnect virtuálních počítačů nebo cloudových služeb mimo virtuální síť?
 
 Ne. Propojení VNet-to-VNet podporují propojování virtuálních sítí. Nepodporuje propojování virtuálních počítačů ani cloudových služeb mimo virtuální síť.
 
@@ -44,13 +44,13 @@ Ne. Cloudová služba ani koncový bod vyrovnávání zatížení nemůžou prac
 
 Ne. Připojení VNet-to-VNet a Multi-Site vyžadují brány VPN Azure s typy sítě VPN RouteBased (dříve nazývané dynamické směrování).
 
-### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>Je možné připojit virtuální síť typu RouteBased k jiné virtuální síti typu PolicyBased?
+### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-tooanother-vnet-with-a-policybased-vpn-type"></a>Je možné připojit virtuální síť s typ sítě VPN RouteBased tooanother virtuální síť s typu Policybased?
 
 Ne, obě virtuální sítě MUSÍ používat sítě VPN založené na směrování (dříve nazývané dynamické směrování).
 
 ### <a name="do-vpn-tunnels-share-bandwidth"></a>Sdílejí tunely VPN šířku pásma?
 
-Ano. Všechna tunelová propojení sítí VPN v rámci virtuální sítě sdílejí v bráně VPN Azure šířku pásma, která je k dispozici, a stejnou smlouvu SLA pro dostupnost brány VPN v Azure.
+Ano. Všechna tunelová propojení VPN virtuální sítě hello sdílet hello dostupnou šířku pásma hello Azure VPN gateway a hello stejné SLA provozu v Azure VPN gateway.
 
 ### <a name="are-redundant-tunnels-supported"></a>Jsou podporovány redundantní tunely?
 

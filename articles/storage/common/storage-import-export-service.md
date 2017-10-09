@@ -1,6 +1,6 @@
 ---
-title: "Používání Azure Import/Export pro přenos dat do a z úložiště objektů blob | Microsoft Docs"
-description: "Naučte se vytvořit import a export úloh na portálu Azure pro přenos dat do a z úložiště objektů blob."
+title: "aaaUsing Azure Import/Export tootransfer data tooand z úložiště objektů blob | Microsoft Docs"
+description: "Zjistěte, jak toocreate import a export úloh v hello portál Azure pro přenos dat tooand z úložiště objektů blob."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,97 +14,97 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
-ms.openlocfilehash: 5696c99b719fb1c5ca9c3da7dbf23d365cc64a2e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0be486a4badf2127b4613f3e9664e4cd308d3298
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-blob-storage"></a>Používat službu Microsoft Azure Import/Export k přenosu dat do úložiště objektů blob
-Služba Azure Import/Export umožňuje bezpečně přenést velké objemy dat do Azure blob storage pomocí přenosů jednotky pevného disku pro datové centrum Azure. Tuto službu můžete použít také k přenosu dat z Azure blob storage na jednotky pevného disku a dodávat k místní lokalitě. Tato služba je vhodný v situacích, kdy chcete přenést několika terabajtů (TB) dat do nebo z Azure, ale je nemožné z důvodu omezenou šířkou pásma nebo vysokou sítě náklady na nahrávání nebo stahování přes síť.
+# <a name="use-hello-microsoft-azure-importexport-service-tootransfer-data-tooblob-storage"></a>Používání hello Microsoft Azure Import/Export služby tootransfer data tooblob úložiště
+Hello služba Azure Import/Export můžete toosecurely přenos velkých objemů dat tooAzure úložiště objektů blob podle přenosů jednotky pevného disku tooan datového centra Azure. Můžete také použít tento služby tootransfer data z Azure blob storage toohard diskové jednotky a dodávat tooyour místního webu. Tato služba je vhodný v situacích, kdy chcete tootransfer několika terabajtů (TB) dat tooor z Azure, ale nahrávání nebo stahování přes síť hello je nemožné kvůli toolimited šířky pásma nebo vysokou sítě náklady.
 
-Služba vyžaduje, aby pevné disky pro zabezpečení vašich dat šifrovaná nástrojem BitLocker. Služba podporuje jak Classic a Azure Resource Manager účty úložiště (standardní a studená úroveň) existuje ve všech oblastech veřejný Azure. Je nutné dodat jednotky pevného disku na jeden z podporovaných umístění zadané později v tomto článku.
+Hello služba vyžaduje, aby pevné disky pro hello zabezpečení vašich dat šifrovaná nástrojem BitLocker. Služba Hello podporuje obě hello Classic a Azure Resource Manager účty úložiště (standardní a studená úroveň) existuje ve všech oblastech hello veřejný Azure. Je nutné dodat jednotky pevného disku tooone hello podporované umístění zadané později v tomto článku.
 
-V tomto článku můžete další informace o službě Azure Import/Export a jak dodat jednotky pro kopírování dat z Azure Blob storage a do.
+V tomto článku můžete další informace o hello Azure Import/Export služby a jak tooship jednotky pro kopírování tooand vaše data z úložiště objektů Blob Azure.
 
-## <a name="when-should-i-use-the-azure-importexport-service"></a>Kdy by se měla použít služba Azure Import/Export?
-Zvažte použití služby Azure Import/Export při nahrávání nebo stahování dat přes síť je příliš pomalé nebo získání další šířku pásma sítě je cenovou konkurenceschopnost.
+## <a name="when-should-i-use-hello-azure-importexport-service"></a>Kdy použít služba Azure Import/Export hello?
+Zvažte použití služby Azure Import/Export při nahrávání nebo stahování dat přes síť hello je příliš pomalé nebo získání další šířku pásma sítě je cenovou konkurenceschopnost.
 
 Tuto službu můžete použít ve scénářích, jako:
 
-* Migrace dat do cloudu: rychle přesouvat velké objemy dat do Azure a nákladově efektivní.
-* Distribuci obsahu: rychle posílat data do lokalit zákazníka.
-* Zálohování: Trvat záloh vaše místní data ukládat do úložiště objektů blob v Azure.
-* Obnovení dat: obnovení velké množství dat uložených v úložišti objektů blob a nastavit doručení vaše místní umístění.
+* Migrace dat v cloudu toohello: přesunout velké objemy dat tooAzure rychle a efektivně náklady.
+* Distribuci obsahu: rychle odeslat data tooyour lokality zákazníka.
+* Zálohování: Provádět zálohování toostore vaše místní data v úložišti objektů blob Azure.
+* Obnovení dat: obnovení velké množství dat uložených v úložišti objektů blob a nastavit doručení tooyour místní umístění.
 
 ## <a name="prerequisites"></a>Požadavky
-V této části jsme seznam požadovaných součástí pro tuto službu využívat. Přečtěte si je pečlivě před přesouvání jednotky.
+V této části jsme seznam hello požadavky požadované toouse této služby. Přečtěte si je pečlivě před přesouvání jednotky.
 
 ### <a name="storage-account"></a>Účet úložiště
-Musí mít stávající předplatné Azure a jeden nebo více účtů úložiště používat službu Import/Export. Každá úloha může použít k přenosu dat do nebo z jenom jeden účet úložiště. Jinými slovy úlohu jeden importu a exportu nelze rozmístěny napříč více účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [postup vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
+Musí mít stávající předplatné Azure a jeden nebo více účtů toouse hello importu/exportu služby úložiště. Každá úloha může být použité tootransfer tooor data z jenom jeden účet úložiště. Jinými slovy úlohu jeden importu a exportu nelze rozmístěny napříč více účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [jak tooCreate účet úložiště](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="blob-types"></a>Typy objektů BLOB
-Služba Azure Import/Export můžete použít ke zkopírování dat do **bloku** objektů BLOB nebo **stránky** objekty BLOB. Naopak můžete pouze exportovat **bloku** objekty BLOB, **stránky** objektů BLOB nebo **připojení** objekty BLOB ze služby Azure storage používání této služby.
+Data toocopy služba Azure Import/Export můžete použít příliš**bloku** objektů BLOB nebo **stránky** objekty BLOB. Naopak můžete pouze exportovat **bloku** objekty BLOB, **stránky** objektů BLOB nebo **připojení** objekty BLOB ze služby Azure storage používání této služby.
 
 ### <a name="job"></a>Úloha
-Chcete-li zahájit proces pro import nebo export z úložiště objektů Blob, nejdřív vytvořit úlohu. Úloha může být úloha importu nebo úlohy exportu:
+toobegin hello proces importu tooor export z úložiště objektů Blob, nejdřív vytvořit úlohu. Úloha může být úloha importu nebo úlohy exportu:
 
-* Pokud chcete k přenosu dat máte místně na objekty BLOB v účtu úložiště Azure, vytvořte úlohy importu.
-* Vytvoření úlohy exportu když chcete k přenosu dat, které jsou aktuálně uloženy jako objekty BLOB ve vašem účtu úložiště pro pevné disky, které jsou součástí na něž při vytvoření úlohy, můžete upozornit službu Import/Export, které bude distribuovat jeden nebo více pevných disků pro datové centrum Azure.
+* Vytvořte úlohu importu, když chcete data tootransfer máte místní tooblobs ve vašem účtu úložiště Azure.
+* Vytvoření úlohy exportu když chcete tootransfer dat aktuálně uložené jako objekty BLOB ve vaší jednotky toohard účet úložiště, které jsou dodané tooyou.s, když vytvoříte úlohu, můžete upozornit hello importu a exportu službu, že jste se distribuovat jeden nebo více pevných disků tooan Azure datové centrum.
 
 * Pro úlohy importu bude přesouvání pevné disky obsahující data.
 * Pro úlohy exportu bude přesouvání prázdný pevné disky.
-* Můžete zaslat až 10 pevných disků na úlohu.
+* Můžete zaslat až too10 pevných disků na úlohu.
 
-Můžete vytvořit importu nebo exportu úlohy pomocí portálu Azure nebo [REST API služby Azure Storage importu a exportu](/rest/api/storageimportexport).
+Můžete vytvořit importu nebo exportu úlohy pomocí hello portál Azure nebo hello [REST API služby Azure Storage importu a exportu](/rest/api/storageimportexport).
 
 ### <a name="waimportexport-tool"></a>Nástroj WAImportExport
-Prvním krokem při vytváření **importovat** úloha je k přípravě vaše jednotky, které bude dodáno pro import. Příprava jednotky, je třeba připojit k místní server a spustit nástroj WAImportExport na místním serveru. Tento nástroj WAImportExport usnadňuje kopírování dat na jednotku, šifrování dat na jednotce s nástrojem BitLocker a generování souborů deníku jednotky.
+Hello prvním krokem při vytváření **importovat** úlohy je tooprepare jednotky dodané pro import. tooprepare jednotky, je nutné připojit místní server tooa a spuštění hello WAImportExport nástroj na místním serveru hello. Tento nástroj WAImportExport usnadňuje kopírování jednotce toohello dat, šifrování dat hello na jednotce hello s nástrojem BitLocker a generování soubory deníku jednotky hello.
 
-Soubory deníku ukládat základní informace o úloze a jednotky, jako jsou jednotky sériové číslo a název účtu úložiště. Tento soubor deníku není uložená na disku. Používá se při vytvoření úlohy importu. Podrobné informace o vytvoření úlohy zajišťuje později v tomto článku.
+soubory deníku Hello ukládat základní informace o úloze a jednotky, jako jsou jednotky sériové číslo a název účtu úložiště. Tento soubor deníku není uložen na jednotce hello. Používá se při vytvoření úlohy importu. Podrobné informace o vytvoření úlohy zajišťuje později v tomto článku.
 
-Nástroj WAImportExport je jenom kompatibilní s operačním systémem Windows 64-bit. Najdete v článku [operačního systému](#operating-system) části pro konkrétní verze operačního systému podporován.
+Nástroj WAImportExport Hello je pouze kompatibilní s operačním systémem Windows 64-bit. V tématu hello [operačního systému](#operating-system) části pro konkrétní verze operačního systému podporován.
 
-Stáhněte si nejnovější verzi [WAImportExport nástroj](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExportV2.zip). Další podrobnosti o použití nástroje WAImportExport najdete v tématu [pomocí nástroje WAImportExport](storage-import-export-tool-how-to.md).
+Stáhněte si nejnovější verzi hello hello [WAImportExport nástroj](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExportV2.zip). Další podrobnosti o používání hello WAImportExport nástroj, najdete v části hello [hello pomocí nástroje WAImportExport](storage-import-export-tool-how-to.md).
 
 >[!NOTE]
->**Předchozí verze:** můžete [stáhnout WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) verze nástroje a odkazovat na [WAImportExpot V1 použití průvodce](storage-import-export-tool-how-to-v1.md). Verze WAImportExpot V1 nástroje poskytují podporu pro **Příprava disky, když je už předem zapisovat data na disk**. Také budete muset použít nástroj WAImportExpot V1, pokud je k dispozici pouze klíč SAS klíč.
+>**Předchozí verze:** můžete [stáhnout WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) verzi hello nástroje a odkazovat příliš[WAImportExpot V1 použití průvodce](storage-import-export-tool-how-to-v1.md). Verze WAImportExpot V1 nástroje hello poskytují podporu pro **Příprava disky, když je už předem zapisovat data toohello disku**. Také budete potřebovat nástroj toouse WAImportExpot V1 Pokud hello k dispozici pouze klíč je klíč SAS.
 
 >
 
 ### <a name="hard-disk-drives"></a>Jednotky pevného disku
-Pouze 2,5 SSD nebo 2,5" nebo 3.5" SATA II nebo interní HDD III jsou podporovány pro použití se službou importu a exportu. Úlohu jeden importu a exportu může mít maximálně 10 pevný disk nebo disky SSD a každé jednotlivé HDD/SSD může mít libovolnou velikost. Velký počet jednotek možné rozdělit do více úloh a neexistuje žádná omezení na počet úloh, které lze vytvořit. 
+Pouze 2,5 SSD nebo 2,5" nebo 3.5" SATA II nebo interní HDD III jsou podporovány pro použití s hello služby importu a exportu. Úlohu jeden importu a exportu může mít maximálně 10 pevný disk nebo disky SSD a každé jednotlivé HDD/SSD může mít libovolnou velikost. Velký počet jednotek možné rozdělit do více úloh a neexistuje žádná omezení na hello počet úloh, které lze vytvořit. 
 
-Pro úlohy importu se zpracují pouze první datový svazek na disku. Datový svazek musí být formátován pomocí systému souborů NTFS.
+Pro úlohy importu se zpracují pouze hello první datový svazek na disku hello. musí být naformátovaná Hello datový svazek systému souborů NTFS.
 
 > [!IMPORTANT]
-> Tato služba nepodporuje externí jednotky pevného disku, které jsou předdefinované adaptérem USB. Navíc nelze použít uvnitř malá a velká písmena externí pevný disk na disk; Neposílejte prosím externí pevné disky.
+> Tato služba nepodporuje externí jednotky pevného disku, které jsou předdefinované adaptérem USB. Navíc hello disku uvnitř hello malá a velká písmena externí pevný disk nelze použít; Neposílejte prosím externí pevné disky.
 > 
 > 
 
-Níže je seznam externích adaptéry USB použít ke zkopírování dat do interní pevné disky. Anker 68UPSATAA - 02BU Anker 68UPSHHDS BU Startech SATADOCK22UE Orico 6628SUS3-C-černá (6628 řada) Thermaltake BlacX odkládacího horká SATA externí pevné jednotky ukotvení stanice (USB 2.0 & eSATA)
+Níže je seznam externích USB adaptéry používají toocopy data toointernal pevné disky. Anker 68UPSATAA - 02BU Anker 68UPSHHDS BU Startech SATADOCK22UE Orico 6628SUS3-C-černá (6628 řada) Thermaltake BlacX odkládacího horká SATA externí pevné jednotky ukotvení stanice (USB 2.0 & eSATA)
 
 ### <a name="encryption"></a>Šifrování
-Data na disku musí být šifrované pomocí nástroj BitLocker Drive Encryption. To chrání vaše data, i když je při přenosu.
+Hello data na jednotce hello musí být šifrované pomocí nástroj BitLocker Drive Encryption. To chrání vaše data, i když je při přenosu.
 
-Pro import úlohy existují dva způsoby, jak provést šifrování. První způsob je zadejte možnost při použití souboru CSV datové sady při spuštění nástroje WAImportExport během přípravy na jednotku. Druhý způsob je povolíte šifrování nástrojem BitLocker na jednotce ručně a zadejte šifrovací klíč v driveset sdíleného svazku clusteru při spuštění WAImportExport nástroj příkazového řádku během přípravy na jednotku.
+Pro import úlohy existují dva způsoby tooperform hello šifrování. Hello první způsob je toospecify hello možnost, při použití souboru CSV datové sady při spuštění nástroje WAImportExport hello během přípravy na jednotku. Hello druhý způsob je tooenable šifrování nástrojem BitLocker na jednotce hello ručně a zadejte šifrovací klíč hello v hello driveset sdíleného svazku clusteru při spuštění WAImportExport nástroj příkazového řádku během přípravy na jednotku.
 
-Pro úlohy exportu po zkopírování dat na discích, bude služba šifrování jednotky pomocí nástroje BitLocker před přesouvání zpět do. Šifrovací klíč vám bude poskytnuta prostřednictvím portálu Azure.  
+Pro úlohy exportu dat po zkopírovaný toohello jednotky, zašifruje hello služby hello jednotky pomocí Bitlockeru před přesouvání ji zpět tooyou. Hello šifrovací klíč bude poskytnuta tooyou prostřednictvím hello portálu Azure.  
 
 ### <a name="operating-system"></a>Operační systém
-Příprava pevný disk pomocí nástroje WAImportExport před přesouvání jednotky do Azure můžete použít jednu z následujících 64bitových operačních systémů:
+Můžete použít jednu z následujících 64bitové operační systémy tooprepare hello pevný disk pomocí hello WAImportExport nástroj před přesouvání hello jednotky tooAzure hello:
 
 Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10<sup>1</sup>, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Všechny tyto operační systémy podporují nástroj BitLocker Drive Encryption.
 
 ### <a name="locations"></a>Umístění
-Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů úložiště veřejný Azure. Můžete zaslat jednotky pevného disku na jeden z následujících umístění. Pokud váš účet úložiště je do veřejného umístění Azure, který není zde určený přesouvání alternativní umístění bude třeba zadat při vytváření úlohy pomocí portálu Azure nebo REST API pro Import nebo Export.
+Služba Azure Import/Export Hello podporuje tooand kopírování dat ze všech účtů úložiště veřejný Azure. Můžete zaslat tooone jednotky pevného disku z následujících umístění hello. Pokud je váš účet úložiště do veřejného umístění Azure, který není zde určený přesouvání alternativní umístění bude třeba zadat při vytváření pomocí úlohy hello hello portál Azure nebo hello importu a exportu REST API.
 
 Podporované přenosů umístění:
 
 * Východ USA
 * Západní USA
 * Východní USA 2
-* Západ USA 2
+* Západní USA 2
 * Střed USA
 * Střed USA – sever
 * Střed USA – jih
@@ -133,136 +133,136 @@ Podporované přenosů umístění:
 * Spojené království – jih
 
 ### <a name="shipping"></a>Přesouvání
-**Přesouvání jednotky k datovému centru:**
+**Přesouvání disků toohello datového centra:**
 
-Při vytváření úlohu import nebo export, bude třeba zadat adresu příjemce jednoho z podporovaných umístění pro odeslání jednotky. Zadaná adresa přesouvání bude záviset na umístění účtu úložiště, ale nemusí být stejný jako vaše umístění účtu úložiště.
+Při vytváření úlohu import nebo export, podporovaném adresu příjemce jednoho hello tooship umístění jednotky vám bude poskytnuta. Hello přesouvání zadaná adresa bude záviset na hello umístění účtu úložiště, ale nemusí být hello stejné jako vaše umístění účtu úložiště.
 
-Prostředníci jako FedEx DHL, UPS nebo poštovní služba nám můžete použít pro odeslání na adresu přesouvání jednotky.
+Můžete vytvořit prostředníci jako FedEx, DHL, UPS nebo tooship nám poštovní služby hello vaší jednotky toohello přesouvání adresu.
 
-**Přesouvání jednotky v datovém centru:**
+**Přesouvání jednotky z datového centra hello:**
 
-Při vytváření úlohu import nebo export, musí se zadat zpáteční adresu pro společnost Microsoft k použití při přesouvání jednotky zpět po dokončení úlohy. Zkontrolujte prosím, že zadáte platná zpáteční adresa. aby se zabránilo zpoždění při zpracování.
+Při vytváření úlohu import nebo export, musí zadejte zpáteční adresu pro Microsoft toouse při přenosů hello jednotky zpět po dokončení úlohy. Zkontrolujte prosím, že zadejte platný zpáteční adresu tooavoid zpoždění při zpracování.
 
-Chcete-li předat dodávat pevný disk můžete rozumí provozovatel podle svého výběru. Zařadit by měl mít odpovídající sledování, aby byla zachována o jeho postupném předávání. Je taky nutné zadat platný FedEx nebo DHL poskytovatel účet číslo, které má být společnost Microsoft používá pro přesouvání jednotky zpět. FedEx účet je požadováno pro přesouvání jednotky zpět z USA a Evropě umístění. DHL účet je požadováno pro přesouvání jednotky zpět z Asii a Austrálie umístění. Můžete vytvořit [FedEx](http://www.fedex.com/us/oadr/) (pro USA a Evropě) nebo [DHL](http://www.dhl.com/) (Asii a Austrálie) poskytovatel účtu, pokud nemáte jeden. Pokud již máte účet číslo operátora, ověřte, zda je platný.
+Poskytovatel zvoleného můžete použít v pořadí tooforward lodě hello pevný disk. Poskytovatel Hello by měl mít odpovídající sledování v pořadí toomaintain předávací protokol. Je taky nutné zadat platný FedEx nebo DHL poskytovatel účet číslo toobe společnost Microsoft používá pro přesouvání hello jednotky zpět. FedEx účet je požadováno pro přesouvání jednotky zpět z hello USA a Evropě umístění. DHL účet je požadováno pro přesouvání jednotky zpět z Asii a Austrálie umístění. Můžete vytvořit [FedEx](http://www.fedex.com/us/oadr/) (pro USA a Evropě) nebo [DHL](http://www.dhl.com/) (Asii a Austrálie) poskytovatel účtu, pokud nemáte jeden. Pokud již máte účet číslo operátora, ověřte, zda je platný.
 
-V přesouvání vlastních balíčků, je třeba postupovat podle podmínek na [podmínky služby Microsoft Azure](https://azure.microsoft.com/support/legal/services-terms/).
+V přesouvání vlastních balíčků, je třeba postupovat podle hello podmínky v [podmínky služby Microsoft Azure](https://azure.microsoft.com/support/legal/services-terms/).
 
 > [!IMPORTANT]
-> Upozorňujeme, že fyzická média, která jsou přesouvání muset křížové mezinárodní hranice. Jste zodpovědní za zajištění, vaše fyzická média a data jsou importovat a exportovat v souladu s platné zákony. Před jejich odesláním fyzických médií, zkontrolujte s vaší poradci ověřit, jestli se médiu a dat můžete souladu s právem odeslaná do identifikovaného datového centra. To vám pomůže zajistit, aby obdržel Microsoft včas. Například všechny balíček, který bude křížové mezinárodní hranice musí obchodní faktury, chcete-li být dodávány spolu s balíčkem (s výjimkou Pokud překračování hranic v rámci Evropské unie). Může vytiskněte vyplněný kopie komerční faktury z webu poskytovatel. Příklad komerční faktury jsou [DHL komerční faktury](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) a [FedEx komerční faktury](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Ujistěte se, že Microsoft nebyl byly označeny jako exportu.
+> Upozorňujeme, že hello fyzického média, který se může být nutné toocross mezinárodní hranice. Jste zodpovědní za zajištění, vaše fyzická média a data jsou importovat a exportovat v souladu s platnými zákony hello. Před přesouvání hello fyzická média, zkontrolujte u vaší tooverify poradci, média a data právními předpisy lze identifikovat uvidíte toohello datového centra. To vám pomůže tooensure nedosáhne Microsoft včas. Například všechny balíček, který bude křížové mezinárodní hranice musí toobe komerční faktury společně s hello balíčku (s výjimkou Pokud překračování hranic v rámci Evropské unie). Může vytiskněte vyplněný kopie hello komerční faktury z webu poskytovatel. Příklad komerční faktury jsou [DHL komerční faktury](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) a [FedEx komerční faktury](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Ujistěte se, že Microsoft nebyl byly označeny jako hello exportu.
 > 
 > 
 
-## <a name="how-does-the-azure-importexport-service-work"></a>Jak funguje služba Azure Import/Export?
-Přenos dat mezi místními servery a Azure blob storage pomocí služby Azure Import/Export vytvořením úlohy a přesouvání jednotky pevného disku pro datové centrum Azure. Každý pevný disk, dodávané se přidružit k jedné úloze. Každá úloha je přidružený k účtu jedno úložiště. Zkontrolujte [část předpoklady](#pre-requisites) pečlivě a zjistěte, jaké jsou specifikace této služby, například podporované typy objektů blob, typy disků, umístění a přesouvání.
+## <a name="how-does-hello-azure-importexport-service-work"></a>Jak funguje služba Azure Import/Export hello?
+Přenos dat mezi místními servery a Azure blob storage pomocí služby Azure Import/Export hello vytvořením úlohy a přesouvání jednotky pevného disku tooan datového centra Azure. Každý pevný disk, dodávané se přidružit k jedné úloze. Každá úloha je přidružený k účtu jedno úložiště. Zkontrolujte hello [část předpoklady](#pre-requisites) pečlivě toolearn o hello specifikace této služby, například podporované typy objektů blob, typy disků, umístění a přesouvání.
 
-V této části jsme popisují na vysoké úrovni kroky import a export úloh. Dále v [Quick Start článku](#quick-start), jsme poskytují podrobné pokyny k vytvoření importu a exportu úlohy.
+V této části jsme popisují na vysoké úrovni hello kroky import a export úloh. Dále v hello [Quick Start článku](#quick-start), jsme poskytují toocreate podrobné pokyny importu a exportu úlohy.
 
 ### <a name="inside-an-import-job"></a>Uvnitř úlohy importu
-Na vysoké úrovni úloha importu zahrnuje následující kroky:
+Na vysoké úrovni úloha importu zahrnuje hello následující kroky:
 
-* Určete data, která mají být importována a počet jednotek, které budete potřebovat.
-* Určete cílové umístění objektu blob pro vaše data v úložišti objektů Blob.
-* Pomocí nástroje WAImportExport si zkopírujte svá data na jeden nebo více pevných disků a je šifrování pomocí nástroje BitLocker.
-* Vytvoření úlohy importu v účtu úložiště cíl pomocí portálu Azure nebo REST API pro Import nebo Export. Pokud používáte portál Azure, nahrajte soubory deníku jednotky.
-* Zadejte zpáteční adresu a číslo účtu poskytovatel má být použit pro přesouvání jednotky pro vás.
-* Dodávat pevných disků o přenosů adresa zadaná při vytvoření úlohy.
-* Aktualizujte doručení sledování Číslo v podrobnostech úlohy importu a odeslání úlohy importu.
-* Disky jsou přijata a zpracovat datového centra Azure.
-* Jednotky jsou dodávané pomocí účtu poskytovatel návratové adresy uvedené v úloze importu.
+* Určit toobe hello data importovat, a hello počet jednotek, které budete potřebovat.
+* Identifikujte hello cílové umístění objektu blob pro vaše data v úložišti objektů Blob.
+* Použijte hello WAImportExport nástroj toocopy vaše data tooone nebo více pevných disků a je šifrování pomocí nástroje BitLocker.
+* Vytvoření úlohy importu v účtu úložiště cíl pomocí hello portál Azure nebo hello importu a exportu REST API. Pokud používáte hello portálu Azure, nahrajte soubory deníku jednotky hello.
+* Zadejte zpáteční adresu hello a toobe číslo poskytovatel účet použitý pro přesouvání back tooyou hello jednotky.
+* Jednotky pevného disku toohello hello lodě přesouvání adresa zadaná při vytvoření úlohy.
+* Aktualizujte hello doručení číslo v podrobnostech úlohy importu hello sledování a odeslání úlohy importu hello.
+* Disky jsou přijata a zpracovat hello datového centra Azure.
+* Jednotky jsou dodávané pomocí poskytovatel účet toohello zpáteční adresu zadali v úloze importu hello.
   
     ![Obrázek toku 1:Import úlohy](./media/storage-import-export-service/importjob.png)
 
 ### <a name="inside-an-export-job"></a>Uvnitř úlohy exportu
-Na vysoké úrovni úlohy exportu zahrnuje následující kroky:
+Na vysoké úrovni zahrnuje úlohy exportu hello následující kroky:
 
-* Určete data, která mají být exportovány a počet jednotek, které budete potřebovat.
-* Určete zdroj objektů BLOB nebo kontejneru cesty vašich dat v úložišti objektů Blob.
-* Vytvoření úlohy exportu ve vašem účtu úložiště zdroje pomocí portálu Azure nebo REST API pro Import nebo Export.
-* Zadejte zdroj objektů BLOB nebo kontejneru cest vaše data v úloha exportu.
-* Zadejte zpáteční adresu a číslo účtu poskytovatel má být použit pro přesouvání jednotky pro vás.
-* Dodávat pevných disků o přenosů adresa zadaná při vytvoření úlohy.
-* Aktualizujte doručení číslo v podrobnostech úlohy exportu sledování a odeslání úlohy exportu.
-* Jednotky jsou přijme a zpracuje v datového centra Azure.
-* Jednotky jsou šifrované pomocí nástroje BitLocker; klíče jsou k dispozici prostřednictvím portálu Azure.  
-* Jednotky jsou dodávané pomocí účtu poskytovatel návratové adresy uvedené v úloze importu.
+* Určete hello data toobe exportovali a hello počet jednotek, které budete potřebovat.
+* Identifikujte hello zdroje BLOB nebo kontejneru cesty vašich dat v úložišti objektů Blob.
+* Vytvoření úlohy exportu ve vašem účtu úložiště zdroje pomocí hello portál Azure nebo hello importu a exportu REST API.
+* Zadejte text hello zdroje BLOB nebo úloha exportu kontejneru cesty vaše data v hello.
+* Zadejte hello návratové adresy a poskytovatel číslo účtu pro toobe používá pro přesouvání back tooyou hello jednotky.
+* Jednotky pevného disku toohello hello lodě přesouvání adresa zadaná při vytvoření úlohy.
+* Aktualizujte hello doručení číslo v podrobnostech úlohy exportu hello sledování a odeslání úlohy exportu hello.
+* Hello jednotky jsou přijme a zpracuje v hello datového centra Azure.
+* Hello jednotky jsou šifrované pomocí nástroje BitLocker; Hello klíče jsou k dispozici prostřednictvím hello portálu Azure.  
+* Hello jednotky jsou dodávané pomocí poskytovatel účet toohello zpáteční adresu zadali v úloze importu hello.
   
     ![Obrázek toku 2:Export úlohy](./media/storage-import-export-service/exportjob.png)
 
 ### <a name="viewing-your-job-and-drive-status"></a>Zobrazení stavu úlohy a jednotky
-Můžete sledovat stav import nebo export úloh z portálu Azure. Klikněte **importu a exportu** kartě. Na stránce se zobrazí seznam vašich úloh.
+Můžete sledovat stav hello import nebo export úloh z hello portálu Azure. Klikněte na tlačítko hello **importu a exportu** kartě. Seznam úloh se zobrazí na stránce hello.
 
 ![Zobrazení stavu úlohy](./media/storage-import-export-service/jobstate.png)
 
-Zobrazí se jeden z následujících stavů úlohy v závislosti na tom, kde je vaše jednotka v procesu.
+Zobrazí se jeden z následujících stavy úlohy v závislosti na tom, kde je vaše jednotka v procesu hello hello.
 
 | Stav úlohy | Popis |
 |:--- |:--- |
-| Vytváření | Po vytvoření úlohy, je její stav nastavit na vytváření. Když úloha je ve stavu vytvoření, službu Import/Export předpokládá, že jednotky nebyly byla odeslaná do datového centra. Úlohy mohou zůstat ve stavu vytvoření až dvou týdnů, po které se automaticky odstraní službou. |
-| Přesouvání | Po dodáte vašeho balíčku, by měl aktualizovat informace o sledování na portálu Azure.  Tato úloha zapnout do "Přesouvání". Úloha zůstane ve stavu přesouvání dobu až dvou týdnů. 
-| Přijaté | Po přijetí všech jednotkách v datovém centru, nastaví se na přijaté stav úlohy. |
-| Přenos | Alespoň jedna jednotka zahájení zpracování, bude stav úlohy na přenos nastavovat. Najdete v části stavy jednotky pod podrobné informace. |
-| Balení | Po dokončení zpracování všech jednotkách, úlohy budou umístěny ve stavu balení dokud jednotky jsou sice vám. |
-| byla dokončena | Po všechny jednotky byly dodány zpět na zákazníka, pokud úloha byla dokončena bez chyb, bude úloha nastavit stav dokončeno. Úloha se automaticky odstraní po 90 dnech ve stavu dokončeno. |
-| uzavřený | Po všechny jednotky byly dodány zpět na zákazníka, pokud zde nejsou žádné chyby během zpracování úlohy, bude úloha nastavit na zavřeném stavu. Úlohy budou automaticky odstraněny po 90 dnech v uzavřeném stavu. |
+| Vytváření | Po vytvoření úlohy, je její stav nastavit tooCreating. Během úlohy hello hello vytváření stavu, hello službu Import/Export předpokládá hello jednotky nebyly uvidíte toohello datového centra. Úlohy mohou zůstat v hello stav vytváření až tootwo týdnů, po které se automaticky odstraní službou hello. |
+| Přesouvání | Po dodáte vašeho balíčku, by měl aktualizovat hello sledování informace v hello portálu Azure.  Tato úloha hello zapnout do "Přesouvání". Úloha Hello zůstane v hello stavu přesouvání až tootwo týdny. 
+| Přijaté | Po přijetí všech jednotkách na hello datového centra bude stav úlohy hello nastaven toohello přijaté. |
+| Přenos | Po zahájení zpracování alespoň jednu jednotku, bude stav úlohy hello nastaven toohello přenos. Hello jednotky stavy najdete v části níže podrobné informace. |
+| Balení | Po dokončení zpracování všech jednotkách, hello úlohy budou umístěny ve stavu balení hello dokud hello jednotky jsou dodané back tooyou. |
+| byla dokončena | Po všechny jednotky byly uvidíte back toohello zákazníka, pokud hello úlohy bez chyb, pak hello úlohy se nastaví toohello stav dokončeno. Úloha Hello bude automaticky odstraněna po 90 dnech v hello stav dokončeno. |
+| uzavřený | Po všechny jednotky byly uvidíte back toohello zákazníka, pokud zde nejsou žádné chyby během zpracování hello hello úlohy, pak hello úlohy se nastaví toohello uzavřeném stavu. Úloha Hello bude automaticky odstraněna po 90 dnech v uzavřeném stavu hello. |
 
-Následující tabulka popisuje životní cyklus jednotlivé jednotky jako přechází prostřednictvím úlohu import nebo export. Aktuální stav každé jednotky, v rámci úlohy je nyní viditelné z portálu Azure.
-Následující tabulka popisuje všechny stavy, které může předávat každé jednotky, v rámci úlohy.
+Následující tabulka Hello popisuje hello životní cyklus jednotlivé jednotky jako přechází prostřednictvím úlohu import nebo export. aktuální stav Hello každé jednotky, v rámci úlohy je nyní vidět hello portálu Azure.
+Hello následující tabulka popisuje všechny stavy, které může předávat každé jednotky, v rámci úlohy.
 
 | Stav disku | Popis |
 |:--- |:--- |
-| Zadaný | Pro úlohu importu při vytvoření úlohy z portálu Azure počáteční stav pro jednotku je zadaná stavu. Pro úlohy exportu vzhledem k tomu, že není zadána žádná jednotka při vytvoření úlohy, stav počáteční jednotky je stav přijaté. |
-| Přijaté | Jednotka přechody stavu přijaté při importu a exportu služby operátor má zpracování jednotek, které byly přijaty z společnosti přesouvání úlohy importu. Stav počáteční jednotky pro úlohy exportu, je stav přijaté. |
-| NeverReceived | Jednotka se přesune do stavu NeverReceived při přijetí balíčku pro úlohu, ale balíček neobsahuje jednotku. Jednotku také můžete přesunout do tohoto stavu, pokud to bylo dva týdny, protože služba přijala přesouvání informace, ale balíček nebyl ještě přijaty v datovém centru. |
-| Přenos | Na jednotku se přesune do stavu přenos zahájení službu k přenosu dat z jednotky do služby Windows Azure Storage. |
-| byla dokončena | Jednotku přesune do stav dokončeno, když služba má úspěšně přenesla všechna data bez chyb.
-| CompletedMoreInfo | Jednotku přesune do stavu CompletedMoreInfo, když služba zjistila některé problémy při kopírování dat z nebo na jednotku. Informace může obsahovat chyby, upozornění a informativní zprávy o přepsání objektů BLOB.
-| ShippedBack | Jednotka přesune do stavu ShippedBack má byla zakoupení z center zálohování dat na návratovou adresu. |
+| Zadaný | Pro úlohu importu z hello portál Azure, bude vytvořena úloha hello hello počátečního stavu pro jednotku při hello zadaná stavu. Pro úlohy exportu vzhledem k tomu, že není zadána žádná jednotka, když je vytvořen hello úlohy, stav počáteční jednotky hello je hello přijaté stavu. |
+| Přijaté | jednotka Hello přechází toohello přijaté stavu, kdy hello importu/exportu služby operátor zpracovala hello jednotky, které byly přijaty z hello přesouvání společnosti úlohy importu. Pro úlohy exportu je stav počáteční jednotky hello hello přijaté stav. |
+| NeverReceived | jednotka Hello přesune toohello NeverReceived stavu, při přijetí hello balíčku pro úlohu ale hello balíček neobsahuje hello jednotky. Jednotku také můžete přesunout do tohoto stavu, pokud to bylo dva týdny, protože služba hello přijala hello přenosů informace, ale hello balíček nebyl ještě byly přijaty hello datového centra. |
+| Přenos | Jednotku přesune toohello přenos stavu, když služba hello zahájí tootransfer dat z jednotky tooWindows hello Azure Storage. |
+| byla dokončena | Jednotku přesune toohello stav dokončeno, když má hello service úspěšně přenesla všechna data hello bez chyb.
+| CompletedMoreInfo | Jednotku přesune toohello CompletedMoreInfo stav, když služba hello zjistila některé problémy při kopírování dat buď z nebo toohello jednotku. Hello informace může obsahovat chyby, upozornění a informativní zprávy o přepsání objektů BLOB.
+| ShippedBack | jednotka Hello přesune toohello ShippedBack stav má zakoupení z hello data center zpět toohello zpáteční adresu. |
 
-Tuto bitovou kopii z portálu Azure zobrazuje stav disku úlohu příklad:
+Tuto bitovou kopii z portálu Azure hello zobrazuje stav disku hello úlohu příklad:
 
 ![Zobrazení stavu jednotky](./media/storage-import-export-service/drivestate.png)
 
-Následující tabulka popisuje stavy selhání jednotky a akcí provedených pro každý stav.
+Hello následující tabulka popisuje stavy selhání jednotky hello a hello akcí pro každý stav.
 
 | Stav disku | Událost | Řešení / další krok |
 |:--- |:--- |:--- |
-| NeverReceived | Jednotka, která je označena jako NeverReceived (protože nebyla přijata jako součást úlohy dodávky) dorazí v jiné dodávky. | Provozní tým přesune do stavu přijaté jednotku. |
-| Není k dispozici | Jednotku, která není součástí všechny úlohy dorazí v datovém centru jako součást jiná úloha. | Jednotka budou označeny jako další jednotky a obnoví se zákazník při dokončení úlohy spojené s původní balíčku. |
+| NeverReceived | Jednotka, která je označena jako NeverReceived (protože nebyla přijata jako součást úlohy hello dodávky) dorazí v jiné dodávky. | Hello provozní tým přesune hello jednotky toohello přijaté stavu. |
+| Není k dispozici | Jednotku, která není součástí všechny úlohy dorazí na hello datového centra v rámci jiné úlohy. | Hello jednotce budou označeny jako další jednotky a bude vrácen toohello zákazníka po dokončení úlohy hello přidružené k původní balíček hello. |
 
-### <a name="time-to-process-job"></a>Čas do procesu úlohy
-Množství času úlohu importu a exportu se liší v závislosti na různých faktorech, například přesouvání čas zpracování úlohy typu, typ a velikost dat kopírovány a velikosti disků zadat. Službu Import/Export nemá SLA, ale po disky jsou přijaty službu snaží dokončení kopírování v 7 až 10 dní. Přesněji sledovat průběh úlohy můžete použít rozhraní REST API. V seznamu úloh operaci, která poskytuje údaje o průběhu kopie není parametr procenta dokončení. Pokud potřebujete odhad k dokončení úlohy importu a exportu kritické čas oslovení do us
+### <a name="time-tooprocess-job"></a>Čas tooprocess úlohy
+Hello množství času potřebné tooprocess úlohu importu a exportu se liší v závislosti na různých faktorech, například dobu dodání, typ úlohy, typ a velikost hello kopírování dat a hello velikost disků hello zadat. Hello importu/exportu služby nemá SLA, ale po hello disky jsou přijetí služby hello usiluje toocomplete hello kopie za 7 dnů too10. Přesněji můžete průběh úlohy hello REST API tootrack hello. V operaci seznam úloh, která poskytuje údaje o průběhu kopírování hello je procenta dokončení parametr. Oslovení toous, pokud budete potřebovat odhad toocomplete úlohu čas kritické importu a exportu.
 
 ### <a name="pricing"></a>Ceny
 **Jednotka poplatek za zpracování**
 
-Je poplatek za zpracování jednotky pro každou jednotku zpracovat jako součást import nebo export úlohy. Zobrazit podrobnosti na [Azure Import/Export ceny](https://azure.microsoft.com/pricing/details/storage-import-export/).
+Je poplatek za zpracování jednotky pro každou jednotku zpracovat jako součást import nebo export úlohy. O hello najdete v podrobnostech hello [Azure Import/Export ceny](https://azure.microsoft.com/pricing/details/storage-import-export/).
 
 **Přesouvání náklady**
 
-Jestliže doplníte jednotky do Azure, platíte náklady na přesouvání poskytovatel přesouvání. Když se Microsoft vrátí jednotky pro vás, náklady na přesouvání je zodpovědné za poskytovatel účet, který jste zadali při vytvoření úlohy.
+Jestliže doplníte tooAzure jednotky, platíte hello přesouvání poskytovatel přesouvání toohello náklady. Po návratu hello jednotky tooyou Microsoft hello přesouvání náklady je účtován toohello poskytovatel účet, který jste zadali v době hello vytvoření úlohy.
 
 **Cena za transakci**
 
-Neexistují žádné cena za transakci, při importu dat do úložiště objektů blob. Standardní výstupní poplatky se dají použít při exportu dat z úložiště objektů blob. Další informace o cena za transakci, v [přenos dat se ceny.](https://azure.microsoft.com/pricing/details/data-transfers/)
+Neexistují žádné cena za transakci, při importu dat do úložiště objektů blob. Standardní výstupní poplatky Hello se dají použít při exportu dat z úložiště objektů blob. Další informace o cena za transakci, v [přenos dat se ceny.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 ## <a name="quick-start"></a>Rychlý start
-V této části jsme poskytují podrobné pokyny pro vytvoření importu a úlohy exportu. Zkontrolujte, zda splňujete všechny [předpoklady](#pre-requisites) než budete pokračovat dál.
+V této části jsme poskytují podrobné pokyny pro vytvoření importu a úlohy exportu. Zkontrolujte, zda splňujete všechny hello [předpoklady](#pre-requisites) než budete pokračovat dál.
 
 > [!IMPORTANT]
-> Služba podporuje jeden účet úložiště standard storage na import nebo export úlohy a nepodporuje prémiové účty úložiště. 
+> Hello služba podporuje jeden účet úložiště standard storage na import nebo export úlohy a nepodporuje prémiové účty úložiště. 
 > 
 > 
 ## <a name="create-an-import-job"></a>Vytvoření úlohy importu
-Vytvořte úlohu importu ke zkopírování dat do účtu úložiště Azure z pevných disků odesíláním jeden nebo více jednotek obsahujících data do zadaného datového centra. Úloha importu přenese tak podrobnosti o jednotky pevného disku, data k zkopírují cíle účtu úložiště a informace o přesouvání ke službě Azure Import/Export. Vytvoření úlohy importu je proces třech krocích. Nejprve připravte jednotky pomocí nástroje WAImportExport. Druhý odeslání úlohy importu pomocí portálu Azure. Potom se dodávají jednotky na adresu přenosů zadané během vytváření úlohy a aktualizovat informace o přesouvání ve vašem podrobnosti úlohy.   
+Vytvořte tooyour toocopy data úlohy import úložiště Azure účet z pevných disků přesouvání jeden nebo více jednotek obsahujících data toohello zadaného datového centra. Hello úlohy importu přenese tak podrobnosti o jednotkách pevných disků, zkopírovat data toobe, cílový účet úložiště a přesouvání služba Azure Import/Export toohello informace. Vytvoření úlohy importu je proces třech krocích. Nejprve připravte jednotky pomocí nástroje WAImportExport hello. Druhý odeslání úlohy importu pomocí hello portálu Azure. Třetí dodávat toohello jednotky hello přesouvání adresa zadaná během vytváření a aktualizaci hello úlohu přesouvání informace ve vašem podrobnosti úlohy.   
 
 ### <a name="prepare-your-drives"></a>Příprava jednotky
-Prvním krokem při importu dat pomocí služby Azure Import/Export je příprava jednotky pomocí nástroje WAImportExport. Postupujte podle následujících kroků a příprava jednotky.
+Hello prvním krokem při importu dat pomocí služby Azure Import/Export hello je tooprepare jednotky pomocí nástroje WAImportExport hello. Postupujte podle kroků hello tooprepare jednotky.
 
-1. Identifikaci dat určených k importu. To může být adresářů a samostatné soubory na místním serveru nebo sdílené síťové složce.  
-2. Určete počet jednotek, které budete potřebovat v závislosti na celkovou velikost data. Pořídit požadovaný počet 2,5 SSD nebo 2,5" nebo 3.5" SATA II nebo III jednotky pevného disku.
-3. Identifikujte cílový účet úložiště, kontejner, virtuálních adresářů a objekty BLOB.
-4.  Určí, adresáře nebo samostatné soubory, které se zkopírují na každý pevný disk.
-5.  Vytvoření souborů CSV pro datovou sadu a driveset.
+1. Identifikujte toobe hello data importovat. To může být adresáře a samostatné soubory na místním serveru hello nebo sdílené síťové složce.  
+2. Určení hello počet jednotek, které budete potřebovat v závislosti na celkovou velikost dat hello. Pořídit hello požadované číslo 2,5 SSD nebo 2,5" nebo 3,5" SATA II nebo III jednotky pevného disku.
+3. Identifikujte hello cílový účet úložiště, kontejner, virtuálních adresářů a objekty BLOB.
+4.  Určení hello adresáře nebo samostatné soubory, které budou zkopírovaný tooeach pevný disk.
+5.  Vytvoření souborů CSV pro datovou sadu a driveset hello.
     
     **Soubor CSV datové sady**
     
@@ -274,17 +274,17 @@ Prvním krokem při importu dat pomocí služby Azure Import/Export je příprav
     "F:\50M_original\","containername/",BlockBlob,rename,"None",None 
     ```
    
-    V předchozím příkladu 100M_1.csv.txt se zkopírují do kořenového adresáře kontejner s názvem "containername". Pokud název kontejneru "containername" neexistuje, bude vytvořen. Všechny soubory a složky v části 50M_original bude zkopírován do containername rekurzivně. Struktura složek budou zachována.
+    V hello výše příklad bude 100M_1.csv.txt zkopírovaný toohello kořenovém hello kontejner s názvem "containername". Pokud containername"hello kontejneru název" neexistuje, bude vytvořen. Všechny soubory a složky v části 50M_original bude toocontainername rekurzivně zkopírovali. Struktura složek budou zachována.
 
-    Další informace o [soubor CSV datovou sadu se připravuje](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
+    Další informace o [Příprava souboru CSV datovou sadu hello](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
-    **Mějte na paměti,**: ve výchozím nastavení, bude importována data jako objekty BLOB bloku. Hodnota pole BlobType můžete použít k importu dat jako objekty BLOB stránky. Například pokud importujete soubory virtuálního pevného disku, které se připojí jako disky na virtuální počítač Azure, je nutné je importovat jako objekty BLOB stránky.
+    **Mějte na paměti,**: ve výchozím nastavení, budou importována hello data jako objekty BLOB bloku. Hello BlobType hodnota pole tooimport data můžete použít jako objekty BLOB stránky. Například pokud importujete soubory virtuálního pevného disku, které se připojí jako disky na virtuální počítač Azure, je nutné je importovat jako objekty BLOB stránky.
 
     **Soubor Driveset CSV**
 
-    Hodnota příznaku driveset je soubor CSV, který obsahuje seznam disků, na které jsou namapované písmena jednotek, aby nástroj, který správně vyberte seznam disků, abyste byli připraveni. 
+    Hodnota Hello hello driveset, je příznak soubor CSV, který obsahuje seznam hello písmena jednotek hello toowhich disky jsou namapované v pořadí pro hello nástroj toocorrectly vyberte hello seznam toobe disky připravené. 
 
-    Dole je příklad driveset souboru CSV:
+    Dole je příklad hello driveset souboru CSV:
     
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -292,23 +292,23 @@ Prvním krokem při importu dat pomocí služby Azure Import/Export je příprav
     H,Format,SilentMode,Encrypt,
     ```
 
-    Ve výše uvedeném příkladu se předpokládá, že jsou připojené dva disky a základní svazků systému souborů NTFS s G:\ písmeno svazku a H:\ byly vytvořeny. Nástroj formátu a šifrování disku, který je hostitelem H:\ a nebude formátu nebo šifrování disku, který je hostitelem svazku G:\.
+    V hello výše příkladu se předpokládá, že jsou připojené dva disky a základní svazků systému souborů NTFS s G:\ písmeno svazku a H:\ byly vytvořeny. Nástroj Hello formátu a šifrování hello disk, který je hostitelem H:\ a nebude formátu nebo šifrování hello disku, který je hostitelem svazku G:\.
 
-    Další informace o [Příprava souboru CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file).
+    Další informace o [Příprava souboru CSV driveset hello](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file).
 
-6.  Použití [WAImportExport nástroj](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) ke kopírování dat na jeden nebo více pevných disků.
-7.  Můžete zadat "Šifrovat" na pole šifrování v drivset CSV povolíte šifrování nástrojem BitLocker na jednotce pevného disku. Alternativně můžete také povolíte šifrování nástrojem BitLocker na jednotce pevného disku ručně a zadejte "AlreadyEncrypted" a zadejte klíče v driveset sdíleného svazku clusteru při spuštění nástroje.
+6.  Použití hello [WAImportExport nástroj](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) toocopy tooone vaše data nebo více pevných disků.
+7.  Můžete zadat "Šifrovat" na pole šifrování v drivset CSV tooenable šifrování nástrojem BitLocker na jednotce pevného disku hello. Alternativně můžete také povolíte šifrování nástrojem BitLocker na jednotce pevného disku hello ručně a zadejte "AlreadyEncrypted" a zadejte klíč hello v hello driveset sdíleného svazku clusteru při spuštění nástroje hello.
 
-8. Neprovádějte žádné změny dat na jednotky pevného disku nebo souboru deníku po dokončení Příprava disku.
+8. Neměňte hello dat na jednotky pevného disku hello nebo hello deníku souboru po dokončení Příprava disku.
 
 > [!IMPORTANT]
-> Každý jednotku pevného disku, které připravíte způsobí souboru deníku. Při vytváření úlohy importu pomocí portálu Azure, musíte nahrát všechny soubory deníku jednotek, které jsou součástí této úlohy importu. Disky bez deníku, které soubory nebudou zpracována.
+> Každý jednotku pevného disku, které připravíte způsobí souboru deníku. Při vytváření úlohy importu hello pomocí hello portálu Azure, musíte nahrát všechny soubory deníku hello hello jednotek, které jsou součástí této úlohy importu. Disky bez deníku, které soubory nebudou zpracována.
 > 
 >
 
-Níže jsou příklady pro přípravu na pevný disk pomocí WAImportExport nástroje a příkazy.
+Níže jsou příkazy hello a příklady pro přípravu hello pevný disk pomocí WAImportExport nástroje.
 
-Příkaz PrepImport WAImportExport nástroj pro první relaci kopírování ke kopírování adresářů a souborů s novou relací kopie:
+Nástroj WAImportExport PrepImport příkaz pro hello nejdříve zkopírovat relace toocopy adresáře nebo soubory s novou relací kopie:
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
@@ -320,7 +320,7 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDire
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-Za účelem **přidat další jednotky**, jeden vytvořit nový soubor driveset a spusťte příkaz jak je uvedeno níže. Pro následné kopírování relace jiné diskových jednotek než je zadáno v souboru .csv InitialDriveset zadejte nový soubor CSV driveset a zadejte jako hodnotu parametru "AdditionalDriveSet". Použití **stejný soubor deníku** název a zadejte **nové ID relace**. Formát souboru AdditionalDriveset CSV je stejný jako formát InitialDriveSet.
+V pořadí příliš**přidat další jednotky**, jeden vytvořit nový soubor driveset a spusťte příkaz hello jak je uvedeno níže. Pro následné kopírování relací toohello různých diskové jednotky než je zadáno v souboru .csv InitialDriveset zadejte nový soubor CSV driveset a zadat jako parametr toohello hodnotu "AdditionalDriveSet". Použití hello **stejný soubor deníku** název a zadejte **nové ID relace**. Formát souboru AdditionalDriveset CSV Hello je stejný jako formát InitialDriveSet.
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -331,7 +331,7 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveS
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
 ```
 
-Chcete-li přidat další data do stejné driveset, WAImportExport nástroj příkaz PrepImport lze volat pro následné kopírování relací pro kopírování další soubory nebo adresáře: pro následné kopírování relace na stejné jednotky pevného disku zadaná v souboru .csv InitialDriveset, zadejte **stejný soubor deníku** název a zadejte **nové ID relace**; je potřeba zadat klíč účtu úložiště.
+V pořadí tooadd další data toohello stejné driveset WAImportExport nástroj příkaz PrepImport lze volat pro následné relace toocopy další soubory nebo adresáře kopie: pro následné kopírování relací toohello stejné pevné disky zadané v CSV InitialDriveset souboru, zadejte hello **stejný soubor deníku** název a zadejte **nové ID relace**; je klíč účtu úložiště bez nutnosti tooprovide hello.
 
 ```
 WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
@@ -343,200 +343,200 @@ WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-Zobrazte další podrobnosti o použití nástroje WAImportExport v [Příprava pevné disky pro import](storage-import-export-tool-preparing-hard-drives-import.md).
+Zobrazte další podrobnosti o použití nástroje WAImportExport hello v [Příprava pevné disky pro import](storage-import-export-tool-preparing-hard-drives-import.md).
 
-Navíc vztahují [ukázkový pracovní postup přípravy pevné disky na úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md) podrobnější pokyny krok za krokem.  
+Viz také toohello [ukázkový pracovní postup tooprepare pevné disky pro úlohy importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md) podrobnější pokyny krok za krokem.  
 
-### <a name="create-the-import-job"></a>Vytvoření úlohy importu
-1. Jakmile připravíte jednotce, přejděte na svůj účet úložiště na portálu Azure a zobrazení řídicího panelu. V části **rychlý přehled**, klikněte na tlačítko **vytvořit úlohu importu**. Projděte si kroky a zaškrtněte políčko znamená, že je vše připraveno jednotce a, abyste měli deníku souboru disku, které jsou k dispozici.
-2. V kroku 1 zadejte kontaktní informace pro osoba odpovědná za tato úloha importu a platný zpáteční adresu. Pokud chcete uložit data podrobného protokolování úlohy importu, zaškrtněte možnost pro **uložit podrobného protokolování v kontejneru objektů blob Moje 'waimportexport'**.
-3. V kroku 2 odešlete soubory deníku jednotky, které jste získali během přípravy kroku jednotky. Musíte nahrát jeden soubor pro každou jednotku, který jste připravili.
+### <a name="create-hello-import-job"></a>Vytvoření úlohy importu hello
+1. Jakmile připravíte jednotce, přejděte tooyour účet úložiště v hello portál Azure a zobrazit hello řídicího panelu. V části **rychlý přehled**, klikněte na tlačítko **vytvořit úlohu importu**. Projděte si kroky hello a vyberte tooindicate hello zaškrtávací políčko, že je vše připraveno vašeho disku a zda máte k dispozici souboru hello disku deníku.
+2. V kroku 1 zadejte kontaktní informace pro hello osoba odpovědná za tato úloha importu a platný zpáteční adresu. Pokud chcete data podrobného protokolování toosave úlohy importu hello, zaškrtněte možnost hello příliš**uložit hello podrobného protokolování v kontejneru objektů blob Moje 'waimportexport'**.
+3. V kroku 2 nahrajte hello jednotky deníku soubory, které jste získali během kroku přípravy jednotky hello. Budete potřebovat tooupload jeden soubor pro každou jednotku, který jste připravili.
    
    ![Vytvoření úlohy importu – krok 3](./media/storage-import-export-service/import-job-03.png)
-4. V kroku 3 zadejte popisný název úlohy importu. Všimněte si, že, které zadáte název může obsahovat jenom malá písmena, číslice, pomlčky a podtržítka, musí začínat písmenem a nesmí obsahovat mezery. Použijete název, který jste se rozhodli sledovat vaše úlohy v době, kdy jsou v průběhu a po jejich dokončení.
+4. V kroku 3 zadejte popisný název úlohy importu hello. Všimněte si, že hello název může obsahovat jenom malá písmena, číslice, pomlčky a podtržítka, musí začínat písmenem a nesmí obsahovat mezery. Použijete název hello zvolíte tootrack úlohách době, kdy jsou v průběhu a po jejich dokončení.
    
-   V dalším kroku vyberte oblast center dat ze seznamu. Oblasti dat center označí datového centra a adresu, na kterou je nutné dodat vašeho balíčku. Najdete v části Nejčastější dotazy níže Další informace.
-5. V kroku 4 vyberte vaše návratový poskytovatel ze seznamu a zadejte číslo svého operátora účtu. Microsoft použije tento účet pro odeslání jednotky vám po dokončení importu úlohu.
+   V dalším kroku vyberte oblast dat center hello seznamu. Středová oblast dat Hello označí hello data center a adres toowhich, je nutné dodat vašeho balíčku. V tématu Nejčastější dotazy hello níže Další informace.
+5. V kroku 4 vyberte vaše návratový poskytovatel hello seznamu a zadejte číslo svého operátora účtu. Po dokončení importu úlohu, bude společnost Microsoft používat tento účet tooship hello jednotky back tooyou.
    
-   Pokud máte vaše číslo sledování, svého operátora doručení vyberte ze seznamu a zadejte číslo sledování.
+   Pokud máte vaše číslo sledování, svého operátora doručení hello seznamu vyberte a zadejte číslo sledování.
    
-   Pokud nemáte sledování Číslo ještě zvolte **po poslali Moje balíček informace o tomto přesouvání pro tuto úlohu importu zajistí**, dokončete proces importu.
-6. Chcete-li po byly součástí vašeho balíčku, zadejte číslo sledování, vraťte se k **importu a exportu** stránky pro váš účet úložiště na portálu Azure, vyberte úlohu v seznamu a zvolte **informace o přesouvání**. Procházet průvodce a zadejte číslo sledování v kroku 2.
+   Pokud nemáte sledování Číslo ještě zvolte **po poslali Moje balíček informace o tomto přesouvání pro tuto úlohu importu zajistí**, dokončete proces importu hello.
+6. Vrátí číslo svého sledování po byly součástí vašeho balíčku tooenter toohello **importu a exportu** stránky pro váš účet úložiště v hello portálu Azure, vyberte úlohu hello seznamu a zvolte **přesouvání informace**. Procházet hello průvodce a zadejte číslo sledování v kroku 2.
    
-    Pokud toto číslo není aktualizován v rámci 2 týdny vytvoření úlohy, tato úloha vyprší.
+    Pokud hello číslo sledování není aktualizován v rámci 2 týdny vytváření hello úlohy, hello úloha vyprší.
    
-    Pokud úloha je ve stavu vytvoření, přesouvání nebo přenos, je také aktualizovat číslo svého operátora účtu v kroku 2 průvodce. Jakmile úloha je ve stavu balení, nelze aktualizovat číslo svého operátora účtu pro dané úlohy.
-7. Průběh úlohy můžete sledovat na řídicím panelu portálu. V tématu každý stav úlohy v předchozí části znamená podle [zobrazení stavu vaše úlohy](#viewing-your-job-status).
+    Pokud úloha hello je ve stavu vytvoření, přesouvání nebo přenos hello, můžete také aktualizovat číslo svého operátora účtu v kroku 2 Průvodce hello. Jakmile hello úloha je ve stavu hello balení, nelze aktualizovat číslo svého operátora účtu pro dané úlohy.
+7. Průběh úlohy můžete sledovat na řídicím panelu portálu hello. V tématu každý stav úlohy v předchozí části hello znamená podle [zobrazení stavu vaše úlohy](#viewing-your-job-status).
 
 ## <a name="create-an-export-job"></a>Vytvoření úlohy exportu
-Vytvoření úlohy exportu službu Import/Export oznámit, že je budete distribuovat jedné nebo několika prázdný jednotek do datového centra, aby data můžete exportovat z vašeho účtu úložiště do jednotky a jednotky a dodání.
+Vytvořte toonotify hello úlohy exportu služby importu a exportu, že je budete přesouvání, jeden nebo více prázdný jednotky toohello datového centra softwaru tak, aby data se dá vyexportovat ze jednotky toohello účtu úložiště a jednotky hello pak dodaný tooyou.
 
 ### <a name="prepare-your-drives"></a>Příprava jednotky
 Příprava jednotky pro úlohy exportu doporučujeme následující předběžné kontroly:
 
-1. Zkontrolujte počet disků požadované pomocí nástroje WAImportExport PreviewExport příkazu. Další informace najdete v tématu [náhled jednotka využití pro úlohu exportovat](https://msdn.microsoft.com/library/azure/dn722414.aspx). Umožňuje zobrazit náhled využití disku pro objekty BLOB, které jste vybrali, na základě velikosti jednotky, které chcete použít.
-2. Zkontrolujte, jestli je můžete pro čtení a zápis na pevný disk, který má být dodán pro úlohu export.
+1. Zkontrolujte hello počet disků požadované příkazem PreviewExport nástroj WAImportExport hello. Další informace najdete v tématu [náhled jednotka využití pro úlohu exportovat](https://msdn.microsoft.com/library/azure/dn722414.aspx). Pomůže vám náhled využití disku pro objekty BLOB hello, které jste vybrali, na základě velikosti hello jednotek hello budete toouse.
+2. Zkontrolujte, jestli je můžete pro čtení a zápis toohello pevný disk, který má být dodán pro úlohu export hello.
 
-### <a name="create-the-export-job"></a>Vytvoření úlohy exportu
-1. Pokud chcete vytvořit úlohy exportu, přejděte na svůj účet úložiště na portálu Azure a zobrazení řídicího panelu. V části **rychlý přehled**, klikněte na tlačítko **vytvořit úlohu exportovat** a pokračujte podle pokynů průvodce.
-2. V kroku 2 zadejte kontaktní informace pro osoba odpovědná za tuto úlohu exportu. Pokud chcete uložit data podrobného protokolování pro úlohu export, zaškrtněte možnost pro **uložit podrobného protokolování v kontejneru objektů blob Moje 'waimportexport'**.
-3. V kroku 3 určete, jaká data objektů blob, které chcete exportovat z vašeho účtu úložiště do prázdné jednotku nebo jednotky. Můžete exportovat všechny data objektů blob v účtu úložiště, nebo můžete určit, které objekty BLOB nebo nastaví objektů blob pro export.
+### <a name="create-hello-export-job"></a>Vytvoření úlohy exportu hello
+1. toocreate úlohy exportu, přejděte tooyour účet úložiště v hello portálu Azure a zobrazit hello řídicího panelu. V části **rychlý přehled**, klikněte na tlačítko **vytvořit úlohu exportovat** a pokračovat v Průvodci hello.
+2. V kroku 2 zadejte kontaktní informace pro hello osoba odpovědná za tuto úlohu exportu. Pokud chcete data toosave podrobného protokolování pro úlohu export hello, zaškrtněte možnost hello příliš**uložit hello podrobného protokolování v kontejneru objektů blob Moje 'waimportexport'**.
+3. V kroku 3 zadejte které blob data chcete tooexport z vašeho úložiště účet tooyour prázdný jednotek nebo disků. Můžete zvolit tooexport všechna data objektů blob v účtu úložiště hello nebo můžete určit, které objekty BLOB nebo nastaví z tooexport objekty BLOB.
    
-   Pokud chcete zadat objekt blob pro export, použijte **rovno** selektor a zadejte relativní cestu do objektu blob, počínaje název kontejneru. Použití *$root* k určení Kořenový kontejner.
+   toospecify tooexport objektů blob použít hello **rovno** selektor a zadejte hello relativní cestu toohello objektů blob, počínaje hello název kontejneru. Použití *$root* toospecify hello Kořenový kontejner.
    
-   K určení všech objektů BLOB od s předponou, použijte **začíná** selektor a zadejte předponu, počínaje lomítkem '/'. Předpona, která může být předponu název kontejneru, název dokončení kontejneru nebo název dokončení kontejneru, za nímž následuje předponu názvu objektu blob.
+   toospecify všechny objekty BLOB spouštění s předponou, použijte hello **začíná** selektor a zadejte předponu hello, počínaje lomítkem '/'. Předpona Hello může být předponou hello hello název kontejneru, hello kontejneru úplný název nebo název dokončení kontejneru hello následuje hello předpona názvu objektu blob hello.
    
-   Následující tabulka uvádí příklady cesty platný objekt blob:
+   Hello následující tabulka uvádí příklady cesty platný objekt blob:
    
    | Selektor | Cesta k objektu BLOB | Popis |
    | --- | --- | --- |
-   | Začíná |/ |Exportuje všech objektů BLOB v účtu úložiště |
-   | Začíná |/$root / |Exportuje všech objektů BLOB v kontejneru kořenové |
+   | Začíná |/ |Exportuje všech objektů BLOB v účtu úložiště hello |
+   | Začíná |/$root / |Exportuje všech objektů BLOB v kontejneru kořenové hello |
    | Začíná |/Book |Exportuje všech objektů BLOB v kontejneru, který začíná předponu **adresáře** |
    | Začíná |/Music/ |Exportuje všech objektů BLOB v kontejneru **Hudba** |
    | Začíná |/ Hudba/láska |Exportuje všech objektů BLOB v kontejneru **Hudba** které začínají předponou **rádi** |
-   | Rovno |$root/logo.bmp |Export objektu blob **logo.bmp** v kořenovém kontejneru |
-   | Rovno |videos/Story.MP4 |Export objektu blob **story.mp4** v kontejneru **videa** |
+   | EQUAL příliš|$root/logo.bmp |Export objektu blob **logo.bmp** v kořenovém kontejneru hello |
+   | EQUAL příliš|videos/Story.MP4 |Export objektu blob **story.mp4** v kontejneru **videa** |
    
-   Cesty objektů blob v platné formáty, aby nedocházelo k chybám při zpracování, je nutné zadat, jak je vidět na tomto snímku obrazovky.
+   Je nutné zadat cesty hello objektů blob v platné formáty tooavoid chyb během zpracování, jak je vidět na tomto snímku obrazovky.
    
    ![Vytvoření úlohy exportu – krok 3](./media/storage-import-export-service/export-job-03.png)
-4. V kroku 4 zadejte popisný název pro úlohu export. Název, který zadáte, může obsahovat jenom malá písmena, číslice, pomlčky a podtržítka, musí začínat písmenem a nesmí obsahovat mezery.
+4. V kroku 4 zadejte popisný název pro úlohu export hello. Hello název může obsahovat jenom malá písmena, číslice, pomlčky a podtržítka, musí začínat písmenem a nesmí obsahovat mezery.
    
-   Oblasti dat center označí datovém centru, ke které je nutné dodat vašeho balíčku. Najdete v části Nejčastější dotazy níže Další informace.
-5. V kroku 5 vyberte vaše návratový poskytovatel ze seznamu a zadejte číslo svého operátora účtu. Microsoft použije tento účet pro odeslání jednotky vám po dokončení exportu úlohu.
+   Středová oblast dat Hello označí hello data center toowhich je nutné dodat vašeho balíčku. V tématu Nejčastější dotazy hello níže Další informace.
+5. V kroku 5 vyberte vaše návratový poskytovatel hello seznamu a zadejte číslo účtu poskytovatel. Microsoft použije tento účet tooship jednotky zpět tooyou po dokončení exportu úlohu.
    
-   Pokud máte vaše číslo sledování, svého operátora doručení vyberte ze seznamu a zadejte číslo sledování.
+   Pokud máte vaše číslo sledování, svého operátora doručení hello seznamu vyberte a zadejte číslo sledování.
    
-   Pokud nemáte sledování Číslo ještě zvolte **po poslali Moje balíček informace o tomto přesouvání pro tuto úlohu export zajistí**, dokončete proces exportu.
-6. Chcete-li po byly součástí vašeho balíčku, zadejte číslo sledování, vraťte se k **importu a exportu** stránky pro váš účet úložiště na portálu Azure, vyberte úlohu v seznamu a zvolte **informace o přesouvání**. Procházet průvodce a zadejte číslo sledování v kroku 2.
+   Pokud nemáte sledování Číslo ještě zvolte **po poslali Moje balíček informace o tomto přesouvání pro tuto úlohu export zajistí**, dokončete proces exportu hello.
+6. Vrátí číslo svého sledování po byly součástí vašeho balíčku tooenter toohello **importu a exportu** stránky pro váš účet úložiště v hello portálu Azure, vyberte úlohu hello seznamu a zvolte **přesouvání informace**. Procházet hello průvodce a zadejte číslo sledování v kroku 2.
    
-    Pokud toto číslo není aktualizován v rámci 2 týdny vytvoření úlohy, tato úloha vyprší.
+    Pokud hello číslo sledování není aktualizován v rámci 2 týdny vytváření hello úlohy, hello úloha vyprší.
    
-    Pokud úloha je ve stavu vytvoření, přesouvání nebo přenos, je také aktualizovat číslo svého operátora účtu v kroku 2 průvodce. Jakmile úloha je ve stavu balení, nelze aktualizovat číslo svého operátora účtu pro dané úlohy.
+    Pokud úloha hello je ve stavu vytvoření, přesouvání nebo přenos hello, můžete také aktualizovat číslo svého operátora účtu v kroku 2 Průvodce hello. Jakmile hello úloha je ve stavu hello balení, nelze aktualizovat číslo svého operátora účtu pro dané úlohy.
    
    > [!NOTE]
-   > Pokud objekt blob export se používá v době kopírování na pevném disku, bude služba Azure Import/Export pořízení snímku objektu blob a zkopírujte snímku.
+   > Pokud toobe blob hello exportovat se používá v době hello kopírování toohard disku, bude služba Azure Import/Export pořízení snímku hello objektů blob a zkopírujte hello snímku.
    > 
    > 
-7. Průběh úlohy můžete sledovat na řídicím panelu portálu Azure. Najdete v každém stavu úlohy znamená v předchozí části na "zobrazení stavu vaše úlohy".
-8. Jakmile se zobrazí na discích s exportovaná data, můžete zobrazit a zkopírujte tyto klíče nástroje BitLocker vygenerované službou pro jednotce. Přejděte na svůj účet úložiště na portálu Azure a klikněte na kartu importu a exportu. Vyberte úlohu export ze seznamu a klikněte na tlačítko Zobrazit klíče. Klíče Bitlockeru vypadat takto:
+7. Průběh úlohy můžete sledovat na řídicím panelu hello v hello portálu Azure. V tématu každý stav úlohy znamená v předchozí části hello na "zobrazení stavu vaše úlohy".
+8. Po obdržení hello jednotky s exportovaná data, můžete zobrazit a zkopírujte klíče nástroje BitLocker hello vygenerované službou hello jednotky. Účet úložiště tooyour hello portálu Azure přejděte a klikněte na kartě importu a exportu hello. Vyberte úlohu export hello seznamu a klikněte na tlačítko Zobrazit klíče hello. klíče Bitlockeru Hello vypadat takto:
    
    ![Zobrazit klíče nástroje BitLocker pro úlohu export](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 
-Přejděte prostřednictvím níže v části Nejčastější dotazy, jak vysvětluje nejběžnější otázky, které zákazníci setkávají při používání této služby.
+Přejděte prostřednictvím v části Nejčastější dotazy hello níže, jak vysvětluje hello nejčastější dotazy, které se zákazníci setkávají při používání této služby.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Můžete zkopírovat pomocí služby Azure Import/Export úložiště Azure File?**
+**Můžete zkopírovat Azure File storage pomocí služby Azure Import/Export hello?**
 
-Ne, služba Azure Import/Export podporuje pouze objekty BLOB bloku a objekty BLOB stránky. Všechny ostatní typy úložiště včetně úložiště Azure File, úložiště Table a Queue Storage nejsou podporovány.
+Ne, hello služba Azure Import/Export podporuje pouze objekty BLOB bloku a objekty BLOB stránky. Všechny ostatní typy úložiště včetně úložiště Azure File, úložiště Table a Queue Storage nejsou podporovány.
 
-**Je dostupná pro předplatná CSP služba Azure Import/Export?**
+**Služba Azure Import/Export hello je dostupná pro předplatná CSP?**
 
 Služba Azure Import/Export podporuje odběry CSP.
 
-**Můžete přeskočit krok přípravy jednotky pro úlohy importu nebo můžete připravit na jednotku bez kopírování?**
+**Můžete přeskočit krok přípravy hello jednotky pro úlohy importu nebo můžete připravit na jednotku bez kopírování?**
 
-Všechny jednotky, který chcete použít pro odeslání pro import dat musí být připraveny pomocí nástroje Azure WAImportExport. Musíte použít nástroj WAImportExport ke zkopírování dat na disk.
+Všechny jednotky, které chcete pro import dat tooship musí připravený pomocí nástroje Azure WAImportExport hello. Je nutné použít hello WAImportExport nástroj toocopy data toohello jednotky.
 
-**Je potřeba provést jakékoli přípravu disku při vytváření úlohy exportu?**
+**Je nutné tooperform všechny Příprava disku při vytváření úlohy exportu?**
 
-Doporučuje se žádné, ale některé předběžné kontroly. Zkontrolujte počet disků požadované pomocí nástroje WAImportExport PreviewExport příkazu. Další informace najdete v tématu [náhled jednotka využití pro úlohu exportovat](https://msdn.microsoft.com/library/azure/dn722414.aspx). Umožňuje zobrazit náhled využití disku pro objekty BLOB, které jste vybrali, na základě velikosti jednotky, které chcete použít. Také zkontrolujte, zda lze číst z a zapisovat na pevný disk, který má být dodán pro úlohu export.
+Doporučuje se žádné, ale některé předběžné kontroly. Zkontrolujte hello počet disků požadované příkazem PreviewExport nástroj WAImportExport hello. Další informace najdete v tématu [náhled jednotka využití pro úlohu exportovat](https://msdn.microsoft.com/library/azure/dn722414.aspx). Pomůže vám náhled využití disku pro objekty BLOB hello, které jste vybrali, na základě velikosti hello jednotek hello budete toouse. Úloha exportu také zkontrolujte, zda může číst z a toohello zápisu pevný se disk, který má být dodán pro hello.
 
-**Co se stane, když I omylem poslat pevný disk, který není v souladu s požadavky na podporované?**
+**Co se stane, když omylem odeslat pevný disk, který není v souladu s toohello podporovány požadavky?**
 
-Datového centra Azure vrátí na jednotku, která není v souladu s požadavky na podporované pro vás. Pokud jenom některé jednotky v balíčku splnit požadavky na podporu, tyto jednotky se zpracují a jednotky, které nesplňují požadavky na bude vrácen vám.
+Hello datové centrum Azure vrátí hello jednotku, která není v souladu s požadavky tooyou toohello podporována. Pokud jenom některé jednotky hello v balíčku hello splnit požadavky na podporu hello, tyto jednotky se zpracují a hello jednotky, které nesplňují požadavky hello bude vrácen tooyou.
 
 **Můžete zrušit má úloha?**
 
 Úlohy můžete zrušit, pokud je jeho stav vytváření nebo přesouvání.
 
-**Jak dlouho na portálu Azure můžete zobrazit stav dokončené úlohy?**
+**Jak dlouho můžete zobrazit stav hello dokončené úlohy v hello portál Azure?**
 
-Můžete zobrazit stav pro dokončené úlohy po dobu 90 dnů. Dokončené úlohy budou odstraněny po 90 dnech.
+Můžete zobrazit stav hello pro dokončené úlohy pro až too90 dnů. Dokončené úlohy budou odstraněny po 90 dnech.
 
-**Pokud chcete importovat nebo exportovat víc než 10 jednotky, co mám dělat?**
+**Pokud I má tooimport nebo exportovat víc než 10 jednotky, co mám dělat?**
 
-Jeden import nebo export úloha může odkazovat jenom 10 jednotky v rámci jedné úlohy pro službu Import/Export. Pokud chcete pro odeslání více než 10 disků, můžete vytvořit více úloh. Jednotky, které jsou přidruženy k této úloze stejné musí dodávané společně ve stejném balíčku.
+Jeden import nebo export úloha může odkazovat jenom 10 jednotky v rámci jedné úlohy pro službu Import/Export hello. Pokud chcete tooship více než 10 disků, můžete vytvořit více úloh. Jednotky, které jsou přidruženy hello odeslání stejnou úlohu současně ve hello stejného balíčku.
 Společnost Microsoft nabízí pokyny a pomoc při kapacity dat zahrnuje více disku úlohy importu. Obraťte se na bulkimport@microsoft.com Další informace
 
-**Službu formátu jednotky před vrácením je?**
+**Nepodporuje hello služby hello disky ve formátu před vrácením je?**
 
 Ne. Všechny jednotky jsou šifrované pomocí Bitlockeru.
 
 **Můžete zakoupit jednotky pro úlohy importu a exportu od společnosti Microsoft?**
 
-Ne. Musíte dodávat vlastní jednotky pro obě import a export úloh.
+Ne. Budete potřebovat tooship vlastní jednotky pro obě import a export úloh.
 
 ** Jak může přistupovat k datům, importovaných pomocí této služby **
 
-Data v rámci účtu úložiště Azure se dají zpřístupnit přes portál Azure nebo pomocí samostatný nástroj nazývá Průzkumník úložišť. https://docs.microsoft.com/en-us/Azure/vs-Azure-Tools-Storage-Manage-with-Storage-Explorer 
+Hello data v rámci účtu úložiště Azure je přístupná prostřednictvím hello portálu Azure nebo pomocí samostatný nástroj nazývá Průzkumník úložišť. https://docs.microsoft.com/en-us/Azure/vs-Azure-Tools-Storage-Manage-with-Storage-Explorer 
 
-**Po dokončení úlohy importu, co bude Moje data vypadat v účtu storage? Moje hierarchie adresářů se zachovají?**
+**Po dokončení úlohy importu hello, co bude Moje data vypadat v účtu úložiště hello? Moje hierarchie adresářů se zachovají?**
 
-Při přípravě na pevný disk pro úlohy importu, je zadána cílového pole DstBlobPathOrPrefix v datové sadě sdíleného svazku clusteru. Toto je cílový kontejner v účtu úložiště, ke kterému se zkopíruje data z pevného disku. V tomto kontejneru cílové virtuální adresáře jsou vytvořeny pro složky z pevného disku a objekty BLOB jsou vytvořené pro soubory. 
+Při přípravě na pevný disk pro úlohy importu, je zadána hello cílového pole DstBlobPathOrPrefix hello v datové sadě sdíleného svazku clusteru. Toto je hello cílový kontejner v toowhich účet úložiště hello, který se zkopíruje data z pevného disku hello. V tomto kontejneru cílové virtuální adresáře jsou vytvořeny pro složky z pevného disku hello a objekty BLOB jsou vytvořené pro soubory. 
 
-**Pokud má jednotka souborů, které již existují v svůj účet úložiště, bude služba přepsat existující objekty BLOB v svůj účet úložiště?**
+**Pokud hello jednotka obsahuje soubory, které již existují v svůj účet úložiště, bude služba hello přepsat existující objekty BLOB v svůj účet úložiště?**
 
-Při přípravě na jednotku, můžete určit, zda by dojít k přepsání souborů cílové nebo ignorováno pomocí pole v souboru CSV datovou sadu názvem dispozice: < přejmenovat | přepsat ne | přepsat >. Ve výchozím nastavení služba bude přejmenovat nové soubory a nikoli přepsat existující objekty BLOB.
+Při přípravě hello jednotku, můžete určit, zda hello cílové soubory by měl být přepsány nebo ignorovat pomocí hello pole v souboru CSV datovou sadu s názvem dispozice: < přejmenovat | přepsat ne | přepsat >. Ve výchozím nastavení hello služby bude přejmenovat hello nové soubory a nikoli přepsat existující objekty BLOB.
 
-**Je nástroj WAImportExport kompatibilní s 32bitové operační systémy?**
-Ne. Nástroj WAImportExport je jenom kompatibilní s operačními systémy Windows 64-bit. Naleznete v části operační systémy v [předpoklady](#pre-requisites) pro úplný seznam podporovaných verzí operačního systému.
+**Nástroj WAImportExport hello je kompatibilní s 32bitové operační systémy?**
+Ne. Nástroj WAImportExport Hello je pouze kompatibilní s operačními systémy Windows 64-bit. Naleznete v části toohello operačních systémů v hello [předpoklady](#pre-requisites) pro úplný seznam podporovaných verzí operačního systému.
 
-**By měla obsahovat jakoukoli jinou hodnotu než jednotku pevného disku v mé balíčku?**
+**By měla obsahovat jakoukoli jinou hodnotu než hello pevný disk v mé balíčku?**
 
 Prosím dodávat pouze pevné disky. Nezahrnujte věci, jako je napájecích kabelů napájení nebo kabely USB.
 
-**Je nutné dodávat Moje jednotky pomocí FedEx nebo DHL?**
+**Je nutné provést tooship Moje jednotky pomocí FedEx nebo DHL?**
 
-Můžete zaslat jednotky do datového centra pomocí žádné známé poskytovatel jako FedEx DHL, UPS nebo nám poštovní služby. Pro přesouvání jednotky vám v datovém centru, je však nutné zadat číslo účtu FedEx v USA a EU nebo DHL číslo účtu v Asii a Austrálie oblastech.
+Můžete zaslat jednotky toohello datového centra pomocí žádné známé poskytovatel jako FedEx DHL, UPS nebo nám poštovní služby. Pro přenosů hello jednotky back tooyou z hello datového centra, je však nutné zadat číslo účtu FedEx hello USA a EU nebo číslo účtu DHL hello Asii a oblastí, Austrálie.
 
 **Existují nějaká omezení s přesouvání mezinárodní úrovni svou jednotku?**
 
-Upozorňujeme, že fyzická média, která jsou přesouvání muset křížové mezinárodní hranice. Jste zodpovědní za zajištění, vaše fyzická média a data jsou importovat a exportovat v souladu s platné zákony. Před jejich odesláním fyzických médií, zkontrolujte s vaší poradci ověřit, jestli se médiu a dat můžete souladu s právem odeslaná do identifikovaného datového centra. To vám pomůže zajistit, aby obdržel Microsoft včas.
+Upozorňujeme, že hello fyzického média, který se může být nutné toocross mezinárodní hranice. Jste zodpovědní za zajištění, vaše fyzická média a data jsou importovat a exportovat v souladu s platnými zákony hello. Před přesouvání hello fyzická média, zkontrolujte u vaší tooverify poradci, média a data právními předpisy lze identifikovat uvidíte toohello datového centra. To vám pomůže tooensure nedosáhne Microsoft včas.
 
-**Při vytváření úlohy, adresy příjemce je umístění, které se liší od umístění účtu úložiště. Co bych měl/a dělat?**
+**Při vytváření úlohy, hello přesouvání adresa je umístění, které se liší od umístění účtu úložiště. Co bych měl/a dělat?**
 
-Některé umístění účtu úložiště jsou namapované na alternativní přesouvání umístění. Dříve dostupná přenosů umístění můžete také dočasně mapovat do alternativního umístění. Vždy zkontrolujte přenosů adresa zadaná při vytváření úlohy před přesouvání jednotky.
+Některé umístění účtu úložiště, jsou namapované tooalternate přesouvání umístění. Dříve k dispozici přesouvání umístění může být také dočasně namapované tooalternate umístění. Vždy zkontrolujte hello přesouvání adresa zadaná při vytváření úlohy před přesouvání jednotky.
 
-**Při přesouvání svou jednotku, poskytovatel požádá o data center adresa a telefonní číslo kontaktu. Co by měl poskytovat?**
+**Při přesouvání svou jednotku, poskytovatel hello požádá o hello data center kontaktní adresa a telefonní číslo. Co by měl poskytovat?**
 
-Řadič domény a telefonní číslo adresy se poskytuje jako součást úlohy vytvoření.
+Hello řadiče domény a telefonní číslo adresy se poskytuje jako součást úlohy vytvoření.
 
-**Můžete použít službu Azure Import/Export pro kopírování PST poštovní schránky a dat služby SharePoint k O365?**
+**Můžete použít hello Azure Import/Export služby toocopy PST poštovních schránek a tooO365 dat služby SharePoint?**
 
-Naleznete [Import PST souborů nebo dat služby SharePoint do služeb Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+Naleznete příliš[Import PST souborů nebo tooOffice dat služby SharePoint 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
 
-**Můžete použít službu Azure Import/Export pro kopírování Moje zálohování offline ke službě Azure Backup?**
+**Můžete použít toocopy služba Azure Import/Export hello Moje zálohování offline toohello služby zálohování Azure?**
 
-Naleznete [pracovní postup Offline zálohování v Azure Backup](../../backup/backup-azure-backup-import-export.md).
+Naleznete příliš[pracovní postup Offline zálohování v Azure Backup](../../backup/backup-azure-backup-import-export.md).
 
-**Jaký je maximální počet HDD pro v jedné dodávky?**
+**Co je hello maximální počet HDD pro v jedné dodávky?**
 
-Může být libovolný počet pevných disků v jedné dodávky a pokud disky patří do více úloh se doporučuje) disky s názvem bez přípony s odpovídající název úlohy. b) aktualizovat úlohy s číslem sledování na konci -1,-2 atd.
+Může být libovolný počet pevných disků v jeden dodávky a pokud hello disky patří toomultiple úlohy se doporučuje příliš a) disky hello označený verzí hello odpovídající název úlohy. b) úlohy aktualizace hello s číslem sledování na konci -1,-2 atd.
   
-**Jaký je maximální objekt Blob bloku a velikost objektu Blob stránky podporovány disku importu a exportu?**
+**Co je hello maximální objekt Blob bloku a velikost objektu Blob stránky podporovány disku importu a exportu?**
 
 Objekt Blob bloku maximální velikost je přibližně 4.768TB nebo 5 000 000 MB.
 Objekt Blob stránky maximální velikost je 1TB.
 
 **Podporuje disku importu a exportu šifrování AES 256?**
 
-Služba Azure Import/Export ve výchozím nastavení zašifruje pomocí nástroje bitlocker šifrování AES 128, ale to je možné zvýšit na AES 256 ručně šifrování nástrojem bitlocker před data budou zkopírována. 
+Služba Azure Import/Export ve výchozím nastavení zašifruje pomocí nástroje bitlocker šifrování AES 128, ale může to být zvýšená tooAES 256 ručně šifrování nástrojem bitlocker před data budou zkopírována. 
 
 Pokud používáte [WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), zde je ukázka příkazu
 ```
 WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
 ```
-Pokud používáte [WAImportExport nástroj](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) zadejte "AlreadyEncrypted" a zadejte klíče v driveset sdíleného svazku clusteru.
+Pokud používáte [WAImportExport nástroj](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) zadejte "AlreadyEncrypted" a zadejte klíč hello v hello driveset sdíleného svazku clusteru.
 ```
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
 ```
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení nástroje WAImportExport](storage-import-export-tool-how-to.md)
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* [Nastavení nástroje WAImportExport hello](storage-import-export-tool-how-to.md)
+* [Přenos dat pomocí hello příkazového řádku azcopy](storage-use-azcopy.md)
 * [Ukázka Azure Import, Export REST API](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
 

@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření webové aplikace Azure systémem Linux | Microsoft Docs"
+title: "aaaCreate Azure webová aplikace spuštěna v systému Linux | Microsoft Docs"
 description: "Webové aplikace Tvorba pracovního postupu pro webové aplikace Azure v systému Linux."
 keywords: "služby Azure app service, webové aplikace, linux, operačních systémů"
 services: app-service
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.openlocfilehash: 49091d4a85bed23927850f9c0bbc5ea8b6e8c9e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: de1bd030345d5e2a8024012067b5bcaa2cca09dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-web-app-running-on-linux"></a>Vytvoření webové aplikace Azure systémem Linux
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 
-## <a name="use-the-azure-portal-to-create-your-web-app"></a>Pomocí portálu Azure k vytvoření webové aplikace
-Můžete začít s vytvářením webové aplikace v systému Linux z [portál Azure](https://portal.azure.com) jak je znázorněno na následujícím obrázku:
+## <a name="use-hello-azure-portal-toocreate-your-web-app"></a>Použít hello Azure portálu toocreate vaší webové aplikace
+Můžete začít s vytvářením webové aplikace v systému Linux z hello [portál Azure](https://portal.azure.com) jak ukazuje následující obrázek hello:
 
-![Zahájení vytváření webové aplikace na portálu Azure][1]
+![Zahájení vytváření webové aplikace na hello portálu Azure][1]
 
-Dále **vytvořit okno** otevře, jak je znázorněno na následujícím obrázku:
+V dalším kroku hello **vytvořit okno** otevře, jak ukazuje následující obrázek hello:
 
-![V okně Vytvořit][2]
+![okno Vytvořit Hello][2]
 
 1. Zadejte název webové aplikace.
-2. Vyberte existující skupinu prostředků nebo vytvořte novou. (Viz dostupné oblasti v [omezení části](app-service-linux-intro.md).)
-3. Vyberte existující plán služby Azure App Service nebo vytvořte novou. (Naleznete v poznámkách k plánu služby App Service v [omezení části](app-service-linux-intro.md).)
-4. Zvolte zásobník aplikací, který chcete použít. Můžete si vybrat mezi několika verzích rozhraní Node.js, PHP, .net Core a Ruby.
+2. Vyberte existující skupinu prostředků nebo vytvořte novou. (Viz dostupné oblasti v hello [omezení části](app-service-linux-intro.md).)
+3. Vyberte existující plán služby Azure App Service nebo vytvořte novou. (Naleznete v poznámkách k plánu služby App Service v hello [omezení části](app-service-linux-intro.md).)
+4. Vyberte aplikace hello zásobníku, že máte v úmyslu toouse. Můžete si vybrat mezi několika verzích rozhraní Node.js, PHP, .net Core a Ruby.
 
-Po vytvoření aplikace můžete změnit zásobník aplikací z nastavení aplikace jak je znázorněno na následujícím obrázku:
+Po vytvoření aplikace hello, můžete změnit zásobník aplikací hello z nastavení aplikace hello jak ukazuje následující obrázek hello:
 
 ![Nastavení aplikace][3]
 
 ## <a name="deploy-your-web-app"></a>Nasazení webové aplikace
-Výběr **možnosti nasazení** ze správy portál vám dává možnost použít místní úložiště Git nebo GitHub pro nasazení aplikace. Zbývající pokyny jsou podobné jako u jiných Linux webové aplikace. Můžete postupovat podle pokynů v [místní nasazení Git](app-service-deploy-local-git.md) nebo [průběžné nasazování](app-service-continuous-deployment.md) k nasazení své aplikace.
+Výběr **možnosti nasazení** z portálu poskytuje správu hello je hello možnost toouse místní Git nebo Githubu úložiště toodeploy vaší aplikace. Hello zbytek hello pokyny jsou podobné toothose pro webovou aplikaci systému Linux. Můžete postupovat podle pokynů hello v [místní nasazení Git](app-service-deploy-local-git.md) nebo [průběžné nasazování](app-service-continuous-deployment.md) toodeploy vaší aplikace.
 
-FTP můžete použít taky k nahrání aplikace do vaší lokality. Koncový bod FTP pro vaši webovou aplikaci můžete získat z části protokolů diagnostiky, jak je znázorněno na následujícím obrázku:
+Můžete také pomocí FTP tooupload webu tooyour aplikace. Můžete získat koncový bod hello FTP pro vaši webovou aplikaci z hello diagnostiky protokoly části Jak ukazuje následující obrázek hello:
 
 ![Diagnostické protokoly][4]
 

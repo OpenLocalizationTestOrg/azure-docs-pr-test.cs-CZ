@@ -1,6 +1,6 @@
 ---
-title: "Konfigurovat přesměrování zpracování SSL - Azure Application Gateway - portálu Azure | Microsoft Docs"
-description: "Tato stránka poskytuje pokyny pro vytvoření služby application gateway pomocí protokolu SSL, přesměrování zpracování úloh pomocí portálu"
+title: "aaaConfigure SSL snižování zátěže - Azure Application Gateway - Azure Portal | Microsoft Docs"
+description: "Tato stránka obsahuje pokyny toocreate služby application gateway pomocí protokolu SSL snižování zátěže přes portál hello"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: f61be0cc4c9274c9914f7c468ce48a2a3d0a4f4a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e87ac0bbe10ac45e307c18802741c7bc31764a20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>Konfigurace aplikační brány pro přesměrování zpracování SSL pomocí portálu
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-hello-portal"></a>Konfigurace aplikační brány pro přesměrování zpracování SSL pomocí portálu hello
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-ssl-portal.md)
@@ -28,67 +28,67 @@ ms.lasthandoff: 08/18/2017
 > * [Azure Classic PowerShell](application-gateway-ssl.md)
 > * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
-Služba Azure Application Gateway se dá nakonfigurovat k ukončení relace Secure Sockets Layer (SSL) v bráně, vyhnete se tak nákladným úlohám dešifrování SSL na webové serverové farmě. Přesměrování zpracování SSL zjednodušuje i nastavení a správu front-end serverů webových aplikací.
+Služba Azure Application Gateway může být relace Secure Sockets Layer (SSL) nakonfigurované tooterminate hello v hello brány tooavoid nákladná SSL dešifrování úlohy toohappen v hello webové farmy. Přesměrování zpracování SSL zjednodušuje i nastavení serveru front-end hello a Správa webové aplikace hello.
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím scénáři projde konfigurace přesměrování zpracování SSL na existující aplikační brány. Tento scénář předpokládá, že jste již provedli postup [vytvoření služby Application Gateway](application-gateway-create-gateway-portal.md).
+Následující scénář Hello projde konfigurace přesměrování zpracování SSL na existující aplikační brány. Hello scénář předpokládá, že jste již provedli kroky hello příliš[vytvoření služby Application Gateway](application-gateway-create-gateway-portal.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pokud chcete konfigurovat přesměrování zpracování SSL pomocí služby application gateway, je vyžadován certifikát. Tento certifikát je načíst ve službě application gateway a používat k šifrování a dešifrování přenosy odesílané prostřednictvím protokolu SSL. Certifikát musí být ve formátu Personal Information Exchange (pfx). Tento formát souboru umožňuje pro export privátního klíče, který je vyžadován součástí služby application gateway k šifrování a dešifrování přenosů.
+tooconfigure přesměrování zpracování SSL pomocí služby application gateway, je vyžadován certifikát. Tento certifikát je načteno ve hello application gateway a používá tooencrypt a dešifrování přenosů hello odeslána prostřednictvím protokolu SSL. certifikát Hello musí toobe formát Personal Information Exchange (pfx). Tento formát souboru umožňuje pro hello privátní klíče toobe exportovali, které je požadované hello aplikace brány tooperform hello šifrování a dešifrování přenosů.
 
 ## <a name="add-an-https-listener"></a>Přidejte naslouchací proces HTTPS
 
-Naslouchací proces HTTPS hledá provozu na základě jeho konfigurace a pomáhá směrovat přenosy back-endové fondy.
+naslouchací proces HTTPS Hello hledá provozu na základě jeho konfigurace a pomáhá trasy hello provoz toohello back-endové fondy.
 
 ### <a name="step-1"></a>Krok 1
 
-Přejděte na portál Azure a vyberte existující aplikační brány
+Přejděte toohello portál Azure a vyberte existující aplikační brány
 
 ### <a name="step-2"></a>Krok 2
 
-Klikněte na tlačítko naslouchací procesy a klikněte na tlačítko Přidat přidejte naslouchací proces.
+Klikněte na tlačítko naslouchací procesy a klikněte na tlačítko hello přidat tlačítko tooadd naslouchací proces.
 
 ![okno Přehled brány aplikace][1]
 
 ### <a name="step-3"></a>Krok 3
 
-Zadejte požadované informace pro naslouchací proces a nahrání certifikátu .pfx, po dokončení klikněte na tlačítko OK.
+Vyplňte hello požadované informace pro naslouchací proces hello a nahrávání hello certifikátů .pfx, po dokončení klikněte na tlačítko OK.
 
-**Název** – tato hodnota je popisný název naslouchacího procesu.
+**Název** – tato hodnota je popisný název hello naslouchacího procesu.
 
-**Konfigurace IP front-endu** – tato hodnota je front-endovou konfiguraci protokolu IP, který se používá pro naslouchací proces.
+**Konfigurace IP front-endu** – tato hodnota je konfigurace IP front-endu hello, který se používá pro naslouchací proces hello.
 
-**Front-endový port (název/Port)** – popisný název pro tento port používají na front-endu aplikační brány a skutečný port používat.
+**Front-endový port (název/Port)** -popisný název hello port používaný na front-endu hello aplikační brány a hello skutečný port používaný hello.
 
-**Protokol** -přepínače k určení, pokud se používá protokol https nebo http pro front-endu.
+**Protokol** -toodetermine přepínače, pokud se používá protokol https nebo http pro hello front-endu.
 
 **Certifikát (jméno a heslo)** – přesměrování zpracování SSL Pokud se používá, je vyžadován pro toto nastavení certifikát .pfx a popisný název a heslo jsou povinné.
 
 ![Přidejte naslouchací proces okno][2]
 
-## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Vytvoření pravidla a přidružit ho k naslouchacímu procesu
+## <a name="create-a-rule-and-associate-it-toohello-listener"></a>Vytvoření pravidla a přidružit ho toohello naslouchací proces
 
-Byla vytvořena naslouchací proces. Je čas k vytvoření pravidla pro zpracování provozu z naslouchací proces. Pravidla určují, jak se provoz směruje na back-endové fondy na základě více nastavení konfigurace, včetně toho, jestli se používá spřažení na základě souboru cookie relace, protokol, port a sondy stavu.
+byla vytvořena Hello naslouchací proces. Je čas toocreate přenosem hello toohandle pravidlo z hello naslouchací proces. Pravidla určují, jak provoz se směruje toohello back-endové fondy na základě více nastavení konfigurace, včetně toho, jestli se používá spřažení na základě souboru cookie relace, protokol, port a sondy stavu.
 
 ### <a name="step-1"></a>Krok 1
 
-Klikněte **pravidla** aplikační brány a pak klikněte na tlačítko Přidat.
+Klikněte na tlačítko hello **pravidla** hello aplikace brány a pak klikněte na tlačítko Přidat.
 
 ![okně pravidla aplikace brány][3]
 
 ### <a name="step-2"></a>Krok 2
 
-Na **přidat základní pravidlo** okno, zadejte popisný název pravidla a zvolte naslouchací proces vytvořili v předchozím kroku. Zvolte odpovídající back-endový fond a http nastavení a klikněte na tlačítko **OK**
+Na hello **přidat základní pravidlo** okno, zadejte popisný název pravidla hello hello a zvolte naslouchací proces hello vytvořili v předchozím kroku hello. Zvolte hello odpovídající back-endový fond a http nastavení a klikněte na tlačítko **OK**
 
 ![okno nastavení protokolu HTTPS][4]
 
-Nastavení jsou nyní uloženy do služby application gateway. Proces ukládání pro toto nastavení může chvíli trvat, než jsou k dispozici k zobrazení prostřednictvím portálu nebo pomocí prostředí PowerShell. Po uložení služby application gateway zpracovává šifrování a dešifrování přenosů. Prostřednictvím protokolu http se budou zpracovávat všechny přenosy mezi aplikační bránu a webovými servery back-end. Veškeré komunikace zpět do klienta, pokud iniciované přes protokol https, bude vrácen klientovi zašifrovaná.
+nastavení Hello se nyní ukládají toohello aplikační brány. Hello uložit proces pro toto nastavení může chvíli trvat, než jsou k dispozici tooview prostřednictvím hello portálu nebo pomocí prostředí PowerShell. Aplikační brána jednou uložené hello zpracovává hello šifrování a dešifrování přenosů. Prostřednictvím protokolu http se budou zpracovávat všechny přenosy mezi hello aplikační bránu a webovými servery služby hello back-end. Jakýkoli klient back toohello komunikace Pokud iniciované přes protokol https, bude vrácen toohello klienta zašifrovaná.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete dozvědět, jak nakonfigurovat vlastní stav testu s Azure Application Gateway, přečtěte si téma [vytvořit sondu vlastní stavu](application-gateway-create-gateway-portal.md).
+toolearn způsobu tooconfigure vlastní stavu testu s Azure Application Gateway, najdete v [vytvořit sondu vlastní stavu](application-gateway-create-gateway-portal.md).
 
 [1]: ./media/application-gateway-ssl-portal/figure1.png
 [2]: ./media/application-gateway-ssl-portal/figure2.png

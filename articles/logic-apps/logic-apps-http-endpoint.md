@@ -1,6 +1,6 @@
 ---
-title: "Volání, aktivační události nebo vnořit pracovních s koncovými body HTTP - Azure Logic Apps | Microsoft Docs"
-description: "Nastavit koncové body HTTP zavolat, aktivaci nebo vnořit pracovní postupy pro Azure Logic Apps"
+title: "aaaCall, aktivaci nebo vnořit pracovních s koncovými body HTTP - Azure Logic Apps | Microsoft Docs"
+description: "Nastavení toocall koncové body HTTP, aktivační události nebo vnoření pracovní postupy pro Azure Logic Apps"
 services: logic-apps
 keywords: "pracovní postupy, koncových bodů protokolu HTTP"
 author: jeffhollan
@@ -16,17 +16,17 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 072a314c3bff75ab7696f86bb063bb7c03c4ae89
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Volání, aktivaci nebo vnořit pracovních s koncovými body HTTP v aplikacích logiky
 
 Synchronní koncové body HTTP můžou nativně zpřístupnit jako triggery pro aplikace logiky, mohli aktivovat nebo volání aplikace logiky prostřednictvím adresy URL. Pracovní postupy lze také vnořit ve vašich logic apps pomocí vzor s koncových bodů.
 
-Pokud chcete vytvořit koncových bodů protokolu HTTP, můžete přidat tyto triggery, aby aplikace logiky můžete přijímat příchozí požadavky:
+Koncové body HTTP toocreate, můžete přidat tyto triggery tak, aby aplikace logiky může přijímat příchozí požadavky:
 
 * [Požadavek](../connectors/connectors-native-reqres.md)
 
@@ -35,22 +35,22 @@ Pokud chcete vytvořit koncových bodů protokolu HTTP, můžete přidat tyto tr
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > I když pomocí našich ukázkách **požadavku** aktivační událost, můžete používat kterýkoli z uvedených aktivačních událostí protokolu HTTP, a všechny zásady stejně jako se vztahují na jiné typy aktivační událost.
+   > I když příklady použití hello **požadavku** aktivační událost, můžete použít některou z hello uvedené aktivace protokolu HTTP a všechny zásady stejně jako vztahují toohello jiné typy aktivační události.
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>Nastavit koncový bod HTTP pro svou aplikaci logiky
 
-Chcete-li vytvořit koncový bod protokolu HTTP, přidejte aktivační událost, která může přijímat příchozí požadavky.
+toocreate koncový bod protokolu HTTP, přidejte aktivační událost, která může přijímat příchozí požadavky.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal"). Přejděte do aplikace logiky a otevřete návrhář aplikace logiky.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com "portál Azure"). Přejděte aplikace logiky tooyour a otevřete návrhář aplikace logiky.
 
-2. Přidejte aktivační událost, která umožní aplikaci logiky přijímat příchozí požadavky. Například přidat **požadavku** aktivační svou aplikaci logiky.
+2. Přidejte aktivační událost, která umožní aplikaci logiky přijímat příchozí požadavky. Například přidejte hello **požadavku** aplikace logiky tooyour aktivační události.
 
-3.  V části **požadavku schématu JSON textu**, můžete volitelně zadat schématu JSON pro datová část (data), které očekáváte, že aktivační událost pro příjem.
+3.  V části **požadavku schématu JSON textu**, můžete volitelně zadat schématu JSON pro datové hello (data), které předpokládáte tooreceive hello aktivační události.
 
-    Toto schéma návrháře používá ke generování tokenů, které aplikace logiky můžete využívat, analyzovat a předání dat z aktivace prostřednictvím pracovního postupu. 
+    Návrhář Hello používá toto schéma pro generování tokenů, aplikace logiky můžete tooconsume, analýzy a předejte data z hello aktivační události prostřednictvím pracovního postupu. 
     Další informace o [tokeny vygenerovat z JSON schémata](#generated-tokens).
 
-    V tomto příkladu zadejte schéma v Návrháři zobrazeny:
+    V tomto příkladu zadejte schéma hello v Návrháři hello zobrazeny:
 
     ```json
     {
@@ -66,11 +66,11 @@ Chcete-li vytvořit koncový bod protokolu HTTP, přidejte aktivační událost,
     }
     ```
 
-    ![Přidat akci požadavku][1]
+    ![Přidat akci požadavku hello][1]
 
     > [!TIP]
     > 
-    > Schéma pro ukázku datové části JSON můžete vygenerovat z nástroje, jako je [jsonschema.net](http://jsonschema.net/), nebo v **požadavku** aktivační události tak, že zvolíte **datová část ukázky použít ke generování schématu**. 
+    > Schéma pro ukázku datové části JSON můžete vygenerovat z nástroje, jako je [jsonschema.net](http://jsonschema.net/), nebo v hello **požadavku** aktivační události tak, že zvolíte **použití ukázkové datové části toogenerate schématu**. 
     > Zadejte vaše datová část ukázky a vyberte **provádí**.
 
     Například tato ukázková datová část:
@@ -94,31 +94,31 @@ Chcete-li vytvořit koncový bod protokolu HTTP, přidejte aktivační událost,
     }
     ```
 
-4.  Uložte svou aplikaci logiky. V části **HTTP POST na tuto adresu URL**, nyní byste měli najít adresu URL generovaného zpětného volání, jako tento ukázkový:
+4.  Uložte svou aplikaci logiky. V části **HTTP POST toothis URL**, nyní byste měli najít adresu URL generovaného zpětného volání, jako tento ukázkový:
 
     ![Adresa URL generovaného zpětného volání pro koncový bod](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
-    Tato adresa URL obsahuje klíč sdíleného přístupového podpisu (SAS) v parametry dotazu, které se používají pro ověřování. 
-    Můžete také získat adresu URL koncového bodu protokolu HTTP z vaší přehled aplikace logiky na portálu Azure. V části **historie aktivační událost**, vyberte aktivační událost:
+    Tato adresa URL obsahuje klíč sdíleného přístupového podpisu (SAS) v hello parametry dotazu, které se používají pro ověřování. 
+    Můžete také získat adresu URL koncového bodu hello HTTP z vaší přehledu aplikace logiky v hello portálu Azure. V části **historie aktivační událost**, vyberte aktivační událost:
 
     ![Získat adresu URL koncového bodu protokolu HTTP z portálu Azure][2]
 
-    Nebo můžete získat adresu URL tím, že toto volání:
+    Nebo můžete získat adresu URL hello tím, že toto volání:
 
     ```
     POST https://management.azure.com/{logic-app-resourceID}/triggers/{myendpointtrigger}/listCallbackURL?api-version=2016-06-01
     ```
 
-## <a name="change-the-http-method-for-your-trigger"></a>Změnit metodu HTTP aktivační události
+## <a name="change-hello-http-method-for-your-trigger"></a>Změnit metodu HTTP hello aktivační události
 
-Ve výchozím nastavení **požadavku** aktivační událost očekává požadavek HTTP POST, ale můžete použít jinou metodu HTTP. 
+Ve výchozím nastavení, hello **požadavku** aktivační událost očekává požadavek HTTP POST, ale můžete použít jinou metodu HTTP. 
 
 > [!NOTE]
 > Můžete zadat typ pouze jednu metodu.
 
 1. Na vaše **požadavku** aktivovat, zvolte **zobrazit rozšířené možnosti**.
 
-2. Otevřete **metoda** seznamu. V tomto příkladu vyberte **získat** , aby bylo později otestovat adresu URL vašeho koncového bodu protokolu HTTP.
+2. Otevřete hello **metoda** seznamu. V tomto příkladu vyberte **získat** , aby bylo později otestovat adresu URL vašeho koncového bodu protokolu HTTP.
 
     > [!NOTE]
     > Můžete vybrat jinou metodu HTTP, nebo zadat vlastní metodu pro aplikaci logiky.
@@ -127,27 +127,27 @@ Ve výchozím nastavení **požadavku** aktivační událost očekává požadav
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>Přijměte parametry prostřednictvím vaše adresa URL koncového bodu protokolu HTTP
 
-Pokud chcete, aby vaše adresa URL koncového bodu protokolu HTTP tak, aby přijímal parametry, přizpůsobit vaší aktivační událost relativní cestu.
+Když chcete parametry tooaccept koncový bod adresy URL protokolu HTTP, přizpůsobit vaší aktivační událost relativní cestu.
 
 1. Na vaše **požadavku** aktivovat, zvolte **zobrazit rozšířené možnosti**. 
 
-2. V části **metoda**, zadejte metodu protokolu HTTP, který chcete žádost o použít. V tomto příkladu vyberte **získat** metodu, pokud jste tak ještě neučinili, tak, aby bylo možné otestovat adresu URL vašeho koncového bodu protokolu HTTP.
+2. V části **metoda**, zadejte metodu hello HTTP, které chcete toouse váš požadavek. V tomto příkladu vyberte hello **získat** metodu, pokud jste tak ještě neučinili, tak, aby bylo možné otestovat adresu URL vašeho koncového bodu protokolu HTTP.
 
       > [!NOTE]
       > Když zadáte relativní cesta aktivační události, musíte zadat metodu HTTP také explicitně aktivační události.
 
-3. V části **relativní cestu**, zadejte relativní cestu pro parametr, který by měl přijmout adresu URL, například `customers/{customerID}`.
+3. V části **relativní cestu**, zadejte relativní cestu hello hello parametru, který by měl přijímat vaše adresa URL, například `customers/{customerID}`.
 
-    ![Zadejte metodu HTTP a relativní cestu pro parametr](./media/logic-apps-http-endpoint/relativeurl.png)
+    ![Zadejte metodu HTTP hello a relativní cestu pro parametr](./media/logic-apps-http-endpoint/relativeurl.png)
 
-4. Chcete-li použít parametr, přidejte **odpovědi** akce do aplikace logiky. (V části aktivační událost, zvolte **nový krok** > **přidat akci** > **odpovědi**) 
+4. toouse hello parametr, přidejte **odpovědi** aplikace logiky tooyour akce. (V části aktivační událost, zvolte **nový krok** > **přidat akci** > **odpovědi**) 
 
-5. Do odpovědi **textu**, zahrnout token pro parametr, který jste zadali v relativní cestě vaší aktivační události.
+5. Do odpovědi **textu**, zahrnout hello token pro hello parametr, který jste zadali v relativní cestě vaší aktivační události.
 
-    Chcete-li například vrátit `Hello {customerID}`, aktualizovat vaši odpověď **textu** s `Hello {customerID token}`. 
-    Seznamu dynamického obsahu by měl zobrazit a zobrazit `customerID` tokenu jste ji vybrat.
+    Například tooreturn `Hello {customerID}`, aktualizovat vaši odpověď **textu** s `Hello {customerID token}`. 
+    Hello dynamického obsahu seznamu by měl zobrazit a zobrazit hello `customerID` tokenu pro tooselect je.
 
-    ![Přidání parametrů do odpovědi](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+    ![Přidat parametr tooresponse textu](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
     Vaše **textu** by měl vypadat jako tento příklad:
 
@@ -155,11 +155,11 @@ Pokud chcete, aby vaše adresa URL koncového bodu protokolu HTTP tak, aby přij
 
 6. Uložte svou aplikaci logiky. 
 
-    Vaše adresa URL koncového bodu protokolu HTTP nyní zahrnuje relativní cesta, například: 
+    Vaše adresa URL koncového bodu protokolu HTTP nyní zahrnuje hello relativní cesta, například: 
 
     https & # 58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
 
-7. Pokud chcete otestovat váš koncový bod protokolu HTTP, zkopírujte a vložte adresu URL aktualizované do jiného okna prohlížeče, ale nahraďte `{customerID}` s `123456`, a stiskněte klávesu Enter.
+7. tootest koncový bod protokolu HTTP, kopírování a vložení hello aktualizované adresu URL do jiného okna prohlížeče, ale nahraďte `{customerID}` s `123456`, a stiskněte klávesu Enter.
 
     Váš prohlížeč by měl zobrazit tento text: 
 
@@ -168,11 +168,11 @@ Pokud chcete, aby vaše adresa URL koncového bodu protokolu HTTP tak, aby přij
 <a name="generated-tokens"></a>
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>Tokeny vygenerovat z JSON schémata pro svou aplikaci logiky
 
-Když zadáte schématu JSON ve vaší **požadavku** aktivační událost, návrháře logiku aplikace generuje tokeny pro vlastnosti v tomto schématu. Pak můžete tyto tokeny pro předávání dat prostřednictvím pracovní postup aplikace logiky.
+Když zadáte schématu JSON ve vaší **požadavku** aktivovat, hello logiku aplikace Návrhář generuje tokeny pro vlastnosti v tomto schématu. Pak můžete tyto tokeny pro předávání dat prostřednictvím pracovní postup aplikace logiky.
 
-Pro tento příklad, pokud přidáte `title` a `name` vlastnosti vašeho schématu JSON, jejich tokeny jsou nyní k dispozici pro použití v dalších krocích pracovního postupu. 
+Pro tento příklad, pokud přidáte hello `title` a `name` vlastnosti schématu JSON tooyour, jejich tokeny jsou nyní k dispozici toouse v dalších krocích pracovního postupu. 
 
-Tady je kompletní schématu JSON:
+Tady je hello dokončení schématu JSON:
 
 ```json
 {
@@ -198,19 +198,19 @@ Tady je kompletní schématu JSON:
 
 ## <a name="create-nested-workflows-for-logic-apps"></a>Vytvoření vnořené pracovní postupy pro logic apps
 
-Pracovní postupy lze vnořit ve vaší aplikaci logiky můžete přidat další logiku aplikace, které může přijímat požadavky. Pokud chcete tyto aplikace logiky, přidejte **Azure Logic Apps – zvolte pracovní postup Logic Apps** akce aktivační událost. Pak můžete vybrat z oprávněné logiku aplikace.
+Pracovní postupy lze vnořit ve vaší aplikaci logiky můžete přidat další logiku aplikace, které může přijímat požadavky. tooinclude těchto aplikací logiky, přidejte hello **Azure Logic Apps – zvolte pracovní postup Logic Apps** tooyour akce aktivační události. Pak můžete vybrat z oprávněné logiku aplikace.
 
 ![Přidat další aplikace logiky](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
 ## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>Volání nebo aktivovat aplikace logiky prostřednictvím koncových bodů protokolu HTTP
 
-Jakmile vytvoříte koncový bod protokolu HTTP, můžete aktivovat svou aplikaci logiky prostřednictvím `POST` metodu pro úplnou adresu URL. Logiku aplikace mají integrovanou podporu pro koncové body přímý přístup.
+Jakmile vytvoříte koncový bod protokolu HTTP, můžete aktivovat svou aplikaci logiky prostřednictvím `POST` metoda toohello úplnou adresu URL. Logiku aplikace mají integrovanou podporu pro koncové body přímý přístup.
 
 ## <a name="reference-content-from-an-incoming-request"></a>Odkaz na obsah z příchozího požadavku
 
-Pokud je typ obsahu je `application/json`, vlastnosti, můžete odkazovat z příchozího požadavku. Obsah, jinak je považována za binární jedné jednotky, které můžete předat pro jiná rozhraní API. Chcete-li tento obsah uvnitř pracovního postupu, je nutné převést obsah. Například pokud předáte `application/xml` obsahu, můžete použít `@xpath()` pro extrakci XPath nebo `@json()` pro převod XML do formátu JSON. Další informace o [práce s typy obsahu](../logic-apps/logic-apps-content-type.md).
+Pokud je typ obsahu hello je `application/json`, vlastnosti, můžete odkazovat z příchozího požadavku hello. Jinak hodnota obsahu považovány za jednu jednotku binární, můžete předat tooother rozhraní API. Tento obsah uvnitř pracovního postupu hello tooreference, je nutné převést obsah. Například pokud předáte `application/xml` obsahu, můžete použít `@xpath()` pro extrakci XPath nebo `@json()` pro převod XML tooJSON. Další informace o [práce s typy obsahu](../logic-apps/logic-apps-content-type.md).
 
-Chcete-li získat výstup z příchozí žádosti, můžete použít `@triggerOutputs()` funkce. Výstup může vypadat jako tento ukázkový:
+tooget hello výstup z příchozího požadavku, můžete použít hello `@triggerOutputs()` funkce. výstup Hello může vypadat jako tento ukázkový:
 
 ```json
 {
@@ -223,18 +223,18 @@ Chcete-li získat výstup z příchozí žádosti, můžete použít `@triggerOu
 }
 ```
 
-Pro přístup k `body` vlastnost můžete konkrétně použít `@triggerBody()` zástupce. 
+tooaccess hello `body` vlastnost můžete konkrétně použít hello `@triggerBody()` zástupce. 
 
-## <a name="respond-to-requests"></a>Reaguje na požadavky.
+## <a name="respond-toorequests"></a>Odpověď toorequests
 
-Můžete chtít reagovat na určité požadavky, které začínají aplikace logiky vrácením obsah volajícímu. Chcete-li vytvořit stavový kód, záhlaví a text na vaši odpověď, můžete použít **odpovědi** akce. Tato akce může vyskytovat kdekoli v aplikaci logiky, nikoli pouze na konci pracovního postupu.
+Můžete chtít toorespond toocertain požadavků, které spustí aplikaci logiky vrácením obsahu toohello volajícího. tooconstruct hello stavový kód, záhlaví a text na vaši odpověď, můžete použít hello **odpovědi** akce. Tato akce může vyskytovat kdekoli v aplikaci logiky, nikoli pouze na konci hello pracovního postupu.
 
 > [!NOTE] 
-> Pokud svou aplikaci logiky neobsahuje **odpovědi**, odpoví koncový bod HTTP *okamžitě* s **202 platných** stavu. Pro původní žádost se získat odpověď, také všechny kroky potřebné pro odpověď musí dokončit v rámci [časový limit požadavku](./logic-apps-limits-and-config.md) Pokud volat pracovní postup jako vnořené logiku aplikace. V případě žádná odpověď v rámci tohoto limitu příchozího požadavku vyprší časový limit a obdrží odpověď HTTP **408 časový limit klienta**. Pro vnořené logic apps pokračuje aplikace logiky nadřazené čekat na odpověď, dokud nebude dokončena, bez ohledu na to, jak dlouho se vyžaduje.
+> Pokud svou aplikaci logiky neobsahuje **odpovědi**, odpoví koncový bod hello HTTP *okamžitě* s **202 platných** stavu. Navíc se pro hello původní žádost tooget hello odpověď, a všechny kroky potřebné k odpovědi hello musí dokončit hello [časový limit požadavku](./logic-apps-limits-and-config.md) Pokud volání hello pracovního postupu jako vnořené logiku aplikace. V případě žádná odpověď v rámci tohoto limitu hello příchozího požadavku vyprší časový limit a obdrží odpověď hello HTTP **408 časový limit klienta**. Pro vnořené logic apps pokračuje aplikace logiky nadřazené hello toowait pro odpověď, dokud nebude dokončena, bez ohledu na to, jak dlouho se vyžaduje.
 
-### <a name="construct-the-response"></a>Vytvoření odpovědi
+### <a name="construct-hello-response"></a>Konstrukce hello odpovědi
 
-V textu odpovědi může obsahovat více než jedno záhlaví a libovolný typ obsahu. V našem příkladu odpovědi hlavičku Určuje, že odpověď má typ obsahu `application/json`. a text obsahuje `title` a `name`, podle schématu JSON aktualizované dříve **požadavku** aktivační události.
+Můžete zahrnout více než jedno záhlaví a libovolný typ obsahu odpovědi hello. V našem příkladu odpovědi hello záhlaví Určuje, že hello odpověď má typ obsahu `application/json`. a hello text obsahuje `title` a `name`, podle schématu JSON hello aktualizované dříve hello **požadavku** aktivační události.
 
 ![Akce odpovědi HTTP][3]
 
@@ -242,11 +242,11 @@ Odpovědi mít tyto vlastnosti:
 
 | Vlastnost | Popis |
 | --- | --- |
-| statusCode |Určuje kód stavu HTTP pro reagovat na příchozí požadavek. Tento kód může být jakýkoli platný stavový kód, který začíná 2xx, 4xx nebo 5xx. Stavové kódy 3xx však nejsou povoleny. |
-| Záhlaví |Definuje libovolný počet hlaviček, které chcete zahrnout do odpovědi. |
+| statusCode |Určuje kód stavu hello HTTP pro odpovídá toohello příchozího požadavku. Tento kód může být jakýkoli platný stavový kód, který začíná 2xx, 4xx nebo 5xx. Stavové kódy 3xx však nejsou povoleny. |
+| Záhlaví |Definuje libovolný počet tooinclude hlavičky odpovědi hello. |
 | Text |Určuje objekt textu, který může být řetězec, objekt JSON nebo i binární obsah na něj odkazovat z předchozího kroku. |
 
-Tady je co schématu JSON teď pro vypadá **odpovědi** akce:
+Tady je co schématu JSON hello vypadá jako teď pro hello **odpovědi** akce:
 
 ``` json
 "Response": {
@@ -266,48 +266,48 @@ Tady je co schématu JSON teď pro vypadá **odpovědi** akce:
 ```
 
 > [!TIP]
-> Chcete-li zobrazit úplnou definici JSON pro svou aplikaci logiky na návrháře aplikace logiky, zvolte **Code zobrazení**.
+> Zvolte tooview hello dokončení JSON definici aplikace logiky na hello návrhář aplikace na základě logiky, **Code zobrazení**.
 
 ## <a name="q--a"></a>Dotazy a odpovědi
 
 #### <a name="q-what-about-url-security"></a>Otázka: co o adresu URL zabezpečení?
 
-Odpověď: azure bezpečně generuje logiku aplikace zpětného volání adresy URL pomocí sdíleného přístupového podpisu (SAS). Tento podpis projdou jako parametr dotazu a musí být ověřené před svou aplikaci logiky můžete aktivovat. Podpis jedinečná kombinace tajný klíč na aplikaci logiky, název aktivační události a operace, které se provádí pomocí vygeneruje Azure. Pokud má uživatel přístup ke klíči tajný logiku aplikace, se proto nelze generovat platný podpis.
+Odpověď: azure bezpečně generuje logiku aplikace zpětného volání adresy URL pomocí sdíleného přístupového podpisu (SAS). Tento podpis projdou jako parametr dotazu a musí být ověřené před svou aplikaci logiky můžete aktivovat. Podpis hello jedinečná kombinace tajný klíč na aplikaci logiky, název aktivační události hello a hello operace, které se provádí pomocí vygeneruje Azure. Pokud má uživatel přístup toohello tajný logiku aplikace klíče, se proto nelze generovat platný podpis.
 
    > [!IMPORTANT]
-   > Pro produkční a zabezpečených systémů důrazně doporučujeme před volání aplikace logiky přímo z prohlížeče, protože:
+   > Pro produkční a zabezpečených systémů důrazně doporučujeme před volání přímo z prohlížeče hello aplikace logiky, protože:
    > 
-   > * Sdílený přístupový klíč se zobrazí v adrese URL.
-   > * Nelze spravovat zabezpečené obsahu zásady z důvodu sdílených domén přes aplikaci logiky odběratele.
+   > * Hello sdílený přístupový klíč se zobrazí v adrese URL hello.
+   > * Nelze spravovat zabezpečení obsahu zásady z důvodu tooshared domén přes aplikaci logiky odběratele.
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>Otázka: je možné nakonfigurovat další koncové body HTTP?
 
-Odpověď: Ano koncových bodů protokolu HTTP podporují pokročilejší konfigurace prostřednictvím [ **API Management**](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost můžete konzistentně spravovat všechna vaše rozhraní API, včetně aplikace logiky, nastavit vlastní názvy domén, použít další metody ověřování a informace, například:
+Odpověď: Ano koncových bodů protokolu HTTP podporují pokročilejší konfigurace prostřednictvím [ **API Management**](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost hello pro tooconsistently můžete spravovat všechna vaše rozhraní API, včetně aplikace logiky, nastavit vlastní názvy domén, použít další metody ověřování a informace, například:
 
-* [Změnit metodu požadavku](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
-* [Segmenty adres URL žádosti o změnu](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
-* Nastavení domény API Management do [portál Azure](https://portal.azure.com/ "portálu Azure")
-* Nastavte zásady pro kontrolu pro základní ověřování
+* [Metoda žádosti o změnu hello](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
+* [Segmenty adres URL hello hello žádosti o změnu](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
+* Nastavení domény API Management do hello [portál Azure](https://portal.azure.com/ "portálu Azure")
+* Nastavení zásad toocheck pro základní ověřování
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Otázka: co změní schéma migraci z verze preview 1 prosince 2014?
+#### <a name="q-what-changed-when-hello-schema-migrated-from-hello-december-1-2014-preview"></a>Otázka: co se změnilo při hello schématu migraci z verze preview 1 prosince 2014 hello?
 
 Odpověď: Zde je souhrn o tyto změny:
 
 | Preview 1 prosince 2014 | 1. června 2016 |
 | --- | --- |
 | Klikněte na tlačítko **naslouchací proces protokolu HTTP** aplikace API |Klikněte na tlačítko **ruční aktivační událost** (žádná aplikace API povinné) |
-| Naslouchací proces protokolu HTTP nastavení "*automaticky odešle odpověď*" |Buď zahrnout **odpovědi** akce nebo není v definici pracovního postupu |
+| Naslouchací proces protokolu HTTP nastavení "*automaticky odešle odpověď*" |Buď zahrnout **odpovědi** akce nebo není v definici pracovního postupu hello |
 | Konfigurace ověřování Basic nebo OAuth |přes správu rozhraní API |
 | Konfigurace metody HTTP |V části **zobrazit rozšířené možnosti**, zvolte metodu HTTP |
 | Nakonfigurujte relativní cestu |V části **zobrazit rozšířené možnosti**, přidejte relativní cestu |
-| Referenční příchozí textu prostřednictvím`@triggerOutputs().body.Content` |Referenční dokumentace prostřednictvím`@triggerOutputs().body` |
-| **Odeslání odpovědi HTTP** akce naslouchací proces protokolu HTTP |Klikněte na tlačítko **odpovědět na požadavek HTTP** (žádná aplikace API povinné) |
+| Referenční dokumentace příchozí textu hello prostřednictvím`@triggerOutputs().body.Content` |Referenční dokumentace prostřednictvím`@triggerOutputs().body` |
+| **Odeslání odpovědi HTTP** akce hello naslouchací proces protokolu HTTP |Klikněte na tlačítko **reakce tooHTTP požadavku** (žádná aplikace API povinné) |
 
 ## <a name="get-help"></a>Podpora
 
-Klást otázky, odpovídat na ně a poučit se ze zkušeností jiných uživatelů Azure Logic Apps můžete ve [fóru Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+tooask otázky, odpovědi na otázky a zjistěte, jaké další Azure Logic Apps uživatelé dělají, navštivte hello [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-Pokud chcete pomoci při vylepšování Azure Logic Apps a konektorů, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Azure Logic Apps](http://aka.ms/logicapps-wish).
+toohelp zlepšení Azure Logic Apps a konektory, hlasovat o nebo odeslání nápadů v hello [web pro zasílání názorů uživatele Azure Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 

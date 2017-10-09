@@ -1,6 +1,6 @@
 ---
-title: "Řada SKU není k dispozici | Microsoft Docs"
-description: "Některé řada SKU nejsou k dispozici pro vybrané předplatné pro tuto oblast."
+title: "není k dispozici aaaSKU řady | Microsoft Docs"
+description: "Některé řada SKU jsou pro hello vybrané předplatné pro tuto oblast dostupná."
 services: Azure Supportability
 documentationcenter: 
 author: ganganarayanan
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: gangan
-ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 76d45894c75c714fb3165b86add4be9012cbd5bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sku-series-unavailable"></a>Řada SKU není k dispozici
-V některých oblastech nejsou některé SKU automaticky k dispozici v nové odběry.  K tomu může dojít při [výkonnější SKU byly zavedeny v oblasti](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/) a v době Oblíbené starší verze SKU odmítne.
-Zpráva "*některá SKU řady nejsou k dispozici pro vybrané předplatné pro tuto oblast*" se zobrazí při vytváření žádosti o podporu o navýšení kvóty výpočetní jádra.
+V některých oblastech nejsou některé SKU automaticky k dispozici v nové odběry.  K tomu může dojít při [výkonnější SKU byly zavedeny v oblasti](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/) a odmítne hello době Oblíbené hello starší verze SKU.
+uvítací zprávu "*některá SKU řady nejsou k dispozici pro hello vybrané předplatné pro tuto oblast*" se zobrazí, když vytvoření kvóty základní výpočetní tooincrease žádosti o podporu.
 
-Můžete si prostudovat SKU dostupnosti na [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services) stránky. 
+Můžete si prostudovat SKU dostupnost hello [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services) stránky. 
 
-Požádat o přístup k SKU, který byl omezen ze svého předplatného, vytvořte žádost o podporu "Správa předplatného".
+toorequest přístup tooa SKU, který byl omezen ze svého předplatného, vytvořit žádost o podporu "Správa předplatného".
 
-* Na stránce základy vyberte typ problému jako "Správa předplatného" a klikněte na tlačítko Další..
+* Na stránce základy hello vyberte typ problému jako "Správa předplatného" a klikněte na tlačítko Další..
 
 ![Okno Základy](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
-* Na stránce problém vyberte typ problému jako "Další obecné otázky" a zadejte přesnou oblast a nevidíte SKU.
-  To pomůže urychlit proces podpory.
+* Na stránce hello problém vyberte typ problému hello jako "Další obecné otázky" a zadejte přesnou oblast hello a nevidíte SKU.
+  To pomůže urychlit proces podpory hello.
 
 ![Problém](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
-* Na stránce kontaktní údaje zadejte svoje kontaktní údaje a klikněte na tlačítko "Vytvořit".
+* Na stránce hello kontaktní údaje zadejte svoje kontaktní údaje a klikněte na tlačítko "Vytvořit".
 
 ![Kontaktní informace](./media/SKU-series-unavailable/ContactInformation.png)
 
 ## <a name="feedback"></a>Váš názor
-Snažíme se vždy otevřený a názory a návrhy! Pošlete nám vaše [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete použít u nás prostřednictvím [Twitter](https://twitter.com/azuresupport) nebo [fórech MSDN](https://social.msdn.microsoft.com/Forums/azure).
+Snažíme se vždy otevřete toofeedback a návrhy! Pošlete nám vaše [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete použít u nás prostřednictvím [Twitter](https://twitter.com/azuresupport) nebo hello [fórech MSDN](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Další informace
 [Nejčastější dotazy týkající se podpory Azure](https://azure.microsoft.com/support/faq)

@@ -1,6 +1,6 @@
 ---
-title: "Dotazování indexu (.NET API – Azure Search) | Dokumentace Microsoftu"
-description: "Sestavení vyhledávacího dotazu ve službě Azure Search a použití parametrů hledání k filtrování a řazení výsledků vyhledávání."
+title: "AAA \"dotazování indexu (rozhraní .NET API - Azure Search) | Microsoft Docs\""
+description: "Sestavení vyhledávacího dotazu ve službě Azure search a pomocí vyhledávání parametrů toofilter a řazení výsledků vyhledávání."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
-ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8b3ba1cd1270aad038fb48d9053fcff35d243e13
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="query-your-azure-search-index-using-the-net-sdk"></a>Dotazování indexu Azure Search pomocí .NET SDK
+# <a name="query-your-azure-search-index-using-hello-net-sdk"></a>Dotazování indexu Azure Search pomocí .NET SDK hello
 > [!div class="op_single_selector"]
 > * [Přehled](search-query-overview.md)
 > * [Azure Portal](search-explorer.md)
@@ -28,31 +28,31 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-Tento článek vám ukáže postup dotazování indexu pomocí [.NET SDK služby Azure Search](https://aka.ms/search-sdk).
+Tento článek vám ukáže, jak tooquery indexu pomocí hello [Azure Search .NET SDK](https://aka.ms/search-sdk).
 
 Před zahájením tohoto názorného průvodce byste již měli mít [vytvořený index Azure Search](search-what-is-an-index.md) a ten by měl být [naplněný daty](search-what-is-data-import.md).
 
 > [!NOTE]
-> Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
+> Ukázkový kód v tomto článku je napsán v jazyce C#. Hello úplný zdrojový kód najdete [na Githubu](http://aka.ms/search-dotnet-howto). Můžete si také přečíst o hello [Azure Search .NET SDK](search-howto-dotnet-sdk.md) pro podrobnější procházení prostřednictvím hello ukázek kódu.
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Zjistěte klíč api-key správce služby Azure Search
-Po vytvoření indexu Azure Search jste již téměř připraveni vydávat dotazy pomocí .NET SDK. Nejprve budete muset získat jeden z klíčů dotazů (api-key) vytvořených pro vyhledávací službu, kterou jste zřídili. .NET SDK bude tento klíč api-key odesílat v každém požadavku na vaši službu. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Teď, když jste vytvořili index Azure Search, jste skoro hotový tooissue dotazy pomocí .NET SDK hello. Nejprve budete potřebovat tooobtain mezi hello dotazu klíče api Key vytvořených pro hello vyhledávací službu, kterou jste zřídili. Hello .NET SDK odešle tento klíč rozhraní api služby tooyour každý požadavek. Platný klíč vytváří na základě žádosti mezi hello aplikace odesílání hello požadavku a hello služby, která ji zpracovává vztah důvěryhodnosti.
 
-1. Pokud chcete najít klíče api-key svojí služby, přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte do okna služby Azure Search.
-3. Klikněte na ikonu klíčů.
+1. toofind vaší služby klíče api Key přihlášením toohello [portálu Azure](https://portal.azure.com/)
+2. Okno služby Azure Search přejděte tooyour
+3. Klikněte na hello ikonu klíčů."
 
 Vaše služba bude mít *klíče správce* a *klíče dotazů*.
 
-* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
-* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
+* Primární a sekundární *klíče správce* udělit úplná práva tooall operace, včetně hello možnost toomanage hello služby, vytvářet a odstraňovat indexy, indexery a zdroje dat.. Existují dva klíče, aby mohl pokračovat toouse hello sekundární klíč, pokud se rozhodnete tooregenerate hello primární klíč a naopak.
+* Vaše *klíče dotazů* udělit oprávnění jen pro čtení tooindexes a dokumentům a obvykle distribuované tooclient aplikace, které vydávají požadavky hledání.
 
-Pro účely dotazování indexu můžete použít jeden z klíčů dotazů. Pro dotazy lze použít i klíče správce, ale ve svých aplikacích byste měli používat klíče dotazů, což lépe odpovídá [Principu minimálního oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+Pro účely hello dotazování indexu můžete použít jeden z klíčů dotazů. Pro dotazy lze také použít klíče správce, ale byste měli používat klíče dotazů v kódu aplikace, což lépe odpovídá hello [Princip nejnižších nutných oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
-## <a name="create-an-instance-of-the-searchindexclient-class"></a>Vytvoření instance třídy SearchIndexClient
-Chcete-li vydávat dotazy pomocí .NET SDK služby Azure Search, budete muset vytvořit instanci třídy `SearchIndexClient`. Tato třída obsahuje několik konstruktorů. Ten, který chcete, přijímá jako parametry název vaší vyhledávací služby, název indexu a objekt `SearchCredentials`. `SearchCredentials` zabalí váš klíč api-key.
+## <a name="create-an-instance-of-hello-searchindexclient-class"></a>Vytvoření instance třídy SearchIndexClient hello
+tooissue dotazy s hello .NET SDK služby Azure Search, budete potřebovat toocreate instanci hello `SearchIndexClient` třídy. Tato třída obsahuje několik konstruktorů. Dobrý den, ten, který chcete přebírá název vaší vyhledávací služby, název indexu a `SearchCredentials` jako parametry. `SearchCredentials` zabalí váš klíč api-key.
 
-Následující kód vytvoří novou třídu `SearchIndexClient` pro index „hotels“ (vytvořený v tématu [Vytvoření indexu Azure Search pomocí .NET SDK](search-create-index-dotnet.md)) pomocí hodnot pro název vyhledávací služby a klíče api-key, které jsou uložené v konfiguračním souboru aplikace (v případě [ukázkové aplikace](http://aka.ms/search-dotnet-howto) `appsettings.json`):
+Hello následující kód vytvoří novou `SearchIndexClient` pro index "hotels" hello (vytvořené v [vytvoření indexu Azure Search pomocí .NET SDK hello](search-create-index-dotnet.md)) pomocí hodnot pro název vyhledávací služby hello a rozhraní api klíče, které jsou uložené v souboru config aplikace hello soubor (`appsettings.json` v případě hello hello [ukázkové aplikace](http://aka.ms/search-dotnet-howto)):
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -65,24 +65,24 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-`SearchIndexClient` obsahuje vlastnost `Documents`. Tato vlastnost poskytuje všechny metody, které potřebujete k dotazování indexů Azure Search.
+`SearchIndexClient` obsahuje vlastnost `Documents`. Tato vlastnost poskytuje že všechny metody, které potřebujete indexů Azure Search tooquery hello.
 
 ## <a name="query-your-index"></a>Dotázání indexu
-Vyhledávání pomocí .NET SDK je jednoduché, stačí na `SearchIndexClient` zavolat metodu `Documents.Search`. Tato metoda přijímá několik parametrů včetně textu vyhledávání, spolu s objektem `SearchParameters`, který lze použít pro další upřesnění dotazu.
+Hledání s hello .NET SDK je jednoduché, volání hello `Documents.Search` metoda na vaše `SearchIndexClient`. Tato metoda přijímá několik parametrů včetně textu hello vyhledávání, spolu s `SearchParameters` objekt, který lze použít toofurther upravit hello dotazu.
 
 #### <a name="types-of-queries"></a>Typy dotazů
-Dva hlavní [typy dotazů](search-query-overview.md#types-of-queries), které budete používat, jsou `search` a `filter`. Dotaz `search` vyhledává jeden nebo více výrazů ve všech *prohledávatelných* polích v indexu. Dotaz `filter` vyhodnocuje logický výraz na všech *filtrovatelných* polích v indexu.
+Hello dva hlavní [typy dotazů](search-query-overview.md#types-of-queries) použijete jsou `search` a `filter`. Dotaz `search` vyhledává jeden nebo více výrazů ve všech *prohledávatelných* polích v indexu. Dotaz `filter` vyhodnocuje logický výraz na všech *filtrovatelných* polích v indexu.
 
-Vyhledávání i filtrování se provádí pomocí metody `Documents.Search`. Vyhledávací dotaz lze předat v parametru `searchText`, zatímco výraz filtru lze předat ve vlastnosti `Filter` třídy `SearchParameters`. Chcete-li filtrovat bez vyhledávání, stačí předat `"*"` jako hodnotu parametru `searchText`. Chcete-li vyhledávat bez filtrování, ponechte vlastnost `Filter` nenastavenou nebo instanci `SearchParameters` vůbec nepředávejte.
+Vyhledávání i filtrování se provádí pomocí hello `Documents.Search` metoda. Vyhledávací dotaz lze předat ve hello `searchText` parametr, zatímco výraz filtru lze předat v hello `Filter` vlastnost hello `SearchParameters` třídy. toofilter bez vyhledávání, stačí předat `"*"` pro hello `searchText` parametr. toosearch bez filtrování, ponechte hello `Filter` vlastnost nenastavenou nebo nepředávejte `SearchParameters` instance vůbec.
 
 #### <a name="example-queries"></a>Ukázky dotazů
-Následující vzorový kód ukazuje několik různých způsobů dotazování indexu „hotels“, definovaného v tématu [Vytvoření indexu Azure Search pomocí .NET SDK](search-create-index-dotnet.md#DefineIndex). Všimněte si, že dokumenty vrácené ve výsledcích vyhledávání jsou instancemi třídy `Hotel`, která byla definovaná v tématu [Import dat do služby Azure Search pomocí .NET SDK](search-import-data-dotnet.md#HotelClass). Ukázkový kód využívá metody `WriteDocuments` k vypsání výsledků vyhledávání do konzoly. Tato metoda je popsaná v následujícím oddílu.
+Hello následující vzorový kód ukazuje několik různých způsobů tooquery hello "hotels" indexu definované v [vytvoření indexu Azure Search pomocí .NET SDK hello](search-create-index-dotnet.md#DefineIndex). Všimněte si, že hello dokumenty vrácené ve výsledcích hledání hello jsou instancemi třídy hello `Hotel` třída, která byla definovaná v [hello Import dat do služby Azure Search pomocí .NET SDK](search-import-data-dotnet.md#HotelClass). Hello ukázkový kód využívá `WriteDocuments` metoda toooutput hello vyhledávání výsledky toohello konzoly. Tato metoda je popsaná v další části hello.
 
 ```csharp
 SearchParameters parameters;
 DocumentSearchResult<Hotel> results;
 
-Console.WriteLine("Search the entire index for the term 'budget' and return only the hotelName field:\n");
+Console.WriteLine("Search hello entire index for hello term 'budget' and return only hello hotelName field:\n");
 
 parameters =
     new SearchParameters()
@@ -94,8 +94,8 @@ results = indexClient.Documents.Search<Hotel>("budget", parameters);
 
 WriteDocuments(results);
 
-Console.Write("Apply a filter to the index to find hotels cheaper than $150 per night, ");
-Console.WriteLine("and return the hotelId and description:\n");
+Console.Write("Apply a filter toohello index toofind hotels cheaper than $150 per night, ");
+Console.WriteLine("and return hello hotelId and description:\n");
 
 parameters =
     new SearchParameters()
@@ -108,8 +108,8 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 
 WriteDocuments(results);
 
-Console.Write("Search the entire index, order by a specific field (lastRenovationDate) ");
-Console.Write("in descending order, take the top two results, and show only hotelName and ");
+Console.Write("Search hello entire index, order by a specific field (lastRenovationDate) ");
+Console.Write("in descending order, take hello top two results, and show only hotelName and ");
 Console.WriteLine("lastRenovationDate:\n");
 
 parameters =
@@ -124,7 +124,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 
 WriteDocuments(results);
 
-Console.WriteLine("Search the entire index for the term 'motel':\n");
+Console.WriteLine("Search hello entire index for hello term 'motel':\n");
 
 parameters = new SearchParameters();
 results = indexClient.Documents.Search<Hotel>("motel", parameters);
@@ -133,7 +133,7 @@ WriteDocuments(results);
 ```
 
 ## <a name="handle-search-results"></a>Zpracování výsledků vyhledávání
-Metoda `Documents.Search` vrací objekt `DocumentSearchResult`, který obsahuje výsledky dotazu. Ukázka v předchozím oddílu používala pro vypsání výsledků vyhledávání do konzoly metodu s názvem `WriteDocuments`:
+Hello `Documents.Search` metoda vrátí `DocumentSearchResult` objekt, který obsahuje výsledky dotazu hello hello. Příklad Hello v předchozí části hello používá metodu s názvem `WriteDocuments` toooutput hello vyhledávání výsledky toohello konzoly:
 
 ```csharp
 private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -147,27 +147,27 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-Zde vidíte, jak vypadají výsledky dotazů v předchozím oddílu za předpokladu, že je index „hotels“ naplněný vzorovými daty v tématu [Import Dat do služby Azure Search pomocí .NET SDK](search-import-data-dotnet.md):
+Tady je co najít hello výsledky jako pro dotazy hello v předchozí části hello, v případě index hello "hotels" naplněný hello vzorovými daty v [hello Import dat do služby Azure Search pomocí .NET SDK](search-import-data-dotnet.md):
 
 ```
-Search the entire index for the term 'budget' and return only the hotelName field:
+Search hello entire index for hello term 'budget' and return only hello hotelName field:
 
 Name: Roach Motel
 
-Apply a filter to the index to find hotels cheaper than $150 per night, and return the hotelId and description:
+Apply a filter toohello index toofind hotels cheaper than $150 per night, and return hello hotelId and description:
 
 ID: 2   Description: Cheapest hotel in town
-ID: 3   Description: Close to town hall and the river
+ID: 3   Description: Close tootown hall and hello river
 
-Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Search hello entire index, order by a specific field (lastRenovationDate) in descending order, take hello top two results, and show only hotelName and lastRenovationDate:
 
 Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
 Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 
-Search the entire index for the term 'motel':
+Search hello entire index for hello term 'motel':
 
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 ```
 
-Výše uvedený ukázkový kód používá k vypsání výsledků vyhledávání konzolu. Stejně tak budete potřebovat zobrazit výsledky vyhledávání ve své aplikaci. Ukázku vykreslování výsledků vyhledávání ve webové aplikaci založené na ASP.NET MVC naleznete v [této ukázce na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample).
+Hello výše uvedený ukázkový kód využívá výsledky hledání toooutput hello konzoly. Stejně tak budete potřebovat toodisplay výsledků vyhledávání ve vaší vlastní aplikaci. V tématu [této ukázce na Githubu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) příklad jak výsledky hledání toorender založené na ASP.NET MVC webové aplikace.
 

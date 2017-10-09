@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for PostgreSQL z Node.js | Dokumentace Microsoftu"
-description: "V tomto rychlém startu najdete vzorek kódu Node.js, který můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL."
+title: "Připojení tooAzure databáze pro PostgreSQL z Node.js | Microsoft Docs"
+description: "Tento rychlý start poskytuje ukázka kódu Node.js můžete použít tooconnect a zadávat dotazy na data z databáze Azure pro PostgreSQL."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,17 +11,17 @@ ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.openlocfilehash: f6c98833c73b70bcf1f8ca53596a34f09807b276
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9b269d72068ecc24bcf3fb447a2efeda512c698c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití Node.js k připojení a dotazování dat
-Tento rychlý start předvádí, jak se připojit k databázi Azure pro používání PostgreSQL [Node.js](https://nodejs.org/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
+# <a name="azure-database-for-postgresql-use-nodejs-tooconnect-and-query-data"></a>Azure databázi PostgreSQL: použití Node.js tooconnect a dotazování dat
+Tento rychlý start předvádí jak tooconnect tooan Azure databázi PostgreSQL pomocí [Node.js](https://nodejs.org/). Zobrazuje jak toouse tooquery příkazy SQL, vložit, aktualizovat a odstranit data v databázi hello. Hello postup v tomto článku předpokládá, že jste obeznámeni s vývojem pomocí Node.js, a že jste novou tooworking s Azure databáze PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
+Tento rychlý start využívá prostředky hello vytvořené v některém z těchto průvodcích se dozvíte jako výchozí bod:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku](quickstart-create-server-database-azure-cli.md)
 
@@ -31,34 +31,34 @@ Budete také muset:
 ## <a name="install-pg-client"></a>Instalace klienta pg
 Nainstalujte [pg](https://www.npmjs.com/package/pg), což je PostgreSQL klienta pro Node.js.
 
-Abyste to mohli udělat, spusťte správce balíčků pro uzly (npm) pro JavaScript z příkazového řádku, abyste instalovali klienta pg.
+toodo tedy spustit hello uzel Správce balíčků (npm) pro jazyk JavaScript z příkazového řádku tooinstall hello pg klienta.
 ```bash
 npm install pg
 ```
 
-Ověřte instalaci tak, že vypíšete nainstalované balíčky.
+Ověření instalace hello tak, že uvedete hello balíčky nainstalované.
 ```bash
 npm list
 ```
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello databáze Azure pro PostgreSQL. Musíte hello serveru plně kvalifikovaný název a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. Z nabídky na levé straně na portálu Azure, klikněte na tlačítko **všechny prostředky** a vyhledávání pro server, kterou jste právě vytvořili.
-3. Klikněte na název serveru.
-4. Vyberte stránku **Přehled** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
- ![Azure Database for PostgreSQL – přihlašovací jméno správce serveru](./media/connect-nodejs/1-connection-string.png)
-5. Pokud zapomenete přihlašovací údaje k serveru, přejděte na stránku **Přehled**, kde můžete zobrazit přihlašovací jméno správce serveru a v případě potřeby resetovat heslo.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Hello levé nabídce na portálu Azure, klikněte na tlačítko **všechny prostředky** a vyhledejte hello serveru, kterou jste právě vytvořili.
+3. Klikněte na název serveru hello.
+4. Vyberte hello serveru **přehled** stránky. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**.
+ ![Azure Database for PostgreSQL – přihlášení správce serveru](./media/connect-nodejs/1-connection-string.png)
+5. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello **přehled** stránka tooview hello serveru správce přihlašovací jméno a v případě potřeby obnovit heslo hello.
 
-## <a name="running-the-javascript-code-in-nodejs"></a>Spuštění kódu jazyka JavaScript v Node.js
-Node.js můžete spouštět z prostředí Bash nebo příkazového řádku Windows tak, že zadáte `node` a potom interaktivně spustíte příklad kódu jazyka JavaScript tak, že ho zkopírujete a vložíte na příkazový řádek. Případně můžete kód jazyka JavaScript uložit do textového souboru a provést příkaz `node filename.js`, kdy název souboru se bude shodovat s parametrem, který ho spouští.
+## <a name="running-hello-javascript-code-in-nodejs"></a>Spuštění kódu JavaScript hello v Node.js
+Node.js hello bash prostředí nebo windows příkazovém řádku může spustit zadáním `node`, spustit kód jazyka JavaScript příklad hello interaktivně kopírování a vkládání do hello řádku. Alternativně může uložit hello kódu jazyka JavaScript do textového souboru a spuštění `node filename.js` s názvem souboru hello jako parametr toorun ho.
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Použijte následující kód k připojení a načtení dat pomocí příkazů **CREATE TABLE** a **INSERT INTO** jazyka SQL.
-Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
+Použití hello následující kód tooconnect a načtení dat pomocí hello **CREATE TABLE** a **INSERT INTO** příkazů SQL.
+Hello [pg. Klient](https://github.com/brianc/node-postgres/wiki/Client) objekt je použité toointerface hello PostgreSQL serveru. Hello [pg. Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) funkce je použité tooestablish hello připojení toohello server. Hello [pg. Client.Query()](https://github.com/brianc/node-postgres/wiki/Query) funkce je použité tooexecute hello dotaz SQL na databázi PostgreSQL. 
 
-Nahraďte parametry host (hostitel), dbname (název databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření serveru a databáze.
+Nahraďte hello hodnoty, kterou jste zadali při vytvoření hello server a databáze hello hostitele, dbname, uživatele a heslo parametry.
 
 ```javascript
 const pg = require('pg');
@@ -107,9 +107,9 @@ function queryDatabase() {
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **vyberte** příkaz jazyka SQL. Hello [pg. Klient](https://github.com/brianc/node-postgres/wiki/Client) objekt je použité toointerface hello PostgreSQL serveru. Hello [pg. Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) funkce je použité tooestablish hello připojení toohello server. Hello [pg. Client.Query()](https://github.com/brianc/node-postgres/wiki/Query) funkce je použité tooexecute hello dotaz SQL na databázi PostgreSQL. 
 
-Nahraďte parametry host (hostitel), dbname (název databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte hello hodnoty, kterou jste zadali při vytvoření hello server a databáze hello hostitele, dbname, uživatele a heslo parametry. 
 
 ```javascript
 const pg = require('pg');
@@ -134,7 +134,7 @@ client.connect(err => {
 
 function queryDatabase() {
   
-    console.log(`Running query to PostgreSQL server: ${config.host}`);
+    console.log(`Running query tooPostgreSQL server: ${config.host}`);
 
     const query = 'SELECT * FROM inventory;';
 
@@ -155,9 +155,9 @@ function queryDatabase() {
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Použijte následující kód k připojení a čtení dat pomocí příkazu **UPDATE** jazyka SQL. Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **aktualizace** příkaz jazyka SQL. Hello [pg. Klient](https://github.com/brianc/node-postgres/wiki/Client) objekt je použité toointerface hello PostgreSQL serveru. Hello [pg. Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) funkce je použité tooestablish hello připojení toohello server. Hello [pg. Client.Query()](https://github.com/brianc/node-postgres/wiki/Query) funkce je použité tooexecute hello dotaz SQL na databázi PostgreSQL. 
 
-Nahraďte parametry host (hostitel), dbname (název databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte hello hodnoty, kterou jste zadali při vytvoření hello server a databáze hello hostitele, dbname, uživatele a heslo parametry. 
 
 ```javascript
 const pg = require('pg');
@@ -202,9 +202,9 @@ function queryDatabase() {
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **odstranit** příkaz jazyka SQL. Hello [pg. Klient](https://github.com/brianc/node-postgres/wiki/Client) objekt je použité toointerface hello PostgreSQL serveru. Hello [pg. Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) funkce je použité tooestablish hello připojení toohello server. Hello [pg. Client.Query()](https://github.com/brianc/node-postgres/wiki/Query) funkce je použité tooexecute hello dotaz SQL na databázi PostgreSQL. 
 
-Nahraďte parametry host (hostitel), dbname (název databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte hello hodnoty, kterou jste zadali při vytvoření hello server a databáze hello hostitele, dbname, uživatele a heslo parametry. 
 
 ```javascript
 const pg = require('pg');

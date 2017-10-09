@@ -1,6 +1,6 @@
 ---
-title: "Migrovat ExpressRoute přidružené virtuální sítě z classic do Resource Manager: Azure: prostředí PowerShell | Microsoft Docs"
-description: "Tato stránka popisuje, jak migrovat přidružený virtuálních sítí do Resource Manager po přesunutí okruhu."
+title: "Migrace z classic tooResource Manager ExpressRoute přidružené virtuální sítě: Azure: prostředí PowerShell | Microsoft Docs"
+description: "Tato stránka popisuje, jak toomigrate přidružené virtuální sítě tooResource Manager po přesunutí okruhu."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,77 +15,77 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 964ea38569062a7127f60dd6309b328db263bf6f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e64506c6909296f98c5dd23b1437bc0b81f31c75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrovat ExpressRoute přidružené virtuální sítě z classic do Resource Manager
+# <a name="migrate-expressroute-associated-virtual-networks-from-classic-tooresource-manager"></a>Migrace z classic tooResource Manager ExpressRoute přidružené virtuální sítě
 
-Tento článek vysvětluje, jak migrovat virtuálních sítí Azure ExpressRoute přidružené z modelu nasazení classic do modelu nasazení Azure Resource Manager po přesunutí okruhu ExpressRoute. 
+Tento článek vysvětluje, jak toomigrate Azure ExpressRoute přidružené virtuální sítě z modelu nasazení classic hello, toohello modelu nasazení Azure Resource Manager po přesunutí okruhu ExpressRoute. 
 
 
 ## <a name="before-you-begin"></a>Než začnete
-* Ověřte, zda máte nejnovější verzi modulů prostředí Azure PowerShell. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
-* Ujistěte se, že jste si přečetli [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
-* Zkontrolujte informace, které jsou poskytovány na základě [přesun okruhu ExpressRoute z classic do Resource Manager](expressroute-move.md). Ujistěte se, že rozumíte plně limity a omezení.
-* Ověřte, že je okruh v modelu nasazení classic plně funkční.
-* Ujistěte se, že máte skupinu prostředků, který byl vytvořen v modelu nasazení Resource Manager.
-* Přečtěte si následující dokumentaci k migraci prostředků:
+* Ověřte, zda máte nejnovější verzi modulů prostředí Azure PowerShell hello hello. Další informace najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* Ujistěte se, že jste si přečetli hello [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
+* Zkontrolujte hello informace jsou poskytovány na základě [přesun okruhu ExpressRoute z classic tooResource Manager](expressroute-move.md). Ujistěte se, že rozumíte plně hello limity a omezení.
+* Ověřte, že hello okruh v modelu nasazení classic hello plně funkční.
+* Ujistěte se, že máte skupinu prostředků, který byl vytvořen v modelu nasazení Resource Manager hello.
+* Projděte si následující dokumentace k migraci prostředků hello:
 
-    * [Platforma podporovaná migrace z klasického do Azure Resource Manageru prostředků IaaS](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-    * [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [Nejčastější dotazy: Migrace z klasického do Azure Resource Manageru prostředky infrastruktury podporované platformy](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [Podporované platformy migrace prostředky infrastruktury z classic tooAzure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [Technické podrobné informace o platformy podporované migrace z klasického tooAzure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+    * [Nejčastější dotazy: Migrace podporované platformy IaaS prostředků z classic tooAzure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Zkontrolujte nejběžnějších chyb, migrace a jejich zmírnění](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Podporované a nepodporované scénáře
 
-* Okruh ExpressRoute můžete přesunout z klasického správce prostředků prostředí bez odstávky. Jakýkoli okruh ExpressRoute můžete přesunout z classic do Resource Manager prostředí bez výpadků. Postupujte podle pokynů v [přesun okruhů ExpressRoute z klasického modelu nasazení Resource Manager pomocí prostředí PowerShell](expressroute-howto-move-arm.md). Toto je předpokladem pro přesunout prostředky, které jsou připojené k virtuální síti.
-* Virtuální sítě, bran a související nasazení v rámci virtuální sítě, které jsou připojené k okruhu ExpressRoute v rámci stejného předplatného, mohou být migrovány do prostředí Resource Manager bez odstávky. Můžete provést kroky popsané dál migrovat prostředkům, například virtuální sítě, bran a virtuálních počítačů nasazených v rámci virtuální sítě. Je nutné zajistit, že virtuální sítě jsou správně nakonfigurovaná, před jejich migrací. 
-* Virtuální sítě, bran a související nasazení v rámci virtuální sítě, které nejsou ve stejném předplatném jako okruh ExpressRoute vyžadují výpadky k dokončení migrace. Poslední část dokumentu popisuje kroky pro migraci prostředků.
+* Z prostředí Resource Manager classic toohello hello bez odstávky můžete přesunout okruh ExpressRoute. Jakýkoli okruh ExpressRoute můžete přesunout z hello classic toohello Resource Manager prostředí bez výpadků. Postupujte podle pokynů hello v [přesun okruhů ExpressRoute z hello toohello klasického modelu nasazení Resource Manager pomocí prostředí PowerShell](expressroute-howto-move-arm.md). Toto je virtuální sítě připojený toohello požadovaných toomove prostředky.
+* Virtuální sítě, bran a přidružené nasazení v rámci hello virtuální sítě, které jsou připojené tooan okruh ExpressRoute v hello, který může být stejné předplatné migrovat toohello Resource Manager prostředí bez odstávky. Můžete postupovat podle hello kroky popsané novější toomigrate prostředkům, například virtuální sítě, bran a virtuálních počítačů nasazených v rámci virtuální sítě hello. Je nutné zajistit, že hello virtuální sítě jsou správně nakonfigurovaná, před jejich migrací. 
+* Virtuální sítě, bran a související nasazení v rámci hello virtuální sítě, které nejsou v hello stejného předplatného jako hello okruh ExpressRoute, vyžadují některé výpadek toocomplete hello migraci. poslední část Hello hello dokumentu popisuje prostředky toomigrate toobe postupovali podle kroků hello.
 * Nelze migrovat virtuální síť s bránu ExpressRoute i bránu VPN.
 
-## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Přesun okruhu ExpressRoute z classic do Resource Manager
-Okruh ExpressRoute z klasického je třeba přesunout do prostředí Resource Manager předtím, než se pokusíte migrovat prostředky, které jsou připojené k okruhu ExpressRoute. K provedení této úlohy, najdete v následujících článcích:
+## <a name="move-an-expressroute-circuit-from-classic-tooresource-manager"></a>Přesun okruhu ExpressRoute z classic tooResource Manager
+Je třeba přesunout, že okruhu ExpressRoute z hello classic toohello prostředí správce prostředků, než se pokusíte toomigrate prostředky, které jsou připojené toohello okruh ExpressRoute. tooaccomplish to úloh, najdete v části hello následující články:
 
-* Zkontrolujte informace, které jsou poskytovány na základě [přesun okruhu ExpressRoute z classic do Resource Manager](expressroute-move.md).
-* [Přesun okruhu z classic do Resource Manager pomocí Azure PowerShell](expressroute-howto-move-arm.md).
-* Pomocí portálu pro správu služby Azure. Můžete postupovat podle pracovního postupu [vytvořit nové okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a zvolte možnost importovat. 
+* Zkontrolujte hello informace jsou poskytovány na základě [přesun okruhu ExpressRoute z classic tooResource Manager](expressroute-move.md).
+* [Přesun okruhu z classic tooResource Manager pomocí Azure PowerShell](expressroute-howto-move-arm.md).
+* Pomocí portálu Azure Service Management hello. Můžete postupovat podle pracovního postupu hello příliš[vytvořit nové okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a zvolte možnost importovat hello. 
 
-Tato operace nezahrnuje výpadku. Můžete pokračovat k přenosu dat mezi vaší místní a společnosti Microsoft, když probíhá migrace.
+Tato operace nezahrnuje výpadku. Tootransfer dat mezi místním a společnosti Microsoft můžete pokračovat, zatímco probíhá migrace hello.
 
 ## <a name="migrate-virtual-networks-gateways-and-associated-deployments"></a>Migrovat virtuální sítě, bran a související nasazení
 
-Kroky, které při migraci závisí na tom, jestli vaše prostředky jsou ve stejném předplatném a různých předplatných.
+Hello kroky podle toomigrate závisí na tom, jestli vaše prostředky jsou v hello stejného předplatného, různých předplatných nebo obojí.
 
-### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-the-same-subscription-as-the-expressroute-circuit"></a>Migrovat virtuální sítě, bran a související nasazení ve stejném předplatném jako okruh ExpressRoute
-Tato část popisuje kroky pro migraci virtuální sítě, bránu a přidružené nasazení ve stejném předplatném jako okruh ExpressRoute. Odstávka je přidružen k této migrace. Můžete nadále používat všechny prostředky prostřednictvím procesu migrace. Správu roviny uzamčeno, když probíhá migrace. 
+### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-hello-same-subscription-as-hello-expressroute-circuit"></a>Migrujte virtuální sítě, brány, a související nasazení v hello stejného předplatného jako hello okruh ExpressRoute
+Tato část popisuje toomigrate toobe postupovali podle kroků hello virtuální sítě, bránu a přidružené nasazení v hello stejného předplatného jako hello okruh ExpressRoute. Odstávka je přidružen k této migrace. Můžete dál toouse všechny prostředky procesem migrace hello. Hello správu roviny uzamčeno, když probíhá migrace hello. 
 
-1. Ujistěte se, že okruh ExpressRoute byl přesunut z klasického prostředí Resource Manager.
-2. Ujistěte se, jestli virtuální sítě má správně připravené pro migraci.
-3. Registrace předplatného pro migraci prostředků. Chcete-li zaregistrovat předplatné pro migraci prostředků, použijte následující fragment kódu prostředí PowerShell:
+1. Ujistěte se, že okruh ExpressRoute hello přesunula z prostředí Resource Manager classic toohello hello.
+2. Zajistěte, aby že správně připraven hello virtuální síti pro migraci hello.
+3. Registrace předplatného pro migraci prostředků. tooregister vaše předplatné pro migraci prostředků, použijte hello následující fragment kódu prostředí PowerShell:
 
   ```powershell 
   Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
   Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
   ```
-4. Ověření, přípravě a migrovat. Chcete-li přesunout virtuální síť, použijte následující fragment kódu prostředí PowerShell:
+4. Ověření, přípravě a migrovat. toomove hello virtuální síť, použijte hello následující fragment kódu prostředí PowerShell:
 
   ```powershell
   Move-AzureVirtualNetwork -Prepare $vnetName  
   Move-AzureVirtualNetwork -Commit $vnetName
   ```
 
-  Migrace může přerušit také spuštěním následující rutiny prostředí PowerShell:
+  Migrace může přerušit také spuštěním následující rutiny prostředí PowerShell hello:
 
   ```powershell
   Move-AzureVirtualNetwork -Abort $vnetName
   ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Platforma podporovaná migrace z klasického do Azure Resource Manageru prostředků IaaS](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-* [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [Nejčastější dotazy: Migrace z klasického do Azure Resource Manageru prostředky infrastruktury podporované platformy](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [Podporované platformy migrace prostředky infrastruktury z classic tooAzure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [Technické podrobné informace o platformy podporované migrace z klasického tooAzure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+* [Nejčastější dotazy: Migrace podporované platformy IaaS prostředků z classic tooAzure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Zkontrolujte nejběžnějších chyb, migrace a jejich zmírnění](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,5 +1,5 @@
 ---
-title: "Návrh pokyny pro replikované tabulky – Azure SQL Data Warehouse | Microsoft Docs"
+title: "pokyny, aaaDesign replikovaných tabulek – Azure SQL Data Warehouse | Microsoft Docs"
 description: "Doporučení k návrhu replikovaných tabulek v Azure SQL Data Warehouse schéma."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -14,62 +14,62 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 437a4f628a343312984d1fa2981df7fa01459e26
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5d405b8c404c65177b387ba959126839c1cf8799
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu pro používání replikovaných tabulek v Azure SQL Data Warehouse
-Tento článek obsahuje doporučení pro návrh replikovaných tabulek v SQL Data Warehouse schéma. Použijte tato doporučení pro zlepšení výkonu dotazů, protože se sníží složitost dat přesouvání a dotazu.
+Tento článek obsahuje doporučení pro návrh replikovaných tabulek v SQL Data Warehouse schéma. Použijte tyto výkon dotazů tooimprove doporučení pomocí snižuje složitost dat přesouvání a dotazu.
 
 > [!NOTE]
-> Funkce replikované tabulky je aktuálně ve verzi public preview. Některé chování se může měnit.
+> Funkce replikované tabulky Hello je aktuálně ve verzi public preview. Některé chování jsou toochange subjektu.
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že jste obeznámeni s distribuci dat a koncepty přesun dat v SQL Data Warehouse.  Další informace najdete v tématu [Distributed data](sql-data-warehouse-distributed-data.md). 
 
-Jako součást návrh tabulky Pochopte, co nejvíce o vašich dat a jak je dotazován data.  Například zvažte tyto otázky:
+Jako součást návrh tabulky Pochopte, co nejvíce o vašich dat a jak je dotazován hello data.  Například zvažte tyto otázky:
 
-- Jak velká je tabulka?   
-- Jak často se aktualizují v tabulce?   
+- Jak velká je tabulka hello?   
+- Jak často se aktualizují hello tabulky?   
 - Je nutné provést tabulkami faktů a dimenzí v datovém skladu?   
 
 ## <a name="what-is-a-replicated-table"></a>Co je replikované tabulky?
-Replikované tabulky obsahuje úplnou kopii v tabulce, která je přístupná na každém výpočetním uzlu. Replikace tabulku eliminuje nutnost k přenosu dat mezi výpočetní uzly před spojení nebo agregace. Vzhledem k tomu, že tabulka obsahuje více kopií, replikované tabulky fungují lépe, když velikost tabulky je menší než 2 GB komprimované.
+Replikované tabulky obsahuje úplnou kopii hello tabulky, které jsou přístupné na každém výpočetním uzlu. Replikace tabulku odebere hello nutné tootransfer data mezi výpočetní uzly před spojení nebo agregace. Protože hello tabulka obsahuje více kopií, replikované tabulky fungují lépe, když velikost tabulky hello je menší než 2 GB komprimované.
 
-Následující diagram znázorňuje replikované tabulky, která je přístupná na každém výpočetním uzlu. V SQL Data Warehouse replikované tabulce zkopírován plně distribuční databázi na každém výpočetním uzlu. 
+Hello následující diagram znázorňuje replikované tabulky, která je přístupná na každém výpočetním uzlu. Hello replikované tabulky v SQL Data Warehouse je plně zkopírovaný tooa distribuční databázi na každém výpočetním uzlu. 
 
 ![Replikované tabulky](media/guidance-for-using-replicated-tables/replicated-table.png "replikované tabulky")  
 
-Replikované tabulky pracovní i pro malý dimenze tabulky v hvězdicové schéma. Tabulky dimenzí jsou obvykle velikosti, která je vhodná k uložení a správě více kopií. Dimenze ukládat popisný data, která změní pomalu, jako je například jméno zákazníka a adresu a podrobnosti o produktu. Pomalu se měnící se povaze dat vede k méně znovu sestaví replikované tabulky. 
+Replikované tabulky pracovní i pro malý dimenze tabulky v hvězdicové schéma. Tabulky dimenzí obvykle jsou velikosti, která je vhodná toostore a udržovat více kopií. Dimenze ukládat popisný data, která změní pomalu, jako je například jméno zákazníka a adresu a podrobnosti o produktu. Hello pomalu změna povaha hello dat vede znovu sestaví toofewer hello replikované tabulky. 
 
 Zvažte použití replikované tabulky, když:
 
-- Velikost tabulky na disku je menší než 2 GB, bez ohledu na počet řádků. Chcete-li zjistit velikost tabulky, můžete použít [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) příkaz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
-- Tabulka se používá ve spojení, které by jinak vyžadovaly přesun dat. Například připojení k síti na distribuovat algoritmu hash tabulky vyžaduje přesun dat, pokud spojující sloupce nejsou na stejný sloupec distribuční. Pokud jeden z tabulky distribuovat algoritmu hash je malý, vezměte v úvahu replikované tabulky. Spojení v tabulce kruhového dotazování vyžaduje přesun dat. Doporučujeme používat replikované tabulky místo kruhového dotazování tabulky ve většině případů. 
+- velikost Hello tabulky na disku je menší než 2 GB, bez ohledu na to hello počet řádků. velikost hello toofind tabulky, můžete použít hello [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) příkaz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
+- Tabulka Hello se používá ve spojení, které by jinak vyžadovaly přesun dat. Například připojení k síti na distribuovat algoritmu hash tabulky při hello spojující sloupce nejsou hello stejný sloupec distribuční vyžaduje přesun dat. Pokud jeden z tabulky distribuovat algoritmu hash hello je malý, vezměte v úvahu replikované tabulky. Spojení v tabulce kruhového dotazování vyžaduje přesun dat. Doporučujeme používat replikované tabulky místo kruhového dotazování tabulky ve většině případů. 
 
 
-Vezměte v úvahu převod existující distribuované tabulka, která se replikované tabulky, když:
+Vezměte v úvahu převod existující distribuované tabulky tooa replikované tabulky, když:
 
-- Dotaz plány pomocí operace přesunu dat, které vysílají data na výpočetní uzly. BroadcastMoveOperation je nákladné a zpomalí výkon dotazů. Chcete-li zobrazit operace přesunu dat v plány dotazů, použijte [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).
+- Dotaz plány pomocí operace přesunu dat, které vysílají hello data tooall hello výpočetních uzlů. Hello BroadcastMoveOperation je nákladné a zpomalí výkon dotazů. operace přesunu dat tooview v plánech dotaz, použít [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).
  
-Replikované tabulky nemusí poskytne nejlepší výkon dotazů při:
+Replikované tabulky nemusí poskytne nejlepší výkon dotazů hello při:
 
-- Tabulka obsahuje časté vložit, aktualizovat a odstraňovat operace. Tyto operace jazyk (DML) manipulaci dat vyžadují opětovné sestavení replikované tabulky. Opětovné sestavení často může způsobit snížení výkonu.
-- Datový sklad je často škálovat. Změna měřítka datového skladu změní počet výpočetních uzlů, který způsobuje opětovném sestavení.
-- Tabulka obsahuje velký počet sloupců, ale operace dat obvykle přístup pouze malý počet sloupců. V tomto scénáři, namísto replikace celou tabulku může být více platné pro hodnoty hash distribuovat v tabulce a pak vytvořit index pro často používaná sloupce. Pokud dotaz vyžaduje přesun dat, SQL Data Warehouse pouze přesouvá data v požadované sloupce. 
+- Tabulka Hello má časté vložit, aktualizovat a odstraňovat operace. Tyto operace jazyk (DML) manipulaci dat vyžadují opětovné sestavení hello replikované tabulky. Opětovné sestavení často může způsobit snížení výkonu.
+- často je škálovat Hello datového skladu. Změna měřítka datového skladu změní hello počet výpočetních uzlů, které způsobuje opětovném sestavení.
+- Tabulka Hello má velký počet sloupců, ale operace dat obvykle přístup pouze malý počet sloupců. V tomto scénáři, namísto replikace hello celou tabulku, může být efektivnější toohash distribuovat hello tabulky a pak vytvořit index sloupce hello často používají. Pokud je dotaz vyžaduje přesunu dat SQL Data Warehouse jen přesun dat v hello požadované sloupce. 
 
 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Použití replikované tabulky s predikáty jednoduchý dotaz
-Než rozhodnete distribuovat nebo replikovat tabulku, vezměte v úvahu typy dotazů, které máte v úmyslu provést na tabulce. Pokud je to možné,
+Než zvolte toodistribute nebo replikovat tabulku, vezměte v úvahu hello typy dotazů, že máte v plánu toorun s tabulkou hello. Pokud je to možné,
 
 - Pro dotazy s predikáty jednoduchý dotaz, jako je například rovnosti nebo nerovnosti použijte replikované tabulky.
 - Pro dotazy s predikáty složitý dotaz, jako je například jako použijte distribuované tabulky nebo není jako.
 
-Náročná na prostředky procesoru dotazů provést nejlépe při práci se distribuuje do všech výpočetních uzlů. Například dotazy, které běží výpočtů na každý řádek tabulky poskytují lepší výkon v distribuované tabulek než replikované tabulky. Vzhledem k tomu, že replikované tabulky je uložený ve plně na každém výpočetním uzlu, náročná na prostředky procesoru dotazy na replikované tabulky spouští celou tabulku na každý uzel výpočty. Navíc výpočet můžou způsobit snížení výkonnosti dotazu.
+Náročná na prostředky procesoru dotazů se nejlépe provést, když pracovní hello je distribuován do všech hello výpočetních uzlů. Například dotazy, které běží výpočtů na každý řádek tabulky poskytují lepší výkon v distribuované tabulek než replikované tabulky. Vzhledem k tomu, že replikované tabulky je uložený ve plně na každém výpočetním uzlu, náročná na prostředky procesoru dotazy na replikované tabulky spouští celou tabulku hello na každý uzel výpočty. Hello navíc výpočetní můžou způsobit snížení výkonnosti dotazu.
 
 Tento dotaz má například komplexní predikátu.  Rychleji spustí po dodavatele distribuované tabulku místo replikované tabulky. V tomto příkladu dodavatele lze distribuovat algoritmu hash nebo distribuované kruhového dotazování.
 
@@ -81,10 +81,10 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 
 ```
 
-## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Převést stávající tabulky pomocí kruhového dotazování na replikované tabulky
-Pokud již máte kruhového dotazování tabulky, doporučujeme převodu na replikované tabulky, pokud splňují s kritérii uvedených v tomto článku. Replikované tabulky zlepšit výkon na kruhového dotazování tabulky, protože se vyhnete nutnosti pro přesun dat.  Přesun dat pomocí kruhového dotazování tabulky vždy vyžaduje pro spojení. 
+## <a name="convert-existing-round-robin-tables-tooreplicated-tables"></a>Převést stávající tabulky tooreplicated kruhového dotazování tabulky
+Pokud již máte kruhového dotazování tabulky, doporučujeme, abyste je převod tooreplicated tabulky, pokud splňují s kritérii uvedených v tomto článku. Replikované tabulky zlepšit výkon na kruhového dotazování tabulky, protože se vyhnete hello potřebu přesun dat.  Přesun dat pomocí kruhového dotazování tabulky vždy vyžaduje pro spojení. 
 
-Tento příklad používá [funkce CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ke změně v tabulce DimSalesTerritory replikované tabulky. Tento příklad funguje bez ohledu na to, jestli je DimSalesTerritory distribuovat algoritmu hash nebo kruhového dotazování.
+Tento příklad používá [funkce CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) toochange hello DimSalesTerritory tabulky tooa replikované tabulky. Tento příklad funguje bez ohledu na to, jestli je DimSalesTerritory distribuovat algoritmu hash nebo kruhového dotazování.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -104,17 +104,17 @@ CREATE STATISTICS [SalesTerritoryCountry] ON [DimSalesTerritory_REPLICATE] ([Sal
 CREATE STATISTICS [SalesTerritoryGroup] ON [DimSalesTerritory_REPLICATE] ([SalesTerritoryGroup]);
 
 -- Switch table names
-RENAME OBJECT [dbo].[DimSalesTerritory] to [DimSalesTerritory_old];
-RENAME OBJECT [dbo].[DimSalesTerritory_REPLICATE] TO [DimSalesTerritory];
+RENAME OBJECT [dbo].[DimSalesTerritory] too[DimSalesTerritory_old];
+RENAME OBJECT [dbo].[DimSalesTerritory_REPLICATE] too[DimSalesTerritory];
 
 DROP TABLE [dbo].[DimSalesTerritory_old];
 ```  
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Příklad výkonu dotazu, kruhové dotazování versus replikovat 
 
-Replikované tabulky nevyžaduje žádné přesun dat pro spojení, protože celá tabulka je již na každém výpočetním uzlu. Pokud tabulky dimenzí distribuované kruhového dotazování, a připojte zkopíruje tabulce dimenze v plném rozsahu na každém výpočetním uzlu. Plán dotazu pro přesun dat, obsahuje operace názvem BroadcastMoveOperation. Tento typ operace přesunu dat zpomalí výkon dotazů a je eliminována použití replikované tabulky. Chcete-li zobrazit kroky plán dotazu, použijte [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zobrazení katalogu systému. 
+Replikované tabulky nevyžaduje žádné přesun dat pro spojení, protože hello celá tabulka je již na každém výpočetním uzlu. Pokud tabulky dimenzí hello distribuované kruhového dotazování, a připojte zkopíruje hello tabulce dimenze v úplné tooeach výpočetním uzlu. toomove hello data, plán dotazu hello obsahuje operace názvem BroadcastMoveOperation. Tento typ operace přesunu dat zpomalí výkon dotazů a je eliminována použití replikované tabulky. kroky plánování tooview dotaz, použít hello [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zobrazení katalogu systému. 
 
-Například v následujícím dotazu pro schéma AdventureWorks ` FactInternetSales` tabulka je distribuovat algoritmu hash. `DimDate` a `DimSalesTerritory` tabulky jsou menší tabulky dimenzí. Tento dotaz vrátí celkový prodej v Severní Americe pro fiskálního roku 2004:
+Například v následujícím dotazu pro schéma AdventureWorks hello hello ` FactInternetSales` tabulka je distribuovat algoritmu hash. Hello `DimDate` a `DimSalesTerritory` tabulky jsou menší tabulky dimenzí. Tento dotaz vrátí celkový prodej hello v Severní Americe pro fiskálního roku 2004:
  
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -126,34 +126,34 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-Znovu vytvořit `DimDate` a `DimSalesTerritory` jako kruhového dotazování tabulky. V důsledku toho dotaz vám ukázal následující plán dotazu, který má více vysílání přesunout operace: 
+Znovu vytvořit `DimDate` a `DimSalesTerritory` jako kruhového dotazování tabulky. V důsledku toho hello dotazu vám ukázal hello následující plán dotazu, který má více vysílání přesunout operace: 
  
 ![Plán dotazu pomocí kruhového dotazování](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
-Znovu vytvořit `DimDate` a `DimSalesTerritory` jako replikovaných tabulek a znovu se spustil dotaz. Výsledný plán dotazu je mnohem kratší a mají některé nevysílá přesune.
+Znovu vytvořit `DimDate` a `DimSalesTerritory` jako replikovaných tabulek a znovu se spustil hello dotazu. Plán dotazu výsledné Hello je mnohem kratší a mít žádné nevysílá přesune.
 
 ![Replikovat plán dotazu](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Důležité informace o výkonu pro úpravy replikované tabulky
-SQL Data Warehouse implementuje replikované tabulky udržováním hlavní verze tabulky. Hlavní verze se zkopíruje na jeden distribuční databázi na každém výpočetním uzlu. Když dojde ke změně, aktualizuje SQL Data Warehouse nejprve hlavní tabulka. Potom vyžaduje nové vytvoření tabulky na každém výpočetním uzlu. Opětovné sestavení replikované tabulky zahrnuje kopírování v tabulce na každém výpočetním uzlu a pak znovu sestavit indexy.
+SQL Data Warehouse implementuje replikované tabulky udržováním hlavní verze tabulky hello. Kopíruje hello hlavní verze tooone distribuční databázi na každém výpočetním uzlu. Když dojde ke změně, aktualizuje SQL Data Warehouse nejprve hello hlavní tabulka. Potom vyžaduje opětovné sestavení hello tabulek na každém výpočetním uzlu. Opětovné sestavení replikované tabulky zahrnuje kopírování hello tabulky tooeach výpočetní uzel a pak znovu sestavit indexy hello.
 
 Znovu sestaví je potřeba po:
 - Data jsou načíst nebo upravit
-- Datový sklad je škálovat na jiné nastavení DWU
+- datový sklad Hello je jiné nastavení DWU tooa škálovat.
 - Aktualizace definice tabulky
 
 Znovu sestaví nejsou nutné po:
 - Operace pozastavení
 - Operace obnovení
 
-Sestavení se neodehrává ihned po data je upravit. Místo toho sestavení se aktivuje při prvním dotazu vybere z tabulky.  V rámci počáteční příkaz select z tabulky jsou kroky pro opětovné sestavení replikované tabulky.  Protože sestavení se provádí v dotazu, může být důležité v závislosti na velikosti tabulky dopad na počáteční příkaz select.  Pokud více replikované tabulky se podílejí vyžadující opětovném sestavení, každá kopie je znovu sestavit sériově jako kroky v rámci příkazu.  Chcete-li zachovat data konzistence během sestavení replikované tabulky výhradní zámek pořízené v tabulce.  Zámek zabraňuje veškerý přístup k tabulce po dobu trvání sestavení. 
+opětovné sestavení Hello neodehrává ihned po data je upravit. Místo toho se aktivuje opětovné sestavení hello hello prvním dotazu vybere z tabulky hello.  V rámci hello počáteční příkazu select z tabulky hello jsou kroky toorebuild hello replikované tabulky.  Protože opětovné sestavení hello se provádí v rámci dotazu hello, může být důležité v závislosti na velikosti hello hello tabulky hello dopad toohello počáteční příkazu select.  Pokud více replikované tabulky se podílejí vyžadující opětovném sestavení, každá kopie je znovu sestavit sériově jako kroky v rámci příkazu hello.  toomaintain konzistenci dat během hello opakované hello replikované tabulky pořízení v tabulce hello výhradní zámek.  Hello uzamčení brání všechny tabulky toohello přístup hello dobu hello přestavení. 
 
 ### <a name="use-indexes-conservatively"></a>Můžete použít indexy
-Standardní indexování postupy platí pro replikované tabulky. SQL Data Warehouse znovu sestaví každý index replikované tabulky v rámci sestavení. Indexy používejte pouze výkonnější převáží náklady znovu sestavit indexy.  
+Standardní postupy indexování použít tooreplicated tabulky. SQL Data Warehouse znovu sestaví každý index replikované tabulky v rámci opětovné sestavení hello. Indexy používejte jenom hello výkonnější převáží hello náklady na nové sestavení indexů hello.  
  
 ### <a name="batch-data-loads"></a>Načítání dat dávky
-Při načítání dat do replikované tabulky, měli snažte minimalizovat znovu sestaví podle dávkování zatížení dohromady. Proveďte všechny dávkové zatížení před spuštěním příkazů select.
+Při načítání dat do replikované tabulky, zkuste znovu sestaví toominimize dávkování zatížení dohromady. Proveďte všechny zatížení hello zpracovat v dávce před spuštěním příkazů select.
 
 Tento vzor zatížení například načte data ze čtyř zdrojů a vyvolá čtyři znovu sestaví. 
 
@@ -176,9 +176,9 @@ Tento vzor zatížení například načte data ze čtyř zdrojů, ale pouze vyvo
 
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Znovu sestavte replikované tabulky po zatížení batch
-Aby dobu provádění konzistentní dotazy, doporučujeme vynutit aktualizaci replikované tabulky po batch zatížení. Jinak hodnota první dotaz musí počkat tabulky, které chcete aktualizovat, která zahrnuje nové sestavení indexů. V závislosti na velikosti a počtu replikované tabulky vliv může být významný dopad na výkon.  
+dobu provádění konzistentní dotazu tooensure, doporučujeme vynutit aktualizaci hello replikované tabulky po batch zatížení. První dotaz hello musí počkat, jinak hodnota toorefresh hello tabulky, která zahrnuje nové sestavení indexů hello. V závislosti na velikosti hello a počet replikované tabulky vliv může být důležité hello vlivu na výkon.  
 
-Tento dotaz používá [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV seznam replikované tabulky, která byla upravena, ale není znovu sestavit.
+Tento dotaz používá hello [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV toolist hello replikovaných tabulek, které byla upravena, ale není znovu sestavit.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -191,14 +191,14 @@ SELECT [ReplicatedTable] = t.[name]
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
  
-Chcete-li vynutit opětovném sestavení, spustíte následující příkaz pro každou tabulku v předchozím výstup. 
+tooforce opětovném sestavení, spusťte následující příkaz pro každou tabulku v předcházející výstup hello hello. 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
 ## <a name="next-steps"></a>Další kroky 
-Pokud chcete vytvořit replikované tabulky, použijte jednu z těchto příkazů:
+toocreate replikované tabulky, použijte jednu z těchto příkazů:
 
 - [Vytvoření tabulky (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
 - [Vytvoření TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)

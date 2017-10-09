@@ -1,24 +1,24 @@
-1. Na levé straně stránky portálu klikněte na **+** a do vyhledávacího pole zadejte text „Brána virtuální sítě“. V části **Výsledky** vyhledejte položku **Brána virtuální sítě** a klikněte na ni.
-2. V dolní části okna Brána virtuální sítě klikněte na **Vytvořit**. Tím otevřete okno **Vytvořit bránu virtuální sítě**.
+1. Na levé straně stránky portálu hello hello, klikněte na tlačítko  **+**  a zadejte brány virtuální sítě v hledání. V části **Výsledky** vyhledejte položku **Brána virtuální sítě** a klikněte na ni.
+2. Hello dolní části okna "Brána virtuální sítě" hello, klikněte na **vytvořit**. Tím se otevře hello **vytvořit bránu virtuální sítě** okno.
 
     ![Vytvoření polí okna brány virtuální sítě](./media/vpn-gateway-add-gw-s2s-rm-portal-include/vnet_gw.png "Nová brána")
 
-3. V okně **Vytvořit bránu virtuální sítě** zadejte hodnoty příslušné brány virtuální sítě.
+3. Na hello **vytvořit bránu virtuální sítě** okno, zadejte hello hodnoty pro bránu virtuální sítě.
 
-  - **Název**: Zadejte pro bránu název. Toto není název podsítě brány. Jedná se o název objektu brány, který vytváříte.
-  - **Typ brány**: Vyberte **VPN**. Brány VPN používají bránu virtuální sítě typu **VPN**. 
-  - **Typ VPN**: Vyberte typ VPN určený pro vaši konfiguraci. Většina konfigurací vyžaduje trasový typ VPN.
-  - **SKU**: Z rozevíracího seznamu vyberte SKU brány. SKU uvedené v rozevíracím seznamu závisí na typu VPN, který jste vybrali. Další informace o SKU brány najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
-  - **Umístění:** K zobrazení umístění může být se posunout. Upravte pole **Umístění**, aby odkazovalo na umístění, kde se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť umístěná, tato síť se nezobrazí v dalším kroku v rozevírací nabídce Zvolit virtuální síť.
-  - **Virtuální síť:** Vyberte virtuální síť, do které chcete tuto bránu přidat. Klikněte na **Virtuální síť** a otevřete okno Zvolit virtuální síť. Vyberte virtuální síť. Pokud svou virtuální síť nevidíte, zkontrolujte, že pole Umístění odkazuje na oblast, ve které se nachází vaše virtuální síť.
-  - **Veřejná IP adresa**: Okno Vytvoření veřejné IP adresy vytvoří objekt veřejné IP adresy. Veřejná IP adresa se dynamicky přiřadí po vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
+  - **Název**: Zadejte pro bránu název. Toto není hello stejné jako podsítě brány. To je hello název objektu hello brány, kterou vytváříte.
+  - **Typ brány**: Vyberte **VPN**. Brány sítě VPN použít typ brány virtuální sítě hello **VPN**. 
+  - **Typ sítě VPN**: Vyberte hello typ sítě VPN, který je určený pro vaši konfiguraci. Většina konfigurací vyžaduje trasový typ VPN.
+  - **Skladová položka**: skladová položka brány hello vyberte z rozevíracího seznamu hello. SKU Hello uvedené v rozevírací nabídce hello závisí na hello typ sítě VPN, které vyberete. Další informace o SKU brány najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+  - **Umístění**: může být nutné tooscroll toosee umístění. Upravit hello **umístění** pole toopoint toohello umístění, kde se nachází virtuální sítě. Pokud umístění hello neukazuje toohello oblasti, kde je umístěn virtuální sítě, hello virtuální sítě se nezobrazí v dalším kroku hello 'vybrat virtuální síť, rozevírací seznam.
+  - **Virtuální síť**: Zvolte hello virtuální sítě toowhich tooadd chcete tuto bránu. Klikněte na tlačítko **virtuální síť** tooopen hello 'Vybrat virtuální síť' okno. Vyberte hello virtuální sítě. Pokud nevidíte virtuální síť, ujistěte se, že pole umístění hello ukazovat toohello oblast, ve kterém se nachází virtuální sítě.
+  - **Veřejná IP adresa**: hello "Vytvoření veřejné IP adresy, okno vytvoří objekt veřejnou IP adresu. Hello veřejnou IP adresu přiřazována dynamicky při vytvoření brány VPN hello. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Však neznamená to, že hello IP adresa změní po byl přiřazen tooyour brány VPN. Hello jenom jednou hello změny veřejné IP adresy je při hello brány je odstraní a znovu vytvoří. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
-    - Nejprve kliknutím na **Veřejná IP adresa** otevřete okno Zvolte veřejnou IP adresu a potom kliknutím na **+Vytvořit novou** otevřete okno Vytvoření veřejné IP adresy.
-    - Dále zadejte **Název** veřejné IP adresy a potom kliknutím na **OK** v dolní části okna uložte změny.
+    - Nejprve, klikněte na tlačítko **veřejnou IP adresu** tooopen hello okno 'vybrat veřejnou IP adresu, a pak klikněte na **+ vytvořit nový** tooopen hello "Vytvoření veřejné IP adresy, okno.
+    - V dalším kroku vstup **název** pro svoji veřejnou IP adresu, pak klikněte na **OK** v hello dolní části tohoto okna toosave změny.
 
       ![Vytvoření veřejné IP adresy](./media/vpn-gateway-add-gw-s2s-rm-portal-include/pip.png "Vytvořit PIP")
 
-4. Ověřte nastavení. Pokud chcete, aby se brána zobrazovala na řídicím panelu, můžete v dolní části okna vybrat **Připnout na řídicí panel**. 
-5. Kliknutím na **Vytvořit** zahajte proces vytváření brány VPN. Nastavení bude ověřeno a na řídicím panelu se zobrazí dlaždice Nasazování brány virtuální sítě. Vytváření brány může trvat až 45 minut. K zobrazení stavu dokončení může být nutné obnovit stránku portálu.
+4. Ověřte nastavení hello. Můžete vybrat **Pin toodashboard** v hello dolní části okna hello, pokud chcete, aby vaše tooappear brány na řídicím panelu hello. 
+5. Klikněte na tlačítko **vytvořit** toobegin vytváření brány VPN hello. Hello nastavení budou ověřena a uvidíte hello "Brána nasazení virtuální sítě" dlaždici na řídicím panelu hello. Vytvoření brány může trvat až too45 minut. Může být nutné toorefresh stav hello dokončit toosee vaší stránky portálu.
 
-Po vytvoření brány můžete zobrazením virtuální sítě na portálu zobrazit IP adresu, která jí byla přiřazena. Brána se zobrazí jako připojené zařízení. Kliknutím na připojené zařízení (bránu virtuální sítě) můžete zobrazit další informace.
+Po vytvoření brány hello zobrazte hello IP adresu, která byla přiřazena tooit prohlížením hello virtuální sítě hello portálu. Hello brány se zobrazí jako připojené zařízení. Můžete kliknout na tooview hello připojené zařízení (bránu virtuální sítě) Další informace.

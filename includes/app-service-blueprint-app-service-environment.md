@@ -4,7 +4,7 @@
 * [Vytvoření služby ILB povoleno App Service Environment pomocí šablony Resource Manageru](../articles/app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
 * [Automatické škálování pomocí služby App Service Environment](../articles/app-service/app-service-environment-auto-scale.md)
 * [Zabezpečení příchozího provozu](../articles/app-service-web/app-service-app-service-environment-control-inbound-traffic.md)
-* [Připojení k back-endovým prostředkům](../articles/app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md)
+* [Připojení tooBackend prostředky](../articles/app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md)
 * [ExpressRoute a služba App Service Environment](../articles/app-service-web/app-service-app-service-environment-network-configuration-expressroute.md)
 * [Nastavení vlastní konfigurace pro služby App Service Environment, včetně nastavení dodržování předpisů PCI](../articles/app-service-web/app-service-app-service-environment-custom-settings.md)
 * [Aplikace s vysokou hustotou hostující s služby App Service Environment](../articles/app-service/app-service-high-density-hosting.md#recommended-configuration-for-high-density-hosting)

@@ -1,5 +1,5 @@
 ---
-title: Integraci sady Azure Mobile Engagement Windows Universal SDK | Microsoft Docs
+title: aaaAzure Mobile Engagement Windows Universal SDK integrace | Microsoft Docs
 description: Windows Universal integraci sady SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2f88e58adb349a2a4eb43b0f182f99b3e8b8cfd4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>Integrace Windows Universal SDK pro Azure Mobile Engagement
-Tento dokument popisuje všech integrace a konfigurace dostupných možnostech pro Azure Mobile Engagement Windows Universal SDK.
+Tento dokument popisuje hello integrace a konfigurace k dispozici všechny možnosti pro hello Azure Mobile Engagement Windows Universal SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto kurzu, musíte nejdřív dokončit naše [15 minut kurzu](mobile-engagement-windows-store-dotnet-get-started.md).
@@ -34,40 +34,40 @@ Můžete přidat tyto funkce:
 2. [Upřesnit možnosti konfigurace](mobile-engagement-windows-store-advanced-configuration.md)
 
 ### <a name="notifications"></a>Oznámení
-[Postup při integraci Reach (oznámení) v aplikaci univerzální pro Windows](mobile-engagement-windows-store-integrate-engagement-reach.md)
+[Jak toointegrate Reach (oznámení) v aplikaci univerzální pro Windows](mobile-engagement-windows-store-integrate-engagement-reach.md)
 
 ### <a name="tag-plan-implementation"></a>Implementace plánu značky:
-[Jak používat rozšířené Mobile Engagement označování rozhraní API v aplikaci univerzální pro Windows](mobile-engagement-windows-store-use-engagement-api.md)
+[Jak toouse hello advanced označování rozhraní API v aplikaci Windows Universal Mobile Engagement](mobile-engagement-windows-store-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Poznámky k verzi
 ### <a name="341-11032016"></a>3.4.1 (11/03/2016)
 
 * Zlepšení stability.
 
-Starší verze najdete v tématu [dokončení poznámky k verzi](mobile-engagement-windows-store-release-notes.md)
+Starší verze najdete v tématu hello [dokončení poznámky k verzi](mobile-engagement-windows-store-release-notes.md)
 
 ## <a name="upgrade-procedures"></a>Postupy upgradu
-Pokud již jste spojili starší verze zapojení do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
+Pokud již mít integrovanou starší verze zapojení do své aplikace, musíte tooconsider hello následující body při upgradu hello SDK.
 
-Pokud je provedena několik verzí sady SDK, budete muset několik postupu. Zobrazit úplnou [postupy upgradu](mobile-engagement-windows-store-upgrade-procedure.md). Například pokud migrujete z 0.10.1 0.11.0 budete muset nejdřív postupujte podle pokynů "od 0.9.0 k 0.10.1" pak postupu "od 0.10.1 k 0.11.0".
+Pokud je vynechán několik verzí hello SDK, mohou obsahovat toofollow několika postupů. V tématu hello dokončení [postupy upgradu](mobile-engagement-windows-store-upgrade-procedure.md). Například pokud migrujete z 0.10.1 too0.11.0 máte toofirst postupujte podle hello "z 0.9.0 too0.10.1" postup pak hello "z 0.10.1 too0.11.0" postup.
 
-### <a name="from-330-to-340"></a>Z 3.3.0 k 3.4.0
+### <a name="from-330-too340"></a>Z 3.3.0 too3.4.0
 #### <a name="test-logs"></a>Protokolů testování
-Protokoly konzoly vyprodukované sady SDK teď může být povolena nebo zakázána nebo filtrovat. Pokud chcete přizpůsobit, aktualizujte vlastnost `EngagementAgent.Instance.TestLogEnabled` na jednu z hodnot, které jsou k dispozici z `EngagementTestLogLevel` výčtu, například:
+Protokoly konzoly vyprodukované hello SDK teď může být povolena nebo zakázána nebo filtrovat. toocustomize, vlastnost hello aktualizace `EngagementAgent.Instance.TestLogEnabled` tooone hello hodnot, které jsou k dispozici z hello `EngagementTestLogLevel` výčtu, například:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
 #### <a name="resources"></a>Zdroje
-Bylo vylepšeno Reach překrytí. Je součástí zdroje balíčku NuGet sady SDK.
+bylo vylepšeno Hello Reach překrytí. Je součástí prostředky pro balíček NuGet sady SDK hello.
 
-Při upgradu na novou verzi sady SDK, můžete zvolit, zda chcete zachovat existující soubory ve složce překrytí vašich prostředků, nebo není:
+Při upgradu toohello novou verzi hello SDK, můžete zvolit, že jestli se mají tookeep existující soubory z hello překrytí složku vašich prostředků, nebo není:
 
-* Pokud předchozí překrytí pracuje pro vás, nebo jsou integrací `WebView` elementy ručně, pak se můžete rozhodnout zachovat vaše ukončení soubory, ji budou i nadále fungovat.
-* Pokud chcete aktualizovat nové překrytí, nahradit všechny `overlay` složku z vašich prostředků s novým z balíčku SDK (aplikace UWP: Po dokončení upgradu, můžete získat novou složku překrytí % USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).
+* Pokud předchozí překrytí hello pracuje pro vás, nebo jsou integrace hello `WebView` elementy ručně, pak můžete rozhodnout, tookeep vaše ukončení soubory, budou i nadále fungovat.
+* tooupdate toohello nové překrytí, nahraďte hello celou `overlay` složky z vašich prostředků s novým hello z balíčku SDK hello (aplikace UWP: Po provedení upgradu hello můžete získat novou složku překrytí hello % USERPROFILE %\\.nuget\packages\ MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).
 
 > [!WARNING]
-> Pomocí nové překrytí přepíše všechny úpravy probíhají v předchozí verzi.
+> Pomocí nové překrytí hello přepíše všechny úpravy probíhají hello předchozí verze.
 > 
 > 
 

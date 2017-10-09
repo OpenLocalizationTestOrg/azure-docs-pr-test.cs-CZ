@@ -1,0 +1,5 @@
+## <a name="pricing"></a>Ceny
+
+Azure Batch je bezplatná služba; vám není účtován hello účet Batch samotný. Budou se účtovat pro hello základní výpočetní prostředky, které využívají řešení Batch a hello prostředky spotřebované jinými službami při spuštění úlohy. Například vám budou účtovat hello výpočetních uzlech (virtuálních počítačů) ve fondech a na hello data, která ukládáte v Azure Storage jako vstup nebo výstup pro vaše úkoly. Podobně pokud používáte hello [balíčky aplikací](../articles/batch/batch-application-packages.md) funkcí služby Batch, budeme vám účtovat prostředky Azure Storage hello používá k ukládání balíčky aplikací. Další informace najdete v článku [Ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
+
+[Virtuální počítače s nízkou prioritou](../articles/batch/batch-low-pri-vms.md) může výrazně snížit náklady na hello úloh služby Batch. Informace o cenách virtuálních počítačů s nízkou prioritou najdete v tématu [Ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/). 

@@ -1,6 +1,6 @@
 ---
-title: "Použití Azure Key Vault z webové aplikace | Microsoft Docs"
-description: "Pomocí tohoto kurzu můžete Naučte se používat Azure Key Vault z webové aplikace."
+title: "aaaUse Azure Key Vault z webové aplikace | Microsoft Docs"
+description: "Použijte tento kurz toohelp zjistíte, jak toouse Azure Key Vault z webové aplikace."
 services: key-vault
 documentationcenter: 
 author: adhurwit
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d5e2299e60b379c4e234d5cd6be03411c5a5c958
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Použití Azure Key Vault z webové aplikace
 ## <a name="introduction"></a>Úvod
-Pomocí tohoto kurzu můžete Naučte se používat Azure Key Vault z webové aplikace v Azure. Provede vás procesem přístup k tajného klíče z Azure Key Vault, takže je možné ve webové aplikaci.
+Použijte tento kurz toohelp zjistíte, jak toouse Azure Key Vault z webové aplikace v Azure. Provede vás procesem hello přístup k tajného klíče z Azure Key Vault, takže je možné ve webové aplikaci.
 
-**Odhadovaný čas dokončení:** 15 minut
+**Odhadovaný čas toocomplete:** 15 minut
 
 Souhrnné informace o Azure Key Vault naleznete v tématu [Co je Azure Key Vault?](key-vault-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
-K dokončení tohoto kurzu potřebujete:
+toocomplete tento kurz, musíte mít hello následující:
 
-* Identifikátor URI pro tajný klíč v Azure Key Vault
-* ID klienta a tajný klíč klienta pro webovou aplikaci, které jsou zaregistrované v Azure Active Directory, který má přístup k trezoru klíč
-* Webová aplikace. Jsme se, že se zobrazuje kroky pro aplikaci ASP.NET MVC nasazené v Azure jako webovou aplikaci.
+* Identifikátor URI tajného klíče tooa v Azure Key Vault
+* ID klienta a tajný klíč klienta pro webovou aplikaci, které jsou zaregistrované v Azure Active Directory, který má přístup tooyour Key Vault
+* Webová aplikace. Jsme se, že se zobrazuje hello kroky pro aplikaci ASP.NET MVC nasazené v Azure jako webovou aplikaci.
 
 > [!NOTE]
-> Je nezbytné, že jste dokončili kroky uvedené v [Začínáme s Azure Key Vault](key-vault-get-started.md) pro účely tohoto kurzu tak, aby měli identifikátor URI tajného klíče a ID klienta a tajný klíč klienta pro webovou aplikaci.
+> Je nezbytné, že jste dokončili hello kroků uvedených v [Začínáme s Azure Key Vault](key-vault-get-started.md) pro tento kurz, který vám hello tooa identifikátor URI tajného klíče a hello ID klienta a tajný klíč klienta pro webovou aplikaci.
 > 
 > 
 
-Webovou aplikaci, která bude mít přístup k Key Vault je ten, který je zaregistrován ve službě Azure Active Directory a byl poskytnut přístup k trezoru klíč. Pokud tomu tak není, přejděte zpět na zaregistrovat aplikaci v kurzu Začínáme a opakujte kroky uvedené.
+Hello webové aplikace, která bude mít přístup k hello Key Vault je hello jeden, který je zaregistrován ve službě Azure Active Directory a udělil přístup tooyour Key Vault. Pokud to není hello případ, přejděte zpět tooRegister aplikace v kurzu Začínáme hello a opakujte kroky hello zobrazeny.
 
-Tento kurz je určen pro vývojářům webů, které pochopit základy toho vytváření webových aplikací v Azure. Další informace o službě Azure Web Apps, naleznete v části [přehled Web Apps](../app-service-web/app-service-web-overview.md).
+Tento kurz je určen pro vývojářům webů, které pochopit základy hello vytváření webových aplikací v Azure. Další informace o službě Azure Web Apps, naleznete v části [přehled Web Apps](../app-service-web/app-service-web-overview.md).
 
 ## <a id="packages"></a>Přidání balíčků Nuget
-Jsou dva balíčky, které webové aplikace musí mít nainstalovaný.
+Jsou dva balíčky, které webové aplikace potřebuje toohave nainstalována.
 
 * Knihovna ověřování Active Directory - obsahuje metody pro interakci s Azure Active Directory a správa identity uživatele
 * Azure Key Vault Library - obsahuje metody pro interakci s Azure Key Vault
 
-Obě tyto balíčky můžete nainstalovat pomocí konzoly Správce balíčků pomocí příkazu Install-Package.
+Obě tyto balíčky můžete nainstalovat pomocí konzoly Správce balíčků pomocí příkazu hello Install-Package hello.
 
-    // this is currently the latest stable version of ADAL
+    // this is currently hello latest stable version of ADAL
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
 
     Install-Package Microsoft.Azure.KeyVault
 
 
 ## <a id="webconfig"></a>Upravit soubor Web.Config
-Existují tři nastavení aplikace, které je třeba přidat do souboru web.config následujícím způsobem.
+Existují tři nastavení aplikace, které je třeba soubor web.config přidané toohello toobe následujícím způsobem.
 
-    <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
+    <!-- ClientId and ClientSecret refer toohello web application registration with Azure Active Directory -->
     <add key="ClientId" value="clientid" />
     <add key="ClientSecret" value="clientsecret" />
 
-    <!-- SecretUri is the URI for the secret in Azure Key Vault -->
+    <!-- SecretUri is hello URI for hello secret in Azure Key Vault -->
     <add key="SecretUri" value="secreturi" />
 
 
-Pokud nechcete kvůli hostování vaší aplikace jako webové aplikace Azure, měli byste k souboru web.config přidat skutečnými hodnotami ClientId, sdílený tajný klíč klienta a identifikátor URI tajného klíče. V opačném případě ponechte tyto fiktivní hodnoty, protože jsme přidáním skutečnými hodnotami na portálu Azure vytváří další úroveň zabezpečení.
+Pokud ale nebudete toohost aplikace jako webové aplikace Azure, měli byste přidat hello skutečné ClientId, sdílený tajný klíč klienta a identifikátor URI tajného klíče hodnoty toohello web.config. V opačném případě ponechte tyto fiktivní hodnoty, protože jsme přidáním hello skutečnými hodnotami v hello portál Azure pro další úroveň zabezpečení.
 
-## <a id="gettoken"></a>Přidejte metodu k získání tokenu přístupu
-Chcete-li použít rozhraní API trezoru klíč musíte přístupový token. Klient klíče trezoru zpracovává volání do rozhraní API Key Vault, ale budete muset zadat pomocí funkce, který získá přístupový token.  
+## <a id="gettoken"></a>Přidat metoda tooGet tokenu přístupu
+V pořadí toouse hello API trezoru klíč musíte přístupový token. Hello klíč trezoru klienta zpracovává volání toohello trezoru klíč rozhraní API, ale můžete potřebovat toosupply její funkci, která se získá hello přístupový token.  
 
-Následuje kód slouží k získání tokenu přístupu z Azure Active Directory. Tento kód můžete přejít kdekoli v aplikaci. Líbí se přidání Utils nebo EncryptionHelper třídy.  
+Následuje hello kód tooget přístupový token ze služby Azure Active Directory. Tento kód můžete přejít kdekoli v aplikaci. I jako tooadd Utils nebo EncryptionHelper třídy.  
 
     //add these using statements
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System.Threading.Tasks;
     using System.Web.Configuration;
 
-    //this is an optional property to hold the secret after it is retrieved
+    //this is an optional property toohold hello secret after it is retrieved
     public static string EncryptSecret { get; set; }
 
-    //the method that will be provided to the KeyVaultClient
+    //hello method that will be provided toohello KeyVaultClient
     public static async Task<string> GetToken(string authority, string resource, string scope)
     {
         var authContext = new AuthenticationContext(authority);
@@ -93,18 +93,18 @@ Následuje kód slouží k získání tokenu přístupu z Azure Active Directory
         AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
 
         if (result == null)
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Failed tooobtain hello JWT token");
 
         return result.AccessToken;
     }
 
 > [!NOTE]
-> Pomocí ID klienta a tajný klíč klienta je nejjednodušší způsob, jak ověřit aplikaci Azure AD. A použití ve vaší webové aplikace je možné oddělení povinností a větší kontrolu nad vaší správy klíčů. Je však závislý na uvedení tajný klíč klienta v nastavení konfigurace, které pro některé můžou být jako rizikové jako uvedení tajný klíč, který chcete chránit v nastavení konfigurace. Níže najdete informace o tom, jak použít ID klienta a certifikát místo ID klienta a tajný klíč klienta k ověření aplikace Azure AD.
+> Pomocí ID klienta a tajný klíč klienta je hello nejjednodušší způsob, jak tooauthenticate aplikaci Azure AD. A použití ve vaší webové aplikace je možné oddělení povinností a větší kontrolu nad vaší správy klíčů. Je však závislý na uvedení hello tajný klíč klienta v nastavení konfigurace, které pro některé můžou být jako rizikové jako uvedení hello tajný klíč, který má tooprotect v nastavení konfigurace. Níže najdete podrobné informace o tom, jak toouse ID klienta a certifikát místo ID klienta a tajný klíč klienta tooauthenticate hello aplikaci Azure AD.
 > 
 > 
 
-## <a id="appstart"></a>Načtení tajný klíč na spuštění aplikace
-Nyní potřebujeme kódu pro volání rozhraní API Key Vault a načítání tajného klíče. Následující kód můžete umístit kdekoli, tak dlouho, dokud se označuje jako předtím, než je nutné ji použít. Tento kód v události spustit aplikace v soubor Global.asax mít umístíte tak, aby při spuštění se spustí jednou a zpřístupní tajný klíč pro aplikaci.
+## <a id="appstart"></a>Načtení hello tajný klíč na spuštění aplikace
+Nyní jsme potřebovat code toocall hello trezoru klíč rozhraní API a načíst hello tajný klíč. Hello následující kód můžou být přepnuté odkudkoli, dokud se označuje jako předtím, než je nutné toouse ho. I tak, aby spustí jednou při spuštění a díky hello tajný klíč, které jsou k dispozici pro aplikace hello zavedla tento kód hello událost spustit aplikace v souboru Global.asax hello.
 
     //add these using statements
     using Microsoft.Azure.KeyVault;
@@ -115,34 +115,34 @@ Nyní potřebujeme kódu pro volání rozhraní API Key Vault a načítání taj
 
     var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
-    //I put a variable in a Utils class to hold the secret for general  application use.
+    //I put a variable in a Utils class toohold hello secret for general  application use.
     Utils.EncryptSecret = sec.Value;
 
 
 
-## <a id="portalsettings"></a>Přidat nastavení aplikace na portálu Azure (volitelné)
-Pokud máte webové aplikace Azure můžete nyní přidat skutečnými hodnotami pro AppSettings na portálu Azure. Díky tomu skutečnými hodnotami nebude v souboru web.config, ale chráněná přes portál, kde můžete dělat samostatnou přístupovou ovládacího prvku. Tyto hodnoty se nahradí hodnoty, které jste zadali v souboru web.config. Ujistěte se, že názvy jsou stejné.
+## <a id="portalsettings"></a>Přidání nastavení aplikace v hello portálu Azure (volitelné)
+Pokud máte webové aplikace Azure nyní můžete přidat hello skutečnými hodnotami pro hello AppSettings v hello portálu Azure. Díky tomu skutečnými hodnotami hello nebude v souboru web.config hello ale chráněné prostřednictvím hello portál, kde můžete dělat samostatnou přístupovou ovládacího prvku. Tyto hodnoty se nahradí hello hodnoty, které jste zadali v souboru web.config. Ujistěte se, že hello názvy jsou hello stejné.
 
 ![Nastavení aplikace se zobrazí na portálu Azure][1]
 
 ## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>Ověřování pomocí certifikátu místo tajný klíč klienta
-Jiný způsob, jak ověřit aplikaci Azure AD je pomocí ID klienta a certifikát místo ID klienta a tajný klíč klienta. Toto jsou kroky pro použití certifikátu ve webové aplikaci Azure:
+Jiný způsob tooauthenticate aplikaci Azure AD je pomocí ID klienta a certifikát místo ID klienta a tajný klíč klienta. Následující jsou hello kroky toouse certifikát ve webové aplikaci Azure:
 
 1. Získat nebo vytvořit certifikát
-2. Certifikát přidružit aplikaci Azure AD
-3. Přidání kódu do vaší webové aplikace na použití certifikátu
-4. Přidat certifikát do vaší webové aplikace
+2. Hello certifikát přidružit aplikaci Azure AD
+3. Přidat kód tooyour webové aplikace toouse hello certifikátu
+4. Přidat certifikát tooyour webové aplikace
 
-**Získejte nebo vytvořte certifikát** pro naše účely budeme testovacího certifikátu. Tady je několik příkazů, které můžete použít v příkazovém řádku vývojáře vytvořit certifikát. Změňte adresář na místo, kam chcete vytvořené soubory certifikátu.  Navíc pro počáteční a koncové datum platnosti certifikátu použijte aktuální datum plus 1 rok.
+**Získejte nebo vytvořte certifikát** pro naše účely budeme testovacího certifikátu. Tady je několik příkazů, můžete použít v toocreate příkazový řádek vývojáře certifikát. Změňte adresář toowhere chcete hello cert soubory vytvořené.  Navíc pro hello počáteční a koncové datum hello certifikát, použijte hello aktuální datum plus 1 rok.
 
     makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
     pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
-Poznamenejte si koncové datum a heslo .pfx (v tomto příkladu: 07/31. prosinci 2016 a test123). Je nutné je níže.
+Poznamenejte si hello koncové datum a hello hesla pro hello .pfx (v tomto příkladu: 07/31. prosinci 2016 a test123). Je nutné je níže.
 
 Další informace o vytvoření testovacího certifikátu najdete v tématu [postup: vytvořit vaše vlastní testovací certifikát](https://msdn.microsoft.com/library/ff699202.aspx)
 
-**Certifikát přidružit aplikaci Azure AD** nyní, když máte certifikát, je třeba ji přidružit k aplikaci Azure AD. Na portálu Azure v současné době nepodporuje tento pracovní postup; To lze provést pomocí prostředí PowerShell. Spusťte následující příkazy, které assoicate certifikát s aplikací Azure AD:
+**Přidružení hello certifikát s aplikací Azure AD** nyní, když máte certifikát, je nutné tooassociate ji pomocí aplikace Azure AD. Hello portálu Azure v současné době nepodporuje tento pracovní postup; To lze provést pomocí prostředí PowerShell. Spusťte následující příkazy tooassoicate hello certifikát s aplikací Azure AD hello hello:
 
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $x509.Import("C:\data\KVWebApp.cer")
@@ -158,16 +158,16 @@ Další informace o vytvoření testovacího certifikátu najdete v tématu [pos
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
 
-    # get the thumbprint to use in your app settings
+    # get hello thumbprint toouse in your app settings
     $x509.Thumbprint
 
-Po spuštění těchto příkazů se zobrazí aplikace ve službě Azure AD. Při hledání, zkontrolujte, že jste vybrali "Moje společnost vlastní aplikace" místo "Aplikace společnost používá" v dialogovém okně hledání.
+Po spuštění těchto příkazů, uvidíte hello aplikace ve službě Azure AD. Při hledání, ujistěte se, že vyberete "Moje společnost vlastní aplikace" místo "Aplikace společnost používá" v dialogovém okně hledání hello.
 
-Další informace o objektech aplikace Azure AD a ServicePrincipal objektů najdete v tématu [objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md)
+toolearn informace o objekty aplikací Azure AD a ServicePrincipal objekty, najdete v části [objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md)
 
-**Přidání kódu do vaší webové aplikace na použití certifikátu** nyní přidáme kódu do vaší webové aplikace na přístup certifikát a použít jej pro ověřování.
+**Přidat kód tooyour webové aplikace toouse hello certifikát** nyní přidáme kód tooyour webové aplikace tooaccess hello certifikátu a použít jej pro ověřování.
 
-Nejprve je kód pro přístup k certifikát.
+Nejprve je kód tooaccess hello certifikátu.
 
     public static class CertificateHelper
     {
@@ -178,7 +178,7 @@ Nejprve je kód pro přístup k certifikát.
             {
                 store.Open(OpenFlags.ReadOnly);
                 X509Certificate2Collection col = store.Certificates.Find(X509FindType.FindByThumbprint,
-                    findValue, false); // Don't validate certs, since the test root isn't installed.
+                    findValue, false); // Don't validate certs, since hello test root isn't installed.
                 if (col == null || col.Count == 0)
                     return null;
                 return col[0];
@@ -191,9 +191,9 @@ Nejprve je kód pro přístup k certifikát.
     }
 
 
-Všimněte si, že je StoreLocation CurrentUser místo LocalMachine. A že jsme se dodává false metodu najít vzhledem k tomu, že používáme testovací certifikát.
+Všimněte si, že hello StoreLocation je CurrentUser místo LocalMachine. A že jsme se poskytuje "Nepravda" toohello nalezena metoda, protože se používá testovací certifikát.
 
-Dále je kód, který používá CertificateHelper a vytvoří ClientAssertionCertificate, která je potřebná pro ověřování.
+Dále je kód, který používá hello CertificateHelper a vytvoří ClientAssertionCertificate, která je potřebná pro ověřování.
 
     public static ClientAssertionCertificate AssertionCert { get; set; }
 
@@ -204,7 +204,7 @@ Dále je kód, který používá CertificateHelper a vytvoří ClientAssertionCe
     }
 
 
-Tady je nový kód slouží k získání tokenu přístupu. Tím se nahradí výše gettoken – metoda. Uvedené ho jiný název pro usnadnění práce.
+Zde je hello nový kód tooget hello přístupový token. Tím se nahradí hello gettoken – metoda výše. Uvedené ho jiný název pro usnadnění práce.
 
     public static async Task<string> GetAccessToken(string authority, string resource, string scope)
     {
@@ -215,21 +215,21 @@ Tady je nový kód slouží k získání tokenu přístupu. Tím se nahradí vý
 
 I všechny tohoto kódu umístili do projektu webové aplikace Utils třídy pro snadné použití.
 
-Do metody Application_Start je poslední změny kódu. Je potřeba nejdřív voláním metody GetCert() zatížení ClientAssertionCertificate. A pak se nám změnit metoda zpětného volání, které jsme zadat při vytváření nové KeyVaultClient. Všimněte si, že tím se nahradí kód, který jsme měli výše.
+Poslední změna kódu Hello se hello metody Application_Start. Nejdřív potřebujeme toocall hello GetCert() metoda tooload hello ClientAssertionCertificate. A pak se nám změnit hello metoda zpětného volání, které jsme zadat při vytváření nové KeyVaultClient. Všimněte si, že tím se nahradí hello kód, který jsme měli výše.
 
     Utils.GetCert();
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**Přidat certifikát do vaší webové aplikace prostřednictvím portálu Azure** přidání certifikátu do vaší webové aplikace je jednoduchý dvoustupňový proces. První přejděte na portál Azure a přejděte do vaší webové aplikace. V okně nastavení pro webové aplikace klikněte na položku "vlastní domény a SSL". V okně, které se otevře vám bude moct nahrát certifikát, který jste vytvořili výše, KVWebApp.pfx, ujistěte se, že si pamatujete heslo pro soubor pfx.
+**Přidat certifikát tooyour webové aplikace prostřednictvím portálu Azure hello** přidání certifikátu tooyour webové aplikace je jednoduchý dvoustupňový proces. Nejprve přejděte toohello portálu Azure a přejděte tooyour webové aplikace. V okně Nastavení hello pro vaši webovou aplikaci klikněte na položku hello "vlastní domény a SSL". Na hello budou okno, které se otevře, budete moct tooupload hello certifikát, který jste vytvořili výše, KVWebApp.pfx, ujistěte se, že jste si heslo hello pro hello pfx.
 
-![Přidání certifikátu do webové aplikace na portálu Azure][2]
+![Přidání certifikátu tooa webové aplikace v hello portálu Azure][2]
 
-Poslední věcí, kterou je potřeba udělat je přidat nastavení aplikace do webové aplikace, který má název webu\_zatížení\_certifikáty a hodnotu *. Tím bude zajištěno, že se načtou všechny certifikáty. Pokud chcete načíst jenom certifikáty, které jste odeslali, můžete zadat seznam jejich kryptografické otisky oddělených čárkami.
+Hello poslední věcí, je nutné, aby toodo je tooadd nastavení aplikace tooyour webovou aplikaci, která má název webu hello\_zatížení\_certifikáty a hodnotu *. Tím bude zajištěno, že se načtou všechny certifikáty. Pokud byste chtěli, že pouze hello tooload certifikáty, které jste odeslali a potom můžete zadat seznam jejich kryptografické otisky oddělených čárkami.
 
-Další informace o přidání certifikátu do webové aplikace najdete v tématu [pomocí certifikátů v aplikacích weby Azure](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
+toolearn Další informace o přidání certifikátu tooa webové aplikace, najdete v části [pomocí certifikátů v aplikacích weby Azure](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-**Přidat certifikát do Key Vault jako tajný klíč** místo přímo nahrát certifikát služby webové aplikace, můžete ukládat v Key Vault jako tajný klíč a nasadit ho z ní. Toto je popsané v tomto příspěvku blogu ve dvou krocích [nasazení Azure certifikát webové aplikace prostřednictvím Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
+**Přidat certifikát tooKey trezoru jako tajný klíč** místo odeslání vašeho certifikátu toohello webové aplikace služby přímo, můžete ukládat v Key Vault jako tajný klíč a nasadit ho z ní. Toto je popsané v následujícím příspěvku na blogu hello ve dvou krocích [nasazení Azure certifikát webové aplikace prostřednictvím Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 ## <a id="next"></a>Další kroky
 Programátorské reference najdete v části [Azure Key Vault C# klienta referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/azure/dn903628.aspx).

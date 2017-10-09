@@ -1,44 +1,44 @@
-### <a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Udělení přístupu aplikaci Mobile Engagement k vašemu klíči rozhraní API GCM
-Pokud chcete aplikaci Mobile Engagement povolit, aby vaším jménem odesílala nabízená oznámení, musíte jí udělit přístup k vašemu klíči rozhraní API. To provedete tak, že svůj klíč nakonfigurujete a zadáte na portál Mobile Engagement.
+### <a name="grant-mobile-engagement-access-tooyour-gcm-api-key"></a>Mobile Engagement udělení přístupu tooyour klíč rozhraní API GCM
+tooallow Mobile Engagement toosend nabízená oznámení vaším jménem, je nutné toogrant, že přístup tooyour klíč rozhraní API. K tomu je potřeba nakonfigurujete a zadáte svůj klíč do hello portál Mobile Engagement.
 
-1. Na portálu Azure Classic zkontrolujte, jestli pracujete v aplikaci určené pro tento projekt, a potom klikněte na tlačítko **Engage** (Zpřístupnit), které najdete dole:
+1. Z klasického portálu Azure, zkontrolujte, jestli pracujete v aplikaci hello používáte pro tento projekt a pak klikněte na tlačítko hello **Engage** tlačítko dole v hello:
    
     ![](./media/mobile-engagement-android-send-push/engage-button.png)
-2. Potom klikněte na **Settings**(Nastavení)  -> **Native Push** (Nativní oznámení) a zadejte klíč GCM:
+2. Pak klikněte na tlačítko hello **nastavení** -> **nativní oznámení** části tooenter klíč GCM:
    
     ![](./media/mobile-engagement-android-send-push/engagement-portal.png)
-3. Klikněte na ikonu **Upravit** před možností **Klíč rozhraní API** v části **GCM Settings** (Nastavení GCM), jak vidíte níže:
+3. Klikněte na tlačítko hello **upravit** ikonu **klíč rozhraní API** v hello **nastavení GCM** části, jak je uvedeno níže:
    
     ![](./media/mobile-engagement-android-send-push/native-push-settings.png)
-4. V místní nabídce vložte klíč serveru GCM, který jste předtím získali, a klikněte na **Ok**.
+4. V místní nabídce hello vložte klíč serveru GCM jste předtím získali hello a pak klikněte na **Ok**.
    
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-## <a id="send"></a>Odeslání oznámení do vaší aplikace
-Teď vytvoříme jednoduchou kampaň nabízených oznámení. Ta bude odesílat oznámení do vaší aplikace.
+## <a id="send"></a>Poslat tooyour aplikaci oznámení
+Nyní vytvoříme kampaně jednoduché nabízených oznámení, který odesílá nabízená oznámení tooour aplikace pro práci s.
 
-1. Na portálu Mobile Engagement přejděte na kartu **REACH**.
-2. Kliknutím na **Nové oznámení** vytvořte kampaň nabízených oznámení.
+1. Přejděte toohello **dosáhnout** na portálu Mobile Engagement.
+2. Klikněte na tlačítko **nové oznámení** toocreate kampaň nabízených oznámení.
    
     ![](./media/mobile-engagement-android-send-push/new-announcement.png)
-3. Nastavte první pole kampaně pomocí následujících kroků:
+3. Nastavte první pole kampaně pomocí následujících kroků hello hello:
    
     ![](./media/mobile-engagement-android-send-push/campaign-first-params.png)
    
     a. Zadejte název kampaně.
    
-    b. U položky **Typ doručení** vyberte *Systémové oznámení -> Jednoduché*: Toto typ jednoduchého nabízeného oznámení pro Android, které obsahuje název a řádek menšího textu.
+    b. Vyberte hello **typ doručení** jako *systémové oznámení -> jednoduché*: Toto je typ hello jednoduché Android nabízeného oznámení, který obsahuje název a řádek menšího textu.
    
-    c. U položky **Delivery time** (Čas doručení) vyberte *Any time* (Kdykoli), aby mohla aplikace přijmout oznámení bez ohledu na to, jestli je spuštěná, nebo ne.
+    c. Vyberte **čas doručení** jako *kdykoli* tooallow hello aplikace tooreceive oznámení, zda je spuštěná aplikace hello, nebo ne.
    
-    d. Do textu oznámení zadejte **Název**, který se v nabízeném oznámení zobrazí tučně.
+    d. V hello oznámení text typ hello **název** který bude v tučné v nabízené hello.
    
     e. Do pole **Zpráva** zadejte zprávu.
-4. Přejděte dolů a v části **Obsah** vyberte **Pouze oznámení**.
+4. Přejděte dolů a v hello **obsahu** vyberte **pouze oznámení**.
    
     ![](./media/mobile-engagement-android-send-push/campaign-content.png)
-5. Tím jste dokončili nastavení nejzákladnější možné kampaně. Nyní znovu přejděte dolů a kliknutím na tlačítko **Vytvořit** kampaň uložte.
-6. Poslední krok: Kliknutím na **Aktivovat** aktivujte svoji kampaň, která bude zasílat nabízená oznámení.
+5. Dokončení nastavení hello nejzákladnější kampaně možné. Nyní znovu přejděte dolů a klikněte na tlačítko hello **vytvořit** tlačítko toosave kampaně.
+6. Poslední krok: Kliknutím na **aktivovat** tooactivate toosend kampaň nabízených oznámení.
    
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
 

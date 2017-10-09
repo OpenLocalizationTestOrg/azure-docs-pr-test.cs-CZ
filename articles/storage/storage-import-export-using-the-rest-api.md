@@ -1,6 +1,6 @@
 ---
-title: "Pomocí REST API služby Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, kde můžete najít prostředky pro používání služby Azure Import/Export rozhraní REST API, včetně postupy a referenční materiál."
+title: "aaaUsing hello REST API služby Azure Import/Export | Microsoft Docs"
+description: "Zjistěte, kde toofind prostředky pro používání hello Azure Import/Export služby REST API, včetně obou jak tooand referenční materiál."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: e4f5ca289f4bd87574e448d37a1154b222f221f5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a01c170b1bc9c2b2ce9086d39de78a39fafb2c8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-importexport-service-rest-api"></a>Použití rozhraní REST API služby Azure Import/Export
+# <a name="using-hello-azure-importexport-service-rest-api"></a>Pomocí REST API služby Azure Import/Export hello
 
-Službu Microsoft Azure Import/Export zpřístupňuje rozhraní REST API umožňující programovací řízení úlohy importu a exportu. Rozhraní REST API můžete provádět všechny operace importu a exportu, které můžete provádět pomocí [portál Azure](https://portal.azure.com/). Kromě toho můžete použít rozhraní API REST k provádění některých podrobné operací, jako je například dotazování procento dokončení úlohy, které nejsou momentálně k dispozici na portálu classic.
+Hello služby Microsoft Azure Import/Export zpřístupňuje rozhraní REST API tooenable programový ovládacího prvku úlohy importu a exportu. Můžete použít rozhraní API REST tooperform hello všechny hello importu a exportu operace, které můžete provádět s hello [portál Azure](https://portal.azure.com/). Kromě toho můžete použít hello REST API tooperform některé podrobné operace, např. dotazování hello procento dokončení úlohy, které nejsou momentálně k dispozici na portálu classic hello.
 
-V tématu [pomocí služby Microsoft Azure Import/Export přenos dat do úložiště objektů Blob](storage-import-export-service.md) přehled službu Import/Export a kurz, který ukazuje, jak použít klasický portál pro vytváření a správu import a export úloh.
+V tématu [pomocí hello Microsoft Azure Import/Export služby tooTransfer Data tooBlob úložiště](storage-import-export-service.md) přehled hello importu/exportu služby a kurz, který ukazuje, jak toouse hello portálu classic toocreate a spravovat import a export úloh.
 
 ## <a name="service-endpoints"></a>Koncové body služby
 
-Služba Azure Import/Export je poskytovatel prostředků pro Azure Resource Manager a poskytuje sadu rozhraní API REST v následující koncový bod HTTPS pro správu úlohy importu a exportu:
+Hello služba Azure Import/Export je poskytovatel prostředků pro Azure Resource Manager a poskytuje sadu rozhraní API REST v hello následující koncový bod HTTPS pro správu úlohy importu a exportu:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
@@ -36,7 +36,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="versioning"></a>Správa verzí
 
-Musíte zadat žádosti o službu Import/Export `api-version` parametr a jeho hodnotu nastavte `2016-11-01`.
+Požadavky toohello importu/exportu služby musíte zadat hello `api-version` parametr a jeho hodnotu nastavte příliš`2016-11-01`.
 
 ## <a name="importexport-service-operations"></a>Import a Export operací služby
 

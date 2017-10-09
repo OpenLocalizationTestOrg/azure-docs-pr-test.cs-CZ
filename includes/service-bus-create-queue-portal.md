@@ -1,17 +1,17 @@
 Ujistěte se, že jste již vytvořili obor názvů Service Bus, jak je znázorněno [zde][namespace-how-to].
 
-1. Přihlaste se k webu [Azure Portal][azure-portal].
-2. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Další služby**).
-3. Klikněte na obor názvů, ve kterém chcete vytvořit frontu. V tomto případě se jedná o **nstest1**.
+1. Přihlaste se toohello [portál Azure][azure-portal].
+2. V levém navigačním podokně hello hello portálu, klikněte na **Service Bus** (Pokud nevidíte **Service Bus**, klikněte na tlačítko **další služby**).
+3. Klikněte na tlačítko hello obor názvů, ve kterém chcete toocreate hello fronty. V tomto případě se jedná o **nstest1**.
    
     ![Vytvoření fronty][createqueue1]
-4. V okně **Obor názvů Service Bus** vyberte **Fronty** a pak klikněte na **Přidat frontu**.
+4. V hello **oboru názvů Service Bus** vyberte **fronty**, pak klikněte na tlačítko **přidat fronty**.
    
     ![Vyberte Fronty][createqueue2]
-5. Zadejte **Název fronty** a nechte ostatní hodnoty na jejich výchozích hodnotách.
+5. Zadejte hello **název fronty** a nechte ostatní hodnoty hello s jejich výchozí hodnoty.
    
     ![Vyberte Nový][createqueue3]
-6. Dole na v okně klikněte na **Vytvořit**.
+6. Hello dolní části okna hello, klikněte na **vytvořit**.
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png

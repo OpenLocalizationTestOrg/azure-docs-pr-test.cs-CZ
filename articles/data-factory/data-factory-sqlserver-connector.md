@@ -1,6 +1,6 @@
 ---
-title: "Přesun dat do a z SQL serveru | Microsoft Docs"
-description: "Další informace o tom, jak přesunout data z databáze serveru SQL Server, který je místně nebo v virtuálního počítače Azure pomocí Azure Data Factory."
+title: aaaMove tooand dat z SQL serveru | Microsoft Docs
+description: "Další informace o způsobu toomove data do nebo ze systému SQL Server databáze tedy místní nebo virtuální počítač Azure pomocí Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 9cd2077d897631457925cda5ef5e6df3c0c33177
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f0cccf56a670e62ec893d75052a81eb26d562050
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesun dat do a z místní SQL Server nebo na IaaS (virtuální počítač Azure) pomocí Azure Data Factory
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z databáze SQL Server na místě. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování. 
+# <a name="move-data-tooand-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesunutí dat tooand z místní SQL Server nebo na IaaS (virtuální počítač Azure) pomocí Azure Data Factory
+Tento článek vysvětluje, jak toouse hello aktivitu kopírování v Azure Data Factory toomove data z databáze SQL Server na místě. Vychází hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování hello. 
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Může kopírovat data **z databáze systému SQL Server** ukládá do následující data:
+Může kopírovat data **z databáze systému SQL Server** toohello následující úložišť dat:
 
 [!INCLUDE [data-factory-supported-sink](../../includes/data-factory-supported-sinks.md)]
 
-Může kopírovat data z následujících datových úložišť **k databázi systému SQL Server**:
+Data můžete zkopírovat z hello následující úložišť dat **databáze systému SQL Server tooa**:
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>Podporované verze systému SQL Server
-Tato podpora konektoru systému SQL Server kopírování dat z/do následující verze instance hostovaná místně nebo v Azure IaaS pomocí ověřování SQL a ověřování systému Windows: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
+Tato podpora konektoru systému SQL Server kopírování dat z / toohello následující verze instance hostovaná místně nebo v Azure IaaS pomocí ověřování SQL a ověřování systému Windows: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
-Koncepty a kroky potřebné pro připojení s SQL serveru hostované místně nebo ve virtuálních počítačích Azure IaaS (infrastruktura jako služba) jsou stejné. V obou případech budete muset použít Brána pro správu dat pro připojení k síti.
+Koncepty Hello a kroky potřebné pro připojení s SQL serveru hostované místně nebo v Azure IaaS (infrastruktura jako služba) virtuálních počítačů jsou hello stejné. V obou případech musíte toouse Brána pro správu dat pro připojení k síti.
 
-V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku se dozvíte o Brána pro správu dat a podrobné pokyny o nastavení brány. Nastavení instance brány je nezbytný předpoklad pro připojení k systému SQL Server.
+V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) toolearn článek o Brána pro správu dat a podrobné pokyny k nastavení hello brány. Nastavení instance brány je nezbytný předpoklad pro připojení k systému SQL Server.
 
-Při bránu nainstalovat na stejný na místním počítači nebo instanci cloudu virtuálního počítače jako Server SQL pro lepší výkon, doporučujeme vám nainstalovat na samostatné počítače. S brány a SQL Server na samostatné počítače snižuje kolize prostředků.
+Zatímco můžete bránu nainstalovat hello stejné na místní počítač nebo cloudové instance virtuálního počítače jako hello systému SQL Server pro lepší výkon, doporučujeme vám nainstalovat na samostatné počítače. S hello brány a SQL Server na samostatné počítače snižuje kolize prostředků.
 
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z databáze SQL serveru místní pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak toocreate Hello kanálu je toouse hello **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírování dat hello.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Můžete také použít následující nástroje toocreate kanálu hello: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny toocreate kanál s aktivitou kopírování. 
 
-Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
+Jestli používáte nástroje hello nebo rozhraní API, je třeba provést následující kroky toocreate kanál, který přesouvá data ze zdrojových dat úložiště tooa jímku dat hello: 
 
 1. Vytvoření **objekt pro vytváření dat**. Objekt pro vytváření dat může obsahovat jeden nebo víc kanálů. 
-2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do data factory. Pokud jsou kopírování dat z databáze SQL serveru do Azure blob storage, například vytvoříte dvě propojené služby propojení databáze systému SQL Server a účet úložiště Azure pro vytváření dat.. Vlastnosti propojené služby, které jsou specifické pro databázi systému SQL Server, najdete v části [propojené vlastnosti služby](#linked-service-properties) části. 
-3. Vytvoření **datové sady** představují vstupní a výstupní data pro kopírování. V příkladu uvedených v posledním kroku vytvoříte datové sady určete tabulku SQL v databázi systému SQL Server, který obsahuje vstupní data. A vytvořte jinou datovou sadu, která zadejte kontejner objektů blob a složky, která obsahuje data zkopírovat z databáze serveru SQL. Vlastnosti datové sady, které jsou specifické pro databázi systému SQL Server, najdete v části [vlastnosti datové sady](#dataset-properties) části.
-4. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve použijete SqlSource jako zdroj a BlobSink jako jímku pro aktivitu kopírování. Podobně pokud kopírujete z Azure Blob Storage do databáze serveru SQL, použijte BlobSource a SqlSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro databáze serveru SQL, najdete v části [zkopírovat vlastnosti aktivity](#copy-activity-properties) části. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímka klikněte na odkaz v předchozí části pro data store. 
+2. Vytvoření **propojené služby** toolink vstupní a výstupní data úložiště tooyour data factory. Například pokud data kopírujete tooan databáze systému SQL Server úložiště objektů blob v Azure, vytvoříte dvě propojené služby toolink databáze systému SQL Server a účet úložiště Azure tooyour služby data factory. Vlastnosti propojené služby, které jsou specifické tooSQL databáze serveru, najdete v části [propojené vlastnosti služby](#linked-service-properties) části. 
+3. Vytvoření **datové sady** toorepresent vstupní a výstupní data pro hello operace kopírování. V příkladu hello uvedených v posledním kroku hello vytvořit tabulku datovou sadu toospecify hello SQL v databázi systému SQL Server, který obsahuje vstupní data hello. Vytvoření kontejneru objektů blob hello toospecify s jinou datovou sadu a hello složky, která obsahuje hello data zkopírovaných z hello databáze systému SQL Server. Vlastnosti datové sady, které jsou konkrétní tooSQL databáze serveru, najdete v části [vlastnosti datové sady](#dataset-properties) části.
+4. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu hello již bylo zmíněno dříve použijete SqlSource jako zdroj a BlobSink jako jímku pro aktivitu kopírování hello. Podobně pokud zkopírujete z Azure Blob Storage tooSQL databáze serveru, použijte BlobSource a SqlSink v aktivitě kopírování hello. Vlastnosti aktivity kopírování, které jsou specifické tooSQL databáze serveru, najdete v části [zkopírovat vlastnosti aktivity](#copy-activity-properties) části. Podrobnosti o způsobu toouse úložiště dat jako zdroj nebo jímka klikněte na tlačítko hello odkaz v předchozí části hello pro data store. 
 
-Když použijete průvodce, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), definujete tyto entity služby Data Factory pomocí formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke zkopírování dat do nebo z místní databáze systému SQL Server naleznete v části [JSON příklady](#json-examples-for-copying-data-from-and-to-sql-server) tohoto článku. 
+Když použijete Průvodce hello, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál hello). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), můžete definovat tyto entity služby Data Factory pomocí formátu JSON hello.  Ukázky s definicemi JSON entit služby Data Factory, které jsou používané toocopy data do nebo z místní databáze systému SQL Server naleznete v části [JSON příklady](#json-examples-for-copying-data-from-and-to-sql-server) tohoto článku. 
 
-Následující části obsahují podrobnosti o vlastnostech formátu JSON, které slouží k určení konkrétní entity služby Data Factory k systému SQL Server: 
+Hello následující části obsahují podrobnosti o vlastnostech formátu JSON, které jsou používané toodefine objekt pro vytváření dat entity konkrétní tooSQL serveru: 
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Vytvoření propojené služby typu **onpremisessqlserver** propojit místní databázi systému SQL Server do služby data factory. Následující tabulka obsahuje popis specifické pro službu SQL serveru propojená místní elementy JSON.
+Vytvoření propojené služby typu **onpremisessqlserver** toolink služby místní systém SQL Server databáze tooa data factory. Hello následující tabulka obsahuje popis služby SQL serveru propojená konkrétní tooon místní elementy JSON.
 
-Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro SQL Server propojené služby.
+Hello následující tabulka obsahuje popis pro konkrétní tooSQL elementy JSON serveru propojené služby.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost typu musí být nastavená na: **onpremisessqlserver**. |Ano |
-| připojovací řetězec |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi systému SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Ano |
-| gatewayName |Název brány, kterou služba Data Factory měla použít pro připojení k místní databázi systému SQL Server. |Ano |
+| type |vlastnost typu Hello by měla být nastavena na: **onpremisessqlserver**. |Ano |
+| připojovací řetězec |Zadejte požadované informace connectionString tooconnect toohello místní databáze SQL serveru pomocí ověřování SQL nebo ověřování systému Windows. |Ano |
+| gatewayName |Název hello brány, kterou služba Data Factory hello měli používat toohello tooconnect, místní databázi systému SQL Server. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud používáte ověřování systému Windows. Příklad: **domainname\\uživatelské jméno**. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
+| heslo |Zadejte heslo pro hello uživatelského účtu, který jste zadali pro uživatelské jméno hello. |Ne |
 
-Můžete šifrovat přihlašovací údaje pomocí **New-AzureRmDataFactoryEncryptValue** rutiny a jak je znázorněno v následujícím příkladu je využít v připojovacím řetězci (**EncryptedCredential** vlastnost):  
+Můžete šifrovat přihlašovací údaje pomocí hello **New-AzureRmDataFactoryEncryptValue** rutiny a použijte je v hello připojovací řetězec, jak ukazuje následující příklad hello (**EncryptedCredential** vlastnost):  
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -97,7 +97,7 @@ Můžete šifrovat přihlašovací údaje pomocí **New-AzureRmDataFactoryEncryp
 ```
 **JSON pro použití ověřování systému Windows**
 
-Brána pro správu dat se zosobnit zadaný uživatelský účet pro připojení k místní databázi systému SQL Server. 
+Brána pro správu dat se zosobnit hello zadaný uživatel účet tooconnect toohello místní databázi systému SQL Server. 
 
 ```json
 {
@@ -116,73 +116,73 @@ Brána pro správu dat se zosobnit zadaný uživatelský účet pro připojení 
 ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-V ukázky, můžete použít datovou sadu typu **SqlServerTable** představují tabulky v databázi systému SQL Server.  
+V hello ukázky jste použili datovou sadu typu **SqlServerTable** toorepresent tabulky v databázi systému SQL Server.  
 
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (SQL Server, objektů blob v Azure, Azure table atd.).
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v části hello [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (SQL Server, objektů blob v Azure, Azure table atd.).
 
-V rámci typeProperties části se liší pro jednotlivé typy datovou sadu a poskytuje informace o umístění dat v úložišti. **Rámci typeProperties** části datové sady typu **SqlServerTable** má následující vlastnosti:
+část rámci typeProperties Hello se liší pro jednotlivé typy datovou sadu a poskytuje informace o umístění hello hello dat v úložišti dat hello. Hello **rámci typeProperties** části pro datovou sadu hello typu **SqlServerTable** má hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| tableName |Název tabulky nebo zobrazení instance databáze serveru SQL, kterou propojená služba odkazuje. |Ano |
+| tableName |Název hello tabulku nebo zobrazení v hello instance databáze SQL serveru, který propojená služba odkazuje. |Ano |
 
 ## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
-Pokud přesouváte data z databáze systému SQL Server, nastavíte typ zdroje v aktivitě kopírování do **SqlSource**. Podobně pokud přesouváte data do databáze serveru SQL, nastavíte typ jímky v aktivitě kopírování do **SqlSink**. Tato část obsahuje seznam vlastností, které jsou podporované SqlSource a SqlSink.
+Pokud přesouváte data z databáze systému SQL Server, nastavíte typ zdroje hello v aktivitě kopírování hello příliš**SqlSource**. Podobně pokud přesouváte databázi systému SQL Server tooa dat, nastavíte typ jímky hello v aktivitě kopírování hello příliš**SqlSink**. Tato část obsahuje seznam vlastností, které jsou podporované SqlSource a SqlSink.
 
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu hello [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
 
 > [!NOTE]
-> Aktivita kopírování přijímá pouze jeden vstup a vytváří jenom jeden výstup.
+> Hello aktivity kopírování přijímá pouze jeden vstup a vytváří jenom jeden výstup.
 
-Vzhledem k tomu, vlastnosti dostupné v rámci typeProperties části aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech zdrojů a jímky.
+Vzhledem k tomu, vlastnosti dostupné v rámci typeProperties části hello hello aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech hello zdrojů a jímky.
 
 ### <a name="sqlsource"></a>SqlSource
-Pokud zdroj v aktivitě kopírování je typu **SqlSource**, následující vlastnosti jsou k dispozici v **rámci typeProperties** části:
+Pokud zdroj v aktivitě kopírování je typu **SqlSource**, hello následující vlastnosti jsou k dispozici v **rámci typeProperties** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Čtení dat pomocí vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. Může odkazovat více tabulek z databáze odkazuje vstupní datové sady. Pokud není zadaný příkaz jazyka SQL, která se provedla: Vyberte možnost z MyTable. |Ne |
-| sqlReaderStoredProcedureName |Název uložené procedury, který čte data ze zdrojové tabulky. |Název uložené procedury. Poslední příkaz jazyka SQL musí být příkaz SELECT v uložené proceduře. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název/hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům a malá a velká písmena parametry uložené procedury. |Ne |
+| sqlReaderQuery |Použijte data tooread hello vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. Může odkazovat více tabulek z databáze hello odkazuje hello vstupní datové sady. Pokud není zadaný, hello příkaz jazyka SQL, která se provedla: Vyberte možnost z MyTable. |Ne |
+| sqlReaderStoredProcedureName |Název hello uložené procedury, která čte data z hello zdrojové tabulky. |Název hello uložené procedury. Hello poslední příkaz jazyka SQL musí být příkaz SELECT v hello uložené procedury. |Ne |
+| storedProcedureParameters |Parametry pro hello uložené procedury. |Páry název/hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům hello a malá a velká písmena parametry hello uložené procedury. |Ne |
 
-Pokud **sqlReaderQuery** je zadán pro SqlSource, aktivitě kopírování spustí tento dotaz na zdroji databáze systému SQL Server získat data.
+Pokud hello **sqlReaderQuery** je zadán pro hello SqlSource, hello aktivity kopírování spouští tento dotaz hello databáze systému SQL Server zdrojová tooget hello data.
 
-Alternativně můžete zadat uložené procedury zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přebírá parametry).
+Alternativně můžete zadat uložené procedury zadáním hello **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud hello uložená procedura používá parametry).
 
-Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části struktura slouží k vytvoření dotazu vyberte možnost spustit v databázi SQL serveru. Pokud definice datové sady nemá strukturu, jsou vybrány všechny sloupce z tabulky.
+Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, hello sloupce definovaný v oddílu Struktura hello jsou použité toobuild dotaz select toorun proti hello databáze systému SQL Server. Pokud definice datové sady hello nemá hello struktura, vyberou se všechny sloupce z tabulky hello.
 
 > [!NOTE]
-> Při použití **sqlReaderStoredProcedureName**, stále je třeba zadat hodnotu pro **tableName** vlastnost v datové sadě JSON. Neexistují žádné ověření, ale adresovat této tabulky.
+> Při použití **sqlReaderStoredProcedureName**, stále potřebujete toospecify hodnotu pro hello **tableName** vlastnost v datové sadě hello JSON. Neexistují žádné ověření, ale adresovat této tabulky.
 
 ### <a name="sqlsink"></a>SqlSink
-**SqlSink** podporuje následující vlastnosti:
+**SqlSink** podporuje hello následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
-| writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
-| sqlWriterCleanupScript |Zadejte dotaz aktivity kopírování provést tak, aby se vyčistit data určitý řez. Další informace najdete v tématu [opakovatelných kopie](#repeatable-copy) části. |Příkaz dotazu. |Ne |
-| sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování vyplníte identifikátor automaticky generovány řez, který se používá k vyčištění dat určitý řez při spusťte znovu. Další informace najdete v tématu [opakovatelných kopie](#repeatable-copy) části. |Název sloupce sloupce s datovým typem binary(32). |Ne |
-| sqlWriterStoredProcedureName |Název uložené procedury upserts (aktualizace nebo vložení) dat do cílové tabulky. |Název uložené procedury. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název/hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům a malá a velká písmena parametry uložené procedury. |Ne |
-| sqlWriterTableType |Zadejte název typu tabulky má být použit v uložené proceduře. Aktivita kopírování zpřístupní přesouvání dat v dočasné tabulce s tímto typem tabulky. Uložená procedura kód pak sloučit data kopírovány s existujícími daty. |Zadejte název tabulky. |Ne |
+| writeBatchTimeout |Doba pro toocomplete operaci vložení dávky hello Počkejte, než vyprší časový limit. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchSize |Pokud velikost vyrovnávací paměti hello dosáhne writeBatchSize vkládá data do tabulky SQL hello. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
+| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování tooexecute tak, aby se vyčistit data určitý řez. Další informace najdete v tématu [opakovatelných kopie](#repeatable-copy) části. |Příkaz dotazu. |Ne |
+| sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování toofill s identifikátorem automaticky generovány řez, což je použité tooclean data určitý řez, pokud znovu spustit. Další informace najdete v tématu [opakovatelných kopie](#repeatable-copy) části. |Název sloupce sloupce s datovým typem binary(32). |Ne |
+| sqlWriterStoredProcedureName |Název hello uložené procedury upserts (aktualizace nebo vložení) dat do cílové tabulky hello. |Název hello uložené procedury. |Ne |
+| storedProcedureParameters |Parametry pro hello uložené procedury. |Páry název/hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům hello a malá a velká písmena parametry hello uložené procedury. |Ne |
+| sqlWriterTableType |Zadejte toobe název typu tabulky používán hello uložené procedury. Aktivita kopírování zpřístupní přesouvání dat hello v dočasné tabulce s tímto typem tabulky. Uložená procedura kódu můžete pak sloučit data hello kopírovány s existujícími daty. |Zadejte název tabulky. |Ne |
 
 
-## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>Příklady JSON pro kopírování dat z a do systému SQL Server
-Následující příklady poskytují ukázka JSON definice, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Následující ukázky ukazují, jak ke zkopírování dat do a z SQL serveru a Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** ze všech zdrojů do jakéhokoli z jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.     
+## <a name="json-examples-for-copying-data-from-and-toosql-server"></a>Příklady JSON ke kopírování dat z a tooSQL serveru
+Hello následující příklady poskytují definice JSON ukázka používané toocreate kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Dobrý den, jak následující ukázky zobrazit toocopy tooand dat z SQL serveru a Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** ze všech zdrojů tooany z hello jímky uvádí [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí hello aktivitu kopírování v Azure Data Factory.     
 
-## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>Příklad: Kopírování dat z SQL serveru do objektu Blob Azure
-Následující příklad ukazuje:
+## <a name="example-copy-data-from-sql-server-tooazure-blob"></a>Příklad: Kopírování dat z SQL serveru tooAzure objektů Blob
+Následující ukázka ukazuje Hello:
 
 1. Propojené služby typu [onpremisessqlserver](#linked-service-properties).
 2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Vstup [datovou sadu](data-factory-create-datasets.md) typu [SqlServerTable](#dataset-properties).
 4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. [Kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [SqlSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+5. Hello [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [SqlSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data časové řady z tabulky serveru SQL Server do objektu blob Azure každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázka Hello zkopíruje data časové řady z tabulky tooan SQL Server objektů blob v Azure každou hodinu. Hello vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky hello.
 
-Jako první krok nastavte Brána pro správu dat. Tyto pokyny jsou v [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
+Jako první krok nastavte Brána pro správu dat hello. Hello pokyny jsou v hello [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 **Služba SQL Server propojené**
 ```json
@@ -212,9 +212,9 @@ Jako první krok nastavte Brána pro správu dat. Tyto pokyny jsou v [přesouvá
 ```
 **Vstupní datové sady SQL Server**
 
-Příkladu se předpokládá, jste vytvořili tabulku "MyTable" v systému SQL Server a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady. Můžete dotazovat přes více tabulek v rámci stejné databáze pomocí jednu datovou sadu, ale musí používat jednu tabulku pro typeProperty tableName datovou sadu.
+Ukázka Hello předpokládá jste vytvořili tabulku "MyTable" v systému SQL Server a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady. Můžete dotazovat přes více tabulek v rámci hello stejnou databázi pomocí jednu datovou sadu, ale jedné tabulky musí být použita pro typeProperty tableName hello datovou sadu.
 
-Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+Nastavení "externí": "PRAVDA" informuje služba Data Factory tuto datovou sadu hello je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```json
 {
@@ -242,7 +242,7 @@ Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je 
 ```
 **Výstupní datovou sadu objektů Blob v Azure**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce pro tento objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a čas částí čas spuštění.
+Data se zapisují nový objekt blob tooa každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce Hello pro objekt blob hello je vyhodnocován dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá rok, měsíc, den a čas části hello počáteční čas.
 
 ```json
 {
@@ -301,7 +301,7 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, int
 ```
 **Kanál s aktivitou kopírování**
 
-Kanál obsahuje aktivitu kopírování, která je konfigurovaná pro používání těchto vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **SqlSource** a **podřízený** je typ nastaven na **BlobSink**. Zadané pro dotaz SQL **SqlReaderQuery** vlastnost vybere data za poslední hodinu pro kopírování.
+Hello kanál obsahuje aktivitu kopírování, je nakonfigurovaná toouse tyto vstupní a výstupní datové sady a je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello **zdroj** je typ nastaven příliš**SqlSource** a **podřízený** je typ nastaven příliš**BlobSink**. Dotaz SQL Hello zadaný pro hello **SqlReaderQuery** vlastnost vybere hello data v hello za hodinu toocopy.
 
 ```json
 {  
@@ -349,22 +349,22 @@ Kanál obsahuje aktivitu kopírování, která je konfigurovaná pro používán
    }
 }
 ```
-V tomto příkladu **sqlReaderQuery** je zadán pro SqlSource. Aktivita kopírování spustí tento dotaz na zdroji databáze systému SQL Server získat data. Alternativně můžete zadat uložené procedury zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přebírá parametry). SqlReaderQuery může odkazovat více tabulek v databázi odkazuje vstupní datové sady. Se neomezuje jenom do tabulky, nastavte jako typeProperty tableName datovou sadu.
+V tomto příkladu **sqlReaderQuery** pro hello SqlSource je zadána. Hello aktivity kopírování spouští tento dotaz hello data hello tooget zdrojové databáze systému SQL Server. Alternativně můžete zadat uložené procedury zadáním hello **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud hello uložená procedura používá parametry). Hello sqlReaderQuery může odkazovat více tabulek v rámci hello databáze odkazuje hello vstupní datové sady. Není omezený tooonly hello tabulky nastavena jako hello typeProperty tableName datové sady.
 
-Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části struktura slouží k vytvoření dotazu vyberte možnost spustit v databázi SQL serveru. Pokud definice datové sady nemá strukturu, jsou vybrány všechny sloupce z tabulky.
+Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, hello sloupce definovaný v oddílu Struktura hello jsou použité toobuild dotaz select toorun proti hello databáze systému SQL Server. Pokud definice datové sady hello nemá hello struktura, vyberou se všechny sloupce z tabulky hello.
 
-Najdete v článku [zdroje Sql](#sqlsource) části a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) pro seznam vlastností, které jsou podporované SqlSource a BlobSink.
+V tématu hello [zdroje Sql](#sqlsource) části a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) hello seznam vlastnostech podporovaných zprostředkovatelem SqlSource a BlobSink.
 
-## <a name="example-copy-data-from-azure-blob-to-sql-server"></a>Příklad: Kopírování dat z objektu Blob Azure do SQL serveru
-Následující příklad ukazuje:
+## <a name="example-copy-data-from-azure-blob-toosql-server"></a>Příklad: Kopírování dat z Azure Blob tooSQL serveru
+Následující ukázka ukazuje Hello:
 
-1. Propojené služby typu [onpremisessqlserver](#linked-service-properties).
-2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
+1. Hello propojené služby typu [onpremisessqlserver](#linked-service-properties).
+2. Hello propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Vstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties).
-5. [Kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [SqlSink](#sql-server-copy-activity-type-properties).
+5. Hello [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [SqlSink](#sql-server-copy-activity-type-properties).
 
-Kopie ukázka časové řady dat z Azure blob do systému SQL Server tabulky každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázka Hello zkopíruje data časové řady z tabulky serveru SQL Server tooa objektů blob v Azure každou hodinu. Hello vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky hello.
 
 **Služba SQL Server propojené**
 
@@ -395,7 +395,7 @@ Kopie ukázka časové řady dat z Azure blob do systému SQL Server tabulky ka�
 ```
 **Azure vstupní datovou sadu objektu Blob**
 
-Data je převzata z nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Název složky a cesta k souboru pro tento objekt blob se vyhodnocují dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc a den součástí čas spuštění a název souboru používá hodinu součástí čas spuštění. "externí": "PRAVDA" nastavení informuje služba Data Factory, že datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+Data je převzata z nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). název a cesta k souboru složky Hello pro objekt blob hello se vyhodnocují dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá rok, měsíc a den součástí hello počáteční čas a název souboru používá hello hodinu součástí hello počáteční čas. "externí": "PRAVDA" nastavení informuje služba Data Factory hello tuto datovou sadu hello je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```json
 {
@@ -463,7 +463,7 @@ Data je převzata z nového objektu blob každou hodinu (frekvence: hodiny, inte
 ```
 **Výstupní datové sady SQL Server**
 
-Ukázka zkopíruje data na tabulku s názvem "MyTable" v systému SQL Server. Podle očekávání souboru CSV objektů Blob tak, aby obsahovala, vytvořte v systému SQL Server s stejný počet sloupců v tabulce. Nové záznamy se přidají do tabulky každou hodinu.
+Ukázka Hello zkopíruje data tooa tabulku s názvem "MyTable" v systému SQL Server. Vytvoření tabulky hello v systému SQL Server s hello stejný počet sloupců, podle očekávání toocontain soubor Blob CSV hello. Přidávání řádků tabulky toohello každou hodinu.
 
 ```json
 {
@@ -483,7 +483,7 @@ Ukázka zkopíruje data na tabulku s názvem "MyTable" v systému SQL Server. Po
 ```
 **Kanál s aktivitou kopírování**
 
-Kanál obsahuje aktivitu kopírování, která je konfigurovaná pro používání těchto vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **BlobSource** a **podřízený** je typ nastaven na **SqlSink**.
+Hello kanál obsahuje aktivitu kopírování, je nakonfigurovaná toouse tyto vstupní a výstupní datové sady a je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello **zdroj** je typ nastaven příliš**BlobSource** a **podřízený** je typ nastaven příliš**SqlSink**.
 
 ```json
 {  
@@ -533,32 +533,32 @@ Kanál obsahuje aktivitu kopírování, která je konfigurovaná pro používán
 ```
 
 ## <a name="troubleshooting-connection-issues"></a>Odstraňování potíží s připojením
-1. Konfigurace systému SQL Server tak, aby přijímal vzdálená připojení. Spusťte **SQL Server Management Studio**, klikněte pravým tlačítkem na **server**a klikněte na tlačítko **vlastnosti**. Vyberte **připojení** ze seznamu a zkontrolujte **povolit vzdálená připojení k serveru**.
+1. Konfigurace vzdáleného připojení tooaccept systému SQL Server. Spusťte **SQL Server Management Studio**, klikněte pravým tlačítkem na **server**a klikněte na tlačítko **vlastnosti**. Vyberte **připojení** ze seznamu hello a zkontrolujte **povolit vzdálená připojení toohello server**.
 
     ![Povolit vzdálená připojení](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
 
-    V tématu [konfigurovat možnosti konfigurace serveru pro vzdálený přístup](https://msdn.microsoft.com/library/ms191464.aspx) podrobné pokyny.
-2. Spusťte **Správce konfigurace systému SQL Server**. Rozbalte položku **konfigurace sítě serveru SQL Server** pro instanci a vyberte **protokoly pro MSSQLSERVER**. Měli byste vidět protokolů v pravém podokně. Povolte protokol TCP/IP kliknutím pravým tlačítkem na **TCP/IP** a kliknutím na **povolit**.
+    V tématu [konfigurace vzdáleného přístupu hello možnosti konfigurace serveru](https://msdn.microsoft.com/library/ms191464.aspx) podrobné pokyny.
+2. Spusťte **Správce konfigurace systému SQL Server**. Rozbalte položku **konfigurace sítě serveru SQL Server** pro hello instance je chcete a vyberte **protokoly pro MSSQLSERVER**. Měli byste vidět protokolů v pravém podokně hello. Povolte protokol TCP/IP kliknutím pravým tlačítkem na **TCP/IP** a kliknutím na **povolit**.
 
     ![Povolte protokol TCP/IP](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
 
     V tématu [povolit nebo zakázat síťový protokol serveru](https://msdn.microsoft.com/library/ms191294.aspx) podrobnosti a alternativní způsoby povolení protokolu TCP/IP.
-3. V rámci stejného časového období, klikněte dvakrát na **TCP/IP** spustíte **vlastností protokolu TCP/IP** okno.
-4. Přepnout **IP adresy** kartě. Posuňte se dolů a najdete **IPAll** části. Poznamenejte si ** TCP Port ** (výchozí hodnota je **1433**).
-5. Vytvoření **pravidlo pro bránu Windows Firewall** na počítači, aby povolit příchozí přenosy pomocí tohoto portu.  
-6. **Ověření připojení**: pro připojení k serveru SQL pomocí plně kvalifikovaný název, použijte SQL Server Management Studio z jiný počítač. Například: "<machine>.<domain>. Corp.<company>.com, 1433. "
+3. Ve stejném okně hello, dvakrát klikněte na **TCP/IP** toolaunch **vlastností protokolu TCP/IP** okno.
+4. Přepínač toohello **IP adresy** kartě. Projděte dolů toosee **IPAll** části. Zapište hello ** TCP Port ** (výchozí hodnota je **1433**).
+5. Vytvoření **pravidlo pro hello brány Windows Firewall** pro příchozí provoz tooallow hello počítače pomocí tohoto portu.  
+6. **Ověření připojení**: tooconnect toohello pomocí plně kvalifikovaného názvu SQL serveru použít SQL Server Management Studio z jiný počítač. Například: "<machine>.<domain>. Corp.<company>.com, 1433. "
 
    > [!IMPORTANT]
 
-   > V tématu [přesun dat mezi místní zdroje a cloudu s Brána pro správu dat](data-factory-move-data-between-onprem-and-cloud.md) podrobné informace.
+   > V tématu [přesun dat mezi místní zdroje a hello cloudu s Brána pro správu dat](data-factory-move-data-between-onprem-and-cloud.md) podrobné informace.
    >
    > V tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tipy k řešení potíží s připojení nebo brány související s problémy.
    >
    >
 
 
-## <a name="identity-columns-in-the-target-database"></a>Sloupce identity v cílové databázi
-Tato část poskytuje příklad, který kopíruje data ze zdrojové tabulky s žádný sloupec identity do cílové tabulky se sloupcem identity.
+## <a name="identity-columns-in-hello-target-database"></a>Sloupce identity v hello cílová databáze
+Tato část poskytuje příklad, který kopíruje data ze zdrojové tabulky s žádné identity sloupec tooa cílové tabulky se sloupcem identity.
 
 **Zdrojová tabulka:**
 
@@ -580,7 +580,7 @@ create table dbo.TargetTbl
 )
 ```
 
-Všimněte si, že cílová tabulka obsahuje sloupec identity.
+Všimněte si, že hello cílová tabulka obsahuje sloupec identity.
 
 **Definice JSON datové sady zdroje**
 
@@ -629,20 +629,20 @@ Všimněte si, že cílová tabulka obsahuje sloupec identity.
 }
 ```
 
-Všimněte si, že jako zdrojové a cílové tabulky jiné schéma (cíl má sloupec s identitou). V tomto scénáři budete muset zadat **struktura** vlastnost v definici datové sady cíl, který neobsahuje sloupec identity.
+Všimněte si, že jako zdrojové a cílové tabulky jiné schéma (cíl má sloupec s identitou). V tomto scénáři budete potřebovat toospecify **struktura** vlastnost v definici datové sady cíl hello, který neobsahuje sloupec identity hello.
 
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>Volání uložené procedury jímku SQL
 V tématu [vyvolat uloženou proceduru SQL jímka v aktivitě kopírování](data-factory-invoke-stored-procedure-from-copy-activity.md) článku příklad volání uložené procedury z jímku SQL při aktivitě kopírování kanálu.
 
 ## <a name="type-mapping-for-sql-server"></a>Mapování typu pro SQL server
-Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s následující postup krok 2:
+Jak je uvedeno v hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článku hello aktivita kopírování provádí automatické typ převody z typů toosink typy zdroje s hello následující přístup krok 2:
 
-1. Převést na typ .NET typy nativní zdrojů
-2. Převést na typ jímky nativní typ formátu .NET
+1. Převod z typu too.NET typy nativní zdroje
+2. Převést typ jímky toonative typ rozhraní .NET
 
-Při přesunu dat do a z SQL serveru, se používají následující mapování z typu SQL na typ .NET a naopak.
+Při přesunutí dat příliš & ze serveru SQL server hello se používají následující mapování z typu too.NET typ SQL a naopak.
 
-Mapování je stejný jako mapování SQL Server datového typu pro technologii ADO.NET.
+mapování Hello je stejný jako hello mapování datového typu aplikace SQL Server pro technologii ADO.NET.
 
 | Typ databázového stroje SQL Server | Typ rozhraní .NET framework |
 | --- | --- |
@@ -679,13 +679,13 @@ Mapování je stejný jako mapování SQL Server datového typu pro technologii 
 | varchar |Řetězec, Char] |
 | xml |XML |
 
-## <a name="mapping-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
-Mapování sloupců z datové sady zdroje na sloupce ze sady jímku dat naleznete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+## <a name="mapping-source-toosink-columns"></a>Mapování zdrojové toosink sloupce
+toomap sloupce z toocolumns datové sady zdroje z podřízený datové sady, najdete v části [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="repeatable-copy"></a>Opakovatelných kopie
-Při kopírování dat do databáze serveru SQL, připojí aktivitě kopírování dat do tabulky jímky ve výchozím nastavení. Místo toho provést UPSERT, najdete v tématu [Repeatable zapisovat do SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) článku. 
+Při kopírování dat tooSQL databáze serveru, aktivity kopírování hello připojí tabulky jímky toohello data ve výchozím nastavení. Místo toho najdete v části tooperform UPSERT [tooSqlSink opakovatelných zápisu](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) článku. 
 
-Při kopírování dat z relačních dat ukládá, uvědomte si, aby se zabránilo neúmyslnému výstupy opakovatelnosti. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Řez se znovu spustí, buď způsobem, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát řez je spustit. V tématu [Repeatable číst z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Při kopírování dat z relační datové úložiště, mějte opakovatelnosti pamatovat tooavoid nezamýšleným výstupy. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Pokud v obou případech se znovu spustí řez, je potřeba toomake jisti, který hello stejných dat je pro čtení bez ohledu na to jak mnohokrát řez je spustit. V tématu [Repeatable číst z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat ho.
+V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) toolearn o klíči faktory, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby toooptimize ho.

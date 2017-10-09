@@ -1,6 +1,6 @@
 ---
-title: "Úvod do Azure Advisor | Microsoft Docs"
-description: "Chcete-li optimalizovat nasazení Azure pomocí Azure Advisor."
+title: aaaIntroduction tooAzure Advisor | Microsoft Docs
+description: "Pomocí Azure Advisor toooptimize Azure nasazení."
 services: advisor
 documentationcenter: NA
 author: kumudd
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 35678142550f9f887562f311a5e7d9516495cf53
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d796fc06366221efdb6f1bda39ab3fb676abfd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
+# <a name="introduction-tooazure-advisor"></a>Úvod tooAzure Advisor
 
-Další informace o Azure Advisor a jejími klíčovými funkcemi a získejte odpovědi na nejčastější dotazy.
+Další informace o Azure Advisor a jejích klíčových funkcích a získat odpovědi toofrequently dotazy.
 
 ## <a name="what-is-advisor"></a>Co je Advisor?
-Advisor je konzultantem přizpůsobené cloudu, která pomáhá dodržujte doporučené postupy, chcete-li optimalizovat nasazení Azure. Ho analyzuje konfigurace prostředků a telemetrii využití a pak doporučuje řešení, které vám pomůžou líp finanční efektivita, výkon, vysokou dostupnost a zabezpečení vašich prostředků Azure.
+Advisor je konzultantem přizpůsobené cloudu, který vám pomůže sledovat osvědčené postupy toooptimize svá nasazení Azure. Ho analyzuje konfigurace prostředků a telemetrii využití a potom doporučuje řešení, které vám mohou pomoci zlepšit hello finanční efektivita, výkon, vysokou dostupnost a zabezpečení vašich prostředků Azure.
 
 Advisor můžete:
 * Získejte proaktivní, kterého lze provést akci a přizpůsobené osvědčené postupy a doporučení. 
-* Zvýšit výkon, zabezpečení a vysokou dostupnost vašich prostředků, jak identifikovat příležitosti k snížit vaše celkové Azure tráví.
+* Zvýšení výkonu hello, zabezpečení a vysokou dostupnost vašich prostředků, jak identifikovat příležitosti tooreduce tráví vaše celkové Azure.
 * Získejte doporučení s vložené navrhovaná akce.
 
-Dostanete Advisor prostřednictvím [portál Azure](https://aka.ms/azureadvisordashboard). Přihlaste se k [portál](https://portal.azure.com), vyberte **Procházet**a potom přejděte k **Azure Advisor**. Řídicí panel Advisor zobrazuje přizpůsobené doporučení pro vybrané předplatné. 
+Advisor můžete přistupovat prostřednictvím hello [portál Azure](https://aka.ms/azureadvisordashboard). Přihlaste se toohello [portál](https://portal.azure.com), vyberte **Procházet**a posuňte se příliš**Azure Advisor**. řídicí panel Advisor Hello zobrazuje přizpůsobené doporučení pro vybrané předplatné. 
 
-Doporučení jsou rozděleny do čtyř kategorií: 
+Hello doporučení jsou rozděleny do čtyř kategorií: 
 
-* **Vysoká dostupnost**: K zajištění a zlepšování kontinuity důležitými obchodními aplikacemi. Další informace najdete v tématu [vysokou dostupnost Advisor doporučení](advisor-high-availability-recommendations.md).
+* **Vysoká dostupnost**: tooensure a zlepšování kontinuity hello důležitými obchodními aplikacemi. Další informace najdete v tématu [vysokou dostupnost Advisor doporučení](advisor-high-availability-recommendations.md).
 
-* **Zabezpečení**: ke zjištění hrozby a ohrožení zabezpečení, které mohou vést k narušení zabezpečení. Další informace najdete v tématu [doporučení zabezpečení Advisor](advisor-security-recommendations.md).
+* **Zabezpečení**: toodetect hrozby a ohrožení zabezpečení, které můžou způsobit narušení toosecurity. Další informace najdete v tématu [doporučení zabezpečení Advisor](advisor-security-recommendations.md).
 
-* **Výkon**: aby se zvýšila rychlost aplikací. Další informace najdete v tématu [Poradce pro výkon doporučení](advisor-performance-recommendations.md).
+* **Výkon**: tooimprove hello rychlosti aplikací. Další informace najdete v tématu [Poradce pro výkon doporučení](advisor-performance-recommendations.md).
 
-* **Náklady na**: optimalizace a snížit vaše celkové Azure tráví. Další informace najdete v tématu [doporučení služby Advisor náklady](advisor-cost-recommendations.md).
+* **Náklady na**: toooptimize a snížit vaše celkové Azure tráví. Další informace najdete v tématu [doporučení služby Advisor náklady](advisor-cost-recommendations.md).
 
   ![Typy doporučení služby Advisor](./media/advisor-overview/advisor-all-tab-examples.png)
 
 > [!NOTE]
-> Chcete-li získat přístup k doporučení služby Advisor, je nutné nejprve *zaregistrovat předplatné* službou Advisor. Předplatné je zaregistrován při *předplatné vlastníka* spustí Advisor řídicího panelu a klikne na tlačítko **získat doporučení** tlačítko. Toto je *jednorázovou operaci*. Po registraci předplatného dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* pro předplatné, skupinu prostředků nebo konkrétní prostředek.
+> tooaccess doporučení služby Advisor, musíte nejdřív *zaregistrovat předplatné* službou Advisor. Předplatné je zaregistrován při *předplatné vlastníka* spustí hello Advisor řídicí panel a klikne na tlačítko hello **získat doporučení** tlačítko. Toto je *jednorázovou operaci*. Po registraci předplatného hello dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* pro předplatné, skupinu prostředků nebo konkrétní prostředek.
 
-Můžete kliknout na doporučení Další informace o něm. Můžete si také přečíst o akcích, které můžete využít výhod příležitost nebo vyřešte problém. 
+Můžete kliknout na další informace doporučení toolearn. Můžete si také přečíst o akcích, můžete provést tootake výhod příležitost nebo vyřešte problém. 
 
-Advisor nabízí doporučení s vložené akce nebo odkazy na dokumentaci. Kliknutím na vložené akce vás provede "cesty s průvodcem uživatele" k implementaci. Kliknutím na odkaz dokumentace bodů dokumentaci, která popisuje, jak ručně implementovat akce. 
+Advisor nabízí doporučení s vložené akce nebo odkazy na dokumentaci. Kliknutím na vložené akce vás provede tooimplement "cesty s průvodcem uživatele" jej. Kliknutím na odkaz dokumentace body toodocumentation, který popisuje, jak implementovat toomanually hello akce. 
 
-Advisor aktualizuje doporučení každou hodinu. Pokud nemáte v úmyslu provést okamžitou akci na doporučení, můžete zopakovat později pro zadané časové období nebo ho zavřít. 
+Advisor aktualizuje doporučení každou hodinu. Na základě doporučení nechystáte tootake okamžitý zásah, můžete zopakovat později pro zadané časové období, nebo ji zavřít. 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="how-do-i-access-advisor"></a>Přístupu Advisor
-Dostanete Advisor prostřednictvím [portál Azure](https://aka.ms/azureadvisordashboard). Přihlaste se k [portál](https://portal.azure.com), vyberte **Procházet**a potom přejděte k **Azure Advisor**. Řídicí panel Advisor zobrazuje přizpůsobené doporučení pro vybrané předplatné. 
+Advisor můžete přistupovat prostřednictvím hello [portál Azure](https://aka.ms/azureadvisordashboard). Přihlaste se toohello [portál](https://portal.azure.com), vyberte **Procházet**a posuňte se příliš**Azure Advisor**. řídicí panel Advisor Hello zobrazuje přizpůsobené doporučení pro vybrané předplatné. 
 
-Doporučení služby Advisor můžete zobrazit také prostřednictvím okně prostředku virtuálního počítače. Vyberte virtuální počítač a poté přejděte k doporučení služby Advisor v nabídce. 
+Doporučení služby Advisor můžete zobrazit také prostřednictvím hello okna prostředků virtuálního počítače. Vyberte virtuální počítač a poté přejděte tooAdvisor doporučení v nabídce hello. 
 
-### <a name="what-permissions-do-i-need-to-access-advisor"></a>Uvedete, jaká oprávnění jsou nutné pro přístup k Advisor?
+### <a name="what-permissions-do-i-need-tooaccess-advisor"></a>Co dělat, oprávnění tooaccess Advisor je potřeba?
 
-Chcete-li získat přístup k doporučení služby Advisor, je nutné nejprve *zaregistrovat předplatné* službou Advisor. Předplatné je zaregistrován při *předplatné vlastníka* spustí Advisor řídicího panelu a klikne na tlačítko **získat doporučení** tlačítko. Toto je *jednorázovou operaci*. Po registraci předplatného dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* pro předplatné, skupinu prostředků nebo konkrétní prostředek.
+tooaccess doporučení služby Advisor, musíte nejdřív *zaregistrovat předplatné* službou Advisor. Předplatné je zaregistrován při *předplatné vlastníka* spustí hello Advisor řídicí panel a klikne na tlačítko hello **získat doporučení** tlačítko. Toto je *jednorázovou operaci*. Po registraci předplatného hello dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* pro předplatné, skupinu prostředků nebo konkrétní prostředek.
 
 ### <a name="how-often-are-advisor-recommendations-updated"></a>Jak často jsou doporučení služby Advisor aktualizovat?
 
@@ -76,11 +76,11 @@ Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti,
 
 ### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>Můžete připomenout znovu nebo zrušit doporučení?
 
-Připomenout znovu nebo zrušit doporučení, klikněte **připomenout znovu** tlačítko nebo odkaz. Můžete zadat dobu připomenutí období nebo vybrat možnost **nikdy** zrušíte doporučení.
+toosnooze nebo zrušit doporučení, klikněte na hello **připomenout znovu** tlačítko nebo odkaz. Můžete zadat dobu připomenutí období nebo vybrat možnost **nikdy** toodismiss hello doporučení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučení služby Advisor najdete v tématu:
+toolearn Další informace o doporučení služby Advisor, najdete v části:
 
 * [Začínáme se službou Advisor](advisor-get-started.md)
 * [Doporučení pro vysokou dostupnost služby Advisor](advisor-high-availability-recommendations.md)

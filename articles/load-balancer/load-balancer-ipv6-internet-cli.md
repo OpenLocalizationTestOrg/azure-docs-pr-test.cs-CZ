@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření Vyrovnávání zatížení internetového s IPv6 – rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se vytvářet internetovým Vyrovnávání zatížení s IPv6 v správce Azure Resource Manager pomocí rozhraní příkazového řádku Azure"
+title: "Služba Vyrovnávání zatížení aaaCreate směřujících Internetu s IPv6 – rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate k Internetu přístupných pro vyrovnávání zatížení s IPv6 v Azure Resource Manager pomocí rozhraní příkazového řádku Azure"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: efb4771800c42df544c3cc37d1d164045fdcaf3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ff75ac90d74a74e3d0c27672b36fbd955a086a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-the-azure-cli"></a>Vytvoření internetové Vyrovnávání zatížení s IPv6 v správce Azure Resource Manager pomocí rozhraní příkazového řádku Azure
+# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-hello-azure-cli"></a>Vytvoření internetové Vyrovnávání zatížení s IPv6 v správce Azure Resource Manager pomocí hello rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi instance služeb, které jsou v pořádku, v cloudových službách nebo virtuálních počítačích v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
+Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení Hello poskytuje vysokou dostupnost distribucí příchozí komunikaci mezi instance pořádku služby ve cloudových službách nebo virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
 
 ## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
 
-Následující diagram znázorňuje řešení vyrovnávání zatížení nasazuje pomocí šablony příklad popsané v tomto článku.
+Hello následující diagram znázorňuje řešení vyrovnávání zatížení hello nasazuje pomocí šablony příklad hello popsané v tomto článku.
 
 ![Scénář nástroje pro vyrovnávání zatížení](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
-V tomto scénáři vytvoříte následující prostředky Azure:
+V tomto scénáři vytvoříte následující prostředky Azure hello:
 
 * dva virtuální počítače (VM)
 * rozhraní virtuální sítě pro každý virtuální počítač s oba protokoly IPv4 a IPv6 adresy přiřazené
 * Vyrovnávání zatížení straně Internetu s IPv4 a IPv6 veřejnou IP adresu
-* Skupiny dostupnosti pro, který obsahuje dva virtuální počítače
-* dvě pravidla vyrovnávání mapovat veřejné virtuální privátní koncové body zatížení
+* toothat sadu dostupnosti obsahuje hello dva virtuální počítače
+* dva načíst vyrovnávání pravidla toomap hello veřejné VIP toohello privátní koncové body
 
-## <a name="deploying-the-solution-using-the-azure-cli"></a>Nasazení řešení pomocí rozhraní příkazového řádku Azure
+## <a name="deploying-hello-solution-using-hello-azure-cli"></a>Nasazení řešení hello pomocí hello rozhraní příkazového řádku Azure
 
-Následující postup ukazuje, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru s rozhraním příkazového řádku. S Azure Resource Managerem se jednotlivé prostředky vytvoří a nakonfigurují zvlášť, následně se spojí dohromady a vytvoří prostředek.
+Hello následující kroky ukazují, jak toocreate přístupem Internetu pro vyrovnávání zátěže pomocí rozhraní příkazového řádku Azure Resource Manager. S Azure Resource Manager, každého prostředku se vytvoří a konfigurovat individuálně a potom se spojí dohromady toocreate prostředku.
 
-Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
+toodeploy nástroj pro vyrovnávání zatížení, můžete vytvořit a nakonfigurovat hello následující objekty:
 
 * Konfigurace front-endových IP adres – obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* Back-endový fond adres – obsahuje síťová rozhraní, pomocí kterých virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
-* Pravidla vyrovnávání zatížení – obsahuje pravidla mapující veřejný port v nástroji pro vyrovnávání zatížení na port v back-endovém fondu adres.
-* Pravidla příchozího překladu adres (NAT) – obsahuje pravidla mapující veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače v back-endovém fondu adres.
-* Testy – obsahuje testy stavu sloužící ke kontrole dostupnosti instancí virtuálních počítačů v back-endovém fondu adres.
+* Fond adres back-end – obsahuje síťová rozhraní (NIC) pro hello virtuální počítače tooreceive síťový provoz z nástroje pro vyrovnávání zatížení hello.
+* Pravidla pro vyrovnávání zatížení – obsahuje pravidla mapování veřejný port tooport nástroje pro vyrovnávání zatížení hello ve fondu adres back-end hello.
+* Příchozí pravidla NAT – obsahuje pravidla mapování veřejný port na hello zatížení vyrovnávání tooa portu pro konkrétní virtuální počítač ve fondu adres back-end hello.
+* Sondy – obsahuje dostupnosti toocheck stavu sondy používané instancí virtuálních počítačů ve fondu adres back-end hello.
 
 Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resource Manageru](load-balancer-arm.md).
 
-## <a name="set-up-your-cli-environment-to-use-azure-resource-manager"></a>Nastavení prostředí rozhraní příkazového řádku pomocí Správce prostředků Azure
+## <a name="set-up-your-cli-environment-toouse-azure-resource-manager"></a>Nastavení prostředí toouse vaše rozhraní příkazového řádku Azure Resource Manager
 
-V tomto příkladu používáme nástrojů příkazového řádku v příkazovém okně prostředí PowerShell. Jsme nejsou pomocí rutin prostředí Azure PowerShell, ale možnosti skriptování Powershellu využijeme ke zlepšení čitelnosti a opakované použití.
+V tomto příkladu používáme hello nástrojů příkazového řádku v příkazovém okně prostředí PowerShell. Jsme nejsou pomocí rutin prostředí Azure PowerShell hello ale také používáme skriptování možnosti tooimprove čitelnost a opětovné používání Powershellu.
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
-2. Spustit **azure konfigurace režim** příkaz Přepnout do režimu Resource Manager.
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) a postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
+2. Spustit hello **azure konfigurace režim** příkaz tooswitch tooResource Manager režimu.
 
     ```azurecli
     azure config mode arm
@@ -73,7 +73,7 @@ V tomto příkladu používáme nástrojů příkazového řádku v příkazové
 
         info:    New mode is arm
 
-3. Přihlaste se k Azure a získat seznam předplatných.
+3. Přihlaste se tooAzure a získejte seznam předplatných.
 
     ```azurecli
     azure login
@@ -85,9 +85,9 @@ V tomto příkladu používáme nástrojů příkazového řádku v příkazové
     azure account list
     ```
 
-    Vyberte odběr, který chcete použít. Poznamenejte si Id předplatného pro další krok.
+    Vyberte hello odběr, který chcete toouse. Poznamenejte si Id předplatného hello hello další krok.
 
-4. Nastavení proměnných prostředí PowerShell pro použití s příkazy rozhraní příkazového řádku.
+4. Nastavení proměnných prostředí PowerShell pro použití s hello rozhraní příkazového řádku.
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -130,16 +130,16 @@ V tomto příkladu používáme nástrojů příkazového řádku v příkazové
     $subnet2 = azure network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Vytvoření veřejné IP adresy pro front-end fond
+## <a name="create-public-ip-addresses-for-hello-front-end-pool"></a>Vytvoření veřejné IP adresy pro front-end fond hello
 
-1. Nastavení proměnných prostředí PowerShell
+1. Nastavení proměnných prostředí PowerShell hello
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Vytvoření veřejné IP adresy front-endu fond IP adres.
+2. Vytvoření veřejné IP hello front-end IP fondu adres.
 
     ```azurecli
     $publicipV4 = azure network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
@@ -147,14 +147,14 @@ V tomto příkladu používáme nástrojů příkazového řádku v příkazové
     ```
 
     > [!IMPORTANT]
-    > Nástroj pro vyrovnávání zatížení používá název domény veřejné IP adresy jako svůj plně kvalifikovaný název domény. Tato změna z klasického nasazení, který používá cloudové služby název jako nástroj pro vyrovnávání zatížení plně kvalifikovaný název domény.
-    > V tomto příkladu je plně kvalifikovaný název domény *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > Nástroj pro vyrovnávání zatížení Hello používá hello domény popisek hello veřejnou IP adresu jako jeho plně kvalifikovaný název domény. Tuto změnu z klasického nasazení, který používá název cloudové služby hello jako hello nástroj pro vyrovnávání zatížení plně kvalifikovaný název domény.
+    > V tomto příkladu hello plně kvalifikovaný název domény je *contoso09152016.southcentralus.cloudapp.azure.com*.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Vytvořte front-end a back endové fondy
 
-Tento příklad vytvoří fondu front-end IP, která přijímá příchozí síťový provoz na nástroje pro vyrovnávání zatížení a fond back-end IP, kde front-end fondu odešle síťový provoz s vyrovnáváním zatížení.
+Tento příklad vytvoří hello front-end IP fond, který obdrží hello příchozí síťový provoz na Vyrovnávání zatížení hello a kde hello front-end fondu odešle hello skupinu s vyrovnáváním zatížení síťového provozu fondu hello back-end IP adres.
 
-1. Nastavení proměnných prostředí PowerShell
+1. Nastavení proměnných prostředí PowerShell hello
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -163,7 +163,7 @@ Tento příklad vytvoří fondu front-end IP, která přijímá příchozí sí�
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Vytvořte front-endový fond IP adres přidružující veřejnou IP adresu vytvořenou v předchozím kroku k nástroji pro vyrovnávání zatížení.
+2. Vytvořte front-end IP fond přidružení hello veřejnou IP adresu, vytvořili v předchozím kroku hello a nástroj pro vyrovnávání zatížení hello.
 
     ```azurecli
     $frontendV4 = azure network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-name $publicIpv4Name --lb-name $lbName
@@ -172,18 +172,18 @@ Tento příklad vytvoří fondu front-end IP, která přijímá příchozí sí�
     $backendAddressPoolV6 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-lb-rules"></a>Vytvoření testu, pravidla NAT a pravidel LB
+## <a name="create-hello-probe-nat-rules-and-lb-rules"></a>Vytvoření testu hello, pravidla NAT a pravidel LB
 
-Tento příklad vytvoří následující položky:
+Tento příklad vytvoří hello následující položky:
 
-* pravidlo testu zkontrolujte připojení k portům TCP 80 k
-* pravidlo NAT přeložit všechny příchozí přenosy na portu 3389 k portu 3389 pro protokol RDP<sup>1</sup>
-* pravidlo NAT přeložit všechny příchozí přenosy na portu 3391 k portu 3389 pro protokol RDP<sup>1</sup>
-* Pravidlo nástroje pro vyrovnávání zatížení, které vyrovnává zatížení veškerého příchozího provozu na portu 80 na port 80 na adresách v back-endovém fondu.
+* toocheck pravidla testu pro připojení k tooTCP port 80
+* zařízení NAT pravidlo tootranslate všechny příchozí přenosy na portu 3389 tooport 3389 pro protokol RDP<sup>1</sup>
+* zařízení NAT pravidlo tootranslate všechny příchozí přenosy na portu 3391 tooport 3389 pro protokol RDP<sup>1</sup>
+* toobalance pravidlo Vyrovnávání zatížení všechny příchozí přenosy na portu 80 tooport 80 na hello adresy ve fondu back-end hello.
 
-<sup>1</sup> Pravidla překladu adres (NAT) se přidružují ke konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz na portu 3389 přicházejících posílá konkrétní virtuální počítač a port pravidla NAT přidružený. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Jednomu portu nelze přiřadit oba protokoly.
+<sup>1</sup> pravidel NAT, která jsou přidružená tooa instance konkrétní virtuální počítač za nástroj pro vyrovnávání zatížení hello. Hello síťový provoz na portu 3389 přicházejících odešle toohello konkrétní virtuální počítač a port pravidla NAT hello přidružený. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Oba protokoly nemůže být přiřazen toohello stejný port.
 
-1. Nastavení proměnných prostředí PowerShell
+1. Nastavení proměnných prostředí PowerShell hello
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -193,22 +193,22 @@ Tento příklad vytvoří následující položky:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Vytvoření sonda
+2. Vytvořit test paměti hello
 
-    Následující příklad vytvoří sondou TCP, který kontroluje pro připojení k back-end port TCP 80 každých 15 sekund. Ho označíte back-end prostředku není k dispozici po dvě po sobě jdoucích selhání.
+    Hello následující příklad vytvoří sondou TCP, který kontroluje pro připojení k tooback-end port TCP 80 každých 15 sekund. Ho označíte hello back-end prostředku není k dispozici po dvě po sobě jdoucích selhání.
 
     ```azurecli
     $probeV4V6 = azure network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
     ```
 
-3. Vytvoření příchozích pravidel NAT, které umožňují připojení RDP k prostředkům back-end
+3. Vytvoření příchozích pravidel NAT, které umožňují připojení RDP toohello back endové prostředky
 
     ```azurecli
     $inboundNatRuleRdp1 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Vytvořit pravidla, která odesílá data na jiné porty back-end v závislosti na které front-endu přijala požadavek na službu Vyrovnávání zatížení
+4. Vytvořit pravidla, která odesílat provoz porty toodifferent back-end v závislosti na tom, které front-endu přijal žádost hello Vyrovnávání zatížení
 
     ```azurecli
     $lbruleIPv4 = azure network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-address-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
@@ -224,7 +224,7 @@ Tento příklad vytvoří následující položky:
     Očekávaný výstup:
 
         info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
+        info:    Looking up hello load balancer "myIPv4IPv6Lb"
         data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
         data:    Name                            : myIPv4IPv6Lb
         data:    Type                            : Microsoft.Network/loadBalancers
@@ -263,9 +263,9 @@ Tento příklad vytvoří následující položky:
 
 ## <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Vytvoření síťové adaptéry a přidružovat je k pravidla NAT, pravidla nástroje pro vyrovnávání zatížení a sondy.
+Vytvořte síťové adaptéry a přiřaďte je sondy, tooNAT pravidla a pravidla nástroje pro vyrovnávání zatížení.
 
-1. Nastavení proměnných prostředí PowerShell
+1. Nastavení proměnných prostředí PowerShell hello
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -288,11 +288,11 @@ Vytvoření síťové adaptéry a přidružovat je k pravidla NAT, pravidla nás
     $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Vytvořte prostředky virtuálních počítačů back-end a připojte každý síťový adaptér
+## <a name="create-hello-back-end-vm-resources-and-attach-each-nic"></a>Vytvořte prostředky virtuálních počítačů hello back-end a připojte každý síťový adaptér
 
-Pokud chcete vytvořit virtuální počítače, musí mít účet úložiště. Pro vyrovnávání zatížení, musí být členy skupiny dostupnosti virtuálních počítačů. Další informace o vytváření virtuálních počítačů najdete v tématu [vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+toocreate virtuální počítače, musí mít účet úložiště. Pro vyrovnávání zatížení, musí virtuální počítače hello toobe členy skupiny dostupnosti. Další informace o vytváření virtuálních počítačů najdete v tématu [vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
-1. Nastavení proměnných prostředí PowerShell
+1. Nastavení proměnných prostředí PowerShell hello
 
     ```powershell
     $storageAccountName = "ps08092016v6sa0"
@@ -311,23 +311,23 @@ Pokud chcete vytvořit virtuální počítače, musí mít účet úložiště. 
     ```
 
     > [!WARNING]
-    > Tento příklad používá uživatelské jméno a heslo pro virtuální počítače ve formátu prostého textu. Odpovídající musí dát pozor při použití přihlašovacích údajů v nešifrované podobě. Bezpečnější způsob zpracování pověření v prostředí PowerShell, najdete v článku [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) rutiny.
+    > Tento příklad používá hello uživatelské jméno a heslo pro virtuální počítače hello ve formátu prostého textu. Odpovídající musí dát pozor při použití pověření hello zrušte. Bezpečnější způsob zpracování pověření v prostředí PowerShell, najdete v části hello [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) rutiny.
 
-2. Vytvořit sadu dostupnosti a účet úložiště
+2. Vytvořit sadu dostupnosti a účet úložiště hello
 
-    Při vytváření virtuálních počítačů, může použít existující účet úložiště. Následující příkaz vytvoří nový účet úložiště.
+    Při vytváření hello virtuálních počítačů, může použít existující účet úložiště. Hello následující příkaz vytvoří nový účet úložiště.
 
     ```azurecli
     $storageAcc = azure storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
     ```
 
-    Dále vytvořte skupinu dostupnosti.
+    Dále vytvořte skupinu dostupnosti hello.
 
     ```azurecli
     $availabilitySet = azure availset create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. Vytvoření virtuálních počítačů s přidružené síťové karty
+3. Vytvořit hello virtuální počítače s hello přidružené síťové karty
 
     ```azurecli
     $vm1 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension

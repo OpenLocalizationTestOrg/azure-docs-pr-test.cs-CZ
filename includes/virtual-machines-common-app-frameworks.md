@@ -1,9 +1,9 @@
 
 
 ## <a name="applications"></a>Aplikace
-Následující tabulka uvádí některé nejčastěji používané aplikace framework šablony. Vyberte šablonu chcete zobrazit další informace, zobrazit šablonu v Githubu nebo nasadit přímo prostřednictvím portálu Azure.
+Hello následující tabulka uvádí některé z hello nejčastěji používané aplikace framework šablony. Zvolte šablonu toosee Další informace, zobrazit šablonu hello v Githubu, nebo nasadit přímo pomocí hello portálu Azure.
 
-| Aplikace | Další informace | Zobrazit šablonu | Nyní nasadit |
+| Aplikace | Další informace | Zobrazit šablonu hello | Nyní nasadit |
 |:--- |:---:|:---:|:---:|
 | Active Directory |[Galerie](https://azure.microsoft.com/documentation/templates/active-directory-new-domain-ha-2-dc/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Apache |[Galerie](https://azure.microsoft.com/documentation/templates/apache2-on-ubuntu-vm/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
@@ -23,13 +23,13 @@ Následující tabulka uvádí některé nejčastěji používané aplikace fram
 | WordPress |[Galerie](https://azure.microsoft.com/documentation/templates/wordpress-single-vm-ubuntu/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/wordpress-single-vm-ubuntu) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | ZooKeeper |[Galerie](https://azure.microsoft.com/documentation/templates/zookeeper-cluster-ubuntu-vm/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/zookeeper-cluster-ubuntu-vm) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fzookeeper-cluster-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 
-Kromě těchto šablon, můžete hledat [Galerie šablon](https://azure.microsoft.com/documentation/templates/).
+Kromě toho toothese šablony, můžete hledat hello [Galerie šablon](https://azure.microsoft.com/documentation/templates/).
 
 
 ## <a name="azure-cli-20"></a>Azure CLI 2.0
-Tyto kroky vyžadují Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Tyto kroky vyžadují hello Azure CLI verze verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Pak vytvořte vaše nasazení ze šablony s [vytvořit nasazení skupiny az](/cli/azure/group/deployment#create). Zadejte úplný identifikátor URI pro svou šablonu pomocí `--template-uri` parametr a všechny požadované parametry šablony v `--parameters` následujícím způsobem:
+Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Pak vytvořte vaše nasazení ze šablony s [vytvořit nasazení skupiny az](/cli/azure/group/deployment#create). Zadejte hello úplný identifikátor URI tooyour šablonu s hello `--template-uri` parametr a všechny požadované parametry šablony v `--parameters` následujícím způsobem:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -38,13 +38,13 @@ az group deployment create --resource-group myResourceGroup \
     --parameters '{"sshKeyData": {"value": "ssh-rsa AAAAB3N{snip}B9eIgoZ"}}'
 ```
 
-V závislosti na šabloně může trvat nějakou dobu Azure a nasadit tyto prostředky.
+V závislosti na šabloně hello může trvat nějakou dobu prostředky Azure toodeploy hello.
 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Tyto kroky vyžadují prostředí Azure PowerShell verze modulu 3,6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud je třeba upgradovat, přečtěte si téma [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tyto kroky vyžadují hello prostředí Azure PowerShell verze modulu 3,6 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` toofind hello verze. Pokud potřebujete tooupgrade, přečtěte si [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-Nejprve vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Pak vytvořte vaše nasazení ze šablony s [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment). Zadejte úplný identifikátor URI pro svou šablonu pomocí `-TemplateURI` parametr následujícím způsobem:
+Nejprve vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Pak vytvořte vaše nasazení ze šablony s [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment). Zadejte hello úplný identifikátor URI tooyour šablonu s hello `-TemplateURI` parametr následujícím způsobem:
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -52,10 +52,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" `
      -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/{template-name}/azuredeploy.json"
 ```
 
-Při spuštění [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) příkazů, můžete být vyzváni k zadání hodnot pro parametry v šabloně. V závislosti na šabloně může trvat nějakou dobu Azure a nasadit tyto prostředky.
+Když spustíte hello [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) příkaz, může být výzvami tooenter hodnoty parametrů hello v šabloně hello. V závislosti na šabloně hello může trvat nějakou dobu prostředky Azure toodeploy hello.
 
 
 ## <a name="next-steps"></a>Další kroky
-Zjistit všechny šablony, které jsou k dispozici na [Githubu](https://github.com/Azure/azure-quickstart-templates).
+Zjistit všechny šablony hello k dispozici na [Githubu](https://github.com/Azure/azure-quickstart-templates).
 
 Další informace o [Azure Resource Manager](../articles/resource-group-template-deploy.md).

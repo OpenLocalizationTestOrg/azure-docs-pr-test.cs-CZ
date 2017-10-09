@@ -1,6 +1,6 @@
 ---
-title: "Správa účtu Azure Automation | Dokumentace Microsoftu"
-description: "Tento článek popisuje, jak spravovat konfiguraci vašeho účtu Automation, jako je chybná konfigurace, odstranění nebo obnovení certifikátu."
+title: "aaaManage účet Azure Automation | Microsoft Docs"
+description: "Tento článek popisuje, jak toomanage hello konfigurace účtu Automation, například chybné konfigurace, odstranění a obnovení certifikátu."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,72 +14,72 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 41efdbcacede74bac038342688362ff480cadc7e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 75e41f601a138d4e8853aa79dcbab6696a5e9fb0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-automation-account"></a>Správa účtu Azure Automation
-V určitém okamžiku před vypršením platnosti účtu Automation musíte obnovit certifikát. Pokud se domníváte, že zabezpečení účtu Spustit jako je ohrožené, můžete ho odstranit a vytvořit znovu. Tato část popisuje, jak tyto operace provést.
+V určitém okamžiku před vypršením platnosti účtu Automation, musíte certifikát toorenew hello. Pokud se domníváte, že došlo k ohrožení zabezpečení tohoto hello účet Spustit jako, můžete odstranit a znovu vytvořit. Tato část pojednává o tom, jak tooperform těchto operací.
 
 ## <a name="self-signed-certificate-renewal"></a>Obnovení certifikátu podepsaného svým držitelem
-Platnost certifikátu podepsaného svým držitelem, který jste vytvořili pro účet Spustit jako, vyprší jeden rok od data jeho vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Když ho obnovíte, aktuální platný certifikát se uchová, aby se zajistilo, že to negativně neovlivní runbooky ověřované účtem Spustit jako, které jsou právě ve frontě nebo aktivně spuštěné. Certifikát zůstane platný až do data vypršení jeho platnosti.
+certifikát podepsaný svým držitelem Hello, kterou jste vytvořili pro hello účet Spustit jako vyprší platnost jeden rok z hello data vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Při obnovování, je aktuální platný certifikát hello udržených tooensure, že nejsou žádné sady runbook, které jsou zařazeny do fronty až nebo aktivně spuštěná, a který ověření pomocí hello účet Spustit jako, negativní vliv. certifikát Hello zůstává platná do data vypršení platnosti.
 
 > [!NOTE]
-> Pokud jste svůj účet Automation Spustit jako nakonfigurovali k používání certifikátu vydaného podnikovou certifikační autoritou a použijete tuto možnost, tento podnikový certifikát se nahradí certifikátem podepsaným svým držitelem.
+> Pokud jste nakonfigurovali vaší spustit v Automation jako účet toouse certifikát vydaný certifikační autoritou rozlehlé sítě a chcete použít tuto možnost, hello podnikový certifikát budou nahrazeny certifikát podepsaný svým držitelem.
 
-Pokud chcete certifikát obnovit, postupujte takto:
+toorenew hello certifikátů, hello následující:
 
-1. Na webu Azure Portal otevřete účet Automation.
+1. V hello portálu Azure otevřete účet Automation hello.
 
-2. V okně **Účet Automation** v podokně **Vlastnosti účtu** v části **Nastavení účtů** vyberte **Účty Spustit jako**.
+2. Na hello **účet Automation** okno, v hello **účet vlastnosti** podokně v části **nastavení účtu**, vyberte **účty spustit jako**.
 
     ![Podokno vlastností účtu Automation](media/automation-manage-account/automation-account-properties-pane.png)
-3. V okně vlastností **Účty Spustit jako** vyberte účet Spustit jako nebo účet Spustit jako pro Classic, pro který chcete obnovit certifikát.
+3. Na hello **účty spustit jako** vlastnosti okně vyberte buď hello účet Spustit jako nebo hello Classic účet Spustit jako, které chcete toorenew hello certifikát pro.
 
-4. V okně **Vlastnosti** vybraného účtu klikněte na **Obnovit certifikát**.
+4. Na hello **vlastnosti** okně hello vybraný účet, klikněte na tlačítko **obnovit certifikát**.
 
     ![Obnovení certifikátu pro účet Spustit jako](media/automation-manage-account/automation-account-renew-runas-certificate.png)
 
-5. Zatímco se certifikát obnovuje, můžete průběh sledovat v nabídce v části **Oznámení**.
+5. Při obnovení certifikátu hello se můžete sledovat průběh hello pod **oznámení** nabídce hello.
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>Odstranění účet Spustit jako nebo Spustit jako pro Classic
-Tato část popisuje, jak odstranit a znovu vytvořit účet Spustit jako nebo účet Spustit jako pro Classic. Při provedení této akce se účet Automation uchová. Odstraněný účet Spustit jako nebo účet Spustit jako pro Classic můžete znovu vytvořit na webu Azure Portal.
+Tato část popisuje, jak toodelete a znovu vytvořit účet Spustit jako nebo Classic spustit jako. Když provedete tuto akci, se uchovávají hello účet Automation. Po odstranění účtu spustit jako nebo Classic spustit jako, znovu ji vytvořte hello portálu Azure.
 
-1. Na webu Azure Portal otevřete účet Automation.
+1. V hello portálu Azure otevřete účet Automation hello.
 
-2. V okně **Účet Automation** v podokně vlastností účtu vyberte **Účty Spustit jako**.
+2. Na hello **účet Automation** okno, v hello účet vlastnosti podokně, vyberte **účty spustit jako**.
 
-3. V okně vlastností **Účty Spustit jako** vyberte účet Spustit jako nebo účet Spustit jako pro Classic, který chcete odstranit. Potom v okně **Vlastnosti** vybraného účtu klikněte na **Odstranit**.
+3. Na hello **účty spustit jako** okno Vlastnosti, vyberte buď hello účet Spustit jako nebo Classic spustit jako účet, který má toodelete. Potom na hello **vlastnosti** okně hello vybraný účet, klikněte na tlačítko **odstranit**.
 
  ![Odstranění účtu Spustit jako](media/automation-manage-account/automation-account-delete-runas.png)
 
-4. Zatímco se účet odstraňuje, můžete průběh sledovat v nabídce v části **Oznámení**.
+4. Zatímco se odstraňuje hello účet, můžete sledovat průběh hello v části **oznámení** nabídce hello.
 
-5. Účet po odstranění můžete znovu vytvořit v okně vlastností **Účty Spustit jako** výběrem možnosti Vytvořit v části **Účet Spustit jako**.
+5. Po odstranění účtu hello můžete znovu vytvořit ji na hello **účty spustit jako** okno Vlastnosti výběrem hello vytvořit možnost **Azure účet Spustit jako**.
 
- ![Znovuvytvoření účtu Automation Spustit jako](media/automation-manage-account/automation-account-create-runas.png)
+ ![Znovu vytvořit účet Automation spustit jako hello](media/automation-manage-account/automation-account-create-runas.png)
 
 ## <a name="misconfiguration"></a>Chybná konfigurace
-Může se stát, že se během prvotního nastavení nesprávně vytvoří nebo později odstraní některá z položek konfigurace nezbytných pro správné fungování účtu Spustit jako nebo Spustit jako pro Classic. Mezi tyto položky patří:
+Některé položky konfigurace potřebné pro toofunction účet Spustit jako nebo Classic spustit jako hello správně může byla odstraněna nebo nesprávně vytvořený během počáteční instalace. položky Hello patří:
 
 * Asset certifikátu
 * Asset připojení
-* Účet Spustit jako byl odebrán z role přispěvatele
+* Účet Spustit jako byl odebrán z role Přispěvatel hello
 * Instanční objekt nebo aplikace v Azure AD
 
-V předchozí a dalších instancích chybné konfigurace účet Automation zjistí změny a v okně vlastností *Účty Spustit jako* příslušného účtu zobrazí stav **Nedokončeno**.
+V hello předchozí a další instance chybné konfigurace, zjistí hello účet Automation hello změní a zobrazuje stav *nekompletní* na hello **účty spustit jako** okně Vlastnosti pro hello účet.
 
 ![Nedokončená konfigurace účtu Spustit jako](media/automation-manage-account/automation-account-runas-incomplete-config.png)
 
-Pokud vyberete tento účet Spustit jako, v podokně **Vlastnosti** účtu se zobrazí následující chybová zpráva:
+Když vyberete účet Spustit jako hello, hello účet **vlastnosti** podokně zobrazí hello následující chybová zpráva:
 
 ![Zpráva upozornění o nedokončené konfiguraci účtu Spustit jako](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png).
 
-Tyto potíže s účtem Spustit jako můžete rychle vyřešit jeho odstraněním a znovuvytvořením.
+Odstranit a znovu vytvořit účet hello můžete rychle vyřešit tyto problémy účet Spustit jako.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o objektech služby najdete v článku [Objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
-* Další informace o řízení přístupu na základě rolí ve službě Azure Automation najdete v článku [Řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md).
-* Další informace o certifikátech a službách Azure najdete v článku [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+* Další informace o objektech služby najdete v části příliš[objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
+* Další informace o řízení přístupu na základě rolí ve službě Azure Automation najdete v části příliš[řízení přístupu na základě Role ve službě Azure Automation](automation-role-based-access-control.md).
+* Další informace o certifikátech a službám Azure, najdete v části příliš[Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

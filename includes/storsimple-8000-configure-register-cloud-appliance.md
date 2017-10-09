@@ -1,19 +1,19 @@
-#### <a name="to-configure-and-register-the-cloud-appliance"></a>Konfigurace a registrace cloudového zařízení
+#### <a name="tooconfigure-and-register-hello-cloud-appliance"></a>tooconfigure a zaregistrovat zařízení cloudu hello
 
-1. V okně **Zařízení** vyberte a klikněte na řešení StorSimple Cloud Appliance, které jste vytvořili.
+1. Vyberte a klikněte na hello zařízení StorSimple cloudu jste vytvořili v hello **zařízení** okno.
 
-    ![Řešení StorSimple Cloud Appliance v seznamu zařízení](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-2. V okně **Konfigurace zařízení** proveďte následující kroky:
+    ![Cloud zařízení StorSimple v seznamu hello zařízení](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
+2. V hello **konfigurace zařízení** okně hello následující kroky:
     
-    1. Do vyhrazeného prostoru zadejte **Service Data Encryption Key** (Šifrovací klíč dat služby). Tento klíč se vygeneruje při registraci prvního fyzického zařízení ve službě Správce zařízení StorSimple.
+    1. Zadejte hello **šifrovacího klíče dat služby** v poskytnutém prostoru hello. Tento klíč se vygeneruje, když jste zaregistrovali hello první fyzického zařízení pomocí služby StorSimple Manager zařízení.
 
-    2. Zadejte nastavení a **Heslo správce zařízení** a heslo **Snapshot Manageru** o zadané délce.
+    2. Zadejte hello **heslo správce zařízení** a **Snapshot Manager** heslo hello zadané délky a nastavení.
 
-    3. Kliknutím na **OK** dokončete počáteční konfiguraci a registraci cloudového zařízení.
+    3. Klikněte na tlačítko **OK** toofinish hello počáteční konfiguraci a registraci hello cloudu zařízení.
     
         ![Konfigurace zařízení v řešení StorSimple Cloud Appliance](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure1.png)
 
-Po dokončení konfigurace a registrace zařízení přejde do režimu online. (Přechod zařízení do režimu online může několik minut trvat.)
+Po dokončení hello konfigurace a registrace hello zařízení přejde do režimu online. (To může trvat několik minut, než zařízení toocome hello online.)
 
 ![Fáze režimu online řešení StorSimple Cloud Appliance](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure2.png)
 

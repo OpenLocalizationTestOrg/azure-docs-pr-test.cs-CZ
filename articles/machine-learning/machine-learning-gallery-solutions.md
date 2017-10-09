@@ -1,6 +1,6 @@
 ---
-title: "Řešení Cortana Intelligence Gallery | Microsoft Docs"
-description: "Vyhledat řešení na webu Cortana Intelligence Gallery."
+title: "aaaCortana Intelligence Galerie řešení | Microsoft Docs"
+description: "Hledání řešení v hello Cortana Intelligence Gallery."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 8e180db2ab5fbabf5238b18b1d2866b746eb9994
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2cb6b0892c2eba873fa7e685288dc3b12d1dc981
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="discover-solutions-in-the-cortana-intelligence-gallery"></a>Vyhledat řešení na webu Cortana Intelligence Gallery
+# <a name="discover-solutions-in-hello-cortana-intelligence-gallery"></a>Hledání řešení v hello Cortana Intelligence Gallery
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="solutions"></a>Řešení
-A  **[řešení](https://gallery.cortanaintelligence.com/solutions)**  v galerii poskytuje základní informace se rychle vytvořit řešení Cortana Intelligence z předkonfigurovaných řešení, referenční dokumentace architektury a vzory návrhu.
-Je proveďte vlastní zahrnuté pokyny nebo s doporučenou partnera.  
+A  **[řešení](https://gallery.cortanaintelligence.com/solutions)**  v hello Galerie poskytuje základní informace tooquickly sestavení řešení Cortana Intelligence z předkonfigurovaných řešení, referenční architektury a vzory návrhu.
+Je proveďte vlastní hello zahrnuté pokyny nebo s doporučenou partnera.  
 
 ## <a name="discover"></a>Informace
-  Chcete-li vyhledat řešení v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **řešení** v horní části domovské stránce Galerie.
+  toobrowse pro řešení v hello galerie, otevřete hello [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **řešení** v horní části hello hello Galerie domovské stránky.
 
-  **[Řešení](https://gallery.cortanaintelligence.com/solutions)**  stránka zobrazuje seznam nedávno přidané řešení.
-Klikněte na tlačítko **zobrazit všechny** zobrazíte všechna řešení.
-Z této stránky můžete vyhledat všechny řešení v galerii. Také můžete hledat výběrem kritéria filtru na levé straně stránky a vstup hledaných termínů v horní části.
+  **[Řešení](https://gallery.cortanaintelligence.com/solutions)**  stránky zobrazí seznam hello naposledy přidat řešení.
+Klikněte na tlačítko **zobrazit všechny** tooview všechna řešení.
+Z této stránky můžete vyhledat všechny řešení v hello galerie. Můžete také prohledat výběrem kritéria filtru na levé straně hello hello stránky a hello vstup hledaných termínů v horní části.
 
- Klikněte na tlačítko řešení otevřete stránku s jeho podrobnosti a další informace. Na této stránce můžete komentář, poskytnout zpětnou vazbu nebo klást otázky prostřednictvím sekci komentáře. Můžete je dokonce sdílet s přátele nebo kolegy pomocí možnosti sdílené složky LinkedIn nebo Twitter. E-mailu odkaz k řešení pozvaným jiní uživatelé při zobrazení stránky.
+ Klikněte na jakékoli řešení tooopen stránku s jeho podrobnosti a další informace. Na této stránce můžete komentář, poskytnout zpětnou vazbu nebo klást otázky prostřednictvím sekci komentáře hello. Můžete ji sdílet i s přátel nebo kolegy pomocí hello sdílenou složkou možnosti LinkedIn nebo Twitter. Můžete také e-mailem na odkaz toothe řešení tooinvite jinou stránku hello tooview uživatele.
 
 ![Sdílet tuto položku s friends](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="deploy"></a>Nasazení
-Pokud chcete používat řešení, klikněte na tlačítko **nasadit**. Postupujte podle kroků uvedené můžete nakonfigurovat a nasadit řešení v pracovním prostoru.
+Pokud chcete toouse řešení, klikněte na tlačítko **nasadit**. Postupujte podle kroků hello uvedené tooconfigure a nasaďte hello řešení v pracovním prostoru.
 
 ![Nasazení řešení Galerie](media/machine-learning-gallery-solutions/deploy-solution.png)
 
-**[PŘEJÍT DO GALERIE DO >>](http://gallery.cortanaintelligence.com)**
+**[TRVAT mi toohello GALERIE >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

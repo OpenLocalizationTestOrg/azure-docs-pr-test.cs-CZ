@@ -1,6 +1,6 @@
 ---
-title: "Zřízení virtuálního počítače vědecké účely Data pro Linux (Ubuntu) v Azure | Microsoft Docs"
-description: "Nakonfigurujte a vytvořte na datové vědě virtuálního počítače pro Linux (Ubuntu) na Azure a provádět analýzy a strojového učení."
+title: "aaaProvision hello datové vědy virtuálního počítače pro Linux (Ubuntu) v Azure | Microsoft Docs"
+description: "Konfigurace a vytvořit na datové vědě virtuálního počítače pro Linux (Ubuntu) na Azure toodo analýzy a strojového učení."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 148603618a7da05d250a6c4f789a212e98791e53
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 037c126c0a35d8065fc89c591089df73d2b91425
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače vědecké účely Data pro Linux (Ubuntu)
-Virtuální počítač vědecké účely Data pro Linux je image virtuálního počítače založeným na Ubuntu, proto je snadné začít pracovat s hloubkovým učení v Azure. Hloubkové learning nástroje patří:
+# <a name="provision-hello-data-science-virtual-machine-for-linux-ubuntu"></a>Zřídit hello datové vědy virtuálního počítače pro Linux (Ubuntu)
+Hello datové vědy virtuálního počítače pro Linux je Ubuntu na základě bitové kopie virtuálního počítače, který umožňuje snadno tooget začít s hloubkovým učení v Azure. Hloubkové learning nástroje patří:
 
   * [Caffe](http://caffe.berkeleyvision.org/): rozhraní hloubkové learning vytvořené pro rychlosti, expressivity a modularitu
   * [Caffe2](https://github.com/caffe2/caffe2): napříč platformami verzi Caffe
@@ -33,12 +33,12 @@ Virtuální počítač vědecké účely Data pro Linux je image virtuálního p
   * [TensorFlow](https://www.tensorflow.org/): knihovny open source pro počítač intelligence z Google
   * [Theano](http://deeplearning.net/software/theano/): Knihovna A Python pro definování, optimalizace a efektivně vyhodnocení matematickém výrazu obsahujícího vícerozměrných polí
   * [Svítilnou](http://torch.ch/): scientific výpočetní rozhraní s podporou wide pro algoritmy strojového učení
-  * CUDA, cuDNN a NVIDIA ovladače
+  * CUDA, cuDNN a ovladač NVIDIA hello
   * Mnoho ukázka poznámkové bloky Jupyter
 
-Všechny knihovny jsou verze grafický procesor, když bude spustit také na procesor.
+Všechny knihovny jsou hello GPU verze, i když bude spustit také na hello procesoru.
 
-Virtuální počítač vědecké účely Data pro Linux také obsahuje oblíbených nástrojů pro datové vědy a vývoj aktivity, včetně:
+Hello datové vědy virtuálního počítače pro Linux také obsahuje oblíbených nástrojů pro datové vědy a vývoj aktivity, včetně:
 
 * Microsoft R Server Developer Edition s Microsoft R Open
 * Anaconda distribuci jazyka Python (verze 2.7 a 3.5), včetně dat Oblíbené knihovny analýz
@@ -61,45 +61,45 @@ Provádění vědecké zpracování dat zahrnuje iterace v pořadí úloh:
 
 1. Hledání, načítání a předem zpracování dat.
 2. Vytváření a testování modely
-3. Nasazování modelů pro používání v inteligentní aplikace
+3. Nasazení hello modely pro používání v inteligentní aplikace
 
-Datových vědců pomocí různých nástrojů k dokončení těchto úloh. Můžete být poměrně časově náročné najít odpovídající verze softwaru, a potom si chcete stáhnout, kompilace a nainstalovat tyto verze.
+Datových vědců pomocí různých nástrojů toocomplete tyto úlohy. Může být časově velmi náročná toofind hello příslušné verze hello softwaru, a pak toodownload, kompilace a nainstalovat tyto verze.
 
-Virtuální počítač vědecké účely Data pro Linux můžete podstatně usnadňují tato zatížení. Umožňuje vám rychle začít s prací projektu analytics. Umožňuje pracovat na úlohy v různých jazycích, včetně R, Python, SQL, Java a C++. Azure SDK zahrnuté ve virtuálním počítači umožňuje sestavení aplikace pomocí různých služeb v systému Linux pro Cloudová platforma společnosti Microsoft. Kromě toho máte přístup do jiných jazyků jako Ruby, Perl, PHP nebo node.js, které jsou také předem nainstalované.
+Hello datové vědy virtuálního počítače pro Linux můžete podstatně usnadňují tato zatížení. Použít toojump spuštění projektu analytics. Umožní vám toowork úloh v různých jazycích, včetně R, Python, SQL, Java a C++. Hello součástí hello virtuálních počítačů Azure SDK vám umožní toobuild vaší aplikace pomocí různých služeb v systému Linux pro Cloudová platforma Microsoft hello. Kromě toho máte přístup jazyky tooother jako Ruby, Perl, PHP nebo node.js, které jsou také předem nainstalovány.
 
-Neexistují žádné poplatky softwaru pro tuto bitovou kopii dat vědecké účely virtuálních počítačů. Platíte jenom využití poplatků Azure hardwaru, které jsou hodnotí na základě velikosti virtuálního počítače, který budete zřizovat. Další informace o poplatky za výpočetní naleznete na [stránky Seznam virtuálních počítačů v Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Neexistují žádné poplatky softwaru pro tuto bitovou kopii dat vědecké účely virtuálních počítačů. Platíte jenom hello Azure hardwaru využití poplatků, které jsou hodnotí na základě velikosti hello hello virtuálního počítače, který budete zřizovat. Další informace o hello výpočetní poplatky lze najít v hello [stránky Seznam virtuálních počítačů na hello Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>Jiné verze datové vědy virtuálního počítače
-A [CentOS](machine-learning-data-science-linux-dsvm-intro.md) bitové kopie je také k dispozici, s mnoha stejné nástroje jako Ubuntu bitovou kopii. A [Windows](machine-learning-data-science-provision-vm.md) bitové kopie je také k dispozici.
+## <a name="other-versions-of-hello-data-science-virtual-machine"></a>Jiné verze hello datové vědy virtuálního počítače
+A [CentOS](machine-learning-data-science-linux-dsvm-intro.md) obrázek k dispozici, s mnoha hello stejné nástroje jako hello Ubuntu image. A [Windows](machine-learning-data-science-provision-vm.md) bitové kopie je také k dispozici.
 
 ## <a name="prerequisites"></a>Požadavky
-Před vytvořením datové vědy virtuálního počítače pro Linux, musí mít předplatné Azure. Chcete-li získat jeden, přečtěte si téma [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/free/).
+Před vytvořením datové vědy virtuálního počítače pro Linux, musí mít předplatné Azure. tooobtain, najdete v části [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Vytvoření virtuálního počítače vědecké účely Data pro Linux
-Tady jsou kroky k vytvoření instance z virtuálního počítače vědecké účely Data pro Linux:
+Zde jsou kroky toocreate hello instanci hello datové vědy virtuálního počítače pro Linux:
 
-1. Přejděte k virtuálnímu počítači výpis na [portál Azure](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
-2. Klikněte na tlačítko **vytvořit** (dole) se zprovoznit průvodce.![ Konfigurace data-vědecké účely vm](./media/machine-learning-data-science-dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-3. Následující části obsahují vstupy pro všechny kroky v průvodci (uvedené na pravé straně na předchozím obrázku) použít k vytvoření virtuálního počítače Microsoft Data vědecké účely. Zde jsou vstupy potřebná ke konfiguraci jednotlivých kroků:
+1. Přejděte na hello výpis toohello virtuálního počítače [portál Azure](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
+2. Klikněte na tlačítko **vytvořit** (v dolním hello) toobring hello průvodce.![ Konfigurace data-vědecké účely vm](./media/machine-learning-data-science-dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+3. Hello následující oddíly poskytují hello vstupy pro každou hello kroků v Průvodci hello (uvedené na hello napravo od hello předcházející obrázek) používá toocreate hello Microsoft Data vědecké účely virtuálního počítače. Zde jsou hello vstupy potřeby tooconfigure každý z těchto kroků:
    
    a. **Základy**:
    
    * **Název**: název vašeho serveru vědecké účely data vytváříte.
    * **Uživatelské jméno**: první účet přihlásit ID.
    * **Heslo**: první heslo účtu (veřejný klíč SSH můžete použít místo hesla).
-   * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se tento počítač je vytvořen a účtují. Musíte mít oprávnění vytvoření prostředku pro toto předplatné.
+   * **Předplatné**: Pokud máte více než jedno předplatné, vyberte hello jednou na které hello počítače je toobe vytvořen a účtují. Musíte mít oprávnění vytvoření prostředku pro toto předplatné.
    * **Skupina prostředků**: můžete vytvořit novou nebo použít stávající skupinu.
-   * **Umístění**: Vyberte datové centrum, která je nejvhodnější. Obvykle je datové centrum, které má většina vašich dat nebo je nejblíže vašemu fyzické umístění pro nejrychlejší přístup k síti.
+   * **Umístění**: Vyberte hello datového centra, která je nejvhodnější. Obvykle je hello datového centra, který má většina vašich dat, nebo je nejbližší fyzické umístění tooyour pro nejrychlejší přístup k síti.
    
    b. **Velikost**:
    
-   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte **Zobrazit vše** zobrazte další možnosti, velikostí virtuálních počítačů. Vyberte virtuální počítač NC třídy pro GPU školení.
+   * Vyberte jeden z typů hello serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte **Zobrazit vše** toosee další možnosti velikostí virtuálních počítačů. Vyberte virtuální počítač NC třídy pro GPU školení.
    
    c. **Nastavení**:
    
    * **Typ disku**: Zvolte **Premium** Pokud dáváte přednost jednotky SSD (SSD). Jinak, vyberte **standardní**. Virtuální grafický procesor počítače vyžadují standardní disku.
-   * **Účet úložiště**: můžete vytvořit nový účet úložiště Azure v rámci vašeho předplatného, nebo použít stávající ve stejném umístění, která jste vybrali na **Základy** krok průvodce.
-   * **Další parametry**: ve většině případů stačí použít výchozí hodnoty. Vzít v úvahu jiné než výchozí hodnoty, najeďte na informační odkaz Nápověda v konkrétních polí.
+   * **Účet úložiště**: můžete vytvořit nový účet úložiště Azure v rámci vašeho předplatného, nebo použijte existující hello stejné umístění, které jste vybrali na hello **Základy** kroku průvodce hello.
+   * **Další parametry**: ve většině případů stačí použít hello výchozí hodnoty. tooconsider jiné než výchozí hodnoty, hover přes odkaz informační hello nápovědy na konkrétních polí hello.
    
    d. **Souhrn**:
    
@@ -107,143 +107,143 @@ Tady jsou kroky k vytvoření instance z virtuálního počítače vědecké ú�
    
    e. **Kupte si**:
    
-   * Chcete-li začít, zřizování, klikněte na tlačítko **koupit**. Je k dispozici odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní pro velikost serveru, který jste zvolili v **velikost** krok.
+   * toostart hello zřizování, klikněte na tlačítko **koupit**. Podmínky toohello hello transakce je k dispozici odkaz. Hello virtuální počítač nemá jakýchkoli dalších poplatků nad rámec hello výpočetní pro velikost server hello jste zvolili v hello **velikost** krok.
 
-Zajišťování zabere asi 5 až 10 minut. Stav zřizování se zobrazí na portálu Azure.
+zřizování Hello zabere asi 5 až 10 minut. Hello Stav zřizování hello se zobrazí na portálu Azure hello.
 
-## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak získat přístup k datové vědy virtuálního počítače pro Linux
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Použít pověření účtu, které jste vytvořili v **Základy** části kroku 3 pro rozhraní prostředí text. V systému Windows, si můžete stáhnout nástroj pro klienta na SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (systém Windows X), můžete použít X11 předávání na Putty nebo instalace klienta na X2Go.
+## <a name="how-tooaccess-hello-data-science-virtual-machine-for-linux"></a>Jak tooaccess hello datové vědy virtuálního počítače pro Linux
+Po hello, které vytvoří virtuální počítač je tooit přihlásit pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu hello, které jste vytvořili v hello **Základy** části kroku 3 pro rozhraní prostředí textu hello. V systému Windows, si můžete stáhnout nástroj pro klienta na SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (systém Windows X), můžete použít X11 předávání na Putty nebo instalace klienta X2Go hello.
 
 > [!NOTE]
-> Klient X2Go provést výrazně lepší, než X11 předávání v testování. Doporučujeme používat klienta X2Go pro grafické rozhraní plochy.
+> Hello X2Go klienta provést výrazně lepší, než X11 předávání v testování. Doporučujeme používat hello X2Go klienta pro grafické rozhraní plochy.
 > 
 > 
 
 ## <a name="installing-and-configuring-x2go-client"></a>Instalace a konfigurace klienta X2Go
-Virtuální počítač s Linuxem již zřízená X2Go server a přijímá připojení klienta. Pro připojení k grafické ploše virtuálního počítače s Linuxem, udělejte na vašeho klienta:
+Hello virtuálního počítače s Linuxem je již zřízeno s X2Go serveru připravené tooaccept připojení a klientů. tooconnect toohello grafické ploše virtuálního počítače s Linuxem hello následující na vašeho klienta:
 
-1. Stáhněte a nainstalujte X2Go klienta pro vaši platformu klienta z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
-2. Spuštění klienta X2Go a vyberte **novou relaci**. Otevře okno Konfigurace s několik karet. Zadejte následující konfigurační parametry:
+1. Stáhněte a nainstalujte hello X2Go klienta pro vaši platformu klienta z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+2. Spusťte hello X2Go klienta a vyberte **novou relaci**. Otevře okno Konfigurace s několik karet. Zadejte hello následující konfigurační parametry:
    * **Karta relace**:
-     * **Hostitele**: název hostitele nebo IP adresy virtuálním počítačům s Linuxem dat vědecké účely.
-     * **Přihlášení**: uživatelské jméno v virtuálního počítače s Linuxem.
-     * **SSH Port**: necháte ve 22, výchozí hodnota.
-     * **Typ relace**: Změňte hodnotu na XFCE. Virtuální počítač s Linuxem aktuálně podporuje jenom XFCE plochy.
-   * **Karta média**: můžete vypnout zvukové podporu a klienta, tisk, pokud nepotřebujete používat.
-   * **Sdílené složky**: Pokud chcete adresáře z vaší klientské počítače na virtuální počítač s Linuxem připojeny, přidejte adresáře klientské počítače, které chcete sdílet s virtuálním Počítačem na této kartě.
+     * **Hostitele**: hello název hostitele nebo IP adresy virtuálním počítačům s Linuxem dat vědecké účely.
+     * **Přihlášení**: uživatelské jméno v hello virtuálního počítače s Linuxem.
+     * **SSH Port**: nechat v 22, výchozí hodnota hello.
+     * **Typ relace**: Změna hello hodnotu tooXFCE. Virtuální počítač s Linuxem hello aktuálně podporuje jenom XFCE plochy.
+   * **Karta média**: můžete vypnout zvukové podporu a klienta, tisk, pokud nepotřebujete toouse je.
+   * **Sdílené složky**: Pokud chcete adresáře z vaší klientské počítače připojené na hello virtuálního počítače s Linuxem, hello klientské počítače adresáře, které chcete tooshare s hello virtuálních počítačů na této kartě přidat.
 
-Po přihlášení k virtuálnímu počítači pomocí SSH klienta nebo XFCE grafické plochy prostřednictvím klienta X2Go, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované ve virtuálním počítači. Na XFCE můžete zobrazit zástupce aplikace nabídky a ikony na ploše pro řadu nástrojů.
+Po přihlášení toohello virtuálních počítačů pomocí klienta SSH hello nebo XFCE grafické plochy prostřednictvím klienta X2Go hello jste připravené toostart pomocí hello nástroje, které jsou nainstalováno a nakonfigurováno na hello virtuálních počítačů. Na XFCE můžete zobrazit zástupce aplikace nabídky a ikony na ploše pro řadu nástrojů hello.
 
-## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Nástroje nainstalované na virtuální počítač vědecké účely Data pro Linux
+## <a name="tools-installed-on-hello-data-science-virtual-machine-for-linux"></a>Nástroje nainstalované na hello datové vědy virtuálního počítače pro Linux
 ### <a name="deep-learning-libraries"></a>Hloubkové Learning knihovny
 
 #### <a name="cntk"></a>CNTK
-Microsoft Cognitive Toolki - CNTK - je open source, hloubkové učení toolkit. Jsou k dispozici v kořenové a py35 Conda prostředí Python vazby. Je také nástroj příkazového řádku (cntk), který je již v CESTĚ.
+Hello Microsoft kognitivní Toolki - CNTK - je open source, hloubkové učení toolkit. Python vazby jsou k dispozici v prostředích Conda kořenové a py35 hello. Je také nástroj příkazového řádku (cntk), který je již v hello CESTU.
 
-Ukázka Python poznámkových bloků jsou k dispozici v JupyterHub. Chcete-li základní ukázku spustit na příkazovém řádku, spusťte následující příkazy v prostředí:
+Ukázka Python poznámkových bloků jsou k dispozici v JupyterHub. toorun základní ukázka hello příkazového řádku, spusťte následující příkazy v prostředí hello hello:
 
     cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
     cntk configFile=lr_bs.cntk makeMode=false command=Train
 
-Další informace najdete v části CNTK [Githubu](https://github.com/Microsoft/CNTK)a [CNTK wiki](https://github.com/Microsoft/CNTK/wiki).
+Další informace najdete v tématu hello části CNTK [Githubu](https://github.com/Microsoft/CNTK)a hello [CNTK wiki](https://github.com/Microsoft/CNTK/wiki).
 
 #### <a name="caffe"></a>Caffe
-Caffe je architektura hloubkové learning z Berkeley vize a výukové centrum. Je k dispozici v /opt/caffe. Příklady najdete v /opt/caffe/examples.
+Caffe je hluboká učení framework z hello Berkeley vize a výukové centrum. Je k dispozici v /opt/caffe. Příklady najdete v /opt/caffe/examples.
 
 #### <a name="caffe2"></a>Caffe2
-Caffe2 je architektura hloubkové learning ze sítě Facebook, která je založená na Caffe. Je k dispozici v Python 2.7 v prostředí kořenové Conda. Aktivovat, spusťte následující příkazy z prostředí:
+Caffe2 je architektura hloubkové learning ze sítě Facebook, která je založená na Caffe. Je k dispozici v Python 2.7 v hello Conda kořenové prostředí. tooactivate ji spustit z prostředí hello hello následující:
 
     source /anaconda/bin/activate root
 
 Některé poznámkových bloků příkladu jsou k dispozici v JupyterHub.
 
 #### <a name="h2o"></a>H2O
-H2O je rychlé, v paměti, distribuované strojového učení a platformy prediktivní analýzy. Balíček Python je nainstalována v kořenové i py35 Anaconda prostředí. Balíček R je také nainstalován. Spuštění z příkazového řádku spusťte H2O `java -jar /dsvm/tools/h2o/current/h2o.jar`; existují různé [možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , které chcete nakonfigurovat. Webové rozhraní toku přístupná procházením http://localhost:54321 začít pracovat. Ukázka poznámkových bloků jsou také k dispozici v JupyterHub.
+H2O je rychlé, v paměti, distribuované strojového učení a platformy prediktivní analýzy. Balíček Python je nainstalována v obou prostředích hello kořenové a py35 Anaconda. Balíček R je také nainstalován. toostart H2O z příkazového řádku hello spustit `java -jar /dsvm/tools/h2o/current/h2o.jar`; existují různé [možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , že chcete tooconfigure. Hello toku webové uživatelské rozhraní je přístupná procházením toohttp://localhost:54321 tooget spuštěna. Ukázka poznámkových bloků jsou také k dispozici v JupyterHub.
 
 #### <a name="keras"></a>Keras
-Keras je nejdůležitější neuronové sítě rozhraní API v Python, která umožňuje spustit v horní části Tensorflow nebo Theano. Je k dispozici v kořenové a py35 prostředí Python. 
+Keras je nejdůležitější neuronové sítě rozhraní API v Python, která umožňuje spustit v horní části Tensorflow nebo Theano. Je k dispozici v prostředí Python kořenové a py35 hello. 
 
 #### <a name="mxnet"></a>MXNet
-MXNet je hloubkové learning rozhraní určené pro efektivitu a flexibilitu. Má R a Python vazby, které jsou zahrnuty v DSVM. Ukázka poznámkových bloků jsou součástí JupyterHub a ukázkový kód je k dispozici v /dsvm/samples/mxnet.
+MXNet je hloubkové learning rozhraní určené pro efektivitu a flexibilitu. Má R a Python vazby, které jsou zahrnuty v hello DSVM. Ukázka poznámkových bloků jsou součástí JupyterHub a ukázkový kód je k dispozici v /dsvm/samples/mxnet.
 
 #### <a name="nvidia-digits"></a>NVIDIA ČÍSLIC
-NVIDIA hloubkové učení GPU školení systému, označuje jako ČÍSLIC, je systém pro zjednodušení běžné úkoly, hloubkové learning jako správy dat, navrhování a cvičení neuronové sítě v systémech GPU a sledování výkonu v reálném čase s pokročilé vizualizace. 
+Hello NVIDIA hloubkové učení GPU školení systém označuje jako ČÍSLIC, je systému toosimplify běžné hloubkové learning úkoly, jako správy dat, navrhování a cvičení neuronové sítě v systémech GPU a sledování výkonu v reálném čase s pokročilé vizualizace. 
 
-ČÍSLIC je k dispozici jako služba, názvem číslic. Spusťte službu a přejděte na http://localhost: 5000 začít pracovat.
+ČÍSLIC je k dispozici jako služba, názvem číslic. Spusťte službu hello a procházet toohttp://localhost:5000 tooget spuštěna.
 
-ČÍSLIC je také nainstalován jako modul Python v prostředí kořenové Conda.
+ČÍSLIC je také nainstalován jako modul Python v hello Conda kořenové prostředí.
 
 #### <a name="tensorflow"></a>TensorFlow
-TensorFlow je knihovna hloubkové learning Google. Otevřeným zdrojem softwarová knihovna pro číselné výpočty pomocí grafů toku dat je. Je k dispozici v prostředí Python py35 TensorFlow a některé ukázkové poznámkových bloků jsou součástí JupyterHub.
+TensorFlow je knihovna hloubkové learning Google. Otevřeným zdrojem softwarová knihovna pro číselné výpočty pomocí grafů toku dat je. Je k dispozici v prostředí Python py35 hello TensorFlow a některé ukázkové poznámkových bloků jsou součástí JupyterHub.
 
 #### <a name="theano"></a>Theano
-Theano je knihovna Python pro efektivní číselné výpočty. Je k dispozici v kořenové a py35 prostředí Python. 
+Theano je knihovna Python pro efektivní číselné výpočty. Je k dispozici v prostředí Python kořenové a py35 hello. 
 
-#### <a name="torch"></a>Svítilnou
-Svítilnou je scientific výpočetní architektura s wide Podpora algoritmů strojového učení. Je k dispozici v /dsvm/tools/torch a interaktivní relace tý a Správce balíčků luarocks jsou k dispozici na příkazovém řádku. Příklady jsou k dispozici v /dsvm/samples/torch.
+#### <a name="torch"></a>Torch
+Svítilnou je scientific výpočetní architektura s wide Podpora algoritmů strojového učení. Je k dispozici v /dsvm/tools/torch a jsou k dispozici v příkazovém řádku hello hello tý interaktivní relace a luarocks Správce balíčků. Příklady jsou k dispozici v /dsvm/samples/torch.
 
-Dále je dostupný v prostředí Anaconda kořenové PyTorch. Příklady jsou /dsvm/samples/pytorch.
+PyTorch je také dostupná v prostředí Anaconda kořenové hello. Příklady jsou /dsvm/samples/pytorch.
 
 ### <a name="microsoft-r-server"></a>Server Microsoft R
-R je jedním z Nejoblíbenější jazyky pro analýzu dat a strojové učení. Pokud chcete použít pro analytické údaje R, virtuální počítač má Microsoft R Server (Paní) s Microsoft R otevřete (MRO) a matematické jádra knihovny (MKL). MKL optimalizuje matematické operace v analytical algoritmy běžné. MRO je kompatibilní s CRAN r. 100 procent a některé z knihovny R publikované v CRAN lze nainstalovat MRO. PANÍ vám dává škálování a operationalization R modelů do webové služby. Můžete upravit programy R v jednom z výchozí editory, jako je Rstudia, vi nebo Emacs. Pokud používáte editoru Emacs, Všimněte si, že balíček Emacs ESS (mluví statistiky Emacs), který zjednodušuje práce se soubory R v editoru Emacs je už předem nainstalovaná.
+R je jedním z hello Nejoblíbenější jazyky pro analýzu dat a strojové učení. Pokud chcete pro analytické údaje toouse R, hello virtuálních počítačů má Microsoft R Server (Paní) s hello Microsoft R otevřete (MRO) a matematické jádra knihovny (MKL). Hello MKL optimalizuje matematické operace v analytical algoritmy běžné. MRO je kompatibilní s CRAN r. 100 procent a některé z knihovny hello R publikované v CRAN se dá nainstalovat na hello MRO. PANÍ vám dává škálování a operationalization R modelů do webové služby. Můžete upravit programy R v jednom z výchozí editory hello, jako je Rstudia, vi nebo Emacs. Pokud používáte hello Emacs editor, Všimněte si, že balíček Emacs hello ESS (mluví statistiky Emacs), což zjednodušuje práce se soubory R v rámci hello Emacs editor, předem nainstalován.
 
-Pro spuštění R konzole, stačí zadat **R** v prostředí. Tím přejdete na interaktivní prostředí. K vývoji vašeho programu R, obvykle pomocí editoru jako Emacs nebo vi a potom spuštěním skriptů v R. S Rstudia máte úplné grafické prostředí IDE vyvíjet váš R program.
+toolaunch R konzoly, stačí zadat **R** v prostředí hello. Tím přejdete tooan interaktivní prostředí. toodevelop váš program R, obvykle pomocí editoru jako Emacs nebo vi a potom spusťte hello skripty v rámci R. S Rstudia máte plný grafické toodevelop prostředí IDE váš R program.
 
-Je také skript jazyka R pro instalaci [balíčky R 20 horní](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) Chcete-li. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, kterou lze zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
+Je také skript jazyka R pro tooinstall hello [balíčky R 20 horní](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) podle potřeby. Tento skript můžete spustit, jakmile se v interaktivní rozhraní hello R, kterou lze zadat (jak je uvedeno) tak, že zadáte **R** v prostředí hello.  
 
 ### <a name="python"></a>Python
-Pro vývoj pomocí Python byl nainstalován distribuce Anaconda Python 2.7 a 3.5. Toto rozdělení obsahuje základní Python společně s přibližně 300 nejoblíbenější balíčků analytics matematické, technici a data. Můžete použít výchozí textové editory. Kromě toho můžete Spyder IDE Python, který je instalován s distribucí Anaconda Python. Spyder musí grafické plocha nebo X11 předávání. Zástupce Spyder je součástí grafické plochy.
+Pro vývoj pomocí Python byl nainstalován distribuce Anaconda Python 2.7 a 3.5. Toto rozdělení obsahuje hello základní Python společně s přibližně 300 hello nejoblíbenější matematické, technici a data balíčků analytics. Můžete použít hello výchozí textové editory. Kromě toho můžete Spyder IDE Python, který je instalován s distribucí Anaconda Python. Spyder musí grafické plocha nebo X11 předávání. Zástupce tooSpyder je součástí grafické plochy hello.
 
-Vzhledem k tomu, že máme Python 2.7 a 3.5, budete muset konkrétně aktivovat požadované verzi Pythonu (conda prostředí) chcete pracovat v aktuální relaci. Proces aktivace nastavuje proměnnou Cesta k požadované verzi Pythonu.
+Vzhledem k tomu, že máme Python 2.7 a 3.5, je nutné toospecifically aktivovat požadovaného hello Python verzi (conda prostředí) chcete toowork na v hello aktuální relaci. proces aktivace Hello nastaví hello cesta proměnné toohello požadované verzi Pythonu.
 
-Pokud chcete aktivovat conda prostředí Python 2.7, spusťte následující příkazy z prostředí:
+tooactivate hello Python 2.7 conda prostředí, spusťte z prostředí hello hello následující:
 
     source /anaconda/bin/activate root
 
 Python 2.7 je nainstalována v */anaconda/bin*.
 
-Pokud chcete aktivovat conda prostředí Python 3.5, spusťte následující příkazy z prostředí:
+tooactivate hello Python 3.5 conda prostředí, spusťte z prostředí hello hello následující:
 
     source /anaconda/bin/activate py35
 
 
 Python 3.5 je nainstalována v */anaconda/envs/py35/bin*.
 
-K vyvolání interaktivní relace Python, stačí zadat **python** v prostředí. Pokud jsou na grafické rozhraní nebo mají X11 předávání sadu nahoru, můžete zadat **pycharm** spustit prostředí IDE PyCharm Python.
+tooinvoke interaktivní relaci Python, stačí zadat **python** v prostředí hello. Pokud jsou na grafické rozhraní nebo mají X11 předávání sadu nahoru, můžete zadat **pycharm** toolaunch hello PyCharm Python IDE.
 
-Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Například:
+tooinstall další knihovny Python, budete potřebovat toorun ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python hello (conda nebo pip) tooinstall toohello správné prostředí Python. Například:
 
     sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
     sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
-Distribuce Anaconda také obsahuje poznámkového bloku Jupyter, prostředí sdílení kódu a analýzy. Poznámkového bloku Jupyter přistupuje prostřednictvím JupyterHub. Přihlášení pomocí místní Linux uživatelské jméno a heslo.
+Hello Anaconda distribuční také obsahuje poznámkového bloku Jupyter, kód tooshare prostředí a analýzy. Poznámkový blok Jupyter Hello je přístupné přes JupyterHub. Přihlášení pomocí místní Linux uživatelské jméno a heslo.
 
-Server poznámkového bloku Jupyter předem nakonfigurovaný s Python 2, Python 3 a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" spustit prohlížeč pro přístup k serveru poznámkového bloku. Pokud jste na virtuální počítač prostřednictvím protokolu SSH nebo X2Go klienta, můžete také navštívit [https://localhost:8000 /](https://localhost:8000/) pro přístup k serveru poznámkového bloku Jupyter.
+server poznámkového bloku Jupyter Hello předem nakonfigurovaný s Python 2, Python 3 a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" toolaunch hello prohlížeče tooaccess hello poznámkového bloku serveru. Pokud jste na hello virtuálních počítačů pomocí protokolu SSH nebo X2Go klienta, můžete také navštívit [https://localhost:8000 /](https://localhost:8000/) tooaccess hello serveru poznámkového bloku Jupyter.
 
 > [!NOTE]
 > Pokračujte, pokud chcete získat všechna upozornění certifikátu.
 > 
 > 
 
-Server poznámkového bloku Jupyter můžete přistupovat z libovolného hostitele. Stačí zadat *https://\<název DNS virtuálního počítače nebo IP adresu\>: 8000 /*
+Server poznámkového bloku Jupyter hello můžete přistupovat z libovolného hostitele. Stačí zadat *https://\<název DNS virtuálního počítače nebo IP adresu\>: 8000 /*
 
 > [!NOTE]
-> Port 8000 je otevřen v bráně firewall ve výchozím nastavení při zřízení virtuálního počítače.
+> Port 8000 je otevřen v bráně firewall hello ve výchozím nastavení při zřízení hello virtuálních počítačů.
 > 
 > 
 
-Budeme mít zabalené poznámkových bloků ukázka – jednu v Pythonu a jeden v jazyce R. Zobrazí se odkaz na ukázky na domovské stránce Poznámkový blok po ověření do poznámkového bloku Jupyter s použitím místní Linux uživatelské jméno a heslo. Můžete vytvořit nový poznámkový blok výběrem **nový**a pak jádra příslušný jazyk. Pokud nevidíte **nový** tlačítko, klikněte na tlačítko **Jupyter** ikona nahoře vlevo přejít na domovskou stránku serveru poznámkového bloku.
+Budeme mít zabalené poznámkových bloků ukázka – jednu v Pythonu a jeden v jazyce R. Uvidíte ukázky toohello hello odkaz na domovskou stránku hello Poznámkový blok, po ověření toohello Poznámkový blok Jupyter s použitím místní Linux uživatelské jméno a heslo. Můžete vytvořit nový poznámkový blok výběrem **nový**a pak jádra hello příslušný jazyk. Pokud nevidíte hello **nový** tlačítko, klikněte na tlačítko hello **Jupyter** ikonu na hello nejvyšší levém toogo toohello domovskou stránku hello serveru poznámkového bloku.
 
 ### <a name="apache-spark-standalone"></a>Apache Spark samostatné 
-Samostatnou instanci systému Apache Spark je předinstalován v DSVM Linux při vývoji aplikací Spark místně nejprve před testování a nasazení na velkých clusterech. PySpark programy můžete spustit pomocí Jupyter jádra. Když otevřete Jupyter a klikněte na tlačítko "New" zobrazí se seznam dostupných jádra. "– Python Spark" je jádra PySpark, které vám umožní vytvářet Spark aplikace pomocí jazyka Python. Můžete taky Python IDE jako PyCharm nebo Spyder k sestavení budete programu Spark. Od to je samostatné instance, Spark zásobníku běží v rámci programu volajícího klienta. Díky tomu je rychlejší a snazší řešení problémů ve srovnání s vývojem na clusteru Spark. 
+Samostatnou instanci systému Apache Spark je předinstalován v hello Linux DSVM toohelp nejprve vývoji aplikací Spark místně před testování a nasazení na velkých clusterech. PySpark programy můžete spustit prostřednictvím hello Jupyter jádra. Když otevřete Jupyter a klikněte na tlačítko "New" hello zobrazí se seznam dostupných jádra. Hello "Spark – Python" je hello jádra PySpark, které vám umožní vytvářet Spark aplikace pomocí jazyka Python. Můžete také použít Python IDE jako PyCharm nebo Spyder toobuild jste Spark programu. Od to je samostatné instance, zásobník Spark hello běží v rámci hello volání program klienta. To umožňuje rychlejší a snazší problémy tootroubleshoot porovná toodeveloping na clusteru Spark. 
 
-Ukázkový PySpark Poznámkový blok je k dispozici na Jupyter, které můžete najít v adresáři "SparkML" v části domovský adresář Jupyter ($ DOMOVSKÉ/poznámkových bloků/SparkML/pySpark). 
+Ukázkový PySpark Poznámkový blok je k dispozici na Jupyter, které můžete najít v adresáři "SparkML" hello pod hello domovskému adresáři Jupyter ($ DOMOVSKÉ/poznámkových bloků/SparkML/pySpark). 
 
 Pokud programujete v R pro Spark, můžete použít Microsoft R Server SparkR nebo sparklyr. 
 
-Před spuštěním v kontextu Spark Microsoft R Server, budete muset jednou instalační program tak, aby Povolit místní Hadoop HDFS a Yarn instance jednoho uzlu. Ve výchozím nastavení jsou služby Hadoop nainstalován, ale na DSVM zakázáno. Chcete-li ji povolit, budete muset spustit následující příkazy jako kořenová při prvním:
+Před spuštěním v kontextu Spark Microsoft R Server, musíte toodo jeden čas instalace krok tooenable místní jednoho uzlu Hadoop HDFS a Yarn instance. Ve výchozím nastavení jsou služby Hadoop nainstalován, ale na hello DSVM zakázáno. Pořadí tooenable, je třeba toorun hello jako kořenové hello poprvé následující příkazy:
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
     cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
@@ -253,108 +253,108 @@ Před spuštěním v kontextu Spark Microsoft R Server, budete muset jednou inst
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Můžete zastavit Hadoop související služby, když je nepotřebujete spuštěním ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` vzorku, který ukazuje, jak pro vývoj a testování paní v vzdálené kontextu Spark (což je samostatnou instanci Spark na DSVM) je zadaná a k dispozici v `/dsvm/samples/MRS` adresáře. 
+Můžete zastavit hello Hadoop související služby, když je nepotřebujete spuštěním ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` ukázku ukázka, jak paní toodevelop a testování v vzdálené kontextu Spark (což je hello samostatnou instanci Spark na hello DSVM) je zadaná a k dispozici v hello `/dsvm/samples/MRS` adresáře. 
 
 ### <a name="ides-and-editors"></a>Editory a integrovaného vývojového prostředí
-Musíte vybrat několik editory kódu. To zahrnuje vi/VIM, Emacs, PyCharm, Rstudia a IntelliJ. IntelliJ, Rstudia a PyCharm grafické editory a třeba, abyste být přihlášeni na grafické plochy jejich použití. Tyto editory obsahují desktopových a aplikačních nabídky zástupců spusťte je.
+Musíte vybrat několik editory kódu. To zahrnuje vi/VIM, Emacs, PyCharm, Rstudia a IntelliJ. IntelliJ, Rstudia a PyCharm jsou grafické editory a budete potřebovat toobe přihlášení tooa grafické plochy toouse je. Tyto editory obsahují desktopových a aplikačních nabídky zástupců toolaunch je.
 
-**VIM** a **Emacs** jsou textové editory. Do Emacs jsme nainstalovali balíček rozšíření názvem Emacs mluví statistiky (ESS), který usnadňuje práci s R v editoru Emacs. Další informace najdete na [ESS](http://ess.r-project.org/).
+**VIM** a **Emacs** jsou textové editory. Do Emacs jsme nainstalovali balíček rozšíření názvem Emacs mluví statistiky (ESS), který usnadňuje práci s R v rámci hello Emacs editor. Další informace najdete na [ESS](http://ess.r-project.org/).
 
-**Latexu** je nainstalován pomocí balíčku texlive spolu s doplňkem Emacs [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) balíček, který zjednodušuje vytváření latexu dokumentů v rámci Emacs.  
+**Latexu** je nainstalován prostřednictvím hello texlive balíčku společně s doplněk Emacs [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) balíček, který zjednodušuje vytváření latexu dokumentů v rámci Emacs.  
 
 ### <a name="databases"></a>Databáze
 
 #### <a name="graphical-sql-client"></a>Grafický klient SQL
-**SQuirrel SQL**, grafický klient SQL, bylo zadáno pro připojení do různých databází (například Microsoft SQL Server a MySQL) a ke spouštění dotazů SQL. Když spustíte z grafického relace plochy (například pomocí X2Go klienta). K vyvolání SQuirrel SQL, můžete spustit pomocí ikony na ploše nebo spuštěním následujícího příkazu v prostředí.
+**SQuirrel SQL**, grafický klient SQL, bylo zadáno tooconnect toodifferent databáze (například Microsoft SQL Server a MySQL) a toorun dotazy SQL. Když spustíte z grafického relace plochy (například pomocí hello X2Go klienta). tooinvoke SQuirrel SQL, můžete spustit z hello ikony na ploše hello nebo spusťte následující příkaz na prostředí hello hello.
 
     /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 
-Před prvním použitím nastavení ovladače a aliasy databáze. Ovladače JDBC jsou umístěné na adrese:
+Před hello první použití, nastavení ovladače a aliasy databáze. Hello JDBC ovladače jsou umístěné na adrese:
 
 */USR/share/Java/jdbcdrivers*
 
 Další informace najdete v tématu [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Nástroje příkazového řádku pro přístup k systému Microsoft SQL Server
-Balíček ovladače ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
+Hello balíček ovladače ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
 
-**BCP**: hromadné nástroj bcp zkopíruje data mezi instance systému Microsoft SQL Server a datový soubor ve formátu zadaného uživatelem. Nástroj bcp slouží k importu velký počet nových řádků do tabulky serveru SQL Server nebo k exportu dat z tabulky do datových souborů. K importu dat do tabulky, musíte použít formát soubor vytvořený pro tuto tabulku nebo pochopit strukturu tabulky a typy dat, které jsou platné pro její sloupce.
+**BCP**: hromadné nástroj bcp hello zkopíruje data mezi instance systému Microsoft SQL Server a datový soubor ve formátu zadaného uživatelem. Nástroj bcp Hello se dá použít tooimport velký počet nových řádků do tabulky serveru SQL Server nebo tooexport data z tabulek do datových souborů. tooimport data do tabulky, musíte buď použijte soubor ve formátu vytvořené pro tuto tabulku, nebo pochopit strukturu hello hello tabulky a hello typy dat, které jsou platné pro její sloupce.
 
 Další informace najdete v tématu [připojení pomocí bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**SqlCmd**: můžete zadat příkazy jazyka Transact-SQL s Nástroj sqlcmd také s postupy systému a skript soubory na příkazovém řádku. Tento nástroj používá rozhraní ODBC pro spuštění dávky Transact-SQL.
+**SqlCmd**: můžete zadat příkazy jazyka Transact-SQL s Nástroj sqlcmd hello, také s postupy systému a soubory na příkazovém řádku hello skriptů. Tento nástroj používá dávek ODBC tooexecute Transact-SQL.
 
 Další informace najdete v tématu [připojení pomocí sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
 > [!NOTE]
-> Existují určité rozdíly v tento nástroj mezi platformy Linux a Windows. Najdete v dokumentaci podrobnosti.
+> Existují určité rozdíly v tento nástroj mezi platformy Linux a Windows. Podrobnosti naleznete v dokumentaci hello.
 > 
 > 
 
 #### <a name="database-access-libraries"></a>Databáze access knihovny
-Nejsou k dispozici v R a Python pro přístup k databázím knihovny.
+Nejsou k dispozici v R a Python tooaccess databáze knihovny.
 
-* V R **RODBC** balíček nebo **dplyr** balíček umožňuje dotazovat nebo spouštění příkazů jazyka SQL na serveru databáze.
-* V Python **pyodbc** knihovna poskytuje přístup k databázi s rozhraním ODBC jako základní vrstvě.  
+* V R, hello **RODBC** balíček nebo **dplyr** balíček vám umožní tooquery nebo spouštění příkazů jazyka SQL na serveru databáze hello.
+* V Python, hello **pyodbc** knihovna poskytuje přístup k databázi s rozhraním ODBC hello základní vrstvě.  
 
 ### <a name="azure-tools"></a>Nástroje Azure
-Následující nástroje Azure jsou nainstalovány ve virtuálním počítači:
+Hello následující nástroje Azure jsou nainstalovány na hello virtuálních počítačů:
 
-* **Rozhraní příkazového řádku Azure**: rozhraní příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure pomocí příkazů prostředí. K vyvolání nástroje Azure, stačí zadat **azure nápovědy**. Další informace najdete v tématu [stránce dokumentace Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer je grafický nástroj, který se používá k procházení objekty, které jsou uloženy ve vašem účtu úložiště Azure a k nahrávání a stahování dat do a z Azure BLOB. Storage Explorer můžete přistupovat z ikonu zástupce na ploše. Můžete ji použít z řádku prostředí zadáním **StorageExplorer**. Musíte být přihlášeni z X2Go klienta, nebo můžete nechat X11 předávání sadu nahoru.
-* **Knihovny Azure**: Toto jsou některé předem nainstalovaná knihoven.
+* **Rozhraní příkazového řádku Azure**: hello rozhraní příkazového řádku Azure vám umožní toocreate a správu prostředků Azure pomocí příkazů prostředí. tooinvoke hello nástroje Azure, stačí zadat **azure nápovědy**. Další informace najdete v tématu hello [stránce dokumentace Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer je grafický nástroj, který je použité toobrowse prostřednictvím hello objekty, které jsou uloženy v účtu úložiště Azure a tooupload a stahování tooand dat z Azure BLOB. Storage Explorer můžete přistupovat z hello zástupce na ploše ikona. Můžete ji použít z řádku prostředí zadáním **StorageExplorer**. Třeba toobe přihlášení z klienta X2Go nebo mít X11 předávání sadu nahoru.
+* **Knihovny Azure**: hello Toto jsou některé hello předem nainstalovaná knihoven.
   
-  * **Python**: související s Azure knihovny v Pythonu, zda jsou nainstalovány jsou **azure**, **azureml**, **pydocumentdb v tuto**, a **pyodbc**. První tři knihovny můžete získat přístup k služby Azure storage, Azure Machine Learning a Azure DB Cosmos (databáze NoSQL v Azure). Čtvrtý knihovny pyodbc (spolu s ovladač Microsoft ODBC pro SQL Server), umožňuje přístup k systému SQL Server, databáze SQL Azure a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadejte **pip seznamu** zobrazíte všechny uvedené knihovny. Ujistěte se, že tento příkaz spustit v prostředí 3.5 i Python 2.7.
-  * **R**: knihovny související s Azure, v R, které jsou nainstalovány jsou **AzureML** a **RODBC**.
-  * **Java**: seznam knihoven Azure Java lze nalézt v adresáři **/dsvm/sdk/AzureSDKJava** ve virtuálním počítači. Klíče knihovny jsou Azure úložiště a správu rozhraní API, databáze Cosmos Azure a JDBC ovladače systému SQL Server.  
+  * **Python**: hello souvisejících s Azure knihovny v Pythonu, zda jsou nainstalovány jsou **azure**, **azureml**, **pydocumentdb v tuto**, a **pyodbc** . S hello první tři knihovny, můžete přístup služby Azure storage, Azure Machine Learning a Azure DB Cosmos (databáze NoSQL v Azure). čtvrtý knihovna Hello pyodbc (spolu s hello ovladač Microsoft ODBC pro SQL Server), umožňuje přístup tooSQL serveru Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadejte **pip seznamu** toosee všechny hello uvedené knihovny. Zda toorun být tento příkaz v obou hello Python 2.7 a 3.5 prostředí.
+  * **R**: hello souvisejících s Azure knihoven v R nainstalované **AzureML** a **RODBC**.
+  * **Java**: hello seznam knihoven Azure Java lze nalézt v adresáři hello **/dsvm/sdk/AzureSDKJava** na hello virtuálních počítačů. Hello klíče knihovny jsou Azure úložiště a správu rozhraní API, databáze Cosmos Azure a JDBC ovladače systému SQL Server.  
 
-Dostanete [portál Azure](https://portal.azure.com) z předem nainstalovaná prohlížeče Firefox. Na portálu Azure můžete vytvářet, spravovat a monitorovat prostředků Azure.
+Dostanete hello [portál Azure](https://portal.azure.com) z prohlížeče Firefox předem nainstalovaná hello. Na hello portálu Azure můžete vytvořit, spravovat a monitorovat prostředků Azure.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning je plně spravovaná Cloudová služba, která umožňuje vytvářet, nasazovat a sdílet řešení prediktivní analýzy. Sestavit experimentů a modely z Azure Machine Learning Studio. Byla přístupná z webového prohlížeče na virtuálním počítači datové vědy navštivte stránky [Microsoft Azure Machine Learning](https://studio.azureml.net).
+Azure Machine Learning je plně spravovaná Cloudová služba, která vám umožní toobuild, nasazení a sdílet řešení prediktivní analýzy. Sestavit experimentů a modely z Azure Machine Learning Studio. Byla přístupná z webového prohlížeče na hello datové vědy virtuálním počítači navštivte stránky [Microsoft Azure Machine Learning](https://studio.azureml.net).
 
-Po přihlášení k Azure Machine Learning Studio, máte přístup experimentování plátno kde můžete vytvořit logický tok pro algoritmy strojového učení. Také mají přístup do poznámkového bloku Jupyter hostované v Azure Machine Learning a může bezproblémově pracovat experimentů v nástroji Machine Learning Studio. Zprovoznit strojového učení modely, které jste vytvořili pomocí zabalení je v rozhraní webových služeb. To umožňuje klientům napsané v libovolném jazyce vyvolání predikcím ze strojového učení modelů. Další informace najdete v tématu [Machine Learning dokumentaci](https://azure.microsoft.com/documentation/services/machine-learning/).
+Po přihlášení tooAzure Machine Learning Studio, máte přístup tooan experimentování plátno, kde můžete vytvořit logický tok pro hello algoritmů strojového učení. Také jste poznámkový blok Jupyter tooa přístup hostované v Azure Machine Learning a může bezproblémově pracovat hello experimentů v nástroji Machine Learning Studio. Zprovoznit hello strojového učení modely, které jste vytvořili pomocí zabalení je v rozhraní webových služeb. To umožňuje klientům napsané v jakékoli jazyk tooinvoke predikcím ze hello modelů strojového učení. Další informace najdete v tématu hello [Machine Learning dokumentaci](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Můžete také vytvořit modely v R nebo Python ve virtuálním počítači a poté ji nasadit v provozním prostředí v Azure Machine Learning. Jsme nainstalovali knihovny v R (**AzureML**) a Python (**azureml**) Chcete-li povolit tuto funkci.
+Můžete také vytvořit modely v R nebo Python na hello virtuálních počítačů a poté ji nasadit v provozním prostředí v Azure Machine Learning. Jsme nainstalovali knihovny v R (**AzureML**) a Python (**azureml**) tooenable tuto funkci.
 
-Informace o tom, jak nasadit do Azure Machine Learning modely v R a Pythonu najdete v tématu [deset způsobů, jak na vědecké zpracování dat virtuálního počítače](machine-learning-data-science-vm-do-ten-things.md) (zejména v části "vytvoření modelů pomocí R nebo Python a zprovoznit je pomocí Azure Machine Learning").
+Informace o tom, jak toodeploy modelů v R a Python do Azure Machine Learning najdete v tématu [deset způsobů, jak na hello vědecké zpracování dat virtuálního počítače](machine-learning-data-science-vm-do-ten-things.md) (zejména část hello "vytvářet modely pomocí R nebo Python a zprovoznit je s použitím Azure Machine Learning").
 
 > [!NOTE]
-> Tyto pokyny byly napsány pro verzi systému Windows virtuálního počítače vědecké účely Data. Ale k dispozici informace o nasazení modely na Azure Machine Learning je použitelná pro virtuální počítač s Linuxem.
+> Tyto pokyny byly napsány pro Windows hello verzi hello vědecké účely dat virtuálních počítačů. Ale hello informace existuje na nasazení tooAzure modely Machine Learning je použít toohello virtuálního počítače s Linuxem.
 > 
 > 
 
 ### <a name="machine-learning-tools"></a>Nástroje Machine learning
-Virtuální počítač obsahuje několik strojového učení nástroje a algoritmy, které byly předem zkompilovat a předem nainstalovány místně. Mezi ně patří:
+Hello virtuální počítač obsahuje několik strojového učení nástroje a algoritmy, které byly předem zkompilovat a předem nainstalovány místně. Mezi ně patří:
 
 * **K dispozici Vowpal**: algoritmus rychlého online učení.
 * **xgboost**: nástroj, který poskytuje optimalizovanou, boosted stromu algoritmy.
 * **Rattle**: na základě R grafický nástroj pro zkoumání dat snadno a modelování.
-* **Python**: Anaconda Python se dodává s algoritmy strojového učení s knihovnami jako další Scikit připojené. Další knihovny můžete nainstalovat pomocí `pip install` příkaz.
+* **Python**: Anaconda Python se dodává s algoritmy strojového učení s knihovnami jako další Scikit připojené. Můžete nainstalovat další knihovny pomocí hello `pip install` příkaz.
 * **LightGBM**: Přechod rychlé, distribuované a vysoce výkonných zvyšovat skóre framework podle algoritmy stromu rozhodnutí.
-* **R**: knihovnu bohaté funkce machine learning je k dispozici pro R. Některé z knihoven, které jsou předem nainstalovaná jsou lm, glm, randomForest, rpart. Další knihovny můžete nainstalovat spuštěním:
+* **R**: knihovnu bohaté funkce machine learning je k dispozici pro R. Některé hello knihoven, které jsou předem nainstalovány jsou lm, glm, randomForest, rpart. Další knihovny můžete nainstalovat spuštěním:
   
         install.packages(<lib name>)
 
-Zde jsou některé další informace o nástroje první tři strojové učení v seznamu.
+Tady je nějaké další informace o hello první tři nástroje machine learning v seznamu hello.
 
 #### <a name="vowpal-wabbit"></a>K dispozici Vowpal
 K dispozici Vowpal je machine learning systému, který používá techniky, jako je online a hash, allreduce, snížení, learning2search, aktivní a interaktivní učení.
 
-Chcete-li spustit nástroj na velmi základní příklad, postupujte takto:
+Nástroj hello toorun na velmi základní příklad hello následující:
 
     cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
     cd vwdemo
     vw house_dataset
 
-Existují další, větší ukázky v tomto adresáři. Další informace o zobrazit najdete v tématu [v této části GitHub](https://github.com/JohnLangford/vowpal_wabbit)a [Vowpal k dispozici wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
+Existují další, větší ukázky v tomto adresáři. Další informace o zobrazit najdete v tématu [v této části GitHub](https://github.com/JohnLangford/vowpal_wabbit)a hello [Vowpal k dispozici wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
 
 #### <a name="xgboost"></a>xgboost
-Toto je do knihovny, která je navržena a optimalizována pro algoritmy boosted (stromu). Cílem této knihovny je k výpočtu omezení počítače krajních potřebných k poskytování rozsáhlé stromové struktury zvyšovat skóre, který je škálovatelný, přenosných a přesné.
+Toto je do knihovny, která je navržena a optimalizována pro algoritmy boosted (stromu). Hello cílem této knihovny je, že toopush hello výpočetní omezení počítače toohello extrémní tooprovide rozsáhlé stromové struktury zvyšovat skóre je škálovatelný, přenosných a přesná.
 
 Je poskytována jako příkazového řádku a také R knihovny.
 
-Použití této knihovny v R, můžete spustit relaci interaktivní R (tak, že zadáte **R** v prostředí) a načíst knihovnu.
+toouse v R této knihovny, můžete spustit relaci interaktivní R (tak, že zadáte **R** v prostředí hello) a zatížení hello knihovně.
 
 Zde je jednoduchý příklad, který můžete spustit v R řádku:
 
@@ -368,51 +368,51 @@ Zde je jednoduchý příklad, který můžete spustit v R řádku:
                     eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
     pred <- predict(bst, test$data)
 
-Spusťte příkazový řádek xgboost, zde jsou příkazů pro spuštění v prostředí:
+toorun hello xgboost příkazového řádku, tady jsou příkazy tooexecute hello v prostředí hello:
 
     cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
     cd xgboostdemo
     xgboost mushroom.conf
 
 
-.Model – soubor se zapíše na zadaný adresář. Informace o tomto příkladu ukázku najdete [na Githubu](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+Zadaný adresář toohello dojde k zapsání .model – souboru. Informace o tomto příkladu ukázku najdete [na Githubu](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
 
-Další informace o xgboost najdete v tématu [stránky dokumentace, která xgboost](https://xgboost.readthedocs.org/en/latest/)a jeho [úložiště GitHub](https://github.com/dmlc/xgboost).
+Další informace o xgboost najdete v tématu hello [stránky dokumentace, která xgboost](https://xgboost.readthedocs.org/en/latest/)a jeho [úložiště GitHub](https://github.com/dmlc/xgboost).
 
 #### <a name="rattle"></a>Rattle
-Rattle ( **R** **A**nalytical **T**ukopis **T**o **L**vám **E**asily) používá zkoumání dat založených na grafickém uživatelském rozhraní a modelování. Představuje statistické a vizuální souhrnů dat, transformace dat, která lze snadno modelovat, sestavení dozorovaných i u nedozorovaných modely z dat, uvede výkon modely graficky, a nastaví skóre nová data. Rovněž vygeneruje kód R, replikace operace v uživatelském rozhraní, které můžete spustit přímo v R nebo používají jako výchozí bod pro další analýzu.
+Rattle (hello **R** **A**nalytical **T**ukopis **T**o **L**vám **E** asily) používá zkoumání dat založených na grafickém uživatelském rozhraní a modelování. Uvede statistické visual souhrnů dat, transformace dat, který je možné snadno modelovat, sestavení dozorovaných i u nedozorovaných modely z hello dat, uvede graficky hello výkonu modelů a nastaví skóre nová data. Rovněž vygeneruje kód R, replikace hello operace v hello uživatelského rozhraní, které můžete spustit přímo v R nebo používají jako výchozí bod pro další analýzu.
 
-Pokud chcete spustit Rattle, musíte být v grafické přihlášení relaci plochy. V terminálu, zadejte ```R``` k zadání prostředí R. Do příkazového řádku R zadejte následující příkazy:
+toorun Rattle, musíte toobe v grafické přihlášení relaci plochy. V terminálu hello zadejte ```R``` tooenter hello R prostředí. Na příkazovém řádku hello R zadejte hello následující příkazy:
 
     library(rattle)
     rattle()
 
-Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky pro rychlé spuštění v Rattle potřebné k použití ukázkové počasí datové sady a vytvoření modelu. V některé z následujících kroků zobrazí se výzva k automatické instalaci a spouštění některé požadované balíčky R, které ještě nejsou v systému.
+Nyní grafické rozhraní otevře sadu karet. Tady jsou hello úvodní kroky v toouse Rattle potřeby ukázkové počasí datové sady a vytvoření modelu. V některé z následujících kroků hello jsou výzvami tooautomatically instalaci a spouštění některé požadované balíčky R, které ještě nejsou v systému hello.
 
 > [!NOTE]
-> Pokud nemáte přístup k instalaci balíčku v adresáři systému (výchozí), může zobrazit výzva na vaše R okna konzoly nainstalovat balíčky do své osobní knihovny. Odpověď *y* Pokud se zobrazí tyto výzvy.
+> Pokud nemáte přístup tooinstall hello balíčku v adresáři systému hello (hello výchozí nastavení), může zobrazit výzva na své R konzoly okno tooinstall balíčky tooyour osobní knihovny. Odpověď *y* Pokud se zobrazí tyto výzvy.
 > 
 > 
 
 1. Klikněte na tlačítko **Spustit**.
-2. Zobrazí se dialogové okno se zobrazí, s dotazem, pokud chcete použít příklad počasí datové sady. Klikněte na tlačítko **Ano** načíst v příkladu.
-3. Klikněte **modelu** kartě.
-4. Klikněte na tlačítko **Execute** k sestavení rozhodovací strom.
-5. Klikněte na tlačítko **kreslení** zobrazíte rozhodovací strom.
-6. Klikněte na tlačítko **doménové struktury** přepínač a klikněte na tlačítko **Execute** vytvářet náhodné doménové struktury.
-7. Klikněte **Evaluate** kartě.
-8. Klikněte na tlačítko **riziko** přepínač a klikněte na tlačítko **Execute** zobrazíte dva pozemků výkonu riziko (kumulativní).
-9. Klikněte **protokolu** zobrazte kód generování R pro předchozí operace.
-   (Z důvodu chyby v aktuální verzi Rattle, je třeba vložit  *#*  znak před *exportovat tento protokol...*  v textu protokolu.)
-10. Klikněte **exportovat** tlačítko pro uložení souboru skriptu R s názvem *weather_script. R* do domovské složky.
+2. Zobrazí se dialogové okno se zobrazí, s dotazem, pokud se vám líbí toouse hello příklad počasí datové sady. Klikněte na tlačítko **Ano** tooload hello příklad.
+3. Klikněte na tlačítko hello **modelu** kartě.
+4. Klikněte na tlačítko **Execute** toobuild rozhodovací strom.
+5. Klikněte na tlačítko **kreslení** toodisplay hello rozhodovací strom.
+6. Klikněte na tlačítko hello **doménové struktury** přepínač a klikněte na tlačítko **Execute** toobuild náhodných doménové struktury.
+7. Klikněte na tlačítko hello **Evaluate** kartě.
+8. Klikněte na tlačítko hello **riziko** přepínač a klikněte na tlačítko **Execute** pozemků výkonu toodisplay dva riziko (kumulativní).
+9. Klikněte na tlačítko hello **protokolu** kartě tooshow hello generovat kód R pro hello předcházející operace.
+   (Z důvodu chyb tooa v aktuální verzi Rattle hello, budete potřebovat tooinsert  *#*  znak před *exportovat tento protokol...*  v textu hello hello protokolu.)
+10. Klikněte na tlačítko hello **exportovat** tlačítko toosave hello R skript soubor s názvem *weather_script. R* toohello domovskou složku.
 
-Můžete ukončit Rattle a R. Nyní můžete upravit generovaného skriptu R, nebo ho použít, protože to je vše, co bylo provedeno v rámci rozhraní Rattle opakování ji kdykoli spustit. Zejména pro začátečníky v R je to snadný způsob, jak rychle provést analýzy a strojového učení v jednoduchého grafického rozhraní, při automatické generování kódu v R upravit nebo Další informace.
+Můžete ukončit Rattle a R. Teď můžete upravit skript jazyka R hello generované nebo ho použít, protože je toorun ho kdykoli toorepeat vše, co bylo provedeno v rámci hello Rattle uživatelského rozhraní. Zejména pro začátečníky v R jde o snadný způsob tooquickly provést analýzy a strojového učení v jednoduchého grafického rozhraní, při automatické generování kódu v R toomodify a další.
 
 ## <a name="next-steps"></a>Další kroky
 Zde je, jak můžete dál učení a zkoumání:
 
-* [Vědecké zpracování dat na datové vědě virtuální počítač pro Linux](machine-learning-data-science-linux-dsvm-walkthrough.md) návodu se dozvíte, jak provést několik běžné úkoly vědecké účely dat datové vědy virtuálního počítače s Linuxem zřízený sem. 
-* Prozkoumejte různé vědě nástrojů data na vědecké zpracování dat virtuálního počítače tak, že zkusíte se nástrojů popsaných v tomto článku. Můžete také spouštět *dsvm. Další informace* na prostředí v rámci virtuálního počítače pro základní informace a odkazy na další informace o nástrojích nainstalovaný na Virtuálním počítači.  
-* Naučte se vytvářet analytická řešení začátku do konce systematičtěji pomocí [proces vědecké účely dat Team](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
-* Přejděte [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) pro počítač učení a analýzy vzorků, které používají sadu Analytics Cortana.
+* Hello [vědecké zpracování dat na hello datové vědy virtuálního počítače pro Linux](machine-learning-data-science-linux-dsvm-walkthrough.md) návod ukazuje, jak tooperform několik běžných vědecké zpracování dat úlohy s hello Data vědecké účely virtuálního počítače s Linuxem zřízený sem. 
+* Prozkoumejte hello různé vědě nástrojů data na hello vědecké zpracování dat virtuálního počítače tak, že zkusíte se hello nástrojů popsaných v tomto článku. Můžete také spouštět *dsvm. Další informace* na hello prostředí v rámci hello virtuálního počítače základní informace toomore úvod a ukazatele o hello nástroje nainstalované na hello virtuálních počítačů.  
+* Zjistěte, jak toobuild začátku do konce analytická řešení systematičtěji pomocí hello [proces vědecké účely dat Team](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+* Navštivte hello [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) pro machine learning a data analýzy ukázky tohoto použití hello Cortana Analytics Suite.
 

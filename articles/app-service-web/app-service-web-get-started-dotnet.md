@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace ASP.NET ve službě Azure | Dokumentace Microsoftu"
-description: "Nasazením ukázkové webové aplikace ASP.NET se naučíte, jak spouštět webové aplikace ve službě Azure App Service."
+title: "aaaCreate technologie ASP.NET webové aplikace v Azure | Microsoft Docs"
+description: "Zjistěte, jak toorun webové aplikace v Azure App Service nasazením hello výchozí ASP.NET webové aplikace."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -15,25 +15,25 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 0f0035f6fef03ddcbb500b78f3445ced5b749808
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: eec916b3c32b6c8b68083177938c5c822a9782b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET v Azure
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit svoji první webovou aplikaci ASP.NET pomocí služby Azure Web Apps. Po dokončení kurzu budete mít skupinu prostředků, která se bude skládat z plánu služby App Service a webové aplikace Azure s nasazenou webovou aplikací.
+[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak toodeploy vaše první ASP.NET webové aplikace tooAzure webové aplikace. Po dokončení kurzu budete mít skupinu prostředků, která se bude skládat z plánu služby App Service a webové aplikace Azure s nasazenou webovou aplikací.
 
-Podívejte se na video s tímto rychlým startem v akci a potom sami proveďte příslušné kroky a publikujte svou první aplikaci .NET v Azure.
+Podívejte se na hello video toosee tento rychlý start v akci a potom postupujte podle hello kroky sami toopublish vaší první aplikace .NET v Azure.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+toocomplete v tomto kurzu:
 
-* Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+* Nainstalujte [Visual Studio 2017](https://www.visualstudio.com/downloads/) s hello následující úlohy:
     - **Vývoj pro ASP.NET a web**
     - **Azure – vývoj**
 
@@ -45,25 +45,25 @@ K provedení kroků v tomto kurzu je potřeba:
 
 Ve Visual Studiu vytvořte projekt tak, že vyberete **Soubor > Nový > Projekt**. 
 
-V dialogovém okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET (.NET Framework)**.
+V hello **nový projekt** dialogovém okně, vyberte **Visual C# > Web > webové aplikace ASP.NET (rozhraní .NET Framework)**.
 
-Aplikaci pojmenujte _myFirstAzureWebApp_ a pak vyberte **OK**.
+Název aplikace hello _myFirstAzureWebApp_a potom vyberte **OK**.
    
 ![Dialogové okno Nový projekt](./media/app-service-web-get-started-dotnet/new-project.png)
 
-Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET. V tomto kurzu Rychlý start vyberte šablonu **MVC** a ujistěte se, že u ověřování je nastavena možnost **Bez ověření**.
+Můžete nasadit libovolného typu tooAzure aplikace ASP.NET web. Pro tento rychlý start, vyberte hello **MVC** šablony a zajistěte, aby ověřování je nastaven příliš**bez ověřování**.
       
 Vyberte **OK**.
 
 ![Dialogové okno Nový projekt ASP.NET](./media/app-service-web-get-started-dotnet/select-mvc-template.png)
 
-V nabídce vyberte **Ladit > Spustit bez ladění** a spusťte tak webovou aplikaci místně.
+Hello nabídce vyberte **ladění > Spustit bez ladění** toorun hello webovou aplikaci místně.
 
 ![Místní spuštění aplikace](./media/app-service-web-get-started-dotnet/local-web-app.png)
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-tooazure"></a>Publikování tooAzure
 
-V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **myFirstAzureWebApp** a vyberte možnost **Publikovat**.
+V hello **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **myFirstAzureWebApp** projektu a vyberte **publikovat**.
 
 ![Publikování z Průzkumníka řešení](./media/app-service-web-get-started-dotnet/solution-explorer-publish.png)
 
@@ -71,95 +71,95 @@ Zkontrolujte, že je vybrána možnost **Microsoft Azure App Service** a vyberte
 
 ![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-Tím se otevře dialogové okno **Vytvořit plán Aplikační služby**, které vám pomůže vytvořit všechny prostředky služby Azure potřebné ke spuštění webové aplikace ASP.NET ve službě Azure.
+Tím se otevře hello **vytvořit službu App Service** dialog, který vám pomůže vytvořit všechny hello potřebné prostředky Azure toorun hello webové aplikace ASP.NET v Azure.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-tooazure"></a>Přihlaste se tooAzure
 
-V dialogovém okně **Vytvořit plán Aplikační služby** vyberte **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud už jste přihlášeni, vyberte z rozevíracího seznamu účet, který obsahuje požadované předplatné.
+V hello **vytvořit službu App Service** dialogovém okně, vyberte **přidat účet**a přihlaste se tooyour předplatného Azure. Pokud už jste přihlášení, vyberte hello účet obsahující hello požadované předplatné z rozevíracího seznamu hello.
 
 > [!NOTE]
 > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
 >
 >
    
-![Přihlášení k Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
+![Přihlaste se tooAzure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-Vedle pole **Skupina prostředků** vyberte **Nová**.
+Další příliš**skupiny prostředků**, vyberte **nový**.
 
-Skupinu prostředků pojmenujte **myResourceGroup** a vyberte **OK**.
+Název skupiny prostředků hello **myResourceGroup** a vyberte **OK**.
 
 ## <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Vedle pole **Plán služby App Service** vyberte **Nový**. 
+Další příliš**plán služby App Service**, vyberte **nový**. 
 
-V dialogovém okně **Konfigurovat plán Aplikační služby** použijte nastavení podle tabulky následující po snímku obrazovky.
+V hello **nakonfigurovat plán služby App Service** dialogové okno, použít nastavení hello v tabulce hello následující snímek obrazovky hello.
 
 ![Vytvoření plánu služby App Service](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
-|Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
-| Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
+|Plán služby App Service| myAppServicePlan | Název hello plán služby App Service. |
+| Umístění | Západní Evropa | datacentrum Hello je hostitelem hello webové aplikace. |
 | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/) určuje funkce hostování. |
 
 Vyberte **OK**.
 
-## <a name="create-and-publish-the-web-app"></a>Vytvoření a publikování webové aplikace
+## <a name="create-and-publish-hello-web-app"></a>Vytvoření a publikování webové aplikace hello
 
-V části **Název webové aplikace** zadejte jedinečný název aplikace (platné znaky jsou `a-z`, `0-9` a `-`) nebo přijměte automaticky vygenerovaný jedinečný název. Adresa URL webové aplikace je `http://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace.
+V **název webové aplikace**, zadejte název jedinečné aplikace (platnými znaky jsou `a-z`, `0-9`, a `-`), nebo přijměte hello automaticky generuje jedinečný název. Adresa URL Hello hello webové aplikace je `http://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace.
 
-Výběrem možnosti **Vytvořit** spustíte vytváření prostředků Azure.
+Vyberte **vytvořit** toostart hello vytváření prostředků Azure.
 
 ![Nastavení názvu webové aplikace](./media/app-service-web-get-started-dotnet/web-app-name.png)
 
-Průvodce po dokončení publikuje webovou aplikaci ASP.NET do služby Azure a pak aplikaci spustí ve výchozím prohlížeči.
+Po dokončení Průvodce hello, tato možnost publikuje hello ASP.NET webové aplikace tooAzure a pak spustí hello aplikace v hello výchozí prohlížeč.
 
 ![Publikovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet/published-azure-web-app.png)
 
-Název webové aplikace zadaný v [kroku vytvoření a publikování](#create-and-publish-the-web-app) se použije jako předpona adresy URL ve formátu `http://<app_name>.azurewebsites.net`.
+Název webové aplikace Hello zadaný v hello [vytvoření a publikování krok](#create-and-publish-the-web-app) slouží jako hello předponu adresy URL ve formátu hello `http://<app_name>.azurewebsites.net`.
 
 Blahopřejeme, vaše webová aplikace ASP.NET je veřejně spuštěná ve službě Azure App Service.
 
-## <a name="update-the-app-and-redeploy"></a>Aktualizace a opětovné nasazení aplikace
+## <a name="update-hello-app-and-redeploy"></a>Aktualizace aplikace hello a znovu ho zaveďte
 
-Z **Průzkumníku řešení** otevřete _Views\Home\Index.cshtml_.
+Z hello **Průzkumníku řešení**, otevřete _Views\Home\Index.cshtml_.
 
-Najděte HTML značku `<div class="jumbotron">` poblíž začátku a nahraďte celý element následujícím kódem:
+Najde hello `<div class="jumbotron">` HTML značky v horní hello a nahraďte celý elementu hello hello následující kód:
 
 ```HTML
 <div class="jumbotron">
     <h1>ASP.NET in Azure!</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+    <p class="lead">This is a simple app that we’ve built that demonstrates how toodeploy a .NET app tooAzure App Service.</p>
 </div>
 ```
 
-Opětovné nasazení do služby Azure provedete tak, že v **Průzkumníku řešení** kliknete pravým tlačítkem na projekt **myFirstAzureWebApp** a vyberete **Publikovat**.
+tooredeploy tooAzure, klikněte pravým tlačítkem na hello **myFirstAzureWebApp** projektu v **Průzkumníku řešení** a vyberte **publikovat**.
 
-Na stránce publikování vyberte **Publikovat**.
+V hello stránky publikování, vyberte **publikovat**.
 
-Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL webové aplikace.
+Po dokončení publikování aplikace Visual Studio spustí adresu URL prohlížeče toohello hello webové aplikace.
 
 ![Aktualizovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 
-## <a name="manage-the-azure-web-app"></a>Správa webové aplikace Azure
+## <a name="manage-hello-azure-web-app"></a>Spravovat hello webové aplikace Azure
 
-Pokud chcete webovou aplikaci spravovat, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte toohello <a href="https://portal.azure.com" target="_blank">portál Azure</a> toomanage hello webové aplikace.
 
-V levé nabídce klikněte na **App Services** a potom vyberte název své webové aplikace Azure.
+Hello levé nabídce vyberte **App Services**a pak vyberte název hello Azure webové aplikace.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-get-started-dotnet/access-portal.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-get-started-dotnet/access-portal.png)
 
 Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
 
 ![Okno App Service na webu Azure Portal](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
+levé nabídce Hello obsahuje různé stránky pro konfiguraci vaší aplikace. 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

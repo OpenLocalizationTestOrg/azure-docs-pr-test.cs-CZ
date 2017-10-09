@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží s Azure Diagnostics | Microsoft Docs"
+title: aaaTroubleshooting Azure Diagnostics | Microsoft Docs
 description: "Vyřešení problémů při používání Azure diagnostics v Azure Virtual Machines, Service Fabric nebo cloudové služby."
 services: monitoring-and-diagnostics
 documentationcenter: .net
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: a0cb529836b14df71e83616f4f625a002c535b7b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: daaf9fa4c40982eb9ba04030d7e8ea1ad9fe085b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
-Řešení potíží s informací, které jsou relevantní pro používání Azure Diagnostics. Další informace o Azure diagnostics najdete v tématu [přehled Azure Diagnostics](azure-diagnostics.md).
+Řešení potíží s toousing relevantní informace o Azure Diagnostics. Další informace o Azure diagnostics najdete v tématu [přehled Azure Diagnostics](azure-diagnostics.md).
 
 ## <a name="logical-components"></a>Logické součásti
-**Modul plug-in Spouštěče diagnostiky (DiagnosticsPluginLauncher.exe)**: spustí rozšíření Azure Diagnostics. Slouží jako položka bodu procesu.
+**Modul plug-in Spouštěče diagnostiky (DiagnosticsPluginLauncher.exe)**: spustí rozšíření Azure Diagnostics hello. Slouží jako hello vstupního bodu procesu.
 
-**Modul plug-in diagnostiky (DiagnosticsPlugin.exe)**: hlavní proces, který je spuštěn Spouštěče výše a konfiguruje Monitoring Agent, spustí ji a spravuje celé jeho životnosti. 
+**Modul plug-in diagnostiky (DiagnosticsPlugin.exe)**: hlavní proces, který je spuštěn hello Spouštěče výše a konfiguruje hello Monitoring Agent, spustí ji a spravuje celé jeho životnosti. 
 
-**Monitoring Agent (MonAgent\*procesy .exe)**: tyto procesy udělat velkou část pracovní; například monitorování, kolekce a přenos dat diagnostiky.  
+**Monitoring Agent (MonAgent\*procesy .exe)**: tyto procesy hello hromadné hello pracovní; například monitorování, kolekce a přenos hello diagnostická data.  
 
 ## <a name="logartifact-paths"></a>Protokol/artefaktů cesty
-Tady jsou cesty k některé důležité protokoly a artefakty. Jsme zachovat odkazující na tyto ve zbývající části dokumentu:
+Tady jsou důležité protokoly toosome hello cesty a artefakty. Jsme zachovat odkazující toothese v rámci hello zbytek dokumentu hello:
 ### <a name="cloud-services"></a>Cloud Services
 | Artefaktů | Cesta |
 | --- | --- |
@@ -56,11 +56,11 @@ Tady jsou cesty k některé důležité protokoly a artefakty. Jsme zachovat odk
 | **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num > .log |
 
 ## <a name="metric-data-doesnt-show-in-azure-portal"></a>Data metriky nezobrazí na portálu Azure
-Azure Diagnostics obsahuje spoustu metriky data, která lze zobrazit na portálu Azure. Pokud máte problémy s zobrazuje těchto dat na portálu, zkontrolujte účet úložiště diagnostiky -> WADMetrics\* tabulce najdete, pokud existují odpovídající záznamy metriky. Zde PartitionKey tabulky je ID prostředku virtuálního počítače nebo škálovací sadu virtuálních počítačů, a RowKey je název metriky tj. název čítače výkonu.
+Azure Diagnostics obsahuje spoustu metriky data, která lze zobrazit na portálu Azure. Pokud máte problémy s zobrazuje těchto dat na portálu, účet úložiště diagnostiky zkontrolujte hello -> WADMetrics\* tabulky toosee Pokud hello odpovídající metriky záznamy jsou k dispozici. Zde hello PartitionKey hello tabulky je ID prostředku hello virtuálního počítače nebo škálovací sadu virtuálních počítačů a hello RowKey je název metriky hello tj. název čítače výkonu.
 
-Pokud je ID prostředku není v pořádku, zkontrolujte konfiguraci diagnostiky -> metriky -> ResourceId, pokud je ID prostředku nastavena správně.
+Pokud hello ID prostředku není v pořádku, zkontrolujte konfiguraci diagnostiky -> metriky -> ResourceId toosee, pokud je ID prostředku hello správně nastavená.
 
-Pokud nejsou žádná data pro konkrétní metriku, zkontrolujte konfiguraci diagnostiky -> PerformanceCounter, jestli jsou zahrnuté metrika (čítače výkonu). Ve výchozím nastavení povolíme následující čítače.
+Pokud nejsou žádná data pro konkrétní metrika hello, zkontrolujte konfiguraci diagnostiky -> PerformanceCounter toosee, pokud metrika hello (čítače výkonu) je součástí. Můžeme povolit hello následující čítače ve výchozím nastavení.
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET aplikace (__celkový__) \Requests/Sec
@@ -80,60 +80,60 @@ Pokud nejsou žádná data pro konkrétní metriku, zkontrolujte konfiguraci dia
 - Zápis \Disk \LogicalDisk (D:) bajty/s
 - \Disk \LogicalDisk (D:) přečtených bajtů/s
 
-Pokud je správně nastavena konfigurace, ale stále nemůžete vidět data metriky, postupujte podle pokynů níže pro další šetření.
+Pokud je správně nastavena konfigurace hello, ale stále nemůžete vidět data metriky hello, postupujte podle pokynů hello pod pro další šetření hello.
 
 
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics není spouštění.
-Podívejte se na **DiagnosticsPluginLauncher.log** a **DiagnosticsPlugin.log** soubory z umístění souborů protokolu výše uvedeného informace o Proč se nepodařilo spustit diagnostiku. 
+Podívejte se na **DiagnosticsPluginLauncher.log** a **DiagnosticsPlugin.log** soubory z umístění hello hello zadaný výše informace o důvod, proč diagnostiky se nezdařilo toostart soubory protokolu. 
 
-Pokud tyto protokoly znamenat `Monitoring Agent not reporting success after launch`, znamená to, došlo k chybě spuštění MonAgentHost.exe. Vyhledejte v protokolech, v umístění určeném pro `MonAgentHost log file` výše v části.
+Pokud tyto protokoly znamenat `Monitoring Agent not reporting success after launch`, znamená to, došlo k chybě spuštění MonAgentHost.exe. Podívejte se na hello protokoly pro tento v hello umístění pro `MonAgentHost log file` hello výše v části.
 
-Poslední řádek souboru protokolu obsahuje ukončovací kód.  
+poslední řádek Hello hello souborů protokolu obsahuje hello ukončovací kód.  
 
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
 ```
-Pokud zjistíte, **záporné** ukončovací kód, najdete [ukončovací kód tabulky](#azure-diagnostics-plugin-exit-codes) v [odkazy](#references).
+Pokud zjistíte, **záporné** ukončovací kód, získáte toohello [ukončovací kód tabulky](#azure-diagnostics-plugin-exit-codes) v hello [odkazy](#references).
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostická Data není přihlášení do služby Azure Storage
-Určete, jestli je zobrazovat žádná data, nebo pouze některá data se nezobrazí.
+## <a name="diagnostics-data-is-not-logged-tooazure-storage"></a>Diagnostická Data se protokolují není tooAzure úložiště
+Určete, jestli je zobrazovat žádná data, nebo jenom některé z dat hello se nezobrazí.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Diagnostické protokoly infrastruktury
-Diagnostické protokoly infrastruktury je, kam azure diagnostics protokoluje všechny chyby, které běží na. Zajistěte, aby mít povolené ([postup?](#how-to-check-diagnostics-extension-configuration)) zaznamenání protokolů diagnostiky infrastruktury v konfiguraci a rychle vyhledat všechny relevantní chyby, které se zobrazí v `DiagnosticInfrastructureLogsTable` tabulky ve vašem účtu úložiště.
+Diagnostické protokoly infrastruktury je, kam azure diagnostics protokoluje všechny chyby, které běží na. Zajistěte, aby mít povolené ([postup?](#how-to-check-diagnostics-extension-configuration)) zaznamenání protokolů diagnostiky infrastruktury v konfiguraci a rychle vyhledat všechny relevantní chyby, které se zobrazí v hello `DiagnosticInfrastructureLogsTable` tabulky ve vašem účtu úložiště.
 
 ### <a name="no-data-is-showing-up"></a>Žádná data se zobrazuje, protože
-Nejčastější příčinou události, který data úplně chybí je nesprávně definované informace o účtu úložiště.
+Nejčastější příčinou Hello úplně chybí dat událostí je informace o účtu nesprávně definované úložiště.
 
 Řešení: Opravte konfiguraci diagnostiky a znovu nainstalujte diagnostiky.
 
-Pokud účet úložiště není správně nakonfigurovaná, vzdálené plochy do počítače a ujistěte se, že DiagnosticsPlugin.exe a MonAgentCore.exe běží. Pokud neběží, postupujte podle [Azure Diagnostics není od](#azure-diagnostics-is-not-starting). Pokud procesů, které běží, přejít na [je data získávání zaznamenaná místně](#is-data-getting-captured-locally) a postupujte podle této příručky odtud na.
+Pokud účet úložiště hello je správně nakonfigurovaná, vzdálené plochy do hello počítač a ujistěte se, DiagnosticsPlugin.exe a MonAgentCore.exe běží. Pokud neběží, postupujte podle [Azure Diagnostics není od](#azure-diagnostics-is-not-starting). Pokud jsou spuštěny hello procesy, přeskočit příliš[je data získávání zaznamenaná místně](#is-data-getting-captured-locally) a postupujte podle této příručky odtud na.
 
-### <a name="part-of-the-data-is-missing"></a>Chybí část dat
-Pokud jsou získáme nějaká data, ale ne jiné. To znamená shromažďování dat nebo přenos kanálu nastavena správně. Můžete zúžit co je problém, postupujte podle zde témata:
+### <a name="part-of-hello-data-is-missing"></a>Chybí část dat, hello
+Pokud jsou získáme nějaká data, ale ne jiné. To znamená hello shromažďování dat nebo přenos kanálu nastavena správně. Postupujte podle hello témata zde toonarrow dolů jaký problém hello je:
 #### <a name="is-collection-configured"></a>Je nakonfigurované kolekce: 
-Konfigurace diagnostiky obsahuje část, která se dá pokyn pro určitý typ dat, které se mají shromažďovat. [Zkontrolujte konfiguraci](#how-to-check-diagnostics-extension-configuration) a ujistěte se, nejsou vyhledávání dat, které jste nenakonfigurovali pro kolekci.
-#### <a name="is-the-host-generating-data"></a>Je hostitel generování dat:
-- **Čítače výkonu**: Otevřete perfmon a zkontrolujte čítač.
-- **Protokoly trasování**: použijte vzdálenou plochu do virtuálního počítače a přidejte TextWriterTraceListener konfiguračního souboru aplikace.  V tématu http://msdn.microsoft.com/library/sk36c28t.aspx nastavit naslouchacího procesu text.  Zajistěte, aby `<trace>` má element `<trace autoflush="true">`.<br />
+Konfigurace diagnostiky obsahuje hello část, která dá pokyn pro konkrétní typ dat toobe shromažďují. [Zkontrolujte konfiguraci](#how-to-check-diagnostics-extension-configuration) toomake, zda nejsou hledáte data můžete nenakonfigurovali pro kolekci.
+#### <a name="is-hello-host-generating-data"></a>Je hostitel hello generování dat:
+- **Čítače výkonu**: Otevřete perfmon a zkontrolujte hello čítače.
+- **Protokoly trasování**: použijte vzdálenou plochu do hello virtuálního počítače a přidejte aplikace TextWriterTraceListener toohello konfigurační soubor.  V tématu http://msdn.microsoft.com/library/sk36c28t.aspx tooset až textu hello naslouchací proces.  Ujistěte se, zda text hello `<trace>` má element `<trace autoflush="true">`.<br />
 Pokud nevidíte generováno protokoly trasování, postupujte podle [více o trasování protokoly chybí](#more-about-trace-logs-missing).
-- **Trasování událostí pro Windows trasování**: Vzdálená plocha do virtuálních počítačů a nainstalujte nástroje PerfView.  Spuštění souboru -> Nástroje PerfView příkazu User -> etwprovder1 naslouchání, etwprovider2 atd.  Všimněte si, že je příkaz naslouchání velká a malá písmena a nemůže být mezery mezi čárkami oddělený seznam zprostředkovatelů trasování událostí pro Windows.  Pokud příkaz se nezdaří, můžete klikněte na tlačítko 'Protokolu' v pravém dolním rohu nástroj nástroje Perfview co došlo k pokusu o spuštění a jaký byl výsledek.  Za předpokladu, že vstup je správná, že pak se nové okno pop nahoru a za několik sekund, bude zahájena zobrazuje trasování ETW.
-- **Protokoly událostí**: použijte vzdálenou plochu do virtuálního počítače. Otevřete `Event Viewer` a nezapomeňte události.
+- **Trasování událostí pro Windows trasování**: použijte vzdálenou plochu do hello virtuálních počítačů a nainstalujte nástroje PerfView.  Spuštění souboru -> Nástroje PerfView příkazu User -> etwprovder1 naslouchání, etwprovider2 atd.  Všimněte si, že příkaz naslouchání hello je malá a velká písmena a nemůže být mezery mezi hello čárkami oddělený seznam zprostředkovatelů trasování událostí pro Windows.  Pokud se příkaz hello nezdaří toorun, můžete kliknutím na tlačítko 'Protokolu' hello v pravé dolní hello části hello nástroje Perfview nástroj toosee, co se pokus o toorun a jaké výsledek hello byl.  Za předpokladu, že vstup hello je správný, že pak se nové okno pop nahoru a za několik sekund bude zahájena, zobrazuje trasování ETW.
+- **Protokoly událostí**: použijte vzdálenou plochu do hello virtuálních počítačů. Otevřete `Event Viewer` a nezapomeňte hello události.
 #### <a name="is-data-getting-captured-locally"></a>Je získávání dat zachytit místně:
-Dále zkontrolujte, zda že získávání zachycení místně.
-Jsou data uložená místně v `*.tsf` soubory v [místní úložiště pro data diagnostiky](#log-artifacts-path). Různé druhy protokoly získat shromážděné v různých `.tsf` soubory. Názvy jsou podobné názvy tabulek v úložišti azure. Například `Performance Counters` získat shromážděných v `PerformanceCountersTable.tsf`, získat shromáždí protokoly událostí v `WindowsEventLogsTable.tsf`. Postupujte podle pokynů v [místní protokolu extrakce](#local-log-extraction) oddílu otevřete místního shromažďování souborů a zajistěte, aby je vidíte získávání shromážděných na disku.
+Dále zkontrolujte, zda hello data získávání zachycenou místně.
+Hello data je místně uložená v `*.tsf` soubory v [hello místní úložiště pro data diagnostiky](#log-artifacts-path). Různé druhy protokoly získat shromážděné v různých `.tsf` soubory. názvy Hello jsou podobné toohello názvy tabulek v úložišti azure. Například `Performance Counters` získat shromážděných v `PerformanceCountersTable.tsf`, získat shromáždí protokoly událostí v `WindowsEventLogsTable.tsf`. Postupujte pokynů hello v [místní protokolu extrakce](#local-log-extraction) části tooopen hello místního shromažďování souborů a zajistěte, aby je vidíte získávání shromážděných na disku.
 
-Pokud nevidíte získávání místně shromážděné protokoly a již ověříte, že je hostitel generování dat, máte pravděpodobně problém konfigurace. Zkontrolujte konfiguraci pečlivě pro příslušné části. Také zkontrolujte konfiguraci vygenerované MonitoringAgent [MaConfig.xml](#log-artifacts-path) a zkontrolujte zkontrolujte, zda je některá část popisující zdroj příslušných protokolových a že nedojde ke ztrátě v překlad mezi konfigurace diagnostiky azure a monitorování konfigurace agenta.
+Pokud nepoužíváte najdete v části získávání místně shromážděné protokoly a již ověříte, že hostitel hello je generování dat, pravděpodobně máte problém konfigurace. Zkontrolujte konfiguraci pečlivě pro odpovídající části hello. Také zkontrolujte konfiguraci hello vygenerované MonitoringAgent [MaConfig.xml](#log-artifacts-path) a ujistěte se, je některá část popisující hello příslušných protokolových zdroje a že nedojde ke ztrátě v překlad mezi azure diagnostics konfigurace a monitorování konfigurace agenta.
 #### <a name="is-data-getting-transferred"></a>Získávání přenosu dat:
-Pokud jste ověřili získávání zachycení místně, ale přesto ho nevidíte ve vašem účtu úložiště: 
-- Především Ujistěte se, zda jste zadali účet úložiště správný a že nebyly vráceny přes etc.for klíče účtu daného úložiště. Pro cloudové služby, někdy vidíme, že lidé Neaktualizovat jejich `useDevelopmentStorage=true`.
-- Pokud předpokladu, že účet úložiště je správná. Ujistěte se, že nemáte určitá omezení sítě, které neumožňují komponenty k dosažení koncové body veřejné úložiště. Jeden způsob, jak to udělat, je Vzdálená plocha do počítače a akci k zápisu něco stejný účet úložiště sami.
-- Nakonec můžete akci a zjistit, jaké selhání se hlášených Monitoring Agent. Agent monitorování protokoly zapisují `maeventtable.tsf` umístěný v [místní úložiště pro data diagnostiky](#log-artifacts-path). Postupujte podle pokynů v [místní protokolu extrakce](#local-log-extraction) části otevřít tento soubor a zkuste to a zjistěte, zda jsou `errors` označující selhání místní soubory číst nebo zapisovat do úložiště.
+Pokud jste ověřili získávání dat hello zachycenou místně, ale přesto ho nevidíte ve vašem účtu úložiště: 
+- Především Ujistěte se, zda jste zadali účet úložiště správný a že nebyly převracet hello etc.for klíče zadaný účet úložiště. Pro cloudové služby, někdy vidíme, že lidé Neaktualizovat jejich `useDevelopmentStorage=true`.
+- Pokud předpokladu, že účet úložiště je správná. Ujistěte se, že nemáte určitá omezení sítě, které neumožňují hello součásti koncové body tooreach veřejného úložiště. Jedním ze způsobů toodo, který je tooremote plochu do hello počítač a zkuste to toowrite něco toohello stejné úložiště účet sami.
+- Nakonec můžete akci a zjistit, jaké selhání se hlášených Monitoring Agent. Agent monitorování protokoly zapisují `maeventtable.tsf` umístěný v [hello místní úložiště pro data diagnostiky](#log-artifacts-path). Postupujte podle pokynů v [místní protokolu extrakce](#local-log-extraction) části tooopen tento soubor a zkuste to a zjistěte, zda existují `errors` označující selhání tooread místní soubory nebo zapisovat toostorage.
 
 ### <a name="capturing--archiving-logs"></a>Zaznamenání / archivaci protokoly
-Došlo k prostřednictvím výše uvedené kroky, ale nelze zjistit, co byla chybná a jsou přemýšlení o obrátíte na podporu. Je první věcí, kterou může vás vyzvou k shromažďování protokolů z vašeho počítače. Díky této sami můžete ušetřit čas. Spustit `CollectGuestLogs.exe` nástroj na [cesta protokolu kolekce nástroje](#log-artifacts-path) a vygeneruje soubor zip s všechny relevantní azure protokoly ve stejné složce.
+Došlo k prostřednictvím hello výše kroky, ale nelze zjistit, co byla chybná a jsou přemýšlení o obrátíte na podporu. Hello první, může vás vyzvou je toocollect protokolů z vašeho počítače. Díky této sami můžete ušetřit čas. Spustit hello `CollectGuestLogs.exe` nástroj na [cesta protokolu kolekce nástroje](#log-artifacts-path) a vygeneruje soubor zip s všechny relevantní azure protokoly v hello stejné složce.
 
 ## <a name="diagnostics-data-tables-not-found"></a>Diagnostická data tabulky nebyl nalezen
-Tabulky v úložišti Azure, která uchovává události trasování událostí pro Windows jsou název, pomocí následujícího kódu:
+Hello tabulek v úložišti Azure, která uchovává události trasování událostí pro Windows jsou pojmenované pomocí hello následující kód:
 
 ```C#
         if (String.IsNullOrEmpty(eventDestination)) {
@@ -195,69 +195,69 @@ Zde naleznete příklad:
 
 ## <a name="references"></a>Odkazy
 
-### <a name="how-to-check-diagnostics-extension-configuration"></a>Jak zkontrolovat konfiguraci rozšíření diagnostiky
-Nejjednodušší způsob, jak zkontrolovat konfiguraci rozšíření je přejděte na http://resources.azure.com, přejděte do virtuálního počítače nebo Cloudová služba, na kterém rozšíření diagnostiky Azure (IaaSDiagnostics / PaaDiagnostics) je nejistá.
+### <a name="how-toocheck-diagnostics-extension-configuration"></a>Jak toocheck konfiguraci rozšíření diagnostiky
+Nejjednodušší způsob, jak toocheck Hello konfiguraci rozšíření toonavigate toohttp://resources.azure.com, přejít toohello virtuálního počítače nebo cloudové služby na které hello rozšíření diagnostiky Azure (IaaSDiagnostics / PaaDiagnostics) je nejistá.
 
-Alternativně použijte vzdálenou plochu do počítače a podívejte se na Azure Diagnostics konfiguračního souboru popsané v příslušné části [zde](#log-artifacts-path).
+Alternativně vzdálenou plochu do počítače hello a podívejte se na hello Azure Diagnostics konfigurační soubor popsané v příslušné části hello [zde](#log-artifacts-path).
 
-Buď případu vyhledávání pro **Microsoft.Azure.Diagnostics** pak pro **xmlCfg** nebo **WadCfg** pole. 
+Buď případu vyhledávání pro **Microsoft.Azure.Diagnostics** pak pro hello **xmlCfg** nebo **WadCfg** pole. 
 
-V případě virtuálních počítačů Pokud se nachází pole WadCfg, znamená to, že konfigurace je ve formátu JSON. Pokud pole xmlCfg k dispozici, znamená to, konfigurace je v kódu XML a je kódování base64. Budete muset [dekódovat](http://www.bing.com/search?q=base64+decoder) zobrazíte XML, který byl načteny diagnostiky.
+V případě virtuálních počítačů Pokud se nachází hello WadCfg pole, znamená to, že konfigurace hello je ve formátu JSON. Pokud hello xmlCfg pole je k dispozici, znamená to, konfigurace hello je v kódu XML a je kódování base64. Je třeba příliš[dekódovat](http://www.bing.com/search?q=base64+decoder) toosee hello XML, který byl načteny diagnostiky.
 
-Pro roli cloudové služby, pokud vyberete konfiguraci z disku, data je zakódovaný pomocí base64, budete muset [dekódovat](http://www.bing.com/search?q=base64+decoder) zobrazíte XML, který byl načteny diagnostiky.
+Pro roli cloudové služby, pokud vyberete hello konfigurace z disku, hello dat je zakódovaný pomocí base64, budete potřebovat příliš[dekódovat](http://www.bing.com/search?q=base64+decoder) toosee hello XML, který byl načteny diagnostiky.
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Kódy ukončení modul plug-in Azure Diagnostics
-Tento modul plug-in vrátí následující ukončovací kód:
+modul plug-in Hello vrátí hello následující ukončovací kód:
 
 | Ukončovací kód | Popis |
 | --- | --- |
 | 0 |Úspěch |
 | -1 |Obecná chyba. |
-| -2 |Nelze načíst soubor rcf.<p>Tato interní chyba by měla pouze dojít, pokud spouštěč modulu plug-in agenta hosta je vyvolána ručně, nesprávně, na virtuálním počítači. |
-| -3 |Nelze načíst konfigurační soubor diagnostiky.<p><p>Řešení: Způsobené konfigurační soubor není předávání ověřování schématu. Řešení je poskytnout konfiguračního souboru, který je v souladu se schématem. |
-| -4 |Jiná instance agenta monitorování diagnostiky už používá adresář místních prostředků.<p><p>Řešení: Zadat jinou hodnotu pro **LocalResourceDirectory**. |
-| -6 |Spouštěč hostovaného agenta modulu plug-in došlo k pokusu o spouštění diagnostiky neplatný příkazového řádku.<p><p>Tato interní chyba by měla pouze dojít, pokud spouštěč modulu plug-in agenta hosta je vyvolána ručně, nesprávně, na virtuálním počítači. |
-| -10 |Modul plug-in diagnostiky byl ukončen se k neošetřené výjimce. |
-| -11 |Agentovi hosta se nepodařilo vytvořit proces zodpovědný za spouštění a monitorování agent sledování.<p><p>Řešení: Ověřte, že jsou k dispozici nové procesy dostatek systémových prostředků.<p> |
-| -101 |Neplatné argumenty při volání modulu plug-in diagnostiky.<p><p>Tato interní chyba by měla pouze dojít, pokud spouštěč modulu plug-in agenta hosta je vyvolána ručně, nesprávně, na virtuálním počítači. |
-| -102 |Proces modulu plug-in se nepodařilo inicializovat.<p><p>Řešení: Ověřte, že jsou k dispozici nové procesy dostatek systémových prostředků. |
-| -103 |Proces modulu plug-in se nepodařilo inicializovat. Konkrétně se nepodařilo vytvořit objekt protokolovacího nástroje.<p><p>Řešení: Ověřte, že jsou k dispozici nové procesy dostatek systémových prostředků. |
-| -104 |Nelze načíst soubor rcf poskytované agenta hosta.<p><p>Tato interní chyba by měla pouze dojít, pokud spouštěč modulu plug-in agenta hosta je vyvolána ručně, nesprávně, na virtuálním počítači. |
-| -105 |Modul plug-in Diagnostics nelze otevřít soubor konfigurace diagnostiky.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud modul plug-in diagnostiky je vyvolána ručně, nesprávně, na virtuálním počítači. |
-| -106 |Diagnostika konfigurační soubor nelze přečíst.<p><p>Řešení: Způsobené konfigurační soubor není předávání ověřování schématu. Proto řešením je zajistit konfiguračního souboru, který je v souladu se schématem. V tématu [jak zkontrolovat konfiguraci rozšíření diagnostiky](#how-to-check-diagnostics-extension-configuration). |
-| -107 |Pass directory prostředků pro agenta monitorování je neplatný.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud agenta monitorování je vyvolána ručně, nesprávně, na virtuálním počítači.</p> |
-| -108 |Nebylo možné převést konfiguračního souboru diagnostiku do konfiguračního souboru monitorování agenta.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud je modul plug-in diagnostiky je vyvolána ručně se souborem neplatná konfigurace. |
-| -110 |Konfigurace diagnostiky obecné došlo k chybě.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud je modul plug-in diagnostiky je vyvolána ručně se souborem neplatná konfigurace. |
-| -111 |Nepodařilo se spustit agent sledování.<p><p>Řešení: Ověřte, že jsou k dispozici dostatek systémových prostředků. |
+| -2 |Nelze tooload hello rcf soubor.<p>Tato interní chyba by měla pouze dojít, pokud hello hostovaného agenta modulu plug-in Spouštěče je vyvolána ručně, nesprávně, na hello virtuálních počítačů. |
+| -3 |Nelze načíst konfigurační soubor hello diagnostiky.<p><p>Řešení: Způsobené konfigurační soubor není předávání ověřování schématu. řešení Hello je tooprovide konfiguračního souboru, který odpovídá schématu hello. |
+| -4 |Jiná instance hello monitoring agent. Diagnostika už používá adresář hello místních prostředků.<p><p>Řešení: Zadat jinou hodnotu pro **LocalResourceDirectory**. |
+| -6 |Spouštěč modulu plug-in agenta hosta Hello k pokusu o diagnostiku toolaunch s neplatnou příkazového řádku.<p><p>Tato interní chyba by měla pouze dojít, pokud hello hostovaného agenta modulu plug-in Spouštěče je vyvolána ručně, nesprávně, na hello virtuálních počítačů. |
+| -10 |modul plug-in diagnostiky Hello byl ukončen se k neošetřené výjimce. |
+| -11 |agent hosta Hello se proces hello nelze toocreate zodpovědný za spouštění a monitorování hello monitoring agent..<p><p>Řešení: Ověřte, že dostatek systémových prostředků jsou k dispozici toolaunch nové procesů.<p> |
+| -101 |Neplatné argumenty při volání modulu plug-in hello diagnostiky.<p><p>Tato interní chyba by měla pouze dojít, pokud hello hostovaného agenta modulu plug-in Spouštěče je vyvolána ručně, nesprávně, na hello virtuálních počítačů. |
+| -102 |proces modulu plug-in Hello je nelze tooinitialize sám sebe.<p><p>Řešení: Ověřte, že dostatek systémových prostředků jsou k dispozici toolaunch nové procesů. |
+| -103 |proces modulu plug-in Hello je nelze tooinitialize sám sebe. Konkrétně je nelze toocreate hello protokolovacího nástroje objektu.<p><p>Řešení: Ověřte, že dostatek systémových prostředků jsou k dispozici toolaunch nové procesů. |
+| -104 |Nelze tooload hello soubor rcf poskytované hello agenta hosta.<p><p>Tato interní chyba by měla pouze dojít, pokud hello hostovaného agenta modulu plug-in Spouštěče je vyvolána ručně, nesprávně, na hello virtuálních počítačů. |
+| -105 |modul plug-in diagnostiky Hello nemůže otevřít soubor konfigurace diagnostiky hello.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud modul plug-in diagnostiky hello je vyvolána ručně, nesprávně, na hello virtuálních počítačů. |
+| -106 |Hello diagnostiky konfigurační soubor nelze přečíst.<p><p>Řešení: Způsobené konfigurační soubor není předávání ověřování schématu. Proto je řešení hello tooprovide konfiguračního souboru, který odpovídá schématu hello. V tématu [jak toocheck konfiguraci rozšíření diagnostiky](#how-to-check-diagnostics-extension-configuration). |
+| -107 |Hello prostředků directory průchodu toohello agenta monitorování je neplatný.<p><p>Tato interní chyba by měla pouze dojít, pokud hello agenta monitorování je vyvolána ručně, nesprávně, na hello virtuálních počítačů.</p> |
+| -108 |Nelze tooconvert hello diagnostiky konfigurační soubor do hello agenta konfiguračním souborem monitorování.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud je modul plug-in diagnostiky hello je vyvolána ručně se souborem neplatná konfigurace. |
+| -110 |Konfigurace diagnostiky obecné došlo k chybě.<p><p>Tato interní chyba by mohlo dojít pouze v Pokud je modul plug-in diagnostiky hello je vyvolána ručně se souborem neplatná konfigurace. |
+| -111 |Agent monitorování nelze toostart hello.<p><p>Řešení: Ověřte, že jsou k dispozici dostatek systémových prostředků. |
 | -112 |Obecná chyba |
 
 ### <a name="local-log-extraction"></a>Extrakce místního protokolu
-Agent monitorování shromažďuje protokoly a artefaktů jako `.tsf` soubory. `.tsf`soubor není možné číst, ale můžete ji do převést `.csv` následujícím způsobem: 
+Hello monitorování agent shromažďuje protokoly a artefaktů jako `.tsf` soubory. `.tsf`soubor není možné číst, ale můžete ji do převést `.csv` následujícím způsobem: 
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-Nový soubor s názvem `<relevantLogFile>.csv` budou vytvořeny v stejnou cestu jako odpovídající `.tsf` souboru.
+Nový soubor s názvem `<relevantLogFile>.csv` budou vytvořeny v hello stejnou cestu jako odpovídající hello `.tsf` souboru.
 
-**Poznámka:**: stačí ke spuštění tohoto nástroje u souboru hlavní tsf (například PerformanceCountersTable.tsf). Doprovodné soubory (například PerformanceCountersTables_\*\*001.tsf PerformanceCountersTables_\*\*002. tsf atd.) budou automaticky zpracovány.
+**Poznámka:**: stačí toorun tento nástroj proti hello hlavní tsf souboru (například PerformanceCountersTable.tsf). Hello doplňujícími soubory (například PerformanceCountersTables_\*\*001.tsf PerformanceCountersTables_\*\*002. tsf atd.) budou automaticky zpracovány.
 
 ### <a name="more-about-trace-logs-missing"></a>Další informace o chybí protokoly trasování
 
-**Poznámka:** to většinou platí cloudových služeb, pouze pokud jste nakonfigurovali DiagnosticsMonitorTraceListener na aplikace běžící na vašem virtuálním počítači IaaS. 
+**Poznámka:** to většinou platí toocloud služby, pouze pokud jste nakonfigurovali hello DiagnosticsMonitorTraceListener na aplikace běžící na vašem virtuálním počítači IaaS. 
 
-- Ujistěte se, že že diagnosticmonitortracelistener je nakonfigurován v souboru web.config nebo app.config.  To je ve výchozím nastavení nakonfigurována v projekty cloudových služeb, ale někteří zákazníci komentář, který ho způsobí, že příkazy trasování, které nelze shromažďovat diagnostické. 
-- Pokud protokoly získávání nezapisují z metody OnStart nebo spustit Ujistěte se, že se DiagnosticMonitorTraceListener souboru app.config.  Ve výchozím nastavení je v souboru web.config, ale které se týkají pouze kód spuštěný v rámci w3wp.exe; Proto musíte ho v souboru app.config zaznamenat trasování spuštění v WaIISHost.exe.
-- Ujistěte se, že používáte Diagnostics.Trace.TraceXXX místo Diagnostics.Debug.WriteXXX.  Příkazy ladění se odeberou ze sestavení pro vydání.
-- Ujistěte se, zda že zkompilovaný kód ve skutečnosti má řádky Diagnostics.Trace (použijte Reflector ildasm nebo ILSpy ověření).  Příkazy Diagnostics.Trace jsou vyřazeny z kompilované binární, pokud nechcete použít symbol Podmíněná kompilace trasování.  Pokud se používá pro sestavení projektu msbuild jde častých problémů narazíte na.
+- Ujistěte se, zda text hello, DiagnosticMonitorTraceListener lze nastavit v hello soubor web.config nebo app.config.  To je ve výchozím nastavení nakonfigurována v projekty cloudových služeb, ale někteří zákazníci komentář ho out, což způsobí hello trasování příkazy toonot shromáždit pomocí diagnostiky. 
+- Pokud protokoly získávání nezapisují z metody OnStart nebo spustit hello Ujistěte se, zda text hello, DiagnosticMonitorTraceListener je v souboru app.config hello.  Ve výchozím nastavení je v souboru web.config hello, ale které se týkají pouze toocode běžící v rámci w3wp.exe; Proto musíte ho v souboru app.config toocapture trasování spuštění v WaIISHost.exe.
+- Ujistěte se, že používáte Diagnostics.Trace.TraceXXX místo Diagnostics.Debug.WriteXXX.  Hello příkazy ladění se odeberou ze sestavení pro vydání.
+- Ujistěte se, zda hello zkompilovat kód ve skutečnosti má řádky Diagnostics.Trace hello (použijte Reflector, ildasm nebo ILSpy tooverify).  Příkazy Diagnostics.Trace jsou vyřazeny z hello kompilovány binární, pokud nechcete použít symbol Podmíněná kompilace hello trasování.  Pokud používáte projektu nástroje msbuild toobuild hello to je běžné toorun problém do.
 
 ## <a name="known-issues-and-mitigations"></a>Známé problémy a jejich zmírnění
 Tady je seznam známých problémů s známé způsoby zmírnění rizik:
 
 **1. rozhraní .NET 4.5 závislost:**
 
-WAD má závislost na modul runtime na rozhraní .NET 4.5 nebo vyšší. Všechny počítače, které jsou zřízené pro cloudové služby a také všechny oficiální azure základní bitové kopie virtuálních počítačů v době psaní to mít rozhraní .NET 4.5 nebo výše nainstalovat. Stále je ale možné zobrazovat v situaci, kdy zkusíte spustit WAD na počítači, který nemá .NET 4.5 nebo vyšší. To se stane, když vytvoříte svůj počítač z původní bitové kopie nebo snímek; nebo přineste vlastní disk.
+WAD má závislost na modul runtime na rozhraní .NET 4.5 nebo vyšší. V době psaní to hello všechny počítače, které jsou zřízené pro cloudové služby a také všechny oficiální azure základní bitové kopie virtuálních počítačů mít rozhraní .NET 4.5 nebo vyšší nainstalovat. Je ale stále možné tooland v situaci, kde se můžete pokusit toorun WAD na počítači, který nemá .NET 4.5 nebo vyšší. To se stane, když vytvoříte svůj počítač z původní bitové kopie nebo snímek; nebo přineste vlastní disk.
 
-To obvykle manifesty jako ukončovací kód **255** při spuštění DiagnosticsPluginLauncher.exe. Selhání dochází z důvodu neošetřené výjimky: 
+To obvykle manifesty jako ukončovací kód **255** při spuštění DiagnosticsPluginLauncher.exe. Selhání kvůli toohello neošetřená výjimka se stane toto: 
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
@@ -266,8 +266,8 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 **2. Data čítače výkonu, které jsou k dispozici v úložiště, ale nezobrazují v portálu**
 
-Virtuální počítače portálu prostředí ukazuje některé čítače výkonu ve výchozím nastavení. Pokud je nevidíte a víte, že data je generováno, protože je k dispozici v úložišti. Kontrola:
-- Pokud data v úložišti mají názvy čítačů v angličtině. Pokud nejsou názvy čítačů v angličtině, nebude možné ho rozpoznat portálu metriky grafu.
-- Pokud používáte zástupné znaky (\*) v názvech čítače výkonu, nebudou mít ke korelaci čítač nakonfigurované a shromáždění portálu.
+Virtuální počítače portálu prostředí ukazuje některé čítače výkonu ve výchozím nastavení. Pokud je nevidíte a víte, že hello data je generováno, protože je k dispozici v úložišti. Kontrola:
+- Pokud hello dat v úložišti má názvy čítačů v angličtině. Pokud nejsou názvy čítačů hello v angličtině, portálu metriky grafu nebude možné toorecognize ho.
+- Pokud používáte zástupné znaky (\*) ve vaší názvy čítačů výkonu hello portálu nebude možné toocorrelate hello nakonfigurované a shromažďují čítač.
 
-**Zmírnění dopadů**: Změna počítače jazyka na angličtinu pro účty systému. Ovládací panely -> oblast -> správy -> Nastavení kopií -> tak, aby vlastní jazyk neplatí pro účet system, zrušte zaškrtnutí políčka "Úvodní obrazovky a systém účty". Ujistěte se, že nepoužíváte zástupné znaky, pokud chcete portál tak, aby se prostředí primární spotřeba také.
+**Zmírnění dopadů**: změnit počítač hello tooEnglish jazyk pro systémové účty. Ovládací panely -> oblast -> správy -> Nastavení kopií -> zrušte zaškrtnutí políčka "Úvodní obrazovky a systém účty" tak, aby vlastní jazyk hello není použita toosystem účtu. Ujistěte se, že nepoužíváte zástupné znaky, pokud chcete portál toobe prostředí primární spotřeba také.

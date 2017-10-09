@@ -1,11 +1,11 @@
 ## <a name="overview-of-azure-resource-manager-templates"></a>Přehled šablon Azure Resource Manageru
-Šablony Azure Resource Manageru umožní deklarativně zadejte infrastruktury Azure IaaS v jazyce Json definováním závislosti mezi prostředky. Podrobný přehled o šablon Azure Resource Manageru naleznete v článku níže:
+Šablony Azure Resource Manager umožňují toodeclaratively zadejte hello infrastruktury Azure IaaS v jazyce Json definováním hello závislosti mezi prostředky. Podrobný přehled o šablon Azure Resource Manageru najdete v článku toohello níže:
 
 [Skupina prostředků – přehled](../articles/azure-resource-manager/resource-group-overview.md)
 
 ## <a name="sample-template-snippet-for-vm-extensions"></a>Ukázka šablony fragment kódu pro rozšíření virtuálního počítače
-Nasazení rozšíření virtuálního počítače v rámci služby Správce prostředků Azure vyžaduje šablony vám deklarativně určit konfigurace rozšíření v šabloně.
-Zde je formát pro zadání konfigurace rozšíření.
+Nasazení rozšíření virtuálního počítače jako součást šablonu Azure Resource Manager, musíte zadat toodeclaratively konfigurace rozšíření hello v šabloně hello.
+Zde je hello formát pro zadání konfigurace rozšíření hello.
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -24,11 +24,11 @@ Zde je formát pro zadání konfigurace rozšíření.
       }
       }
 
-Jak vidíte z výše uvedeného, šablona rozšíření obsahuje dvě hlavní části:
+Jak je vidět z výše uvedených hello hello rozšíření šablona obsahuje dvě hlavní části:
 
 1. Rozšíření název, vydavatel a verze
 2. Konfigurace rozšíření.
 
-## <a name="identifying-the-publisher-type-and-typehandlerversion-for-any-extension"></a>Identifikace vydavatele, typ a typeHandlerVersion pro jakoukoli příponu
-Rozšíření virtuálního počítače Azure jsou publikovány společností Microsoft a důvěryhodných vydavatelů 3. stran a každé rozšíření je jedinečně identifikovaný vydavatele, typ a typeHandlerVersion. To se dá určit jako následující:  
+## <a name="identifying-hello-publisher-type-and-typehandlerversion-for-any-extension"></a>Identifikace hello vydavatele, typ a typeHandlerVersion pro jakoukoli příponu
+Rozšíření virtuálního počítače Azure jsou publikovány společností Microsoft a důvěryhodných vydavatelů 3. stran a každé rozšíření je jedinečně identifikovaný typeHandlerVersion jeho vydavatele, typ a hello. To se dá určit jako následující:  
 

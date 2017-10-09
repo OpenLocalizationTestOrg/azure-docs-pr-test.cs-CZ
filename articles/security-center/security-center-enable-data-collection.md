@@ -1,6 +1,6 @@
 ---
-title: "Povolení shromažďování dat v Azure Security Center | Microsoft Docs"
-description: " Informace o povolení shromažďování dat v Azure Security Center. "
+title: "shromažďování dat aaaEnable v Azure Security Center | Microsoft Docs"
+description: " Zjistěte, jak tooenable shromažďování dat v Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: terrylan
-ms.openlocfilehash: 7e9ad8cd8c77c57c37dc208b86b3727a4e1dc7b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 78bbf9a3d852095e2a1387c1606ff4bbb778a0dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-data-collection-in-azure-security-center"></a>Povolení shromažďování dat v Azure Security Center
 
 > [!NOTE]
-> Od začátku června 2017 bude Security Center používat ke shromažďování a ukládání dat agenta Microsoft Monitoring Agent. Další informace najdete v tématu [Azure Security Center platformy migrace](security-center-platform-migration.md). Informace v tomto článku představují funkce služby Security Center po přechodu na agenta Microsoft Monitoring Agent.
+> Počínaje časná 2017 června, Security Center použije hello agenta Microsoft Monitoring Agent toocollect a ukládat data. Další, najdete v části toolearn [Azure Security Center platformy migrace](security-center-platform-migration.md). Hello informace v tomto článku představuje funkce Security Center po přechodu toohello agenta Microsoft Monitoring Agent.
 >
 >
 
-Security Center shromažďuje data z vašich virtuálních počítačů za účelem posouzení jejich stavu, poskytování doporučení zabezpečení a upozorňování na hrozby. Pokud nejprve přístup k Security Center, máte možnost Povolit shromažďování dat pro všechny virtuální počítače ve vašem předplatném. Pokud se shromažďování dat není povolené, Security Center doporučí, zapnout shromažďování dat v zásadách zabezpečení pro toto předplatné.
+Security Center shromažďuje data z vaší virtuální počítače (VM) tooassess jejich stavu zabezpečení, zadejte doporučení zabezpečení a výstrah toothreats. Pokud nejprve přístup k Security Center, máte hello možnost tooenable shromažďování dat pro všechny virtuální počítače ve vašem předplatném. Pokud se shromažďování dat není povolené, Security Center doporučí, zapnout shromažďování dat v zásadách zabezpečení hello pro toto předplatné.
 
-Při shromažďování dat je povolené, Security Center zřizuje agenta Microsoft Monitoring Agent do všech existujících podporované virtuální počítače Azure a všechny nové, které jsou vytvořeny. Microsoft Monitoring Agent hledá různé konfigurace související se zabezpečením. Kromě toho operační systém vyvolá událost protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent přečte položky protokolu událostí a konfigurací a zkopíruje data do pracovního prostoru pro analýzu. Microsoft Monitoring Agent taky zkopíruje soubory se stavem systému do pracovního prostoru.
+Při shromažďování dat je povolené, Security Center zřizuje hello agenta Microsoft Monitoring Agent na všechny stávající podporovaných virtuálních počítačích Azure a všechny nové, které jsou vytvořené. Hello agenta Microsoft Monitoring Agent hledá různé konfigurace související se zabezpečením. Kromě toho hello operačního systému vyvolá událost protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Hello agenta Microsoft Monitoring Agent čte položky protokolu událostí a konfigurací a zkopíruje prostoru tooyour hello data pro analýzu. Hello agenta Microsoft Monitoring Agent také zkopíruje prostoru tooyour soubory výpisu havárií.
 
-Pokud používáte úroveň Free služby Security Center, můžete zakázat shromažďování dat z virtuálních počítačů tak, že zakážete shromažďování dat v zásadě zabezpečení. Zakázání shromažďování dat omezením posouzení zabezpečení pro virtuální počítače. Další informace najdete v tématu [zakázání shromažďování dat](#disabling-data-collection). Jsou povoleny snímků disku virtuálního počítače a kolekce artefaktů i v případě, že shromažďování dat je zakázané. Shromažďování dat je vyžadován pro odběry ve standardní vrstvě služby Security Center.
+Pokud používáte úroveň Free hello služby Security Center, můžete zakázat shromažďování dat z virtuálních počítačů tak, že zakážete shromažďování dat v zásadách zabezpečení hello. Zakázání shromažďování dat omezením posouzení zabezpečení pro virtuální počítače. Další, najdete v části toolearn [zakázání shromažďování dat](#disabling-data-collection). Jsou povoleny snímků disku virtuálního počítače a kolekce artefaktů i v případě, že shromažďování dat je zakázané. Shromažďování dat je vyžadován pro odběry ve standardní vrstvě hello služby Security Center.
 
 > [!NOTE]
 > Další informace o volné a Standard Security Center [cenové úrovně](security-center-pricing.md).
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementace doporučení
+## <a name="implement-hello-recommendation"></a>Implementace doporučení hello
 
 > [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení. Tento dokument není to podrobný průvodce.
+> Toto téma představuje hello služby pomocí příklad nasazení. Tento dokument není to podrobný průvodce.
 >
 >
 
-1. V **doporučení** vyberte **povolení shromažďování dat pro odběry**.  Tím se otevře **shromažďování dat zapnout** okno.
+1. V hello **doporučení** vyberte **povolení shromažďování dat pro odběry**.  Tím se otevře hello **shromažďování dat zapnout** okno.
    ![Okno doporučení][2]
-2. Na **shromažďování dat zapnout** okně vyberte své předplatné. **Zásady zabezpečení** otevře se okno pro toto předplatné.
-3. Na **zásady zabezpečení** vyberte **na** pod **shromažďování dat** automaticky shromažďovat protokoly. Zapnutí zřizuje kolekce dat rozšíření monitorování všech aktuálních a nových podporované virtuální počítače v rámci předplatného.
+2. Na hello **shromažďování dat zapnout** okně vyberte své předplatné. Hello **zásady zabezpečení** otevře se okno pro toto předplatné.
+3. Na hello **zásady zabezpečení** vyberte **na** pod **shromažďování dat** tooautomatically shromažďovat protokoly. V odběru hello zapnete dat kolekce zřizuje hello rozšíření monitorování na všech aktuálních a nových podporované virtuální počítače.
 4. Vyberte **Uložit**.
 5. Vyberte **OK**.
 
 ## <a name="disabling-data-collection"></a>Zakázání shromažďování dat
-Pokud používáte úroveň Free služby Security Center, můžete zakázat shromažďování dat z virtuálních počítačů v každém okamžiku tak, že zakážete shromažďování dat v zásadě zabezpečení. Shromažďování dat je vyžadován pro odběry ve standardní vrstvě služby Security Center.
+Pokud používáte úroveň Free hello služby Security Center, můžete zakázat shromažďování dat z virtuálních počítačů v každém okamžiku tak, že zakážete shromažďování dat v zásadách zabezpečení hello. Shromažďování dat je vyžadován pro odběry ve standardní vrstvě hello služby Security Center.
 
-1. Vraťte se do **Security Center** a vyberte **zásad** dlaždici. Tím se otevře **zabezpečení zásady definovat zásady, za předplatné** okno.
-   ![Vyberte dlaždici zásad][5]
-2. Na **zabezpečení zásady definovat zásady, za předplatné** okně vyberte odběr, který chcete zakázat shromažďování dat.
-3. **Zásady zabezpečení** otevře se okno pro toto předplatné.  Vyberte **vypnout** pod shromažďování dat.
-4. Vyberte **Uložit** nejvyšší pásu karet.
+1. Vrátí toohello **Security Center** okno a vyberte hello **zásad** dlaždici. Tím se otevře hello **zabezpečení zásady definovat zásady, za předplatné** okno.
+   ![Vyberte dlaždici zásad hello][5]
+2. Na hello **zabezpečení zásady definovat zásady, za předplatné** okně, vyberte hello předplatné chcete shromažďování dat toodisable.
+3. Hello **zásady zabezpečení** otevře se okno pro toto předplatné.  Vyberte **vypnout** pod shromažďování dat.
+4. Vyberte **Uložit** hello nejvyšší pásu karet.
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek vám ukázal, jak provést doporučení Security Center "Povolit shromažďování dat." Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+Tento článek ukázal, jak tooimplement hello Security Center doporučení "povolení shromažďování dat." toolearn Další informace o Security Center, najdete v části hello následující:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak tooconfigure zásady zabezpečení pro skupiny prostředků a předplatná Azure.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md)– zjistěte, jak toomonitor hello stav svých prostředků Azure.
+* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md)– zjistěte, jak toomanage a reakce toosecurity výstrahy.
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – zjistěte, jak toomonitor hello stav vašich partnerských řešení.
 - [Zabezpečení dat v Azure Security Center](security-center-data-security.md) -další způsob správy a zabezpečení ve službě Security Center.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
+* [Nejčastější dotazy k Azure Security Center](security-center-faq.md)– přečtěte si nejčastější dotazy o použití služby hello.
+* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/)– získejte nejnovější informace zabezpečení Azure hello a informace.
 
 <!--Image references-->
 [2]: ./media/security-center-enable-data-collection/recommendations.png

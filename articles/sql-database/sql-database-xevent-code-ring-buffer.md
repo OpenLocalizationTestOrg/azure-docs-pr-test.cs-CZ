@@ -1,6 +1,6 @@
 ---
-title: "Kód XEvent cyklické vyrovnávací paměti pro databázi SQL. | Microsoft Docs"
-description: "Poskytuje ukázky kódu jazyka Transact-SQL, která přišla rychlé a snadné použití cíl cyklické vyrovnávací paměti, v databázi SQL Azure."
+title: "aaaXEvent kód cyklické vyrovnávací paměti pro databázi SQL. | Microsoft Docs"
+description: "Poskytuje ukázky kódu jazyka Transact-SQL, která přišla rychlé a snadné použití cíl hello cyklické vyrovnávací paměti, v databázi SQL Azure."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,33 +16,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: 6fbefe151901ac3b15d93712422878fc4d6206f1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 21df748d9999d6837d2b5bbe4a3f47fb351b4633
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Prstence kódu cílové vyrovnávací paměti pro rozšířené události v databázi SQL
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Chcete úplného příkladu kódu pro nejjednodušší rychlý způsob, jak informace o zachycení a sestav pro rozšířené události během testu. Je nejjednodušší cíl pro rozšířené události data [cíl cyklické vyrovnávací paměti](http://msdn.microsoft.com/library/ff878182.aspx).
+Chcete úplného příkladu kódu hello nejjednodušší rychlý způsob toocapture a sestava informace pro rozšířené události během testu. Hello nejjednodušší cíl pro data rozšířených událostí je hello [cíl cyklické vyrovnávací paměti](http://msdn.microsoft.com/library/ff878182.aspx).
 
 Toto téma představuje ukázku kódu jazyka Transact-SQL, který:
 
-1. Vytvoří tabulku s daty k předvedení s.
+1. Vytvoří tabulku se toodemonstrate data s.
 2. Vytvoří relaci pro existující událost rozšířené, a to **sqlserver.sql_statement_starting**.
    
-   * Událost je omezený na příkazy SQL, které obsahují určitý řetězec aktualizace: **příkaz jako '% aktualizace tabEmployee %'**.
-   * Vybere možnost odesílat výstup události k cíli typu cyklické vyrovnávací paměti, a to **package0.ring_buffer**.
-3. Spustí relaci události.
+   * Hello událostí je omezená tooSQL příkazů, které obsahují určitý řetězec aktualizace: **příkaz jako '% aktualizace tabEmployee %'**.
+   * Vybere toosend hello výstup hello cíl tooa události typu cyklické vyrovnávací paměti, a to **package0.ring_buffer**.
+3. Spustí relaci události hello.
 4. Vydá několik jednoduchých příkazy aktualizace SQL.
-5. Vydá příkazu SQL SELECT načíst výstup událostí z cyklické vyrovnávací paměti.
+5. Problémy SQL vyberte příkaz tooretrieve událostí výstup hello cyklické vyrovnávací paměti.
    
    * **Sys.dm_xe_database_session_targets** a jsou připojené ostatní zobrazení dynamické správy (zobrazení dynamické správy).
-6. Zastaví relace události.
-7. Zahodí cíl cyklické vyrovnávací paměti, chcete-li uvolnit její prostředky.
-8. Zahodí ukázkové tabulky a relace události.
+6. Zastaví hello relace události.
+7. Vyřazuje hello cíl cyklické vyrovnávací paměti, toorelease její prostředky.
+8. Zahodí relace události hello a hello ukázkové tabulky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,14 +51,14 @@ Toto téma představuje ukázku kódu jazyka Transact-SQL, který:
   
   * Volitelně můžete [vytvořit **AdventureWorksLT** ukázkovou databázi](sql-database-get-started.md) v minutách.
 * SQL Server Management Studio (ssms.exe), v ideálním případě její nejnovější měsíční aktualizace verzi. 
-  Si můžete stáhnout nejnovější ssms.exe z:
+  Si můžete stáhnout nejnovější ssms.exe hello z:
   
   * Téma s názvem [stáhnout SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [Přímý odkaz na stažení.](http://go.microsoft.com/fwlink/?linkid=616025)
+  * [Stahování toohello přímý odkaz.](http://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-S velmi malé změny můžete spustit následující ukázka kódu cyklické vyrovnávací paměti na Azure SQL Database nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu '_databáze' názvu některá zobrazení dynamické správy (zobrazení dynamické správy), použít v klauzuli FROM v kroku 5. Například:
+S velmi malé změny hello následující ukázka kódu cyklické vyrovnávací paměti lze spustit v Azure SQL Database nebo Microsoft SQL Server. Hello rozdíl je hello přítomnosti hello uzlu '_databáze"v názvu hello některé zobrazení dynamické správy (zobrazení dynamické správy), použít v klauzuli FROM hello v kroku 5. Například:
 
 * Sys.dm_xe**_databáze**_session_targets
 * Sys.dm_xe_session_targets
@@ -220,13 +220,13 @@ GO
 
 ## <a name="ring-buffer-contents"></a>Obsah prstenec vyrovnávací paměti
 
-Použili jsme ssms.exe spustit ukázkový kód.
+Použili jsme ukázka kódu hello toorun ssms.exe.
 
-Pokud chcete zobrazit výsledky, jsme klikli buňky v záhlaví sloupce **target_data_XML**.
+výsledky hello tooview, jsme klikli hello buňky v záhlaví sloupce hello **target_data_XML**.
 
-Potom v podokně výsledků jsme klikli buňky v záhlaví sloupce **target_data_XML**. Klepněte na tlačítko vytvořit jinou kartu Soubor v ssms.exe ve kterém byl obsah buňky výsledek zobrazí, jako XML.
+Potom v podokně výsledků hello jsme klikli hello buňky v záhlaví sloupce hello **target_data_XML**. Klepněte na tlačítko vytvořit jinou kartu Soubor v ssms.exe v které hello zobrazila obsah buňky hello výsledek ve formátu XML.
 
-Výstup se zobrazuje v následující bloku. Vypadá tak dlouho, ale je právě dva  **<event>**  elementy.
+výstup Hello se zobrazí v následující bloku hello. Vypadá tak dlouho, ale je právě dva  **<event>**  elementy.
 
 &nbsp;
 
@@ -320,7 +320,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 #### <a name="release-resources-held-by-your-ring-buffer"></a>Uvolnit prostředky držené vaší cyklické vyrovnávací paměti
 
-Až skončíte s vaší cyklické vyrovnávací paměti, můžete ho odebrat a její prostředky vydání verze **ALTER** podobně jako následující:
+Až skončíte s vaší cyklické vyrovnávací paměti, můžete ho odebrat a její prostředky vydání verze **ALTER** jako hello následující:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -330,7 +330,7 @@ GO
 ```
 
 
-Definice relaci události je aktualizován, ale není vyřazen. Později můžete přidat další instanci cyklické vyrovnávací paměti do relace události:
+definice Hello relaci události je aktualizován, ale není vyřazen. Později můžete přidat další instanci relace události tooyour hello cyklické vyrovnávací paměti:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -345,11 +345,11 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>Další informace
 
-Primární téma pro rozšířené události v databázi SQL Azure je:
+Hello primární téma pro rozšířené události v databázi SQL Azure je:
 
 * [Rozšířené aspekty událost v databázi SQL](sql-database-xevent-db-diff-from-svr.md), který se liší od některých aspektů rozšířené události, které se liší od Azure SQL Database a serveru Microsoft SQL Server.
 
-Další témata ukázkový kód pro rozšířené události jsou dostupné prostřednictvím následujících odkazů. Ale je nutné pravidelně zkontrolovat všechny ukázkové zobrazíte zda ukázku cílem Microsoft SQL Server a databáze SQL Azure. Potom můžete rozhodnout, zda jsou mírně potřebné ke spuštění ukázky.
+Další témata ukázkový kód pro rozšířené události jsou k dispozici hello následující odkazy. Jestli hello ukázka cílem Microsoft SQL Server a databáze SQL Azure však musíte zkontrolovat pravidelně žádné toosee ukázka. Potom můžete rozhodnout, zda jsou mírně potřebné toorun hello ukázka.
 
 * Ukázka kódu pro Azure SQL Database: [kód cílový soubor událostí pro rozšířené události v databázi SQL](sql-database-xevent-code-event-file.md)
 
@@ -357,5 +357,5 @@ Další témata ukázkový kód pro rozšířené události jsou dostupné prost
 ('lock_acquired' event.)
 
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Find hello Objects That Have hello Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->

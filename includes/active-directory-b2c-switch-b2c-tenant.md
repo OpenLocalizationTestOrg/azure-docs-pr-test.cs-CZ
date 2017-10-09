@@ -1,5 +1,5 @@
 Upravená Sipi.
 
-Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
+tooswitch tooyour klienta Azure AD B2C, vyberte adresář B2C hello v pravém horním rohu hello hello portálu.
 
-![Přepnutí na tenanta Azure AD B2C](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)
+![Přepínač klienta tooyour Azure AD B2C](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)

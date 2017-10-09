@@ -1,5 +1,5 @@
 ---
-title: "Průběžné sestavování a integrace linuxových aplikací Azure Service Fabric v Javě pomocí Jenkinse | Dokumentace Microsoftu"
+title: "aaaContinuous sestavení a integraci pro aplikace v jazyce Linux Java Azure Service Fabric pomocí volaných | Microsoft Docs"
 description: "Průběžné sestavování a integrace linuxových aplikací v Javě pomocí Jenkinse"
 services: service-fabric
 documentationcenter: java
@@ -14,75 +14,75 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.openlocfilehash: d9372407540d903acca5b1639a2d9ceb0bf3c571
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 15da2cb8c759233219369ea889550da93748129f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Sestavování a nasazování linuxových aplikací v Javě pomocí Jenkinse
-Jenkins je oblíbený nástroj pro průběžnou integraci a nasazování aplikací. Tady je postup, kterým můžete sestavit a nasadit aplikaci Azure Service Fabric s využitím Jenkinse.
+# <a name="use-jenkins-toobuild-and-deploy-your-linux-java-application"></a>Použití volaných toobuild a nasazení aplikace v jazyce Linux Java
+Jenkins je oblíbený nástroj pro průběžnou integraci a nasazování aplikací. Tady je způsob toobuild a nasadit aplikace Azure Service Fabric pomocí volaných.
 
 ## <a name="general-prerequisites"></a>Obecné požadavky
-- Máte lokálně nainstalovaný Git. Odpovídající verzi Gitu (v závislosti na operačním systému) můžete nainstalovat ze [stránky pro stažení Gitu](https://git-scm.com/downloads). Pokud jste ještě Git nepoužívali, další informace najdete v [dokumentaci ke Gitu](https://git-scm.com/docs).
-- Máte po ruce modul plug-in Jenkinse pro Service Fabric. Můžete ho stáhnout ze stránky pro [stažení Service Fabric](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi).
+- Máte lokálně nainstalovaný Git. Můžete nainstalovat hello příslušnou verzi Git z [hello Git stáhne stránky](https://git-scm.com/downloads), podle operačního systému. Pokud jste nový tooGit, získáte další informace z hello [Git dokumentaci](https://git-scm.com/docs).
+- Mít hello Service Fabric volaných modulu plug-in užitečné. Můžete ho stáhnout ze stránky pro [stažení Service Fabric](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi).
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>Nastavení Jenkinse uvnitř clusteru Service Fabric
 
-Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Následující části vysvětlují, jak nastavit je uvnitř clusteru při použití účtu úložiště Azure pro uložení stavu instance kontejneru.
+Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Hello následující části zobrazit jak tooset ho nahoru v clusteru s podporou při používání Azure storage účet toosave hello stavu instance hello kontejneru.
 
 ### <a name="prerequisites"></a>Požadavky
-1. Máte připravený cluster Service Fabric s Linuxem. Na clusteru Service Fabric vytvořeném z webu Azure Portal je už nainstalovaný Docker. Pokud cluster spouštíte místně, můžete ke kontrole, jestli je Docker nainstalovaný, použít příkaz ``docker info``. Pokud není nainstalovaný, nainstalujte ho pomocí následujících příkazů:
+1. Máte připravený cluster Service Fabric s Linuxem. Cluster Service Fabric vytvořené z hello portál Azure již má nainstalované Docker. Pokud používáte hello cluster místně, zkontrolujte, zda je nainstalována pomocí příkazu hello Docker ``docker info``. Pokud nainstalovaná není, nainstalujte ji podle toho pomocí hello následující příkazy:
 
   ```sh
   sudo apt-get install wget
   wget -qO- https://get.docker.io/ | sh
   ```
-2. Máte nasazenou aplikaci Service Fabric typu kontejner v clusteru pomocí následujícího postupu:
+2. Máte hello Service Fabric kontejnerové aplikace nasazené na clusteru hello pomocí hello následující kroky:
 
   ```sh
 git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
 cd service-fabric-java-getting-started/Services/JenkinsDocker/
 ```
 
-3. Je nutné připojit podrobnosti možnost Azure – sdílená složka úložiště, ve které chcete zachovat stav instance volaných kontejneru. Pokud používáte portál Microsoft Azure pro stejné, prosím postupujte podle kroků – vytvoření účtu úložiště Azure, například ``sfjenkinsstorage1``. Vytvoření **sdílené složky** pod tímto účtem úložiště vyslovení ``sfjenkins``. Klikněte na **připojit** pro sdílené složky a Poznámka hodnoty zobrazuje v části **připojení z Linux**, například to může vypadat třeba takto -
+3. Je třeba hello připojit možnost Podrobnosti o hello úložiště Azure sdílenou, místo, kam chcete toopersist hello stavu instance hello volaných kontejneru. Pokud používáte portál Microsoft Azure hello pro hello stejné, prosím postupujte podle kroků hello – vytvoření účtu úložiště Azure, například ``sfjenkinsstorage1``. Vytvoření **sdílené složky** pod tímto účtem úložiště vyslovení ``sfjenkins``. Klikněte na **připojit** pro sdílené složky a Poznámka hello hello hodnoty, se zobrazí v části **připojení z Linux**, například to může vypadat třeba takto -
 ```sh
 sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
 ```
 
-4. Aktualizujte zástupný symbol hodnoty v ```setupentrypoint.sh``` skriptu s podrobnostmi o odpovídající úložiště azure.
+4. Aktualizujte zástupný symbol hodnoty hello v hello ```setupentrypoint.sh``` skriptu s podrobnostmi o odpovídající úložiště azure.
 ```sh
 vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
 ```
-Nahraďte ``[REMOTE_FILE_SHARE_LOCATION]`` s hodnotou ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` z výstupu connect v bodě 3 výše.
-Nahraďte ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` s hodnotou ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` z bodu 3 výše.
+Nahraďte ``[REMOTE_FILE_SHARE_LOCATION]`` s hodnotou hello ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` ze hello výstup hello připojit v bodě 3 výše.
+Nahraďte ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` s hodnotou hello ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` z bodu 3 výše.
 
-5. Připojte se ke clusteru a nainstalujte aplikaci kontejneru.
+5. Připojte toohello cluster a instalace aplikace hello kontejneru.
 ```azurecli
 sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
 bash Scripts/install.sh
 ```
-Tím se do clusteru nainstaluje kontejner s Jenkinsem, který můžete monitorovat pomocí Service Fabric Exploreru.
+Nainstaluje kontejner volaných hello clusteru a můžete monitorovat pomocí hello Service Fabric Exploreru.
 
 ### <a name="steps"></a>Kroky
-1. V prohlížeči přejděte na ``http://PublicIPorFQDN:8081``. Najdete tam cestu k počátečnímu heslu správce vyžadovanému k přihlášení. Můžete Jenkinse dál používat jako uživatel s oprávněními správce. Nebo můžete po přihlášení pomocí počátečního účtu správce vytvořit a změnit uživatele.
+1. Z prohlížeče, přejděte příliš``http://PublicIPorFQDN:8081``. Poskytuje hello cestu hello počáteční správce požadováno heslo toosign v. Můžete dál toouse volaných jako uživatel s oprávněními správce. Nebo můžete vytvořit a změnit hello uživatele po přihlásíte pomocí účtu správce. počáteční hello.
 
    > [!NOTE]
-   > Zajistěte, aby během vytváření clusteru byl jako koncový bod aplikace zadaný port 8081.
+   > Zajistěte, aby byl hello 8081 port jako port koncového bodu aplikace hello při vytváření clusteru hello.
    >
 
-2. Získejte ID instance kontejneru pomocí příkazu ``docker ps -a``.
-3. Přihlaste se přes SSH (Secure Shell) ke kontejneru a vložte cestu, která se zobrazila na portálu Jenkinse. Pokud se na portálu zobrazila například cesta `PATH_TO_INITIAL_ADMIN_PASSWORD`, spusťte:
+2. Získat ID instance kontejneru hello pomocí ``docker ps -a``.
+3. Secure Shell (SSH) přihlášení toohello kontejneru a vložte hello cesta, kterou jste se zobrazí na portálu volaných hello. Například, pokud hello portálu se zobrazí cesta hello `PATH_TO_INITIAL_ADMIN_PASSWORD`, spusťte následující hello:
 
   ```sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
   cat PATH_TO_INITIAL_ADMIN_PASSWORD
   ```
 
-4. Nastavte GitHub pro práci s Jenkinsem, a to pomocí kroků uvedených v tématu věnovaném [vygenerování nového klíče SSH a jeho přidání k agentovi SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
-    * Pomocí pokynů z GitHubu vygenerujte klíč SSH a přidejte ho do účtu GitHubu, který je hostitelem vašeho úložiště.
-    * Příkazy popsané u předchozího odkazu spusťte v prostředí Jenkins Dockeru (ne na hostiteli).
-    * Pokud se chcete k prostředí Jenkinse přihlásit z hostitele, použijte následující příkaz:
+4. Nastavit Githubu toowork s volaných, pomocí kroků hello v [generování nového klíče SSH a její přidání agenta SSH toohello](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+    * Pomocí pokynů hello klíč SSH hello toogenerate Githubu a tooadd hello SSH klíče toohello účtu GitHub, který je hostitelem úložiště.
+    * Spusťte příkazy hello uvedený v hello předcházející odkaz v hello volaných Docker prostředí (a ne na vašem hostiteli).
+    * toosign v toohello volaných prostředí z hostitele, hello použijte následující příkaz:
 
   ```sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
@@ -90,82 +90,82 @@ Tím se do clusteru nainstaluje kontejner s Jenkinsem, který můžete monitorov
 
 ## <a name="set-up-jenkins-outside-a-service-fabric-cluster"></a>Nastavení Jenkinse mimo cluster Service Fabric
 
-Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Následující části vysvětlují, jak ho nastavit mimo cluster.
+Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Dobrý den, následující části zobrazit jak tooset ho nahoru mimo cluster.
 
 ### <a name="prerequisites"></a>Požadavky
-Potřebujete mít nainstalovaný Docker. Pomocí následujících příkazů můžete Docker nainstalovat z terminálu:
+Je nutné toohave Docker nainstalována. použít tooinstall Docker z hello terminálu může být Hello následující příkazy:
 
   ```sh
   sudo apt-get install wget
   wget -qO- https://get.docker.io/ | sh
   ```
 
-Když teď v terminálu spustíte příkaz ``docker info``, na výstupu by se mělo zobrazit, že je spuštěná služba Docker.
+Nyní když spustíte ``docker info`` v hello terminálu, měli byste vidět ve výstupu hello této hello Docker se službou.
 
 ### <a name="steps"></a>Kroky
-  1. Stáhněte si image kontejneru s Jenkinsem pro Service Fabric: ``docker pull raunakpandya/jenkins:v1``
-  2. Spusťte image kontejneru: ``docker run -itd -p 8080:8080 raunakpandya/jenkins:v1``
-  3. Získejte ID instance image kontejneru. Pomocí příkazu ``docker ps –a`` můžete vypsat všechny kontejnery Dockeru.
-  4. Přihlaste se k portálu Jenkinse pomocí následujících kroků:
+  1. Hello Service Fabric volaných kontejneru image pro vyžádání obsahu:``docker pull raunakpandya/jenkins:v1``
+  2. Spusťte kontejner hello bitové kopie:``docker run -itd -p 8080:8080 raunakpandya/jenkins:v1``
+  3. Získání ID hello hello kontejneru image instance. Můžete vytvořit seznam všechny kontejnery Docker hello příkazem hello``docker ps –a``
+  4. Přihlaste se toohello volaných portálu pomocí hello následující kroky:
 
     * ```sh
     docker exec [first-four-digits-of-container-ID] cat /var/jenkins_home/secrets/initialAdminPassword
     ```
     Pokud ID kontejneru je 2d24a73b5964, použijte 2d24.
-    * Toto heslo se vyžaduje pro přihlášení k řídicímu panelu Jenkinse z portálu, což je ``http://<HOST-IP>:8080``.
-    * Jakmile se poprvé přihlásíte, můžete si vytvořit vlastní uživatelský účet, který budete používat pro další účely, nebo můžete dál používat účet uživatele s právy pro správu. Když vytvoříte uživatele, budete s ním muset pokračovat.
-  5. Nastavte GitHub pro práci s Jenkinsem, a to pomocí kroků uvedených v tématu věnovaném [vygenerování nového klíče SSH a jeho přidání k agentovi SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
-        * Pomocí pokynů z GitHubu vygenerujte klíč SSH a přidejte ho do účtu GitHubu, který je hostitelem úložiště.
-        * Příkazy popsané u předchozího odkazu spusťte v prostředí Jenkins Dockeru (ne na hostiteli).
-      * Pokud se chcete k prostředí Jenkinse přihlásit z hostitele, použijte následující příkazy:
+    * Heslo je vyžadováno pro přihlášení toohello volaných řídicího panelu portálu, který je``http://<HOST-IP>:8080``
+    * Po přihlášení pro hello poprvé, můžete vytvořit svůj vlastní uživatelský účet a použít pro budoucí účely, nebo můžete pokračovat toouse hello správce účtu. Po vytvoření uživatele, musíte toocontinue s třídou.
+  5. Nastavit Githubu toowork s volaných, pomocí kroků hello v [generování nového klíče SSH a její přidání agenta SSH toohello](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+        * Pomocí pokynů hello klíč SSH hello toogenerate Githubu a tooadd hello SSH klíče toohello účtu GitHub, který je hostitelem hello úložiště.
+        * Spusťte příkazy hello uvedený v hello předcházející odkaz v hello volaných Docker prostředí (a ne na vašem hostiteli).
+      * toosign v toohello volaných prostředí z hostitele, hello použijte následující příkazy:
 
       ```sh
       docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
       ```
 
-Zkontrolujte, že cluster nebo počítač, ve kterém se hostuje image kontejneru Jenkinse, má veřejnou IP adresu. To umožňuje, aby instance Jenkinse dostávala oznámení z GitHubu.
+Ujistěte se, že hello clusteru nebo počítače, kde hello, který je hostován volaných kontejneru image má veřejné IP adresu. To umožňuje hello volaných instance tooreceive oznámení z Githubu.
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>Instalace modulu plug-in Jenkinse pro Service Fabric z portálu
+## <a name="install-hello-service-fabric-jenkins-plug-in-from-hello-portal"></a>Instalovat hello Service Fabric volaných modulu plug-in z portálu hello
 
-1. Přejděte na ``http://PublicIPorFQDN:8081``.
-2. Na řídicím panelu vyberte **Manage Jenkins** (Správa Jenkinse) > **Manage Plugins** (Správa modulů plug-in) > **Advanced** (Rozšířené).
-Tady můžete nahrát modul plug-in. Vyberte **Choose file** (Zvolit soubor) a potom vyberte soubor **serviceFabric.hpi**, který jste si stáhli v části Požadavky. Jakmile vyberete **Upload** (Nahrát), Jenkins modul plug-in automaticky nainstaluje. Pokud je vyžadováno restartování, povolte ho.
+1. Přejděte příliš``http://PublicIPorFQDN:8081``
+2. Hello volaných řídicí panel, vyberte **spravovat volaných** > **Správa modulů plug-in** > **Upřesnit**.
+Tady můžete nahrát modul plug-in. Vyberte **zvolte soubor**a potom vyberte hello **serviceFabric.hpi** souboru, který jste stáhli v části požadavky. Když vyberete **nahrát**, volaných automaticky nainstaluje modul plug-in hello. Pokud je vyžadováno restartování, povolte ho.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Vytvoření a konfigurace úlohy Jenkinse
 
 1. Na řídicím panelu vytvořte **novou položku**.
 2. Zadejte název položky (třeba **MyJob**). Vyberte **free-style project** (volný styl projektu) a klikněte na **OK**.
-3. Přejděte na stránku úlohy a klikněte na **Configure** (Konfigurovat).
+3. Přejděte na stránku hello úlohy a klikněte na tlačítko **konfigurace**.
 
-   a. V sekci obecných informací v části **GitHub project** (Projekt GitHub) zadejte adresu URL projektu. Tato adresa je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy průběžného nasazování a integrace (CI/CD) Jenkinse (např. ``https://github.com/sayantancs/SFJenkins``).
+   a. V části Obecné hello pod **Githubu projektu**, zadejte svoji adresu URL projektu Githubu. Tato adresa URL hostitele hello služby Fabric aplikaci Java, které chcete toointegrate s hello volaných průběžnou integraci, toku průběžné nasazování (CI/CD) (například ``https://github.com/sayantancs/SFJenkins``).
 
-   b. V části **Source Code Management** (Správa zdrojového kódu) vyberte **Git**. Zadejte adresu URL úložiště, které je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy CI/CD Jenkinse (např. ``https://github.com/sayantancs/SFJenkins.git``). V této části můžete také zadat, jaká větev se má sestavit (například **/master**).
-4. Nakonfigurujte *GitHub* (který je hostitelem úložiště) tak, aby mohl komunikovat s Jenkinsem. Použijte k tomu následující postup:
+   b. V části hello **správu zdrojového kódu** vyberte **Git**. Zadejte adresu URL hello úložiště, který je hostitelem aplikace hello Service Fabric Java, které chcete toointegrate s hello toku volaných CI/CD (například ``https://github.com/sayantancs/SFJenkins.git``). Navíc můžete zde určíte které větve toobuild (například **/hlavní**).
+4. Konfigurace vaší *Githubu* (který je hostitelem úložiště hello), aby bylo možné tootalk tooJenkins. Použijte hello následující kroky:
 
-   a. Přejděte na stránku vašeho úložiště Github. Přejděte do části **Settings** (Nastavení) > **Integrations and Services** (Integrace a služby).
+   a. Přejděte tooyour stránce úložiště Githubu. Přejděte příliš**nastavení** > **integrace služby a služby**.
 
-   b. Vyberte **Add Service** (Přidat službu), zadejte **Jenkins** a vyberte **Jenkins-Github plugin** (Modul plug-in Jenkins-Github).
+   b. Vyberte **přidat službu**, typ **volaných**a vyberte hello **modulu plug-in volaných Githubu**.
 
    c. Zadejte adresu URL webhooku Jenkinse (ve výchozím nastavení by měla být ``http://<PublicIPorFQDN>:8081/github-webhook/``). Klikněte na **add/update service** (Přidat/aktualizovat službu).
 
-   d. Do instance Jenkinse se odešle testovací událost. V GitHubu by se měla vedle webhooku zobrazit zelená značka zaškrtnutí a váš projekt se sestaví.
+   d. Událost testování se odesílají tooyour volaných instance. Měli byste vidět zelené zaškrtnutí ve hello webhooku v Githubu a bude sestavení projektu.
 
-   e. V části **Build Triggers** (Triggery sestavení) vyberte požadovanou možnost sestavení. V tomto příkladě použití chcete aktivovat sestavení při každém vložení metodou Push do úložiště. Proto vyberete **GitHub hook trigger for GITScm polling** (Trigger webhooku GitHubu pro cyklické dotazování GitHubu). (Dřív se tato možnost nazývala **Build when a change is pushed to GitHub** (Sestavit při vložení změny metodou Push do GitHubu).
+   e. V části hello **sestavení aktivační události** vyberte, které možnost, kterou chcete vytvořit. V tomto příkladu budete chtít tootrigger sestavení, vždy, když se stane, některé nabízené toohello úložiště. Proto vyberete **GitHub hook trigger for GITScm polling** (Trigger webhooku GitHubu pro cyklické dotazování GitHubu). (Dříve, tato možnost byla volána **sestavení při změně je nabídnutých tooGitHub**.)
 
-   f. V části **Build** (Sestavení) z rozevírací nabídky **Add build step** (Přidat krok sestavení) vyberte možnost **Invoke Gradle Script** (Vyvolání skriptu Gradle). Ve widgetu, který se zobrazí, zadejte do pole **Root build script** (Kořenový skript sestavení) cestu ke kořenovému skriptu sestavení pro vaši aplikaci. Sestavení si ze zadané cesty vezme soubor build.gradle a bude pracovat odpovídajícím způsobem. Pokud vytvoříte projekt ``MyActor`` (pomocí modulu plug-in Eclipse nebo generátoru Yeoman), pole pro kořenový skript sestavení by mělo obsahovat ``${WORKSPACE}/MyActor``. Příklad toho, jak by to mělo vypadat, najdete na následujícím snímku:
+   f. V části hello **sestavení části**, z rozevíracího seznamu hello **přidat krok sestavení**, vyberte možnost hello **vyvolání skriptu Gradle**. V hello pomůcky, který jste dostali, zadejte cestu hello příliš**kořenové sestavení skriptu** pro vaši aplikaci. Převezme build.gradle ze zadané cesty hello a odpovídajícím způsobem funguje. Pokud vytvoříte projekt s názvem ``MyActor`` (s použitím modulu plug-in nebo Yeoman generátor Eclipse hello), by měl obsahovat skriptu buildu kořenové hello ``${WORKSPACE}/MyActor``. V tématu hello následující snímek obrazovky příklad co vypadá takto:
 
     ![Akce sestavení v Jenkinsu pro Service Fabric][build-step]
 
-   g. V rozevírací nabídce **Post-Build Actions** (Akce po sestavení) vyberte **Deploy Service Fabric Project** (Nasazení projektu Service Fabric). V této části je potřeba zadat podrobnosti o clusteru, ve kterém se bude nasazovat aplikace Service Fabric zkompilovaná Jenkinsem. Můžete také zadat další podrobnosti o aplikaci, které se používají k jejímu nasazení. Příklad toho, jak by to mělo vypadat, najdete na následujícím snímku:
+   g. Z hello **akce po sestavení** rozevíracího seznamu, vyberte **nasazení projektu služby Fabric**. Zde je třeba tooprovide cluster, ve kterém se nasazuje podrobnosti, kde hello volaných kompilované aplikace Service Fabric. Můžete zadat také podrobnosti o další aplikace používá toodeploy hello aplikace. V tématu hello následující snímek obrazovky příklad co vypadá takto:
 
     ![Akce sestavení v Jenkinsu pro Service Fabric][post-build-step]
 
    > [!NOTE]
-   > Zde uvedený cluster může být stejný jako cluster, který hostuje aplikaci Jenkins typu kontejner, pokud k nasazení image kontejneru Jenkins používáte Service Fabric.
+   > Zde Hello clusteru může být stejný jako jeden hostitelský hello hello volaných aplikaci kontejneru, v případě, že používáte Service Fabric toodeploy hello volaných kontejneru image.
    >
 
 ## <a name="next-steps"></a>Další kroky
-GitHub a Jenkins jsou teď nakonfigurované. Můžete provést nějaké ukázkové změny v projektu například v úložišti ``MyActor``https://github.com/sayantancs/SFJenkins. Metodou Push změny vložte do vzdálené větve ``master`` (nebo jakékoli jiné větve, kterou jste si pro práci nakonfigurovali). Tím se aktivuje nakonfigurovaná úloha Jenkinse ``MyJob``. Tato úloha načte změny z GitHubu a použije je k sestavení aplikace, kterou nasadí do koncového bodu clusteru, který jste zadali v akcích po sestavení.  
+GitHub a Jenkins jsou teď nakonfigurované. Zvažte některé ukázkové změnit ve vaší ``MyActor`` projektu v příkladu úložiště hello https://github.com/sayantancs/SFJenkins. Vaše změny tooa push vzdáleného ``master`` větve (nebo všechny firemní pobočky, který jste nakonfigurovali toowork s). Tím se spustí úlohu volaných hello ``MyJob``, který jste nakonfigurovali. Načte hello změny z Githubu, je sestavení a nasadí hello toohello clusteru koncový bod aplikace, které jste zadali v akce po sestavení.  
 
   <!-- Images -->
   [build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/build-step.png

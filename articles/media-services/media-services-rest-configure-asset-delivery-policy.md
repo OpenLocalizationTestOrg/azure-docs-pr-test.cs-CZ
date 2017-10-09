@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace zásad doručení assetu pomocí Media Services REST API | Microsoft Docs"
-description: "Toto téma ukazuje, jak nakonfigurovat zásady doručení jiný prostředek pomocí Media Services REST API."
+title: "zásady doručení mediálního aaaConfiguring pomocí Media Services REST API | Microsoft Docs"
+description: "Toto téma ukazuje, jak pomocí Media Services REST API zásady pro doručení tooconfigure jiný prostředek."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 7ffbde11b943961dd3a3b5edebd0cfd52429e845
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8203230d570935e17382c598820dbfe42f83f8d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurace zásad doručení assetu
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Pokud máte v plánu pro doručování dynamicky šifrovaných prostředky, jeden z kroků v pracovním postupu doručování obsahu Media Services je konfigurace zásad doručení pro prostředky. Zásady doručení assetu informuje Media Services, jak chcete použít pro váš asset, který bude doručen: do které protokol pro streamování by měl váš asset dynamicky zabalené (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), zda chcete dynamicky šifrovat. váš asset a jak (obálky nebo common encryption).
+Pokud máte v plánu prostředky toodeliver dynamicky šifrovat, jeden z hello kroků v hello Media Services obsahu doručení pracovního postupu je konfigurace zásad doručení pro prostředky. zásady doručení assetu Hello informuje Media Services, jak chcete použít pro váš asset toobe doručit: do streamování protokol, který by měl váš asset dynamicky zabalené (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), zda chcete toodynamically váš asset šifrovat a jak (obálky nebo common encryption).
 
-Toto téma popisuje, proč a jak vytvořit a nakonfigurovat zásady doručení assetu.
+Toto téma popisuje, proč a jak toocreate a nakonfigurujte zásady doručení assetu.
 
 >[!NOTE]
->Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
+>Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu. 
 >
->Abyste mohli používat dynamické balením a dynamickým šifrováním také váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí.
+>Navíc toobe možné toouse dynamické balením a dynamickým šifrováním váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí.
 
-Různé zásady je možné aplikovat na stejný asset. Můžete například použít šifrování PlayReady na technologie Smooth Streaming a pomocí standardu AES Envelope šifrování a MPEG DASH, HLS. Veškeré protokoly, které nejsou v zásadách doručení definovány (například když přidáte jedinou zásadu, která jako protokol určuje pouze HLS), budou při streamování blokovány. Výjimkou je, pokud nemáte definovány vůbec žádné zásady doručení assetu. Pak budou všechny protokoly povolené v nešifrované podobě.
+Je možné aplikovat různé zásady toohello stejné asset. Například může použít PlayReady šifrování tooSmooth Streaming a pomocí standardu AES Envelope šifrování tooMPEG DASH a HLS. Veškeré protokoly, které nejsou v zásadách doručení definovány (například přidáte jedinou zásadu, která jako hello protokol určuje pouze HLS) budou při streamování blokovány. Výjimka toothis Hello je, pokud máte definovány vůbec žádné zásady doručení assetu. Potom bude možné v hello zrušte všechny protokoly.
 
-Pokud chcete doručovat šifrované asset úložiště, musíte nakonfigurovat zásady doručení assetu. Před asset Streamovat, server datových proudů odebere šifrování úložiště a datové proudy svůj obsah pomocí zadaného doručování zásad. Například k poskytování asset šifrován Advanced Encryption (Standard AES) obálky šifrovací klíč, nastavte typ zásad na **DynamicEnvelopeEncryption**. Pokud chcete odebrat šifrování úložiště a Streamovat prostředek v nešifrované podobě, nastavte typ zásad na **NoDynamicEncryption**. Postupujte podle příklady, které ukazují, jak konfigurovat tyto typy zásad.
+Pokud chcete toodeliver asset šifrované úložiště, musíte nakonfigurovat zásady doručení assetu hello. Před Streamovat asset hello streamování šifrování úložiště hello odebere server a datových proudů svůj obsah pomocí hello zadat zásady pro doručení. Například toodeliver asset šifrován Advanced Encryption (Standard AES) obálky šifrovací klíč, nastavte typ zásad hello příliš**DynamicEnvelopeEncryption**. šifrování úložiště tooremove a asset hello datový proud v hello jasné, nastavte typ zásad hello příliš**NoDynamicEncryption**. Příklady, které ukazují, jak tooconfigure tyto typy zásad podle.
 
-V závislosti na tom, jak nakonfigurovat zásady doručení assetu by nebudete moct dynamicky balíčku, dynamicky šifrovat a stream u následujících protokolů streamování: technologie Smooth Streaming, HLS, datové proudy MPEG DASH.
+V závislosti na tom, jak nakonfigurovat zásady doručení assetu hello je bude možné toodynamically balíčku, dynamicky šifrovat a stream hello následujících protokolů datových proudů: technologie Smooth Streaming, HLS, datové proudy MPEG DASH.
 
-V následujícím seznamu jsou formáty, který používáte pro datový proud Smooth, HLS, DASH.
+Hello následující seznam ukazuje hello formáty, že používáte toostream Smooth, HLS, DASH.
 
 Technologie Smooth Streaming:
 
@@ -53,30 +53,30 @@ MPEG DASH
 {streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
-Pokyny k publikování assetu a vytvoření adresy URL streamování najdete v článku o [vytvoření adresy URL streamování](media-services-deliver-streaming-content.md).
+Pokyny, jak toopublish prostředek a sestavení adresu URL pro streamování, najdete v části [sestavit adresu URL pro streamování](media-services-deliver-streaming-content.md).
 
 ## <a name="considerations"></a>Požadavky
-* Nelze odstranit AssetDeliveryPolicy přidružený prostředek při Lokátor OnDemand (streaming) existuje pro tento prostředek. Doporučuje se před odstraněním zásady odeberte zásady z prostředku.
-* Šifrované majetku úložiště nelze vytvořit lokátor streamování, nastavena žádné zásady doručení assetu.  Není-li Asset šifrování úložiště, systém vám umožní vytvořit Lokátor a Streamovat prostředek v nešifrované podobě bez zásady pro doručení assetu.
-* Můžete mít více zásady doručení mediálního přidružené jednoho datového zdroje, ale můžete určit pouze jeden způsob, jak zpracovávat dané AssetDeliveryProtocol.  Znamená, pokud se pokusíte propojit dvě zásady doručení, které zadat AssetDeliveryProtocol.SmoothStreaming protokol, který bude výsledkem chyba, protože systém nebude vědět, který jeden se má použít, když klient odešle požadavek technologie Smooth Streaming.
-* Pokud máte prostředek s stávající Lokátor streamování, nelze propojit nové zásady pro daný prostředek, odpojit existující zásady z prostředku nebo aktualizujete zásady pro doručení přidružený asset.  Nejdřív musíte odstraňte Lokátor streamování, upravit zásady a potom je znovu vytvořit lokátor streamování.  Stejné locatorId můžete použít, když je znovu vytvořit lokátor streamování, ale měli byste zajistit, že vzhledem k tomu, že do mezipaměti obsah počátek nebo podřízené CDN, který nebude způsobovat problémy pro klienty.
+* Nelze odstranit AssetDeliveryPolicy přidružený prostředek při Lokátor OnDemand (streaming) existuje pro tento prostředek. Hello doporučení je zásada hello tooremove z hello asset před odstraněním hello zásad.
+* Šifrované majetku úložiště nelze vytvořit lokátor streamování, nastavena žádné zásady doručení assetu.  Není-li hello Asset šifrování úložiště, hello systému vám umožní vytvoření prostředku hello Lokátor a datový proud v hello zrušte bez zásady pro doručení assetu.
+* Může mít několik zásady doručení mediálního přidružené jednoho datového zdroje, ale můžete zadat jenom jeden ze způsobů toohandle daného AssetDeliveryProtocol.  Znamená, pokud se pokusíte toolink dvě zásady doručení určující hello AssetDeliveryProtocol.SmoothStreaming protokol, který bude výsledkem chyba, protože systém hello nebude vědět, které z nich chcete tooapply když klient zadává žádost technologie Smooth Streaming.
+* Pokud máte prostředek s stávající Lokátor streamování, nelze propojit nový prostředek toohello zásady, odpojit existující zásady z hello asset nebo aktualizujete zásady pro doručení přidružený hello asset.  Můžete nejprve mít Lokátor streamování hello tooremove, upravte hello zásady a potom je znovu vytvořit lokátor streamování hello.  Můžete použít hello, které by měly stejné locatorId při vytvoření hello streamování Lokátor ale můžete zajistit, který nezpůsobí problémy pro klienty, protože do mezipaměti obsah hello původ nebo příjem dat CDN.
 
 >[!NOTE]
 
 >Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-toomedia-services"></a>Připojení služby tooMedia
 
-Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
+>Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
 
 ## <a name="clear-asset-delivery-policy"></a>Zásady doručení assetu vymazat
 ### <a id="create_asset_delivery_policy"></a>Vytvoření zásady doručení assetu
-Následující požadavek HTTP vytvoří zásady doručení assetu, který určuje nelze použít dynamické šifrování a poskytovat datový proud v některém z těchto protokolů: protokoly MPEG DASH, HLS nebo technologie Smooth Streaming. 
+Hello následující požadavek HTTP vytvoří zásady doručení assetu, která určuje toonot použít dynamické šifrování a protokoly datového proudu hello toodeliver v některém z následujících hello: protokoly MPEG DASH, HLS nebo technologie Smooth Streaming. 
 
-Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPolicy najdete v tématu [typy používané při definování AssetDeliveryPolicy](#types) části.   
+Informace o co hodnoty, které můžete zadat při vytváření AssetDeliveryPolicy, najdete v části hello [typy používané při definování AssetDeliveryPolicy](#types) části.   
 
 Žádost:
 
@@ -123,7 +123,7 @@ Odpověď:
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
 ### <a id="link_asset_with_asset_delivery_policy"></a>Odkaz asset zásady doručení assetu
-Následující požadavek HTTP odkazuje na zásady doručení assetu pro daný prostředek.
+Hello následující hello odkazy požadavku HTTP zadat zásady doručení pro asset toohello assetu.
 
 Žádost:
 
@@ -146,13 +146,13 @@ Odpověď:
 
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Zásady doručení assetu DynamicEnvelopeEncryption
-### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Vytvořte klíč obsahu typu EnvelopeEncryption a tu propojit na prostředku
-Při zadávání zásad doručení DynamicEnvelopeEncryption, budete muset nezapomeňte propojit klíč obsahu typu EnvelopeEncryption asset. Další informace najdete v tématu: [vytváření klíč obsahu](media-services-rest-create-contentkey.md)).
+### <a name="create-content-key-of-hello-envelopeencryption-type-and-link-it-toohello-asset"></a>Vytvořte klíč obsahu typu EnvelopeEncryption hello a propojit jej toohello asset
+Při zadávání zásad doručení DynamicEnvelopeEncryption, musíte se toolink toomake váš asset tooa obsahu klíč hello EnvelopeEncryption typu. Další informace najdete v tématu: [vytváření klíč obsahu](media-services-rest-create-contentkey.md)).
 
 ### <a id="get_delivery_url"></a>Získat adresu URL pro doručení
-Získáte adresu URL doručení pro metodu zadaný doručení obsahu klíče vytvořeného v předchozím kroku. Klient používá vrácené adresu URL k vyžádání AES klíč nebo licence PlayReady, aby přehrávání chráněného obsahu.
+Adresa URL doručení hello GET pro hello zadat metodu doručení obsahu klíče hello vytvořili v předchozím kroku hello. Klient používá hello vrátila adresa URL toorequest AES klíč nebo licence PlayReady v pořadí tooplayback hello chráněného obsahu.
 
-Zadejte typ adresy URL získat v textu požadavku HTTP. Pokud chráníte svůj obsah pomocí technologie PlayReady, žádosti o adresu URL získání licence Media Services PlayReady pomocí 1 pro keyDeliveryType: {"keyDeliveryType": 1}. Pokud chráníte svůj obsah pomocí šifrování obálky, požadavků adresu URL pro získání klíče zadáním 2 pro keyDeliveryType: {"keyDeliveryType": 2}.
+Zadejte typ hello tooget hello adresy URL v textu hello hello požadavku protokolu HTTP. Pokud chráníte svůj obsah pomocí technologie PlayReady, žádosti o adresu URL získání licence Media Services PlayReady pomocí 1 pro hello keyDeliveryType: {"keyDeliveryType": 1}. Pokud chráníte svůj obsah pomocí šifrování hello obálky, požadavků adresu URL pro získání klíče zadáním 2 pro keyDeliveryType: {"keyDeliveryType": 2}.
 
 Žádost:
 
@@ -188,9 +188,9 @@ Odpověď:
 
 
 ### <a name="create-asset-delivery-policy"></a>Vytvoření zásady doručení assetu
-Vytvoří následující požadavek HTTP **AssetDeliveryPolicy** nakonfigurovaný pro použití dynamické obálky šifrování (**DynamicEnvelopeEncryption**) k **HLS** protokol (v tomto příkladu jiné protokoly budou při streamování blokovány). 
+Hello následující požadavek HTTP vytvoří hello **AssetDeliveryPolicy** který je nakonfigurovaný tooapply dynamické obálky šifrování (**DynamicEnvelopeEncryption**) toohello **HLS**protokolu (v tomto příkladu jiné protokoly budou při streamování blokovány). 
 
-Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPolicy najdete v tématu [typy používané při definování AssetDeliveryPolicy](#types) části.   
+Informace o co hodnoty, které můžete zadat při vytváření AssetDeliveryPolicy, najdete v části hello [typy používané při definování AssetDeliveryPolicy](#types) části.   
 
 Žádost:
 
@@ -232,16 +232,16 @@ Odpověď:
 V tématu [odkaz asset zásady doručení assetu](#link_asset_with_asset_delivery_policy)
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Zásady doručení assetu DynamicCommonEncryption
-### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Vytvořte klíč obsahu typu CommonEncryption a tu propojit na prostředku
-Při zadávání zásad doručení DynamicCommonEncryption, budete muset nezapomeňte propojit klíč obsahu typu CommonEncryption asset. Další informace najdete v tématu: [vytváření klíč obsahu](media-services-rest-create-contentkey.md)).
+### <a name="create-content-key-of-hello-commonencryption-type-and-link-it-toohello-asset"></a>Vytvořte klíč obsahu typu CommonEncryption hello a propojit jej toohello asset
+Při zadávání zásad doručení DynamicCommonEncryption, musíte se toolink toomake váš asset tooa obsahu klíč hello CommonEncryption typu. Další informace najdete v tématu: [vytváření klíč obsahu](media-services-rest-create-contentkey.md)).
 
 ### <a name="get-delivery-url"></a>Získat adresu URL pro doručení
-Získáte adresu URL doručení pro metodu doručení PlayReady obsahu klíče vytvořeného v předchozím kroku. Klient používá vrácené adresu URL k vyžádání licence PlayReady, aby přehrávání chráněného obsahu. Další informace najdete v tématu [získat adresu URL doručení](#get_delivery_url).
+Získáte hello doručení URL pro metodu doručení PlayReady hello hello obsahu klíče vytvořené v předchozím kroku hello. Klient používá hello vrátil toorequest adresu URL licence PlayReady v pořadí tooplayback hello chráněný obsah. Další informace najdete v tématu [získat adresu URL doručení](#get_delivery_url).
 
 ### <a name="create-asset-delivery-policy"></a>Vytvoření zásady doručení assetu
-Vytvoří následující požadavek HTTP **AssetDeliveryPolicy** nakonfigurovaný pro použití běžného dynamického šifrování (**DynamicCommonEncryption**) do **technologie Smooth Streaming**protokolu (v tomto příkladu jiné protokoly budou při streamování blokovány). 
+Hello následující požadavek HTTP vytvoří hello **AssetDeliveryPolicy** který je nakonfigurovaný tooapply běžného dynamického šifrování (**DynamicCommonEncryption**) toohello **technologie Smooth Streaming**  protokolu (v tomto příkladu jiné protokoly budou při streamování blokovány). 
 
-Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPolicy najdete v tématu [typy používané při definování AssetDeliveryPolicy](#types) části.   
+Informace o co hodnoty, které můžete zadat při vytváření AssetDeliveryPolicy, najdete v části hello [typy používané při definování AssetDeliveryPolicy](#types) části.   
 
 Žádost:
 
@@ -260,14 +260,14 @@ Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPo
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Pokud chcete chránit obsah pomocí Widevine DRM, aktualizujte hodnoty AssetDeliveryConfiguration používat WidevineLicenseAcquisitionUrl (což je hodnota 7) a zadejte adresu URL služby doručování licencí. Můžete použít následující partneři AMS doručit licence na Widevine: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
+Pokud chcete tooprotect svůj obsah pomocí Widevine DRM, aktualizujte hello AssetDeliveryConfiguration hodnoty toouse WidevineLicenseAcquisitionUrl (což je hodnota hello 7) a zadejte adresu URL hello služby doručování licencí. Můžete použít následující toohelp partneři AMS doručování licence na Widevine hello: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
 
 Například: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
 > [!NOTE]
-> Při šifrování s technologií Widevine, by pouze možné doručíte pomocí čárka. Nezapomeňte zadat DASH (2) v doručovací protokol assetu.
+> Při šifrování s technologií Widevine, by být pouze možnost toodeliver pomocí čárka. Ujistěte se, že toospecify DASH (2) v hello doručovací protokol assetu.
 > 
 > 
 
@@ -278,7 +278,7 @@ V tématu [odkaz asset zásady doručení assetu](#link_asset_with_asset_deliver
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
-Následující výčet popisuje hodnoty, které lze nastavit pro doručovací protokol assetu.
+Hello následující výčtu popisuje hodnoty, které lze nastavit pro doručovací protokol assetu hello.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -313,7 +313,7 @@ Následující výčet popisuje hodnoty, které lze nastavit pro doručovací pr
 
 ### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
 
-Následující výčet popisuje hodnoty, které můžete zadat pro typ zásad doručení assetu.  
+Hello následující výčtu popisuje hodnoty, které můžete zadat pro typ zásady doručení assetu hello.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -323,12 +323,12 @@ Následující výčet popisuje hodnoty, které můžete zadat pro typ zásad do
         None,
 
         /// <summary>
-        /// The Asset should not be delivered via this AssetDeliveryProtocol. 
+        /// hello Asset should not be delivered via this AssetDeliveryProtocol. 
         /// </summary>
         Blocked, 
 
         /// <summary>
-        /// Do not apply dynamic encryption to the asset.
+        /// Do not apply dynamic encryption toohello asset.
         /// </summary>
         /// 
         NoDynamicEncryption,  
@@ -346,7 +346,7 @@ Následující výčet popisuje hodnoty, které můžete zadat pro typ zásad do
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
 
-Následující výčet popisuje hodnoty, které můžete použít ke konfiguraci metodu doručení obsahu klíče, který se klient.
+Hello následující výčtu popisuje hodnoty, které můžete použít metodu doručení hello tooconfigure hello obsahu toohello klíče klienta.
     
     public enum ContentKeyDeliveryType
     {
@@ -379,7 +379,7 @@ Následující výčet popisuje hodnoty, které můžete použít ke konfiguraci
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
 
-Následující výčet popisuje hodnoty, které můžete nastavit, aby konfigurace klíče, které slouží k získání konkrétní konfigurace pro zásady pro doručení assetu.
+Následující výčet Hello popisuje hodnoty můžete nastavit určité konfigurace tooget tooconfigure klíčů používaných pro zásady pro doručení assetu.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -399,22 +399,22 @@ Následující výčet popisuje hodnoty, které můžete nastavit, aby konfigura
         EnvelopeBaseKeyAcquisitionUrl,
 
         /// <summary>
-        /// The initialization vector to use for envelope encryption in Base64 format.
+        /// hello initialization vector toouse for envelope encryption in Base64 format.
         /// </summary>
         EnvelopeEncryptionIVAsBase64,
 
         /// <summary>
-        /// The PlayReady License Acquisition Url to use for common encryption.
+        /// hello PlayReady License Acquisition Url toouse for common encryption.
         /// </summary>
         PlayReadyLicenseAcquisitionUrl,
 
         /// <summary>
-        /// The PlayReady Custom Attributes to add to the PlayReady Content Header
+        /// hello PlayReady Custom Attributes tooadd toohello PlayReady Content Header
         /// </summary>
         PlayReadyCustomAttributes,
 
         /// <summary>
-        /// The initialization vector to use for envelope encryption.
+        /// hello initialization vector toouse for envelope encryption.
         /// </summary>
         EnvelopeEncryptionIV,
 

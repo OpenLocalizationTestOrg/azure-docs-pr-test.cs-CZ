@@ -1,6 +1,6 @@
 ---
-title: "Odeslání souborů ze zařízení do služby Azure IoT Hub s .NET | Microsoft Docs"
-description: "Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro .NET. Odeslané soubory jsou uloženy v kontejneru objektů blob úložiště Azure."
+title: "soubory aaaUpload z tooAzure zařízení IoT Hub s .NET | Microsoft Docs"
+description: "Jak tooupload souborů z cloudu toohello zařízení pomocí zařízení Azure IoT SDK pro .NET. Odeslané soubory jsou uloženy v kontejneru objektů blob úložiště Azure."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: b45d85d0d77cf47f36cb793bc8c0dbe2d5c12634
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 07d555f6ba8b067bbd3233bc8eebaa220ad2388b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Odeslání souborů ze zařízení do cloudu službou IoT Hub pomocí rozhraní .NET
+# <a name="upload-files-from-your-device-toohello-cloud-with-iot-hub-using-net"></a>Ukládání souborů z vašeho zařízení toohello cloud službou IoT Hub pomocí rozhraní .NET
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-V tomto kurzu vychází kód [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) kurzu ukazují, jak využít možnosti nahrávání souboru služby IoT Hub. Jak ukazuje na:
+V tomto kurzu vychází hello kód v hello [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) kurz tooshow můžete jak toouse hello možnosti nahrávání souboru IoT Hub. Jak ukazuje na:
 
 - Bezpečně zadejte zařízení s Azure blob identifikátor URI pro nahrání souboru.
-- Oznámení o odeslání souboru IoT Hub použijte k aktivaci zpracování souboru ve vaší aplikaci back-end.
+- Použijte hello IoT Hub souboru odesílání oznámení tootrigger zpracování souboru hello ve vaší aplikaci back-end.
 
-[Začínáme se službou IoT Hub](iot-hub-csharp-csharp-getstarted.md) a [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) kurzy zobrazit základních funkcí zařízení cloud a z cloudu do zařízení zasílání zpráv služby IoT Hub. [Zprávy procesu zařízení-Cloud](iot-hub-csharp-csharp-process-d2c.md) kurz popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení cloud do úložiště objektů blob v Azure. Ale v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně malý zprávy typu zařízení cloud, které IoT Hub přijímá. Například:
+Hello [Začínáme se službou IoT Hub](iot-hub-csharp-csharp-getstarted.md) a [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) kurzy zobrazit hello základních zařízení cloud a z cloudu do zařízení zasílání zpráv funkcí služby IoT Hub. Hello [zprávy procesu zařízení-Cloud](iot-hub-csharp-csharp-process-d2c.md) kurz popisuje zprávy typu zařízení cloud způsob tooreliably úložiště v Azure blob storage. Ale v některých scénářích nelze mapovat snadno hello data, která vaše zařízení odesílají do hello poměrně malý zařízení cloud zprávy, které přijímá IoT Hub. Například:
 
 * Velkých souborů, které obsahují Image
 * Videa
 * Data vibrace odebírána data v vysoká frekvence
 * Určitou formu předběžně zpracované dat
 
-Tyto soubory jsou obvykle dávkové zpracování v cloudu pomocí nástrojů, jako [Azure Data Factory](../data-factory/index.md) nebo [Hadoop](../hdinsight/index.md) zásobníku. Pokud budete potřebovat k nahrání souborů ze zařízení, když můžete nadále používat zabezpečení a spolehlivost služby IoT Hub.
+Tyto soubory jsou obvykle dávkové zpracování v hello cloudu pomocí nástrojů, jako [Azure Data Factory](../data-factory/index.md) nebo hello [Hadoop](../hdinsight/index.md) zásobníku. Pokud budete potřebovat tooupload soubory ze zařízení, můžete nadále používat hello zabezpečení a spolehlivost služby IoT Hub.
 
-Na konci tohoto kurzu můžete spustit dvě aplikace konzoly .NET:
+Na konci hello tohoto kurzu můžete spustit dvě aplikace konzoly .NET:
 
-* **SimulatedDevice**, upravenou verzi aplikace vytvořená v [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) kurzu. Tato aplikace se uloží soubor do úložiště pomocí identifikátoru URI SAS poskytované služby IoT hub.
+* **SimulatedDevice**, upravenou verzi hello aplikace vytvořená v hello [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) kurzu. Tato aplikace odešle soubor toostorage, pomocí SAS URI poskytované služby IoT hub.
 * **ReadFileUploadNotification**, který obdrží oznámení o odeslání souboru ze služby IoT hub.
 
 > [!NOTE]
-> IoT Hub podporuje mnoho zařízení platformy a jazyky (včetně C, Javy a JavaScriptu) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [Azure střediska pro vývojáře IoT] podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
+> IoT Hub podporuje mnoho zařízení platformy a jazyky (včetně C, Javy a JavaScriptu) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat toohello [Azure střediska pro vývojáře IoT] pro podrobné pokyny, jak tooconnect tooAzure vaše zařízení IoT Hub.
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
 * Visual Studio 2015 nebo Visual Studio 2017
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
@@ -55,21 +55,21 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="upload-a-file-from-a-device-app"></a>Nahrát soubor z aplikace na zařízení
 
-V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) pro příjem zpráv typu cloud zařízení ze služby IoT hub.
+V této části upravíte hello zařízení aplikaci, kterou jste vytvořili v [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-csharp-csharp-c2d.md) tooreceive zprávy typu cloud zařízení ze služby IoT hub hello.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem myši **SimulatedDevice** projektu, klikněte na tlačítko **přidat**a potom klikněte na **existující položka**. Přejděte na soubor obrázku a její zahrnutí do projektu. Tento kurz předpokládá bitovou kopii jmenuje `image.jpg`.
+1. V sadě Visual Studio, klikněte pravým tlačítkem na hello **SimulatedDevice** projektu, klikněte na tlačítko **přidat**a potom klikněte na **existující položka**. Přejděte tooan soubor bitové kopie a její zahrnutí do projektu. Tento kurz předpokládá hello image jmenuje `image.jpg`.
 
-1. Klikněte pravým tlačítkem na bitovou kopii a pak klikněte na **vlastnosti**. Ujistěte se, že **kopírovat do výstupního adresáře** je nastaven na **vždy Kopírovat**.
+1. Klikněte pravým tlačítkem na hello image a pak klikněte na **vlastnosti**. Ujistěte se, že **zkopírujte tooOutput Directory** je nastaven příliš**vždy Kopírovat**.
 
     ![][1]
 
-1. V **Program.cs** souboru, v horní části souboru přidejte následující příkazy:
+1. V hello **Program.cs** soubor, přidejte následující příkazy hello horní části souboru hello hello:
 
     ```csharp
     using System.IO;
     ```
 
-1. Přidejte následující metodu do třídy **Program**:
+1. Přidejte následující metodu toohello hello **Program** třídy:
 
     ```csharp
     private static async void SendToBlobAsync()
@@ -84,49 +84,49 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesí
         }
 
         watch.Stop();
-        Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
+        Console.WriteLine("Time tooupload file: {0}ms\n", watch.ElapsedMilliseconds);
     }
     ```
 
-    `UploadToBlobAsync` Metoda přebírá ve zdrojovém souboru název a datový proud souboru k odeslání a zpracovává nahrávání do úložiště. Konzolové aplikace zobrazí dobu potřebnou k odeslání souboru.
+    Hello `UploadToBlobAsync` metoda přebírá v názvu souboru hello a zdroj datového proudu souboru toobe hello odeslán a zpracovává toostorage nahrávání hello. konzolové aplikace Hello zobrazí hello doba trvání tooupload hello souboru.
 
-1. Přidejte následující metodu v **hlavní** metoda, těsně před `Console.ReadLine()` řádku:
+1. Přidejte následující metodu v hello hello **hlavní** metoda bezprostředně před hello `Console.ReadLine()` řádku:
 
     ```csharp
     SendToBlobAsync();
     ```
 
 > [!NOTE]
-> Pro saké na jednoduchost tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciálního omezení rychlosti), dle pokynů v článku na webu MSDN [přechodných chyb].
+> Pro saké na jednoduchost tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciálního omezení rychlosti), dle pokynů v článku na webu MSDN hello [přechodných chyb].
 
 ## <a name="receive-a-file-upload-notification"></a>Nechte si zaslat oznámení nahrávání souborů
 
 V této části napíšete konzolovou aplikaci .NET, která přijímá zprávy oznámení nahrávání souborů ze služby IoT Hub.
 
-1. V aktuálním řešení sady Visual Studio vytvořte projekt Visual C# Windows pomocí **konzolové aplikace** šablona projektu. Název projektu **ReadFileUploadNotification**.
+1. V hello aktuální řešení nástroje Visual Studio vytvořte projekt Visual C# Windows pomocí hello **konzolové aplikace** šablona projektu. Název projektu hello **ReadFileUploadNotification**.
 
     ![Nový projekt v sadě Visual Studio][2]
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **ReadFileUploadNotification** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
+1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ReadFileUploadNotification** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
 
-1. V **Správce balíčků NuGet** vyhledejte **Microsoft.Azure.Devices**, klikněte na tlačítko **nainstalovat**a přijměte podmínky použití.
+1. V hello **Správce balíčků NuGet** vyhledejte **Microsoft.Azure.Devices**, klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello.
 
-    Tato akce stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT] v **ReadFileUploadNotification** projektu.
+    Tato akce stáhne, nainstaluje a přidá odkaz toohello [balíček NuGet sady SDK služby Azure IoT] v hello **ReadFileUploadNotification** projektu.
 
-1. V **Program.cs** souboru, v horní části souboru přidejte následující příkazy:
+1. V hello **Program.cs** soubor, přidejte následující příkazy hello horní části souboru hello hello:
 
     ```csharp
     using Microsoft.Azure.Devices;
     ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT hub z [Začínáme s centrem IoT]:
+1. Přidejte následující pole toohello hello **Program** třídy. Nahraďte hodnotu zástupného symbolu hello s hello IoT hub připojovacího řetězce z [Začínáme s centrem IoT]:
 
     ```csharp
     static ServiceClient serviceClient;
     static string connectionString = "{iot hub connection string}";
     ```
 
-1. Přidejte následující metodu do třídy **Program**:
+1. Přidejte následující metodu toohello hello **Program** třídy:
 
     ```csharp
     private async static void ReceiveFileUploadNotificationAsync()
@@ -148,37 +148,37 @@ V této části napíšete konzolovou aplikaci .NET, která přijímá zprávy o
     }
     ```
 
-    Všimněte si, že tento vzor receive se shoduje s klíčem pro příjem zpráv typu cloud zařízení z aplikace zařízení.
+    Poznámka: Tento vzor receive je hello stejné jeden použité tooreceive zprávy typu cloud zařízení z aplikace hello zařízení.
 
-1. Nakonec do metody **Main** přidejte následující řádky:
+1. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
 
     ```csharp
     Console.WriteLine("Receive file upload notifications\n");
     serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
     ReceiveFileUploadNotificationAsync();
-    Console.WriteLine("Press Enter to exit\n");
+    Console.WriteLine("Press Enter tooexit\n");
     Console.ReadLine();
     ```
 
-## <a name="run-the-applications"></a>Spuštění aplikací
+## <a name="run-hello-applications"></a>Spouštění aplikací hello
 
-Nyní můžete spustit aplikace.
+Teď je připraven toorun hello aplikace.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění**. Vyberte **více projektů po spuštění**, vyberte **spustit** akce pro **ReadFileUploadNotification** a **SimulatedDevice**.
+1. V sadě Visual Studio, klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění**. Vyberte **více projektů po spuštění**, pak vyberte hello **spustit** akce pro **ReadFileUploadNotification** a **SimulatedDevice**.
 
-1. Stiskněte klávesu **F5**. Obě aplikace by se měl spustit. Měli byste vidět nahrávání dokončit v jedné aplikaci konzoly a odesílání oznámení přijatých konzolovou aplikaci. Můžete použít [portál Azure] nebo Průzkumníka serveru Visual Studia chcete zkontrolovat přítomnost nahrávaný soubor ve vašem účtu úložiště Azure.
+1. Stiskněte klávesu **F5**. Obě aplikace by se měl spustit. Měli byste vidět hello nahrávání skončil za jeden konzolovou aplikaci a hello odesílání oznámení přijatých hello jiných konzolovou aplikaci. Můžete použít hello [portál Azure] nebo Průzkumníka serveru Visual Studia toocheck přítomnost hello hello souboru v účtu úložiště Azure.
 
     ![][50]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak používat funkce nahrávání souboru služby IoT Hub pro zjednodušení nahrávání souborů ze zařízení. Můžete dál prozkoumat funkcí služby IoT hub a scénáře v následujících článcích:
+V tomto kurzu jste se dozvěděli, jak nahrát soubor hello toouse možnosti nahrávání souborů toosimplify ze zařízení IoT Hub. Scénáře a tooexplore funkcí služby IoT hub můžete pokračovat v hello následující články:
 
 * [Vytvoření služby IoT hub prostřednictvím kódu programu][lnk-create-hub]
-* [Úvod do jazyka C SDK][lnk-c-sdk]
+* [Úvod tooC SDK][lnk-c-sdk]
 * [Sady SDK služby Azure IoT][lnk-sdks]
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
 
 * [Simulaci zařízení s hranou IoT][lnk-iotedge]
 

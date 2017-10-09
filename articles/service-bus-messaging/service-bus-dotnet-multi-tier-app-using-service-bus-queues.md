@@ -1,6 +1,6 @@
 ---
-title: "Vícevrstvá aplikace .NET, která používá Azure Service Bus | Dokumentace Microsoftu"
-description: "Kurz .NET, který vám pomůže vytvořit vícevrstvou aplikaci v Azure, která používá fronty Service Bus ke komunikaci mezi vrstvami."
+title: "aaa.NET vícevrstvé aplikace pomocí Azure Service Bus | Microsoft Docs"
+description: "Kurz .NET, který vám pomůže vytvořit vícevrstvou aplikaci v Azure, která používá toocommunicate fronty Service Bus mezi vrstvami."
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,100 +14,100 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: sethm
-ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 485910ff1d3b8b0a709ee14ede32e57cf873829a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Vícevrstvá aplikace .NET, která používá fronty Azure Service Bus
 ## <a name="introduction"></a>Úvod
-Vývoj pro Microsoft Azure je snadný při použití Visual Studia a bezplatné sady Azure SDK pro .NET. Tento kurz vás provede jednotlivými kroky při vytváření aplikace, která používá několik prostředků Azure běžících ve vašem lokálním prostředí.
+Vývoj pro Microsoft Azure je snadný při použití sady Visual Studio a hello bezplatné sady Azure SDK pro .NET. Tento kurz vás provede kroky toocreate hello aplikaci, která používá několik prostředků Azure běžících ve vašem místním prostředí.
 
-Naučíte se:
+Co se dozvíte hello následující:
 
-* Jak ve svém počítači vytvořit prostředí pro vývoj pro Azure stažením a instalací jednoho balíčku.
-* Jak používat Visual Studio k vývoji pro Azure.
-* Jak vytvořit vícevrstvou aplikaci v Azure pomocí webových rolí a rolí pracovního procesu.
-* Jak komunikovat mezi vrstvami pomocí front Service Bus.
+* Jak tooenable počítače pro vývoj pro Azure s jedním stáhněte a nainstalujte.
+* Jak toouse toodevelop Visual Studio pro Azure.
+* Jak toocreate vícevrstvé aplikace v Azure pomocí webových a pracovních rolí.
+* Jak toocommunicate mezi úrovně pomocí front Service Bus.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-V tomto kurzu sestavíte a spustíte vícevrstvou aplikaci v cloudové službě Azure. Front-endem je webová role ASP.NET MVC a back-endem je role pracovního procesu, která používá frontu Service Bus. Můžete vytvořit stejnou vícevrstvou aplikaci s front-endem jako webový projekt, který není nasazený do cloudové služby, ale na web Azure. Taky můžete vyzkoušet kurz [Hybridní lokální/cloudová aplikace .NET](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md).
+V tomto kurzu budete sestavte a spusťte hello vícevrstvé aplikace v cloudové službě Azure. Webová role ASP.NET MVC je Hello front-endu a back-end hello role pracovního procesu, který používá fronty Service Bus. Můžete vytvořit stejnou vícevrstvou aplikaci s front-endu hello jako webový projekt, který je nasazený tooan webové stránky Azure namísto cloudové služby hello. Můžete také zkusit hello [hybridní lokální/Cloudová aplikace .NET](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) kurzu.
 
-Na následujícím snímku obrazovky je vidět hotová aplikace.
+Hello následující snímek obrazovky ukazuje aplikace hello byla dokončena.
 
 ![][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Přehled scénáře: komunikace mezi rolemi
-Abyste mohli odeslat objednávku ke zpracování, musí komponenta uživatelského prostředí front-endu, která běží ve webové roli, pracovat s logikou střední úrovně běžící v roli pracovního procesu. Tento příklad používá zasílání zpráv Service Bus pro komunikaci mezi vrstvami.
+toosubmit objednávku ke zpracování, hello front-end součást uživatelského rozhraní, spuštěné v hello webovou roli, musí spolupracovat s hello logikou střední úrovně běžící v roli pracovního procesu hello. Tento příklad používá pro hello komunikaci mezi vrstvami hello zasílání zpráv Service Bus.
 
-Pomocí zasílání zpráv Service Bus mezi webem a prostředními úrovněmi odděluje obě části. Na rozdíl od přímého přenosu zpráv (tzn. TCP nebo HTTP) se webová úroveň nemusí k prostřední úrovni připojit přímo, namísto toho odesílá pracovní jednotky jako zprávy do služby Service Bus, která je spolehlivě uchová, dokud nebude prostřední vrstva připravená je spotřebovat a zpracovat.
+Pomocí služby Service Bus zasílání zpráv mezi hello webem a prostředními úrovněmi odděluje obě části. Na rozdíl od toodirect zasílání zpráv (to znamená, TCP nebo HTTP), hello webová vrstva nepřipojuje střední vrstvy toohello přímo. Namísto toho odesílá pracovní jednotky jako zprávy do služby Service Bus, která spolehlivě uchová, dokud nebude prostřední vrstva hello je připraven tooconsume a jejich zpracování.
 
-Service Bus nabízí dvě entity, které podporují zprostředkované zasílání zpráv: fronty a témata. V případě front se každá zpráva odeslaná do fronty spotřebuje jedním příjemcem. Témata podporují chování typu publikovat/odebírat, ve kterém je každá publikovaná zpráva zpřístupněná odběru registrovanému pro dané téma. Každý odběr logicky uchovává svoji vlastní frontu zpráv. Odběry se taky dají konfigurovat pomocí pravidel filtrů, které omezují skupinu zpráv předávaných do fronty odběru na takové, které odpovídají filtru. Následující příklad používá fronty Service Bus.
+Service Bus poskytuje dvě entity toosupport zprostředkované zasílání zpráv na úrovni: fronty a témata. V případě front se každá zpráva odeslaná toohello fronty spotřebuje jednoho příjemce. Témata podporují hello publikování a přihlášení k odběru vzor ve kterém je každá publikovaná zpráva provedené dostupné tooa odběru registrovanému pro téma hello. Každý odběr logicky uchovává svoji vlastní frontu zpráv. Odběry můžete nakonfigurovat také pomocí pravidel filtrů, které omezují hello skupinu zpráv předávaných do toothose fronty hello předplatné, které odpovídají filtru hello. Hello následující příklad používá fronty Service Bus.
 
 ![][1]
 
 Tento komunikační mechanizmus má několik výhod oproti přímému přenosu zpráv.
 
-* **Časové oddělení**. S asynchronním vzorcem zasílání zpráv nemusí být producenti a spotřebitelé online ve stejnou dobu. Service Bus spolehlivě uchová zprávy, dokud spotřebitel nebude připravený je přijmout. Díky tomu se součásti distribuované aplikace můžou odpojit, například při údržbě nebo při selhání jedné ze součástí, a přitom to nebude mít vliv na systém jako celek. Navíc stačí, aby spotřebitelská aplikace byla online i jen v určitou dobu během dne.
-* **Vyrovnávání zátěže**. V mnoha aplikacích se zátěž na systém může postupně měnit, zatímco doba nutná ke zpracování pracovní jednotky je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou – to znamená, že spotřebitelskou aplikaci (pracovní proces) stačí zřídit jen na obvyklou zátěž, ne na zátěž ve špičce. S měnící se příchozí zátěží se mění hloubka fronty. To znamená přímou úsporu nákladů ve smyslu infrastruktury nutné pro zvládání zatížení aplikace.
-* **Vyrovnávání zatížení**. Když se zátěž zvyšuje, můžou se přidat další pracovní procesy, které budou číst zprávy z fronty. Každou zprávu zpracovává jen jeden pracovní proces. Toto vyrovnávání zátěže podle požadavků umožňuje optimální využívání pracovních počítačů i v případě, že se pracovní počítače liší z hlediska výkonu, protože zprávy žádaný a zpracovávají svou vlastním maximální rychlostí. Tomuto chování se často říká *konkurence mezi spotřebiteli*.
+* **Časové oddělení**. S asynchronním vzorcem zasílání zpráv hello nemusí být producenti a spotřebitelé online na hello stejnou dobu. Service Bus spolehlivě uchová zprávy, dokud hello spotřebitel nebude připravený je přijmout. To umožňuje hello součástí hello distribuované aplikace toobe odpojit, například za účelem údržby nebo z důvodu tooa součást havárií, bez dopadu na systém jako celek. Kromě toho hello využívání aplikací potřebovat pouze toocome online v určitou dobu hello den.
+* **Vyrovnávání zátěže**. V mnoha aplikacích zatížení systému se liší v čase, při zpracování hello čas potřebný pro jednotlivé jednotky práce je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou znamená, že tento hello využívání aplikací (pracovník hello) pouze potřebám toobe zřízený průměrnou zátěž tooaccommodate spíše než zátěž ve špičce. Hello hloubka fronty hello s měnící hello příchozí zátěží se mění. To znamená přímou úsporu nákladů z hlediska hello množství infrastruktury požadované tooservice hello aplikace zatížení.
+* **Vyrovnávání zatížení**. Když se zátěž zvyšuje, další pracovní procesy přidáním tooread z fronty hello. Každou zprávu zpracovává jenom jeden hello pracovních procesů. Kromě toho tato Vyrovnávání zatížení založené na operaci pull umožňuje optimální využívání hello pracovních počítačů i v případě, že se pracovní počítače liší z hlediska výpočetní výkon, jak se bude načítat zprávy na svou vlastním maximální rychlostí. Toto chování se často říká hello *konkurence mezi spotřebiteli* vzor.
   
   ![][2]
 
-V následující části se probírá kód, který tuto architekturu implementuje.
+Hello následující oddíly popisují hello kód, který tuto architekturu implementuje.
 
-## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
-Než začnete s vývojem aplikací pro Azure, připravte si nástroje a vývojové prostředí.
+## <a name="set-up-hello-development-environment"></a>Nastavit hello vývojového prostředí
+Před zahájením vývojem aplikací pro Azure, získání hello nástroje a nastavení vývojového prostředí.
 
-1. Nainstalujte sadu Azure SDK pro .NET ze [stránky pro stažení SDK](https://azure.microsoft.com/downloads/).
-2. Ve sloupci **.NET** klikněte na verzi sady [Visual Studio](http://www.visualstudio.com), kterou používáte. Kroky v tomto kurzu používají sadu Visual Studio 2015, ale také pracují se sadou Visual Studio 2017.
-3. Když se zobrazí dialog pro spuštění nebo uložení instalačního programu, klikněte na **Spustit**.
-4. V **Instalačním programu webové platformy** klikněte na **Instalovat** a pokračujte v instalaci.
-5. Po dokončení instalace budete mít všechno, co je potřeba k vývoji aplikace. Sada SDK obsahuje nástroje, které vám umožní snadno vyvíjet aplikace pro Azure ve Visual Studiu.
+1. Nainstalujte hello Azure SDK pro .NET ze hello SDK [položky ke stažení](https://azure.microsoft.com/downloads/).
+2. V hello **.NET** sloupce, klikněte na tlačítko hello verzi [Visual Studio](http://www.visualstudio.com) používáte. Hello kroky v tomto kurzu Visual Studio 2015, ale také pracovat s Visual Studio 2017.
+3. Po zobrazení výzvy toorun nebo uložení instalačního programu hello, klikněte na tlačítko **spustit**.
+4. V hello **instalačního programu webové platformy**, klikněte na tlačítko **nainstalovat** a pokračovat v instalaci hello.
+5. Po dokončení instalace hello budete mít všechno potřebné toostart toodevelop hello aplikace. Hello SDK obsahuje nástroje, které vám umožní snadno vyvíjet aplikace Azure v sadě Visual Studio.
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů
-Dál je potřeba vytvořit obor názvů služby a získat klíč sdíleného přístupového podpisu (SAS). Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace oboru názvů a klíče SAS poskytuje pověření, kterým služba Service Bus ověří přístup k aplikaci.
+dalším krokem Hello je toocreate oboru názvů služby a získat klíč sdíleného přístupového podpisu (SAS). Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Hello systém vygeneruje SAS klíč při vytvoření oboru názvů. Hello kombinace oboru názvů a klíče SAS poskytuje pověření hello pro Service Bus tooauthenticate přístup tooan aplikaci.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Vytvoření webové role
-V této části vytvoříte front-end své aplikace. Nejdřív vytvoříte stránky, které vaše aplikace zobrazí.
-Potom přidáte kód, který odesílá položky do fronty Service Bus a zobrazí informace o stavu fronty.
+V této části vytvoříte front-end hello vaší aplikace. Nejprve je třeba vytvořit hello stránky, které vaše aplikace zobrazí.
+Potom přidáte kód, který odesílá položky fronty Service Bus tooa a zobrazí informace o frontě hello stavu.
 
-### <a name="create-the-project"></a>Vytvoření projektu
-1. Jako správce spusťte Visual Studio: klikněte pravým tlačítkem na ikonu programu **Visual Studio** a vyberete možnost **Spustit jako správce**. Emulátor výpočtů v Azure, který se bude probírat později v tomto článku, potřebuje, aby bylo Visual Studio spuštěné s právy správce.
+### <a name="create-hello-project"></a>Vytvoření projektu hello
+1. Pomocí oprávnění správce, spuštění sady Visual Studio: klikněte pravým tlačítkem na hello **Visual Studio** ikonu programu a potom klikněte na **spustit jako správce**. Hello emulátoru služby výpočty Azure, probírat později v tomto článku, vyžaduje, aby Visual Studio spuštěné s oprávněními správce.
    
-   Ve Visual Studiu v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
-2. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Cloud** a pak na **Cloudová služba Azure**. Jako název projektu zadejte **MultiTierApp**. Pak klikněte na **OK**.
+   V sadě Visual Studio na hello **soubor** nabídky, klikněte na tlačítko **nový**a potom klikněte na **projektu**.
+2. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Cloud** a pak na **Cloudová služba Azure**. Název projektu hello **MultiTierApp**. Pak klikněte na **OK**.
    
    ![][9]
 3. Z rolí **.NET Framework 4.5** poklikáním vyberte **Webovou roli ASP.NET**.
    
    ![][10]
-4. Najeďte kurzorem na **WebRole1** v části **řešení Cloudové služby Azure**, klikněte na ikonu tužky a přejmenujte webovou roli na **FrontendWebRole**. Pak klikněte na **OK**. (Ujistěte se, že „Frontend“ zadáte s malým „e“ tzn. nikoli „FrontEnd“.)
+4. Pozastavte ukazatel myši nad **WebRole1** pod **řešení cloudové služby Azure**, klikněte na ikonu tužky hello a přejmenujte webovou roli hello příliš**FrontendWebRole**. Pak klikněte na **OK**. (Ujistěte se, že „Frontend“ zadáte s malým „e“ tzn. nikoli „FrontEnd“.)
    
    ![][11]
-5. V dialogovém okně **Nový projekt ASP.NET** v seznamu **Vyberte šablonu** klikněte na **MVC**.
+5. Z hello **nový projekt ASP.NET** dialogové okno, v hello **vyberte šablonu** seznamu, klikněte na tlačítko **MVC**.
    
    ![][12]
-6. Pořád ještě v dialogovém okně **Nový projekt ASP.NET** klikněte na tlačítko **Změna ověřování**. V dialogovém okně **Změna ověřování** klikněte na možnost **Bez ověřování** a poté klikněte na tlačítko **OK**. V tomto kurzu nasazujete aplikaci, která nepotřebuje přihlášení uživatele.
+6. Stále v hello **nový projekt ASP.NET** dialogovém okně klikněte na hello **změna ověřování** tlačítko. V hello **změna ověřování** dialogové okno, klikněte na tlačítko **bez ověřování**a potom klikněte na **OK**. V tomto kurzu nasazujete aplikaci, která nepotřebuje přihlášení uživatele.
    
     ![][16]
-7. Pořád ještě v dialogovém okně **Nový projekt ASP.NET** klikněte na tlačítko **OK** a vytvořte tak projekt.
-8. V **Průzkumníku řešení** v projektu **FrontendWebRole** klikněte pravým tlačítkem na **Reference**, a pak klikněte na **Správa balíčků NuGet**.
-9. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Vyberte balíček **WindowsAzure.ServiceBus**, klikněte na **Instalovat** a přijměte podmínky použití.
+7. Zpět v hello **nový projekt ASP.NET** dialogové okno, klikněte na tlačítko **OK** toocreate hello projektu.
+8. V **Průzkumníku řešení**, v hello **FrontendWebRole** projektu, klikněte pravým tlačítkem na **odkazy**, pak klikněte na tlačítko **spravovat balíčky NuGet**.
+9. Klikněte na tlačítko hello **Procházet** a potom vyhledejte `Microsoft Azure Service Bus`. Vyberte hello **WindowsAzure.ServiceBus** balíček, klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello.
    
    ![][13]
    
-   Poznámka: Teď jsou vytvořené reference na sestavení klienta a přidané některé nové soubory s kódem.
-10. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Modely**, pak klikněte na **Přidat** a pak na **Třída**. Do pole **Název** zadejte název **OnlineOrder.cs**. Pak klikněte na **Přidat**.
+   Všimněte si, že hello vyžaduje teď jsou reference na sestavení klienta a přidané některé nové soubory s kódem.
+10. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Modely**, pak klikněte na **Přidat** a pak na **Třída**. V hello **název** pole, název typu hello **OnlineOrder.cs**. Pak klikněte na **Přidat**.
 
-### <a name="write-the-code-for-your-web-role"></a>Napsání kódu pro vaši webovou roli
-V této části vytvoříte stránky, které vaše aplikace zobrazí.
+### <a name="write-hello-code-for-your-web-role"></a>Psaní kódu hello pro vaši webovou roli
+V této části vytvoříte hello stránky, které vaše aplikace zobrazí.
 
-1. V souboru OnlineOrder.cs ve Visual Studiu nahraďte existující definici oboru názvů následujícím kódem.
+1. V souboru OnlineOrder.cs hello v sadě Visual Studio nahraďte existující definici oboru názvů hello následující kód:
    
    ```csharp
    namespace FrontendWebRole.Models
@@ -119,14 +119,14 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
        }
    }
    ```
-2. V **Průzkumníku řešení** poklikejte na **Controllers\HomeController.cs**. Na začátek souboru přidejte následující příkazy **using**, které přidají obory názvů pro model, který jste právě vytvořili, a pro Service Bus.
+2. V **Průzkumníku řešení** poklikejte na **Controllers\HomeController.cs**. Přidejte následující hello **pomocí** příkazy hello horní části hello souboru tooinclude hello obory názvů pro model, který jste právě vytvořili, zvolte a pro Service Bus.
    
    ```csharp
    using FrontendWebRole.Models;
    using Microsoft.ServiceBus.Messaging;
    using Microsoft.ServiceBus;
    ```
-3. v souboru HomeController.cs ve Visual Studiu taky místo existující definice oboru názvů zadejte následující kód. Tento kód obsahuje metody pro zpracování odesílání položek do fronty.
+3. Také v souboru HomeController.cs hello v sadě Visual Studio, nahraďte existující definici oboru názvů hello následující kód. Tento kód obsahuje metody pro zpracování odesílání hello položky toohello fronty.
    
    ```csharp
    namespace FrontendWebRole.Controllers
@@ -135,7 +135,7 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
        {
            public ActionResult Index()
            {
-               // Simply redirect to Submit, since Submit will serve as the
+               // Simply redirect tooSubmit, since Submit will serve as the
                // front page of this application.
                return RedirectToAction("Submit");
            }
@@ -146,7 +146,7 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
            }
    
            // GET: /Home/Submit.
-           // Controller method for a view you will create for the submission
+           // Controller method for a view you will create for hello submission
            // form.
            public ActionResult Submit()
            {
@@ -156,17 +156,17 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
            }
    
            // POST: /Home/Submit.
-           // Controller method for handling submissions from the submission
+           // Controller method for handling submissions from hello submission
            // form.
            [HttpPost]
-           // Attribute to help prevent cross-site scripting attacks and
+           // Attribute toohelp prevent cross-site scripting attacks and
            // cross-site request forgery.  
            [ValidateAntiForgeryToken]
            public ActionResult Submit(OnlineOrder order)
            {
                if (ModelState.IsValid)
                {
-                   // Will put code for submitting to queue here.
+                   // Will put code for submitting tooqueue here.
    
                    return RedirectToAction("Submit");
                }
@@ -178,34 +178,34 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
        }
    }
    ```
-4. V nabídce **Sestavení** klikněte na **Sestavit řešení** a vyzkoušejte přesnost své dosavadní práce.
-5. Teď vytvořte zobrazení pro metodu `Submit()`, kterou jste vytvořili předtím. Klikněte pravým tlačítkem do metody `Submit()` (přetížení `Submit()`, které nepřijímá žádné parametry), a pak vyberte **Přidat zobrazení**.
+4. Z hello **sestavení** nabídky, klikněte na tlačítko **sestavit řešení** tootest hello přesnost své dosavadní práce.
+5. Teď vytvořte zobrazení hello hello `Submit()` metoda jste vytvořili dříve. Klikněte pravým tlačítkem do hello `Submit()` – metoda (hello přetížení `Submit()` které nepřijímá žádné parametry) a potom zvolte **přidat zobrazení**.
    
    ![][14]
-6. Objeví se dialogové okno pro vytvoření zobrazení. V seznamu **Šablona** vyberte **Vytvořit**. V seznamu **Třída modelu** klikněte na třídu **OnlineOrder**.
+6. Zobrazí se dialogové okno pro vytvoření zobrazení hello. V hello **šablony** vyberte **vytvořit**. V hello **třída modelu** seznamu, klikněte na tlačítko hello **OnlineOrder** třídy.
    
    ![][15]
 7. Klikněte na tlačítko **Přidat**.
-8. Teď změňte zobrazený název vaší aplikace. V **Průzkumníku řešení** poklikejte na soubor **Views\Shared\\_Layout.cshtml** a otevře se v editoru Visual Studio.
+8. Teď změňte hello zobrazí název vaší aplikace. V **Průzkumníku řešení**, dvakrát klikněte **Views\Shared\\_Layout.cshtml** souboru tooopen ji v editoru Visual Studio hello.
 9. Všechny výskyty **My ASP.NET Application** změňte na **LITWARE'S Products**.
-10. Odstraňte odkazy **Home**, **About** a **Contact**. Odstraňte zvýrazněný uzel:
+10. Odebrat hello **Domů**, **o**, a **kontaktujte** odkazy. Odstraňte hello zvýrazněná kód:
     
     ![][28]
-11. Nakonec upravte stránku pro odesílání tak, aby obsahovala nějaké informace o frontě. V **Průzkumníku řešení** poklikejte na soubor **Views\Home\Submit.cshtml** a otevře se v editoru Visual Studio. Po `<h2>Submit</h2>` přidejte následující řádek. Hodnota `ViewBag.MessageCount` je zatím prázdná. Zaplníte ji později.
+11. Nakonec upravte hello odeslání stránky tooinclude některé informace o frontě hello. V **Průzkumníku řešení**, dvakrát klikněte **Views\Home\Submit.cshtml** souboru tooopen ji v editoru Visual Studio hello. Přidejte následující řádek po hello `<h2>Submit</h2>`. Prozatím se hello `ViewBag.MessageCount` je prázdný. Zaplníte ji později.
     
     ```html
-    <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
+    <p>Current number of orders in queue waiting toobe processed: @ViewBag.MessageCount</p>
     ```
-12. Teď je implementované vaše uživatelské prostředí. Stisknutím klávesy **F5** můžete spustit svoji aplikaci a zkontrolovat, že vypadá tak, jak má.
+12. Teď je implementované vaše uživatelské prostředí. Stisknutím klávesy **F5** toorun aplikaci a potvrďte, že vypadá tak podle očekávání.
     
     ![][17]
 
-### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Napsání nového kódu pro odesílání položek do fronty Service Bus
-Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte třídu, která obsahuje informace o připojení k vaší frontě Service Bus. Potom inicializujte připojení ze souboru Global.aspx.cs. Nakonec aktualizujte kód pro odesílání, který jste vytvořili předtím v souboru HomeController.cs tak, aby položky odesílal do fronty Service Bus.
+### <a name="write-hello-code-for-submitting-items-tooa-service-bus-queue"></a>Zápis kódu hello pro odesílání položek fronty Service Bus tooa
+Teď přidáte kód pro odesílání položek tooa fronty. Nejdřív vytvořte třídu, která obsahuje informace o připojení k vaší frontě Service Bus. Potom inicializujte připojení ze souboru Global.aspx.cs. Nakonec aktualizujte kód odeslání hello, kterou jste vytvořili dříve v HomeController.cs tooactually odeslání položky tooa fronty Service Bus.
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na **FrontendWebRole** (pravým tlačítkem klikněte na projekt, ne na roli). Klikněte na **Přidat** a potom na **Třída**.
-2. Zadejte název třídy **QueueConnector.cs**. Klikněte na **Přidat** a třída se vytvoří.
-3. Teď přidejte kód, který bude obsahovat informace o připojení a inicializovat připojení k frontě Service Bus. Celý obsah souboru QueueConnector.cs nahraďte následujícím kódem a zadejte hodnoty pro `your Service Bus namespace` (název vašeho oboru názvů) a `yourKey` – to je **primární klíč**, který jste předtím získali z webu Azure Portal.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **FrontendWebRole** (klikněte pravým tlačítkem na projekt hello, ne hello roli). Klikněte na **Přidat** a potom na **Třída**.
+2. Název třídy hello **QueueConnector.cs**. Klikněte na tlačítko **přidat** toocreate hello třídy.
+3. Nyní přidáte kód, který zapouzdřuje informace o připojení hello a inicializuje fronty Service Bus tooa hello připojení. Hello celý obsah souboru QueueConnector.cs nahraďte hello následující kód a zadejte hodnoty pro `your Service Bus namespace` (název vašeho oboru názvů) a `yourKey`, což je hello **primární klíč** jste předtím získali z hello Azure portál.
    
    ```csharp
    using System;
@@ -223,15 +223,15 @@ Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte tř
            // on every request.
            public static QueueClient OrdersQueueClient;
    
-           // Obtain these values from the portal.
+           // Obtain these values from hello portal.
            public const string Namespace = "your Service Bus namespace";
    
-           // The name of your queue.
+           // hello name of your queue.
            public const string QueueName = "OrdersQueue";
    
            public static NamespaceManager CreateNamespaceManager()
            {
-               // Create the namespace manager which gives you access to
+               // Create hello namespace manager which gives you access to
                // management operations.
                var uri = ServiceBusEnvironment.CreateServiceUri(
                    "sb", Namespace, String.Empty);
@@ -242,21 +242,21 @@ Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte tř
    
            public static void Initialize()
            {
-               // Using Http to be friendly with outbound firewalls.
+               // Using Http toobe friendly with outbound firewalls.
                ServiceBusEnvironment.SystemConnectivity.Mode =
                    ConnectivityMode.Http;
    
-               // Create the namespace manager which gives you access to
+               // Create hello namespace manager which gives you access to
                // management operations.
                var namespaceManager = CreateNamespaceManager();
    
-               // Create the queue if it does not exist already.
+               // Create hello queue if it does not exist already.
                if (!namespaceManager.QueueExists(QueueName))
                {
                    namespaceManager.CreateQueue(QueueName);
                }
    
-               // Get a client to the queue.
+               // Get a client toohello queue.
                var messagingFactory = MessagingFactory.Create(
                    namespaceManager.Address,
                    namespaceManager.Settings.TokenProvider);
@@ -267,39 +267,39 @@ Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte tř
    }
    ```
 4. Teď musíte zajistit, aby se vaše metoda **Initialize** volala. V **Průzkumníku řešení** poklikejte na **Global.asax\Global.asax.cs**.
-5. Přidejte následující řádek na konec metody **Application_Start**.
+5. Přidejte následující řádek kódu na konci hello hello hello **Application_Start** metoda.
    
    ```csharp
    FrontendWebRole.QueueConnector.Initialize();
    ```
-6. Nakonec aktualizujte webový kód, který jste vytvořili předtím, aby se položky odesílaly do fronty. V **Průzkumníku řešení** poklikejte na **Controllers\HomeController.cs**.
-7. Aktualizujte metodu `Submit()` (přetížení, které nepřijímá žádné parametry) následujícím způsobem, aby se získal počet zpráv pro frontu.
+6. Nakonec aktualizujte kód webového hello jste vytvořili dříve, k odeslání položky toohello fronty. V **Průzkumníku řešení** poklikejte na **Controllers\HomeController.cs**.
+7. Aktualizace hello `Submit()` – metoda (hello přetížení, které nepřijímá žádné parametry) následujícím způsobem tooget uvítací zprávu počet pro frontu hello.
    
    ```csharp
    public ActionResult Submit()
    {
-       // Get a NamespaceManager which allows you to perform management and
+       // Get a NamespaceManager which allows you tooperform management and
        // diagnostic operations on your Service Bus queues.
        var namespaceManager = QueueConnector.CreateNamespaceManager();
    
-       // Get the queue, and obtain the message count.
+       // Get hello queue, and obtain hello message count.
        var queue = namespaceManager.GetQueue(QueueConnector.QueueName);
        ViewBag.MessageCount = queue.MessageCount;
    
        return View();
    }
    ```
-8. Aktualizujte metodu `Submit(OnlineOrder order)` (přetížení, které přijímá jeden parametr) následujícím způsobem, aby se do fronty odesílaly informace o objednávce.
+8. Aktualizace hello `Submit(OnlineOrder order)` – metoda (hello přetížení, které přijímá jeden parametr) následujícím způsobem toosubmit pořadí informace toohello fronty.
    
    ```csharp
    public ActionResult Submit(OnlineOrder order)
    {
        if (ModelState.IsValid)
        {
-           // Create a message from the order.
+           // Create a message from hello order.
            var message = new BrokeredMessage(order);
    
-           // Submit the order.
+           // Submit hello order.
            QueueConnector.OrdersQueueClient.Send(message);
            return RedirectToAction("Submit");
        }
@@ -309,63 +309,63 @@ Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte tř
        }
    }
    ```
-9. Teď můžete aplikaci znovu spustit. Pokaždé, když odešlete odbejdnávku, počet zpráv se zvýší.
+9. Teď můžete spustit hello aplikaci znovu. Pokaždé, když odešlete odbejdnávku, počet zpráv hello se zvýší.
    
    ![][18]
 
-## <a name="create-the-worker-role"></a>Vytvoření role pracovního procesu
-Teď vytvoříte roli pracovního procesu, která zpracuje odesílání objednávek. Tento příklad používá šablonu Visual Studia **Role pracovního procesu s frontou Service Bus**. Potřebné pověření jste už získali z portálu.
+## <a name="create-hello-worker-role"></a>Vytvoření role pracovního procesu hello
+Teď vytvoříte roli pracovního procesu hello, který zpracovává hello objednávek. Tento příklad používá hello **Role pracovního procesu s frontou Service Bus** šablonu Visual Studia. Jste už získali z portálu hello hello vyžaduje přihlašovací údaje.
 
-1. Zkontrolujte, že máte Visual Studio připojené ke svému účtu Azure.
-2. Ve Visual Studiu v **Průzkumníku řešení** klikněte pravým tlačítkem na složku **Roles** v projektu **MultiTierApp**.
-3. Klikněte na **Přidat**, a pak klikněte na **Nový projekt role pracovního procesu**. Zobrazí se dialogové okno **Přidat nový projekt role**.
+1. Ujistěte se, že jste se připojili Visual Studio tooyour účet Azure.
+2. V sadě Visual Studio v **Průzkumníku řešení** klikněte pravým tlačítkem myši **role** ve složce hello **MultiTierApp** projektu.
+3. Klikněte na **Přidat**, a pak klikněte na **Nový projekt role pracovního procesu**. Hello **přidat nový projekt Role** zobrazí se dialogové okno.
    
    ![][26]
-4. V dialogovém okně **Přidat nový projekt role** klikněte na **Role pracovního procesu s frontou Service Bus**.
+4. V hello **přidat nový projekt Role** dialogové okno, klikněte na tlačítko **Role pracovního procesu s frontou Service Bus**.
    
    ![][23]
-5. Do pole **Název** zadejte název projektu **OrderProcessingRole**. Pak klikněte na **Přidat**.
-6. Připojovací řetězec, který jste získali v kroku 9 v části „Vytvoření oboru názvů Service Bus“ zkopírujte do schránky.
-7. V **Průzkumníku řešení** klikněte pravým tlačítkem na roli **OrderProcessingRole**, které jste vytvořili v kroku 5 (ujistěte se, že kliknete pravým tlačítkem na **OrderProcessingRole** v seznamu **Role**, ne na třídu). Potom klikněte na **Vlastnosti**.
-8. Na kartě **Nastavení** v dialogovém okně **Vlastnosti** klikněte do pole **Hodnota** pro **Microsoft.ServiceBus.ConnectionString** a vložte hodnotu koncového bodu, kterou jste zkopírovali v kroku 6.
+5. V hello **název** pole, název projektu hello **OrderProcessingRole**. Pak klikněte na **Přidat**.
+6. Zkopírujte hello připojovací řetězec, který jste získali v kroku 9 schránky toohello části "Vytvoření oboru názvů Service Bus" hello.
+7. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **OrderProcessingRole** jste vytvořili v kroku 5 (ujistěte se, že kliknete pravým tlačítkem na **OrderProcessingRole** pod **Role**, a není hello třídy). Potom klikněte na **Vlastnosti**.
+8. Na hello **nastavení** kartě hello **vlastnosti** dialogové okno, klikněte do hello **hodnotu** pole pro **Microsoft.ServiceBus.ConnectionString**a potom vložte hodnotu koncového bodu hello jste zkopírovali v kroku 6.
    
    ![][25]
-9. Vytvořte třídu **OnlineOrder**, která bude zastupovat objednávky při jejich zpracování z fronty. Můžete znovu použít třídu, kterou jste už vytvořili. V **Průzkumníku řešení** klikněte pravým tlačítkem na třídu **OrderProcessingRole** (pravým tlačítkem klikněte ikonu třídy, ne na roli). Klikněte na **Přidat**, pak klikněte na **Existující položka**.
-10. Přejděte do podsložky pro **FrontendWebRole\Models** a poklikejte na **OnlineOrder.cs**, tím ho přidáte do projektu.
-11. Ve **WorkerRole.cs** změňte hodnotu proměnné **QueueName** z `"ProcessingQueue"` na `"OrdersQueue"`, jak je vidět v následujícím kódu.
+9. Vytvoření **OnlineOrder** třídy toorepresent hello objednávky jako při jejich zpracování z fronty hello. Můžete znovu použít třídu, kterou jste už vytvořili. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **OrderProcessingRole** – třída (klikněte pravým tlačítkem na ikonu třídy hello, ne hello roli). Klikněte na **Přidat**, pak klikněte na **Existující položka**.
+10. Procházet toohello podsložky pro **FrontendWebRole\Models**a potom dvakrát klikněte na **OnlineOrder.cs** tooadd ho toothis projektu.
+11. V **WorkerRole.cs**, změnit hodnotu hello hello **QueueName** proměnnou z `"ProcessingQueue"` příliš`"OrdersQueue"` jak je znázorněno v následujícím kódu hello.
     
     ```csharp
-    // The name of your queue.
+    // hello name of your queue.
     const string QueueName = "OrdersQueue";
     ```
-12. Na začátek souboru WorkerRole.cs přidejte následující příkaz using.
+12. Přidejte následující hello pomocí příkazu hello horní části souboru WorkerRole.cs hello.
     
     ```csharp
     using FrontendWebRole.Models;
     ```
-13. Ve funkci `Run()` ve volání `OnMessage()` místo obsahu klauzule `try` vložte následující kód.
+13. V hello `Run()` funkce uvnitř hello `OnMessage()` volání, nahraďte obsah hello hello `try` klauzuli with hello následující kód.
     
     ```csharp
     Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
-    // View the message as an OnlineOrder.
+    // View hello message as an OnlineOrder.
     OnlineOrder order = receivedMessage.GetBody<OnlineOrder>();
     Trace.WriteLine(order.Customer + ": " + order.Product, "ProcessingMessage");
     receivedMessage.Complete();
     ```
-14. Dokončili jste aplikaci. Celou aplikaci můžete vyzkoušet tak, že v Průzkumníku řešení kliknete pravým tlačítkem na projekt MultiTierApp, vyberete **Nastavit jako spouštěný projekt**, a pak stisknete F5. Všimněte si, že počet zpráv se nezvyšuje, protože role pracovního procesu zpracovává položky z fronty a označuje je jako hotové. Výstup své role pracovního procesu můžete sledovat v uživatelském prostředí Emulátoru výpočtů v Azure. To můžete udělat tak, že v oznamovací oblasti hlavního panelu kliknete pravým tlačítkem na ikonu emulátoru a vyberte **Zobrazit uživatelské prostředí emulátoru služby Compute**.
+14. Dokončili jste aplikaci hello. Hello celou aplikaci můžete otestovat kliknutím pravým tlačítkem na projekt MultiTierApp hello v Průzkumníku řešení, výběr **nastavit jako spouštěný projekt**a pak stisknete F5. Všimněte si, že počet zpráv se nezvyšuje, protože hello role pracovního procesu zpracovává položky z fronty hello a označí je jako dokončené. Zobrazí se výstup trasování hello své role pracovního procesu zobrazením hello uživatelské prostředí emulátoru výpočtů Azure. To provedete kliknutím pravým tlačítkem myši na ikonu emulátoru hello v hello oznamovací oblasti hlavního panelu a výběrem **zobrazit uživatelské prostředí emulátoru výpočtů**.
     
     ![][19]
     
     ![][20]
 
 ## <a name="next-steps"></a>Další kroky
-Pokud se o službě Service Bus chcete dozvědět víc, pročtěte si následující zdroje:  
+toolearn víc o službě Service Bus, najdete v části hello následující prostředky:  
 
 * [Dokumentace ke službě Azure Service Bus][sbdocs]  
 * [Stránka služby Service Bus][sbacom]  
-* [Jak používat fronty Service Bus][sbacomqhowto]  
+* [Jak tooUse fronty služby Service Bus][sbacomqhowto]  
 
-Další informace o víceúrovňových scénářích najdete v:  
+toolearn Další informace o víceúrovňových scénářích najdete v části:  
 
 * [Vícevrstvá aplikace .NET, která používá tabulky, fronty a objekty blob služby Storage][mutitierstorage]  
 

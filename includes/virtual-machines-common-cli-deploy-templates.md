@@ -4,27 +4,27 @@
 * [Vytvoření virtuálního počítače z vlastní image](#create-a-custom-vm-image)
 * [Nasazení virtuálního počítače, který používá virtuální síť a nástroj pro vyrovnávání zatížení](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
 * [Odebrání skupiny prostředků](#remove-a-resource-group)
-* [Zobrazení protokolu pro nasazení skupiny prostředků](#show-the-log-for-a-resource-group-deployment)
+* [Zobrazit hello protokolu pro nasazení skupiny prostředků](#show-the-log-for-a-resource-group-deployment)
 * [Zobrazení informací o virtuálním počítači](#display-information-about-a-virtual-machine)
-* [Připojení k virtuálnímu počítači s Linuxem](#log-on-to-a-linux-based-virtual-machine)
+* [Připojit virtuální počítač založený na Linuxu tooa](#log-on-to-a-linux-based-virtual-machine)
 * [Zastavení virtuálního počítače](#stop-a-virtual-machine)
 * [Spuštění virtuálního počítače](#start-a-virtual-machine)
 * [Připojení datového disku](#attach-a-data-disk)
 
 ## <a name="getting-ready"></a>Příprava
-Abyste mohli použít rozhraní příkazového řádku Azure se skupinou prostředků Azure, musíte mít správnou verzi rozhraní příkazového řádku Azure a účet Azure. Pokud nemáte rozhraní příkazového řádku Azure, [nainstalujte ho](../articles/cli-install-nodejs.md).
+Před použitím hello rozhraní příkazového řádku Azure s skupin prostředků Azure, budete potřebovat toohave hello správnou verzi rozhraní příkazového řádku Azure a účet Azure. Pokud nemáte hello rozhraní příkazového řádku Azure, [ji nainstalovat](../articles/cli-install-nodejs.md).
 
-### <a name="update-your-azure-cli-version-to-090-or-later"></a>Aktualizace rozhraní příkazového řádku Azure na verzi 0.9.0 nebo novější
-Zadejte `azure --version` a podívejte se, jestli už máte nainstalovanou verzi 0.9.0 nebo novější.
+### <a name="update-your-azure-cli-version-too090-or-later"></a>Aktualizace vašeho too0.9.0 verze rozhraní příkazového řádku Azure nebo novější
+Typ `azure --version` toosee, zda jste již nainstalovali verzi 0.9.0 nebo novější.
 
 ```azurecli
 azure --version
 0.9.0 (node: 0.10.25)
 ```
 
-Pokud nemáte verzi 0.9.0 nebo novější, musíte rozhraní aktualizovat pomocí jednoho z nativních instalačních programů nebo prostřednictvím **npm**, a to zadáním příkazu `npm update -g azure-cli`.
+Pokud vaše verze není 0.9.0 nebo novější, je nutné tooupdate ji pomocí jedné z hello nativní instalační programy nebo pomocí **npm** zadáním `npm update -g azure-cli`.
 
-Rozhraní příkazového řádku Azure můžete také spustit jako kontejner Dockeru pomocí následující [image Dockeru](https://registry.hub.docker.com/u/microsoft/azure-cli/). Z hostitele Docker spusťte následující příkaz:
+Rozhraní příkazového řádku Azure můžete také spustit jako kontejner Docker pomocí následující hello [Docker image](https://registry.hub.docker.com/u/microsoft/azure-cli/). Z hostitele Docker spusťte následující příkaz hello:
 
 ```bash
 docker run -it microsoft/azure-cli
@@ -33,10 +33,10 @@ docker run -it microsoft/azure-cli
 ### <a name="set-your-azure-account-and-subscription"></a>Nastavení předplatného a účtu Azure
 Pokud ještě nemáte předplatné Azure, ale máte předplatné MSDN, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Můžete si zaregistrovat i [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-Teď se [interaktivně přihlaste k účtu Azure](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login). Zadejte `azure login`, postupujte podle výzev a využijte možnost interaktivního přihlášení k účtu Azure. 
+Nyní [interaktivně přihlásit tooyour účet Azure](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login) zadáním `azure login` a následující hello vyzve k tooyour prostředí interaktivní přihlašovací účet Azure. 
 
 > [!NOTE]
-> Pokud máte pracovní nebo školní ID a víte, že nemáte povolené dvoufaktorové ověřování, můžete **také** použít `azure login -u` společně s pracovním nebo školním ID a přihlásit se *bez* interaktivní relace. Pokud nemáte pracovní nebo školní ID, můžete [vytvořit pracovní nebo školní ID z vašeho osobního účtu Microsoft](../articles/virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a přihlásit se stejným způsobem.
+> Pokud máte pracovní nebo školní ID, a znát nemáte povoleno dvoufaktorové ověřování, můžete **také** použít `azure login -u` společně s hello pracovní nebo školní ID toolog v *bez* interaktivní relace. Pokud nemáte pracovní nebo školní ID, můžete [vytvořit pracovní nebo školní id z vašeho osobního účtu Microsoft](../articles/virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) toolog v hello stejným způsobem.
 >
 >
 
@@ -53,35 +53,35 @@ data:    Fabrikam test                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
 data:    Contoso production                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 ```
 
-Pomocí následujícího příkazu můžete nastavit aktuální předplatné Azure. Použijte název předplatného nebo ID s prostředky, které chcete spravovat.
+Hello aktuální předplatné můžete nastavit tak, že zadáte následující hello. Použijte hello název nebo hello ID předplatného obsahující hello prostředky, které chcete toomanage.
 
 ```azurecli
 azure account set <subscription name or ID> true
 ```
 
-### <a name="switch-to-the-azure-cli-resource-group-mode"></a>Přepnutí do režimu skupiny prostředků rozhraní příkazového řádku Azure
-Ve výchozím nastavení se rozhraní příkazového řádku Azure spustí v režimu správy služeb (režim **asm**). Pro přepnutí do režimu skupiny prostředků zadejte následující příkaz.
+### <a name="switch-toohello-azure-cli-resource-group-mode"></a>Přepnout režim skupiny prostředků toohello rozhraní příkazového řádku Azure
+Ve výchozím nastavení spustí hello rozhraní příkazového řádku Azure v režimu správy služby hello (**asm** režim). Zadejte hello následující tooswitch tooresource skupiny režimu.
 
 ```azurecli
 azure config mode arm
 ```
 
 ## <a name="understanding-azure-resource-templates-and-resource-groups"></a>Principy skupin prostředků a šablon prostředků Azure
-Většina aplikací je vytvořená pomocí kombinace různých typů prostředků (jako je jeden nebo několik virtuálních počítačů a účtů úložiště, databáze SQL, virtuální síť nebo síť pro doručování obsahu). Výchozí rozhraní API pro správu služeb Azure a portál Azure Classic reprezentuje tyto položky podle jednotlivých služeb. Tento přístup vyžaduje, abyste jednotlivé služby nasadili a spravovali po jedné (nebo k tomuto účelu našli jiné nástroje), a ne jako jednu logickou jednotku nasazení.
+Většina aplikací je vytvořená pomocí kombinace různých typů prostředků (jako je jeden nebo několik virtuálních počítačů a účtů úložiště, databáze SQL, virtuální síť nebo síť pro doručování obsahu). Hello výchozí Azure service management API a hello portál Azure classic reprezentována tyto položky přístup pomocí služby. Tento postup vyžaduje, abyste toodeploy a spravovat jednotlivé služby hello jednotlivě (nebo najít jiné nástroje, které tak) a ne jako jednu logickou jednotku nasazení.
 
-*Šablony Azure Resource Manageru* ale umožňují nasadit a spravovat tyto různé prostředky jako jednu logickou jednotku nasazení, a to deklarativní způsobem. Místo toho, abyste Azure dali přesné pokyny k nasazení jednoho příkazu za druhým, popíšete celé nasazení v souboru JSON (to znamená všechny prostředky a přidružené konfigurace a parametry nasazení) a sdělíte Azure, že se tyto prostředky nasadí jako jedna skupina.
+*Šablony Azure Resource Manageru*, ale, díky kterému budete toodeploy a spravovat tyto různé prostředky jako jednu jednotku logické nasazení deklarativní způsobem. Místo imperativní informuje Azure co toodeploy jednoho příkazu za druhým, popisují celého nasazení v souboru JSON – všechny prostředky hello a přidružené konfigurace a nasazení parametry – a řekněte Azure toodeploy tyto prostředky jako jeden Skupina.
 
-Potom můžete celý životní cyklus prostředků této skupiny spravovat pomocí příkazů pro správu prostředků rozhraní příkazového řádku Azure a provádět tyto operace:
+Pak můžete spravovat hello celkový životní cyklus hello skupiny prostředků pomocí příkazů správu prostředků Azure CLI:
 
-* Zastavení, spuštění a odstranění všech prostředků v rámci skupiny najednou.
-* Použití pravidel řízení přístupu na základě rolí (RBAC) k tomu, abyste pro tyto prostředky zamkli oprávnění zabezpečení.
+* Zastavení, spuštění a odstranit všechny prostředky hello v rámci skupiny hello současně.
+* Použití řízení přístupu na základě rolí (RBAC) pravidla toolock dolů oprávnění zabezpečení na ně.
 * Auditování operací.
 * Označení prostředků dalšími metadaty pro lepší sledování.
 
-Spoustu dalších informací o skupinách prostředků Azure a tom, k čemu je můžete využít, najdete v [přehledu Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md). Pokud vás zajímá vytváření šablon, přečtěte si téma věnované [vytváření šablon Azure Resource Manageru](../articles/resource-group-authoring-templates.md).
+Další informace o skupin prostředků Azure a co dělají za vás v hello mnoha [přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md). Pokud vás zajímá vytváření šablon, přečtěte si téma věnované [vytváření šablon Azure Resource Manageru](../articles/resource-group-authoring-templates.md).
 
 ## <a id="quick-create-a-vm-in-azure"></a>Úkol: Rychlé vytvoření virtuálního počítače v Azure
-Někdy víte, kterou image chcete použít, potřebujete virtuální počítač z této image hned a moc vás nezajímá infrastruktura – chcete třeba něco otestovat na čistém virtuálním počítači. A právě to je chvíle pro použití příkazu `azure vm quick-create`, kterému předáte všechny argumenty potřebné k vytvoření tohoto virtuálního počítače a jeho infrastruktury.
+Někdy víte, jaké image, budete potřebovat, a teď potřebujete virtuálního počítače z této bitové kopie a vám nezáleží příliš mnoho hello infrastruktury – možná máte tootest něco čistou virtuálního počítače. Pokud je chcete toouse hello `azure vm quick-create` příkazů a předat nezbytné toocreate argumenty hello virtuálního počítače a jeho infrastruktury.
 
 Nejdřív vytvoříte skupinu prostředků.
 
@@ -100,10 +100,10 @@ data:
 info:    group create command OK
 ```
 
-Potom budete potřebovat image. Pokud chcete najít image pomocí rozhraní příkazového řádku Azure, přečtěte si téma věnované [navigaci a výběru imagí virtuálního počítače Azure pomocí PowerShellu a rozhraní příkazového řádku Azure](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ale pro účely tohoto článku použijeme krátký seznam oblíbených imagí. Pro toto rychlé vytvoření použijeme image Stable CoreOS.
+Potom budete potřebovat image. toofind na bitovou kopii s hello Azure CLI, najdete v části [navigace a výběr imagí virtuálních počítačů Azure pomocí prostředí PowerShell a rozhraní příkazového řádku Azure hello](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ale pro účely tohoto článku použijeme krátký seznam oblíbených imagí. Pro toto rychlé vytvoření použijeme image Stable CoreOS.
 
 > [!NOTE]
-> Jako ComputeImageVersion můžete také v jazyce šablony i v rozhraní příkazového řádku Azure jednoduše zadat parametr latest. To vám umožní vždycky použít nejnovější opravenou verzi image, aniž byste museli upravovat svoje skripty nebo šablony. Příklad najdete níž.
+> Pro ComputeImageVersion můžete taky jednoduše zadat 'nejnovější' jako hello parametr v obou jazyk hello šablony a hello rozhraní příkazového řádku Azure. To vám umožní, že tooalways používáte hello nejnovější a opravou verze hello bitové kopie bez nutnosti toomodify skripty nebo šablon. Příklad najdete níž.
 >
 >
 
@@ -127,7 +127,7 @@ Potom budete potřebovat image. Pokud chcete najít image pomocí rozhraní př�
 | MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |1.0.141204 |
 | MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |4.3.4665 |
 
-Teď vytvořte virtuální počítač zadáním příkazu `azure vm quick-create` a připravte se na výzvy. Výsledek by měl vypadat přibližně takto:
+Právě vytvoření virtuálního počítače tak, že zadáte hello `azure vm quick-create` příkaz a je připravený pro hello výzvy. Výsledek by měl vypadat přibližně takto:
 
 ```azurecli
 azure vm quick-create
@@ -140,31 +140,31 @@ ImageURN (format: "publisherName:offer:skus:version"): coreos:coreos:stable:late
 User name: ops
 Password: *********
 Confirm password: *********
-+ Looking up the VM "coreos"
-info:    Using the VM Size "Standard_A1"
-info:    The [OS, Data] Disk or image configuration requires storage account
++ Looking up hello VM "coreos"
+info:    Using hello VM Size "Standard_A1"
+info:    hello [OS, Data] Disk or image configuration requires storage account
 + Retrieving storage accounts
-info:    Could not find any storage accounts in the region "westus", trying to create new one
+info:    Could not find any storage accounts in hello region "westus", trying toocreate new one
 + Creating storage account "cli9fd3fce49e9a9b3d14302" in "westus"
-+ Looking up the storage account cli9fd3fce49e9a9b3d14302
-+ Looking up the NIC "coreo-westu-1430261891570-nic"
++ Looking up hello storage account cli9fd3fce49e9a9b3d14302
++ Looking up hello NIC "coreo-westu-1430261891570-nic"
 info:    An nic with given name "coreo-westu-1430261891570-nic" not found, creating a new one
-+ Looking up the virtual network "coreo-westu-1430261891570-vnet"
-info:    Preparing to create new virtual network and subnet
++ Looking up hello virtual network "coreo-westu-1430261891570-vnet"
+info:    Preparing toocreate new virtual network and subnet
 / Creating a new virtual network "coreo-westu-1430261891570-vnet" [address prefix: "10.0.0.0/16"] with subnet "coreo-westu-1430261891570-sne+" [address prefix: "10.0.1.0/24"]
-+ Looking up the virtual network "coreo-westu-1430261891570-vnet"
-+ Looking up the subnet "coreo-westu-1430261891570-snet" under the virtual network "coreo-westu-1430261891570-vnet"
-info:    Found public ip parameters, trying to setup PublicIP profile
-+ Looking up the public ip "coreo-westu-1430261891570-pip"
++ Looking up hello virtual network "coreo-westu-1430261891570-vnet"
++ Looking up hello subnet "coreo-westu-1430261891570-snet" under hello virtual network "coreo-westu-1430261891570-vnet"
+info:    Found public ip parameters, trying toosetup PublicIP profile
++ Looking up hello public ip "coreo-westu-1430261891570-pip"
 info:    PublicIP with given name "coreo-westu-1430261891570-pip" not found, creating a new one
 + Creating public ip "coreo-westu-1430261891570-pip"
-+ Looking up the public ip "coreo-westu-1430261891570-pip"
++ Looking up hello public ip "coreo-westu-1430261891570-pip"
 + Creating NIC "coreo-westu-1430261891570-nic"
-+ Looking up the NIC "coreo-westu-1430261891570-nic"
++ Looking up hello NIC "coreo-westu-1430261891570-nic"
 + Creating VM "coreos"
-+ Looking up the VM "coreos"
-+ Looking up the NIC "coreo-westu-1430261891570-nic"
-+ Looking up the public ip "coreo-westu-1430261891570-pip"
++ Looking up hello VM "coreos"
++ Looking up hello NIC "coreo-westu-1430261891570-nic"
++ Looking up hello public ip "coreo-westu-1430261891570-pip"
 data:    Id                              :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/coreos-quick/providers/Microsoft.Compute/virtualMachines/coreos
 data:    ProvisioningState               :Succeeded
 data:    Name                            :coreos
@@ -215,26 +215,26 @@ info:    vm quick-create command OK
 A váš nový virtuální počítač je připravený.
 
 ## <a id="deploy-a-vm-in-azure-from-a-template"></a>Úkol: Nasazení virtuálního počítače v Azure ze šablony
-Pokyny v těchto odstavcích použijte pro nasazení nového virtuálního počítače Azure ze šablony pomocí rozhraní příkazového řádku Azure. Tato šablona vytvoří jeden virtuální počítač v nové virtuální síti s jedinou podsítí a na rozdíl od příkazu `azure vm quick-create` umožňuje popsat, co přesně chcete, a zopakovat to bez chyb. Tato šablona vytvoří tohle:
+Použijte hello pokyny v těchto částech toodeploy nového virtuálního počítače Azure pomocí šablony s hello rozhraní příkazového řádku Azure. Tato šablona vytvoří jeden virtuální počítač v nové virtuální sítě s jedinou podsítí a na rozdíl od `azure vm quick-create`, umožňuje toodescribe jste, co chcete přesněji a opakujte bez chyb. Tato šablona vytvoří tohle:
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
 
-### <a name="step-1-examine-the-json-file-for-the-template-parameters"></a>Krok 1: Prohlídka parametrů šablony v souboru JSON
-Obsah souboru JSON pro příslušnou šablonu vypadá takto. (Tato šablona je také umístěná na [GitHubu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json).)
+### <a name="step-1-examine-hello-json-file-for-hello-template-parameters"></a>Krok 1: Zkontrolujte hello JSON v souboru parametrů šablony hello
+Tady jsou hello obsah souboru JSON hello hello šablony. (hello šablona se také nachází v [Githubu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json).)
 
-Šablony jsou flexibilní, takže se návrhář může rozhodnout, jestli vám zpřístupní spoustu parametrů, nebo nabídne jenom několik variant a vytvoří šablonu, která je pevněji daná. Abyste shromáždili informace, které musíte šabloně předat jako parametry, otevřete soubor šablony (v tomto tématu je obsah šablony uvedený dál) a prohlédněte si hodnoty **parametrů**.
+Šablony jsou flexibilní, proto hello Návrhář může mít vybrali toogive velké množství parametry nebo vybrali toooffer jen několik tak, že vytvoříte šablonu, která více vyřešen. V pořadí toocollect hello informace, které potřebujete toopass hello šablony jako parametry, otevřete soubor šablony hello (Toto téma obsahuje vložené šablony níže) a zkontrolujte hello **parametry** hodnoty.
 
-V tomto případě vás šablona vyzve k zadání těchto údajů:
+V takovém případě níže uvedená šablona hello požádá pro:
 
 * Jedinečný název účtu úložiště.
-* Uživatelské jméno správce pro virtuální počítač.
+* Uživatelské jméno hello virtuálních počítačů správce.
 * Heslo.
-* Název domény pro okolní svět.
+* Název domény pro hello mimo world toouse.
 * Číslo verze Ubuntu Serveru (ale přijme jenom jednu z hodnot v seznamu).
 
 Přečtěte si další informace o [požadavcích na uživatelské jméno a heslo](../articles/virtual-machines/linux/faq.md#what-are-the-username-requirements-when-creating-a-vm).
 
-Jakmile se o těchto hodnotách rozhodnete, jste připraveni vytvořit skupinu a nasadit tuto šablonu do předplatného Azure.
+Jakmile se rozhodnete tyto hodnoty jste skupinu pro připravený toocreate a nasazení této šablony do vašeho předplatného Azure.
 
 ```json
 {
@@ -244,25 +244,25 @@ Jakmile se o těchto hodnotách rozhodnete, jste připraveni vytvořit skupinu a
     "newStorageAccountName": {
     "type": "string",
     "metadata": {
-        "description": "Unique DNS name for the storage account where the virtual machine's disks will be placed."
+        "description": "Unique DNS name for hello storage account where hello virtual machine's disks will be placed."
     }
     },
     "adminUsername": {
     "type": "string",
     "metadata": {
-        "description": "User name for the virtual machine."
+        "description": "User name for hello virtual machine."
     }
     },
     "adminPassword": {
     "type": "securestring",
     "metadata": {
-        "description": "Password for the virtual machine."
+        "description": "Password for hello virtual machine."
     }
     },
     "dnsNameForPublicIP": {
     "type": "string",
     "metadata": {
-        "description": "Unique DNS name for the public IP used to access the virtual machine."
+        "description": "Unique DNS name for hello public IP used tooaccess hello virtual machine."
     }
     },
     "ubuntuOSVersion": {
@@ -274,7 +274,7 @@ Jakmile se o těchto hodnotách rozhodnete, jste připraveni vytvořit skupinu a
         "15.04"
     ],
     "metadata": {
-        "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version. Allowed values: 12.04.5-LTS, 14.04.2-LTS, 15.04."
+        "description": "hello Ubuntu version for hello VM. This will pick a fully patched image of this given Ubuntu version. Allowed values: 12.04.5-LTS, 14.04.2-LTS, 15.04."
     }
     }
 },
@@ -413,10 +413,10 @@ Jakmile se o těchto hodnotách rozhodnete, jste připraveni vytvořit skupinu a
 }
 ```
 
-### <a name="step-2-create-the-virtual-machine-by-using-the-template"></a>Krok 2: Vytvoření virtuálního počítače pomocí šablony
-Až budete mít všechny hodnoty parametrů připravené, musíte pro nasazení šablony vytvořit skupinu prostředků a potom šablonu nasadit.
+### <a name="step-2-create-hello-virtual-machine-by-using-hello-template"></a>Krok 2: Vytvoření hello virtuálního počítače pomocí šablony hello
+Až budete mít vaše hodnoty parametrů připraven, musíte vytvořit skupinu prostředků pro šablonu nasazení a potom nasaďte šablonu hello.
 
-Pro vytvoření skupiny prostředků zadejte příkaz `azure group create <group name> <location>` s požadovaným názvem skupiny a umístěním datacentra, do kterého chcete nasazovat. Akce proběhne rychle:
+Skupina prostředků toocreate hello, typ `azure group create <group name> <location>` s názvem hello hello skupiny chcete a hello datacenter umístění, do kterého chcete toodeploy. Akce proběhne rychle:
 
 ```azurecli
 azure group create myResourceGroup westus
@@ -433,28 +433,28 @@ data:
 info:    group create command OK
 ```
 
-Teď chcete vytvořit nasazení. Použijte příkaz `azure group deployment create` a předejte mu:
+Nyní toocreate hello nasazení, volání `azure group deployment create` a předejte:
 
-* Soubor šablony (pokud jste výše uvedenou šablonu JSON uložili do místního souboru).
-* Identifikátor URI šablony (pokud chcete odkazovat na soubor na Githubu nebo jiné webové adrese).
-* Skupinu prostředků, do které chcete nasazovat.
+* soubor šablony Hello (Pokud jste uložili hello výše JSON šablony tooa místního souboru).
+* Šablona identifikátor URI (v případě potřeby toopoint v souboru hello v Githubu nebo některých jiných webovou adresu).
+* Skupina prostředků Hello, do kterého chcete toodeploy.
 * Volitelný název nasazení.
 
-K zadání hodnot parametrů vás vyzve oddíl parameters souboru JSON. Až zadáte všechny hodnoty parametrů, zahájí se proces nasazení.
+Bude výzvami toosupply hello hodnoty parametrů v části "parametry" hello souboru JSON hello. Pokud jste zadali hodnoty parametrů všechny hello, bude zahájena vaše nasazení.
 
 Zde naleznete příklad:
 
 ```azurecli
 azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json myResourceGroup firstDeployment
 info:    Executing command group deployment create
-info:    Supply values for the following parameters
+info:    Supply values for hello following parameters
 newStorageAccountName: storageaccount
 adminUsername: ops
 adminPassword: password
 dnsNameForPublicIP: newdomainname
 ```
 
-Získáte tento typ informací:
+Zobrazí hello následující typy informací:
 
 ```azurecli
 + Initializing template configurations and parameters
@@ -464,7 +464,7 @@ info:    Created template deployment "firstDeployment"
 info:    Registering provider microsoft.storage
 info:    Registering provider microsoft.network
 info:    Registering provider microsoft.compute
-+ Waiting for deployment to complete
++ Waiting for deployment toocomplete
 data:    DeploymentName     : firstDeployment
 data:    ResourceGroupName  : myResourceGroup
 data:    ProvisioningState  : Succeeded
@@ -484,12 +484,12 @@ info:    group deployment create command OK
 
 
 ## <a id="create-a-custom-vm-image"></a>Úkol: Vytvoření vlastní image virtuálního počítače
-Se základy využití šablon jste se seznámili v předcházejících krocích, takže teď můžeme podobné pokyny využít k vytvoření vlastního virtuálního počítače z konkrétního souboru .vhd v Azure pomocí šablony s využitím rozhraní příkazového řádku Azure. Rozdíl je v tom, že tato šablona vytvoří jeden virtuální počítač ze zadaného virtuálního pevného disku (VHD).
+Jste se seznámili s hello základní použití šablony výše, takže teď můžeme použít podobné pokyny toocreate vlastní virtuální počítač ze souboru konkrétní VHD v Azure pomocí šablony prostřednictvím hello rozhraní příkazového řádku Azure. Hello rozdíl je, že tato šablona vytvoří jeden virtuální počítač z zadaný virtuální pevný disk (VHD).
 
-### <a name="step-1-examine-the-json-file-for-the-template"></a>Krok 1: Prohlídka šablony v souboru JSON
-Tady je obsah souboru JSON pro šablonu, která je v této části použitá jako příklad. (Tato šablona je také umístěná na [GitHubu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).)
+### <a name="step-1-examine-hello-json-file-for-hello-template"></a>Krok 1: Zkontrolujte hello JSON v souboru šablony hello
+Tady jsou hello obsah souboru JSON hello hello šablony, která v této části se používá jako příklad. (hello šablona se také nachází v [Githubu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).)
 
-Znovu musíte zjistit, jaké hodnoty chcete použít pro parametry, které nemají výchozí hodnoty. Po spuštění příkazu `azure group deployment create` vás rozhraní příkazového řádku Azure vyzve k zadání těchto hodnot.
+Znovu budete potřebovat toofind hello hodnoty, které mají tooenter pro hello parametry, které nemají výchozí hodnoty. Když spustíte hello `azure group deployment create` příkaz hello příkazového řádku Azure CLI vás vyzve tooenter můžete tyto hodnoty.
 
 ```json
 {
@@ -674,15 +674,15 @@ Znovu musíte zjistit, jaké hodnoty chcete použít pro parametry, které nemaj
 }
 ```
 
-### <a name="step-2-obtain-the-vhd"></a>Krok 2: Získání virtuálního pevného disku (VHD)
+### <a name="step-2-obtain-hello-vhd"></a>Krok 2: Získání hello virtuálního pevného disku
 Pro tyto účely budete samozřejmě potřebovat soubor .vhd. Můžete použít ten, který už máte v Azure, nebo nějaký nahrát.
 
-Pro virtuální počítač s Windows najdete informace v tématu věnovaném [vytvoření a nahrání VHD s Windows Serverem do Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Virtuální počítač systému Windows, najdete v části [vytvoření a nahrání virtuálního pevného disku serveru Windows tooAzure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Pro virtuální počítač s Linuxem najdete informace v tématu [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Pro virtuální počítač založený na Linuxu, viz [vytváření a odesílání virtuální pevný disk, který obsahuje operační systém Linux hello](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
-### <a name="step-3-create-the-virtual-machine-by-using-the-template"></a>Krok 3: Vytvoření virtuálního počítače pomocí šablony
-Teď jste připravení vytvořit na základě tohoto souboru .vhd nový virtuální počítač. Pomocí příkazu `azure group create <location>` vytvořte skupinu, do které se provede nasazení:
+### <a name="step-3-create-hello-virtual-machine-by-using-hello-template"></a>Krok 3: Vytvoření hello virtuálního počítače pomocí šablony hello
+Nyní jste připravené toocreate nového virtuálního počítače podle hello VHD. Vytvoření skupiny toodeploy do, pomocí `azure group create <location>`:
 
 ```azurecli
 azure group create myResourceGroupUser eastus
@@ -699,7 +699,7 @@ data:
 info:    group create command OK
 ```
 
-Potom vytvořte nasazení použitím možnosti `--template-uri` pro přímé volání šablony (nebo můžete použít možnost `--template-file` a soubor, který jste uložili místně). Všimněte si, že vzhledem k tomu, že šablona má zadané výchozí hodnoty, zobrazí se jenom pár výzev k zadání. Pokud šablonu nasazujete na různých místech, může se stát, že u výchozích hodnot dojde ke kolizím pojmenování (hlavně u názvu DNS, který vytvoříte).
+Pak vytvořte hello nasazení pomocí hello `--template-uri` toocall možnost v šabloně hello přímo (nebo můžete použít hello `--template-file` toouse možnost soubor, který jste uložili místně). Všimněte si, že protože hello šablony má výchozí hodnoty zadané, budete vyzváni k jenom pár věcí. Pokud nasadíte hello šablony na různých místech, můžete zjistit, že některé pojmenování kolizí ke kterým dochází u hello výchozí hodnoty (zejména hello název DNS, které vytvoříte).
 
 ```azurecli
 azure group deployment create \
@@ -707,14 +707,14 @@ azure group deployment create \
 > myResourceGroup \
 > customVhdDeployment
 info:    Executing command group deployment create
-info:    Supply values for the following parameters
+info:    Supply values for hello following parameters
 adminUserName: ops
 adminPassword: password
 osType: linux
 subscriptionId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-Výstup by měl vypadat asi takto:
+Výstup vypadá podobně jako následující hello:
 
 ```azurecli
 + Initializing template configurations and parameters
@@ -723,7 +723,7 @@ info:    Created template deployment "customVhdDeployment"
 + Registering providers
 info:    Registering provider microsoft.network
 info:    Registering provider microsoft.compute
-+ Waiting for deployment to complete
++ Waiting for deployment toocomplete
 error:   Deployment provisioning state was not successful
 data:    DeploymentName     : customVhdDeployment
 data:    ResourceGroupName  : myResourceGroupUser
@@ -752,14 +752,14 @@ info:    group deployment create command OK
 ```
 
 ## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Úloha: Nasazení aplikace s více virtuálními počítači, která používá virtuální síť a externí nástroj pro vyrovnávání zatížení
-Tato šablona umožňuje vytvořit dva virtuální počítače s nástrojem pro vyrovnávání zatížení a nakonfigurovat pravidlo vyrovnávání zatížení na portu 80. Tato šablona také nasadí účet úložiště, virtuální síť, veřejnou IP adresu, skupinu dostupnosti a síťová rozhraní.
+Tato šablona vám umožní toocreate dva virtuální počítače pod nástrojem pro vyrovnávání zatížení a nakonfigurujte pravidlo Vyrovnávání zatížení na Port 80. Tato šablona také nasadí účet úložiště, virtuální síť, veřejnou IP adresu, skupinu dostupnosti a síťová rozhraní.
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
 
-Pomocí těchto kroků nasadíte aplikaci s více virtuálními počítači, která používá virtuální síť a nástroj pro vyrovnávání zatížení, a to využitím šablony Resource Manageru v úložišti šablon GitHub pomocí příkazů prostředí Azure PowerShell.
+Postupujte podle těchto kroků toodeploy aplikace více virtuálních počítačů, která používá virtuální síť a nástroj pro vyrovnávání zatížení pomocí šablony Resource Manageru v šabloně úložiště GitHub hello pomocí příkazů prostředí Azure PowerShell.
 
-### <a name="step-1-examine-the-json-file-for-the-template"></a>Krok 1: Prohlídka šablony v souboru JSON
-Obsah souboru JSON pro příslušnou šablonu vypadá takto. Pokud chcete, aby nejnovější verzi, ho má nachází [v úložišti GitHub pro šablony](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json). Toto téma používá k volání šablony přepínač `--template-uri`, ale můžete také použít přepínač `--template-file` a předat místní verzi.
+### <a name="step-1-examine-hello-json-file-for-hello-template"></a>Krok 1: Zkontrolujte hello JSON v souboru šablony hello
+Tady jsou hello obsah souboru JSON hello hello šablony. Pokud chcete, aby hello nejnovější verzi, ho má nachází [v úložišti GitHub hello pro šablony](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json). Toto téma používá hello `--template-uri` toocall přepínače v hello šablony, ale můžete také použít hello `--template-file` přepínač toopass místní verze.
 
 ```json
 {
@@ -807,7 +807,7 @@ Obsah souboru JSON pro příslušnou šablonu vypadá takto. Pokud chcete, aby n
             "type": "string",
             "defaultValue": "myVM",
             "metadata": {
-                "description": "Prefix to use for VM names"
+                "description": "Prefix toouse for VM names"
             }
         },
         "vmSourceImageName": {
@@ -846,7 +846,7 @@ Obsah souboru JSON pro příslušnou šablonu vypadá takto. Pokud chcete, aby n
             "type": "string",
             "defaultValue": "Standard_A1",
             "metadata": {
-                "description": "Size of the VM"
+                "description": "Size of hello VM"
             }
         }
     },
@@ -1094,8 +1094,8 @@ Obsah souboru JSON pro příslušnou šablonu vypadá takto. Pokud chcete, aby n
 }
 ```
 
-### <a name="step-2-create-the-deployment-by-using-the-template"></a>Krok 2: Vytvoření nasazení pomocí šablony
-Pomocí `azure group create <location>` vytvořte pro šablonu skupinu prostředků. Potom vytvořte nasazení do této skupiny prostředků. Použijte příkaz `azure group deployment create`, předejte skupinu prostředků a název nasazení a odpovězte na výzvy k zadání parametrů šablony, které nemají výchozí hodnoty.
+### <a name="step-2-create-hello-deployment-by-using-hello-template"></a>Krok 2: Vytvoření hello nasazení pomocí šablony hello
+Vytvořte skupinu prostředků pro šablonu hello pomocí `azure group create <location>`. Pak vytvořte nasazení do této skupiny prostředků pomocí `azure group deployment create` a předání hello skupinu prostředků, předávání název nasazení a volaného hello výzvy pro parametry v hello šablonu, která nemá výchozí hodnoty.
 
 ```azurecli
 azure group create lbgroup westus
@@ -1112,7 +1112,7 @@ data:
 info:    group create command OK
 ```
 
-Potom k nasazení šablony použijte příkaz `azure group deployment create` s možností `--template-uri`. Připravte si hodnoty parametrů a po zobrazení příslušných výzev je zadejte, jak znázorňuje následující obrázek.
+Teď použít hello `azure group deployment create` příkaz a hello `--template-uri` možnost toodeploy hello šablony. Připravte si hodnoty parametrů a po zobrazení příslušných výzev je zadejte, jak znázorňuje následující obrázek.
 
 ```azurecli
 azure group deployment create \
@@ -1120,7 +1120,7 @@ azure group deployment create \
 > lbgroup \
 > newdeployment
 info:    Executing command group deployment create
-info:    Supply values for the following parameters
+info:    Supply values for hello following parameters
 location: westus
 newStorageAccountName: storagename
 adminUsername: ops
@@ -1133,7 +1133,7 @@ info:    Created template deployment "newdeployment"
 info:    Registering provider microsoft.storage
 info:    Registering provider microsoft.compute
 info:    Registering provider microsoft.network
-+ Waiting for deployment to complete
++ Waiting for deployment toocomplete
 data:    DeploymentName     : newdeployment
 data:    ResourceGroupName  : lbgroup
 data:    ProvisioningState  : Succeeded
@@ -1161,10 +1161,10 @@ data:    vmSize                 String        Standard_A1
 info:    group deployment create command OK
 ```
 
-Všimněte si, že tato šablona nasadí image Windows Serveru. Můžete ji ale snadno nahradit libovolnou linuxovou imagí. Chcete vytvořit cluster Dockeru s několika správci Swarm? [Můžete](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
+Všimněte si, že tato šablona nasadí image Windows Serveru. Můžete ji ale snadno nahradit libovolnou linuxovou imagí. Chcete toocreate Docker clusteru s několika správci swarm? [Můžete](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
 
 ## <a id="remove-a-resource-group"></a>Úkol: Odebrání skupiny prostředků
-Mějte na paměti, že do skupiny prostředků je možné znovu provádět nasazení, ale pokud jste s ní hotoví, můžete ji odstranit pomocí `azure group delete <group name>`.
+Mějte na paměti, že můžete znovu nasadit tooa skupinu prostředků, ale pokud jste hotovi s jedním, můžete ho odstranit pomocí `azure group delete <group name>`.
 
 ```azurecli
 azure group delete myResourceGroup
@@ -1174,25 +1174,25 @@ Delete resource group myResourceGroup? [y/n] y
 info:    group delete command OK
 ```
 
-## <a id="show-the-log-for-a-resource-group-deployment"></a>Úkol: Zobrazení protokolu pro nasazení skupiny prostředků
-Tento úkol je obvyklý při vytváření nebo používání šablon. K zobrazení protokolů nasazení pro skupinu se použije volání `azure group log show <groupname>`. Zobrazí poměrně hodně informací, které jsou užitečné ke zjištění, proč se něco stalo, nebo nestalo. (Další informace o řešení potíží s nasazeními a také další informace o problémech najdete v tématu [Řešení chyb nasazení v Azure pomocí Azure Resource Manageru](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md).)
+## <a id="show-the-log-for-a-resource-group-deployment"></a>Úloha: Zobrazit hello protokolu pro nasazení skupiny prostředků
+Tento úkol je obvyklý při vytváření nebo používání šablon. protokoly Hello volání toodisplay hello nasazení pro skupinu je `azure group log show <groupname>`, který zobrazuje s bit informace, které jsou užitečné při hledání něco stalo--nebo nebyla. (Další informace o řešení potíží s nasazeními a také další informace o problémech najdete v tématu [Řešení chyb nasazení v Azure pomocí Azure Resource Manageru](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md).)
 
-Pokud se zaměřujete na konkrétní selhání, můžete použít nástroje, jako je **jq**, podívat se na věci víc zblízka a zjistit třeba, která jednotlivá selhání je potřeba napravit. Následující příklad využívá **jq** k analýze protokolu nasazení pro **lbgroup** a hledá selhání.
+tootarget specifických chybách, například můžete použít nástroje, například **jq** tooquery věcí, které jsou o něco víc, přesněji, například které jednotlivé chyby, je nutné toocorrect. Hello následující příklad používá **jq** tooparse nasazení protokolu **lbgroup**, kteří hledají selhání.
 
 ```azurecli
 azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 ```
-Umožňuje rychle zjistit, co se nepovedlo, opravit to a zkusit znovu. V následujícím případě šablona vytvářela dva virtuální počítače ve stejnou dobu. Výsledkem byl zámek na souboru .vhd. (Po příslušné úpravě šablony se nasazení rychle povedlo.)
+Umožňuje rychle zjistit, co se nepovedlo, opravit to a zkusit znovu. V následujícím případě hello, hello šablonu měl byla vytváření dva virtuální počítače v hello současně, který vytvoří zámek na VHD hello. (Po úpravě šablony hello jsme hello nasazení bylo úspěšné rychle.)
 
 ```json
 {
     "statusCode": "Conflict",
-    "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"The resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"AcquireDiskLeaseFailed\",\"message\":\"Failed to acquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd.\"}]}}"
+    "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"hello resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"AcquireDiskLeaseFailed\",\"message\":\"Failed tooacquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd.\"}]}}"
 }
 ```
 
 ## <a id="display-information-about-a-virtual-machine"></a>Úkol: Zobrazení informací o virtuálním počítači
-Informace o konkrétním virtuálním počítači ve skupině prostředků můžete zobrazit pomocí příkazu `azure vm show <groupname> <vmname>`. Pokud máte ve skupině víc než jeden virtuální počítač, můžete nejdřív zobrazit seznam virtuálních počítačů ve skupině pomocí příkazu `azure vm list <groupname>`.
+Zobrazí se informace o konkrétní virtuální počítače ve vaší skupině prostředků s použitím hello `azure vm show <groupname> <vmname>` příkaz. Pokud máte více než jeden virtuální počítač ve vaší skupině, bude pravděpodobně nutné nejprve toolist hello virtuální počítače ve skupině pomocí `azure vm list <groupname>`.
 
 ```azurecli
 azure vm list zoo
@@ -1209,8 +1209,8 @@ A potom vyhledat počítač myVM1:
 ```azurecli
 azure vm show zoo myVM1
 info:    Executing command vm show
-+ Looking up the VM "myVM1"
-+ Looking up the NIC "nic1"
++ Looking up hello VM "myVM1"
++ Looking up hello NIC "nic1"
 data:    Id                              :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/zoo/providers/Microsoft.Compute/virtualMachines/myVM1
 data:    ProvisioningState               :Failed
 data:    Name                            :myVM1
@@ -1259,12 +1259,12 @@ info:    vm show command OK
 ```
 
 > [!NOTE]
-> Pokud chcete prostřednictvím kódu programu uložit výstup příkazů konzoly a zpracovat je, můžete využít třeba nástroj pro analýzu JSON, jako je  **[jq](https://github.com/stedolan/jq)**  nebo  **[jsawk](https://github.com/micha/jsawk)**, nebo knihovny jazyků, které jsou pro tyto účely vhodné.
+> Pokud chcete tooprogrammatically úložiště a manipulaci s výstup hello příkazů vaší konzoly, může být vhodné toouse JSON analýza nástroje, jako  **[jq](https://github.com/stedolan/jq)**  nebo  **[jsawk](https://github.com/micha/jsawk)** , nebo knihovny jazyka, které jsou vhodné pro úlohu hello.
 >
 >
 
-## <a id="log-on-to-a-linux-based-virtual-machine"></a>Úkol: Připojení k virtuálnímu počítači s Linuxem
-K počítačům se systémem Linux se obvykle připojuje prostřednictvím SSH. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>Úloha: Přihlaste tooa systémem Linux virtuálního počítače
+Počítače se systémem Linux jsou obvykle připojené toothrough SSH. Další informace najdete v tématu [jak toouse SSH s Linuxem v Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a id="stop-a-virtual-machine"></a>Úkol: Zastavení virtuálního počítače
 Spusťte tento příkaz:
@@ -1274,7 +1274,7 @@ azure vm stop <group name> <virtual machine name>
 ```
 
 > [!IMPORTANT]
-> Tento parametr použijte k uchování virtuální IP adresy (VIP) virtuální sítě pro případ, že se jedná o poslední virtuální počítač v této síti. <br><br> Pokud použijete parametr `StayProvisioned`, bude se vám tento virtuální počítač nadále účtovat.
+> Použijte tento parametr tookeep hello virtuální IP (VIP) hello sítě vnet, v případě, že je hello poslední virtuální počítač v této virtuální sítě. <br><br> Pokud používáte hello `StayProvisioned` parametr stále platit budete pro hello virtuálních počítačů.
 >
 >
 
@@ -1286,23 +1286,23 @@ azure vm start <group name> <virtual machine name>
 ```
 
 ## <a id="attach-a-data-disk"></a>Úkol: Připojení datového disku
-Musíte se také rozhodnout, jestli se má připojit nový disk, nebo disk, který obsahuje data. V případě nového disku tento příkaz vytvoří soubor .vhd a rovnou ho i připojí.
+Budete také potřebovat toodecide zda tooattach nový disk nebo jeden, který obsahuje data. Pro nový disk, hello příkaz vytvoří soubor VHD hello a připojí jej v hello stejný příkaz.
 
-Pokud chcete připojit nový disk, spusťte tento příkaz:
+tooattach nový disk, spusťte tento příkaz:
 
 ```azurecli
     azure vm disk attach-new <resource-group> <vm-name> <size-in-gb>
 ```
 
-Pokud chcete připojit stávající datový disk, spusťte tento příkaz:
+tooattach stávající datový disk, spusťte tento příkaz:
 
 ```azurecli
 azure vm disk attach <resource-group> <vm-name> [vhd-url]
 ```
 
-Pak bude potřeba disk připojit běžným způsobem, který v Linuxu používáte.
+Toomount hello disku, pak musíte jako za normálních okolností byste v systému Linux.
 
 ## <a name="next-steps"></a>Další kroky
-Další příklady použití rozhraní příkazového řádku Azure s režimem **arm** najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure pro Mac, Linux a Windows s Azure Resource Managerem](../articles/xplat-cli-azure-resource-manager.md). Další informace o prostředcích Azure a jejich konceptech najdete v [přehledu Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md).
+Daleko Další příklady použití Azure CLI s hello **arm** režimu, najdete v části [hello pomocí Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](../articles/xplat-cli-azure-resource-manager.md). toolearn Další informace o prostředků Azure a jejich koncepty, najdete v části [přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md).
 
 Další šablony, které můžete použít, najdete v tématech věnovaných [rychlému úvodu do šablon pro Azure](https://azure.microsoft.com/documentation/templates/) a [aplikačním architekturám využívajícím šablony](../articles/virtual-machines/linux/app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

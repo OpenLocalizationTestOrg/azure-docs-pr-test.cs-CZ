@@ -1,6 +1,6 @@
 ---
-title: "Další informace o použití konektoru MQ v Azure Logic Apps | Microsoft Docs"
-description: "Připojení k místní nebo Azure MQ server z vaší aplikace logiky pracovního postupu procházet, příjem a odesílání zpráv do WebSphere MQ"
+title: aaaLearn jak toouse hello MQ konektor v Azure Logic Apps | Microsoft Docs
+description: "Připojit tooan na pracovišti nebo v Azure MQ server z vaší toobrowse pracovní postup aplikace logiky, příjem a odesílání zpráv tooWebSphere MQ"
 services: logic-apps
 author: valthom
 manager: anneta
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
-ms.openlocfilehash: 17c651585b56dae186286f5d8c68c363ae9c524d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8b36d53b457ced1a7461c229aecfcf8e4ae668a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Připojit k serveru IBM MQ z aplikace logic apps pomocí konektoru MQ 
+# <a name="connect-tooan-ibm-mq-server-from-logic-apps-using-hello-mq-connector"></a>Připojit tooan IBM MQ server z aplikace logic apps pomocí konektoru MQ hello 
 
-Microsoft Connector pro MQ odešle a načítá zprávy o uložená v MQ Server místní nebo v Azure. Tento konektor zahrnuje Microsoft MQ klienta, který komunikuje se vzdáleným serverem IBM MQ přes síť TCP/IP. Tento dokument je úvodní příručka k používání konektoru MQ. Doporučujeme že začněte tím, že procházení do jedné zprávy ve frontě a potom zkusit dalších akcí.    
+Microsoft Connector pro MQ odešle a načítá zprávy o uložená v MQ Server místní nebo v Azure. Tento konektor zahrnuje Microsoft MQ klienta, který komunikuje se vzdáleným serverem IBM MQ přes síť TCP/IP. Tento dokument je konektor úvodní příručka toouse hello MQ. Doporučujeme začínat procházením do jedné zprávy ve frontě, a potom zkusit hello dalších akcí.    
 
-Konektor MQ zahrnuje následující akce. Neexistují žádné aktivační události.
+konektor MQ Hello zahrnuje hello následující akce. Neexistují žádné aktivační události.
 
--   Přejděte do jedné zprávy bez odstranění zprávy ze serveru IBM MQ
--   Procházet dávku zpráv bez odstranění zprávy ze serveru IBM MQ
--   Přijme do jedné zprávy a odstraní zprávu ze serveru IBM MQ
--   Přijetí dávku zpráv a odstranění zprávy ze serveru IBM MQ
--   Odesílání do jedné zprávy na IBM MQ Server 
+-   Přejděte do jedné zprávy bez odstranění uvítací zprávu z hello IBM MQ Server
+-   Procházet dávku zpráv bez odstranění hello zprávy z hello IBM MQ Server
+-   Přijímat do jedné zprávy a odstranit uvítací zprávu z hello IBM MQ Server
+-   Přijímat dávku zpráv a odstranit hello zpráv z hello IBM MQ Server
+-   Odeslat jedné zprávy toohello IBM MQ Server 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud používáte MQ místnímu serveru [nainstalovat bránu dat místní](../logic-apps/logic-apps-gateway-install.md) na serveru v rámci vaší sítě. Pokud je Server MQ veřejně, nebo dostupné v rámci Azure, není bránu dat použít nebo vyžaduje.
+* Pokud používáte MQ místnímu serveru [nainstalovat bránu dat místní hello](../logic-apps/logic-apps-gateway-install.md) na serveru v rámci vaší sítě. Pokud hello MQ Server veřejně, nebo dostupné v rámci Azure, není brána dat hello používá nebo vyžaduje.
 
     > [!NOTE]
-    > Serveru s nainstalovanou bránu dat On-Premises musí také mít rozhraní .net Framework 4.6 nainstalovaný konektor MQ funkce.
+    > server Hello kde hello místní Data brána je nainstalovaná musí také mít rozhraní .net Framework 4.6 pro konektor MQ toofunction hello nainstalována.
 
-* Vytvoření prostředku Azure pro bránu dat místní - [nastavení připojení brány dat](../logic-apps/logic-apps-gateway-connection.md).
+* Vytvoření hello prostředků Azure pro bránu dat místní hello - [nastavit připojení k bráně data hello](../logic-apps/logic-apps-gateway-connection.md).
 
 * Oficiálně podporované IBM WebSphere MQ verze:
    * MQ 7.5
@@ -48,79 +48,79 @@ Konektor MQ zahrnuje následující akce. Neexistují žádné aktivační udál
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**. 
-2. Zadejte **název**, jako je například MQTestApp, **předplatné**, **skupiny prostředků**, a **umístění** (použijte umístění, kde je nakonfigurované připojení k místní brána Data Gateway). Vyberte **připnout na řídicí panel**a vyberte **vytvořit**.  
+1. V hello **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**. 
+2. Zadejte hello **název**, jako je například MQTestApp, **předplatné**, **skupiny prostředků**, a **umístění** (použijte umístění hello kde hello místní brána dat je nakonfigurováno připojení). Vyberte **Pin toodashboard**a vyberte **vytvořit**.  
 ![Vytvoření aplikace logiky](media/connectors-create-api-mq/Create_Logic_App.png)
 
 ## <a name="add-a-trigger"></a>Přidat aktivační událost
 
 > [!NOTE]
-> Konektor MQ nemá žádné aktivační události. Ano, používat jiný aktivační událost spusťte aplikaci logiky, jako **opakování** aktivační události. 
+> Hello MQ konektor nemá žádné aktivační události. Ano, použít jiný toostart aktivační událost svou aplikaci logiky, jako je například hello **opakování** aktivační události. 
 
-1. **Logiku aplikace Návrhář** otevře, vyberte **opakování** v seznamu běžných aktivačních událostí.
-2. Vyberte **upravit** v rámci opakování aktivační událost. 
-3. Nastavte **frekvence** k **den**a nastavte **Interval** k **7**. 
+1. Hello **logiku aplikace Návrhář** otevře, vyberte **opakování** v hello seznam běžných aktivační události.
+2. Vyberte **upravit** v rámci hello opakování aktivační události. 
+3. Sada hello **frekvence** příliš**den**a sadu hello **Interval** příliš**7**. 
 
 ## <a name="browse-a-single-message"></a>Přejděte do jedné zprávy
 1. Vyberte **+ nový krok**a vyberte **přidat akci**.
-2. Do vyhledávacího pole zadejte `mq`a potom vyberte **MQ - procházet zpráva**.  
+2. Hello vyhledávacího pole zadejte `mq`a potom vyberte **MQ - procházet zpráva**.  
 ![Procházet zpráv](media/connectors-create-api-mq/Browse_message.png)
 
-3. Pokud není k dispozici připojení k existující MQ, vytvořte připojení:  
+3. Pokud není k dispozici připojení k existující MQ, vytvořte hello připojení:  
 
-    1. Vyberte **připojit prostřednictvím místní brána dat**a zadejte vlastnosti serveru MQ.  
-    Pro **Server**, můžete zadat název serveru MQ nebo zadejte IP adresu následovaný dvojtečkou a číslo portu. 
-    2. **Brány** rozevírací seznam obsahuje seznam všech existujících připojení brány, které byly nakonfigurovány. Vyberte bránu.
-    3. Vyberte **vytvořit** po dokončení. Připojení vypadá podobně jako následující:   
+    1. Vyberte **připojit prostřednictvím místní brána dat**a zadejte vlastnosti hello serveru MQ.  
+    Pro **Server**, můžete zadat název serveru MQ hello nebo zadejte IP adresu hello následovaný dvojtečkou a hello číslo portu. 
+    2. Hello **brány** rozevírací seznam obsahuje seznam všech existujících připojení brány, které byly nakonfigurovány. Vyberte bránu.
+    3. Vyberte **vytvořit** po dokončení. Připojení vypadá podobně jako toohello následující:   
     ![Vlastnosti připojení](media/connectors-create-api-mq/Connection_Properties.png)
 
-4. Ve vlastnostech akce můžete:  
+4. Ve vlastnostech hello akce můžete:  
 
-    * Použití **fronty** vlastnost, která fronty jiný název než co je definována v připojení
-    * Použití **MessageId**, **CorrelationId**, **GroupId**a dalších vlastností a vyhledejte zprávu založenou na jiné vlastnosti zprávy MQ
-    * Nastavit **IncludeInfo** k **True** zahrnout informace o dalších zpráv ve výstupu. Nebo ji nastavte na **False** tak, aby neobsahoval informace o dalších zpráv ve výstupu.
-    * Zadejte **časový limit** hodnotu určete, jak dlouho čekat na zprávu, která přicházejí v prázdné frontě. Pokud je zadán nic, se načte první zprávu ve frontě a neexistuje žádný doby čekání na zprávu, která se zobrazí.  
+    * Použití hello **fronty** tooaccess vlastnost název fronty jiný než co je definována v hello připojení
+    * Použití hello **MessageId**, **CorrelationId**, **GroupId**a další vlastnosti toobrowse zprávy podle vlastnosti zprávy MQ různých hello
+    * Nastavit **IncludeInfo** příliš**True** informace o dalších zpráv tooinclude ve výstupu hello. Nebo ji nastavte příliš**False** toonot zahrnují informace o dalších zpráv ve výstupu hello.
+    * Zadejte **časový limit** hodnotu toodetermine jak dlouho toowait pro zprávu tooarrive v prázdné frontě. Pokud je zadán nic, jsou načtena hello první zprávu ve frontě hello a neexistuje žádný doby čekání na tooappear zprávy.  
     ![Procházet vlastnosti zprávy](media/connectors-create-api-mq/Browse_message_Props.png)
 
 5. **Uložit** změny a potom **spustit** svou aplikaci logiky:  
 ![Uložte a spusťte](media/connectors-create-api-mq/Save_Run.png)
 
-6. Za několik sekund jsou uvedeny kroky spuštění, a můžete se podívat na výstup. Vyberte na zelenou značku zaškrtnutí zobrazíte podrobnosti o jednotlivých kroků. Vyberte **najdete v části nezpracovaná výstupy** zobrazíte další podrobnosti na výstupní data.  
+6. Za několik sekund jsou uvedeny kroky hello hello spustit, a můžete se podívat na výstup hello. Vyberte podrobnosti toosee hello zeleného zaškrtnutí jednotlivých kroků. Vyberte **najdete v části nezpracovaná výstupy** toosee další podrobnosti o hello výstupní data.  
 ![Procházet výstup zpráv](media/connectors-create-api-mq/Browse_message_output.png)  
 
     Nezpracovaná výstup:  
     ![Procházet nezpracovaná výstup zpráv](media/connectors-create-api-mq/Browse_message_raw_output.png)
 
-7. Když **IncludeInfo** je možnost nastavena na hodnotu true, se zobrazí následující výstup:  
+7. Když hello **IncludeInfo** je možnost nastavena tootrue, zobrazí se následující výstup hello:  
 ![Procházet zpráva obsahovat informace o](media/connectors-create-api-mq/Browse_message_Include_Info.png)
 
 ## <a name="browse-multiple-messages"></a>Procházet více zpráv
-**Procházet zprávy** zahrnuje akce **BatchSize** možnost indikující, kolik zpráv má být vrácen z fronty.  Pokud **BatchSize** nemá žádný záznam, jsou vráceny všechny zprávy. Vrácený výstupem je pole zpráv.
+Hello **procházet zprávy** zahrnuje akce **BatchSize** možnost tooindicate má být vrácen počet zpráv z fronty hello.  Pokud **BatchSize** nemá žádný záznam, jsou vráceny všechny zprávy. Hello vrátit výstupem je pole zpráv.
 
-1. Při přidávání **procházet zprávy** je standardně vybraná akce, první připojení, který je nakonfigurovaný. Vyberte **změnit připojení** vytvořte nové připojení, nebo vyberte jiné připojení.
+1. Při přidávání hello **procházet zprávy** je standardně vybraná akce, hello prvního připojení, který je nakonfigurovaný. Vyberte **změnit připojení** toocreate nové připojení, nebo vyberte jiné připojení.
 
-2. Výstup procházet zprávy zobrazí:  
+2. výstup Hello procházet zprávy zobrazí:  
 ![Procházet výstupní zprávy](media/connectors-create-api-mq/Browse_messages_output.png)
 
 ## <a name="receive-a-single-message"></a>Přijímat do jedné zprávy
-**Příjmu zpráv** akce se stejnými vstupy a výstupy jako **zpráva Procházet** akce. Při použití **příjmu zpráv**, odstraní zprávu z fronty.
+Hello **příjmu zpráv** akce má hello stejné vstupy a výstupy jako hello **zpráva Procházet** akce. Při použití **příjmu zpráv**, odstraní hello zprávu z fronty hello.
 
 ## <a name="receive-multiple-messages"></a>Zobrazí více zpráv
-**Přijímat zprávy** akce se stejnými vstupy a výstupy jako **procházet zprávy** akce. Při použití **přijímat zprávy**, zprávy jsou odstraněny z fronty.
+Hello **přijímat zprávy** akce má hello stejné vstupy a výstupy jako hello **procházet zprávy** akce. Při použití **přijímat zprávy**, jsou odstraněny hello zprávy z fronty hello.
 
-Pokud nejsou žádné zprávy ve frontě, když procházet nebo příjmu, selže s následující výstup:  
+Pokud nejsou žádné zprávy ve frontě hello, když procházet nebo příjmu, krok hello selže s touto hello následující výstup:  
 ![Ne MQ zprávy chyby](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
 
 ## <a name="send-a-message"></a>Odeslat zprávu
-1. Při přidávání **odesílání zpráv** ve výchozím nastavení je vybrané akce, první připojení, který je nakonfigurovaný. Vyberte **změnit připojení** vytvořte nové připojení, nebo vyberte jiné připojení. Platném **typy zpráv** jsou **Datagram**, **odpověď**, nebo **požadavku**.  
+1. Při přidávání hello **odesílání zpráv** ve výchozím nastavení je vybrané akce, hello prvního připojení, který je nakonfigurovaný. Vyberte **změnit připojení** toocreate nové připojení, nebo vyberte jiné připojení. Hello platný **typy zpráv** jsou **Datagram**, **odpověď**, nebo **požadavku**.  
 ![Odeslat Msg Props](media/connectors-create-api-mq/Send_Msg_Props.png)
 
-2. Výstup odeslat zpráva vypadá takto:  
+2. Hello výstup odeslat zpráva vypadá hello následující:  
 ![Odeslání výstupu Msg](media/connectors-create-api-mq/Send_Msg_Output.png)
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/mq/).
+Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/mq/).
 
 ## <a name="next-steps"></a>Další kroky
-[Vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md). Prozkoumejte dalších dostupných konektorů v Logic Apps v našem [rozhraní API seznamu](apis-list.md).
+[Vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md). Prozkoumejte hello dalších dostupných konektorů v Logic Apps v našem [rozhraní API seznamu](apis-list.md).

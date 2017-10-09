@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Požadavky
 * A [MicrosoftTranslator](https://www.microsoft.com/translator) účtu  
 
-Než v aplikaci logiky můžete použít váš účet MicrosoftTranslator, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu MicrosoftTranslator. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure.  
+Než v aplikaci logiky můžete použít váš účet MicrosoftTranslator, musíte je nejdříve autorizovat hello logiku aplikace tooconnect tooyour MicrosoftTranslator účtu. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na hello portálu Azure.  
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu MicrosoftTranslator:  
+Zde jsou kroky tooauthorize hello vaší logiku aplikace tooconnect tooyour MicrosoftTranslator účet:  
 
-1. Chcete-li vytvořit připojení k MicrosoftTranslator, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *MicrosoftTranslator* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. Vyberte připojení tooMicrosoftTranslator, v návrháři aplikace logiky hello, toocreate **zobrazit Microsoft spravované rozhraní API** v hello rozevíracím seznamu a potom zadejte *MicrosoftTranslator* hello vyhledávacího pole. Vyberte hello aktivační události nebo akce, budete jako toouse:  
    ![Krok vytvoření MicrosoftTranslator připojení](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
-2. Pokud jste nevytvořili žádné připojení k MicrosoftTranslator před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší MicrosoftTranslator. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu MicrosoftTranslator:  
+2. Pokud jste nevytvořili žádné připojení tooMicrosoftTranslator před, získáte výzvami tooprovide přihlašovacích údajů MicrosoftTranslator. Tyto přihlašovací údaje bude použité tooauthorize vaše tooconnect aplikace logiky k a získat přístup k datům účtu MicrosoftTranslator:  
    ![Krok vytvoření MicrosoftTranslator připojení](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
-3. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
+3. Všimněte si hello připojení bylo vytvořeno a jste nyní volné tooproceed s hello další kroky v aplikaci logiky:  
    ![Krok vytvoření MicrosoftTranslator připojení](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 

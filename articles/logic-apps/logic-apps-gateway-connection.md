@@ -1,6 +1,6 @@
 ---
-title: "Přistupovat ke zdrojům dat místně pro Azure Logic Apps | Microsoft Docs"
-description: "Nastavit místní brána dat tak můžete přistupovat ke zdrojům dat místně z aplikace logiky"
+title: "zdroje dat aaaAccess místně pro Azure Logic Apps | Microsoft Docs"
+description: "Nastaví bránu dat místní hello, tak můžete přistupovat ke zdrojům dat místně z aplikace logiky"
 keywords: "přístup k datům na místní, přenos dat, šifrování, zdroje dat"
 services: logic-apps
 author: jeffhollan
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1d3deaac5a095316ce78e224dab0c08559bc2ff2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>Přístup ke zdrojům dat místně z aplikací logiky s místní brány dat
+# <a name="access-data-sources-on-premises-from-logic-apps-with-hello-on-premises-data-gateway"></a>Přístup ke zdrojům dat místně z aplikací logiky s bránou data místně hello
 
-Chcete-li z vašich logic apps přistupovat ke zdrojům dat místně, nastavte bránu místní data, která aplikace logiky můžete použít se podporované konektory. Brána funguje jako mostu, který poskytuje přenos rychlé dat a šifrování mezi datové zdroje na místní a aplikace logiky. Brána předává data z místního zdroje na šifrované kanály přes Azure Service Bus. Veškerý provoz pochází jako zabezpečené odchozí provoz z agenta brány. Další informace o [fungování bránu dat](logic-apps-gateway-install.md#gateway-cloud-service). 
+zdroje dat tooaccess místně z vašich aplikací logiky nastavit bránu místní data, která aplikace logiky můžete použít se podporované konektory. Hello brány funguje jako mostu, který poskytuje přenos rychlé dat a šifrování mezi datové zdroje na místní a aplikace logiky. Brána Hello předává data z místního zdroje na šifrované kanály prostřednictvím hello Azure Service Bus. Veškerý provoz pochází jako zabezpečené odchozí provoz z agenta brány hello. Další informace o [fungování brány dat hello](logic-apps-gateway-install.md#gateway-cloud-service). 
 
-Brána podporuje připojení k těmto zdrojům dat místně:
+Hello brána podporuje místní zdroje dat toothese připojení:
 
 *   BizTalk Server 2016
 *   DB2  
@@ -41,9 +41,9 @@ Brána podporuje připojení k těmto zdrojům dat místně:
 *   SQL Server
 *   Teradata
 
-Tyto kroky ukazují, jak nastavit místní brána dat pro práci s logic apps. Další informace o podporované konektory najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). 
+Tyto kroky ukazují, jak tooset až hello místní brány toowork data s logic apps. Další informace o podporované konektory najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). 
 
-Informace o tom, jak používat bránu s jinými službami, najdete v těchto článcích:
+Informace o tom, jak toouse hello brány s jinými službami najdete v těchto článcích:
 
 *   [Microsoft Power BI místní brány dat](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Služba Azure gateway místní dat služby Analysis Services](../analysis-services/analysis-services-gateway.md)
@@ -52,111 +52,111 @@ Informace o tom, jak používat bránu s jinými službami, najdete v těchto č
 
 ## <a name="requirements"></a>Požadavky
 
-* Musíte mít již [nainstalovat bránu dat na místním počítači](logic-apps-gateway-install.md).
+* Musíte mít již [nainstalovali hello bránu dat na místním počítači](logic-apps-gateway-install.md).
 
-* Když se přihlásíte na portál Azure, budete muset použít stejný pracovní nebo školní účet, který se používá ke [nainstalovat bránu dat místní](logic-apps-gateway-install.md#requirements). Předplatné Azure k použití při vytváření prostředku brány na portálu Azure pro instalaci brány musí mít také váš přihlašovací účet.
+* Při přihlášení toohello portál Azure máte toouse hello stejný pracovní nebo školní účet, který byl použit příliš[nainstalovat bránu dat místní hello](logic-apps-gateway-install.md#requirements). Přihlášení musí mít váš účet také toouse předplatného Azure při vytváření prostředku brány v hello portál Azure pro instalaci brány.
 
-* Instalace brány nelze již požadoval podle prostředek Azure brány. Instalace brány pouze jeden prostředek, služba Azure gateway můžete přidružit. Deklarace identity se stane, když vytvoříte prostředek brány tak, aby instalace není k dispozici pro další prostředky.
+* Instalace brány nelze již požadoval podle prostředek Azure brány. Můžete přidružit brány instalace tooonly jedna služba Azure gateway prostředku. Deklarace identity se stane, když vytvoříte prostředek brány hello tak, aby instalace hello není k dispozici pro další prostředky.
 
-## <a name="set-up-the-data-gateway-connection"></a>Nastavení připojení brány dat
+## <a name="set-up-hello-data-gateway-connection"></a>Nastavit připojení k bráně data hello
 
-### <a name="1-install-the-on-premises-data-gateway"></a>1. Instalace na místní datovou bránu
+### <a name="1-install-hello-on-premises-data-gateway"></a>1. Nainstalovat bránu dat místní hello
 
-Pokud jste to ještě neudělali, postupujte podle kroků [postup nainstalovat bránu dat místní](logic-apps-gateway-install.md). Než budete pokračovat v dalších krocích, ujistěte se, že jste nainstalovali bránu dat na místním počítači.
+Pokud jste to ještě neudělali, postupujte podle hello [kroky tooinstall hello místní data brána](logic-apps-gateway-install.md). Než budete pokračovat s hello další kroky, ujistěte se, že jste nainstalovali bránu dat hello v místním počítači.
 
 <a name="create-gateway-resource"></a>
-### <a name="2-create-an-azure-resource-for-the-on-premises-data-gateway"></a>2. Vytvořit prostředek služby Azure pro bránu místní data
+### <a name="2-create-an-azure-resource-for-hello-on-premises-data-gateway"></a>2. Vytvořit prostředek služby Azure pro bránu dat místní hello
 
-Po instalaci brány na místním počítači, musíte vytvořit vaše brána data gateway jako prostředek v Azure. Tento krok také přidruží vaší brány prostředků ve vašem předplatném Azure.
+Po instalaci brány hello v místním počítači, musíte vytvořit vaše brána data gateway jako prostředek v Azure. Tento krok také přidruží vaší brány prostředků ve vašem předplatném Azure.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal"). Nezapomeňte použít stejný Azure pracovní nebo školní e-mailovou adresu použitý k instalaci brány.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com "portál Azure"). Zajistěte, aby toouse hello Azure pracovní nebo školní e-mailovou adresu používat tooinstall hello brány.
 
-2. V levé nabídce v Azure, zvolte **nový** > **Enterprise integrace** > **místní brána dat** jak je vidět tady:
+2. V levé nabídce hello v Azure, zvolte **nový** > **Enterprise integrace** > **místní brána dat** jak je vidět tady:
 
    ![Najít "místní brána dat"](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
-3. Na **vytvořit připojení bránu** okno, zadejte tyto údaje pro vytvoření prostředku brány dat:
+3. Na hello **vytvořit připojení bránu** okno, zadejte tyto údaje toocreate prostředku brány dat:
 
     * **Název**: Zadejte název pro prostředek brány. 
 
-    * **Předplatné**: Vyberte předplatné Azure, které chcete přidružit k prostředku brány. 
-    Tento odběr musí být ve stejném předplatném jako svou aplikaci logiky.
+    * **Předplatné**: Vyberte hello tooassociate předplatného Azure s vaší brány prostředků. 
+    Tento odběr musí být hello stejnému předplatnému jako svou aplikaci logiky.
    
-      Výchozí předplatné je založena na účet Azure, který jste použili k přihlášení.
+      výchozí předplatné Hello je založena na hello účet Azure, který jste použili toosign v.
 
     * **Skupina prostředků**: Vytvořte skupinu prostředků nebo vyberte existující skupinu prostředků pro nasazení brány prostředku. 
     Skupiny prostředků usnadňují správu souvisejících prostředků Azure jako kolekce.
 
-    * **Umístění**: Azure omezuje toto umístění do stejné oblasti, která byla vybrána pro cloudové službě brány během [instalace brány](logic-apps-gateway-install.md). 
+    * **Umístění**: Azure omezuje toto umístění toohello stejné oblasti, která byla vybrána pro cloudové službě Brána hello během [instalace brány](logic-apps-gateway-install.md). 
 
       > [!NOTE]
-      > Ujistěte se, že umístění prostředků brány odpovídá umístění brány cloudové služby. Instalace brány, jinak hodnota nemusí zobrazit v seznamu nainstalovaných brány můžete vybrat v dalším kroku.
+      > Ujistěte se, že umístění prostředku hello brány odpovídá umístění hello brány cloudové služby. Jinak instalace brány nemusí zobrazit v seznamu brány hello nainstalován pro tooselect můžete v dalším kroku hello.
       > 
       > Pro prostředek brány a pro svou aplikaci logiky můžete různých oblastech.
 
-    * **Název instalace**: Pokud vaše instalace brány již není vybrána, vyberte brány, kterou jste dříve nainstalovali. 
+    * **Název instalace**: Pokud vaše instalace brány již není vybrána, vyberte hello brány, kterou jste dříve nainstalovali. 
 
-    Chcete-li prostředek brány přidat do řídicího panelu Azure, zvolte **připnout na řídicí panel**. 
+    Zvolte tooadd hello brány prostředků tooyour řídicí panel Azure **Pin toodashboard**. 
     Až budete hotoví, zvolte **vytvořit**.
 
     Například:
 
-    ![Zadejte podrobnosti vytvořit bránu, místní data](./media/logic-apps-gateway-connection/createblade.png)
+    ![Zadejte podrobnosti toocreate vaše místní brána data gateway](./media/logic-apps-gateway-connection/createblade.png)
 
-    K vyhledání nebo zobrazit vaše brána data gateway kdykoli hlavní Azure levé nabídce přejděte na **více služeb** > **Enterprise integrace** > **místní brány Data Gateways**.
+    toofind nebo zobrazení, vaše brána data gateway v každém okamžiku hello hlavní Azure levé nabídce, přejděte příliš **více služeb** > **Enterprise integrace** > **místní Data Brány**.
 
-    ![Přejděte na "Další služby", "Enterprise integraci", "místní Data Gateway"](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
+    ![Přejděte příliš "Další služby", "Enterprise integraci", "Místní Data Gateway"](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
-### <a name="3-connect-your-logic-app-to-the-on-premises-data-gateway"></a>3. Připojení aplikace logiky k bráně místní data
+### <a name="3-connect-your-logic-app-toohello-on-premises-data-gateway"></a>3. Připojte bránu logiku aplikace toohello místní data
 
-Teď, když jste vytvořili prostředku bránu dat a vašeho předplatného Azure přidružené k prostředku, vytvořte připojení mezi svou aplikaci logiky a brána data gateway.
+Teď, když jste vytvořili prostředku bránu dat a vašeho předplatného Azure přidružené k prostředku, vytvořte připojení mezi bránu dat a hello aplikace logiky.
 
 > [!NOTE]
-> Vaše umístění připojení brány musí být ve stejné oblasti jako svou aplikaci logiky, ale můžete použít bránu data gateway, která existuje v jiné oblasti.
+> Vaše brána umístění připojení musí existovat v hello stejné oblasti jako svou aplikaci logiky, ale můžete použít bránu data gateway, která existuje v jiné oblasti.
 
-1. Na portálu Azure vytvořit nebo otevřít v návrháři aplikace logiky aplikace logiky.
+1. V hello portálu Azure vytvořte nebo otevřete aplikaci logiky v návrháři aplikace logiky.
 
 2. Přidejte konektor, který podporuje místní připojení, jako je SQL Server.
 
-3. Následující pořadí uvedeném, vyberte **připojit prostřednictvím místní brána dat**, zadejte jedinečný název a požadované informace a vyberte prostředek brány dat, který chcete použít. Až budete hotoví, zvolte **vytvořit**.
+3. Následující hello pořadí uvedeném, vyberte **připojit prostřednictvím místní brána dat**, zadejte jedinečný název a text hello požadované informace a vyberte hello data gateway prostředků, které chcete toouse. Až budete hotoví, zvolte **vytvořit**.
 
    > [!TIP]
-   > Jedinečný název umožňuje snadno identifikovat toto připojení později, zejména v případě, že vytvoříte více připojení. Pokud je k dispozici, zahrnují také kvalifikované domény pro vaše uživatelské jméno. 
+   > Jedinečný název umožňuje snadno identifikovat toto připojení později, zejména v případě, že vytvoříte více připojení. Pokud je k dispozici, zahrnují také hello domény pro vaše uživatelské jméno. 
 
    ![Vytvoření připojení mezi brána logiku aplikace a data](./media/logic-apps-gateway-connection/blankconnection.png)
 
-Blahopřejeme, připojení brány je nyní připraven pro svou aplikaci logiky používat.
+Blahopřejeme, připojení brány je nyní připraven pro vaše toouse aplikace logiky.
 
 ## <a name="edit-your-gateway-connection-settings"></a>Upravit nastavení připojení brány
 
-Po vytvoření připojení brány pro svou aplikaci logiky, můžete chtít později aktualizovat nastavení pro dané připojení.
+Po vytvoření připojení brány pro svou aplikaci logiky, můžete nastavení hello toolater aktualizací pro dané připojení.
 
-1. Vyhledání připojení brány:
+1. připojení brány toofind hello:
 
-   * V okně aplikace logiky v rámci **nástroje pro vývoj**, vyberte **rozhraní API připojení**. 
+   * V okně aplikace logiky hello v části **nástroje pro vývoj**, vyberte **rozhraní API připojení**. 
    
-     **Rozhraní API připojení** podokně se zobrazují všechna připojení rozhraní API, které jsou přidružené k aplikaci logiky, včetně připojení brány.
+     Hello **rozhraní API připojení** podokně se zobrazují všechna připojení rozhraní API, které jsou přidružené k aplikaci logiky, včetně připojení brány.
 
-     ![Přejděte do aplikace logiky, vyberte položku "API připojení"](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+     ![Přejděte tooyour aplikace logiky, vyberte položku "API připojení"](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * Nebo v hlavní Azure levé nabídce, přejděte na **více služeb** > **Web a mobilní služby** > **připojení rozhraní API** pro všechna rozhraní API připojení, včetně připojení brány, které jsou spojeny s předplatným Azure. 
+   * Nebo hello hlavní Azure levé nabídce, přejděte příliš **více služeb** > **Web a mobilní služby** > **připojení rozhraní API** pro všechna rozhraní API připojení včetně brány připojení, které jsou spojeny s předplatným Azure. 
 
-   * Nebo na hlavní Azure nabídce vlevo, přejděte na **všechny prostředky** pro všechna rozhraní API připojení, včetně připojení brány, které jsou spojeny s předplatným Azure.
+   * Nebo hello hlavní Azure levém nabídky, přejděte příliš**všechny prostředky** pro všechna rozhraní API připojení, včetně připojení brány, které jsou spojeny s předplatným Azure.
 
-2. Vyberte připojení brány, který chcete zobrazit nebo upravit a zvolit **připojení k rozhraní API upravit**.
+2. Vyberte připojení brány hello chcete tooview nebo upravit a zvolte **připojení k rozhraní API upravit**.
 
    > [!TIP]
-   > Pokud vaše aktualizace se projeví, zkuste [zastavením a restartováním brány služby systému Windows](./logic-apps-gateway-install.md#restart-gateway).
+   > Pokud vaše aktualizace se projeví, zkuste [zastavením a restartováním služby systému Windows hello brány](./logic-apps-gateway-install.md#restart-gateway).
 
 <a name="change-delete-gateway-resource"></a>
 ## <a name="switch-or-delete-your-on-premises-data-gateway-resource"></a>Přepínač nebo odstranit prostředek brány vaše místní data
 
-Vytvořte prostředek jiné brány, bránu přidružit jiný zdroj nebo odebrat prostředek brány, můžete odstranit prostředek brány bez ovlivnění instalace brány. 
+toocreate prostředek jinou bránu bránu přidružit jiný prostředek nebo odebrat prostředek hello brány, můžete odstranit prostředek brány hello bez ovlivnění hello instalace brány. 
 
-1. Hlavní Azure levé nabídce přejděte na **všechny prostředky**. 
+1. Hello hlavní Azure levé nabídce, přejděte příliš**všechny prostředky**. 
 2. Najděte a vyberte prostředek brány vaše data.
-3. Zvolte **místní brána dat**a na panelu nástrojů prostředků, zvolte **odstranit**.
+3. Zvolte **místní brána dat**a na panelu nástrojů hello prostředků, zvolte **odstranit**.
 
 <a name="faq"></a>
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

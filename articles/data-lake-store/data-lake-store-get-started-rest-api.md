@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Data Lake Storem pomocí REST API | Dokumentace Microsoftu"
-description: "Použití rozhraní REST API WebHDFS k provádění operací v Data Lake Store"
+title: "aaaUse hello REST API tooget začít s Data Lake Store | Microsoft Docs"
+description: "Použití rozhraní REST API WebHDFS tooperform operací v Data Lake Store"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: nitinme
-ms.openlocfilehash: dc2c8f58e0a2faf1b00f4903148328a5141a8637
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 62fce8293dfee730a61f2a3d37fc138ce7c3afdf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-rest-apis"></a>Začínáme s Azure Data Lake Store pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -33,37 +33,37 @@ ms.lasthandoff: 07/11/2017
 >
 > 
 
-V tomto článku se naučíte používat rozhraní REST API WebHDFS a rozhraní REST API Data Lake Store k provádění správy účtů a operací systému souborů v Azure Data Lake Store. Azure Data Lake Store zpřístupňuje vlastní rozhraní REST API pro operace správy účtů. Data Lake Store je nicméně kompatibilní s ekosystémy HDFS a Hadoop, a proto podporuje použití rozhraní REST API WebHDFS pro operace systému souborů.
+V tomto článku se dozvíte, jak toouse rozhraní REST API WebHDFS a rozhraní API REST Data Lake Store tooperform účtu správu, jakož i operací systému souborů v Azure Data Lake Store. Azure Data Lake Store zpřístupňuje vlastní rozhraní REST API pro operace správy účtů. Data Lake Store je nicméně kompatibilní s ekosystémy HDFS a Hadoop, a proto podporuje použití rozhraní REST API WebHDFS pro operace systému souborů.
 
 > [!NOTE]
-> Podrobné informace týkající se podpory rozhraní REST API pro Data Lake Store najdete v tématu [Referenční informace týkající se rozhraní REST API Azure Data Lake Store](https://msdn.microsoft.com/library/mt693424.aspx).
+> Podrobné informace o podporovaných hello REST API pro Data Lake Store najdete v tématu [Azure Data Lake Store REST referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/mt693424.aspx).
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Vytvoření aplikace Azure Active Directory**. Aplikaci Azure AD použijete k ověření aplikace Data Lake Store ve službě Azure AD. Existují různé přístupy k ověřování ve službě Azure AD, jsou to **ověřování koncového uživatele** nebo **ověřování služba-služba**. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
-* [cURL](http://curl.haxx.se/). Tento článek používá cURL k předvedení toho, jak provádět volání rozhraní REST API vůči účtu Data Lake Store.
+* **Vytvoření aplikace Azure Active Directory**. Hello Azure AD aplikace tooauthenticate hello Data Lake Store aplikaci můžete používat s Azure AD. Existují různé přístupy tooauthenticate s Azure AD, které jsou **ověřování koncového uživatele** nebo **service-to-service ověřování**. Pokyny a další informace o tooauthenticate, najdete v části [ověřování koncového uživatele](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Service-to-service ověřování](data-lake-store-authenticate-using-active-directory.md).
+* [cURL](http://curl.haxx.se/). Tento článek používá cURL toodemonstrate, jakým způsobem volá toomake REST API vůči účtu Data Lake Store.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Jak můžu ověřovat pomocí služby Azure Active Directory?
-Ověřování pomocí služby Azure Active Directory můžete provádět dvěma přístupy.
+Můžete použít dva přístupy tooauthenticate pomocí služby Azure Active Directory.
 
 ### <a name="end-user-authentication-interactive"></a>Ověření koncového uživatele (interaktivní)
-V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. V případě interaktivního ověřování proveďte následující postup.
+V tomto scénáři aplikace hello vyzve uživatele toolog hello v a všechny operace hello se provádějí v kontextu hello hello uživatele. Proveďte následující kroky pro interaktivní ověřování hello.
 
-1. Prostřednictvím aplikace přesměrujte uživatele na tuto adresu URL:
+1. Prostřednictvím aplikace přesměrování toohello uživatele hello následující adresu URL:
    
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<REDIRECT-URI> musí být zakódovaný, aby se dal použít jako adresa URL. Pro adresu https://localhost proto použijte zápis `https%3A%2F%2Flocalhost`).
+   > \<REDIRECT-URI > musí toobe kódováním pro použití v adrese URL. Pro adresu https://localhost proto použijte zápis `https%3A%2F%2Flocalhost`).
    > 
    > 
    
-    Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
+    Za účelem hello tohoto kurzu můžete nahradit zástupné hodnoty hello v adrese URL hello výše a vložte jej do adresního řádku webového prohlížeče. Bude přesměrované tooauthenticate pomocí přihlášení Azure. Jakmile úspěšně přihlásíte, hello odpovědi se zobrazí v adresním řádku prohlížeče hello. odpověď Hello bude v hello následující formát:
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
-2. Zaznamenejte autorizační kód z odpovědi. Pro účely tohoto kurzu můžete zkopírovat autorizační kód z adresního řádku webového prohlížeče a předat jej v požadavku POST koncovému bodu tokenu, jak vidíte níže:
+2. Zaznamenejte hello autorizační kód z odpovědi hello. V tomto kurzu můžete zkopírovat hello autorizační kód z panelu Adresa hello hello webového prohlížeče a předat jej v hello POST požadavek toohello koncovému bodu tokenu, jak je uvedeno níže:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -73,13 +73,13 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
-   > V takovém případě nemusí být identifikátor \<REDIRECT-URI> zakódovaný.
+   > V takovém případě hello \<REDIRECT-URI > nemusí být zakódován.
    > 
    > 
-3. Odpovědí je objekt JSON, který obsahuje přístupový token (např. `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (např. `"refresh_token": "<REFRESH_TOKEN>"`). Aplikace používá přístupový token při přístupu k Azure Data Lake Store, zatímco obnovovací token používá k získání dalšího přístupového tokenu, když přístupovému tokenu vyprší platnost.
+3. odpověď Hello je objekt JSON, který obsahuje přístupový token (například `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (například `"refresh_token": "<REFRESH_TOKEN>"`). Vaše aplikace používá hello přístupový token při přístupu k Azure Data Lake Store a hello aktualizace tokenu tooget dalšího přístupového tokenu když vyprší platnost přístupového tokenu.
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
-4. Když vyprší platnost přístupového tokenu, můžete pomocí obnovovacího tokenu požádat o nový přístupový token, jak vidíte níže:
+4. Když vyprší platnost hello přístupový token, můžete požádat o nový přístupový token pomocí hello aktualizace tokenu, jak je uvedeno níže:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -90,7 +90,7 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
 Další informace o interaktivním ověřování uživatelů najdete v tématu [Tok poskytování autorizačních kódů](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ### <a name="service-to-service-authentication-non-interactive"></a>Ověřování služba-služba (neinteraktivní)
-V tomto scénáři aplikace poskytuje svoje vlastní přihlašovací údaje k provedení operací. V tomto případě musíte vydat požadavek POST podobný tomu, který vidíte níže. 
+V tomto scénáři hello hello aplikace poskytuje svoje vlastní přihlašovací údaje tooperform hello operace. V takovém případě musíte vydat požadavek POST jako hello níže. 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -98,20 +98,20 @@ V tomto scénáři aplikace poskytuje svoje vlastní přihlašovací údaje k pr
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-Výstup tohoto požadavku bude obsahovat autorizační token (níže ve výstupu označený jako `access-token`), který potom budete předávat s voláními rozhraní REST API. Tento ověřovací token si uložte do textového souboru, protože ho budete později v tomto článku potřebovat.
+Hello výstup tohoto požadavku bude obsahovat autorizační token (odlišené `access-token` ve výstupu hello níže), potom budete předávat s voláními rozhraní REST API. Tento ověřovací token si uložte do textového souboru, protože ho budete později v tomto článku potřebovat.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-Tento článek používá **neinteraktivní** přístup. Další informace o neinteraktivním přístupu (volání služba-služba) najdete v tématu [Volání služba-služba pomocí přihlašovacích údajů](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+Tento článek používá hello **neinteraktivní** přístup. Další informace o neinteraktivním (volání služba služba) najdete v tématu [služba pomocí přihlašovacích údajů volání tooservice](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
 ## <a name="create-a-data-lake-store-account"></a>Vytvoření účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://msdn.microsoft.com/library/mt694078.aspx).
+Tato operace je založená na volání rozhraní REST API hello definované [zde](https://msdn.microsoft.com/library/mt694078.aspx).
 
-Použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující příkaz cURL hello. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
-Ve výše uvedeném příkazu nahraďte položku \<`REDACTED`\> autorizačním tokenem, který jste získali dříve. Datová část požadavku tohoto příkazu se nachází v souboru **input.json** poskytnutém pro parametr `-d` výše. Obsah souboru input.json vypadá přibližně takto:
+V hello výše příkazu nahraďte položku \< `REDACTED` \> s tokenem autorizace hello jste získali dříve. Hello datová část požadavku tohoto příkazu se nachází v hello **input.json** soubor, který je k dispozici pro hello `-d` parametr výše. Hello obsah souboru Input.JSON vypadá hello vypadat hello následující:
 
     {
     "location": "eastus2",
@@ -122,28 +122,28 @@ Ve výše uvedeném příkazu nahraďte položku \<`REDACTED`\> autorizačním t
     }    
 
 ## <a name="create-folders-in-a-data-lake-store-account"></a>Vytváření složek v účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory).
+Tato operace je založená na volání rozhraní REST API WebHDFS hello definované [zde](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory).
 
-Použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující příkaz cURL hello. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
-Ve výše uvedeném příkazu nahraďte položku \<`REDACTED`\> autorizačním tokenem, který jste získali dříve. Tento příkaz vytvoří adresář s názvem **mytempdir** v kořenové složce účtu Data Lake Store.
+V hello výše příkazu nahraďte položku \< `REDACTED` \> s tokenem autorizace hello jste získali dříve. Tento příkaz vytvoří adresář s názvem **mytempdir** hello kořenové složce účtu Data Lake Store.
 
-Po úspěšném dokončení operace se zobrazí takováto odpověď:
+Pokud po úspěšném dokončení operace hello se zobrazí odpověď takto:
 
     {"boolean":true}
 
 ## <a name="list-folders-in-a-data-lake-store-account"></a>Zobrazení seznamu složek v účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory).
+Tato operace je založená na volání rozhraní REST API WebHDFS hello definované [zde](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory).
 
-Použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující příkaz cURL hello. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
-Ve výše uvedeném příkazu nahraďte položku \<`REDACTED`\> autorizačním tokenem, který jste získali dříve.
+V hello výše příkazu nahraďte položku \< `REDACTED` \> s tokenem autorizace hello jste získali dříve.
 
-Po úspěšném dokončení operace se zobrazí takováto odpověď:
+Pokud po úspěšném dokončení operace hello se zobrazí odpověď takto:
 
     {
     "FileStatuses": {
@@ -163,15 +163,15 @@ Po úspěšném dokončení operace se zobrazí takováto odpověď:
     }
 
 ## <a name="upload-data-into-a-data-lake-store-account"></a>Nahrání dat do účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File).
+Tato operace je založená na volání rozhraní REST API WebHDFS hello definované [zde](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File).
 
-Použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující příkaz cURL hello. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
-Ve výše uvedené syntaxi je parametr **-T** umístění nahrávaného souboru.
+V hello výše syntaxe **-T** parametr je hello umístění souboru hello nahrávání.
 
-Výstup je podobný tomuto:
+výstup Hello je podobné toohello následující:
    
     HTTP/1.1 307 Temporary Redirect
     ...
@@ -185,18 +185,18 @@ Výstup je podobný tomuto:
     ...
 
 ## <a name="read-data-from-a-data-lake-store-account"></a>Čtení dat z účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File).
+Tato operace je založená na volání rozhraní REST API WebHDFS hello definované [zde](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File).
 
 Čtení dat z účtu Data Lake Store je proces, který obsahuje dva kroky.
 
-* Nejdřív odešlete požadavek GET na koncový bod `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`. Vrátí se umístění, na které je nutné odeslat další požadavek GET.
-* Potom odešlete požadavek GET na koncový bod `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`. Tím se zobrazí obsah souboru.
+* Nejdřív odešlete požadavek GET na koncový bod hello `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`. Tato možnost vrátí umístění toosubmit hello další požadavek GET na.
+* Potom odešlete požadavek GET hello koncový bod hello `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`. Tato akce zobrazí hello obsah souboru hello.
 
-Vstupní parametry v prvním a druhém kroku se ale nijak neliší, a proto můžete parametr `-L` použít k odeslání prvního požadavku. Možnost `-L` v podstatě kombinuje dva požadavky do jednoho. Výsledkem je, že cURL zopakuje požadavek na novém umístění. Nakonec se zobrazí výstup ze všech volání požadavků, který bude vypadat přibližně tak, jak vidíte níže. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Ale vzhledem k tomu, že není žádný rozdíl v hello vstupní parametry mezi hello nejprve a hello druhé krok, můžete použít hello `-L` parametr toosubmit hello prvního požadavku. `-L`možnost v podstatě kombinuje dva požadavky do jednoho a bude cURL zopakuje požadavek hello na nové umístění hello. Nakonec hello výstup ze všech volání požadavků hello se zobrazuje, jako vidíte níže. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
-Zobrazený výstup by měl vypadat přibližně takto:
+Měli byste vidět výstup podobný toohello následující:
 
     HTTP/1.1 307 Temporary Redirect
     ...
@@ -209,13 +209,13 @@ Zobrazený výstup by měl vypadat přibližně takto:
     Hello, Data Lake Store user!
 
 ## <a name="rename-a-file-in-a-data-lake-store-account"></a>Přejmenování souboru v účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory).
+Tato operace je založená na volání rozhraní REST API WebHDFS hello definované [zde](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory).
 
-Pokud chcete přejmenovat soubor, použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující hello cURL toorename příkaz do souboru. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
-Zobrazený výstup by měl vypadat přibližně takto:
+Měli byste vidět výstup podobný toohello následující:
 
     HTTP/1.1 200 OK
     ...
@@ -223,13 +223,13 @@ Zobrazený výstup by měl vypadat přibližně takto:
     {"boolean":true}
 
 ## <a name="delete-a-file-from-a-data-lake-store-account"></a>Odstranění souboru z účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory).
+Tato operace je založená na volání rozhraní REST API WebHDFS hello definované [zde](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory).
 
-Pokud chcete odstranit soubor, použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující hello cURL toodelete příkaz do souboru. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 
-Zobrazený výstup by měl vypadat asi takto:
+Měli byste vidět výstup jako hello následující:
 
     HTTP/1.1 200 OK
     ...
@@ -237,13 +237,13 @@ Zobrazený výstup by měl vypadat asi takto:
     {"boolean":true}
 
 ## <a name="delete-a-data-lake-store-account"></a>Odstranění účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://msdn.microsoft.com/library/mt694075.aspx).
+Tato operace je založená na volání rozhraní REST API hello definované [zde](https://msdn.microsoft.com/library/mt694075.aspx).
 
-Pokud chcete odstranit účet Data Lake Store, použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
+Použijte následující hello cURL příkaz toodelete účtu Data Lake Store. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
 
-Zobrazený výstup by měl vypadat asi takto:
+Měli byste vidět výstup jako hello následující:
 
     HTTP/1.1 200 OK
     ...

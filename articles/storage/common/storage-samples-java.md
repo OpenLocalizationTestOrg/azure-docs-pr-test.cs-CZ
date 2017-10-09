@@ -1,6 +1,6 @@
 ---
-title: "Ukázek Azure Storage pomocí Java | Microsoft Docs"
-description: "Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí knihovny klienta úložiště Java."
+title: "Ukázky aaaAzure úložiště pomocí Java | Microsoft Docs"
+description: "Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí knihovny klienta úložiště hello Java."
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: fd27e1ac9a773e7b0f5245aa74acdb0521cd098c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6aec326cbfedc1166fc61037ac39d33c15d28d2c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-samples-using-java"></a>Ukázek Azure Storage používá Java
 
 ## <a name="java-sample-index"></a>Ukázka index Java
 
-Následující tabulka obsahuje přehled o našem úložišti ukázky a pokryté v každé ukázkové scénáře. Kliknutím na odkazy k zobrazení odpovídající ukázkový kód v Githubu.
+Hello následující tabulka obsahuje přehled ukázek scénáře úložiště a hello zahrnutých v každém vzorku. Klikněte na hello odkazy tooview hello odpovídající ukázkový kód v Githubu.
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Ukázkový kód</th></tr></thead><tbody> 
 <tr> 
@@ -197,13 +197,13 @@ Následující tabulka obsahuje přehled o našem úložišti ukázky a pokryté
 
 ## <a name="azure-code-samples-library"></a>Knihovna Azure ukázky kódu
 
-Chcete-li zobrazit knihovně ucelenou ukázku, přejděte na [ukázky kódu Azure](https://azure.microsoft.com/resources/samples/?service=storage) knihovny, která obsahuje ukázky pro úložiště Azure, které můžete stáhnout a spustit místně. Knihovna ukázka kódu obsahuje ukázkový kód ve formátu ZIP. Alternativně můžete procházet a naklonujte úložiště GitHub pro jednotlivé vzorky.
+tooview hello ucelenou ukázku knihovny, přejděte toohello [ukázky kódu Azure](https://azure.microsoft.com/resources/samples/?service=storage) knihovny, která obsahuje ukázky pro úložiště Azure, které můžete stáhnout a spustit místně. Hello knihovně ukázka kódu obsahuje ukázkový kód ve formátu ZIP. Alternativně můžete procházet a klonovat úložiště GitHub hello pro jednotlivé vzorky.
 
 [!INCLUDE [storage-java-samples-include](../../../includes/storage-java-samples-include.md)]
 
 ## <a name="getting-started-guides"></a>Získávání příručky Začínáme
 
-Pokud hledáte pokyny, jak nainstalovat a začít pracovat s knihovny klienta Azure Storage, projděte si následující příručky.
+Podívejte se na následující příručky, pokud hledáte pokyny, jak hello tooinstall a začátek práce s hello knihovny klienta Azure Storage.
 
 * [Začínáme se službou objektů Blob v Azure v jazyce Java](../blobs/storage-java-how-to-use-blob-storage.md)
 * [Začínáme se službou Azure fronty v jazyce Java](../storage-java-how-to-use-queue-storage.md)

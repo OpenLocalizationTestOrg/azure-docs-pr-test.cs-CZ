@@ -1,0 +1,1 @@
+V případě potřeby nainstalujte modul Azure PowerShell hello pomocí pokynů hello v hello [prostředí Azure PowerShell průvodce](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)a poté spusťte `Login-AzureRmAccount` toocreate připojení s Azure. Také budete potřebovat toohave veřejný klíč SSH s názvem `id_rsa.pub` v adresáři .ssh hello profilu uživatele.

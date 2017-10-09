@@ -1,6 +1,6 @@
 ---
-title: "Nastavit zásadu replikace pro replikaci technologie Hyper-V do sekundární lokality s Azure Site Recovery | Microsoft Docs"
-description: "Popisuje, jak si nastavte zásady pro replikaci virtuálního počítače technologie Hyper-V do sekundární lokalita VMM s Azure Site Recovery."
+title: "aaaSet se zásada replikace pro tooa replikace technologie Hyper-V s Azure Site Recovery sekundární lokality. | Microsoft Docs"
+description: "Popisuje, jak tooset si zásadu pro virtuální počítač Hyper-V replikace tooa VMM sekundární lokalitu s Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.openlocfilehash: a3ecc555e049914d7bffdddce7b0522f09362d24
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6d008e3bb3fa0b666e91678cf6de3693dd712ae3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="step-8-set-up-a-replication-policy"></a>Krok 8: Nastavení zásad replikace
 
-Po dokončení konfigurace [mapování sítě](vmm-to-vmm-walkthrough-network-mapping.md), použijte tento článek nastavit zásada replikace pro virtuální počítač (VM) replikace Hyper-V do sekundární lokality pomocí [Azure Site Recovery](site-recovery-overview.md).
+Po dokončení konfigurace [mapování sítě](vmm-to-vmm-walkthrough-network-mapping.md), použijte tento článek tooset si zásadu replikace pro Hyper-V virtuální počítač (VM) replikace tooa sekundární lokalitu pomocí [Azure Site Recovery](site-recovery-overview.md).
 
-Po přečtení tohoto článku můžete publikovat jakékoli dotazy nebo připomínky na jeho konci nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Po přečtení tohoto článku, post jakékoli komentáře v dolní části hello nebo na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Když vytvoříte zásadu replikace, všechny hostitele pomocí zásad, musí mít stejný operační systém. Cloudu VMM může obsahovat hostitelů Hyper-V s různými verzemi systému Windows Server, ale v takovém případě musíte víc zásad replikace.
-- Můžete provádět počáteční replikaci v režimu offline.
+- Když vytvoříte zásadu replikace, všechny hostitele pomocí zásad hello musí mít hello stejný operační systém. Hello cloudu VMM může obsahovat hostitelů Hyper-V s různými verzemi systému Windows Server, ale v takovém případě musíte víc zásad replikace.
+- Můžete provést hello počáteční replikaci v režimu offline.
 
 ## <a name="configure-replication-settings"></a>Konfigurace nastavení replikace
 
-1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Připravit infrastrukturu** > **Nastavení replikace** > **+Vytvořit a přidružit**.
+1. Klikněte na tlačítko toocreate novou zásadu replikace, **připravit infrastrukturu** > **nastavení replikace** > **+ vytvořit a přidružit**.
 
     ![Síť](./media/vmm-to-vmm-walkthrough-replication/gs-replication.png)
-2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Typ zdroje a cíle musí být **technologie Hyper-V**.
-3. V **verze hostitele technologie Hyper-V**, vyberte, jaký operační systém běží na hostiteli.
-4. V **typ ověřování** a **port ověřování**, zadejte, jak ověření přenosů mezi primárními a obnovovacími hostitelské servery technologie Hyper-V. Vyberte **certifikát** pouze tehdy, je pracovní prostředí protokolu Kerberos. Azure Site Recovery automaticky nakonfiguruje certifikáty pro ověřování pomocí protokolu HTTPS. Nemusíte dělat nic ručně. Ve výchozím nastavení bude otevřen port 8083 a 8084 (pro certifikáty) v bráně Windows Firewall na hostitelských serverech technologie Hyper-V. Pokud vyberete **Kerberos**, lístek protokolu Kerberos se použije pro vzájemné ověřování serverů hostitele. Všimněte si, že toto nastavení platí jen pro hostitelské servery technologie Hyper-V v systému Windows Server 2012 R2.
-5. V části **Frekvence kopírování** určete, jak často chcete replikovat rozdílová data po počáteční replikaci (každých 30 sekund, 5 minut nebo 15 minut).
-6. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý bude interval uchovávání dat pro jednotlivé body obnovení. Chráněné počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu.
-7. V **frekvence snímkování konzistentní aplikace vzhledem**, zadejte, jak často (1 – 12 hodin) body obnovení obsahující snímky konzistentní s aplikacemi jsou vytvořeny. Technologie Hyper-V používá dva typy snímků – standardní snímek, což je přírůstkový snímek celého virtuálního počítače, a snímek konzistentní vzhledem k aplikacím, který vytvoří snímek dat aplikací ve virtuálním počítači v daném okamžiku. Snímky konzistentní vzhledem k aplikacím využívají službu Stínová kopie svazku (VSS), aby bylo zajištěno, že aplikace budou při pořízení snímku v konzistentním stavu. Pokud povolíte snímky konzistentní s aplikacemi, bude mít vliv výkon aplikací běžících na zdrojových virtuálních počítačích. Zajistěte, aby byla hodnota, kterou nastavíte, menší než počet dalších bodů obnovení, které nakonfigurujete.
+2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Hello zdrojové a cílové typ musí být **technologie Hyper-V**.
+3. V **verze hostitele technologie Hyper-V**, vyberte, jaký operační systém běží na hostiteli hello.
+4. V **typ ověřování** a **port ověřování**, zadejte, jak ověření přenosů mezi hello primární a servery hostitele obnovení technologie Hyper-V. Vyberte **certifikát** pouze tehdy, je pracovní prostředí protokolu Kerberos. Azure Site Recovery automaticky nakonfiguruje certifikáty pro ověřování pomocí protokolu HTTPS. Nepotřebujete toodo nic ručně. Ve výchozím nastavení port 8083 a 8084 (pro certifikáty) se otevřou v hello brány Windows Firewall na hostitelských serverech technologie Hyper-V hello. Pokud vyberete **Kerberos**, lístek protokolu Kerberos se použije pro vzájemné ověřování serverů hostitele hello. Všimněte si, že toto nastavení platí jen pro hostitelské servery technologie Hyper-V v systému Windows Server 2012 R2.
+5. V **frekvence kopírování**, určete, jak často má tooreplicate rozdílová data po hello počáteční replikaci (každých 30 sekund, 5 nebo 15 minut).
+6. V **uchování bodu obnovení**, zadejte v hodinách, jak dlouho bude hello intervalem pro uchovávání dat se pro každý bod obnovení. Chráněné počítače může být obnovena tooany bodu v rámci časového období.
+7. V **frekvence snímkování konzistentní aplikace vzhledem**, zadejte, jak často (1 – 12 hodin) body obnovení obsahující snímky konzistentní s aplikacemi jsou vytvořeny. Technologie Hyper-V používá dva typy snímků – standardní snímek, což je přírůstkový snímek celého virtuálního počítače hello a snímky konzistentní s aplikací, která přebírá v okamžiku snímek dat aplikací hello uvnitř hello virtuálního počítače. Snímky konzistentní s aplikacemi pomocí tooensure služby Stínová kopie svazku (VSS), které aplikace budou při pořízení snímku hello v konzistentním stavu. Pokud povolíte snímky konzistentní s aplikacemi, ovlivní hello výkon aplikací běžících na zdrojových virtuálních počítačích. Zajistěte, aby byl hello hodnoty, které nastavíte, menší než počet hello další body obnovení, které nakonfigurujete.
 8. V **kompresi přenosu dat**, zadejte, zda by měl být komprimované replikovaná data, která se přenáší.
-9. Vyberte **odstranit repliku virtuálního počítače**, chcete-li určit, že virtuální počítač repliky měla by být odstraněna, pokud zakažte ochranu pro zdrojový virtuální počítač. Pokud povolíte toto nastavení, když zakažte ochranu pro zdrojový virtuální počítač se odebere z konzole Site Recovery, nastavení obnovení lokality pro nástroj VMM se odeberou z konzoly nástroje VMM a replika odstraněn.
-10. V **počáteční metodu replikace**, pokud replikujete přes síť, určete, zda chcete spustit počáteční replikaci nebo ji můžete naplánovat. Pokud chcete uložit šířku pásma sítě, můžete chtít naplánovat dobu mimo špičky. Pak klikněte na **OK**.
+9. Vyberte **odstranit repliku virtuálního počítače**, měla by být odstraněna toospecify, který hello virtuální počítač repliky, pokud zakažte ochranu pro hello zdrojového virtuálního počítače. Pokud povolíte toto nastavení při zakázání ochrany pro hello zdrojového virtuálního počítače se odebere z konzole Site Recovery hello, odeberou se z konzoly VMM hello nastavení Site Recovery pro hello VMM a hello repliky se odstraní.
+10. V **počáteční metodu replikace**, pokud replikujete hello síti, určete, zda text hello počáteční replikace toostart, nebo ji můžete naplánovat. toosave šířku pásma sítě, můžete chtít tooschedule ho dobu mimo špičky. Pak klikněte na **OK**.
 
      ![Zásady replikace](./media/vmm-to-vmm-walkthrough-replication/gs-replication2.png)
-11. Když vytvoříte novou zásadu, automaticky se přidruží ke cloudu VMM. V **zásady replikace**, klikněte na tlačítko **OK**. K této zásadě replikace můžete přidružit další Cloudy VMM (a virtuální počítače v nich) **replikace** > název zásady > **přidružit Cloud VMM**.
+11. Když vytvoříte novou zásadu je přidružená automaticky hello cloudu VMM. V **zásady replikace**, klikněte na tlačítko **OK**. K této zásadě replikace můžete přidružit další Cloudy VMM (a hello virtuální počítače v nich) **replikace** > název zásady > **přidružit Cloud VMM**.
 
      ![Zásady replikace](./media/vmm-to-vmm-walkthrough-replication/policy-associate.png)
 
@@ -56,23 +56,23 @@ Po přečtení tohoto článku můžete publikovat jakékoli dotazy nebo připom
 
 ## <a name="prepare-for-offline-initial-replication"></a>Příprava pro počáteční replikaci prováděnou offline
 
-Můžete provést offline replikaci dat prvotní kopie. Můžete to následujícím způsobem připravit:
+Můžete provést offline replikaci pro kopírování dat počáteční hello. Můžete to následujícím způsobem připravit:
 
-* Na zdrojovém serveru zadejte cestu umístění, ze kterého bude export dat probíhat. Přiřaďte úplné řízení pro systém souborů NTFS a sdílené složky oprávnění ke službě VMM na cestu pro export. Na cílovém serveru zadejte cestu umístění, ze kterého dojde k importu. Přiřaďte stejné oprávnění pro tuto cestu importu.
-* Pokud je import nebo export cesta sdílená, přiřaďte správce, Power Users, Print Operator nebo operátor serveru členství ve skupině pro účet služby VMM na vzdáleném počítači, na kterém sdílený se nachází.
-* Pokud používáte všechny účty spustit jako přidejte hostitele, na cestám pro import a export, přiřaďte pro čtení a oprávnění k zápisu do účty spustit jako v nástroji VMM.
-* Import a export sdílené složky nesmí nacházet na libovolném počítači se používá jako server hostitele technologie Hyper-V, protože konfigurace zpětné smyčky není podporována technologií Hyper-V.
-* Ve službě Active Directory na každém Hyper-V serveru hostitele, který obsahuje virtuální počítače, který chcete chránit, povolit a nakonfigurovat omezené delegování důvěřovat vzdálených počítačích, na kterých cestám pro import a export nacházejí, následujícím způsobem:
-  1. Na řadiči domény otevřete **Active Directory Users and Computers**.
-  2. Ve stromu konzoly klikněte na tlačítko **DomainName** > **počítače**.
-  3. Klikněte pravým tlačítkem na název serveru hostitele technologie Hyper-V > **vlastnosti**.
-  4. Na **delegování** , klikněte na **důvěřovat tomuto počítači pro delegování pouze určeným službám**.
+* Na zdrojovém serveru hello zadejte cestu umístění, ze které hello bude export dat probíhat. Přiřaďte úplné řízení pro oprávnění systému souborů NTFS a sdílení toohello služba VMM na cestu pro export hello. Na cílovém serveru hello určíte, že dojde k cestu umístění, ze kterého hello data importovat. Přiřaďte hello stejná oprávnění v této cestě importu.
+* Pokud hello import nebo export cesta sdílená, přiřadit správce, Power Users, Print Operator nebo operátor serveru členství ve skupině pro účet služby VMM hello ve vzdáleném počítači hello na které hello sdílet se nachází.
+* Pokud používáte všechny spustit jako účty tooadd hostitele, hello importovat a exportovat cesty, přiřadit pro čtení a zápis toohello účty spustit jako v nástroji VMM.
+* Hello import a export sdílených složek nesmí nacházet na libovolném počítači se používá jako server hostitele technologie Hyper-V, protože konfigurace zpětné smyčky není podporována technologií Hyper-V.
+* Ve službě Active Directory, na každém serveru hostitele technologie Hyper-V, který obsahuje virtuální počítače, které chcete tooprotect povolte a nakonfigurujte omezené delegování tootrust hello vzdálené počítačích, na které hello import a export cesty jsou umístěny, následujícím způsobem:
+  1. V řadiči domény hello otevřete **Active Directory Users and Computers**.
+  2. Ve stromu konzoly hello, klikněte na tlačítko **DomainName** > **počítače**.
+  3. Název hostitelského serveru klikněte pravým tlačítkem na hello technologie Hyper-V > **vlastnosti**.
+  4. Na hello **delegování** , klikněte na **důvěřovat tomuto počítači pro delegování pouze toospecified službám**.
   5. Klikněte na tlačítko **používající libovolný protokol pro ověřování**.
   6. Klikněte na tlačítko **přidat** > **uživatelé a počítače**.
-  7. Zadejte název počítače, který je hostitelem cestu pro export > **OK**. Ze seznamu dostupných služeb, podržte stisknutou klávesu CTRL a klikněte na tlačítko **cifs** > **OK**. Opakujte pro název počítače, který je hostitelem cestu importu. Opakujte podle potřeby pro další hostitelské servery technologie Hyper-V.
+  7. Název typu hello hello počítače, který je hostitelem cestu pro export hello > **OK**. Hello seznamu dostupných služeb, podržte klávesu CTRL hello a klikněte na **cifs** > **OK**. Opakujte pro hello název počítače hello cestu importu hello tohoto hostitele. Opakujte podle potřeby pro další hostitelské servery technologie Hyper-V.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte na [krok 9: povolení replikace](vmm-to-vmm-walkthrough-enable-replication.md).
+Přejděte příliš[krok 9: povolení replikace](vmm-to-vmm-walkthrough-enable-replication.md).

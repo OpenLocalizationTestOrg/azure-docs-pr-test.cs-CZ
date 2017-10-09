@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s xMatters OnDemand | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a xMatters OnDemand."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a xMatters OnDemand."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,104 +13,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 9bfcb44ed19f167872b3cd9119e2dbdd35c82604
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7cc8f9f0d8cefc8a60b9514027437ced50c66242
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Azure Active Directory integrace s xMatters OnDemand
 
-V tomto kurzu zjistěte, jak integrovat xMatters OnDemand s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate xMatters OnDemand službou Azure Active Directory (Azure AD).
 
-Integrace xMatters OnDemand s Azure AD poskytuje následující výhody:
+Integrace xMatters OnDemand s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k xMatters OnDemand
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k xMatters OnDemand (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooxMatters OnDemand
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooxMatters OnDemand (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s xMatters OnDemand, potřebujete následující položky:
+tooconfigure integrace Azure AD s xMatters OnDemand, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Předplatné povolené xMatters OnDemand jednotné přihlašování
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání xMatters OnDemand z Galerie
+1. Přidání xMatters OnDemand z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-xmatters-ondemand-from-the-gallery"></a>Přidání xMatters OnDemand z Galerie
-Při konfiguraci integrace xMatters OnDemand do služby Azure AD potřebujete přidat xMatters OnDemand z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-xmatters-ondemand-from-hello-gallery"></a>Přidání xMatters OnDemand z Galerie hello
+tooconfigure hello integrace xMatters OnDemand do Azure AD, je nutné tooadd xMatters OnDemand hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat xMatters OnDemand z galerie, proveďte následující kroky:**
+**tooadd xMatters OnDemand z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **xMatters OnDemand**.
+4. Hello vyhledávacího pole zadejte **xMatters OnDemand**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_search.png)
 
-5. Na panelu výsledků vyberte **xMatters OnDemand**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **xMatters OnDemand**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části konfiguraci a testování Azure AD jednotné přihlašování s xMatters OnDemand založené na testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, jaké příslušného uživatele v xMatters OnDemand je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v xMatters OnDemand musí být vytvořeno.
+Pro toowork jeden přihlašování, musí Azure AD tooknow jaké hello příslušného uživatele v xMatters OnDemand je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v xMatters OnDemand musí toobe navázat.
 
-V xMatters OnDemand přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V xMatters OnDemand přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s xMatters OnDemand, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s xMatters OnDemand, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele OnDemand xMatters](#creating-a-xmatters-ondemand-test-user)**  – Pokud chcete mít protějšek Britta Simon v xMatters OnDemand propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele OnDemand xMatters](#creating-a-xmatters-ondemand-test-user)**  -toohave protějšek Britta Simon v xMatters OnDemand, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší xMatters OnDemand aplikace.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v vaší xMatters OnDemand aplikace.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s xMatters OnDemand, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s xMatters OnDemand, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **xMatters OnDemand** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **xMatters OnDemand** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
-3. Na **xMatters OnDemand domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **xMatters OnDemand domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:   
+    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:   
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -119,7 +119,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://www.xmatters.com`|
     | `https://<companyname>.xmatters.com.au/`|
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -128,124 +128,124 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<companyname>.au1.xmatters.com.au/<instancename>`|
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory xMatters OnDemand](https://www.xmatters.com/company/contact-us/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Obraťte se na [tým podpory xMatters OnDemand](https://www.xmatters.com/company/contact-us/) tooget tyto hodnoty.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu místně jako **c:\\XMatters OnDemand.cer**.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte hello soubor certifikátu místně jako **c:\\XMatters OnDemand.cer**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
     
     > [!IMPORTANT]
-    > Je třeba předávat certifikát, který chcete [tým podpory xMatters OnDemand](https://www.xmatters.com/company/contact-us/). Certifikát musí být odeslaný tým podpory xMatters předtím, než může dokončení konfigurace přihlášení. 
+    > Je třeba tooforward hello certifikát toohello [tým podpory xMatters OnDemand](https://www.xmatters.com/company/contact-us/). certifikát Hello musí toobe odeslaný tým podpory xMatters hello předtím, než můžete dokončit hello jeden přihlašování konfigurace. 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_400.png)
 
-6. Na **xMatters OnDemand konfigurace** klikněte na tlačítko **konfigurace xMatters OnDemand** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **xMatters OnDemand konfigurace** klikněte na tlačítko **konfigurace xMatters OnDemand** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_configure.png) 
 
-7. V okně prohlížeče jiný web Přihlaste se na váš web společnosti XMatters OnDemand jako správce.
+7. V okně prohlížeče jiný web Přihlaste se tooyour XMatters OnDemand společnosti lokality jako správce.
 
-8. Na panelu nástrojů v horní části klikněte na tlačítko **správce**a potom klikněte na **podrobnosti o společnosti** na navigačním panelu na levé straně.
+8. V panelu nástrojů hello hello nahoře, klikněte na **správce**a potom klikněte na **podrobnosti o společnosti** hello navigačním panelu na levé straně hello.
    
     ![Správce](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "správce")
 
-9. Na **konfigurace SAML** proveďte následující kroky:
+9. Na hello **konfigurace SAML** proveďte hello následující kroky:
    
     ![Konfigurace SAML](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "konfigurace SAML")
    
     a. Vyberte **povolit SAML**.
    
-    b. Vložení **SAML Entity ID**, který jste zkopírovali z portálu Azure do **ID zprostředkovatele Identity** textové pole.
+    b. Vložení **SAML Entity ID**, který jste zkopírovali z hello portálu Azure do hello **ID zprostředkovatele Identity** textové pole.
    
-    c. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure do **jeden přihlašovací adresa URL** textové pole.
+    c. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z hello portálu Azure do hello **jeden přihlašovací adresa URL** textové pole.
    
-    d. Vložení **Sign-Out URL**, který jste zkopírovali z portálu Azure do **jednu adresu URL odhlašovací** textové pole.
+    d. Vložení **Sign-Out URL**, který jste zkopírovali z hello portálu Azure do hello **jednu adresu URL odhlašovací** textové pole.
    
-    e. Na stránce Podrobnosti o společnosti v horní části, klikněte na **uložit změny**.
+    e. Na stránce Podrobnosti o společnosti hello hello horní, klikněte na tlačítko **uložit změny**.
     
     ![Podrobnosti o společnosti](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "společnosti podrobnosti")
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Vytvoření zkušebního uživatele OnDemand xMatters
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k XMatters OnDemand, musí být zřízená do XMatters OnDemand. V případě XMatters OnDemand zřizování je ruční úloha.
+V pořadí tooenable Azure AD Uživatelé toolog v tooXMatters OnDemand musí být zřízená do XMatters OnDemand. V případě hello XMatters OnDemand zřizování je ruční úloha.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Ke zřízení uživatelských účtů, proveďte následující kroky:
-1. Přihlaste se k vaší **XMatters OnDemand** klienta.
+### <a name="tooprovision-a-user-accounts-perform-hello-following-steps"></a>tooprovision uživatelské účty, provádět hello následující kroky:
+1. Přihlaste se tooyour **XMatters OnDemand** klienta.
 
-2.  Klikněte na tlačítko **uživatelé** kartě. a pak klikněte na **přidat uživatele**.
+2.  Klikněte na tlačítko **uživatelé** kartu a pak klikněte na tlačítko **přidat uživatele**.
   
     ![Uživatelé](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "uživatelů")
 
-3. V **přidat uživatele** část, proveďte následující kroky:
+3. V hello **přidat uživatele** část, proveďte následující kroky hello:
    
     ![Přidat uživatele](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "přidat uživatele")
 
     a. Vyberte **Active**.
 
-    b. V **ID uživatele** jako typ id uživatele uživatele k textovému poli, Brittasimon@contoso.com.
+    b. V hello **ID uživatele** textovému poli, typ hello id uživatele jako Brittasimon@contoso.com.
    
-    c. V **křestní jméno** textovému poli, typ křestní jméno uživatele, jako je Britta.
+    c. V hello **křestní jméno** textovému poli, typ křestní jméno uživatele hello jako Britta.
 
-    d. V **příjmení** textovému poli, zadejte příjmení uživatele jako Simon.
+    d. V hello **příjmení** textovému poli, zadejte příjmení uživatele hello jako Simon aplikace.
     
-    e. V **lokality** textovému poli, zadejte platnou lokalitou platný Azure AD účet chcete zřídit.
+    e. V hello **lokality** textovému poli, zadejte platnou lokalitou hello platný Azure AD účet chcete tooprovision.
     
     f. Klikněte na **Uložit**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k xMatters OnDemand.
+V této části povolíte tak, že udělíte přístup tooxMatters OnDemand Britta Simon toouse Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon xMatters OnDemand, proveďte následující kroky:**
+**tooassign tooxMatters Britta Simon OnDemand, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **xMatters OnDemand**.
+2. V seznamu aplikace hello vyberte **xMatters OnDemand**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -253,7 +253,7 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -261,14 +261,14 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Po kliknutí na tlačítko xMatters OnDemand dlaždice na přístupovém panelu, jste měli získat automaticky přihlášení k vaší xMatters OnDemand aplikace.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Po kliknutí na tlačítko hello xMatters OnDemand dlaždice v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour xMatters OnDemand aplikace.
+Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

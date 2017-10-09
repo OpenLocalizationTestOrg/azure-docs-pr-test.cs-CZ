@@ -1,6 +1,6 @@
 ---
-title: "Co je Azure Event Hubs a proč tuto službu používat | Microsoft Docs"
-description: "Přehled a úvod do služby Azure Event Hubs – ingestování telemetrických údajů z webů, aplikací a zařízení v cloudovém měřítku"
+title: "aaaWhat je Azure Event Hubs a proč ji používat | Microsoft Docs"
+description: "Přehled a úvod tooAzure Event Hubs - cloudového škálovatelného přijímání telemetrie z webů, aplikací a zařízení"
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm; babanisa
-ms.openlocfilehash: 1a6bf0a0352e6d9e3a22586ac825558d12e1307a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f6199a2e5bee8506f529b6f561234d79f9c8d465
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-event-hubs"></a>Co je služba Event Hubs?
 
-Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Díky [možnosti publikování a odebírání dat](https://msdn.microsoft.com/library/aa560414.aspx) s nízkou latencí a v masivním měřítku slouží služba Event Hubs jako vstupní brána k velkým objemům dat.
+Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data se odešlou tooan centra událostí, lze je transformovat a uložit pomocí jakékoli zprostředkovatele datové analýzy v reálném čase nebo adaptérů pro dávkování či ukládání. S hello možnost tooprovide [publikování a odebírání](https://msdn.microsoft.com/library/aa560414.aspx) s nízkou latencí a v masivním měřítku, Event Hubs slouží jako hello "na doběhu" pro velká Data.
 
 ## <a name="why-use-event-hubs"></a>Proč používat Event Hubs
 
@@ -36,31 +36,31 @@ Služba Event Hubs například umožňuje sledování chování v mobilních apl
 
 ## <a name="azure-event-hubs-overview"></a>Přehled služby Azure Event Hubs
 
-V architekturách řešení hraje služba Event Hubs běžně roli „předních dveří“ pro kanál událostí, který se často nazývá *přijímač událostí*. Přijímač událostí je komponenta nebo služba, která se nachází mezi zdroji událostí a příjemci událostí a slouží k oddělení produkce datového proudu událostí od spotřeby těchto událostí. Následující obrázek znázorňuje tuto architekturu:
+Vítejte v architekturách řešení hraje Služba Event Hubs běžně roli je hello "přední dveře" pro kanál událostí, často říká *přijímač událostí*. Přijímač událostí je komponenta nebo služba, která se nachází mezi zdroji událostí a příjemci událostí toodecouple hello produkce datového proudu událostí od spotřeby těchto události hello. Hello následující obrázek znázorňuje tuto architekturu:
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_full_pipeline.png)
 
-Služba Event Hubs poskytuje možnost zpracovávat datové proudy zpráv. Její charakteristiky ji ale odlišují od tradičních podnikových způsobů zasílání zpráv. Možnosti služby Event Hubs jsou vycházejí ze scénářů zpracování událostí a vysoké propustnosti. V důsledku toho se služba Event Hubs liší od zasílání zpráv služby [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) a neimplementuje některé možnosti dostupné pro entity [zasílání zpráv Service Bus](/azure/service-bus-messaging/), jako jsou třeba témata.
+Služba Event Hubs poskytuje možnost zpracovávat datové proudy zpráv. Její charakteristiky ji ale odlišují od tradičních podnikových způsobů zasílání zpráv. Možnosti služby Event Hubs jsou vycházejí ze scénářů zpracování událostí a vysoké propustnosti. Takto se liší od služby Event Hubs [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) zasílání zpráv a neimplementuje některé možnosti hello, které jsou k dispozici pro [zasílání zpráv Service Bus](/azure/service-bus-messaging/) entitami, jako je například témata.
 
 ## <a name="event-hubs-features"></a>Funkce Event Hubs
 
-Event Hubs obsahuje následující klíčové prvky:
+Centra událostí obsahuje hello následující klíčové prvky:
 
-- [**Producenti/zdroje událostí:**](event-hubs-features.md#event-publishers) Entita, která odesílá data do centra událostí. Událost se publikuje prostřednictvím AMQP 1.0 nebo HTTPS.
-- [**Zachytávání:**](event-hubs-features.md#capture) Umožňuje zachytit streamovaná data Event Hubs a uložit je v účtu Azure Blob Storage.
-- [**Oddíly:**](event-hubs-features.md#partitions) Umožňuje každému příjemci načíst jenom konkrétní podmnožinu, nebo oddíl datového proudu událostí.
-- [**Tokeny SAS:**](event-hubs-features.md#sas-tokens) Identifikuje a ověřuje zdroj událostí.
+- [**Producenti/zdroje událostí**](event-hubs-features.md#event-publishers): Entita, která odesílá data tooan události rozbočovače. Událost se publikuje prostřednictvím AMQP 1.0 nebo HTTPS.
+- [**Zaznamenat**](event-hubs-features.md#capture): umožňuje toocapture Event Hubs, streamování dat a uloží jej v účtu úložiště objektů Blob v Azure.
+- [**Oddíly**](event-hubs-features.md#partitions): hello umožňuje každý příjemce tooonly číst z konkrétní podmnožinu nebo oddíl datového proudu událostí.
+- [**Tokeny SAS**](event-hubs-features.md#sas-tokens): identifikuje a ověřuje vydavatel události hello.
 - [**Příjemci událostí:**](event-hubs-features.md#event-consumers) Entita, která čte data událostí z centra událostí. Příjemci událostí se připojují prostřednictvím protokolu AMQP 1.0. 
-- [**Skupiny příjemců:**](event-hubs-features.md#consumer-groups) Poskytuje každé aplikaci s několika konzumacemi samostatné zobrazení datového proudu událostí a umožňuje, aby tito příjemci jednali nezávisle.
+- [**Skupiny příjemců**](event-hubs-features.md#consumer-groups): poskytuje každý více využívání aplikace s oddělená zobrazení datového proudu událostí hello, povolení těchto příjemci tooact nezávisle.
 - [**Jednotky propustnosti:**](event-hubs-features.md#capacity) Předem zakoupené jednotky kapacity. Škálování jednoho oddílu dovoluje maximálně jednu jednotku propustnosti.
 
-Technické podrobnosti o těchto a dalších funkcích služby Event Hubs najdete v [přehledu funkcí Event Hubs](event-hubs-features.md). 
+Technické podrobnosti o těchto a dalších funkcí služby Event Hubs najdete v tématu hello [přehled funkcí služby Event Hubs](event-hubs-features.md). 
 
 ## <a name="next-steps"></a>Další kroky
 
 Podrobné informace o cenách služby Event Hubs naleznete v článku o [cenách služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-Další informace o službě Event Hubs naleznete pod těmito odkazy:
+Další informace o službě Event Hubs najdete na adrese hello následující odkazy:
 
 * Úvodní [Kurz služby Event Hubs](event-hubs-dotnet-standard-getstarted-send.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

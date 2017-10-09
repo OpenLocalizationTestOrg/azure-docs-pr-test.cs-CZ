@@ -1,6 +1,6 @@
 ---
-title: "Pochopení toku kódu autorizace OAuth 2.0 ve službě Azure AD | Microsoft Docs"
-description: "Tento článek popisuje, jak používat zprávy protokolu HTTP k autorizaci přístupu k webové aplikace a webové rozhraní API ve vašem klientovi pomocí Azure Active Directory a OAuth 2.0."
+title: "aaaUnderstand hello toku kódu autorizace OAuth 2.0 ve službě Azure AD | Microsoft Docs"
+description: "Tento článek popisuje, jak přistupovat k toouse HTTP zprávy tooauthorize tooweb aplikací a webových rozhraní API ve vašem klientovi pomocí Azure Active Directory a OAuth 2.0."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4a6fe67d786a5fcb87d1059c2e94ba0c88d26cd3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# Autorizace přístupu k webovým aplikacím s použitím OAuth 2.0 a Azure Active Directory
-Azure Active Directory (Azure AD) používá OAuth 2.0 umožnit autorizace přístupu k webové aplikace a webové rozhraní API v klientovi služby Azure AD. Tato příručka je závislý na jazyce a popisuje, jak odesílat a přijímat zprávy HTTP bez použití některé z našich knihovny open-source.
+# Autorizace přístupu tooweb aplikací pomocí OAuth 2.0 a Azure Active Directory
+Azure Active Directory (Azure AD) používá tooenable OAuth 2.0, můžete tooauthorize přístup tooweb aplikací a webových rozhraní API v klientovi služby Azure AD. Tento průvodce je závislý na jazyce a popisuje, jak toosend a přijímat zprávy HTTP bez použití některé z našich knihovny open-source.
 
-Toku kódu autorizace OAuth 2.0 je popsaná v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.1). To se používá k provedení ověřování a autorizace ve většině typy aplikací, včetně webových aplikací a nativně nainstalované aplikace.
+Hello toku kódu autorizace OAuth 2.0 je popsaná v [části 4.1 hello OAuth 2.0 specifikace](https://tools.ietf.org/html/rfc6749#section-4.1). Je použité tooperform ověřování a autorizace ve většině typy aplikací, včetně webových aplikací a nativně nainstalované aplikace.
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
 ## Tok ověřování OAuth 2.0
-Na vysoké úrovni tok celý autorizace pro aplikaci trochu vypadat třeba takto:
+Na vysoké úrovni tok hello celý autorizace pro aplikaci trochu vypadat třeba takto:
 
 ![Ověřování kódu toku OAuth](media/active-directory-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## Žádost o autorizační kód
-Tok autorizačního kódu začíná klienta odkazovat uživatele `/authorize` koncový bod. V této žádosti o klient naznačuje oprávnění, které potřebuje získat od uživatele. Koncové body OAuth 2.0 ze stránky vaší aplikace na portálu Azure Classic, můžete získat v **zobrazit koncové body** tlačítka na panel dolní.
+tok autorizačního kódu Hello začíná textem hello klienta odkazovat hello uživatele toohello `/authorize` koncový bod. V této žádosti o hello klient určuje hello oprávnění potřebná tooacquire od uživatele hello. Koncové body hello OAuth 2.0 můžete získat ze stránky vaší aplikace na portálu Azure Classic, hello **zobrazit koncové body** tlačítko v zásuvce dolní hello.
 
 ```
 // Line breaks for legibility only
@@ -50,23 +50,23 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Klienta |Požadované |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci.  Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
-| client_id |Požadované |Id aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na webu Azure Portal. Klikněte na tlačítko **služby Active Directory**, klikněte na adresář, zvolte aplikaci a klikněte na tlačítko **konfigurace** |
-| response_type |Požadované |Musí zahrnovat `code` pro tok autorizačního kódu. |
-| redirect_uri |Doporučená |O položku redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování.  Se musí přesně shodovat s jedním redirect_uris, které jste zaregistrovali na portálu, s výjimkou musí být kódovaná adresou url.  Pro nativní & mobilní aplikace, by měl použít výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Doporučená |Určuje metodu, která se má použít k odeslání výsledný token zpět do vaší aplikace.  Může být `query` nebo `form_post`. |
-| state |Doporučená |Hodnota součástí požadavek, který je také vrácený v odpovědi tokenu. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
-| Prostředek |Volitelné |Identifikátor URI aplikace ID webové rozhraní API (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace Web API na portálu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář, klikněte na aplikaci a pak klikněte na tlačítko **konfigurace**. |
-| řádku |Volitelné |Označuje typ interakci s uživatelem, který je vyžadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel měla zobrazit výzva k novému ověření. <p> *souhlas*: souhlas uživatele byla udělena, ale je třeba aktualizovat. Uživatel měla zobrazit výzva k souhlas. <p> *admin_consent*: Správce měla zobrazit výzva k souhlas jménem všichni uživatelé v organizaci |
-| login_hint |Volitelné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailové adresy na stránce přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem.  Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
-| domain_hint |Volitelné |Poskytuje informace o klientovi nebo doménu, která uživatel by měl použít pro přihlášení. Hodnota domain_hint je registrované domény pro klienta. Pokud klient federovaný na místní adresář, AAD přesměruje na federační server zadaného klienta. |
+| Klienta |Požadované |Hello `{tenant}` hodnota v cestě hello hello žádosti může být použité toocontrol, který se můžete přihlásit do aplikace hello.  Hello povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
+| client_id |Požadované |Hello Id aplikace přiřazené tooyour aplikace při registraci s Azure AD. Tento nástroj naleznete v hello portálu Azure. Klikněte na tlačítko **služby Active Directory**, klikněte na adresář hello, zvolte hello aplikace a klikněte na **konfigurace** |
+| response_type |Požadované |Musí zahrnovat `code` pro tok autorizačního kódu hello. |
+| redirect_uri |Doporučená |Hello redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování.  Se musí přesně shodovat s jedním z hello redirect_uris, registrován v hello portál, s výjimkou musí být kódovaná adresou url.  Nativní & mobilní aplikace, měli byste použít výchozí hodnotu hello `urn:ietf:wg:oauth:2.0:oob`. |
+| response_mode |Doporučená |Určuje metodu hello, který by měl být použité toosend hello výsledný token back tooyour aplikace.  Může být `query` nebo `form_post`. |
+| state |Doporučená |Hodnota součástí hello požadavek, který je také vrácený v odpovědi tokenu hello. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav Hello je také použít tooencode informace o stavu hello uživatele v aplikaci hello před došlo k požadavku hello ověřování, jako je například stránku hello nebo zobrazení, které byly na. |
+| Prostředek |Volitelné |Hello identifikátor ID URI aplikace hello webových rozhraní API (zabezpečené prostředků). Klikněte na tlačítko toofind hello identifikátor ID URI aplikace hello webových rozhraní API, v hello portálu Azure, **služby Active Directory**, klikněte na tlačítko hello adresář, klikněte na tlačítko hello aplikace a pak klikněte na **konfigurace**. |
+| řádku |Volitelné |Označuje typ hello interakce s uživatelem, který je vyžadován.<p> Platné hodnoty jsou: <p> *přihlášení*: hello uživatel by měl být výzvami tooreauthenticate. <p> *souhlas*: souhlas uživatele byla udělena, je však nutné toobe aktualizovat. Hello uživatel by měl být výzvami tooconsent. <p> *admin_consent*: Správce by měl být výzvami tooconsent jménem všichni uživatelé v organizaci |
+| login_hint |Volitelné |Může být použité toopre výplně hello uživatelského jména nebo e-mailovou adresu pole hello přihlašovací stránky pro uživatele hello, pokud znáte svoje uživatelské jméno předem.  Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno hello s z předchozí přihlášení už extrahovat pomocí hello `preferred_username` deklarací identity. |
+| domain_hint |Volitelné |Poskytuje nápovědu o hello klienta nebo doménu, která hello uživatel by měl používat toosign v. Hodnota Hello hello domain_hint je registrované domény pro klienta hello. Pokud klient hello federované tooan místní adresář, přesměruje AAD toohello zadaného klienta federační server. |
 
 > [!NOTE]
-> Pokud uživatel je součástí organizace, správce organizace souhlas nebo odmítnout jménem uživatele nebo povolit uživatele o souhlas. Uživatel je zadána možnost souhlas jenom v případě, že správce povolí ho.
+> Pokud je uživatel hello součástí organizace, správce organizace hello souhlas nebo odmítnout jménem uživatele hello nebo povolit tooconsent hello uživatele. Hello uživatel hello možnost tooconsent jenom v případě, že správce hello povolí ho.
 >
 >
 
-V tomto okamžiku je uživatel vyzván k zadání přihlašovacích údajů a souhlas oprávnění uvedené v `scope` parametr dotazu. Jakmile se uživatel ověří a uděluje souhlas, Azure AD odešle odpověď do vaší aplikace na `redirect_uri` adres ve vaší žádosti.
+V tomto okamžiku se hello uživateli se zobrazí výzva tooenter své přihlašovací údaje a souhlasu toohello oprávnění uvedené v hello `scope` parametr dotazu. Jakmile uživatel hello ověřuje a uděluje souhlas, Azure AD odešle tooyour aplikace na odpovědi na hello `redirect_uri` adres ve vaší žádosti.
 
 ### Úspěšná odpověď
 Úspěšná odpověď může vypadat například takto:
@@ -78,13 +78,13 @@ Location: http://localhost/myapp/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 
 | Parametr | Popis |
 | --- | --- |
-| admin_consent |Hodnota je True, pokud správce souhlas výzvu žádost o souhlas. |
-| Kód |Autorizační kód, který požadované aplikace. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. |
-| session_state |Jedinečná hodnota, která identifikuje aktuální uživatelskou relaci. Tato hodnota je identifikátor GUID, ale má být považována za neprůhledné hodnoty, které jsou předávány bez prozkoumání. |
-| state |Pokud parametr stavu je obsažena v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Je vhodné pro aplikaci do ověřte, zda jsou hodnoty stavu v požadavku a odpovědi identické před použitím odpovědi. To pomůže zjistit [webů požadavku padělání (proti útokům CSRF) před útoky](https://tools.ietf.org/html/rfc6749#section-10.12) proti klienta. |
+| admin_consent |Hodnota Hello má hodnotu True, pokud správce dá souhlas tooa souhlasu požadavek řádku. |
+| Kód |Hello autorizační kód, který aplikace hello požadavek. Hello aplikace můžete použít pro cílový prostředek hello hello autorizační kód toorequest přístupový token. |
+| session_state |Jedinečná hodnota, která identifikuje hello se aktuální uživatelská relace. Tato hodnota je identifikátor GUID, ale má být považována za neprůhledné hodnoty, které jsou předávány bez prozkoumání. |
+| state |Pokud parametr stavu je zahrnuta v žádosti o hello, hello stejnou hodnotu by se zobrazit v odpovědi hello. Je vhodné pro tooverify aplikace hello, hodnot stavu hello v hello žádostí a odpovědí se shodují před použitím hello odpovědi. To pomáhá toodetect [webů požadavku padělání (proti útokům CSRF) před útoky](https://tools.ietf.org/html/rfc6749#section-10.12) proti hello klienta. |
 
 ### Chybové odpovědi
-Chybové odpovědi se taky může odeslat do `redirect_uri` tak, aby aplikace můžete správně zpracovat.
+Chybové odpovědi se taky může odeslat toohello `redirect_uri` tak, aby aplikace hello můžete správně zpracovat.
 
 ```
 GET http://localhost:12345/?
@@ -94,25 +94,25 @@ error=access_denied
 
 | Parametr | Popis |
 | --- | --- |
-| error |K chybě kódu hodnota definovaná v části 5.2 z [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). V další tabulce jsou kódy chyb, které vrátí Azure AD. |
-| error_description |Podrobnější popis chyby. Tato zpráva neměla být popisný koncového uživatele. |
-| state |Hodnota stavu je náhodně generované hodnoty znovu použít, které se odesílají v požadavku a vrátí se v reakci na zabránit útokům (proti útokům CSRF) padělání požadavku posílaného mezi weby. |
+| error |K chybě kódu hodnota definovaná v části 5.2 hello [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Další tabulka Hello popisuje hello chybové kódy, které vrátí Azure AD. |
+| error_description |Podrobnější popis chyby hello. Tato zpráva není určen popisný toobe koncového uživatele. |
+| state |hodnota stavu Hello je náhodně generované-znovu použít hodnotu, která se odesílají v hello požadavek a vrátila útocích hello odpovědi tooprevent požadavku posílaného mezi weby padělání (proti útokům CSRF). |
 
 #### Kódy chyb pro chyb koncový bod autorizace
-Následující tabulka popisuje různé kódy chyb, které mohou být vráceny v `error` parametr odpovědi na chybu.
+Hello následující tabulka popisuje hello různé kódy chyb, které mohou být vráceny v hello `error` parametr hello chybové odpovědi.
 
 | Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
-| invalid_request |Chyba protokolu, například chybějící povinný parametr. |Opravte a odešlete požadavek znovu. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
-| unauthorized_client |Klientská aplikace nemá oprávnění k vyžádání autorizační kód. |K tomu obvykle dojde, pokud klientská aplikace není registrovaný ve službě Azure AD nebo nebyla přidána do klienta Azure AD pro uživatele. Aplikace můžete vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Azure AD. |
-| ACCESS_DENIED |Vlastník prostředku odepřen souhlasu |Klientská aplikace může upozornit uživatele, který nemůže pokračovat, pokud uživatel souhlasí. |
-| unsupported_response_type |Autorizace serveru nepodporuje typ odpovědi v požadavku. |Opravte a odešlete požadavek znovu. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
-| server_error |Serveru došlo k neočekávané chybě. |Opakujte žádost. Tyto chyby může být důsledkem dočasné stavy. Klientská aplikace mohou vysvětlit pro uživatele, že odpověď se zpožďuje kvůli dočasné chybě. |
-| temporarily_unavailable |Server je dočasně zaneprázdněn pro zpracování požadavku. |Opakujte žádost. Klientská aplikace mohou vysvětlit pro uživatele, že odpověď se zpožďuje kvůli dočasné podmínce. |
-| invalid_resource |Cílový prostředek je neplatný, protože neexistuje, Azure AD ji nemůže najít, nebo není správně nakonfigurována. |To znamená, že k prostředku, pokud existuje, není nakonfigurované v klientovi. Aplikace můžete vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Azure AD. |
+| invalid_request |Chyba protokolu, například chybějící povinný parametr. |Vyřešte a znovu odešlete žádost hello. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
+| unauthorized_client |Hello klientská aplikace není povolená toorequest autorizační kód. |K tomu obvykle dojde, když hello klientská aplikace není registrovaný ve službě Azure AD nebo klienta Azure AD toohello uživatele nebyla přidána. aplikace Hello můžete vyzvat uživatele hello s pokyny pro instalaci aplikace hello a její přidání tooAzure AD. |
+| ACCESS_DENIED |Vlastník prostředku odepřen souhlasu |klientská aplikace Hello uvědomí hello uživatele, který nemůže pokračovat, dokud hello uživatel souhlasí. |
+| unsupported_response_type |Hello autorizace server nepodporuje typ odpovědi hello v žádosti o hello. |Vyřešte a znovu odešlete žádost hello. To je chyba vývoj a je obvykle zachycena během počáteční testování. |
+| server_error |Hello serveru došlo k neočekávané chybě. |Opakujte žádost hello. Tyto chyby může být důsledkem dočasné stavy. klientská aplikace Hello toohello uživatele mohou vysvětlit, že odpovědi je zpožděno z důvodu tooa dočasné chybě. |
+| temporarily_unavailable |Hello server je dočasně zaneprázdněn toohandle hello požadavku. |Opakujte žádost hello. klientská aplikace Hello mohou vysvětlit toohello uživatele, odpovědi je zpožděno z důvodu tooa dočasné podmínce. |
+| invalid_resource |Hello cílového prostředku je neplatný, protože neexistuje, Azure AD ji nemůže najít, nebo není správně nakonfigurována. |To znamená, že prostředek hello, pokud existuje, není nakonfigurované v klientovi hello. aplikace Hello můžete vyzvat uživatele hello s pokyny pro instalaci aplikace hello a její přidání tooAzure AD. |
 
-## Pomocí autorizační kód žádosti o token přístupu
-Teď, když jste získali autorizační kód a bylo uděleno oprávnění uživatelem, můžete uplatnit kód pro token přístupu k požadovaného prostředku odesíláním požadavek POST do `/token` koncový bod:
+## Použít hello autorizační kód toorequest přístupový token
+Teď, když jste získali autorizační kód a bylo uděleno oprávnění uživatelem hello, lze uplatnit hello kód pro prostředek tokenu toohello potřeby přístup odesláním toohello požadavek POST `/token` koncový bod:
 
 ```
 // Line breaks for legibility only
@@ -132,20 +132,20 @@ grant_type=authorization_code
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Klienta |Požadované |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci.  Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
-| client_id |Požadované |Id aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na portálu Azure Classic. Klikněte na tlačítko **služby Active Directory**, klikněte na adresář, zvolte aplikaci a klikněte na tlačítko **konfigurace** |
-| grant_type |Požadované |Musí být `authorization_code` pro tok autorizačního kódu. |
-| Kód |Požadované |`authorization_code` Kterou jste získali v předchozí části |
-| redirect_uri |Požadované |Stejné `redirect_uri` hodnotu, která byla použita k získání `authorization_code`. |
-| tajný klíč client_secret |vyžaduje se pro webové aplikace |Tajný klíč aplikace vytvořené v portálu pro registraci aplikace pro vaši aplikaci.  Není vhodné jej použít v nativní aplikaci, protože client_secrets nelze uložit spolehlivě na zařízení.  Je vyžadováno pro webové aplikace a webové rozhraní API, které mají možnost ukládat `client_secret` bezpečně na straně serveru. |
-| Prostředek |vyžaduje se, pokud zadaný v autorizační kód požadavku, jinak volitelné |Identifikátor URI aplikace ID webové rozhraní API (zabezpečené prostředků). |
+| Klienta |Požadované |Hello `{tenant}` hodnota v cestě hello hello žádosti může být použité toocontrol, který se můžete přihlásit do aplikace hello.  Hello povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
+| client_id |Požadované |Hello Id aplikace přiřazené tooyour aplikace při registraci s Azure AD. Tento nástroj naleznete v hello portálu Azure Classic. Klikněte na tlačítko **služby Active Directory**, klikněte na adresář hello, zvolte hello aplikace a klikněte na **konfigurace** |
+| grant_type |Požadované |Musí být `authorization_code` pro tok autorizačního kódu hello. |
+| Kód |Požadované |Hello `authorization_code` kterou jste získali v předchozí části hello |
+| redirect_uri |Požadované |Hello stejné `redirect_uri` hodnotu, která byla hello použité tooacquire `authorization_code`. |
+| tajný klíč client_secret |vyžaduje se pro webové aplikace |Hello aplikace tajný klíč, který jste vytvořili v portálu pro registraci aplikace hello pro vaši aplikaci.  Není vhodné jej použít v nativní aplikaci, protože client_secrets nelze uložit spolehlivě na zařízení.  Je vyžadováno pro webové aplikace a webové rozhraní API, které mají hello možnost toostore hello `client_secret` bezpečně na straně serveru hello. |
+| Prostředek |vyžaduje se, pokud zadaný v autorizační kód požadavku, jinak volitelné |Hello identifikátor ID URI aplikace hello webových rozhraní API (zabezpečené prostředků). |
 
-Chcete-li najít identifikátor ID URI aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář, klikněte na aplikaci a pak klikněte na tlačítko **konfigurace**.
+Klikněte na tlačítko toofind hello identifikátor ID URI aplikace v portálu pro správu Azure, hello **služby Active Directory**, klikněte na adresář hello, klikněte na tlačítko aplikace hello a pak klikněte na tlačítko **konfigurace**.
 
 ### Úspěšná odpověď
-Azure AD vrátí přístupový token při úspěšné odpovědi. Chcete-li minimalizovat síťový volání z klientské aplikace a jejich přidružené latence, by měl klientská aplikace mezipaměti přístupové tokeny pro dobu životnosti tokenu, který je uveden v odpovědi OAuth 2.0. Chcete-li určit dobu životnosti tokenu, použijte buď `expires_in` nebo `expires_on` hodnoty parametrů.
+Azure AD vrátí přístupový token při úspěšné odpovědi. toominimize sítě volání z aplikace hello klienta a jejich přidružené latence, by měl hello klientská aplikace mezipaměti přístupových tokenů pro hello životnost tokenu, který je uveden v hello odpovědi OAuth 2.0. životnost tokenu hello toodetermine, použijte buď hello `expires_in` nebo `expires_on` hodnoty parametrů.
 
-Webové rozhraní API prostředků vrátí-li `invalid_token` kódu chyby to může znamenat, že prostředek bylo zjištěno, že vypršela platnost tokenu. Pokud jsou časy hodiny klienta a prostředků různých (známé jako "zkosení čas"), zvažte prostředek token, který má být platnost předtím, než se vymaže tokenu z mezipaměti klienta. Pokud k tomu dojde, zrušte tokenu z mezipaměti, i když je stále v rámci počítané celé jeho životnosti.
+Webové rozhraní API prostředků vrátí-li `invalid_token` kódu chyby to může znamenat, že hello prostředků bylo zjištěno, že hello tokenu vypršela platnost. Pokud hello klienta a prostředků hodiny časy jsou různé (známé jako "zkosení čas"), zvažte hello prostředků, než se vymaže hello tokenu z mezipaměti klienta hello vypršelo tokenu toobe hello. Pokud k tomu dojde, zrušte hello tokenu z mezipaměti hello, i když je stále v rámci počítané celé jeho životnosti.
 
 Úspěšná odpověď může vypadat například takto:
 
@@ -165,17 +165,17 @@ Webové rozhraní API prostředků vrátí-li `invalid_token` kódu chyby to mů
 
 | Parametr | Popis |
 | --- | --- |
-| access_token |Požadovaný přístupový token. Aplikace můžete používat tento token k ověření zabezpečeným prostředkům, jako jsou webové rozhraní API. |
-| token_type |Určuje hodnotu typ tokenu. Pouze typ, který podporuje Azure AD je nosiče. Další informace o nosné tokeny najdete v tématu [OAuth2.0 autorizace Framework: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
-| expires_in |Jak dlouho přístupový token je platný (v sekundách). |
-| expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti. |
-| Prostředek |Identifikátor URI aplikace ID webové rozhraní API (zabezpečené prostředků). |
-| Obor |Zosobnění oprávnění udělená aplikaci klienta. Výchozí oprávnění je `user_impersonation`. Vlastníkem prostředku zabezpečené můžete zaregistrovat další hodnoty ve službě Azure AD. |
-| refresh_token |Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat další přístupové tokeny po vypršení platnosti aktuální přístupový token.  Aktualizujte je dlouhodobé tokeny a slouží k přístupu k prostředkům uchovávány dlouhou dobu. |
-| požadavku id_token |Nepodepsané JSON Web Token (JWT). Base64Url může aplikace dekódovat segmentů tento token pro vyžadování informací o uživateli, který přihlášení. Aplikace můžete hodnoty do mezipaměti a jejich zobrazení, ale na ně neměli spoléhat pro žádné hranice zabezpečení nebo autorizace. |
+| access_token |Hello požadovaný přístupový token. Hello aplikace můžete používat tento token tooauthenticate toohello zabezpečeným prostředkům, například webového rozhraní API. |
+| token_type |Určuje hodnotu hello typ tokenu. Hello pouze zadejte, že podporuje Azure AD je nosiče. Další informace o nosné tokeny najdete v tématu [OAuth2.0 autorizace Framework: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| expires_in |Jak dlouho hello přístupový token je platný (v sekundách). |
+| expires_on |Hello čas, kdy vyprší platnost hello přístupový token. Datum Hello je reprezentován jako hello počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC dokud hello čas vypršení platnosti. Tato hodnota je použité toodetermine hello Životnost mezipaměti tokenů. |
+| Prostředek |Hello identifikátor ID URI aplikace hello webových rozhraní API (zabezpečené prostředků). |
+| Obor |Udělení oprávnění zosobnění toohello klientské aplikace. Hello výchozí oprávnění je `user_impersonation`. Vlastník Hello hello zabezpečené prostředků můžete zaregistrovat další hodnoty ve službě Azure AD. |
+| refresh_token |Aktualizace tokenu OAuth 2.0. Hello aplikace můžete používat tento token tooacquire další přístupové tokeny, po vypršení platnosti hello aktuální přístupový token.  Aktualizujte tokeny je dlouhodobé a může být použité tooretain přístup tooresources pro dlouhou dobu. |
+| požadavku id_token |Nepodepsané JSON Web Token (JWT). Hello aplikace může base64Url dekódovat hello segmenty tento token toorequest informací o hello uživatele, který přihlášení. aplikace Hello můžete hello hodnoty do mezipaměti a jejich zobrazení, ale na ně neměli spoléhat pro žádné hranice zabezpečení nebo autorizace. |
 
 ### Deklarace tokenů JWT
-Token JWT v hodnotě `id_token` parametr lze dekódovat do následující deklarací identity:
+token JWT Hello v hello hodnotu hello `id_token` parametr lze dekódovat do hello následující deklarace identity:
 
 ```
 {
@@ -199,35 +199,35 @@ Token JWT v hodnotě `id_token` parametr lze dekódovat do následující deklar
 }.
 ```
 
-Další informace o webových tokenů JSON najdete v tématu [specifikaci JWT IETF koncept](http://go.microsoft.com/fwlink/?LinkId=392344). Další informace o typech tokenů a deklarací identity, najdete v tématu [podporované tokenu a typy deklarací identity](active-directory-token-and-claims.md)
+Další informace o webových tokenů JSON najdete v tématu hello [specifikaci JWT IETF koncept](http://go.microsoft.com/fwlink/?LinkId=392344). Další informace o hello typy tokenů a deklarací identity, najdete v tématu [podporované tokenu a typy deklarací identity](active-directory-token-and-claims.md)
 
-`id_token` Parametr obsahuje následující typy deklarací identity:
+Hello `id_token` parametr obsahuje hello následující typy deklarací identity:
 
 | Typ deklarace identity | Popis |
 | --- | --- |
-| oblast |Cílová skupina tokenu. Pokud je token vydán pro klientskou aplikaci, cílová skupina je `client_id` klienta. |
-| Exp |Čas vypršení platnosti. Čas, kdy vyprší platnost tokenu. Token, který má být platný, aktuální datum a čas musí být menší než nebo rovno `exp` hodnotu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku byl token vydán. |
-| family_name |Uživatelské poslední jméno nebo příjmení. Aplikace můžete zobrazit tuto hodnotu. |
-| given_name |Křestní jméno uživatele. Aplikace můžete zobrazit tuto hodnotu. |
-| IAT |Vydané v čase. Čas, kdy byl vydán token JWT. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku byl token vydán. |
-| iss |Identifikuje vydavatel tokenu |
-| NBF |Neplatný před čas. Čas, kdy začne platit token. Pro token, který má být platný aktuální datum a čas musí být větší než nebo rovna hodnotě Nbf. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku byl token vydán. |
-| OID |Identifikátor objektu (ID) objektu uživatele ve službě Azure AD. |
-| Sub – |Identifikátor tokenu subjektu. Toto je trvalé a nezměnitelné identifikátor pro uživatele, který popisuje token. Použijte tuto hodnotu v ukládání do mezipaměti logiku. |
-| TID |Identifikátor klienta (ID) klienta Azure AD, která vydala token. |
-| unique_name |Jedinečný identifikátor, který lze zobrazit uživateli. Je to obvykle hlavní název uživatele (UPN). |
-| hlavní název uživatele |Hlavní název uživatele uživatele. |
-| ver |Verze. Verze token JWT, obvykle 1.0. |
+| oblast |Cílová skupina hello tokenu. Pokud hello token je vydán tooa klientskou aplikaci, cílová skupina hello je hello `client_id` hello klienta. |
+| Exp |Čas vypršení platnosti. Hello čas, kdy vyprší platnost tokenu hello. Hello tokenu toobe platný, hello aktuální datum a čas musí být menší než nebo rovna toohello `exp` hodnotu. čas Hello je reprezentován jako hello počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) dokud byl vydán token hello hello čas UTC. |
+| family_name |Uživatelské poslední jméno nebo příjmení. Tuto hodnotu můžete zobrazit aplikace Hello. |
+| given_name |Křestní jméno uživatele. Tuto hodnotu můžete zobrazit aplikace Hello. |
+| IAT |Vydané v čase. Hello čas, kdy byl vydán hello JWT. čas Hello je reprezentován jako hello počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) dokud byl vydán token hello hello čas UTC. |
+| iss |Identifikuje vydavatel tokenu hello |
+| NBF |Neplatný před čas. Hello čas, kdy začne platit hello token. Pro hello tokenu toobe platný hello aktuální datum a čas musí být větší než nebo rovna toohello Nbf hodnota. čas Hello je reprezentován jako hello počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) dokud byl vydán token hello hello čas UTC. |
+| OID |Identifikátor objektu (ID) hello objektu uživatele ve službě Azure AD. |
+| Sub – |Identifikátor tokenu subjektu. Toto je trvalé a nezměnitelné identifikátor pro popisuje hello uživatele, který hello tokenu. Použijte tuto hodnotu v ukládání do mezipaměti logiku. |
+| TID |Klienta identifikátor (ID) klienta hello Azure AD, která vydala hello token. |
+| unique_name |Jedinečný identifikátor, který může být zobrazených toohello uživatele. Je to obvykle hlavní název uživatele (UPN). |
+| hlavní název uživatele |Hlavní název uživatele hello uživatele. |
+| ver |Verze. verze Hello hello token JWT, obvykle 1.0. |
 
 ### Chybové odpovědi
-Koncový bod chyby vystavování tokenů jsou kódy chyb protokolu HTTP, protože klient zavolá koncový bod vystavování tokenů přímo. Kromě stavový kód protokolu HTTP na koncový bod Azure AD vystavování tokenů také vrátí hodnotu dokumentu JSON s objekty, které popisují chybu.
+Hello vystavování tokenů koncový bod chyby jsou kódy chyb protokolu HTTP, protože volání klienta hello hello koncový bod vystavování tokenů přímo. Kromě toho toohello HTTP stavový kód, koncový bod vystavování tokenů Azure AD hello také vrátí hodnotu dokumentu JSON s objekty, které popisují chybu hello.
 
 Ukázková chyba odpověď může vypadat například takto:
 
 ```
 {
   "error": "invalid_grant",
-  "error_description": "AADSTS70002: Error validating credentials. AADSTS70008: The provided authorization code or refresh token is expired. Send a new interactive authorization request for this user and resource.\r\nTrace ID: 3939d04c-d7ba-42bf-9cb7-1e5854cdce9e\r\nCorrelation ID: a8125194-2dc8-4078-90ba-7b6592a7f231\r\nTimestamp: 2016-04-11 18:00:12Z",
+  "error_description": "AADSTS70002: Error validating credentials. AADSTS70008: hello provided authorization code or refresh token is expired. Send a new interactive authorization request for this user and resource.\r\nTrace ID: 3939d04c-d7ba-42bf-9cb7-1e5854cdce9e\r\nCorrelation ID: a8125194-2dc8-4078-90ba-7b6592a7f231\r\nTimestamp: 2016-04-11 18:00:12Z",
   "error_codes": [
     70002,
     70008
@@ -239,37 +239,37 @@ Ukázková chyba odpověď může vypadat například takto:
 ```
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
-| error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby ověřování. |
+| error |Řetězec kódu chyby, který lze použít tooclassify typů chyb, ke kterým došlo a může být použité tooreact tooerrors. |
+| error_description |Konkrétní chybová zpráva, která může pomoci vývojář identifikovat hello hlavní příčinu chyby ověřování. |
 | error_codes |Seznam tokenů zabezpečení specifické chybové kódy, které vám můžou pomoct při diagnostiky. |
-| časové razítko |Čas, kdy se stala chyba. |
-| trace_id |Jedinečný identifikátor pro požadavek, který vám můžou pomoct při diagnostiky. |
-| correlation_id |Jedinečný identifikátor pro požadavek, který vám můžou pomoct při diagnostiky mezi komponentami. |
+| časové razítko |Hello čas, kdy došlo k chybě hello. |
+| trace_id |Jedinečný identifikátor pro hello požadavek, který vám pomůže v diagnostice. |
+| correlation_id |Jedinečný identifikátor pro hello požadavek, který vám pomůže v diagnostice mezi komponentami. |
 
 #### Stavové kódy HTTP
-Následující tabulka uvádí stavové kódy HTTP, které vrací koncový bod vystavování tokenů. V některých případech kód chyby je dostačující k popisu odpovědi, ale pokud nejsou chyby, budete muset analyzovat doprovodné dokumentu JSON a zkontrolujte jeho kód chyby.
+Hello následující tabulka uvádí hello HTTP stavové kódy, které hello vrátí koncový bod vystavování tokenů. V některých případech je kód chyby hello dostatečná toodescribe hello odpovědi, ale pokud nejsou chyby, je třeba tooparse hello doplňujícími JSON dokumentu a zkontrolujte jeho kód chyby.
 
 | Kód HTTP | Popis |
 | --- | --- |
-| 400 |Výchozí kód HTTP. Používá se ve většině případů a obvykle kvůli chybně vytvořený požadavek. Opravte a odešlete požadavek znovu. |
-| 401 |Ověření se nezdařilo. Například v požadavku chybí parametr tajný klíč client_secret. |
-| 403 |Ověření se nezdařilo. Například uživatel nemá oprávnění pro přístup k prostředku. |
-| 500 |Došlo k vnitřní chybě na službu. Opakujte žádost. |
+| 400 |Výchozí kód HTTP. Používá se ve většině případů a obvykle kvůli tooa chybně vytvořený požadavek. Vyřešte a znovu odešlete žádost hello. |
+| 401 |Ověření se nezdařilo. Například hello v požadavku chybí parametr tajný klíč client_secret hello. |
+| 403 |Ověření se nezdařilo. Například hello uživatel nemá oprávnění tooaccess hello prostředků. |
+| 500 |U služby hello došlo k vnitřní chybě. Opakujte žádost hello. |
 
 #### Kódy chyb pro koncový bod tokenu chyby
 | Kód chyby | Popis | Akce klienta |
 | --- | --- | --- |
-| invalid_request |Chyba protokolu, například chybějící povinný parametr. |Opravte a odešlete požadavek znovu |
-| invalid_grant |Autorizační kód je neplatná nebo skončila jeho platnost. |Zkuste nový požadavek `/authorize` koncový bod |
-| unauthorized_client |Ověřený klient nemá oprávnění používat tento typ udělení autorizace. |K tomu obvykle dojde, pokud klientská aplikace není registrovaný ve službě Azure AD nebo nebyla přidána do klienta Azure AD pro uživatele. Aplikace můžete vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Azure AD. |
-| invalid_client |Ověření klienta se nezdařilo. |Pověření klienta nejsou platné. Pokud chcete vyřešit, Správce aplikací aktualizuje přihlašovací údaje. |
-| unsupported_grant_type |Autorizace serveru nepodporuje typ udělení autorizace. |Změňte typ udělení v požadavku. Tento typ chyby provedeno pouze během vývoje a zjistit během počáteční testování. |
-| invalid_resource |Cílový prostředek je neplatný, protože neexistuje, Azure AD ji nemůže najít, nebo není správně nakonfigurována. |To znamená, že k prostředku, pokud existuje, není nakonfigurované v klientovi. Aplikace můžete vyzvat uživatele s pokyny pro instalaci aplikace a její přidání do Azure AD. |
-| interaction_required |Požadavek vyžaduje interakci uživatele. Na další ověřování krok je třeba požadovaný. | Místo neinteraktivní žádost opakujte akci s požadavek interaktivní autorizace pro stejný prostředek. |
-| temporarily_unavailable |Server je dočasně zaneprázdněn pro zpracování požadavku. |Opakujte žádost. Klientská aplikace mohou vysvětlit pro uživatele, že odpověď se zpožďuje kvůli dočasné podmínce. |
+| invalid_request |Chyba protokolu, například chybějící povinný parametr. |Vyřešte a znovu odešlete žádost hello |
+| invalid_grant |Hello autorizační kód je neplatná nebo skončila jeho platnost. |Zkuste nové žádosti o toohello `/authorize` koncový bod |
+| unauthorized_client |Hello ověřený klient není autorizován toouse Tato autorizace udělit typu. |K tomu obvykle dojde, když hello klientská aplikace není registrovaný ve službě Azure AD nebo klienta Azure AD toohello uživatele nebyla přidána. aplikace Hello můžete vyzvat uživatele hello s pokyny pro instalaci aplikace hello a její přidání tooAzure AD. |
+| invalid_client |Ověření klienta se nezdařilo. |pověření klienta Hello nejsou platné. toofix, Správce aplikací hello aktualizuje hello přihlašovací údaje. |
+| unsupported_grant_type |autorizace serveru Hello nepodporuje typ udělení autorizace hello. |Změna hello udělit typu v žádosti o hello. Tento typ chyby provedeno pouze během vývoje a zjistit během počáteční testování. |
+| invalid_resource |Hello cílového prostředku je neplatný, protože neexistuje, Azure AD ji nemůže najít, nebo není správně nakonfigurována. |To znamená, že prostředek hello, pokud existuje, není nakonfigurované v klientovi hello. aplikace Hello můžete vyzvat uživatele hello s pokyny pro instalaci aplikace hello a její přidání tooAzure AD. |
+| interaction_required |žádost o Hello vyžaduje interakci uživatele. Na další ověřování krok je třeba požadovaný. | Místo neinteraktivní žádost, opakujte akci s požadavek interaktivní autorizace pro hello stejné prostředků. |
+| temporarily_unavailable |Hello server je dočasně zaneprázdněn toohandle hello požadavku. |Opakujte žádost hello. klientská aplikace Hello mohou vysvětlit toohello uživatele, odpovědi je zpožděno z důvodu tooa dočasné podmínce. |
 
-## Použití tokenu přístupu pro přístup k prostředku
-Teď, když jste byla úspěšně načtena `access_token`, můžete token v žádostech o k webovým rozhraním API, včetně jeho `Authorization` záhlaví. [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) specifikace vysvětluje, jak používat nosné tokeny v požadavcích HTTP pro přístup k chráněným prostředkům.
+## Použít hello přístup tokenu tooaccess hello prostředků
+Teď, když jste byla úspěšně načtena `access_token`, můžete použít hello token v žádosti o tooWeb rozhraní API, včetně v hello `Authorization` záhlaví. Hello [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) specifikace vysvětluje, jak toouse nosné tokeny v tooaccess požadavky HTTP chráněné zdroje.
 
 ### Ukázková žádost
 ```
@@ -279,41 +279,41 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ### Chybové odpovědi
-Zabezpečené prostředky, které implementují stavové kódy HTTP problém RFC 6750. Pokud žádost neobsahuje pověření pro ověření nebo chybí token, odpověď obsahuje `WWW-Authenticate` záhlaví. Pokud se požadavek nezdaří, server prostředků odpoví stavový kód HTTP a chybový kód.
+Zabezpečené prostředky, které implementují stavové kódy HTTP problém RFC 6750. Pokud požadavek hello nezahrnuje pověření pro ověření nebo chybí hello odpovědi tokenu, hello zahrnuje `WWW-Authenticate` záhlaví. Pokud se požadavek nezdaří, hello server prostředků odpoví s kódem stavu HTTP hello a chybový kód.
 
-Následuje příklad úspěšné odpovědi když žádost klienta nezahrnuje token nosiče:
+Hello tady je příklad úspěšné odpovědi, když požadavek klienta hello nezahrnuje token nosiče hello:
 
 ```
 HTTP/1.1 401 Unauthorized
-WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
+WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="hello access token is missing.",
 ```
 
 #### Parametry chyby
 | Parametr | Popis |
 | --- | --- |
-| authorization_uri |Identifikátor URI (fyzické koncový bod) serveru ověřování. Tato hodnota se také používá jako klíč vyhledávání získat další informace o serveru z koncového bodu zjišťování. <p><p> Klient musíte ověřit, že server ověřování je důvěryhodný. Když prostředek je chráněný službou Azure AD, je dostačující k ověření, že adresa URL začíná https://login.microsoftonline.com nebo jiný název hostitele, který podporuje Azure AD. Prostředek konkrétního klienta by měl vrátit vždy identifikátor URI autorizace konkrétního klienta. |
-| error |K chybě kódu hodnota definovaná v části 5.2 z [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). |
-| error_description |Podrobnější popis chyby. Tato zpráva neměla být popisný koncového uživatele. |
-| ID_prostředku |Vrací jedinečný identifikátor prostředku. Klientská aplikace můžete použít tento identifikátor jako hodnotu `resource` parametr při požadavku na token pro prostředek. <p><p> Je důležité pro klientskou aplikaci ověřit tuto hodnotu, jinak může být škodlivý služby moci vyvolat **zvýšení oprávnění** útoku <p><p> Pro zabránění útoku doporučujeme ověřit, jestli `resource_id` odpovídá základní webové adresy URL rozhraní API, která přistupuje. Pokud je přistupuje https://service.contoso.com/data, například `resource_id` může být htttps://service.contoso.com/. Klientská aplikace musí odmítnout `resource_id` , nemá na začátku základní adresu URL Pokud nejsou spolehlivé alternativní způsob, jak ověřit id. |
+| authorization_uri |identifikátor URI (fyzické koncový bod) serveru ověřování hello Hello. Tato hodnota se také používá jako vyhledávací key tooget Další informace o serveru hello z koncového bodu zjišťování. <p><p> Hello klienta musíte ověřit, že hello serveru ověřování je důvěryhodný. Když hello prostředků je chráněný službou Azure AD, je dostatečná tooverify, který hello adresa URL začíná https://login.microsoftonline.com nebo jiný název hostitele, který podporuje Azure AD. Prostředek konkrétního klienta by měl vrátit vždy identifikátor URI autorizace konkrétního klienta. |
+| error |K chybě kódu hodnota definovaná v části 5.2 hello [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). |
+| error_description |Podrobnější popis chyby hello. Tato zpráva není určen popisný toobe koncového uživatele. |
+| ID_prostředku |Vrátí hello jedinečný identifikátor prostředku hello. Hello klientská aplikace můžete použít tento identifikátor jako hodnota hello hello `resource` parametr při požadavku na token pro prostředek hello. <p><p> Je důležité pro hello klienta aplikace tooverify tuto hodnotu, jinak škodlivý služba může být schopný tooinduce **zvýšení oprávnění** útoku <p><p> Hello Doporučená strategie pro zabránění útoku je tooverify, který hello `resource_id` odpovídá hello základ hello webové adresy URL rozhraní API, která přistupuje. Například pokud https://service.contoso.com/data se přistupuje, hello `resource_id` může být htttps://service.contoso.com/. klientská aplikace Hello musí odmítnout `resource_id` , nemá na začátku základní adresu URL hello pokud existuje id spolehlivé jiný způsob, jak tooverify hello. |
 
 #### Kódy chyb nosiče schéma
-Specifikace RFC 6750 definuje následující chyby pro prostředky, které používají hlavička WWW-Authenticate a schéma nosiče v odpovědi.
+Hello specifikaci RFC 6750 definuje hello následujícím chybám pro prostředky, které používají hlavičky WWW-Authenticate hello a schéma nosiče v odpovědi hello.
 
 | Kód stavu HTTP | Kód chyby | Popis | Akce klienta |
 | --- | --- | --- | --- |
-| 400 |invalid_request |Požadavek není ve správném formátu. Například je může chybí parametr nebo pomocí stejný parametr dvakrát. |Opravte chybu a opakujte žádost. Tento typ chyby provedeno pouze během vývoje a zjistit počáteční testování v. |
-| 401 |invalid_token |Přístupový token chybí, je neplatný nebo je odvolané. Hodnota parametru error_description poskytuje další podrobnosti. |Požádat o nový token ze serveru ověřování. Pokud se nezdaří, nový token došlo k neočekávané chybě. Odeslat chybovou zprávu pro uživatele a zkuste to znovu za náhodné zpoždění. |
-| 403 |insufficient_scope |Přístupový token neobsahuje zosobnění oprávnění požadovaná pro přístup k prostředku. |Poslat novou žádost o autorizaci koncového bodu autorizace. Pokud odpověď obsahuje parametr rozsahu, použijte hodnotu oboru v požadavku na prostředek. |
-| 403 |insufficient_access |Předmět tokenu nemá oprávnění, která jsou potřebná pro přístup k prostředku. |Dotázat se uživatele, použijte jiný účet nebo požádejte o oprávnění k zadaný prostředek. |
+| 400 |invalid_request |Hello požadavku není ve správném formátu. Například může být chybějící parametr nebo pomocí hello stejný parametr dvakrát. |Opravte chybu hello a opakujte žádost hello. Tento typ chyby provedeno pouze během vývoje a zjistit počáteční testování v. |
+| 401 |invalid_token |Hello přístupový token chybí, je neplatný nebo je odvolané. Hello hodnota parametru error_description hello poskytuje další podrobnosti. |Ze serveru ověřování hello požádat o nový token. Pokud se nezdaří, nový token hello došlo k neočekávané chybě. Odeslat uživatelé toohello zpráva Chyba a opakujte po náhodné zpoždění. |
+| 403 |insufficient_scope |Hello přístupový token neobsahuje hello zosobnění oprávnění požadované tooaccess hello prostředků. |Odešlete nového autorizace požadavku toohello autorizaci koncového bodu. Pokud hello odpovědi obsahuje parametr rozsahu hello, použijte hodnotu oboru hello hello požadavek toohello prostředku. |
+| 403 |insufficient_access |Hello subjektu hello tokenu nemá oprávnění hello, které jsou požadované tooaccess hello prostředků. |Výzva hello uživatele toouse jiný účet nebo toorequest oprávnění toohello zadaný prostředek. |
 
-## Aktualizace přístupových tokenů
-Přístupové tokeny jsou krátkodobou a je třeba aktualizovat po vypršení jejich platnosti chcete-li pokračovat, přístup k prostředkům. Můžete obnovit `access_token` odesláním jiné `POST` žádost o `/token` koncový bod, ale tato poskytnutí času `refresh_token` místo `code`.
+## Aktualizace hello přístupové tokeny
+Přístupové tokeny jsou krátkodobou a je třeba aktualizovat po vypršení jejich platnosti toocontinue přístupu k prostředkům. Můžete obnovit hello `access_token` odesláním jiné `POST` požadavku toohello `/token` koncový bod, ale tentokrát poskytování hello `refresh_token` místo hello `code`.
 
-Aktualizujte tokeny nemají zadaný životnosti. Doba života tokeny obnovení jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro požadovanou akci. Aplikace musí očekávat a zpracování chyby vrácené v koncovém bodě vystavování tokenů správně.
+Aktualizujte tokeny nemají zadaný životnosti. Hello životnosti tokenů aktualizace jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro potřeby hello akci. Aplikace musí tooexpect a řešit chyby vrácené hello vystavování tokenů endpoint správně.
 
-Jakmile se zobrazí odpověď se chyba tokenu aktualizace, zahodit aktuální obnovovací token a nové autorizační kód požadavku nebo přístupový token. Zejména při použití aktualizace tokenu v toku, udělení autorizačního kódu, pokud se zobrazí odpověď se `interaction_required` nebo `invalid_grant` kódy chyb, zrušíte tokenu obnovení a požádejte o nový kód autorizace.
+Jakmile se zobrazí odpověď se chyba tokenu aktualizace, zahodit hello aktuální obnovovací token a nové autorizační kód požadavku nebo přístupový token. Zejména při použití aktualizace tokenu v hello tok udělení autorizačního kódu, pokud se zobrazí odpověď se hello `interaction_required` nebo `invalid_grant` kódy chyb, zrušíte hello obnovovací token a požádejte o nový kód autorizace.
 
-Ukázková žádost na **konkrétního klienta** koncový bod (můžete také **běžné** koncového bodu) získat přístup k nové tokenu pomocí tokenu obnovení vypadá takto:
+Toohello požadavku ukázkové **konkrétního klienta** koncový bod (můžete použít také hello **běžné** koncového bodu) tooget nový přístupový token pomocí tokenu obnovení vypadá takto:
 
 ```
 // Line breaks for legibility only
@@ -344,13 +344,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 | Parametr | Popis |
 | --- | --- |
-| token_type |Typ tokenu. Jedinou podporovanou hodnotou je **nosiče**. |
-| expires_in |Zbývající dobu životnosti tokenu v sekundách. Typické hodnota je 3600 (jedna hodina). |
-| expires_on |Datum a čas, kdy vyprší platnost tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. |
-| Prostředek |Identifikuje zabezpečené prostředek, který může být přístupový token používané k přístupu. |
-| Obor |Zosobnění oprávnění udělená nativní klientskou aplikaci. Výchozí oprávnění je **user_impersonation**. Vlastník cílového prostředku můžete zaregistrovat alternativní hodnoty ve službě Azure AD. |
-| access_token |Nový přístupový token, který byl vyžádán. |
-| refresh_token |Nový refresh_token OAuth 2.0, který slouží k vyžádání nové přístupové tokeny, když vyprší platnost v této odpovědi. |
+| token_type |Typ tokenu Hello. Hello podporována pouze hodnota je **nosiče**. |
+| expires_in |Hello zbývající doba platnosti tokenu hello v sekundách. Typické hodnota je 3600 (jedna hodina). |
+| expires_on |Hello datum a čas, kdy vyprší platnost tokenu hello. Datum Hello je reprezentován jako hello počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC dokud hello čas vypršení platnosti. |
+| Prostředek |Identifikuje hello zabezpečené prostředků token přístupu hello může být použité tooaccess. |
+| Obor |Udělení oprávnění zosobnění toohello nativní klientskou aplikaci. Hello výchozí oprávnění je **user_impersonation**. Vlastník Hello hello cílový prostředek můžete zaregistrovat alternativní hodnoty ve službě Azure AD. |
+| access_token |Hello nový přístupový token, který byl požadován. |
+| refresh_token |Nový refresh_token OAuth 2.0, který lze použít toorequest nové přístupové tokeny, když vyprší platnost hello, jeden v této odpovědi. |
 
 ### Chybové odpovědi
 Ukázková chyba odpověď může vypadat například takto:
@@ -358,7 +358,7 @@ Ukázková chyba odpověď může vypadat například takto:
 ```
 {
   "error": "invalid_resource",
-  "error_description": "AADSTS50001: The application named https://foo.microsoft.com/mail.read was not found in the tenant named 295e01fc-0c56-4ac3-ac57-5d0ed568f872.  This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant.  You might have sent your authentication request to the wrong tenant.\r\nTrace ID: ef1f89f6-a14f-49de-9868-61bd4072f0a9\r\nCorrelation ID: b6908274-2c58-4e91-aea9-1f6b9c99347c\r\nTimestamp: 2016-04-11 18:59:01Z",
+  "error_description": "AADSTS50001: hello application named https://foo.microsoft.com/mail.read was not found in hello tenant named 295e01fc-0c56-4ac3-ac57-5d0ed568f872.  This can happen if hello application has not been installed by hello administrator of hello tenant or consented tooby any user in hello tenant.  You might have sent your authentication request toohello wrong tenant.\r\nTrace ID: ef1f89f6-a14f-49de-9868-61bd4072f0a9\r\nCorrelation ID: b6908274-2c58-4e91-aea9-1f6b9c99347c\r\nTimestamp: 2016-04-11 18:59:01Z",
   "error_codes": [
     50001
   ],
@@ -370,11 +370,11 @@ Ukázková chyba odpověď může vypadat například takto:
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
-| error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby ověřování. |
+| error |Řetězec kódu chyby, který lze použít tooclassify typů chyb, ke kterým došlo a může být použité tooreact tooerrors. |
+| error_description |Konkrétní chybová zpráva, která může pomoci vývojář identifikovat hello hlavní příčinu chyby ověřování. |
 | error_codes |Seznam tokenů zabezpečení specifické chybové kódy, které vám můžou pomoct při diagnostiky. |
-| časové razítko |Čas, kdy se stala chyba. |
-| trace_id |Jedinečný identifikátor pro požadavek, který vám můžou pomoct při diagnostiky. |
-| correlation_id |Jedinečný identifikátor pro požadavek, který vám můžou pomoct při diagnostiky mezi komponentami. |
+| časové razítko |Hello čas, kdy došlo k chybě hello. |
+| trace_id |Jedinečný identifikátor pro hello požadavek, který vám pomůže v diagnostice. |
+| correlation_id |Jedinečný identifikátor pro hello požadavek, který vám pomůže v diagnostice mezi komponentami. |
 
-Popis kódy chyb a klienta doporučenou akci najdete v tématu [kódy chyb pro koncový bod tokenu chyby](#error-codes-for-token-endpoint-errors).
+Popis hello kódy chyb a hello Doporučená akce klienta najdete v tématu [kódy chyb pro koncový bod tokenu chyby](#error-codes-for-token-endpoint-errors).

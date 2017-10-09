@@ -1,24 +1,24 @@
-## <a name="specify-the-behavior-of-the-iot-device"></a>Určení chování zařízení IoT
+## <a name="specify-hello-behavior-of-hello-iot-device"></a>Zadejte chování hello zařízení IoT hello
 
-Klientská knihovna serializéru služby IoT Hub používá model k určení formátu zpráv, které si zařízení vyměňuje se službou IoT Hub.
+Hello IoT Hub serializátor Klientská knihovna používá formát hello toospecify modelu hello zprávy hello zařízení výměn službou IoT Hub.
 
-1. Přidejte následující deklarace proměnných za příkazy `#include`. Nahraďte zástupné hodnoty [Device Id] (ID zařízení) a [Device Key] (Klíč zařízení) hodnotami, které jste si pro své zařízení poznamenali na řídicím panelu řešení vzdáleného monitorování. K nahrazení hodnoty [IoTHub Name] (Název služby IoT Hub) použijte název hostitele služby IoT Hub z řídicího panelu řešení. Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:
+1. Přidejte následující deklarace proměnných po hello hello `#include` příkazy. Nahraďte zástupný symbol hodnoty hello [Id zařízení] a [klíč zařízení] s hodnotami, které jste si poznamenali pro vaše zařízení v panelu řešení vzdáleného monitorování hello. Použijte hello název hostitele centra IoT z tooreplace řídicí panel řešení hello [IoTHub Name]. Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:
    
     ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
 
-1. Přidejte následující kód definující model, který umožní komunikaci zařízení se službou IoT Hub. Tento model určuje, že zařízení:
+1. Přidejte následující kód toodefine hello model, který umožňuje hello zařízení toocommunicate službou IoT Hub hello. Tento model určuje hello zařízení:
 
    - Může odesílat telemetrii s informacemi o teplotě, venkovní teplotě, vlhkosti a ID zařízení.
-   - Může odesílat metadata o zařízení do služby IoT Hub. Zařízení při spuštění odesílá základní metadata v objektu **DeviceInfo**.
-   - Může odesílat ohlášené vlastnosti do dvojčete zařízení ve službě IoT Hub. Tyto ohlášené vlastnosti se seskupují do vlastností konfigurace, zařízení a systému.
-   - Může přijímat požadované vlastnosti nastavené ve dvojčeti zařízení ve službě IoT Hub a jednat podle nich.
-   - Může reagovat na přímé metody **Reboot** a **InitiateFirmwareUpdate** vyvolané prostřednictvím portálu řešení. Zařízení odesílá informace o přímých metodách, které podporuje, pomocí ohlášených vlastností.
+   - Můžete odeslat metadata o hello zařízení tooIoT rozbočovače. Hello zařízení odesílá základní metadata **DeviceInfo** objekt při spuštění.
+   - Můžete odeslat oznámenou vlastnosti toohello dvojče zařízení IoT hub. Tyto ohlášené vlastnosti se seskupují do vlastností konfigurace, zařízení a systému.
+   - Může přijímat a fungují v požadovaných vlastností v hello dvojče zařízení IoT hub.
+   - Může reagovat toohello **restartovat** a **InitiateFirmwareUpdate** přímé metody vyvolat prostřednictvím portálu řešení hello. Hello zařízení odesílá informace o metodách přímé hello, že podporuje použití hlášené vlastností.
    
     ```c
-    // Define the Model
+    // Define hello Model
     BEGIN_NAMESPACE(Contoso);
 
     /* Reported properties */
@@ -74,7 +74,7 @@ Klientská knihovna serializéru služby IoT Hub používá model k určení for
       WITH_DESIRED_PROPERTY(double, TemperatureMeanValue, onDesiredTemperatureMeanValue),
       WITH_DESIRED_PROPERTY(uint8_t, TelemetryInterval, onDesiredTelemetryInterval),
 
-      /* Direct methods implemented by the device */
+      /* Direct methods implemented by hello device */
       WITH_METHOD(Reboot),
       WITH_METHOD(InitiateFirmwareUpdate, ascii_char_ptr, FwPackageURI),
 
@@ -85,15 +85,15 @@ Klientská knihovna serializéru služby IoT Hub používá model k určení for
     END_NAMESPACE(Contoso);
     ```
 
-## <a name="implement-the-behavior-of-the-device"></a>Implementace chování zařízení
-Nyní přidejte kód, který implementuje chování definované v modelu.
+## <a name="implement-hello-behavior-of-hello-device"></a>Implementace hello chování hello zařízení
+Teď přidejte kód, který implementuje chování hello definované v modelu hello.
 
-1. Přidejte následující funkce, které zpracovávají požadované vlastnosti nastavené na řídicím panelu řešení. Tyto požadované vlastnosti jsou definované v modelu:
+1. Přidejte následující funkce, které zpracovávají hello požadovaných vlastností v řídicí panel řešení hello hello. Tyto požadované vlastnosti jsou definované v modelu hello:
 
     ```c
     void onDesiredTemperatureMeanValue(void* argument)
     {
-      /* By convention 'argument' is of the type of the MODEL */
+      /* By convention 'argument' is of hello type of hello MODEL */
       Thermostat* thermostat = argument;
       printf("Received a new desired_TemperatureMeanValue = %f\r\n", thermostat->TemperatureMeanValue);
 
@@ -101,13 +101,13 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
 
     void onDesiredTelemetryInterval(void* argument)
     {
-      /* By convention 'argument' is of the type of the MODEL */
+      /* By convention 'argument' is of hello type of hello MODEL */
       Thermostat* thermostat = argument;
       printf("Received a new desired_TelemetryInterval = %d\r\n", thermostat->TelemetryInterval);
     }
     ```
 
-1. Přidejte následující funkce, které zpracovávají přímé metody vyvolané prostřednictvím služby IoT Hub. Tyto přímé metody jsou definované v modelu:
+1. Přidejte následující funkce, které zpracovávají hello přímé metody vyvolat prostřednictvím centra IoT hello hello. Tyto metody přímé jsou definovány v modelu hello:
 
     ```c
     /* Handlers for direct methods */
@@ -130,26 +130,26 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
     }
     ```
 
-1. Přidejte následující funkci, která odesílá zprávu do předkonfigurovaného řešení:
+1. Přidejte následující funkce, která odesílá zprávy toohello předkonfigurované řešení hello:
    
     ```c
-    /* Send data to IoT Hub */
+    /* Send data tooIoT Hub */
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
     {
       IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromByteArray(buffer, size);
       if (messageHandle == NULL)
       {
-        printf("unable to create a new IoTHubMessage\r\n");
+        printf("unable toocreate a new IoTHubMessage\r\n");
       }
       else
       {
         if (IoTHubClient_SendEventAsync(iotHubClientHandle, messageHandle, NULL, NULL) != IOTHUB_CLIENT_OK)
         {
-          printf("failed to hand over the message to IoTHubClient");
+          printf("failed toohand over hello message tooIoTHubClient");
         }
         else
         {
-          printf("IoTHubClient accepted the message for delivery\r\n");
+          printf("IoTHubClient accepted hello message for delivery\r\n");
         }
 
         IoTHubMessage_Destroy(messageHandle);
@@ -158,7 +158,7 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
     }
     ```
 
-1. Přidejte následující obsluhu zpětného volání, která se spustí, když zařízení do předkonfigurovaného řešení odešle nové hodnoty požadovaných vlastností:
+1. Přidejte následující obslužná rutina zpětného volání, která se spouští při hello zařízení odeslal nové hodnoty hlášené vlastnost toohello předkonfigurované řešení hello:
 
     ```c
     /* Callback after sending reported properties */
@@ -169,15 +169,15 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
     }
     ```
 
-1. Přidejte následující funkci, která vaše zařízení připojí k předkonfigurovanému řešení v cloudu a umožní výměnu dat. Tato funkce provádí následující kroky:
+1. Přidejte následující hello funkce tooconnect toohello předkonfigurované řešení zařízení v cloudu hello a vyměňovat data. Tato funkce provádí hello následující kroky:
 
-    - Inicializuje platformu.
-    - Zaregistruje v knihovně serializace obor názvů Contoso.
-    - Inicializuje klienta s připojovacím řetězcem zařízení.
-    - Vytvoří instanci modelu **Thermostat**.
+    - Inicializuje hello platformy.
+    - Zaregistruje hello Contoso obor názvů se hello knihovně serializace.
+    - Inicializuje hello klienta s hello zařízení připojovací řetězec.
+    - Vytvoření instance hello **termostatu** modelu.
     - Vytvoří a odešle hodnoty ohlášených vlastností.
     - Odešle objekt **DeviceInfo**.
-    - Vytvoří smyčku pro odesílání telemetrie každou sekundu.
+    - Vytvoří telemetrie toosend smyčky každou sekundu.
     - Uvolní všechny prostředky.
 
       ```c
@@ -185,13 +185,13 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
       {
         if (platform_init() != 0)
         {
-          printf("Failed to initialize the platform.\n");
+          printf("Failed tooinitialize hello platform.\n");
         }
         else
         {
           if (SERIALIZER_REGISTER_NAMESPACE(Contoso) == NULL)
           {
-            printf("Unable to SERIALIZER_REGISTER_NAMESPACE\n");
+            printf("Unable tooSERIALIZER_REGISTER_NAMESPACE\n");
           }
           else
           {
@@ -203,10 +203,10 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
             else
             {
       #ifdef MBED_BUILD_TIMESTAMP
-              // For mbed add the certificate information
+              // For mbed add hello certificate information
               if (IoTHubClient_SetOption(iotHubClientHandle, "TrustedCerts", certificates) != IOTHUB_CLIENT_OK)
               {
-                  printf("Failed to set option \"TrustedCerts\"\n");
+                  printf("Failed tooset option \"TrustedCerts\"\n");
               }
       #endif // MBED_BUILD_TIMESTAMP
               Thermostat* thermostat = IoTHubDeviceTwin_CreateThermostat(iotHubClientHandle);
@@ -229,17 +229,17 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
                 thermostat->System.Platform = "Plat 9.75";
                 thermostat->System.Processor = "i3-7";
                 thermostat->System.SerialNumber = "SER21";
-                /* Specify the signatures of the supported direct methods */
-                thermostat->SupportedMethods = "{\"Reboot\": \"Reboot the device\", \"InitiateFirmwareUpdate--FwPackageURI-string\": \"Updates device Firmware. Use parameter FwPackageURI to specifiy the URI of the firmware file\"}";
+                /* Specify hello signatures of hello supported direct methods */
+                thermostat->SupportedMethods = "{\"Reboot\": \"Reboot hello device\", \"InitiateFirmwareUpdate--FwPackageURI-string\": \"Updates device Firmware. Use parameter FwPackageURI toospecifiy hello URI of hello firmware file\"}";
 
-                /* Send reported properties to IoT Hub */
+                /* Send reported properties tooIoT Hub */
                 if (IoTHubDeviceTwin_SendReportedStateThermostat(thermostat, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
                 {
                   printf("Failed sending serialized reported state\n");
                 }
                 else
                 {
-                  printf("Send DeviceInfo object to IoT Hub at startup\n");
+                  printf("Send DeviceInfo object tooIoT Hub at startup\n");
       
                   thermostat->ObjectType = "DeviceInfo";
                   thermostat->IsSimulatedDevice = 0;
@@ -296,7 +296,7 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
       }
     ```
    
-    Tady je pro srovnání ukázková zpráva **telemetrie** odeslaná do předkonfigurovaného řešení:
+    Pro referenci tady je ukázka **Telemetrie** toohello zpráva byla odeslána předkonfigurované řešení:
    
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}

@@ -5,5 +5,5 @@
 | Koncové body CDN jeden profil |10 |
 | Vlastní domény na jeden koncový bod |10 |
 
-Požádejte o aktualizaci pro vaše předplatné doporučené omezení otevřením lístku podpory.
+Předplatné služby aktualizace tooyour logicky omezení požadavků otevřením lístku podpory.
 

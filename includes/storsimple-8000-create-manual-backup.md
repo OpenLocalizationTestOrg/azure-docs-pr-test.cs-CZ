@@ -1,28 +1,28 @@
 
 <!--author=alkohli last changed: 01/20/2017-->
 
-#### <a name="to-create-a-manual-backup"></a>Ruční vytvoření zálohy
+#### <a name="toocreate-a-manual-backup"></a>toocreate ruční zálohy
 
-1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte své zařízení. Přejděte do **Nastavení > Správa > Zásady zálohování**.
+1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **zařízení**. Hello tabulkové seznam zařízení, vyberte zařízení. Přejděte příliš**Nastavení > Správa > zásady zálohování**.
 
-2. Okno **Zásady zálohování** obsahuje výpis všech zásad zálohování v tabulkovém formátu, včetně zásad svazku, který chcete zálohovat. Vyberte zásadu přidruženou ke svazku, který chcete zálohovat, a kliknutím pravým tlačítkem myši vyvolejte místní nabídku. Z rozevíracího seznamu vyberte **Zálohovat nyní**.
+2. Hello **zásady zálohování** okno obsahuje seznam všech zásad zálohování hello v tabulkovém formátu, včetně hello zásady pro hello svazek, který chcete tooback nahoru. Vyberte zásady hello přidružené hello svazek, který chcete tooback nahoru a klikněte pravým tlačítkem na tooinvoke hello kontextové nabídky. Hello rozevíracího seznamu vyberte **zálohovat nyní**.
 
     ![Ruční vytvoření zálohy](./media/storsimple-8000-create-manual-backup/createmanualbu1.png)
 
-3. V okně **Zálohovat nyní** proveďte následující kroky:
+3. V hello **zálohovat nyní** okně hello následující kroky:
 
-    1. Z rozevíracího seznamu zvolte vhodný **Typ snímku**: **Místní** snímek nebo **Cloudový** snímek. Pokud chcete rychlejší zálohování a obnovení, vyberte místní snímek; cloudový snímek vyberte, pokud chcete větší odolnost dat.
+    1. Zvolte odpovídající hello **snímku typ** z rozevíracího seznamu hello: **místní** snímku nebo **cloudu** snímku. Pokud chcete rychlejší zálohování a obnovení, vyberte místní snímek; cloudový snímek vyberte, pokud chcete větší odolnost dat.
 
         ![Ruční vytvoření zálohy](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
-    2. Kliknutím na **OK** spusťte úlohu pro vytvoření snímku. Po úspěšném vytvoření úlohy se v horní části stránky zobrazí oznámení.
+    2. Klikněte na tlačítko **OK** toostart toocreate úlohu snímku. Po úspěšném vytvoření úlohy hello se uvidíte oznámení hello horní části stránky hello.
 
         ![Ruční vytvoření zálohy](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
-    3. Pokud chcete úlohu monitorovat, klikněte na oznámení. Tím přejdete do okna **Úlohy**, kde můžete zobrazit průběh úlohy.
+    3. toomonitor hello úlohy, klikněte na tlačítko hello oznámení. Tím přejdete toohello **úlohy** okno, kde můžete zobrazit průběh úlohy hello.
 
 
-5. Po dokončení úlohy zálohování přejděte na kartu **Backup catalog** (Katalog zálohování).
+5. Po dokončení úlohy zálohování hello přejděte toohello **katalog zálohování** kartě.
 
-6. Nastavte filtry na příslušné zařízení, zásady zálohování a časové rozmezí. Záloha by se měla zobrazit v seznamu sad záloh uvedených v katalogu.
+6. Nastavte hello filtru výběr toohello příslušné zařízení, zásady zálohování a časové rozmezí. Hello zálohování by se zobrazit v seznamu hello sad záloh, který se zobrazí v katalogu hello.
 

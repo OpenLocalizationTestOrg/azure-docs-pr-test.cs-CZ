@@ -1,6 +1,6 @@
 ---
-title: Novinky v Power BI Embedded
-description: "Získat nejnovější informace na to, co je nového v Power BI Embedded"
+title: "aaaWhat je nového v Power BI Embedded"
+description: "Získat nejnovější informace o hello na to, co je nového v Power BI Embedded"
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 07c53a5d6b1881a4c207a2aefed9fcede0fa069e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 859fa57eda4311b17a0098d0e5cb7fa4f969b534
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="whats-new-in-power-bi-embedded"></a>Novinky v Power BI Embedded
 
-Aktualizace **Power BI Embedded** vydávají v pravidelných intervalech. Však nemusí být vždy verze obsahuje nové funkce uživatelsky orientovaný; Některé verze se zaměřuje na funkce back endové službě. Jsme budete zvýrazněte nové funkce uživatelsky orientovaný sem. Ujistěte se, že zkontrolujte často.
+Aktualizace příliš**Power BI Embedded** vydávají v pravidelných intervalech. Však nemusí být vždy verze obsahuje nové funkce uživatelsky orientovaný; Některé verze se zaměřuje na funkce back endové službě. Jsme budete zvýrazněte nové funkce uživatelsky orientovaný sem. Často se že toocheck zpět.
 
 ## <a name="march-2017"></a>2017 března
 
@@ -44,7 +44,7 @@ Aktualizace **Power BI Embedded** vydávají v pravidelných intervalech. Však 
 **Rozhraní API pro správu**
 
 * Klon sestavy a datové sady
-* Vazbu sestavy na jinou sadu dat
+* Vytvoření vazby jinou datovou sadu tooa sestavy
 
 **Ukázky**
 
@@ -62,18 +62,18 @@ Aktualizace **Power BI Embedded** vydávají v pravidelných intervalech. Však 
 Součástí této verze:
 
 * Všechny nové JavaScript SDK, která podporuje [rozšířené filtrování a stránky navigační](power-bi-embedded-interact-with-reports.md).
-* Power BI Embedded se teď podporuje v centrální Kanada datovém centru. Zkontrolujte [stav datacenter](https://azure.microsoft.com/status/).
+* Power BI Embedded se teď podporuje v datovém centru Kanada centrální hello. Zkontrolujte [stav datacenter](https://azure.microsoft.com/status/).
 
 ## <a name="july-11th-2016"></a>11. července 2016
 Součástí této verze:
 
-* **Skvělé zprávy!** Služba Power BI Embedded je už ve verzi preview – je nyní GA (obecně k dispozici).  
-* Všechna rozhraní API REST byl přesunut z **/beta** k **/v1.0**.
+* **Skvělé zprávy!** Hello Power BI Embedded služby je už ve verzi preview – je nyní GA (obecně k dispozici).  
+* Všechna rozhraní API REST byl přesunut z **/beta** příliš**/v1.0**.
 * Rozhraní .NET a JavaScript SDK se aktualizovala pro **verze 1.0**.
-* Power BI API – volání lze ověřit nyní přímo pomocí klíče rozhraní API. Tokeny aplikací jsou potřeba jenom pro vložení. Jako součást tohoto zřizování a vývojářů tokeny jsou zastaralé v rozhraní API verze 1.0, ale budete pokračovat v betaverzi fungovat až do 12/30/2016. Další informace najdete v tématu [ověřování a autorizaci s Power BI Embedded](power-bi-embedded-app-token-flow.md).
-* Podpora zabezpečení na úrovni (RLS) řádek pro tokeny aplikací a vložené sestavy. Další informace najdete v tématu [řádek zabezpečení na úrovni s Power BI Embedded](power-bi-embedded-rls.md).
+* Power BI API – volání lze ověřit nyní přímo pomocí klíče rozhraní API. Tokeny aplikací jsou potřeba jenom pro vložení. Jako součást tohoto zřizování a vývojářů tokeny jsou zastaralé v rozhraní API verze 1.0, ale jejich toowork pokračovat ve verzi beta hello až do 12/30/2016. Další, najdete v části toolearn [ověřování a autorizaci s Power BI Embedded](power-bi-embedded-app-token-flow.md).
+* Podpora zabezpečení na úrovni (RLS) řádek pro tokeny aplikací a vložené sestavy. Další, najdete v části toolearn [řádek zabezpečení na úrovni s Power BI Embedded](power-bi-embedded-rls.md).
 * Aktualizovat ukázkovou aplikaci pro všechny **verze 1.0** volání rozhraní API.
 * Power BI Embedded podpora pro Azure SDK, prostředí PowerShell a rozhraní příkazového řádku.
-* Uživatelé mohou exportovat vizualizace dat **.csv**.
-* Power BI Embedded se teď podporuje v všechny stejné jazyky nebo národní prostředí jako Microsoft Azure. Další informace najdete v tématu [Azure - jazyky](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
+* Uživatelé mohou exportovat vizualizace dat tooa **.csv**.
+* Power BI Embedded se teď podporuje v všechny hello stejné jazyky nebo národní prostředí jako Microsoft Azure. Další, najdete v části toolearn [Azure - jazyky](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
 

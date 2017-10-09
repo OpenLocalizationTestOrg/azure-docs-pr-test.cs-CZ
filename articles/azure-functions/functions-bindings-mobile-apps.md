@@ -1,6 +1,6 @@
 ---
-title: Azure vazby funkce Mobile Apps | Microsoft Docs
-description: "Pochopit, jak používat Azure Mobile Apps vazby v Azure Functions."
+title: vazby funkce Mobile Apps aaaAzure | Microsoft Docs
+description: Pochopit, jak toouse vazeb Azure Mobile Apps v Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,48 +16,48 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/31/2016
 ms.author: glenga
-ms.openlocfilehash: c5e1c02984f9773b263c0bee7685c7d5ff62e658
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3679a5d5c66705b32e422ec17e3a1e6d6ac063c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-mobile-apps-bindings"></a>Azure Mobile Apps funkce vazby
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek vysvětluje, jak nakonfigurovat a kódu [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) vazeb v Azure Functions. Azure Functions podporuje vstup a výstup vazby pro Mobile Apps.
+Tento článek vysvětluje, jak tooconfigure a kód [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) vazeb v Azure Functions. Azure Functions podporuje vstup a výstup vazby pro Mobile Apps.
 
-Mobile Apps vstup a výstup vazby umožňují [číst a zapisovat do datových tabulek](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations) v mobilní aplikaci.
+vstupní technologie Hello Mobile Apps a výstup vazby umožňují [číst a zapisovat toodata tabulky](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations) v mobilní aplikaci.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 <a name="input"></a>
 
 ## <a name="mobile-apps-input-binding"></a>Vstupní vazba Mobile Apps
-Vstupní vazba Mobile Apps načte záznam z koncového bodu mobilní tabulky a předá ji do funkce. C# a F # funkce všechny změny provedené v záznamu se automaticky odešlou zpět k tabulce při ukončení funkce úspěšně.
+Hello Vstupní vazba Mobile Apps načte záznam z koncového bodu mobilní tabulky a předá ji do funkce. V jazyce C# a F # funkce všechny změny provedené toohello záznam automaticky odešlou back toohello tabulky při ukončení hello funkce úspěšně.
 
-Mobile Apps vstup do funkce používá následující objekt JSON v `bindings` pole function.json:
+Hello Mobile Apps vstupní tooa funkce používá následující objekt JSON v hello hello `bindings` pole function.json:
 
 ```json
 {
     "name": "<Name of input parameter in function signature>",
     "type": "mobileTable",
     "tableName": "<Name of your mobile app's data table>",
-    "id" : "<Id of the record to retrieve - see below>",
+    "id" : "<Id of hello record tooretrieve - see below>",
     "connection": "<Name of app setting that has your mobile app's URL - see below>",
     "apiKey": "<Name of app setting that has your mobile app's API key - see below>",
     "direction": "in"
 }
 ```
 
-Je třeba počítat s následujícím:
+Vezměte na vědomí následující hello:
 
-* `id`může být statické nebo může být založen na aktivační událost, která volá funkci. Například, pokud používáte [aktivační událost fronty]() pro funkce, pak `"id": "{queueTrigger}"` používá s řetězcovou hodnotou obsahující zprávy ve frontě jako ID záznamu pro načtení.
-* `connection`by mělo obsahovat název nastavení aplikace v aplikaci funkce, která obsahuje adresu URL této mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující adresu URL mobilních aplikací (který vypadá podobně jako `http://<appname>.azurewebsites.net`), pak zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. 
-* Je třeba zadat `apiKey` Pokud jste [implementovat klíč rozhraní API vašeho back-end mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API vašeho back-end mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). K tomu, můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující klíč rozhraní API, přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. 
+* `id`může být statické nebo může být založen na hello aktivační událost, která volá funkce hello. Například, pokud používáte [aktivační událost fronty]() pro funkce, pak `"id": "{queueTrigger}"` používá hello řetězcovou hodnotou obsahující zprávu fronty hello jako hello záznamů tooretrieve ID.
+* `connection`by mělo obsahovat název hello nastavení aplikace v aplikaci funkce, která obsahuje adresu URL hello mobilní aplikace. Funkce Hello používá tuto adresu URL tooconstruct hello požadované operace REST proti mobilní aplikaci. Můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující adresu URL mobilních aplikací (který vypadá podobně jako `http://<appname>.azurewebsites.net`), potom zadejte název nastavení aplikace hello hello do hello `connection` vlastnost Vstupní vazba. 
+* Je třeba toospecify `apiKey` Pokud jste [implementovat klíč rozhraní API vašeho back-end mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API vašeho back-end mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). toodo, můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující klíč hello rozhraní API, pak přidejte hello `apiKey` vlastnost vaše Vstupní vazba s hello název nastavení aplikace hello. 
   
   > [!IMPORTANT]
-  > Tento klíč rozhraní API nesmí sdílet s klienty mobilní aplikace. Je měli jenom zajistit jeho distribuci bezpečně klientům straně služby, jako je Azure Functions. 
+  > Tento klíč rozhraní API nesmí sdílet s klienty mobilní aplikace. By mělo být distribuované bezpečně tooservice straně klienty, jako jsou Azure Functions. 
   > 
   > [!NOTE]
   > Azure Functions ukládá informace o připojení a klíče rozhraní API jako nastavení aplikace, tak, aby se změnami do vašeho úložiště správy zdrojového kódu. To chrání vaše citlivé informace.
@@ -67,16 +67,16 @@ Je třeba počítat s následujícím:
 <a name="inputusage"></a>
 
 ## <a name="input-usage"></a>Vstupní využití
-V této části se dozvíte, jak používat vaše mobilní aplikace vstupní vazby v kódu funkce. 
+Tato část uvádí, jak toouse Mobile Apps vstupní vazby v kódu funkce. 
 
-Když se najde záznam se zadané tabulky a ID záznamu, je předaná do pojmenované [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parametr (nebo v Node.js, je předaná do `context.bindings.<name>` objekt). Při záznamu není nalezen, je parametr `null`. 
+Pokud záznam hello se hello zadána tabulka a záznam ID nenajde, je předána do hello s názvem [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parametr (nebo v Node.js, je předaná do hello `context.bindings.<name>` objekt). Když se nenašel záznam hello, parametr hello je `null`. 
 
-Funkcí jazyka C# a F #, provedené změny do vstupní záznamu (vstupní parametr) je automaticky odeslán zpět k tabulce mobilní aplikace při ukončení funkce úspěšně. Ve funkcích Node.js, použijte `context.bindings.<name>` pro přístup k vstupního záznamu. Nelze upravit záznam v Node.js.
+Funkcí jazyka C# a F # je všechny změny toohello vstupní záznamu (vstupní parametr) automaticky odeslán zpět toohello Mobile Apps tabulce, při ukončení hello funkce úspěšně. Ve funkcích Node.js, použijte `context.bindings.<name>` tooaccess hello vstupního záznamu. Nelze upravit záznam v Node.js.
 
 <a name="inputsample"></a>
 
 ## <a name="input-sample"></a>Vstupní ukázka
-Předpokládejme, že máte následující function.json, který načte záznam tabulky mobilní aplikace s id zprávy ve frontě aktivační události:
+Předpokládejme, že máte hello následující function.json, který načte záznam tabulky mobilní aplikace s id hello hello fronty aktivační událost zprávy:
 
 ```json
 {
@@ -102,7 +102,7 @@ Předpokládejme, že máte následující function.json, který načte záznam 
 }
 ```
 
-V tématu vzorku pro specifický jazyk, který používá vstupního záznamu z vazby. Ukázky jazyka C# a F # také upravit na záznam `text` vlastnost.
+V tématu vzorku hello konkrétní jazyk, který používá hello vstupního záznamu z vazby hello. Ukázky jazyka C# a F # Hello také upravit záznam hello `text` vlastnost.
 
 * [C#](#inputcsharp)
 * [Node.js](#inputnodejs)
@@ -150,9 +150,9 @@ module.exports = function (context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="mobile-apps-output-binding"></a>Mobile Apps výstup vazby
-Použijte výstup Mobile Apps vazby k zápisu nového záznamu do tabulky koncový bod mobilní aplikace.  
+Použijte hello Mobile Apps výstup vazby toowrite nový koncový bod záznamů tooa tabulky mobilní aplikace.  
 
-Mobile Apps výstup funkce používá následující objekt JSON v `bindings` pole function.json:
+Hello Mobile Apps výstup hello následující objekt JSON v hello používá funkci `bindings` pole function.json:
 
 ```json
 {
@@ -165,13 +165,13 @@ Mobile Apps výstup funkce používá následující objekt JSON v `bindings` po
 }
 ```
 
-Je třeba počítat s následujícím:
+Vezměte na vědomí následující hello:
 
-* `connection`by mělo obsahovat název nastavení aplikace v aplikaci funkce, která obsahuje adresu URL této mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující adresu URL mobilních aplikací (který vypadá podobně jako `http://<appname>.azurewebsites.net`), pak zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. 
-* Je třeba zadat `apiKey` Pokud jste [implementovat klíč rozhraní API vašeho back-end mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API vašeho back-end mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). K tomu, můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující klíč rozhraní API, přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. 
+* `connection`by mělo obsahovat název hello nastavení aplikace v aplikaci funkce, která obsahuje adresu URL hello mobilní aplikace. Funkce Hello používá tuto adresu URL tooconstruct hello požadované operace REST proti mobilní aplikaci. Můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující adresu URL mobilních aplikací (který vypadá podobně jako `http://<appname>.azurewebsites.net`), potom zadejte název nastavení aplikace hello hello do hello `connection` vlastnost Vstupní vazba. 
+* Je třeba toospecify `apiKey` Pokud jste [implementovat klíč rozhraní API vašeho back-end mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API vašeho back-end mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). toodo, můžete [vytvoření nastavení aplikace v aplikaci funkce]() obsahující klíč hello rozhraní API, pak přidejte hello `apiKey` vlastnost vaše Vstupní vazba s hello název nastavení aplikace hello. 
   
   > [!IMPORTANT]
-  > Tento klíč rozhraní API nesmí sdílet s klienty mobilní aplikace. Je měli jenom zajistit jeho distribuci bezpečně klientům straně služby, jako je Azure Functions. 
+  > Tento klíč rozhraní API nesmí sdílet s klienty mobilní aplikace. By mělo být distribuované bezpečně tooservice straně klienty, jako jsou Azure Functions. 
   > 
   > [!NOTE]
   > Azure Functions ukládá informace o připojení a klíče rozhraní API jako nastavení aplikace, tak, aby se změnami do vašeho úložiště správy zdrojového kódu. To chrání vaše citlivé informace.
@@ -181,14 +181,14 @@ Je třeba počítat s následujícím:
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>Využití výstupní
-V této části se dozvíte, jak používat Mobile Apps výstupu vazby v kódu funkce. 
+Tato část uvádí, jak toouse Mobile Apps výstup vazby v kódu funkce. 
 
-V C# funkce, použijte parametr s názvem výstup typu `out object` pro přístup k výstupu záznamu. Ve funkcích Node.js, použijte `context.bindings.<name>` pro přístup k výstupu záznamu.
+V C# funkce, použijte parametr s názvem výstup typu `out object` tooaccess hello výstup záznamu. Ve funkcích Node.js, použijte `context.bindings.<name>` tooaccess hello výstup záznamu.
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Ukázkový výstup
-Předpokládejme, že máte následující function.json, která definuje aktivační procedury fronty a výstup mobilní aplikace:
+Předpokládejme, že máte následující function.json, který definuje aktivační procedury fronty a Mobile Apps výstup hello:
 
 ```json
 {
@@ -213,7 +213,7 @@ Předpokládejme, že máte následující function.json, která definuje aktiva
 }
 ```
 
-Naleznete v ukázce pro specifický jazyk, který vytvoří záznam v koncovém bodě Mobile Apps tabulku s obsahem zprávy ve frontě.
+V tématu vzorku hello konkrétní jazyk, který vytvoří záznam v koncový bod hello Mobile Apps tabulek s obsahem hello uvítací zprávu fronty.
 
 * [C#](#outcsharp)
 * [Node.js](#outnodejs)

@@ -1,6 +1,6 @@
 ---
-title: "Průběžné nasazování do Azure App Service | Microsoft Docs"
-description: "Naučte se povolit průběžné nasazování do služby Azure App Service."
+title: "aaaContinuous tooAzure nasazení služby App Service | Microsoft Docs"
+description: "Zjistěte, jak tooenable průběžné nasazování tooAzure služby App Service."
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 7d978e623aaff25a9400090bd3ac18ed560d2ebf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 62a22cbda354fd5b0a1b9729c8c375408e75049f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
-Tento kurz ilustruje postup při konfiguraci pracovního postupu průběžného nasazování pro aplikaci služby [Azure App Service]. Služby App Service integrace s BitBucket, Githubu, a [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) umožňuje průběžné nasazování workflow, kde Azure vyžaduje nejnovější aktualizace z projektu publikována do některého z těchto služeb. Průběžné nasazování je skvělou možností pro projekty, u kterých se integruje více příspěvků nebo u kterých integrace probíhá často.
+# <a name="continuous-deployment-tooazure-app-service"></a>Průběžné tooAzure nasazení služby App Service
+Tento kurz ukazuje, jak tooconfigure pracovního postupu průběžné nasazování pro vaše [Azure App Service] aplikace. Služby App Service integrace s BitBucket, Githubu, a [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) umožňuje průběžně pracovní postup nasazení, kde Azure vyžaduje nejnovější aktualizace hello z projektu publikované tooone z těchto služeb. Průběžné nasazování je skvělou možností pro projekty, u kterých se integruje více příspěvků nebo u kterých integrace probíhá často.
 
-Chcete zjistit, jak nakonfigurovat průběžné nasazování ručně z úložiště v cloudu nejsou uvedené pomocí portálu Azure (například [GitLab](https://gitlab.com/)), najdete v části [nastavení průběžné nasazování pomocí ruční kroky](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+toofind out jak hello tooconfigure průběžné nasazování ručně z úložiště v cloudu nejsou uvedené pomocí portálu Azure (například [GitLab](https://gitlab.com/)), najdete v části [nastavení průběžné nasazování pomocí ruční kroky](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 ## <a name="overview"></a>Povolení průběžného nasazování
-Pokud chcete povolit průběžné nasazování, postupujte takto:
+průběžné nasazování tooenable,
 
-1. Publikujte obsah aplikace do úložiště, které se bude používat pro průběžné nasazování.  
-    Další informace o publikování projektu v těchto službách najdete v článcích [Vytvoření úložiště (GitHub)], [Vytvoření úložiště (BitBucket)] a [Začínáme se službou VSTS].
-2. V okně s nabídkou aplikace na [Azure Portal] klikněte na tlačítko **NASAZENÍ APLIKACE > Možnosti nasazení**. Klikněte na **Zvolit zdroj** a pak vyberte zdroj nasazení.  
+1. Publikujte úložiště obsahu toohello vaší aplikace, který se použije pro průběžné nasazování.  
+    Další informace o publikování vašeho projektu toothese služby najdete v tématu [vytvořit úložiště (Githubu)], [vytvořit úložiště (BitBucket)], a [začít pracovat s služby VSTS].
+2. V okně vaší aplikace nabídky v hello [portál Azure], klikněte na tlačítko **nasazení aplikace > Možnosti nasazení**. Klikněte na tlačítko **zvolit zdroj**, zvolte položku zdroj nasazení hello.  
    
     ![](./media/app-service-continuous-deployment/cd_options.png)
    
    > [!NOTE]
-   > Pokud chcete konfigurovat účet služby VSTS pro nasazení služby App Service, prostudujte si tento [kurz](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+   > tooconfigure účet služby VSTS pro nasazení služby App Service najdete v tématu to [kurzu](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
    > 
    > 
-3. Dokončete pracovní postup ověřování.
-4. V okně **Zdroj nasazení** zvolte projekt a větev, ze které se má nasazení provádět. Až to budete mít, klikněte na **OK**.
+3. Dokončení pracovního postupu hello autorizace.
+4. V hello **zdroj nasazení** okně Zvolit hello projekt a rozvětvují toodeploy z. Až to budete mít, klikněte na **OK**.
    
     ![](./media/app-service-continuous-deployment/github_option.png)
    
@@ -48,51 +48,51 @@ Pokud chcete povolit průběžné nasazování, postupujte takto:
    > 
    > 
    
-    Služba App Service vytvoří přidružení s vybraným úložištěm, vyžádá si soubory z určené větve a bude udržovat klon úložiště pro vaši aplikaci služby App Service. Při konfiguraci průběžného nasazování služby VSTS z portálu Azure Portal integrace využívá [stroj pro nasazení Kudu](https://github.com/projectkudu/kudu/wiki) služby App Service, který s každým příkazem `git push` již automatizuje úlohy sestavení a nasazení. Průběžné nasazování ve službě VSTS nemusíte nastavovat samostatně. Po dokončení tohoto procesu se v okně aplikace **Možnosti nasazení** zobrazí aktivní nasazení, které indikuje, že nasazení proběhlo úspěšně.
-5. Pokud chcete ověřit úspěšné nasazení aplikace, klikněte na možnost **Adresa URL** v horní části okna aplikace na portálu Azure Portal.
-6. Pokud chcete ověřit, že se průběžné nasazování provádí ze zvoleného úložiště, vložte do úložiště nějakou změnu. Aplikace by se měla krátce po dokončení vkládání do úložiště aktualizovat a změny by se měly projevit. Vložení aktualizace můžete ověřit v okně **Možnosti nasazení** v aplikaci.
+    Služby App Service vytvoří přidružení se hello vybrané úložiště, který vrátí v souborech hello z hello zadaný větve a udržuje klon úložiště pro aplikaci služby App Service. Při konfiguraci služby VSTS průběžné nasazování z hello portálu Azure, integrace hello používá hello služby App Service [modul nasazení Kudu](https://github.com/projectkudu/kudu/wiki), které již automatizuje úlohy sestavení a nasazení s každou `git push`. Není nutné tooseparately nastavit průběžné nasazování v služby VSTS. Po dokončení tohoto procesu se hello **možnosti nasazení** okně aplikace se zobrazí aktivní nasazení, která určuje nasazení proběhla úspěšně.
+5. tooverify hello aplikace je úspěšně nasazená, klikněte na tlačítko hello **URL** hello horní části okna hello aplikací v hello portálu Azure.
+6. tooverify, který průběžné nasazování dochází z hello úložiště podle vašeho výběru push úložiště toohello změnu. Aplikace by měl aktualizovat změny hello tooreflect krátce po dokončení hello nabízené toohello úložiště. Můžete ověřit, že má vyžádat v aktualizaci hello v hello **možnosti nasazení** okno vaší aplikace.
 
 ## <a name="VSsolution"></a>Průběžné nasazování řešení sady Visual Studio
-Vložení řešení sady Visual Studio do služby Azure App Service může představovat prosté vložení jednoduchého souboru index.html. Proces nasazení služby App Service zvyšuje efektivitu všech podrobností, včetně obnovení závislostí NuGet sestavení binárních souborů aplikace. Stačí, abyste doporučené postupy správy a údržby zdrojového kódu dodržovali jen ve svém úložišti Git, a nasazení aplikace App Service se postará o všechno ostatní.
+Vkládání tooAzure řešení sady Visual Studio služby App Service je stejně jednoduché jako vkládání jednoduché index.html souboru. Hello procesu nasazení služby App Service zjednodušuje všechny hello podrobnosti, včetně závislostí NuGet obnovení a vytváření binární soubory aplikace hello. Můžete dodržujte doporučené postupy řízení hello zdroj Správa kód pouze do úložiště Git a umožní nasazení služby App Service se postará o hello rest.
 
-Kroky při vkládání řešení sady Visual Studio do služby App Service jsou stejné jako v [předchozí části](#overview), pokud řešení a úložiště nakonfigurujete takto:
+Hello kroky pro vkládání vaší tooApp řešení sady Visual Studio jsou služby hello stejné jako hello [předchozí části](#overview), za předpokladu, že můžete nakonfigurovat následujícím způsobem řešení a úložiště:
 
-* Pomocí možnosti správy zdrojového kódu sady Visual Studio vygenerujte soubor `.gitignore` podobně jako na následujícím obrázku nebo do kořenového adresáře úložiště ručně přidejte soubor `.gitignore` s obsahem podobným této [ukázce souboru .gitignore](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
+* Použít hello Visual Studio zdroj ovládacího prvku možnost toogenerate `.gitignore` soubor například hello bitovou kopii níže nebo přidejte ručně `.gitignore` soubor v kořenovém úložišti s obsahu podobné toothis [.gitignore ukázka](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
   
   ![](./media/app-service-continuous-deployment/VS_source_control.png)
-* Přidejte adresářový strom celého řešení do úložiště tak, aby se soubor .sln nacházel v kořenovém adresáři úložiště.
+* Přidejte hello celé řešení directory stromu tooyour úložiště, se soubor .sln hello v kořenovém úložišti hello.
 
-Po nastavení úložiště podle uvedeného popisu a konfiguraci aplikace v Azure tak, aby probíhalo průběžné nasazování z jednoho z úložišť Git online, můžete vyvíjet aplikaci ASP.NET místně v sadě Visual Studio a průběžně kód nasazovat prostým vložením změn do příslušného úložiště Git online.
+Po nastavení úložiště bez vyžádání, jak je popsáno a aplikace v Azure nakonfigurovaný pro nepřetržitou publikování z jednoho z hello online úložiště Git, můžete vyvíjet aplikace ASP.NET místně v sadě Visual Studio a průběžně nasadíte tak svůj kód jednoduše načte Když zavedete vaše změny tooyour online úložiště Git.
 
 ## <a name="disableCD"></a>Zakázání průběžného nasazování
-Pokud chcete průběžné nasazování zakázat, postupujte takto:
+průběžné nasazování toodisable,
 
-1. V okně s nabídkou aplikace na [Azure Portal] klikněte na tlačítko **NASAZENÍ APLIKACE > Možnosti nasazení**. Klikněte na tlačítko **Odpojit** v okně **Možnosti nasazení**.
+1. V okně vaší aplikace nabídky v hello [portál Azure], klikněte na tlačítko **nasazení aplikace > Možnosti nasazení**. Pak klikněte na tlačítko **odpojení** v hello **možnosti nasazení** okno.
    
     ![](./media/app-service-continuous-deployment/cd_disconnect.png)
-2. Po zvolení odpovědi **Ano** na potvrzovací zprávu se můžete vrátit do okna aplikace a kliknout na **NASAZENÍ APLIKACE > Možnosti nasazení**, pokud chcete nastavit publikování z jiného zdroje.
+2. Po odpovídání **Ano** toohello potvrzující zpráva, se můžete vrátit okně tooyour aplikace a klikněte na tlačítko **nasazení aplikace > Možnosti nasazení** Pokud byste chtěli tooset až publikování z jiného zdroje.
 
 ## <a name="additional-resources"></a>Další zdroje
-* [Postup při zkoumání běžných problémů s průběžným nasazováním](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [Způsob používání prostředí PowerShell pro Azure]
-* [Způsob používání nástrojů příkazového řádku Azure pro Mac a Linux]
+* [Jak tooinvestigate běžné problémy se průběžné nasazování.](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [Jak toouse prostředí PowerShell pro Azure]
+* [Jak toouse hello nástroje příkazového řádku Azure pro Mac a Linux]
 * [Dokumentace pro Git]
 * [Projekt Kudu](https://github.com/projectkudu/kudu/wiki)
-* [Použití Azure automaticky generovat kanálu CI nebo CD pro nasazení aplikace ASP.NET 4](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
+* [Použití Azure tooautomatically generovat CI/CD kanálu toodeploy ASP.NET 4 aplikace](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 [Azure App Service]: https://azure.microsoft.com/en-us/documentation/articles/app-service-changes-existing-services/
-[Azure Portal]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Způsob používání prostředí PowerShell pro Azure]: /powershell/azureps-cmdlets-docs
-[Způsob používání nástrojů příkazového řádku Azure pro Mac a Linux]:../cli-install-nodejs.md
+[Jak toouse prostředí PowerShell pro Azure]: /powershell/azureps-cmdlets-docs
+[Jak toouse hello nástroje příkazového řádku Azure pro Mac a Linux]:../cli-install-nodejs.md
 [Dokumentace pro Git]: http://git-scm.com/documentation
 
-[Vytvoření úložiště (GitHub)]: https://help.github.com/articles/create-a-repo
-[Vytvoření úložiště (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
-[Začínáme se službou VSTS]: https://www.visualstudio.com/docs/vsts-tfs-overview
+[vytvořit úložiště (Githubu)]: https://help.github.com/articles/create-a-repo
+[vytvořit úložiště (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
+[začít pracovat s služby VSTS]: https://www.visualstudio.com/docs/vsts-tfs-overview

@@ -1,6 +1,6 @@
 ---
-title: "Protokolu kolekcí dat protokolu HTTP Analytics rozhraní API | Microsoft Docs"
-description: "Log Analytics HTTP dat kolekce API můžete přidat POST JSON data do úložiště analýzy protokolů z libovolného klienta, který můžete volat rozhraní REST API. Tento článek popisuje, jak použít rozhraní API a obsahuje příklady, jak publikovat data pomocí různých programovacích jazyků."
+title: aaaLog API kolekce dat protokolu HTTP Analytics | Microsoft Docs
+description: "Můžete použít hello Log Analytics HTTP dat kolekce API tooadd POST JSON toohello analýzy protokolů úložiště data z libovolného klienta, který můžete volat hello REST API. Tento článek popisuje, jak toouse hello rozhraní API a příklady, jak má toopublish data pomocí různých programovacích jazyků."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
-ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c2921082831c49da764d946ac9c4fab975a38185
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>Odesílání dat k analýze protokolů s rozhraním API kolekce dat protokolu HTTP
-Tento článek ukazuje, jak používat rozhraní API sady kolekcí dat protokolu HTTP k odesílání dat k analýze protokolů z klienta pro REST API.  Popisuje, jak formátu data shromažďovaná společností skriptu nebo aplikaci, její zahrnutí do žádost a mít této žádosti autorizovat analýzy protokolů.  Příklady jsou uvedené pro prostředí PowerShell, C# a Python.
+# <a name="send-data-toolog-analytics-with-hello-http-data-collector-api"></a>Odeslání dat tooLog Analytics s hello rozhraní API sady kolekcí dat protokolu HTTP
+Tento článek ukazuje, jak toouse hello tooLog data toosend Analytics rozhraní API sady kolekcí dat protokolu HTTP od klienta pro REST API.  Se popisuje, jak tooformat data shromažďovaná společností skriptu nebo aplikace, zahrnují v požadavku a mít této žádosti autorizovat analýzy protokolů.  Příklady jsou uvedené pro prostředí PowerShell, C# a Python.
 
 ## <a name="concepts"></a>Koncepty
-Rozhraní API sady kolekcí dat protokolu HTTP můžete použít k odesílání dat k analýze protokolů z libovolného klienta, který můžete volat rozhraní REST API.  To může být sady runbook ve službě Azure Automation, který shromažďuje správy dat z Azure nebo ve jiný cloud nebo může být alternativní správy systému, který používá analýzy protokolů konsolidovat a analyzovat data.
+Můžete použít hello rozhraní API sady kolekcí dat protokolu HTTP toosend data tooLog Analytics z libovolného klienta, který můžete volat rozhraní REST API.  To může být sady runbook ve službě Azure Automation, který shromažďuje správy dat z Azure nebo jiný cloud nebo ji mohou být alternativní správy systému, který používá tooconsolidate analýzy protokolů a analyzovat data.
 
-Všechna data v úložišti analýzy protokolů uloženo jako záznam s konkrétní typ záznamu.  Formátování dat odesílat na rozhraní API sady kolekcí dat protokolu HTTP jako více záznamů ve formátu JSON.  Při odesílání dat jednotlivých záznamů je vytvořen v úložišti pro každý záznam v datová část požadavku.
+Všechna data v úložišti analýzy protokolů hello uloženo jako záznam s konkrétní typ záznamu.  Vaše data toosend toohello rozhraní API sady kolekcí dat protokolu HTTP je formátovat jako více záznamů ve formátu JSON.  Při odesílání dat hello jednotlivé záznamy se vytvoří v hello úložiště pro každý záznam v hello datová část požadavku.
 
 
 ![Přehled kolekcí dat protokolu HTTP](media/log-analytics-data-collector-api/overview.png)
@@ -34,7 +34,7 @@ Všechna data v úložišti analýzy protokolů uloženo jako záznam s konkrét
 
 
 ## <a name="create-a-request"></a>Vytvořit žádost o
-Chcete-li použít rozhraní API sady kolekcí dat protokolu HTTP, vytvořte požadavek POST, která obsahuje data k odeslání v JavaScript Object Notation (JSON).  Následující tři tabulky obsahují atributy, které jsou požadovány pro každý požadavek. Jsme popisují každý atribut podrobněji později v článku.
+toouse hello HTTP kolekcí dat rozhraní API, můžete vytvořit požadavek POST, která obsahuje hello data toosend v JavaScript Object Notation (JSON).  Hello následující tři tabulky seznam hello atributy, které jsou požadovány pro každý požadavek. Jsme popisují každý atribut podrobněji dále v článku hello.
 
 ### <a name="request-uri"></a>Identifikátor URI požadavku
 | Atribut | Vlastnost |
@@ -46,30 +46,30 @@ Chcete-li použít rozhraní API sady kolekcí dat protokolu HTTP, vytvořte po�
 ### <a name="request-uri-parameters"></a>Parametry identifikátoru URI požadavku
 | Parametr | Popis |
 |:--- |:--- |
-| CustomerID |Jedinečný identifikátor pro pracovní prostor Microsoft Operations Management Suite. |
-| Prostředek |Název prostředku rozhraní API: / api/protokoly. |
-| Verze rozhraní API |Verze rozhraní API používat s touto žádostí. V současné době je 2016-04-01. |
+| CustomerID |Hello jedinečný identifikátor pro pracovní prostor hello Microsoft Operations Management Suite. |
+| Prostředek |název prostředku Hello rozhraní API: / api/protokoly. |
+| Verze rozhraní API |verze Hello toouse hello rozhraní API s touto žádostí. V současné době je 2016-04-01. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 | Záhlaví | Popis |
 |:--- |:--- |
-| Autorizace |Podpis autorizace. Dále v tomto článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC SHA256. |
-| Typ protokolu |Zadejte typ záznamu dat, která je odesílána. Typ protokolu v současné době podporuje pouze alfanumerické znaky. Nepodporuje se číslice nebo speciální znaky. |
-| x-ms datum |Datum, kdy byl požadavek zpracovat, v dokumentu RFC 1123 formátu. |
-| čas generované pole |Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole a její obsah se používají pro **TimeGenerated**. Pokud toto pole není určena, výchozí hodnota pro **TimeGenerated** je čas, který je konzumována zprávy. Obsah zprávy pole by mělo vyhovovat formátu ISO 8601 rrrr-MM-ddTHH. |
+| Autorizace |podpis Hello autorizace. Dále v článku hello, si můžete přečíst o tom, záhlaví toocreate HMAC algoritmus SHA256. |
+| Typ protokolu |Zadejte typ záznamu hello hello dat, která je odesílána. Typ protokolu hello v současné době podporuje pouze alfanumerické znaky. Nepodporuje se číslice nebo speciální znaky. |
+| x-ms datum |Datum Hello zpracování tohoto požadavku hello, v dokumentu RFC 1123 formátu. |
+| čas generované pole |Hello název pole v hello data, která obsahuje časové razítko hello položky dat hello. Pokud určíte pole a její obsah se používají pro **TimeGenerated**. Pokud toto pole není určena, výchozí hodnoty pro hello **TimeGenerated** je čas hello této hello je konzumována zprávy. postupujte podle Hello obsah pole zpráv hello hello ISO 8601 formát rrrr-MM-ddTHH. |
 
 ## <a name="authorization"></a>Autorizace
-Každá žádost o Log Analytics HTTP dat kolekce API musí obsahovat hlavičku autorizace. K ověření požadavku, musíte se odhlásit požadavek s primární nebo sekundární klíč pro pracovní prostor, který je vytvoření požadavku. Pak předejte tento podpis jako součást požadavku.   
+Všechny žádosti o toohello Log Analytics HTTP dat kolekce API musí obsahovat hlavičku autorizace. tooauthenticate žádost, musíte se odhlásit hello žádost s hello primární nebo sekundární klíč hello pro hello pracovní prostor, který je vytváření hello požadavku. Pak předejte tento podpis jako součást požadavku hello.   
 
-Tady je formát pro hlavičku autorizace:
+Tady je hello formát pro hello autorizační hlavičky:
 
 ```
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* je jedinečný identifikátor pro pracovní prostor služby Operations Management Suite. *Podpis* je [Hash-based ověřování kódu metoda HMAC (Message)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , se vytvářejí na základě požadavku a potom vypočítaného pomocí [algoritmus SHA256](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Potom můžete zakódovat je pomocí kódování Base64.
+*WorkspaceID* je hello jedinečný identifikátor pro pracovní prostor služby Operations Management Suite hello. *Podpis* je [Hash-based ověřování kódu metoda HMAC (Message)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , se vytvářejí na základě požadavku hello a pak vypočítaného pomocí hello [algoritmus SHA256](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Potom můžete zakódovat je pomocí kódování Base64.
 
-Použijte tento formát ke kódování **SharedKey** podpis řetězec:
+Použijte tento formát tooencode hello **SharedKey** podpis řetězec:
 
 ```
 StringToSign = VERB + "\n" +
@@ -85,16 +85,16 @@ Tady je příklad řetězce podpis:
 POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 ```
 
-Máte-li řetězec podpis, zakódovat je pomocí algoritmus HMAC s klíčem SHA256 na řetězec kódování UTF-8 a pak kódování výsledek jako Base64. Použijte tento formát:
+Pokud máte hello podpis řetězec, zakódovat je pomocí hello algoritmus HMAC s klíčem SHA256 na hello řetězec kódovaný UTF-8 a pak kódování hello výsledek jako Base64. Použijte tento formát:
 
 ```
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
-Ukázky v dalších částech mít ukázkový kód vám pomůže vytvořit autorizační hlavičky.
+Ukázky Hello v dalších částech hello mít ukázkový kód toohelp vytvoříte autorizační hlavičky.
 
 ## <a name="request-body"></a>Text žádosti
-Tělo zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů s dvojice názvů a hodnot vlastností v tomto formátu:
+Hello textu hello zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů s hello vlastnost páry název-hodnota v tomto formátu:
 
 ```
 {
@@ -105,7 +105,7 @@ Tělo zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záz
 }
 ```
 
-Pomocí následujícího formátu můžete dávky více záznamů společně v jedné žádosti. Všechny záznamy musí být stejného typu záznamu.
+Více záznamů společně v jedné žádosti může batch pomocí hello formátu. Všechny záznamy hello musí být hello stejný typ záznamu.
 
 ```
 {
@@ -123,11 +123,11 @@ Pomocí následujícího formátu můžete dávky více záznamů společně v j
 ```
 
 ## <a name="record-type-and-properties"></a>Typ záznamu a vlastnosti
-Při odesílání dat prostřednictvím Log Analytics HTTP dat kolekce API definujete vlastní typ záznamu. V současné době nelze zapisovat data do existující typy záznamů, které byly vytvořeny tak, že jiné datové typy a řešení. Analýzy protokolů přečte příchozích dat a poté vytvoří vlastnosti, které odpovídají datové typy hodnot, které zadáte.
+Při odesílání dat prostřednictvím hello Log Analytics HTTP dat kolekce API definujete vlastní typ záznamu. V současné době nelze zapisovat data tooexisting typy záznamů, které byly vytvořeny tak, že jiné datové typy a řešení. Analýzy protokolů přečte hello příchozích dat a poté vytvoří vlastnosti, které odpovídají hello datové typy hello hodnoty, které zadáte.
 
-Každý požadavek pro rozhraní API Log Analytics musí obsahovat **typ protokolu** záhlaví s názvem pro typ záznamu. Přípona **_CL** se automaticky připojí k názvu zadáte jako vlastní protokol ho odlišuje od ostatních typů protokolu. Pokud zadáte název například **MyNewRecordType**, analýzy protokolů vytvoří záznam s typem **MyNewRecordType_CL**. To pomáhá zajistit, že neexistují žádné konflikty mezi názvy typů vytvořené uživatelem a ty poskytuje současný nebo budoucí řešení společnosti Microsoft.
+Každý požadavek toohello musí zahrnovat Log Analytics API **typ protokolu** záhlaví s názvem hello pro typ záznamu hello. přípona Hello **_CL** je automaticky připojením toohello název zadejte toodistinguish z jiných protokolu typy jako vlastní protokol. Například pokud zadáte název hello **MyNewRecordType**, analýzy protokolů vytvoří záznam s typem hello **MyNewRecordType_CL**. To pomáhá zajistit, že neexistují žádné konflikty mezi názvy typů vytvořené uživatelem a ty poskytuje současný nebo budoucí řešení společnosti Microsoft.
 
-Pokud chcete identifikovat datový typ vlastnost, analýzy protokolů přidá příponu název vlastnosti. Pokud vlastnost obsahuje hodnotu null, vlastnost není součástí záznamů. Tato tabulka uvádí datový typ vlastnosti a odpovídající příponu:
+tooidentify vlastnost datový typ, analýzy protokolů přidává vlastnost toohello příponu. Pokud vlastnost obsahuje hodnotu null, hello vlastnost není součástí záznamů. Tato tabulka uvádí hello vlastnost datový typ a odpovídající příponu:
 
 | Datový typ vlastnosti | Přípona |
 |:--- |:--- |
@@ -137,75 +137,75 @@ Pokud chcete identifikovat datový typ vlastnost, analýzy protokolů přidá p�
 | Datum a čas |_T – |
 | IDENTIFIKÁTOR GUID |_g |
 
-Datový typ, který používá analýzy protokolů pro každou vlastnost závisí na tom, jestli typ záznamu pro nový záznam již existuje.
+Hello datový typ, který používá analýzy protokolů pro každou vlastnost závisí na tom, jestli typ záznamu hello nový záznam o hello již existuje.
 
-* Pokud typ záznamu neexistuje, analýzy protokolů vytvoří novou. Analýzy protokolů používá k určení datového typu pro každou vlastnost pro nový záznam odvození typu JSON.
-* Pokud typ záznamu neexistuje, analýzy protokolů se pokusí vytvořit nový záznam na základě existující vlastností. Pokud datový typ pro vlastnost v novém záznamu se neshoduje se a nelze převést na typ existující, nebo pokud záznam obsahuje vlastnosti, která neexistuje, analýzy protokolů vytvoří novou vlastnost s příponou relevantní.
+* Pokud typ záznamu hello neexistuje, analýzy protokolů vytvoří novou. Analýzy protokolů používá hello JSON typ odvození toodetermine hello datový typ pro každou vlastnost nový záznam o hello.
+* Pokud typ záznamu hello neexistuje, analýzy protokolů pokusí toocreate nový záznam na základě existující vlastností. Pokud hello datový typ pro vlastnost v novém záznamu hello není odpovídají a nemůže být převedená toohello existující typ nebo pokud hello záznam obsahuje vlastnosti, která neexistuje, vytvoří novou vlastnost analýzy protokolů, který má příponu relevantní hello.
 
 Například by tato položka odeslání vytvořit záznam s třemi vlastnostmi **number_d**, **boolean_b**, a **string_s**:
 
 ![Ukázka záznamu 1](media/log-analytics-data-collector-api/record-01.png)
 
-Pokud pak odeslání této další položky, hodnoty všech formátu řetězce, nebude změnit vlastnosti. Tyto hodnoty lze převést na existující typy dat:
+Pokud pak odeslání této další položky, hodnoty všech formátu řetězce, nebude změnit vlastnosti hello. Tyto hodnoty mohou být převedená tooexisting datové typy:
 
 ![Ukázka záznamu 2](media/log-analytics-data-collector-api/record-02.png)
 
-Ale pokud jste provedli poté tento další odeslání, analýzy protokolů by vytvořit nové vlastnosti **boolean_d** a **string_d**. Nelze převést tyto hodnoty:
+Ale pokud jste provedli poté tento další odeslání, analýzy protokolů by vytvořit hello nové vlastnosti **boolean_d** a **string_d**. Nelze převést tyto hodnoty:
 
 ![Ukázka záznamu 3](media/log-analytics-data-collector-api/record-03.png)
 
-Pokud tuto položku, se potom odeslán, před vytvořením typ záznamu, analýzy protokolů by vytvořit záznam s třemi vlastnostmi **úspěch**, **boolean_s**, a **string_s**. V této položce všechny počáteční hodnoty, je naformátovaná jako řetězec:
+Pokud potom odeslán hello následující položky, před vytvořením hello typ záznamu, analýzy protokolů by vytvořit záznam s třemi vlastnostmi **úspěch**, **boolean_s**, a **string_s**. V této položce každé počáteční hodnoty hello je naformátovaná jako řetězec:
 
 ![Ukázka záznamu 4](media/log-analytics-data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Omezení dat
-Existují některá omezení kolem data odeslány do kolekce Log Analytics Data rozhraní API.
+Existují některá omezení kolem hello data odeslány toohello Log Analytics Data kolekce rozhraní API.
 
-* Maximálně 30 MB za post protokolu analýzy dat kolekce API. Toto je omezení velikosti pro jednu metodu post. Pokud data z jedné odeslání, který překračuje 30 MB, měli rozdělení dat až bloky s menší velikostí a odešlete je současně.
-* Maximální limit 32 KB pro pole hodnot. Pokud hodnota pole je větší než 32 KB, bude zkrácen data.
+* Maximálně 30 MB za post tooLog analýzy dat kolekce rozhraní API. Toto je omezení velikosti pro jednu metodu post. Pokud hello data z jedné post, který je delší než 30 MB, je třeba rozdělit hello bloky dat si toosmaller velikosti a odešlete je současně.
+* Maximální limit 32 KB pro pole hodnot. Pokud hodnota pole hello je větší než 32 KB, bude zkrácen hello data.
 * Doporučený maximální počet polí pro daný typ je 50. Toto je praktické omezení z perspektivy prostředí vyhledávání a použitelnost.  
 
 ## <a name="return-codes"></a>Návratové kódy
-Stavový kód HTTP 200 znamená, že žádost byla přijata pro zpracování. To znamená, že operace úspěšně dokončena.
+Hello stavový kód HTTP 200 znamená, že byla přijata ke zpracování tohoto požadavku hello. To znamená, že hello operace byla úspěšně dokončena.
 
-Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit službu:
+Tato tabulka uvádí hello kompletní sadu stavové kódy, které může služba hello vrátit:
 
 | Kód | Status | Kód chyby | Popis |
 |:--- |:--- |:--- |:--- |
-| 200 |OK | |Žádost byla přijata úspěšně. |
-| 400 |Chybný požadavek |InactiveCustomer |Pracovní prostor byl uzavřen. |
-| 400 |Chybný požadavek |InvalidApiVersion |Služba nebyla rozpoznána verze rozhraní API, který jste zadali. |
-| 400 |Chybný požadavek |InvalidCustomerId |Zadané ID pracovního prostoru je neplatný. |
-| 400 |Chybný požadavek |InvalidDataFormat |Byla odeslána neplatná JSON. Text odpovědi může obsahovat další informace o tom, jak vyřešit chyby. |
-| 400 |Chybný požadavek |InvalidLogType |Typ protokolu zadat obsahují zvláštní znaky nebo číslice. |
-| 400 |Chybný požadavek |MissingApiVersion |Verze rozhraní API není zadaný. |
-| 400 |Chybný požadavek |MissingContentType |Typ obsahu, který nebyl zadán. |
-| 400 |Chybný požadavek |MissingLogType |Typ protokolu požadovaná hodnota nebyl zadán. |
-| 400 |Chybný požadavek |UnsupportedContentType |Typ obsahu, který nebyl nastaven na **application/json**. |
-| 403 |Je zakázané |InvalidAuthorization |Službě se nepodařilo ověřit žádost. Ověření platnosti připojení ID a klíč pracovního prostoru. |
-| 404 |Nebyl nalezen | | Buď je zadaná adresa URL nesprávná nebo požadavku je příliš velký. |
-| 429 |Příliš mnoho požadavků | | Služba dochází k velkému počtu data z účtu. Opakujte požadavek později. |
-| 500 |Vnitřní chyba serveru |UnspecifiedError |Služba zjistila vnitřní chybu. Opakujte žádost. |
-| 503 |Služba není k dispozici |ServiceUnavailable |Služba je momentálně nedostupný a nepřijímá požadavky. Opakujte žádost. |
+| 200 |OK | |Hello žádost byla úspěšně přijata. |
+| 400 |Chybný požadavek |InactiveCustomer |pracovní prostor Hello bylo ukončeno. |
+| 400 |Chybný požadavek |InvalidApiVersion |verze Hello rozhraní API, který jste zadali nebyla rozpoznána službou hello. |
+| 400 |Chybný požadavek |InvalidCustomerId |Zadané ID pracovního prostoru Hello je neplatný. |
+| 400 |Chybný požadavek |InvalidDataFormat |Byla odeslána neplatná JSON. text odpovědi Hello může obsahovat další informace o tom, jak tooresolve hello chyby. |
+| 400 |Chybný požadavek |InvalidLogType |Typ protokolu Hello zadat obsahují zvláštní znaky nebo číslice. |
+| 400 |Chybný požadavek |MissingApiVersion |verze rozhraní API Hello nebyl zadán. |
+| 400 |Chybný požadavek |MissingContentType |Typ obsahu Hello nebyl zadán. |
+| 400 |Chybný požadavek |MissingLogType |Hello vyžaduje protokolu typ hodnoty nebyl zadán. |
+| 400 |Chybný požadavek |UnsupportedContentType |Typ obsahu Hello nebyl nastaven příliš**application/json**. |
+| 403 |Je zakázané |InvalidAuthorization |Hello služby se nezdařilo tooauthenticate hello požadavku. Ověřte platné klíči hello prostoru ID a připojení. |
+| 404 |Nebyl nalezen | | Buď zadaná adresa URL hello je nesprávný, nebo hello požadavku je příliš velký. |
+| 429 |Příliš mnoho požadavků | | Služba Hello dochází k velkému počtu data z účtu. Hello požadavek opakujte akci později. |
+| 500 |Vnitřní chyba serveru |UnspecifiedError |Hello služby došlo k vnitřní chybě. Zkuste provést požadavek hello. |
+| 503 |Služba není k dispozici |ServiceUnavailable |Hello služba je aktuálně k dispozici tooreceive požadavky. Opakujte žádost. |
 
 ## <a name="query-data"></a>Dotazování dat
-K dotazování na data odeslaná vyhledejte záznamy s aktualizace Log Analytics HTTP dat kolekce API **typ** který se rovná **LogType** hodnotu, která jste zadali, spolu s **_CL**. Pokud jste použili například **MyCustomLog**, pak by vrátit všechny záznamy s **typ = MyCustomLog_CL**.
+tooquery data odeslaná při hello Log Analytics HTTP dat kolekce API, vyhledejte záznamy s **typ** který je rovna toohello **LogType** hodnotu, která jste zadali, spolu s **_CL**. Pokud jste použili například **MyCustomLog**, pak by vrátit všechny záznamy s **typ = MyCustomLog_CL**.
 
 >[!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše uvedeném dotazu by změnit na následující.
+> Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak hello výše dotazu by změňte následující toohello.
 
 > `MyCustomLog_CL`
 
 ## <a name="sample-requests"></a>Ukázka požadavků
-V následujících částech najdete ukázky postup odesílání dat do kolekce API protokolu analýzy HTTP Data pomocí různých programovacích jazyků.
+V dalších částech hello, budete najít ukázky jak toosubmit data toohello Log Analytics HTTP dat kolekce API pomocí různých programovacích jazyků.
 
-Pro každý vzorek proveďte tyto kroky nastavit proměnné pro hlavičku autorizace:
+Pro každý vzorek proveďte tyto kroky tooset hello proměnných pro hello autorizační hlavičky:
 
-1. Na portálu služby Operations Management Suite, vyberte **nastavení** dlaždici a potom vyberte **připojené zdroje** kartě.
-2. Napravo od **ID pracovního prostoru**, vyberte ikonu kopírování a vložte ID jako hodnotu **ID zákazníka** proměnné.
-3. Napravo od **primární klíč**, vyberte ikonu kopírování a vložte ID jako hodnotu **sdílený klíč** proměnné.
+1. V hello portál Operations Management Suite, vyberte hello **nastavení** dlaždici a potom vyberte hello **připojené zdroje** kartě.
+2. toohello napravo od **ID pracovního prostoru**, vyberte ikonu kopírování hello a vložte hello ID jako hodnota hello hello **ID zákazníka** proměnné.
+3. toohello napravo od **primární klíč**, vyberte ikonu kopírování hello a vložte hello ID jako hodnota hello hello **sdílený klíč** proměnné.
 
-Alternativně můžete změnit proměnné pro typ protokolu a JSON data.
+Alternativně můžete změnit hello proměnných pro typ protokolu hello a JSON data.
 
 ### <a name="powershell-sample"></a>Ukázkové prostředí PowerShell
 ```
@@ -215,14 +215,14 @@ $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 # Replace with your Primary Key
 $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# Specify the name of the record type that you'll be creating
+# Specify hello name of hello record type that you'll be creating
 $LogType = "MyRecordType"
 
-# Specify a field with the created time for the records
+# Specify a field with hello created time for hello records
 $TimeStampField = "DateValue"
 
 
-# Create two records with the same set of properties to create
+# Create two records with hello same set of properties toocreate
 $json = @"
 [{  "StringValue": "MyString1",
     "NumberValue": 42,
@@ -238,7 +238,7 @@ $json = @"
 }]
 "@
 
-# Create the function to create the authorization signature
+# Create hello function toocreate hello authorization signature
 Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $method, $contentType, $resource)
 {
     $xHeaders = "x-ms-date:" + $date
@@ -256,7 +256,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 }
 
 
-# Create the function to create and post the request
+# Create hello function toocreate and post hello request
 Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
@@ -287,7 +287,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 
 }
 
-# Submit the data to the API endpoint
+# Submit hello data toohello API endpoint
 Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
@@ -308,21 +308,21 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId tooyour Operations Management Suite workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
-        // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
+        // For sharedKey, use either hello primary or hello secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of hello event type that is being submitted tooLog Analytics
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field toospecify hello timestamp from hello data. If hello time field is not specified, Log Analytics assumes hello time is hello message ingestion time
         static string TimeStampField = "";
 
         static void Main()
         {
-            // Create a hash for the API signature
+            // Create a hash for hello API signature
             var datestring = DateTime.UtcNow.ToString("r");
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
@@ -331,7 +331,7 @@ namespace OIAPIExample
             PostData(signature, datestring, json);
         }
 
-        // Build the API signature
+        // Build hello API signature
         public static string BuildSignature(string message, string secret)
         {
             var encoding = new System.Text.ASCIIEncoding();
@@ -344,7 +344,7 @@ namespace OIAPIExample
             }
         }
 
-        // Send a request to the POST API endpoint
+        // Send a request toohello POST API endpoint
         public static void PostData(string signature, string date, string json)
         {
             try
@@ -385,13 +385,13 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update hello customer ID tooyour Operations Management Suite workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
-# For the shared key, use either the primary or the secondary Connected Sources client authentication key   
+# For hello shared key, use either hello primary or hello secondary Connected Sources client authentication key   
 shared_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# The log type is the name of the event that is being submitted
+# hello log type is hello name of hello event that is being submitted
 log_type = 'WebMonitorTest'
 
 # An example JSON web monitor object
@@ -423,7 +423,7 @@ body = json.dumps(json_data)
 ######Functions######  
 #####################
 
-# Build the API signature
+# Build hello API signature
 def build_signature(customer_id, shared_key, date, content_length, method, content_type, resource):
     x_headers = 'x-ms-date:' + date
     string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
@@ -433,7 +433,7 @@ def build_signature(customer_id, shared_key, date, content_length, method, conte
     authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
     return authorization
 
-# Build and send a request to the POST API
+# Build and send a request toohello POST API
 def post_data(customer_id, shared_key, body, log_type):
     method = 'POST'
     content_type = 'application/json'
@@ -460,4 +460,4 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Použití [rozhraní API pro vyhledávání protokolu](log-analytics-log-search-api.md) k načtení dat z úložiště analýzy protokolů.
+- Použití hello [rozhraní API pro vyhledávání protokolu](log-analytics-log-search-api.md) tooretrieve data z úložiště analýzy protokolů hello.

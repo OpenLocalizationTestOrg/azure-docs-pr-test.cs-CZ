@@ -1,6 +1,6 @@
 ---
-title: "Použití jazyka C# s Hive a Pig systému Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o použití jazyka C# uživatelsky definované funkce (UDF) s Hive a Pig streamování v Azure HDInsight."
+title: "aaaUse C# s Hive a Pig systému Hadoop v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse C# uživatelem definované funkce (UDF) s Hive a Pig streamování v Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,30 +16,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 58e7af47be71c3e0389e5fb4641e124eb648494e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dd35409766f2dafe4d8050c3f9bc351949473ad6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>Uživatelem definované funkce jazyka C# pomocí Hive a Pig streamování systému Hadoop v HDInsight
 
-Další informace o použití jazyka C# uživatelem definované funkce (UDF) s Apache Hive a Pig v HDInsight.
+Zjistěte, jak toouse C# uživatele definovaných funkcí (UDF) s Apache Hive a Pig v HDInsight.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu pracovat s clustery HDInsight se systémem Linux i systému Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md).
+> Hello kroky v tomto dokumentu pracovat s clustery HDInsight se systémem Linux i systému Windows. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md).
 
-Obě Hive a Pig můžete předat data do externí aplikace pro zpracování. Tento proces se označuje jako _streamování_. Pokud používáte aplikační rozhraní .NET, data, je předaná do aplikace na stdin – a aplikace vrací výsledky do datového proudu STDOUT. Číst a zapisovat ze standardního vstupu a výstupu STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
+Obě Hive a Pig můžete předat data tooexternal aplikací pro zpracování. Tento proces se označuje jako _streamování_. Při použití aplikační rozhraní .NET, hello data předávána toohello aplikace na stdin – a aplikace hello vrátí hello výsledky do datového proudu STDOUT. tooread a zápisu ze standardního vstupu a výstupu STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Znalost zápis a sestavování kód C#, která je cílena rozhraní .NET Framework 4.5.
 
-    * Ať IDE, které chcete použijte. Doporučujeme, abyste [Visual Studio](https://www.visualstudio.com/vs) 2015, 2017, nebo [Visual Studio Code](https://code.visualstudio.com/). Kroky v tomto dokumentu používají Visual Studio 2017.
+    * Ať IDE, které chcete použijte. Doporučujeme, abyste [Visual Studio](https://www.visualstudio.com/vs) 2015, 2017, nebo [Visual Studio Code](https://code.visualstudio.com/). Hello kroky v tomto dokumentu Visual Studio 2017.
 
-* Způsob, jak nahrát soubory .exe do clusteru a spuštění úlohy Pig a Hive. Doporučujeme, abyste nástrojů Data Lake pro Visual Studio, prostředí Azure PowerShell a rozhraní příkazového řádku Azure. Kroky v tomto dokumentu nástroje Data Lake pro Visual Studio a odesílat soubory, spusťte v příkladu Hive dotaz.
+* Tooupload .exe způsob soubory toohello clusteru a spuštění úlohy Pig a Hive. Doporučujeme, abyste hello nástrojů Data Lake pro Visual Studio, prostředí Azure PowerShell a rozhraní příkazového řádku Azure. Hello kroky v tomto dokumentu pomocí hello nástrojů Data Lake pro Visual Studio tooupload hello soubory a spusťte dotaz Hive příklad hello.
 
-    Informace o jiných způsobech spouštění Hive dotazy a úlohy Pig, najdete v následujících dokumentech:
+    Informace o dalších dotazů Hive toorun způsoby a úlohy Pig najdete v části hello následující dokumenty:
 
     * [Použijte Apache Hive s HDInsight](hdinsight-use-hive.md)
 
@@ -49,26 +49,26 @@ Obě Hive a Pig můžete předat data do externí aplikace pro zpracování. Ten
 
 ## <a name="net-on-hdinsight"></a>Rozhraní .NET v HDInsight
 
-* __HDInsight se systémem Linux__ clusterů pomocí [Mono (https://mono-project.com)](https://mono-project.com) ke spouštění aplikací .NET. Monofonní verze 4.2.1 je součástí HDInsight verze 3.5.
+* __HDInsight se systémem Linux__ clusterů pomocí [Mono (https://mono-project.com)](https://mono-project.com) toorun aplikací .NET. Monofonní verze 4.2.1 je součástí HDInsight verze 3.5.
 
     Další informace o Mono kompatibilitu s verzí rozhraní .NET Framework naleznete v tématu [Mono kompatibility](http://www.mono-project.com/docs/about-mono/compatibility/).
 
-    Použít konkrétní verzi Mono, najdete v článku [instalace nebo aktualizace Mono](hdinsight-hadoop-install-mono.md) dokumentu.
+    toouse na konkrétní verzi Mono, najdete v části hello [instalace nebo aktualizace Mono](hdinsight-hadoop-install-mono.md) dokumentu.
 
-* __HDInsight se systémem Windows__ clustery pomocí rozhraní Microsoft .NET CLR ke spouštění aplikací .NET.
+* __HDInsight se systémem Windows__ clustery pomocí aplikace .NET toorun hello Microsoft .NET CLR.
 
-Další informace o verzi rozhraní .NET framework a Mono součástí verzích HDInsight naleznete v tématu [HDInsight verze součástí](hdinsight-component-versioning.md).
+Další informace o verzi hello hello rozhraní .NET framework a Mono součástí verzích HDInsight naleznete v tématu [HDInsight verze součástí](hdinsight-component-versioning.md).
 
-## <a name="create-the-c-projects"></a>Vytvoření C\# projekty
+## <a name="create-hello-c-projects"></a>Vytvoření hello C\# projekty
 
 ### <a name="hive-udf"></a>Hive UDF
 
-1. Otevřete Visual Studio a vytvořte řešení. Typ projektu vyberte **konzolovou aplikaci (rozhraní .NET Framework)**a název nového projektu **HiveCSharp**.
+1. Otevřete Visual Studio a vytvořte řešení. Typ projektu hello vyberte **konzolovou aplikaci (rozhraní .NET Framework)**a název hello nový projekt **HiveCSharp**.
 
     > [!IMPORTANT]
     > Vyberte __rozhraní .NET Framework 4.5__ Pokud používáte cluster HDInsight se systémem Linux. Další informace o Mono kompatibilitu s verzí rozhraní .NET Framework naleznete v tématu [Mono kompatibility](http://www.mono-project.com/docs/about-mono/compatibility/).
 
-2. Nahraďte obsah **Program.cs** následujícím kódem:
+2. Nahraďte obsah hello **Program.cs** s hello následující:
 
     ```csharp
     using System;
@@ -86,17 +86,17 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
                 // Read stdin in a loop
                 while ((line = Console.ReadLine()) != null)
                 {
-                    // Parse the string, trimming line feeds
+                    // Parse hello string, trimming line feeds
                     // and splitting fields at tabs
                     line = line.TrimEnd('\n');
                     string[] field = line.Split('\t');
                     string phoneLabel = field[1] + ' ' + field[2];
-                    // Emit new data to stdout, delimited by tabs
+                    // Emit new data toostdout, delimited by tabs
                     Console.WriteLine("{0}\t{1}\t{2}", field[0], phoneLabel, GetMD5Hash(phoneLabel));
                 }
             }
             /// <summary>
-            /// Returns an MD5 hash for the given string
+            /// Returns an MD5 hash for hello given string
             /// </summary>
             /// <param name="input">string value</param>
             /// <returns>an MD5 hash</returns>
@@ -107,7 +107,7 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
                 byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
                 byte[] hash = md5.ComputeHash(inputBytes);
 
-                // Step 2, convert byte array to hex string
+                // Step 2, convert byte array toohex string
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < hash.Length; i++)
                 {
@@ -119,13 +119,13 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
     }
     ```
 
-3. Sestavte projekt.
+3. Sestavení projektu hello.
 
 ### <a name="pig-udf"></a>Pig UDF
 
-1. Otevřete Visual Studio a vytvořte řešení. Typ projektu vyberte **konzolové aplikace**a název nového projektu **PigUDF**.
+1. Otevřete Visual Studio a vytvořte řešení. Typ projektu hello vyberte **konzolové aplikace**a název hello nový projekt **PigUDF**.
 
-2. Nahraďte obsah **Program.cs** soubor s následujícím kódem:
+2. Nahraďte obsah hello hello **Program.cs** soubor s hello následující kód:
 
     ```csharp
     using System;
@@ -143,10 +143,10 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
                     // Fix formatting on lines that begin with an exception
                     if(line.StartsWith("java.lang.Exception"))
                     {
-                        // Trim the error info off the beginning and add a note to the end of the line
+                        // Trim hello error info off hello beginning and add a note toohello end of hello line
                         line = line.Remove(0, 21) + " - java.lang.Exception";
                     }
-                    // Split the fields apart at tab characters
+                    // Split hello fields apart at tab characters
                     string[] field = line.Split('\t');
                     // Put fields back together for writing
                     Console.WriteLine(String.Join("\t",field));
@@ -156,11 +156,11 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
     }
     ```
 
-    Tato aplikace analyzuje řádky odeslané z Pig a přeformátovat řádků, které začínají `java.lang.Exception`.
+    Tato aplikace analyzuje řádky hello odeslaný Pig a přeformátovat řádky, které začínají `java.lang.Exception`.
 
-3. Uložit **Program.cs**a potom sestavte projekt.
+3. Uložit **Program.cs**a následně vytvořit projekt hello.
 
-## <a name="upload-to-storage"></a>Nahrání do úložiště
+## <a name="upload-toostorage"></a>Nahrát toostorage
 
 1. V sadě Visual Studio otevřete **Průzkumníka serveru**.
 
@@ -168,23 +168,23 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
 
 3. Po zobrazení výzvy zadejte své přihlašovací údaje předplatného Azure a pak klikněte na tlačítko **přihlásit**.
 
-4. Rozbalte položku, kterou chcete nasadit tuto aplikaci do clusteru HDInsight. Položku s textem __(výchozí účet úložiště)__ je uveden.
+4. Rozbalte cluster HDInsight hello, který chcete toodeploy této aplikace. Položku s textem hello __(výchozí účet úložiště)__ je uveden.
 
-    ![Průzkumník serveru zobrazující účet úložiště pro cluster](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Průzkumník serveru zobrazující hello účet úložiště pro hello cluster](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * Pokud tuto položku lze rozšířit, kterou používáte __účet úložiště Azure__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, rozbalte položku a dvakrát __(výchozí kontejner)__.
+    * Pokud tuto položku lze rozšířit, kterou používáte __účet úložiště Azure__ jako výchozí úložiště pro hello cluster. soubory hello tooview na hello výchozí úložiště pro hello cluster, rozbalte položku hello a potom dvakrát klikněte na hello __(výchozí kontejner)__.
 
-    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Store__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte na __(výchozí účet úložiště)__ položku.
+    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Store__ jako hello výchozí úložiště pro hello cluster. soubory hello tooview na hello výchozí úložiště pro hello cluster, dvakrát klikněte na hello __(výchozí účet úložiště)__ položku.
 
-6. Pokud chcete nahrát soubory .exe, použijte jednu z následujících metod:
+6. soubory .exe tooupload hello, použijte jednu z následujících metod hello:
 
-    * Pokud se používá __účet úložiště Azure__, klikněte na ikonu nahrávání a potom vyhledejte **bin\debug** složku pro **HiveCSharp** projektu. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **Ok**.
+    * Pokud se používá __účet úložiště Azure__, klikněte na ikonu hello nahrávání a vyhledejte toohello **bin\debug** složku pro hello **HiveCSharp** projektu. Nakonec vyberte hello **HiveCSharp.exe** souboru a klikněte na tlačítko **Ok**.
 
         ![Nahrajte ikonu](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Pokud používáte __Azure Data Lake Store__, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **otevřete**.
+    * Pokud používáte __Azure Data Lake Store__, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu hello souboru a pak vyberte __nahrát__. Nakonec vyberte hello **HiveCSharp.exe** souboru a klikněte na tlačítko **otevřete**.
 
-    Jednou __HiveCSharp.exe__ odesílání skončí, opakujte tento postup nahrání pro __PigUDF.exe__ souboru.
+    Jednou hello __HiveCSharp.exe__ nahrávání dokončí, proces odesílání opakování hello hello __PigUDF.exe__ souboru.
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
@@ -192,14 +192,14 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
 
 2. Rozbalte položku **Azure** a pak rozbalte **HDInsight**.
 
-3. Pravým tlačítkem na cluster, který jste nasadili **HiveCSharp** do aplikace a pak vyberte **napsat dotaz Hive**.
+3. Klikněte pravým tlačítkem na hello clusteru, že jste nasadili hello **HiveCSharp** do aplikace a pak vyberte **napsat dotaz Hive**.
 
-4. Použijte následující text pro dotaz Hive:
+4. Použijte následující text pro dotaz Hive hello hello:
 
     ```hiveql
-    -- Uncomment the following if you are using Azure Storage
+    -- Uncomment hello following if you are using Azure Storage
     -- add file wasb:///HiveCSharp.exe;
-    -- Uncomment the following if you are using Azure Data Lake Store
+    -- Uncomment hello following if you are using Azure Data Lake Store
     -- add file adl:///HiveCSharp.exe;
 
     SELECT TRANSFORM (clientid, devicemake, devicemodel)
@@ -210,28 +210,28 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
     ```
 
     > [!IMPORTANT]
-    > Zrušením komentáře u `add file` příkaz, který odpovídá typu použitého výchozí úložiště pro cluster.
+    > Zrušením komentáře u hello `add file` příkaz, který odpovídá typu hello výchozí úložiště použitého pro váš cluster.
 
-    Tento dotaz vybere `clientid`, `devicemake`, a `devicemodel` pole z `hivesampletable`a předá pole HiveCSharp.exe aplikaci. Dotaz očekává aplikaci, aby vracela tři pole, které jsou uloženy jako `clientid`, `phoneLabel`, a `phoneHash`. Dotaz se také očekává, že HiveCSharp.exe najít v kořenovém kontejneru výchozí úložiště.
+    Tento dotaz vybere hello `clientid`, `devicemake`, a `devicemodel` pole z `hivesampletable`a předá hello pole toohello HiveCSharp.exe aplikace. dotaz Hello očekává tři pole tooreturn se aplikace hello, které jsou uloženy jako `clientid`, `phoneLabel`, a `phoneHash`. dotaz Hello také očekává toofind HiveCSharp.exe hello kořenové hello výchozí kontejner úložiště.
 
-5. Klikněte na tlačítko **odeslání** se odeslat úlohu do clusteru HDInsight. **Souhrn úlohy Hive** otevře se okno.
+5. Klikněte na tlačítko **odeslání** toosubmit hello úlohy toohello HDInsight clusteru. Hello **Souhrn úlohy Hive** otevře se okno.
 
-6. Klikněte na tlačítko **aktualizovat** aktualizovat souhrn dokud **stav úlohy** změny **dokončeno**. Chcete-li zobrazit výstup úlohy, klikněte na tlačítko **výstup úlohy**.
+6. Klikněte na tlačítko **aktualizovat** toorefresh hello souhrnné dokud **stav úlohy** změní příliš**dokončeno**. výstup úlohy hello tooview, klikněte na tlačítko **výstup úlohy**.
 
 ## <a name="run-a-pig-job"></a>Spustit úlohu Pig
 
-1. Pro připojení ke svému clusteru HDInsight, použijte jednu z následujících metod:
+1. Použijte jednu z následujících clusteru HDInsight tooyour tooconnect metody hello:
 
     * Pokud používáte __systémem Linux__ HDInsight clusteru, použijte SSH. Například, `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Další informace najdete v tématu [withHDInsight použití SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
     
-    * Pokud používáte __založené na Windows__ clusteru HDInsight, [připojit ke clusteru pomocí vzdálené plochy](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+    * Pokud používáte __založené na Windows__ clusteru HDInsight, [clusteru toohello připojit pomocí vzdálené plochy](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 
-2. Pomocí jedné následujícího příkazu spusťte Pig příkazového řádku:
+2. Použijte jeden hello následující příkaz toostart hello Pig příkazového řádku:
 
         pig
 
     > [!IMPORTANT]
-    > Pokud používáte cluster systému Windows, použijte následující příkazy:
+    > Pokud používáte cluster systému Windows, použijte hello místo následující příkazy:
     > ```
     > cd %PIG_HOME%
     > bin\pig
@@ -239,7 +239,7 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
 
     A `grunt>` se zobrazí výzva.
 
-3. Zadejte následující příkaz pro spuštění úlohy Pig, která používá aplikace rozhraní .NET Framework:
+3. Zadejte následující toorun Pig úlohu, která používá aplikace rozhraní .NET Framework hello hello:
 
         DEFINE streamer `PigUDF.exe` CACHE('/PigUDF.exe');
         LOGS = LOAD '/example/data/sample.log' as (LINE:chararray);
@@ -247,12 +247,12 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    `DEFINE` Příkaz vytvoří zástupce `streamer` pro aplikace pigudf.exe a `CACHE` načte z výchozí úložiště pro cluster. Později `streamer` se používá s `STREAM` operátor ke zpracování jedné řádků obsažená v protokolu a vrátí data jako řadu sloupců.
+    Hello `DEFINE` příkaz vytvoří zástupce `streamer` pro hello pigudf.exe aplikace, a `CACHE` načte z výchozí úložiště pro hello cluster. Později `streamer` se používá s hello `STREAM` operátor tooprocess hello jednotlivých řádků obsažená v protokolu a návratové hello data jako řadu sloupců.
 
     > [!NOTE]
-    > Název aplikace, který se používá pro streamování, musí být uzavřena do \` (backtick) při znak alias, a "(jednoduchou uvozovku) při použití s `SHIP`.
+    > název aplikace Hello, který se používá pro streamování, musí být uzavřena do hello \` (backtick) znak při alias, a "(v jednoduchých uvozovkách) při použití s `SHIP`.
 
-4. Po zadání poslední řádek, by měla spustit úlohu. Vrátí výstup podobný následujícímu:
+4. Po zadání hello poslední řádek, začněte hello úlohy. Vrátí výstup podobný toohello následující text:
 
         (2012-02-03 20:11:56 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
         (2012-02-03 20:11:56 SampleClass5 [DEBUG] detail for id 1976092771)
@@ -262,9 +262,9 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste se naučili, jak používat rozhraní .NET Framework aplikace z Hive a Pig v HDInsight. Pokud chcete další informace o použití Python s Hive a Pig, přečtěte si téma [použít Python s Hive a Pig v HDInsight](hdinsight-python.md).
+V tomto dokumentu jste se naučili jak toouse aplikace rozhraní .NET Framework z Hive a Pig v HDInsight. Pokud chcete toolearn jak zjistit, toouse Python s Hive a Pig, [Python použití Hive a Pig v HDInsight](hdinsight-python.md).
 
-Pro jiné způsoby používání Pig a Hive a další informace o použití prostředí MapReduce najdete v následujících dokumentech:
+Další způsoby toouse Pig a Hive a toolearn o použití prostředí MapReduce najdete v části hello následující dokumenty:
 
 * [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)

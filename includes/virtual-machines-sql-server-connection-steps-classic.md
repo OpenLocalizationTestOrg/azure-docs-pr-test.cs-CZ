@@ -1,23 +1,23 @@
-### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Určení názvu DNS virtuálního počítače
-Pokud se chcete připojit k databázovému stroji SQL Serveru z jiného počítače, musíte znát název DNS (Domain Name System) virtuálního počítače. (Je to název, který internet používá k identifikaci virtuálního počítače. Můžete použít IP adres, ale IP adresa se může změnit, když Azure přesune prostředky kvůli redundanci nebo údržbě. Název DNS bude stabilní, protože je možné ho přesměrovat na novou IP adresu.)  
+### <a name="determine-hello-dns-name-of-hello-virtual-machine"></a>Určení názvu DNS hello hello virtuálního počítače
+tooconnect toohello databázového stroje SQL Server z jiného počítače, musíte znát hello systému DNS (Domain Name) název hello virtuálního počítače. (Toto je hello název hello Internetu používá tooidentify hello virtuálního počítače. Můžete použít hello IP adresu, ale hello IP adresy mohou změnit, pokud Azure přesune prostředky pro redundanci nebo údržby. název DNS Hello budou stabilní, protože může být přesměrován tooa novou IP adresu.)  
 
-1. Na webu Azure Portal (nebo z předchozího kroku) vyberte **Virtuální počítače (Classic)**.
+1. V portálu Azure hello (nebo z předchozího kroku hello), vyberte **virtuálních počítačů (klasické)**.
 2. Vyberte virtuální počítač SQL.
-3. V okně **Virtuální počítač** zkopírujte **název DNS** pro tento virtuální počítač.
+3. Na hello **virtuálního počítače** okno, kopie hello **název DNS** hello virtuálního počítače.
    
     ![Název DNS](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 
-### <a name="connect-to-the-database-engine-from-another-computer"></a>Připojení k databázovému stroji z jiného počítače
-1. Na počítači připojeném k internetu otevřete SQL Server Management Studio.
-2. V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) do pole **Název serveru** zadejte název DNS virtuálního počítače (zjištěný v předchozím úkolu) a číslo portu veřejného koncového bodu ve formátu*název_DNS,číslo_portu*, například **mysqlvm.cloudapp.net,57500**.
+### <a name="connect-toohello-database-engine-from-another-computer"></a>Připojit toohello databázový stroj z jiného počítače
+1. Na počítači připojené toohello Internetu, otevřete SQL Server Management Studio.
+2. V hello **připojit tooServer** nebo **připojit tooDatabase modul** dialogové okno, v hello **název serveru** zadejte název DNS hello hello virtuálního počítače (určený v hello předchozí úlohy) a číslo portu veřejný koncový bod ve formátu hello *DNSName, ČísloPortu* například **mysqlvm.cloudapp.net,57500**.
    
     ![Připojení pomocí SSMS](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
    
-    Pokud si nepamatujete číslo portu veřejného koncového bodu, který jste vytvořili, najdete ho v okně **Virtuální počítač** v části **Koncové body**.
+    Pokud si nepamatujete číslo portu veřejný koncový bod hello jste dříve vytvořili, ho můžete najít v hello **koncové body** oblasti hello **virtuální počítač** okno.
    
     ![Veřejný port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-3. V poli **Ověřování** vyberte **Ověřování serveru SQL Server**.
-4. Do pole **Přihlášení** zadejte název přihlášení, které jste vytvořili v předchozím úkolu.
-5. Do pole **Heslo** zadejte heslo přihlášení, které jste vytvořili v předchozím úkolu.
+3. V hello **ověřování** vyberte **ověřování systému SQL Server**.
+4. V hello **přihlášení** pole, název typu hello přihlašovací jméno, které jste vytvořili v rámci předchozí úlohy.
+5. V hello **heslo** pole, zadejte heslo hello hello přihlášení, který vytvoříte v rámci předchozí úlohy.
 6. Klikněte na **Připojit**.
 

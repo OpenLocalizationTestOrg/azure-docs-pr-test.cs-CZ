@@ -1,39 +1,39 @@
-Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Odpojení způsobí odebrání disku z virtuálního počítače, ale neodstraní disk z účtu úložiště Azure.
+Pokud již nepotřebujete datový disk, který je připojený tooa virtuální počítač, můžete ho snadno odpojit. Disk se odpojuje odebere hello disk z virtuálního počítače hello, ale neodstraní hello disku z hello účtu úložiště Azure.
 
-Pokud znovu chcete použít stávající data na disku, můžete ho znovu připojit ke stejnému nebo jinému virtuálnímu počítači.  
+Pokud chcete toouse hello existující data na disku hello znovu, můžete ji můžete opět připojit toohello stejného virtuálního počítače nebo jiný.  
 
 > [!NOTE]
-> Pokud chcete odpojit disk operačního systému, musíte nejdřív odstranit příslušný virtuální počítač.
+> toodetach disk operačního systému, musíte nejdřív toodelete hello virtuálního počítače.
 >
 
-## <a name="find-the-disk"></a>Vyhledání disku
-Pokud neznáte název disku nebo ho chcete před odpojením ověřit, postupujte podle těchto kroků.
+## <a name="find-hello-disk"></a>Najít hello disk
+Pokud si nejste jisti hello název hello disku nebo chcete tooverify ji předtím, než jej odpojte, postupujte podle těchto kroků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
 
-2. Klikněte na **Virtuální počítače** a potom vyberte příslušný virtuální počítač.
+2. Klikněte na tlačítko **virtuální počítače**, a pak vyberte hello odpovídající virtuálních počítačů.
 
-3. Na levé straně řídicího panelu virtuálního počítače v části **Nastavení** klikněte na **Disky**.
+3. Klikněte na tlačítko **disky** podél hello levá strana řídicí panel hello virtuálního počítače, v části **nastavení**.
 
- Na řídicím panelu virtuálního počítače se zobrazuje název a typ všech připojených disků. Třeba tato obrazovka ukazuje virtuální počítač s jedním diskem operačního systému (OS) a jedním datovým diskem:
+ virtuální počítač Hello řídicí panel uvádí hello název a typ všech připojených discích. Třeba tato obrazovka ukazuje virtuální počítač s jedním diskem operačního systému (OS) a jedním datovým diskem:
 
     ![Vyhledání datového disku](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
-## <a name="detach-the-disk"></a>Odpojení disku
-1. Na webu Azure Portal klikněte na **Virtual Machines** a potom klikněte na název virtuálního počítače s datovým diskem, který chcete odpojit.
+## <a name="detach-hello-disk"></a>Odpojte hello disk
+1. Z hello portálu Azure, klikněte na tlačítko **virtuální počítače**a potom klikněte na název hello hello virtuálního počítače, který má datový disk hello chcete toodetach.
 
-2. Na levé straně řídicího panelu virtuálního počítače v části **Nastavení** klikněte na **Disky**.
+2. Klikněte na tlačítko **disky** podél hello levá strana řídicí panel hello virtuálního počítače, v části **nastavení**.
 
-3. Klikněte na disk, který chcete odpojit.
+3. Klikněte na disk hello chcete toodetach.
 
-  ![Určení odpojovaného disku](./media/howto-detach-disk-windows-linux/disklist.png)
+  ![Identifikovat toodetach disku hello](./media/howto-detach-disk-windows-linux/disklist.png)
 
-4. Na panelu příkazů klikněte na **Odpojit**.
+4. Na panelu příkazů hello, klikněte na **odpojení**.
 
-  ![Vyhledání příkazu pro odpojení](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
+  ![Vyhledejte hello detach – příkaz](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
-5. Kliknutím na **Ano** v potvrzovacím okně odpojíte příslušný disk.
+5. V okně potvrzení hello klikněte **Ano** toodetach hello disku.
 
-  ![Potvrzení odpojení disku](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+  ![Potvrďte odpojuje hello disku](./media/howto-detach-disk-windows-linux/confirmdetach.png)
 
-Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
+Hello disk zůstává v úložišti, ale je už připojené tooa virtuální počítač.

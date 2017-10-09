@@ -1,6 +1,6 @@
 ---
-title: "Referenční informace pro vývojáře Azure funkcí jazyka C# skript | Microsoft Docs"
-description: "Pochopit, jak vyvíjet Azure Functions pomocí jazyka C#."
+title: "aaaAzure funkce jazyka C# skript referenční informace pro vývojáře | Microsoft Docs"
+description: "Pochopit, jak toodevelop Azure Functions pomocí jazyka C#."
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
-ms.openlocfilehash: 83a351ce0279ada8ce7fe0513497349471334a86
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27a8f4eb77497a373ff4031539e2e930585e48e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Azure funkcí jazyka C# skript referenční informace pro vývojáře
 > [!div class="op_single_selector"]
@@ -30,17 +30,17 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Prostředí skriptu jazyka C# pro Azure Functions je založena na Azure WebJobs SDK. Toky dat do funkce jazyka C# prostřednictvím metoda argumenty. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k takové věci, jako funkce protokolovacího nástroje a zrušení tokenů.
+Hello C# skript prostředí pro Azure Functions je založena na hello Azure WebJobs SDK. Toky dat do funkce jazyka C# prostřednictvím metoda argumenty. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k akce, jako je hello funkce protokolovacího nástroje a zrušení tokenů.
 
-Tento článek předpokládá, že jste si již přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md).
+Tento článek předpokládá, že jste si přečetli již hello [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 
 Informace o použití jazyka C# třídy knihovny najdete v tématu [knihovny tříd pomocí rozhraní .NET s Azure Functions](functions-dotnet-class-library.md).
 
 ## <a name="how-csx-works"></a>Jak funguje .csx
-`.csx` Formátu umožňuje zapsat menší "standardní" a zaměřit se na psaní právě C# funkce. Zahrnout všechny odkazy na sestavení a obory názvů na začátku souboru jako obvykle. Místo zabalení všechno, co v oboru názvů a třídy, pouze definuje `Run` metoda. Pokud je nutné zahrnout všechny třídy pro instanci Pokud chcete definovat objekty prostý staré CLR objektů POCO (), můžete zahrnout třídu ve stejném souboru.   
+Hello `.csx` formátu vám umožní toowrite méně "standardní" a zaměřit na zápis právě C# funkce. Zahrnout všechny odkazy na sestavení a obory názvů na začátku hello hello soubor jako obvykle. Místo zabalení všechno, co v oboru názvů a třídy, pouze definuje `Run` metoda. Pokud potřebujete tooinclude všechny třídy pro instanci toodefine prostý objekty původního objektu CLR (objektů POCO), můžete použít třídu uvnitř hello stejného souboru.   
 
-## <a name="binding-to-arguments"></a>Vytvoření vazby na argumenty
-Různé vazby je vázána na funkce jazyka C# pomocí `name` vlastnost *function.json* konfigurace. Každé vazby má svou vlastní podporované typy; řetězec, objektů POCO nebo CloudBlockBlob může například podporovat aktivační události objektu blob. Podporované typy jsou popsané v dokumentaci pro každou vazbu. Objekt objektů POCO musí mít metody getter a setter definované pro každou vlastnost.
+## <a name="binding-tooarguments"></a>Vazba tooarguments
+Hello různé vazby jsou vázané tooa C# funkce prostřednictvím hello `name` vlastnost hello *function.json* konfigurace. Každé vazby má svou vlastní podporované typy; řetězec, objektů POCO nebo CloudBlockBlob může například podporovat aktivační události objektu blob. Hello podporované typy jsou popsány v hello odkaz pro každou vazbu. Objekt objektů POCO musí mít metody getter a setter definované pro každou vlastnost.
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -59,7 +59,7 @@ public class MyClass
 
 ## <a name="using-method-return-value-for-output-binding"></a>Pomocí návratovou hodnotu metoda pro vazbu výstup
 
-Můžete použít návratovou hodnotu metoda pro vazbu výstup pomocí názvu `$return` v *function.json*:
+Můžete použít návratovou hodnotu metoda pro vazbu výstup pomocí názvu hello `$return` v *function.json*:
 
 ```json
 {
@@ -80,7 +80,7 @@ public static string Run(string input, TraceWriter log)
 
 ## <a name="writing-multiple-output-values"></a>Zápis více hodnot výstup
 
-K vytvoření více hodnot pro vazbu výstup, použijte [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typy. Tyto typy jsou jen pro zápis kolekce, které se zapisují do výstupu vazby po dokončení metody.
+toowrite více hodnot tooan výstup vazbu, použijte hello [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typy. Tyto typy jsou jen pro zápis kolekce, které jsou napsané toohello výstup vazby po dokončení metoda hello.
 
 Tento příklad zapíše více fronty zpráv pomocí `ICollector`:
 
@@ -93,9 +93,9 @@ public static void Run(ICollector<string> myQueueItem, TraceWriter log)
 ```
 
 ## <a name="logging"></a>Protokolování
-Do protokolu výstup váš datový proud protokolů v jazyce C#, zahrnují argument typu `TraceWriter`. Doporučujeme, abyste pojmenujte ji `log`. Nepoužívejte `Console.Write` v Azure Functions. 
+výstupní datový proud protokolů tooyour v jazyce C# toolog, zahrnout argument typu `TraceWriter`. Doporučujeme, abyste pojmenujte ji `log`. Nepoužívejte `Console.Write` v Azure Functions. 
 
-`TraceWriter`je definována v [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). Úroveň protokolu pro `TraceWriter` se dá nakonfigurovat v [hostitele\.json].
+`TraceWriter`je definována v hello [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). Hello úroveň protokolu pro `TraceWriter` se dá nakonfigurovat v [hostitele\.json].
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -105,7 +105,7 @@ public static void Run(string myBlob, TraceWriter log)
 ```
 
 ## <a name="async"></a>Asynchronní
-Chcete-li funkci asynchronní, použijte `async` – klíčové slovo a vraťte se `Task` objektu.
+toomake funkci asynchronní, použijte hello `async` – klíčové slovo a vraťte se `Task` objektu.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -118,7 +118,7 @@ public async static Task ProcessQueueMessageAsync(
 ```
 
 ## <a name="cancellation-token"></a>Token zrušení
-Některé operace vyžadují řádné vypnutí. I když je vždy nejlepší napsat kód, který dokáže zpracovat chybám, v případech, kde se má zpracovat řádné vypnutí požadavky, můžete definovat [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) zadali argument.  A `CancellationToken` je k dispozici signál, že se aktivuje vypnutí hostitele.
+Některé operace vyžadují řádné vypnutí. I když je vždy nejlepší toowrite kód, který dokáže zpracovat chybám v případech, kde chcete toohandle řádné vypnutí požadavků, můžete definovat [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) zadali argument.  A `CancellationToken` je k dispozici toosignal, že se aktivuje vypnutí hostitele.
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -132,7 +132,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ```
 
 ## <a name="importing-namespaces"></a>Import obory názvů
-Pokud potřebujete importovat obory názvů, můžete to udělat tak jako obvyklé, se `using` klauzule.
+Pokud potřebujete tooimport obory názvů, můžete tak učinit běžným způsobem s hello `using` klauzule.
 
 ```csharp
 using System.Net;
@@ -141,7 +141,7 @@ using System.Threading.Tasks;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 ```
 
-Následující obory názvů jsou automaticky importuje a jsou proto volitelné:
+Hello následující obory názvů jsou automaticky importuje a jsou proto volitelné:
 
 * `System`
 * `System.Collections.Generic`
@@ -153,7 +153,7 @@ Následující obory názvů jsou automaticky importuje a jsou proto volitelné:
 * `Microsoft.Azure.WebJobs.Host`
 
 ## <a name="referencing-external-assemblies"></a>Odkazování na externí sestavení
-Pro sestavení architektury, přidání odkazů pomocí `#r "AssemblyName"` – direktiva.
+Pro sestavení architektury, přidejte odkazy na pomocí hello `#r "AssemblyName"` – direktiva.
 
 ```csharp
 #r "System.Web.Http"
@@ -165,7 +165,7 @@ using System.Threading.Tasks;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 ```
 
-Následující sestavení jsou automaticky přidány Azure Functions hostování prostředí:
+Hello následující sestavení jsou automaticky přidány hello Azure Functions hostování prostředí:
 
 * `mscorlib`
 * `System`
@@ -178,7 +178,7 @@ Následující sestavení jsou automaticky přidány Azure Functions hostování
 * `System.Web.Http`
 * `System.Net.Http.Formatting`
 
-Následující sestavení může být odkazován jednoduchý název (například `#r "AssemblyName"`):
+Hello následující sestavení může být odkazován jednoduchý název (například `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -189,18 +189,18 @@ Následující sestavení může být odkazován jednoduchý název (například
 
 ## <a name="referencing-custom-assemblies"></a>Odkazování na vlastní sestavení
 
-Chcete-li vlastního sestavení, můžete použít buď *sdílené* sestavení nebo *privátní* sestavení:
-- Sdílená sestavení jsou sdíleny ve všech funkcí v rámci funkce aplikace. Chcete-li vlastního sestavení, nahrajte sestavení do funkce aplikace, například v `bin` složku v kořenu aplikace funkce. 
-- Soukromá sestavení jsou součástí kontextu danou funkci a podporovat zkušební načtení různých verzí. Soukromá sestavení musí být nahrán v `bin` složky v adresáři funkce. Odkazovat pomocí názvu souboru, jako třeba `#r "MyAssembly.dll"`. 
+tooreference vlastního sestavení, můžete použít buď *sdílené* sestavení nebo *privátní* sestavení:
+- Sdílená sestavení jsou sdíleny ve všech funkcí v rámci funkce aplikace. tooreference vlastního sestavení, nahrání hello sestavení tooyour funkce aplikace, například v `bin` složky v kořenové aplikace hello funkce. 
+- Soukromá sestavení jsou součástí kontextu danou funkci a podporovat zkušební načtení různých verzí. Soukromá sestavení musí být nahrán v `bin` složky v adresáři funkce hello. Referenční dokumentace pomocí hello název souboru, například `#r "MyAssembly.dll"`. 
 
-Informace o tom, jak odeslat soubory do složky funkce najdete v následující části na správy balíčků.
+Informace o způsobu tooupload tooyour funkce složku souborů najdete v části hello následující části na správy balíčků.
 
 ### <a name="watched-directories"></a>Sledované adresáře
 
-Adresář, který obsahuje soubor skriptu funkce je automaticky sledovaná změny sestavení. Podívejte se na sestavení změny v ostatních adresářů, přidejte je do `watchDirectories` seznamu v [hostitele\.json].
+Hello adresář, který obsahuje soubor skriptu hello funkce je automaticky sledovaných pro tooassemblies změny. je toowatch sestavení změny v ostatních adresářů, přidejte toohello `watchDirectories` seznamu v [hostitele\.json].
 
 ## <a name="using-nuget-packages"></a>Pomocí balíčků NuGet
-Použití balíčků NuGet ve funkci jazyka C#, nahrajte *project.json* soubor do složky funkce v systému souborů aplikaci funkce. Tady je příklad *project.json* soubor, který přidá odkaz na Microsoft.ProjectOxford.Face verze 1.1.0:
+Nahrát toouse balíčků NuGet v C# funkce, *project.json* toohello funkce složka soubory v aplikaci funkce hello systému souborů. Tady je příklad *project.json* soubor, který přidá odkaz tooMicrosoft.ProjectOxford.Face verze 1.1.0:
 
 ```json
 {
@@ -214,18 +214,18 @@ Použití balíčků NuGet ve funkci jazyka C#, nahrajte *project.json* soubor d
 }
 ```
 
-Je podporováno pouze rozhraní .NET Framework 4.6, tak zkontrolujte, zda vaše *project.json* soubor Určuje `net46` jak je vidět tady.
+Hello rozhraní .NET Framework 4.6 je podporována pouze, tak zkontrolujte, zda vaše *project.json* soubor Určuje `net46` jak je vidět tady.
 
-Když nahrajete *project.json* soubor modulu runtime získá balíčky a automaticky přidá reference na sestavení balíčku. Nemusíte přidávat `#r "AssemblyName"` direktivy. Chcete-li používat typy definované v balíčky NuGet, přidejte požadované `using` příkazů do vaší *run.csx* souboru 
+Když nahrajete *project.json* souboru, hello runtime získá hello balíčky a automaticky přidá reference toohello balíček sestavení. Nepotřebujete tooadd `#r "AssemblyName"` direktivy. toouse hello typy definované v hello balíčky NuGet, přidejte požadované hello `using` příkazy tooyour *run.csx* souboru 
 
-V modulu runtime funkce obnovení NuGet funguje tak, že porovnáte `project.json` a `project.lock.json`. Pokud data a časových razítek souborů **nepodporují** běží shodu, obnovení NuGet a aktualizovat balíčky NuGet stahování. Ale pokud razítka data a času souborů **provést** shodu, NuGet nebude provádět obnovení. Proto `project.lock.json` by neměl být nasadit jako způsobí, že chcete přeskočit obnovení balíčku NuGet. Abyste se vyhnuli nasazení souboru zámku, přidejte `project.lock.json` k `.gitignore` souboru.
+V modulu runtime hello funkce obnovení NuGet funguje tak, že porovnáte `project.json` a `project.lock.json`. Pokud hello data a časových razítek souborů hello **nepodporují** běží shodu, obnovení NuGet a aktualizovat balíčky NuGet stahování. Nicméně, pokud hello data a časových razítek souborů hello **provést** shodu, NuGet nebude provádět obnovení. Proto `project.lock.json` by neměl být nasadit jako způsobí, že obnovení balíčků NuGet tooskip. tooavoid nasazení hello zámek souboru, přidejte hello `project.lock.json` toohello `.gitignore` souboru.
 
-Pokud chcete používat vlastní NuGet kanálu, zadejte datového kanálu v *Nuget.Config* soubor v kořenu aplikace funkce. Další informace najdete v tématu [konfigurace NuGet chování](/nuget/consume-packages/configuring-nuget-behavior).
+toouse vlastní informační kanál NuGet, zadejte hello kanálu v *Nuget.Config* soubor v kořenovém funkce aplikace hello. Další informace najdete v tématu [konfigurace NuGet chování](/nuget/consume-packages/configuring-nuget-behavior).
 
 ### <a name="using-a-projectjson-file"></a>Pomocí souboru project.json.
-1. Otevřete funkce na portálu Azure. Na kartě protokoly zobrazí výstup instalace balíčku.
-2. Nahrát soubor project.json, použijte jednu z metod popsaných v [jak aktualizovat soubory aplikace funkce](functions-reference.md#fileupdate) v referenčním tématu pro vývojáře Azure Functions.
-3. Po *project.json* soubor odešle, uvidíte výstup podobný následujícímu příkladu funkce je streamování protokolu:
+1. Otevřete hello funkce v hello portálu Azure. Hello zaznamená karta zobrazí hello balíček instalace výstup.
+2. tooupload soubor project.json, použijte jednu z metod hello popsaných v hello [jak tooupdate funkce soubory aplikace](functions-reference.md#fileupdate) v tématu referenční vývojáře Azure Functions hello.
+3. Po hello *project.json* soubor odešle, uvidíte výstup jako následující příklad ve vaší funkci hello je streamování protokolu:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -245,7 +245,7 @@ Pokud chcete používat vlastní NuGet kanálu, zadejte datového kanálu v *Nug
 ```
 
 ## <a name="environment-variables"></a>Proměnné prostředí
-Proměnné prostředí nebo nastavení hodnoty aplikace, použijte `System.Environment.GetEnvironmentVariable`, jak ukazuje následující příklad kódu:
+tooget proměnné prostředí nebo hodnotu nastavení aplikace, použijte `System.Environment.GetEnvironmentVariable`, jak ukazuje následující příklad kódu hello:
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
@@ -263,7 +263,7 @@ public static string GetEnvironmentVariable(string name)
 ```
 
 ## <a name="reusing-csx-code"></a>Opětovné použití kódu .csx
-Můžete použít třídy a metody definované v jiných *.csx* soubory ve vaší *run.csx* souboru. Chcete-li provést, použijte `#load` direktivy ve vaší *run.csx* souboru. V následujícím příkladu rutiny protokolování s názvem `MyLogger` je sdílena v *myLogger.csx* a načtena do *run.csx* pomocí `#load` – direktiva:
+Můžete použít třídy a metody definované v jiných *.csx* soubory ve vaší *run.csx* souboru. toodo, který použít `#load` direktivy ve vaší *run.csx* souboru. V následujícím příkladu hello, s názvem rutiny protokolování `MyLogger` je sdílena v *myLogger.csx* a načtena do *run.csx* pomocí hello `#load` – direktiva:
 
 Příklad *run.csx*:
 
@@ -286,7 +286,7 @@ public static void MyLogger(TraceWriter log, string logtext)
 }
 ```
 
-Pomocí sdílenou *.csx* je běžný vzor, když chcete vaší argumentů mezi funkce pomocí objektu objektů POCO silného typu. V následujícím příkladu zjednodušené služby triggeru protokolu HTTP a aktivační události fronty sdílet objektů POCO objekt s názvem `Order` na typově pořadí dat:
+Pomocí sdílenou *.csx* je běžný vzor, když chcete, aby toostrongly vaše argumenty mezi funkce pomocí objektu objektů POCO typů. V následující ukázka zjednodušené hello, triggeru protokolu HTTP a aktivační události fronty sdílet objektů POCO objekt s názvem `Order` toostrongly typ hello pořadí dat:
 
 Příklad *run.csx* pro triggeru protokolu HTTP:
 
@@ -299,7 +299,7 @@ public static async Task<HttpResponseMessage> Run(Order req, IAsyncCollector<Ord
 {
     log.Info("C# HTTP trigger function received an order.");
     log.Info(req.ToString());
-    log.Info("Submitting to processing queue.");
+    log.Info("Submitting tooprocessing queue.");
 
     if (req.orderId == null)
     {
@@ -351,25 +351,25 @@ public class Order
 }
 ```
 
-Můžete použít relativní cestu `#load` – direktiva:
+Můžete použít relativní cesty s hello `#load` – direktiva:
 
-* `#load "mylogger.csx"`načte soubor umístěný ve složce funkce.
-* `#load "loadedfiles\mylogger.csx"`načte soubor umístěný ve složce ve složce funkce.
-* `#load "..\shared\mylogger.csx"`načte soubor umístěný ve složce na stejné úrovni jako složka funkce, který je přímo pod *wwwroot*.
+* `#load "mylogger.csx"`načte soubor umístěný ve složce funkce hello.
+* `#load "loadedfiles\mylogger.csx"`načte soubor umístěný ve složce ve složce funkce hello.
+* `#load "..\shared\mylogger.csx"`načte soubor umístěný ve složce na stejné úrovni jako složka funkce hello, tedy hello přímo pod *wwwroot*.
 
-`#load` – Direktiva pracuje pouze s *.csx* soubory (C# skript), ne při *.cs* soubory.
+Hello `#load` – direktiva pracuje pouze s *.csx* soubory (C# skript), ne při *.cs* soubory.
 
 <a name="imperative-bindings"></a> 
 
 ## <a name="binding-at-runtime-via-imperative-bindings"></a>Vazba za běhu prostřednictvím imperativní vazby
 
-V jazyce C# a jinými jazyky rozhraní .NET, můžete použít [imperativní](https://en.wikipedia.org/wiki/Imperative_programming) vazby vzor, nikoli [ *deklarativní* ](https://en.wikipedia.org/wiki/Declarative_programming) vazeb v *function.json*. Imperativní vazba je užitečné, když vázané parametry muset počítaný v době běhu spíše než návrhu. S tento vzor můžete vytvořit vazbu na podporované vstup a výstup vazbu na průběžně ve vašem kódu funkce.
+V jazyce C# a jinými jazyky rozhraní .NET, můžete použít [imperativní](https://en.wikipedia.org/wiki/Imperative_programming) vazby vzor jako názvem na rozdíl od toohello [ *deklarativní* ](https://en.wikipedia.org/wiki/Declarative_programming) vazeb v *function.json*. Imperativní vazba je užitečné, když vázané parametry potřebovat toobe počítaný v době běhu spíše než návrhu. S tento vzor můžete vytvořit vazbu toosupported vstup a výstup vazbu na průběžně ve vašem kódu funkce.
 
 Definujte imperativní vazby následujícím způsobem:
 
 - **Nechcete** zahrnují položku v *function.json* pro vaše požadované imperativní vazby.
 - Předejte jí vstupní parametr [ `Binder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) nebo [ `IBinder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- K provedení vazby dat použijte následující vzor C#.
+- Použijte následující C# vzor tooperform hello datová vazba hello.
 
 ```cs
 using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -378,9 +378,9 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-kde `BindingTypeAttribute` je atribut rozhraní .NET, který definuje váš vazby a `T` je vstupní nebo výstupní typ, který podporuje tento typ vazby. `T`také nelze `out` typ parametru (například `out JObject`). Například v tabulce Mobile Apps výstupu vazba podporuje [šest výstup typy](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)pro `T`.
+kde `BindingTypeAttribute` je hello .NET atribut, který definuje váš vazby a `T` je hello vstupních nebo výstupních typ, který podporuje tento typ vazby. `T`také nelze `out` typ parametru (například `out JObject`). Například v tabulce Mobile Apps výstupu vazba podporuje [šest výstup typy](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)pro `T`.
 
-Následující příklad kódu vytvoří [objektu blob Storage výstup vazby](functions-bindings-storage-blob.md#using-a-blob-output-binding) s objektem blob cestu, která je definována v době běhu, pak zapíše řetězec do objektu blob.
+Hello následující příklad kódu vytvoří [objektu blob Storage výstup vazby](functions-bindings-storage-blob.md#using-a-blob-output-binding) s objektem blob cestu, která je definována v době běhu, pak zapíše objekt blob toohello řetězec.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -395,8 +395,8 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definuje [objektu blob Storage](functions-bindings-storage-blob.md) vstupem nebo výstupem vazby a [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) je typ vazby podporované výstup.
-Kód získá výchozí nastavení aplikace pro připojovací řetězec pro účet úložiště (což je `AzureWebJobsStorage`). Můžete zadat nastavení vlastní aplikace používat tak, že přidáte [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předání atribut pole do `BindAsync<T>()`. Například:
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definuje hello [objektu blob Storage](functions-bindings-storage-blob.md) vstupem nebo výstupem vazby a [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) je typ vazby podporované výstup.
+Hello kód získá hello výchozí nastavení aplikace hello připojovací řetězce k účtu úložiště (což je `AzureWebJobsStorage`). Můžete zadat nastavení toouse vlastní aplikaci přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předání hello atribut pole do `BindAsync<T>()`. Například:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -417,7 +417,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-Následující tabulka obsahuje seznam atributy .NET pro každý typ vazby a balíčky, ve kterých jsou definovány.
+Hello následující tabulka uvádí hello .NET atributy pro každou vazbu typu hello balíčků a ve kterých jsou definovány.
 
 > [!div class="mx-codeBreakAll"]
 | Vazba | Atribut | Přidání odkazu |
@@ -435,7 +435,7 @@ Následující tabulka obsahuje seznam atributy .NET pro každý typ vazby a bal
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace najdete v tématu hello následující prostředky:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

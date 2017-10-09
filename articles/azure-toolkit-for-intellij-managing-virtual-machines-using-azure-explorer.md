@@ -1,6 +1,6 @@
 ---
-title: "Spravovat virtuální počítače pomocí Průzkumníku Azure pro IntelliJ | Microsoft Docs"
-description: "Zjistěte, jak spravovat virtuální počítače Azure pomocí Průzkumníka Azure pro IntelliJ."
+title: "hello aaaManage virtuální počítače pomocí Průzkumníku Azure pro IntelliJ | Microsoft Docs"
+description: "Zjistěte, jak toomanage virtuální počítače Azure pomocí hello Průzkumníka Azure pro IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 9197580407b3509fbf9a842e1fee1e6348478c34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a73dd4f73b311dd3413f6712e3b76c36ee464de1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-virtual-machines-by-using-the-azure-explorer-for-intellij"></a>Spravovat virtuální počítače pomocí Průzkumníku Azure pro IntelliJ
+# <a name="manage-virtual-machines-by-using-hello-azure-explorer-for-intellij"></a>Správa virtuálních počítačů pomocí hello Průzkumník Azure pro IntelliJ
 
-Průzkumník Azure, který je součástí sady nástrojů Azure pro IntelliJ, poskytuje Java vývojářům snadno použitelné řešení pro správu virtuálních počítačů v jejich účtu Azure z uvnitř IntelliJ integrované vývojové prostředí (IDE).
+Hello Průzkumník Azure, který je součástí hello nástrojů Azure pro IntelliJ, poskytuje vývojáře v jazyce Java s řešením snadno použitelné pro správu virtuálních počítačů v jejich účtu Azure z uvnitř hello IntelliJ integrované vývojové prostředí (IDE).
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
@@ -30,118 +30,118 @@ Průzkumník Azure, který je součástí sady nástrojů Azure pro IntelliJ, po
 
 ## <a name="create-a-virtual-machine-in-intellij"></a>Vytvoření virtuálního počítače v IntelliJ
 
-K vytvoření virtuálního počítače pomocí Průzkumníku Azure, postupujte takto: 
+toocreate virtuálního počítače pomocí hello Azure Explorer hello následující: 
 
-1. Přihlaste se k účtu Azure pomocí kroků v [přihlášení pokyny pro Azure Toolkit IntelliJ] článku.
+1. Přihlaste se pomocí kroků hello v hello tooyour účet Azure [přihlášení pokyny pro hello Azure Toolkit IntelliJ] článku.
 
-2. V **Azure Explorer** , rozbalte **Azure** uzel, klikněte pravým tlačítkem na **virtuální počítače**a potom klikněte na **vytvoření virtuálního počítače**. 
+2. V hello **Azure Explorer** , rozbalte hello **Azure** uzel, klikněte pravým tlačítkem na **virtuální počítače**a potom klikněte na **vytvoření virtuálního počítače**. 
 
-   ![Příkaz vytvoření virtuálního počítače][CR01]  
-    **Vytvořit nový virtuální počítač** otevře se průvodce.
+   ![Hello příkaz vytvoření virtuálního počítače][CR01]  
+    Hello **vytvořit nový virtuální počítač** otevře se průvodce.
 
-3. V **zvolte předplatné** oken, vyberte své předplatné a pak klikněte na tlačítko **Další**. 
+3. V hello **zvolte předplatné** oken, vyberte své předplatné a pak klikněte na tlačítko **Další**. 
 
-   ![Zvolte předplatné okna][CR02]
+   ![Hello zvolte předplatné okna][CR02]
 
-4. V **vyberte bitovou kopii virtuálního počítače** okno, zadejte následující informace:
+4. V hello **vyberte bitovou kopii virtuálního počítače** okno, zadejte hello následující informace:
 
    * **Umístění**: Určuje, kde bude vytvořen virtuální počítač (například *západní USA*). 
 
    * **Doporučená image**: Určuje, že zvolíte bitovou kopii z zkrácený seznam běžně používané bitové kopie.
 
-   * **Vlastní image**: Určuje, že zvolíte vlastní image tím, že poskytuje následující informace:
+   * **Vlastní image**: Určuje, že zvolíte vlastní image tím, že poskytuje hello následující informace:
 
-      * **Vydavatel**: Určuje publisher, který vytvořil bitovou kopii, kterou budete používat pro virtuální počítač (například *Microsoft*).
+      * **Vydavatel**: Určuje hello vydavatele, který vytvořili hello obrázek, který budete používat pro virtuální počítač (například *Microsoft*).
 
-      * **Nabízejí**: Určuje nabídky používat od vydavatele, vybraný virtuální počítač (například *JDK*).
+      * **Nabízejí**: Určuje nabídky toouse od vydavatele vybrané hello hello virtuálního počítače (například *JDK*).
 
-      * **Skladová položka**: Určuje skladová jednotka (SKU) z vybrané nabídky (například *JDK_8*).
+      * **Skladová položka**: Určuje hello skladové jednotky (SKU) toouse z vybrané nabídky hello (například *JDK_8*).
 
-      * **Verze #**: Určuje, kterou verzi vybrané SKU používat.
+      * **Verze #**: Určuje, která verze hello vybrané SKU toouse.
 
-   ![Vyberte okno bitovou kopii virtuálního počítače][CR03]
+   ![Hello vyberte časové období bitovou kopii virtuálního počítače][CR03]
 
 5. Klikněte na **Další**. 
 
-6. V **základní nastavení virtuálního počítače** okno, zadejte následující informace:
+6. V hello **základní nastavení virtuálního počítače** okno, zadejte hello následující informace:
 
-   * **Název virtuálního počítače**: Určuje název pro nový virtuální počítač, který musí začínat písmenem a obsahovat pouze písmena, číslice a pomlčky.
+   * **Název virtuálního počítače**: Určuje hello název pro nový virtuální počítač, který musí začínat písmenem a obsahovat pouze písmena, číslice a pomlčky.
 
-   * **Velikost**: Určuje počet jader a paměti k přidělení pro virtuální počítač.
+   * **Velikost**: Určuje hello počet jader a paměti tooallocate pro virtuální počítač.
 
-   * **Uživatelské jméno**: Určuje účet správce, který chcete vytvořit pro virtuální počítač pod správou.
+   * **Uživatelské jméno**: Určuje hello správce účtu toocreate pro virtuální počítač pod správou.
 
-   * **Heslo** a **potvrdit**: Určuje heslo pro účet správce.
+   * **Heslo** a **potvrdit**: Určuje hello heslo pro účet správce.
 
-   ![Okno základní nastavení virtuálního počítače][CR04]
+   ![okno Hello základní nastavení virtuálního počítače][CR04]
 
 7. Klikněte na **Další**. 
 
-8. V **související prostředky** okno, zadejte následující informace:
+8. V hello **související prostředky** okno, zadejte hello následující informace:
 
-   * **Skupina prostředků**: Určuje skupinu prostředků pro virtuální počítač. Vyberte jednu z následujících možností:
-      * **Vytvořit nový**: Určuje, že chcete vytvořit novou skupinu prostředků.
-      * **Použít existující**: Určuje, zda chcete vybrat ze seznamu skupin prostředků, které jsou spojeny s vaším účtem Azure.
+   * **Skupina prostředků**: Určuje hello skupinu prostředků pro virtuální počítač. Vyberte jednu z hello následující možnosti:
+      * **Vytvořit nový**: Určuje, že chcete toocreate novou skupinu prostředků.
+      * **Použít existující**: Určuje, že chcete tooselect ze seznamu skupin prostředků, které jsou spojeny s vaším účtem Azure.
 
-       ![Okna přidružené prostředky][CR07]
+       ![okna přidružené prostředky Hello][CR07]
 
-   * **Účet úložiště**: Určuje účet úložiště, který chcete použít pro virtuální počítač uložen. Můžete vybrat existující účet úložiště nebo vytvořit nový účet. Pokud se rozhodnete **vytvořit nový**, zobrazí se dialogové okno následující:
+   * **Účet úložiště**: Určuje toouse účet hello úložiště pro uložení virtuálního počítače. Můžete vybrat existující účet úložiště nebo vytvořit nový účet. Pokud se rozhodnete **vytvořit nový**, zobrazí se následující dialogové okno hello:
 
-      ![Dialogové okno Vytvořit účet úložiště][CR05]
+      ![Dialogové okno Vytvořit účet úložiště Hello][CR05]
 
-   * **Virtuální síť** a **podsíť**: Určuje virtuální síť a podsíť, kterému se bude připojovat virtuálního počítače. Můžete použít existující síť a podsíť, nebo můžete vytvořit nové sítě a podsítě. Pokud vyberete **vytvořit nový**, zobrazí se dialogové okno následující:
+   * **Virtuální síť** a **podsíť**: Určuje hello virtuální síť a podsíť, kterému se bude připojovat virtuálního počítače. Můžete použít existující síť a podsíť, nebo můžete vytvořit nové sítě a podsítě. Pokud vyberete **vytvořit nový**, zobrazí se následující dialogové okno hello:
 
-      ![Dialogové okno vytvořit virtuální síť][CR06]
+      ![Dialogové okno vytvořit virtuální síť Hello][CR06]
 
-   * **Veřejná IP adresa**: Určuje externí IP adresu pro virtuální počítač. Můžete vytvořit novou IP adresu nebo, pokud virtuální počítač nebude mít veřejnou IP adresu, můžete si vybrat **(None)**. 
+   * **Veřejná IP adresa**: Určuje externí IP adresu pro virtuální počítač. Můžete toocreate novou IP adresu nebo, pokud virtuální počítač nebude mít veřejnou IP adresu, můžete si vybrat **(None)**. 
 
    * **Skupina zabezpečení sítě**: Určuje volitelné síťové brány firewall pro virtuální počítač. Můžete vybrat existující bránu firewall, nebo pokud virtuální počítač nebude používat síťovou bránu firewall, můžete vybrat **(None)**. 
 
-   * **Skupina dostupnosti**: Určuje, že virtuální počítač může patřit do sadu volitelné dostupnosti. Můžete vybrat existující sadu dostupnosti, vytvořit novou skupinu dostupnosti nebo, pokud nebude virtuální počítač patří do skupiny dostupnosti, vyberte **(None)**.
+   * **Skupina dostupnosti**: Určuje, že virtuální počítač může patřit do sadu volitelné dostupnosti. Můžete vybrat existující sadu dostupnosti, vytvořte novou skupinu dostupnosti nebo, pokud virtuální počítač nebude patří tooan nastavení dostupnosti, vyberte **(None)**.
 
 9. Klikněte na **Dokončit**.  
-    Nový virtuální počítač se zobrazí v okně nástroje Průzkumník Azure. 
+    Nový virtuální počítač se zobrazí v okně nástroje Azure Exploreru hello. 
 
-   ![Nový virtuální počítač v zobrazení Průzkumník Azure][CR08]
+   ![Nový virtuální počítač v hello Průzkumník Azure][CR08]
 
 ## <a name="restart-a-virtual-machine-in-intellij"></a>Restartování virtuálního počítače v IntelliJ
 
-K restartování virtuálního počítače pomocí Průzkumníku Azure v IntelliJ, postupujte takto:
+virtuální počítač pomocí hello Průzkumník Azure v IntelliJ, toorestart hello následující:
 
-1. V **Azure Explorer** zobrazení, klikněte pravým tlačítkem na virtuální počítač a pak vyberte **restartujte**.
+1. V hello **Azure Explorer** zobrazení, klikněte pravým tlačítkem na hello virtuálního počítače a pak vyberte **restartujte**.
 
-   ![Příkaz restartovat virtuální počítač][RE01]
+   ![příkaz restartovat virtuální počítač Hello][RE01]
 
-2. V okně potvrzení klikněte na **Ano**. 
+2. V okně potvrzení hello klikněte **Ano**. 
 
-   ![Okno pro potvrzení restartování virtuálního počítače][RE02]
+   ![Hello restartovat virtuální počítač potvrzovacím okně][RE02]
 
 ## <a name="shut-down-a-virtual-machine-in-intellij"></a>Vypnout virtuální počítač v IntelliJ
 
-Vypnout spuštěného virtuálního počítače pomocí Průzkumníku Azure v IntelliJ, postupujte takto:
+tooshut dolů spuštěného virtuálního počítače pomocí hello Průzkumník Azure v IntelliJ, hello následující:
 
-1. V **Azure Explorer** zobrazení, klikněte pravým tlačítkem na virtuální počítač a pak vyberte **vypnutí**.
+1. V hello **Azure Explorer** zobrazení, klikněte pravým tlačítkem na hello virtuálního počítače a pak vyberte **vypnutí**.
 
-   ![Příkaz pro vypnutí virtuálního počítače][SH01]
+   ![příkaz pro vypnutí virtuálního počítače Hello][SH01]
 
-2. V okně potvrzení klikněte na **Ano**. 
+2. V okně potvrzení hello klikněte **Ano**. 
 
-   ![Vypnutí virtuálního počítače potvrzovacím okně][SH02]
+   ![Vypněte virtuální počítač potvrzovacím okně Hello][SH02]
 
 ## <a name="delete-a-virtual-machine-in-intellij"></a>Odstranění virtuálního počítače v IntelliJ
 
-Odstranění virtuálního počítače pomocí Průzkumníku Azure v IntelliJ, postupujte takto:
+virtuální počítač pomocí hello Průzkumník Azure v IntelliJ, toodelete hello následující:
 
-1. V **Azure Explorer** zobrazení, klikněte pravým tlačítkem na virtuální počítač a pak vyberte **odstranit**.
+1. V hello **Azure Explorer** zobrazení, klikněte pravým tlačítkem na hello virtuálního počítače a pak vyberte **odstranit**.
 
-   ![Příkaz Delete virtuálního počítače][DE01]
+   ![příkaz Delete Hello virtuálního počítače][DE01]
 
-2. V okně potvrzení klikněte na **Ano**. 
+2. V okně potvrzení hello klikněte **Ano**. 
 
-   ![Okno pro potvrzení odstranění virtuálního počítače][DE02]
+   ![Hello odstranit okno pro potvrzení virtuálního počítače][DE02]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Azure velikostí virtuálních počítačů a cenách najdete v následujících zdrojích informací:
+Další informace o Azure velikosti virtuálního počítače a cenách najdete v tématu hello následující prostředky:
 
 * Azure velikostí virtuálních počítačů
   * [Velikosti pro virtuální počítače s Windows v Azure]
@@ -150,17 +150,17 @@ Další informace o Azure velikostí virtuálních počítačů a cenách najdet
   * [Ceny virtuálního počítače Windows]
   * [Virtuální počítače Linux – ceny]
 
-Další informace o sadách Azure pro integrovaného vývojového prostředí Java najdete v následujících zdrojích informací:
+Další informace o hello sadách Azure pro integrovaného vývojového prostředí Java najdete v tématu hello následující prostředky:
 
 * [Azure nástrojů pro Eclipse]
-  * [Co je nového v sadě nástrojů Azure pro Eclipse]
-  * [Instalace sady Azure Toolkit pro Eclipse]
-  * [Pokyny přihlášení k Azure nástrojů pro Eclipse]
+  * [Co je nového v hello nástrojů Azure pro Eclipse]
+  * [Instalace hello nástrojů Azure pro Eclipse]
+  * [Přihlášení pokyny pro hello nástrojů Azure pro Eclipse]
   * [Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]
 * [Sada Azure Toolkit pro IntelliJ]
-  * [Co je nového v sadě nástrojů Azure pro IntelliJ]
-  * [Instalace sady Azure Toolkit pro IntelliJ]
-  * [přihlášení pokyny pro Azure Toolkit IntelliJ]
+  * [Co je nového v hello nástrojů Azure pro IntelliJ]
+  * [Instalace hello Azure Toolkit pro IntelliJ]
+  * [přihlášení pokyny pro hello Azure Toolkit IntelliJ]
   * [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]
 
 Další informace o používání Azure s Java najdete v tématu [Azure střediska pro vývojáře Java] a [Java nástrojů pro Visual Studio Team Services].
@@ -171,12 +171,12 @@ Další informace o používání Azure s Java najdete v tématu [Azure středis
 [Sada Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij.md
 [Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Instalace sady Azure Toolkit pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Instalace sady Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Pokyny přihlášení k Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[přihlášení pokyny pro Azure Toolkit IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Co je nového v sadě nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Co je nového v sadě nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Instalace hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Instalace hello Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Přihlášení pokyny pro hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[přihlášení pokyny pro hello Azure Toolkit IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Co je nového v hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Co je nového v hello nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/
 [Java nástrojů pro Visual Studio Team Services]: https://java.visualstudio.com/

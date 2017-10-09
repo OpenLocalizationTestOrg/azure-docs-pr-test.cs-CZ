@@ -1,10 +1,10 @@
-Platíte za dvě věci: náklady na výpočetní kapacitu pro bránu virtuální sítě a výchozí přenos dat z brány virtuální sítě. Informace o cenách najdete na stránce [Ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).
+Platíte za dvě věci: hello každou hodinu výpočetní náklady pro bránu virtuální sítě hello a přenos dat odchozí hello z hello brány virtuální sítě. Informace o cenách najdete na hello [cenová](https://azure.microsoft.com/pricing/details/vpn-gateway) stránky.
 
-**Náklady na výpočetní výkon brány virtuální sítě**<br>Každá brána virtuální sítě má náklady na hodinový výpočetní výkon. Cena je založená na SKU brány, kterou určíte při vytváření brány virtuální sítě. Náklady jsou pro samotnou bránu vedle přenosu dat, který bránou prochází.
+**Náklady na výpočetní výkon brány virtuální sítě**<br>Každá brána virtuální sítě má náklady na hodinový výpočetní výkon. cena Hello je založena na hello SKU brány, zadejte v případě, že vytvoření brány virtuální sítě. Hello náklady jsou pro samotné bráně hello a kromě přenos dat toohello této prochází hello brány.
 
-**Náklady na přenos dat**<br>Náklady na přenos dat se počítají na základě výchozího přenosu ze zdrojové brány virtuální sítě.
+**Náklady na přenos dat**<br>Náklady na přenos dat se vypočítáváno na odchozí provoz z brány virtuální sítě hello zdroje.
 
-* Pokud odesíláte přenosy do místního zařízení VPN, budou se účtovat podle sazby za výchozí internetový přenos dat.
-* Pokud odesíláte přenosy mezi virtuálními sítěmi v různých oblastech, ceny závisí na konkrétní oblasti.
-* Pokud odesíláte přenosy pouze mezi virtuálními sítěmi ve stejné oblasti, žádné náklady na data se na vás nevztahují. Přenosy dat mezi virtuálními sítěmi ve stejné oblasti je zdarma.
+* Při odesílání tooyour provoz, místní zařízení VPN, bude účtovat poplatek s rychlost přenosu hello Internet odchozí data.
+* Při odesílání přenosů mezi virtuálními sítěmi v různých oblastech, ceny hello je oblast na základě hello.
+* Při odesílání přenosů pouze mezi hello virtuální sítě, které jsou ve stejné oblasti, se neplatí data. Přenosy dat mezi virtuálními sítěmi v hello stejné oblasti je zdarma.
 

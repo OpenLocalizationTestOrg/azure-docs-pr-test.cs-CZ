@@ -1,63 +1,63 @@
-Některé balíčky se při spuštění v Azure nemusí pomocí systému pip nainstalovat.  Může to být jednoduše proto, že nejsou dostupné v indexu balíčků Pythonu.  Důvodem může být také to, že je požadován kompilátor (kompilátor není dostupný v počítači, ve kterém běží webová aplikace ve službě Azure App Service).
+Některé balíčky se při spuštění v Azure nemusí pomocí systému pip nainstalovat.  Může být tento balíček hello není k dispozici na hello indexu balíčků Pythonu.  Může být, že je požadován kompilátor (kompilátor není k dispozici na hello počítač běžící hello webové aplikace v Azure App Service).
 
-V této části najdete popis způsobů řešení tohoto problému.
+V této části se podíváme způsoby toodeal s tímto problémem.
 
 ### <a name="request-wheels"></a>Vyžádání souborů wheel
-Pokud instalace balíčku vyžaduje kompilátor, pokuste se kontaktovat vlastníka balíčku a požádejte ho o zpřístupnění souborů wheel balíčku.
+Pokud hello instalace balíčku vyžaduje kompilátor, pokuste se kontaktovat vlastníka toorequest balíček hello, která souborů Wheel dostupná pro balíček hello.
 
-S nedávno vydanému [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], je nyní snazší sestavovat balíčky, které mají nativní kód pro Python 2.7.
+S nedávno vydanému hello [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], je teď jednodušší toobuild balíčky, které mají nativní kód pro Python 2.7.
 
 ### <a name="build-wheels-requires-windows"></a>Sestavení souborů wheel (vyžaduje Windows)
-Poznámka: Při použití této možnosti je nutné balíček zkompilovat pomocí prostředí Python, které odpovídá platformě, architektuře a verzi použité ve webové aplikaci ve službě Azure App Service (Windows/32-bit/2.7 nebo 3.4).
+Poznámka: Pokud použijete tuto možnost, ujistěte se, že balíček hello toocompile pomocí prostředí Python, který odpovídá hello platformě, architektuře a verzi, která se používá v hello webové aplikace v Azure App Service (Windows/32-bit/2.7 nebo 3.4).
 
-Pokud se balíček nenainstaluje, protože vyžaduje kompilátor, můžete kompilátor nainstalovat na místním počítači a sestavit pro balíček soubor wheel, který potom zahrnete do úložiště.
+Pokud hello balíček nenainstaluje, protože vyžaduje kompilátor, můžete nainstalovat hello kompilátoru na místním počítači a sestavit wheel hello balíčku, který potom zahrnete do úložiště.
 
-Uživatelé Mac/Linux: Pokud nemáte přístup k počítači s Windows, přečtěte si téma [vytvoření virtuálního počítače s Windows] [ Create a Virtual Machine Running Windows] pro vytvoření virtuálního počítače na platformě Azure.  Můžete ho použít k vytvoření souborů wheel, přidat je do úložiště a virtuální počítač zahodit. 
+Uživatelé Mac/Linux: Pokud nemáte počítač Windows tooa přístup, zobrazit [vytvoření virtuálního počítače s Windows] [ Create a Virtual Machine Running Windows] jak toocreate virtuálního počítače na platformě Azure.  Můžete použít souborů Wheel toobuild hello, přidejte je toohello úložiště a pokud chcete zahodit hello virtuálních počítačů. 
 
 Python 2.7 můžete nainstalovat [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
 
 Pro Python 3.4 můžete nainstalovat [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
 
-K sestavení souborů wheel budete potřebovat balíček wheel:
+toobuild souborů Wheel, budete potřebovat balíček wheel hello:
 
     env\scripts\pip install wheel
 
-Závislost zkompilujete pomocí příkazu `pip wheel`:
+Budete používat `pip wheel` toocompile závislost:
 
     env\scripts\pip wheel azure==0.8.4
 
-Vytvoříte tak soubor .whl ve složce \wheelhouse.  Složku \wheelhouse a soubory wheel přidejte do úložiště.
+Tím se vytvoří soubor .whl ve složce \wheelhouse hello.  Přidáte složku \wheelhouse hello a kolečka soubory tooyour úložiště.
 
-Upravte soubor requirements.txt a přidejte na jeho začátek možnost `--find-links`. Tento parametr řekne systému pip, aby před použitím indexu balíčků Pythonu nejprve vyhledal přesnou shodu v místní složce.
+Upravit vaše hello tooadd requirements.txt `--find-links` možnost v horní části hello. Tato hodnota informuje pip toolook pro přesnou shodu v místní složce hello před indexu balíčků pythonu toohello probíhající.
 
     --find-links wheelhouse
     azure==0.8.4
 
-Pokud chcete zahrnout všechny svoje závislosti do složky \wheelhouse, a index balíčků Pythonu vůbec nechcete použít, můžete přidáním parametru `--no-index` na začátek souboru requirements.txt vynutit, aby systém pip index balíčků ignoroval.
+Pokud chcete tooinclude všechny svoje závislosti hello \wheelhouse složku a nepoužije hello python package index vůbec, můžete vynutit indexu balíčků hello tooignore pip přidáním `--no-index` toohello začátek souboru requirements.txt.
 
     --no-index
 
 ### <a name="customize-installation"></a>Přizpůsobení instalace
-Skript nasazení můžete přizpůsobit tak, aby nainstalovat balíček ve virtuálním prostředí pomocí alternativního instalačního programu, jako je například easy\_install.  Příklad tohoto postupu označený jako komentář najdete v souboru deploy.cmd.  Ujistěte se, že tyto balíčky nejsou uvedené v souboru requirements.txt, abyste systému pip zabránili v jejich instalaci.
+Můžete přizpůsobit hello nasazení skriptu tooinstall balíček ve virtuálním prostředí hello pomocí alternativního instalačního programu, například easy\_nainstalovat.  Příklad tohoto postupu označený jako komentář najdete v souboru deploy.cmd.  Ujistěte se, že tyto balíčky nejsou uvedené v souboru requirements.txt, tooprevent pip instalaci je.
 
-Do skriptu nasazení přidejte následující kód:
+Přidejte tento skript nasazení toohello:
 
     env\scripts\easy_install somepackage
 
-V některých případech můžete k instalaci z instalačního souboru .exe použít také instalační program easy\_install (některé balíčky jsou kompatibilní s formátem .zip, takže je easy\_install podporuje).  Přidejte instalační program do úložiště a předáním cesty spustitelnému souboru spusťte easy\_install.
+Může být také možné toouse snadno\_tooinstall nainstalovat z instalačního programu exe (některé jsou zip kompatibilní, takže je easy\_install podporuje).  Přidejte úložiště tooyour hello instalačního programu a spusťte easy\_nainstalovat předáním toohello hello cestu spustitelného souboru.
 
-Do skriptu nasazení přidejte následující kód:
+Přidejte tento skript nasazení toohello:
 
     env\scripts\easy_install "%DEPLOYMENT_SOURCE%\installers\somepackage.exe"
 
-### <a name="include-the-virtual-environment-in-the-repository-requires-windows"></a>Zahrnutí virtuálního prostředí do úložiště (vyžaduje Windows)
-Poznámka: Při použití této možnosti je nutné použít virtuální prostředí, které odpovídá platformě, architektuře a verzi použité ve webové aplikaci ve službě Azure App Service (Windows/32-bit/2.7 nebo 3.4).
+### <a name="include-hello-virtual-environment-in-hello-repository-requires-windows"></a>Zahrnout virtuální prostředí hello hello úložiště (vyžaduje Windows)
+Poznámka: Pokud použijete tuto možnost, ujistěte se, že toouse virtuální prostředí, které odpovídá hello platformě, architektuře a verzi, která se používá v hello webové aplikace v Azure App Service (Windows/32-bit/2.7 nebo 3.4).
 
-Pokud do úložiště zahrnete virtuální prostředí, můžete skriptu nasazení zabránit ve správě virtuálního prostředí v Azure vytvořením prázdného souboru:
+Pokud zahrnete virtuální prostředí hello hello úložiště, můžete skript nasazení hello zabránit správě virtuálního prostředí v Azure vytvořením prázdného souboru:
 
     .skipPythonDeployment
 
-Existující virtuální prostředí v aplikaci se doporučuje odstranit, abyste zabránili zanechání nepotřebných souborů z období, kdy bylo virtuální prostředí spravováno automaticky.
+Doporučujeme odstranit existující virtuální prostředí v aplikaci hello zanechání nepotřebných souborů z tooprevent hello, pokud bylo hello virtuální prostředí spravováno automaticky.
 
 [Create a Virtual Machine Running Windows]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27

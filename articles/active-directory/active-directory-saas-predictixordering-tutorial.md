@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s Predictix řazení | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Predictix řazení."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Predictix řazení."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,189 +14,189 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8536a741f9b114ac6787c7aefb4c76ec6c4ed83e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0418ef24d7942b6b751c0b4d64e7bd1fba1d6a56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Kurz: Azure Active Directory integrace s Predictix řazení
 
-V tomto kurzu zjistěte, jak integrovat Predictix řazení s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate Predictix řazení s Azure Active Directory (Azure AD).
 
-Integrace Predictix řazení s Azure AD poskytuje následující výhody:
+Integrace Predictix řazení s Azure AD poskytuje hello následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k Predictix řazení.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Predictix řazení (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup tooPredictix řazení.
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooPredictix řazení (jednotné přihlášení) s jejich účty Azure AD.
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Predictix řazení, potřebujete následující položky:
+tooconfigure integrace Azure AD s Predictix řazení, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Řazení Predictix jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Predictix řazení z Galerie
+1. Přidání Predictix řazení z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-predictix-ordering-from-the-gallery"></a>Přidání Predictix řazení z Galerie
-Chcete-li nakonfigurovat integraci Predictix řazení do služby Azure AD, přidejte Predictix řazení z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-predictix-ordering-from-hello-gallery"></a>Přidání Predictix řazení z Galerie hello
+tooconfigure hello integrace Predictix řazení do Azure AD, je nutné tooadd řazení Predictix hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat řazení Predictix z galerie, proveďte následující kroky:**
+**tooadd Predictix řazení z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![okno aplikace Hello Enterprise][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. Do vyhledávacího pole zadejte **Predictix řazení**, vyberte **Predictix řazení** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Hello vyhledávacího pole zadejte **Predictix řazení**, vyberte **Predictix řazení** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
 
-    ![Predictix řazení v seznamu výsledků](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_addfromgallery.png)
+    ![Predictix řazení v seznamu výsledků hello](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Predictix řazení podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Predictix řazení je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v řazení Predictix musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Predictix řazení je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v řazení Predictix musí toobe navázat.
 
-V Predictix řazení, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Predictix řazení, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Predictix řazení, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s Predictix řazení, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Predictix řazení](#create-a-predictix-ordering-test-user)**  – Pokud chcete mít protějšek Britta Simon v Predictix řazení propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Predictix řazení](#create-a-predictix-ordering-test-user)**  -toohave protějšek Britta Simon v Predictix pořadí, které je propojené toohello Azure AD reprezentace uživatele.
+4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Predictix řazení.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Predictix řazení.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Predictix řazení, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s Predictix řazení, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **Predictix řazení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **Predictix řazení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_samlbase.png)
 
-3. Na **Predictix řazení domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **Predictix řazení domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Predictix řazení domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname-pricing>.ordering.predictix.com/sso/request`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
+    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru: 
     | |
     |--|
     | `https://<companyname-pricing>.dev.ordering.predictix.com` |
     | `https://<companyname-pricing>.ordering.predictix.com` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Predictix řazení klienta](https://www.predix.io/support/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Predictix řazení klienta](https://www.predix.io/support/) tooget tyto hodnoty. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-predictixordering-tutorial/tutorial_general_400.png)
 
-6. Na **Predictix řazení konfigurace** klikněte na tlačítko **konfigurovat řazení Predictix** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **Predictix řazení konfigurace** klikněte na tlačítko **konfigurovat řazení Predictix** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurace Predictix řazení](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **Predictix řazení** straně, budete muset odeslat stažené **certifikátu (Base64)**, **Sign-Out URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** k [Predictix řazení tým podpory](https://www.predix.io/support/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. tooconfigure jednotného přihlašování na **Predictix řazení** straně, je nutné stáhnout hello toosend **certifikátu (Base64)**, **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby**  příliš[Predictix řazení tým podpory](https://www.predix.io/support/). Nastavují hello toohave tato nastavení jednotného přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. V hello portál Azure, v levém podokně hello, klikněte na tlačítko hello **Azure Active Directory** tlačítko.
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_01.png)
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_02.png)
+    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello horní části hello **všichni uživatelé** dialogové okno.
 
-    ![Tlačítko Přidat](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_03.png)
+    ![tlačítko Přidat Hello](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+4. V hello **uživatele** dialogové okno pole, proveďte následující kroky hello:
 
-    ![Dialogové okno uživatele](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_04.png)
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-predictixordering-tutorial/create_aaduser_04.png)
 
-   a. V **název** zadejte **BrittaSimon**.
+   a. V hello **název** zadejte **BrittaSimon**.
 
-   b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+   b. V hello **uživatelské jméno** pole typu hello e-mailovou adresu uživatele Britta Simon.
 
-   c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+   c. Vyberte hello **zobrazit hesla** zaškrtněte políčko a zapište si ji hello hodnotu, která se zobrazí v hello **heslo** pole.
 
    d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-predictix-ordering-test-user"></a>Vytvoření zkušebního uživatele Predictix řazení
 
-V této části vytvoříte uživatele volal Britta Simon v Predictix řazení. Práce s [Predictix řazení tým podpory](https://www.predix.io/support/) přidat uživatele do platformy Predictix řazení.
+V této části vytvoříte uživatele volal Britta Simon v Predictix řazení. Práce s [Predictix řazení tým podpory](https://www.predix.io/support/) tooadd hello uživatelé v platformě Predictix řazení hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Predictix řazení.
+V této části můžete povolit Britta Simon toouse Azure jednotné přihlašování a udělení přístupu tooPredictix řazení.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele hello][200] 
 
-**Pokud chcete přiřadit Britta Simon Predictix řazení, proveďte následující kroky:**
+**tooassign tooPredictix Britta Simon řazení, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Predictix řazení**.
+2. V seznamu aplikace hello vyberte **Predictix řazení**.
 
-    ![Odkaz Predictix řazení v seznamu aplikací](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_app.png)  
+    ![v seznamu aplikace hello odkaz Predictix řazení Hello](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![odkaz "Uživatelé a skupiny" Hello][202]
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -204,14 +204,14 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
+Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.
 
-Když kliknete na dlaždici Predictix řazení na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Predictix řazení.
+Po kliknutí na tlačítko hello Predictix řazení dlaždice v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour aplikace pro objednání Predictix.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

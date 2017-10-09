@@ -1,6 +1,6 @@
 ---
-title: "Migrovat virtuální počítače do Resource Manager pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tento článek vás provede migraci podporované platformy prostředků z klasického do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure"
+title: "virtuální počítače tooResource aaaMigrate Manager pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Tento článek vás provede hello platformy podporované migrace prostředků z classic tooAzure Resource Manager pomocí rozhraní příkazového řádku Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -15,177 +15,177 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: a63d758570b09b37b8e51c639267f729521d9ae0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0b11f4bb1b4658b3e88bf7629147ed953b678556
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky infrastruktury z klasického do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
-Tyto kroky ukazují, jak používat příkazy rozhraní příkazového řádku Azure (CLI) k migraci infrastruktury jako služby (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manager. Článek vyžaduje [rozhraní příkazového řádku Azure](../../cli-install-nodejs.md).
+# <a name="migrate-iaas-resources-from-classic-tooazure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky infrastruktury z classic tooAzure Resource Manager pomocí rozhraní příkazového řádku Azure
+Tyto kroky vám ukážou, jak toouse rozhraní příkazového řádku Azure (CLI) příkazy toomigrate infrastruktury jako služby (IaaS) prostředky z modelu nasazení classic hello, toohello modelu nasazení Azure Resource Manager. článek Hello vyžaduje hello [rozhraní příkazového řádku Azure](../../cli-install-nodejs.md).
 
 > [!NOTE]
-> Všechny operace, které jsou zde popsané jsou idempotent. Pokud došlo k potížím. než nepodporované funkce nebo chyby v konfiguraci, doporučujeme zopakovat Příprava, zrušení nebo potvrzení operace. Platforma se pak zkuste akci znovu.
+> Všechny operace hello postupu popsaného tady jsou idempotent. Pokud došlo k potížím. než nepodporované funkce nebo chyby v konfiguraci, doporučujeme, abyste se znovu pokusíte hello připravit, zrušení nebo potvrzení operace. Hello platformy a zkuste to znovu hello akce.
 > 
 > 
 
 <br>
-Tady je Vývojový diagram k identifikaci pořadí, ve kterém kroky se musí provést během procesu migrace
+Tady je pořadí tooidentify hello vývojový diagram, ve kterém kroky nutné toobe provést během procesu migrace
 
-![Snímek obrazovky, který ukazuje kroky migrace](../windows/media/migration-classic-resource-manager/migration-flow.png)
+![Snímek obrazovky, který zobrazuje kroky migrace hello](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>Krok 1: Příprava na migraci
-Tady je několik osvědčených postupů, které doporučujeme jak vyhodnotit migrace IaaS prostředky z classic do Resource Manager:
+Tady je několik osvědčených postupů, které doporučujeme jak vyhodnotit migrace prostředky infrastruktury z classic tooResource Manager:
 
-* Pročtěte [seznam nepodporovaných konfigurací nebo funkce](../windows/migration-classic-resource-manager-overview.md). Pokud máte virtuální počítače, které používají nepodporované konfigurace nebo funkce, doporučujeme počkejte funkce nebo konfigurační podpory, která má být oznámeno. Alternativně můžete odebrat tuto funkci nebo přesunout mimo tuto konfiguraci, chcete-li migrovat, pokud ji vyhovuje vašim potřebám.
-* Pokud máte automatizované skripty, které jsou dnes nasazení infrastruktury a aplikace, pokuste se vytvořit podobné nastavení testu pomocí těchto skriptů pro migraci. Alternativně můžete nastavit ukázkové prostředí pomocí portálu Azure.
+* Pročtěte hello [seznam nepodporovaných konfigurací nebo funkce](../windows/migration-classic-resource-manager-overview.md). Pokud máte virtuální počítače, které používají nepodporované konfigurace nebo funkce, doporučujeme počkejte hello konfigurace funkcí nebo podporu toobe oznámeno. Alternativně můžete odebrat tuto funkci nebo přesunout mimo tuto tooenable migraci konfigurace, pokud ji vyhovuje vašim potřebám.
+* Pokud máte automatizované skripty, které jsou dnes nasazení infrastruktury a aplikace, zkuste toocreate podobné nastavení testu pomocí těchto skriptů pro migraci. Alternativně můžete nastavit ukázkové prostředí pomocí hello portálu Azure.
 
 > [!IMPORTANT]
-> Application Gateway nejsou aktuálně podporovány pro migraci z classic do Resource Manager. Pokud chcete migrovat klasickou virtuální síť s aplikační brány, odstranění brány před spuštěním operace Příprava přesunout sítě. Po dokončení migrace znovu připojte bránu ve službě Správce prostředků Azure. 
+> Application Gateway nejsou aktuálně podporovány pro migraci z classic tooResource správce. Před spuštěním síť Příprava operace toomove hello odebrat toomigrate klasickou virtuální síť s aplikační brány, brány hello. Po dokončení migrace hello znovu hello brány ve službě Správce prostředků Azure. 
 >
->Připojování k okruhy ExpressRoute v jiné předplatné brány ExpressRoute se nedají automaticky migrovat. V takových případech odebrat bránu ExpressRoute, migrujte virtuální sítě a znovu vytvořit bránu. Najdete v tématu [okruhy ExpressRoute migrovat a přidružené virtuální sítě z klasického modelu nasazení Resource Manager](../../expressroute/expressroute-migration-classic-resource-manager.md) Další informace.
+>Připojení tooExpressRoute okruhů v jiné předplatné brány ExpressRoute se nedají automaticky migrovat. V takových případech odeberte hello brány ExpressRoute, migrovat hello virtuální síť a znovu hello brány. Najdete v tématu [migrovat ExpressRoute okruhy a přidružené virtuální sítě z modelu nasazení Resource Manager classic toohello hello](../../expressroute/expressroute-migration-classic-resource-manager.md) Další informace.
 > 
 > 
 
-## <a name="step-2-set-your-subscription-and-register-the-provider"></a>Krok 2: Nastavte předplatné a zaregistrujte zprostředkovatele
-Pro scénáře migrace, budete muset nastavit svoje prostředí pro obě classic a Resource Manager. [Instalace rozhraní příkazového řádku Azure](../../cli-install-nodejs.md) a [vyberte své předplatné](../../xplat-cli-connect.md).
+## <a name="step-2-set-your-subscription-and-register-hello-provider"></a>Krok 2: Nastavte předplatné a zaregistrujte zprostředkovatele hello
+Pro scénáře migrace, je třeba tooset prostředí pro obě classic a Resource Manager. [Instalace rozhraní příkazového řádku Azure](../../cli-install-nodejs.md) a [vyberte své předplatné](../../xplat-cli-connect.md).
 
-Přihlášení ke svému účtu.
+Tooyour přihlašovací účet.
 
     azure login
 
-Pomocí následujícího příkazu vyberte předplatné Azure.
+Vyberte hello předplatného Azure pomocí hello následující příkaz.
 
     azure account set "<azure-subscription-name>"
 
 > [!NOTE]
-> Registrace je čas krok, ale je nutné provést jednou před pokusem o migraci. Bez registrace se zobrazí následující chybová zpráva 
+> Registrace je v jednu chvíli krok ale vyžaduje toobe provádí jednou před pokusem o migraci. Bez registrace se zobrazí následující chybová zpráva hello 
 > 
 > *Struktura BadRequest: Předplatné není zaregistrované pro migraci.* 
 > 
 > 
 
-Zaregistrovat u zprostředkovatele prostředků migrace pomocí následujícího příkazu. Všimněte si, že v některých případech tento příkaz časového limitu. Registrace však bude úspěšné.
+Zaregistrovat u zprostředkovatele prostředků migrace hello pomocí hello následující příkaz. Všimněte si, že v některých případech tento příkaz časového limitu. Registrace hello však bude úspěšné.
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-Počkejte 5 minut pro registraci dokončit. Pomocí následujícího příkazu můžete zkontrolovat stav schválení. Ujistěte se, že je RegistrationState `Registered` než budete pokračovat.
+Počkejte pět minut, než toofinish registrace hello. Stav hello hello schválení můžete zkontrolovat pomocí hello následující příkaz. Ujistěte se, že je RegistrationState `Registered` než budete pokračovat.
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Nyní přepínat rozhraní příkazového řádku pro `asm` režimu.
+Nyní přepínač příkazového řádku toohello `asm` režimu.
 
     azure config mode asm
 
-## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Krok 3: Zkontrolujte, zda že máte dostatečný počet jader virtuálního počítače Azure Resource Manager v oblasti Azure vaše aktuální nasazení nebo virtuální sítě
-V tomto kroku budete potřebovat přepnout do `arm` režimu. To lze proveďte pomocí následujícího příkazu.
+## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-hello-azure-region-of-your-current-deployment-or-vnet"></a>Krok 3: Zkontrolujte, zda že máte dostatečný počet jader virtuálního počítače Azure Resource Manager v hello oblast Azure vaše aktuální nasazení nebo virtuální sítě
+V tomto kroku budete potřebovat tooswitch příliš`arm` režimu. To lze proveďte pomocí hello následující příkaz.
 
 ```
 azure config mode arm
 ```
 
-Následující příkaz rozhraní příkazového řádku můžete zkontrolovat aktuální množství jader, které máte ve službě Správce prostředků Azure. Další informace o základní kvóty, najdete v části [omezení a Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
+Můžete použít hello následující rozhraní příkazového řádku příkaz toocheck hello aktuální velikost jádra, které máte ve službě Správce prostředků Azure. toolearn Další informace o základní kvóty, najdete v části [omezení a hello Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Po dokončení ověření tento krok, můžete přepnout zpět na `asm` režimu.
+Po dokončení ověření tento krok, můžete přepnout zpět příliš`asm` režimu.
 
     azure config mode asm
 
 
 ## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Krok 4: Možnost 1 - migraci virtuálních počítačů v rámci cloudové služby
-Získání seznamu cloudových služeb pomocí následujícího příkazu a pak vyberte cloudovou službu, která chcete migrovat. Pamatujte, že pokud jsou virtuální počítače v rámci cloudové služby ve virtuální síti nebo pokud budou mít web/role pracovního procesu, zobrazí se chybová zpráva.
+Získání seznamu hello cloudových služeb pomocí hello následující příkaz a potom vyberte hello cloudové služby, které chcete toomigrate. Všimněte si, že pokud hello virtuálních počítačů v rámci hello cloudové služby jsou ve virtuální síti nebo mají webové/role pracovního procesu, zobrazí se chybová zpráva.
 
     azure service list
 
-Spusťte následující příkaz pro získání názvu nasazení pro cloudovou službu z podrobný výstup. Ve většině případů název nasazení je stejný jako název cloudové služby.
+Spusťte následující příkaz tooget hello název nasazení pro cloudovou službu hello z podrobný výstup hello hello. Ve většině případů je hello název nasazení hello stejný jako název hello cloudové služby.
 
     azure service show <serviceName> -vv
 
-Nejprve ověřte, jestli je možné migrovat cloudové služby, použijte následující příkazy:
+Nejprve ověřte, jestli je možné migrovat hello cloudové služby pomocí hello následující příkazy:
 
 ```shell
 azure service deployment validate-migration <serviceName> <deploymentName> new "" "" ""
 ```
 
-Vypněte virtuální počítače v rámci cloudové služby pro migraci. Máte dvě možnosti, které lze vybírat.
+Připravte hello virtuálních počítačů v rámci hello cloudové služby pro migraci. Máte dvě možnosti toochoose z.
 
-Pokud chcete migrovat virtuální počítače k virtuální síti vytvořené platformy, použijte následující příkaz.
+Pokud chcete toomigrate hello virtuální počítače tooa platformy vytvořit virtuální síť, použijte následující příkaz hello.
 
     azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
 
-Pokud chcete migrovat na existující virtuální síť v modelu nasazení Resource Manager, použijte následující příkaz.
+Pokud chcete stávající virtuální sítě v modelu nasazení Resource Manager hello tooan toomigrate, použijte následující příkaz hello.
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
-Po úspěšné operace Příprava můžete zobrazit prostřednictvím podrobný výstup, pokud chcete získat stav migrace virtuálních počítačů a ujistěte se, že jsou v `Prepared` stavu.
+Po přípravě hello operace proběhne úspěšně, můžete projděte tooget podrobný výstup hello hello migrace stavu hello virtuální počítače a ujistěte se, že jsou v hello `Prepared` stavu.
 
     azure vm show <vmName> -vv
 
-Zkontrolujte konfiguraci pro připravené prostředky pomocí rozhraní příkazového řádku nebo portálu Azure. Pokud si nejste připravený pro migraci a chcete přejít zpět do původního stavu, použijte následující příkaz.
+Zkontrolujte konfiguraci hello hello připravenou prostředky pomocí rozhraní CLI nebo hello portálu Azure. Pokud si nejste připravený pro migraci a chcete toogo back toohello starý stav, použijte následující příkaz hello.
 
     azure service deployment abort-migration <serviceName> <deploymentName>
 
-Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostředky pomocí následujícího příkazu.
+Pokud hello připravené konfigurací spokojeni, můžete přejít a potvrdit hello prostředky pomocí hello následující příkaz.
 
     azure service deployment commit-migration <serviceName> <deploymentName>
 
 
 
 ## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>Krok 4: Možnost 2 - migrovat virtuální počítače ve virtuální síti
-Vyberte virtuální síť, která chcete migrovat. Všimněte si, že pokud virtuální síť obsahuje webové/role pracovního procesu nebo virtuální počítače s nepodporované konfigurace, obdržíte chybovou zprávu ověření.
+Vybrat hello virtuální sítě, které chcete toomigrate. Všimněte si, že pokud hello virtuální síť obsahuje role web nebo worker nebo virtuální počítače s nepodporované konfigurace, obdržíte chybovou zprávu ověření.
 
-Pomocí následujícího příkazu získáte všechny virtuální sítě v rámci předplatného.
+Získáte všechny hello virtuální sítě v rámci předplatného hello pomocí hello následující příkaz.
 
     azure network vnet list
 
-Výstup bude vypadat přibližně takto:
+Hello výstup bude vypadat přibližně takto:
 
-![Snímek obrazovky s celý virtuální síť s názvem zvýrazněná příkazového řádku.](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
+![Snímek obrazovky hello příkazového řádku s zvýrazněná název hello celý virtuální sítě.](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-V předchozím příkladu **virtualNetworkName** je celý název **"Classicubuntu16 classicubuntu16 skupiny"**.
+V hello výše příklad hello **virtualNetworkName** je celý název hello **"Classicubuntu16 classicubuntu16 skupiny"**.
 
-Nejprve ověřte, jestli je možné migrovat virtuální sítě pomocí následujícího příkazu:
+Nejprve ověřte, jestli je možné migrovat hello virtuální sítě pomocí hello následující příkaz:
 
 ```shell
 azure network vnet validate-migration <virtualNetworkName>
 ```
 
-Pomocí následujícího příkazu připravte virtuální síť podle svého výběru pro migraci.
+Připravte hello virtuální síť podle svého výběru pro migraci pomocí hello následující příkaz.
 
     azure network vnet prepare-migration <virtualNetworkName>
 
-Zkontrolujte konfiguraci pro virtuální počítače, který připravené pomocí rozhraní příkazového řádku nebo portálu Azure. Pokud si nejste připravený pro migraci a chcete přejít zpět do původního stavu, použijte následující příkaz.
+Zkontrolujte konfiguraci hello hello připravit virtuální počítače pomocí rozhraní příkazového řádku nebo hello portálu Azure. Pokud si nejste připravený pro migraci a chcete toogo back toohello starý stav, použijte následující příkaz hello.
 
     azure network vnet abort-migration <virtualNetworkName>
 
-Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostředky pomocí následujícího příkazu.
+Pokud hello připravené konfigurací spokojeni, můžete přejít a potvrdit hello prostředky pomocí hello následující příkaz.
 
     azure network vnet commit-migration <virtualNetworkName>
 
 ## <a name="step-5-migrate-a-storage-account"></a>Krok 5: Migrace účet úložiště
-Po dokončení migrace virtuálních počítačů, doporučujeme, migraci účtu úložiště.
+Po dokončení migrace hello virtuálních počítačů, doporučujeme, abyste že migrujete hello účet úložiště.
 
-Pomocí následujícího příkazu připravte účet úložiště pro migraci
+Příprava na migraci účtu úložiště hello pomocí hello následující příkaz
 
     azure storage account prepare-migration <storageAccountName>
 
-Zkontrolujte konfiguraci pro účet úložiště připravené pomocí rozhraní příkazového řádku nebo portálu Azure. Pokud si nejste připravený pro migraci a chcete přejít zpět do původního stavu, použijte následující příkaz.
+Zkontrolujte konfiguraci hello hello připravenou účet úložiště pomocí rozhraní CLI nebo hello portálu Azure. Pokud si nejste připravený pro migraci a chcete toogo back toohello starý stav, použijte následující příkaz hello.
 
     azure storage account abort-migration <storageAccountName>
 
-Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostředky pomocí následujícího příkazu.
+Pokud hello připravené konfigurací spokojeni, můžete přejít a potvrdit hello prostředky pomocí hello následující příkaz.
 
     azure storage account commit-migration <storageAccountName>
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled platformy podporované migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Migrace prostředků IaaS z klasického do Azure Resource Manageru pomocí prostředí PowerShell](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Komunita nástroje asistence s migrace z klasického do Azure Resource Manageru prostředků IaaS](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přehled migrace podporované platformy IaaS prostředků z classic tooAzure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Technické podrobné informace o platformy podporované migrace z klasického tooAzure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Plánování migrace prostředky infrastruktury z classic tooAzure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Pomocí prostředí PowerShell toomigrate IaaS prostředky z classic tooAzure Resource Manager](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Komunita nástroje asistence s migrace prostředky infrastruktury z classic tooAzure Resource Manager](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Běžné chyby při migraci](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Přečtěte si nejčastější dotazy o migraci prostředky infrastruktury jako služby z klasického do Azure Resource Manageru](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Zkontrolujte hello nejčastěji kladené dotazy týkající se migrace prostředky infrastruktury z classic tooAzure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

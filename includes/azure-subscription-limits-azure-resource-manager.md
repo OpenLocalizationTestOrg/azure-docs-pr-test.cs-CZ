@@ -17,14 +17,14 @@
 
 <sup>1</sup> Výchozí omezení se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze nebo průběžné platby, a řadě, jako je Dv2, F, G atd.
 
-<sup>2</sup> To zahrnuje účty služby Storage úrovně Standard i Premium. Pokud potřebujete více než 200 účtů úložiště, vytvořte žádost prostřednictvím [podpory Azure](https://azure.microsoft.com/support/faq/). Tým Azure Storage se na váš obchodní případ podívá a může schválit až 250 účtů úložiště.
+<sup>2</sup> To zahrnuje účty služby Storage úrovně Standard i Premium. Pokud potřebujete více než 200 účtů úložiště, vytvořte žádost prostřednictvím [podpory Azure](https://azure.microsoft.com/support/faq/). Hello týmu Azure Storage bude zkontrolovat váš případ obchodní a může schválit too250 úložiště účtů.
 
-<sup>3</sup> Můžete použít neomezený počet značek na předplatné. Počet značek na prostředek nebo skupinu prostředků je omezený na 15. Pokud je počet značek 10 000 nebo méně, Resource Manager vrací pouze [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags#Tags_List) v předplatném. Pokud však počet překročí 10 000, stále můžete najít prostředek podle značky.  
+<sup>3</sup> Můžete použít neomezený počet značek na předplatné. Hello počet značky pro každý prostředek nebo skupina prostředků je omezené too15. Správce prostředků pouze vrátí [seznam jedinečný název značky a hodnoty](/rest/api/resources/tags#Tags_List) v předplatném hello při hello počet značek je 10 000 nebo méně. Však můžete stále najít prostředek podle značky při hello počet překračuje 10 000.  
 
-<sup>4</sup> Tyto funkce se už nevyžadují se skupinami prostředků Azure a Azure Resource Managerem.
+<sup>4</sup>tyto funkce se už nevyžadují s skupiny prostředků Azure a hello Azure Resource Manager.
 
 > [!NOTE]
-> Je důležité zdůraznit, že pro jádra virtuálního počítače platí omezení celkového počtu na oblast i omezení velikosti podle řady (Dv2, F atd.) na oblast a tato omezení se vynucují samostatně.  Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D.  V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).  
+> Je důležité tooemphasize s jader virtuálního počítače místní celkový limit, jakož i místní za omezení velikosti řady (Dv2, F atd.), který vynutí se samostatně.  Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D.  Toto předplatné bude mít možnost A1 toodeploy 30 virtuálních počítačů nebo 30 virtuálních počítačů D1 nebo kombinaci hello dva tooexceed celkem 30 jader (například 10 virtuálních počítačů A1 a 20 D1 virtuálních počítačů).  
 > <!-- -->
 > 
 > 

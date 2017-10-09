@@ -1,6 +1,6 @@
 ---
 title: "Vytvoření a úprava okruhu ExpressRoute: prostředí PowerShell: portál Azure classic | Microsoft Docs"
-description: "Tento článek vás provede kroky pro vytváření a zřizování okruhu ExpressRoute. Tento článek také ukazuje, jak zkontrolovat stav, aktualizace nebo odstranění a zrušení zřízení váš okruh."
+description: "Tento článek vás provede kroky hello pro vytváření a zřizování okruhu ExpressRoute. Tento článek také ukazuje, jak toocheck hello stav, aktualizovat, nebo odstranit a zrušit jejich zřízení váš okruh."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 3b12bbb21ebf6a0160227c4a281c420cf192d6f7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9897c88776a2153ba22aa9ff328becb9f12b660b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell (klasické)
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/03/2017
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Tento článek vás provede kroky k vytvoření okruhu Azure ExpressRoute pomocí rutin prostředí PowerShell a modelu nasazení classic. Tento článek také ukazuje, jak zkontrolovat stav, aktualizace nebo odstranění a zrušení zřízení okruhu ExpressRoute.
+Tento článek vás provede kroky toocreate hello okruh Azure ExpressRoute pomocí modelu nasazení classic rutiny a hello prostředí PowerShell. Tento článek také ukazuje, jak toocheck hello stav, aktualizovat, nebo odstranit a zrušit jejich zřízení okruhu ExpressRoute.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -40,60 +40,60 @@ Tento článek vás provede kroky k vytvoření okruhu Azure ExpressRoute pomoc�
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
-### <a name="step-1-review-the-prerequisites-and-workflow-articles"></a>Krok 1. Přečtěte si požadavky a pracovní postup články
-Ujistěte se, že jste si přečetli [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.  
+### <a name="step-1-review-hello-prerequisites-and-workflow-articles"></a>Krok 1. Hello požadavky a pracovní postup články
+Ujistěte se, že jste si přečetli hello [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.  
 
-### <a name="step-2-install-the-latest-versions-of-the-azure-service-management-sm-powershell-modules"></a>Krok 2. Nainstalujte nejnovější verzi modulů prostředí PowerShell Azure Service Management (SM)
-Postupujte podle pokynů v [Začínáme s rutinami prostředí Azure PowerShell](/powershell/azure/overview) podrobné pokyny ke konfiguraci počítače pro používání modulů prostředí Azure PowerShell.
+### <a name="step-2-install-hello-latest-versions-of-hello-azure-service-management-sm-powershell-modules"></a>Krok 2. Nainstalujte nejnovější verzi modulů prostředí PowerShell Azure Service Management (SM) hello hello
+Postupujte podle pokynů hello v [Začínáme s rutinami prostředí Azure PowerShell](/powershell/azure/overview) podrobný návod jak tooconfigure modulů prostředí Azure PowerShell hello toouse vašeho počítače.
 
-### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>Krok 3. Přihlaste se k účtu Azure a vybrat odběr
-1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+### <a name="step-3-log-in-tooyour-azure-account-and-select-a-subscription"></a>Krok 3. Přihlaste se tooyour účet Azure a vybrat odběr
+1. Otevřete konzolu prostředí PowerShell se zvýšenými oprávněními a připojte tooyour účtu. Použijte následující příklad toohelp, ke kterým se připojujete hello:
 
         Login-AzureRmAccount
 
-2. Zkontrolujte předplatná pro příslušný účet.
+2. Zkontrolujte předplatná hello pro účet hello.
 
         Get-AzureRmSubscription
 
-3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
+3. Pokud máte více než jedno předplatné, vyberte hello předplatné, které chcete toouse.
 
         Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-4. Potom použijte následující rutinu k předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
+4. Pak pomocí následující rutiny tooadd hello tooPowerShell vaše předplatné Azure pro model nasazení classic hello.
 
         Add-AzureAccount
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Vytvořit a zřídit okruhu ExpressRoute
-### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>Krok 1. Importovat další moduly Powershellu pro ExpressRoute
- Pokud jste tak již neučinili, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell mohli začít používat rutiny pro ExpressRoute. Naimportovat moduly z umístění, které byly instalovány k v místním počítači. V závislosti na metodě, které jste použili pro instalaci modulů může být jiný než následující příklad ukazuje umístění. V příkladu podle potřeby upravte.  
+### <a name="step-1-import-hello-powershell-modules-for-expressroute"></a>Krok 1. Naimportujte hello moduly Powershellu pro ExpressRoute
+ Pokud jste tak již neučinili, je nutné naimportovat moduly Azure a ExpressRoute hello do relace prostředí PowerShell hello v pořadí toostart pomocí rutiny pro ExpressRoute hello. Importovat hello moduly z hello umístění, které byly nainstalované tooon místního počítače. V závislosti na metodě hello používá tooinstall hello moduly, může být jiný než hello následující příklad ukazuje umístění hello. Příklad hello podle potřeby upravte.  
 
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
-### <a name="step-2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>Krok 2. Získejte seznam podporovaných zprostředkovatelů, umístění a šířek pásma
-Než vytvoříte okruh ExpressRoute, musíte seznam poskytovatelů podporovaných připojení, umístění a možnosti šířky pásma.
+### <a name="step-2-get-hello-list-of-supported-providers-locations-and-bandwidths"></a>Krok 2. Získat hello seznam podporovaných zprostředkovatelů, umístění a šířek pásma
+Než vytvoříte okruh ExpressRoute, musíte hello seznam poskytovatelů podporovaných připojení, umístění a možnosti šířky pásma.
 
-Rutiny prostředí PowerShell `Get-AzureDedicatedCircuitServiceProvider` vrátí tyto informace, které budete používat v dalších krocích:
+rutiny prostředí PowerShell text Hello `Get-AzureDedicatedCircuitServiceProvider` vrátí tyto informace, které budete používat v dalších krocích:
 
     Get-AzureDedicatedCircuitServiceProvider
 
-Zkontrolujte, pokud poskytovatel připojení se nezobrazí. Poznamenejte si následující informace vzhledem k tomu, že budete je potřebovat později při vytvoření okruhu:
+Pokud poskytovatel připojení se nezobrazí, zkontrolujte toosee. Poznamenejte si následující informace, protože budete je potřebovat později při vytvoření okruhu hello:
 
 * Name (Název)
 * PeeringLocations
 * BandwidthsOffered
 
-Nyní jste připraveni vytvořit okruh ExpressRoute.         
+Nyní jste připravené toocreate okruhu ExpressRoute.         
 
 ### <a name="step-3-create-an-expressroute-circuit"></a>Krok 3. Vytvoření okruhu ExpressRoute
-Následující příklad ukazuje, jak vytvořit 200 MB/s okruh ExpressRoute prostřednictvím Equinix ze Silicon Valley. Pokud používáte k jinému zprostředkovateli a různá nastavení, dosaďte tyto informace při zkontrolujte vaši žádost.
+Hello následující příklad ukazuje, jak toocreate 200 MB/s ExpressRoute okruhu prostřednictvím Equinix ze Silicon Valley. Pokud používáte k jinému zprostředkovateli a různá nastavení, dosaďte tyto informace při zkontrolujte vaši žádost.
 
 > [!IMPORTANT]
-> Váš okruh ExpressRoute bude účtován od okamžiku, kdy se objeví klíč služby. Ujistěte se, při provádění této operace, pokud poskytovatel připojení je připraven ke zřízení okruhu.
+> Váš okruh ExpressRoute bude účtován z hello okamžiku, kdy se objeví klíč služby. Ujistěte se, když hello poskytovatele připojení je připraven tooprovision hello okruh provedení této operace.
 > 
 > 
 
-Toto je požadavek příklad pro nový klíč služby:
+Následující Hello je požadavek příklad pro nový klíč služby:
 
     $Bandwidth = 200
     $CircuitName = "MyTestCircuit"
@@ -102,21 +102,21 @@ Toto je požadavek příklad pro nový klíč služby:
 
     New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard -BillingType MeteredData
 
-Nebo, pokud chcete vytvořit okruh ExpressRoute s doplňkem premium, použijte následující příklad. Odkazovat [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) další podrobnosti o doplněk premium.
+Nebo, pokud chcete toocreate okruh ExpressRoute s doplňkem hello premium, hello použijte následující příklad. Odkazovat toohello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) další podrobnosti o doplněk premium hello.
 
     New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium - BillingType MeteredData
 
 
-Odpověď bude obsahovat klíč služby. Podrobný popis všech parametrů získáte spuštěním následující:
+Hello odpověď bude obsahovat klíč služby hello. Podrobný popis všech parametrů hello můžete získat spuštěním hello následující:
 
     get-help new-azurededicatedcircuit -detailed
 
-### <a name="step-4-list-all-the-expressroute-circuits"></a>Krok 4. Zobrazí seznam všech okruhy ExpressRoute
-Můžete spustit `Get-AzureDedicatedCircuit` získat seznam všech okruhy ExpressRoute, které jste vytvořili:
+### <a name="step-4-list-all-hello-expressroute-circuits"></a>Krok 4. Zobrazí seznam všech okruhy ExpressRoute hello
+Můžete spustit hello `Get-AzureDedicatedCircuit` příkaz tooget seznam všech hello okruhy ExpressRoute, které jste vytvořili:
 
     Get-AzureDedicatedCircuit
 
-Odpověď bude vypadat přibližně jako v následujícím příkladu:
+odpověď Hello bude něco podobné toohello následující ukázka:
 
     Bandwidth                        : 200
     CircuitName                      : MyTestCircuit
@@ -127,7 +127,7 @@ Odpověď bude vypadat přibližně jako v následujícím příkladu:
     Sku                              : Standard
     Status                           : Enabled
 
-Tyto informace kdykoli můžete načíst pomocí `Get-AzureDedicatedCircuit` rutiny. Provádění volání bez parametrů jsou uvedeny všechny okruhů. Zobrazí se klíč služby v *klíč ServiceKey* pole.
+Tyto informace kdykoli můžete načíst pomocí hello `Get-AzureDedicatedCircuit` rutiny. Provedení hello volání bez parametrů jsou uvedeny všechny okruhy hello. Zobrazí se klíč služby v hello *klíč ServiceKey* pole.
 
     Get-AzureDedicatedCircuit
 
@@ -140,32 +140,32 @@ Tyto informace kdykoli můžete načíst pomocí `Get-AzureDedicatedCircuit` rut
     Sku                              : Standard
     Status                           : Enabled
 
-Podrobný popis všech parametrů získáte spuštěním následující:
+Podrobný popis všech parametrů hello můžete získat spuštěním hello následující:
 
     get-help get-azurededicatedcircuit -detailed
 
-### <a name="step-5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>Krok 5. Klíč služby poslat svého poskytovatele připojení pro zřizování
-*ServiceProviderProvisioningState* poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. *Stav* poskytuje stav na straně společnosti Microsoft. Další informace o zřizování stavy okruhu najdete v tématu [pracovních](expressroute-workflows.md#expressroute-circuit-provisioning-states) článku.
+### <a name="step-5-send-hello-service-key-tooyour-connectivity-provider-for-provisioning"></a>Krok 5. Odeslání poskytovatele připojení klíče tooyour hello služby pro zřizování
+*ServiceProviderProvisioningState* poskytuje informace o hello aktuální stav zřizování na straně hello poskytovatele služeb. *Stav* poskytuje hello stavu na straně Microsoft hello. Další informace o zřizování stavy okruhu najdete v tématu hello [pracovních](expressroute-workflows.md#expressroute-circuit-provisioning-states) článku.
 
-Když vytvoříte nový okruh ExpressRoute, okruhu bude v následujícím stavu:
+Když vytvoříte nový okruh ExpressRoute, bude mít okruh hello hello následující stav:
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-Okruh přejde na následující stav, pokud poskytovatel připojení probíhá povolení pro vás:
+okruh Hello přejde toohello následující stavu, pokud je zprostředkovatel připojení k hello v procesu hello povolení pro vás:
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
-Okruh ExpressRoute musí být v následujícím stavu, abyste mohli používat ji:
+Okruh ExpressRoute musí být v následujícím stavu můžete toobe možné toouse hello ho:
 
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
 
-### <a name="step-6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Krok 6. Pravidelně kontrolovat stav a stav okruhu klíče
-Tímto způsobem zjistíte, když má poskytovatel povoleno váš okruh. Po nakonfiguroval okruhu *ServiceProviderProvisioningState* se zobrazí jako *zajištěno* jak je znázorněno v následujícím příkladu:
+### <a name="step-6-periodically-check-hello-status-and-hello-state-of-hello-circuit-key"></a>Krok 6. Pravidelně kontrolovat hello stav a stav hello hello okruh klíče
+Tímto způsobem zjistíte, když má poskytovatel povoleno váš okruh. Po nakonfiguroval hello okruh *ServiceProviderProvisioningState* se zobrazí jako *zajištěno* jak ukazuje následující příklad hello:
 
     Get-AzureDedicatedCircuit
 
@@ -179,18 +179,18 @@ Tímto způsobem zjistíte, když má poskytovatel povoleno váš okruh. Po nako
     Status                           : Enabled
 
 ### <a name="step-7-create-your-routing-configuration"></a>Krok 7. Vytvořte vlastní konfiguraci směrování
-Odkazovat [konfigurace směrování pro okruh ExpressRoute (vytvoření a úprava okruhu partnerských vztahů)](expressroute-howto-routing-classic.md) podrobné pokyny najdete v článku.
+Odkazovat toohello [konfigurace směrování pro okruh ExpressRoute (vytvoření a úprava okruhu partnerských vztahů)](expressroute-howto-routing-classic.md) podrobné pokyny najdete v článku.
 
 > [!IMPORTANT]
-> Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle virtuální privátní síť IP, např. MPLS), poskytovatel připojení nakonfigurujete a správu směrování za vás.
+> Tyto pokyny platí pouze toocircuits, které jsou vytvořené poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle virtuální privátní síť IP, např. MPLS), poskytovatel připojení nakonfigurujete a správu směrování za vás.
 > 
 > 
 
-### <a name="step-8-link-a-virtual-network-to-an-expressroute-circuit"></a>Krok 8. Propojení virtuální sítě k okruhu ExpressRoute
-V dalším kroku propojení virtuální sítě k okruhu ExpressRoute. Odkazovat na [okruhy ExpressRoute propojování virtuálních sítí](expressroute-howto-linkvnet-classic.md) podrobné pokyny. Pokud potřebujete k vytvoření virtuální sítě pomocí modelu nasazení classic pro ExpressRoute najdete v tématu [vytvoření virtuální sítě pro ExpressRoute](expressroute-howto-vnet-portal-classic.md).
+### <a name="step-8-link-a-virtual-network-tooan-expressroute-circuit"></a>Krok 8. Propojení virtuální sítě tooan okruh ExpressRoute
+V dalším kroku propojte virtuální sítě tooyour okruh ExpressRoute. Odkazovat příliš[okruhy ExpressRoute propojení sítí toovirtual](expressroute-howto-linkvnet-classic.md) podrobné pokyny. Pokud potřebujete toocreate virtuální sítě pomocí modelu nasazení classic hello pro ExpressRoute, přečtěte si [vytvoření virtuální sítě pro ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
-## <a name="getting-the-status-of-an-expressroute-circuit"></a>Získávání stav okruhu ExpressRoute
-Tyto informace kdykoli můžete načíst pomocí `Get-AzureCircuit` rutiny. Provádění volání bez parametrů jsou uvedeny všechny okruhů.
+## <a name="getting-hello-status-of-an-expressroute-circuit"></a>Získávání hello stav okruhu ExpressRoute
+Tyto informace kdykoli můžete načíst pomocí hello `Get-AzureCircuit` rutiny. Provedení hello volání bez parametrů jsou uvedeny všechny okruhy hello.
 
     Get-AzureDedicatedCircuit
 
@@ -212,7 +212,7 @@ Tyto informace kdykoli můžete načíst pomocí `Get-AzureCircuit` rutiny. Prov
     Sku                              : Standard
     Status                           : Enabled
 
-Informace o konkrétní okruh ExpressRoute můžete získat pomocí předání klíče služby jako parametr pro volání.
+Informace o konkrétní okruh ExpressRoute můžete získat pomocí předání klíče služby hello jako parametr toohello volání.
 
     Get-AzureDedicatedCircuit -ServiceKey "*********************************"
 
@@ -226,24 +226,24 @@ Informace o konkrétní okruh ExpressRoute můžete získat pomocí předání k
     Status                           : Enabled
 
 
-Podrobný popis všech parametrů můžete získat spuštěním v následujícím příkladu:
+Podrobný popis všech parametrů hello můžete získat spuštěním hello následující ukázka:
 
     get-help get-azurededicatedcircuit -detailed
 
 ## <a name="modifying-an-expressroute-circuit"></a>Úprava okruhu ExpressRoute
 Bez dopadu na připojení můžete upravit některé vlastnosti okruhu ExpressRoute.
 
-Můžete provést následující bez výpadků:
+Můžete provést následující bez výpadků hello:
 
 * Povolit nebo zakázat doplněk ExpressRoute premium pro váš okruh ExpressRoute.
-* Zadaný na tomto portu je dostupná kapacita, zvětšete šířku pásma okruhu ExpressRoute. Všimněte si, že šířku pásma okruhu přechod na starší verzi není podporován. 
-* Změňte plán měření z – měření podle objemu dat na neomezená Data na úrovni. Všimněte si, že změna měření plánu z neomezená Data – měření podle objemu dat není podporován.
+* Zvýšení hello šířka pásma okruhu ExpressRoute, pokud na portu hello je dostupné kapacity. Všimněte si, že hello šířka pásma okruhu přechod na starší verzi není podporován. 
+* Změnit plán z tooUnlimited dat – měření podle objemu dat měření hello. Poznámka: Změna hello měření plán z tooMetered neomezená Data na úrovni, dat není podporováno.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
 
-Odkazovat [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) Další informace o omezení.
+Odkazovat toohello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) Další informace o omezení.
 
-### <a name="to-enable-the-expressroute-premium-add-on"></a>Chcete-li povolit doplněk ExpressRoute premium
-Doplněk ExpressRoute premium pro váš okruh. existující můžete povolit pomocí následující rutiny prostředí PowerShell:
+### <a name="tooenable-hello-expressroute-premium-add-on"></a>doplněk ExpressRoute premium tooenable hello
+Doplněk ExpressRoute premium hello pro váš okruh. existující můžete povolit pomocí následující rutiny prostředí PowerShell hello:
 
     Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Premium
 
@@ -256,22 +256,22 @@ Doplněk ExpressRoute premium pro váš okruh. existující můžete povolit pom
     Sku                              : Premium
     Status                           : Enabled
 
-Funkce doplněk ExpressRoute premium povoleno bude mít teď váš okruh. Všimněte si, že jsme spustí hned, jak byl úspěšně spuštěn příkaz fakturace pro funkci rozšíření premium.
+Váš okruh bude mít teď hello ExpressRoute premium rozšíření funkce povolené. Všimněte si, že jsme spustí hned, jak byl úspěšně spuštěn příkaz hello fakturace pro funkci rozšíření hello premium.
 
-### <a name="to-disable-the-expressroute-premium-add-on"></a>Chcete-li zakázat doplněk ExpressRoute premium
+### <a name="toodisable-hello-expressroute-premium-add-on"></a>doplněk ExpressRoute premium toodisable hello
 > [!IMPORTANT]
-> Tato operace může selhat, pokud používáte prostředky, které jsou větší než co je povoleno pro standardní okruh.
+> Tato operace může selhat, pokud používáte prostředky, které jsou větší než co je povolené standardní okruh hello.
 > 
 > 
 
 #### <a name="considerations"></a>Požadavky
 
-* Je nutné zajistit, že počet virtuální sítě propojené ke okruhu je menší než 10 před downgradovat z úrovně premium na standard. Pokud to neuděláte, vaše žádost o aktualizaci se nezdaří a budete mít účtují zvýhodněné sazby.
-* Je nutné zrušit všechny virtuální sítě v jiných geopolitické oblasti. Pokud to neuděláte, vaše žádost o aktualizaci se nezdaří a budete mít účtují zvýhodněné sazby.
-* Směrovací tabulka musí být menší než 4 000 tras pro soukromý partnerský vztah. Pokud má větší než 4 000 tras velikost trasy tabulce, relaci protokolu BGP bude vyřaďte a nebude možné opětovně povolena dokud počet předpon inzerovaných přejde nižší než 4 000.
+* Je nutné zajistit, že hello počet virtuální sítě propojené toohello okruh je menší než 10 před downgradovat z úrovně premium toostandard. Pokud to neuděláte, vaše žádost o aktualizaci se nezdaří a budete fakturovaná hello zvýhodněné sazby.
+* Je nutné zrušit všechny virtuální sítě v jiných geopolitické oblasti. Pokud to neuděláte, vaše žádost o aktualizaci se nezdaří a budete fakturovaná hello zvýhodněné sazby.
+* Směrovací tabulka musí být menší než 4 000 tras pro soukromý partnerský vztah. Pokud vaše velikost tabulky trasy je větší než 4 000 tras, relace BGP hello bude vyřaďte a nebude možné opětovně povolena dokud hello počet předpon inzerovaných přejde nižší než 4 000.
 
-#### <a name="disable-the-premium-add-on"></a>Zakázat doplněk premium
-Doplněk ExpressRoute premium pro váš okruh. existující můžete zakázat pomocí následující rutiny prostředí PowerShell:
+#### <a name="disable-hello-premium-add-on"></a>Zakázat doplněk premium hello
+Pomocí následující rutiny prostředí PowerShell hello můžete zakázat doplněk ExpressRoute premium hello pro váš okruh. stávající:
 
     Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Standard
 
@@ -286,19 +286,19 @@ Doplněk ExpressRoute premium pro váš okruh. existující můžete zakázat po
 
 
 
-### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Chcete-li aktualizovat šířku pásma okruhu ExpressRoute
-Zkontrolujte [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) pro podporované možnosti šířky pásma pro poskytovatele. Můžete vybrat libovolnou velikost, která je větší než velikost existujícího okruhu tak dlouho, dokud umožňuje fyzického portu (na kterém je vytvořený váš okruh).
+### <a name="tooupdate-hello-expressroute-circuit-bandwidth"></a>šířku pásma okruhu ExpressRoute tooupdate hello
+Zkontrolujte hello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) pro podporované možnosti šířky pásma pro poskytovatele. Můžete vybrat libovolnou velikost, která je větší než velikost hello existujícího okruhu tak dlouho, dokud umožňuje hello fyzického portu (na kterém je vytvořený váš okruh).
 
 > [!IMPORTANT]
-> Možná budete muset znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nelze upgradovat okruh.
+> Pokud je na existující port hello nedostatečné kapacity, mohou mít okruh ExpressRoute toorecreate hello. Pokud v tomto umístění není k dispozici žádné další kapacitu, nelze upgradovat hello okruh.
 >
-> Nejde snížit šířku pásma okruhu ExpressRoute bez přerušení. Přechod na starší verzi šířky pásma vyžaduje zrušení zřízení okruh ExpressRoute a pak znova nezajistíte nové okruh ExpressRoute.
+> Nelze zmenšit hello šířku pásma okruhu ExpressRoute bez přerušení. Přechod na starší verzi šířky pásma vyžaduje, abyste okruh ExpressRoute hello toodeprovision a pak znova nezajistíte nové okruh ExpressRoute.
 > 
 > 
 
 #### <a name="resize-a-circuit"></a>Změna velikosti okruhu
 
-Jakmile se rozhodnete, jakou velikost potřebujete, můžete ke změně velikosti okruhu následující příkaz:
+Až se rozhodnete, jakou velikost, je nutné, můžete použít následující příkaz tooresize hello váš okruh:
 
     Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
 
@@ -311,11 +311,11 @@ Jakmile se rozhodnete, jakou velikost potřebujete, můžete ke změně velikost
     Sku                              : Standard
     Status                           : Enabled
 
-Váš okruh bude mít byla velikosti na straně společnosti Microsoft. Obraťte se svého poskytovatele připojení k aktualizaci konfigurace na jejich straně tak, aby odpovídaly tuto změnu. Všimněte si, že jsme spustí fakturace můžete pro možnost aktualizované šířky pásma z tohoto bodu na.
+Váš okruh bude mít byla velikosti na straně Microsoft hello. Obraťte se na vaše připojení poskytovatele tooupdate konfigurace na jejich straně toomatch tuto změnu. Všimněte si, že jsme spustí fakturace můžete pro hello aktualizovat na možnost šířky pásma z tohoto bodu.
 
-Pokud se zobrazí chybová zpráva při zvýšení šířku pásma okruhu, znamená to, existuje ponecháno žádné dostatečnou šířku pásma na fyzického portu, kde se má vytvořit existujícím okruhem. Budete muset odstranit tento okruh a vytvořit nové okruh velikosti, které potřebujete. 
+Pokud se zobrazí následující chyba, když zvýšení šířku pásma okruhu hello hello, znamená to, existuje ponecháno žádné dostatečnou šířku pásma na hello fyzického portu, kde se má vytvořit existujícím okruhem. Máte toodelete tento okruh a vytvořit nové okruh hello velikosti, které potřebujete. 
 
-    Set-AzureDedicatedCircuitProperties : InvalidOperation : Insufficient bandwidth available to perform this circuit
+    Set-AzureDedicatedCircuitProperties : InvalidOperation : Insufficient bandwidth available tooperform this circuit
     update operation
     At line:1 char:1
     + Set-AzureDedicatedCircuitProperties -ServiceKey ********************* ...
@@ -328,21 +328,21 @@ Pokud se zobrazí chybová zpráva při zvýšení šířku pásma okruhu, zname
 
 ### <a name="considerations"></a>Požadavky
 
-* Je nutné zrušit všechny virtuální sítě od okruhu ExpressRoute pro tato operace proběhla úspěšně. Zkontrolujte, zda jsou všechny virtuální sítě, které jsou propojeny s okruh, pokud se tato operace nezdaří.
-* Pokud je poskytovatel služby okruh ExpressRoute Stav zřizování **zřizování** nebo **zajištěno** , musíte pracovat se svým poskytovatelem služeb pro zrušení zřízení okruhu na jejich straně. Budeme nadále rezervovat prostředky a dokud poskytovatele služeb dokončení zrušení okruhu a upozorní nám vám účtovat.
-* Pokud má poskytovatel služeb zrušit okruhu (poskytovatele služeb Stav zřizování je nastavena na **není zajišťováno**) pak můžete odstranit okruh. To se zastaví fakturace pro okruh.
+* Je nutné zrušit všechny virtuální sítě od hello okruh ExpressRoute pro tuto operaci toosucceed. Zkontrolujte toosee, pokud máte žádné virtuální sítě, které jsou propojené toohello okruh, pokud se tato operace nezdaří.
+* Pokud je hello ExpressRoute okruhu poskytovatele služeb Stav zřizování **zřizování** nebo **zajištěno** na jejich straně, musíte pracovat se váš okruh hello toodeprovision zprostředkovatele služby. Jsme bude i nadále tooreserve prostředky a dokud poskytovatele služeb hello dokončení zrušení zřízení hello okruhu a upozorní nám vám účtovat.
+* Pokud má poskytovatel služeb hello zrušit okruh hello (Stav zřizování poskytovatele služeb hello je nastaven příliš**není zajišťováno**) pak můžete odstranit okruh hello. To se zastaví fakturace hello okruh.
 
 #### <a name="delete-a-circuit"></a>Odstranit okruh
 
-Váš okruh ExpressRoute můžete odstranit tak, že spustíte následující příkaz:
+Váš okruh ExpressRoute můžete odstranit spuštěním hello následující příkaz:
 
     Remove-AzureDedicatedCircuit -ServiceKey "*********************************"
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření okruhu, ujistěte se, že provedete následující kroky:
+Po vytvoření okruhu, ujistěte se, že hello následující:
 
 * [Vytvoření a úprava směrování pro okruhu ExpressRoute](expressroute-howto-routing-classic.md)
-* [Propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-classic.md)
+* [Propojení vaší virtuální sítě tooyour okruh ExpressRoute](expressroute-howto-linkvnet-classic.md)
 

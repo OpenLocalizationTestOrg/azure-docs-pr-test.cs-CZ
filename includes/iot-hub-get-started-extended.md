@@ -1,19 +1,19 @@
 ## <a name="extended-iot-scenarios"></a>Rozšířené scénáře IoT
 
-Použijete další nástroje a služby Azure. Jakmile budete mít připojené zařízení ke službě IoT Hub, můžete prozkoumat další scénáře, ve kterých se používají další nástroje a služby Azure:
+Použijete další nástroje a služby Azure. Když připojíte vaše zařízení tooIoT rozbočovače, můžete si prostudovat další scénáře, které používají jiné nástroje Azure a služby:
 
 | Scénář                                                   | Nástroj nebo služba Azure              |
 |----------------------------------------------------------- |------------------------------------|
 | [Správa zpráv IoT Hub][Mg_IoT_Hub_Msg]                  | Nástroj iothub-explorer               |
 | [Správa zařízení IoT][Mg_IoT_Dv]                        | Nástroj iothub-explorer               |
-| [Uložení zpráv IoT Hub do úložiště Azure][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
+| [Uložit IoT Hub tooAzure úložiště zpráv][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
 | [Vizualizace dat ze snímačů][Vis_Data]                          | Microsoft Power BI, Azure Web Apps |
 | [Předpověď počasí s využitím dat ze snímačů][Weather_Forecast]      | Azure Machine Learning             |
 | [Automatická detekce anomálií a reakce na ně][Anomaly_Detect] | Azure Logic Apps                   |
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení těchto kurzů můžete podrobněji prozkoumat možnosti služby IoT Hub v [příručce pro vývojáře][lnk-dev-guide]. Další kurzy najdete v části [Postupy][lnk-how-to].
+Pokud jste dokončili tyto kurzy, můžete dále prozkoumat hello služby IoT Hub v hello [Příručka vývojáře][lnk-dev-guide]. Můžete najít další kurzy v hello [postupy] [ lnk-how-to] části.
 
 
 [Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md

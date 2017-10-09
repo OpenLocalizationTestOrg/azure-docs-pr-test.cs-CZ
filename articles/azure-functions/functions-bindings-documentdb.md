@@ -1,6 +1,6 @@
 ---
-title: Azure DB Cosmos funkce vazby | Microsoft Docs
-description: "Pochopit, jak používat Azure Cosmos DB vazby v Azure Functions."
+title: vazby funkce Cosmos DB aaaAzure | Microsoft Docs
+description: Pochopit, jak vazeb Azure Cosmos DB toouse v Azure Functions.
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,48 +16,48 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/18/2016
 ms.author: glenga
-ms.openlocfilehash: de95b0591eb95e76dbb7ba2382e9e14e1f66cda1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 76b89e8296db1dd28dff9528903b1f6a28f55232
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Azure DB Cosmos funkce vazby
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek vysvětluje, jak nakonfigurovat a vazeb Azure Cosmos DB kódu v Azure Functions. Azure Functions podporuje vstup a výstup vazby pro Cosmos DB.
+Tento článek vysvětluje, jak Azure Cosmos DB vazeb tooconfigure a kódu v Azure Functions. Azure Functions podporuje vstup a výstup vazby pro Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Další informace o Cosmos DB najdete v tématu [Úvod do Cosmos DB](../documentdb/documentdb-introduction.md) a [vytvoření konzolové aplikace Cosmos DB](../documentdb/documentdb-get-started.md).
+Další informace o Cosmos DB najdete v tématu [tooCosmos Úvod DB](../documentdb/documentdb-introduction.md) a [vytvoření konzolové aplikace Cosmos DB](../documentdb/documentdb-get-started.md).
 
 <a id="docdbinput"></a>
 
 ## <a name="documentdb-api-input-binding"></a>Rozhraní API DocumentDB vstupní vazby
-Vstupní vazba rozhraní API DocumentDB Cosmos DB dokumentu načte a předává je pro pojmenované vstupní parametr funkce. Dokument, který se dá určit ID založené na aktivační událost, která volá funkci. 
+Hello Vstupní vazba rozhraní API DocumentDB Cosmos DB dokumentu načte a předává je toohello s názvem vstupní parametr funkce hello. Hello dokument, který se dá určit ID podle hello aktivační událost, která volá funkce hello. 
 
-Vstupní vazba rozhraní API DocumentDB má následující vlastnosti *function.json*:
+Hello Vstupní vazba rozhraní API DocumentDB má následující vlastnosti v hello *function.json*:
 
-- `name`: Název identifikátor použitý v kódu funkce pro dokument
-- `type`: musí být nastavena na "documentdb"
-- `databaseName`: Databáze obsahující dokumentu
-- `collectionName`: Kolekce obsahující dokumentu
-- `id`: Id dokumentu pro načtení. Tato vlastnost podporuje vazby parametrů; v tématu [vazby na vlastní vstupní vlastnosti ve výrazu vazby](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) v článku [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md).
-- `sqlQuery`: Dotaz Cosmos DB SQL použitý k načtení více dokumentů. Dotaz podporuje runtime vazby. Příklad: `SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`: Název nastavení aplikace obsahující připojovací řetězec databáze Cosmos
-- `direction`: musí být nastavena na `"in"`.
+- `name`: Název identifikátor používaný v kódu funkce pro dokument hello
+- `type`: musí být nastaven příliš "documentdb"
+- `databaseName`: hello databáze obsahující hello dokumentu
+- `collectionName`: hello kolekce obsahující hello dokumentu
+- `id`: hello Id dokumentu tooretrieve hello. Tato vlastnost podporuje vazby parametrů; v tématu [vazbu vlastnosti vstupu toocustom ve výrazu vazby](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) v článku hello [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md).
+- `sqlQuery`: Dotaz Cosmos DB SQL použitý k načtení více dokumentů. Hello query podporuje runtime vazby. Příklad: `SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`: hello název nastavení aplikace hello obsahující připojovací řetězec databáze Cosmos
+- `direction`: musí být nastaven příliš`"in"`.
 
-Vlastnosti `id` a `sqlQuery` nelze zadat současně. Pokud ani `id` ani `sqlQuery` není nastaven, je-li načíst celou kolekci.
+Hello vlastnosti `id` a `sqlQuery` nelze zadat současně. Pokud ani `id` ani `sqlQuery` nastavena, hello celou kolekci se načítají.
 
 ## <a name="using-a-documentdb-api-input-binding"></a>Použití rozhraní API DocumentDB vstupní vazby
 
-* V jazyce C# a F # funkce při ukončení funkce úspěšně, některé změny provedené vstupní dokument prostřednictvím pojmenované vstupní parametry jsou automaticky nastavené jako trvalé. 
-* V funkce jazyka JavaScript nejsou automaticky provedeny aktualizace po ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` pro nastavení aktualizací. Najdete v článku [JavaScript ukázka](#injavascript).
+* V jazyce C# a F # funkce při ukončení hello funkce úspěšně, některé změny provedené v toohello vstupní dokument prostřednictvím pojmenované vstupní parametry jsou automaticky nastavené jako trvalé. 
+* V funkce jazyka JavaScript nejsou automaticky provedeny aktualizace po ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` toomake aktualizace. V tématu hello [JavaScript ukázka](#injavascript).
 
 <a name="inputsample"></a>
 
 ## <a name="input-sample-for-single-document"></a>Vstupní vzorek pro jednotlivý dokument
-Předpokládejme, že máte následující rozhraní API DocumentDB vstupní vazby v `bindings` pole function.json:
+Předpokládejme, že máte následující hello DocumentDB API vstupní vazby v hello `bindings` pole function.json:
 
 ```json
 {
@@ -71,7 +71,7 @@ Předpokládejme, že máte následující rozhraní API DocumentDB vstupní vaz
 }
 ```
 
-V tématu vzorku pro specifický jazyk, který používá tuto vstupní vazbu k aktualizaci dokumentu textovou hodnotu.
+V tématu vzorku hello konkrétní jazyk, který používá vstupní vazby tooupdate hello tohoto dokumentu textovou hodnotu.
 
 * [C#](#incsharp)
 * [F#](#infsharp)
@@ -98,7 +98,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-Tato ukázka vyžaduje `project.json` soubor, který určuje `FSharp.Interop.Dynamic` a `Dynamitey` NuGet závislosti:
+Tato ukázka vyžaduje `project.json` soubor, který určuje hello `FSharp.Interop.Dynamic` a `Dynamitey` NuGet závislosti:
 
 ```json
 {
@@ -113,7 +113,7 @@ Tato ukázka vyžaduje `project.json` soubor, který určuje `FSharp.Interop.Dyn
 }
 ```
 
-Chcete-li přidat `project.json` souborů najdete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
+tooadd `project.json` souborů najdete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
 
 <a name="injavascript"></a>
 
@@ -130,9 +130,9 @@ module.exports = function (context) {
 
 ## <a name="input-sample-with-multiple-documents"></a>Vstupní ukázkové s více dokumenty
 
-Předpokládejme, které chcete načíst více dokumentů určeného dotaz SQL, chcete-li přizpůsobit parametry dotazu pomocí aktivační procedury fronty. 
+Předpokládejme, že si přejete tooretrieve více dokumentů, zadaný v dotazu SQL pomocí parametry dotazu toocustomize hello frontě aktivační události. 
 
-V tomto příkladu obsahuje aktivační událost fronty parametr `departmentId`. Fronty zpráv z `{ "departmentId" : "Finance" }` by vrátit všechny záznamy pro finančního oddělení. Použijte následující *function.json*:
+V tomto příkladu hello frontě aktivační události obsahuje parametr `departmentId`. Fronty zpráv z `{ "departmentId" : "Finance" }` by vrátit všechny záznamy pro hello finančního oddělení. Použijte hello v *function.json*:
 
 ```
 {
@@ -177,30 +177,30 @@ module.exports = function (context, input) {
 ```
 
 ## <a id="docdboutput"></a>Rozhraní API DocumentDB výstup vazby
-Rozhraní API DocumentDB výstup vazby umožňuje zapsat nový dokument k databázi Azure Cosmos DB. Má následující vlastnosti v *function.json*:
+Hello DocumentDB API výstupu vazby umožňuje zapisovat novou databázi Azure Cosmos DB tooan dokumentu. Má následující vlastnosti v hello *function.json*:
 
-- `name`: Identifikátor použitý v kódu funkce pro nový dokument
-- `type`: musí být nastavený na`"documentdb"`
-- `databaseName`: Databáze obsahující kolekci, kde bude vytvořen nový dokument.
-- `collectionName`: Kolekce, kde bude vytvořen nový dokument.
-- `createIfNotExists`: Logická hodnota označující, zda kolekce bude vytvořen, pokud neexistuje. Výchozí hodnota je *false*. Z důvodu pro toto je nové kolekce se vytvoří s vyhrazenou propustností, kterou se hradí. Další podrobnosti naleznete [stránce s cenami](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection`: Název nastavení aplikace obsahující připojovací řetězec databáze Cosmos
-- `direction`: musí být nastavený na`"out"`
+- `name`: Identifikátor použitý v kódu funkce pro nový dokument hello
+- `type`: musí být nastaven příliš`"documentdb"`
+- `databaseName`: hello databáze obsahující hello kolekce, kde bude vytvořen nový dokument hello.
+- `collectionName`: hello kolekce, kde bude vytvořen nový dokument hello.
+- `createIfNotExists`: Logická hodnota. hodnota tooindicate, zda text hello kolekce se vytvoří, pokud neexistuje. Výchozí hodnota Hello je *false*. Hello důvod pro toto je nové kolekce se vytvoří s vyhrazenou propustností, kterou se hradí. Další podrobnosti naleznete na adrese hello [stránce s cenami](https://azure.microsoft.com/pricing/details/documentdb/).
+- `connection`: hello název nastavení aplikace hello obsahující připojovací řetězec databáze Cosmos
+- `direction`: musí být nastaven příliš`"out"`
 
 ## <a name="using-a-documentdb-api-output-binding"></a>Pomocí rozhraní API DocumentDB výstup vazby
-V této části se dozvíte, jak používat rozhraní API DocumentDB výstupu vazby v kódu funkce.
+Tato část uvádí, jak toouse rozhraní API DocumentDB výstup vazby v kódu funkce.
 
-Při zápisu do výstupního parametru ve vaší funkci ve výchozím nastavení je nový dokument vygenerované v databázi, se automaticky vytvářenému identifikátoru GUID jako ID dokumentu. Můžete zadat ID dokumentu výstup dokumentu zadáním `id` vlastnost JSON v výstupní parametr. 
+Při psaní toohello výstupní parametr do funkce, ve výchozím nastavení do nového dokumentu se generuje ve vaší databázi, se automaticky vytvářenému identifikátoru GUID jako hello dokumentu ID. Můžete zadat ID dokumentu hello výstup dokumentu zadáním hello `id` vlastnost JSON v hello výstupní parametr. 
 
 >[!Note]  
->Pokud zadáte ID stávající dokument, získá přepsány nový dokument výstup. 
+>Pokud zadáte ID hello stávající dokument, získá přepsány nový dokument výstup hello. 
 
-Výstup více dokumentů, můžete také vázat na `ICollector<T>` nebo `IAsyncCollector<T>` kde `T` je jedním z podporovaných typů.
+toooutput více dokumentů, můžete také navázat příliš`ICollector<T>` nebo `IAsyncCollector<T>` kde `T` je jeden z typů hello podporována.
 
 <a name="outputsample"></a>
 
 ## <a name="documentdb-api-output-binding-sample"></a>Ukázka výstupu vazby DocumentDB rozhraní API
-Předpokládejme, že máte následující rozhraní API DocumentDB výstup vazby v `bindings` pole function.json:
+Předpokládejme, že máte následující hello DocumentDB API výstup vazby v hello `bindings` pole function.json:
 
 ```json
 {
@@ -214,7 +214,7 @@ Předpokládejme, že máte následující rozhraní API DocumentDB výstup vazb
 }
 ```
 
-A máte vazbu vstupní fronty pro frontu, která přijímá JSON v následujícím formátu:
+A máte vazbu vstupní fronty pro frontu, která přijímá JSON v hello následující formát:
 
 ```json
 {
@@ -224,7 +224,7 @@ A máte vazbu vstupní fronty pro frontu, která přijímá JSON v následujíc�
 }
 ```
 
-A chcete vytvořit Cosmos DB dokumenty ve formátu pro každý záznam:
+A chcete, aby toocreate Cosmos DB dokumenty ve formátu pro každý záznam hello:
 
 ```json
 {
@@ -235,7 +235,7 @@ A chcete vytvořit Cosmos DB dokumenty ve formátu pro každý záznam:
 }
 ```
 
-V tématu vzorku pro specifický jazyk, který používá tuto vazbu výstup k přidání dokumenty k vaší databázi.
+V tématu vzorku hello konkrétní jazyk, který používá tento výstup vazby tooadd dokumenty tooyour databázi.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -292,7 +292,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-Tato ukázka vyžaduje `project.json` soubor, který určuje `FSharp.Interop.Dynamic` a `Dynamitey` NuGet závislosti:
+Tato ukázka vyžaduje `project.json` soubor, který určuje hello `FSharp.Interop.Dynamic` a `Dynamitey` NuGet závislosti:
 
 ```json
 {
@@ -307,7 +307,7 @@ Tato ukázka vyžaduje `project.json` soubor, který určuje `FSharp.Interop.Dyn
 }
 ```
 
-Chcete-li přidat `project.json` souborů najdete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
+tooadd `project.json` souborů najdete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
 
 <a name="outjavascript"></a>
 

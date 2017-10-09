@@ -1,5 +1,5 @@
 ---
-title: "Ukázková data v tabulkách Azure HDInsight Hive | Microsoft Docs"
+title: "aaaSample data v tabulkách Azure HDInsight Hive | Microsoft Docs"
 description: "Dolů vzorkování dat v Azure HDInsight (Hadopop) tabulek Hive"
 services: machine-learning,hdinsight
 documentationcenter: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: d46297dfaf85976114fbf610803e5f1a997041e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5f86df9b5a18facc875f437abfb004dbe3a06ea4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
-V tomto článku jsme popisují, jak nižší sample data uložená v Azure HDInsight Hive tabulky pomocí dotazů Hive. Nemůžeme popisuje tři metody vzorkování často se používá použít:
+V tomto článku jsme popisují, jak toodown ukázková data ukládat do tabulek Azure HDInsight Hive pomocí dotazů Hive. Nemůžeme popisuje tři metody vzorkování často se používá použít:
 
 * Uniform náhodné vzorkování
 * Náhodné vzorkování podle skupin
 * Vrstveného vzorkování
 
-Následující **nabídky** odkazy na témata, které popisují, jak ukázková data z různých prostředích úložiště.
+Následující Hello **nabídky** odkazy tootopics, které popisují, jak toosample data z různých prostředích úložiště.
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 **Proč ukázková data?**
-Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné nižší ukázková data, která mají snížit velikost menší, ale reprezentativní a lepší správu bitlockeru. To usnadňuje pochopení dat, zkoumání a funkce inženýrství. Jeho role v procesu Team datové vědy je umožnit rychlé vytváření prototypů zpracování dat funkcí a modelů strojového učení.
+Pokud datovou sadu hello plánování tooanalyze velká, je obvykle vhodné hello toodown ukázková data tooreduce ho tooa menší, ale reprezentativní a lepší správu bitlockeru velikost. To usnadňuje pochopení dat, zkoumání a funkce inženýrství. Jeho role v hello proces vědecké účely Team dat je rychlé vytváření prototypů tooenable hello zpracování dat funkcí a modelů strojového učení.
 
-Tato úloha vzorkování je krok v [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Tato úloha vzorkování je krok v hello [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## <a name="how-to-submit-hive-queries"></a>Postup odesílání dotazů Hive
-Z konzoly Hadoop příkazový řádek z hlavního uzlu clusteru Hadoop lze odesílat dotazy Hive. K tomu, přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu nástroje příkazového řádku Hadoop a odesílání dotazů Hive z ní. Pokyny k odesílání dotazů Hive v konzole nástroje příkazového řádku Hadoop, najdete v části [postup odesílání dotazů Hive](machine-learning-data-science-move-hive-tables.md#submit).
+## <a name="how-toosubmit-hive-queries"></a>Jak toosubmit dotazů Hive
+Z příkazového řádku Hadoop konzoly hello hello hlavního uzlu clusteru Hadoop hello lze odesílat dotazy Hive. toodo, přihlaste se k hlavnímu uzlu clusteru Hadoop hello hello otevře hello konzoly Hadoop příkazového řádku a odesílání dotazů Hive hello odtud. Pokyny v odesílání dotazů Hive v konzole hello Hadoop příkazového řádku najdete v tématu [jak tooSubmit dotazů Hive](machine-learning-data-science-move-hive-tables.md#submit).
 
 ## <a name="uniform"></a>Uniform náhodné vzorkování
-Uniform náhodné vzorkování znamená, že každý řádek v sadě dat má stejnou šanci se vzorků. To lze provést přidáním další pole rand() se sada dat v informacích o vnitřní dotaz "Vyberte" a v vnější "Vyberte" dotaz tuto podmínku na tomto náhodných poli.
+Uniform náhodné vzorkování znamená, že každý řádek v sadě dat hello má stejnou šanci se vzorků. To může být implementováno přidáním další pole rand() toohello datové sady v informacích o vnitřní dotazu "Vyberte" hello a hello vnější "Vyberte" dotaz na toto pole náhodných tuto podmínku.
 
 Tady je příklad dotazu:
 
@@ -55,11 +55,11 @@ Tady je příklad dotazu:
         )a
     where samplekey<='${hiveconf:sampleRate}'
 
-Zde `<sample rate, 0-1>` Určuje poměr záznamy, které uživatelé má zkusit.
+Zde `<sample rate, 0-1>` určuje hello podíl záznamy, uživatelé hello chcete toosample.
 
 ## <a name="group"></a>Náhodné vzorkování podle skupin
-Když vzorkování kategorizovaná data, můžete zahrnout nebo vyloučit všechny instance určité konkrétní hodnoty kategorií proměnné. Toto je pojmy "vzorkování skupinou".
-Například pokud máte kategorií proměnné "Stavu", která obsahuje hodnoty NY, MA, certifikační Autority, ni, PA atd, chcete záznamů stejného stavu, vždy se společně, jestli jsou vzorkovat nebo ne.
+Když vzorkování kategorizovaná data, může být vhodné tooeither zahrnout nebo vyloučit všechny instance hello určité konkrétní hodnoty kategorií proměnné. Toto je pojmy "vzorkování skupinou".
+Například pokud máte kategorií proměnné "Stavu", která obsahuje hodnoty NY, MA, certifikační Autority, ni, PA atd, záznamy hello stejného stavu se vždy společně, jestli jsou vzorkovat nebo ne.
 
 Tady je příklad dotazu této ukázky podle skupiny:
 
@@ -88,7 +88,7 @@ Tady je příklad dotazu této ukázky podle skupiny:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Vrstveného vzorkování
-Náhodné vzorkování je si s ohledem na proměnnou kategorií Pokud ukázky získat hodnoty, kategorií, jsou ve stejné poměr jako nadřazené naplnění, ze kterého byly získány ukázky. Pomocí příkladě jako výš, Předpokládejme, že data obsahují dílčí plnění státy, můžete ni má 100 připomínky, NY má 60 připomínky a WA má 300 připomínky. Pokud zadáte rychlost vrstveného vzorkování být 0,5, pak ukázka získat by měl mít přibližně 50, 30 a 150 připomínky ni, NY a WA v uvedeném pořadí.
+S ohledem tooa kategorií proměnnou Pokud hello ukázky získat hodnoty to kategorií v hello je si náhodné vzorkování stejné poměr jako hello nadřazené naplnění, ze které hello byly získány ukázky. Pomocí hello stejné příklad, jak je uvedeno výše, předpokládá se, že data obsahují dílčí plnění státy, vyslovte ni má 100 připomínky, NY má 60 připomínky a WA má 300 připomínky. Pokud zadáte rychlost hello si vzorkování toobe 0,5, pak hello ukázka získat by měl mít přibližně 50, 30 a 150 připomínky ni, NY a WA v uvedeném pořadí.
 
 Tady je příklad dotazu:
 

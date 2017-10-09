@@ -1,28 +1,28 @@
 
-### <a name="to-sign-up-for-a-blitline-account"></a>Chcete-li si zaregistrovat účet Blitline
-1. Přihlaste se k [portál pro správu Azure](https://manage.windowsazure.com/).
-2. V dolním podokně portálu pro správu, klikněte na **nový**.
+### <a name="toosign-up-for-a-blitline-account"></a>toosign pro účet Blitline
+1. Přihlaste se toohello [portálu pro správu Azure](https://manage.windowsazure.com/).
+2. V dolním podokně hello hello portálu pro správu, klikněte na **nový**.
    
     ![command-bar-new][command-bar-new]
 3. Klikněte na tlačítko **úložiště**.
    
     ![blitline úložiště][blitline-store]
-4. V **zvolte doplněk** dialogovém okně, vyberte **Blitline** a klikněte na šipku vpravo.
-5. V **přizpůsobení rozšíření** dialogovém okně vyberte **Blitline** chcete registraci k plánu.
-6. Zadejte název pro identifikaci vaší **Blitline** služby v Azure nastavení, nebo použijte výchozí hodnotu **Blitline**. Název musí mít délku 1 až 100 znaků a musí obsahovat pouze alfanumerické znaky, pomlčky, tečky a podtržítka. Název musí být v seznamu předplacených položek Azure Storu jedinečný.
+4. V hello **zvolte doplněk** dialogovém okně, vyberte **Blitline** a klikněte na šipku vpravo hello.
+5. V hello **přizpůsobení rozšíření** dialogovém okně vyberte hello **Blitline** chcete toosign registraci k plánu.
+6. Zadejte název tooidentify vaše **Blitline** služby v Azure nastavení, nebo použijte výchozí hodnotu hello **Blitline**. Název musí mít délku 1 až 100 znaků a musí obsahovat pouze alfanumerické znaky, pomlčky, tečky a podtržítka. Název Hello musí být jedinečný v seznamu odebírané položky úložiště Azure.
    
     ![úložiště obrazovky-1][store-screen-1]
-7. Vyberte hodnotu pro oblast; například západní USA. 
-8. Klikněte na šipku vpravo.
-9. Na **zkontrolujte nákupu** kartě, zkontrolujte plán a informace o cenách a přečíst si právní podmínky. Pokud souhlasíte s podmínkami, klikněte na zatržítko. Po kliknutí na tlačítko zaškrtnutí, váš účet Blitline zahájíte proces zřizování. 
+7. Vyberte hodnotu pro oblast hello; například západní USA. 
+8. Klikněte na šipku vpravo hello.
+9. Na hello **zkontrolujte nákupu** kartě, zkontrolujte hello plán a informace o cenách a přečíst si právní podmínky hello. Pokud budete souhlasit toohello podmínky, klikněte na tlačítko zaškrtnutí hello. Po kliknutí na tlačítko zaškrtnutí hello, váš účet Blitline zahájíte hello procesu zřizování. 
 
-Chcete-li použít Blitline musíte mít ID aplikace.
+toouse Blitline potřebujete toohave ID aplikace.
 
-### <a name="to-find-your-blitline-application-id"></a>Najít vaše ID aplikace Blitline
+### <a name="toofind-your-blitline-application-id"></a>toofind vaše ID aplikace Blitline
 1. Klikněte na tlačítko **informace o připojení**.
    
     ![blitline připojení informace tlačítka][blitline-connection-info-button]
-2. V *informace o připojení* dialogu uvidíte vaše ID aplikace
+2. V hello *informace o připojení* dialogu uvidíte vaše ID aplikace
    
     ![informace o blitline připojení][blitline-connection-info]
 

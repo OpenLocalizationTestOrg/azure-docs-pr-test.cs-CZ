@@ -1,6 +1,6 @@
 ---
-title: "Ladění Azure mikroslužeb v systému Windows | Microsoft Docs"
-description: "Zjistěte, jak sledovat a diagnostikovat vaše služby vytvořené pomocí Microsoft Azure Service Fabric na místním vývojovém počítači."
+title: "aaaDebug Azure mikroslužeb v systému Windows | Microsoft Docs"
+description: "Zjistěte, jak toomonitor a diagnostikovat vaše služby vytvořené pomocí Microsoft Azure Service Fabric na místním vývojovém počítači."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 08998340afb2f242b9a268331607b0d1ddb9b0c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24868aa194b8a28fa3e6de95c1de5506d912a544
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služby v instalačním programu pro vývoj místním počítači
 > [!div class="op_single_selector"]
@@ -27,43 +27,43 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro služby, chcete-li pokračovat s minimálním dopadem na činnost koncového uživatele. Při monitorování a Diagnostika jsou kritické v prostředí skutečné produkční nasazené, efektivitu bude záviset na přijetí podobné modelu během vývoje služby zajistěte, aby byl že při přesunutí instalace reálného asi nebudou fungovat. Service Fabric usnadňuje vývojářům implementovat diagnostiky, které může bezproblémově fungovat v jednom počítači místní vývoj nastavení a nastavení clusteru skutečné produkční služby.
+Monitorování, zjišťování, Diagnostika a řešení potíží s umožňují toocontinue služby s minimálním dopadem toohello uživatelské prostředí. Při monitorování a Diagnostika jsou kritické v prostředí skutečné produkční nasazené, efektivitu hello bude záviset na přijetí model podobně jako při vývoji tooensure služby, kterou pracují při přesunutí instalace reálného tooa. Service Fabric usnadňuje diagnostiku tooimplement vývojáři služby, který může bezproblémově pracovat v jednom počítači místní vývoj nastavení a nastavení clusteru skutečné produkční.
 
 ## <a name="event-tracing-for-windows"></a>Trasování událostí pro Windows
-[Trasování událostí pro systém Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) je technologie doporučené pro trasování zpráv v Service Fabric. Jsou některé výhody použití trasování událostí pro Windows:
+[Trasování událostí pro systém Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) je hello doporučená technologie pro trasování zpráv v Service Fabric. Jsou některé výhody použití trasování událostí pro Windows:
 
 * **Trasování událostí pro Windows je rychlá.** Byla vytvořena jako trasování technologie, která má minimální dopad na dobu provádění kódu.
-* **Trasování událostí pro Windows funguje bezproblémově mezi místní vývojové prostředí a taky nastavení reálného clusteru.** To znamená, že nemáte přepsání trasování kódu, když budete chtít kód nasadit do clusteru s podporou skutečné.
-* **Service Fabric systému kód také používá trasování událostí pro Windows pro interní trasování.** To vám umožní zobrazit vaše trasování aplikací prokládaný. pomocí trasování systému Service Fabric. Také umožňuje snadno pochopit pořadí a vzájemné vztahy mezi kódu aplikace a události v základním systému.
-* **Není integrovanou podporu v nástroji Service Fabric Visual Studio zobrazovat události trasování událostí pro Windows.** Události trasování událostí se zobrazí v zobrazení diagnostických událostí sady Visual Studio, jakmile sady Visual Studio je správně nakonfigurován s Service Fabric. 
+* **Trasování událostí pro Windows funguje bezproblémově mezi místní vývojové prostředí a taky nastavení reálného clusteru.** To znamená, že nemáte toorewrite vaše trasování code po připravené toodeploy skutečné clusteru tooa kódu.
+* **Service Fabric systému kód také používá trasování událostí pro Windows pro interní trasování.** To vám umožní tooview vaše trasování aplikací prokládaný. pomocí trasování systému Service Fabric. Pomáhá také toomore snadno porozumíte hello pořadí a vzájemné vztahy mezi kódu aplikace a události v základním systému hello.
+* **Události trasování událostí pro Windows tooview není integrovanou podporu v nástroji Service Fabric Visual Studio.** Události trasování událostí se zobrazí v hello zobrazení diagnostických událostí sady Visual Studio, jakmile sady Visual Studio je správně nakonfigurován s Service Fabric. 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Zobrazit události systému Service Fabric v sadě Visual Studio
-Service Fabric vysílá události trasování událostí pro Windows, což vývojářům aplikací pochopit, co se děje v platformu. Pokud jste tak již neučinili, pokračujte a postupujte podle kroků v [vytvoření vaší první aplikace v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md). Tyto informace vám pomohou aplikace spuštěná Diagnostika prohlížeči událostí zobrazuje trasovací zprávy.
+Service Fabric vysílá události trasování událostí pro vývojáře aplikací toohelp pochopit, co se děje v platformě hello. Pokud jste tak již neučinili, pokračujte a postupujte podle kroků hello v [vytvoření vaší první aplikace v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md). Tyto informace vám pomohou vám zprovoznění aplikace s hello diagnostiky Prohlížeč událostí zobrazuje hello trasování zpráv.
 
-1. Pokud k diagnostice události okno nezobrazí automaticky, přejděte na **zobrazení** v sadě Visual Studio, zvolte **ostatní okna** a potom **prohlížeče diagnostických událostí**.
-2. Každá událost má standardní metadata informaci o uzlu, aplikace a služby, kterou událost pochází z. Můžete také filtrovat seznam událostí pomocí **filtrování událostí** pole v horní části okna události. Například můžete filtrovat podle **název uzlu** nebo **název služby.** A když se díváte na podrobnosti události, je také možné pozastavit pomocí **pozastavit** tlačítka v horní části okna události a pokračovat později, aniž by došlo ke ztrátě událostí.
+1. Pokud hello diagnostiky události okno nezobrazí automaticky, přejděte toohello **zobrazení** v sadě Visual Studio, zvolte **ostatní okna** a potom **prohlížeče diagnostických událostí**.
+2. Každá událost obsahuje informace o standardní metadata, dozvíte se, že hello uzlu, služby a aplikace hello událost pochází z. Můžete také filtrovat hello seznam událostí pomocí hello **filtrování událostí** pole hello horní části okna události hello. Například můžete filtrovat podle **název uzlu** nebo **název služby.** A když se díváte na podrobnosti události, je také možné pozastavit pomocí hello **pozastavit** tlačítko hello horní části okna hello události a pokračovat později, aniž by došlo ke ztrátě událostí.
    
    ![Prohlížeč událostí diagnostiky Visual Studio](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
-## <a name="add-your-own-custom-traces-to-the-application-code"></a>Přidání vlastního vlastní trasování do kódu aplikace
-Šablony projektů Service Fabric Visual Studio obsahovat ukázkový kód. Kód ukazuje, jak přidat vlastní aplikaci trasování ETW kódu, které se zobrazí v prohlížeči Visual Studio ETW společně systému trasování z Service Fabric. Výhodou této metody je, že metadata jsou automaticky přidány do trasování a Prohlížeč událostí diagnostické sady Visual Studio již byla konfigurována pro jejich zobrazení.
+## <a name="add-your-own-custom-traces-toohello-application-code"></a>Přidání vlastního kódu aplikace toohello vlastní trasování
+šablony projektů Service Fabric Visual Studio Hello obsahovat ukázkový kód. Hello kód ukazuje, jak kód vlastní aplikace tooadd trasování událostí pro Windows trasování, zobrazující se v prohlížeči Visual Studio trasování událostí pro Windows hello společně systému trasování z Service Fabric. Hello Výhodou této metody je, že metadata se automaticky přidá tootraces a hello Visual Studio diagnostiky Prohlížeč událostí je již nakonfigurován toodisplay je.
 
-Pro projekty vytvořené z **šablony služby** (bezstavové nebo stateful) také vyhledat `RunAsync` implementace:
+Pro projekty vytvořené z hello **šablony služby** (bezstavové nebo stateful) jenom hledat hello `RunAsync` implementace:
 
-1. Volání `ServiceEventSource.Current.ServiceMessage` v `RunAsync` metoda ukazuje příklad vlastního trasování událostí pro Windows trasování z kódu aplikace.
-2. V **ServiceEventSource.cs** souboru, zjistíte, přetížení pro `ServiceEventSource.ServiceMessage` metoda, která má být použit pro vysoká frekvence událostí z důvodů výkonu.
+1. Hello volání příliš`ServiceEventSource.Current.ServiceMessage` v hello `RunAsync` metoda ukazuje příklad vlastního trasování událostí pro Windows trasování z kódu aplikace hello.
+2. V hello **ServiceEventSource.cs** souboru, můžete použít přetížení pro hello `ServiceEventSource.ServiceMessage` metoda, která má být použit pro vysoká frekvence událostí z důvodu tooperformance důvodů.
 
-Pro projekty vytvořené z **šablony objektu actor** (bezstavové nebo stateful):
+Pro projekty vytvořené z hello **šablony objektu actor** (bezstavové nebo stateful):
 
-1. Otevřete **"ProjectName".cs** souboru kde *ProjectName* je název, který jste zvolili pro svůj projekt sady Visual Studio.  
-2. Najít kód `ActorEventSource.Current.ActorMessage(this, "Doing Work");` v *DoWorkAsync* metoda.  Toto je příklad vlastního trasování ETW zapsána z kódu aplikace.  
-3. V souboru **ActorEventSource.cs**, zjistíte, přetížení pro `ActorEventSource.ActorMessage` metoda, která má být použit pro vysoká frekvence událostí z důvodů výkonu.
+1. Otevřete hello **"ProjectName".cs** souboru kde *ProjectName* je název hello jste zvolili pro svůj projekt sady Visual Studio.  
+2. Najít kód hello `ActorEventSource.Current.ActorMessage(this, "Doing Work");` v hello *DoWorkAsync* metoda.  Toto je příklad vlastního trasování ETW zapsána z kódu aplikace.  
+3. V souboru **ActorEventSource.cs**, můžete použít přetížení pro hello `ActorEventSource.ActorMessage` metoda, která má být použit pro vysoká frekvence událostí z důvodu tooperformance důvodů.
 
-Po přidání vlastní trasování událostí pro Windows trasování do kódu služby, můžete vytvořit, nasadit a spusťte aplikaci znovu zobrazíte vaší událostí v prohlížeči diagnostických událostí. Pokud při ladění aplikace s **F5**, se automaticky otevře prohlížeč diagnostických událostí.
+Po přidání vlastního trasování událostí pro Windows trasování tooyour kódu služby, můžete sestavit, nasazení a spuštění aplikace hello znovu toosee vaše událostí v hello prohlížeče diagnostických událostí. Pokud při ladění aplikace hello s **F5**, hello se automaticky otevře prohlížeč diagnostických událostí.
 
 ## <a name="next-steps"></a>Další kroky
-Stejný kód trasování, které jste přidali do vaší aplikace výše pro místní diagnostiky pracovat s nástroji, které můžete použít k zobrazení tyto události při spuštění aplikace v clusteru služby Azure. Podívejte se na tyto články, které popisují různé možnosti pro nástroje a popisují, jak je můžete nastavit tak.
+Hello stejný kód trasování, které jste přidali aplikaci tooyour výše pro místní diagnostiky bude pracovat s nástroji, které můžete použít tooview tyto události při spuštění aplikace v clusteru služby Azure. Podívejte se na tyto články, které popisují různé možnosti hello hello nástroje a popisují, jak je můžete nastavit tak.
 
-* [Postup shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Jak toocollect protokoly s Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Seskupení událostí a kolekce pomocí EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
 

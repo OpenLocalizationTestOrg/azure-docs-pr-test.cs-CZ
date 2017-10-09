@@ -1,6 +1,6 @@
 ---
-title: "Použití Log Analytics s aplikací s více tenanty využívající službu SQL Database | Dokumentace Microsoftu"
-description: "Instalace a použití analýzy protokolů (OMS) s Azure SQL Database ukázková Wingtip SaaS aplikace"
+title: "aaaUse analýzy protokolů a aplikaci víceklientské databáze SQL | Microsoft Docs"
+description: "Instalace a použití analýzy protokolů (OMS) s hello Azure SQL Database ukázkové Wingtip SaaS aplikace"
 keywords: kurz k sql database
 services: sql-database
 documentationcenter: 
@@ -16,108 +16,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 26f6f519ecb3abf6343dc2776aa141dff99ced15
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fa9085ce3462939e66853faa2a3cd71e0f6c2581
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="setup-and-use-log-analytics-oms-with-the-wingtip-saas-app"></a>Instalace a použití analýzy protokolů (OMS) s Wingtip SaaS aplikace
+# <a name="setup-and-use-log-analytics-oms-with-hello-wingtip-saas-app"></a>Instalace a použití analýzy protokolů (OMS) s hello Wingtip SaaS aplikace
 
-V tomto kurzu, nastavení a použití *analýzy protokolů ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* pro monitorování elastické fondy a databází. Je nástavbou kurzu [Monitorování a správa výkonu](sql-database-saas-tutorial-performance-monitoring.md) a uvádí, jak se používá *Log Analytics* k posílení monitorování a upozorňování poskytovaného na portálu Azure Portal. Služba Log Analytics je zvlášť vhodná pro monitorování a upozorňování v různém rozsahu, protože podporuje stovky fondů a stovky tisíc databází. Poskytuje také jedno řešení pro monitorování, které může integrovat monitorování různých aplikací a služeb Azure napříč několika předplatnými Azure.
+V tomto kurzu, nastavení a použití *analýzy protokolů ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* pro monitorování elastické fondy a databází. Vychází hello [sledování výkonu a správy kurzu](sql-database-saas-tutorial-performance-monitoring.md)a ukazuje, jak toouse *analýzy protokolů* tooaugment hello monitorování a výstrah, které jsou uvedeny v hello portálu Azure. Služba Log Analytics je zvlášť vhodná pro monitorování a upozorňování v různém rozsahu, protože podporuje stovky fondů a stovky tisíc databází. Poskytuje také jedno řešení pro monitorování, které může integrovat monitorování různých aplikací a služeb Azure napříč několika předplatnými Azure.
 
 Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Instalace a konfigurace Log Analytics (OMS)
-> * Monitorování fondů a databází pomocí Log Analytics
+> * Pomocí analýzy protokolů toomonitor fondy a databáze
 
-Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
+toocomplete dokončení tohoto kurzu, ujistěte se, hello následující požadavky:
 
-* Adresář Wingtip SaaS aplikace je nasazená. Nasazení za méně než pět minut najdete v tématu [nasazení a seznamte se s Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
+* Hello Wingtip SaaS aplikace je nasazená. toodeploy za méně než pět minut, najdete v části [nasazení a seznamte se s hello Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-Diskusi ke scénářům a vzorcům SaaS a způsob, jakým ovlivňují požadavky na řešení pro monitorování, najdete v [kurzu Monitorování a správa výkonu](sql-database-saas-tutorial-performance-monitoring.md).
+V tématu hello [sledování výkonu a správy kurzu](sql-database-saas-tutorial-performance-monitoring.md) diskuzi o hello SaaS scénáře a vzory a jejich vlivu hello požadavky na řešení monitorování.
 
 ## <a name="monitoring-and-managing-performance-with-log-analytics-oms"></a>Monitorování a správa výkonu pomocí Log Analytics (OMS)
 
-Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a upozorňování je specifické podle prostředků a je vhodné pro malý počet prostředků, ale méně vhodné pro monitorování velkých instalací nebo poskytnutí sjednoceného pohledu na různé prostředky a předplatná.
+Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a výstrah je konkrétní prostředky a vhodné pro malý počet prostředků, ale je méně rozsáhlé instalace skvěle hodí toomonitoring nebo pro zajištění jednotný pohled napříč různými prostředky a odběry.
 
-Log Analytics je možné používat u velkoobjemových scénářů. To je samostatná služba Azure, která poskytuje analýzy přes vydávané diagnostické protokoly a telemetrii získanou v pracovním prostoru Log Analytics, které můžou shromažďovat telemetrii z mnoha služeb a dají se používat k dotazování a nastavování výstrah. Log Analytics poskytuje integrovaný jazyk dotazů a nástroje vizualizace dat umožňující analýzy a vizualizaci provozních dat. Řešení SQL Analytics nabízí několik předdefinovaných elastických fondů a zobrazení a dotazů na monitorování a upozorňování databáze a umožňuje přidávat vlastní ad-hoc dotazy a podle potřeby je ukládat. OMS poskytuje také vlastní návrhář zobrazení.
+Log Analytics je možné používat u velkoobjemových scénářů. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly analýzy a telemetrie získané v pracovním prostoru analýzy protokolů, které může shromažďovat telemetrická data z mnoha služby a být použité tooquery a nastavit výstrahy. Log Analytics poskytuje integrovaný jazyk dotazů a nástroje vizualizace dat umožňující analýzy a vizualizaci provozních dat. Hello řešení analýzy SQL poskytuje několik předem definovaných elastický fond a databáze, monitorování a výstrah, zobrazení a dotazy a umožňuje přidávat své vlastní dotazy ad hoc a uložit tyto podle potřeby. OMS poskytuje také vlastní návrhář zobrazení.
 
-Pracovní prostory a analytická řešení Log Analytics se dají otevírat z portálu Azure Portal i v OMS. Azure Portal je novější přístupový bod, ale v některých oblastech může být za portálem OMS.
+Pracovní prostory a analýzy analytická řešení protokolu lze otevřít v hello portál Azure a v OMS. Hello portál Azure je hello novější přístupový bod, ale mohou být za portálu OMS hello v určité oblasti.
 
-### <a name="start-the-load-generator-to-create-data-to-analyze"></a>Spuštění generátoru zatížení pro vytváření dat k analýze
+### <a name="start-hello-load-generator-toocreate-data-tooanalyze"></a>Spustit hello zatížení generátor toocreate data tooanalyze
 
-1. Spusťte skript **Demo-PerformanceMonitoringAndManagement.ps1** ve složce **PowerShell ISE**. Tento skript nechte spuštěný, protože je možné, že během tohoto kurzu budete spouštět několik scénářů generování zatížení.
-1. Pokud používáte méně než pět tenantů, zřiďte dávku tenantů pro zajištění zajímavějšího kontextu monitorování:
+1. Otevřete **ukázku PerformanceMonitoringAndManagement.ps1** v hello **prostředí PowerShell ISE**. Uchovávejte tento skript otevřete tak, jak chcete toorun několik scénářů generování zatížení hello během tohoto kurzu.
+1. Pokud máte méně než pět klienty, zřídit dávky klienty tooprovide zajímavějšího monitorování kontextu:
    1. Nastavte **$DemoScenario = 1,** **Zřízení dávky tenantů**
-   1. Stisknutím klávesy **F5** spusťte skript.
+   1. Stiskněte klávesu **F5** toorun hello skriptu.
 
 1. Nastavte **$DemoScenario** = 2, **Generování normální intenzity zatížení (asi 40 DTU)**.
-1. Stisknutím klávesy **F5** spusťte skript.
+1. Stiskněte klávesu **F5** toorun hello skriptu.
 
-## <a name="get-the-wingtip-application-scripts"></a>Získání skriptů aplikace Wingtip
+## <a name="get-hello-wingtip-application-scripts"></a>Získat hello Wingtip aplikační skripty
 
-Skripty a zdrojový kód aplikace Wingtip Tickets jsou dostupné v úložišti GitHubu [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS). Soubory se skripty jsou ve [složce Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules). Stáhněte si složku **Learning Modules** do svého místního počítače. Dejte pozor, abyste zachovali strukturu složky.
+Hello Wingtip lístky skripty a zdrojový kód aplikace jsou k dispozici v hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. Skript soubory jsou umístěny v hello [Learning moduly složky](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules). Stáhnout hello **Learning moduly** místní počítač tooyour složky, údržby jeho strukturu složek.
 
-## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Instalace a konfigurace Log Analytics a řešení Azure SQL Analytics
+## <a name="installing-and-configuring-log-analytics-and-hello-azure-sql-analytics-solution"></a>Instalace a konfigurace analýzy protokolů a hello řešení analýzy SQL Azure
 
-Log Analytics je samostatná služba, která vyžaduje konfiguraci. Log Analytics shromažďuje data a telemetrii protokolů a metriku v pracovním prostoru Log Analytics. Pracovní prostor je prostředek stejně jako ostatní prostředky v Azure a je potřeba ho vytvořit. I když pracovní prostor nemusí být vytvořený ve stejné skupině prostředků jako aplikace, které monitoruje, dává to často největší smysl. V případě aplikace Wingtip SaaS to umožňuje snadno odstranit s aplikace jednoduše odstraněním skupiny prostředků v pracovním prostoru.
+Analýzy protokolů je samostatné služby, který vyžaduje toobe nakonfigurované. Log Analytics shromažďuje data a telemetrii protokolů a metriku v pracovním prostoru Log Analytics. Pracovní prostor je prostředek stejně jako ostatní prostředky v Azure a je potřeba ho vytvořit. Při hello prostoru nepotřebuje toobe vytvořené v hello stejné skupině prostředků jako aplikace hello je monitorování, tato možnost může hello nejvhodnější. V případě hello hello Wingtip SaaS aplikace to umožňuje toobe prostoru hello snadno odstranit aplikaci hello jednoduše odstraněním skupiny prostředků hello.
 
-1. Otevřete ...\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\*Demo-LogAnalytics.ps1* v **Integrovaném skriptovacím prostředí (ISE) v prostředí PowerShell**.
-1. Stisknutím klávesy **F5** spusťte skript.
+1. Otevřete... \\Learning moduly\\sledování výkonu a správy\\analýzy protokolů\\*ukázku LogAnalytics.ps1* v hello **prostředí PowerShell ISE**.
+1. Stiskněte klávesu **F5** toorun hello skriptu.
 
-Teď by mělo být možné otevřít Log Analytics na portálu Azure Portal (nebo portálu OMS). Shromáždění telemetrie a její zviditelnění v pracovním prostoru Log Analytics bude trvat pár minut. Čím déle necháte systém shromažďovat data, tím zajímavější bude práce s nimi. Teď si můžete dát chvilku pauzu – jen se ujistěte, že je generátor pořád spuštěný!
-
-
-## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Monitorování fondů a databází pomocí Log Analytics a řešení SQL Analytics
+V tomto okamžiku byste měli mít možnost Otevřít analýzy protokolů hello portálu Azure (nebo portálu OMS hello). To bude trvat několik minut, než telemetrie toobe shromážděny v hello pracovní prostor analýzy protokolů a toobecome viditelné. Hello delší že necháte hello systému shromažďování, že data hello zajímavějšího hello prostředí bude. Teď je vhodná doba toograb nápoj - jenom Ujistěte se, generátor zatížení hello je stále spuštěná!
 
 
-V tomto cvičení otevřete analýzy protokolů a podívejte se na telemetrie shromážděných pro databáze a fondy na portálu OMS.
+## <a name="use-log-analytics-and-hello-sql-analytics-solution-toomonitor-pools-and-databases"></a>Pomocí analýzy protokolů a hello fondy toomonitor řešení SQL Analytics a databáze
 
-1. Přejděte na portál [Azure Portal](https://portal.azure.com) a otevřete Log Analytics kliknutím na Další služby. Potom vyhledejte Log Analytics:
+
+V tomto cvičení otevřete analýzy protokolů a hello toolook portálu OMS na telemetrie hello shromážděných pro hello databáze a fondy.
+
+1. Procházet toohello [portál Azure](https://portal.azure.com) a otevřete analýzy protokolů tak, že kliknete na další služby a potom najděte analýzy protokolů:
 
    ![otevření log analytics](media/sql-database-saas-tutorial-log-analytics/log-analytics-open.png)
 
-1. Vyberte pracovní prostor s názvem *wtploganalytics-&lt;USER&gt;*.
+1. Vyberte pracovní prostor hello s názvem *wtploganalytics -&lt;uživatele&gt;*.
 
-1. Vyberte **Přehled** k otevření řešení Log Analytics na portálu Azure Portal.
+1. Vyberte **přehled** tooopen hello analýzy protokolů řešení v hello portálu Azure.
    ![overview-link](media/sql-database-saas-tutorial-log-analytics/click-overview.png)
 
-    **DŮLEŽITÉ**: Může to několik minut trvat, než začne být řešení aktivní. Buďte prosím trpěliví.
+    **Důležité**: může trvat několik minut, než je aktivní hello řešení. Buďte prosím trpěliví.
 
-1. Kliknutím otevřete dlaždici Azure SQL Analytics.
+1. Klikněte na hello Azure SQL Analytics dlaždice tooopen ho.
 
     ![overview](media/sql-database-saas-tutorial-log-analytics/overview.png)
 
     ![analytics](media/sql-database-saas-tutorial-log-analytics/analytics.png)
 
-1. Zobrazení v okně řešení se prochází po straně a má vlastní posuvník v dolní části (pokud je to potřeba, aktualizujte okno).
+1. Hello zobrazení v hello řešení okno posouvá do stran, s vlastní posuvníku v dolní části hello (aktualizace hello okně potřeby).
 
-1. Prozkoumejte různá zobrazení, a to tak, že na ně budete klikat nebo že budete klikat na jednotlivé prostředky. Otevře se průzkumník pro procházení k podrobnostem, kde se můžete pomocí časového posuvníku vlevo nahoře nebo kliknutím na svislý pruh zaměřit na užší časový interval. V tomto zobrazení můžete vybírat jednotlivé databáze nebo fondy pro zaměření na konkrétní prostředky:
+1. Prozkoumejte svislé hello různých zobrazení kliknutím na nich nebo na jednotlivé prostředky tooopen procházení explorer, kde můžete použít hello čas posuvníku v hello top doleva nebo klikněte na panel toofocus v na užší časovém intervalu. V tomto zobrazení si můžete vybrat jednotlivé databáze nebo fondy toofocus na konkrétní prostředky:
 
     ![graf](media/sql-database-saas-tutorial-log-analytics/chart.png)
 
-1. Pokud budete zpět v okně řešení a přejdete zcela doprava, najdete některé uložené dotazy, které můžete kliknutím otevřít a prozkoumat. Můžete je zkoušet měnit a můžete si uložit některé zajímavé dotazy, které vytvoříte, a později je znovu otevřít a používat s jinými prostředky.
+1. Zpět v okně řešení hello Pokud se posunete toohello nejvíce vpravo uvidíte některé uložené dotazy, můžete kliknutím na tooopen a prozkoumat. Můžete je zkoušet měnit a můžete si uložit některé zajímavé dotazy, které vytvoříte, a později je znovu otevřít a používat s jinými prostředky.
 
-1. Až se vrátíte do okna pracovního prostoru Log Analytics, vyberte Portál OMS a otevřete řešení tady.
+1. Zpět v okně pracovní prostor analýzy protokolů hello vyberte portálu OMS tooopen hello řešení existuje.
 
     ![oms](media/sql-database-saas-tutorial-log-analytics/oms.png)
 
-1. Na portálu OMS můžete konfigurovat výstrahy. Klikněte na část výstrahy v zobrazení DTU databáze.
+1. Na portálu OMS hello můžete nakonfigurovat výstrahy. Klikněte na hello výstrahy část hello databáze DTU zobrazení.
 
-1. V zobrazení prohledávání protokolu uvidíte sloupcový graf představované metriky.
+1. V hello protokol hledání se zobrazí zobrazení, které se vám zobrazí pruhový graf reprezentované metrik hello.
 
     ![prohledávání protokolů](media/sql-database-saas-tutorial-log-analytics/log-search.png)
 
-1. Pokud kliknete na výstrahu na panelu nástrojů, zobrazí se konfigurace výstrahy, kterou můžete změnit.
+1. Pokud kliknete na výstrahu v panelu nástrojů hello bude možné toosee hello výstrah Konfigurace a můžete ho změnit.
 
     ![přidání pravidla výstrahy](media/sql-database-saas-tutorial-log-analytics/add-alert.png)
 
-Monitorování a upozorňování v Log Analytics a OMS je založené na dotazech na data v pracovním prostoru, na rozdíl od výstrah v oknech jednotlivých prostředků, které jsou specifické podle prostředků. Proto můžete definovat výstrahu, která dohlíží na všechny databáze místo definování samostatné výstrahy pro každou databázi. Nebo můžete zapsat výstrahu, která používá složený dotaz přes více typů prostředků. Dotazy jsou omezené jenom daty dostupnými v pracovním prostoru.
+Hello monitorování a generování výstrah v analýzy protokolů a OMS je založená na dotazech nad daty hello v hello prostoru, na rozdíl od hello výstrahy v okně každý prostředek, který je konkrétní prostředky. Proto můžete definovat výstrahu, která dohlíží na všechny databáze místo definování samostatné výstrahy pro každou databázi. Nebo můžete zapsat výstrahu, která používá složený dotaz přes více typů prostředků. Dotazy jsou omezena pouze hello data k dispozici v pracovním prostoru hello.
 
-Log Analytics pro SQL Database se účtuje podle objemu dat v pracovním prostoru. V tomto kurzu jste vytvořili bezplatný pracovní prostor omezený na 500 MB na den. Po dosažení tohoto limitu se data přestanou přidávat do pracovního prostoru.
+Analýzy protokolů pro databáze SQL je účtovat na základě objemu dat hello v prostoru hello. V tomto kurzu jste vytvořili volného prostoru, což je omezená too500MB za den. Po dosažení tohoto limitu data je již přidána toohello prostoru.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -126,12 +126,12 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Instalace a konfigurace Log Analytics (OMS)
-> * Monitorování fondů a databází pomocí Log Analytics
+> * Pomocí analýzy protokolů toomonitor fondy a databáze
 
 [Kurz Analýza tenanta](sql-database-saas-tutorial-tenant-analytics.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Další kurzy, které po počátečním nasazení aplikace Wingtip SaaS sestavení](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* [Další kurzy, které stavějí hello počáteční nasazení Wingtip SaaS aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
 * [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

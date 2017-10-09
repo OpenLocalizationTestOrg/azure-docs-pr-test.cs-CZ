@@ -1,53 +1,53 @@
 # <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Škálování uzlů agentů v clusteru Container Service
-Po [nasazení clusteru Azure Container Service](../articles/container-service/dcos-swarm/container-service-deployment.md) možná budete potřebovat změnit počet uzlů agentů. Například můžete potřebovat přidat více agentů, abyste mohli spouštět více instancí nebo aplikací typu kontejner. 
+Po [nasazení clusteru Azure Container Service](../articles/container-service/dcos-swarm/container-service-deployment.md), může být nutné toochange hello počet uzlů agenta. Například můžete potřebovat přidat více agentů, abyste mohli spouštět více instancí nebo aplikací typu kontejner. 
 
-Počet uzlů agentů v clusteru DC/OS, Docker Swarm nebo Kubernetes můžete změnit na webu Azure Portal nebo pomocí Azure CLI 2.0. 
+Můžete změnit hello počet agenta uzlů v clusteru DC/OS, Docker Swarm nebo Kubernetes pomocí hello portál Azure nebo hello 2.0 rozhraní příkazového řádku Azure. 
 
-## <a name="scale-with-the-azure-portal"></a>Škálování pomocí webu Azure Portal
+## <a name="scale-with-hello-azure-portal"></a>Škálování se hello portálu Azure
 
-1. Na webu [Azure Portal](https://portal.azure.com) přejděte na **Služby kontejneru** a klikněte na službu kontejneru, kterou chcete upravit.
-2. V okně **Služba kontejneru** klikněte na **Agenti**.
-3. Do pole **Počet virtuálních počítačů** zadejte požadovaný počet uzlů agentů.
+1. V hello [portál Azure](https://portal.azure.com), vyhledejte **služby kontejneru**a potom klikněte na službu kontejneru hello, které chcete toomodify.
+2. V hello **Container service** okně klikněte na tlačítko **agenti**.
+3. V **počet virtuálních počítačů**, zadejte hello požadovaného počtu uzlů agenty.
 
-    ![Škálování fondu na portálu](./media/container-service-scale/container-service-scale-portal.png)
+    ![Škálování fondu hello portálu](./media/container-service-scale/container-service-scale-portal.png)
 
-4. Konfiguraci uložíte kliknutím na **Uložit**.
+4. toosave hello konfiguraci, klikněte na tlačítko **Uložit**.
 
-## <a name="scale-with-the-azure-cli-20"></a>Škálování pomocí Azure CLI 2.0
+## <a name="scale-with-hello-azure-cli-20"></a>Škálování se hello 2.0 rozhraní příkazového řádku Azure
 
-Ujistěte se, že jste [nainstalovali](/cli/azure/install-az-cli2) nejnovější verzi Azure CLI 2.0 a jste přihlášení k účtu Azure (`az login`).
+Ujistěte se, že jste [nainstalován](/cli/azure/install-az-cli2) hello nejnovější Azure CLI 2.0 a přihlášení tooan účet azure (`az login`).
 
-### <a name="see-the-current-agent-count"></a>Zobrazení aktuálního počtu agentů
-Pokud chcete zobrazit aktuální počet agentů v clusteru, spusťte příkaz `az acs show`. Zobrazí se konfigurace clusteru. Například následující příkaz zobrazí konfiguraci služby kontejneru `containerservice-myACSName` ve skupině prostředků `myResourceGroup`:
+### <a name="see-hello-current-agent-count"></a>V tématu hello aktuální počet agentů
+toosee hello počet agentů aktuálně hello clusteru, spusťte hello `az acs show` příkaz. Ukazuje to hello konfigurace clusteru. Například hello následující příkaz ukazuje hello konfigurace hello kontejneru služby s názvem `containerservice-myACSName` ve skupině prostředků hello `myResourceGroup`:
 
 ```azurecli
 az acs show -g myResourceGroup -n containerservice-myACSName
 ```
 
-Příkaz vrátí počet agentů v hodnotě `Count` v části `AgentPoolProfiles`.
+příkaz Hello vrátí hello počet agentů v hello `Count` hodnoty v části `AgentPoolProfiles`.
 
-### <a name="use-the-az-acs-scale-command"></a>Použití příkazu az acs scale
-Pokud chcete změnit počet uzlů agentů, spusťte příkaz `az acs scale` a zadejte **skupinu prostředků**, **název služby kontejneru** a požadovaný **nový počet agentů**. Použitím nižšího nebo vyššího čísla můžete vertikálně snížit nebo navýšit kapacitu.
+### <a name="use-hello-az-acs-scale-command"></a>Použití hello az příkaz škálování služby acs
+toochange hello počet uzlů agenta, spusťte hello `az acs scale` příkazu a dodávky hello **skupiny prostředků**, **název kontejneru služby**a hello potřeby **nový počet agentů**. Použitím nižšího nebo vyššího čísla můžete vertikálně snížit nebo navýšit kapacitu.
 
-Pokud například chcete změnit počet agentů v předchozím clusteru na 10, zadejte následující příkaz:
+Například toochange hello počet agentů v hello předchozí too10 clusteru, zadejte následující příkaz hello:
 
 ```azurecli
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Azure CLI 2.0 vrátí řetězec JSON představující novou konfiguraci služby kontejneru, včetně nového počtu agentů.
+Hello Azure CLI 2.0 vrátí JSON řetězec představující hello novou konfiguraci kontejneru služby hello, včetně počtu nových agenta hello.
 
 Další možnosti příkazu zobrazíte spuštěním příkazu `az acs scale --help`.
 
 ## <a name="scaling-considerations"></a>Důležité informace o škálování
 
-* Počet uzlů agentů musí být mezi 1 a 100 včetně. 
+* Hello počet uzlů agent musí být mezi 1 a 100, včetně. 
 
-* Vaše kvóta pro jádra může omezovat počet uzlů agentů v clusteru.
+* Vaší kvóty jader můžete omezit počet hello agenta uzlů v clusteru.
 
-* Operace škálování uzlů agentů se používají na škálovací sadu virtuálních počítačů Azure, která obsahuje fond agentů. V clusteru DC/OS se operacemi ukázanými v tomto článku škálují pouze uzly agentů v privátním fondu.
+* Operace škálování uzlu agenta jsou sadě škálování virtuálního počítače Azure použité tooan obsahující fond agenta hello. V clusteru DC/OS jsou pouze agent uzlů ve fondu privátní hello škálovat operacemi hello uvedené v tomto článku.
 
-* V závislosti na orchestrátoru, který v clusteru nasadíte, můžete samostatně škálovat počet instancí kontejneru spuštěného v clusteru. Například v clusteru DC/OS můžete změnit počet instancí aplikace typu kontejner pomocí [uživatelského rozhraní Marathon](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md).
+* V závislosti na hello orchestrator, které můžete nasadit v clusteru můžete nezávisle škálovat hello počet instancí kontejneru běžící v clusteru s hello. Například v clusteru DC/OS, použijte hello [uživatelského rozhraní Marathon](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) toochange hello počet instancí kontejneru aplikace.
 
 * Automatické škálování uzlů agentů v clusteru Container Service aktuálně není podporováno.
 

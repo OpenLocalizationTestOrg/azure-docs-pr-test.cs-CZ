@@ -1,0 +1,1 @@
+Toto téma se používá jako jeho výchozí prostředky hello bodu vytvořené v [vytvořit svoji první funkci z portálu Azure hello](../articles/azure-functions/functions-create-first-azure-function.md). Pokud jste tak již neučinili, dokončete prosím tyto kroky nyní toocreate funkce aplikace.

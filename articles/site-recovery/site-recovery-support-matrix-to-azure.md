@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery matici podpory pro replikaci do Azure | Microsoft Docs
-description: "Shrnuje podporované operační systémy a součásti služby Azure Site Recovery"
+title: matici podpory aaaAzure Site Recovery pro replikaci tooAzure | Microsoft Docs
+description: "Shrnuje hello podporované operační systémy a součásti služby Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: Rajani-Janaki-Ram
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajanaki
-ms.openlocfilehash: a2ccc3d43a56a569897e1efe24f576eb92610ec3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: eae1db2ff1392d272f6b2eb0e3410da19d09da7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery matici podpory pro replikaci z místního do Azure
+# <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-tooazure"></a>Azure Site Recovery matici podpory pro replikaci z místní tooAzure
 
 
-Tento článek shrnuje podporované konfigurace a součásti služby Azure Site Recovery při replikaci a obnovení do Azure. Další informace o požadavcích na Azure Site Recovery najdete v tématu [požadavky](site-recovery-prereq.md).
+Tento článek shrnuje podporované konfigurace a součásti služby Azure Site Recovery při replikaci a obnovení tooAzure. Další informace o požadavcích na Azure Site Recovery najdete v tématu hello [požadavky](site-recovery-prereq.md).
 
 
 ## <a name="support-for-deployment-options"></a>Podporu pro možnosti nasazení
 
 **Nasazení** | **VMware nebo fyzický server** | **Technologie Hyper-V (s/bez nástroje Virtual Machine Manager)** |
 --- | --- | ---
-**Azure Portal** | Místní virtuální počítače VMware do úložiště Azure s Azure Resource Manager nebo classic úložiště a sítě.<br/><br/> Převzetí služeb při selhání využívající Resource Manager nebo classic virtuálních počítačů. | Místní virtuální počítače Hyper-V do úložiště Azure, s Resource Manager nebo classic úložiště a sítě.<br/><br/> Převzetí služeb při selhání využívající Resource Manager nebo classic virtuálních počítačů.
+**Azure Portal** | Místní úložiště tooAzure virtuální počítače VMware, s Azure Resource Manager nebo classic úložiště a sítě.<br/><br/> Převzetí služeb při selhání tooResource založené na správci nebo classic virtuálních počítačů. | Místní úložiště tooAzure virtuálních počítačů Hyper-V, s Resource Manager nebo classic úložiště a sítě.<br/><br/> Převzetí služeb při selhání tooResource založené na správci nebo classic virtuálních počítačů.
 **Portál Classic** | Pouze v režimu údržby. Nové trezory nelze vytvořit. | Pouze v režimu údržby.
 **PowerShell** | Není aktuálně podporováno. | Podporuje se
 
@@ -56,53 +56,53 @@ Tento článek shrnuje podporované konfigurace a součásti služby Azure Site 
 
 
   >[!Note]
-  >Technologie Hyper-V lokalitě, která zkombinuje hostitele se systémem Windows Server 2016 a 2012 R2 není aktuálně podporován. Obnovení do alternativního umístění pro virtuální počítače na hostiteli systému Windows Server 2016 se aktuálně nepodporuje.
+  >Technologie Hyper-V lokalitě, která zkombinuje hostitele se systémem Windows Server 2016 a 2012 R2 není aktuálně podporován. Tooan alternativní umístění pro obnovení pro virtuální počítače na hostiteli systému Windows Server 2016 se aktuálně nepodporuje.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Podpora pro verze operačního systému replikovaného počítače
 
-Virtuální počítače, které jsou chráněné musí splňovat [požadavky pro Azure](#failed-over-azure-vm-requirements) při replikaci do Azure.
-Následující tabulka shrnuje podporu pro replikované operačního systému v různých scénářích nasazení při použití Azure Site Recovery. Tato podpora se vztahuje pro jakoukoli úlohu spuštěnou na uvedených operačního systému.
+Virtuální počítače, které jsou chráněné musí splňovat [požadavky pro Azure](#failed-over-azure-vm-requirements) při replikaci tooAzure.
+Hello následující tabulka shrnuje podporu pro replikované operačního systému v různých scénářích nasazení při použití Azure Site Recovery. Tato podpora se vztahuje pro jakoukoli úlohu spuštěnou na hello uvedených operačního systému.
 
  **VMware nebo fyzický server** | **Technologie Hyper-V (s/bez VMM)** |
 --- | --- |
-64bitová verze systému Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s v minimálně SP1<br/>*Windows Server 2016* – nepodporuje aktuálně na virtuální počítače VMware a fyzické servery. <br/><br/> Red Hat Enterprise Linux: 5.2 k 5,11, 6.1 k 6.8 7.0 na 7.3 <br/><br/>Centů OS: 5.2 k 5,11, 6.1 k 6.8 7.0 na 7.3 <br/><br/>Ubuntu 14.04 LTS server[ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Oracle Enterprise Linux 6.4, 6.5 systémem Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>(Upgrade replikaci počítačů z SLES 11 SP3 na SLES 11 SP4 není podporována. V případě upgradu replikovaného počítače z SLES 11SP3 pro SLES 11 SP4, musíte zakázat replikaci a chránit počítač znovu po upgradu.) | Všechny hostovaný operační systém [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868.aspx)
+64bitová verze systému Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s v minimálně SP1<br/>*Windows Server 2016* – nepodporuje aktuálně na virtuální počítače VMware a fyzické servery. <br/><br/> Red Hat Enterprise Linux: 5.2 too5.11, 6.1 too6.8, 7.0 too7.3 <br/><br/>Centů operačního systému: 5.2 too5.11, 6.1 too6.8, 7.0 too7.3 <br/><br/>Ubuntu 14.04 LTS server[ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Oracle Enterprise Linux 6.4, 6.5 systémem hello Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>(Upgrade replikaci počítačů z SLES 11 SP3 tooSLES 11 SP4 není podporována. Pokud byl upgradován replikovaného počítače z tooSLES 11SP3 SLES 11 SP4, budete potřebovat toodisable replikace a chránit počítač hello znovu po upgradu hello.) | Všechny hostovaný operační systém [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868.aspx)
 
 
 >[!IMPORTANT]
->(Platí pro VMware nebo fyzické servery replikující se do Azure)
+>(Platí tooVMware/fyzické servery replikace tooAzure)
 >
-> Na Red Hat Enterprise Linux Server 7 + a CentOS 7 + servery je podporována verze 3.10.0-514 jádra od 9.8 verzi služby Azure Site Recovery Mobility.<br/><br/>
-> Zákazníci na jádru 3.10.0-514 s verzí nižší než verze 9.8 služba Mobility je potřeba zakázat replikaci, aktualizujte verzi 9.8 verze služby Mobility a pak povolení replikace znovu.
+> Na Red Hat Enterprise Linux Server 7 + a CentOS 7 + servery je podporována verze 3.10.0-514 jádra od verze 9.8 hello služby Azure Site Recovery Mobility.<br/><br/>
+> Zákazníci na hello 3.10.0-514 jádra s verzí hello služba Mobility je nižší než verze 9.8 jsou požadované toodisable replikace, aktualizace hello verzi hello Mobility service tooversion 9.8 a pak znovu povolení replikace.
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Podporované verze Ubuntu jádra pro VMware nebo fyzické servery
 
 **Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-14.04 LTS | 9.9 | 3.13.0-24-Generic k 3.13.0-117-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-75-generic |
-14.04 LTS | 9.10 | 3.13.0-24-Generic k 3.13.0-121-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-81-generic |
-16.04 LTS | 9.10 | 4.4.0-21-Generic k 4.4.0-81-generic,<br/>4.8.0-34-Generic k 4.8.0-56-generic,<br/>4.10.0-14-Generic k 4.10.0-24-generic |
+14.04 LTS | 9.9 | 3.13.0-24-Generic too3.13.0-117 – obecné<br/>3.16.0-25-Generic too3.16.0-77obecné<br/>3.19.0-18-Generic too3.19.0-80 – obecné<br/>4.2.0-18-Generic too4.2.0-42 – obecné<br/>4.4.0-21-Generic too4.4.0-75 – obecné |
+14.04 LTS | 9.10 | 3.13.0-24-Generic too3.13.0-121 – obecné<br/>3.16.0-25-Generic too3.16.0-77obecné<br/>3.19.0-18-Generic too3.19.0-80 – obecné<br/>4.2.0-18-Generic too4.2.0-42 – obecné<br/>4.4.0-21-Generic too4.4.0-81 – obecné |
+16.04 LTS | 9.10 | 4.4.0-21-Generic too4.4.0-81 – obecné<br/>4.8.0-34-Generic too4.8.0-56 – obecné<br/>4.10.0-14-Generic too4.10.0 – 24obecné |
 
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Podporované souborové systémy a konfigurace úložiště hostovaný v systému Linux (VMware nebo fyzické servery)
 
-Následující soubor systémy a úložiště konfigurace softwaru je podporována v systému Linux servery se systémem VMware nebo fyzických serverů:
+Následující Hello souborové systémy a úložiště konfigurace softwaru je podporována v systému Linux servery se systémem VMware nebo fyzických serverů:
 * Systémy souborů: ext3, ext4, ReiserFS (Suse Linux Enterprise Server pouze), XFS
 * Správce svazků: LVM2
 * Software s funkcí Multipath: Mapovač zařízení
 
 Zařízení úložiště Paravirtualized (exportovat paravirtualized ovladače zařízení) nejsou podporovány.<br/>
 Blokovat více fronty vstupně-výstupní operace zařízení nejsou podporovány.<br/>
-Fyzické servery s řadič úložiště HP CCISS nejsou podporovány.<br/>
+Fyzické servery s řadič úložiště HP CCISS hello nejsou podporovány.<br/>
 
 >[!Note]
-> Na servery se systémem Linux následující adresáře (Pokud nastavený jako samostatné oddíly/souboru systems) musí být na stejném disku (disk operačního systému) na zdrojovém serveru: / (kořenová), / Boot, USR, /usr/local, /var, etc<br/><br/>
-> Funkce XFSv5 na XFS systémy, jako je například kontrolního součtu metadata jsou podporované od 9.10 verzi služby Mobility. Pokud používáte funkce XFSv5, ověřte, že používáte verzi služby Mobility 9.10 nebo novější. Můžete použít nástroj xfs_info ke kontrole tzv XFS pro oddíl. Pokud ftype nastavena na hodnotu 1, se právě používají XFSv5 funkce.
+> Na hello servery Linux následující adresáře (Pokud nastavený jako samostatné oddíly/souboru systems) musí být na hello stejný disk (disk hello operačního systému) na zdrojovém serveru hello: / (kořenová), / Boot, USR, /usr/local, /var, etc<br/><br/>
+> Funkce XFSv5 na XFS systémy, jako je například metadata kontrolního součtu podporované od verze 9.10 hello služba Mobility. Pokud používáte funkce XFSv5, ověřte, že používáte verzi služby Mobility 9.10 nebo novější. Pro oddíl hello můžete hello xfs_info nástroj toocheck hello XFS tzv. Pokud je ftype nastavená too1, potom funkce XFSv5 se používá.
 >
 
 
 ## <a name="support-for-network-configuration"></a>Podpora pro konfiguraci sítě
-Následující tabulka představuje souhrn podporu konfigurace sítě v různých scénářích nasazení, které používají Azure Site Recovery k replikaci do Azure.
+Následující tabulky Hello shrnují podporu konfigurace sítě v různých scénářích nasazení, které používají tooAzure tooreplicate Azure Site Recovery.
 
 ### <a name="host-network-configuration"></a>Konfigurace sítě hostitele
 
@@ -121,7 +121,7 @@ Seskupování síťových adaptérů | Ne | Ne
 IPv4 | Ano | Ano
 IPv6 | Ne | Ne
 Statická IP adresa (Windows) | Ano | Ano
-Statická IP adresa (Linux) | Ano <br/><br/>Virtuální počítače je nakonfigurován pro používání protokolu DHCP na navrácení služeb po obnovení  | Ne
+Statická IP adresa (Linux) | Ano <br/><br/>Virtuální počítače je nakonfigurované toouse DHCP na navrácení služeb po obnovení  | Ne
 Více síťovými Kartami | Ano | Ano
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>Konfigurace sítě virtuálních počítačů Azure při selhání
@@ -139,7 +139,7 @@ Zachovat zdrojové IP adresy | Ano | Ano
 
 
 ## <a name="support-for-storage"></a>Podpora pro úložiště
-Následující tabulka představuje souhrn podporu konfigurace úložiště v různých scénářích nasazení, které používají Azure Site Recovery k replikaci do Azure.
+Následující tabulky Hello shrnují podporu konfigurace úložiště v různých scénářích nasazení, které používají tooAzure tooreplicate Azure Site Recovery.
 
 ### <a name="host-storage-configuration"></a>Konfigurace úložiště hostitele
 
@@ -189,26 +189,26 @@ Import a export služby | Ne | Ne
 --- | --- | --- 
 Skupiny dostupnosti | Ano | Ano
 ROZBOČOVAČE | Ano | Ano  
-Managed Disks | Ano | Ano<br/><br/>Navrácení služeb po obnovení místně z virtuálního počítače Azure s spravované disky není aktuálně podporován.
+Managed Disks | Ano | Ano<br/><br/>Navrácení služeb po obnovení tooon místní z virtuálního počítače Azure s spravované disky není aktuálně podporován.
 
 ## <a name="failed-over-azure-vm-requirements"></a>Požadavky na virtuální počítač Azure při selhání
 
-Site Recovery můžete nasadit za účelem replikace virtuálních počítačů a fyzických serverů s jakýmkoli operačním systémem podporovaným v Azure. To zahrnuje většinu verzí systému Windows a Linux. Místní, že virtuální počítače, které chcete replikovat, musí odpovídat následující požadavky pro Azure při replikaci do Azure.
+Můžete nasadit Site Recovery tooreplicate virtuální počítače a fyzické servery se systémem žádný operační systém nepodporuje v Azure. To zahrnuje většinu verzí systému Windows a Linux. Místní virtuální počítače, které budete chtít tooreplicate musí odpovídat hello při replikaci tooAzure následující požadavky pro Azure.
 
 **Entity** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-**Hostovaný operační systém** | Technologie Hyper-V na Azure replikaci: Site Recovery podporuje všechny operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx). <br/><br/> Pro fyzický server replikace a VMware: Zkontrolujte Windows a Linux [požadavky](site-recovery-vmware-to-azure-classic.md) | Kontrola předpokladů se nezdaří, pokud není podporován.
+**Hostovaný operační systém** | Replikace technologie Hyper-V tooAzure: Site Recovery podporuje všechny operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx). <br/><br/> Pro fyzický server replikace a VMware: Zkontrolujte hello Windows a Linux [požadavky](site-recovery-vmware-to-azure-classic.md) | Kontrola předpokladů se nezdaří, pokud není podporován.
 **Architektura operačního systému hosta** | 64bitová verze | Kontrola předpokladů se nezdaří, pokud není podporován
-**Velikost disku operačního systému** | Pokud replikujete až 2048 GB **virtuální počítače VMware nebo fyzických serverů do Azure**.<br/><br/>Až 2048 GB pro **technologie Hyper-V generace 1** virtuálních počítačů.<br/><br/>Až 300 GB pro **virtuálních počítačů technologie Hyper-V generace 2**.  | Kontrola předpokladů se nezdaří, pokud není podporován
+**Velikost disku operačního systému** | Pokud replikujete až too2048 GB **virtuální počítače VMware nebo fyzických serverů tooAzure**.<br/><br/>Až 2048 GB pro **technologie Hyper-V generace 1** virtuálních počítačů.<br/><br/>Až 300 GB pro **virtuálních počítačů technologie Hyper-V generace 2**.  | Kontrola předpokladů se nezdaří, pokud není podporován
 **Počet disků operačního systému** | 1 | Kontrola předpokladů se nezdaří, pokud není podporován.
-**Počet datových disků** | Pokud 64 nebo méně replikujete **virtuálních počítačů VMware do Azure**; 16 nebo méně Pokud replikujete **virtuálních počítačů Hyper-V do Azure** | Kontrola předpokladů se nezdaří, pokud není podporován
-**Velikost datového disku virtuálního pevného disku** | Až 4095 GB | Kontrola předpokladů se nezdaří, pokud není podporován
+**Počet datových disků** | Pokud 64 nebo méně replikujete **virtuální počítače VMware tooAzure**; 16 nebo méně Pokud replikujete **tooAzure virtuálních počítačů Hyper-V** | Kontrola předpokladů se nezdaří, pokud není podporován
+**Velikost datového disku virtuálního pevného disku** | Až too4095 GB | Kontrola předpokladů se nezdaří, pokud není podporován
 **Síťové adaptéry** | Několik adaptérů jsou podporovány. |
 **Sdílený virtuální pevný disk** | Nepodporuje se | Kontrola předpokladů se nezdaří, pokud není podporován
 **FC disku** | Nepodporuje se | Kontrola předpokladů se nezdaří, pokud není podporován
-**Formát pevného disku** | VIRTUÁLNÍ PEVNÝ DISK <br/><br/> VHDX | I když VHDX není aktuálně podporovaná v Azure, Site Recovery automaticky převede VHDX virtuálního pevného disku při selhání do Azure. Pokud selžou zpět na místní virtuální počítače nadále používat formát VHDX.
+**Formát pevného disku** | VIRTUÁLNÍ PEVNÝ DISK <br/><br/> VHDX | I když VHDX není aktuálně podporovaná v Azure, Site Recovery při selhání tooAzure automaticky převádí VHDX tooVHD. Pokud jste navrácení služeb po obnovení tooon místní hello virtuální počítače zůstávají formátu VHDX toouse hello.
 **Nástroj BitLocker** | Nepodporuje se | Než začnete chránit virtuální počítač, musí se zakázat nástroj BitLocker.
-**Název virtuálního počítače.** | 1 až 63 znaků. Omezen na písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
+**Název virtuálního počítače.** | 1 až 63 znaků. Tooletters s omezeným přístupem, číslice a pomlčky. název virtuálního počítače Hello musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu hello v hello vlastnosti virtuálního počítače ve službě Site Recovery.
 **Typ virtuálního počítače** | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 se typ disku operačního systému basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku jsou podporovány.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|
 
 ## <a name="support-for-recovery-services-vault-actions"></a>Podpora pro akce trezoru služeb zotavení
@@ -224,8 +224,8 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 **Název** | **Popis** | **Nejnovější verzi** | **Podrobnosti**
 --- | --- | --- | --- | ---
 **Zprostředkovatele Azure Site Recovery** | Koordinuje komunikaci mezi místními servery a Azure <br/><br/> Nainstalovat na místní servery nástroje Virtual Machine Manager nebo na servery Hyper-V, pokud neexistuje žádný server nástroje Virtual Machine Manager | 5.1.19 ([dostupná z portálu](http://aka.ms/downloaddra)) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
-**Azure Site Recovery sjednocený instalační program (VMware do Azure)** | Koordinuje komunikaci mezi místními servery VMware a Azure <br/><br/> Nainstalovat na místní servery VMware | 9.3.4246.1 (k dispozici z portálu) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
-**Služba mobility** | Koordinuje replikaci mezi místními VMware servery/fyzické servery a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzických serverů, které chcete replikovat  | Není k dispozici (je k dispozici z portálu) | Není k dispozici
+**Azure Unified instalace nástroje Site Recovery (VMware tooAzure)** | Koordinuje komunikaci mezi místními servery VMware a Azure <br/><br/> Nainstalovat na místní servery VMware | 9.3.4246.1 (k dispozici z portálu) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
+**Služba mobility** | Koordinuje replikaci mezi místními VMware servery/fyzické servery a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzických serverů chcete tooreplicate  | Není k dispozici (je k dispozici z portálu) | Není k dispozici
 **Agenta Microsoft Azure Recovery Services (MARS)** | Koordinuje replikaci mezi virtuální počítače Hyper-V a Azure<br/><br/> Nainstalována na místní servery Hyper-V (s nebo bez serveru Virtual Machine Manager) | Nejnovější verze agenta ([dostupná z portálu](http://aka.ms/latestmarsagent)) |
 
 

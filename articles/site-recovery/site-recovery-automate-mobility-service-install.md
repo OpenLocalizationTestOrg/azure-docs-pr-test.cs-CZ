@@ -1,6 +1,6 @@
 ---
-title: "Nasazení služby Mobility obnovení lokality pomocí Azure Automation DSC. | Microsoft Docs"
-description: "Popisuje, jak automaticky nasadit služby Azure Site Recovery Mobility a Azure agent pro virtuální počítač VMware a fyzické serveru replikaci do Azure pomocí Azure Automation DSC."
+title: "aaaDeploy hello služba Mobility obnovení lokality pomocí Azure Automation DSC. | Microsoft Docs"
+description: "Popisuje, jak nasazovat toouse Azure Automation DSC tooautomatically hello Azure Site Recovery Mobility service a Azure agenta pro virtuální počítač VMware a tooAzure replikace fyzického serveru"
 services: site-recovery
 documentationcenter: 
 author: krnese
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: krnese
-ms.openlocfilehash: bcc5f11afbecac8fe63935f3401dd3e2d767e8aa
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 52cdd13ceb61718a21137180c55db86919af5929
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Nasazení služby Mobility pomocí Azure Automation DSC pro replikaci virtuálního počítače
+# <a name="deploy-hello-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Nasazení služby Mobility hello s Azure Automation DSC pro replikaci virtuálního počítače
 V Operations Management Suite jsme poskytují komplexní zálohování a řešení pro zotavení po havárii, které můžete použít jako součást plánu pro kontinuitu podnikových.
 
-Spuštění této cesty společně s technologií Hyper-V pomocí repliky technologie Hyper-V. Ale jsme mít rozšířenou o podporu heterogenní instalační program, protože zákazníci mají více hypervisorů a platformy v jejich cloudy.
+Spuštění této cesty společně s technologií Hyper-V pomocí repliky technologie Hyper-V. Ale rozšířené toosupport heterogenní instalace vzhledem k tomu, že zákazníci, mají více hypervisorů a platformy v jejich cloudy.
 
-Pokud používáte úlohy VMware nebo fyzických serverů dnes, server pro správu všech součástí Azure Site Recovery běží v prostředí pro zpracování komunikace a data replikace s Azure, když Azure je cíl.
+Pokud používáte úlohy VMware nebo fyzických serverů dnes, server pro správu se spustí všechny hello součásti Azure Site Recovery ve vaší prostředí toohandle hello komunikace a data replikace s Azure, případě Azure je cíl.
 
-## <a name="deploy-the-site-recovery-mobility-service-by-using-automation-dsc"></a>Nasazení služby Mobility obnovení lokality pomocí Automation DSC
+## <a name="deploy-hello-site-recovery-mobility-service-by-using-automation-dsc"></a>Nasazení služby Site Recovery Mobility hello pomocí Automation DSC
 Začněme tím, provádění rychlé rozpis jaké tento server pro správu.
 
-Server pro správu spouští několik rolí serveru. Jedna z těchto rolí se *konfigurace*, který koordinuje komunikaci a spravuje procesy data replikace a obnovení.
+server pro správu Hello spouští několik rolí serveru. Jedna z těchto rolí se *konfigurace*, který koordinuje komunikaci a spravuje procesy data replikace a obnovení.
 
-Kromě toho *proces* role funguje jako replikační brána. Tato role přijímá data replikace z chráněných zdrojových počítačů, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odešle ji do účtu úložiště Azure. Jednou z funkcí pro roli proces je také nabízená instalace služby Mobility na chráněné počítače a provádět automatického zjišťování virtuálních počítačů VMware.
+Kromě toho hello *proces* role funguje jako replikační brána. Tato role přijímá data replikace z chráněných zdrojových počítačů, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odešle ji tooan účtu úložiště Azure. Jeden z hello funkce pro roli hello procesu se taky toopush instalaci počítače tooprotected služby Mobility hello a provádět automatického zjišťování virtuálních počítačů VMware.
 
-Pokud dojde navrácení služeb po obnovení z Azure, *hlavní cíl* role bude zpracovávat data replikace v rámci této operace.
+Pokud dojde navrácení služeb po obnovení z Azure, hello *hlavní cíl* role, bude zpracovávat data replikace hello jako součást této operace.
 
-Pro chráněné počítače spoléháme na *služba Mobility*. Tato součást je nasazený na každý počítač (virtuálního počítače VMware nebo fyzických serverů), který chcete replikovat do Azure. Se zaznamenává datové zápisy na počítači a předává je na serveru pro správu (proces role).
+Pro počítače chráněné hello spoléháme na hello *služba Mobility*. Tato součást je nasazené tooevery počítače (virtuální počítač VMware nebo fyzických serverů), které chcete tooreplicate tooAzure. Se zaznamenává datové zápisy na počítači hello a předává je na serveru pro správu toohello (proces role).
 
-V případě, že pracujete s kontinuity podnikových procesů, je důležité si uvědomit, úlohy, infrastruktury a související součásti. Potom můžete splňovat požadavky na cíli času obnovení (RTO) a cíl bodu obnovení (RPO). V tomto kontextu služba Mobility je klíčem k zajištění ochrany vašich úloh podle předpokladů.
+V případě, že pracujete s kontinuity podnikových procesů, je důležité toounderstand úlohy, infrastruktury a součásti hello zahrnuta. Potom můžete splňovat požadavky hello cíli času obnovení (RTO) a cíl bodu obnovení (RPO). V tomto kontextu hello služba Mobility je klíče tooensuring která jsou chráněná úlohy, jako byste očekávali.
 
 Jak tedy, optimalizované způsobem, zajistíte, že máte spolehlivé chráněné instalace pomoci z některé součásti služby Operations Management Suite?
 
-Tento článek obsahuje příklad použití Azure Automation požadovaného stavu konfigurace (DSC), společně s Site Recovery, abyste ověřili, že:
+Tento článek obsahuje příklad použití Azure Automation požadovaného stavu konfigurace (DSC), společně s Site Recovery, tooensure který:
 
-* Služba Mobility a agenta virtuálního počítače Azure se nasadí do počítače systému Windows, které chcete chránit.
-* Služba Mobility a agenta virtuálního počítače Azure jsou vždy spuštěny Azure je cílem replikace.
+* Služba Mobility Hello a agenta virtuálního počítače Azure jsou nasazené toohello počítače s Windows, které chcete tooprotect.
+* Služba Mobility Hello a agenta virtuálního počítače Azure jsou vždy spuštěny Azure je cílem replikace hello.
 
 ## <a name="prerequisites"></a>Požadavky
-* Úložiště pro ukládání požadované instalace
-* Úložiště pro ukládání vyžaduje heslo pro registraci se serverem pro správu
+* Instalace vyžaduje hello toostore s úložiště
+* Úložiště toostore hello vyžaduje heslo tooregister se serverem pro správu hello
 
   > [!NOTE]
-  > Jedinečné heslo se vygeneruje pro každý server pro správu. Pokud se chystáte nasadit více serverů pro správu, musíte zajistit, že správné heslo je uloženo v souboru passphrase.txt.
+  > Jedinečné heslo se vygeneruje pro každý server pro správu. Chcete-li toodeploy více serverů pro správu, máte tooensure této hello správné heslo je uloženo v souboru passphrase.txt hello.
   >
   >
-* Windows Management Framework (WMF) 5.0 nainstalovaný na počítačích, které chcete povolit pro ochranu (požadavek pro Automation DSC)
+* Windows Management Framework (WMF) 5.0 nainstalován v počítačích hello chcete tooenable pro ochranu (požadavek pro Automation DSC)
 
   > [!NOTE]
-  > Pokud chcete používat počítače DSC pro systém Windows, které mají nainstalovaný WMF 4.0, najdete v části [pomocí DSC v odpojených prostředích](## Use DSC in disconnected environments).
+  > Pokud chcete počítače toouse DSC pro systém Windows, které mají WMF 4.0 nainstalovat, najdete v tématu hello [použití DSC v odpojených prostředích](## Use DSC in disconnected environments).
   
 
-Služba Mobility lze nainstalovat pomocí příkazového řádku a několika argumenty. Proto je potřeba mít binárních souborů (po jejich extrahování z vašeho nastavení) a ukládat je na místě, kde je můžete obnovit pomocí konfigurace DSC.
+Služba Mobility Hello dají nainstalovat přes hello příkazového řádku a přijímá několik argumentů. To je důvod, proč potřebujete toohave hello binárních souborů (po jejich extrahování z vašeho nastavení) a ukládat je na místě, kde je můžete obnovit pomocí konfigurace DSC.
 
 ## <a name="step-1-extract-binaries"></a>Krok 1: Extrahování binárních souborů
-1. Pokud chcete extrahovat soubory, které potřebujete pro tento instalační program, přejděte na následující adresář na vašem serveru pro správu:
+1. tooextract hello soubory, které potřebujete pro tento instalační program, procházet toohello následující directory na vašem serveru pro správu:
 
     **Recovery\home\svsystems\pushinstallsvc\repository \Microsoft azure lokality**
 
@@ -72,28 +72,28 @@ Služba Mobility lze nainstalovat pomocí příkazového řádku a několika arg
 
     **Microsoft ASR_UA_version_Windows_GA_date_Release.exe**
 
-    Použijte následující příkaz k extrakci instalační program:
+    Použijte následující příkaz tooextract hello instalačního programu hello:
 
     **.\Microsoft-ASR_UA_9.1.0.0_Windows_GA_02May2016_release.exe /q /x:C:\Users\Administrator\Desktop\Mobility_Service\Extract**
-2. Vyberte všechny soubory a odeslat je do složky komprimované (ZIP).
+2. Vyberte všechny soubory a jejich odeslání tooa komprimované složky (ZIP).
 
-Nyní máte binární soubory, které potřebujete k automatizaci instalace služby Mobility pomocí Automation DSC.
+Nyní máte hello binární soubory, je nutné tooautomate hello instalace služby Mobility hello pomocí Automation DSC.
 
 ### <a name="passphrase"></a>Přístupové heslo
-Dále musíte určit, kam chcete umístit tento komprimované složce. Účet úložiště Azure můžete použít, jak je znázorněno novější ukládat heslo, které potřebujete k instalaci. Agent bude potom proveďte registraci se serverem pro správu jako součást procesu.
+Dále musíte toodetermine místo tooplace této komprimované složky. Účet úložiště Azure můžete použít jako uvedené později toostore hello heslo, které potřebujete k instalaci hello. Hello agenta bude potom proveďte registraci se serverem pro správu hello jako součást procesu hello.
 
-Do textového souboru jako passphrase.txt lze uložit heslo, které jste získali při nasazení serveru pro správu.
+Hello heslo, které jste získali při nasazení serveru pro správu hello můžete uložit jako passphrase.txt tooa textového souboru.
 
-Umístěte komprimované složce a heslo v vyhrazené kontejneru v účtu úložiště Azure.
+Umístěte hello komprimované složce a hello heslo v vyhrazené kontejneru v hello účtu úložiště Azure.
 
 ![Umístění složky](./media/site-recovery-automate-mobilitysevice-install/folder-and-passphrase-location.png)
 
-Pokud chcete zachovat tyto soubory ve sdílené složce v síti, můžete tak učinit. Potřebujete zkontrolujte, zda prostředek DSC, který budete používat později přístup a můžete získat nastavení a heslo.
+Pokud dáváte přednost tookeep tyto soubory ve sdílené složce v síti, můžete tak učinit. Stačí tooensure, má přístup hello DSC prostředek, který budete používat později a můžete získat hello nastavení a heslo.
 
-## <a name="step-2-create-the-dsc-configuration"></a>Krok 2: Vytvoření konfigurace DSC
-Instalace závisí na WMF 5.0. Pro počítač úspěšně použít konfiguraci prostřednictvím Automation DSC musí být k dispozici WMF 5.0.
+## <a name="step-2-create-hello-dsc-configuration"></a>Krok 2: Vytvoření konfigurace hello DSC
+Instalační program Hello závisí na WMF 5.0. Pro počítač toosuccessfully hello použít konfiguraci hello prostřednictvím Automation DSC, WMF 5.0 musí toobe přítomen.
 
-Prostředí používá následující ukázková konfigurace DSC:
+prostředí Hello používá následující příklad konfigurace DSC hello:
 
 ```powershell
 configuration ASRMobilityService {
@@ -190,42 +190,42 @@ configuration ASRMobilityService {
     }
 }
 ```
-Konfigurace bude postupujte takto:
+provede konfigurace Hello hello následující:
 
-* Proměnné se v konfiguraci umožňují získat binární soubory pro tuto službu Mobility a agenta virtuálního počítače Azure, kde lze získat heslo a kam se mají ukládat výstup.
-* Konfigurace naimportuje xPSDesiredStateConfiguration DSC prostředků, tak, aby můžete použít `xRemoteFile` ke stažení souborů z úložiště.
-* Konfigurace vytvoří adresář, kam chcete uložit binární soubory.
-* Archiv prostředků bude extrahujte soubory z komprimované složky.
-* Z UNIFIEDAGENT nainstaluje balíček prostředků instalace služby Mobility. Instalační program EXE s konkrétní argumenty. (Proměnné, které vytvořit argumenty, které je nutné změnit tak, aby se zohlednilo vaše prostředí.)
-* Balíček prostředků AzureAgent nainstaluje agenta virtuálního počítače Azure, který se doporučuje pro každý virtuální počítač, který běží v Azure. Agent virtuálního počítače Azure také umožňuje přidat rozšíření do virtuálního počítače po převzetí služeb při selhání.
-* Prostředek služby nebo prostředky zajistí vždy spuštěn související služby Mobility a službami Azure.
+* proměnné Hello bude informovat hello konfigurace, kde tooget hello binární soubory pro služby Mobility hello a hello agenta virtuálního počítače Azure, kde tooget hello přístupové heslo, a kde toostore hello výstup.
+* Hello konfigurace naimportuje hello xPSDesiredStateConfiguration DSC prostředků, tak, aby můžete použít `xRemoteFile` toodownload hello soubory z úložiště hello.
+* Konfigurace Hello vytvoří adresáře, kde chcete toostore hello binární soubory.
+* Hello archivu prostředků bude extrahujte hello soubory z komprimované složky hello.
+* Hello balíček instalace prostředků bude z hello UNIFIEDAGENT instalaci služby Mobility hello. Instalační program EXE s konkrétní argumenty hello. (hello proměnné, které vytvořit hello argumenty potřebovat změnit toobe tooreflect prostředí.)
+* Hello balíček prostředků AzureAgent nainstaluje agenta hello virtuálního počítače Azure, který se doporučuje pro každý virtuální počítač, který běží v Azure. agent virtuálního počítače Azure Hello také je možné tooadd toohello rozšíření virtuálního počítače po převzetí služeb při selhání.
+* Hello prostředek služby nebo prostředky zajišťují, že hello související služby Mobility a hello Azure vždy běží služby.
 
-Uložte konfiguraci jako **ASRMobilityService**.
+Uložte konfiguraci hello jako **ASRMobilityService**.
 
 > [!NOTE]
-> Nezapomeňte nahradit CSIP ve vaší konfiguraci tak, aby odrážela samotnou správu serveru, tak, aby agent správně připojí a bude používat správné heslo.
+> Nezapomeňte tooreplace hello CSIP ve vaší konfiguraci tooreflect hello samotnou správu serveru, tak, aby hello agenta správně připojí a bude používat hello správné heslo.
 >
 >
 
-## <a name="step-3-upload-to-automation-dsc"></a>Krok 3: Nahrát do Automation DSC
-Vzhledem k tomu, že konfigurace DSC, které jste provedli importuje modul požadovaný prostředek DSC (xPSDesiredStateConfiguration), je třeba importovat Tenhle modul ve službě Automation před nahráním konfigurace DSC.
+## <a name="step-3-upload-tooautomation-dsc"></a>Krok 3: Nahrát na server tooAutomation DSC
+Protože hello DSC konfigurace, které jste provedli importuje modul požadovaný prostředek DSC (xPSDesiredStateConfiguration), je třeba tooimport Tenhle modul ve službě Automation před nahráním hello DSC konfigurace.
 
-Přihlaste se k účtu Automation, přejděte na **prostředky** > **moduly**a klikněte na tlačítko **procházet galerii**.
+Přihlášení tooyour účet Automation, procházet příliš**prostředky** > **moduly**a klikněte na tlačítko **procházet galerii**.
 
-Zde můžete vyhledat modul a naimportujte ho do vašeho účtu.
+Zde můžete vyhledat hello modulu a importujte ho tooyour účtu.
 
 ![Import modulu](./media/site-recovery-automate-mobilitysevice-install/search-and-import-module.png)
 
-Když toto dokončíte, přejděte k počítači, kde máte nainstalované moduly Azure Resource Manager a přejít k importu nově vytvořený konfigurace DSC.
+Když toto dokončíte, přejděte tooyour počítače, ve které máte nainstalované moduly Azure Resource Manageru hello a pokračovat konfigurace DSC tooimport hello nově vytvořený.
 
 ### <a name="import-cmdlets"></a>Rutiny importu
-V prostředí PowerShell Přihlaste se k předplatnému Azure. Upravte rutiny zohlednilo vaše prostředí a zaznamenat informace o účtu Automation v proměnné:
+V prostředí PowerShell Přihlaste se tooyour předplatného Azure. Upravte tooreflect hello rutin prostředí a zaznamenat informace o účtu Automation v proměnné:
 
 ```powershell
 $AAAccount = Get-AzureRmAutomationAccount -ResourceGroupName 'KNOMS' -Name 'KNOMSAA'
 ```
 
-Odešlete konfigurace do Automation DSC pomocí následující rutiny:
+Odešlete hello konfigurace tooAutomation DSC pomocí hello následující rutiny:
 
 ```powershell
 $ImportArgs = @{
@@ -236,44 +236,44 @@ $ImportArgs = @{
 $AAAccount | Import-AzureRmAutomationDscConfiguration @ImportArgs
 ```
 
-### <a name="compile-the-configuration-in-automation-dsc"></a>Zkompilování konfigurace v Automation DSC
-Dále musíte o zkompilování konfigurace v Automation DSC, takže můžete začít registrovat uzly k němu. Můžete toho dosáhnout spuštěním následující rutiny:
+### <a name="compile-hello-configuration-in-automation-dsc"></a>Zkompilování konfigurace hello v Automation DSC
+Dále musíte toocompile hello konfigurace v Automation DSC, tak, aby bylo možné spustit tooit tooregister uzlů. Můžete toho dosáhnout spuštěním následující rutiny hello:
 
 ```powershell
 $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobilityService
 ```
 
-Může to trvat několik minut, protože v podstatě nasazujete konfigurace hostované službě vyžádání DSC.
+Může to trvat několik minut, protože v podstatě nasazujete hello konfigurace toohello hostované DSC vyžádání služby.
 
-Po konfiguraci zkompilujete, můžete načíst informace o úlohách pomocí prostředí PowerShell (Get-AzureRmAutomationDscCompilationJob) nebo pomocí [portál Azure](https://portal.azure.com/).
+Po zkompilujete hello konfigurace, můžete načíst informace o úlohách hello pomocí prostředí PowerShell (Get-AzureRmAutomationDscCompilationJob) nebo pomocí hello [portál Azure](https://portal.azure.com/).
 
 ![Načtení úlohy](./media/site-recovery-automate-mobilitysevice-install/retrieve-job.png)
 
-Teď úspěšně publikována a konfiguraci DSC nahrán do Automation DSC.
+Teď úspěšně publikována a nahrát váš tooAutomation DSC konfigurace DSC.
 
-## <a name="step-4-onboard-machines-to-automation-dsc"></a>Krok 4: Připojit počítače k Automation DSC
+## <a name="step-4-onboard-machines-tooautomation-dsc"></a>Krok 4: Zařadit počítače tooAutomation DSC
 > [!NOTE]
-> Jeden z požadovaných součástí pro dokončení tohoto scénáře je, že vaše počítače Windows jsou aktualizovány na nejnovější verzi WMF. Můžete stáhnout a nainstalovat správnou verzi pro vaši platformu z [Download Center](https://www.microsoft.com/download/details.aspx?id=50395).
+> Jedním z hello předpoklady pro dokončení tohoto scénáře je, že vaše počítače Windows jsou aktualizovány s hello nejnovější verze WMF. Můžete stáhnout a nainstalovat správnou verzi hello pro vaši platformu z hello [Download Center](https://www.microsoft.com/download/details.aspx?id=50395).
 >
 >
 
-Nyní vytvoříte metaconfig pro DSC, která budou platit pro uzly. Uspět s tím, budete muset získat adresu URL koncového bodu a primární klíč pro vybrané účtu Automation v Azure. Můžete najít tyto hodnoty v části **klíče** na **všechna nastavení** okno pro účet služby Automation.
+Nyní vytvoříte metaconfig pro DSC, že použijete tooyour uzlů. toosucceed s tím, potřebujete tooretrieve hello koncový bod adresy URL a hello primární klíč pro vybrané účtu Automation v Azure. Můžete najít tyto hodnoty v části **klíče** na hello **všechna nastavení** okně hello účet Automation.
 
 ![Hodnoty klíče](./media/site-recovery-automate-mobilitysevice-install/key-values.png)
 
-V tomto příkladu máte fyzického serveru Windows Server 2012 R2, který chcete chránit pomocí Site Recovery.
+V tomto příkladu budete mít fyzický server Windows Server 2012 R2 chcete tooprotect pomocí Site Recovery.
 
-### <a name="check-for-any-pending-file-rename-operations-in-the-registry"></a>Zkontrolujte všechny čekající operace přejmenování souboru v registru
-Než začnete přidružení serveru s koncovým bodem Automation DSC, doporučujeme zkontrolovat pro všechny čekající operace přejmenování souboru v registru. Instalace se může mají zakázáno dokončení kvůli čeká na restartování.
+### <a name="check-for-any-pending-file-rename-operations-in-hello-registry"></a>Zkontrolujte všechny čekající operace přejmenování souboru v registru hello
+Než začnete tooassociate hello server s koncovým bodem hello Automation DSC, doporučujeme zkontrolovat pro všechny čekající operace přejmenování souboru v registru hello. Může vylučují hello instalace z dokončení kvůli tooa čekat na restartování.
 
-Spusťte následující rutiny ověřte, zda je žádné čeká na restartování na serveru:
+Spusťte následující rutinu tooverify se žádné čeká na restartování na serveru hello hello:
 
 ```powershell
 Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\' | Select-Object -Property PendingFileRenameOperations
 ```
-Pokud se zobrazí prázdné, jste na tlačítko OK. V opačném případě by to vyřešit tak, že restartování serveru během časového období údržby.
+Pokud se zobrazí prázdné, jste OK tooproceed. V opačném případě by to vyřešit tak, že restartování serveru hello během časového období údržby.
 
-Použít konfiguraci na serveru, spusťte prostředí PowerShell integrovaném skriptovacím prostředí (ISE) a spusťte následující skript. Toto je v podstatě DSC místní konfiguraci, která bude určit, aby modul správce místní konfigurace zaregistrovat službu Automation DSC a načíst konkrétní konfiguraci (ASRMobilityService.localhost).
+Konfigurace hello tooapply na serveru hello, otevřete hello prostředí PowerShell integrovaném skriptovacím prostředí (ISE) a spusťte následující skript hello. Toto je v podstatě místní konfigurace DSC, který bude pokyn hello správce místní konfigurace modulu tooregister s hello služby Automation DSC a načíst konkrétní konfiguraci hello (ASRMobilityService.localhost).
 
 ```powershell
 [DSCLocalConfigurationManager()]
@@ -314,63 +314,63 @@ metaconfig -URL 'https://we-agentservice-prod-1.azure-automation.net/accounts/<Y
 Set-DscLocalConfigurationManager .\metaconfig -Force -Verbose
 ```
 
-Tato konfigurace způsobí, že modul správce místní konfigurace k registraci v Automation DSC. Také se určí, jak pracovat modul, jak ho postupovat, pokud je konfigurace odlišily (ApplyAndAutoCorrect) a jak by měla postupovat s konfigurací Pokud je vyžadován restart.
+Tato konfigurace způsobí hello správce místní konfigurace modulu tooregister samotné s Automation DSC. Také se určí, jak pracovat hello modul, jak ho postupovat, pokud je konfigurace odlišily (ApplyAndAutoCorrect) a jak by měla postupovat s konfigurací hello Pokud je vyžadován restart.
 
-Po spuštění tohoto skriptu uzlu začněte registrace u služby Automation DSC.
+Po spuštění tohoto skriptu hello uzlu by měl začínat tooregister Automation DSC.
 
 ![Registrace uzlu v průběhu](./media/site-recovery-automate-mobilitysevice-install/register-node.png)
 
-Pokud přejdete zpět na portál Azure, uvidíte, že nově zaregistrovaný uzel má nyní zobrazovaly v portálu.
+Pokud přejdete zpět toohello portálu Azure, najdete v tomto uzlu nově zaregistrovaný hello má nyní zobrazovaly v portálu hello.
 
-![Registrovaný uzlu na portálu](./media/site-recovery-automate-mobilitysevice-install/registered-node.png)
+![Registrovaný uzlu hello portálu](./media/site-recovery-automate-mobilitysevice-install/registered-node.png)
 
-Na serveru můžete spustit následující rutiny prostředí PowerShell k ověření, že správně zaregistrovány uzlu:
+Na serveru hello můžete spustit hello následující tooverify rutiny, která hello uzel má správně zaregistrovány prostředí PowerShell:
 
 ```powershell
 Get-DscLocalConfigurationManager
 ```
 
-Po konfiguraci byl vyžádat a použít na server, můžete to ověřit spuštěním následující rutiny:
+Po konfiguraci hello načtený a použitých toohello serveru, můžete to ověřit spuštěním následující rutiny hello:
 
 ```powershell
 Get-DscConfigurationStatus
 ```
 
-Výstup ukazuje, že server úspěšně vyžádat jeho konfigurace:
+výstup Hello ukazuje, že tento server hello má úspěšně vyžádat jeho konfigurace:
 
 ![Výstup](./media/site-recovery-automate-mobilitysevice-install/successful-config.png)
 
-Kromě toho instalace služby Mobility má svou vlastní protokolu, který se nachází v *SystemDrive*\ProgramData\ASRSetupLogs.
+Kromě toho instalace služby Mobility hello má svou vlastní protokolu, který se nachází v *SystemDrive*\ProgramData\ASRSetupLogs.
 
-Je to. Teď úspěšně nasazen a registrované služby Mobility na počítači, který chcete chránit pomocí Site Recovery. DSC se ujistěte, že jsou vždy neběží požadované služby.
+Je to. Teď úspěšně nasazen a zaregistrován hello služba Mobility na počítači hello chcete tooprotect pomocí Site Recovery. DSC se přesvědčíte, že hello požadované vždy běží služby.
 
 ![Úspěšné nasazení](./media/site-recovery-automate-mobilitysevice-install/successful-install.png)
 
-Po úspěšné nasazení zjistí, server pro správu, musíte nakonfigurovat ochranu a zapnout replikaci na počítači pomocí Site Recovery.
+Po server pro správu hello zjistí hello úspěšné nasazení, můžete nakonfigurovat ochranu a zapnout replikaci na počítači hello pomocí Site Recovery.
 
 ## <a name="use-dsc-in-disconnected-environments"></a>Použití DSC v odpojených prostředích
-Pokud vaše počítače nejsou připojené k Internetu, můžete stále spolehnout na DSC k nasazení a konfiguraci služby Mobility na jiné úlohy, které chcete chránit.
+Pokud vaše počítače nejsou připojené toohello Internetu, můžete stále závisí na DSC toodeploy a nakonfigurovat službu Mobility hello na hello úlohy, které chcete tooprotect.
 
-Můžete vytvořit vlastní server DSC za instanci ve vašem prostředí a v podstatě poskytovat stejné funkce, které jste získali z Automation DSC. To znamená klienti načte konfiguraci (po dokončení registrace) ke koncovému bodu DSC. Další možností je ručně push konfigurace DSC na počítače, místně nebo vzdáleně.
+Můžete vytvořit vlastní server DSC za instanci ve vašem prostředí tooessentially zadejte hello stejné funkce, které jste získali z Automation DSC. To znamená, bude hello klientům načítat konfigurace hello (po dokončení registrace) toohello DSC koncový bod. Další možností je však toomanually nabízené hello DSC konfigurace tooyour počítače, místně nebo vzdáleně.
 
-Všimněte si, že v tomto příkladu je přidaný parametr pro název počítače. Vzdálené soubory, které jsou umístěné ve vzdálené sdílené složce, která musí být přístupný pomocí počítače, které chcete chránit. Konec skript představuje konfigurace a pak spustí použít konfigurace DSC k cílovému počítači.
+Všimněte si, že v tomto příkladu je přidaný parametr pro název počítače hello. Hello vzdálené soubory jsou umístěné ve vzdálené sdílené složce, která by měla být přístupné hello počítače, které chcete tooprotect. Hello konec skriptu hello představuje hello konfigurace a pak spustí tooapply hello DSC konfigurace toohello cílový počítač.
 
 ### <a name="prerequisites"></a>Požadavky
-Ujistěte se, že je nainstalován modul PowerShell xPSDesiredStateConfiguration. Pro počítače s Windows, kde je nainstalován WMF 5.0 můžete nainstalovat modul xPSDesiredStateConfiguration spuštěním následující rutiny na cílových počítačích:
+Zkontrolujte, zda že je nainstalován tento modul PowerShell xPSDesiredStateConfiguration hello. Pro počítače s Windows, kde je nainstalován WMF 5.0 můžete nainstalovat modul xPSDesiredStateConfiguration hello spuštěním následující rutiny na cílových počítačích hello hello:
 
 ```powershell
 Find-Module -Name xPSDesiredStateConfiguration | Install-Module
 ```
 
-Můžete také stáhnout a uložit v modulu v případě, že budete muset distribuovat do počítače s Windows, které mají WMF 4.0. Spusťte tuto rutinu na počítači, kde se nachází PowerShellGet (WMF 5.0):
+Můžete také stáhnout a uložit hello modulu v případě, že potřebujete toodistribute ho tooWindows počítače, které mají WMF 4.0. Spusťte tuto rutinu na počítači, kde se nachází PowerShellGet (WMF 5.0):
 
 ```powershell
 Save-Module -Name xPSDesiredStateConfiguration -Path <location>
 ```
 
-Také pro WMF 4.0, zkontrolujte, zda [Windows 8.1 update KB2883200](https://www.microsoft.com/download/details.aspx?id=40749) je nainstalován na počítačích.
+Pro WMF 4.0, ujistěte se také, že hello [Windows 8.1 update KB2883200](https://www.microsoft.com/download/details.aspx?id=40749) nainstalován v počítačích hello.
 
-Následující konfigurace můžete vloží do počítače s Windows, které mají WMF 5.0 a WMF 4.0:
+Hello následující konfigurace mohou poslat tooWindows počítače, které mají WMF 5.0 a WMF 4.0:
 
 ```powershell
 configuration ASRMobilityService {
@@ -471,28 +471,28 @@ ASRMobilityService -ComputerName 'MyTargetComputerName'
 Start-DscConfiguration .\ASRMobilityService -Wait -Force -Verbose
 ```
 
-Pokud chcete vytvořit vlastní server DSC za ve vaší podnikové síti tak, aby napodoboval možností, které můžete získat z Automation DSC, přečtěte si téma [nastavení webového serveru vyžádané replikace DSC](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396).
+Pokud chcete tooinstantiate vlastní DSC vyžádání obsahu server na možnostech hello toomimic vaší podnikové síti, které můžete získat z Automation DSC, najdete v části [nastavení webového serveru vyžádané replikace DSC](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396).
 
 ## <a name="optional-deploy-a-dsc-configuration-by-using-an-azure-resource-manager-template"></a>Volitelné: Konfigurace DSC nasazení pomocí šablony Azure Resource Manager
-Tento článek se zaměřuje na tom, jak můžete vytvořit vlastní konfigurace DSC pro automatické nasazení služby Mobility a Agent virtuálního počítače Azure – a ujistěte se, která běží na počítačích, které chcete chránit. Máme také šablonu Azure Resource Manager, nasadíte tuto konfiguraci DSC na nový nebo existující účet automatizace Azure. Šablonu bude používat vstupních parametrů k vytvoření automatizace prostředky, které budou obsahovat proměnné prostředí.
+Tento článek se zaměřuje na tom, jak můžete vytvořit vlastní tooautomatically konfigurace DSC nasadit službu Mobility hello a hello agenta virtuálního počítače Azure – a ujistěte se, že jsou spuštěny v hello počítače, které chcete tooprotect. Máme také šablonu Azure Resource Manager, nasadíte tuto DSC konfigurace tooa nový nebo existující účet Azure Automation. Šablona Hello použije vstupní parametry toocreate automatizace prostředky, které budou obsahovat hello proměnné prostředí.
 
-Po nasazení šablony, jednoduše najdete ke kroku 4 v tomto průvodci zařadit do vašeho počítače.
+Poté, co nasadíte hello šablony, jednoduše najdete toostep 4 v této příručce tooonboard vašich počítačů.
 
-Šablonu bude postupujte takto:
+Šablona Hello provede hello následující:
 
 1. Použít existující účet Automation nebo vytvořit novou
 2. Trvat vstupní parametry:
-   * ASRRemoteFile – umístění pro uložení instalace služby Mobility
-   * ASRPassphrase – umístění, kam jste uložili soubor passphrase.txt
-   * ASRCSEndpoint – IP adresa serveru pro správu
-3. Naimportujte modul Powershellu xPSDesiredStateConfiguration
-4. Vytvoření a kompilaci konfigurace DSC
+   * ASRRemoteFile – hello umístění pro uložení instalace služby Mobility hello
+   * ASRPassphrase – hello umístění pro uložení souboru passphrase.txt hello
+   * ASRCSEndpoint – hello IP adresa serveru pro správu
+3. Importujte modul PowerShell xPSDesiredStateConfiguration hello
+4. Vytvoření a kompilaci konfigurace DSC hello
 
-Aby mohl začít registrace vašich počítačů pro ochranu, stane se všechny předchozí kroky ve správném pořadí.
+Všechny hello předchozích kroků proběhne ve správném pořadí hello, aby mohl začít registrace vašich počítačů pro ochranu.
 
-Šablona, s pokyny pro nasazení, se nachází na [Githubu](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/DSC).
+Šablona Hello s pokyny pro nasazení, se nachází na [Githubu](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/DSC).
 
-Nasazení šablony pomocí prostředí PowerShell:
+Nasazení šablony hello pomocí prostředí PowerShell:
 
 ```powershell
 $RGDeployArgs = @{
@@ -509,4 +509,4 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Poté, co nasadíte agenty služby Mobility, můžete [povolit replikaci](site-recovery-vmware-to-azure.md) pro virtuální počítače.
+Poté, co nasadíte agenty služby Mobility hello, můžete [povolit replikaci](site-recovery-vmware-to-azure.md) hello virtuálních počítačů.

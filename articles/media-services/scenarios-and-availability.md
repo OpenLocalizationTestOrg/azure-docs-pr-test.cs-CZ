@@ -1,5 +1,5 @@
 ---
-title: "Scénáře využití služby Microsoft Azure Media Services a dostupnost funkcí v datových centrech | Dokumentace Microsoftu"
+title: "aaaMicrosoft Azure Media Services scénáře a dostupnost funkcí přes datových center | Microsoft Docs"
 description: "V tomto tématu najdete přehled scénářů využití služby Microsoft Azure Media Services a dostupnost funkcí a služeb v datových centrech."
 services: media-services
 documentationcenter: 
@@ -13,91 +13,91 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: d9994dd7bfb6b6bf949a7708c07651d667929ae4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3dbab6998ed5da738baf8f1e2fb096dfba336e19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
-Microsoft Azure Media Services (AMS) umožňuje bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
+Microsoft Azure Media Services (AMS) vám umožní toosecurely nahrávání, ukládání, kódovat a video nebo zvuk obsah balíčku pro vysílání na vyžádání i živé streamování doručení toovarious klienty (například TV, počítače a mobilní zařízení).
 
-AMS funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vašich aplikací. [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. 
+AMS funguje v několika datových centrech kolem hello, world. Těchto datových centrech jsou seskupené v oblastech toogeographic, která poskytuje flexibilitu při výběru místa toobuild vaší aplikace. Můžete zkontrolovat hello [seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/). 
 
-Toto téma představuje běžné scénáře doručování obsahu [živě](#live_scenarios) nebo [na vyžádání](#vod_scenarios). V tématu najdete také podrobnosti o dostupnosti funkcí a služeb pro média v datových centrech.
+Toto téma představuje běžné scénáře doručování obsahu [živě](#live_scenarios) nebo [na vyžádání](#vod_scenarios). Hello téma obsahuje také podrobnosti o dostupnosti funkce média a služby napříč datovými centry.
 
 ## <a name="overview"></a>Přehled
 
 ### <a name="prerequisites"></a>Požadavky
 
-Pokud chcete začít používat Azure Media Services, potřebujete následující:
+toostart využívající Azure Media Services, měli byste mít hello následující:
 
 * Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
-* Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
+* Hello koncový bod, ze kterého chcete obsah toostream streamování má toobe v hello **systémem** stavu.
 
-    Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování být ve stavu **Spuštěno**.
+    Při vytváření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello koncový bod streamování má toobe v hello **systémem** stavu.
 
-### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Běžně používané objekty při vývoji na základě modelu AMS OData
+### <a name="commonly-used-objects-when-developing-against-hello-ams-odata-model"></a>Běžně používané objekty při vývoji proti hello AMS OData modelu
 
-Následující obrázek ukazuje některé z nejčastěji používaných objektů při vývoji na základě modelu Media Services OData.
+Hello následující obrázek ukazuje některé objekty hello nejčastěji používaná při vývoji vůči modelu hello Media Services OData.
 
-Kliknutím na obrázek zobrazíte jeho plnou velikost.  
+Klikněte na tlačítko tooview hello bitové kopie je plná velikost.  
 
 <a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
-Celý model můžete zobrazit [zde](https://media.windows.net/API/$metadata?api-version=2.15).  
+Můžete zobrazit celý modelu hello [zde](https://media.windows.net/API/$metadata?api-version=2.15).  
 
-## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Ochrana obsahu v úložišti a doručování streamovaných médií v nešifrované podobě
+## <a name="protect-content-in-storage-and-deliver-streaming-media-in-hello-clear-non-encrypted"></a>Ochrana obsahu v úložišti a doručování streamovaných médií v hello clear (bez šifrování)
 
 ![Pracovní postup videa na vyžádání (VoD)](./media/scenarios-and-availability/scenarios-and-availability01.png)
 
 1. Nahrajte do prostředku vysoce kvalitní mediální soubor.
 
-    Doporučujeme použít na asset možnost šifrování úložiště. Ochráníte tak svůj obsah během nahrávání a během jeho pobytu v úložišti.
-2. Zakódujte ho do sady souborů MP4 s adaptivní přenosovou rychlostí.
+    Doporučujeme majetku, tooyour možnost šifrování úložiště tooapply v pořadí tooprotect svůj obsah během nahrávání a při umístěná v úložišti.
+2. Zakódujte tooa sadu souborů MP4 s adaptivní přenosovou rychlostí.
 
-    Na výstupní asset doporučujeme použít možnost šifrování úložiště. Ochráníte tak váš obsah v úložišti.
+    Doporučuje se, že toohello možnost šifrování úložiště tooapply výstupní asset v pořadí tooprotect váš obsah v úložišti.
 3. Nakonfigurujte zásady doručení assetu (používané dynamickým balením).
 
     Pokud váš asset používá šifrování úložiště, **musíte** nakonfigurovat zásady doručení assetu.
-4. Publikujte asset tím, že vytvoříte lokátor OnDemand.
+4. Publikujte hello asset tak, že vytvoříte Lokátor OnDemand.
 5. Streamujte publikovaný obsah.
 
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#availability).
+Informace o dostupnosti v datových centrech najdete v tématu hello [dostupnosti](#availability) části.
 
 ## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>Ochrana obsahu v úložišti, doručování dynamicky šifrovaných streamovaných médií
 
 ![Ochrana technologií PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-1. Nahrajte do prostředku vysoce kvalitní mediální soubor. Na asset použijte možnost šifrování úložiště.
-2. Zakódujte ho do sady souborů MP4 s adaptivní přenosovou rychlostí. Na výstupní asset použijte možnost šifrování úložiště.
-3. Pokud chcete asset během přehrávání dynamicky šifrovat, vytvořte šifrovací klíč obsahu.
+1. Nahrajte do prostředku vysoce kvalitní mediální soubor. Použijte asset toohello možnost šifrování úložiště.
+2. Zakódujte tooa sadu souborů MP4 s adaptivní přenosovou rychlostí. Použijte úložiště šifrování možnost toohello výstupní asset.
+3. Vytvořte šifrovací klíč obsahu pro prostředek hello chcete toobe během přehrávání dynamicky šifrovat.
 4. Nakonfigurujte zásady autorizace klíče obsahu.
 5. Nakonfigurujte zásady doručení assetu (používané dynamickým balením a dynamickým šifrováním).
-6. Publikujte asset tím, že vytvoříte lokátor OnDemand.
+6. Publikujte hello asset tak, že vytvoříte Lokátor OnDemand.
 7. Streamujte publikovaný obsah.
 
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#availability).
+Informace o dostupnosti v datových centrech najdete v tématu hello [dostupnosti](#availability) části.
 
-## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Použití Media Analytics k získání prakticky uplatnitelných informací z videí
+## <a name="use-media-analytics-tooderive-actionable-insights-from-your-videos"></a>Použití Media Analytics tooderive prakticky uplatnitelných informací z videí
 
-Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
+Media Analytics je kolekce řečových a vizuálních komponent, které usnadňují organizacím a podnikům umožňují tooderive prakticky uplatnitelných informací ze svých videosouborů. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
 
 1. Nahrajte do prostředku vysoce kvalitní mediální soubor.
-2. Zpracovávejte videa pomocí některé ze služeb Analýzy mediálních služeb popsaných v části [Přehled Analýz mediálních služeb](media-services-analytics-overview.md).
-3. Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. Pokud procesor médií vytvořil soubor MP4, můžete ho progresivně stahovat. Pokud procesor médií vytvořil soubor JSON, můžete ho stáhnout z úložiště objektů blob v Azure.
+2. Zpracujte videa s jedním z služeb Media Analytics hello popsaných v hello [Media Analytics přehled](media-services-analytics-overview.md) části.
+3. Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. Pokud procesor médií vytvořil soubor MP4, můžete ho progresivně stahovat hello souboru. Pokud procesor médií vytvořil soubor JSON, můžete stáhnout soubor hello z hello úložiště objektů blob Azure.
 
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#availability).
+Informace o dostupnosti v datových centrech najdete v tématu hello [dostupnosti](#availability) části.
 
 ## <a name="deliver-progressive-download"></a>Doručení progresivního stahování
 
 1. Nahrajte do prostředku vysoce kvalitní mediální soubor.
-2. Zakódujte ho do jednoho souboru MP4.
-3. Publikujte asset tím, že vytvoříte lokátor OnDemand nebo SAS.
+2. Zakódujte tooa jednoho souboru MP4.
+3. Publikujte hello asset tak, že vytvoříte Lokátor OnDemand nebo SAS.
 
-    Pokud používáte lokátor SAS, bude se obsah stahovat z úložiště objektů blob v Azure. V takovém případě nepotřebujete koncové body streamování ve spuštěném stavu.
+    Pokud používáte Lokátor SAS, hello obsah se stáhne ze hello úložiště objektů blob Azure. V takovém případě nepotřebujete toohave koncové body v Začínáme stavu streamování.
 4. Progresivně stáhněte obsah.
 
 ## <a id="live_scenarios"></a>Doručování živě streamovaných událostí 
@@ -105,57 +105,57 @@ Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#ava
 1. Ingestujte živý obsah pomocí různých protokolů pro živé streamování (například RTMP nebo technologie Smooth Streaming).
 2. (volitelně) Kódujte datový proud na datový proud s adaptivní přenosovou rychlostí.
 3. Zobrazte náhled živého streamování.
-4. Doručujte obsah prostřednictvím běžných streamovacích protokolů (například MPEG DASH, Smooth, HLS) přímo k vašim zákazníkům nebo do sítě pro doručování obsahu (CDN) pro další distribuci.
+4. doručování obsahu hello prostřednictvím běžných streamovacích protokolů (například MPEG DASH, Smooth, HLS) přímo tooyour zákazníky nebo tooa sítě pro doručování obsahu (CDN) pro další distribuci.
 
     -nebo-
 
-    Zaznamenávejte a ukládejte ingestovaný obsah, abyste ho mohli streamovat později (video na vyžádání).
+    Záznam a úložiště hello požity obsah v pořadí toobe Streamovat později (video na vyžádání).
 
-Při živém streamování můžete zvolit jednu z následujících cest:
+Při provádění živé vysílání datového proudu, je možné, že jedna z následujících hello tras:
 
 ### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů (průchozí)
 
-Následující diagram znázorňuje hlavní části platformy AMS, které se podílejí na **průchozím** pracovním postupu.
+Hello následující diagram znázorňuje hello hlavní části platformy hello AMS, které se podílejí na hello **průchozí** pracovního postupu.
 
 ![Živý pracovní postup](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 Další informace najdete v článku o [práci s kanály, které přijímají živé streamování s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
 
-### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Práce s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services
+### <a name="working-with-channels-that-are-enabled-tooperform-live-encoding-with-azure-media-services"></a>Práce s kanály, které jsou povolené tooperform za provozu, kódování službou Azure Media Services
 
-Následující diagram znázorňuje hlavní část platformy AMS, které se podílejí na pracovním postupu živého streamování, ve kterém má kanál povolené kódování v reálném čase pomocí služby Media Services.
+Hello následující diagram znázorňuje hello hlavní části platformy AMS hello souvisejících s pracovním postupu živého streamování kde kanál je s povoleným tooperform za provozu, kódování pomocí služby Media Services.
 
 ![Živý pracovní postup](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
-Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Další informace najdete v tématu [práce s kanály, že jsou povolené tooPerform živé kódování službou Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#availability).
+Informace o dostupnosti v datových centrech najdete v tématu hello [dostupnosti](#availability) části.
 
 ## <a name="consuming-content"></a>Konzumace obsahu
 
-Služba Azure Media Services nabízí nástroje, které potřebujete k vytvoření dynamických aplikací pro klientské přehrávače pro většinu platforem včetně: zařízení iOS, zařízení Android, Windows, Windows Phone, Xbox a set top boxy. Následující téma obsahuje odkazy na sady SDK a architektury přehrávačů, které můžete použít pro vývoj vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Media Services. Další informace najdete v tématu [Vývoj aplikací pro přehrávání videa](media-services-develop-video-players.md).
+Azure Media Services poskytuje hello nástroje budete potřebovat toocreate bohaté aplikací pro dynamické klientské přehrávače pro většinu platforem včetně: zařízení iOS, zařízení se systémem Android, Windows, Windows Phone, Xbox a Set top polí. Hello následující téma obsahuje odkazy tooSDKs a architektury přehrávačů, které můžete použít toodevelop vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Media Services. Další informace najdete v tématu [Vývoj aplikací pro přehrávání videa](media-services-develop-video-players.md).
 
 ## <a name="enabling-azure-cdn"></a>Povolení Azure CDN
 
-Služba Media Services podporuje integraci s Azure CDN. Informace o povolení Azure CDN najdete v článku o [správě koncových bodů streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md).
+Služba Media Services podporuje integraci s Azure CDN. Informace o tom najdete v části tooenable Azure CDN [jak tooManage koncových bodů streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md).
 
 ## <a id="scaling"></a>Škálování účtu Media Services
 
 Zákazníci AMS můžou ve svých účtech AMS škálovat koncové body streamování, zpracování médií a úložiště.
 
-* Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Koncový bod streamování **Standard** je vhodný pro většinu úloh streamování. Zahrnuje stejné funkce jako koncové body streamování **Premium** a automaticky škáluje šířku odchozího pásma. 
+* Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Koncový bod streamování **Standard** je vhodný pro většinu úloh streamování. Obsahuje hello stejné funkce jako **Premium** streamování koncových bodů a škálují šířky odchozího pásma automaticky. 
 
-    Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o škálování koncových bodů streamování **Premium** najdete v tématu [Škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md).
+    Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). koncový bod streamování Hello je možné rozšířit přidáním služby SUs. Každý SU poskytuje dodatečnou šířku pásma kapacity toohello aplikace. Další informace o škálování **Premium** koncové body streamování, najdete v části hello [škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md) tématu.
 
-* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
+* Účet Media Services je přidružen vyhrazené jednotky typu, který určuje rychlost hello, ke které se zpracovávají médiu zpracování úlohy. Můžete si vybrat mezi hello následující vyhrazené typy jednotka: **S1**, **S2**, nebo **S3**. Například hello stejné úlohy kódování běží rychleji, pokud použijete hello **S2** jednotku rezervovanou typ porovnání toohello **S1** typu.
 
-    Kromě určení typu rezervované jednotky můžete určit, že chcete účet zřídit s **rezervovanými jednotkami** (RU). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
+    Kromě toho toospecifying hello vyhrazený typ jednotky, můžete zadat tooprovision vašeho účtu pomocí **jednotek rezervovaných** (ruština). Hello počet zřízené RUs určuje hello počet úloh média, jež lze současně zpracovávat v daném účtu.
 
     >[!NOTE]
     >RU fungují pro paralelní provádění veškerého zpracování médií, včetně úloh indexování pomocí Azure Media Indexeru. Ale na rozdíl od kódování se úlohy indexování s rychlejšími rezervovanými jednotkami nezpracovávají rychleji.
 
     Další informace najdete v tématu [Škálování zpracování médií](media-services-portal-scale-media-processing.md).
-* Svůj účet Media Services můžete škálovat také tím, že k němu přidáte účty úložiště. Každý účet úložiště je omezen na 500 TB. Pokud chcete úložiště rozšířit nad jeho výchozí omezení, můžete k jednomu účtu Media Services připojit více účtů úložiště. Další informace najdete v tématu [Správa účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
+* Váš účet Media Services můžete škálovat také přidáním tooit účty úložiště. Každý účet úložiště je omezená too500 TB. tooexpand úložiště nad rámec hello výchozí omezení, můžete zvolit tooattach více úložiště účtů tooa jednomu účtu Media Services. Další informace najdete v tématu [Správa účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
 
 ##<a id="availability"></a>Dostupnost funkcí služby Media Services v datových centrech
 
@@ -165,11 +165,11 @@ V této části najdete podrobnosti o dostupnosti funkcí služby Media Services
 
 #### <a name="availability"></a>Dostupnost
 
-Účty Media Service můžete vytvářet v následujících oblastech: Severní Evropa, Západní Evropa, USA – západ, USA – východ, Jihovýchodní Asie, Východní Asie, Japonsko – západ, Japonsko – východ, Brazílie – jih, Indie – západ, Indie – jih a Indie – střed. 
+Můžete vytvořit účty služby Media Services v hello následující oblasti: Severní Evropa, západní Evropa, západní USA, Východ USA, jihovýchodní Asie, východní Asie, Japonsko – Západ, Japonsko – východ, Brazílie – Jih, Indie – Západ, Indie – jih a Indie – střed. 
 
 ### <a name="streaming-endpoints"></a>Koncové body streamování 
 
-Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Další informace najdete v části popisující [škálování](#scaling).
+Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Další informace najdete v tématu hello [škálování](#scaling) části.
 
 #### <a name="availability"></a>Dostupnost
 
@@ -197,7 +197,7 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
 
-Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
+Media Analytics je kolekce řečových a vizuálních komponent, které usnadňuje organizacím a podnikům umožňují tooderive prakticky uplatnitelných informací ze svých videosouborů. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
 
 #### <a name="availability"></a>Dostupnost
 
@@ -215,7 +215,7 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 ### <a name="protection"></a>Ochrana
 
-Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opuštění počítače přes uložení a zpracování až po doručení. Další informace najdete v tématu [Ochrana obsahu AMS](media-services-content-protection-overview.md).
+Microsoft Azure Media Services umožňuje vám toosecure médiu z hello doby, kdy opouští váš počítač prostřednictvím úložiště, zpracování a doručení. Další informace najdete v tématu [Ochrana obsahu AMS](media-services-content-protection-overview.md).
 
 #### <a name="availability"></a>Dostupnost
 
@@ -229,9 +229,9 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
 
-Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. 
+Hello počet jednotek rezervovaných pro zřízené určuje hello počet úloh média, jež lze současně zpracovávat v daném účtu. 
 
-Další informace najdete v části popisující [škálování](#scaling).
+Další informace najdete v tématu hello [škálování](#scaling) části.
 
 #### <a name="availability"></a>Dostupnost
 
@@ -239,9 +239,9 @@ K dispozici ve všech datových centrech.
 
 ### <a name="reserved-unit-ru-type"></a>Typ rezervované jednotky (RU)
 
-Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: S1, S2 nebo S3.
+Účet Media Services je přidružený k typu jednotku rezervovanou, která určuje, ke které se zpracovávají médiu zpracování úlohy rychlost hello. Můžete si vybrat mezi hello následující vyhrazené typy jednotka: S1, S2 nebo S3.
 
-Další informace najdete v části popisující [škálování](#scaling).
+Další informace najdete v tématu hello [škálování](#scaling) části.
 
 #### <a name="availability"></a>Dostupnost
 

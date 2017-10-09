@@ -1,6 +1,6 @@
 ---
-title: "Spouštění dotazů Hive pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak k odesílání úloh Hadoop do HDInsight Hadoop Azure pomocí sady .NET SDK HDInsight."
+title: "aaaRun dotazů Hive pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toosubmit Hadoop úlohy tooAzure HDInsight Hadoop pomocí sady .NET SDK HDInsight."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -16,38 +16,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jgao
-ms.openlocfilehash: 7b1a5f7ea3b2bda438727dc75a85557ea7930280
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 11f07d90405d3e804774610e242813927df59a03
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Hive pomocí sady .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Zjistěte, jak k odesílání dotazů Hive pomocí sady .NET SDK HDInsight. Zápis programu C# k odesílání dotazů Hive pro výpis tabulek Hive a zobrazit výsledky.
+Zjistěte, jak toosubmit Hive dotazy pomocí HDInsight .NET SDK. Můžete napsat dotaz Hive pro výpis tabulek Hive toosubmit programu C# a zobrazit výsledky hello.
 
 > [!NOTE]
-> Kroky v tomto článku je potřeba provést z klienta Windows. Informace o používání Linux, OS X nebo Unix klienta pro práci s Hive použijte volič karty v horní článek ukazuje.
+> Hello kroky v tomto článku je potřeba provést z klienta Windows. Informace o systému Linux, OS X nebo Unix klienta toowork pomocí Hive použijte selektor karta hello zobrazený na hello horní části článku hello.
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto článku, musíte mít následující položky:
+Před zahájením tohoto článku, musíte mít hello následující položky:
 
 * **Cluster Hadoop v HDInsight**. V tématu [začít používat systémem Linux Hadoop v HDInsight](./hdinsight-hadoop-linux-tutorial-get-started.md).
 * **Visual Studio 2013 nebo 2015 nebo 2017**.
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>Odesílání dotazů Hive pomocí sady .NET SDK HDInsight
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET. 
+Hello HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je jednodušší toowork s clustery HDInsight pomocí technologie .NET. 
 
-**K odesílání úloh**
+**tooSubmit úlohy**
 
 1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio.
-2. Z konzoly Správce balíčků Nuget spusťte následující příkaz:
+2. Z konzoly Správce balíčků Nuget hello spusťte následující příkaz hello:
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. Použijte následující kód:
+3. Použijte hello následující kód:
 
     ```csharp
         using System.Collections.Generic;
@@ -75,14 +75,14 @@ Před zahájením tohoto článku, musíte mít následující položky:
    
                 static void Main(string[] args)
                 {
-                    System.Console.WriteLine("The application is running ...");
+                    System.Console.WriteLine("hello application is running ...");
    
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
    
                     SubmitHiveJob();
    
-                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.WriteLine("Press ENTER toocontinue ...");
                     System.Console.ReadLine();
                 }
    
@@ -97,13 +97,13 @@ Před zahájením tohoto článku, musíte mít následující položky:
                         Arguments = args
                     };
    
-                    System.Console.WriteLine("Submitting the Hive job to the cluster...");
+                    System.Console.WriteLine("Submitting hello Hive job toohello cluster...");
                     var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
                     var jobId = jobResponse.JobSubmissionJsonResponse.Id;
                     System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
                     System.Console.WriteLine("JobId is " + jobId);
    
-                    System.Console.WriteLine("Waiting for the job completion ...");
+                    System.Console.WriteLine("Waiting for hello job completion ...");
    
                     // Wait for job completion
                     var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
@@ -131,18 +131,18 @@ Před zahájením tohoto článku, musíte mít následující položky:
             }
         }
     ```
-4. Stisknutím klávesy **F5** spusťte aplikaci.
+4. Stiskněte klávesu **F5** toorun hello aplikace.
 
-Výstup aplikace musí být podobně jako:
+výstup Hello hello aplikace musí být podobně jako:
 
 ![HDInsight Hadoop Hive výstup úlohy](./media/hdinsight-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili několik způsobů, jak vytvořit cluster služby HDInsight. Další informace naleznete v následujících článcích:
+V tomto článku jste se naučili několik způsobů toocreate clusteru služby HDInsight. toolearn více, najdete v části hello následující články:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
 * [Vytvoření clusterů systému Hadoop v HDInsight][hdinsight-provision]
-* [Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure](hdinsight-administer-use-management-portal.md)
+* [Správa clusterů systému Hadoop v HDInsight pomocí hello portálu Azure](hdinsight-administer-use-management-portal.md)
 * [Referenční informace sady SDK rozhraní .NET HDInsight](https://msdn.microsoft.com/library/mt271028.aspx)
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
 * [Použití nástroje Sqoop s HDInsight](hdinsight-use-sqoop-mac-linux.md)

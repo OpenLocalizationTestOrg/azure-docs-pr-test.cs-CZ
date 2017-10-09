@@ -1,8 +1,8 @@
-### <a name="gwipnoconnection"></a>Úprava IP adresy brány místní sítě (GatewayIpAddress) – žádné připojení brány
+### <a name="gwipnoconnection"></a>Brána místní sítě hello toomodify GatewayIpAddress - žádné připojení brány
 
-Pokud zařízení VPN, ke kterému se chcete připojit, změnilo svou veřejnou IP adresu, musíte upravit bránu místní sítě, aby odrážela tuto změnu. Pomocí tohoto příkladu upravte bránu místní sítě, která nemá připojení brány.
+Pokud hello zařízení VPN, které chcete tooconnect toohas změnit jeho veřejnou IP adresu, musíte toomodify hello místní síťové brány tooreflect, který změnit. Použijte hello příklad toomodify bránu místní sítě, která nemá připojení brány.
 
-Při upravování této hodnoty můžete také zároveň upravit předpony adres. Ujistěte se, že k přepsání aktuálního nastavení používáte existující název brány místní sítě. Pokud použijete jiný název, vytvoříte novou bránu místní sítě, místo abyste přepsali tu stávající.
+Při úpravě tuto hodnotu, můžete také upravit předpony adres hello v hello stejnou dobu. Zda toouse hello stávající název brány místní sítě se v pořadí toooverwrite hello aktuální nastavení. Pokud použijete jiný název, můžete vytvořit novou bránu místní sítě, místo přepsání hello existující.
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
@@ -10,34 +10,34 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 ```
 
-### <a name="gwipwithconnection"></a>Úprava IP adresy brány místní sítě (GatewayIpAddress) – existující připojení brány
+### <a name="gwipwithconnection"></a>Brána místní sítě hello toomodify GatewayIpAddress - existující připojení brány
 
-Pokud zařízení VPN, ke kterému se chcete připojit, změnilo svou veřejnou IP adresu, musíte upravit bránu místní sítě, aby odrážela tuto změnu. Pokud už nějaké připojení brány existuje, musíte ho nejdřív odebrat. Po odebrání připojení můžete upravit IP adresu brány a vytvořit nové připojení. Můžete také zároveň upravit předpony adresy. Způsobí to určitý výpadek připojení VPN. Při upravování IP adresy brány není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
+Pokud hello zařízení VPN, které chcete tooconnect toohas změnit jeho veřejnou IP adresu, musíte toomodify hello místní síťové brány tooreflect, který změnit. Pokud připojení brány již existuje, je nutné nejprve tooremove hello připojení. Po odebrání hello připojení můžete upravit IP adresu brány hello a znovu vytvořte nové připojení. Můžete také upravit předpony adres hello v hello stejnou dobu. Způsobí to určitý výpadek připojení VPN. Při úpravě IP adresu brány hello, nepotřebujete toodelete hello VPN gateway. Potřebujete jenom tooremove hello připojení.
  
 
-1. Odeberte připojení. Název vašeho připojení můžete najít pomocí rutiny Get-AzureRmVirtualNetworkGatewayConnection.
+1. Odeberte připojení hello. Název hello připojení můžete najít pomocí rutiny hello 'Get-AzureRmVirtualNetworkGatewayConnection'.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
   -ResourceGroupName MyRGName
   ```
-2. Upravte hodnotu GatewayIpAddress. Můžete také zároveň upravit předpony adresy. Ujistěte se, že k přepsání aktuálního nastavení používáte existující název brány místní sítě. Pokud to neuděláte, vytvoříte novou bránu místní sítě, místo abyste přepsali tu stávající.
+2. Změníte hodnotu 'GatewayIpAddress' hello. Můžete také upravit předpony adres hello v hello stejnou dobu. Být jisti toouse hello stávající název vaší místní brány toooverwrite hello aktuální nastavení sítě. Pokud to neuděláte, můžete vytvořit novou bránu místní sítě, místo přepsání hello existující.
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
   -Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
   -GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
   ```
-3. Vytvořte připojení. V tomto příkladu konfigurujeme typ připojení IPsec. Až budete připojení znovu vytvářet, použijte typ připojení stanovený pro vaši konfiguraci. Informace o dalších typech připojení najdete na stránce [Rutina prostředí PowerShell](https://msdn.microsoft.com/library/mt603611.aspx).  Pokud chcete získat název brány VirtualNetworkGateway, můžete spustit rutinu Get-AzureRmVirtualNetworkGateway.
+3. Vytvořte připojení hello. V tomto příkladu konfigurujeme typ připojení IPsec. Při opětovném vytvoření připojení, použijte typ hello připojení, který je zadán pro vaši konfiguraci. Typy další připojení, najdete v části hello [rutiny prostředí PowerShell](https://msdn.microsoft.com/library/mt603611.aspx) stránky.  Název VirtualNetworkGateway hello tooobtain, můžete spustit rutinu "Get-AzureRmVirtualNetworkGateway" hello.
    
-    Nastavte proměnné.
+    Nastavení proměnných hello.
 
   ```powershell
   $local = Get-AzureRMLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName MyRGName
   ```
    
-    Vytvořte připojení.
+    Vytvořte připojení hello.
 
   ```powershell 
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `

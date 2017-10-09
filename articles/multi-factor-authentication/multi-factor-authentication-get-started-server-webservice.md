@@ -1,6 +1,6 @@
 ---
-title: "Webová služba mobilní aplikace Azure MFA Serveru | Dokumentace Microsoftu"
-description: "Aplikace Microsoft Authenticator nabízí možnost dalšího ověření mimo pásmo.  To umožňuje serveru MFA používat nabízená oznámení pro uživatele."
+title: "aaaAzure webové služby mobilní aplikace MFA Server | Microsoft Docs"
+description: "aplikace Microsoft Authenticator Hello nabízí možnost dalšího ověření out-of-band.  To umožňuje hello MFA server toouse nabízená oznámení toousers."
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
@@ -15,90 +15,90 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.openlocfilehash: bf758d1241f2a56eba4d5c92ace713d6e563df65
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4175b68fcbf85ec3fd53d8edf4e07306c75a4c71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Povolení ověření přes mobilní aplikaci se serverem Azure Multi-Factor Authentication
 
-Aplikace Microsoft Authenticator nabízí možnost dalšího ověření mimo pásmo. Namísto zahájení automatizovaného telefonního hovoru nebo odeslání SMS zprávy uživateli při přihlášení, doručí služba Azure Multi-Factor Authentication oznámení do aplikace Microsoft Authenticator na tablet nebo smartphone uživatele. Uživatel v aplikaci jednoduše dokončí přihlášení klepnutím na **Ověřit** (nebo zadá kód PIN a klepne na Ověřit).
+aplikace Microsoft Authenticator Hello nabízí možnost dalšího ověření out-of-band. Namísto automatizovaného telefonního hovoru nebo SMS toohello uživatele při přihlášení, doručí Azure Multi-Factor Authentication aplikaci Microsoft Authenticator toohello oznámení na tablet nebo smartphone uživatele hello. Hello uživatel jednoduše klepne na **ověřte** (nebo zadá kód PIN a klepne na "Ověřit") v hello toocomplete aplikace jejich přihlášení.
 
-Použití mobilní aplikace pro dvojstupňové ověřování se upřednostňuje v případě, že je telefonní příjem nespolehlivý. Pokud aplikaci používáte jako generátor tokenu OAUTH, nevyžaduje připojení k síti ani k internetu.
+Použití mobilní aplikace pro dvojstupňové ověřování se upřednostňuje v případě, že je telefonní příjem nespolehlivý. Pokud používáte aplikace hello jako generátor tokenu OATH, nevyžaduje jakékoli připojení, sítě nebo Internetu.
 
-V závislosti na vašem prostředí můžete chtít webovou službu mobilní aplikace nasadit na stejný server jako Azure Multi-Factor Authentication Server, nebo na jiný server s přístupem k internetu.
+V závislosti na vašem prostředí, může být vhodné webové služby mobilní aplikace toodeploy hello na hello stejný server jako Server Azure Multi-Factor Authentication nebo na jiném internetového serveru.
 
 ## <a name="requirements"></a>Požadavky
 
-Pokud chcete použít aplikaci Microsoft Authenticator, je třeba splnit následující podmínky, aby aplikace mohla úspěšně komunikovat s webovou službou mobilní aplikace:
+aplikace Microsoft Authenticator hello toouse hello vyžadují se následující věci tak, aby hello aplikace mohla úspěšně komunikovat s webovou službou mobilní aplikace:
 
 * Azure Multi-Factor Authentication Server verze 6.0 nebo vyšší
 * Instalace webové služby mobilní aplikace na internetovém webovém serveru s [Internetovou informační službou Microsoft® (IIS) IIS 7.x nebo vyšší](http://www.iis.net/)
-* Nainstalované, registrované a povolené rozhraní ASP.NET v4.0.30319
+* Nainstalovaná, zaregistrované a nastavit tooAllowed položku ASP.NET v4.0.30319
 * Požadované role služby zahrnují technologie ASP.NET a kompatibilitu metabáze služby IIS 6
 * Webová služba mobilní aplikace je přístupná přes veřejnou adresu URL.
 * Webová služba mobilní aplikace je zabezpečena certifikátem SSL.
-* Instalujte sadu SDK webové služby Azure Multi-Factor Authentication ve službě IIS 7.x nebo vyšší na **stejném serveru jako Azure Multi-Factor Authentication Server**.
-* Sada SDK webové služby Azure Multi-Factor Authentication je zabezpečená certifikátem SSL.
-* Webová služba mobilní aplikace se může připojit k sadě SDK webové služby Azure Multi-Factor Authentication přes protokol SSL.
-* Webová služba mobilní aplikace se může ověřit v sadě SDK webové služby Azure MFA pomocí přihlašovacích údajů účtu služby, který je členem skupiny zabezpečení „PhoneFactor Admins“. Tento účet služby a skupina existují ve službě Active Directory, pokud Azure Multi-Factor Authentication Server běží na serveru připojeném k doméně. Tento účet služby a skupina existují místně na Azure Multi-Factor Authentication Serveru, pokud není připojený k doméně.
+* Nainstalujte hello SDK webové služby Azure Multi-Factor Authentication ve službě IIS 7.x nebo vyšší na hello **stejný server jako hello Azure Multi-Factor Authentication Server**
+* Hello SDK webové služby Azure Multi-Factor Authentication je zabezpečená certifikátem SSL.
+* Webové služby mobilní aplikace můžete připojit toohello SDK webové služby Azure Multi-Factor Authentication přes protokol SSL
+* Webové služby mobilní aplikace, můžete ověřovat toohello Azure MFA Web Service SDK pomocí pověření účtu služby, který je členem skupiny zabezpečení "PhoneFactor Admins" hello hello. Tento účet služby a skupina existují ve službě Active Directory, pokud je hello Azure Multi-Factor Authentication Server na serveru připojeném k doméně. Tento účet služby a skupina existují místně na serveru Azure Multi-Factor Authentication Server hello Pokud není připojený k tooa domény.
 
-## <a name="install-the-mobile-app-web-service"></a>Instalaci webové služby mobilní aplikace
+## <a name="install-hello-mobile-app-web-service"></a>Instalace webové služby mobilní aplikace hello
 
-Před instalací webové služby mobilní aplikace mějte na paměti následující:
+Před instalací webové služby mobilní aplikace hello, nezapomeňte hello následující podrobnosti:
 
-* Potřebujete účet služby, který je součástí skupiny PhoneFactor Admins. Může to být stejný účet, jako jste použili k instalaci portálu User Portal.
-* Je užitečné otevřít webový prohlížeč na webovém serveru s přístupem k internetu a přejít na adresu URL sady Web Service SDK, která byla zadán do souboru web.config. Pokud se prohlížeč úspěšně dostane k webové službě, měla by se zobrazit výzva k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo, které jste zadali do souboru web.config, v naprosto stejném tvaru. Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
-* Pokud se před webovým serverem webové služby mobilní aplikace nachází reverzní proxy server nebo brána firewall a provádí snižování zátěže protokolu SSL, můžete upravit soubor web.config webové služby mobilní aplikace tak, aby webová služba mobilní aplikace mohla používat protokol http místo protokolu https. SSL je však stále zapotřebí ve směru z mobilní aplikace k reverznímu proxy serveru / bráně firewall. Do části \<appSettings\> přidejte následující klíč:
+* Potřebujete účet služby, který je součástí skupiny PhoneFactor Admins. Tento účet může být stejný jako jeden hello použitý k instalaci portálu User Portal hello hello.
+* Je užitečné tooopen webový prohlížeč na webovém serveru Internetové hello a přejděte na adresu URL toohello hello sady SDK webové služby, který byl zadán do souboru web.config hello. Pokud prohlížeč hello můžete získat úspěšně toohello webové služby, se musí výzvu k zadání pověření. Zadejte hello uživatelské jméno a heslo, které jste zadali do souboru web.config hello úplně stejně jako v souboru hello. Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+* Pokud reverzní proxy server nebo brána firewall se před webovým serverem webové služby mobilní aplikace hello uložený a provádí SSL snižování zátěže, můžete upravit soubor web.config webové služby mobilní aplikace hello, takže hello webové služby mobilní aplikace mohly používat protokol http místo protokolu https. Šifrování SSL je stále vyžadují z hello mobilní aplikace toohello brány firewall nebo reverznímu proxy serveru. Přidejte následující klíče toohello hello \<appSettings\> části:
 
         <add key="SSL_REQUIRED" value="false"/>
 
-### <a name="install-the-web-service-sdk"></a>Instalace sady SDK webové služby
+### <a name="install-hello-web-service-sdk"></a>Instalace sady SDK webové služby hello
 
-V obou scénářích, pokud sada SDK webové služby Azure Multi-Factor Authentication **není** na Azure Multi-Factor Authentication (MFA) Serveru nainstalovaná, proveďte následující kroky.
+V obou těchto případech, pokud hello SDK webové služby Azure Multi-Factor Authentication je **není** nainstalovány na hello serveru Azure Multi-Factor Authentication (MFA), dokončení hello následujících kroků.
 
-1. Otevřete konzolu Multi-Factor Authentication Serveru.
-2. Přejděte do části **Sada SDK webové služby** a vyberte **Instalovat sadu SDK webové služby**.
-3. Dokončete instalaci s použitím výchozích hodnot, pokud je z nějakého důvodu nepotřebujete změnit.
-4. Vytvořte vazbu certifikátu SSL k webu ve službě IIS.
+1. Otevřete konzolu služby Multi-Factor Authentication Server hello.
+2. Přejděte toohello **sady SDK webové služby** a vyberte **instalace sady SDK webové služby**.
+3. Dokončení hello instalace pomocí výchozího nastavení hello, pokud potřebujete toochange je z nějakého důvodu.
+4. Vytvořit vazbu webu toohello certifikát SSL ve službě IIS.
 
-Pokud máte dotazy ke konfiguraci certifikátu SSL na serveru služby IIS, přečtěte si článek [Nastavení protokolu SSL ve službě IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Pokud máte dotazy týkající se konfigurace certifikátu protokolu SSL na server služby IIS, najdete v článku hello [jak tooSet protokolu SSL ve službě IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-Sada SDK webové služby musí být zabezpečená certifikátem SSL. Pro tento účel stačí certifikát podepsaný svým držitelem. Importujte certifikát do úložiště „Důvěryhodné kořenové certifikační autority“ účtu místního počítače na webovém serveru portálu User Portal, aby byl certifikát důvěryhodný při navazování připojení SSL.
+Hello sady SDK webové služby musí být zabezpečená certifikátem SSL. Pro tento účel stačí certifikát podepsaný svým držitelem. Importujte certifikát hello do úložiště "Důvěryhodné kořenové certifikační autority" hello hello účtu místního počítače na webovém serveru portálu User Portal hello tak, aby při inicializaci připojení SSL hello důvěřovat certifikátu.
 
 ![Nastavení konfigurace MFA Serveru – sada SDK webové služby](./media/multi-factor-authentication-get-started-server-webservice/sdk.png)
 
-### <a name="install-the-service"></a>Instalace služby
+### <a name="install-hello-service"></a>Nainstalujte službu hello
 
-1. **Na MFA Serveru** přejděte do instalační cesty.
-2. Přejděte do složky, kde je nainstalovaný Azure MFA Server – výchozí umístění je **C:\Program Files\Azure Multi-Factor Authentication**.
-3. Vyhledejte instalační soubor **MultiFactorAuthenticationMobileAppWebServiceSetup64**. Pokud server **nemá** přístup k internetu, zkopírujte instalační soubor na server s přístupem k internetu.
-4. Pokud MFA Server **nemá** přístup k internetu, přepněte na **server s přístupem k internetu**.
-5. Spusťte instalační soubor **MultiFactorAuthenticationMobileAppWebServiceSetup64** jako správce, změňte v případě potřeby web, a pokud chcete, změňte virtuální adresář na krátký název.
-6. Po dokončení instalace přejděte do umístění **C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService** (nebo odpovídajícího adresáře podle názvu virtuálního adresáře) a upravte soubor Web.Config.
+1. **Na hello MFA Server**, procházet toohello Instalační cesta.
+2. Přejděte toohello složku, kde hello Azure MFA serveru je nainstalovaná hello výchozí je **C:\Program Files\Azure Multi-Factor Authentication**.
+3. Vyhledejte soubor instalace hello **MultiFactorAuthenticationMobileAppWebServiceSetup64**. Pokud je hello server **není** internetového kopie hello instalace souboru toohello internetovém serveru.
+4. Pokud hello je MFA Server **není** internetového přepínač toohello **internetovém serveru**.
+5. Spustit hello **MultiFactorAuthenticationMobileAppWebServiceSetup64** nainstalujte soubor jako správce, změňte hello lokality v případě potřeby a pokud byste chtěli změnit hello virtuální adresář tooa krátký název.
+6. Po dokončení instalace hello, procházet příliš**C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService** (nebo odpovídajícího adresáře podle názvu virtuálního adresáře hello) a upravte soubor Web.Config hello.
 
-   * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"**, kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
-   * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"**, kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
-   * Vyhledejte nastavení **pfMobile App Web Service_pfwssdk_PfWsSdk** a změňte hodnotu z **http://localhost:4898/PfWsSdk.asmx** na adresu URL sady SDK webové služby (příklad: https://mfa.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
-   * Uložte soubor Web.Config a zavřete Poznámkový blok.
+   * Najít klíč hello **"Klíče WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **hodnota = ""** příliš**hodnota = "Doména\uživatel"** kde doména\uživatel je účtu služby, který je součástí Skupina "PhoneFactor Admins".
+   * Najít klíč hello **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **hodnota = ""** příliš**hodnota = "Password"** kde heslo je heslo hello hello služby Účet zadaný v předchozím řádku hello.
+   * Najde hello **nastavení pfMobile App Web Service_pfwssdk_PfWsSdk** nastavení a změňte hodnotu hello z **http://localhost: 4898/pfwssdk.asmx** toohello adresa URL sady SDK webové služby (Příklad: https://mfa.contoso.com/ MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
+   * Zavřete poznámkový blok a uložte soubor Web.Config hello.
 
    > [!NOTE]
-   > Vzhledem k tomu, že se pro toto připojení používá protokol SSL, je třeba na sadu SDK webové služby odkazovat pomocí **plně kvalifikovaného názvu domény**, a **ne pomocí IP adresy**. Certifikát SSL by byl vydán pro plně kvalifikovaný název domény a použitá adresa URL se musí shodovat s názvem na certifikátu.
+   > Vzhledem k tomu, že je pro toto připojení používá protokol SSL, musíte odkázat hello sadu Web Service SDK pomocí **plně kvalifikovaný název domény (FQDN)** a **není IP adresa**. Hello certifikát SSL by byl vydán pro hello plně kvalifikovaný název domény a hello adresa URL se musí shodovat hello názvem na certifikátu hello.
 
-7. Pokud web, na který byla nainstalována webová služba mobilní aplikace, nebyl dosud navázaný na veřejně podepsaný certifikát, nainstalujte certifikát na server, otevřete Správce služby IIS a vytvořte vazbu certifikátu k webu.
-8. Na libovolném počítači otevřete webový prohlížeč a přejděte na adresu URL, kam byla nainstalována webová služba mobilní aplikace (příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+7. Pokud hello web, který webové služby mobilní aplikace byla nainstalována v části nebyla již byla svázána s veřejně podepsaný certifikát, nainstalujte hello certifikát na hello server, otevřete Správce služby IIS a vazby webu toohello hello certifikátu.
+8. Z libovolného počítače otevřete webový prohlížeč a přejděte na adresu URL toohello nainstalovanou webové služby mobilní aplikace (Příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 
-## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurace serveru Azure Multi-Factor Authentication
+## <a name="configure-hello-mobile-app-settings-in-hello-azure-multi-factor-authentication-server"></a>Konfigurovat nastavení mobilní aplikace hello v Azure Multi-Factor Authentication Server hello
 
-Teď, když je instalována webová služba mobilní aplikace, musíte nakonfigurovat server Azure Multi-Factor Authentication pro práci s portálem.
+Teď je nainstalované webové služby mobilní aplikace hello musíte toowork Azure Multi-Factor Authentication Server hello tooconfigure hello portálu.
 
-1. V konzole Multi-Factor Authentication Serveru klikněte na ikonu User Portal. Pokud mají uživatelé povolení řídit své metody ověřování, zaškrtněte možnost **Mobilní aplikace** na kartě Nastavení v části **Povolit uživatelům výběr metody**. Bez povolení této funkce musí koncoví uživatelé pro dokončení aktivace mobilní aplikace kontaktovat podporu.
-2. Zaškrtněte políčko **Povolit uživatelům aktivaci mobilní aplikace**.
-3. Zaškrtněte políčko **Povolit zápis uživatele**.
-4. Klikněte na ikonu **Mobilní aplikace**.
-5. Do pole **Adresa URL webové služby mobilní aplikace** zadejte adresu URL používanou s virtuálním adresářem vytvořeným při instalaci MultiFactorAuthenticationMobileAppWebServiceSetup64 (příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/).
-6. Do pole **Název účtu** vyplňte název společnosti nebo organizace, který se pro tento účet zobrazí v mobilní aplikaci.
+1. V konzole aplikace Multi-Factor Authentication Server hello klikněte na ikonu portálu pro uživatele hello. Pokud jsou uživatelé toocontrol své metody ověřování, zkontrolujte **mobilní aplikace** na kartě nastavení hello, v části **povolit uživatelům tooselect metoda**. Bez povolení této funkce, koncoví uživatelé jsou požadované toocontact aktivací toocomplete HelpDesk pro hello mobilní aplikace.
+2. Zkontrolujte hello **povolit uživatelům tooactivate mobilní aplikace** pole.
+3. Zkontrolujte hello **povolit zápis uživatele** pole.
+4. Klikněte na tlačítko hello **mobilní aplikace** ikonu.
+5. Zadejte adresu URL hello používá s hello virtuálního adresáře, který byl vytvořen při instalaci MultiFactorAuthenticationMobileAppWebServiceSetup64 (Příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/) v poli hello  **Adresa URL služby Mobile App Web:**.
+6. Naplnění hello **název účtu** pole s hello firmy nebo organizace toodisplay název v hello mobilních aplikací pro tento účet.
    ![Konfigurace MFA Serveru – nastavení mobilní aplikace](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)
 
 ## <a name="next-steps"></a>Další kroky

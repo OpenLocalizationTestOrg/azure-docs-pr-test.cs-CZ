@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 ASP.NET Web Server získávání spuštěno – konfigurace | Microsoft Docs"
+title: "aaaAzure AD v2 ASP.NET Web Server Začínáme - Config | Microsoft Docs"
 description: "Implementace přihlašování společnosti Microsoft na řešení technologie ASP.NET s tradiční webovou aplikací využívajících prohlížeč pomocí OpenID Connect standard"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,29 +15,29 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 0c627802ccfba230dcde2dafffee26cb1c895791
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e666be4622ad30aaa1e12e49ae56bbe1e129b2a9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 ## <a name="create-an-application-express"></a>Vytvoření aplikace (Express)
-Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Microsoft*:
-1. Registrace vaší aplikace pomocí [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure)
+Nyní je třeba tooregister svoji aplikaci v hello *portálu pro registraci aplikace Microsoft*:
+1. Registrace vaší aplikace prostřednictvím hello [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure)
 2.  Zadejte název vaší aplikace a e-mailu
-3.  Ujistěte se, že je zaškrtnuté políčko pro instalaci na základě
-4.  Postupujte podle pokynů k přidání do aplikace adresy URL pro přesměrování
+3.  Ujistěte se, že je zaškrtnuté políčko hello pro instalaci na základě
+4.  Postupujte podle pokynů tooadd hello k aplikaci tooyour adresy URL pro přesměrování
 
-## <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Přidat informace o registraci aplikace k řešení (Upřesnit)
-Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Microsoft*:
-1. Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app) zaregistrovat aplikaci
+## <a name="add-your-application-registration-information-tooyour-solution-advanced"></a>Přidat řešení aplikace registrační informace tooyour (Upřesnit)
+Nyní je třeba tooregister svoji aplikaci v hello *portálu pro registraci aplikace Microsoft*:
+1. Přejděte toohello [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app) tooregister aplikace
 2. Zadejte název vaší aplikace a e-mailu 
-3.  Ujistěte se, že není zaškrtnuto políčko pro instalaci na základě
+3.  Ujistěte se, že není zaškrtnuto políčko hello pro instalaci na základě
 4.  Klikněte na tlačítko `Add Platform`, zvolte položku`Web`
-5.  Přejděte zpět do Visual Studio a v Průzkumníku řešení vyberte projekt a podívejte se na okno vlastností (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
-6.  Změna SSL povoleno`True`
-7.  Zkopírujte adresu URL protokolu SSL a přidejte tuto adresu URL do seznamu adres URL pro přesměrování v portálu pro registraci seznam adres URL pro přesměrování:<br/><br/>![Vlastnosti projektu](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-8.  Přidejte následující v `web.config` umístěné v kořenové složce části `configuration\appSettings`:
+5.  Přejděte zpět tooVisual Studio, vyberte hello projekt v Průzkumníku řešení klikněte a podívejte se na vlastnosti – okno hello (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
+6.  Příliš změnit povolen protokol SSL`True`
+7.  Zkopírujte hello adresy URL protokolu SSL a přidejte tuto adresu URL toohello seznam adres URL pro přesměrování v portálu registrace hello seznam adres URL pro přesměrování:<br/><br/>![Vlastnosti projektu](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
+8.  Přidejte následující hello `web.config` umístěné v kořenové složce hello části hello `configuration\appSettings`:
 
 ```xml
 <add key="ClientId" value="Enter_the_Application_Id_here" />
@@ -48,10 +48,10 @@ Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Micro
 <!-- Workaround for Docs conversion bug -->
 <ol start="9">
 <li>
-Nahraďte `ClientId` s Id aplikace, který jste právě zaregistrovali
+Nahraďte `ClientId` s hello Id aplikace, které jste právě zaregistrovali
 </li>
 <li>
-Nahraďte `redirectUri` pomocí adresy URL protokolu SSL vašeho projektu
+Nahraďte `redirectUri` s hello SSL URL projektu
 </li>
 </ol>
 <!-- End Docs -->

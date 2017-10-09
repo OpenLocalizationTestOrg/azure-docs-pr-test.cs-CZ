@@ -1,14 +1,14 @@
 
-Diagnostika problémů s cloudové služby Microsoft Azure vyžaduje shromažďování souborů protokolů služby u virtuálních počítačů jako dojít k problémům. Můžete použít AzureLogCollector rozšíření na vyžádání k perfom jednorázové shromažďování protokolů z jedné nebo více cloudové služby virtuálních počítačů (z webové role i role pracovního procesu) a přenos shromážděných souborů do účtu úložiště Azure – všechny bez vzdálené přihlášení k jakémukoli z virtuální počítače.
+Diagnostika problémů s cloudové služby Microsoft Azure vyžaduje shromažďování souborů protokolů služby hello na virtuální počítače jsou prováděny hello problémy. Můžete použít hello AzureLogCollector rozšíření na vyžádání tooperfom jednorázové shromažďování protokolů z jedné nebo více virtuálních počítačů služby cloudu (z webových rolí a rolí pracovního procesu) a přenos hello shromážděné soubory tooan účtu úložiště Azure – všechny bez vzdálené přihlášení tooany hello virtuálních počítačů.
 
 > [!NOTE]
-> Popisy pro většinu zaznamenané informace lze najít na http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+> Popisy pro většinu hello protokolovat informace lze najít na http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
 > 
 > 
 
-Existují dva režimy kolekce závisí na typy souborů, které se mají shromažďovat.
+Existují dva režimy kolekce závisí na typech hello toobe soubory shromážděny.
 
-* Azure hostovaného agenta protokoly pouze (GA). Tento režim kolekce zahrnuje všechny protokoly související s agenty Azure hostů a další součásti Azure.
+* Azure hostovaného agenta protokoly pouze (GA). Tento režim kolekce zahrnuje všechny agenty hostů související tooAzure hello protokoly a dalšími součástmi Azure.
 * Všechny protokoly (úplná záloha). Tento režim kolekce bude shromažďovat všechny soubory v režimu GA plus:
   
   * protokoly událostí systému a aplikací
@@ -17,31 +17,31 @@ Existují dva režimy kolekce závisí na typy souborů, které se mají shroma�
   * Protokoly instalace
   * Další systémové protokoly
 
-V obou režimech kolekce složky kolekcí další data lze pomocí kolekce následující strukturou:
+V obou režimech kolekce složky kolekcí další data lze pomocí kolekce hello strukturu:
 
-* **Název**: název kolekce, která se použije jako název podsložky v souboru zip, které se mají shromažďovat.
-* **Umístění**: cesta ke složce na virtuálním počítači, kde budou shromažďovány souboru.
-* **SearchPattern**: vzor názvů souborů, které se mají shromažďovat. Výchozí hodnota je "*"
-* **Rekurzivní**: Pokud soubory budou shromažďovat rekurzivně ve složce.
+* **Název**: název hello hello kolekce, která se použije jako hello název podsložky uvnitř toobe soubor zip hello shromažďují.
+* **Umístění**: hello cesta toohello složky na virtuálním počítači hello kde budou shromažďovány souboru.
+* **SearchPattern**: hello vzor názvů hello toobe soubory shromážděny. Výchozí hodnota je "*"
+* **Rekurzivní**: Pokud budou soubory hello shromážděných rekurzivně složce hello.
 
 ## <a name="prerequisites"></a>Požadavky
-* Potřebujete mít účet úložiště pro rozšíření, které chcete ukládat soubory generované zip.
+* Potřebujete toohave účet úložiště pro soubory zip toosave generované rozšíření.
 * Ujistěte se, že používáte V0.8.0 rutiny Azure PowerShell nebo vyšší. Další informace najdete v tématu [Azure stáhne](https://azure.microsoft.com/downloads/).
 
-## <a name="add-the-extension"></a>Přidejte rozšíření
-Můžete použít [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) rutiny nebo [rozhraní API REST pro správu služby](https://msdn.microsoft.com/library/ee460799.aspx) přidat AzureLogCollector rozšíření.
+## <a name="add-hello-extension"></a>Přidat rozšíření hello
+Můžete použít [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) rutiny nebo [rozhraní API REST pro správu služby](https://msdn.microsoft.com/library/ee460799.aspx) tooadd hello AzureLogCollector rozšíření.
 
-Pro cloudové služby, existující rutiny Azure Powershellu **Set-AzureServiceExtension**, slouží k povolení rozšíření u instancí role cloudové služby. Pokaždé, když je toto rozšíření povolené prostřednictvím této rutiny, aktivuje se v instancích vybranou roli v systému vybrané role shromáždění protokolů.
+Pro cloudové služby, hello existující rutiny Azure Powershellu, **Set-AzureServiceExtension**, může být použité tooenable hello rozšíření u instancí role cloudové služby. Pokaždé, když je toto rozšíření povolené prostřednictvím této rutiny, aktivuje se u instancí role hello vybrané vybraných rolí shromáždění protokolů.
 
-Pro virtuální počítače, existující rutiny Azure Powershellu **Set-AzureVMExtension**, slouží k povolení rozšíření na virtuálních počítačích. Pokaždé, když je toto rozšíření povolené prostřednictvím rutin, aktivuje se na každou instanci shromáždění protokolů.
+Pro virtuální počítače, hello existující rutiny Azure Powershellu, **Set-AzureVMExtension**, může být rozšíření hello tooenable používané virtuálními počítači. Pokaždé, když je toto rozšíření povolené pomocí rutin hello, aktivuje se na každou instanci shromáždění protokolů.
 
-Toto rozšíření interně používá na základě JSON PublicConfiguration a PrivateConfiguration. Toto je rozložení ukázku JSON pro veřejné a privátní konfigurace.
+Toto rozšíření interně používá hello na základě JSON PublicConfiguration a PrivateConfiguration. Hello následuje hello rozložení ukázkové JSON pro veřejné a privátní konfigurace.
 
 ### <a name="publicconfiguration"></a>PublicConfiguration
     {
         "Instances":  "*",
         "Mode":  "Full",
-        "SasUri":  "SasUri to your storage account with sp=wl",
+        "SasUri":  "SasUri tooyour storage account with sp=wl",
         "AdditionalData":
         [
           {
@@ -65,31 +65,31 @@ Toto rozšíření interně používá na základě JSON PublicConfiguration a P
     }
 
 > [!NOTE]
-> Toto rozšíření nevyžaduje **privateConfiguration**. Zadáte na prázdnou strukturou pro **– PrivateConfiguration** argument.
+> Toto rozšíření nevyžaduje **privateConfiguration**. Můžete jenom zadat prázdnou strukturou hello **– PrivateConfiguration** argument.
 > 
 > 
 
-Můžete provést jednu z dvě následující kroky k přidání AzureLogCollector na jeden nebo více instancí cloudové služby nebo virtuálního počítače vybrané role, která aktivuje kolekce na každý virtuální počítač ke spuštění a odeslání shromážděné soubory pro zadaný účet Azure.
+Proveďte jeden z hello dvě následující kroky tooadd hello AzureLogCollector tooone nebo více instancí služeb Cloud nebo virtuální počítač z vybrané role, které aktivuje hello kolekce na každý počítač toorun a odesílat hello shromážděné soubory tooAzure účtu zadat.
 
 ## <a name="adding-as-a-service-extension"></a>Přidání jako rozšíření služby
-1. Postupujte podle pokynů k připojení k vašemu předplatnému Azure PowerShell.
-2. Zadejte název, slotu, role a role instance služby pro které chcete přidat a povolit AzureLogCollector rozšíření.
+1. Postupujte podle hello pokyny tooconnect prostředí Azure PowerShell tooyour předplatné.
+2. Zadejte název služby hello, slotu, role a role instance toowhich chcete tooadd a povolit rozšíření AzureLogCollector hello.
    
         #Specify your cloud service name
         $ServiceName = 'extensiontest2'
    
-        #Specify the slot. 'Production' or 'Staging'
+        #Specify hello slot. 'Production' or 'Staging'
         $slot = 'Production'
    
-        #Specified the roles on which the extension will be installed and enabled
+        #Specified hello roles on which hello extension will be installed and enabled
         $roles = @("WorkerRole1","WebRole1")
    
-        #Specify the instances on which extension will be installed and enabled.  Use wildcard * for all instances
+        #Specify hello instances on which extension will be installed and enabled.  Use wildcard * for all instances
         $instances = @("*")
    
-        #Specify the collection mode, "Full" or "GA"
+        #Specify hello collection mode, "Full" or "GA"
         $mode = "GA"
-3. Zadejte složku další data, pro které se budou shromažďovat soubory (Tento krok je volitelný).
+3. Zadejte složku hello další data, pro které se budou shromažďovat soubory (Tento krok je volitelný).
    
         #add one location
         $a1 = New-Object PSObject
@@ -103,18 +103,18 @@ Můžete provést jednu z dvě následující kroky k přidání AzureLogCollect
               #more locations can be added....
    
    > [!NOTE]
-   > Můžete použít token `%roleroot%` chcete určit kořenovou jednotku role, protože nepoužívá pevnou jednotku.
+   > Můžete použít token `%roleroot%` toospecify hello role kořenové jednotce vzhledem k tomu nepoužívá pevnou jednotku.
    > 
    > 
-4. Zadejte název účtu úložiště Azure a klíč, ke kterému se nahraje shromážděných souborů.
+4. Zadejte název účtu úložiště Azure hello a klíče toowhich shromážděné soubory budou odeslány.
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-5. Volání SetAzureServiceLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby. Po dokončení provádění můžete najít nahrávaný soubor v části`https://YouareStorageAccountName.blob.core.windows.net/vmlogs`
+5. Volání hello SetAzureServiceLogCollector.ps1 (zahrnutá na konci hello tohoto článku hello) jako způsobem tooenable hello AzureLogCollector rozšíření pro cloudové služby. Po dokončení provádění hello hello nahrát soubor naleznete v části`https://YouareStorageAccountName.blob.core.windows.net/vmlogs`
    
         .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
 
-Zde je definice parametry předané do skriptu. (To je zkopírovat níže také.)
+Hello následuje hello Definice hello parametry předané toohello skriptu. (To je zkopírovat níže také.)
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -146,12 +146,12 @@ Zde je definice parametry předané do skriptu. (To je zkopírovat níže také.
 
 * *ServiceName*: název vaší cloudové služby.
 * *Role*: seznam rolí, například "WebRole1" nebo "WorkerRole1".
-* *Instance*: seznam názvů instancí role oddělené čárkou – použít zástupný znak řetězec ("*") pro všechny instance role.
+* *Instance*: seznam názvů hello instancí role oddělené čárkou – použijte hello zástupný řetězec ("*") pro všechny instance role.
 * *Slot*: název slotu. "Výroba" nebo "Přípravy".
 * *Režim*: režim kolekce. "Úplná" nebo "GA".
 * *StorageAccountName*: název Azure účet úložiště pro ukládání shromážděných dat.
 * *StorageAccountKey*: název Azure klíč účtu úložiště.
-* *AdditionalDataLocationList*: seznam následující strukturou:
+* *AdditionalDataLocationList*: seznam hello strukturu:
   
       {
       String Name,
@@ -161,20 +161,20 @@ Zde je definice parametry předané do skriptu. (To je zkopírovat níže také.
       }
 
 ## <a name="adding-as-a-vm-extension"></a>Přidání jako rozšíření virtuálního počítače
-Postupujte podle pokynů k připojení k vašemu předplatnému Azure PowerShell.
+Postupujte podle hello pokyny tooconnect prostředí Azure PowerShell tooyour předplatné.
 
-1. Zadejte název služby, virtuálních počítačů a režim kolekce.
+1. Zadejte název služby hello, virtuálních počítačů a režim kolekce hello.
    
         #Specify your cloud service name
         $ServiceName = 'YourCloudServiceName'
    
-        #Specify the VM name
+        #Specify hello VM name
         $VMName = "'YourVMName'"
    
-        #Specify the collection mode, "Full" or "GA"
+        #Specify hello collection mode, "Full" or "GA"
         $mode = "GA"
    
-        Specify the additional data folder for which files will be collected (this step is optional).
+        Specify hello additional data folder for which files will be collected (this step is optional).
    
         #add one location
         $a1 = New-Object PSObject
@@ -186,13 +186,13 @@ Postupujte podle pokynů k připojení k vašemu předplatnému Azure PowerShell
    
         $AdditionalDataList+= $a1
               #more locations can be added....
-2. Zadejte název účtu úložiště Azure a klíč, ke kterému se nahraje shromážděných souborů.
+2. Zadejte název účtu úložiště Azure hello a klíče toowhich shromážděné soubory budou odeslány.
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-3. Volání SetAzureVMLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby. Po dokončení provádění najdete v části https://YouareStorageAccountName.blob.core.windows.net/vmlogs nahrávaný soubor
+3. Volání hello SetAzureVMLogCollector.ps1 (zahrnutá na konci hello tohoto článku hello) jako způsobem tooenable hello AzureLogCollector rozšíření pro cloudové služby. Po dokončení provádění hello můžete najít v souboru hello nahrán pod https://YouareStorageAccountName.blob.core.windows.net/vmlogs
 
-Zde je definice parametry předané do skriptu. (To je zkopírovat níže také.)
+Hello následuje hello Definice hello parametry předané toohello skriptu. (To je zkopírovat níže také.)
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -217,11 +217,11 @@ Zde je definice parametry předané do skriptu. (To je zkopírovat níže také.
       )
 
 * Název služby: Váš název cloudové služby.
-* VMName název virtuálního počítače.
+* Název hello VMName hello virtuálních počítačů.
 * Režim: Režim kolekce. "Úplná" nebo "GA".
 * StorageAccountName: Název účtu úložiště Azure pro ukládání shromážděna data.
 * StorageAccountKey: Název klíč účtu úložiště Azure.
-* AdditionalDataLocationList: Seznam následující strukturou:
+* AdditionalDataLocationList: Seznam hello strukturu:
 
 ```
       {
@@ -274,7 +274,7 @@ SetAzureServiceLogCollector.ps1
           }
         $publicConfig | Add-Member -MemberType NoteProperty -Name "Instances" -Value $instanceText
     }
-    else  #For all instances if not specified.  The value should be a space or *
+    else  #For all instances if not specified.  hello value should be a space or *
     {
         $publicConfig | Add-Member -MemberType NoteProperty -Name "Instances" -Value " "
     }
@@ -289,7 +289,7 @@ SetAzureServiceLogCollector.ps1
     }
 
     #
-    #we need to get the Sasuri from StorageAccount and containers
+    #we need tooget hello Sasuri from StorageAccount and containers
     #
     $context = New-AzureStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
@@ -306,7 +306,7 @@ SetAzureServiceLogCollector.ps1
     $publicConfig | Add-Member -MemberType NoteProperty -Name "SasUri" -Value $SasUri
 
     #
-    #Add AdditionalData to collect data from additional folders
+    #Add AdditionalData toocollect data from additional folders
     #
     if ($AdditionDataLocationList -ne $null )
     {
@@ -314,7 +314,7 @@ SetAzureServiceLogCollector.ps1
     }
 
     #
-    # Convert it to JSON format
+    # Convert it tooJSON format
     #
     $publicConfigJSON = $publicConfig | ConvertTo-Json
     "publicConfig is:  $publicConfigJSON"
@@ -333,12 +333,12 @@ SetAzureServiceLogCollector.ps1
     }
 
     #
-    #This is an optional step: generate a sasUri to the container so it can be shared with other people if nened
+    #This is an optional step: generate a sasUri toohello container so it can be shared with other people if nened
     #
     $SasExpireTime = [DateTime]::Now.AddMinutes(120).ToString("o")
     $SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rl -Context $context
     $SasUri = $SasUri + "&restype=container&comp=list"
-    Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
+    Write-Output "hello container for uploaded file can be accessed using this link:`r`n$sasuri"
 
 
 SetAzureVMLogCollector.ps1
@@ -378,7 +378,7 @@ SetAzureVMLogCollector.ps1
     }
 
     #
-    #we need to get the Sasuri from StorageAccount and containers
+    #we need tooget hello Sasuri from StorageAccount and containers
     #
     $context = New-AzureStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
@@ -395,7 +395,7 @@ SetAzureVMLogCollector.ps1
     $publicConfig | Add-Member -MemberType NoteProperty -Name "SasUri" -Value $SasUri
 
     #
-    #Add AdditionalData to collect data from additional folders
+    #Add AdditionalData toocollect data from additional folders
     #
     if ($AdditionDataLocationList -ne $null )
     {
@@ -403,7 +403,7 @@ SetAzureVMLogCollector.ps1
     }
 
     #
-    # Convert it to JSON format
+    # Convert it tooJSON format
     #
     $publicConfigJSON = $publicConfig | ConvertTo-Json
 
@@ -425,8 +425,8 @@ SetAzureVMLogCollector.ps1
                 Set-AzureVMExtension -VM $VM -ExtensionName "AzureLogCollector" -Publisher Microsoft.WindowsAzure.Compute -PublicConfiguration $publicConfigJSON -PrivateConfiguration $privateconfig -Version 1.* | Update-AzureVM -Verbose
 
                 #
-                #We will check the VM status to find if operation by extension has been completed or not. The completion of the operation,either succeed or fail, can be indicated by
-                #the presence of SubstatusList field.
+                #We will check hello VM status toofind if operation by extension has been completed or not. hello completion of hello operation,either succeed or fail, can be indicated by
+                #hello presence of SubstatusList field.
                 #
                 $Completed = $false
                 while ($Completed -ne $true)
@@ -442,7 +442,7 @@ SetAzureVMLogCollector.ps1
                         elseif (($status.ExtensionSettingStatus.SubstatusList -eq $null -or $status.ExtensionSettingStatus.SubstatusList.Count -lt 1))
                         {
                               $Completed = $false
-                              Write-Output "Waiting for operation to complete..."
+                              Write-Output "Waiting for operation toocomplete..."
                         }
                         else
                         {
@@ -453,15 +453,15 @@ SetAzureVMLogCollector.ps1
                               $blob = New-Object Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob($UploadedFileUri)
 
                       #
-                            # This is an optional step:  For easier access to the file, we can generate a read-only SasUri directly to the file
+                            # This is an optional step:  For easier access toohello file, we can generate a read-only SasUri directly toohello file
                               #
                               $ExpiryTimeRead =  [DateTime]::Now.AddMinutes(120).ToString("o")
                               $ReadSasUri = New-AzureStorageBlobSASToken -ExpiryTime $ExpiryTimeRead  -FullUri  -Blob  $blob.name -Container $blob.Container.Name -Permission r -Context $context
 
-                            Write-Output "The uploaded file can be accessed using this link: $ReadSasUri"
+                            Write-Output "hello uploaded file can be accessed using this link: $ReadSasUri"
 
                               #
-                              #This is an optional step:  Remove the extension after we are done
+                              #This is an optional step:  Remove hello extension after we are done
                               #
                               Get-AzureVM -ServiceName $ServiceName -Name $VMName | Set-AzureVMExtension -Publisher Microsoft.WindowsAzure.Compute -ExtensionName "AzureLogCollector" -Version 1.* -Uninstall | Update-AzureVM -Verbose
 
@@ -471,13 +471,13 @@ SetAzureVMLogCollector.ps1
           }
           else
           {
-              Write-Output "VM OS Type is not Windows, the extension cannot be enabled"
+              Write-Output "VM OS Type is not Windows, hello extension cannot be enabled"
           }
 
     }
     else
     {
-      Write-Output "VM name is not specified, the extension cannot be enabled"
+      Write-Output "VM name is not specified, hello extension cannot be enabled"
     }
 
 ## <a name="next-steps"></a>Další kroky

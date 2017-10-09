@@ -1,0 +1,3 @@
+
+* [ID aplikace pro svou aplikaci zaregistrovat](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW991). Vytvoření ID aplikace explicitní (ne ID zástupný znak aplikace) a pro **ID sady**, použijte ID hello přesný sady, který je ve vašem projektu Xcode rychlý start. Je také velmi důležitý, že jste vybrali hello **nabízená oznámení** možnost. 
+* Dále [tooprepare pro konfiguraci nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6), vytvořit "Vývoj" nebo "Distribucí" certifikát SSL.

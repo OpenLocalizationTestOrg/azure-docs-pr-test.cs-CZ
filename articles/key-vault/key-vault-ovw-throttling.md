@@ -1,39 +1,39 @@
 ---
 ms.assetid: 
-title: "Omezení pokyny Azure Key Vault | Microsoft Docs"
+title: "aaaAzure omezení pokyny Key Vault | Microsoft Docs"
 ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
 ms.date: 06/21/2017
-ms.openlocfilehash: fe700e22c5323c2a0bdc315e349cd119798bcf40
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a75cf96bc6503e51f14378bee598bad57e85be82
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault omezení pokyny
 
-Omezení je proces, který zahájení, který omezuje počet souběžných volání ve službě Azure, aby se zabránilo nadměrné využití prostředků. Službou Azure Key Vault (AZURE) je určený k řešení k velkému počtu požadavků. Pokud dojde k čtenáře počet požadavků, omezení požadavků vašeho klienta pomáhá udržovat optimální výkon a spolehlivost služby službou AZURE.
+Omezení je proces, který zahájení, který omezí hello počet souběžných volání toohello služba Azure nadměrné využití tooprevent prostředků. Službou Azure Key Vault (AZURE) je navrženou toohandle k velkému počtu požadavků. Pokud dojde k čtenáře počet požadavků, omezení požadavků vašeho klienta pomáhá udržovat optimální výkon a spolehlivost hello služby službou AZURE.
 
-Omezení omezení lišit v závislosti na scénáři. Například pokud provádíte značný zápisů, možnost omezení je vyšší než pokud pouze provádíte čtení.
+Omezení omezení lišit v závislosti na scénáři hello. Například pokud provádíte značný zápisů, možnost hello omezení je vyšší než pokud pouze provádíte čtení.
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Jak Key Vault zpracovávat jeho omezení?
 
-Omezení služby v Key Vault existují zabránili zneužití prostředky a zajistit kvality služeb pro všechny klienty Key Vault. Pokud je překročena prahová hodnota služby, limity Key Vault žádné další požadavky z tohoto klienta v časovém intervalu. V takovém případě Key Vault vrátí stavový kód HTTP 429 (příliš mnoho požadavků), a požadavky selžou. Navíc neúspěšné požadavky, které vrátí 429 směrem k mezní hodnoty omezení sledovanými Key Vault. 
+Omezení služby v Key Vault existují tooprevent zneužití prostředků a ujistěte se kvality služeb pro všechny klienty Key Vault. Pokud je překročena prahová hodnota služby, limity Key Vault žádné další požadavky z tohoto klienta v časovém intervalu. V takovém případě Key Vault vrátí stavový kód HTTP 429 (příliš mnoho požadavků), a hello požadavky služeb při selhání. Navíc neúspěšné požadavky, které vrátí 429 směrem omezení omezení hello sledovanými Key Vault. 
 
 Pokud máte platný obchodní případu pro vyšší šířku pásma, kontaktujte nás.
 
 
-## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Omezení aplikace v reakci na omezení služby
+## <a name="how-toothrottle-your-app-in-response-tooservice-limits"></a>Jak toothrottle aplikace v odpovědi tooservice omezení
 
-Následují **osvědčené postupy** omezení aplikace:
-- Snižte počet operací na základě požadavku.
-- Snižte frekvenci požadavků.
+Hello následují **osvědčené postupy** omezení aplikace:
+- Snižte počet hello operací na základě požadavku.
+- Snižte četnost hello požadavků.
 - Vyhněte se okamžitě opakování. 
     - Všechny požadavky nabíhat proti vaší omezení použití.
 
-Pokud implementujete zpracování chyb vaší aplikace, použijte kód chyby HTTP 429 k detekci potřebu omezení na straně klienta. Pokud požadavek selže s kódem chyby HTTP 429 znovu, k stále dochází omezení služby Azure. Nadále používat doporučené na straně klienta omezování metoda, opakování žádosti, dokud neproběhne úspěšně.
+Pokud implementujete zpracování chyb vaší aplikace, použijte hello HTTP Chyba kód 429 toodetect hello nutnost omezení na straně klienta. Pokud hello požadavek selže s kódem chyby HTTP 429 znovu, k stále dochází omezení služby Azure. Pokračujte, toouse hello doporučená metoda omezení na straně klienta, opakování hello požadavku, dokud neproběhne úspěšně.
 
 ### <a name="recommended-client-side-throttling-method"></a>Doporučený způsob omezení na straně klienta
 
@@ -49,5 +49,5 @@ Nesmí být v tomto okamžiku získávání kódy odpovědí HTTP 429.
 
 ## <a name="see-also"></a>Viz také
 
-Hlubší orientaci omezení na cloudu Microsoftu, najdete v části [omezení vzor](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+Hlubší orientaci omezení na hello cloudu Microsoftu, najdete v části [omezení vzor](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

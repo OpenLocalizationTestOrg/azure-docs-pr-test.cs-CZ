@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison (uzel) připojit k Azure IoT - Lekce 3: vytvoření aplikace pro funkce | Microsoft Docs"
-description: "Aplikace Azure funkce naslouchá událostem, Azure IoT hub, zpracuje příchozí zprávy a zapisuje je do Azure Table storage."
+title: "Připojit Intel Edison (uzel) tooAzure IoT - Lekce 3: vytvoření aplikace pro funkce | Microsoft Docs"
+description: "aplikaci Azure Funkce Hello naslouchá tooAzure IoT Centrum událostí, zpracuje příchozí zprávy a zapíše tooAzure tabulka úložiště."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "ukládání dat v cloudu, data uložená v cloudu, iot cloudové služby"
+keywords: "ukládání dat v cloudu hello, data uložená v cloudu, iot cloudové služby"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 37ee5962-95ce-40e8-8162-17e735eaec21
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 6ada1cbbb560f1373346eca561dceb28d7ca7242
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ea0a4cdf978158d70e47eaed57e3de378b638d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-function-app-and-azure-storage-account"></a>Vytvořte aplikaci Azure funkce a účet úložiště Azure
-[Azure Functions](../../articles/azure-functions/functions-overview.md) je řešení umožňující snadno spouštět *funkce* (malé části kódu) v cloudu. Aplikace Azure funkce hostuje provádění funkcí v Azure.
+[Azure Functions](../../articles/azure-functions/functions-overview.md) je řešení umožňující snadno spouštět *funkce* (malé části kódu) v cloudu hello. Aplikace Azure funkce hostuje hello provádění funkcí v Azure.
 
 ## <a name="what-will-you-do"></a>Co se dělat
-Vytvoření aplikace Azure funkce a účet úložiště Azure pomocí šablony Azure Resource Manager. Aplikace Azure funkce naslouchá událostem, Azure IoT hub, zpracuje příchozí zprávy a zapisuje je do Azure Table storage. Účet úložiště se používá k přečtení trvalou kopie zprávy z tabulky Azure. Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky][troubleshooting].
+Aplikace Azure funkce a účet úložiště Azure, použijte toocreate šablony Azure Resource Manager. aplikaci Azure Funkce Hello naslouchá tooAzure IoT Centrum událostí, zpracuje příchozí zprávy a zapíše tooAzure tabulka úložiště. Hello účet úložiště se používá ke čtení hello trvalé kopie zpráv z tabulky Azure. Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky][troubleshooting].
 
 ## <a name="what-will-you-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
-* Jak používat [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) nasazení prostředků Azure.
-* Jak používat aplikaci Azure funkce zpracování zpráv centra IoT a jejich zápis do tabulky v Azure Table storage.
+* Jak toouse [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) toodeploy Azure prostředky.
+* Jak toouse Azure funkce aplikace tooprocess zprávy centra IoT a jejich zápis tooa tabulky ve službě Azure Table storage.
 
 ## <a name="what-do-you-need"></a>Co je potřeba
 Musíte úspěšně jste dokončili:
 - [Začínáme s vaší Edison Intel][get-started-with-your-intel-edison]
 - [Vytvoření služby Azure IoT hub][create-your-azure-iot-hub]
 
-## <a name="open-the-sample-app"></a>Otevřete ukázková aplikace
-Otevřete ukázkový projekt ve Visual Studio Code spuštěním následujících příkazů:
+## <a name="open-hello-sample-app"></a>Ukázkové aplikace otevřete hello
+Otevřete hello ukázkový projekt ve Visual Studio Code spuštěním hello následující příkazy:
 
 ```bash
 cd Lesson3
@@ -49,32 +49,32 @@ code .
 
 ![Struktura úložiště][repo-structure]
 
-* Soubor v `app` podsložky je klíče zdrojového souboru. Tento zdrojový soubor obsahuje kód, který odešle zprávu 20krát do služby IoT hub a blink DIODU pro každou zprávu, kterou odešle.
-* `arm-template.json` Soubor je šablony Azure Resource Manager, která obsahuje aplikaci Azure funkce a účet úložiště Azure.
-* `arm-template-param.json` Soubor je soubor konfigurace používané šablony Azure Resource Manageru.
-* `ReceiveDeviceMessages` Podsložky obsahuje kód Node.js pro funkci Azure.
+* soubor Hello v hello `app` podsložky je hello klíče zdrojového souboru. Tento zdrojový soubor obsahuje kód toosend hello zprávu 20krát tooyour IoT hub a blikání hello DIODU pro každou zprávu, že odešle.
+* Hello `arm-template.json` soubor je hello šablony Azure Resource Manageru, která obsahuje aplikaci Azure funkce a účet úložiště Azure.
+* Hello `arm-template-param.json` soubor je soubor konfigurace hello používá šablony Azure Resource Manageru hello.
+* Hello `ReceiveDeviceMessages` podsložky obsahuje kód Node.js hello pro hello Azure funkce.
 
 ## <a name="configure-azure-resource-manager-templates-and-create-resources-in-azure"></a>Konfigurace šablon Azure Resource Manager a vytváření prostředků v Azure
-Aktualizace `arm-template-param.json` soubor ve Visual Studio Code.
+Aktualizace hello `arm-template-param.json` soubor ve Visual Studio Code.
 
 ![Parametry šablony Azure Resource Manager][arm-template-parameters]
 
 * Nahraďte **[název služby IoT Hub]** s **{Moje název centra}** kterou jste zadali při jste [vytvoření služby IoT hub a registraci Intel Edison][created-your-iot-hub-and-registered-intel-edison].
-* Nahraďte **[předpony řetězec pro nové prostředky]** s jakoukoli předponu chcete. Předpona, která zajišťuje, že název prostředku globálně jedinečný, aby nedošlo ke konfliktu. Nepoužívejte pomlčku nebo číslo počáteční v předponu.
+* Nahraďte **[předpony řetězec pro nové prostředky]** s jakoukoli předponu chcete. Předpona Hello zajistí, že tento název zdroje hello je globálně jedinečný tooavoid konflikt. Nepoužívejte dash nebo číslo počáteční v hello předponu.
 
-Po provedení aktualizace `arm-template-param.json` souboru, nasadit tyto prostředky do Azure tak, že spustíte následující příkaz:
+Po dokončení aktualizace hello `arm-template-param.json` souboru, nasazení hello prostředky tooAzure spuštěním hello následující příkaz:
 
 ```bash
 az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
-Vytvořte tyto prostředky trvá asi 5 minut. Při vytvoření prostředku probíhá, můžete přesunout další článek.
+Trvá asi 5 minut toocreate tyto prostředky. Při vytvoření prostředku hello probíhá, můžete přesunout na následující článek toohello.
 
 ## <a name="summary"></a>Souhrn
-Vytvoření aplikace Azure funkce pro zpracování zprávy IoT hub a účet úložiště Azure slouží k uložení těchto zpráv. Teď můžete nasadit a spustit ukázkový k odesílání zpráv typu zařízení cloud na Edison.
+Jste vytvořili vaší aplikaci tooprocess funkce Azure IoT hub zprávy a Azure storage účet toostore tyto zprávy. Teď můžete nasadit a spustit zpráv typu zařízení cloud hello ukázkové toosend na Edison.
 
 ## <a name="next-steps"></a>Další kroky
-[Spuštění ukázkové aplikace k odesílání zpráv typu zařízení cloud na Intel Edison][send-device-to-cloud-messages].
+[Spuštění ukázkové aplikace toosend zpráv typu zařízení cloud na Intel Edison][send-device-to-cloud-messages].
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md

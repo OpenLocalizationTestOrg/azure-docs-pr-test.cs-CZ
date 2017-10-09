@@ -1,6 +1,6 @@
 ---
-title: "Řetězec funkce šablon Azure Resource Manager - | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manageru pro práci s řetězce."
+title: "funkce šablony Resource Manageru aaaAzure - řetězec | Microsoft Docs"
+description: "Popisuje funkce toouse hello v toowork šablony Azure Resource Manager s řetězci."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 27f7f6a52cbe4e9915718184433e92ca92999346
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězcové funkce pro šablony Azure Resource Manager
 
-Resource Manager poskytuje následující funkce pro práci s řetězce:
+Resource Manager poskytuje následující funkce pro práci s řetězci hello:
 
 * [formátu Base64.](#base64)
 * [base64ToJson](#base64tojson)
@@ -59,21 +59,21 @@ Resource Manager poskytuje následující funkce pro práci s řetězce:
 ## <a name="base64"></a>formátu Base64.
 `base64(inputString)`
 
-Vrátí reprezentaci base64 vstupní řetězec.
+Vrátí hello reprezentace hello vstupní řetězec base64.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |Řetězec |Hodnota k vrátit jako znázornění base64. |
+| inputString |Ano |Řetězec |Hodnota tooreturn Hello jako znázornění base64. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec obsahující reprezentace base64.
+Řetězec obsahující reprezentace hello base64.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak chcete používat funkci base64.
+Hello následující příklad ukazuje, jak toouse hello funkce base64.
 
 ```json
 {
@@ -112,7 +112,7 @@ Následující příklad ukazuje, jak chcete používat funkci base64.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -125,13 +125,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="base64tojson"></a>base64ToJson
 `base64tojson`
 
-Převede znázornění base64 objekt JSON.
+Převede objekt base64 tooa reprezentaci JSON.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |Řetězec |Reprezentace base64 převést na objekt JSON. |
+| base64Value |Ano |Řetězec |Hello base64 reprezentace tooconvert tooa objekt JSON. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -139,7 +139,7 @@ Objekt JSON.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad používá funkci base64ToJson převést hodnotu base64:
+Hello následující příklad používá hello base64ToJson funkce tooconvert hodnotu base64:
 
 ```json
 {
@@ -178,7 +178,7 @@ Následující příklad používá funkci base64ToJson převést hodnotu base64
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -191,21 +191,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="base64tostring"></a>base64ToString
 `base64ToString(base64Value)`
 
-Převede řetězec znázornění base64.
+Převede řetězec base64 reprezentace tooa.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |Řetězec |Reprezentace base64 převést na řetězec. |
+| base64Value |Ano |Řetězec |Hello base64 reprezentace tooconvert tooa řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec převedený base64 hodnoty.
+Řetězec hello převést hodnotu base64.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad používá funkci base64ToString převést hodnotu base64:
+Hello následující příklad používá hello base64ToString funkce tooconvert hodnotu base64:
 
 ```json
 {
@@ -244,7 +244,7 @@ Následující příklad používá funkci base64ToString převést hodnotu base
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -259,13 +259,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="concat"></a>concat
 `concat (arg1, arg2, arg3, ...)`
 
-Kombinuje více řetězcové hodnoty a vrací spojený řetězec nebo kombinuje několik polí a vrací zřetězených pole.
+Kombinuje více řetězcové hodnoty a vrátí řetězec hello zřetězených nebo kombinuje několik polí a vrací hello zřetězených pole.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo pole |První hodnota zřetězení. |
+| arg1 |Ano |řetězec nebo pole |Hello první hodnota zřetězení. |
 | Další argumenty |Ne |Řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -273,7 +273,7 @@ Kombinuje více řetězcové hodnoty a vrací spojený řetězec nebo kombinuje 
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak kombinovat dvou řetězcových hodnot a vrátí spojený řetězec.
+Hello následující příklad ukazuje, jak toocombine dva řetězce hodnoty a vrátí spojený řetězec.
 
 ```json
 {
@@ -295,13 +295,13 @@ Následující příklad ukazuje, jak kombinovat dvou řetězcových hodnot a vr
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | concatOutput | Řetězec | Předpona 5yj4yjf5mbg72 |
 
-Následující příklad ukazuje, jak kombinovat dvěma poli.
+Hello následující příklad ukazuje, jak maticových toocombine dva.
 
 ```json
 {
@@ -336,7 +336,7 @@ Následující příklad ukazuje, jak kombinovat dvěma poli.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -353,16 +353,16 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obs
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu k vyhledání. |
-| itemToFind |Ano |řetězec nebo celá čísla |Hodnota k vyhledání. |
+| kontejner |Ano |pole, objekt nebo řetězec |Hello hodnotu, která obsahuje hodnotu toofind hello. |
+| itemToFind |Ano |řetězec nebo celá čísla |Hodnota toofind Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-**Hodnota TRUE,** Pokud je položka, jinak hodnota **False**.
+**Hodnota TRUE,** Pokud je položka hello, jinak hodnota **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat s různými typy obsahuje:
+Hello následující příklad ukazuje, jak toouse obsahuje s různými typy:
 
 ```json
 {
@@ -413,7 +413,7 @@ Následující příklad ukazuje, jak používat s různými typy obsahuje:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -429,13 +429,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="datauri"></a>dataUri
 `dataUri(stringToConvert)`
 
-Převede hodnotu na datový identifikátor URI.
+Převede data tooa hodnota identifikátoru URI.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Ano |Řetězec |Hodnota převést na identifikátor URI dat. |
+| stringToConvert |Ano |Řetězec |Hello tooconvert tooa údaj hodnoty identifikátoru URI. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -443,7 +443,7 @@ Převede hodnotu na datový identifikátor URI.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad převede hodnotu na identifikátor URI dat. a převede data URI na řetězec:
+Následující ukázka Hello převede data tooa hodnota identifikátoru URI a převede data řetězce tooa URI:
 
 ```json
 {
@@ -473,7 +473,7 @@ Následující příklad převede hodnotu na identifikátor URI dat. a převede 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -485,21 +485,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="datauritostring"></a>dataUriToString
 `dataUriToString(dataUriToConvert)`
 
-Převádí data URI ve formátu hodnotu na řetězec.
+Hodnota tooa řetězec ve formátu převádí data identifikátor URI.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Ano |Řetězec |Data, která hodnota identifikátoru URI k převedení. |
+| dataUriToConvert |Ano |Řetězec |data Hello tooconvert hodnota identifikátoru URI. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec obsahující převedenou hodnotu.
+Řetězec obsahující hello převést hodnotu.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad převede hodnotu na identifikátor URI dat. a převede data URI na řetězec:
+Následující ukázka Hello převede data tooa hodnota identifikátoru URI a převede data řetězce tooa URI:
 
 ```json
 {
@@ -529,7 +529,7 @@ Následující příklad převede hodnotu na identifikátor URI dat. a převede 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -547,15 +547,15 @@ Určuje, zda je prázdný řetězec, objekt nebo pole.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota ke kontrole, jestli je prázdný. |
+| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota toocheck Hello, pokud je prázdná. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud hodnota je prázdný, jinak hodnota **False**.
+Vrátí **True** Pokud hello hodnota je prázdný, jinak hodnota **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ověří, zda jsou řetězec, objekt a pole prázdné.
+Následující ukázka Hello ověří, zda jsou řetězec, objekt a pole prázdné.
 
 ```json
 {
@@ -594,7 +594,7 @@ Následující příklad ověří, zda jsou řetězec, objekt a pole prázdné.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -607,22 +607,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="endswith"></a>endsWith
 `endsWith(stringToSearch, stringToFind)`
 
-Určuje, zda řetězec končí s hodnotou. Porovnání nerozlišuje malá a velká písmena.
+Určuje, zda řetězec končí s hodnotou. Hello porovnání nerozlišuje malá a velká písmena.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |Řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |Řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |Řetězec |Hello hodnotu, která obsahuje položky toofind hello. |
+| stringToFind |Ano |Řetězec |Hodnota toofind Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-**Hodnota TRUE,** Pokud poslední znak nebo znaky řetězce odpovídají hodnotě; jinak **False**.
+**Hodnota TRUE,** Pokud hello poslední znak nebo znaky řetězce hello odpovídají hello hodnotu; jinak, **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat funkce startsWith a endsWith:
+Hello následující příklad ukazuje, jak toouse hello funkce startsWith a endsWith:
 
 ```json
 {
@@ -658,7 +658,7 @@ Následující příklad ukazuje, jak používat funkce startsWith a endsWith:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -674,21 +674,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="first"></a>první
 `first(arg1)`
 
-Vrátí první znak řetězec, nebo první prvek pole.
+Vrátí hello první znak řetězce hello nebo první prvek pole hello.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota k načtení první element nebo znak. |
+| arg1 |Ano |pole nebo řetězec |Hello hodnota tooretrieve hello první prvek nebo znak. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec prvního znaku nebo typ první prvek v poli (řetězec, int, pole nebo objekt).
+Řetězec hello první znak nebo typ hello (řetězec, int, pole nebo objekt) hello první prvek v poli.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat funkci první s řetězec a pole.
+Hello následující příklad ukazuje, jak toouse hello první funkce s řetězec a pole.
 
 ```json
 {
@@ -715,7 +715,7 @@ Následující příklad ukazuje, jak používat funkci první s řetězec a pol
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -727,22 +727,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="indexof"></a>indexOf
 `indexOf(stringToSearch, stringToFind)`
 
-Vrátí první pozici hodnoty v řetězci. Porovnání nerozlišuje malá a velká písmena.
+Vrátí hello první pozici hodnoty v řetězci. Hello porovnání nerozlišuje malá a velká písmena.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |Řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |Řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |Řetězec |Hello hodnotu, která obsahuje položky toofind hello. |
+| stringToFind |Ano |Řetězec |Hodnota toofind Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující pozici položku, kterou chcete najít. Hodnota je počítáno od nuly. Pokud položka není nalezena, vrátí se -1.
+Celé číslo představující pozici hello toofind položky hello. Hodnota Hello je počítáno od nuly. Pokud hello položka není nalezena, se vrátí hodnotu -1.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat funkce indexOf a lastIndexOf:
+Hello následující příklad ukazuje, jak toouse hello funkce indexOf a lastIndexOf:
 
 ```json
 {
@@ -774,7 +774,7 @@ Následující příklad ukazuje, jak používat funkce indexOf a lastIndexOf:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -789,21 +789,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="last"></a>poslední
 `last (arg1)`
 
-Vrátí poslední znak řetězce nebo posledním elementem pole.
+Vrátí poslední znak řetězce hello nebo hello posledním elementem pole hello.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota k načtení poslední element nebo znak. |
+| arg1 |Ano |pole nebo řetězec |Hello hodnota tooretrieve hello poslední element nebo znak. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec poslední znak nebo typ posledním prvkem v pole (řetězec, int, pole nebo objekt).
+Řetězec hello poslední znak nebo typ hello (řetězec, int, pole nebo objekt) hello poslední prvek v poli.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat funkci naposledy s řetězec a pole.
+Hello následující příklad ukazuje, jak toouse hello poslední funkci s řetězec a pole.
 
 ```json
 {
@@ -830,7 +830,7 @@ Následující příklad ukazuje, jak používat funkci naposledy s řetězec a 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -842,22 +842,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="lastindexof"></a>lastIndexOf
 `lastIndexOf(stringToSearch, stringToFind)`
 
-Vrátí poslední umístění hodnoty v řetězci. Porovnání nerozlišuje malá a velká písmena.
+Vrátí hello poslední umístění hodnoty v řetězci. Hello porovnání nerozlišuje malá a velká písmena.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |Řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |Řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |Řetězec |Hello hodnotu, která obsahuje položky toofind hello. |
+| stringToFind |Ano |Řetězec |Hodnota toofind Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující pozici poslední položku, kterou chcete najít. Hodnota je počítáno od nuly. Pokud položka není nalezena, vrátí se -1.
+Celé číslo, které představuje poslední pozice hello toofind položky hello. Hodnota Hello je počítáno od nuly. Pokud hello položka není nalezena, se vrátí hodnotu -1.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat funkce indexOf a lastIndexOf:
+Hello následující příklad ukazuje, jak toouse hello funkce indexOf a lastIndexOf:
 
 ```json
 {
@@ -889,7 +889,7 @@ Následující příklad ukazuje, jak používat funkce indexOf a lastIndexOf:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -904,13 +904,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="length"></a>Délka
 `length(string)`
 
-Vrátí počet znaků v řetězci nebo prvků v poli.
+Vrátí hello počet znaků v řetězci nebo prvků v poli.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Pole na použití pro získání počet elementů nebo řetězec Pokud chcete použít pro maximální počet znaků. |
+| arg1 |Ano |pole nebo řetězec |Hello toouse pole pro získání hello počet elementů nebo hello toouse řetězec pro získání hello počet znaků. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -918,7 +918,7 @@ Typ int.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat délka s řetězec a pole:
+Následující příklad ukazuje, jak Hello toouse délka s řetězec a pole:
 
 ```json
 {
@@ -952,7 +952,7 @@ Následující příklad ukazuje, jak používat délka s řetězec a pole:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -964,25 +964,25 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="padleft"></a>padLeft
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
-Vrací vpravo zarovnaný řetězec přidáním znaků na levé straně až do dosažení celkové určenou délku.
+Vrací vpravo zarovnaný řetězec přidáním znaků toohello doleva až do dosažení celkové zadané délky hello.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Ano |řetězec nebo celá čísla |Hodnota Zarovnat vpravo. |
-| Hodnota totalLength |Ano |celá čísla |Celkový počet znaků v vrácený řetězec. |
-| paddingCharacter |Ne |jeden znak |Znak, který má používat pro odsazení nalevo až do dosažení celkové délky. Výchozí hodnota je mezera. |
+| valueToPad |Ano |řetězec nebo celá čísla |Hello hodnota tooright-zarovnat. |
+| Hodnota totalLength |Ano |celá čísla |Celkový počet znaků v hello Hello vrátil řetězec. |
+| paddingCharacter |Ne |jeden znak |Hello toouse znak pro odsazení nalevo dokud nebude dosaženo celková délka hello. Hello výchozí hodnota je mezera. |
 
-Pokud původní text je delší než počet znaků k vyplnění, přidají se žádné znaky.
+Pokud původní řetězec hello je delší než hello počet znaků toopad, přidají se žádné znaky.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-A řetězec s minimálně počet zadaný znaků.
+Řetězec s minimálně hello počet zadaný znaků.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak k vyplnění hodnota parametru zadaný uživatelem přidáním nulu, dokud nebude dosaženo celkový počet znaků. 
+Hello následující příklad ukazuje, jak toopad hello hodnota parametru zadaný uživatelem přidáním hello nulové znak dokud nedosáhne hello celkový počet znaků. 
 
 ```json
 {
@@ -1004,7 +1004,7 @@ Následující příklad ukazuje, jak k vyplnění hodnota parametru zadaný už
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1021,17 +1021,17 @@ Vrátí nový řetězec se všechny instance jeden řetězec nahrazen jiným ře
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| originalString |Ano |Řetězec |Hodnota, která obsahuje všechny instance jeden řetězec nahrazen jiným řetězcem. |
-| oldString |Ano |Řetězec |Řetězec, který má být odebrána z původního řetězce. |
-| newstring – |Ano |Řetězec |Řetězec, který se má přidat místo text odebrané. |
+| originalString |Ano |Řetězec |Hello hodnotu, která obsahuje všechny instance jeden řetězec nahrazen jiným řetězcem. |
+| oldString |Ano |Řetězec |odebrat z původního řetězce hello toobe řetězec Hello. |
+| newstring – |Ano |Řetězec |řetězec tooadd Hello místo hello odebrat řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec s nahrazené znaky.
+Řetězec s hello nahradit znaků.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak odebrat všechny pomlčky z řetězce zadaný uživatelem a jak součást řetězce identifikátoru nahradit jiným řetězcem.
+Hello následující příklad ukazuje, jak tooremove všechny pomlčky z řetězce hello zadaný uživatelem a jak tooreplace součástí hello jiným řetězcem.
 
 ```json
 {
@@ -1057,7 +1057,7 @@ Následující příklad ukazuje, jak odebrat všechny pomlčky z řetězce zada
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1069,14 +1069,14 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="skip"></a>Přeskočit
 `skip(originalValue, numberToSkip)`
 
-Vrátí řetězec s odebranými znaky po zadaný počet znaků, nebo pole s všechny elementy po zadaný počet elementů.
+Vrátí řetězec s všechny znaky hello po hello zadaný počet znaků, nebo pole s všechny elementy hello po hello zadaný počet elementů.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| původní hodnota |Ano |pole nebo řetězec |Pole nebo řetězec, který má používat pro přeskočení. |
-| numberToSkip |Ano |celá čísla |Počet elementů nebo znaků, které chcete vynechat. Pokud tato hodnota je 0 nebo menší, vrátí se všechny elementy nebo znaků v hodnotě. Pokud je větší než délka pole nebo řetězec, se vrátí prázdné pole nebo řetězec. |
+| původní hodnota |Ano |pole nebo řetězec |Hello toouse pro přeskočení pole nebo řetězec. |
+| numberToSkip |Ano |celá čísla |Hello počet tooskip elementy nebo znaky. Pokud tato hodnota je 0 nebo menší, všechny hello elementy nebo znaků hello hodnoty jsou vráceny. Pokud je větší než délka hello hello pole nebo řetězec, se vrátí prázdné pole nebo řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1084,7 +1084,7 @@ Pole nebo řetězec.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad přeskočí zadaný počet elementů v poli a zadaný počet znaků v řetězci.
+Následující příklad přeskočí hello Hello zadaný počet prvků v poli hello a hello zadaný počet znaků v řetězci.
 
 ```json
 {
@@ -1126,7 +1126,7 @@ Následující příklad přeskočí zadaný počet elementů v poli a zadaný p
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1138,14 +1138,14 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="split"></a>split
 `split(inputString, delimiter)`
 
-Vrátí pole řetězců obsahující dílčích řetězců vstupního řetězce, které jsou odděleny zadaných oddělovačů.
+Vrací pole řetězců obsahující hello podřetězce hello vstupní řetězec, které jsou odděleny hello zadaného oddělovače.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |Řetězec |Řetězec k rozdělení. |
-| Oddělovač |Ano |řetězec nebo pole řetězců. |Oddělovač, který se má použít k rozdělení řetězec. |
+| inputString |Ano |Řetězec |řetězec toosplit Hello. |
+| Oddělovač |Ano |řetězec nebo pole řetězců. |Oddělovač toouse Hello k rozdělení hello řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1153,7 +1153,7 @@ Pole řetězců.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad rozdělí vstupní řetězec s čárkou a s čárkou nebo středníkem.
+Hello následující příklad rozdělí vstupní řetězec hello se čárkou a s čárkou nebo středníkem.
 
 ```json
 {
@@ -1186,7 +1186,7 @@ Následující příklad rozdělí vstupní řetězec s čárkou a s čárkou ne
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1198,22 +1198,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="startswith"></a>startsWith
 `startsWith(stringToSearch, stringToFind)`
 
-Určuje, zda řetězec začíná hodnotu. Porovnání nerozlišuje malá a velká písmena.
+Určuje, zda řetězec začíná hodnotu. Hello porovnání nerozlišuje malá a velká písmena.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |Řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |Řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |Řetězec |Hello hodnotu, která obsahuje položky toofind hello. |
+| stringToFind |Ano |Řetězec |Hodnota toofind Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-**Hodnota TRUE,** Pokud první znak nebo znaky řetězce odpovídají hodnotě; jinak **False**.
+**Hodnota TRUE,** Pokud hello první znak nebo znaky řetězce hello odpovídají hello hodnotu; jinak, **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat funkce startsWith a endsWith:
+Hello následující příklad ukazuje, jak toouse hello funkce startsWith a endsWith:
 
 ```json
 {
@@ -1249,7 +1249,7 @@ Následující příklad ukazuje, jak používat funkce startsWith a endsWith:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1265,21 +1265,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="string"></a>Řetězec
 `string(valueToConvert)`
 
-Převede zadanou hodnotu na řetězec.
+Hello převede zadaný řetězec tooa hodnoty.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano | Všechny |Hodnota převést na řetězec. Žádný druh hodnotu lze převést, včetně objekty a pole. |
+| valueToConvert |Ano | Všechny |toostring tooconvert hodnotu Hello. Žádný druh hodnotu lze převést, včetně objekty a pole. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec převedenou hodnotu.
+Řetězec hello převést hodnotu.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak převést různé typy hodnot řetězců:
+Hello následující příklad ukazuje, jak tooconvert různé typy hodnot toostrings:
 
 ```json
 {
@@ -1324,7 +1324,7 @@ Následující příklad ukazuje, jak převést různé typy hodnot řetězců:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1337,23 +1337,23 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="substring"></a>dílčí řetězec
 `substring(stringToParse, startIndex, length)`
 
-Vrátí dílčí řetězec, který začíná na pozici zadaný znak a obsahuje zadaný počet znaků.
+Vrátí dílčí řetězec, spustí hello zadaný znak pozice a že obsahuje hello zadaný počet znaků.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Ano |Řetězec |Původní řetězec, ze které je extrahován dílčí řetězec. |
-| Počáteční index |Ne |celá čísla |Počáteční znak pozice s nulovým základem pro dílčí řetězec. |
-| Délka |Ne |celá čísla |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. |
+| stringToParse |Ano |Řetězec |řetězec původní Hello, ze které hello dílčí řetězec extrahován. |
+| Počáteční index |Ne |celá čísla |Hello počáteční znak pozice s nulovým základem pro hello dílčí řetězec. |
+| Délka |Ne |celá čísla |Hello počet znaků pro hello dílčí řetězec. Musí odkazovat tooa umístění v rámci hello řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Dílčí řetězec.
+Hello dílčí řetězec.
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce selže, když dílčí řetězec přesahuje konci řetězce. V následujícím příkladu se nezdaří s chybou "parametry indexu a délky musí odkazovat na umístění v rámci řetězce. Parametr indexu: "0", parametr délky: 11, Délka parametru řetězce: "10". ".
+Funkce Hello selže, když hello substring přesahuje hello konce řetězce hello. Následující ukázka Hello selže s hello chyba "hello parametry indexu a délky musí odkazovat tooa umístění v rámci hello řetězec. Parametr index Hello: '0' hello parametr délky: 11, hello Délka parametru řetězce hello: "10". ".
 
 ```json
 "parameters": {
@@ -1366,7 +1366,7 @@ Funkce selže, když dílčí řetězec přesahuje konci řetězce. V následuj�
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad extrahuje dílčí řetězec z parametr.
+Následující ukázka Hello extrahuje dílčí řetězec z parametr.
 
 ```json
 {
@@ -1388,7 +1388,7 @@ Následující příklad extrahuje dílčí řetězec z parametr.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1400,14 +1400,14 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="take"></a>proveďte
 `take(originalValue, numberToTake)`
 
-Vrátí řetězec s zadaný počet znaků od začátku řetězec nebo pole s zadaný počet elementů od začátku pole.
+Vrátí řetězec s hello zadaný počet znaků od začátku hello hello řetězec nebo pole s hello zadaný počet elementů od začátku hello hello pole.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| původní hodnota |Ano |pole nebo řetězec |Pole nebo řetězec, který má trvat elementy ze. |
-| numberToTake |Ano |celá čísla |Počet elementů nebo znaků, který má trvat. Pokud tato hodnota je 0 nebo menší, se vrátí prázdné pole nebo řetězec. Pokud je větší než délka dané pole nebo řetězec, vrátí se všechny elementy ve pole nebo řetězec. |
+| původní hodnota |Ano |pole nebo řetězec |Hello pole nebo řetězec elementy hello tootake z. |
+| numberToTake |Ano |celá čísla |Hello počet tootake elementy nebo znaky. Pokud tato hodnota je 0 nebo menší, se vrátí prázdné pole nebo řetězec. Pokud je větší než délka hello hello zadané pole nebo řetězec, vrátí se všechny elementy hello ve hello pole nebo řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1415,7 +1415,7 @@ Pole nebo řetězec.
 
 ### <a name="examples"></a>Příklady
 
-V následujícím příkladu má zadaný počet prvků z pole a znaků z řetězce.
+Následující příklad trvá hello Hello zadaný počet elementů od hello pole a znaků z řetězce.
 
 ```json
 {
@@ -1457,7 +1457,7 @@ V následujícím příkladu má zadaný počet prvků z pole a znaků z řetěz
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1469,21 +1469,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="tolower"></a>toLower
 `toLower(stringToChange)`
 
-Převede zadaný řetězec na malá písmena.
+Hello převede zadaný řetězec toolower případu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |Řetězec |Hodnota k převedení na malá písmena. |
+| stringToChange |Ano |Řetězec |Hello hodnotu tooconvert toolower případu. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Daný řetězec převést na malá písmena.
+Hello řetězec převést toolower případu.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad převede hodnotu parametru na malá písmena a na velká písmena.
+Následující ukázka Hello převede případ toolower hodnotu parametru a tooupper případu.
 
 ```json
 {
@@ -1509,7 +1509,7 @@ Následující příklad převede hodnotu parametru na malá písmena a na velk�
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1521,21 +1521,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="toupper"></a>toUpper
 `toUpper(stringToChange)`
 
-Převede zadaný řetězec na velká písmena.
+Hello převede zadaný řetězec tooupper případu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |Řetězec |Hodnota k převedení na velká písmena. |
+| stringToChange |Ano |Řetězec |Hello hodnotu tooconvert tooupper případu. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Daný řetězec převést na velká písmena.
+Hello řetězec převést tooupper případu.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad převede hodnotu parametru na malá písmena a na velká písmena.
+Následující ukázka Hello převede případ toolower hodnotu parametru a tooupper případu.
 
 ```json
 {
@@ -1561,7 +1561,7 @@ Následující příklad převede hodnotu parametru na malá písmena a na velk�
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1573,21 +1573,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="trim"></a>Uvolnění dočasné paměti
 `trim (stringToTrim)`
 
-Odebere všechny úvodní a koncové prázdné znaky ze zadaného řetězce.
+Odebere všechny úvodní a koncové prázdné znaky z hello zadaný řetězec.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Ano |Řetězec |Hodnota k uvolnění dočasné paměti. |
+| stringToTrim |Ano |Řetězec |Hodnota tootrim Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec, který bez úvodní a koncové prázdné znaky.
+řetězec Hello bez úvodní a koncové prázdné znaky.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ořízne prázdné znaky z parametru.
+Hello následující příklad ořízne hello prázdné znaky z parametru hello.
 
 ```json
 {
@@ -1609,7 +1609,7 @@ Následující příklad ořízne prázdné znaky z parametru.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1620,44 +1620,44 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="uniquestring"></a>uniqueString
 `uniqueString (baseString, ...)`
 
-Vytvoří řetězec deterministickou hash na základě hodnot zadaných jako parametry. 
+Vytvoří řetězec deterministickou hash na základě hodnot hello zadané jako parametry. 
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |Řetězec |Hodnota použitá v funkce hash pro vytvoření jedinečné řetězce. |
-| Další parametry podle potřeby |Ne |Řetězec |Můžete přidat libovolný počet řetězce podle potřeby vytvořit hodnotu, která určuje úroveň jedinečnosti. |
+| baseString |Ano |Řetězec |Hodnota Hello používá toocreate funkce hash hello do jedinečného řetězce. |
+| Další parametry podle potřeby |Ne |Řetězec |Můžete přidat tolik řetězce jako potřebné toocreate hello hodnotu, která určuje úroveň hello jedinečnosti. |
 
 ### <a name="remarks"></a>Poznámky
 
-Tato funkce je užitečné, pokud je potřeba vytvořit jedinečný název pro prostředek. Je-li zadat hodnoty parametrů, které omezí rozsah jedinečnosti pro výsledek. Můžete zadat, zda je název jedinečný dolů předplatné, skupinu prostředků nebo nasazení. 
+Tato funkce je užitečné, když potřebujete toocreate jedinečný název pro prostředek. Je-li zadat hodnoty parametrů, které omezit obor hello jedinečnosti pro výsledek hello. Můžete zadat, zda je název hello jedinečný dolů toosubscription, skupinu prostředků nebo nasazení. 
 
-Vrácená hodnota není náhodný řetězec, ale spíš výsledek funkce hash. Vrácená hodnota je 13 znaků. Není globálně jedinečný. Chcete zkombinovat hodnotu s předponou z vaší zásady vytváření názvů vytvořit smysluplný název. Následující příklad ukazuje formát vrácené hodnoty. Skutečná hodnota se liší podle parametrů.
+Hello vrátil hodnoty není náhodný řetězec, ale spíš hello výsledek funkce hash. Hello vrátit hodnota je 13 znaků. Není globálně jedinečný. Můžete chtít toocombine hello hodnotu s předponou ze zásady vytváření názvů toocreate smysluplný název. Hello následující příklad ukazuje hello formát hello vrátil hodnotu. Skutečná hodnota Hello se liší podle hello poskytnutými parametry.
 
     tcvhiyu5h2o5o
 
-Následující příklady ukazují, jak pomocí uniqueString můžete vytvořit jedinečnou hodnotu pro běžně používané úrovně.
+Hello následující příklady ukazují, jak toouse uniqueString toocreate a jedinečné hodnoty pro běžně používané úrovně.
 
-Jedinečný obor do předplatného
+Jedinečný oboru toosubscription
 
 ```json
 "[uniqueString(subscription().subscriptionId)]"
 ```
 
-Jedinečný obor do skupiny prostředků
+Jedinečný vymezená tooresource skupiny
 
 ```json
 "[uniqueString(resourceGroup().id)]"
 ```
 
-Jedinečný rozsah nasazení pro skupinu prostředků.
+Jedinečný obor toodeployment pro skupinu prostředků.
 
 ```json
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-Následující příklad ukazuje, jak vytvořit jedinečný název pro účet úložiště na základě vaší skupiny prostředků. Uvnitř skupinu prostředků název není jedinečný, pokud je vytvořen stejným způsobem.
+Hello následující příklad ukazuje, jak toocreate jedinečný název pro účet úložiště na základě vaší skupiny prostředků. Uvnitř hello skupinu prostředků, název hello není jedinečný, pokud sestavený hello stejným způsobem.
 
 ```json
 "resources": [{ 
@@ -1672,7 +1672,7 @@ Následující příklad ukazuje, jak vytvořit jedinečný název pro účet ú
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad vrátí výsledky z uniquestring:
+Hello následující příklad vrátí výsledky z uniquestring:
 
 ```json
 {
@@ -1697,30 +1697,30 @@ Následující příklad vrátí výsledky z uniquestring:
 ## <a name="uri"></a>identifikátor URI
 `uri (baseUri, relativeUri)`
 
-Vytvoří absolutní identifikátor URI kombinací baseUri a relativeUri řetězce.
+Vytvoří absolutní identifikátor URI kombinací hello baseUri a hello relativeUri řetězec.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ano |Řetězec |Řetězec základní identifikátor uri. |
-| relativeUri |Ano |Řetězec |Řetězec relativní identifikátor uri pro přidání do řetězce základní identifikátor uri. |
+| baseUri |Ano |Řetězec |řetězec Hello základní identifikátor uri. |
+| relativeUri |Ano |Řetězec |Hello relativní identifikátor uri řetězec tooadd toohello základní identifikátor uri řetězec. |
 
-Hodnota **baseUri** parametr může obsahovat konkrétní soubor, ale jenom základní cesta se používá při vytváření identifikátor URI. Například předávání `http://contoso.com/resources/azuredeploy.json` jako parametr výsledky baseUri v základní identifikátor URI služby `http://contoso.com/resources/`.
+hodnota pro hello Hello **baseUri** parametr může obsahovat konkrétní soubor, ale jenom základní cesta hello se používá při vytváření hello identifikátor URI. Například předávání `http://contoso.com/resources/azuredeploy.json` jako hello baseUri parametr výsledky v základní identifikátor URI služby `http://contoso.com/resources/`.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec představující absolutní identifikátor URI pro základní a relativní hodnoty.
+Řetězec představující hello absolutní identifikátor URI pro základní a relativní hodnoty hello.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak vytvořit odkaz na vnořené šablonu na základě hodnoty nadřazené šablony.
+Hello následující příklad ukazuje, jak tooconstruct šablonu vnořené tooa odkaz založená na hodnotě hello hello nadřazené šablony.
 
 ```json
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-Následující příklad ukazuje, jak použít identifikátor uri, uriComponent a uriComponentToString:
+Následující příklad ukazuje, jak Hello toouse uri, uriComponent a uriComponentToString:
 
 ```json
 {
@@ -1749,7 +1749,7 @@ Následující příklad ukazuje, jak použít identifikátor uri, uriComponent 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1768,15 +1768,15 @@ Kóduje identifikátoru URI.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Ano |Řetězec |Hodnota ke kódování. |
+| stringToEncode |Ano |Řetězec |Hodnota tooencode Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Řetězec identifikátoru URI kódovaný hodnotu.
+Řetězec hello URI kódovaný hodnotu.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak použít identifikátor uri, uriComponent a uriComponentToString:
+Následující příklad ukazuje, jak Hello toouse uri, uriComponent a uriComponentToString:
 
 ```json
 {
@@ -1805,7 +1805,7 @@ Následující příklad ukazuje, jak použít identifikátor uri, uriComponent 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1825,7 +1825,7 @@ Vrátí že hodnotu kódovaný řetězec identifikátoru URI.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Ano |Řetězec |Identifikátor URI kódovaný hodnotu převést na řetězec. |
+| uriEncodedString |Ano |Řetězec |Hodnota tooconvert tooa řetězec kódovaný Hello identifikátor URI. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1833,7 +1833,7 @@ Vrátí že hodnotu kódovaný řetězec identifikátoru URI.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak použít identifikátor uri, uriComponent a uriComponentToString:
+Následující příklad ukazuje, jak Hello toouse uri, uriComponent a uriComponentToString:
 
 ```json
 {
@@ -1862,7 +1862,7 @@ Následující příklad ukazuje, jak použít identifikátor uri, uriComponent 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1872,8 +1872,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

@@ -1,3 +1,3 @@
 > [!IMPORTANT]
-> Služba IoT Hub bude veřejně zjistitelná jako koncový bod DNS, takže se ujistěte, že při jeho pojmenování nepoužíváte žádné citlivé údaje.
+> Hello IoT hub budou veřejně zjistitelný jako koncový bod DNS, takže Ujistěte se, že tooavoid žádné citlivé informace, které se při pojmenovávání ho.
 >

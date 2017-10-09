@@ -1,6 +1,6 @@
 ---
-title: "Události v na základě objektu actor Azure mikroslužeb | Microsoft Docs"
-description: "Úvod do události pro Service Fabric Reliable Actors."
+title: "aaaEvents v na základě objektu actor Azure mikroslužeb | Microsoft Docs"
+description: "Úvod tooevents Service Fabric Reliable actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/13/2017
 ms.author: amanbha
-ms.openlocfilehash: d936670c548ff709fc2e935d3f28d94e4bde8a04
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a51e41c35441a5fea508138968b36a35f0ba6699
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="actor-events"></a>Události objektu actor
-Události objektu actor poskytují způsob, jak odeslat oznámení best effort z objektu actor pro klienty. Události objektu actor navržených pro komunikaci objektu actor klienta a by se neměla používat pro komunikaci objektu actor actor.
+Události objektu actor poskytují způsob toosend best effort oznámení z hello objektu actor toohello klientů. Události objektu actor navržených pro komunikaci objektu actor klienta a by se neměla používat pro komunikaci objektu actor actor.
 
-Následující fragmenty kódu ukazují, jak pomocí objektu actor události ve vaší aplikaci.
+Hello následující kód fragmenty zobrazit jak toouse objektu actor události ve vaší aplikaci.
 
-Definujte rozhraní, které popisuje události, které zveřejnil objektu actor. Toto rozhraní musí být odvozen od `IActorEvents` rozhraní. Argumenty metody musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Metody musí vracet typ void, jako událost oznámení jsou jednou z možností a usilovně.
+Definujte rozhraní, které popisuje hello události, které zveřejnil objektu actor hello. Toto rozhraní musí být odvozen od hello `IActorEvents` rozhraní. argumenty Hello hello metody musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). metody Hello musí vracet typ void, jako událost oznámení jsou jednou z možností a usilovně.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -39,7 +39,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Události, které zveřejnil objektu actor v objektu actor rozhraní deklarujte.
+Deklarování hello událostí, které zveřejnil hello objektu actor v rozhraní objektu actor hello.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -57,7 +57,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Na straně klienta Implementujte obslužné rutiny události.
+Na straně klienta hello implementaci obslužné rutiny události hello.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -78,7 +78,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Na klientovi vytvoření proxy server k objektu actor, který publikuje události a přihlásit se k události.
+V klientovi hello vytvořte toohello objektu actor proxy serveru, který publikuje hello událostí a přihlášení k odběru události tooits.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -93,9 +93,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-V případě převzetí služeb při selhání objektu actor může převzetí služeb při selhání jiným procesem nebo uzel. Proxy objektu actor spravuje aktivní odběry a automaticky je odběratel znovu. Můžete řídit interval opakovaného předplatné prostřednictvím `ActorProxyEventExtensions.SubscribeAsync<TEvent>` rozhraní API. Chcete-li odhlásit, použijte `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` rozhraní API.
+V případě hello převzetí služeb při selhání objektu actor hello může převzetí služeb při selhání tooa jiným procesem nebo uzel. proxy objektu actor Hello spravuje hello aktivní odběry a automaticky je odběratel znovu. Můžete řídit interval opakovaného předplatné hello prostřednictvím hello `ActorProxyEventExtensions.SubscribeAsync<TEvent>` rozhraní API. toounsubscribe, použijte hello `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` rozhraní API.
 
-V objektu actor jednoduše publikujte události při jejich provádění. Pokud existují odběratele, kteří mají událost, modul runtime aktéři odešle je oznámení.
+V objektu actor hello jednoduše publikování událostí hello při jejich provádění. Pokud existují toohello události odběratele, hello aktéři runtime odešle je hello oznámení.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();

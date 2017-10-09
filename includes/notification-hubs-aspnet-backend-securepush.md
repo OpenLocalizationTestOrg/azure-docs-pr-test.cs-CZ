@@ -1,6 +1,6 @@
 ## <a name="webapi-project"></a>WebAPI projektu
-1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v **upozornění uživatelů** kurzu.
-2. V Notifications.cs, nahraďte celek **oznámení** třídy následujícím kódem. Ujistěte se, že nahraďte zástupné symboly připojovací řetězec (s úplným přístupem) pro vaše Centrum oznámení a název rozbočovače. Můžete získat z těchto hodnot [portálu Azure Classic](http://manage.windowsazure.com). Tento modul představuje teď jiné zabezpečené oznámení, které se budou odesílat. Do dokončení implementace se uloží oznámení v databázi. pro jednoduchost v takovém případě jsme je uložit v paměti.
+1. V sadě Visual Studio otevřete hello **AppBackend** projekt, který jste vytvořili v hello **upozornění uživatelů** kurzu.
+2. V Notifications.cs, nahraďte hello celou **oznámení** se hello následující kód. Být jisti zástupné symboly tooreplace hello připojovacím řetězcem (s úplným přístupem) pro vaše Centrum oznámení a název centra hello. Tyto hodnoty můžete získat z hello [portálu Azure Classic](http://manage.windowsazure.com). Tento modul představuje teď hello jiné zabezpečené oznámení, která bude odeslána. Do dokončení implementace se uloží hello oznámení v databázi. pro jednoduchost v takovém případě jsme je uložit v paměti.
    
         public class Notification
         {
@@ -40,7 +40,7 @@
             }
         }
 
-1. V NotificationsController.cs, nahraďte kód uvnitř **NotificationsController** třídy definice následujícím kódem. Tato součást implementuje způsob, jak zařízení bezpečně načíst oznámení a také poskytuje způsob (pro účely tohoto kurzu) k aktivaci zabezpečené oznámení do zařízení. Všimněte si, že při odesílání oznámení do centra oznámení, jenom odešleme nezpracovaná oznámení s ID oznámení (a žádná skutečná zpráva):
+1. V NotificationsController.cs, nahraďte kód hello uvnitř hello **NotificationsController** definici třídy s hello následující kód. Tato součást implementuje hello zařízení tooretrieve hello oznámení způsob, jak bezpečně a poskytuje i tootrigger způsob (pro účely tohoto kurzu hello) zabezpečené nabízené tooyour zařízení. Všimněte si, že při odesílání centra oznámení toohello hello oznámení, jenom odešleme nezpracovaná oznámení s hello ID hello oznámení (a žádná skutečná zpráva):
    
        public NotificationsController()
        {
@@ -75,8 +75,8 @@
         }
 
 
-Všimněte si, že `Post` metoda teď neodešle oznámení s informační zprávou. Odešle nezpracovaná oznámení, že obsahuje pouze ID oznámení a ne všechny citlivého obsahu. Zkontrolujte taky, okomentujte operaci odeslání pro platformy, pro které nemáte přihlašovací údaje, které jsou nakonfigurované v centru oznámení, jak bude vést k chybám.
+Všimněte si, že hello `Post` metoda teď neodešle oznámení s informační zprávou. Odešle nezpracovaná oznámení, že obsahuje pouze ID oznámení hello a ne všechny citlivého obsahu. Ujistěte se také, zda toocomment hello odeslat operaci hello platforem, pro které nemáte přihlašovací údaje, které jsou nakonfigurované v centru oznámení, jak bude vést k chybám.
 
-1. Nyní jsme bude znovu nasaďte tuto aplikaci na web Azure aby přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si **cílová adresa URL** vlastnost **připojení** kartě. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na **Publikovat**.
+1. Nyní nasadíme znovu tuto aplikaci tooan webu Azure v pořadí toomake je přístupná ze všech zařízení. Klikněte pravým tlačítkem na hello **AppBackend** projektu a vyberte **publikovat**.
+2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si hello **cílová adresa URL** vlastnost hello **připojení** kartě. Označujeme toothis adresu URL jako vaše *koncový bod back-end* dál v tomto kurzu. Klikněte na **Publikovat**.
 

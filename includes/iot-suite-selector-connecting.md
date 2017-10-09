@@ -6,61 +6,61 @@
 > 
 
 ## <a name="scenario-overview"></a>Přehled scénáře
-V tomto scénáři vytvoříte zařízení, které odesílá následující telemetrii do [předkonfigurovaného řešení][lnk-what-are-preconfig-solutions] vzdáleného monitorování:
+V tomto scénáři vytvoříte zařízení, které odesílá hello následující telemetrie toohello vzdálené monitorování [předkonfigurované řešení][lnk-what-are-preconfig-solutions]:
 
 * Venkovní teplota
 * Vnitřní teplota
 * Vlhkost
 
-Kód v zařízení pro zjednodušení generuje ukázkové hodnoty, ale doporučujeme vám ukázku rozšířit připojením skutečných senzorů k zařízení a odesíláním skutečné telemetrie.
+Pro jednoduchost hello kódu na zařízení hello generuje ukázkové hodnoty, ale doporučujeme vám tooextend hello ukázka připojením zařízení tooyour skutečné senzory a odesláním skutečné telemetrie.
 
-Zařízení je také schopné odpovídat na metody vyvolané z řídicího panelu řešení a na požadované hodnoty vlastností nastavené na řídicím panelu řešení.
+Hello zařízení je také možné toorespond toomethods volat z řídicí panel řešení hello a potřeby vlastnost hodnotami nastavenými v řídicí panel řešení hello.
 
-K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk-free-trial].
+toocomplete tohoto kurzu potřebujete aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk-free-trial].
 
 ## <a name="before-you-start"></a>Než začnete
 Než začnete psát kód pro zařízení, je nutné zřídit předkonfigurované řešení vzdáleného monitorování a v něm zřídit nové vlastní zařízení.
 
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Zřízení předkonfigurovaného řešení vzdáleného monitorování
-Zařízení, které v tomto kurzu vytvoříte, odesílá data do instance předkonfigurovaného řešení [vzdáleného monitorování][lnk-remote-monitoring]. Pokud jste ve svém účtu Azure ještě nezřídili předkonfigurované řešení vzdáleného monitorování, použijte následující postup:
+Hello zařízení v tomto kurzu vytvoříte odesílá data tooan instanci hello [vzdálené monitorování] [ lnk-remote-monitoring] předkonfigurované řešení. Pokud jste ještě nezřídili hello vzdálené monitorování předkonfigurované řešení v účtu Azure, použijte hello následující kroky:
 
-1. Na stránce <https://www.azureiotsuite.com/> můžete vytvořit řešení kliknutím na **+**.
-2. Kliknutím na **Vybrat** na panelu **Vzdálené monitorování** vytvořte řešení.
-3. Na stránce **Vytvořit řešení vzdáleného monitorování** zadejte **Název řešení** podle vašeho výběru, vyberte **Oblast**, do které chcete řešení nasadit, a vyberte předplatné Azure, které chcete použít. Potom klikněte na **Vytvořit řešení**.
-4. Počkejte, dokud proces zřizování neskončí.
+1. Na hello <https://www.azureiotsuite.com/> klikněte na tlačítko  **+**  toocreate řešení.
+2. Klikněte na tlačítko **vyberte** na hello **vzdálené monitorování** panelu toocreate řešení.
+3. Na hello **vytvořit řešení vzdáleného sledování** stránky, zadejte **název řešení** podle vaší volby, vyberte hello **oblast** toodeploy do mají a vyberte hello Azure toouse toowant předplatné. Potom klikněte na **Vytvořit řešení**.
+4. Počkejte na dokončení procesu zřizování hello.
 
 > [!WARNING]
-> Předkonfigurovaná řešení využívají fakturovatelné služby Azure. Abyste se vyhnuli zbytečným poplatkům, nezapomeňte předkonfigurované řešení odebrat ze svého předplatného, jakmile s ním budete hotovi. Předkonfigurované řešení můžete ze svého předplatného úplně odebrat na stránce <https://www.azureiotsuite.com/>.
+> Hello předkonfigurované řešení využívají fakturovatelný služby Azure. Ujistěte se, tooremove hello předkonfigurované řešení ze svého předplatného, když jste hotovi s ním tooavoid všechny nepotřebné poplatky. Předkonfigurované řešení můžete úplně odebrat ze svého předplatného návštěvou hello <https://www.azureiotsuite.com/> stránky.
 > 
 > 
 
-Po skončení procesu zřizování řešení vzdáleného monitorování klikněte na **Spustit**. Ve vašem prohlížeči se otevře řídicí panel řešení.
+Po dokončení hello zřizování pro hello řešení vzdáleného sledování, klikněte na tlačítko **spusťte** řídicí panel řešení hello tooopen v prohlížeči.
 
 ![Řídicí panel řešení][img-dashboard]
 
-### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>Zřízení zařízení v řešení vzdáleného monitorování
+### <a name="provision-your-device-in-hello-remote-monitoring-solution"></a>Zřízení zařízení v řešení vzdáleného sledování hello
 > [!NOTE]
-> Pokud jste už ve svém řešení zařízení zřídili, můžete tento krok přeskočit. Při vytváření klientské aplikace potřebujete znát přihlašovací údaje zařízení.
+> Pokud jste už ve svém řešení zařízení zřídili, můžete tento krok přeskočit. Přihlašovací údaje tooknow hello zařízení musíte při vytváření hello klientské aplikace.
 > 
 > 
 
-Aby se zařízení mohlo připojit k předkonfigurovanému řešení, musí se identifikovat ve službě IoT Hub pomocí platných přihlašovacích údajů. Přihlašovací údaje zařízení můžete zjistit z řídicího panelu řešení. Přihlašovací údaje zařízení vložíte do klientské aplikace později v tomto kurzu.
+Pro zařízení tooconnect toohello předkonfigurované řešení, se musí identifikovat tooIoT centra pomocí platných přihlašovacích údajů. Přihlašovací údaje hello zařízení můžete načíst z řídicí panel řešení hello. Přihlašovací údaje zařízení hello zahrnete do klientské aplikace později v tomto kurzu.
 
-Pokud chcete přidat zařízení do řešení vzdáleného monitorování, proveďte na řídicím panelu řešení následující kroky:
+tooadd zařízení tooyour řešení vzdáleného monitorování, dokončení hello následující kroky v řídicí panel řešení hello:
 
-1. V levém dolním rohu řídicího panelu klikněte na **Přidat zařízení**.
+1. V hello levém dolním rohu hello řídicí panel, klikněte na **přidání zařízení**.
    
    ![Přidání zařízení][1]
-2. Na panelu **Vlastní zařízení** klikněte na **Přidat nové**.
+2. V hello **vlastní zařízení** panelu, klikněte na tlačítko **přidat nový**.
    
    ![Přidání vlastního zařízení][2]
-3. Vyberte možnost **Definovat vlastní ID zařízení**. Zadejte ID zařízení, třeba **mydevice**, klikněte na **Zkontrolovat ID** pro ověření, že se tento název ještě nepoužívá, a potom zřiďte zařízení kliknutím na **Vytvořit**.
+3. Vyberte možnost **Definovat vlastní ID zařízení**. Zadejte ID zařízení, jako **mydevice**, klikněte na tlačítko **Zkontrolujte ID** tooverify tento název již není používána a pak klikněte na tlačítko **vytvořit** tooprovision hello zařízení.
    
    ![Přidání ID zařízení][3]
-4. Poznamenejte si přihlašovací údaje zařízení (ID zařízení, název hostitele služby IoT Hub a Klíč zařízení). Klientská aplikace potřebuje tyto hodnoty pro připojení k řešení vzdáleného monitorování. Potom klikněte na **Done** (Hotovo).
+4. Nastavit hello zařízení Poznámka: přihlašovací údaje (ID zařízení, název hostitele centra IoT a klíč zařízení). Klientské aplikace, musí tyto hodnoty tooconnect toohello řešení vzdáleného sledování. Potom klikněte na **Done** (Hotovo).
    
     ![Zobrazení přihlašovacích údajů zařízení][4]
-5. V seznamu zařízení na řídicím panelu řešení vyberte své zařízení. Pak na panelu **Podrobnosti o zařízení** klikněte na **Povolit zařízení**. Stav vašeho zařízení je teď **Spuštěno**. Řešení vzdáleného monitorování teď může z vašeho zařízení přijímat telemetrii a vyvolávat v něm metody.
+5. Vyberte zařízení v seznamu zařízení hello v řídicí panel řešení hello. Potom v hello **podrobnosti o zařízení** panelu, klikněte na tlačítko **povolit zařízení**. Hello stav zařízení je nyní **systémem**. řešení vzdáleného monitorování Hello teď můžete přijímat telemetrická data ze zařízení a volat metody na hello zařízení.
 
 [img-dashboard]: ./media/iot-suite-selector-connecting/dashboard.png
 [1]: ./media/iot-suite-selector-connecting/suite0.png

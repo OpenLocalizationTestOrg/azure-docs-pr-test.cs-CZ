@@ -1,5 +1,5 @@
 ---
-title: "Spolehlivé služby oznámení | Microsoft Docs"
+title: "oznámení služby aaaReliable | Microsoft Docs"
 description: "Rámcová dokumentace pro oznámení služby Fabric spolehlivé služby"
 services: service-fabric
 documentationcenter: .net
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8c43190d31dbe82d1dc7fa1c228128bdcc3684f6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reliable-services-notifications"></a>Spolehlivé služby oznámení
-Oznámení klientům sledovat změny provedené na objekt, který se vás zajímá. Oznámení podporují dva typy objektů: *spolehlivé správce stavu* a *spolehlivé slovník*.
+Oznámení klientům tootrack hello změny, které jsou určeny jako tooan objekt, který se vás zajímá. Oznámení podporují dva typy objektů: *spolehlivé správce stavu* a *spolehlivé slovník*.
 
 Běžnými důvody používání oznámení jsou:
 
-* Vytváření materializována zobrazení, jako je například sekundární indexy nebo agregovat filtrovaných zobrazení stavu repliky. Příkladem je seřazená index všechny klíče ve slovníku spolehlivé.
-* Odesílání monitorování dat, například počet uživatelů, které jsou přidány za poslední hodinu.
+* Vytváření materializována zobrazení, jako je například sekundární indexy nebo agregovat filtrovaných zobrazení stavu repliky hello. Příkladem je seřazená index všechny klíče ve slovníku spolehlivé.
+* Odesílání monitorování data, jako je například hello počet uživatelů přidaných v hello poslední hodinu.
 
 Oznámení při vyvolání jako součást použije operace. Z tohoto důvodu měla by ji zpracovat oznámení tak rychle, jak je možné a synchronní události nesmí obsahovat žádné náročná operace.
 
 ## <a name="reliable-state-manager-notifications"></a>Stav spolehlivé Správce oznámení
-Správce spolehlivé stavu poskytuje oznámení pro následující události:
+Správce spolehlivé stavu poskytuje oznámení pro hello následující události:
 
 * Transakce
   * Potvrzení
@@ -40,16 +40,16 @@ Správce spolehlivé stavu poskytuje oznámení pro následující události:
   * Přidání spolehlivé stavu
   * Odebrání spolehlivé stavu
 
-Správce spolehlivé stavu sleduje aktuální aktivních pořadových transakce. Pouze změny ve stavu transakce, která způsobuje být aktivováno oznámení je právě potvrzené transakce.
+Správce spolehlivé stavu sleduje aktuální transakce aktivních pořadových hello. Hello pouze změny ve stavu transakce, který způsobuje, že oznámení toobe aktivováno je právě potvrzené transakce.
 
-Správce spolehlivé stavu udržuje kolekci stavy spolehlivá jako slovník spolehlivé a spolehlivé fronty. Správce spolehlivé stavu aktivuje oznámení při změně této kolekce: spolehlivé stavu je přidat nebo odebrat nebo celou kolekci znovu sestaven.
-Správce spolehlivé stavu kolekce je znovu sestavit ve třech případech:
+Správce spolehlivé stavu udržuje kolekci stavy spolehlivá jako slovník spolehlivé a spolehlivé fronty. Správce spolehlivé stavu aktivuje oznámení při změně této kolekce: spolehlivé stavu je přidat nebo odebrat nebo celou kolekci hello je znovu sestavit.
+Hello spolehlivé správce stavu kolekce je znovu sestavit ve třech případech:
 
-* Obnovení: Když se spustí repliku, obnoví předchozí stav z disku. Na konci obnovení používá **NotifyStateManagerChangedEventArgs** má provést událost, která obsahuje sadu obnovené spolehlivé stavy.
-* Úplné kopie: před repliku se můžete zapojit do konfigurační sady, má má být sestaven. V některých případech to vyžaduje úplnou kopii spolehlivé správce stavu stavu z primární repliky má být použita pro nečinnosti sekundární repliky. Správce spolehlivé stavu v sekundární replice používá **NotifyStateManagerChangedEventArgs** má provést událost, která obsahuje sadu spolehlivé stavy, které jej získali z primární repliky.
-* Obnovení: Ve scénářích zotavení po havárii, stav repliky může být obnovena ze zálohy, prostřednictvím **RestoreAsync**. V takových případech spolehlivé správce stavu na primární replice používá **NotifyStateManagerChangedEventArgs** má provést událost, která obsahuje sadu spolehlivé stavy, které ji obnovit ze zálohy.
+* Obnovení: Když se spustí repliku, obnoví předchozí stav z disku hello. Na konci hello obnovení, používá **NotifyStateManagerChangedEventArgs** toofire událost, která obsahuje sadu hello obnovené spolehlivé stavy.
+* Úplné kopie: před repliku můžete připojit hello konfigurační sady, má toobe sestaven. V některých případech to vyžaduje úplnou kopii spolehlivé správce stavu stavu z hello primární repliky toobe toohello použité v nečinnosti sekundární repliky. Správce spolehlivé stavu na sekundární repliku, která používá hello **NotifyStateManagerChangedEventArgs** toofire událost, která obsahuje sadu hello spolehlivé stavy, které jej získali z primární repliky hello.
+* Obnovení: Ve scénářích zotavení po havárii, stav hello repliky může být obnovena ze zálohy, prostřednictvím **RestoreAsync**. V takových případech spolehlivé správce stavu na primární replice hello používá **NotifyStateManagerChangedEventArgs** toofire událost, která obsahuje sadu hello spolehlivé stavy, které ji obnovit ze zálohy hello.
 
-Registrace pro oznámení transakce nebo oznámení správce stavu, budete muset zaregistrovat **TransactionChanged** nebo **StateManagerChanged** událostí na spolehlivé správce stavu. Je běžné registraci obslužné rutiny těchto událostí se v konstruktoru stavové služby. Při registraci v konstruktoru, nebude neproběhly všechna oznámení, která je způsobena změnou po dobu životnosti **IReliableStateManager**.
+tooregister pro transakce oznámení a oznámení správce stavu, je nutné tooregister s hello **TransactionChanged** nebo **StateManagerChanged** událostí na spolehlivé správce stavu. Běžné místní tooregister s tyto obslužné rutiny událostí je hello konstruktoru stavové služby. Při registraci na hello konstruktor nebude neproběhly všechna oznámení, která je způsobena změnou během hello životnost **IReliableStateManager**.
 
 ```C#
 public MyService(StatefulServiceContext context)
@@ -60,10 +60,10 @@ public MyService(StatefulServiceContext context)
 }
 ```
 
-**TransactionChanged** používá obslužné rutiny události **NotifyTransactionChangedEventArgs** k zajištění podrobných informací o události. Obsahuje vlastnost action (například **NotifyTransactionChangedAction.Commit**) určující typ změny. Také obsahuje vlastnost transakce, který poskytuje odkaz na transakce, který změnil.
+Hello **TransactionChanged** používá obslužné rutiny události **NotifyTransactionChangedEventArgs** tooprovide podrobnosti o události hello. Obsahuje vlastnost action hello (například **NotifyTransactionChangedAction.Commit**) určující typ hello změny. Také obsahuje vlastnost transaction hello, která poskytuje transakce toohello odkaz, který změnil.
 
 > [!NOTE]
-> V současné době **TransactionChanged** události jsou vyvolány pouze v případě, že je transakce potvrzena. Akce bude rovna **NotifyTransactionChangedAction.Commit**. Ale v budoucnu, může být vyvolána události pro jiné typy změny stavu transakce. Doporučujeme, abyste kontrolu akce a zpracování události, pouze pokud je ten, který jste očekávali.
+> V současné době **TransactionChanged** události jsou vyvolány pouze v případě, že je hello transakce potvrzena. Hello akce je pak rovna příliš**NotifyTransactionChangedAction.Commit**. Ale v budoucnu hello, může být vyvolána události pro jiné typy změny stavu transakce. Doporučujeme, abyste kontrolu hello akce a zpracování události hello, pouze pokud je ten, který jste očekávali.
 > 
 > 
 
@@ -82,9 +82,9 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 }
 ```
 
-**StateManagerChanged** používá obslužné rutiny události **NotifyStateManagerChangedEventArgs** k zajištění podrobných informací o události.
+Hello **StateManagerChanged** používá obslužné rutiny události **NotifyStateManagerChangedEventArgs** tooprovide podrobnosti o události hello.
 **NotifyStateManagerChangedEventArgs** má dva podtřídy: **NotifyStateManagerRebuildEventArgs** a **NotifyStateManagerSingleEntityChangedEventArgs**.
-Pomocí vlastnosti akce v **NotifyStateManagerChangedEventArgs** přetypovat **NotifyStateManagerChangedEventArgs** pro správné podtřídu:
+Pomocí vlastnosti akce hello v **NotifyStateManagerChangedEventArgs** toocast **NotifyStateManagerChangedEventArgs** toohello správné podtřídami:
 
 * **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
 * **NotifyStateManagerChangedAction.Add** a **NotifyStateManagerChangedAction.Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
@@ -106,16 +106,16 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ```
 
 ## <a name="reliable-dictionary-notifications"></a>Spolehlivé slovník oznámení
-Spolehlivé slovník poskytuje oznámení pro následující události:
+Spolehlivé slovník obsahuje oznámení o hello následující události:
 
 * Opětovné sestavení: Voláno, když **ReliableDictionary** její stav se zotavil z obnovené nebo zkopírovaný místní stavu nebo zálohování.
-* Clear: Voláno, když stav **ReliableDictionary** byl vymazán prostřednictvím **ClearAsync** metoda.
-* Přidejte: Volána, když byla přidat položku do **ReliableDictionary**.
+* Clear: Voláno, když hello stav **ReliableDictionary** byl vymazán prostřednictvím hello **ClearAsync** metoda.
+* Přidejte: Volána, když se příliš přidat položku**ReliableDictionary**.
 * Aktualizace: Volána, když se položky v **IReliableDictionary** byla aktualizována.
 * Odebrat: Volána, když se položky v **IReliableDictionary** byla odstraněna.
 
-Pokud chcete dostávat oznámení spolehlivé slovník, je potřeba zaregistrovat **DictionaryChanged** obslužné rutiny události na **IReliableDictionary**. Je běžné registraci obslužné rutiny těchto událostí se v **ReliableStateManager.StateManagerChanged** přidat oznámení.
-Při registraci **IReliableDictionary** se přidá do **IReliableStateManager** zajistí, že nebude neproběhly žádné oznámení.
+tooget spolehlivé slovník oznámení, musíte tooregister s hello **DictionaryChanged** obslužné rutiny události na **IReliableDictionary**. Běžné místní tooregister s tyto obslužné rutiny událostí je v hello **ReliableStateManager.StateManagerChanged** přidat oznámení.
+Při registraci **IReliableDictionary** je přidána příliš**IReliableStateManager** zajistí, že nebude neproběhly žádné oznámení.
 
 ```C#
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -136,11 +136,11 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 ```
 
 > [!NOTE]
-> **ProcessStateManagerSingleEntityNotification** je metoda ukázky, předchozím **OnStateManagerChangedHandler** příklad volání.
+> **ProcessStateManagerSingleEntityNotification** je metoda ukázky hello této hello předchozí **OnStateManagerChangedHandler** příklad volání.
 > 
 > 
 
-Předchozí sady kódu **IReliableNotificationAsyncCallback** rozhraní, spolu s **DictionaryChanged**. Protože **NotifyDictionaryRebuildEventArgs** obsahuje **IAsyncEnumerable** rozhraní – které je možné provést výčet asynchronně – opětovné sestavení oznámení při vyvolání prostřednictvím  **RebuildNotificationAsyncCallback** místo **OnDictionaryChangedHandler**.
+Hello předchozí kód nastaví hello **IReliableNotificationAsyncCallback** rozhraní, spolu s **DictionaryChanged**. Protože **NotifyDictionaryRebuildEventArgs** obsahuje **IAsyncEnumerable** rozhraní – které je výčet asynchronně – toobe opětovné sestavení oznámení při vyvolání prostřednictvím  **RebuildNotificationAsyncCallback** místo **OnDictionaryChangedHandler**.
 
 ```C#
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -158,12 +158,12 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 ```
 
 > [!NOTE]
-> V předchozím kódu v rámci zpracování oznámení o opětovné sestavení nejprve zachována agregovaný stav je vymazán. Protože spolehlivé kolekce se znovu sestaven pomocí nového stavu, jsou všechny předchozí oznámení důležité.
+> V předchozích kódu, jako součást zpracování hello opětovné sestavení oznámení, hello první hello udržovat, že agregovaný stav je vymazán. Protože kolekce spolehlivé hello se znovu sestaven pomocí nového stavu, jsou všechny předchozí oznámení důležité.
 > 
 > 
 
-**DictionaryChanged** používá obslužné rutiny události **NotifyDictionaryChangedEventArgs** k zajištění podrobných informací o události.
-**NotifyDictionaryChangedEventArgs** má pět podtřídy. Použijte vlastnost akce v **NotifyDictionaryChangedEventArgs** přetypovat **NotifyDictionaryChangedEventArgs** pro správné podtřídu:
+Hello **DictionaryChanged** používá obslužné rutiny události **NotifyDictionaryChangedEventArgs** tooprovide podrobnosti o události hello.
+**NotifyDictionaryChangedEventArgs** má pět podtřídy. Použijte vlastnost hello akce v **NotifyDictionaryChangedEventArgs** toocast **NotifyDictionaryChangedEventArgs** toohello správné podtřídami:
 
 * **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
@@ -205,15 +205,15 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ## <a name="recommendations"></a>Doporučení
 * *Proveďte* co nejrychleji provést oznámení události.
 * *Nechcete* spouštět žádné náročná operace (například vstupně-výstupních operací) jako součást synchronní události.
-* *Proveďte* zkontrolujte typ akce před zpracovat událost. Nové typy akce může v budoucnu přidat.
+* *Proveďte* zkontrolujte typ akce hello před zpracovat hello událost. Nové typy akcí pravděpodobně přidána v budoucí hello.
 
-Zde jsou některé věci, třeba vzít v úvahu:
+Zde jsou některé věci tookeep nezapomeňte:
 
-* Oznámení při vyvolání jako součást provádění operace. Například oznámení o obnovení, je vyvolána jako poslední krok operaci obnovení. Obnovení nebude dokončen, dokud zpracovává událost upozornění.
-* Protože oznámení při vyvolání jako součást provádění operací, klienti zobrazit pouze oznámení pro místně potvrzení operace. A protože je zaručeno, že operace pouze místně potvrzené (jinými slovy, přihlášení), se může nebo nemusí být v budoucnu vrátit zpět.
-* V cestě opakování je aktivována, jednoho oznámení pro každou operaci použité. To znamená, že obsahuje-li transakce T1 Create(X), Delete(X) a Create(X), získáte jedno oznámení pro vytvoření X, jeden pro odstranění a jeden pro vytvoření znovu, v tomto pořadí.
-* Pro transakce, které obsahují více operací operace se použijí v pořadí, ve kterém byly načteny na primární replice od uživatele.
-* Jako součást zpracování false průběh může být některé operace vrátit zpět. Oznámení jsou vyvolány pro tyto operace vrácení zpět, vracení stavu repliky na bod stabilní. Jeden důležitý rozdíl oznámení vrácení zpět je, že jsou agregovaný události, které mají duplicitní klíče. Například pokud se vrací zpět transakci T1, se zobrazí jeden oznámení Delete(X).
+* Oznámení při vyvolání jako součást hello provedení operace. Například oznámení o obnovení, je vyvolána jako poslední krok hello operaci obnovení. Obnovení nebude dokončen, dokud zpracovává událost upozornění hello.
+* Protože oznámení při vyvolání jako součást hello použije operace, klienti zobrazit pouze oznámení pro místně potvrzení operace. A protože operace jsou zaručit pouze toobe místně potvrzené (jinými slovy, přihlášení), se může nebo nemusí být v budoucnu hello odvolat.
+* V cestě opakování hello je pro každou operaci použité aktivována jednoho oznámení. To znamená, že pokud transakce T1 obsahuje Create(X), Delete(X) a Create(X), získáte jedno oznámení pro vytvoření hello X, jeden pro odstranění hello a jeden pro vytvoření hello znovu, v tomto pořadí.
+* Pro transakce, které obsahují více operací operace se použijí v hello pořadí, ve kterém bylo přijato na primární replice hello od uživatele hello.
+* Jako součást zpracování false průběh může být některé operace vrátit zpět. Oznámení jsou vyvolány pro tyto operace vrácení zpět, vracení stavu hello hello repliky back tooa stabilní bodu. Jeden důležitý rozdíl oznámení vrácení zpět je, že jsou agregovaný události, které mají duplicitní klíče. Například pokud se vrací zpět transakci T1, uvidíte tooDelete(X) jednoho oznámení.
 
 ## <a name="next-steps"></a>Další kroky
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)

@@ -8,7 +8,7 @@
 | Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |500 GB<sup>4,5</sup></p> |
 | Doba využití procesoru (5 minut)<sup>6</sup> |3 minuty |3 minuty |Neomezená, platíte na standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený, platím na sazby úrovně standard |Neomezený, platím na sazby úrovně standard |
 | Doba využití procesoru (den)<sup>6</sup> |60 minut |240 minut |Neomezená, platíte na standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený, platím na sazby úrovně standard |Neomezený, platím na sazby úrovně standard |
-| Paměť (1 hodina) |1 024 MB za plán služby App Service |1 024 MB za aplikace |– |Není dostupné. |– |
+| Paměť (1 hodina) |1 024 MB za plán služby App Service |1 024 MB za aplikace |Není k dispozici |Není dostupné. |Není k dispozici |
 | Šířka pásma |165 MB |Neomezená, [rychlosti přenosu dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |Neomezený přenos dat, které platí sazby |Neomezený přenos dat, které platí sazby |Neomezený přenos dat, které platí sazby |
 | Architektura aplikace |32-bit |32-bit |32-bit nebo 64bitová verze |32-bit nebo 64bitová verze |32-bit nebo 64bitová verze |
 | Webové sokety na instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |
@@ -28,13 +28,13 @@
 | SLA | |<p> |99,9 % |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
 <sup>1</sup>aplikace a kvóty úložišť jsou za plán služby App Service, pokud není uvedeno jinak.  
-<sup>2</sup>skutečný počet aplikací, které je možné hostovat na tyto počítače závisí na aktivitu aplikace, velikost instance počítačů a odpovídající využití prostředků.  
+<sup>2</sup>hello skutečný počet aplikací, které je možné hostovat na tyto počítače závisí na aktivitu hello hello aplikací, hello velikost instance hello počítačů a využití prostředků odpovídající hello.  
 <sup>3</sup>vyhrazené instance může mít různou velikost. V tématu [App Service – ceny](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/) další podrobnosti.  
-<sup>4</sup>premium úroveň umožňuje až 50 vypočítá instancí (přičemž podléhá dostupnosti) a 500 GB místa na disku při použití prostředí App Service a 20 jinak výpočetní instance a 250 GB úložiště.  
-<sup>5</sup>limitu úložiště je celková velikost obsahu mezi všechny aplikace ve stejném plán služby App Service. Další možnosti úložiště jsou k dispozici v [App Service Environment](../articles/app-service-web/app-service-web-configure-an-app-service-environment.md#storage)  
-<sup>6</sup>tyto prostředky jsou omezeny fyzické prostředky v rámci vyhrazenou instancí (velikost instance a číslo instance).  
-<sup>7</sup>je škálovat aplikaci v základní vrstvě na dvě instance, kdy máte 350 souběžných připojení pro každou z obou instancí.  
-<sup>8</sup>úroveň premium umožňuje zálohování intervaly dolů až každých 5 minut, při použití prostředí App Service a 50 časy denně jinak.  
-<sup>9</sup>spouštět vlastní spustitelné soubory nebo skripty na vyžádání, podle plánu, nebo instance nepřetržitě jako úlohy na pozadí v rámci vaší služby App Service. U nepřetržitého provádění úloh WebJobs se vyžaduje stálé připojení. Pro plánované úlohy WebJobs se vyžaduje Azure Scheduler na úrovni Free nebo Standard. Neexistuje žádné předdefinované omezení počtu WebJobs, která se může spustit v instanci služby App Service, ale neexistují praktické omezení, které závisí na kódu aplikace pokouší o provedení.   
+<sup>4</sup>premium úroveň umožňuje až too50 vypočítá instancí (subjektu tooavailability) a 500 GB místa na disku při používání prostředí App Service a 20 jinak výpočetní instance a 250 GB úložiště.  
+<sup>5</sup>limit úložiště hello je celková velikost obsahu hello mezi všechny aplikace ve stejném plán služby App Service. Další možnosti úložiště jsou k dispozici v [App Service Environment](../articles/app-service-web/app-service-web-configure-an-app-service-environment.md#storage)  
+<sup>6</sup>tyto prostředky jsou omezeny fyzické prostředky v instancích hello vyhrazené (velikost instance hello a hello počet instancí).  
+<sup>7</sup>Pokud je v instancích tootwo úroveň Basic hello škálovat aplikaci, máte 350 souběžných připojení pro každou hello dvě instance.  
+<sup>8</sup>úroveň premium umožňuje zálohování intervaly dolů až tooevery 5 minut při použití prostředí App Service a 50 časy denně jinak.  
+<sup>9</sup>spouštět vlastní spustitelné soubory nebo skripty na vyžádání, podle plánu, nebo instance nepřetržitě jako úlohy na pozadí v rámci vaší služby App Service. U nepřetržitého provádění úloh WebJobs se vyžaduje stálé připojení. Pro plánované úlohy WebJobs se vyžaduje Azure Scheduler na úrovni Free nebo Standard. Neexistuje žádné předdefinované omezení počtu hello webové úlohy, která se může spustit v instanci služby App Service, ale neexistují praktické omezení, které jsou závislé na jaké kód aplikace hello se pokouší toodo.   
 <sup>10</sup>SLA 99,95 % zadaná pro nasazení, které používají více instancí Azure Traffic Manager nakonfigurován pro převzetí služeb při selhání.  
 

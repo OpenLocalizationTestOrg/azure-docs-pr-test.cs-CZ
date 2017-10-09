@@ -1,12 +1,12 @@
-1. Na portálu v části **Všechny prostředky** klikněte na **+Přidat**. V **všechno, co** okno vyhledávacího pole, typ **brány místní sítě**, pak klikněte na vrácení seznamu prostředků. Kliknutím n **Brána místní sítě** otevřete okno, pak kliknutím na **Vytvořit** otevřete okno **Vytvořit bránu místní sítě**.
+1. V portálu hello z **všechny prostředky**, klikněte na tlačítko **+ přidat**. V hello **všechno, co** okno vyhledávacího pole, typ **brány místní sítě**, pak klikněte na tlačítko tooreturn seznamu prostředků. Klikněte na tlačítko **brány místní sítě** tooopen hello okna a potom klikněte na **vytvořit** tooopen hello **vytvořit bránu místní sítě** okno.
    
     ![Vytvoření brány místní sítě](./media/vpn-gateway-add-lng-rm-portal-include/lng.png)
 
-2. V okně **Vytvoření brány místní sítě** zadejte **Název** objektu brány místní sítě. Pokud je to možné, používejte něco intuitivní, například **ClassicVNetLocal** nebo **TestVNet1Local**. Díky tomu je snazší identifikaci bránu místní sítě na portálu.
-3. Zadejte platné veřejné **IP adresu** pro zařízení VPN nebo brány virtuální sítě, ke kterému se chcete připojit.<br>**Pokud tento místní síť představuje místní umístění:** zadat adresu veřejnou IP adresu, kterou chcete připojit k zařízení VPN. IP adresa nemůže být za serverem NAT a musí být dostupná pro Azure.<br>**Pokud tato místní síť představuje jiné virtuální síti:** zadejte veřejnou IP adresu, která byla přiřazena bránu virtuální sítě pro tuto virtuální síť.<br>**Pokud ještě nemáte IP adresu:** tvoří platný zástupný IP adresa a pak se vrátit a změnit toto nastavení před připojením.
-4. **Adresní prostor** odkazuje na rozsahy adres sítě, kterou tato místní síť představuje. Můžete přidat více různých rozsahů adres. Ujistěte se, že rozsahy, který zde určíte nepřekrývají s rozsahy jiné sítě, ke které se připojujete.
-5. V rozevíracím seznamu **Předplatné** zkontrolujte, jestli se zobrazuje správné předplatné.
-6. V rozevíracím seznamu **Skupina prostředků** vyberte skupinu prostředků, kterou chcete použít. Můžete vytvořit novou skupinu prostředků, nebo vybrat skupinu prostředků, kterou jste už vytvořili.
-7. Pro **umístění**, vyberte umístění, ve kterém se vytvoří tento prostředek. Můžete vybrat stejné umístění, ve kterém se nachází vaše virtuální síť, ale není to povinné.
-8. Kliknutím na **Vytvořit** vytvořte bránu místní sítě.
+2. Na hello **okno brány místní sítě vytvořit**, zadejte **název** pro vaše objektu brány místní sítě. Pokud je to možné, používejte něco intuitivní, například **ClassicVNetLocal** nebo **TestVNet1Local**. To usnadňuje jste tooidentify hello brány místní sítě hello portálu.
+3. Zadejte platné veřejné **IP adresu** pro zařízení VPN hello nebo toowhich brány virtuální sítě chcete tooconnect.<br>**Pokud tento místní síť představuje místní umístění:** zadejte hello veřejná IP adresa zařízení VPN hello, který chcete tooconnect k. Ho nemůže být za serverem NAT a má toobe dostupný v Azure.<br>**Pokud tato místní síť představuje jiné virtuální síti:** zadejte hello veřejnou IP adresu, kterému byla přiřazena toohello brány virtuální sítě pro tuto virtuální síť.<br>**Pokud ještě nemáte hello IP adresa:** tvoří platný zástupný IP adresa a pak se vrátit a změnit toto nastavení před připojením.
+4. **Adresní prostor** odkazuje rozsahy adres toohello hello sítě, který představuje tuto místní sítě. Můžete přidat více různých rozsahů adres. Ujistěte se, že hello rozsahy, který zde určíte nepřekrývají s rozsahy toowhich jiné sítě, ke kterým se připojujete.
+5. Pro **předplatné**, ověřte, že hello správné předplatné se zobrazuje.
+6. Pro **skupiny prostředků**vyberte hello skupinu prostředků, které chcete toouse. Můžete vytvořit novou skupinu prostředků, nebo vybrat skupinu prostředků, kterou jste už vytvořili.
+7. Pro **umístění**, vyberte hello umístění, ve kterém se vytvoří tento prostředek. Můžete chtít tooselect hello stejné umístění, které virtuální sítě se nachází v, ale nejste požadované toodo tak.
+8. Klikněte na tlačítko **vytvořit** brány místní sítě toocreate hello.
 

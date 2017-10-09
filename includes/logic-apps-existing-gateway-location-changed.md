@@ -1,0 +1,2 @@
+**Q**: Proč hello umístění pro moje existující bránu změnit? <br/>
+**A**: brány prostředky vytvořené před 3 může 2017 byly přesunuty toohello původní umístění klienta hello Azure AD pro hello pracovní nebo školní účet, který vytvořili těchto bran. Tyto změny by neměla mít vliv probíhající logiku aplikace, které by měly pokračovat v práci jako obvykle. S hello brány obecné dostupnosti v květnu umístění prostředků brány se může lišit od umístění aplikace logiky.

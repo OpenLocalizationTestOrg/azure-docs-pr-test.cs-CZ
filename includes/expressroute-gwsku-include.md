@@ -1,6 +1,6 @@
-Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Pokud vyberete vyšší SKU brány, přidělí se pro bránu víc procesorů a šířky pásma sítě, a v důsledku toho může brána podporovat vyšší propustnost sítě k virtuální síti. 
+Když vytvoříte bránu virtuální sítě, je nutné toospecify hello brány, které chcete toouse SKU. Když vyberete vyšší skladová položka brány, více procesorů a šířku pásma sítě jsou přiděleny toohello brány a v důsledku toho hello gateway může podporovat vyšší propustnost toohello virtuální síti sítě. 
 
-ExpressRoute brány virtuální sítě můžete použít následující SKU: 
+ExpressRoute brány virtuální sítě můžete použít následující SKU hello: 
 
 * Standard
 * HighPerformance

@@ -1,3 +1,3 @@
 > [!IMPORTANT]
-> ID zařízení se může zobrazit v protokolech shromažďovaných pro účely zákaznické podpory a řešení potíží, proto se ujistěte, že při pojmenování nepoužíváte žádné citlivé údaje.
+> Hello zařízení, může být viditelné v protokolech hello shromážděných pro zákaznickou podporu a řešení potíží s, ID, ujistěte se, že tooavoid žádné citlivé informace, které se při pojmenovávání ho.
 >

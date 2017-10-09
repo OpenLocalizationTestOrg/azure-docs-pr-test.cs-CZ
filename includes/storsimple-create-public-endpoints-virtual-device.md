@@ -1,14 +1,14 @@
-#### <a name="to-create-public-endpoints-on-the-virtual-device"></a>Vytvoření veřejných koncových bodů na virtuálním zařízení
+#### <a name="toocreate-public-endpoints-on-hello-virtual-device"></a>toocreate veřejné koncové body hello virtuálního zařízení
 
-1. Přihlaste se k portálu Azure Classic.
-2. Klikněte na **Virtuální počítače** a potom vyberte virtuální počítač, který používáte jako virtuální zařízení.
-3. Klikněte na **Koncové body**. Objeví se stránka **Koncové body**, která obsahuje všechny koncové body pro daný virtuální počítač.
-4. Klikněte na tlačítko **Add** (Přidat). Zobrazí se dialogové okno **Přidat koncový bod**. Pokračujte kliknutím na šipku.
-5. Do pole **Název** zadejte následující název koncového bodu: **WinRMHttps**.
-6. V poli **Protokol** uveďte **TCP**.
-7. Do pole **Veřejný port** zadejte čísla portů, která chcete pro připojení použít.
-8. Do pole **Privátní port** zadejte **5986**.
-9. Kliknutím na symbol zaškrtnutí vytvořte koncový bod.
+1. Přihlaste se toohello portál Azure classic.
+2. Klikněte na tlačítko **virtuální počítače**, a pak vyberte hello virtuální počítač, který je používán jako virtuální zařízení.
+3. Klikněte na **Koncové body**. Hello **koncové body** stránky obsahuje všechny koncové body pro virtuální počítač hello.
+4. Klikněte na tlačítko **Přidat**. Hello **přidat koncový bod** zobrazí se dialogové okno. Klikněte na šipku toocontinue hello.
+5. Pro hello **název**, typ hello následující název koncového bodu hello: **WinRMHttps**.
+6. Pro hello **protokol**, zadejte **TCP**.
+7. Pro hello **veřejný Port**, zadejte čísla portů hello chcete toouse pro připojení hello.
+8. Pro hello **privátní Port**, typ **5986**.
+9. Klikněte na tlačítko hello zaškrtnutí toocreate hello koncový bod.
 
-Po vytvoření koncového bodu můžete zobrazit jeho podrobnosti, abyste zjistili virtuální IP adresu (VIP). Tuto adresu si poznamenejte.
+Po vytvoření koncového bodu hello můžete zobrazit jeho podrobnosti toodetermine hello veřejná virtuální IP (VIP) adres. Tuto adresu si poznamenejte.
 

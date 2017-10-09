@@ -1,7 +1,7 @@
-## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Přidružit účet úložiště Azure do služby IoT Hub
+## <a name="associate-an-azure-storage-account-tooiot-hub"></a>Přidružit tooIoT účtu Azure Storage rozbočovače
 
-Protože aplikaci simulovaného zařízení odešle soubor do objektu blob, musíte mít [Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) účet přidružený ke službě IoT Hub. Když přidružíte účet úložiště Azure IoT hub, generuje službu IoT hub identifikátor URI SAS. Zařízení můžete použít tento identifikátor URI pro SAS se bezpečně nahrát soubor do kontejneru objektů blob. Služba IoT Hub a sady SDK zařízení koordinovat proces, který generuje identifikátor URI SAS a zpřístupní zařízení použít k nahrání souboru.
+Protože aplikaci simulovaného zařízení hello odešle soubor tooa objekt blob, musíte mít [Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) účtu přidruženého tooIoT rozbočovače. Když přidružíte účet úložiště Azure IoT hub, hello IoT hub vygeneruje SAS URI. Zařízení můžete použít tento identifikátor URI pro SAS toosecurely nahrávání kontejneru objektů blob tooa souboru. Hello služby IoT Hub a hello sady SDK zařízení koordinovat hello proces, který generuje hello identifikátor URI pro SAS a je k dispozici tooa zařízení toouse tooupload soubor.
 
-Postupujte podle pokynů v [nahrávání souborů konfigurovat pomocí portálu Azure](../articles/iot-hub/iot-hub-configure-file-upload.md) k přidružení účtu Azure Storage do služby IoT hub. Ujistěte se, že kontejner objektů blob je spojen s služby IoT hub a že jsou povolené soubor oznámení.
+Postupujte podle pokynů hello v [nahrávání souborů konfigurovat pomocí portálu Azure hello](../articles/iot-hub/iot-hub-configure-file-upload.md) tooassociate Centrum IoT tooyour účet úložiště Azure. Ujistěte se, že kontejner objektů blob je spojen s služby IoT hub a že jsou povolené soubor oznámení.
 
 ![Povolit oznámení soubor portálu](media/iot-hub-associate-storage/enable-file-notifications.png)

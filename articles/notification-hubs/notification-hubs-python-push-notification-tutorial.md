@@ -1,6 +1,6 @@
 ---
-title: "Jak používat centra oznámení s Pythonem"
-description: "Naučte se používat Azure Notification Hubs z Python back-end."
+title: "aaaHow toouse centra oznámení s Pythonem"
+description: "Zjistěte, jak toouse Azure Notification Hubs z Python back-end."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,19 +14,19 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 9ceedb9940759427fc8cec74a1307e42472563a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 21d5aaf7fc24c9936fac8e0a8de640c66c51ab0a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Jak používat centra oznámení z Pythonu
+# <a name="how-toouse-notification-hubs-from-python"></a>Jak toouse Notification Hubs z Pythonu
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Můžete ke všem funkcím centra oznámení z Java/PHP nebo Python nebo Ruby back-end pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn223264.aspx).
+Můžete ke všem funkcím centra oznámení z Java/PHP nebo Python nebo Ruby back-end pomocí rozhraní REST centra oznámení hello, jak je popsáno v tématu MSDN hello [rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
-> To je ukázka odkazu implementace pro implementaci odešle oznámení v Pythonu a není oficiálně podporované Python SDK centra oznámení.
+> To je ukázka odkazu implementace pro implementaci odešle oznámení hello v Pythonu a není hello oficiálně podporován Python SDK centra oznámení.
 > 
 > Tato ukázka je napsané v Pythonu 3.4.
 > 
@@ -35,42 +35,42 @@ Můžete ke všem funkcím centra oznámení z Java/PHP nebo Python nebo Ruby ba
 V tomto tématu ukážeme postup:
 
 * Vytvoření klienta REST centra oznámení funkcí v Pythonu.
-* Odesílání oznámení pomocí rozhraní Python rozhraní API REST centra oznámení. 
-* Získá výpis požadavků a odpovědí HTTP REST pro ladění vzdělávací účely. 
+* Odesílání oznámení pomocí hello Python rozhraní toohello rozhraní API REST centra oznámení. 
+* Získá výpis hello požadavků a odpovědí HTTP REST pro ladění vzdělávací účely. 
 
-Můžete provést [kurzu Začínáme Get](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) pro vaši mobilní platformu podle volby implementace části back-end v Pythonu.
+Můžete postupovat podle hello [kurzu Začínáme Get](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) pro vaši mobilní platformu podle vlastní volby, implementace část hello back-end v Pythonu.
 
 > [!NOTE]
-> Obor vzorku je omezena pouze k odesílání oznámení a neprovádí žádné registrace správy.
+> obor Hello ukázky hello je jenom omezené toosend oznámení a neprovádí žádné registrace správy.
 > 
 > 
 
 ## <a name="client-interface"></a>Rozhraní klienta
-Rozhraní hlavní klienta může poskytovat stejné metody, které jsou k dispozici v [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx). To vám umožní přímo převést všechny výukové programy a ukázky aktuálně k dispozici na tomto webu a přispěli komunity na Internetu.
+rozhraní Hello hlavní klienta může poskytnout hello stejných metod, které jsou k dispozici v hello [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx). To vám umožní toodirectly převede všechny hello kurzy a ukázky aktuálně k dispozici na tomto webu a přispěli hello komunity na hello Internetu.
 
-K dispozici v kódu lze najít [Python REST obálku ukázka].
+Můžete najít všechny hello kód je k dispozici v hello [Python REST obálku ukázka].
 
-Chcete-li například vytvořit klienta:
+Například toocreate klienta:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-K odeslání oznámení s informační zprávou Windows:
+toosend Windows připít oznámení:
 
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Implementace
-Pokud jste ještě není, postupujte podle našich [kurzu Začínáme Get] až na poslední část, kde je nutné implementovat back-end.
+Pokud jste ještě není, postupujte podle našich [kurzu Začínáme Get] až toohello poslední část, kde máte tooimplement hello back-end.
 
-Všechny podrobnosti implementace úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části jsme se popisují implementaci Python hlavní kroky potřebné pro přístup k koncové body REST centra oznámení a odesílání oznámení
+Všechny hello podrobnosti tooimplement úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části jsme se popisují implementaci Python hello hello hlavní kroky požadované tooaccess koncové body REST centra oznámení a odesílání oznámení
 
-1. Analýza připojovacího řetězce
-2. Vygenerování tokenu autorizace
+1. Analyzovat hello připojovací řetězec
+2. Vygenerování tokenu autorizace hello
 3. Odeslání oznámení pomocí rozhraní HTTP REST API
 
-### <a name="parse-the-connection-string"></a>Analýza připojovacího řetězce
-Tady je hlavní třída implementace klienta, jejichž konstruktor analyzuje připojovací řetězec:
+### <a name="parse-hello-connection-string"></a>Analyzovat hello připojovací řetězec
+Tady je hlavní třídy hello implementace hello klienta, jejichž konstruktor analyzuje hello připojovací řetězec:
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -95,8 +95,8 @@ Tady je hlavní třída implementace klienta, jejichž konstruktor analyzuje př
 
 
 ### <a name="create-security-token"></a>Vytvoření tokenu zabezpečení
-Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [zde](http://msdn.microsoft.com/library/dn495627.aspx).
-Následující metody, mají být přidán do **NotificationHub** v identifikátoru URI aktuální žádosti a přihlašovací údaje extrahovat z připojovacího řetězce na základě třídy k vytvoření tohoto tokenu.
+Podrobnosti o Hello hello vytvoření tokenu zabezpečení jsou k dispozici [zde](http://msdn.microsoft.com/library/dn495627.aspx).
+Hello následující metody mají toobe přidat toohello **NotificationHub** třída toocreate hello token podle hello identifikátoru URI aktuální žádosti hello a přihlašovací údaje hello extrahoval z hello připojovací řetězec.
 
     @staticmethod
     def get_expiry():
@@ -134,7 +134,7 @@ První, umožňují použít definice třídy představující oznámení.
             if not any(x in notification_format for x in valid_formats):
                 raise Exception(
                     "Invalid Notification format. " +
-                    "Must be one of the following - 'template', 'apple', 'gcm', 'windows', 'windowsphone', 'adm', 'baidu'")
+                    "Must be one of hello following - 'template', 'apple', 'gcm', 'windows', 'windowsphone', 'adm', 'baidu'")
 
             self.format = notification_format
             self.payload = payload
@@ -147,9 +147,9 @@ První, umožňují použít definice třídy představující oznámení.
 
 Tato třída je kontejner pro nativní oznámení textu nebo sadu vlastností v případě šablony oznámení, sadu hlaviček, který obsahuje formátu (nativní platforma nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost Apple vypršení platnosti a hlavičky WNS).
 
-Naleznete [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a na konkrétní oznámení platformách formátů pro všechny možnosti, které jsou k dispozici.
+Podrobnosti najdete toohello [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a hello formáty konkrétní oznámení platformy pro všechny hello možnosti, které jsou k dispozici.
 
-Teď s touto třídou jsme může zapisovat odesílání oznámení metody uvnitř **NotificationHub** třídy.
+Teď s touto třídou jsme může zapisovat hello odesílání oznámení metody uvnitř hello **NotificationHub** třídy.
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -157,7 +157,7 @@ Teď s touto třídou jsme může zapisovat odesílání oznámení metody uvnit
 
         if self.Debug > 0:
             connection.set_debuglevel(self.Debug)
-            # adding this querystring parameter gets detailed information about the PNS send notification outcome
+            # adding this querystring parameter gets detailed information about hello PNS send notification outcome
             url += self.DEBUG_SEND
             print("--- REQUEST ---")
             print("URI: " + url)
@@ -205,11 +205,11 @@ Teď s touto třídou jsme může zapisovat odesílání oznámení metody uvnit
         else:
             tag_list = tag_or_tag_expression
 
-        # add the tags/tag expressions to the headers collection
+        # add hello tags/tag expressions toohello headers collection
         if tag_list != "":
             headers.update({'ServiceBusNotification-Tags': tag_list})
 
-        # add any custom headers to the headers collection that the user may have added
+        # add any custom headers toohello headers collection that hello user may have added
         if notification.headers is not None:
             headers.update(notification.headers)
 
@@ -257,23 +257,23 @@ Teď s touto třídou jsme může zapisovat odesílání oznámení metody uvnit
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
 
-Výše uvedené metody odeslat požadavek HTTP POST koncovému bodu /messages centra oznámení, s správné textu a hlavičky k odesílání oznámení.
+Hello výše metody odeslat HTTP POST požadavek toohello /messages koncový bod centra oznámení, s správné textu hello a hlavičky toosend hello oznámení.
 
-### <a name="using-debug-property-to-enable-detailed-logging"></a>Pomocí vlastnosti ladění povolit podrobné protokolování
-Povolení ladění vlastnost při inicializaci centra oznámení se zapsat podrobné protokolování informace o požadavku HTTP a odpovědi výpisu, jakož i podrobné zprávy oznámení odeslat výsledek. Nedávno jsme přidali tato vlastnost s názvem [TestSend centra oznámení vlastnost](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) která vrací podrobné informace o výsledek odeslání oznámení. Pro použití - inicializujte pomocí tohoto vzorce:
+### <a name="using-debug-property-tooenable-detailed-logging"></a>Pomocí ladění vlastnost tooenable podrobné protokolování
+Povolení ladění vlastnost při inicializaci hello Centrum oznámení se zapsat podrobné protokolování informací o hello HTTP, že požadavek a odpověď výpisu, jakož i podrobné zprávy oznámení odeslat výsledek. Nedávno jsme přidali tato vlastnost s názvem [TestSend centra oznámení vlastnost](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) která vrací podrobné informace o hello výsledek odeslání oznámení. toouse ho - inicializovat pomocí hello následující:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-Žádost o odeslání oznámení centra adresy URL protokolu HTTP získá spolu s "test" querystring v důsledku. 
+žádost odeslat oznámení centra Hello adresy URL protokolu HTTP získá spolu s "test" querystring v důsledku. 
 
-## <a name="complete-tutorial"></a>Dokončení tohoto kurzu
-Nyní můžete dokončit kurz Začínáme zasláním oznámení z back-end Python.
+## <a name="complete-tutorial"></a>Dokončení hello kurzu
+Nyní můžete provést kurzu Začínáme hello zasláním oznámení hello z Python back-end.
 
-Inicializace vašeho centra oznámení klienta (nahraďte název připojovacího řetězce a centra podle pokynů v [kurzu Začínáme Get]):
+Inicializace vašeho centra oznámení klienta (nahraďte hello připojovací řetězec a názvu centra podle pokynů v hello [kurzu Začínáme Get]):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-Pak přidejte kód odeslat v závislosti na svou cílovou platformu mobilních. Tato ukázka přidá také vyšší úrovně metody k povolení odesílání oznámení založené na platformě například send_windows_notification pro systém windows. send_apple_notification (pro apple) atd. 
+Pak přidejte kód odesílání hello v závislosti na svou cílovou platformu mobilních. Tato ukázka přidá také vyšší úrovně metody tooenable odesílání oznámení založené na platformě hello například send_windows_notification pro systém windows. send_apple_notification (pro apple) atd. 
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store a Windows Phone 8.1 (bez Silverlight)
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
@@ -322,33 +322,33 @@ Spuštěním kódu Python by měl vytvořit oznámení, které jsou na cílovém
 
 ## <a name="examples"></a>Příklady:
 ### <a name="enabling-debug-property"></a>Povolení ladění vlastnost
-Když povolíte příznak ladění při inicializaci NotificationHub, zobrazí se podrobné požadavku HTTP a odpovědi výpisu, jakož i NotificationOutcome takto kde pochopit, jaké hlavičky protokolu HTTP se předávají v požadavku a jaké odpověď HTTP byla přijata z centra oznámení:![][1]
+Když povolíte příznak ladění při inicializaci hello NotificationHub, zobrazí se podrobné výpisu žádosti a odpovědi protokolu HTTP, jakož i NotificationOutcome jako hello následující, kde pochopit, jaké hlavičky protokolu HTTP se předávají v žádosti o hello a jaké HTTP byla přijata odpověď z hello Centrum oznámení:![][1]
 
 Uvidíte, například podrobný výsledek centra oznámení 
 
-* Když zprávu úspěšně odeslat na službu nabízených oznámení. 
+* Když hello je úspěšně odeslána zpráva toohello službu nabízených oznámení. 
   
-        <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-* Pokud neexistují žádné cíle najít pro všechny nabízené oznámení potom pravděpodobně chcete vidět následující informace v odpovědi (což znamená, že neexistují žádné registrace nalezen pravděpodobně doručit oznámení, protože registrace měl některé neodpovídající značky)
+        <Outcome>hello Notification was successfully sent toohello Push Notification System</Outcome>
+* Pokud nebyly nalezeny žádné cíle pro všechny nabízené oznámení pak budete pravděpodobně toosee hello následující hello odpovědi (což znamená, že neexistují žádné registrace pravděpodobně nalézt toodeliver hello oznámení, protože registrace hello měl některé Neshoda značek)
   
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Vysílání informační zpráva do systému Windows
-Všimněte si seznam hlaviček, které získat odeslaná při odesílání oznámení s informační zprávou všesměrového vysílání pro klienta systému Windows. 
+### <a name="broadcast-toast-notification-toowindows"></a>Vysílání tooWindows oznámení informační zprávy
+Všimněte si hello hlavičky, které získat odeslaná při odesílání oznámení klienta tooWindows informační zprávy všesměrového vysílání. 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Odeslat oznámení o určení značky (nebo výraz označení)
-Všimněte si hlavičku HTTP značky, který získá přidán do požadavku HTTP (v následujícím příkladu jsme odesílání oznámení pouze na registrací s odebranou datovou částí "sports")
+Hlavičky protokolu HTTP značky hello oznámení, který získá přidat toohello HTTP požadavku (v příkladu hello níže jsme odesílání hello oznámení pouze tooregistrations s odebranou datovou částí "sports")
 
     hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Odeslat oznámení o určení více značek
-Všimněte si, jak hlavičku HTTP značky změní, když jsou odesílány více značek. 
+Všimněte si, jak hlavičky protokolu HTTP značky hello změní, když jsou odesílány více značek. 
 
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
@@ -356,14 +356,14 @@ Všimněte si, jak hlavičku HTTP značky změní, když jsou odesílány více 
 ![][4]
 
 ### <a name="templated-notification"></a>Použitím šablon oznámení
-Všimněte si, že změní hlavičku formátu HTTP a text datové části je odeslána jako část obsahu žádosti HTTP:
+Všimněte si, že hello změny záhlaví HTTP formátu a datovou část textu hello je odeslána jako část obsahu žádosti hello HTTP:
 
 **Na straně klienta - registrované šablony**
 
         var template =
                         @"<toast><visual><binding template=""ToastText01""><text id=""1"">$(greeting_en)</text></binding></visual></toast>";
 
-**Na straně serveru – odesílání datové části**
+**Na straně serveru – odesílání hello datové části**
 
         template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
         hub.send_template_notification(template_payload)
@@ -371,11 +371,11 @@ Všimněte si, že změní hlavičku formátu HTTP a text datové části je ode
 ![][5]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto tématu jsme vám ukázal, jak vytvořit jednoduché klienta Python REST pro centra oznámení. Odsud můžete:
+V tomto tématu jsme vám ukázal, jak toocreate jednoduché Python REST klienta pro centra oznámení. Odsud můžete:
 
-* Stáhnout kompletní [Python REST obálku ukázka], která obsahuje všechny výše uvedený kód.
-* Pokračujte ve čtení o označování funkce v centrech oznámení [novinkách kurzu]
-* Pokračujte ve čtení o funkce šablon centra oznámení v [kurzu lokalizace zprávy]
+* Stáhnout hello úplné [Python REST obálku ukázka], která obsahuje všechny výše uvedený kód hello.
+* Pokračujte ve čtení o centrech oznámení označování funkce v hello [novinkách kurzu]
+* Pokračujte ve čtení o funkce šablon centra oznámení v hello [kurzu lokalizace zprávy]
 
 <!-- URLs -->
 [Python REST obálku ukázka]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python

@@ -1,23 +1,23 @@
-## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava k ověřování žádostí o Azure Resource Manager
-Je třeba ověřit všechny operace, které můžete provádět na prostředky pomocí [Azure Resource Manager] [ lnk-authenticate-arm] s Azure Active Directory (AD). Nejjednodušší způsob, jak nakonfigurovat tuto funkci je pomocí Powershellu nebo rozhraní příkazového řádku Azure.
+## <a name="prepare-tooauthenticate-azure-resource-manager-requests"></a>Příprava tooauthenticate, které požadavky Azure Resource Manager
+Je třeba ověřit všechny hello operace, které můžete provádět na prostředky pomocí hello [Azure Resource Manager] [ lnk-authenticate-arm] s Azure Active Directory (AD). Hello tooconfigure nejjednodušší způsob, jak je to toouse prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
-Nainstalujte [rutin prostředí Azure PowerShell] [ lnk-powershell-install] než budete pokračovat.
+Nainstalujte hello [rutin prostředí Azure PowerShell] [ lnk-powershell-install] než budete pokračovat.
 
-Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD pomocí prostředí PowerShell. Tyto příkazy můžete spustit ve standardní relaci prostředí PowerShell.
+Dobrý den, jak následující kroky zobrazit tooset až ověřování hesla pro aplikaci AD pomocí prostředí PowerShell. Tyto příkazy můžete spustit ve standardní relaci prostředí PowerShell.
 
-1. Přihlaste se k předplatnému Azure, pomocí následujícího příkazu:
+1. Přihlaste se tooyour předplatného Azure, pomocí hello následující příkaz:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup do všech předplatná Azure přidružená přihlašovacích údajů. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, které je k dispozici pro použití:
+1. Pokud máte víc předplatných Azure, přihlášení tooAzure uděluje přístup tooall hello předplatná Azure přidružená přihlašovacích údajů. Použijte následující příkaz toolist hello předplatná Azure k dispozici pro vás toouse hello:
 
     ```powershell
     Get-AzureRMSubscription
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+    Použijte následující příkaz tooselect předplatné, že budete chtít toouse toorun hello příkazy toomanage služby IoT hub hello. Název odběru hello nebo ID můžete použít z hello výstup hello předchozí příkaz:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -25,29 +25,29 @@ Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD 
     ```
 
 2. Poznamenejte si vaše **TenantId** a **SubscriptionId**. Budete potřebovat později.
-3. Vytvořte novou aplikaci Azure Active Directory pomocí následujícího příkazu, nahraďte svými držiteli místní:
+3. Vytvořte novou aplikaci Azure Active Directory pomocí hello následující příkaz, nahraďte zástupného hello:
    
    * **{Zobrazovaný název}:** zobrazovaný název pro vaši aplikaci, jako **MySampleApp**
-   * **{Adresu URL domovské stránky}:** adresu URL domovské stránky aplikace jako **http://mysampleapp/home**. Tato adresa URL nemusí tak, aby odkazoval na reálné aplikaci.
-   * **{Identifikátor aplikace}:** jedinečný identifikátor, jako **http://mysampleapp**. Tato adresa URL nemusí tak, aby odkazoval na reálné aplikaci.
-   * **{Heslo}:** heslo, které použijete k ověření s vaší aplikací.
+   * **{Adresu URL domovské stránky}:** hello URL hello domovské stránky aplikace jako **http://mysampleapp/home**. Tato adresa URL nemusí toopoint tooa reálné aplikaci.
+   * **{Identifikátor aplikace}:** jedinečný identifikátor, jako **http://mysampleapp**. Tato adresa URL nemusí toopoint tooa reálné aplikaci.
+   * **{Heslo}:** heslo používat tooauthenticate s vaší aplikací.
      
      ```powershell
      New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
      ```
-4. Poznamenejte si **ApplicationId** aplikace, které jste vytvořili. Budete potřebovat později.
-5. Vytvořit nový objekt služby pomocí následujícího příkazu, nahraďte **{MyApplicationId}** s **ApplicationId** z předchozího kroku:
+4. Poznamenejte si hello **ApplicationId** hello aplikace, které jste vytvořili. Budete potřebovat později.
+5. Vytvořit nový objekt služby pomocí hello následující příkaz, nahraďte **{MyApplicationId}** s hello **ApplicationId** hello v předchozím kroku:
    
     ```powershell
     New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
     ```
-6. Nastavení přiřazení role pomocí následujícího příkazu, nahraďte **{MyApplicationId}** s vaší **ApplicationId**.
+6. Nastavení přiřazení role pomocí hello následující příkaz, nahraďte **{MyApplicationId}** s vaší **ApplicationId**.
    
     ```powershell
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-Nyní dokončení vytvoření aplikace Azure AD, která umožňuje ověření z vaší vlastní aplikaci C#. Později v tomto kurzu potřebujete následující hodnoty:
+Nyní dokončení vytváření hello aplikaci Azure AD, která vám umožní tooauthenticate z vaší vlastní aplikaci C#. Je třeba hello později v tomto kurzu následující hodnoty:
 
 * TenantId
 * SubscriptionId

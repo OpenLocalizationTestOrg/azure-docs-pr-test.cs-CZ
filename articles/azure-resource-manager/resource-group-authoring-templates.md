@@ -1,6 +1,6 @@
 ---
-title: "Struktura šablony Azure Resource Manager a syntaxe | Microsoft Docs"
-description: "Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON."
+title: "aaaAzure Resource Manager strukturu šablony a syntaxe | Microsoft Docs"
+description: "Popisuje hello strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2017
 ms.author: tomfitz
-ms.openlocfilehash: dc9b64062d7f68c83aa090eec96744819a5ca423
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b0709852f8777c91cc1704d6bca16257a017d515
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu a syntaxe šablon Azure Resource Manager
-Toto téma popisuje strukturu šablony Azure Resource Manager. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto částech. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).
+# <a name="understand-hello-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu hello a syntaxe šablon Azure Resource Manager
+Toto téma popisuje strukturu hello šablony Azure Resource Manager. Představuje různé části šablony a hello vlastnosti, které jsou k dispozici v těchto částech hello. Šablona Hello se skládá z JSON a výrazy, můžete použít hodnoty tooconstruct pro vaše nasazení. Podrobný kurz k vytvoření šablony, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Formát šablony
-Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
+Ve své nejjednodušší struktura obsahuje šablonu hello následující prvky:
 
 ```json
 {
@@ -39,14 +39,14 @@ Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| $schema |Ano |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony. Použijte adresu URL v předchozím příkladu. |
-| contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Můžete zadat jakoukoli hodnotu pro tento element. Při nasazení prostředků pomocí šablony, tuto hodnotu lze zajistit, aby se používal správnou šablonu. |
-| Parametry |Ne |Hodnoty, které jsou k dispozici při nasazení pro přizpůsobení nasazení prostředků. |
-| proměnné |Ne |Hodnoty, které se používá jako fragmenty JSON v šabloně, které zjednodušují výrazy jazyka šablony. |
+| $schema |Ano |Umístění souboru schématu JSON hello, který popisuje hello verze jazyka šablony hello. Použijte adresu URL hello uvedené v předchozím příkladu hello. |
+| contentVersion |Ano |Verze šablony hello (například 1.0.0.0). Můžete zadat jakoukoli hodnotu pro tento element. Při nasazení prostředků pomocí šablony hello, tato hodnota může být použité toomake se, že šablona správné hello používá. |
+| parameters |Ne |Hodnoty, které jsou k dispozici po nasazení provést nasazení toocustomize prostředků. |
+| proměnné |Ne |Hodnoty, které jsou použity jako fragmenty JSON ve výrazech jazyka šablony toosimplify šablony hello. |
 | Prostředky |Ano |Typy prostředků, které jsou nasazené nebo aktualizovány v skupinu prostředků. |
 | Výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
 
-Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příklad obsahuje úplnou syntaxí šablony:
+Každý prvek obsahuje vlastnosti, které můžete zadat. Následující ukázka Hello obsahuje hello úplnou syntaxí šablony:
 
 ```json
 {
@@ -62,7 +62,7 @@ Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příkl
             "minLength": <minimum-length-for-string-or-array>,
             "maxLength": <maximum-length-for-string-or-array-parameters>,
             "metadata": {
-                "description": "<description-of-the parameter>" 
+                "description": "<description-of-hello parameter>" 
             }
         }
     },
@@ -117,14 +117,14 @@ Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příkl
 }
 ```
 
-Jsme zkontrolujte v částech šablony podrobněji později v tomto tématu.
+Jsme zkontrolujte hello části šablony hello podrobněji později v tomto tématu.
 
 ## <a name="expressions-and-functions"></a>Výrazy a funkce
-Základní syntaxe šablony je JSON. K dispozici v rámci šablony JSON hodnoty rozšířit však výrazy a funkce.  Výrazy jsou zapsané v JSON textové literály jejichž první a poslední znaky jsou hranaté závorky: `[` a `]`, v uvedeném pořadí. Hodnota výrazu vyhodnotí při nasazení šablony. Při zápisu jako řetězcový literál, může být výsledkem vyhodnocení výrazu jiného typu formátu JSON, jako je například pole nebo celé číslo, v závislosti na skutečný výraz.  Tak, aby měl řetězcový literál začínat závorky `[`, ale je interpretován jako výraz, můžete přidat další znak pravé závorky zahájíte řetězec s `[[`.
+Základní syntaxe Hello hello šablony je JSON. Výrazy a funkce však rozšířit hodnoty na JSON hello, které jsou k dispozici v rámci šablony hello.  Výrazy jsou zapsané v JSON textové literály jejichž první a poslední znaky jsou hello závorky: `[` a `]`, v uvedeném pořadí. Hello hodnotu výrazu hello vyhodnotí při nasazení šablony hello. Při zápisu jako řetězcový literál, může být výsledkem vyhodnocení výrazu hello hello jiného typu formátu JSON, jako je například pole nebo celé číslo, v závislosti na skutečný výraz hello.  řetězcový literál začínat závorky toohave `[`, ale je interpretován jako výraz, můžete přidat řetězec navíc závorky toostart hello s `[[`.
 
-Obvykle používají výrazy s funkcí k provádění operací pro konfiguraci nasazení. Jenom jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Vlastnosti odkazovat pomocí operátorů dot a [index].
+Výrazy se obvykle používá s operacemi tooperform funkce pro konfiguraci nasazení hello. Jenom jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Vlastnosti odkazovat pomocí operátorů dot a [index] hello.
 
-Následující příklad ukazuje, jak použít několik funkcí, při vytváření hodnoty:
+Hello následující příklad ukazuje, jak toouse několik funkcí při vytváření hodnoty:
 
 ```json
 "variables": {
@@ -134,12 +134,12 @@ Následující příklad ukazuje, jak použít několik funkcí, při vytvářen
 }
 ```
 
-Úplný seznam funkcí šablony najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md). 
+Hello úplný seznam funkcí šablony najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Parametry
-V sekci parametrů šablony zadejte hodnoty, které můžete zadat při nasazování prostředky. Tyto hodnoty parametrů umožňují přizpůsobit nasazení zadáním hodnoty, které jsou přizpůsobené pro konkrétní prostředí (například vývoj, testování a provozním). Není nutné zadat parametry v šabloně, ale bez parametrů šablony vždy nasazení stejné prostředky se stejnými názvy, umístění a vlastnosti.
+V části Parametry hello hello šablony zadejte hodnoty, které můžete zadat při nasazování hello prostředky. Tyto hodnoty parametrů povolit nasazení hello toocustomize zadáním hodnoty, které jsou přizpůsobené pro konkrétní prostředí (například vývoj, testování a provozním). Nemáte tooprovide parametry v šabloně, ale bez parametrů šablony vždy nasazení hello stejné prostředky s hello stejné názvy a umístění a vlastností.
 
-Můžete definovat parametry s následující strukturou:
+Definujte parametry s hello strukturu:
 
 ```json
 "parameters": {
@@ -152,7 +152,7 @@ Můžete definovat parametry s následující strukturou:
         "minLength": <minimum-length-for-string-or-array>,
         "maxLength": <maximum-length-for-string-or-array-parameters>,
         "metadata": {
-            "description": "<description-of-the parameter>" 
+            "description": "<description-of-hello parameter>" 
         }
     }
 }
@@ -160,17 +160,17 @@ Můžete definovat parametry s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| Název parametru |Ano |Název parametru. Musí být platný identifikátor jazyka JavaScript. |
-| type |Ano |Typ hodnoty parametru. Zobrazit seznam povolených typů za touto tabulkou. |
-| Výchozí hodnota |Ne |Výchozí hodnota pro parametr, pokud není zadána žádná hodnota pro parametr. |
-| allowedValues |Ne |Povolené hodnoty pro parametr a ujistěte se, že je zadaná hodnota pravé pole. |
-| MinValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je (včetně). |
-| MaxValue |Ne |Maximální hodnota parametry typu int, tato hodnota je (včetně). |
-| minLength |Ne |Minimální délka řetězce, secureString a parametry typu pole, tato hodnota je (včetně). |
-| Hodnota maxLength |Ne |Maximální délka řetězce, secureString a parametry typu pole, tato hodnota je (včetně). |
-| Popis |Ne |Popis parametru, který se zobrazí uživatelům prostřednictvím portálu. |
+| Název parametru |Ano |Název parametru hello. Musí být platný identifikátor jazyka JavaScript. |
+| type |Ano |Typ hodnoty parametru hello. Zobrazit hello seznam povolených typů za touto tabulkou. |
+| Výchozí hodnota |Ne |Výchozí hodnota pro parametr hello, pokud není zadána žádná hodnota pro parametr hello. |
+| allowedValues |Ne |Pole povolených hodnot pro jistotu, že je zadaná hodnota pravé hello toomake parametr hello. |
+| MinValue |Ne |Hello minimální hodnotu pro parametry typ int, tato hodnota je (včetně). |
+| MaxValue |Ne |Hello maximální hodnotu pro parametry typ int, tato hodnota je (včetně). |
+| minLength |Ne |Minimální délka Hello string, secureString a parametry typu pole, tato hodnota je (včetně). |
+| Hodnota maxLength |Ne |Maximální délka Hello string, secureString a parametry typu pole, tato hodnota je (včetně). |
+| description |Ne |Zobrazí popis hello parametr, který je toousers prostřednictvím portálu hello. |
 
-Povolené typy a hodnoty jsou:
+Hello povolené typy a hodnoty jsou:
 
 * **řetězec**
 * **secureString**
@@ -180,19 +180,19 @@ Povolené typy a hodnoty jsou:
 * **secureObject**
 * **pole**
 
-Pro zadání parametru, jako je volitelné, zadejte hodnotu defaultValue (může být prázdný řetězec). 
+toospecify parametr jako volitelná, zadejte hodnotu defaultValue (může být prázdný řetězec). 
 
-Pokud zadáte název parametru v šabloně, který odpovídá parametru v příkazu k nasazení šablony, je potenciální nejednoznačnosti hodnoty, které zadáte. Správce prostředků řeší tento nedorozuměním přidáním operátory **FromTemplate** pro parametr šablony. Například, pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s **ResourceGroupName** parametr ve [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) rutiny. Během nasazení, budete vyzváni, zadejte hodnotu pro **ResourceGroupNameFromTemplate**. Obecně platí neměli byste toto nedorozuměním není pojmenováním parametry se stejným názvem jako parametry použité pro operace nasazení.
+Pokud zadáte název parametru v šabloně odpovídající parametr v hello příkaz toodeploy hello šablony, je potenciální nejednoznačnosti hello hodnoty, které zadáte. Správce prostředků řeší tento nedorozuměním přidáním hello operátory **FromTemplate** toohello parametr šablony. Například, pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s hello **ResourceGroupName** parametr v hello [ Nové AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) rutiny. Během nasazení se výzvami tooprovide hodnotu **ResourceGroupNameFromTemplate**. Obecně platí neměli byste toto nedorozuměním není pojmenováním parametry s hello stejný název jako parametry použité pro operace nasazení.
 
 > [!NOTE]
-> Všechna hesla, klíče a jiné tajné klíče by měl používat **secureString** typu. Pokud předáte citlivá data v objektu JSON, použít **secureObject** typu. Parametry šablony s secureString nebo secureObject typů nelze přečíst po nasazení prostředků. 
+> Všechna hesla, klíče a jiné tajné měli používat hello **secureString** typu. Pokud předáte citlivá data v objektu JSON, použít hello **secureObject** typu. Parametry šablony s secureString nebo secureObject typů nelze přečíst po nasazení prostředků. 
 > 
-> Například následující položku v historii nasazení zobrazuje hodnotu pro řetězce a objekt, ale ne pro secureString a secureObject.
+> Hello následující položku v historii nasazení hello příkladu hello hodnotu pro řetězce a objekt, ale ne pro secureString a secureObject.
 >
 > ![Zobrazit hodnoty nasazení](./media/resource-group-authoring-templates/show-parameters.png)  
 >
 
-Následující příklad ukazuje, jak definovat parametry:
+Následující příklad ukazuje, jak Hello toodefine parametry:
 
 ```json
 "parameters": {
@@ -230,12 +230,12 @@ Následující příklad ukazuje, jak definovat parametry:
 }
 ```
 
-Pro vstupní hodnoty parametrů během nasazování naleznete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md). 
+Jak tooinput hello parametr hodnoty během nasazení, naleznete v části [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md). 
 
 ## <a name="variables"></a>Proměnné
-V sekci proměnných můžete vytvořit hodnoty, které lze použít v celé vaší šablony. Není potřeba definovat proměnné, ale jejich často zjednodušit vaše šablony snížením složité výrazy.
+V části proměnných hello vytvořit hodnoty, které lze použít v celé vaší šablony. Není nutné toodefine proměnné, ale jejich často zjednodušit vaše šablony snížením složité výrazy.
 
-Můžete definovat proměnné s následující strukturou:
+Můžete zadat proměnné určené s hello strukturu:
 
 ```json
 "variables": {
@@ -246,7 +246,7 @@ Můžete definovat proměnné s následující strukturou:
 }
 ```
 
-Následující příklad ukazuje, jak k definování proměnné, který je sestavený ze dvou hodnot parametrů:
+Následující příklad ukazuje, jak Hello toodefine proměnné, která se vytvářejí na základě dvě hodnoty parametrů:
 
 ```json
 "variables": {
@@ -254,7 +254,7 @@ Následující příklad ukazuje, jak k definování proměnné, který je sesta
 }
 ```
 
-Další příklad ukazuje, proměnné, která je komplexního typu JSON a proměnné, které se vytvářejí na základě jiné proměnné:
+Hello další příklad ukazuje, proměnné, která je komplexního typu JSON a proměnné, které se vytvářejí na základě jiné proměnné:
 
 ```json
 "parameters": {
@@ -284,9 +284,9 @@ Další příklad ukazuje, proměnné, která je komplexního typu JSON a promě
 ```
 
 ## <a name="resources"></a>Zdroje
-V části prostředky definujete prostředky, které jsou nasazené a aktualizovat. V této části můžete získat složité, protože je potřeba pochopit, typy, které nasazujete zadejte správné hodnoty. Pro konkrétní prostředky hodnoty (apiVersion, typ a vlastnosti), které je nutné nastavit, najdete v části [definování zdrojů v šablonách Azure Resource Manager](/azure/templates/). 
+V části prostředky hello definujete hello prostředky, které jsou nasazené a aktualizovat. V této části můžete získat složité, protože musíte pochopit hello typy, které nasazujete tooprovide hello správné hodnoty. Hello konkrétní prostředky hodnoty (apiVersion, typ a vlastnosti), je nutné, aby tooset naleznete v části [definování zdrojů v šablonách Azure Resource Manager](/azure/templates/). 
 
-Můžete definovat prostředky s následující strukturou:
+Definování zdrojů s hello strukturu:
 
 ```json
 "resources": [
@@ -329,19 +329,19 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| Podmínka | Ne | Logická hodnota, která určuje, jestli je nasazené prostředku. |
-| apiVersion |Ano |Verze rozhraní REST API pro vytvoření prostředku. |
-| type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). |
-| jméno |Ano |Název prostředku. Název musí splňovat omezení součást URI definované v RFC3986. Kromě toho služby Azure, které zveřejňují názvu prostředku třetí stranou ověřit název, který má Ujistěte se, zda není pokus o zfalšovat jiné identity. |
-| location |Je to různé. |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle má smysl vyberte ten, který je blízko vaši uživatelé. Obvykle také má smysl umístit prostředky, které vzájemně spolupracovat ve stejné oblasti. Většina typů prostředků vyžadují umístění, ale některé typy (například přiřazení role) nevyžadují umístění. V tématu [nastavit umístění prostředku v šablonách Azure Resource Manager](resource-manager-template-location.md). |
-| tags |Ne |Značky, které jsou přidružené k prostředku. V tématu [označit prostředky v šablonách Azure Resource Manager](resource-manager-template-tags.md). |
-| Komentáře |Ne |Poznámky pro dokumentaci prostředky ve vaší šabloně |
-| Kopírování |Ne |V případě potřeby více než jednu instanci počet zdrojů pro vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky do nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
-| dependsOn |Ne |Prostředky, které musí být nasazené, než je nasazený tento prostředek. Správce prostředků vyhodnotí závislosti mezi prostředky a nasadí je ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, jsou nasazeny současně. Hodnota může být čárkami oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Zobrazit seznam pouze těch prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou v této šabloně definovány již musí existovat. Vyhněte se přidání nepotřebné závislostí, jak mohou zpomalit nasazení a vytvoření cyklické závislosti. Pokyny v závislosti na nastavení najdete v tématu [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
-| properties |Ne |Nastavení konfigurace specifických prostředků. Hodnoty pro vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku REST API operaci (metoda PUT) k vytvoření prostředku. Můžete také zadat pole kopie vytvořit více instancí vlastnosti. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
-| Prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
+| Podmínka | Ne | Logická hodnota, která určuje, jestli je nasazené hello prostředků. |
+| apiVersion |Ano |Verze toouse hello REST API pro vytváření prostředků hello. |
+| type |Ano |Typ prostředku hello. Tato hodnota je kombinací hello obor názvů zprostředkovatele prostředků hello a typ prostředku hello (například **Microsoft.Storage/storageAccounts**). |
+| jméno |Ano |Název prostředku hello. Hello název musí splňovat omezení součást URI definované v RFC3986. Kromě toho služby Azure, které zveřejňují hello prostředků název toooutside strany ověřit název toomake hello, že není pokusu o toospoof jiné identity. |
+| location |Je to různé. |Podporovaná geo umístění hello zadaný prostředek. Můžete vybrat libovolný hello dostupných umístění, ale obvykle má smysl toopick ten, který je zavřít tooyour uživatele. Obvykle se také má smysl tooplace prostředky, které vzájemně spolupracovat v hello stejné oblasti. Většina typů prostředků vyžadují umístění, ale některé typy (například přiřazení role) nevyžadují umístění. V tématu [nastavit umístění prostředku v šablonách Azure Resource Manager](resource-manager-template-location.md). |
+| tags |Ne |Značky, které jsou přidružené hello prostředků. V tématu [označit prostředky v šablonách Azure Resource Manager](resource-manager-template-tags.md). |
+| Komentáře |Ne |Poznámky pro dokumentaci hello prostředky ve vaší šabloně |
+| Kopírování |Ne |V případě potřeby více než jednu instanci hello počet toocreate prostředky. paralelní je výchozí režim Hello. Zadejte sériové režim, když mají všechny nebo z nich hello toodeploy prostředky v hello stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
+| dependsOn |Ne |Prostředky, které musí být nasazené, než je nasazený tento prostředek. Správce prostředků vyhodnotí hello závislosti mezi prostředky a nasadí je ve správném pořadí hello. Pokud nejsou na sobě navzájem závislé prostředky, jsou nasazeny současně. Hello hodnota může být čárkami oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Zobrazit seznam pouze těch prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou v této šabloně definovány již musí existovat. Vyhněte se přidání nepotřebné závislostí, jak mohou zpomalit nasazení a vytvoření cyklické závislosti. Pokyny v závislosti na nastavení najdete v tématu [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
+| properties |Ne |Nastavení konfigurace specifických prostředků. Hello hodnoty vlastností hello jsou hello stejné jako hello hodnoty, které zadáte v textu žádosti hello hello REST API operaci (metoda PUT) toocreate hello prostředků. Můžete také určit toocreate pole kopie více instancí vlastnosti. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
+| Prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku hello definovaný. Zadejte pouze typy prostředků, které jsou povoleny ve schématu hello hello nadřazené prostředku. Hello plně kvalifikovaný typ prostředku podřízené hello obsahuje hello nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek hello není implicitní. Je nutné explicitně zadat tuto závislost. |
 
-V části prostředky obsahuje pole prostředky pro nasazení. V rámci každého prostředku můžete také definovat pole podřízené prostředky. Proto vaše oddílu prostředků může mít struktura jako:
+Hello prostředků obsahuje pole toodeploy prostředky hello. V rámci každého prostředku můžete také definovat pole podřízené prostředky. Proto vaše oddílu prostředků může mít struktura jako:
 
 ```json
 "resources": [
@@ -367,7 +367,7 @@ V části prostředky obsahuje pole prostředky pro nasazení. V rámci každéh
 
 Další informace o definování podřízené prostředky najdete v tématu [nastavte název a typ pro podřízený prostředek v šabloně Resource Manager](resource-manager-template-child-resource.md).
 
-**Podmínku** element určuje, zda je nasazení na prostředek. Hodnota pro tento element překládá true nebo false. Například k určení, jestli je nasazené nový účet úložiště, použijte tento příkaz:
+Hello **podmínku** element určuje, jestli je nasazené hello prostředků. Hello hodnota pro tento element překládá tootrue, nebo hodnotu NEPRAVDA. Například toospecify zda nový účet úložiště je nasazená, použijte:
 
 ```json
 {
@@ -386,7 +386,7 @@ Další informace o definování podřízené prostředky najdete v tématu [nas
 
 Příklad použití nový nebo existující prostředek, naleznete v části [nový nebo stávající šablonu podmínku](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
 
-Chcete-li určit, zda je virtuální počítač nasadit pomocí hesla nebo klíče SSH, definovat dvě verze virtuálního počítače šablony a použít **podmínku** k odlišení využití. Předání parametru, který určuje scénář, který chcete nasadit.
+toospecify zda virtuální počítač nasazený pomocí hesla nebo klíče SSH, definovat dvě verze hello virtuálního počítače šablony a použít **podmínku** toodifferentiate využití. Předání parametru, který určuje, které toodeploy scénář.
 
 ```json
 {
@@ -429,12 +429,12 @@ Chcete-li určit, zda je virtuální počítač nasadit pomocí hesla nebo klí�
 }
 ``` 
 
-Příklad použití heslo nebo klíč SSH pro virtuální počítač nejde nasadit, naleznete v části [uživatelské jméno nebo SSH podmínku šablony](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
+Příklad použití hesla nebo SSH klíče toodeploy virtuálního počítače, naleznete v části [uživatelské jméno nebo SSH podmínku šablony](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
 
 ## <a name="outputs"></a>Výstupy
-V části výstupy zadejte hodnoty, které jsou vráceny z nasazení. Například může vrátit identifikátor URI pro přístup k prostředkům nasazené.
+V části výstupy hello zadejte hodnoty, které jsou vráceny z nasazení. Například může vrátit hello URI tooaccess nasazené prostředků.
 
-Následující příklad ukazuje strukturu definici výstup:
+Hello následující příklad ukazuje hello Struktura definice výstup:
 
 ```json
 "outputs": {
@@ -447,11 +447,11 @@ Následující příklad ukazuje strukturu definici výstup:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| outputName |Ano |Název výstupní hodnotu. Musí být platný identifikátor jazyka JavaScript. |
-| type |Ano |Typ hodnoty výstup. Výstupní hodnoty podporují stejné typy jako vstupní parametry šablony. |
+| outputName |Ano |Název hodnoty výstup hello. Musí být platný identifikátor jazyka JavaScript. |
+| type |Ano |Typ hodnoty výstup hello. Výstupní hodnoty podporovat hello stejné typy jako vstupní parametry šablony. |
 | hodnota |Ano |Výraz jazyka šablony, který se vyhodnotí a vrátí jako výstupní hodnotu. |
 
-Následující příklad ukazuje, hodnotu, která je vrácena v části výstupy.
+Hello následující příklad ukazuje hodnotu, která je vrácena v části výstupy hello.
 
 ```json
 "outputs": {
@@ -466,7 +466,7 @@ Další informace o práci s výstupem najdete v tématu [sdílení stavu v šab
 
 ## <a name="template-limits"></a>Omezení šablony
 
-Omezení velikosti vaší šablony 1 MB a každý soubor parametrů na 64 KB. Omezení 1 MB platí pro konečného stavu šablony po rozšířila s definic iterativní prostředků a hodnoty pro parametry a proměnné. 
+Omezit velikost hello vaše šablona too1 MB a každý parametr souboru too64 KB. omezení 1 MB Hello platí toohello konečného stavu hello šablony po rozšířila s definic iterativní prostředků a hodnoty pro parametry a proměnné. 
 
 Také jste omezeni na:
 
@@ -476,10 +476,10 @@ Také jste omezeni na:
 * 64 výstupní hodnoty
 * 24,576 znaků výraz šablony
 
-Některá omezení šablony můžete překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). Abyste snížili počet parametrů, proměnné nebo výstupů, můžete sloučit několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](resource-manager-objects-as-parameters.md).
+Některá omezení šablony můžete překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). číslo hello tooreduce parametry, proměnné nebo výstupů, můžete sloučit několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](resource-manager-objects-as-parameters.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
-* Podrobnosti o funkcích, které můžete použít z v rámci šablon najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md).
-* Pokud chcete kombinovat několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* Musíte používat prostředky, které existují v jiné skupině prostředků. Tento scénář je běžný, při práci s účty úložiště a virtuální sítě, které jsou sdíleny více skupin prostředků. Další informace najdete v tématu [resourceId funkce](resource-group-template-functions-resource.md#resourceid).
+* tooview dokončení šablon pro mnoho různých typů řešení, najdete v části hello [šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates/).
+* Podrobnosti o funkcích hello můžete použít z v rámci šablon najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md).
+* toocombine více šablony během nasazení, viz [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* Může být nutné toouse prostředky, které existují v jiné skupině prostředků. Tento scénář je běžný, při práci s účty úložiště a virtuální sítě, které jsou sdíleny více skupin prostředků. Další informace najdete v tématu hello [resourceId funkce](resource-group-template-functions-resource.md#resourceid).

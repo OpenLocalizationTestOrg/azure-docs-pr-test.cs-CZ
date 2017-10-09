@@ -1,6 +1,6 @@
 ---
-title: "Hostitelem více webů s Azure Application Gateway | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny ke konfiguraci služby Azure application gateway existující pro hostování několika webových aplikací na stejnou bránu pomocí portálu Azure."
+title: "aaaHost víc lokalit s Azure Application Gateway | Microsoft Docs"
+description: "Tato stránka poskytuje pokyny tooconfigure existující bránu aplikací Azure pro hostování několika webových aplikací na hello stejnou bránu s hello portálu Azure."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: 84bd62ae17b7f7ba4cd815ef1f9880679607ebce
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2172aa2c80720f6f1ab7dd91745b44654bcaee00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-an-existing-application-gateway-for-hosting-multiple-web-applications"></a>Konfigurace existující aplikační brány pro hostování několika webových aplikací
 
@@ -28,32 +28,32 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Hostování více lokalitu umožňuje nasadit více než jednu webovou aplikaci ve stejném application gateway. Přitom spoléhá na přítomnost Hlavička hostitele v příchozím požadavku HTTP, chcete-li zjistit, který naslouchací proces by přijímat přenosy. Naslouchací proces pak přesměruje přenosy na příslušné back-end fondu podle konfigurace v definici pravidla brány. V protokolu SSL povoleno webových aplikací Aplikační brána spoléhá na toto rozšíření indikace názvu serveru (SNI) vyberte správné naslouchací proces pro webový provoz. Běžně používá pro více hostování lokality je načíst vyrovnávat požadavky na jiných webových domén na jiný server back endové fondy. Více subdomény stejné kořenové domény podobně také může být hostovaný na stejné aplikační brány.
+Hostování více lokality můžete toodeploy více než jednu webovou aplikaci na hello stejné aplikační brány. Přitom spoléhá na přítomnost Hlavička hostitele v hello příchozí požadavek HTTP, který naslouchací proces by přijímat přenosy toodetermine. naslouchací proces Hello potom směrovat přenosy tooappropriate back-end fondu podle konfigurace v definici pravidla hello hello brány. V protokolu SSL povoleno webových aplikací Aplikační brána spoléhá na hello indikace názvu serveru (SNI) rozšíření toochoose hello správné naslouchací proces pro hello webový provoz. Běžně používá pro více hostování lokality je tooload vyrovnávat požadavky pro fondy jiných webových domén toodifferent back-end serverů. Podobně jako více subdomény hello stejné kořenové domény může být také hostovaná v hello stejné aplikační brány.
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím příkladu se Aplikační brána obsluhuje přenosy dat pro contoso.com a fabrikam.com s dvěma fondy back-end serverů: contoso fondu serverů a fond serverů fabrikam. Podobně jako instalační program může subdomény hostitele jako app.contoso.com a blog.contoso.com.
+V následujícím příkladu hello, aplikační brána obsluhuje přenosy dat pro contoso.com a fabrikam.com s dvěma fondy back-end serverů: contoso fondu serverů a fond serverů fabrikam. Podobně jako instalační program může být subdomény používané toohost jako app.contoso.com a blog.contoso.com.
 
 ![scénář nasazení ve více lokalitách][multisite]
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento scénář přidává podporu více lokalit existující aplikační brány. Abyste mohli dokončit tento scénář, musí být k dispozici ke konfiguraci existující aplikační brány. Navštivte [vytvoření služby application gateway pomocí portálu](application-gateway-create-gateway-portal.md) se dozvíte, jak vytvořit základní aplikační brána v portálu.
+Tento scénář přidá podporu více lokalit tooan existující aplikační brány. toocomplete tento scénář existující bránu aplikace potřebuje k dispozici tooconfigure toobe. Navštivte [vytvoření služby application gateway pomocí portálu hello](application-gateway-create-gateway-portal.md) toolearn jak toocreate základní aplikační brána hello portálu.
 
-Tady jsou kroky potřebné k aktualizaci služby application gateway:
+Následující Hello se, že kroky hello tooupdate hello aplikační brány:
 
-1. Vytvoření fondů back-end, které chcete použít pro každou lokalitu.
+1. Vytvořte toouse back endové fondy pro každou lokalitu.
 2. Vytvořte naslouchací proces pro každou lokalitu Aplikační brána podporuje.
-3. Vytvoření pravidel pro mapování jednotlivých naslouchací proces s příslušnou back-end.
+3. Vytvoření pravidla toomap každý naslouchací proces s hello odpovídající back-end.
 
 ## <a name="requirements"></a>Požadavky
 
-* **Fond back-end serverů:** Seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do podsítě virtuální sítě, nebo by měly být veřejnými nebo virtuálními IP adresami. Můžete také použít plně kvalifikovaný název domény.
-* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
-* **Front-end port:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
-* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL). Pro aplikace s povolenou více servery brány název hostitele a indikátory SNI jsou také přidat.
-* **Pravidlo:** pravidlo váže naslouchací proces fondu back-end serverů a definuje, kterému fondu back-end serverů provoz směrovat při volání příslušného naslouchacího procesu. Pravidla se zpracovávají v pořadí, ve kterém jsou uvedeny a provoz se přesměruje přes první pravidlo, které odpovídá bez ohledu na specifické podobě. Například, pokud máte pravidlo pomocí základní naslouchací proces a pravidla pomocí více lokalit naslouchací proces obou na stejném portu, musí být uvedené pravidlo s několika lokalitami naslouchací proces před pravidlo základní naslouchací proces, aby pravidlo více lokalit a fungovat podle očekávání. 
-* **Certifikáty:** každý naslouchací proces vyžaduje jedinečný certifikát, v tomto příkladu jsou vytvořeny 2 naslouchací procesy pro více lokalit. Dva certifikáty PFX a hesla je potřeba vytvořit.
+* **Fond back-end serverů:** hello seznam IP adres hello back-end serverů. uvedené Hello IP adresy by měly buď patřit toohello podsíť virtuální sítě nebo by měla být veřejné IP Adrese nebo VIP. Můžete také použít plně kvalifikovaný název domény.
+* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení jsou vázané tooa fond a jsou použité tooall servery v rámci fondu hello.
+* **Front-end port:** tento port je hello veřejný port, který se otevírá ve hello aplikační brány. Provoz volá Tenhle port a potom získá přesměruje tooone hello back-end serverů.
+* **Naslouchací proces:** hello naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL hello (Pokud se konfiguruje přesměrování zpracování SSL). Pro aplikace s povolenou více servery brány název hostitele a indikátory SNI jsou také přidat.
+* **Pravidlo:** hello pravidlo váže naslouchací proces hello, hello fondu back-end serverů a definuje, jaký provoz hello fond back-end serverů by měla být směrovanou toowhen volání příslušného naslouchacího procesu. Pravidla se zpracovávají v pořadí hello, které jsou uvedeny a provoz se přesměruje prostřednictvím hello první pravidlo, které odpovídá bez ohledu na specifické podobě. Například pokud máte pravidlo pomocí základní naslouchací proces a pravidla pomocí více lokalit naslouchací proces i na stejný port, hello pravidlo s hello naslouchací proces hello více lokalit musí být uvedený před hello pravidlo základní naslouchací proces hello-li pravidlo více lokalit toofunction hello jako byl očekáván. 
+* **Certifikáty:** každý naslouchací proces vyžaduje jedinečný certifikát, v tomto příkladu jsou vytvořeny 2 naslouchací procesy pro více lokalit. Dva certifikáty PFX a hesla hello u nich třeba toobe vytvořili.
 
 ## <a name="create-back-end-pools-for-each-site"></a>Vytvoření fondu back-end pro každou lokalitu
 
@@ -61,72 +61,72 @@ Back-end fondu pro každou lokalitu, že je potřeba brána podporuje aplikace, 
 
 ### <a name="step-1"></a>Krok 1
 
-Přejděte do existující aplikační brány na portálu Azure (https://portal.azure.com). Vyberte **back-endové fondy** a klikněte na tlačítko **přidat**
+Přejděte tooan existující aplikační brána v hello portálu Azure (https://portal.azure.com). Vyberte **back-endové fondy** a klikněte na tlačítko **přidat**
 
 ![Přidat back-endové fondy][7]
 
 ### <a name="step-2"></a>Krok 2
 
-Zadejte informace pro fond back-end **pool1**, přidávání ip adresy nebo plně kvalifikované názvy domén pro back-end serverů a klikněte na tlačítko **OK**
+Vyplnit hello informace pro fond back-end hello **pool1**, přidání hello ip adresy nebo plně kvalifikované názvy domén pro hello back-end serverů a klikněte na tlačítko **OK**
 
 ![nastavení pool1 fondu back-end][8]
 
 ### <a name="step-3"></a>Krok 3
 
-V okně back-endové fondy klikněte na **přidat** přidat další back-end fondu **pool2**, přidávání ip adresy nebo plně kvalifikované názvy DOMÉN pro back-end serverů a klikněte na tlačítko **OK**
+V okně back-endové fondy hello klikněte na tlačítko **přidat** tooadd další back-end fondu **pool2**, přidání hello ip adresy nebo plně kvalifikované názvy DOMÉN pro hello back-end serverů a klikněte na tlačítko **OK**
 
 ![nastavení pool2 fondu back-end][9]
 
 ## <a name="create-listeners-for-each-back-end"></a>Vytvořte naslouchací procesy pro každý back-end
 
-Služba Application Gateway se při hostování více než jednoho webu na stejné veřejné IP adrese a portu spoléhá na hlavičky hostitele HTTP 1.1. Základní naslouchací proces vytvořený na portálu tuto vlastnost neobsahuje.
+Aplikační brána spoléhá na HTTP 1.1 toohost hlavičky hostitele více než jeden web na hello stejnou veřejnou IP adresu a port. Hello základní naslouchací proces vytvoření portálu hello tuto vlastnost neobsahuje.
 
 ### <a name="step-1"></a>Krok 1
 
-Klikněte na tlačítko **naslouchací procesy** na existující aplikační brány a klikněte na **Multi-Site** přidat první naslouchací proces.
+Klikněte na tlačítko **naslouchací procesy** hello existující aplikační brány a klikněte na tlačítko **Multi-Site** první naslouchací proces tooadd hello.
 
 ![okno Přehled – moduly naslouchání][1]
 
 ### <a name="step-2"></a>Krok 2
 
-Zadejte informace pro naslouchací proces. V tomto příkladu SSL je nakonfigurované ukončení, vytvořte nový port front-endu. Nahrajte certifikát .pfx, který chcete použít pro ukončení protokolu SSL. Jediným rozdílem v tomto okně ve srovnání s okně Standardní základní naslouchací proces je název hostitele.
+Vyplňte hello informace pro naslouchací proces hello. V tomto příkladu SSL je nakonfigurované ukončení, vytvořte nový port front-endu. Nahrajte toobe certifikátu .pfx hello používá pro ukončení protokolu SSL. jediným rozdílem Hello v tomto okně okno porovnání toohello standardní základní naslouchací proces je název hostitele hello.
 
 ![naslouchací proces vlastnosti okna][2]
 
 ### <a name="step-3"></a>Krok 3
 
-Klikněte na tlačítko **Multi-Site** a vytvořit naslouchací proces jiný, jak je popsáno v předchozím kroku pro druhou lokalitu. Nezapomeňte použít jiný certifikát pro druhý naslouchací proces. Jediným rozdílem v tomto okně ve srovnání s okně Standardní základní naslouchací proces je název hostitele. Zadejte informace pro naslouchací proces a klikněte na tlačítko **OK**.
+Klikněte na tlačítko **Multi-Site** a vytvořit naslouchací proces jiný, jak je popsáno v předchozím kroku hello pro druhou lokalitu hello. Ujistěte se, že toouse jiný certifikát pro druhý naslouchací proces hello. jediným rozdílem Hello v tomto okně okno porovnání toohello standardní základní naslouchací proces je název hostitele hello. Vyplnění hello informací pro naslouchací proces hello a klikněte na tlačítko **OK**.
 
 ![naslouchací proces vlastnosti okna][3]
 
 > [!NOTE]
-> Vytvoření naslouchacího procesu na portálu Azure pro službu application gateway je dlouhotrvající úlohy, může trvat nějakou dobu vytvořit dva naslouchací procesy v tomto scénáři. Po dokončení naslouchací procesy zobrazit na portálu, jak je vidět na následujícím obrázku:
+> Vytvoření naslouchacího procesu v hello portál Azure pro službu application gateway je dlouhotrvající úlohy, může trvat některé hello toocreate čas dva naslouchací procesy v tomto scénáři. Při dokončení hello naslouchací procesy zobrazit hello portálu, jak je vidět v hello následující bitové kopie:
 
 ![Přehled naslouchací proces][4]
 
-## <a name="create-rules-to-map-listeners-to-backend-pools"></a>Vytvoření pravidel pro mapování moduly pro naslouchání na back-endové fondy
+## <a name="create-rules-toomap-listeners-toobackend-pools"></a>Vytvoření pravidel fondy toobackend toomap – moduly naslouchání
 
 ### <a name="step-1"></a>Krok 1
 
-Přejděte do existující aplikační brány na portálu Azure (https://portal.azure.com). Vyberte **pravidla** a zvolte existující výchozí pravidlo **rule1 New** a klikněte na tlačítko **upravit**.
+Přejděte tooan existující aplikační brána v hello portálu Azure (https://portal.azure.com). Vyberte **pravidla** a zvolte existující výchozí pravidlo hello **rule1 New** a klikněte na tlačítko **upravit**.
 
 ### <a name="step-2"></a>Krok 2
 
-Vyplňte v okně pravidla, jak je vidět na následujícím obrázku. Výběr prvního naslouchací proces a první fondu a kliknutím na **Uložit** při dokončení.
+Vyplňte okno hello pravidla, jak je vidět v hello následující obrázek. Výběr hello první naslouchací proces a první fondu a kliknutím na **Uložit** při dokončení.
 
 ![upravit existující pravidlo][6]
 
 ### <a name="step-3"></a>Krok 3
 
-Klikněte na tlačítko **základní pravidlo** vytvoření druhého pravidla. Vyplňte formulář s druhý naslouchací proces a sekundu back-end fondu a klikněte na tlačítko **OK** uložit.
+Klikněte na tlačítko **základní pravidlo** toocreate hello druhé pravidlo. Vyplňte formulář hello hello druhý naslouchací proces a sekundu fond back-end a klikněte na tlačítko **OK** toosave.
 
 ![přidat základní pravidlo okno][10]
 
-Tento scénář se dokončí konfigurace aplikační brány s podporou více lokalit prostřednictvím portálu Azure.
+Tento scénář se dokončí konfigurace aplikační brány s podporou více lokalit prostřednictvím hello portálu Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak chránit své weby s [Application Gateway - brány Firewall webových aplikací](application-gateway-webapplicationfirewall-overview.md)
+Zjistěte, jak tooprotect své weby s [Application Gateway - brány Firewall webových aplikací](application-gateway-webapplicationfirewall-overview.md)
 
 <!--Image references-->
 [1]: ./media/application-gateway-create-multisite-portal/figure1.png

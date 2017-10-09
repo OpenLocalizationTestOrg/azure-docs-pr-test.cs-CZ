@@ -1,6 +1,6 @@
 ---
-title: "Stránka šablon ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky na portálu vývojáře pomocí sadu šablon ve službě Azure API Management."
+title: "aaaPage šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toocustomize hello obsah stránky na portálu vývojáře pomocí sadu šablon ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f9ef37a694bce786b6acaa428df83f0cb23c2dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84bd971ad4bcacfdd36c2ebbe05b16063f2a547b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="page-templates-in-azure-api-management"></a>Stránka šablon ve službě Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah přihlášení, přihlaste se a stránka nebyla nalezena stránky v portálu pro vývojáře.  
+ Hello šablony v této části umožňují toocustomize hello obsah hello přihlášení, přihlaste se a stránka nebyla nalezena v portálu pro vývojáře hello stránky.  
   
 -   [Přihlásit se](#SignIn)  
   
@@ -32,10 +32,10 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 -   [Stránka nebyla nalezena.](#PageNotFound)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous. Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony. Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="SignIn"></a>Přihlásit se  
- **Přihlášení** šablona umožňuje přizpůsobit přihlašovací stránku v portálu pro vývojáře.  
+ Hello **přihlášení** šablona vám umožní toocustomize hello přihlašovací stránce v portálu pro vývojáře hello.  
   
  ![Přihlašovací stránka](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM přihlášení vývojář stránky portálu šablony")  
   
@@ -96,7 +96,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Tato šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [Basic přihlášení](api-management-page-controls.md#basic-signin)  
   
@@ -134,7 +134,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="SignUp"></a>Registrace  
- **Zaregistrovat** šablona umožňuje přizpůsobit přihlašovací stránku v portálu pro vývojáře.  
+ Hello **zaregistrovat** šablona vám umožní toocustomize hello registrační stránku v portálu pro vývojáře hello.  
   
  ![Přihlašovací stránku služby](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM registrace vývojář stránky portálu šablony")  
   
@@ -155,7 +155,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Tato šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [registrace](api-management-page-controls.md#sign-up)  
   
@@ -182,7 +182,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="PageNotFound"></a>Stránka nebyla nalezena.  
- **Stránka nebyla nalezena** šablona umožňuje přizpůsobit stránka nebyla nalezena stránka v portálu pro vývojáře.  
+ Hello **stránka nebyla nalezena** šablona umožňuje vám toocustomize hello stránka nebyla nalezena stránka v portálu pro vývojáře hello.  
   
  ![Nebyla nalezena stránka](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM nebyl nalezen vývojář stránky portálu šablony")  
   
@@ -225,11 +225,11 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|referenceCode|Řetězec|Kód vygenerováno, pokud tato stránka se nezobrazí v důsledku vnitřní chyby.|  
-|Kód chyby|Řetězec|Kód vygenerováno, pokud tato stránka se nezobrazí v důsledku vnitřní chyby.|  
-|emailBody|Řetězec|E-mailu textu vygenerováno, pokud tato stránka se nezobrazí v důsledku vnitřní chyby.|  
-|requestedUrl|Řetězec|Adresa URL vyžádá, když stránka nebyla nalezena.|  
-|referrerUrl|Řetězec|Odkazující server Adresa URL pro požadovanou adresu URL.|  
+|referenceCode|Řetězec|Kód v případě, že tato stránka se nezobrazí jako výsledek hello k vnitřní chybě vygenerována.|  
+|Kód chyby|Řetězec|Kód v případě, že tato stránka se nezobrazí jako výsledek hello k vnitřní chybě vygenerována.|  
+|emailBody|Řetězec|E-mailu textu vygenerováno, pokud tato stránka se nezobrazí jako výsledek hello k vnitřní chybě.|  
+|requestedUrl|Řetězec|Adresa URL Hello vyžádá, když hello stránka nebyla nalezena.|  
+|referrerUrl|Řetězec|toohello adresy URL odkazující server Hello požadovaná adresa URL.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -244,4 +244,4 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

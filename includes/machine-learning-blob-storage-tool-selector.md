@@ -1,6 +1,6 @@
-<!-- Guidance on technologies used to move data to and/or from Azure Blob storage are linked here:
+<!-- Guidance on technologies used toomove data tooand/or from Azure Blob storage are linked here:
 -->
-Tato nabídka odkazy na technologie, které můžete použít pro přesun dat do a z Azure Blob storage:
+Tato nabídka odkazy tootechnologies toomove tooand dat z Azure Blob storage můžete použít:
 
 > [!div class="op_single_selector" title1="Blob storage tools"]
 > * [Přehled](../articles/machine-learning/machine-learning-data-science-move-azure-blob.md)

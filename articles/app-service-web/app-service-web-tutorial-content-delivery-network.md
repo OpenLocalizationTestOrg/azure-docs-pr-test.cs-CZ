@@ -1,6 +1,6 @@
 ---
-title: "Přidejte název CDN do Azure App Service | Microsoft Docs"
-description: "Přidejte do služby Azure App Service službu Content Delivery Network (CDN) umožňující ukládání statických souborů do mezipaměti a jejich doručování ze serverů blízko zákazníkům po celém světe."
+title: aaaAdd tooan CDN Azure App Service | Microsoft Docs
+description: "Přidejte toocache Content Delivery Network (CDN) tooan Azure App Service a poskytovat statické soubory ze serverů zavřít tooyour zákazníků ohledně hello, world."
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
@@ -10,17 +10,17 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 88b7fd884517279064472b804a6d1dc2921cbd24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Přidání služby Content Delivery Network (CDN) do služby Azure App Service
+# <a name="add-a-content-delivery-network-cdn-tooan-azure-app-service"></a>Přidat tooan Content Delivery Network (CDN) Azure App Service
 
-[Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) ukládá statický webový obsah do mezipaměti na strategicky umístěných místech, a tak poskytuje maximální propustnost pro doručování obsahu uživatelům. CDN také snižuje zatížení serveru na webovou aplikaci. Tento kurz ukazuje, jak přidat Azure CDN do [webové aplikace ve službě Azure App Service](app-service-web-overview.md). 
+[Sítě doručování Azure obsahu (CDN)](../cdn/cdn-overview.md) ukládá do mezipaměti na strategicky umístěných místech tooprovide maximální propustnost pro doručování obsahu toousers statický webový obsah. Hello CDN také snižuje zatížení serveru ve webové aplikaci. Tento kurz ukazuje, jak Azure CDN tooa tooadd [webové aplikace v Azure App Service](app-service-web-overview.md). 
 
-Tady je domovská stránka ukázkového statického webu v HTML, se kterým budete pracovat:
+Tady je hello domovskou stránku hello ukázka statické HTML webového serveru, který bude fungovat s:
 
 ![Domovská stránka ukázkové aplikace](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
 
@@ -29,63 +29,63 @@ Získáte informace:
 > [!div class="checklist"]
 > * Vytvořit koncový bod CDN.
 > * Aktualizovat prostředky uložené v mezipaměti.
-> * Spravovat verze uložené v mezipaměti pomocí řetězců dotazu.
-> * Použít vlastní doménu pro koncový bod CDN.
+> * Použití dotazu řetězce verze toocontrol do mezipaměti.
+> * Použijte vlastní doménu pro koncový bod CDN hello.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete v tomto kurzu:
 
 - [Nainstalovat Git](https://git-scm.com/).
 - [Instalace rozhraní příkazového řádku Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-web-app"></a>Vytvoření webové aplikace
+## <a name="create-hello-web-app"></a>Vytvoření webové aplikace hello
 
-Při vytváření webové aplikace, kterou budete pracovat, postupujte podle [statické rychlý start HTML](app-service-web-get-started-html.md) prostřednictvím **přejděte do aplikace** krok.
+toocreate hello webovou aplikaci, která bude fungovat s, postupujte podle hello [statické rychlý start HTML](app-service-web-get-started-html.md) prostřednictvím hello **procházet toohello aplikace** krok.
 
 ### <a name="have-a-custom-domain-ready"></a>Připravení vlastní domény
 
-K dokončení kroku vlastní domény tohoto kurzu, musíte mít přístup k registru systému DNS u svého poskytovatele domény (například GoDaddy) a vlastní vlastní doménu. Abyste například mohli přidat záznamy DNS pro `contoso.com` a `www.contoso.com`, musíte mít přístup ke konfiguraci nastavení DNS pro kořenovou doménu `contoso.com`.
+toocomplete hello vlastní domény krok tohoto kurzu potřebujete tooown vlastní doménu a mít přístup tooyour DNS registru pro poskytovatele domény (například GoDaddy). Tooadd záznamy DNS, třeba pro `contoso.com` a `www.contoso.com`, musíte mít přístup tooconfigure hello nastavení DNS pro hello `contoso.com` kořenové domény.
 
-Pokud ještě nemáte název domény, zvažte nákup domény pomocí webu Azure Portal podle postupu v [kurzu k doménám App Service](custom-dns-web-site-buydomains-web-app.md). 
+Pokud ještě nemáte název domény, zvažte následující hello [kurzu domény služby App Service](custom-dns-web-site-buydomains-web-app.md) hello toopurchase domény pomocí portálu Azure. 
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="log-in-toohello-azure-portal"></a>Přihlaste se toohello portálu Azure
 
-Otevřete prohlížeč a přejděte na web [Azure Portal](https://portal.azure.com).
+Otevřete prohlížeč a přejděte toohello [portál Azure](https://portal.azure.com).
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Vytvoření koncového bodu a profilu CDN
 
-Na levém navigačním panelu vyberte **App Services** a pak vyberte aplikaci, kterou jste vytvořili v [rychlém úvodu ke statickému HTML](app-service-web-get-started-html.md).
+V levé navigační hello, vyberte **App Services**a pak vyberte hello aplikaci, kterou jste vytvořili v hello [statické rychlý start HTML](app-service-web-get-started-html.md).
 
-![Výběr aplikace App Service na portálu](media/app-service-web-tutorial-content-delivery-network/portal-select-app-services.png)
+![Vyberte aplikace App Service hello portálu](media/app-service-web-tutorial-content-delivery-network/portal-select-app-services.png)
 
-Na stránce **App Service** v části **Nastavení** vyberte **Sítě > Konfigurovat Azure CDN pro aplikaci**.
+V hello **služby App Service** stránku hello **nastavení** vyberte **sítě > Konfigurovat Azure CDN pro vaši aplikaci**.
 
-![Výběr CDN na portálu](media/app-service-web-tutorial-content-delivery-network/portal-select-cdn.png)
+![Vyberte CDN hello portálu](media/app-service-web-tutorial-content-delivery-network/portal-select-cdn.png)
 
-Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod** nastavení tak, jak je uvedeno v tabulce.
+V hello **Azure Content Delivery Network** zadejte hello **nový koncový bod** nastavení uvedeného v tabulce hello.
 
-![Vytvoření profilu a koncového bodu na portálu](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint.png)
+![Vytvoření profilu a koncového bodu hello portálu](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint.png)
 
 | Nastavení | Navrhovaná hodnota | Popis |
 | ------- | --------------- | ----------- |
-| **Profil CDN** | myCDNProfile | Vyberte **vytvořit nový** k vytvoření profilu CDN. Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
-| **Cenová úroveň** | Akamai Standard | [Cenová úroveň](../cdn/cdn-overview.md#azure-cdn-features) určuje poskytovatele a dostupné funkce. V tomto kurzu používáme Standard Akamai. |
-| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete na doméně *\<název_koncového_bodu>.azureedge.net*.
+| **Profil CDN** | myCDNProfile | Vyberte **vytvořit nový** toocreate profilu CDN. Profil CDN je kolekce koncové body CDN pomocí hello stejné cenová úroveň. |
+| **Cenová úroveň** | Akamai Standard | Hello [cenová úroveň](../cdn/cdn-overview.md#azure-cdn-features) určuje hello zprostředkovatele a dostupných funkcí. V tomto kurzu používáme Standard Akamai. |
+| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net hello | Přístup k prostředkům v mezipaměti v doméně hello  *\<endpointname >. azureedge.net*.
 
 Vyberte **Vytvořit**.
 
-Azure vytvoří profil a koncový bod. Nový koncový bod se zobrazí na stejné stránce v seznamu **Koncové body** a až se zřídí, bude jeho stav **Spuštěno**.
+Azure vytvoří hello profilu a koncového bodu. Nový koncový bod Hello se zobrazí v hello **koncové body** seznam na hello stejné stránce, a pokud je zřízený hello stav **systémem**.
 
 ![Nový koncový bod v seznamu](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint-in-list.png)
 
-### <a name="test-the-cdn-endpoint"></a>Testování koncového bodu CDN
+### <a name="test-hello-cdn-endpoint"></a>Test hello koncový bod CDN
 
 Pokud jste vybrali cenovou úroveň Verizon, rozšíření koncového bodu obvykle trvá přibližně 90 minut. U Akamai trvá rozšíření několik minut.
 
-Ukázková aplikace má soubor `index.html` a složky *css*, *img* a *js* obsahující další statické prostředky. Cesty k obsahu jsou v koncovém bodu CDN pro všechny tyto soubory stejné. Například obě následující adresy URL slouží k přístupu k souboru *bootstrap.css* ve složce *css*:
+Ukázková aplikace Hello má `index.html` souboru a *šablon stylů css*, *img*, a *js* složek, které obsahují další statické prostředky. Hello obsahu cesty pro všechny tyto soubory jsou stejné hello na koncový bod CDN hello. Například obě hello následující adresy URL přístup hello *bootstrap.css* souboru v hello *šablon stylů css* složky:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -95,7 +95,7 @@ http://<appname>.azurewebsites.net/css/bootstrap.css
 http://<endpointname>.azureedge.net/css/bootstrap.css
 ```
 
-Přejděte v prohlížeči na následující adresu URL:
+Přejděte následující adresu URL toohello prohlížeče:
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -103,36 +103,36 @@ http://<endpointname>.azureedge.net/index.html
 
 ![Domovská stránka ukázkové aplikace poskytnutá z CDN](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
- Zobrazí na stejné stránce, který byl dříve v webové aplikace Azure. Azure CDN má načíst prostředky počátek webové aplikace a jejich obsluhuje z koncového bodu CDN
+ Zobrazí hello stejné stránka byla spuštěna dříve v webové aplikace Azure. Azure CDN má načíst prostředky hello počátek webové aplikace a jejich obsluhuje z koncového bodu CDN hello
 
-Abyste zajistili uložení této stránky v mezipaměti v CDN, aktualizujte stránku. Někdy jsou k uložení požadovaného obsahu do mezipaměti v CDN potřeba dva požadavky na stejný prostředek.
+tooensure, tato stránka je do mezipaměti v hello CDN, stránku hello aktualizace. Dva požadavky pro hello stejné asset jsou někdy požadované pro hello CDN toocache hello požadovaný obsah.
 
 Další informace o vytváření koncových bodů a profilů CDN najdete v tématu [Začínáme s Azure CDN](../cdn/cdn-create-new-endpoint.md).
 
-## <a name="purge-the-cdn"></a>Vyprázdnění CDN
+## <a name="purge-hello-cdn"></a>Vyprázdnění hello CDN
 
-CDN pravidelně aktualizuje prostředky z původní webové aplikace podle konfigurace hodnoty TTL (Time to Live). Výchozí hodnota TTL je sedm dní.
+Hello CDN se pravidelně aktualizuje jejích prostředcích z hello počátek webové aplikace na základě hello time to live (TTL) konfigurace. Hello výchozí hodnota TTL je sedm dní.
 
-Čas od času může být nutné aktualizovat CDN před vypršením hodnoty TTL – například při nasazení aktualizovaného obsahu do webové aplikace. Aktualizaci můžete aktivovat ručním vyprázdněním prostředků CDN. 
+V některých případech bude pravděpodobně nutné toorefresh hello CDN před hello vypršení platnosti TTL – například když nasadíte aktualizované obsahu toohello webové aplikace. tootrigger aktualizace, můžete ručně vyprázdnit hello CDN prostředky. 
 
-V této části kurzu nasadíte do webové aplikace změnu a vyprázdníte CDN, abyste v CDN aktivovali aktualizaci mezipaměti.
+V této části kurzu hello nasazení změn toohello webové aplikace a mazání hello CDN tootrigger hello CDN toorefresh své mezipaměti.
 
-### <a name="deploy-a-change-to-the-web-app"></a>Nasazení změny do webové aplikace
+### <a name="deploy-a-change-toohello-web-app"></a>Nasazení webové aplikace toohello změn
 
-Otevřete soubor `index.html` a do nadpisu H1 přidejte „– V2“, jak je znázorněno v následujícím příkladu: 
+Otevřete hello `index.html` souboru a přidejte "-V2" toohello H1 záhlaví, jak je znázorněno v hello následující ukázka: 
 
 ```
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
 ```
 
-Potvrďte změnu a nasaďte ji do webové aplikace.
+Potvrdit změny a nasaďte ji toohello webové aplikace.
 
 ```bash
 git commit -am "version 2"
 git push azure master
 ```
 
-Po dokončení nasazení přejděte na adresu URL webové aplikace a uvidíte změnu.
+Po dokončení nasazení adresy URL procházet toohello webové aplikace a v tématu hello změnit.
 
 ```
 http://<appname>.azurewebsites.net/index.html
@@ -140,7 +140,7 @@ http://<appname>.azurewebsites.net/index.html
 
 ![V2 v nadpisu ve webové aplikaci](media/app-service-web-tutorial-content-delivery-network/v2-in-web-app-title.png)
 
-Přejděte na adresu URL koncového bodu CDN pro domovskou stránku – změnu neuvidíte, protože platnost verze uložené v mezipaměti v CDN ještě nevypršela. 
+Vyhledejte koncový bod CDN toohello adresa URL pro domovskou stránku hello a nevidíte hello změnit, protože v mezipaměti verzi hello v hello CDN ještě nevypršela. 
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -148,35 +148,35 @@ http://<endpointname>.azureedge.net/index.html
 
 ![Žádné V2 v nadpisu v CDN](media/app-service-web-tutorial-content-delivery-network/no-v2-in-cdn-title.png)
 
-### <a name="purge-the-cdn-in-the-portal"></a>Vyprázdnění CDN na portálu
+### <a name="purge-hello-cdn-in-hello-portal"></a>Vyprázdnění hello CDN hello portálu
 
-Pokud chcete v CDN aktivovat aktualizaci verze uložené v mezipaměti, vyprázdněte CDN.
+tootrigger hello CDN tooupdate jeho verze v mezipaměti, vyprázdnit hello CDN.
 
-Na levém navigačním panelu portálu vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků vytvořenou pro vaši webovou aplikaci (myResourceGroup).
+V levém navigačním hello portálu, vyberte **skupiny prostředků**a pak vyberte skupinu prostředků hello, kterou jste vytvořili pro webové aplikace (myResourceGroup).
 
 ![Výběr skupiny prostředků](media/app-service-web-tutorial-content-delivery-network/portal-select-group.png)
 
-V seznamu prostředků vyberte koncový bod CDN.
+V seznamu hello prostředků vyberte koncový bod CDN.
 
 ![Výběr koncového bodu](media/app-service-web-tutorial-content-delivery-network/portal-select-endpoint.png)
 
-V horní části stránky **Koncový bod** klikněte na **Vyprázdnit**.
+Hello horní části hello **koncový bod** klikněte na tlačítko **mazání**.
 
 ![Výběr možnosti Vyprázdnit](media/app-service-web-tutorial-content-delivery-network/portal-select-purge.png)
 
-Zadejte cesty k obsahu, který chcete vyprázdnit. Můžete předat úplnou cestu k souboru pro vyprázdnění jednotlivých souborů, nebo část cesty pro vyprázdnění a aktualizaci veškerého obsahu ze složky. Protože jste změnili soubor `index.html`, ujistěte se, že zadáte jeho cestu.
+Zadejte cesty obsahu hello chcete toopurge. Můžete předat toopurge cesta dokončení souboru jednotlivých souborů nebo toopurge segmentu cesty a obnovit veškerý obsah ve složce. Vzhledem k tomu, že jste změnili `index.html`, ujistěte se, který je jedním z cesty hello.
 
-V dolní části stránky klikněte na **Vyprázdnit**.
+V dolní části hello hello stránky, vyberte **mazání**.
 
 ![Stránka Vyprázdnit](media/app-service-web-tutorial-content-delivery-network/app-service-web-purge-cdn.png)
 
-### <a name="verify-that-the-cdn-is-updated"></a>Ověření aktualizace CDN
+### <a name="verify-that-hello-cdn-is-updated"></a>Ověřte, že hello, který se aktualizuje CDN
 
-Počkejte na dokončení zpracování žádosti o vyprázdnění, obvykle to trvá pár minut. Pokud chcete zobrazit aktuální stav, vyberte ikonu zvonku v horní části stránky. 
+Počkejte, dokud žádost o vyprázdnění hello dokončí zpracování, obvykle během několika minut. toosee hello aktuální stav, vyberte hello ikonu zvonku v horní části hello hello stránky. 
 
 ![Oznámení vyprázdnění](media/app-service-web-tutorial-content-delivery-network/portal-purge-notification.png)
 
-Přejděte na adresu URL koncového bodu CDN pro soubor `index.html` a nyní uvidíte text „V2“, který jste přidali do nadpisu na domovské stránce. To ukazuje, že se mezipaměť CDN aktualizovala.
+Vyhledejte adresu URL koncového bodu CDN toohello pro `index.html`, a nyní se zobrazí hello V2 přidat název toohello na domovskou stránku hello. Ukazuje to, že hello CDN mezipaměti byla aktualizována.
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -186,23 +186,23 @@ http://<endpointname>.azureedge.net/index.html
 
 Další informace najdete v tématu [Vyprázdnění koncového bodu Azure CDN](../cdn/cdn-purge-endpoint.md). 
 
-## <a name="use-query-strings-to-version-content"></a>Správa verzí obsahu pomocí řetězců dotazu
+## <a name="use-query-strings-tooversion-content"></a>Použít obsah tooversion řetězce dotazu
 
-Azure CDN nabízí následující možnosti chování při ukládání do mezipaměti:
+Hello Azure CDN nabízí následující možnosti ukládání do mezipaměti chování hello:
 
 * Ignorovat řetězce dotazu
 * Nepoužívat ukládání do mezipaměti pro řetězce dotazu
 * Ukládat do mezipaměti každou jedinečnou adresu URL 
 
-První z nich je výchozí, což znamená, že existuje jenom jedna verze uložené v mezipaměti majetku bez ohledu na to, řetězec dotazu v adrese URL. 
+Hello první z nich je hello výchozí, což znamená, existuje jenom jedna verze uložené v mezipaměti majetku bez ohledu na to hello řetězec dotazu v hello URL. 
 
-V této části kurzu změníte chování při ukládání do mezipaměti tak, že se do mezipaměti bude ukládat každá jedinečná adresa URL.
+V této části kurzu hello změníte hello ukládání do mezipaměti chování toocache každou jedinečnou adresu URL.
 
-### <a name="change-the-cache-behavior"></a>Změna chování mezipaměti
+### <a name="change-hello-cache-behavior"></a>Změna chování mezipaměti hello
 
-Na webu Azure Portal na stránce **Koncový bod CDN** vyberte **Mezipaměť**.
+V portálu Azure hello **koncový bod CDN** vyberte **mezipaměti**.
 
-Z rozevíracího seznamu **Chování při ukládání řetězců dotazu do mezipaměti** vyberte **Ukládat do mezipaměti každou jedinečnou adresu URL**.
+Vyberte **do mezipaměti každou jedinečnou adresu URL** z hello **chování ukládání řetězců s dotazy** rozevíracího seznamu.
 
 Vyberte **Uložit**.
 
@@ -210,24 +210,24 @@ Vyberte **Uložit**.
 
 ### <a name="verify-that-unique-urls-are-cached-separately"></a>Ověření samostatného ukládání jedinečných adres URL do mezipaměti
 
-V prohlížeči přejděte na domovskou stránku na koncovém bodu CDN, ale přidejte řetězec dotazu: 
+V prohlížeči přejděte toohello domovské stránce na koncový bod CDN hello, ale obsahovat řetězec dotazu: 
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=1
 ```
 
-CDN vrátí aktuální obsah webové aplikace, který obsahuje text „V2“ v nadpisu. 
+Hello CDN vrátí hello aktuální webové aplikace obsah, který obsahuje v záhlaví hello "V2". 
 
-Abyste zajistili uložení této stránky v mezipaměti v CDN, aktualizujte stránku. 
+tooensure, tato stránka je do mezipaměti v hello CDN, stránku hello aktualizace. 
 
-Otevřete soubor `index.html`, změňte „V2“ na „V3“ a nasaďte změnu. 
+Otevřete `index.html` a změňte "V2" příliš "V3" a změnu hello. 
 
 ```bash
 git commit -am "version 3"
 git push azure master
 ```
 
-V prohlížeči přejděte na adresu URL koncového bodu CDN s novým řetězcem dotazu, například `q=2`. CDN získá aktuální soubor `index.html` a zobrazí „V3“.  Pokud ale přejdete na koncový bod CDN s řetězcem dotazu `q=1`, uvidíte „V2“.
+Přejděte v prohlížeči, adresa URL koncového bodu CDN toohello s novou řetězce dotazu, jako `q=2`. Hello CDN získá hello aktuální `index.html` souboru a zobrazí "V3".  Ale pokud přejdete koncový bod CDN toohello s hello `q=1` dotaz na řetězec, najdete v části "V2".
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2
@@ -244,49 +244,49 @@ http://<endpointname>.azureedge.net/index.html?q=1
 Výstup ukazuje, že každý řetězec dotazu je zpracovávat odděleně:
 
 * q = 1 byl používán před, takže obsah uložený v mezipaměti, jsou vráceny (V2).
-* q = 2 je novou, proto se nejnovější obsah webové aplikace načíst a vrátí (V3).
+* q = 2 je novou, proto se obsah hello nejnovější webové aplikace načíst a vrátí (V3).
 
 Další informace najdete v tématu [Řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](../cdn/cdn-query-string.md).
 
-## <a name="map-a-custom-domain-to-a-cdn-endpoint"></a>Mapování vlastní domény na koncový bod CDN
+## <a name="map-a-custom-domain-tooa-cdn-endpoint"></a>Mapa koncový bod CDN tooa vlastní doménu.
 
-Na koncový bod CDN namapujete vlastní doménu vytvořením záznamu CNAME. Záznam CNAME je funkce DNS, která mapuje zdrojovou doménu na cílovou doménu. Například můžete namapovat `cdn.contoso.com` nebo `static.contoso.com` na `contoso.azureedge.net`.
+Vaše vlastní doména tooyour koncový bod CDN budete mapovat vytvořením záznamu CNAME. Záznam CNAME je funkce DNS, který se mapuje zdrojové domény tooa cílové domény. Například může mapování `cdn.contoso.com` nebo `static.contoso.com` příliš`contoso.azureedge.net`.
 
-Pokud nemáte vlastní doménu, zvažte nákup domény pomocí webu Azure Portal podle postupu v [kurzu k doménám App Service](custom-dns-web-site-buydomains-web-app.md). 
+Pokud nemáte vlastní doménu, zvažte následující hello [kurzu domény služby App Service](custom-dns-web-site-buydomains-web-app.md) hello toopurchase domény pomocí portálu Azure. 
 
-### <a name="find-the-hostname-to-use-with-the-cname"></a>Zjištění názvu hostitele pro použití v záznamu CNAME
+### <a name="find-hello-hostname-toouse-with-hello-cname"></a>Najít název hostitele toouse hello s hello CNAME
 
-Na webu Azure Portal se na stránce **Koncový bod** ujistěte, že je na levém navigačním panelu vybrán **Přehled** a pak vyberte tlačítko **+ Vlastní doména** v dolní části stránky.
+V portálu Azure hello **koncový bod** se přesvědčte, že **přehled** je vybraný v levé navigaci a potom vyberte hello hello **+ vlastní domény** tlačítko hello horní části stránky hello.
 
 ![Výběr možnosti Přidat vlastní doménu](media/app-service-web-tutorial-content-delivery-network/portal-select-add-domain.png)
 
-Na stránce **Přidat vlastní doménu** se zobrazí název hostitele koncového bodu pro použití k vytvoření záznamu CNAME. Název hostitele je odvozený z adresy URL koncového bodu CDN: **&lt;název_koncového_bodu>.azureedge.net**. 
+V hello **přidat vlastní doménu** stránky, uvidíte hello koncový bod hostitele název toouse vytvořit záznam CNAME. název hostitele Hello je odvozený od vaše adresa URL koncového bodu CDN:  **&lt;EndpointName >. azureedge.net**. 
 
 ![Stránka Přidat doménu](media/app-service-web-tutorial-content-delivery-network/portal-add-domain.png)
 
-### <a name="configure-the-cname-with-your-domain-registrar"></a>Konfigurace záznamu CNAME u registrátora domény
+### <a name="configure-hello-cname-with-your-domain-registrar"></a>Konfigurace hello CNAME u vašeho registrátora domény
 
-Přejděte na web registrátora vaší domény a vyhledejte část pro vytváření záznamů DNS. Může to být v části, jako je **Název domény**, **DNS** nebo **Správa názvového serveru**.
+Navigace webu tooyour doménového registrátora a vyhledejte oddíl hello pro vytvoření záznamů DNS. Může to být v části, jako je **Název domény**, **DNS** nebo **Správa názvového serveru**.
 
-Najděte část pro správu záznamů CNAME. Možná bude nutné přejít na stránku rozšířeného nastavení a hledat slova jako CNAME, Alias nebo Subdomény.
+Najít oddíl hello správy záznamů CNAME. Může mít toogo tooan Upřesnit nastavení stránky a vyhledejte slova hello CNAME, Alias nebo subdomény.
 
-Vytvořit záznam CNAME, který mapuje vaši zvolenou subdomény (například **statické** nebo **cdn**) k **názvu hostitele koncového bodu** uvedené výše v portálu. 
+Vytvořit záznam CNAME, který mapuje vaši zvolenou subdomény (například **statické** nebo **cdn**) toohello **názvu hostitele koncového bodu** uvedené výše v portálu hello. 
 
-### <a name="enter-the-custom-domain-in-azure"></a>Zadání vlastní domény v Azure
+### <a name="enter-hello-custom-domain-in-azure"></a>Zadejte vlastní domény hello v Azure
 
-Vraťte se na stránku **Přidat vlastní doménu** a do dialogového okna zadejte vlastní doménu včetně poddomény. Zadejte například `cdn.contoso.com`.   
+Vrátí toohello **přidat vlastní doménu** stránky a zadejte vlastní domény, včetně hello subdomény, v dialogovém okně hello. Zadejte například `cdn.contoso.com`.   
    
-Azure ověří, že pro zadaný název domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří.
+Azure ověřuje, zda existuje záznam CNAME hello pro hello název domény, který jste zadali. Pokud hello CNAME je správná, je ověřit vaši vlastní doménu.
 
-Rozšíření záznamu CNAME na názvové servery na internetu může nějakou dobu trvat. Pokud vaše doména není ověřený okamžitě, počkejte několik minut a zkuste to znovu.
+Pro hello CNAME záznamů toopropagate tooname servery na hello Internetu může trvat dobu. Pokud vaše doména není ověřený okamžitě, počkejte několik minut a zkuste to znovu.
 
-### <a name="test-the-custom-domain"></a>Testování vlastní domény
+### <a name="test-hello-custom-domain"></a>Test hello vlastní domény
 
-V prohlížeči přejděte na soubor `index.html` s použitím vlastní domény (například `cdn.contoso.com/index.html`) a ověřte, že výsledek je stejný, jako když přejdete přímo na `<endpointname>azureedge.net/index.html`.
+V prohlížeči přejděte toohello `index.html` souboru používání vlastní domény (například `cdn.contoso.com/index.html`) tooverify, která je výsledkem hello text hello, stejně jako když přejdete přímo příliš`<endpointname>azureedge.net/index.html`.
 
 ![Domovská stránka ukázkové aplikace s použitím adresy URL vlastní domény](media/app-service-web-tutorial-content-delivery-network/home-page-custom-domain.png)
 
-Další informace najdete v tématu [Mapování obsahu Azure CDN na vlastní doménu](../cdn/cdn-map-content-to-custom-domain.md).
+Další informace najdete v tématu [vlastní doménu CDN Azure mapa obsahu tooa](../cdn/cdn-map-content-to-custom-domain.md).
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -297,10 +297,10 @@ Co jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit koncový bod CDN.
 > * Aktualizovat prostředky uložené v mezipaměti.
-> * Spravovat verze uložené v mezipaměti pomocí řetězců dotazu.
-> * Použít vlastní doménu pro koncový bod CDN.
+> * Použití dotazu řetězce verze toocontrol do mezipaměti.
+> * Použijte vlastní doménu pro koncový bod CDN hello.
 
-Informace o optimalizaci výkonu CDN v těchto článcích:
+Zjistěte, jak toooptimize CDN výkon v hello následující články:
 
 > [!div class="nextstepaction"]
 > [Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN](../cdn/cdn-improve-performance.md)

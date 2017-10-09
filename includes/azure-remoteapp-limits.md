@@ -13,7 +13,7 @@
 | Časový limit nečinnosti |4 hodiny |
 | Odpojené vypršení časového limitu |4 hodiny |
 
-Počet uživatelů, je určený počet virtuálních počítačů použít pro svoji kolekci:
+Hello počet uživatelů, je dáno hello počet virtuálních počítačů použít pro svoji kolekci:
 
 * Základní = 16 uživatelů na virtuální počítač
 * Standardní = 10 uživateli na virtuální počítač

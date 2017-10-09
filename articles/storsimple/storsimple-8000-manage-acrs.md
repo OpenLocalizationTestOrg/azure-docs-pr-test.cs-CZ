@@ -1,6 +1,6 @@
 ---
-title: "Spravovat záznamy řízení přístupu v zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak používat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v zařízení StorSimple."
+title: "aaaManage záznamy řízení přístupu v zařízení StorSimple | Microsoft Docs"
+description: "Popisuje, jak řízení přístupu toouse záznamy toodetermine (ACRs), které hostitele může připojit tooa svazek v zařízení StorSimple hello."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,79 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9173e34f889ce1c082b20bb382cb6ca9a03dd797
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cf532206e2c0bc49da853663ba34ae993ec2981d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Použít službu StorSimple Manager ke správě záznamy řízení přístupu
+# <a name="use-hello-storsimple-manager-service-toomanage-access-control-records"></a>Použití služby StorSimple Manager hello, toomanage záznamy řízení přístupu
 
 ## <a name="overview"></a>Přehled
-Záznamy řízení přístupu (ACRs) umožňují určit, které hostitele může připojit k svazek v zařízení StorSimple. ACRs jsou nastaveny na konkrétním svazku a obsahovat kvalifikované názvy iSCSI (IQN) hostitele. Když hostitel pokusí o připojení ke svazku, zařízení se kontroluje ACR přidružený tento svazek pro název IQN a pokud je nalezena shoda, pak připojení. Zaznamenává řízení přístupu **konfigurace** části okně vaší služby StorSimple Manager zařízení zobrazí všechny záznamy řízení přístupu s odpovídající IQN hostitelů.
+Záznamy řízení přístupu (ACRs) umožňují toospecify, které hostitele může připojit tooa svazek v zařízení StorSimple hello. ACRs jsou nastavené určité svazku tooa a obsahovat hello iSCSI (IQN) kvalifikované názvy hostitelů hello. Když se hostitel pokusí tooconnect tooa svazku, zkontroluje zařízení hello hello ACR přidruženého tento svazek pro název IQN hello a pokud je nalezen, pak hello připojení. Hello záznamy řízení přístupu v hello **konfigurace** části okně vaší služby StorSimple Manager zařízení zobrazí všechny záznamy řízení přístupu hello s hello odpovídající IQN hello hostitelů.
 
-Tento kurz vysvětluje následující běžné úlohy související s ACR:
+Tento kurz vysvětluje hello následující běžné úlohy související s ACR:
 
 * Přidání záznamu o řízení přístupu
 * Upravit záznam řízení přístupu
 * Odstranit záznam řízení přístupu
 
 > [!IMPORTANT]
-> * Při přiřazování ACR svazku, vezměte v potaz, že svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku.
-> * Při odstraňování ACR ze svazku, ujistěte se, že odpovídající hostitele není přístup k svazku vzhledem k tomu, že odstranění může mít za následek přerušení pro čtení a zápis.
+> * Při přiřazování svazek tooa ACR, vezměte v potaz, že hello svazek není přístup souběžně více než jednomu hostiteli neclusterované protože to může způsobit poškození svazku hello.
+> * Při odstraňování ACR ze svazku, ujistěte se, že tohoto hostitele odpovídající hello není přístup k hello svazek, protože odstranění hello může mít za následek přerušení pro čtení a zápis.
 
-## <a name="get-the-iqn"></a>Získání názvu IQN
+## <a name="get-hello-iqn"></a>Získání názvu IQN hello
 
-Proveďte následující kroky k získání názvu IQN hostitele Windows se systémem Windows Server 2012.
+Proveďte následující kroky tooget hello názvu IQN hostitele se systémem Windows Server 2012 Windows hello.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 
 ## <a name="add-an-access-control-record"></a>Přidání záznamu o řízení přístupu
-Můžete použít **konfigurace** část v okně service Manager zařízení StorSimple přidat ACRs. Obvykle přidružíte jednu ACR jeden svazek.
+Použít hello **konfigurace** v hello Správce zařízení StorSimple služby okno tooadd ACRs části. Obvykle přidružíte jednu ACR jeden svazek.
 
-Proveďte následující postup pro přidání ACR.
+Proveďte následující kroky tooadd ACR hello.
 
-#### <a name="to-add-an-acr"></a>Chcete-li přidat ACR
+#### <a name="tooadd-an-acr"></a>tooadd ACR
 
-1. Přejděte do služby StorSimple Manager zařízení, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
-2. V **záznamy řízení přístupu** okně klikněte na tlačítko **+ přidat ACR**.
+1. Přejděte tooyour service Manager zařízení StorSimple, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
+2. V hello **záznamy řízení přístupu** okně klikněte na tlačítko **+ přidat ACR**.
 
     ![Klikněte na tlačítko Přidat ACR](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. V **přidat ACR** okno, proveďte následující kroky:
+3. V hello **přidat ACR** okně hello následující kroky:
 
     1. Zadáte název acr.
     
-    2. Zadejte název IQN hostitele vašeho systému Windows Server v části **iSCSI Initiator název IQN ()**.
+    2. Zadejte název IQN hello hostiteli systému Windows Server v části **iSCSI Initiator název IQN ()**.
 
-    3. Klikněte na tlačítko **přidat** vytvořit ACR.
+    3. Klikněte na tlačítko **přidat** toocreate hello ACR.
 
         ![Klikněte na tlačítko Přidat ACR](./media/storsimple-8000-manage-acrs/createacr2.png)
 
-4.  Nově přidaný ACR se zobrazí v tabulkovém seznam ACRs.
+4.  Hello nově přidaní že ACR se zobrazí v tabulkovém seznam ACRs hello.
 
     ![Klikněte na tlačítko Přidat ACR](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>Upravit záznam řízení přístupu
-Můžete použít **konfigurace** část v okně service Manager zařízení StorSimple upravit ACRs.
+Použít hello **konfigurace** v hello Správce zařízení StorSimple služby okno tooedit ACRs části.
 
 > [!NOTE]
-> Doporučujeme proto upravovat pouze ACRs, které nejsou aktuálně používá. Chcete-li upravit ACR přidružené k svazku, který je aktuálně používán, musíte nejdřív udělat svazek offline.
+> Doporučujeme proto upravovat pouze ACRs, které nejsou aktuálně používá. tooedit přidruženého ACR svazku, který je aktuálně používán, musíte nejdřív udělat hello svazek offline.
 
-Proveďte následující kroky, chcete-li upravit ACR.
+Proveďte následující kroky tooedit ACR hello.
 
-#### <a name="to-edit-an-access-control-record"></a>Chcete-li upravit záznam řízení přístupu
-1.  Přejděte do služby StorSimple Manager zařízení, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
+#### <a name="tooedit-an-access-control-record"></a>tooedit záznam řízení přístupu
+1.  Přejděte tooyour service Manager zařízení StorSimple, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. V tabulkovém seznam záznamy řízení přístupu, klikněte na tlačítko a vyberte ACR, který chcete upravit.
+2. V hello tabulkové výpis hello záznamy řízení přístupu, klikněte na tlačítko a vyberte hello ACR chcete toomodify.
 
     ![Úpravy záznamů o řízení přístupu](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. V **záznam řízení přístupu upravit** okno, zadejte jiný IQN odpovídající do jiného hostitele.
+3. V hello **záznam řízení přístupu upravit** okno, zadejte jiný hostitelský odpovídající tooanother IQN.
 
     ![Úpravy záznamů o řízení přístupu](./media/storsimple-8000-manage-acrs/editacr2.png)
 
@@ -94,39 +94,39 @@ Proveďte následující kroky, chcete-li upravit ACR.
 
     ![Úpravy záznamů o řízení přístupu](./media/storsimple-8000-manage-acrs/editacr3.png)
 
-5. Budete upozorněni, když se aktualizuje ACR. Tabulkové se také seznam aktualizuje, aby odrážely změny.
+5. Budete upozorněni, když je aktualizována hello ACR. tabulkový výčet Hello rovněž aktualizuje tooreflect hello změnu.
 
    
 ## <a name="delete-an-access-control-record"></a>Odstranit záznam řízení přístupu
-Můžete použít **konfigurace** část v okně služby StorSimple Manager zařízení odstranit ACRs.
+Použít hello **konfigurace** v hello Správce zařízení StorSimple služby okno toodelete ACRs části.
 
 > [!NOTE]
-> Lze odstranit pouze ACRs, které nejsou aktuálně používá. Pokud chcete odstranit ACR přidružené k svazku, který je aktuálně používán, musíte nejdřív udělat svazek offline.
+> Lze odstranit pouze ACRs, které nejsou aktuálně používá. toodelete přidruženého ACR svazku, který je aktuálně používán, musíte nejdřív udělat hello svazek offline.
 
-Proveďte následující kroky a odstraňte záznam řízení přístupu.
+Proveďte následující kroky toodelete záznam řízení přístupu hello.
 
-#### <a name="to-delete-an-access-control-record"></a>Odstranit záznam řízení přístupu
-1.  Přejděte do služby StorSimple Manager zařízení, klikněte dvakrát na název služby a pak v rámci **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
+#### <a name="toodelete-an-access-control-record"></a>toodelete záznam řízení přístupu
+1.  Přejděte tooyour service Manager zařízení StorSimple, klikněte dvakrát na hello název služby a potom v rámci hello **konfigurace** klikněte na tlačítko **záznamy řízení přístupu**.
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. V tabulkovém seznam záznamy řízení přístupu, klikněte na tlačítko a vyberte ACR, který chcete odstranit.
+2. V hello tabulkové výpis hello záznamy řízení přístupu, klikněte na tlačítko a vyberte hello ACR chcete toodelete.
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. Klikněte pravým tlačítkem a vyvolání v místní nabídce vyberte **odstranit**.
+3. Klikněte pravým tlačítkem na tooinvoke hello kontextovou nabídku a vyberte **odstranit**.
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. Po zobrazení výzvy k potvrzení, zkontrolujte informace a pak klikněte na tlačítko **odstranit**.
+4. Po zobrazení výzvy k potvrzení, zkontrolujte hello informace a pak klikněte na tlačítko **odstranit**.
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
-5. Upozornění se zobrazí po dokončení odstranění. Tabulkový výčet je aktualizována tak, aby odrážela odstranění.
+5. Upozornění se zobrazí po dokončení odstranění hello. tabulkový výčet Hello je aktualizovaný tooreflect hello odstranění.
 
-    ![Přejděte na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Přejděte tooaccess řízení záznamů](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [správu svazků zařízení StorSimple](storsimple-8000-manage-volumes-u2.md).
-* Další informace o [pomocí služby StorSimple Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Další informace o [pomocí hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

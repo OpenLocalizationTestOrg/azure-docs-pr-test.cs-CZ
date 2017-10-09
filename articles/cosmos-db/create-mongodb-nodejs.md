@@ -1,6 +1,6 @@
 ---
-title: "Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js | Dokumentace Microsoftu"
-description: "Naučte se připojovat stávající aplikaci MongoDB s podporou Node.js ke službě Azure Cosmos DB"
+title: "aaaConnect tooAzure aplikace MongoDB Cosmos DB pomocí Node.js | Microsoft Docs"
+description: "Zjistěte, jak tooconnect existující aplikace Node.js MongoDB tooAzure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,17 +15,17 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 06/19/2017
 ms.author: mimig
-ms.openlocfilehash: a26477d692cc98ed16c195233ade5434cc536a36
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bc4f17a31d8c18d1ce5e3f002462f4d48eeb1f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Služba Azure Cosmos DB: Migrace stávající webové aplikace MongoDB s podporou Node.js 
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento rychlý start popisuje způsob použití stávající aplikace [MongoDB](mongodb-introduction.md) napsané v Node.js a připojení ke službě Azure Cosmos DB, která podporuje připojení klienta MongoDB. Jinými slovy: aplikace Node.js ví pouze to, že se připojuje k databázi pomocí rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
+Tento rychlý start předvádí jak toouse existující [MongoDB](mongodb-introduction.md) aplikace napsané v Node.js a připojte ho tooyour Azure Cosmos DB databáze, která podporuje připojení klienta MongoDB. Jinými slovy aplikace Node.js pouze ví, že se počítač připojuje tooa databáze pomocí rozhraní API MongoDB. Je transparentní toohello aplikace, která hello dat je uložen v Azure Cosmos DB.
 
 Po dokončení budete mít ve službě [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). 
 
@@ -34,26 +34,26 @@ Po dokončení budete mít ve službě [Azure Cosmos DB](https://azure.microsoft
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="prerequisites"></a>Požadavky 
-Abyste mohli spustit příkazy `npm` a `git`, musíte mít kromě rozhraní příkazového řádku Azure místně nainstalovaný [Node.js](https://nodejs.org/) a [Git](http://www.git-scm.com/downloads).
+Kromě toho tooAzure rozhraní příkazového řádku, musíte [Node.js](https://nodejs.org/) a [Git](http://www.git-scm.com/downloads) nainstalovány místně toorun `npm` a `git` příkazy.
 
-Měli byste mít praktickou znalost Node.js. Tento rychlý start není určen jako pomůcka pro všeobecný vývoj aplikací v Node.js.
+Měli byste mít praktickou znalost Node.js. Tento rychlý start není určený toohelp k vývoji aplikací Node.js obecně.
 
-## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+## <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
+Otevřete okno terminálu git, jako je například git bash a `cd` tooa pracovní adresář.  
 
-Spuštěním následujících příkazů naklonujte ukázkové úložiště. Toto ukázkové úložiště obsahuje výchozí aplikaci [MEAN.js](http://meanjs.org/). 
+Spusťte následující příkazy tooclone hello Ukázka úložiště hello. Tato ukázka úložiště obsahuje výchozí hello [MEAN.js](http://meanjs.org/) aplikace. 
 
 ```bash
 git clone https://github.com/prashanthmadi/mean
 ```
 
-## <a name="run-the-application"></a>Spuštění aplikace
+## <a name="run-hello-application"></a>Spuštění aplikace hello
 
-Nainstalujte požadované balíčky a spusťte aplikaci.
+Instalace hello požadované balíčky a spuštění aplikace hello.
 
 ```bash
 cd mean
@@ -61,27 +61,27 @@ npm install
 npm start
 ```
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Pokud používáte nainstalované rozhraní příkazového řádku Azure, přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/#login) a postupujte podle pokynů na obrazovce. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
+Pokud používáte nainstalovaný Azure CLI, přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů. Pokud používáte hello prostředí cloudu Azure, můžete tento krok přeskočit.
 
 ```azurecli
 az login 
 ``` 
    
-## <a name="add-the-azure-cosmos-db-module"></a>Přidání modulu služby Azure Cosmos DB
+## <a name="add-hello-azure-cosmos-db-module"></a>Přidat modul Azure Cosmos DB hello
 
-Pokud používáte nainstalované rozhraní příkazového řádku Azure, zkontrolujte pomocí příkazu `az`, zda je komponenta `cosmosdb` už nainstalovaná. Pokud se komponenta `cosmosdb` v seznamu základních příkazů nachází, pokračujte k dalšímu příkazu. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
+Pokud používáte nainstalované rozhraní příkazového řádku Azure, zkontrolujte toosee Pokud hello `cosmosdb` spuštěním hello je již nainstalována součást `az` příkaz. Pokud `cosmosdb` je v seznamu příkazů, základní text hello, pokračovat toohello další příkaz. Pokud používáte hello prostředí cloudu Azure, můžete tento krok přeskočit.
 
-Pokud se komponenta `cosmosdb` v seznamu základních příkazů nenachází, přeinstalujte [rozhraní příkazového řádku Azure 2.0]( /cli/azure/install-azure-cli).
+Pokud `cosmosdb` není v seznamu příkazů, základní text hello, přeinstalujte [Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte pomocí příkazu [az group create](/cli/azure/group#create) [skupinu prostředků](../azure-resource-manager/resource-group-overview.md). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. 
+Vytvoření [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) s hello [vytvořit skupinu az](/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. 
 
-Následující příklad vytvoří skupinu prostředků pro oblast Západní Evropa. Pro skupinu prostředků vyberte jedinečný název.
+Hello následující příklad vytvoří skupinu prostředků v oblasti západní Evropa hello. Vyberte jedinečný název pro skupinu prostředků hello.
 
-Pokud používáte Azure Cloud Shell, klikněte na **Vyzkoušet** a postupujte podle pokynů pro přihlášení uvedených na obrazovce, potom příkaz zkopírujte do příkazového řádku.
+Pokud používáte prostředí cloudu Azure, klikněte na tlačítko **zkuste ho**, postupujte podle pokynů na obrazovce toologin hello a pak zkopírujte hello příkazu do příkazového řádku hello.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -89,20 +89,20 @@ az group create --name myResourceGroup --location "West Europe"
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Pomocí příkazu [az cosmosdb create](/cli/azure/cosmosdb#create) vytvořte účet služby Azure Cosmos DB.
+Vytvoření účtu Azure Cosmos DB s hello [vytvořit az cosmosdb](/cli/azure/cosmosdb#create) příkaz.
 
-V následujícím příkazu nahraďte zástupný symbol `<cosmosdb-name>` vlastním jedinečným názvem účtu služby Azure Cosmos DB. Tento jedinečný název se použije jako součást koncového bodu služby Azure Cosmos DB (`https://<cosmosdb-name>.documents.azure.com/`). Název proto musí být jedinečný ve všech účtech služby Azure Cosmos DB platformy Azure. 
+V hello následující příkaz, nahraďte prosím vlastní jedinečný název účtu Azure Cosmos DB, kde uvidíte hello `<cosmosdb-name>` zástupný symbol. Tento jedinečný název se použije jako součást váš koncový bod Azure Cosmos DB (`https://<cosmosdb-name>.documents.azure.com/`), takže název hello musí toobe jedinečný mezi všechny účty Azure Cosmos DB v Azure. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
-Parametr `--kind MongoDB` umožňuje klientská připojení MongoDB.
+Hello `--kind MongoDB` parametr povolí připojení klientů MongoDB.
 
-Po vytvoření účtu služby Azure Cosmos DB zobrazí rozhraní příkazového řádku Azure podobné informace jako v následujícím příkladu. 
+Při vytvoření účtu Azure Cosmos DB hello hello rozhraní příkazového řádku Azure znázorňuje následující ukázka podobné toohello informace. 
 
 > [!NOTE]
-> Tento příklad jako formát výstupu Azure CLI používá výchozí JSON. Pokud chcete použít jiný formát výstupu, přečtěte si téma [Formáty výstupu pro příkazy Azure CLI 2.0](https://docs.microsoft.com/cli/azure/format-output-azure-cli).
+> Tento příklad používá JSON jako hello rozhraní příkazového řádku Azure výstupní formát, což je výchozí hello. toouse jiné výstup formátu najdete v tématu [výstup formátů pro příkazy Azure CLI 2.0](https://docs.microsoft.com/cli/azure/format-output-azure-cli).
 
 ```json
 {
@@ -136,16 +136,16 @@ DB/databaseAccounts/<cosmosdb-name>",
 } 
 ```
 
-## <a name="connect-your-nodejs-application-to-the-database"></a>Připojení aplikace Node.js k databázi
+## <a name="connect-your-nodejs-application-toohello-database"></a>Připojit databáze toohello aplikace Node.js
 
-V tomto kroku připojíte ukázkovou aplikaci MEAN.js k právě vytvořené databázi služby Azure Cosmos DB, a to pomocí připojovacího řetězce MongoDB. 
+V tomto kroku připojíte MEAN.js ukázkové aplikace tooan Azure Cosmos DB databázi, kterou jste právě vytvořili, pomocí připojovacího řetězce MongoDB. 
 
 <a name="devconfig"></a>
-## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurace připojovacího řetězce v aplikaci Node.js
+## <a name="configure-hello-connection-string-in-your-nodejs-application"></a>Konfigurace v aplikaci Node.js hello připojovací řetězec
 
 V úložišti MEAN.js otevřete `config/env/local-development.js`.
 
-Obsah tohoto souboru nahraďte následujícím kódem. Nezapomeňte nahradit také dva zástupné symboly `<cosmosdb-name>` názvem vašeho účtu služby Azure Cosmos DB.
+Nahraďte hello obsah tohoto souboru hello následující kód. Ujistěte se, tooalso nahradit hello dva `<cosmosdb-name>` zástupné texty názvem svého účtu Azure Cosmos DB.
 
 ```javascript
 'use strict';
@@ -157,25 +157,25 @@ module.exports = {
 };
 ```
 
-## <a name="retrieve-the-key"></a>Načtení klíče
+## <a name="retrieve-hello-key"></a>Načíst klíč hello
 
-Aby bylo možné se připojit k databázi služby Azure Cosmos DB, potřebujete klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys).
+Pořadí tooconnect tooan Azure Cosmos DB databáze je nutné klíč databáze hello. Použití hello [az cosmosdb seznamu klíčů](/cli/azure/cosmosdb#list-keys) příkaz tooretrieve hello primární klíč.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
-Výstupní informace rozhraní příkazového řádku Azure jsou podobné jako v následujícím příkladu. 
+Hello rozhraní příkazového řádku Azure výstupy informace podobné toohello následující ukázka. 
 
 ```json
 "RUayjYjixJDWG5xTqIiXjC..."
 ```
 
-Zkopírujte hodnotu `primaryMasterKey`. Vložte ji místo `<primary_master_key>` v souboru `local-development.js`.
+Zkopírujte hodnotu hello `primaryMasterKey`. Vložit přes hello `<primary_master_key>` v `local-development.js`.
 
 Uložte provedené změny.
 
-### <a name="run-the-application-again"></a>Spusťte aplikaci znovu.
+### <a name="run-hello-application-again"></a>Spusťte aplikaci hello znovu.
 
 Spusťte `npm start` znovu. 
 
@@ -183,45 +183,45 @@ Spusťte `npm start` znovu.
 npm start
 ```
 
-Zpráva konzoly by vás teď měla informovat o tom, že vývojové prostředí je připravené a spuštěné. 
+Zprávy konzoly by měl nyní zjistíte, že prostředí vývoj hello je spuštěná. 
 
-V prohlížeči přejděte na `http://localhost:3000`. V horní nabídce klikněte na **Zaregistrovat se** a pokuste se vytvořit dva fiktivní uživatele. 
+Přejděte příliš`http://localhost:3000` v prohlížeči. Klikněte na tlačítko **zaregistrovat** v horní nabídce a zkuste to toocreate hello dvě fiktivní uživatele. 
 
-Ukázková aplikace MEAN.js ukládá data uživatelů v databázi. Pokud budete úspěšní a aplikace MEAN.js automaticky zaregistruje vytvořeného uživatele, bude připojení Azure Cosmos DB fungovat. 
+Hello MEAN.js ukázkové aplikace ukládá data uživatele v databázi hello. Pokud jste úspěšné a do automaticky přihlásí MEAN.js hello vytvořený uživatel a funkčnost připojení k databázi Azure Cosmos. 
 
-![Aplikace MEAN.js se úspěšně připojí k databázi MongoDB](./media/create-mongodb-nodejs/mongodb-connect-success.png)
+![MEAN.js připojí úspěšně tooMongoDB](./media/create-mongodb-nodejs/mongodb-connect-success.png)
 
 ## <a name="view-data-in-data-explorer"></a>Zobrazení dat v Průzkumníku dat
 
-Data uložená službou Azure Cosmos DB je možné zobrazovat a je možné se na ně dotazovat a spouštět na ně obchodní logiku na portálu Azure Portal.
+Data uložená pomocí Azure DB Cosmos je k dispozici tooview, dotazů a spuštění obchodní logiky na v hello portálu Azure.
 
-Pokud chcete zobrazovat uživatelská data vytvořená v předchozím kroku, zadávat na ně dotazy a pracovat s nimi, přihlaste se k portálu [Azure Portal](https://portal.azure.com) ve webovém prohlížeči.
+tooview, dotazování a pracovat s daty uživatele hello vytvořili v předchozím kroku hello přihlášení toohello [portál Azure](https://portal.azure.com) ve webovém prohlížeči.
 
-V horním vyhledávacím poli zadejte Azure Cosmos DB. Po otevření okna účtu služby Cosmos DB vyberte účet Cosmos DB. V levém navigačním panelu klikněte na Průzkumník dat. Rozbalte kolekci v podokně Kolekce. Pak můžete zobrazovat dokumenty v kolekci, dotazovat se na data a dokonce vytvářet a spouštět uložené procedury, triggery a funkce UDF. 
+Hello nejvyšší vyhledávacího pole zadejte Azure Cosmos DB. Po otevření okna účtu služby Cosmos DB vyberte účet Cosmos DB. V levé navigační hello klikněte na tlačítko Průzkumníku dat. Rozbalte v podokně Kolekce hello kolekce a pak můžete zobrazit dokumenty hello hello kolekce, hello dotaz na data a i vytvořit a spustit uložené procedury, triggery a UDF. 
 
-![Průzkumník dat na portálu Azure Portal](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
+![Průzkumník dat v hello portálu Azure](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
-## <a name="deploy-the-nodejs-application-to-azure"></a>Nasaďte aplikaci Node.js do platformy Azure
+## <a name="deploy-hello-nodejs-application-tooazure"></a>Nasazení tooAzure aplikace Node.js hello
 
-V tomto kroku se nasazuje aplikace Node.js připojená k databázi MongoDB ke službě Azure Cosmos DB.
+V tomto kroku nasadíte vaší tooAzure aplikace Node.js připojené MongoDB Cosmos DB.
 
-Pravděpodobně jste si všimli, že dříve změněný soubor konfigurace je určený pro vývojové prostředí (`/config/env/local-development.js`). Pokud nasadíte aplikaci do služby App Service, bude se ve výchozím nastavení spouštět v produkčním prostředí. Teď tedy musíte provést stejné změny v příslušném souboru konfigurace.
+Může mít k tomu, že hello konfigurační soubor, který jste změnili dříve je pro hello vývojové prostředí (`/config/env/local-development.js`). Při nasazení vaší aplikace tooApp služby, se spustí v provozním prostředí hello ve výchozím nastavení. Proto nyní, budete potřebovat toomake hello stejné změnit toohello příslušného konfiguračního souboru.
 
 V úložišti MEAN.js otevřete `config/env/production.js`.
 
-V objektu `db` nahraďte hodnotu `uri` tak, jak je uvedeno v následujícím příkladu. Nezapomeňte nahradit zástupné symboly jako v předcházejícím případě.
+V hello `db` objektu, nahraďte hodnotu hello `uri` jako zobrazit v hello následující ukázka. Být jisti tooreplace hello zástupné symboly jako před.
 
 ```javascript
 'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10255/mean?ssl=true&sslverifycertificate=false',
 ```
 
 > [!NOTE] 
-> Možnost `ssl=true` je důležitá, protože [služba Azure Cosmos DB vyžaduje SSL](connect-mongodb-account.md#connection-string-requirements). 
+> Hello `ssl=true` možnost je důležité, protože [Azure Cosmos DB vyžaduje SSL](connect-mongodb-account.md#connection-string-requirements). 
 >
 >
 
-V terminálu potvrďte do systému Git všechny změny. Můžete zkopírovat oba příkazy a spouštět je společně.
+V terminálu hello potvrďte všechny změny do Git. Můžete zkopírovat i toorun příkazy dohromady.
 
 ```bash
 git add .
@@ -229,14 +229,14 @@ git commit -m "configured MongoDB connection string"
 ```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze služby Azure Cosmos DB a vytvoření kolekce MongoDB pomocí Průzkumníku dat. Teď můžete migrovat data MongoDB do služby Azure Cosmos DB.  
+V tento rychlý start, když jste se naučili jak toocreate Azure DB Cosmos účtu a vytvořte kolekci MongoDB pomocí Průzkumníku dat hello. Nyní můžete migrovat data tooAzure vaše MongoDB Cosmos DB.  
 
 > [!div class="nextstepaction"]
 > [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)

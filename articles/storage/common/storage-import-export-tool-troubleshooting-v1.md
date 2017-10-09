@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s nástroj Azure Import/Export | Microsoft Docs"
-description: "Další informace o některé běžné problémy, proto při použití nástroje Azure Import/Export a postupy pro jejich zpracování."
+title: "aaaTroubleshooting hello nástroj Azure Import/Export | Microsoft Docs"
+description: "Další informace o některých hello běžné problémy, proto při použití hello nástroj Azure Import/Export a jak toohandle je."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 7bfda602dbc0ea47828a7c9243b8b9b09ec78432
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 254439c15797862dded5d80028b8780ad163b2b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-the-azure-importexport-tool"></a>Řešení potíží s nástrojem Azure pro import/export
-Nástroj Microsoft Azure Import/Export vrací chybové zprávy, pokud běží na problémy. Toto téma uvádí některé běžné problémy, které mohou uživatelé do.  
+# <a name="troubleshooting-hello-azure-importexport-tool"></a>Řešení potíží s hello nástroj Azure Import/Export
+Hello nástroj Microsoft Azure Import/Export vrací chybové zprávy, pokud běží na problémy. Toto téma uvádí některé běžné problémy, které mohou uživatelé do.  
   
 ## <a name="a-copy-session-fails-what-i-should-do"></a>Relaci kopie selže, co mám udělat?  
  Při kopírování relace selže, existují dvě možnosti:  
   
- Pokud je chyba opakovatelná, například pokud sdílené síťové složce byla offline na krátkou dobu a nyní je zpět do režimu online, můžete obnovit kopii relace. Pokud chyba není opakovatelná, například pokud jste zadali nesprávný zdrojový adresář souboru v parametrech příkazového řádku, musíte k přerušení relace kopírování. V tématu [Příprava pevné disky pro úlohy importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) Další informace o obnovení a přerušení kopírování relací.  
+ Pokud chyba hello opakovatelná, například pokud hello síťové sdílené složky byla ve stavu offline pro malou období a nyní je zpět do režimu online, můžete obnovit hello kopie relace. Pokud hello chyba není opakovatelná, například pokud jste zadali hello nesprávný zdrojový soubor adresář v hello parametry příkazového řádku, musíte tooabort hello kopie relace. V tématu [Příprava pevné disky pro úlohy importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) Další informace o obnovení a přerušení kopírování relací.  
   
 ## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nelze obnovit nebo k přerušení relace kopírování.  
- Pokud relace kopírování se má první relace kopie pro jednotku, pak by měl stavu chybová zpráva: "má první relace kopírování se nedá obnovit nebo přerušena." V takovém případě můžete odstranit původní soubor deníku a spusťte příkaz znovu.  
+ Pokud relace kopie hello se hello první relaci kopie pro jednotku, pak by měl stavu hello chybová zpráva: "hello první relaci kopírování se nedá obnovit nebo přerušena." V takovém případě můžete odstranit původní soubor deníku hello a znovu spusťte příkaz hello.  
   
- Pokud relaci kopie není první z nich pro jednotku, může být vždy obnovení nebo přerušena.  
+ Pokud relaci kopie není hello první z nich pro jednotku, může být vždy obnovení nebo přerušena.  
   
-## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>I ztráty deník souboru, je možné stále vytvořit úlohu?  
- Soubor deníku pro jednotku obsahuje kompletní informace o kopírování dat na tuto jednotku, a je potřeba přidat další soubory na disk a budou použity k vytvoření úlohy importu. Pokud soubor deníku dojde ke ztrátě, budete muset znovu provést všechny kopie relace pro jednotku.  
+## <a name="i-lost-hello-journal-file-can-i-still-create-hello-job"></a>Ztrátou hello deníku souboru, je možné stále vytvořit úlohu hello?  
+ Hello deníku soubor pro jednotku obsahuje veškeré informace o hello kopírování dat toothis jednotky a je potřebné tooadd jednotka toohello další soubory a bude použité toocreate úlohy importu. Pokud soubor deníku hello dojde ke ztrátě, bude mít tooredo všechny relace hello kopie pro jednotku hello.  
   
 ## <a name="next-steps"></a>Další kroky
  
-* [Nastavení nástroje azure import/export](../storage-import-export-tool-setup-v1.md)   
+* [Nastavení nástroje azure import/export hello](../storage-import-export-tool-setup-v1.md)   
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Oprava úlohy importu](../storage-import-export-tool-repairing-an-import-job-v1.md)   

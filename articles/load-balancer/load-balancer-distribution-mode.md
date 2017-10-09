@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace pro vyrovnávání zatížení režim distribuce | Microsoft Docs"
-description: "Jak nakonfigurovat režim distribuce nástroje pro vyrovnávání zatížení Azure pro podporu spřažení IP zdroje"
+title: "režim distribuce nástroj pro vyrovnávání zatížení aaaConfigure | Microsoft Docs"
+description: "Jak tooconfigure Azure zatížení vyrovnávání distribuční režimu toosupport zdrojové IP spřažení"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-ms.openlocfilehash: 4cb000c8ee1bb2e267dc0813dab23a77a46080ce
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e745240b733ffc07928d8ed0ae097785ad4f412e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-the-distribution-mode-for-load-balancer"></a>Nakonfigurujte distribuční režim pro vyrovnávání zatížení
+# <a name="configure-hello-distribution-mode-for-load-balancer"></a>Konfigurovat režim distribuce hello nástroje pro vyrovnávání zatížení
 
 ## <a name="hash-based-distribution-mode"></a>Režim distribuce na základě hodnoty hash
 
-Výchozí distribuční algoritmus používá 5-řazené kolekce členů (zdrojové IP adresy, zdrojového portu, cílové adresy IP, cílový port, protokol typu) hodnotu hash pro mapování provoz na dostupné servery. Poskytuje věrnosti pouze v rámci relace přenosu. Pakety ve stejné relaci se přesměruje na stejnou instanci datacenter IP (DIP) za vyrovnáváním zatížení koncového bodu. Když se klient spustí novou relaci ze stejné zdrojové IP adresy, zdrojového portu změny a způsobí, že provoz přejít k jinému koncovému bodu vyhrazené IP adresy.
+Hello výchozí distribuční algoritmus používá 5-řazené kolekce členů (zdrojová adresa IP, zdrojového portu, cílové adresy IP, cílový port, protokol typu) hash toomap provoz tooavailable servery. Poskytuje věrnosti pouze v rámci relace přenosu. Pakety hello stejné relace bude přesměruje toohello instance stejné datacenter IP (DIP) za vyrovnáváním zatížení hello koncový bod. Při spuštění klienta hello hello novou relaci ze stejné zdrojové IP adresy, zdrojového portu hello změny a způsobí, že hello provoz toogo tooa různých DIP koncový bod.
 
 ![Nástroj pro vyrovnávání zatížení na základě hodnoty hash](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
@@ -31,37 +31,37 @@ Obrázek 1-5-n-tice distribuce
 
 ## <a name="source-ip-affinity-mode"></a>Režim spřažení IP zdroje
 
-Máme jiný režim distribuce se označuje jako zdroj IP spřažení (známou taky jako spřažení relace na spřažení IP klienta). Azure nástroj pro vyrovnávání zatížení lze nakonfigurovat k využívání 2-n-tice (zdrojová adresa IP, cílovou IP adresu) nebo 3-n-tice (zdrojová adresa IP, cílové adresy IP, protokol) pro mapování provoz do dostupných serverů. Pomocí spřažení zdrojové IP adresy připojení inicializována z stejný klientský počítač přejde do stejné koncový bod vyhrazené IP adresy.
+Máme jiný režim distribuce se označuje jako zdroj IP spřažení (známou taky jako spřažení relace na spřažení IP klienta). Azure nástroj pro vyrovnávání zatížení může být nakonfigurované toouse 2-n-tice (zdrojová adresa IP, cílovou IP adresu) nebo 3-n-tice (zdrojová adresa IP, cílové adresy IP, protokol) toomap provozu toohello dostupné servery. Pomocí zdrojové IP adresy spřažení připojení inicializována z hello stejný klientský počítač přejde toohello stejný koncový bod vyhrazené IP adresy.
 
-Následující diagram znázorňuje konfiguraci 2 řazené kolekce členů. Všimněte si, jak 2-n-tice spustí pomocí nástroje pro vyrovnávání zatížení do virtuálního počítače 1 (VM1) které se potom zálohuje virtuálního počítače 2 a VM3.
+Hello následující diagram znázorňuje konfiguraci 2 řazené kolekce členů. Všimněte si, jak hello 2-n-tice spouští prostřednictvím hello zatížení vyrovnávání toovirtual počítač 1 (VM1) které se potom zálohuje virtuálního počítače 2 a VM3.
 
 ![spřažení relace](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
 Obrázek 2 – distribuční 2 řazené kolekce členů
 
-Zdroj IP spřažení řeší nekompatibilitou nástroj pro vyrovnávání zatížení Azure a brány vzdálené plochy (RD). Nyní můžete vytvořit farmy služby Brána VP v jednom cloudové služby.
+Zdroj IP spřažení řeší nekompatibilitou hello nástroj pro vyrovnávání zatížení Azure a brány vzdálené plochy (RD). Nyní můžete vytvořit farmy služby Brána VP v jednom cloudové služby.
 
-Další scénář případu využití je média nahrávání, kde nahrávání dat se nakonfigurují UDP ale rovině řízení je dosaženo pomocí TCP:
+Další scénář případu využití je média nahrávání, kde nahrání dat hello se nakonfigurují UDP ale rovině řízení hello je dosaženo pomocí TCP:
 
-* Klient nejprve zahájí relace TCP na skupinu s vyrovnáváním zatížení veřejnou adresu, získá přesměrován na konkrétní vyhrazené IP adresy v tomto kanálu zůstane aktivní, monitorování stavu připojení
-* Novou relaci UDP ze stejné klientský počítač se zahájí na stejný veřejný koncový bod Vyrovnávání zatížení, zde očekává se, že toto připojení je také k přesměrování stejný koncový bod vyhrazené IP adresy jako bylo předchozí připojení TCP tak, aby média nahrát mohou být provedeny na vysokou propustnost při zachování také řídicí kanál prostřednictvím TCP.
+* Klient nejprve zahájí veřejnou adresu s vyrovnáváním zatížení toohello relace TCP, získá směrovanou tooa konkrétní vyhrazené IP adresy v tomto kanálu je stav připojení levém active toomonitor hello
+* Novou relaci UDP z hello stejný klientský počítač je zahájena toohello veřejný koncový bod s vyrovnáváním zatížení stejné, zde hello očekává se, aby toto připojení je také směrovanou toohello může být stejný koncový bod vyhrazené IP adresy jako hello předchozí připojení TCP tak, aby média nahrát provedená Vysoká propustnost při zachování také řídicí kanál prostřednictvím TCP.
 
 > [!NOTE]
-> Když se změní sady s vyrovnáváním zatížení (odebrání nebo přidání virtuálního počítače), distribuci požadavky klientů je přepočítávány. Nemůže záviset na nové připojení z existující klienti ukončení na stejném serveru. Kromě toho použití zdrojové IP adresy režim distribuce spřažení může způsobit jako nerovné distribučního provozu. Klienti se systémem za proxy může považovat za jeden jedinečných klientských aplikací.
+> Když se změní sady s vyrovnáváním zatížení (odebrání nebo přidání virtuálního počítače), je přepočítávány hello distribuce požadavky klientů. Nemůže záviset na nové připojení z existující klienti ukončení v hello stejný server. Kromě toho použití zdrojové IP adresy režim distribuce spřažení může způsobit jako nerovné distribučního provozu. Klienti se systémem za proxy může považovat za jeden jedinečných klientských aplikací.
 
 ## <a name="configuring-source-ip-affinity-settings-for-load-balancer"></a>Konfigurace nastavení spřažení zdrojové IP adresy pro službu Vyrovnávání zatížení
 
-Pro virtuální počítače můžete použít PowerShell Chcete-li změnit nastavení časového limitu:
+Pro virtuální počítače můžete použít nastavení vypršení časového limitu toochange prostředí PowerShell:
 
-Koncový bod Azure přidejte k virtuálnímu počítači a nastavte režim distribuce nástroje pro vyrovnávání zatížení
+Přidejte tooa Azure koncový bod virtuálního počítače a nastavte režim distribuce nástroje pro vyrovnávání zatížení
 
 ```powershell
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-LoadBalancerDistribution může být nastaven na sourceIP pro 2-n-tice (zdrojová adresa IP, cílovou IP adresu) služby Vyrovnávání zatížení, sourceIPProtocol pro vyrovnávání zatížení 3-n-tice (zdrojová adresa IP, cílové adresy IP, protokol), nebo žádný Pokud chcete výchozí chování Vyrovnávání zatížení 5 řazené kolekce členů.
+LoadBalancerDistribution lze nastavit toosourceIP pro 2-n-tice (zdrojová adresa IP, cílovou IP adresu) služby Vyrovnávání zatížení, sourceIPProtocol pro vyrovnávání zatížení 3-n-tice (zdrojová adresa IP, cílové adresy IP, protokol), nebo žádný Pokud chcete, aby hello výchozí chování Vyrovnávání zatížení 5 řazené kolekce členů.
 
-Použijte následující postupy k načtení konfigurace aplikace endpoint zatížení vyrovnávání distribuční režimu:
+Použijte následující tooretrieve režimu konfigurace koncového bodu zatížení vyrovnávání distribuční hello:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -83,19 +83,19 @@ Použijte následující postupy k načtení konfigurace aplikace endpoint zatí
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Pokud není zadán LoadBalancerDistribution element nástroje pro vyrovnávání zatížení Azure používá výchozí algoritmus 5 řazené kolekce členů.
+Pokud není zadán hello LoadBalancerDistribution element používá nástroj pro vyrovnávání zatížení Azure hello hello výchozí 5 řazené kolekce členů algoritmus.
 
-### <a name="set-the-distribution-mode-on-a-load-balanced-endpoint-set"></a>Nastavit režim distribuce na sady koncových bodů s vyrovnáváním zatížení
+### <a name="set-hello-distribution-mode-on-a-load-balanced-endpoint-set"></a>Nastavit režim distribuce hello na sady koncových bodů s vyrovnáváním zatížení
 
-Pokud koncové body jsou součástí sady koncových bodů s vyrovnáváním zatížení, režim distribuce musí být nastavena na sady koncových bodů s vyrovnáváním zatížení:
+Pokud koncové body jsou součástí sady koncových bodů s vyrovnáváním zatížení, režim distribuce hello musí být nastavena na sady koncových bodů s vyrovnáváním zatížení hello:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="cloud-service-configuration-to-change-distribution-mode"></a>Konfigurace služby, chcete-li změnit režim distribuce v cloudu
+### <a name="cloud-service-configuration-toochange-distribution-mode"></a>Cloudové služby konfigurace toochange distribuční režimu
 
-Sada Azure SDK pro .NET 2.5 (pro vydané v listopadu) můžete využít k aktualizaci cloudové služby. Nastavení koncového bodu pro cloudové služby se provádí v .csdef. Aby bylo možné aktualizovat režim distribuce nástroje pro vyrovnávání zatížení pro nasazení cloudové služby, je požadovaná nasazení upgradu.
+Můžete využít hello Azure SDK pro .NET 2.5 (toobe vydané v listopadu) tooupdate cloudové služby. Nastavení koncového bodu pro cloudové služby se provádí v hello .csdef. Nasazení upgradu v pořadí tooupdate hello vyrovnávání režim distribuce zatížení pro nasazení cloudové služby, není zapotřebí.
 Tady je příklad změny .csdef pro koncový bod nastavení:
 
 ```xml
@@ -118,9 +118,9 @@ Tady je příklad změny .csdef pro koncový bod nastavení:
 
 ## <a name="api-example"></a>Příklad rozhraní API
 
-Můžete nakonfigurovat distribuci nástroje pro vyrovnávání zatížení, pomocí rozhraní API správy služby. Nezapomeňte přidat `x-ms-version` záhlaví je nastaven na verzi `2014-09-01` nebo vyšší.
+Můžete nakonfigurovat distribuce nástroje pro vyrovnávání zatížení hello pomocí služby hello rozhraní API pro správu. Ujistěte se, zda text hello tooadd `x-ms-version` záhlaví nastavena tooversion `2014-09-01` nebo vyšší.
 
-### <a name="update-the-configuration-of-the-specified-load-balanced-set-in-a-deployment"></a>Aktualizujte konfiguraci konkrétního nastavení Vyrovnávání zatížení v nasazení
+### <a name="update-hello-configuration-of-hello-specified-load-balanced-set-in-a-deployment"></a>Aktualizace konfigurace hello hello zadat sady s vyrovnáváním zatížení v nasazení
 
 #### <a name="request-example"></a>Příklad požadavku
 
@@ -145,7 +145,7 @@ Můžete nakonfigurovat distribuci nástroje pro vyrovnávání zatížení, pom
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Hodnota LoadBalancerDistribution může být sourceIP pro spřažení 2 řazené kolekce členů, sourceIPProtocol pro spřažení 3 řazené kolekce členů nebo hodnotu none (pro bez přidružení. například 5-n-tice)
+Hodnota Hello LoadBalancerDistribution může být sourceIP pro spřažení 2 řazené kolekce členů, sourceIPProtocol pro spřažení 3 řazené kolekce členů nebo hodnotu none (pro bez přidružení. například 5-n-tice)
 
 #### <a name="response"></a>Odpověď
 

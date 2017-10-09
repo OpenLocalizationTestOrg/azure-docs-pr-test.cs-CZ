@@ -1,6 +1,6 @@
 ---
-title: "Začínáme se správou zařízení Azure IoT Hub (Java) | Microsoft Docs"
-description: "Jak používat k zahájení restartu zařízení vzdálenou správou zařízení Azure IoT Hub. Zařízení Azure IoT SDK pro jazyk Java, kterou použijete k implementaci aplikaci ze simulovaného zařízení, která zahrnuje přímá metoda a sady SDK pro jazyk Java k implementaci aplikační služby, která volá metodu přímé služby Azure IoT."
+title: "aaaGet spuštění se správou zařízení Azure IoT Hub (Java) | Microsoft Docs"
+description: "Jak tooinitiate správy zařízení Azure IoT Hub toouse vzdáleném zařízení restartovat. Použití zařízení Azure IoT hello SDK pro Javu tooimplement aplikaci simulovaného zařízení, která zahrnuje přímá metoda a hello sady SDK služby Azure IoT pro Java tooimplement aplikační služby, která volá metodu přímé hello."
 services: iot-hub
 documentationcenter: .java
 author: dominicbetts
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c75635f366f5ced4bf91792d1a905dd6aab8ed79
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7aaeda9d4ff7002e5c66adfd61e2dfd5bcea964f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
 
@@ -25,57 +25,57 @@ ms.lasthandoff: 08/18/2017
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Použití portálu Azure k vytvoření služby IoT Hub a vytvoření identity zařízení ve službě IoT hub.
-* Vytvořte aplikaci ze simulovaného zařízení, která používá přímý způsob restartování zařízení. Přímé metody jsou vyvolány z cloudu.
-* Vytvořte aplikaci, která volá metodu přímé restartování v aplikaci simulovaného zařízení prostřednictvím služby IoT hub. Tuto aplikaci poté sleduje hlášen vlastnostech ze zařízení, které najdete v části po dokončení operace restartování.
+* Použijte hello portálu toocreate Azure IoT Hub a vytvoření identity zařízení ve službě IoT hub.
+* Vytvoření aplikace simulovaného zařízení, která implementuje přímá metoda tooreboot hello zařízení. Přímé metody jsou vyvolány z cloudu hello.
+* Vytvořte aplikaci, která volá metodu přímé hello restartování v hello aplikaci simulovaného zařízení prostřednictvím služby IoT hub. Tato aplikace pak monitorování hello hlášené vlastnosti z toosee hello zařízení po dokončení operace restartování hello.
 
-Na konci tohoto kurzu máte dvě aplikace konzoly v jazyce Java:
+Na konci hello tohoto kurzu máte dvě aplikace konzoly v jazyce Java:
 
 **simulated-device**. Tuto aplikaci:
 
-* Připojí se ke službě IoT hub s dříve vytvořenou identitou zařízení.
+* Připojí tooyour IoT hub s dříve vytvořenou identitou zařízení hello.
 * Přijme hovor přímá metoda restartování.
 * Simuluje fyzické restartování.
-* Čas poslední restartování prostřednictvím hlášené vlastnosti sestavy.
+* Sestavy hello čas poslední restartování hello prostřednictvím hlášené vlastnosti.
 
 **aktivační událost restartování**. Tuto aplikaci:
 
-* Přímá metoda volá v aplikaci simulovaného zařízení.
-* Zobrazí odpověď na volání metody přímé poslal simulované zařízení
-* Zobrazí aktualizovaná hlášené vlastnosti.
+* Přímá metoda volá v aplikaci simulovaného zařízení hello.
+* Zobrazí hello odpovědi toohello přímé volání metody, které poslal hello simulovaného zařízení
+* Zobrazí hello aktualizovat hlášené vlastnosti.
 
 > [!NOTE]
-> Informace o sadách SDK, které můžete použít k vytváření aplikací pro spuštění na zařízení a back end vašeho řešení najdete v tématu [SDK služby Azure IoT][lnk-hub-sdks].
+> Informace o hello sady SDK, které můžete toorun toobuild aplikace na zařízení a back end vašeho řešení, najdete v části [SDK služby Azure IoT][lnk-hub-sdks].
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu potřebujete:
 
-* Java SE 8. <br/> Kapitola [Příprava vývojového prostředí][lnk-dev-setup] popisuje postup instalace Javy pro tento návod v systému Windows nebo Linux.
-* Maven 3.  <br/> Kapitola [Příprava vývojového prostředí][lnk-dev-setup] popisuje postup instalace nástroje [Maven][lnk-maven] pro tento návod v systému Windows nebo Linux.
+* Java SE 8. <br/> [Příprava vývojového prostředí] [ lnk-dev-setup] popisuje, jak tooinstall Java v tomto kurzu v systému Windows nebo Linux.
+* Maven 3.  <br/> [Příprava vývojového prostředí] [ lnk-dev-setup] popisuje, jak tooinstall [Maven] [ lnk-maven] v tomto kurzu v systému Windows nebo Linux.
 * [Verze Node.js 0.10.0 nebo novější](http://nodejs.org).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivační události restartu vzdálené v zařízení s přímá metoda
+## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a>Aktivační události restartu vzdálené na zařízení hello pomocí přímá metoda
 
 V této části vytvoříte konzolovou aplikaci Java:
 
-1. Vyvolá metodu přímé restartování v aplikaci simulovaného zařízení.
-1. Zobrazí odpověď.
-1. Hlasování hlášen vlastnostech odesílaných ze zařízení k určení po dokončení restartování.
+1. Vyvolá metodu přímé hello restartování v aplikaci simulovaného zařízení hello.
+1. Zobrazí hello odpovědi.
+1. Hlasování hello hlášené vlastnosti odeslaný toodetermine hello zařízení po dokončení restartování hello.
 
-Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody přímé a čtení hlášené vlastnosti.
+Tato Konzolová aplikace připojí tooyour IoT Hub tooinvoke hello přímá metoda a čtení hello hlášené vlastnosti.
 
 1. Vytvořte prázdnou složku s názvem dm-get-started.
 
-1. Ve složce dm-get-started vytvořte projekt Maven s názvem **restartování aktivační událost** pomocí následujícího příkazu na příkazovém řádku. Následující obrázek znázorňuje jeden dlouhý příkaz:
+1. Ve složce hello dm-get-started vytvořte projekt Maven s názvem **restartování aktivační událost** pomocí hello následující příkaz na příkazovém řádku. Následující Hello zobrazuje jeden dlouhý příkaz:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. Na příkazovém řádku přejděte do složky restartování aktivační události.
+1. Na příkazovém řádku přejděte složky toohello restartování aktivační události.
 
-1. Pomocí textového editoru, otevřete soubor pom.xml ve složce restartování aktivační události a přidejte následující závislost na **závislosti** uzlu. Tuto závislost umožňuje komunikovat se službou IoT hub pomocí balíčku klienta služby iot ve vaší aplikaci:
+1. Pomocí textového editoru, otevřete soubor pom.xml hello ve složce hello restartování aktivační události a přidejte následující závislost toohello hello **závislosti** uzlu. Tuto závislost umožňuje, aby vám toouse hello klienta služby iot balíček ve vaší aplikaci toocommunicate službou IoT hub:
 
     ```xml
     <dependency>
@@ -87,9 +87,9 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     ```
 
     > [!NOTE]
-    > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven][lnk-maven-service-search].
+    > Můžete zkontrolovat nejnovější verze hello **klienta služby iot** pomocí [Maven vyhledávání][lnk-maven-service-search].
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:
+1. Přidejte následující hello **sestavení** uzlu po hello **závislosti** uzlu. Tato konfigurace se dá pokyn hello aplikace v jazyce Java 1,8 toobuild Maven toouse:
 
     ```xml
     <build>
@@ -107,11 +107,11 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     </build>
     ```
 
-1. Soubor pom.xml uložte a zavřete.
+1. Uložte a zavřete soubor pom.xml hello.
 
-1. Pomocí textového editoru otevřete trigger-reboot\src\main\java\com\mycompany\app\App.java zdrojový soubor.
+1. Pomocí textového editoru otevřete hello trigger-reboot\src\main\java\com\mycompany\app\App.java zdrojový soubor.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+1. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -126,7 +126,7 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     import java.util.concurrent.ExecutorService;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubconnectionstring}` IoT hub připojovacím řetězcem jste si poznamenali v *vytvoření služby IoT Hub* části:
+1. Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy. Nahraďte `{youriothubconnectionstring}` IoT hub připojovacím řetězcem jste si poznamenali v hello *vytvoření služby IoT Hub* části:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -137,7 +137,7 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. Chcete-li implementovat podproces, který čte hlášené vlastnosti z dvojče zařízení každých 10 sekund, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. tooimplement podproces, který čte hello hlášené vlastnosti z dvojče zařízení hello každých 10 sekund, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -158,7 +158,7 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     }
     ```
 
-1. K vyvolání metody přímé restartování na simulované zařízení, přidejte následující kód, který **hlavní** metoda:
+1. Přímá metoda restartování tooinvoke hello na hello simulované zařízení, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
     System.out.println("Starting sample...");
@@ -183,7 +183,7 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     }
     ```
 
-1. Chcete-li spustit vlákno pro cyklické dotazování hlášen vlastnostech ze simulovaného zařízení, přidejte následující kód, který **hlavní** metoda:
+1. toostart hello vlákno toopoll hello hlášené vlastnosti z hello simulovaného zařízení, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -191,32 +191,32 @@ Tato Konzolová aplikace připojí do služby IoT Hub pro vyvolání metody př�
     executor.execute(showReportedProperties);
     ```
 
-1. Chcete-li umožňují zastavte aplikaci, přidejte následující kód do **hlavní** metoda:
+1. tooenable toostop hello aplikace, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     executor.shutdownNow();
     System.out.println("Shutting down sample...");
     ```
 
-1. Uložte a zavřete soubor trigger-reboot\src\main\java\com\mycompany\app\App.java.
+1. Uložte a zavřete soubor trigger-reboot\src\main\java\com\mycompany\app\App.java hello.
 
-1. Sestavení **restartování aktivační událost** back-end aplikace a opravte všechny chyby. Na příkazovém řádku přejděte do složky, restartování aktivační události a spusťte následující příkaz:
+1. Sestavení hello **restartování aktivační událost** back-end aplikace a opravte všechny chyby. Na příkazovém řádku přejděte toohello restartování aktivační událost složky a spuštění hello následující příkaz:
 
     `mvn clean package -DskipTests`
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení. Aplikace naslouchá restartování přímé volání metody ze služby IoT hub a okamžitě odpoví na toto volání. Aplikace pak chvíli k simulaci procesu restartování předtím, než použije hlášené vlastnost oznámení v režimu spánku **restartování aktivační událost** back-end aplikačním dokončení restartování.
+V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení. Hello aplikace čeká na restartování hello přímá metoda. volání ze služby IoT hub a okamžitě odpoví toothat volání. Hello aplikace pak chvíli v režimu spánku toosimulate hello restartování procesu předtím, než použije hlášené vlastnost toonotify hello **restartování aktivační událost** back-end aplikace, která hello restartování je dokončena.
 
-1. Ve složce dm-get-started vytvořte projekt Maven s názvem **simulated-device** pomocí následujícího příkazu na příkazovém řádku. Toto je jeden dlouhý příkaz:
+1. Ve složce hello dm-get-started vytvořte projekt Maven s názvem **simulated-device** pomocí hello následující příkaz na příkazovém řádku. Hello následuje jeden dlouhý příkaz:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. Na příkazovém řádku přejděte do složky simulated-devices.
+1. Na příkazovém řádku přejděte toohello složky simulated Devices.
 
-1. Pomocí textového editoru otevřete ve složce simulated-device soubor pom.xml a přidejte následující závislost na **závislosti** uzlu. Tuto závislost umožňuje komunikovat se službou IoT hub pomocí balíčku klienta služby iot ve vaší aplikaci:
+1. Pomocí textového editoru, otevřete soubor pom.xml hello ve složce simulated-device hello a přidejte následující závislost toohello hello **závislosti** uzlu. Tuto závislost umožňuje, aby vám toouse hello klienta služby iot balíček ve vaší aplikaci toocommunicate službou IoT hub:
 
     ```xml
     <dependency>
@@ -227,9 +227,9 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     ```
 
     > [!NOTE]
-    > Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven][lnk-maven-device-search].
+    > Můžete zkontrolovat nejnovější verze hello **klienta zařízení iot** pomocí [Maven vyhledávání][lnk-maven-device-search].
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:
+1. Přidejte následující hello **sestavení** uzlu po hello **závislosti** uzlu. Tato konfigurace se dá pokyn hello aplikace v jazyce Java 1,8 toobuild Maven toouse:
 
     ```xml
     <build>
@@ -247,11 +247,11 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     </build>
     ```
 
-1. Soubor pom.xml uložte a zavřete.
+1. Uložte a zavřete soubor pom.xml hello.
 
-1. Pomocí textového editoru, otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java zdroje.
+1. Pomocí textového editoru otevřete hello simulated-device\src\main\java\com\mycompany\app\App.java zdrojový soubor.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+1. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -265,7 +265,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     import java.util.HashSet;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{yourdeviceconnectionstring}` jste si poznamenali v připojovacím řetězcem zařízení *vytvoření identity zařízení* části:
+1. Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy. Nahraďte `{yourdeviceconnectionstring}` s řetězcem připojení zařízení hello jste si poznamenali v hello *vytvoření identity zařízení* části:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -276,31 +276,31 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     private static DeviceClient client;
     ```
 
-1. K implementaci obslužná rutina zpětného volání pro přímé metoda události stavu, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. tooimplement obslužná rutina zpětného volání pro přímé metoda události stavu, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context)
       {
-        System.out.println("IoT Hub responded to device method operation with status " + status.name());
+        System.out.println("IoT Hub responded toodevice method operation with status " + status.name());
       }
     }
     ```
 
-1. K implementaci obslužná rutina zpětného volání pro zařízení twin stav události, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. tooimplement obslužná rutina zpětného volání pro události twin stavu zařízení, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
     {
         public void execute(IotHubStatusCode status, Object context)
         {
-            System.out.println("IoT Hub responded to device twin operation with status " + status.name());
+            System.out.println("IoT Hub responded toodevice twin operation with status " + status.name());
         }
     }
     ```
 
-1. Chcete-li implementovat obslužná rutina zpětného volání pro vlastnosti události, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. tooimplement obslužná rutina zpětného volání pro vlastnosti události, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -313,7 +313,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-1. Chcete-li implementovat vlákno k simulaci restartování zařízení, přidejte následující vnořenou třídu k **aplikace** třídy. Vlákno pět sekund v režimu spánku a poté nastaví **lastReboot** hlášené vlastnost:
+1. tooimplement restartu vlákno toosimulate hello zařízení přidat hello následující vnořené třídy toohello **aplikace** třídy. vlákno Hello pět sekund v režimu spánku a poté nastaví hello **lastReboot** hlášené vlastnost:
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -334,7 +334,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-1. Chcete-li implementovat metodu přímé na zařízení, přidejte následující vnořenou třídu k **aplikace** třídy. Když simulované aplikace obdrží volání **restartovat** přímá metoda ji vrátí potvrzení volající a pak spustí vlákna ke zpracování restartování:
+1. Přímá metoda hello tooimplement na hello zařízení, přidejte následující hello vnořené třídy toohello **aplikace** třídy. Když simulované aplikace hello obdrží volání toohello **restartovat** přímá metoda vrátí volající toohello potvrzení a pak spustí vlákno tooprocess hello restartovat:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -366,20 +366,20 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-1. Upravte podpis metody **hlavní** metoda k vyvolání následující výjimky:
+1. Upravte podpis hello hello **hlavní** hello toothrow metoda následující výjimky:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. K vytváření instancí **DeviceClient**, přidejte následující kód, který **hlavní** metoda:
+1. tooinstantiate **DeviceClient**, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-1. Pokud chcete spustit přijímá volání přímá metoda, přidejte následující kód do **hlavní** metoda:
+1. toostart přijímá volání přímá metoda, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
     try
@@ -387,7 +387,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
       client.open();
       client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
       client.startDeviceTwin(new DeviceTwinStatusCallback(), null, new PropertyCallback(), null);
-      System.out.println("Subscribed to direct methods and polling for reported properties. Waiting...");
+      System.out.println("Subscribed toodirect methods and polling for reported properties. Waiting...");
     }
     catch (Exception e)
     {
@@ -397,10 +397,10 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-1. Chcete-li vypnout v simulátoru zařízení, přidejte následující kód do **hlavní** metoda:
+1. tooshut dolů hello simulátor zařízení, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
-    System.out.println("Press any key to exit...");
+    System.out.println("Press any key tooexit...");
     Scanner scanner = new Scanner(System.in);
     scanner.nextLine();
     scanner.close();
@@ -408,31 +408,31 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     System.out.println("Shutting down...");
     ```
 
-1. Uložte a zavřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.
+1. Uložte a zavřete soubor simulated-device\src\main\java\com\mycompany\app\App.java hello.
 
-1. Sestavení **simulated-device** back-end aplikace a opravte všechny chyby. Na příkazovém řádku přejděte do složky simulated-device a spusťte následující příkaz:
+1. Sestavení hello **simulated-device** back-end aplikace a opravte všechny chyby. Na příkazovém řádku přejděte složky simulated Devices toohello a spuštění hello následující příkaz:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-the-apps"></a>Spouštění aplikací
+## <a name="run-hello-apps"></a>Spuštění aplikace hello
 
-Nyní jste připraveni aplikaci spustit.
+Nyní je připraven toorun hello aplikace.
 
-1. V příkazovém řádku ve složce simulated-device spusťte následující příkaz, aby začal přijímat volání metody restartování ze služby IoT hub:
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Přímá metoda volání restartovat aplikaci simulovaného zařízení Java IoT Hub pro naslouchání][1]
-
-1. Na příkazovém řádku ve složce Aktivační událost restartování spusťte následující příkaz k volání metody restartování na simulovaného zařízení ze služby IoT hub:
+1. Na příkazovém řádku ve složce simulated-device hello spusťte následující příkaz toobegin přijímá restartování metoda volání ze služby IoT hub hello:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Aplikace služby Java IoT Hub k volání metody přímé restartování][2]
+    ![IoT Hub Java simulované zařízení aplikaci toolisten pro volání metod přímé restartování][1]
 
-1. Simulované zařízení reaguje na volání metody přímé restartování:
+1. Na příkazovém řádku ve složce hello restartování aktivační událost spusťte následující příkaz toocall hello restartování metodu na simulovaného zařízení ze služby IoT hub hello:
 
-    ![Aplikaci simulovaného zařízení Java IoT Hub odpoví na volání přímá metoda][3]
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Hello toocall aplikace služby Java IoT Hub restartovat přímá metoda][2]
+
+1. Simulované zařízení Hello odpoví toohello restartování přímá metoda volání:
+
+    ![Volání metody přímé toohello odpoví aplikaci simulovaného zařízení Java IoT Hub][3]
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

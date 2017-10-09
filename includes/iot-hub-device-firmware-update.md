@@ -1,25 +1,25 @@
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 V této části:
 
-* Vytvoříte konzolovou aplikaci Node.js, která bude reagovat na přímou metodu volanou cloudem.
+* Vytvořte konzolovou aplikaci Node.js, která odpovídá tooa přímá metoda volá hello cloudu
 * Aktivujete simulovanou aktualizaci firmwaru.
-* Pomocí ohlášených vlastností umožníte dotazům na dvojčata zařízení identifikovat zařízení a čas jejich poslední dokončené aktualizace firmwaru.
+* Použití hello hlášené vlastnosti tooenable zařízení twin dotazy tooidentify zařízení a po poslední dokončení aktualizace firmwaru
 
-Krok 1: Vytvoření prázdnou složku s názvem **manageddevice**.  Ve složce **manageddevice** vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku. Přijměte všechny výchozí hodnoty:
+Krok 1: Vytvoření prázdnou složku s názvem **manageddevice**.  V hello **manageddevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku hello. Přijměte všechny výchozí hodnoty hello:
    
     ```
     npm init
     ```
 
-Krok 2: na příkazovém řádku v **manageddevice** složky, spusťte následující příkaz k instalaci **azure-iot-device** a **azure-iot zařízení mqtt** zařízení SDK balíčky:
+Krok 2: na příkazovém řádku v hello **manageddevice** složky, spusťte následující příkaz tooinstall hello hello **azure-iot-device** a **azure-iot zařízení mqtt** zařízení Balíčky sady SDK:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-Krok 3: Pomocí textového editoru, vytvořte **dmpatterns_fwupdate_device.js** v soubor **manageddevice** složky.
+Krok 3: Pomocí textového editoru, vytvořte **dmpatterns_fwupdate_device.js** souboru v hello **manageddevice** složky.
 
-Krok 4: Přidejte následující příkazy na začátku "vyžadovat" **dmpatterns_fwupdate_device.js** souboru:
+Krok 4: Přidejte následující hello "vyžadovat" příkazy při spuštění hello hello **dmpatterns_fwupdate_device.js** souboru:
    
     ```
     'use strict';
@@ -27,14 +27,14 @@ Krok 4: Přidejte následující příkazy na začátku "vyžadovat" **dmpattern
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-Krok 5: Přidejte **connectionString** proměnné a použít ho k vytvoření **klienta** instance. Nahraďte zástupný text `{yourdeviceconnectionstring}` připojovacím řetězcem, který jste si zaznamenali dříve v části Vytvoření identity zařízení:
+Krok 5: Přidejte **connectionString** proměnné a použít ho toocreate **klienta** instance. Nahraďte hello `{yourdeviceconnectionstring}` zástupný symbol připojovacího řetězce hello dříve provedené poznamenejte si v části "Vytvoření identity zařízení" hello dříve:
    
     ```
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-Krok 6: Přidejte následující funkce, které se používá k aktualizaci hlášené vlastnosti:
+Krok 6: Přidejte hello následující funkce, která je použité tooupdate hlášené vlastnosti:
    
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -51,7 +51,7 @@ Krok 6: Přidejte následující funkce, které se používá k aktualizaci hlá
     };
     ```
 
-Krok 7: Přidejte následující funkce, které simulují stažením a použitím firmware bitové kopie:
+Krok 7: Přidejte následující funkce, které simulují stažení a použití bitové kopie firmware hello hello:
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -74,7 +74,7 @@ Krok 7: Přidejte následující funkce, které simulují stažením a použití
     }
     ```
 
-Krok 8: Přidejte následující funkce, která aktualizuje stav aktualizace firmwaru je hlášen vlastnostech k **čekání**. Zařízení jsou obvykle informována o dostupné aktualizaci a správcem definovaná zásada způsobí, že začnou stahovat a aplikovat aktualizaci firmwaru. V této funkci by měla běžet logika, která povoluje tuto zásadu. Pro jednoduchost ukázky čeká čtyři sekund, než budete pokračovat stáhnout do firmwaru:
+Krok 8: Přidejte následující funkce, že stav aktualizace firmwaru hello aktualizací prostřednictvím hello ohlásil vlastnosti příliš hello**čekání**. Zařízení jsou obvykle zásad způsobuje hello zařízení toostart stažení a použití aktualizace hello informovány o k dispozici aktualizace a definovaného správcem. Tato funkce je kde hello tooenable logiku, která se má spustit zásady. Pro jednoduchost ukázka hello čeká čtyři sekund před pokračováním toodownload hello firmware obrázku:
    
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -90,7 +90,7 @@ Krok 8: Přidejte následující funkce, která aktualizuje stav aktualizace fir
     };
     ```
 
-Krok 9: Přidejte následující funkce, která aktualizuje stav aktualizace firmwaru je hlášen vlastnostech k **stahování**. Funkce pak simuluje stahování firmwaru a nakonec aktualizuje stav aktualizace firmwaru buď na **downloadFailed** (Stahování selhalo), nebo **downloadComplete** (Stahování dokončeno):
+Krok 9: Přidejte následující funkce, že stav aktualizace firmwaru hello aktualizací prostřednictvím hello ohlásil vlastnosti příliš hello**stahování**. Hello funkce pak simuluje stahování firmwaru a nakonec aktualizace hello tooeither stav aktualizace firmwaru **downloadFailed** nebo **downloadComplete**:
    
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -128,7 +128,7 @@ Krok 9: Přidejte následující funkce, která aktualizuje stav aktualizace fir
     }
     ```
 
-Krok 10: Přidejte následující funkce, která aktualizuje stav aktualizace firmwaru je hlášen vlastnostech k **použití**. Funkce pak simuluje aplikování image firmwaru a nakonec aktualizuje stav aktualizace firmwaru buď na **applyFailed** (Aplikování selhalo), nebo **applyComplete** (Aplikování dokončeno):
+Krok 10: Přidejte následující funkce, že stav aktualizace firmwaru hello aktualizací prostřednictvím hello ohlásil vlastnosti příliš hello**použití**. Hello funkce pak simuluje použití bitové kopie hello firmware a nakonec aktualizace hello tooeither stav aktualizace firmwaru **applyFailed** nebo **applyComplete**:
     
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -166,31 +166,31 @@ Krok 10: Přidejte následující funkce, která aktualizuje stav aktualizace fi
     }
     ```
 
-Krok 11: Přidejte následující funkce, která zpracovává **firmwareUpdate** přímá metoda a zahájí aktualizaci firmwaru více fáze procesu:
+Krok 11: Přidejte následující hello funkce této obslužné rutiny hello **firmwareUpdate** přímá metoda a firmware více fáze hello zahájí proces aktualizovat:
     
     ```
     var onFirmwareUpdate = function(request, response) {
     
-      // Respond the cloud app for the direct method
+      // Respond hello cloud app for hello direct method
       response.send(200, 'FirmwareUpdate started', function(err) {
         if (!err) {
           console.error('An error occured when sending a method response:\n' + err.toString());
         } else {
-          console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+          console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
         }
       });
     
-      // Get the parameter from the body of the method request
+      // Get hello parameter from hello body of hello method request
       var fwPackageUri = request.payload.fwPackageUri;
     
-      // Obtain the device twin
+      // Obtain hello device twin
       client.getTwin(function(err, twin) {
         if (err) {
           console.error('Could not get device twin.');
         } else {
           console.log('Device twin acquired.');
     
-          // Start the multi-stage firmware update
+          // Start hello multi-stage firmware update
           waitToDownload(twin, fwPackageUri, function() {
             downloadImage(twin, fwPackageUri, function(imageData) {
               applyImage(twin, imageData, function() {});    
@@ -202,14 +202,14 @@ Krok 11: Přidejte následující funkce, která zpracovává **firmwareUpdate**
     }
     ```
 
-Krok 12: Nakonec přidejte následující kód, který se připojuje ke službě IoT hub:
+Krok 12: Nakonec přidejte následující kód, který se připojuje tooyour IoT hub hello:
     
     ```
     client.open(function(err) {
       if (err) {
-        console.error('Could not connect to IotHub client');
+        console.error('Could not connect tooIotHub client');
       }  else {
-        console.log('Client connected to IoT Hub.  Waiting for firmwareUpdate direct method.');
+        console.log('Client connected tooIoT Hub.  Waiting for firmwareUpdate direct method.');
       }
     
       client.onDeviceMethod('firmwareUpdate', onFirmwareUpdate);
@@ -217,6 +217,6 @@ Krok 12: Nakonec přidejte následující kód, který se připojuje ke službě
     ```
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN [přechodných chyb](https://msdn.microsoft.com/library/hh675232.aspx).
+> věcí tookeep jednoduchý, tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN hello [přechodných chyb](https://msdn.microsoft.com/library/hh675232.aspx).
 > 
 > 

@@ -1,6 +1,6 @@
 ---
-title: "Zobrazení systému SQL Data Warehouse | Microsoft Docs"
-description: "Odkazy na systémové zobrazení obsahu pro SQL Data Warehouse."
+title: "zobrazení datového skladu systému aaaSQL | Microsoft Docs"
+description: "Obsah zobrazení toosystem odkazy pro SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 07/12/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bd4d7184f6c95b37fe16b897c44c46000bbb2746
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="system-views"></a>Systémová zobrazení
 ## <a name="sql-data-warehouse-catalog-views"></a>Zobrazení katalogu SQL Data Warehouse
@@ -61,8 +61,8 @@ ms.lasthandoff: 08/03/2017
 * [Sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](http://msdn.microsoft.com/library/mt203909.aspx)
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server zobrazení dynamické správy pro datový sklad SQL
-Následující zobrazení dynamické správy se dají použít pro SQL Data Warehouse, ale je třeba spustit prostřednictvím připojení ke **hlavní** databáze.
+## <a name="sql-server-dmvs-applicable-toosql-data-warehouse"></a>Použít tooSQL zobrazení dynamické správy serveru SQL datového skladu
+Hello následující zobrazení dynamické správy jsou příslušné tooSQL datového skladu, ale je třeba spustit připojením toohello **hlavní** databáze.
 
 * [Sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [Sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -135,18 +135,18 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [Sys.Views](http://msdn.microsoft.com/library/ms190334.aspx)
 
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server zobrazení dynamické správy k dispozici v SQL Data Warehouse
-SQL Data Warehouse zpřístupňuje řadu zobrazení dynamické správy SQL Server (zobrazení dynamické správy). Tato zobrazení, když je dotazován v SQL Data Warehouse se hlásí stav databáze SQL, které jsou spuštěné v distribucí.
+SQL Data Warehouse zpřístupňuje řadu zobrazení dynamické správy SQL Server hello (zobrazení dynamické správy). Tato zobrazení, když je dotazován v SQL Data Warehouse se hlásí hello stav databáze SQL, které jsou spuštěné v hello distribuce.
 
-Vzhledem k tomu, že SQL Data Warehouse je postavená na MPP technologie společnosti Microsoft, použijte stejné zobrazení systému SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW).
+Vzhledem k tomu, že SQL Data Warehouse je postavená na MPP technologie společnosti Microsoft, hello SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) použijte stejné systémová zobrazení.
 
-Z tohoto důvodu každý z těchto DMV má konkrétní sloupec s názvem pdw_node_id. Toto je identifikátor pro výpočetním uzlu. V PDW výpočetní uzel je silnější koncept pro architekturu. V SQL Data Warehouse architektura intenzivněji spoléhá na distribucí.
+Z tohoto důvodu každý z těchto DMV má konkrétní sloupec s názvem pdw_node_id. Toto je identifikátor hello hello hello výpočetním uzlu. V PDW hello výpočetním uzlu je silnější koncept pro architekturu hello. V SQL Data Warehouse architektura hello intenzivněji spoléhá na hello distribuce.
 
 > [!NOTE]
-> Pokud chcete použít tyto zobrazení, vložte 'pdw_nodes_' do názvu, jak je znázorněno v následující tabulce.
+> toouse tyto zobrazit, vložit 'pdw_nodes_' do hello název, jak je znázorněno v následující tabulce hello.
 > 
 > 
 
-| Název DMV v SQL Data Warehouse | Odkaz na téma Transact-SQL služby SQL Server na webu MSDN |
+| Název DMV v SQL Data Warehouse | Odkaz tooSQL Server Transact-SQL, tématu na webu MSDN |
 |:--- |:--- |
 | Sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [Sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | Sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [Sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 

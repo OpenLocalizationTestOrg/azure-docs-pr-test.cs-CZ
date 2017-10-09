@@ -1,6 +1,6 @@
 ---
-title: "Trasování volání pomocí rozhraní API Inspector - Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak pro trasování volání s využitím Inspector rozhraní API v Azure API Management."
+title: "volání aaaTrace pomocí rozhraní API Inspector - Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak pomocí volání tootrace hello Inspector rozhraní API v Azure API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b0c401caa8da1b789f6cfe5edf97a5f118d78f26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Jak používat nástroj Inspector rozhraní API pro trasování volání v Azure API Management
-API Management představuje nástroj Inspector rozhraní API vám pomohou při ladění a řešení potíží s vaše rozhraní API. Rozhraní API Inspector je možné programově a můžete taky použít přímo z portálu pro vývojáře. 
+# <a name="how-toouse-hello-api-inspector-tootrace-calls-in-azure-api-management"></a>Jakým způsobem volá toouse hello tootrace Inspector rozhraní API v Azure API Management
+Služba API Management nabízí rozhraní API Inspector toohelp nástroj k ladění a řešení potíží s vaše rozhraní API. Hello Inspector rozhraní API je možné programově a můžete taky použít přímo z portálu pro vývojáře hello. 
 
-Kromě trasování operací, nástroj Inspector rozhraní API také sleduje [výraz zásady](https://msdn.microsoft.com/library/azure/dn910913.aspx) hodnocení. Ukázka, najdete v části [cloudu zahrnují díl 177: víc funkcí správy rozhraní API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převíjení vpřed na 21:00.
+Kromě toho tootracing operace, nástroj Inspector rozhraní API také sleduje [výraz zásady](https://msdn.microsoft.com/library/azure/dn910913.aspx) hodnocení. Ukázka, najdete v části [cloudu zahrnují díl 177: víc funkcí správy rozhraní API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a převinutí vpřed too21:00.
 
 Tato příručka poskytuje návod pomocí rozhraní API Inspector.
 
 > [!NOTE]
-> Trasování API Inspector pouze generované a k dispozici pro požadavků, které obsahují klíče předplatné, které patří do [správce](api-management-howto-create-groups.md) účtu.
+> Trasování API Inspector pouze generované a k dispozici pro požadavků, které obsahují klíče předplatné, které patří toohello [správce](api-management-howto-create-groups.md) účtu.
 > 
 > 
 
-## <a name="trace-call"></a> Inspector pomocí rozhraní API pro trasování volání
-Použít kontrola rozhraní API, přidejte **ocp-apim trasování: true** žádosti hlavičky k volání operace a pak stáhnout a prohlédnout trasování pomocí adresy URL uvedené **ocp apim trasování umístění** odpovědi hlavička. To lze provést programově a můžete také provést přímo z portálu pro vývojáře.
+## <a name="trace-call"></a> Použití rozhraní API Inspector tootrace volání
+toouse Inspector rozhraní API, přidejte **ocp-apim trasování: true** žádosti o volání operace tooyour záhlaví a pak stáhnout a prohlédnout hello trasování pomocí adresy URL hello indikován hello **ocp apim trasování umístění** hlavička odpovědi. To lze provést programově a můžete také provést přímo z portálu pro vývojáře hello.
 
-Tento kurz ukazuje, jak použít kontrola rozhraní API pro trasování operací pomocí základní rozhraní API kalkulačky, který je nakonfigurovaný v [Správa vašeho prvního rozhraní API](api-management-get-started.md) kurz Začínáme. Pokud jste nedokončili tohoto kurzu trvá jenom pár chvil importovat rozhraní API základní kalkulačky, nebo můžete použít jiné API dle vlastního výběru, jako je například Echo API. Každá instance služby API Management je vybavená předem nakonfigurovaným rozhraním API programu Echo, které můžete použít k experimentování a seznámení se službou API Management. Echo API vrátí zpět ať vstup je do něj odeslané. Pokud chcete použít, můžete vyvolat všechny akce HTTP a návratová hodnota bude jednoduše jste poslali. 
+Tento kurz ukazuje, jak toouse hello API Inspector tootrace operace pomocí hello základní rozhraní API kalkulačky, který je nakonfigurovaný v hello [Správa vašeho prvního rozhraní API](api-management-get-started.md) kurz Začínáme. Pokud jste nedokončili tohoto kurzu trvá jenom pár chvil tooimport hello rozhraní API základní kalkulačky, nebo můžete použít jiné API dle vlastního výběru, jako je například hello Echo API. Každá instance služby API Management je vybavená předem nakonfigurovaným rozhraním Echo API, které je možné použít tooexperiment s a další informace o službě API Management. Hello Echo API vrátí zpět ať vstup je odeslán tooit. toouse, můžete vyvolat všechny akce HTTP a hello návratová hodnota bude jednoduše jste poslali. 
 
-Chcete-li začít, klikněte na tlačítko **portál pro vývojáře** služby API Management na portálu Azure. Operace lze volat přímo z portálu pro vývojáře, která představuje pohodlný způsob pro zobrazení a testování operací v rozhraní API.
+tooget začít, klikněte na tlačítko **portál pro vývojáře** v hello portál Azure pro služby API Management. Operace lze volat přímo z portálu pro vývojáře hello, který nabízí pohodlný způsob tooview a otestovat hello operace rozhraní API.
 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v [Začínáme s Azure API Management] [ Get started with Azure API Management] kurzu.
+> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Začínáme s Azure API Management] [ Get started with Azure API Management] kurzu.
 > 
 > 
 
 ![Portál pro vývojáře API Management][api-management-developer-portal-menu]
 
-Klikněte na tlačítko **rozhraní API** z horní nabídce a pak klikněte na tlačítko **Basic Calculator**.
+Klikněte na tlačítko **rozhraní API** z hello horní nabídce a pak klikněte na tlačítko **Basic Calculator**.
 
 ![Echo API][api-management-api]
 
-Klikněte na tlačítko **vyzkoušet** pokusit **přidat dvě celá čísla** operaci.
+Klikněte na tlačítko **vyzkoušet** tootry hello **přidat dvě celá čísla** operaci.
 
 ![Vyzkoušet][api-management-open-console]
 
-Ponechte výchozí hodnoty parametrů a vyberte klíč předplatného pro produkt, kterou chcete použít z **klíč předplatného** rozevíracího seznamu.
+Ponechat hello výchozí hodnoty parametrů a vyberte hello klíč předplatného pro produkt hello chcete toouse z hello **klíč předplatného** rozevíracího seznamu.
 
-Ve výchozím nastavení v portálu pro vývojáře **Ocp-Apim-trasování** záhlaví je již nastaven na **true**. Tuto hlavičku konfiguruje, zda se vygeneruje trasování.
+Ve výchozím nastavení v portálu hello hello vývojáře **Ocp-Apim-trasování** záhlaví je již nastaven příliš**true**. Tuto hlavičku konfiguruje, zda se vygeneruje trasování.
 
 ![Odeslat][api-management-http-get]
 
-Klikněte na tlačítko **odeslat** k vyvolání operace.
+Klikněte na tlačítko **odeslat** tooinvoke hello operaci.
 
 ![Odeslat][api-management-send-results]
 
-V odpovědi bude hlavičky **ocp apim trasování umístění** s hodnotou podobně jako v následujícím příkladu.
+V odpovědi hello hlavičky bude **ocp apim trasování umístění** s hodnotou podobné toohello následující ukázka.
 
 ```
 ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 ```
 
-Trasování je možné stáhnout ze zadaného umístění a zkontrolovat, jak je předvedeno v dalším kroku. Upozorňujeme, že pouze poslední položky 100 protokolu se ukládají a jsou v otočení opakovaně umístění protokolu. Pokud provedete více než 100 volání s povoleným sledováním nakonec začnete přepsal první trasování na místě.
+trasování Hello si můžete stáhnout z hello zadané umístění a zkontrolovat, jak je předvedeno v dalším kroku hello. Upozorňujeme, že pouze hello poslední 100 záznamů protokolu se ukládají a jsou v otočení opakovaně umístění protokolu. Pokud provedete více než 100 volání s povoleným sledováním nakonec začnete přepsal hello první trasování na místě.
 
-## <a name="inspect-trace"></a>Zkontrolovat trasování
-Chcete-li zkontrolovat hodnoty v trasování, stáhněte soubor trasování z **ocp apim trasování umístění** adresy URL. Je textový soubor ve formátu JSON a obsahuje položky, podobně jako v následujícím příkladu.
+## <a name="inspect-trace"></a>Zkontrolovat hello trasování
+tooreview hello hodnoty v hello trasování, stáhněte si soubor trasování hello ze hello **ocp apim trasování umístění** adresy URL. Je textový soubor ve formátu JSON a obsahuje položky podobné toohello následující ukázka.
 
 ```json
 {
@@ -144,7 +144,7 @@ Chcete-li zkontrolovat hodnoty v trasování, stáhněte soubor trasování z **
                 "timestamp": "2015-06-23T19:51:35.2998610Z",
                 "elapsed": "00:00:00.0727522",
                 "data": {
-                    "message": "Request is being forwarded to the backend service.",
+                    "message": "Request is being forwarded toohello backend service.",
                     "request": {
                         "method": "GET",
                         "url": "http://calcapi.cloudapp.net/api/add?a=51&b=49",
@@ -219,7 +219,7 @@ Chcete-li zkontrolovat hodnoty v trasování, stáhněte soubor trasování z **
                 "timestamp": "2015-06-23T19:51:35.4256650Z",
                 "elapsed": "00:00:00.1961112",
                 "data": {
-                    "message": "Response headers have been sent to the caller. Starting to stream the response body."
+                    "message": "Response headers have been sent toohello caller. Starting toostream hello response body."
                 }
             },
             {
@@ -227,7 +227,7 @@ Chcete-li zkontrolovat hodnoty v trasování, stáhněte soubor trasování z **
                 "timestamp": "2015-06-23T19:51:35.4256650Z",
                 "elapsed": "00:00:00.1963155",
                 "data": {
-                    "message": "Response body streaming to the caller is complete."
+                    "message": "Response body streaming toohello caller is complete."
                 }
             }
         ]
@@ -235,15 +235,15 @@ Chcete-li zkontrolovat hodnoty v trasování, stáhněte soubor trasování z **
 }
 ```
 
-## <a name="next-steps"> </a>Další kroky
-* Podívejte se na ukázku trasování výrazy zásad v [cloudu zahrnují díl 177: víc funkcí správy rozhraní API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Převinutí souboru 21:00 zobrazíte ukázku.
+## <a name="next-steps"></a>Další kroky
+* Podívejte se na ukázku trasování výrazy zásad v [cloudu zahrnují díl 177: víc funkcí správy rozhraní API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Rychlé převíjení vpřed too21:00 toosee hello ukázku.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Cloud+Cover/Episode-177-More-API-Management-Features-with-Vlad-Vinogradsky/player]
 > 
 > 
 
-[Use API Inspector to trace a call]: #trace-call
-[Inspect the trace]: #inspect-trace
+[Use API Inspector tootrace a call]: #trace-call
+[Inspect hello trace]: #inspect-trace
 [Next steps]: #next-steps
 
 [Configure API settings]: api-management-howto-create-apis.md#configure-api-settings

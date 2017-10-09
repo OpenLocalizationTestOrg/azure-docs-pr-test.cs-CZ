@@ -4,34 +4,34 @@
 > 
 > 
 
-Tento článek poskytuje podrobný návod k [ukázkovému kódu Hello World][lnk-helloworld-sample] pro ilustraci základních komponent architektury [Azure IoT Edge][lnk-iot-edge]. Ukázka používá Azure IoT Edge k vytvoření jednoduché brány, která každých pět sekund zaznamená do souboru zprávu „hello world“.
+Tento článek obsahuje podrobný návod k hello [Hello, World ukázkový kód] [ lnk-helloworld-sample] tooillustrate hello základní součástí hello [Azure IoT Edge] [ lnk-iot-edge] architektura. Hello ukázce se používá toobuild hello Azure IoT hraniční bránu jednoduché protokoly každých pět sekund soubor tooa zprávu "hello, world".
 
 Tento návod ilustruje:
 
-* **Hello World ukázková architektura**: Popisuje, jak [architektury koncepty Azure IoT Edge] [ lnk-edge-concepts] týkají Hello, World vzorek a jak součásti zapadají.
-* **Postup k vytvoření ukázky**: kroky potřebné k vytvoření ukázkového kódu.
-* **Postup spuštění ukázky**: kroky potřebné ke spuštění ukázkového kódu. 
-* **Příklad typického výstupu**: příklad výstupu, jaký můžete očekávat při spuštění ukázky.
-* **Fragmenty kódu**: kolekce fragmenty kódu zobrazit, jak Hello, World vzorek implementuje klíčové komponenty IoT hraniční brány.
+* **Hello World ukázková architektura**: Popisuje, jak [architektury koncepty Azure IoT Edge] [ lnk-edge-concepts] použít toohello Hello, World vzorek a jak hello součásti zapadají.
+* **Jak toobuild hello ukázka**: hello kroky požadované toobuild hello ukázka.
+* **Jak toorun hello ukázka**: hello kroky požadované toorun hello ukázka. 
+* **Typické výstup**: Příklad hello výstup tooexpect při spuštění ukázkové hello.
+* **Fragmenty kódu**: kolekce tooshow fragmenty kódu jak ukázka programu hello Hello World implementuje klíče IoT hraniční brány součásti.
 
 
 ## <a name="hello-world-sample-architecture"></a>Architektura ukázky Hello World
-Ukázka Hello World ilustruje koncepty popsané v předchozí části. Hello World vzorek implementuje IoT hraniční bránu, která se skládá ze dvou IoT Edge moduly kanál:
+Ukázka programu Hello Hello World znázorňuje hello konceptů popsaných v předchozí části hello. Ukázka programu Hello Hello World implementuje IoT hraniční bránu, která se skládá ze dvou IoT Edge moduly kanál:
 
-* Modul *hello world* vytvoří každých pět sekund zprávu a předá ji do modulu logger.
-* Modul *logger* zapíše přijatou zprávu do souboru.
+* Hello *hello, world* modulu vytvoří zprávu každých pět sekund a předává je modul toohello protokolovacího nástroje.
+* Hello *protokolovač* zprávy hello zápisy modulu obdrží tooa souboru.
 
 ![Architektura ukázky Hello World vytvořené s použitím služby Azure IoT Edge][4]
 
-Jak je popsáno v předchozí části, modul Hello World nepředává každých pět sekund zprávu přímo do modulu logger. Místo toho ji každých pět sekund publikuje do zprostředkovatele.
+Jak je popsáno v předchozí části hello, hello World Hello modulu nepředává zprávy přímo toohello protokoly modulu každých pět sekund. Místo toho se publikuje zprostředkovatel toohello zpráva každých pět sekund.
 
-Protokolovací modul obdrží od zprostředkovatele zprávu a postupuje podle ní, zatímco zapisuje obsah zprávy do souboru.
+Hello protokolovacího nástroje modul přijímá uvítací zprávu z hello zprostředkovatele a spustí se při, zápis hello obsah souboru tooa zpráva hello.
 
-Protokolovací modul od zprostředkovatele zprávy pouze přijímá, nikdy žádné sám nepublikuje.
+Hello protokoly modulu využívá pouze zprávy z hello zprostředkovatele, se nikdy publikuje nový zprostředkovatel toohello zprávy.
 
-![Způsob, jakým zprostředkovatel provádí směrování zpráv mezi moduly ve službě Azure IoT Edge][5]
+![Jak hello zprostředkovatele směrování zpráv mezi moduly v Azure IoT Edge][5]
 
-Obrázek nahoře ukazuje architekturu ukázky Hello World a relativní cesty ke zdrojovým souborům, které implementují jednotlivé části, v [úložišti][lnk-iot-edge]. Prozkoumejte kód sami, nebo pro orientaci použijte fragmenty kódu uvedené dole.
+Hello výše uvedené schéma ukazuje architekturu hello ukázka programu hello Hello World a relativní cesty hello toohello zdrojové soubory, které implementují různé části hello ukázka v hello [úložiště][lnk-iot-edge]. Prozkoumejte hello kód vlastní, nebo hello fragmenty kódu níže, použijte jako vodítko.
 
 <!-- Images -->
 [4]: media/iot-hub-iot-edge-getstarted-selector/high_level_architecture.png

@@ -1,6 +1,6 @@
 ---
-title: "Běžné cloudové služby úlohy správy (klasické) | Microsoft Docs"
-description: "Naučte se spravovat cloudové služby na portálu Azure classic."
+title: "úlohy správy aaaCommon cloudové služby (klasické) | Microsoft Docs"
+description: "Zjistěte, jak toomanage cloudových služeb v hello portál Azure classic."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,142 +14,142 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 2ee76dfcb579e53975b1f61a6590f8d78dc0961b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 03b1d632f1480d0f65c87b7f8ffc747417acf7b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-cloud-services"></a>Jak spravovat cloudové služby
+# <a name="how-toomanage-cloud-services"></a>Jak tooManage cloudových služeb
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-how-to-manage-portal.md)
 > * [Portál Azure Classic](cloud-services-how-to-manage.md)
 >
 >
 
-V **cloudové služby** oblasti Azure classic portálu, můžete aktualizovat roli služby nebo nasazení, zvýšení úrovně dvoufázového nasazení do produkčního prostředí, propojte prostředky ke cloudové službě, můžete zobrazit závislosti prostředků a škálování prostředky společně a odstranit cloudovou službu nebo nasazení.
+V hello **cloudové služby** oblasti hello Azure classic portálu, můžete aktualizovat roli služby nebo nasazení, zvýšení úrovně tooproduction dvoufázového nasazení, propojte prostředky tooyour cloudové služby, můžete zobrazit hello prostředky závislosti a škálování hello prostředky společně a odstraňte cloudovou službu nebo nasazení.
 
 ## <a name="how-to-update-a-cloud-service-role-or-deployment"></a>Postupy: aktualizovat roli služby cloudu nebo nasazení
-Pokud je potřeba aktualizovat kód aplikace pro cloudové služby, použijte **aktualizace** na řídicím panelu **cloudové služby** stránky, nebo **instance** stránky. Můžete aktualizovat roli jednoho nebo všech rolí. Budete muset nahrát nový balíček služby a konfigurační soubor služby.
+Pokud potřebujete kód aplikace hello tooupdate pro cloudové služby, použijte **aktualizace** na řídicím panelu hello **cloudové služby** stránky, nebo **instance** stránky. Můžete aktualizovat roli jednoho nebo všech rolí. Budete potřebovat tooupload nový balíček služby a konfigurační soubor služby.
 
-1. V [portál Azure classic](https://manage.windowsazure.com/), na řídicím panelu **cloudové služby** stránky, nebo **instance** klikněte na tlačítko **aktualizace**.
+1. V hello [portál Azure classic](https://manage.windowsazure.com/), na řídicím panelu hello **cloudové služby** stránky, nebo **instance** klikněte na tlačítko **aktualizace**.
 
     ![UpdateDeployment](./media/cloud-services-how-to-manage/CloudServices_UpdateDeployment.png)
 
-2. V **označení nasazení**, zadejte název pro identifikaci nasazení (například mycloudservice4). Označení nasazení v části zjistíte **úvodní** na řídicím panelu.
-3. V **balíček**, použijte **Procházet** pro nahrání souboru balíku služeb (.cspkg).
-4. V **konfigurace**, použijte **Procházet** nahrát konfigurační soubor služby (.cscfg).
-5. V **Role**, vyberte **všechny** Pokud chcete upgradovat všechny role v rámci cloudové služby. Pokud chcete provést aktualizaci s jedinou rolí, vyberte roli, kterou chcete aktualizovat. I když vyberete určité role aktualizace, aktualizace v konfiguračním souboru služby platí pro všechny role.
-6. Pokud se aktualizace změní počet rolí nebo velikost žádnou roli, vyberte **povolit aktualizaci, pokud se změní velikost role nebo počet rolí** zaškrtávacího políčka umožníte aktualizace, aby bylo možné pokračovat.
+2. V **označení nasazení**, zadejte název tooidentify hello nasazení (například mycloudservice4). Zjistíte označení nasazení hello pod **úvodní** na řídicím panelu hello.
+3. V **balíček**, použijte **Procházet** tooupload hello souboru balíku služeb (.cspkg).
+4. V **konfigurace**, použijte **Procházet** tooupload hello služby konfiguračního souboru (.cscfg).
+5. V **Role**, vyberte **všechny** Pokud chcete, aby tooupgrade všechny role v hello Cloudová služba. Aktualizovat tooperform jedné role, vyberte hello role, které chcete tooupdate. I když vyberete tooupdate konkrétní roli, hello aktualizace v konfiguračním souboru služby hello jsou použité tooall role.
+6. Pokud změny aktualizace hello hello počet rolí nebo hello velikost žádnou roli, vyberte hello **povolit aktualizaci, pokud se změní velikost role nebo počet rolí** tooproceed aktualizace hello tooenable zaškrtávací políčko.
 
-    Uvědomte si, že pokud změníte velikost role (to znamená, velikost virtuálního počítače, který je hostitelem role instance) nebo počet rolí, každá instance role (virtuálním počítači) musí být znovu s vytvořenými bitovými kopiemi a všechny místní data budou ztracena.
+    Mějte na paměti, když změníte velikost hello role (tedy hello velikost virtuálního počítače, který je hostitelem role instance) nebo hello počet rolí, každá instance role (virtuálním počítači) musí být znovu s vytvořenými bitovými kopiemi a všechny místní data budou ztracena.
 
-7. Pokud všechny služby role mít pouze jednu instanci role, vyberte **aktualizovat i když jeden nebo více rolí obsahuje jednu instanci zaškrtávací políčko** povolit upgradu pokračovat.
+7. Pokud všechny služby role mít pouze jednu instanci role, vyberte hello **aktualizovat i když jeden nebo více rolí obsahuje jednu instanci zaškrtávací políčko** upgradu tooproceed tooenable hello.
 
-    Azure můžete pouze zaručit 99,95 % dostupnost služby při aktualizaci služby cloud pokud každá role má aspoň dvě instance role (virtuální počítače). Umožňující jeden virtuální počítač ke zpracování požadavků klientů dalších během aktualizace.
+    Azure můžete pouze zaručit 99,95 % dostupnost služby při aktualizaci služby cloud pokud každá role má aspoň dvě instance role (virtuální počítače). Umožňující jeden virtuální počítač tooprocess klientských požadavků v průběhu aktualizace hello jiné.
 
-8. Klikněte na tlačítko **OK** (zaškrtnutí) spustíte aktualizaci služby.
+8. Klikněte na tlačítko **OK** aktualizaci služby hello toobegin (zaškrtnutí).
 
-## <a name="how-to-swap-deployments-to-promote-a-staged-deployment-to-production"></a>Postupy: Prohodit nasazení na podporu dvoufázového nasazení do produkčního prostředí
-Použití **Prohodit** ke zvýšení úrovně pracovní nasazení cloudové služby do produkčního prostředí. Pokud se rozhodnete nasadit novou verzi cloudové služby, můžete dvoufázové instalace a otestovat novou verzi v pracovní prostředí vaší cloudové služby, když vaši zákazníci používají aktuální verzi v produkčním prostředí. Až budete připraveni k povýšení nové verze do produkčního prostředí, můžete použít **Prohodit** přepnout adresy URL, které jsou určeny dvě nasazení.
+## <a name="how-to-swap-deployments-toopromote-a-staged-deployment-tooproduction"></a>Postupy: Prohodit nasazení toopromote tooproduction dvoufázového nasazení
+Použití **Prohodit** toopromote pracovní nasazení tooproduction cloudové služby. Pokud se rozhodnete toodeploy novou verzi cloudové služby, můžete dvoufázové instalace a otestovat novou verzi v pracovní prostředí vaší cloudové služby, když vaši zákazníci používají hello aktuální verzi v produkčním prostředí. Až budete připraveni toopromote hello tooproduction nové verze, můžete použít **Prohodit** tooswitch hello adresy URL, pomocí které hello se dvě nasazení podrobněji.
 
-Můžete zaměnit nasazení z **cloudové služby** stránku nebo řídicí panel.
+Můžete zaměnit nasazení z hello **cloudové služby** stránky nebo hello řídicího panelu.
 
-1. V [portál Azure classic](https://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**.
-2. V seznamu cloudové služby klikněte na cloudové služby za účelem vyberte ho.
+1. V hello [portál Azure classic](https://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**.
+2. V seznamu hello cloudových služeb, klikněte na tlačítko hello cloudové služby tooselect ho.
 3. Klikněte na tlačítko **odkládacího souboru**.
 
-    Otevře se následující potvrzovací výzvu.
+    Hello následující potvrzovací výzvu otevře.
 
     ![Cloudové služby Swap](./media/cloud-services-how-to-manage/CloudServices_Swap.png)
 
-4. Po ověření, informace o nasazení, klikněte na tlačítko **Ano** chcete Prohodit nasazení.
+4. Po ověření, informace o nasazení hello, klikněte na tlačítko **Ano** tooswap hello nasazení.
 
-    Swap nasazení dochází rychle jediné, co se změní je virtuální IP adresy (VIP) pro nasazení.
+    swap nasazení Hello dochází rychle hello jediné, co se změní je hello virtuální IP adresy (VIP) pro nasazení hello.
 
-    Abyste ušetřili náklady výpočetní, můžete odstranit nasazení v testovacím prostředí, jakmile se přesvědčíte, že nové produkční nasazení funguje podle očekávání.
+    náklady na výpočetní toosave, můžete odstranit hello nasazení v hello pracovní prostředí, jakmile se přesvědčíte, že hello nové produkční nasazení funguje podle očekávání.
 
 ### <a name="common-questions-about-swapping-deployments"></a>Časté otázky týkající se nasazení vzájemná záměna
 
-**Jaké jsou požadavky pro odkládací nasazení?**
+**Jaké jsou požadavky hello pro odkládací nasazení?**
 
 Existují dva klíče požadavky pro úspěšné nasazení prohození:
 
-- Pokud chcete používat statickou IP adresu pro vaše produkční slot, jeden pro přípravný slot také musíte rezervovat. Prohození, jinak nebude úspěšná.
+- Pokud chcete pro produkční slot toouse statickou IP adresu, musíte rezervovat jeden pro vaše přípravný slot. Hello odkládacího souboru, jinak nebude úspěšná.
 
-- Všechny instance role musí být spuštěna, než bude možné provést prohození. Můžete zkontrolovat stav vaší instance na portálu Azure classic nebo pomocí [příkaz Get-AzureRole v prostředí Windows PowerShell](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0).
+- Všechny instance role musí být spuštěna, než bude možné provést hello swap. Můžete zkontrolovat stav hello vaše instance v hello portál Azure classic nebo pomocí [hello příkaz Get-AzureRole v prostředí Windows PowerShell](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0).
 
-Všimněte si, že aktualizace operačního systému hosta a službou opravy operace může také způsobit nasazení záměna selhání. V tématu [Poradce při potížích se nasazení služby cloud](cloud-services-troubleshoot-deployment-problems.md) další podrobnosti.
+Všimněte si, že aktualizace operačního systému hosta a službou opravy operace může také způsobit toofail záměna nasazení. V tématu [Poradce při potížích se nasazení služby cloud](cloud-services-troubleshoot-deployment-problems.md) další podrobnosti.
 
 **Nesnižuje prohození výpadek své aplikaci? Jak by měly zpracovávat ho?**
 
-Jak je popsáno v poslední části, prohození nasazení je obvykle velmi rychlé vzhledem k tomu, že je právě změnu konfigurace pro vyrovnávání zatížení Azure. V některých případech ale ho můžete trvat deset nebo víc sekund a způsobit selhání přechodný připojení. Chcete-li omezit vliv na vaše zákazníky, zvažte implementaci [logika opakovaných pokusů klienta](../best-practices-retry-general.md).
+Jak je popsáno v poslední části hello, prohození nasazení je obvykle velmi rychlé vzhledem k tomu, že je jenom ke změně konfigurace pro vyrovnávání zatížení Azure hello. V některých případech ale ho můžete trvat deset nebo víc sekund a způsobit selhání přechodný připojení. toolimit dopad tooyour zákazníků, zvažte implementaci [logika opakovaných pokusů klienta](../best-practices-retry-general.md).
 
-## <a name="how-to-link-a-resource-to-a-cloud-service"></a>Postupy: odkaz prostředek cloudové služby
-Abyste označili, na jakých dalších prostředcích vaše cloudová služba závisí, můžete s ní propojit nějakou instanci Azure SQL Database nebo účet úložiště v systému . Můžete propojit a odpojit prostředky na **propojené prostředky** stránky a následně monitorovat jejich využití na řídicím panelu cloudové služby. Pokud propojený účet úložiště monitorování zapnutý, můžete sledovat celkový počet požadavků na řídicím panelu cloudové služby.
+## <a name="how-to-link-a-resource-tooa-cloud-service"></a>Postupy: odkaz prostředků tooa cloudové služby
+tooshow závislosti cloudové služby na jiné prostředky, můžete propojit instance databáze SQL Azure nebo Cloudová služba toohello účet úložiště. Můžete propojit a zrušit propojení prostředky na hello **propojené prostředky** stránky a následně monitorovat jejich využití na řídicí panel hello cloudové služby. Pokud propojený účet úložiště monitorování zapnutý, můžete sledovat celkový počet požadavků na řídicí panel hello cloudové služby.
 
-Použití **odkaz** propojit nový nebo existující databázi SQL instance nebo úložiště účet do cloudové služby. Potom můžete škálovat databázi společně s roli služby cloud, který se používá na **škálování** stránky. (Účet úložiště škáluje automaticky jako zvýšení využití.) Další informace najdete v tématu [postup škálování cloudové služby a propojené prostředky](cloud-services-how-to-scale.md).
+Použití **odkaz** toolink nový nebo existující databázi SQL instance nebo úložiště účet tooyour cloudové služby. Potom můžete škálovat hello databáze spolu s hello cloudové služby role, která jej používá na hello **škálování** stránky. (Účet úložiště škáluje automaticky jako zvýšení využití.) Další informace najdete v tématu [jak tooScale Cloudová služba a propojené prostředky](cloud-services-how-to-scale.md).
 
-Také můžete monitorovat, spravovat a škálovat v databázi **databáze** uzlu portálu Azure classic.
+Také můžete monitorovat, spravovat a škálování hello databáze v hello **databáze** uzlu hello portál Azure classic.
 
-"Propojování" prostředků v tomto smyslu nepodporuje připojení aplikace k prostředku. Pokud vytvoříte novou databázi pomocí **odkaz**, budete muset přidat připojovací řetězce do kódu aplikace a pak upgradujte cloudové služby. Také budete muset přidat připojovací řetězce, pokud vaše aplikace používá prostředky v propojený účet úložiště.
+"Propojování" prostředků v tomto smyslu není připojit toohello prostředek vaší aplikace. Pokud vytvoříte novou databázi pomocí **odkaz**, budete potřebovat tooadd hello připojovací řetězce tooyour kódu aplikace a pak upgradovat hello cloudové služby. Budete také potřebovat tooadd připojovací řetězce Pokud vaše aplikace používá prostředky v propojený účet úložiště.
 
-Následující postup popisuje, jak propojit novou instanci databáze SQL, nasazeny na nový server databáze SQL, do cloudové služby.
+Hello následující postup popisuje, jak toolink novou instanci databáze SQL, nasazena na nový server databáze SQL, tooa cloudové služby.
 
-### <a name="to-link-a-sql-database-instance-to-a-cloud-service"></a>Propojení instanci SQL databáze do cloudové služby
-1. V [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**. Pak klikněte na název cloudové služby za účelem otevře řídicí panel.
+### <a name="toolink-a-sql-database-instance-tooa-cloud-service"></a>toolink SQL Database instance tooa cloudové služby
+1. V hello [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**. Klikněte na tlačítko hello název řídicího panelu tooopen hello hello cloudové služby.
 2. Klikněte na tlačítko **propojené prostředky**.
 
-    **Propojené prostředky** otevře se stránka.
+    Hello **propojené prostředky** otevře se stránka.
 
     ![LinkedResourcesPage](./media/cloud-services-how-to-manage/CloudServices_LinkedResourcesPage.png)
 
 3. Klikněte na možnost **odkaz prostředek** nebo **odkaz**.
 
-    **Prostředků odkaz** spustí se průvodce.
+    Hello **prostředků odkaz** spustí se průvodce.
 
     ![Odkaz Page1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
 4. Klikněte na tlačítko **vytvořte nový prostředek** nebo **propojení na existující prostředek**.
-5. Vyberte typ prostředku propojení. V [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **SQL Database**. (Jenom portál Azure classic podporuje propojení účtu úložiště v cloudové službě.)
-6. Chcete-li dokončit konfiguraci databáze, postupujte podle pokynů v nápovědě pro **databází SQL** oblasti portálu Azure classic.
+5. Zvolte typ hello toolink prostředků. V hello [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **SQL Database**. (Jenom hello klasický portál Azure podporuje propojení účtu úložiště tooa cloudové služby.)
+6. Konfigurace databáze toocomplete hello, postupujte podle pokynů v nápovědě pro hello **databází SQL** oblasti hello portál Azure classic.
 
-    Můžete sledovat průběh operace propojení v oblasti zpráv.
+    Můžete postupovat podle hello průběh hello propojení operace v oblasti zpráv hello.
 
-    Po dokončení propojení můžete monitorovat stav propojeného prostředku na řídicím panelu cloudové služby. Informace o škálování propojené databáze SQL najdete v tématu [postup škálování cloudové služby a propojené prostředky](cloud-services-how-to-scale.md).
+    Po dokončení propojení můžete sledovat stav hello hello propojené prostředku na řídicí panel hello cloudové služby. Informace o škálování propojené databáze SQL najdete v tématu [jak tooScale Cloudová služba a propojené prostředky](cloud-services-how-to-scale.md).
 
-### <a name="to-unlink-a-linked-resource"></a>Zrušení propojení propojeného prostředku
-1. V [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**. Pak klikněte na název cloudové služby za účelem otevře řídicí panel.
-2. Klikněte na tlačítko **propojené prostředky**a pak vyberte prostředek.
-3. Klikněte na tlačítko **zrušit propojení**. Pak klikněte na tlačítko **Ano** při potvrzení.
+### <a name="toounlink-a-linked-resource"></a>toounlink propojeného prostředku
+1. V hello [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**. Klikněte na tlačítko hello název řídicího panelu tooopen hello hello cloudové služby.
+2. Klikněte na tlačítko **propojené prostředky**a potom vyberte hello prostředků.
+3. Klikněte na tlačítko **zrušit propojení**. Pak klikněte na tlačítko **Ano** na výzvu k potvrzení hello.
 
-    Databáze SQL se odpojuje nemá žádný vliv na databázi nebo aplikace připojení k databázi. Stále můžete spravovat v databázi **databází SQL** oblasti portálu Azure classic.
+    Databáze SQL se odpojuje nemá žádný vliv na hello databázi nebo databázi toohello aplikace hello připojení. Stále můžete spravovat hello databáze v hello **databází SQL** oblasti hello portál Azure classic.
 
 ## <a name="how-to-delete-deployments-and-a-cloud-service"></a>Postupy: odstranění nasazení a cloudové služby
 Před odstraněním cloudové služby, je nutné odstranit každé existující nasazení.
 
-Pokud chcete uložit výpočetní náklady, můžete odstranit pracovní nasazení po ověření, že produkčního nasazení funguje podle očekávání. Jste fakturovaná výpočetní náklady pro instance rolí i v případě, že Služba cloudu není spuštěna.
+náklady na výpočetní toosave, jakmile ověříte, že produkčního nasazení funguje podle očekávání, můžete odstranit pracovní nasazení. Jste fakturovaná výpočetní náklady pro instance rolí i v případě, že Služba cloudu není spuštěna.
 
-Pomocí následujícího postupu můžete odstranit nasazení nebo cloudové služby.
+Použijte následující postup toodelete hello nasazení nebo cloudové služby.
 
-1. V [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**.
-2. Vyberte cloudovou službu a pak klikněte na **odstranit**. (Pokud chcete vybrat cloudové služby bez otevření řídicí panel, klikněte na libovolné místo kromě názvu v položce cloudové služby.)
+1. V hello [portál Azure classic](http://manage.windowsazure.com/), klikněte na tlačítko **cloudové služby**.
+2. Vyberte hello cloudové služby a pak klikněte na tlačítko **odstranit**. (tooselect cloudové služby bez otevření hello řídicí panel, klikněte na libovolné místo kromě názvu hello v položku hello cloudové služby.)
 
-    Pokud máte nasazení v pracovním nebo produkčním, zobrazí se nabídky možností podobné následující v dolní části okna. Před odstraněním cloudové služby, je nutné odstranit všechna existující nasazení.
+    Pokud máte nasazení v pracovním nebo produkčním, zobrazí se nabídky možností podobné toohello následující jednu po hello dolní části okna hello. Před odstraněním hello cloudové služby, je nutné odstranit všechna existující nasazení.
 
     ![Odstranění nabídky](./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png)
 
-3. Pokud chcete odstranit nasazení, klikněte na tlačítko **odstranit produkční nasazení** nebo **odstranit pracovní nasazení**. Potom v potvrzovací výzvu, klikněte na **Ano**.
-4. Pokud budete chtít odstranit cloudové služby, opakujte krok 3, v případě potřeby odstranit další nasazení.
-5. Chcete-li odstranit cloudovou službu, klikněte na tlačítko **odstranění Cloudová služba**. Potom v potvrzovací výzvu, klikněte na **Ano**.
+3. toodelete nasazení, klikněte na tlačítko **odstranit produkční nasazení** nebo **odstranit pracovní nasazení**. Klikněte na výzvy k potvrzení hello **Ano**.
+4. Pokud máte v plánu toodelete hello cloudové služby, opakujte krok 3, v případě potřeby toodelete další nasazení.
+5. toodelete hello Cloudová služba, klikněte na tlačítko **odstranění Cloudová služba**. Klikněte na výzvy k potvrzení hello **Ano**.
 
 > [!NOTE]
-> Pokud podrobné monitorování je nakonfigurovaný pro cloudové služby, Azure neodstraní data sledování z vašeho účtu úložiště při odstraňování cloudové služby. Musíte ručně odstranit data. Informace o tom, kde najít metriky tabulky najdete v tématu "postup: přístup podrobné monitorování data mimo portál Azure classic" v [postup monitorování cloudové služby](cloud-services-how-to-monitor.md).
+> Pokud podrobné monitorování je nakonfigurovaný pro cloudové služby, Azure hello monitorování data z účtu úložiště při odstranění hello Cloudová služba neodstraní. Toodelete hello dat budete potřebovat ručně. Informace o kde toofind hello metriky tabulky najdete v tématu "postup: přístup k podrobné monitorování data mimo portál Azure classic hello" v [jak tooMonitor cloudových služeb](cloud-services-how-to-monitor.md).
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure.md).
-* Zjistěte, jak [nasazení cloudové služby](cloud-services-how-to-create-deploy.md).
+* Zjistěte, jak příliš[nasazení cloudové služby](cloud-services-how-to-create-deploy.md).
 * Konfigurace [vlastní název domény](cloud-services-custom-domain-name.md).
 * Konfigurace [certifikáty ssl](cloud-services-configure-ssl-certificate.md).

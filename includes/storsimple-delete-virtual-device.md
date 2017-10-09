@@ -1,6 +1,6 @@
-#### <a name="to-delete-a-virtual-device"></a>Odstranění virtuálního zařízení
+#### <a name="toodelete-a-virtual-device"></a>toodelete virtuálního zařízení
 
-1. Přihlaste se na portál Azure Classic.
-2. Klikněte na **Virtuální počítače** a potom vyberte virtuální zařízení.
-3. Klikněte na **Odstranit** a zvolte odstranění všech disků virtuálního počítače.
+1. Přihlaste se toohello portál Azure classic.
+2. Klikněte na tlačítko **virtuální počítače**, a pak vyberte hello virtuální zařízení.
+3. Klikněte na tlačítko **odstranit** a zvolte toodelete všechny disky virtuálního počítače hello.
 

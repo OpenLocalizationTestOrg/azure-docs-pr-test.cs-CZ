@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric Docker Compose Preview | Microsoft Docs
-description: "Azure Service Fabric přijme Docker Compose formátu, aby bylo snazší orchestraci kontejnerů exsiting pomocí Service Fabric. Tato podpora je aktuálně ve verzi preview."
+title: aaaAzure Service Fabric Docker Compose Preview | Microsoft Docs
+description: "Azure Service Fabric přijímá Docker Compose toomake formát je snazší kontejnery exsiting tooorchestrate pomocí Service Fabric. Tato podpora je aktuálně ve verzi preview."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 824044fd698f0ed94c4212722bc82187905315dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>Určení svazku modulů plug-in a ovladače protokolování pro váš kontejner
 
-Service Fabric podporuje určení [modulů plug-in svazku Docker](https://docs.docker.com/engine/extend/plugins_volume/) a [Docker protokolování ovladače](https://docs.docker.com/engine/admin/logging/overview/) pro vaši službu kontejneru. Moduly plug-in jsou určené v manifestu aplikace, jak je znázorněno v následujícím manifestu:
+Service Fabric podporuje určení [modulů plug-in svazku Docker](https://docs.docker.com/engine/extend/plugins_volume/) a [Docker protokolování ovladače](https://docs.docker.com/engine/admin/logging/overview/) pro vaši službu kontejneru. moduly plug-in Hello jsou určené v manifestu aplikace hello, jak je znázorněno v následujícím manifest hello:
 
 
 ```xml
@@ -56,9 +56,9 @@ Service Fabric podporuje určení [modulů plug-in svazku Docker](https://docs.d
 </ApplicationManifest>
 ```
 
-V předchozím příkladu `Source` označení pro `Volume` odkazuje do zdrojové složky. Zdrojová složka může být do složky ve virtuálním počítači, který je hostitelem kontejnery nebo trvalé vzdálené úložiště. `Destination` Značka je umístění, `Source` je namapována na spuštěné kontejneru. 
+V předchozím příkladu hello, hello `Source` značky pro hello `Volume` odkazuje toohello zdrojové složky. Zdrojová složka Hello může být složky v hello virtuálního počítače, který je hostitelem hello kontejnery nebo trvalé vzdálené úložiště. Hello `Destination` značka je hello umístění, které hello `Source` běží namapované toowithin hello kontejneru. 
 
-Při zadávání modulu plug-in svazku, Service Fabric automaticky vytvoří svazku, pomocí zadaných parametrů. `Source` Značka je název svazku a `Driver` značky Určuje modul plug-in ovladač svazku. Možnosti lze zadat pomocí `DriverOption` značky, jak je znázorněno v následujícím fragmentu kódu:
+Při zadávání modulu plug-in svazku, Service Fabric automaticky vytvoří hello svazku, pomocí zadaných parametrů hello. Hello `Source` značka je název hello hello svazku a hello `Driver` značky určuje hello svazku ovladač modulu plug-in. Možnosti lze zadat pomocí hello `DriverOption` značky, jak je znázorněno v následujícím fragmentu kódu hello:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
@@ -66,9 +66,9 @@ Při zadávání modulu plug-in svazku, Service Fabric automaticky vytvoří sva
 </Volume>
 ```
 
-Pokud je zadaný ovladač protokolu Docker, je nezbytné pro nasazení agentů (nebo kontejnery) pro zpracování protokoly v clusteru.  `DriverOption` Značky lze zadat také možnosti protokolu ovladačů.
+Pokud je zadaný ovladač Docker protokolu, je nutné toodeploy protokoly hello toohandle agentů (nebo kontejnery) v clusteru hello.  Hello `DriverOption` značky lze použít toospecify protokolu ovladač možnosti také.
 
-Najdete v těchto článcích nasazení kontejnerů do clusteru Service Fabric:
+Odkažte toohello následující cluster Service Fabric tooa kontejnery toodeploy články:
 
 
 [Nasazení kontejneru v Service Fabric](service-fabric-deploy-container.md)

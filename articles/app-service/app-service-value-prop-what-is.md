@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service pro webové a mobilní aplikace a aplikace API | Dokumentace Microsoftu"
+title: "aaaAzure služby App Service pro webové, mobilní a aplikací API | Microsoft Docs"
 description: "Zjistěte, jak vám může Azure App Service pomoci s vývojem, nasazením a správou webových a mobilních aplikací."
 keywords: "app service, azure app service, cena app service, škálování, škálovatelné, nasazení aplikace, nasazení aplikace azure, paas, platforma jako služba, web, azure mobile"
 services: app-service
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
-ms.openlocfilehash: a773e43b28b144dd8341b276eee3fa504d4f1080
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 22f414c7d79092d87406a8d3538b946881fb4580
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-azure-app-service"></a>Co je Azure App Service?
 *App Service* je služba Microsoft Azure typu [platforma jako služba](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS). Webové a mobilní aplikace můžete vytvářet pro libovolnou platformu nebo zařízení. Své aplikace můžete integrovat s řešeními SaaS a propojovat s lokálními aplikacemi. A lze také automatizovat firemní procesy. Azure spouští vaše aplikace na plně spravovaných virtuálních počítačích (VM) se sdílenými prostředky, které si sami zvolíte, nebo na vyhrazených virtuálních počítačích.
 
-App Service zahrnuje webové a mobilní funkce, které jsme dříve nabízeli samostatně jako Weby Azure a Azure Mobile Services. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba vám App Service umožňuje vytvářet různé komponenty – weby, back-endy mobilních aplikací, rozhraní RESTful API a firemní procesy – v jediném řešení.
+App Service zahrnuje hello webové a mobilní funkce, které jsme dříve nabízeli samostatně jako weby Azure a Azure Mobile Services. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba vám App Service umožňuje vytvářet různé komponenty – weby, back-endy mobilních aplikací, rozhraní RESTful API a firemní procesy – v jediném řešení.
 
-Následující 4minutové video stručně shrnuje, v čem se App Service podobá dřívějším nabídkám Azure a co nabízí nového.
+Hello následující 4minutové video obsahuje stručné vysvětlení vztah tooearlier Azure App Service nabídky a co je nového v ní.
 
 > [!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/app-service-history-lesson/player]
 > 
@@ -36,32 +36,32 @@ Následující 4minutové video stručně shrnuje, v čem se App Service podobá
 Toto jsou některé klíčové funkce a možnosti služby App Service:
 
 * **Více jazyků a rozhraní:** App Service zahrnuje prvotřídní podporu pro ASP.NET, Node.js, Javu, PHP a Python. Na virtuálních počítačích App Service můžete také spouštět [Windows PowerShell a další skripty nebo spustitelné soubory](../app-service-web/web-sites-create-web-jobs.md).
-* **Optimalizace DevOps:** Můžete nastavit [průběžnou integraci a nasazení](../app-service-web/app-service-continuous-deployment.md) pomocí služeb Visual Studio Team Services, GitHub nebo BitBucket. Aktualizace lze podporovat prostřednictvím [testovacího a přípravného prostředí](../app-service-web/web-sites-staged-publishing.md). Máte možnost [testování A/B](../app-service-web/app-service-web-test-in-production-get-start.md). Spravujte aplikace ve službě App Service pomocí prostředí [Azure PowerShell](/powershell/azureps-cmdlets-docs) nebo [multiplatformního rozhraní příkazového řádku (CLI)](../cli-install-nodejs.md).
-* **Globální škálování s vysokou dostupností:** Můžete ručně i automaticky škálovat pro účely [vertikálního](../app-service-web/web-sites-scale.md) nebo [horizontálního](../monitoring-and-diagnostics/insights-how-to-scale.md) navýšení kapacity. Aplikace je možné hostovat kdekoli v globální infrastruktuře datacenter Microsoftu a smlouva [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pro App Service zaručuje vysokou dostupnost.
-* **Připojení k platformám SaaS a lokálním datům:** Můžete si vybírat z více než 50 [konektorů](../connectors/apis-list.md) pro firemní systémy (například SAP, Siebel nebo Oracle), služby SaaS (například služby Salesforce nebo Office 365) a internetové služby (například Facebook nebo Twitter). Získejte přístup k místním datům pomocí [hybridních připojení](../biztalk-services/integration-hybrid-connection-overview.md) a [virtuálních sítí Azure](../app-service-web/web-sites-integrate-with-vnet.md).
+* **Optimalizace DevOps:** Můžete nastavit [průběžnou integraci a nasazení](../app-service-web/app-service-continuous-deployment.md) pomocí služeb Visual Studio Team Services, GitHub nebo BitBucket. Aktualizace lze podporovat prostřednictvím [testovacího a přípravného prostředí](../app-service-web/web-sites-staged-publishing.md). Máte možnost [testování A/B](../app-service-web/app-service-web-test-in-production-get-start.md). Spravovat aplikace v App Service pomocí [prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) nebo hello [multiplatformního rozhraní příkazového řádku (CLI)](../cli-install-nodejs.md).
+* **Globální škálování s vysokou dostupností:** Můžete ručně i automaticky škálovat pro účely [vertikálního](../app-service-web/web-sites-scale.md) nebo [horizontálního](../monitoring-and-diagnostics/insights-how-to-scale.md) navýšení kapacity. Umožňuje hostování vašich aplikací kdekoli v společnosti Microsoft globální infrastruktuře datacenter a hello služby App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) zaručuje vysokou dostupnost.
+* **Připojení tooSaaS platformy a místní data** – zvolte z více než 50 [konektory](../connectors/apis-list.md) pro firemní systémy (například SAP, Siebel a Oracle), služby SaaS (například služby Salesforce nebo Office 365) a internet služby (například Facebook nebo Twitter). Získejte přístup k místním datům pomocí [hybridních připojení](../biztalk-services/integration-hybrid-connection-overview.md) a [virtuálních sítí Azure](../app-service-web/web-sites-integrate-with-vnet.md).
 * **Zabezpečení a dodržování předpisů** – Služba App Service je [kompatibilní se standardy ISO, SOC a PCI](https://www.microsoft.com/TrustCenter/).
-* **Šablony aplikací**– Vyberte si z rozsáhlého seznamu šablon na webu [Azure Marketplace](https://azure.microsoft.com/marketplace/), které vám umožní používat průvodce k instalaci oblíbeného open source softwaru, jako je WordPress, Joomla nebo Drupal.
-* **Integrace sady Visual Studio** – Vyhrazené nástroje v sadě Visual Studio zjednodušují práci při vytváření, nasazování a ladění.
+* **Šablony aplikací** – zvolte z rozsáhlého seznamu šablon v hello [Azure Marketplace](https://azure.microsoft.com/marketplace/) které vám umožní používat Průvodce tooinstall oblíbených open-source softwaru jako je WordPress, Joomla nebo Drupal.
+* **Integrace aplikace Visual Studio** – vyhrazené nástroje v sadě Visual Studio zjednodušují práci hello při vytváření, nasazování a ladění.
 
 ## <a name="app-types-in-app-service"></a>Typy aplikací v App Service
-App Service nabízí několik *typů aplikací*, z nichž každá je určena k hostování konkrétního typu úlohy:
+App Service nabízí několik *typy aplikací*, každý z nich je určený toohost konkrétní úlohu:
 
 * [**Webové aplikace**](../app-service-web/app-service-web-overview.md) – k hostování webů a webových aplikací
 * [**Mobilní aplikace**](../app-service-mobile/app-service-mobile-value-prop.md) – k hostování back-endu mobilních aplikací
 * [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) – k hostování rozhraní RESTful API.
 * [**Logic Apps**](../logic-apps/logic-apps-what-are-logic-apps.md) – k automatizaci obchodních procesů a integraci systémů a dat napříč cloudy bez psaní kódu.
 
-Slovem *aplikace* se zde označují prostředky hostování vyhrazené pro spouštění určité úlohy nebo procesu. Pokud zde například zmiňujeme „webovou aplikaci“, pravděpodobně jste zvyklí chápat webovou aplikaci jako výpočetní prostředky i kód aplikace, které společně poskytují v prohlížeči příslušné funkce. V App Service ale *webová aplikace* představuje výpočetní prostředky, které Azure poskytuje k hostování kódu aplikace. 
+Hello word *aplikace* zde označují toohello hostování vyhrazené prostředky toorunning zatížení. Pořízení "Webová aplikace" jako příklad, budete pravděpodobně zvykli toothinking webové aplikace jako hello výpočetní prostředky a aplikace code prohlížeč tooa funkce tohoto společně doručit. Ale ve službě App Service *webové aplikace* je hello výpočetní prostředky, které Azure poskytuje k hostování kódu aplikace. 
 
 Vaše aplikace se může skládat z více aplikací App Service různého druhu. Například pokud se vaše aplikace skládá z webového front-endu a back-endu RESTful API, můžete:
 
-- Nasadit obojí (front-end i rozhraní API) do jedné webové aplikace.  
-- Nasadit kód front-endu do webové aplikace a kód back-endu do aplikace API. 
+- Nasazení (front-endu i rozhraní api) tooa jedné webové aplikace  
+- Nasazení webové aplikace tooa kód front-endu a back-end kód aplikace tooan rozhraní API. 
 
 
 
 ## <a name="app-service-plans"></a>Plány služby App Service
-[Plány služby App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) představují kolekci fyzických prostředků použitých k hostování vašich aplikací.
+[Plánů služby App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) představují kolekci hello toohost fyzické prostředky, které používá vaše aplikace.
 
 Plány služby App Service definují:
 
@@ -70,11 +70,11 @@ Plány služby App Service definují:
 - **Velikost instance** (Malá, Střední, Velká)
 - **SKU** (Free, Shared, Basic, Standard, Premium)
 
-Všechny aplikace přiřazené k **plánu služby App Service** sdílí službou definované prostředky a tak umožňují snížení nákladů při hostování více aplikací.
+Všechny aplikace přiřazené tooan **plán služby App Service** sdílet prostředky hello definovaná tímto povolení toosave nákladů při hostování více aplikací.
 
-Váš **plán služby App Service** se může škálovat od skladových jednotek (SKU) úrovní **Free** a **Shared** po SKU úrovní **Basic**, **Standard** a **Premium** a vy při tom získáte přístup k dalším prostředkům a funkcím. Když bude váš plán služby App Service nastaven na úroveň **Basic** nebo vyšší, budete také moci řídit **velikost** a škálovat počet virtuálních počítačů.
+Vaše **plán služby App Service** možné škálovat od **volné** a **sdílené** SKU příliš**základní**, **standardní**, a **Premium** SKU, která poskytuje přístup k prostředkům toomore a funkcí společně hello způsobem. Jakmile je plán aplikační služby je nastaven příliš**základní** nebo vyšší můžete také ovládat hello **velikost** a škálovat počet hello virtuálních počítačů.
 
-**SKU** a **Škálování** plánu služby App Service určují cenu, ne počet aplikací hostovaných ve službě. 
+Hello **SKU** a **škálování** z hello služby App Service určuje plán hello náklady a není hello počet aplikací, které jsou v ní umístěné. 
 
 Pokud potřebujete větší škálovatelnost a izolaci sítě, můžete aplikace spustit ve službě [App Service Environment](../app-service-web/app-service-app-service-environment-intro.md).
 

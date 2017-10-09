@@ -6,7 +6,7 @@
 | **Více lokalit** |Podporuje se |Nepodporuje se |
 | **S2S a ExpressRoute existovat vedle sebe** |Podporuje se |Nepodporuje se |
 | **Point-to-Site** |Podporuje se |Nepodporuje se |
-| **Classic do Resource Manageru** |Podporuje se |Nepodporuje se |
+| **Classic tooResource Manager** |Podporuje se |Nepodporuje se |
 
 #### <a name="vpn-type---classic-deployment-model"></a>Typ sítě VPN - modelu nasazení classic
 |  | **Dynamické** | **Statické** |
@@ -16,5 +16,5 @@
 | **Více lokalit** |Podporuje se |Nepodporuje se |
 | **S2S a ExpressRoute existovat vedle sebe** |Podporuje se |Nepodporuje se |
 | **Point-to-Site** |Podporuje se |Nepodporuje se |
-| **Classic do Resource Manageru** |Podporuje se |Nepodporuje se |
+| **Classic tooResource Manager** |Podporuje se |Nepodporuje se |
 

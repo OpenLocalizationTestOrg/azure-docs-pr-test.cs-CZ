@@ -8,25 +8,25 @@ Virtuální sítí (VNET) a podsítě prostředky pomohl definovat hranici zabez
 
 ![Virtuální síť s více podsítěmi](./media/resource-groups-networking/Figure4.png)
 
-Virtuální sítě obsahují následující vlastnosti.
+Virtuální sítě obsahovat hello následující vlastnosti.
 
 | Vlastnost | Popis | Ukázkové hodnoty |
 | --- | --- | --- |
-| **adresní prostor** |Kolekce předpon adres, které tvoří virtuální sítě v notaci CIDR |192.168.0.0/16 |
-| **podsítě** |Kolekce podsítě, které tvoří virtuální sítě |v tématu [podsítě](#Subnets) níže. |
-| **IP adresa** |Přiřazené objektu IP adresy. Toto je vlastnost jen pro čtení. |104.42.233.77 |
+| **adresní prostor** |Kolekce předpon adres, které tvoří hello virtuální sítě v notaci CIDR |192.168.0.0/16 |
+| **podsítě** |Kolekce podsítě, které tvoří hello virtuální sítě |v tématu [podsítě](#Subnets) níže. |
+| **IP adresa** |Tooobject přidělit IP adresu. Toto je vlastnost jen pro čtení. |104.42.233.77 |
 
 ### <a name="subnets"></a>Podsítě
-Podsíť je prostředkem podřízené virtuální sítě, a pomáhá definovat segmenty adresní prostory v rámci blok CIDR pomocí předpony IP adres. Síťové adaptéry můžete přidat do podsítí a připojení k virtuálním počítačům, poskytuje připojení pro různé úlohy.
+Podsíť je prostředkem podřízené virtuální sítě, a pomáhá definovat segmenty adresní prostory v rámci blok CIDR pomocí předpony IP adres. Síťové adaptéry lze přidat toosubnets a připojené tooVMs, poskytuje připojení pro různé úlohy.
 
-Podsítě obsahují následující vlastnosti. 
+Podsítě obsahovat hello následující vlastnosti. 
 
 | Vlastnost | Popis | Ukázkové hodnoty |
 | --- | --- | --- |
-| **addressPrefix** |Jedna adresa předponu, která tvoří podsíť v notaci CIDR |192.168.1.0/24 |
-| **skupinu zabezpečení sítě** |Skupina NSG použije na podsíť |v tématu [skupiny Nsg](#Network-Security-Group) |
-| **routeTable** |Směrovací tabulka použije na podsíť |v tématu [UDR](#Route-table) |
-| **Konfigurace IP adresy** |Kolekce objektů configruation IP používané síťové adaptéry připojené k podsíti |v tématu [UDR](#Route-table) |
+| **addressPrefix** |Jedna adresa předponu, která tvoří hello podsíť v notaci CIDR |192.168.1.0/24 |
+| **skupinu zabezpečení sítě** |Skupina NSG použitá toohello podsítě |v tématu [skupiny Nsg](#Network-Security-Group) |
+| **routeTable** |Směrovací tabulka použita toohello podsítě |v tématu [UDR](#Route-table) |
+| **Konfigurace IP adresy** |Kolekce objektů configruation IP používané síťové adaptéry připojené toohello podsítě |v tématu [UDR](#Route-table) |
 
 Ukázka VNet ve formátu JSON:
 
@@ -74,6 +74,6 @@ Ukázka VNet ve formátu JSON:
 
 ### <a name="additional-resources"></a>Další zdroje
 * Přečtěte si další informace o [VNet](../articles/virtual-network/virtual-networks-overview.md).
-* Pro čtení [referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/mt163650.aspx) pro virtuální sítě.
-* Pro čtení [referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/mt163618.aspx) pro podsítě.
+* Čtení hello [referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/mt163650.aspx) pro virtuální sítě.
+* Čtení hello [referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/mt163618.aspx) pro podsítě.
 

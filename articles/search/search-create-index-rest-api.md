@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření indexu (REST API – Azure Search) | Dokumentace Microsoftu"
-description: "Vytvořte index v kódu pomocí rozhraní HTTP REST API Azure Search."
+title: "AAA \"Vytvoření indexu (rozhraní REST - API Azure Search) | Microsoft Docs\""
+description: "Vytvořte index v kódu pomocí hello HTTP REST API služby Azure Search."
 services: search
 documentationcenter: 
 author: ashmaka
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 117ab64a9874a443351a8a02a9b959b8f7beb7c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
+# <a name="create-an-azure-search-index-using-hello-rest-api"></a>Vytvoření indexu Azure Search pomocí REST API hello
 > [!div class="op_single_selector"]
 >
 > * [Přehled](search-what-is-an-index.md)
@@ -31,33 +31,33 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-Tento článek vás provede procesem vytvoření [indexu](https://docs.microsoft.com/rest/api/searchservice/Create-Index) Azure Search pomocí rozhraní REST API služby Azure Search.
+Tento článek vás provede procesem vytvoření Azure Search hello [index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) pomocí hello REST API služby Azure Search.
 
 Předtím, než podle těchto pokynů vytvoříte index, byste už měli mít [vytvořenou službu Azure Search](search-create-service-portal.md).
 
-Pokud chcete vytvořit index Azure Search pomocí rozhraní REST API, vydáte jednu žádost HTTP POST do koncového bodu adresy URL služby Azure Search. Definice indexu bude obsažená v textu žádosti jako obsah JSON ve správném formátu.
+toocreate indexu Azure Search pomocí hello REST API, vydáte koncový bod adresy URL jednu HTTP POST požadavek tooyour služby Azure Search. Definice indexu bude obsažená v textu hello žádosti jako obsah JSON ve správném.
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifikace klíče rozhraní API správce služby Azure Search
-Teď, když máte zřízenou službu Azure Search, můžete vydávat žádosti HTTP na koncový bod adresy URL služby pomocí rozhraní REST API. *Všechny* žádosti rozhraní API musí obsahovat klíč rozhraní API (api-key) vygenerovaný pro službu Search, kterou jste zřídili. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Teď, když máte zřízenou službu Azure Search, můžete vydávat žádosti HTTP na koncový bod adresy URL služby pomocí hello REST API. *Všechny* žádostí o rozhraní API musí zahrnovat hello klíč api-key generovaný pro hello službu vyhledávání jste zřídili. Platný klíč vytváří na základě žádosti mezi hello aplikace odesílání hello požadavku a hello služby, která ji zpracovává vztah důvěryhodnosti.
 
-1. Pokud chcete najít klíče api-key svojí služby, musíte se přihlásit k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte do okna služby Azure Search.
-3. Klikněte na ikonu klíčů.
+1. toofind vaší služby klíče api Key musíte se přihlásit hello [portálu Azure](https://portal.azure.com/)
+2. Okno služby Azure Search přejděte tooyour
+3. Klikněte na hello ikonu klíčů."
 
 Vaše služba bude mít *klíče správce* a *klíče dotazů*.
 
-* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
-* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
+* Primární a sekundární *klíče správce* udělit úplná práva tooall operace, včetně hello možnost toomanage hello služby, vytvářet a odstraňovat indexy, indexery a zdroje dat.. Existují dva klíče, aby mohl pokračovat toouse hello sekundární klíč, pokud se rozhodnete tooregenerate hello primární klíč a naopak.
+* Vaše *klíče dotazů* udělit oprávnění jen pro čtení tooindexes a dokumentům a obvykle distribuované tooclient aplikace, které vydávají požadavky hledání.
 
-Pro účely vytvoření indexu můžete použít primární nebo sekundární klíč správce.
+Pro účely vytvoření indexu hello, můžete použít buď vaší primární nebo sekundární klíč správce.
 
 ## <a name="define-your-azure-search-index-using-well-formed-json"></a>Definování indexu Azure Search pomocí správného formátu JSON
-Jedna žádost HTTP POST do služby vytvoří váš index. Text žádosti HTTP POST bude obsahovat jeden objekt JSON, který definuje index Azure Search.
+Jediná služba tooyour požadavek HTTP POST vytvoří váš index. Hello text žádosti HTTP POST bude obsahovat jeden objekt JSON, který definuje index Azure Search.
 
-1. První vlastností tohoto objektu JSON je název indexu.
-2. Druhou vlastností tohoto objektu JSON je pole JSON s názvem `fields`, které obsahuje samostatný objekt JSON pro každé pole v indexu. Každý z těchto objektů JSON obsahuje více párů název/hodnota pro každý atribut pole, včetně „name“, „type“ atd.
+1. Hello první vlastností tohoto objektu JSON je hello název indexu.
+2. Hello druhou vlastností tohoto objektu JSON je pole JSON s názvem `fields` , který obsahuje samostatný objekt JSON pro každé pole v indexu. Každý z těchto objektů JSON obsahuje více dvojic název hodnota pro každou hello pole atributů, včetně "name" "type" atd.
 
-Při navrhování indexu je důležité zohlednit uživatelskou práci při vyhledávání a potřeby podniku, protože každému poli se musí přiřadit [správné atributy](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Tyto atributy určují, které funkce vyhledávání (filtrování, používání faset, řazení fulltextového vyhledávání atd.) se použijí u kterých polí. Pokud kterýkoli atribut nezadáte, příslušná funkce hledání se ve výchozím nastavení povolí, ledaže ji výslovně zakážete.
+Je důležité, aby byl vyhledávání uživatelské prostředí a obchodní potřeby v úvahu při navrhování indexu, protože každé pole musí mít přiřazen hello [správné atributy](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Tyto atributy určují, které funkce vyhledávání (filtrování, používání faset, řazení fulltextového vyhledávání atd.) použít toowhich pole. Kterýkoli atribut nezadáte bude výchozí hello tooenable hello odpovídající funkce hledání, pokud ji výslovně zakážete.
 
 V našem příkladu jsme nazvali index „hotels“ a pole jsme definovali takto:
 
@@ -81,30 +81,30 @@ V našem příkladu jsme nazvali index „hotels“ a pole jsme definovali takto
 }
 ```
 
-Atributy indexu jsme pro každé pole pečlivě zvolili podle toho, jak se pravděpodobně použijí v aplikaci. Například `hotelId` je jedinečný klíč, který lidé hledající hotely nejspíš neznají, a proto jsme u tohoto pole zakázali fulltextové vyhledávání tím, že jsme `searchable` nastavili na `false`, což šetří místo v indexu.
+Pečlivě zvolili hello atributy indexu pro každé pole v závislosti na tom, jak myslíme si, že se pravděpodobně použijí v aplikaci. Například `hotelId` je jedinečný klíč, který lidé hledající hotely nejspíš neznají, takže jsme zakázat fulltextové vyhledávání pro toto pole nastavte `searchable` příliš`false`, což šetří místo v indexu hello.
 
-Upozorňujeme, že právě jedno pole v indexu typu `Edm.String` musí být určené jako klíčové pole.
+Upozorňujeme, že právě jedno pole v indexu typu `Edm.String` musí být hello určeny jako pole "klíčem" hello.
 
-Výše uvedená definice indexu používá pro pole `description_fr` analyzátor jazyka, protože je určené k ukládání francouzského textu. Další informace o analyzátorech jazyka najdete v [tématu jazykové podpory](https://docs.microsoft.com/rest/api/searchservice/Language-support) a příslušném [příspěvku na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/).
+výše uvedená definice indexu Hello používá analyzátor jazyka pro hello `description_fr` pole, protože je určený toostore francouzského textu. V tématu [tématu jazykové podpory hello](https://docs.microsoft.com/rest/api/searchservice/Language-support) a také odpovídající hello [příspěvku na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/) Další informace o analyzátorech jazyka.
 
-## <a name="issue-the-http-request"></a>Vydání žádosti HTTP
-1. Použijte definici indexu jako text žádosti a vydejte žádost HTTP POST do adresy URL koncového bodu služby Azure Search. V adrese URL nezapomeňte použít název služby jako název hostitele a vložit správné `api-version` jako parametr řetězce dotazu (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2016-09-01`).
-2. V hlavičkách žádostí zadejte `Content-Type` jako `application/json`. V hlavičce `api-key` budete taky muset zadat klíč správce služby, který jste identifikovali v kroku I.
+## <a name="issue-hello-http-request"></a>Problém hello HTTP požadavku
+1. Použijte definici indexu jako text žádosti hello, vydejte HTTP POST požadavek tooyour Azure Search service adresu URL koncového bodu. V adrese URL hello, že toouse být název vaší služby jako název hostitele hello a umístí hello správné `api-version` jako parametr řetězce dotazu (aktuální verze rozhraní API hello je `2016-09-01` v době publikování tohoto dokumentu hello).
+2. V hlavičkách žádosti hello, zadejte hello `Content-Type` jako `application/json`. Budete také potřebovat tooprovide klíč správce vaší služby, který jste určili v kroku I v hello `api-key` záhlaví.
 
-Abyste mohli vydat níže uvedenou žádost, budete muset zadat vlastní název služby a klíč rozhraní API:
+Tooprovide bude mít vlastní název a rozhraní api klíče tooissue hello žádost o služby níže:
 
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
     api-key: [api-key]
 
 
-V případě úspěšné žádosti by se měl zobrazit stavový kód 201 (vytvořeno). Další informace o vytvoření indexu prostřednictvím rozhraní REST API najdete v [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+V případě úspěšné žádosti by se měl zobrazit stavový kód 201 (vytvořeno). Další informace o vytvoření indexu prostřednictvím hello REST API, navštivte hello [referenční dokumentace rozhraní API zde](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-Pokud jste s indexem hotovi a chcete ho odstranit, stačí vydat žádost HTTP DELETE. Takto bychom například odstranili index „hotely“:
+Když jste hotovi s toodelete indexu a chcete ho, stačí vydejte žádost HTTP DELETE. Jedná se například jak jsme odstranili index "hotels" hello:
 
     DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
     api-key: [api-key]
 
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření indexu Azure Search budete připravení [nahrát do indexu obsah](search-what-is-data-import.md), abyste mohli začít prohledávat data.
+Po vytvoření indexu Azure Search, budete moci příliš[nahrát obsah do indexu hello](search-what-is-data-import.md) , abyste mohli začít prohledávat data.

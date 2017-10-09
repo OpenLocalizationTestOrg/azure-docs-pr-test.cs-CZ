@@ -1,6 +1,6 @@
 ---
-title: "Načtení z Azure blob Azure datovým skladem. | Microsoft Docs"
-description: "Naučte se používat k načtení dat z Azure blob storage do SQL Data Warehouse PolyBase. Načtení několik tabulek z veřejná data do schématu Contoso prodejní datového skladu."
+title: "aaaLoad z Azure blob tooAzure datového skladu | Microsoft Docs"
+description: "Zjistěte, jak toouse PolyBase tooload dat z Azure blob storage do SQL Data Warehouse. Načtení několik tabulek z veřejná data do schématu hello Contoso prodejní datového skladu."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 2859c1144f72fd685af89f83024df1409902ab0c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b4978ccefa4d55ff5c89fba84c5e705422ddbb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Načtení dat z Azure blob storage do SQL Data Warehouse (PolyBase)
 > [!div class="op_single_selector"]
@@ -28,37 +28,37 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Načtení dat z Azure blob storage do Azure SQL Data Warehouse pomocí PolyBase a T-SQL příkazů. 
+Použijte PolyBase a T-SQL příkazy tooload dat z Azure blob storage do Azure SQL Data Warehouse. 
 
-V tomto kurzu na jednoduchost, načte dvě tabulky z veřejné Azure Blob Storage do schématu Contoso prodejní datového skladu. Pokud chcete načíst úplnou datovou sadu, spusťte v příkladu [načíst úplné Contoso prodejní datového skladu] [ Load the full Contoso Retail Data Warehouse] z úložiště ukázky Microsoft SQL Server.
+tookeep jednoduchý, v tomto kurzu načte dvou tabulek z veřejné Azure Blob Storage do schématu hello Contoso prodejní datového skladu. tooload hello úplné datové sady, spusťte hello příklad [zatížení hello úplné Contoso prodejní datového skladu] [ Load hello full Contoso Retail Data Warehouse] z úložiště hello ukázky Microsoft SQL Server.
 
 V tomto kurzu provedete následující:
 
-1. Konfigurace PolyBase načíst z Azure blob storage
+1. Konfigurace PolyBase tooload z Azure blob storage
 2. Načíst veřejná data do databáze
-3. Po dokončení zatížení, provedení optimalizace.
+3. Po dokončení hello zatížení, provedení optimalizace.
 
 ## <a name="before-you-begin"></a>Než začnete
-Spustit v tomto kurzu, budete potřebovat účet Azure, která již obsahuje databázi SQL Data Warehouse. Pokud to nemáte, přečtěte si téma [vytvořit SQL Data Warehouse][Create a SQL Data Warehouse].
+toorun tohoto kurzu potřebujete účet Azure, která již obsahuje databázi SQL Data Warehouse. Pokud to nemáte, přečtěte si téma [vytvořit SQL Data Warehouse][Create a SQL Data Warehouse].
 
-## <a name="1-configure-the-data-source"></a>1. Nakonfigurujte zdroj dat
-PolyBase používá externí objekty T-SQL zadat umístění a atributy externí data. Definice externího objektu jsou uloženy v SQL Data Warehouse. Samotná data ukládána externě.
+## <a name="1-configure-hello-data-source"></a>1. Konfigurace zdroje dat hello
+PolyBase používá T-SQL externí objekty toodefine hello umístění a atributy externích dat hello. definice externího objektu Hello jsou uloženy v SQL Data Warehouse. samotná data Hello je uložených externě.
 
 ### <a name="11-create-a-credential"></a>1.1. Vytvoření přihlašovacích údajů
-**Tento krok přeskočit** při zavádění veřejná data společnosti Contoso. Nepotřebujete zabezpečený přístup k veřejná data, protože je již přístupné všem uživatelům.
+**Tento krok přeskočit** při zavádění hello Contoso veřejná data. Protože je již dostupný tooanyone nepotřebujete veřejná data toohello zabezpečený přístup.
 
-**Není tento krok přeskočit** Pokud používáte v tomto kurzu jako šablona pro načítání svoje vlastní data. Přístup k datům prostřednictvím pověření pomocí následujícího skriptu vytvoření přihlašovacích údajů platných pro databázi a použít jej při definování umístění zdroje dat.
+**Není tento krok přeskočit** Pokud používáte v tomto kurzu jako šablona pro načítání svoje vlastní data. tooaccess data pomocí přihlašovacích údajů, použijte hello následující skript toocreate databáze obor pověření a pak jeho pomocí při definování hello umístění zdroje dat hello.
 
 ```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
--- Required to encrypt the credential secret in the next step.
+-- Required tooencrypt hello credential secret in hello next step.
 
 CREATE MASTER KEY;
 
 
 -- B: Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
+-- IDENTITY: Provide any string, it is not used for authentication tooAzure storage.
 -- SECRET: Provide your Azure storage account key.
 
 
@@ -70,9 +70,9 @@ WITH
 
 
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs tooaccess data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
--- CREDENTIAL: Provide the credential created in the previous step.
+-- CREDENTIAL: Provide hello credential created in hello previous step.
 
 CREATE EXTERNAL DATA SOURCE AzureStorage
 WITH (
@@ -82,10 +82,10 @@ WITH (
 );
 ```
 
-Přejděte ke kroku 2.
+Přeskočte toostep 2.
 
-### <a name="12-create-the-external-data-source"></a>1.2. Vytvoření externího zdroje dat.
-Použít [vytvořit externí zdroj dat] [ CREATE EXTERNAL DATA SOURCE] příkazu umístění dat a typu dat úložiště. 
+### <a name="12-create-hello-external-data-source"></a>1.2. Vytvoření hello externí zdroj dat
+Použít [vytvořit externí zdroj dat] [ CREATE EXTERNAL DATA SOURCE] příkaz toostore hello umístění hello dat a datový typ hello. 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -97,12 +97,12 @@ WITH
 ```
 
 > [!IMPORTANT]
-> Pokud zvolíte možnost zveřejnit objektu blob služby azure storage kontejnery, mějte na paměti, že jako vlastník dat vám bude účtována pro data s nimi spojeným nákladům při data ponechá datového centra. 
+> Pokud si zvolíte toomake vaše veřejné kontejnery úložiště objektů blob v azure, mějte na paměti, že jako vlastník dat hello vám bude účtována pro data s nimi spojeným nákladům při data ponechá hello datového centra. 
 > 
 > 
 
 ## <a name="2-configure-data-format"></a>2. Konfigurovat formát dat
-Jsou data uložena v textových souborů v Azure blob storage a každé pole je oddělená s oddělovačem. To [vytvořit EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] příkaz k určení formátu dat v textových souborů. Data společnosti Contoso se nekomprimované a oddělený kanálu.
+Hello data jsou uložena v textových souborů v Azure blob storage a každé pole je oddělená s oddělovačem. To [vytvořit EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] příkaz toospecify hello formát data hello hello textových souborů. nekomprimované Hello data společnosti Contoso a oddělený kanálu.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -116,21 +116,21 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. Vytvoření externí tabulky
-Formát dat zdroje a soubor jste zadali, jste připraveni k vytvoření externí tabulky. 
+## <a name="3-create-hello-external-tables"></a>3. Vytvoření hello externí tabulky
+Teď, když jste zadali hello datového zdroje a formát souboru, jste připravené toocreate hello externí tabulky. 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. Vytvořte schéma pro data.
-Pokud chcete vytvořit místo, kam můžete ukládat data společnosti Contoso ve vaší databázi, vytvořte schéma.
+### <a name="31-create-a-schema-for-hello-data"></a>3.1. Vytvořte schéma pro hello data.
+toocreate místě toostore hello Contoso data z databáze, vytvořte schéma.
 
 ```sql
 CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. Vytvořte externí tabulky.
-Spusťte tento skript pro vytvoření DimProduct a FactOnlineSales externí tabulky. Všechny, které jsme to děláte, zde je definování názvy sloupců a datové typy a vazba je do umístění a formát souborů úložiště objektů blob v Azure. Definice je uložená v SQL Data Warehouse a dat je stále v Azure Storage Blob.
+### <a name="32-create-hello-external-tables"></a>3.2. Vytvořte hello externí tabulky.
+Spusťte tento skript toocreate hello DimProduct a FactOnlineSales externí tabulky. Všechny, které jsme to děláte, zde je definování názvy sloupců a datové typy a vazba je toohello umístění a formát souborů úložiště objektů blob v Azure hello. definice Hello je uložená v SQL Data Warehouse a hello dat je stále v hello Azure Storage Blob.
 
-**Umístění** parametr je složka, v kořenové složce v Azure Storage Blob. Každá tabulka je v jiné složce.
+Hello **umístění** parametr je hello složky v kořenové složce hello v hello Azure Storage Blob. Každá tabulka je v jiné složce.
 
 ```sql
 
@@ -215,23 +215,23 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. Načtení dat
-Není k dispozici různé způsoby přístup k externím datům.  Můžete zadávat dotazy na data přímo z externí tabulky, načíst data do nové tabulky databáze nebo přidat externí data do existující tabulky databáze.  
+## <a name="4-load-hello-data"></a>4. Načtení dat hello
+Není k dispozici různé způsoby tooaccess externí data.  Můžete zadávat dotazy na data přímo z externí tabulky hello, načtení dat hello do nové tabulky databáze nebo přidat externí data tooexisting databázových tabulek.  
 
 ### <a name="41-create-a-new-schema"></a>4.1. Vytvořit nové schéma
-Funkce CTAS vytvoří novou tabulku, která obsahuje data.  Nejprve vytvořte schéma pro data společnosti contoso.
+Funkce CTAS vytvoří novou tabulku, která obsahuje data.  Nejprve vytvořte schéma pro data společnosti contoso hello.
 
 ```sql
 CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. Načíst data do nové tabulky
-Pokud chcete načíst data z Azure blob storage a uložit ho v tabulce uvnitř vaší databáze, použijte [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] příkaz. Načítání se funkce CTAS využívá silného typu externí tabulky, které jste právě vytvořili. Chcete-li načíst data do nové tabulky, použijte jednu [funkce CTAS] [ CTAS] příkaz na jednu tabulku. 
+### <a name="42-load-hello-data-into-new-tables"></a>4.2. Načtení dat hello do nové tabulky
+tooload dat z Azure úložiště objektů blob a uložte ho v tabulce uvnitř vaší databáze, použijte hello [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] příkaz. Načtení se funkce CTAS využívá hello silného typu externí tabulky se právě created.tooload hello data do nové tabulky, použijte jednu [funkce CTAS] [ CTAS] příkaz na jednu tabulku. 
  
-Funkce CTAS vytvoří novou tabulku a naplní s výsledky příkazu select. Funkce CTAS definuje novou tabulku tak, aby měl stejné sloupce a typy dat jako výsledky příkazu select. Pokud vyberete všechny sloupce z externí tabulky, bude nová tabulka repliku sloupce a typy dat v externí tabulky.
+Funkce CTAS vytvoří novou tabulku a naplní s hello výsledky příkazu select. Funkce CTAS definuje hello nové tabulky toohave hello stejnou sloupce a datové typy jako hello výsledky hello vyberte příkaz. Pokud vyberete všechny sloupce hello z externí tabulky, bude nová tabulka hello repliku hello sloupce a typy dat v hello externí tabulky.
 
-V tomto příkladu vytvoříme dimenze a tabulky faktů jako hash distribuované tabulky. 
+V tomto příkladu vytvoříme hello dimenze a tabulky faktů hello jako hash distribuované tabulky. 
 
 ```sql
 SELECT GETDATE();
@@ -241,20 +241,20 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3 sledovat průběh zatížení
-Můžete sledovat průběh zatížení pomocí zobrazení dynamické správy (zobrazení dynamické správy). 
+### <a name="43-track-hello-load-progress"></a>4.3 sledovat průběh zatížení hello
+Můžete sledovat průběh hello zatížení pomocí zobrazení dynamické správy (zobrazení dynamické správy). 
 
 ```sql
--- To see all requests
+-- toosee all requests
 SELECT * FROM sys.dm_pdw_exec_requests;
 
--- To see a particular request identified by its label
+-- toosee a particular request identified by its label
 SELECT * FROM sys.dm_pdw_exec_requests as r
 WHERE r.[label] = 'CTAS : Load [cso].[DimProduct]             '
       OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 ;
 
--- To track bytes and files
+-- tootrack bytes and files
 SELECT
     r.command,
     s.request_id,
@@ -278,9 +278,9 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5. Optimalizace columnstore komprese
-Ve výchozím nastavení SQL Data Warehouse ukládá jako clusterovaný index columnstore v tabulce. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Je z různých důvodů, proč k tomu může dojít. Další informace najdete v tématu [spravovat indexy columnstore][manage columnstore indexes].
+Ve výchozím nastavení ukládá SQL Data Warehouse tabulku hello jako clusterovaný index columnstore. Po dokončení zatížení, nemusí některé řádky dat hello komprimované do hello columnstore.  Je z různých důvodů, proč k tomu může dojít. Další, najdete v části toolearn [spravovat indexy columnstore][manage columnstore indexes].
 
-Chcete-li optimalizovat výkon dotazů a komprese columnstore po zatížení, znovu sestavte vynutit index columnstore komprimovat všechny řádky v tabulce. 
+toooptimize výkon dotazů a komprese columnstore po zatížení, znovu sestavit index columnstore toocompress pro hello tabulky tooforce hello všechny řádky hello. 
 
 ```sql
 SELECT GETDATE();
@@ -290,14 +290,14 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-Další informace o údržbě indexů columnstore, najdete v článku [spravovat indexy columnstore] [ manage columnstore indexes] článku.
+Další informace o údržbě indexů columnstore najdete v tématu hello [spravovat indexy columnstore] [ manage columnstore indexes] článku.
 
 ## <a name="6-optimize-statistics"></a>6. Optimalizace statistiky
-Je vhodné vytvořit jednosloupcovou statistiku okamžitě po zatížení. Existuje několik možností pro statistiky. Například pokud vytvoříte jednosloupcovou statistiku pro každý sloupec může trvat dlouhou dobu znovu vytvořit všechny statistiky. Pokud víte, že některé sloupce nejsou má být v predikátech dotazu, můžete přeskočit vytvoření statistiky pro tyto sloupce.
+Je nejlepší toocreate jednosloupcovou statistiku ihned po zatížení. Existuje několik možností pro statistiky. Například pokud vytvoříte jednosloupcovou statistiku pro každý sloupec může trvat dlouhou dobu toorebuild všechny statistické údaje o hello. Pokud víte, že některé sloupce nebudete toobe v predikátech dotazu, můžete přeskočit vytvoření statistiky pro tyto sloupce.
 
-Pokud se rozhodnete vytvořit jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít ukázka kódu uložené procedury `prc_sqldw_create_stats` v [statistiky] [ statistics] článku.
+Pokud se rozhodnete toocreate jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít ukázka kódu uložené procedury hello `prc_sqldw_create_stats` v hello [statistiky] [ statistics] článku.
 
-V následujícím příkladu je to dobrý výchozí bod pro vytvoření statistiky. Vytvoří jednosloupcovou statistiku pro každý sloupec v tabulce dimenze a pro každý sloupec spojující v tabulkách faktů. Vždy přidáním statistiky jeden nebo více sloupců do ostatních sloupců tabulky faktů později.
+Následující ukázka Hello je to dobrý výchozí bod pro vytvoření statistiky. Vytvoří jednosloupcovou statistiku pro každý sloupec v tabulce dimenze hello a na každém spojující sloupci tabulky faktů hello. Sloupců tabulky faktů tooother statistiky jeden nebo více sloupci můžete vždy přidat později.
 
 ```sql
 CREATE STATISTICS [stat_cso_DimProduct_AvailableForSaleDate] ON [cso].[DimProduct]([AvailableForSaleDate]);
@@ -344,7 +344,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ## <a name="achievement-unlocked"></a>Dosažení odemčený!
 Veřejná data mají úspěšně načíst do Azure SQL Data Warehouse. Skvělá práce!
 
-Nyní můžete spustit dotazu na tabulky pomocí dotazů takto:
+Nyní můžete spustit dotazování tabulky hello pomocí dotazů jako hello následující:
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -355,7 +355,7 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete načíst data úplné Contoso prodejní datového skladu, použijte skript v další tipy pro vývoj, najdete v části [přehled vývoje SQL Data Warehouse][SQL Data Warehouse development overview].
+tooload hello úplné Contoso prodejní dat datového skladu, použijte skript hello v další tipy pro vývoj, najdete v části [přehled vývoje SQL Data Warehouse][SQL Data Warehouse development overview].
 
 <!--Image references-->
 
@@ -377,4 +377,4 @@ Pokud chcete načíst data úplné Contoso prodejní datového skladu, použijte
 
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
+[Load hello full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

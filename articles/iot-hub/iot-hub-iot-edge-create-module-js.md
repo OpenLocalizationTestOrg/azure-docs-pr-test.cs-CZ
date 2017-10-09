@@ -1,6 +1,6 @@
 ---
-title: "Vytvořte modul Azure IoT Edge s Node.js | Microsoft Docs"
-description: "V tomto kurzu umožňující prezentovat jak napsat modulu převaděč dat zakázat pomocí nejnovější Azure IoT Edge NPM balíčky a Yeoman generátor."
+title: aaaCreate modul Azure IoT Edge s Node.js | Microsoft Docs
+description: "V tomto kurzu umožňující prezentovat jak toowrite pomocí modulu zakázat data převaděč hello nejnovější Azure IoT Edge NPM balíčky a Yeoman generátor."
 services: iot-hub
 author: sushi
 manager: timlt
@@ -11,23 +11,23 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: sushi
-ms.openlocfilehash: ba466f47e157d805600c41fa3d84ed5a0363969c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d3e696b5a310377ffb8e99998ff0714bf7c0bb41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-nodejs"></a>Vytvořte modul Azure IoT Edge s Node.js
 
-V tomto kurzu umožňující prezentovat vytvoření modulu pro Azure IoT hrany v JS.
+V tomto kurzu umožňující prezentovat jak toocreate modul pro Azure IoT hrany v JS.
 
-V tomto kurzu jsme provede procesem nastavení prostředí a jak napsat [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) modulu převaděč dat pomocí nejnovější balíčky Azure IoT Edge NPM.
+V tomto kurzu jsme provede procesem nastavení prostředí a jak toowrite [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) modulu převaděč dat pomocí Azure IoT Edge NPM balíčky nejnovější hello.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V této části nastavíte prostředí pro vývoj modulu IoT okraj. Platí pro obě *64bitová verze Windows* a *Linux 64-bit (Ubuntu 14 +)* operační systémy.
+V této části nastavíte prostředí pro vývoj modulu IoT okraj. Platí tooboth *64bitová verze Windows* a *Linux 64-bit (Ubuntu 14 +)* operační systémy.
 
-Je vyžadován následující software:
+je potřeba Hello následující software:
 * [Git klienta](https://git-scm.com/downloads).
 * [Uzel LTS](https://nodejs.org).
 * `npm install -g yo`.
@@ -35,41 +35,41 @@ Je vyžadován následující software:
 
 ## <a name="architecture"></a>Architektura
 
-Platformy Azure IoT Edge výraznou přijme [Von Neumannova architektura](https://en.wikipedia.org/wiki/Von_Neumann_architecture). Což znamená, že celou architekturu Azure IoT okraj je systém, který zpracovává vstup a výstup; a každý jednotlivých modul je také velmi malé subsystému vstup a výstup. V tomto kurzu zavedeme následující dva moduly:
+platformy Azure IoT Edge Hello výraznou přijme hello [Von Neumannova architektura](https://en.wikipedia.org/wiki/Von_Neumann_architecture). To znamená této architektuře hello celý Azure IoT okraj je systém, který zpracovává vstup a výstup; a každý jednotlivých modul je také velmi malé subsystému vstup a výstup. V tomto kurzu zavedeme hello následující dva moduly:
 
 1. Modul, který obdrží simulované [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) signál a převede jej na formátovaný [JSON](https://en.wikipedia.org/wiki/JSON) zprávy.
-2. Modul, který vytiskne přijatého [JSON](https://en.wikipedia.org/wiki/JSON) zprávy.
+2. Modul, který vytiskne hello přijata [JSON](https://en.wikipedia.org/wiki/JSON) zprávy.
 
-Následující obrázek zobrazuje typické toku koncová dat pro tento projekt.
+Hello následující obrázek zobrazuje hello typické end tooend toku dat pro tento projekt.
 
 ![Tok dat mezi tři moduly](media/iot-hub-iot-edge-create-module/dataflow.png "vstup: Simulated zakázat modulu; Procesor: Převaděč modulu; Výstup: Modul tiskárny")
 
-## <a name="set-up-the-environment"></a>Nastavení prostředí
-Níže budeme ukazují, jak rychle nastavit prostředí pro začít psát první modul zakázat převaděč JS.
+## <a name="set-up-hello-environment"></a>Nastavení prostředí hello
+Zde jsme vám ukážou, jak tooquickly nastavit prostředí toostart toowrite první modul zakázat převaděč JS.
 
 ### <a name="create-module-project"></a>Vytvoření projektu modulu
 1. Otevřete okno příkazového řádku, spusťte `yo az-iot-gw-module`.
-2. Podle pokynů na obrazovce na dokončení inicializace modulu projektu.
+2. Postupujte podle kroků hello na hello obrazovky toofinish hello inicializace modulu projektu.
 
 ### <a name="project-structure"></a>Struktura projektu
-Modul projektu JS se skládá z následujících součástí:
+Modul projektu JS se skládá z hello následující součásti:
 
-`modules`-Přizpůsobené JS modulu zdrojové soubory. Nahraďte výchozí `sensor.js` a `printer.js` s vlastní soubory modulu.
+`modules`-hello přizpůsobit JS modulu zdrojové soubory. Nahraďte hello výchozí `sensor.js` a `printer.js` s vlastní soubory modulu.
 
-`app.js`-Soubor položku Spustit instance okraj.
+`app.js`-hello vstupní soubor toostart hello Edge instance.
 
-`gw.config.json`Chcete-li přizpůsobit moduly, které mají být načteny Edge – konfigurační soubor.
+`gw.config.json`-hello konfigurační soubor toocustomize hello moduly toobe načteny okraj.
 
-`package.json`-Informace metadat pro modul projekt.
+`package.json`-hello informace metadat pro modul projektu.
 
-`README.md`-Základní dokumentace pro modul projekt.
+`README.md`-hello základní dokumentace pro modul projekt.
 
 
 ### <a name="package-file"></a>Soubor balíčku
 
-To `package.json` deklaruje všechny informace potřebné pro modul projekt, který obsahuje název, verzi, položky, skripty, modulu runtime a vývoj závislosti metadat.
+To `package.json` deklaruje všechny hello metadata informace potřebné pro modul projekt, který obsahuje název, verzi, položky, skripty, modulu runtime a vývoj závislosti hello.
 
-Následující fragment kódu ukazuje, jak nakonfigurovat pro zakázat převaděč ukázkový projekt.
+Následující fragment kódu ukazuje kód jak tooconfigure pro zakázat převaděč ukázkový projektu.
 ```json
 {
   "name": "converter",
@@ -95,7 +95,7 @@ Následující fragment kódu ukazuje, jak nakonfigurovat pro zakázat převadě
 
 
 ### <a name="entry-file"></a>Vstupní soubor
-`app.js` Definuje způsob k inicializaci instance okraj. Zde jsme není nutné provést změnu.
+Hello `app.js` definuje hello způsob tooinitialize hello edge instance. Zde jsme nepotřebují toomake všechny změny.
 
 ```javascript
 (function() {
@@ -117,13 +117,13 @@ Následující fragment kódu ukazuje, jak nakonfigurovat pro zakázat převadě
 ### <a name="interface-of-module"></a>Rozhraní modulu
 Modul služby Azure IoT Edge lze považovat procesor dat, jejichž povinnostem je: přijímání vstupu, zpracovat a vytvoření výstupu.
 
-Vstup může být data z hardware (např. detektor pohybu), zprávu z ostatních modulů, nebo cokoliv jiného (např. náhodné číslo pravidelně generované časovač).
+vstup Hello může být data z hardware (např. detektor pohybu), zprávu z ostatních modulů, nebo cokoliv jiného (např. náhodné číslo pravidelně generované časovač).
 
-Výstup bude vypadat na vstup, se může spustit chování hardware (např. blikající LED), zprávu, která z ostatních modulů, nebo cokoliv jiného (např. tisk do konzoly).
+výstup Hello je podobné toohello vstup, se může spustit chování hardware (např. hello blikat DIODU), zpráva tooother moduly nebo cokoliv jiného (např. tisk toohello konzoly).
 
-Moduly navzájem komunikují pomocí `message` objektu. **Obsah** z `message` je bajtové pole, které umožňuje reprezentovat jakýkoli druh dat se vám líbí. **Vlastnosti** jsou také k dispozici v `message` a jsou jednoduše mapování řetězec řetězec. Může si můžete představit **vlastnosti** jako hlavičky v požadavku HTTP nebo metadata souboru.
+Moduly navzájem komunikují pomocí `message` objektu. Hello **obsah** z `message` je bajtové pole, které umožňuje reprezentovat jakýkoli druh dat se vám líbí. **Vlastnosti** jsou také k dispozici v hello `message` a jsou jednoduše mapování řetězec řetězec. Může si můžete představit **vlastnosti** jako hello hlavičky v požadavku HTTP, nebo hello metadata souboru.
 
-Chcete-li vytvořit modul Azure IoT Edge v JS, budete muset vytvořit nový objekt modul, který implementuje požadované metody `receive()`. V tomto okamžiku můžete také implementovat volitelné `create()` nebo `start()`, nebo `destroy()` také metody. Následující fragment kódu ukazuje generování uživatelského rozhraní modulu objektu JS.
+Pořadí toodevelop modul Azure IoT Edge v JS, je nutné toocreate nového objektu modulu, který implementuje metody hello požadované `receive()`. V tomto okamžiku můžete také tooimplement hello volitelné `create()` nebo `start()`, nebo `destroy()` také metody. Hello následující fragment kódu ukazuje, že hello generování uživatelského rozhraní modulu objektu JS.
 
 ```javascript
 'use strict';
@@ -158,16 +158,16 @@ module.exports = {
 | ------------------------ | -------------------------------------- | ---------------------- | ---------------------- |
 | Teplotní datových zpráv | Analýza a vytvořit novou zprávu JSON | Struktura JSON zpráv | `converter.js` |
 
-Tento modul je typické modul Azure IoT okraj. Přijímá zprávy teploty z ostatních modulů (modul hardwarového nebo v tomto případě naše simulované modulu lit); a pak normalizuje teploty zprávu ve zprávě strukturovaných JSON (včetně připojování ID zprávy, nastavení vlastnosti jestli musíme teploty výstrahu aktivovat a tak dále).
+Tento modul je typické modul Azure IoT okraj. Přijímá zprávy teploty z ostatních modulů (modul hardwarového nebo v tomto případě naše simulované modulu lit); a pak normalizuje uvítací zprávu teploty tooa strukturovaná JSON zprávy (včetně připojování hello ID zprávy, nastavení hello vlastnost jestli potřebujeme tootrigger hello teploty výstrahy a tak dále).
 
 ```javascript
 receive: function (message) {
-  // Initialize the messageCount in global object at first time.
+  // Initialize hello messageCount in global object at first time.
   if (!global.messageCount) {
     global.messageCount = 0;
   }
 
-  // Read the content and properties objects from message.
+  // Read hello content and properties objects from message.
   let rawContent = JSON.parse(Buffer.from(message.content).toString('utf8'));
   let rawProperties = message.properties;
 
@@ -185,7 +185,7 @@ receive: function (message) {
     temperature: rawContent.temperature
   };
 
-  // Publish the new message to broker.
+  // Publish hello new message toobroker.
   this.broker.publish(
     {
       properties: newProperties,
@@ -198,9 +198,9 @@ receive: function (message) {
 ### <a name="printer-module"></a>Modul tiskárny
 | Vstup                          | Procesor | Výstup                     | Zdrojový soubor          |
 | ------------------------------ | --------- | -------------------------- | -------------------- |
-| Jakékoli zprávy z ostatních modulů | Není k dispozici       | Přihlaste se do konzoly zprávy | `printer.js` |
+| Jakékoli zprávy z ostatních modulů | Není k dispozici       | Protokolování zpráv tooconsole hello | `printer.js` |
 
-Tento modul je jednoduché, není potřeba vysvětlovat, který výstupy přijatých zpráv (vlastnost, obsah) do okna terminálu.
+Tento modul je jednoduché, není potřeba vysvětlovat, který výstupy hello přijaté zprávy (vlastnost, obsah) toohello okno terminálu.
 
 ```javascript
 receive: function (message) {
@@ -213,9 +213,9 @@ receive: function (message) {
 ```
 
 ### <a name="configuration"></a>Konfigurace
-V posledním kroku před spuštěním moduly je ke konfiguraci Azure IoT okraj a k navázání připojení mezi moduly.
+posledním krokem Hello před spuštěním moduly hello je tooconfigure hello Azure IoT okraj a tooestablish hello připojení mezi moduly.
 
-Nejprve je potřeba deklarovat naše `node` zavaděče (od Azure IoT Edge podporuje zavaděče různých jazyků), který může být odkazuje jeho `name` v částech i později.
+Nejdřív potřebujeme toodeclare naše `node` zavaděče (od Azure IoT Edge podporuje zavaděče různých jazyků), který může být odkazuje jeho `name` v částech hello i později.
 
 ```json
 "loaders": [
@@ -226,7 +226,7 @@ Nejprve je potřeba deklarovat naše `node` zavaděče (od Azure IoT Edge podpor
 ]
 ```
 
-Jakmile jsme prohlásí, že je naše zavaděče, potřebujeme také deklarovat také naše moduly. Podobně jako deklarace zavaděče, že lze také odkazovat podle jejich `name` atribut. Když modul deklarace, musíme určit zavaděč, měla by používat (který by měl být jeden jsme definovali před) a vstupní bod (musí být normalizovaný název třídy Naše modulu) pro každý modul. `simulated_device` Modulu je nativní modul, který je součástí balíčku Azure IoT Edge core runtime. Zahrnout `args` v kódu JSON souboru i v případě, že je `null`.
+Jakmile jsme prohlásí, že je naše zavaděče, také potřebujeme toodeclare také naše moduly. Podobné zavaděče hello toodeclaring, že lze také odkazovat podle jejich `name` atribut. Když modul deklarace, potřebujeme toospecify hello zavaděč měli použít (které by se měly hello jeden jsme definovali před) a hello vstupního bodu (by měl být hello normalizovaný název třídy Naše modulu) pro každý modul. Hello `simulated_device` modulu je nativní modul, který je součástí hello Azure IoT Edge core runtime balíčku. Zahrnout `args` v souboru JSON, i když je hello `null`.
 
 ```json
 "modules": [
@@ -266,7 +266,7 @@ Jakmile jsme prohlásí, že je naše zavaděče, potřebujeme také deklarovat 
 ]
 ```
 
-Na konci konfigurace naváže připojení. Je každé připojení vyjádřená `source` a `sink`. Jejich by měl obě odkazovat modul předem definovaná. Výstup zprávu `source` modulu se předají na vstup `sink` modulu.
+Na konci hello hello konfigurace naváže připojení hello. Je každé připojení vyjádřená `source` a `sink`. Jejich by měl obě odkazovat modul předem definovaná. zprávu výstup Hello `source` modulu se předají toohello vstup z `sink` modulu.
 
 ```json
 "links": [
@@ -281,11 +281,11 @@ Na konci konfigurace naváže připojení. Je každé připojení vyjádřená `
 ]
 ```
 
-## <a name="running-the-modules"></a>Spuštění moduly
+## <a name="running-hello-modules"></a>Spuštěné moduly hello
 1. `npm install`
 2. `npm start`
 
-Pokud chcete aplikaci ukončit, stiskněte klávesu `<Enter>` klíč.
+Pokud chcete aplikace hello tooterminate, stiskněte klávesu `<Enter>` klíč.
 
 > [!IMPORTANT]
-> Není doporučeno používat kombinace kláves Ctrl + C k ukončení aplikace IoT okraj. Jako tímto způsobem může způsobit neobvyklým způsobem ukončení procesu.
+> Není doporučeno toouse Ctrl + C tooterminate hello IoT Edge aplikace. Jako tímto způsobem může způsobit hello proces tooterminate neobvyklým způsobem.
