@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure AD v projektech Visual Studio MVC | Microsoft Docs"
-description: "Jak začít používat Azure Active Directory v projekty MVC po připojení k nebo vytváření Azure AD pomocí sady Visual Studio připojené služby"
+title: "Začínáme s Azure AD v projektech Visual Studio MVC aaaGet | Microsoft Docs"
+description: "Způsob tooget spuštění pomocí služby Azure Active Directory v projekty MVC po připojení tooor vytváření Azure AD pomocí sady Visual Studio připojené služby"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 807824dd6e4e57e443f8a7322cf2e5326384316d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a><span data-ttu-id="68829-103">Začínáme s Azure Active Directory a Visual Studio připojené služby (Projekty MVC)</span><span class="sxs-lookup"><span data-stu-id="68829-103">Getting Started with Azure Active Directory and Visual Studio connected services (MVC Projects)</span></span>
+# <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a><span data-ttu-id="5c220-103">Začínáme s Azure Active Directory a Visual Studio připojené služby (Projekty MVC)</span><span class="sxs-lookup"><span data-stu-id="5c220-103">Getting Started with Azure Active Directory and Visual Studio connected services (MVC Projects)</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="68829-104">Začínáme</span><span class="sxs-lookup"><span data-stu-id="68829-104">Getting Started</span></span>](vs-active-directory-dotnet-getting-started.md)
-> * [<span data-ttu-id="68829-105">Co se přihodilo</span><span class="sxs-lookup"><span data-stu-id="68829-105">What Happened</span></span>](vs-active-directory-dotnet-what-happened.md)
+> * [<span data-ttu-id="5c220-104">Začínáme</span><span class="sxs-lookup"><span data-stu-id="5c220-104">Getting Started</span></span>](vs-active-directory-dotnet-getting-started.md)
+> * [<span data-ttu-id="5c220-105">Co se přihodilo</span><span class="sxs-lookup"><span data-stu-id="5c220-105">What Happened</span></span>](vs-active-directory-dotnet-what-happened.md)
 > 
 > 
 
-## <a name="requiring-authentication-to-access-controllers"></a><span data-ttu-id="68829-106">Vyžádání ověření řadičům přístup</span><span class="sxs-lookup"><span data-stu-id="68829-106">Requiring authentication to access controllers</span></span>
-<span data-ttu-id="68829-107">Všechny řadiče ve vašem projektu byly ozdobené s **Autorizovat** atribut.</span><span class="sxs-lookup"><span data-stu-id="68829-107">All controllers in your project were adorned with the **Authorize** attribute.</span></span> <span data-ttu-id="68829-108">Tento atribut vyžaduje, aby uživatel k ověření před přístupem k tyto řadiče.</span><span class="sxs-lookup"><span data-stu-id="68829-108">This attribute requires the user to be authenticated before accessing these controllers.</span></span> <span data-ttu-id="68829-109">Chcete-li umožňují řadiči získat anonymní přístup, odeberte tento atribut z řadiče.</span><span class="sxs-lookup"><span data-stu-id="68829-109">To allow the controller to be accessed anonymously, remove this attribute from the controller.</span></span> <span data-ttu-id="68829-110">Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje ověření, namísto aplikace do třídy kontroleru.</span><span class="sxs-lookup"><span data-stu-id="68829-110">If you want to set the permissions at a more granular level, apply the attribute to each method that requires authorization instead of applying it to the controller class.</span></span>
+## <a name="requiring-authentication-tooaccess-controllers"></a><span data-ttu-id="5c220-106">Vyžadování ověřování tooaccess řadiče</span><span class="sxs-lookup"><span data-stu-id="5c220-106">Requiring authentication tooaccess controllers</span></span>
+<span data-ttu-id="5c220-107">Všechny řadiče ve vašem projektu byly ozdobené s hello **Autorizovat** atribut.</span><span class="sxs-lookup"><span data-stu-id="5c220-107">All controllers in your project were adorned with hello **Authorize** attribute.</span></span> <span data-ttu-id="5c220-108">Tento atribut vyžaduje, aby toobe hello uživatel ověřený před přístupem k tyto řadiče.</span><span class="sxs-lookup"><span data-stu-id="5c220-108">This attribute requires hello user toobe authenticated before accessing these controllers.</span></span> <span data-ttu-id="5c220-109">tooallow hello řadiče toobe přistupovat anonymně, odeberte tento atribut z hello řadiče.</span><span class="sxs-lookup"><span data-stu-id="5c220-109">tooallow hello controller toobe accessed anonymously, remove this attribute from hello controller.</span></span> <span data-ttu-id="5c220-110">Pokud chcete tooset hello oprávnění na podrobnější úrovni, použijte hello atribut tooeach metodu, která vyžaduje autorizace místo jeho použití toohello třídy kontroleru.</span><span class="sxs-lookup"><span data-stu-id="5c220-110">If you want tooset hello permissions at a more granular level, apply hello attribute tooeach method that requires authorization instead of applying it toohello controller class.</span></span>
 
-## <a name="adding-signin--signout-controls"></a><span data-ttu-id="68829-111">Přidání přihlášení / odhlášení ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="68829-111">Adding SignIn / SignOut Controls</span></span>
-<span data-ttu-id="68829-112">K přidávání ovládacích prvků přihlášení/odhlášení do zobrazení, můžete použít **_LoginPartial.cshtml** částečné zobrazení k přidání funkce do jednoho zobrazení.</span><span class="sxs-lookup"><span data-stu-id="68829-112">To add the SignIn/SignOut controls to your view, you can use the **_LoginPartial.cshtml** partial view to add the functionality to one of your views.</span></span> <span data-ttu-id="68829-113">Tady je příklad funkci přidat do standardní **_Layout.cshtml** zobrazení.</span><span class="sxs-lookup"><span data-stu-id="68829-113">Here is an example of the functionality added to the standard **_Layout.cshtml** view.</span></span> <span data-ttu-id="68829-114">(Všimněte si posledním prvkem v div s navigační panel sbalí třída):</span><span class="sxs-lookup"><span data-stu-id="68829-114">(Note the last element in the div with class navbar-collapse):</span></span>
+## <a name="adding-signin--signout-controls"></a><span data-ttu-id="5c220-111">Přidání přihlášení / odhlášení ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="5c220-111">Adding SignIn / SignOut Controls</span></span>
+<span data-ttu-id="5c220-112">tooadd hello přihlášení/odhlášení ovládací prvky zobrazení tooyour, můžete použít hello **_LoginPartial.cshtml** částečné zobrazení tooadd hello funkce tooone vašich zobrazení.</span><span class="sxs-lookup"><span data-stu-id="5c220-112">tooadd hello SignIn/SignOut controls tooyour view, you can use hello **_LoginPartial.cshtml** partial view tooadd hello functionality tooone of your views.</span></span> <span data-ttu-id="5c220-113">Tady je příklad hello funkce přidané toohello standard **_Layout.cshtml** zobrazení.</span><span class="sxs-lookup"><span data-stu-id="5c220-113">Here is an example of hello functionality added toohello standard **_Layout.cshtml** view.</span></span> <span data-ttu-id="5c220-114">(Všimněte si hello posledním prvkem v hello div s navigační panel sbalí třída):</span><span class="sxs-lookup"><span data-stu-id="5c220-114">(Note hello last element in hello div with class navbar-collapse):</span></span>
 
 <pre>
     &lt;!DOCTYPE html&gt; 
@@ -79,6 +79,6 @@ ms.lasthandoff: 08/29/2017
     &lt;/html&gt;
 </pre>
 
-## <a name="next-steps"></a><span data-ttu-id="68829-115">Další kroky</span><span class="sxs-lookup"><span data-stu-id="68829-115">Next steps</span></span>
-- [<span data-ttu-id="68829-116">Další informace o službě Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="68829-116">Learn more about Azure Active Directory</span></span>](https://azure.microsoft.com/services/active-directory/) 
+## <a name="next-steps"></a><span data-ttu-id="5c220-115">Další kroky</span><span class="sxs-lookup"><span data-stu-id="5c220-115">Next steps</span></span>
+- [<span data-ttu-id="5c220-116">Další informace o službě Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="5c220-116">Learn more about Azure Active Directory</span></span>](https://azure.microsoft.com/services/active-directory/) 
 

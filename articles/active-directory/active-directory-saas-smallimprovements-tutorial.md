@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s malé vylepšení | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi malé vylepšení a Azure Active Directory."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi malé vylepšení a Azure Active Directory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,253 +13,253 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 49a8cd3acfc6df15ef6a51171c8421162bc94efc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 33213fe4b61f5005cf78bee2c05b2b1e5e71ae8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a><span data-ttu-id="7903f-103">Kurz: Azure Active Directory integrace s malé vylepšení</span><span class="sxs-lookup"><span data-stu-id="7903f-103">Tutorial: Azure Active Directory integration with Small Improvements</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a><span data-ttu-id="dac42-103">Kurz: Azure Active Directory integrace s malé vylepšení</span><span class="sxs-lookup"><span data-stu-id="dac42-103">Tutorial: Azure Active Directory integration with Small Improvements</span></span>
 
-<span data-ttu-id="7903f-104">V tomto kurzu zjistěte, jak integrovat malé vylepšení s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="7903f-104">In this tutorial, you learn how to integrate Small Improvements with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="dac42-104">V tomto kurzu zjistíte, jak toointegrate malé vylepšení v Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="dac42-104">In this tutorial, you learn how toointegrate Small Improvements with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="7903f-105">Malé vylepšení integrace s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="7903f-105">Integrating Small Improvements with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="dac42-105">Malé vylepšení integrace s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="dac42-105">Integrating Small Improvements with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="7903f-106">Můžete řídit ve službě Azure AD, který má přístup k vylepšení malé</span><span class="sxs-lookup"><span data-stu-id="7903f-106">You can control in Azure AD who has access to Small Improvements</span></span>
-- <span data-ttu-id="7903f-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k malé vylepšení (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="7903f-107">You can enable your users to automatically get signed-on to Small Improvements (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="7903f-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="7903f-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="dac42-106">Můžete řídit ve službě Azure AD, který má přístup tooSmall vylepšení</span><span class="sxs-lookup"><span data-stu-id="dac42-106">You can control in Azure AD who has access tooSmall Improvements</span></span>
+- <span data-ttu-id="dac42-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooSmall vylepšení (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="dac42-107">You can enable your users tooautomatically get signed-on tooSmall Improvements (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="dac42-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="dac42-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="7903f-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="7903f-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="dac42-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="dac42-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="7903f-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="7903f-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="dac42-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="dac42-110">Prerequisites</span></span>
 
-<span data-ttu-id="7903f-111">Konfigurace integrace Azure AD s malé vylepšení, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="7903f-111">To configure Azure AD integration with Small Improvements, you need the following items:</span></span>
+<span data-ttu-id="dac42-111">tooconfigure integrace Azure AD s malé vylepšení, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="dac42-111">tooconfigure Azure AD integration with Small Improvements, you need hello following items:</span></span>
 
-- <span data-ttu-id="7903f-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="7903f-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="7903f-113">Malých vylepšení jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="7903f-113">A Small Improvements single sign-on enabled subscription</span></span>
+- <span data-ttu-id="dac42-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="dac42-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="dac42-113">Malých vylepšení jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="dac42-113">A Small Improvements single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="7903f-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="7903f-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="dac42-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="dac42-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="7903f-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="7903f-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="dac42-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="dac42-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="7903f-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="7903f-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="7903f-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="7903f-117">If you don't have an Azure AD trial environment, you can get a one-month trial here [Trial offer](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="dac42-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="dac42-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="dac42-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="dac42-117">If you don't have an Azure AD trial environment, you can get a one-month trial here [Trial offer](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="7903f-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="7903f-118">Scenario description</span></span>
-<span data-ttu-id="7903f-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="7903f-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="7903f-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="7903f-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="dac42-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="dac42-118">Scenario description</span></span>
+<span data-ttu-id="dac42-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="dac42-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="dac42-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="dac42-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="7903f-121">Přidání vylepšení malé z Galerie</span><span class="sxs-lookup"><span data-stu-id="7903f-121">Adding Small Improvements from the gallery</span></span>
-2. <span data-ttu-id="7903f-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="7903f-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="dac42-121">Přidání vylepšení malé z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="dac42-121">Adding Small Improvements from hello gallery</span></span>
+2. <span data-ttu-id="dac42-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="dac42-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-small-improvements-from-the-gallery"></a><span data-ttu-id="7903f-123">Přidání vylepšení malé z Galerie</span><span class="sxs-lookup"><span data-stu-id="7903f-123">Adding Small Improvements from the gallery</span></span>
-<span data-ttu-id="7903f-124">Při konfiguraci integrace malé vylepšení do služby Azure AD, potřebujete přidat malé vylepšení z Galerie si na seznam spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="7903f-124">To configure the integration of Small Improvements into Azure AD, you need to add Small Improvements from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-small-improvements-from-hello-gallery"></a><span data-ttu-id="dac42-123">Přidání vylepšení malé z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="dac42-123">Adding Small Improvements from hello gallery</span></span>
+<span data-ttu-id="dac42-124">tooconfigure hello integrace malé vylepšení do Azure AD, je nutné tooadd malé vylepšení hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="dac42-124">tooconfigure hello integration of Small Improvements into Azure AD, you need tooadd Small Improvements from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="7903f-125">**Pokud chcete přidat malé vylepšení z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="7903f-125">**To add Small Improvements from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="dac42-125">**tooadd malé vylepšení z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="dac42-125">**tooadd Small Improvements from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="7903f-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="7903f-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="dac42-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="dac42-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="7903f-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="7903f-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="7903f-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="7903f-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="dac42-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="dac42-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="dac42-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="dac42-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="7903f-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="7903f-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="dac42-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="dac42-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="7903f-133">Do vyhledávacího pole zadejte **malé vylepšení**.</span><span class="sxs-lookup"><span data-stu-id="7903f-133">In the search box, type **Small Improvements**.</span></span>
+4. <span data-ttu-id="dac42-133">Hello vyhledávacího pole zadejte **malé vylepšení**.</span><span class="sxs-lookup"><span data-stu-id="dac42-133">In hello search box, type **Small Improvements**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_search.png)
 
-5. <span data-ttu-id="7903f-135">Na panelu výsledků vyberte **malé vylepšení**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="7903f-135">In the results panel, select **Small Improvements**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="dac42-135">Na panelu výsledků hello vyberte **malé vylepšení**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="dac42-135">In hello results panel, select **Small Improvements**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="7903f-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="7903f-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="7903f-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s malé vylepšení podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="7903f-138">In this section, you configure and test Azure AD single sign-on with Small Improvements based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="dac42-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="dac42-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="dac42-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s malé vylepšení podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="dac42-138">In this section, you configure and test Azure AD single sign-on with Small Improvements based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="7903f-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v malých vylepšení je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7903f-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Small Improvements is to a user in Azure AD.</span></span> <span data-ttu-id="7903f-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v malých vylepšení musí navázat.</span><span class="sxs-lookup"><span data-stu-id="7903f-140">In other words, a link relationship between an Azure AD user and the related user in Small Improvements needs to be established.</span></span>
+<span data-ttu-id="dac42-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v malých vylepšení je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="dac42-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Small Improvements is tooa user in Azure AD.</span></span> <span data-ttu-id="dac42-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v malých vylepšení musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="dac42-140">In other words, a link relationship between an Azure AD user and hello related user in Small Improvements needs toobe established.</span></span>
 
-<span data-ttu-id="7903f-141">V malých vylepšení přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="7903f-141">In Small Improvements, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="dac42-141">V malých vylepšení přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="dac42-141">In Small Improvements, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="7903f-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s malé vylepšení, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="7903f-142">To configure and test Azure AD single sign-on with Small Improvements, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="dac42-142">tooconfigure a testu Azure AD jednotné přihlašování s malé vylepšení, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="dac42-142">tooconfigure and test Azure AD single sign-on with Small Improvements, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="7903f-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="7903f-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="7903f-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="7903f-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="7903f-145">**[Vytvoření zkušebního uživatele malé vylepšení](#creating-a-small-improvements-test-user)**  – Pokud chcete mít protějšek Britta Simon v malých vylepšení propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="7903f-145">**[Creating a Small Improvements test user](#creating-a-small-improvements-test-user)** - to have a counterpart of Britta Simon in Small Improvements that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="7903f-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="7903f-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="7903f-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="7903f-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="dac42-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="dac42-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="dac42-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="dac42-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="dac42-145">**[Vytvoření zkušebního uživatele malé vylepšení](#creating-a-small-improvements-test-user)**  -toohave protějšek Britta Simon v malých vylepšení, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="dac42-145">**[Creating a Small Improvements test user](#creating-a-small-improvements-test-user)** - toohave a counterpart of Britta Simon in Small Improvements that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="dac42-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="dac42-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="dac42-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="dac42-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="7903f-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="7903f-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="dac42-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="dac42-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="7903f-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci malé vylepšení.</span><span class="sxs-lookup"><span data-stu-id="7903f-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Small Improvements application.</span></span>
+<span data-ttu-id="dac42-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci malé vylepšení.</span><span class="sxs-lookup"><span data-stu-id="dac42-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Small Improvements application.</span></span>
 
-<span data-ttu-id="7903f-150">**Ke konfiguraci Azure AD jednotné přihlašování s malé vylepšení, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="7903f-150">**To configure Azure AD single sign-on with Small Improvements, perform the following steps:**</span></span>
+<span data-ttu-id="dac42-150">**tooconfigure Azure AD jednotné přihlašování s malé vylepšení, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="dac42-150">**tooconfigure Azure AD single sign-on with Small Improvements, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="7903f-151">Na portálu Azure na **malé vylepšení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="7903f-151">In the Azure portal, on the **Small Improvements** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="dac42-151">V portálu Azure, na hello hello **malé vylepšení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="dac42-151">In hello Azure portal, on hello **Small Improvements** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="7903f-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="7903f-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="dac42-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="dac42-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_samlbase.png)
 
-3. <span data-ttu-id="7903f-155">Na **malé vylepšení domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="7903f-155">On the **Small Improvements Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="dac42-155">Na hello **malé vylepšení domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="dac42-155">On hello **Small Improvements Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    <span data-ttu-id="7903f-157">a.</span><span class="sxs-lookup"><span data-stu-id="7903f-157">a.</span></span> <span data-ttu-id="7903f-158">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.small-improvements.com`</span><span class="sxs-lookup"><span data-stu-id="7903f-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<subdomain>.small-improvements.com`</span></span>
+    <span data-ttu-id="dac42-157">a.</span><span class="sxs-lookup"><span data-stu-id="dac42-157">a.</span></span> <span data-ttu-id="dac42-158">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.small-improvements.com`</span><span class="sxs-lookup"><span data-stu-id="dac42-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<subdomain>.small-improvements.com`</span></span>
 
-    <span data-ttu-id="7903f-159">b.</span><span class="sxs-lookup"><span data-stu-id="7903f-159">b.</span></span> <span data-ttu-id="7903f-160">V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.small-improvements.com`</span><span class="sxs-lookup"><span data-stu-id="7903f-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<subdomain>.small-improvements.com`</span></span>
+    <span data-ttu-id="dac42-159">b.</span><span class="sxs-lookup"><span data-stu-id="dac42-159">b.</span></span> <span data-ttu-id="dac42-160">V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.small-improvements.com`</span><span class="sxs-lookup"><span data-stu-id="dac42-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<subdomain>.small-improvements.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="7903f-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="7903f-161">These values are not real.</span></span> <span data-ttu-id="7903f-162">Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="7903f-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="7903f-163">Obraťte se na [tým podpory pro malé vylepšení klienta](mailto:support@small-improvements.com) k získání těchto hodnot.</span><span class="sxs-lookup"><span data-stu-id="7903f-163">Contact [Small Improvements Client support team](mailto:support@small-improvements.com) to get these values.</span></span> 
+    > <span data-ttu-id="dac42-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="dac42-161">These values are not real.</span></span> <span data-ttu-id="dac42-162">Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="dac42-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="dac42-163">Obraťte se na [tým podpory pro malé vylepšení klienta](mailto:support@small-improvements.com) tooget tyto hodnoty.</span><span class="sxs-lookup"><span data-stu-id="dac42-163">Contact [Small Improvements Client support team](mailto:support@small-improvements.com) tooget these values.</span></span> 
  
-4. <span data-ttu-id="7903f-164">Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.</span><span class="sxs-lookup"><span data-stu-id="7903f-164">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="dac42-164">Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="dac42-164">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_certificate.png) 
 
-5. <span data-ttu-id="7903f-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="7903f-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="dac42-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="dac42-166">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="7903f-168">Na **malé konfigurace vylepšení** klikněte na tlačítko **konfigurace malých vylepšení** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="7903f-168">On the **Small Improvements Configuration** section, click **Configure Small Improvements** to open **Configure sign-on** window.</span></span> <span data-ttu-id="7903f-169">Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="7903f-169">Copy the **SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="dac42-168">Na hello **malé konfigurace vylepšení** klikněte na tlačítko **konfigurace malých vylepšení** tooopen **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="dac42-168">On hello **Small Improvements Configuration** section, click **Configure Small Improvements** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="dac42-169">Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="dac42-169">Copy hello **SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_configure.png) 
 
-7. <span data-ttu-id="7903f-171">V jiném okně prohlížeče Přihlaste se k serveru vaší společnosti malé vylepšení jako správce.</span><span class="sxs-lookup"><span data-stu-id="7903f-171">In another browser window, sign on to your Small Improvements company site as an administrator.</span></span>
+7. <span data-ttu-id="dac42-171">V jiném okně prohlížeče Přihlaste se jako správce na webu společnosti tooyour malé vylepšení.</span><span class="sxs-lookup"><span data-stu-id="dac42-171">In another browser window, sign on tooyour Small Improvements company site as an administrator.</span></span>
 
-8. <span data-ttu-id="7903f-172">Na stránce hlavní řídicí panel, klikněte na tlačítko **správy** tlačítko na levé straně.</span><span class="sxs-lookup"><span data-stu-id="7903f-172">From the main dashboard page, click **Administration** button on the left.</span></span>
+8. <span data-ttu-id="dac42-172">Na stránce hello hlavní řídicí panel, klikněte na tlačítko **správy** tlačítko na levé straně hello.</span><span class="sxs-lookup"><span data-stu-id="dac42-172">From hello main dashboard page, click **Administration** button on hello left.</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
-9. <span data-ttu-id="7903f-174">Klikněte **jednotné přihlašování SAML** tlačítko z **integrace** části.</span><span class="sxs-lookup"><span data-stu-id="7903f-174">Click the **SAML SSO** button from **Integrations** section.</span></span>
+9. <span data-ttu-id="dac42-174">Klikněte na tlačítko hello **jednotné přihlašování SAML** tlačítko z **integrace** části.</span><span class="sxs-lookup"><span data-stu-id="dac42-174">Click hello **SAML SSO** button from **Integrations** section.</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
-10. <span data-ttu-id="7903f-176">Na stránce nastavení jednotného přihlašování proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="7903f-176">On the SSO Setup page, perform the following steps:</span></span>
+10. <span data-ttu-id="dac42-176">Na stránce instalace jednotné přihlašování hello proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="dac42-176">On hello SSO Setup page, perform hello following steps:</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    <span data-ttu-id="7903f-178">a.</span><span class="sxs-lookup"><span data-stu-id="7903f-178">a.</span></span> <span data-ttu-id="7903f-179">V **koncový bod HTTP** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="7903f-179">In the **HTTP Endpoint** textbox, paste the value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="dac42-178">a.</span><span class="sxs-lookup"><span data-stu-id="dac42-178">a.</span></span> <span data-ttu-id="dac42-179">V hello **koncový bod HTTP** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="dac42-179">In hello **HTTP Endpoint** textbox, paste hello value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
 
-    <span data-ttu-id="7903f-180">b.</span><span class="sxs-lookup"><span data-stu-id="7903f-180">b.</span></span> <span data-ttu-id="7903f-181">V poznámkovém bloku otevřete stažený certifikát, kopírovat obsah a vložte ji do **x509 certifikát** textové pole.</span><span class="sxs-lookup"><span data-stu-id="7903f-181">Open your downloaded certificate in Notepad, copy the content, and then paste it into the **x509 Certificate** textbox.</span></span> 
+    <span data-ttu-id="dac42-180">b.</span><span class="sxs-lookup"><span data-stu-id="dac42-180">b.</span></span> <span data-ttu-id="dac42-181">Otevřete stažený certifikát v poznámkovém bloku hello kopírování obsahu a pak ji vložit do hello **x509 certifikát** textové pole.</span><span class="sxs-lookup"><span data-stu-id="dac42-181">Open your downloaded certificate in Notepad, copy hello content, and then paste it into hello **x509 Certificate** textbox.</span></span> 
 
-    <span data-ttu-id="7903f-182">c.</span><span class="sxs-lookup"><span data-stu-id="7903f-182">c.</span></span> <span data-ttu-id="7903f-183">Pokud chcete mít jednotné přihlašování a přihlašovací formulář ověřování možnost k dispozici pro uživatele, zkontrolujte **povolit přístup přes heslo pro přihlášení příliš** možnost.</span><span class="sxs-lookup"><span data-stu-id="7903f-183">If you wish to have SSO and Login form authentication option available for users, then check the **Enable access via login/password too** option.</span></span>  
+    <span data-ttu-id="dac42-182">c.</span><span class="sxs-lookup"><span data-stu-id="dac42-182">c.</span></span> <span data-ttu-id="dac42-183">Pokud chcete toohave jednotné přihlašování a přihlašovací formulář ověřování možnost k dispozici pro uživatele, zkontrolujte hello **povolit přístup přes heslo pro přihlášení příliš** možnost.</span><span class="sxs-lookup"><span data-stu-id="dac42-183">If you wish toohave SSO and Login form authentication option available for users, then check hello **Enable access via login/password too** option.</span></span>  
 
-    <span data-ttu-id="7903f-184">d.</span><span class="sxs-lookup"><span data-stu-id="7903f-184">d.</span></span> <span data-ttu-id="7903f-185">Zadejte odpovídající hodnotu pro název tlačítko jednotného přihlášení v **SAML výzva** textové pole.</span><span class="sxs-lookup"><span data-stu-id="7903f-185">Enter the appropriate value to Name the SSO Login button in the **SAML Prompt** textbox.</span></span>  
+    <span data-ttu-id="dac42-184">d.</span><span class="sxs-lookup"><span data-stu-id="dac42-184">d.</span></span> <span data-ttu-id="dac42-185">Zadejte hello odpovídající hodnotu tooName hello přihlášení SSO tlačítko hello **SAML výzva** textové pole.</span><span class="sxs-lookup"><span data-stu-id="dac42-185">Enter hello appropriate value tooName hello SSO Login button in hello **SAML Prompt** textbox.</span></span>  
 
-    <span data-ttu-id="7903f-186">e.</span><span class="sxs-lookup"><span data-stu-id="7903f-186">e.</span></span> <span data-ttu-id="7903f-187">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="7903f-187">Click **Save**.</span></span>
+    <span data-ttu-id="dac42-186">e.</span><span class="sxs-lookup"><span data-stu-id="dac42-186">e.</span></span> <span data-ttu-id="dac42-187">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="dac42-187">Click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="7903f-188">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="7903f-188">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="7903f-189">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="7903f-189">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="7903f-190">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="7903f-190">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="dac42-188">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="dac42-188">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="dac42-189">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="dac42-189">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="dac42-190">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="dac42-190">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="7903f-191">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="7903f-191">Creating an Azure AD test user</span></span>
-<span data-ttu-id="7903f-192">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="7903f-192">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="dac42-191">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="dac42-191">Creating an Azure AD test user</span></span>
+<span data-ttu-id="dac42-192">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="dac42-192">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="7903f-194">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="7903f-194">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="dac42-194">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="dac42-194">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="7903f-195">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="7903f-195">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="dac42-195">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="dac42-195">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="7903f-197">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="7903f-197">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="dac42-197">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="dac42-197">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="7903f-199">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="7903f-199">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="dac42-199">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="dac42-199">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="7903f-201">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="7903f-201">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="dac42-201">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="dac42-201">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="7903f-203">a.</span><span class="sxs-lookup"><span data-stu-id="7903f-203">a.</span></span> <span data-ttu-id="7903f-204">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="7903f-204">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="dac42-203">a.</span><span class="sxs-lookup"><span data-stu-id="dac42-203">a.</span></span> <span data-ttu-id="dac42-204">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="dac42-204">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="7903f-205">b.</span><span class="sxs-lookup"><span data-stu-id="7903f-205">b.</span></span> <span data-ttu-id="7903f-206">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="7903f-206">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="dac42-205">b.</span><span class="sxs-lookup"><span data-stu-id="dac42-205">b.</span></span> <span data-ttu-id="dac42-206">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="dac42-206">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="7903f-207">c.</span><span class="sxs-lookup"><span data-stu-id="7903f-207">c.</span></span> <span data-ttu-id="7903f-208">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="7903f-208">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="dac42-207">c.</span><span class="sxs-lookup"><span data-stu-id="dac42-207">c.</span></span> <span data-ttu-id="dac42-208">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="dac42-208">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="7903f-209">d.</span><span class="sxs-lookup"><span data-stu-id="7903f-209">d.</span></span> <span data-ttu-id="7903f-210">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="7903f-210">Click **Create**.</span></span>
+    <span data-ttu-id="dac42-209">d.</span><span class="sxs-lookup"><span data-stu-id="dac42-209">d.</span></span> <span data-ttu-id="dac42-210">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="dac42-210">Click **Create**.</span></span>
  
-### <a name="creating-a-small-improvements-test-user"></a><span data-ttu-id="7903f-211">Vytvoření zkušebního uživatele malé vylepšení</span><span class="sxs-lookup"><span data-stu-id="7903f-211">Creating a Small Improvements test user</span></span>
+### <a name="creating-a-small-improvements-test-user"></a><span data-ttu-id="dac42-211">Vytvoření zkušebního uživatele malé vylepšení</span><span class="sxs-lookup"><span data-stu-id="dac42-211">Creating a Small Improvements test user</span></span>
 
-<span data-ttu-id="7903f-212">Povolit uživatelům Azure AD přihlášení k vylepšení malé, musí být zřízená do malých vylepšení.</span><span class="sxs-lookup"><span data-stu-id="7903f-212">To enable Azure AD users to log in to Small Improvements, they must be provisioned into Small Improvements.</span></span> <span data-ttu-id="7903f-213">V případě malé vylepšení zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="7903f-213">In the case of Small Improvements, provisioning is a manual task.</span></span>
+<span data-ttu-id="dac42-212">Uživatelé toolog tooenable Azure AD v tooSmall vylepšení, se musí být zřízená do malých vylepšení.</span><span class="sxs-lookup"><span data-stu-id="dac42-212">tooenable Azure AD users toolog in tooSmall Improvements, they must be provisioned into Small Improvements.</span></span> <span data-ttu-id="dac42-213">V případě hello malé vylepšení zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="dac42-213">In hello case of Small Improvements, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="7903f-214">**K poskytnutí uživatelského účtu, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="7903f-214">**To provision a user account, perform the following steps:**</span></span>
+<span data-ttu-id="dac42-214">**tooprovision uživatelský účet, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="dac42-214">**tooprovision a user account, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="7903f-215">Přihlašování k webu společnosti malé vylepšení jako správce.</span><span class="sxs-lookup"><span data-stu-id="7903f-215">Sign-on to your Small Improvements company site as an administrator.</span></span>
+1. <span data-ttu-id="dac42-215">Web společnosti malé vylepšení tooyour přihlášení jako správce.</span><span class="sxs-lookup"><span data-stu-id="dac42-215">Sign-on tooyour Small Improvements company site as an administrator.</span></span>
 
-2. <span data-ttu-id="7903f-216">Na domovské stránce, přejděte do nabídky na levé straně, klikněte na tlačítko **správy**.</span><span class="sxs-lookup"><span data-stu-id="7903f-216">From the Home page, go to the menu on the left, click **Administration**.</span></span>
+2. <span data-ttu-id="dac42-216">Na domovské stránce hello, přejděte na hello zbývajících toohello nabídky, klikněte na tlačítko **správy**.</span><span class="sxs-lookup"><span data-stu-id="dac42-216">From hello Home page, go toohello menu on hello left, click **Administration**.</span></span>
 
-3. <span data-ttu-id="7903f-217">Klikněte **adresář uživatelského** tlačítko z části Správa uživatelů.</span><span class="sxs-lookup"><span data-stu-id="7903f-217">Click the **User Directory** button from User Management section.</span></span> 
+3. <span data-ttu-id="dac42-217">Klikněte na tlačítko hello **adresář uživatelského** tlačítko z části Správa uživatelů.</span><span class="sxs-lookup"><span data-stu-id="dac42-217">Click hello **User Directory** button from User Management section.</span></span> 
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
-4. <span data-ttu-id="7903f-219">Klikněte na tlačítko **přidat uživatele**.</span><span class="sxs-lookup"><span data-stu-id="7903f-219">Click **Add users**.</span></span>
+4. <span data-ttu-id="dac42-219">Klikněte na tlačítko **přidat uživatele**.</span><span class="sxs-lookup"><span data-stu-id="dac42-219">Click **Add users**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
-5. <span data-ttu-id="7903f-221">Na **přidat uživatele** dialogové okno, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="7903f-221">On the **Add Users** dialog, perform the following steps:</span></span> 
+5. <span data-ttu-id="dac42-221">Na hello **přidat uživatele** dialogové okno, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="dac42-221">On hello **Add Users** dialog, perform hello following steps:</span></span> 
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    <span data-ttu-id="7903f-223">a.</span><span class="sxs-lookup"><span data-stu-id="7903f-223">a.</span></span> <span data-ttu-id="7903f-224">Zadejte **křestní jméno** uživatele jako **Britta**.</span><span class="sxs-lookup"><span data-stu-id="7903f-224">Enter the **first name** of user like **Britta**.</span></span>
+    <span data-ttu-id="dac42-223">a.</span><span class="sxs-lookup"><span data-stu-id="dac42-223">a.</span></span> <span data-ttu-id="dac42-224">Zadejte hello **křestní jméno** uživatele jako **Britta**.</span><span class="sxs-lookup"><span data-stu-id="dac42-224">Enter hello **first name** of user like **Britta**.</span></span>
 
-    <span data-ttu-id="7903f-225">b.</span><span class="sxs-lookup"><span data-stu-id="7903f-225">b.</span></span> <span data-ttu-id="7903f-226">Zadejte **příjmení** uživatele jako **Simon**.</span><span class="sxs-lookup"><span data-stu-id="7903f-226">Enter the **Last name** of user like **Simon**.</span></span>
+    <span data-ttu-id="dac42-225">b.</span><span class="sxs-lookup"><span data-stu-id="dac42-225">b.</span></span> <span data-ttu-id="dac42-226">Zadejte hello **příjmení** uživatele jako **Simon**.</span><span class="sxs-lookup"><span data-stu-id="dac42-226">Enter hello **Last name** of user like **Simon**.</span></span>
 
-    <span data-ttu-id="7903f-227">c.</span><span class="sxs-lookup"><span data-stu-id="7903f-227">c.</span></span> <span data-ttu-id="7903f-228">Zadejte **e-mailu** uživatele jako  **brittasimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="7903f-228">Enter the **Email** of user like **brittasimon@contoso.com**.</span></span> 
+    <span data-ttu-id="dac42-227">c.</span><span class="sxs-lookup"><span data-stu-id="dac42-227">c.</span></span> <span data-ttu-id="dac42-228">Zadejte hello **e-mailu** uživatele jako  **brittasimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="dac42-228">Enter hello **Email** of user like **brittasimon@contoso.com**.</span></span> 
 
-    <span data-ttu-id="7903f-229">d.</span><span class="sxs-lookup"><span data-stu-id="7903f-229">d.</span></span> <span data-ttu-id="7903f-230">Můžete také zadat osobní zprávu v **odeslat e-mailové oznámení** pole.</span><span class="sxs-lookup"><span data-stu-id="7903f-230">You can also choose to enter the personal message in the **Send notification email** box.</span></span> <span data-ttu-id="7903f-231">Pokud nechcete, aby k odesílání oznámení, poté zrušte zaškrtnutí tohoto políčka.</span><span class="sxs-lookup"><span data-stu-id="7903f-231">If you do not wish to send the notification, then uncheck this checkbox.</span></span>
+    <span data-ttu-id="dac42-229">d.</span><span class="sxs-lookup"><span data-stu-id="dac42-229">d.</span></span> <span data-ttu-id="dac42-230">Můžete také tooenter hello osobní zprávu v hello **odeslat e-mailové oznámení** pole.</span><span class="sxs-lookup"><span data-stu-id="dac42-230">You can also choose tooenter hello personal message in hello **Send notification email** box.</span></span> <span data-ttu-id="dac42-231">Pokud nechcete, aby toosend hello oznámení, poté zrušte zaškrtnutí tohoto políčka.</span><span class="sxs-lookup"><span data-stu-id="dac42-231">If you do not wish toosend hello notification, then uncheck this checkbox.</span></span>
 
-    <span data-ttu-id="7903f-232">e.</span><span class="sxs-lookup"><span data-stu-id="7903f-232">e.</span></span> <span data-ttu-id="7903f-233">Klikněte na tlačítko **vytvořte uživatele**.</span><span class="sxs-lookup"><span data-stu-id="7903f-233">Click **Create Users**.</span></span>
+    <span data-ttu-id="dac42-232">e.</span><span class="sxs-lookup"><span data-stu-id="dac42-232">e.</span></span> <span data-ttu-id="dac42-233">Klikněte na tlačítko **vytvořte uživatele**.</span><span class="sxs-lookup"><span data-stu-id="dac42-233">Click **Create Users**.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="7903f-234">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="7903f-234">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="dac42-234">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="dac42-234">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="7903f-235">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu malé vylepšení.</span><span class="sxs-lookup"><span data-stu-id="7903f-235">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Small Improvements.</span></span>
+<span data-ttu-id="dac42-235">V této části povolíte tak, že udělíte přístup k vylepšení tooSmall toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="dac42-235">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooSmall Improvements.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="7903f-237">**Pokud chcete přiřadit Britta Simon malé vylepšení, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="7903f-237">**To assign Britta Simon to Small Improvements, perform the following steps:**</span></span>
+<span data-ttu-id="dac42-237">**tooassign Britta Simon tooSmall vylepšení, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="dac42-237">**tooassign Britta Simon tooSmall Improvements, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="7903f-238">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="7903f-238">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="dac42-238">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="dac42-238">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="7903f-240">V seznamu aplikací vyberte **malé vylepšení**.</span><span class="sxs-lookup"><span data-stu-id="7903f-240">In the applications list, select **Small Improvements**.</span></span>
+2. <span data-ttu-id="dac42-240">V seznamu aplikace hello vyberte **malé vylepšení**.</span><span class="sxs-lookup"><span data-stu-id="dac42-240">In hello applications list, select **Small Improvements**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_app.png) 
 
-3. <span data-ttu-id="7903f-242">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="7903f-242">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="dac42-242">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="dac42-242">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="7903f-244">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="7903f-244">Click **Add** button.</span></span> <span data-ttu-id="7903f-245">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="7903f-245">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="dac42-244">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="dac42-244">Click **Add** button.</span></span> <span data-ttu-id="dac42-245">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="dac42-245">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="7903f-247">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="7903f-247">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="dac42-247">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="dac42-247">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="7903f-248">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="7903f-248">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="dac42-248">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="dac42-248">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="7903f-249">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="7903f-249">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="dac42-249">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="dac42-249">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="7903f-250">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="7903f-250">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="dac42-250">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="dac42-250">Testing single sign-on</span></span>
 
-<span data-ttu-id="7903f-251">Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.</span><span class="sxs-lookup"><span data-stu-id="7903f-251">The objective of this section is to test your Azure AD SSO configuration using the Access Panel.</span></span>  
+<span data-ttu-id="dac42-251">Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.</span><span class="sxs-lookup"><span data-stu-id="dac42-251">hello objective of this section is tootest your Azure AD SSO configuration using hello Access Panel.</span></span>  
 
-<span data-ttu-id="7903f-252">Když kliknete na dlaždici malé vylepšení na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci malé vylepšení.</span><span class="sxs-lookup"><span data-stu-id="7903f-252">When you click the Small Improvements tile in the Access Panel, you should get automatically signed-on to your Small Improvements application.</span></span>
+<span data-ttu-id="dac42-252">Po kliknutí na tlačítko hello malé vylepšení dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour malé vylepšení aplikace.</span><span class="sxs-lookup"><span data-stu-id="dac42-252">When you click hello Small Improvements tile in hello Access Panel, you should get automatically signed-on tooyour Small Improvements application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="7903f-253">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="7903f-253">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="dac42-253">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="dac42-253">Additional resources</span></span>
 
-* [<span data-ttu-id="7903f-254">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="7903f-254">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="7903f-255">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="7903f-255">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="dac42-254">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="dac42-254">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="dac42-255">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="dac42-255">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

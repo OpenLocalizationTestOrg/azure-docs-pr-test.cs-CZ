@@ -1,6 +1,6 @@
 ---
-title: "Ochrana rozhraní API ve službě Azure API Management | Dokumentace Microsoftu"
-description: "Seznamte se s možnostmi ochrany rozhraní API pomocí zásad kvót a zásad omezování četnosti."
+title: "aaaProtect rozhraní API pomocí Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak tooprotect vaše rozhraní API pomocí zásad kvót a omezování zásady (omezení rychlosti)."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -14,106 +14,106 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3113fd277d434da0c051b8b90fd629a102bf4867
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a><span data-ttu-id="aa13b-103">Ochrana rozhraní API omezením četnosti pomocí Azure API Management</span><span class="sxs-lookup"><span data-stu-id="aa13b-103">Protect your API with rate limits using Azure API Management</span></span>
-<span data-ttu-id="aa13b-104">Tento průvodce vám ukáže, jak snadno můžete pomocí služby Azure API Management přidat ochranu rozhraní API vašeho back-endu tím, že nakonfigurujete zásady omezení četnosti a zásady kvót.</span><span class="sxs-lookup"><span data-stu-id="aa13b-104">This guide shows you how easy it is to add protection for your backend API by configuring rate limit and quota policies with Azure API Management.</span></span>
+# <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a><span data-ttu-id="52669-103">Ochrana rozhraní API omezením četnosti pomocí Azure API Management</span><span class="sxs-lookup"><span data-stu-id="52669-103">Protect your API with rate limits using Azure API Management</span></span>
+<span data-ttu-id="52669-104">Tento průvodce vám ukáže, jak je snadné tooadd ochranu pro váš back-end rozhraní API podle konfigurace zásad kvót a omezování míra s Azure API Management.</span><span class="sxs-lookup"><span data-stu-id="52669-104">This guide shows you how easy it is tooadd protection for your backend API by configuring rate limit and quota policies with Azure API Management.</span></span>
 
-<span data-ttu-id="aa13b-105">V tomto kurzu vytvoříte „bezplatnou zkušební verzi“ produktu s rozhraním API, která vývojářům umožní provádět až 10 volání za minutu a až 200 volání za týden do vašeho rozhraní API pomocí zásad [Omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [Nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota).</span><span class="sxs-lookup"><span data-stu-id="aa13b-105">In this tutorial, you will create a "Free Trial" API product that allows developers to make up to 10 calls per minute and up to a maximum of 200 calls per week to your API using the [Limit call rate per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) and [Set usage quota per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) policies.</span></span> <span data-ttu-id="aa13b-106">Potom rozhraní API publikujete a zásady omezení četnosti otestujete.</span><span class="sxs-lookup"><span data-stu-id="aa13b-106">You will then publish the API and test the rate limit policy.</span></span>
+<span data-ttu-id="52669-105">V tomto kurzu vytvoříte "Bezplatnou zkušební verzi" rozhraní API produktu, který umožňuje vývojářům toomake too10 volání za minutu a až tooa maximálně 200 volání za týden tooyour rozhraní API pomocí hello [omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [ Nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) zásady.</span><span class="sxs-lookup"><span data-stu-id="52669-105">In this tutorial, you will create a "Free Trial" API product that allows developers toomake up too10 calls per minute and up tooa maximum of 200 calls per week tooyour API using hello [Limit call rate per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) and [Set usage quota per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) policies.</span></span> <span data-ttu-id="52669-106">Potom publikovat hello rozhraní API a testování omezení četnosti hello.</span><span class="sxs-lookup"><span data-stu-id="52669-106">You will then publish hello API and test hello rate limit policy.</span></span>
 
-<span data-ttu-id="aa13b-107">Pokud se zajímáte o pokročilejší scénáře omezování pomocí zásad [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) a [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey), podívejte se na článek [Pokročilé omezování požadavků pomocí Azure API Management](api-management-sample-flexible-throttling.md).</span><span class="sxs-lookup"><span data-stu-id="aa13b-107">For more advanced throttling scenarios using the [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) and [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) policies, see [Advanced request throttling with Azure API Management](api-management-sample-flexible-throttling.md).</span></span>
+<span data-ttu-id="52669-107">Pro pokročilejší scénáře omezování pomocí hello [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) a [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) zásady, najdete v části [pokročilé omezování požadavků pomocí Azure API Management](api-management-sample-flexible-throttling.md).</span><span class="sxs-lookup"><span data-stu-id="52669-107">For more advanced throttling scenarios using hello [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) and [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) policies, see [Advanced request throttling with Azure API Management](api-management-sample-flexible-throttling.md).</span></span>
 
-## <span data-ttu-id="aa13b-108"><a name="create-product"> </a>Vytvoření produktu</span><span class="sxs-lookup"><span data-stu-id="aa13b-108"><a name="create-product"> </a>To create a product</span></span>
-<span data-ttu-id="aa13b-109">V tomto kroku vytvoříte bezplatnou zkušební verzi produktu, který nevyžaduje schválení předplatného.</span><span class="sxs-lookup"><span data-stu-id="aa13b-109">In this step, you will create a Free Trial product that does not require subscription approval.</span></span>
+## <span data-ttu-id="52669-108"><a name="create-product"></a>toocreate produktu</span><span class="sxs-lookup"><span data-stu-id="52669-108"><a name="create-product"> </a>toocreate a product</span></span>
+<span data-ttu-id="52669-109">V tomto kroku vytvoříte bezplatnou zkušební verzi produktu, který nevyžaduje schválení předplatného.</span><span class="sxs-lookup"><span data-stu-id="52669-109">In this step, you will create a Free Trial product that does not require subscription approval.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="aa13b-110">Pokud už máte produkt nakonfigurovaný a chcete ho v tomto kurzu použít, můžete přeskočit na článek [Konfigurace zásad omezení četnosti a zásad kvót][Configure call rate limit and quota policies] a postupovat v kurzu odtamtud se svým produktem místo bezplatné zkušební verze produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-110">If you already have a product configured and want to use it for this tutorial, you can jump ahead to [Configure call rate limit and quota policies][Configure call rate limit and quota policies] and follow the tutorial from there using your product in place of the Free Trial product.</span></span>
+> <span data-ttu-id="52669-110">Pokud už máte produkt nakonfigurovaný a chcete toouse ho v tomto kurzu, můžete přeskočit příliš[Konfigurace četnosti zásad kvót a omezování] [ Configure call rate limit and quota policies] a postupujte podle pokynů hello kurzu odtamtud se svým produktem místo hello bezplatné zkušební verze produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-110">If you already have a product configured and want toouse it for this tutorial, you can jump ahead too[Configure call rate limit and quota policies][Configure call rate limit and quota policies] and follow hello tutorial from there using your product in place of hello Free Trial product.</span></span>
 > 
 > 
 
-<span data-ttu-id="aa13b-111">Začněte tak, že na webu Azure Portal dané služby API Management kliknete na **Portál vydavatele**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-111">To get started, click **Publisher portal** in the Azure Portal for your API Management service.</span></span>
+<span data-ttu-id="52669-111">tooget začít, klikněte na tlačítko **portál vydavatele** v hello portál Azure pro služby API Management.</span><span class="sxs-lookup"><span data-stu-id="52669-111">tooget started, click **Publisher portal** in hello Azure Portal for your API Management service.</span></span>
 
 ![Portál vydavatele][api-management-management-console]
 
-> <span data-ttu-id="aa13b-113">Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si článek [Vytvoření instance API Management][Create an API Management service instance] v kurzu [Správa vašeho prvního rozhraní API v Azure API Management][Manage your first API in Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="aa13b-113">If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in the [Manage your first API in Azure API Management][Manage your first API in Azure API Management] tutorial.</span></span>
+> <span data-ttu-id="52669-113">Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Správa vašeho prvního rozhraní API v Azure API Management] [ Manage your first API in Azure API Management] kurzu.</span><span class="sxs-lookup"><span data-stu-id="52669-113">If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in hello [Manage your first API in Azure API Management][Manage your first API in Azure API Management] tutorial.</span></span>
 > 
 > 
 
-<span data-ttu-id="aa13b-114">V nabídce **API Management** na levé straně klikněte na **Produkty** a zobrazte stránku **Produkty**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-114">Click **Products** in the **API Management** menu on the left to display the **Products** page.</span></span>
+<span data-ttu-id="52669-114">Klikněte na tlačítko **produkty** v hello **API Management** nabídky na levém toodisplay hello hello **produkty** stránky.</span><span class="sxs-lookup"><span data-stu-id="52669-114">Click **Products** in hello **API Management** menu on hello left toodisplay hello **Products** page.</span></span>
 
 ![Přidání produktu][api-management-add-product]
 
-<span data-ttu-id="aa13b-116">Kliknutím na **Přidat produkt** zobrazíte dialogové okno **Přidání nového produktu**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-116">Click **Add product** to display the **Add new product** dialog box.</span></span>
+<span data-ttu-id="52669-116">Klikněte na tlačítko **přidat produkt** toodisplay hello **přidání nového produktu** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="52669-116">Click **Add product** toodisplay hello **Add new product** dialog box.</span></span>
 
 ![Přidání nového produktu][api-management-new-product-window]
 
-<span data-ttu-id="aa13b-118">Do pole **Nadpis** zadejte text **Bezplatná zkušební verze**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-118">In the **Title** box, type **Free Trial**.</span></span>
+<span data-ttu-id="52669-118">V hello **název** zadejte **bezplatné zkušební verze**.</span><span class="sxs-lookup"><span data-stu-id="52669-118">In hello **Title** box, type **Free Trial**.</span></span>
 
-<span data-ttu-id="aa13b-119">Do pole **Popis** zadejte následující text: **Předplatitelé můžou spustit 10 volání za minutu až do maximálního počtu 200 volání za týden. Potom bude přístup odepřen.**</span><span class="sxs-lookup"><span data-stu-id="aa13b-119">In the **Description** box, type the following text: **Subscribers will be able to run 10 calls/minute up to a maximum of 200 calls/week after which access is denied.**</span></span>
+<span data-ttu-id="52669-119">V hello **popis** pole, typ hello následující text: **Odběratelé, kteří budou mít toorun 10 volání za minutu až tooa maximálně 200 volání za týden. potom bude přístup odepřen.**</span><span class="sxs-lookup"><span data-stu-id="52669-119">In hello **Description** box, type hello following text: **Subscribers will be able toorun 10 calls/minute up tooa maximum of 200 calls/week after which access is denied.**</span></span>
 
-<span data-ttu-id="aa13b-120">Produkty ve službě API Management můžou být chráněné nebo otevřené.</span><span class="sxs-lookup"><span data-stu-id="aa13b-120">Products in API Management can be protected or open.</span></span> <span data-ttu-id="aa13b-121">V případě chráněných produktů se musíte nejdřív přihlásit k jejich odběru a až potom je můžete používat.</span><span class="sxs-lookup"><span data-stu-id="aa13b-121">Protected products must be subscribed to before they can be used.</span></span> <span data-ttu-id="aa13b-122">Otevřené produkty můžete používat bez předplatného.</span><span class="sxs-lookup"><span data-stu-id="aa13b-122">Open products can be used without a subscription.</span></span> <span data-ttu-id="aa13b-123">Pokud chcete vytvořit chráněný produkt, který vyžaduje předplatné, nezapomeňte vybrat možnost **Vyžadovat předplatné**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-123">Ensure that **Require subscription** is selected to create a protected product that requires a subscription.</span></span> <span data-ttu-id="aa13b-124">Toto je výchozí nastavení.</span><span class="sxs-lookup"><span data-stu-id="aa13b-124">This is the default setting.</span></span>
+<span data-ttu-id="52669-120">Produkty ve službě API Management můžou být chráněné nebo otevřené.</span><span class="sxs-lookup"><span data-stu-id="52669-120">Products in API Management can be protected or open.</span></span> <span data-ttu-id="52669-121">Chráněných produktů musí být odebírané toobefore, které mohou být použity.</span><span class="sxs-lookup"><span data-stu-id="52669-121">Protected products must be subscribed toobefore they can be used.</span></span> <span data-ttu-id="52669-122">Otevřené produkty můžete používat bez předplatného.</span><span class="sxs-lookup"><span data-stu-id="52669-122">Open products can be used without a subscription.</span></span> <span data-ttu-id="52669-123">Ujistěte se, že **vyžadovat předplatné** je vybrané toocreate chráněný produkt, který vyžaduje předplatné.</span><span class="sxs-lookup"><span data-stu-id="52669-123">Ensure that **Require subscription** is selected toocreate a protected product that requires a subscription.</span></span> <span data-ttu-id="52669-124">Toto je výchozí nastavení hello.</span><span class="sxs-lookup"><span data-stu-id="52669-124">This is hello default setting.</span></span>
 
-<span data-ttu-id="aa13b-125">Pokud chcete, aby pokusy o přihlášení k odběru produktu kontroloval a následně přijímal nebo odmítal správce, vyberte možnost **Vyžadovat schválení předplatného**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-125">If you want an administrator to review and accept or reject subscription attempts to this product, select **Require subscription approval**.</span></span> <span data-ttu-id="aa13b-126">Pokud necháte políčko nezaškrtnuté, pokusy o přihlášení k odběru budou schvalovány automaticky.</span><span class="sxs-lookup"><span data-stu-id="aa13b-126">If the check box is not selected, subscription attempts will be auto-approved.</span></span> <span data-ttu-id="aa13b-127">V tomto příkladu se předplatné schvaluje automaticky, proto políčko nezaškrtávejte.</span><span class="sxs-lookup"><span data-stu-id="aa13b-127">In this example, subscriptions are automatically approved, so do not select the box.</span></span>
+<span data-ttu-id="52669-125">Pokud chcete tooreview správce a přijměte nebo odmítněte předplatné pokusí toothis produktu, vyberte **vyžadovat schválení předplatného**.</span><span class="sxs-lookup"><span data-stu-id="52669-125">If you want an administrator tooreview and accept or reject subscription attempts toothis product, select **Require subscription approval**.</span></span> <span data-ttu-id="52669-126">Pokud není zaškrtnuté políčko hello, pokusy o předplatné bude schvalovat automaticky.</span><span class="sxs-lookup"><span data-stu-id="52669-126">If hello check box is not selected, subscription attempts will be auto-approved.</span></span> <span data-ttu-id="52669-127">V tomto příkladu předplatné schvaluje automaticky, takže nezaškrtávejte políčko hello.</span><span class="sxs-lookup"><span data-stu-id="52669-127">In this example, subscriptions are automatically approved, so do not select hello box.</span></span>
 
-<span data-ttu-id="aa13b-128">Pokud chcete vývojářským účtům povolit přihlášení k vícenásobným odběrům nového produktu, zaškrtněte políčko **Povolit více souběžných předplatných**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-128">To allow developer accounts to subscribe multiple times to the new product, select the **Allow multiple simultaneous subscriptions** check box.</span></span> <span data-ttu-id="aa13b-129">Tento kurz několik souběžných předplatných nevyužívá, takže políčko nechte nezaškrtnuté.</span><span class="sxs-lookup"><span data-stu-id="aa13b-129">This tutorial does not utilize multiple simultaneous subscriptions, so leave it unchecked.</span></span>
+<span data-ttu-id="52669-128">tooallow vývojáře účty toosubscribe několikrát toohello nového produktu, vyberte hello **povolit více souběžných předplatných** zaškrtávací políčko.</span><span class="sxs-lookup"><span data-stu-id="52669-128">tooallow developer accounts toosubscribe multiple times toohello new product, select hello **Allow multiple simultaneous subscriptions** check box.</span></span> <span data-ttu-id="52669-129">Tento kurz několik souběžných předplatných nevyužívá, takže políčko nechte nezaškrtnuté.</span><span class="sxs-lookup"><span data-stu-id="52669-129">This tutorial does not utilize multiple simultaneous subscriptions, so leave it unchecked.</span></span>
 
-<span data-ttu-id="aa13b-130">Po zadání všech hodnot klikněte na **Uložit** a vytvořte produkt.</span><span class="sxs-lookup"><span data-stu-id="aa13b-130">After all values are entered, click **Save** to create the product.</span></span>
+<span data-ttu-id="52669-130">Po zadání všech hodnot, klikněte na tlačítko **Uložit** toocreate hello produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-130">After all values are entered, click **Save** toocreate hello product.</span></span>
 
 ![Produkt přidán][api-management-product-added]
 
-<span data-ttu-id="aa13b-132">Ve výchozím nastavení jsou nové produkty viditelné pro uživatele ve skupině **Správci**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-132">By default, new products are visible to users in the **Administrators** group.</span></span> <span data-ttu-id="aa13b-133">Teď přidáme skupinu **Vývojáři**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-133">We are going to add the **Developers** group.</span></span> <span data-ttu-id="aa13b-134">Klikněte na **Bezplatná zkušební verze** a potom na kartu **Viditelnost**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-134">Click **Free Trial**, and then click the **Visibility** tab.</span></span>
+<span data-ttu-id="52669-132">Ve výchozím nastavení jsou nové produkty viditelné toousers v hello **správci** skupiny.</span><span class="sxs-lookup"><span data-stu-id="52669-132">By default, new products are visible toousers in hello **Administrators** group.</span></span> <span data-ttu-id="52669-133">Přidáme tooadd hello **vývojáři** skupiny.</span><span class="sxs-lookup"><span data-stu-id="52669-133">We are going tooadd hello **Developers** group.</span></span> <span data-ttu-id="52669-134">Klikněte na tlačítko **bezplatné zkušební verze**a potom klikněte na hello **viditelnost** kartě.</span><span class="sxs-lookup"><span data-stu-id="52669-134">Click **Free Trial**, and then click hello **Visibility** tab.</span></span>
 
-> <span data-ttu-id="aa13b-135">Ve službě API Management se ke správě viditelnosti produktů pro vývojáře používají skupiny.</span><span class="sxs-lookup"><span data-stu-id="aa13b-135">In API Management, groups are used to manage the visibility of products to developers.</span></span> <span data-ttu-id="aa13b-136">Produkty udělují viditelnost skupinám a vývojáři můžou zobrazovat a odebírat produkty, které jsou viditelné pro skupinu, do které patří.</span><span class="sxs-lookup"><span data-stu-id="aa13b-136">Products grant visibility to groups, and developers can view and subscribe to the products that are visible to the groups in which they belong.</span></span> <span data-ttu-id="aa13b-137">Další informace najdete v článku [Vytvoření a používání skupin v Azure API Management][How to create and use groups in Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="aa13b-137">For more information, see [How to create and use groups in Azure API Management][How to create and use groups in Azure API Management].</span></span>
+> <span data-ttu-id="52669-135">Skupiny ve službě API Management jsou použité toomanage hello viditelnost toodevelopers produkty.</span><span class="sxs-lookup"><span data-stu-id="52669-135">In API Management, groups are used toomanage hello visibility of products toodevelopers.</span></span> <span data-ttu-id="52669-136">Produkty udělují viditelnost toogroups a vývojáři můžou zobrazovat a odebírat toohello produkty, které jsou viditelné toohello skupiny, do které patří.</span><span class="sxs-lookup"><span data-stu-id="52669-136">Products grant visibility toogroups, and developers can view and subscribe toohello products that are visible toohello groups in which they belong.</span></span> <span data-ttu-id="52669-137">Další informace najdete v tématu [jak toocreate a používání skupin v Azure API Management][How toocreate and use groups in Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="52669-137">For more information, see [How toocreate and use groups in Azure API Management][How toocreate and use groups in Azure API Management].</span></span>
 > 
 > 
 
 ![Přidání skupiny vývojářů][api-management-add-developers-group]
 
-<span data-ttu-id="aa13b-139">Zaškrtněte políčko **Vývojáři** a potom klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-139">Select the **Developers** check box, and then click **Save**.</span></span>
+<span data-ttu-id="52669-139">Vyberte hello **vývojáři** zaškrtněte políčko a potom klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="52669-139">Select hello **Developers** check box, and then click **Save**.</span></span>
 
-## <span data-ttu-id="aa13b-140"><a name="add-api"> </a>Přidání rozhraní API do produktu</span><span class="sxs-lookup"><span data-stu-id="aa13b-140"><a name="add-api"> </a>To add an API to the product</span></span>
-<span data-ttu-id="aa13b-141">V tomto kroku kurzu přidáme rozhraní API v programu Echo do nového produktu v bezplatné zkušební verzi.</span><span class="sxs-lookup"><span data-stu-id="aa13b-141">In this step of the tutorial, we will add the Echo API to the new Free Trial product.</span></span>
+## <span data-ttu-id="52669-140"><a name="add-api"></a>tooadd rozhraní API toohello produktu</span><span class="sxs-lookup"><span data-stu-id="52669-140"><a name="add-api"> </a>tooadd an API toohello product</span></span>
+<span data-ttu-id="52669-141">V tomto kroku kurzu hello přidáme hello Echo API toohello nové bezplatné zkušební verze produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-141">In this step of hello tutorial, we will add hello Echo API toohello new Free Trial product.</span></span>
 
-> <span data-ttu-id="aa13b-142">Každá instance služby API Management je vybavená předem nakonfigurovaným rozhraním API programu Echo, které můžete použít k experimentování a seznámení se službou API Management.</span><span class="sxs-lookup"><span data-stu-id="aa13b-142">Each API Management service instance comes pre-configured with an Echo API that can be used to experiment with and learn about API Management.</span></span> <span data-ttu-id="aa13b-143">Další informace najdete v článku [Správa vašeho prvního rozhraní API ve službě Azure API Management][Manage your first API in Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="aa13b-143">For more information, see [Manage your first API in Azure API Management][Manage your first API in Azure API Management].</span></span>
+> <span data-ttu-id="52669-142">Každá instance služby API Management je vybavená předem nakonfigurovaným rozhraním Echo API, které je možné použít tooexperiment s a další informace o službě API Management.</span><span class="sxs-lookup"><span data-stu-id="52669-142">Each API Management service instance comes pre-configured with an Echo API that can be used tooexperiment with and learn about API Management.</span></span> <span data-ttu-id="52669-143">Další informace najdete v článku [Správa vašeho prvního rozhraní API ve službě Azure API Management][Manage your first API in Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="52669-143">For more information, see [Manage your first API in Azure API Management][Manage your first API in Azure API Management].</span></span>
 > 
 > 
 
-<span data-ttu-id="aa13b-144">V nabídce **API Management** na levé straně klikněte na **Produkty**, potom na **Bezplatná zkušební verze** a nakonfigurujte produkt.</span><span class="sxs-lookup"><span data-stu-id="aa13b-144">Click **Products** from the **API Management** menu on the left, and then click **Free Trial** to configure the product.</span></span>
+<span data-ttu-id="52669-144">Klikněte na tlačítko **produkty** z hello **API Management** nabídky na levé hello a pak klikněte na tlačítko **bezplatné zkušební verze** tooconfigure hello produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-144">Click **Products** from hello **API Management** menu on hello left, and then click **Free Trial** tooconfigure hello product.</span></span>
 
 ![Konfigurace produktu][api-management-configure-product]
 
-<span data-ttu-id="aa13b-146">Klikněte na **Přidat rozhraní API do produktu**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-146">Click **Add API to product**.</span></span>
+<span data-ttu-id="52669-146">Klikněte na tlačítko **přidat rozhraní API tooproduct**.</span><span class="sxs-lookup"><span data-stu-id="52669-146">Click **Add API tooproduct**.</span></span>
 
-![Přidání rozhraní API do produktu][api-management-add-api]
+![Přidání rozhraní API tooproduct][api-management-add-api]
 
-<span data-ttu-id="aa13b-148">Vyberte **Rozhraní API v programu Echo** a potom klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-148">Select **Echo API**, and then click **Save**.</span></span>
+<span data-ttu-id="52669-148">Vyberte **Rozhraní API v programu Echo** a potom klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="52669-148">Select **Echo API**, and then click **Save**.</span></span>
 
 ![Přidání rozhraní API v programu Echo][api-management-add-echo-api]
 
-## <span data-ttu-id="aa13b-150"><a name="policies"> </a>Konfigurace zásad kvót a zásad omezení četnosti volání</span><span class="sxs-lookup"><span data-stu-id="aa13b-150"><a name="policies"> </a>To configure call rate limit and quota policies</span></span>
-<span data-ttu-id="aa13b-151">Omezení četnosti a kvóty se konfigurují v editoru zásad.</span><span class="sxs-lookup"><span data-stu-id="aa13b-151">Rate limits and quotas are configured in the policy editor.</span></span> <span data-ttu-id="aa13b-152">Dvě zásady, které v tomto kurzu budeme přidávat, jsou [Omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [Nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota).</span><span class="sxs-lookup"><span data-stu-id="aa13b-152">The two policies we will be adding in this tutorial are the [Limit call rate per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) and [Set usage quota per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) policies.</span></span> <span data-ttu-id="aa13b-153">Tyto zásady se musí použít na obor produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-153">These policies must be applied at the product scope.</span></span>
+## <span data-ttu-id="52669-150"><a name="policies"></a>tooconfigure četnosti zásad kvót a omezování</span><span class="sxs-lookup"><span data-stu-id="52669-150"><a name="policies"> </a>tooconfigure call rate limit and quota policies</span></span>
+<span data-ttu-id="52669-151">Omezení četnosti a kvóty se konfigurují v editoru zásad hello.</span><span class="sxs-lookup"><span data-stu-id="52669-151">Rate limits and quotas are configured in hello policy editor.</span></span> <span data-ttu-id="52669-152">zásady Hello dva přidáme v tomto kurzu jsou hello [omezení četnosti volání podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) a [nastavení kvóty využití podle předplatného](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) zásady.</span><span class="sxs-lookup"><span data-stu-id="52669-152">hello two policies we will be adding in this tutorial are hello [Limit call rate per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) and [Set usage quota per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) policies.</span></span> <span data-ttu-id="52669-153">Tyto zásady se musí použít v oboru produktu hello.</span><span class="sxs-lookup"><span data-stu-id="52669-153">These policies must be applied at hello product scope.</span></span>
 
-<span data-ttu-id="aa13b-154">V nabídce **API Management** na levé straně klikněte na **Zásady**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-154">Click **Policies** under the **API Management** menu on the left.</span></span> <span data-ttu-id="aa13b-155">V seznamu **Produkt** klikněte na položku **Bezplatná zkušební verze**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-155">In the **Product** list, click **Free Trial**.</span></span>
+<span data-ttu-id="52669-154">Klikněte na tlačítko **zásady** pod hello **API Management** nabídky na levé straně hello.</span><span class="sxs-lookup"><span data-stu-id="52669-154">Click **Policies** under hello **API Management** menu on hello left.</span></span> <span data-ttu-id="52669-155">V hello **produktu** seznamu, klikněte na tlačítko **bezplatné zkušební verze**.</span><span class="sxs-lookup"><span data-stu-id="52669-155">In hello **Product** list, click **Free Trial**.</span></span>
 
 ![Zásady produktu][api-management-product-policy]
 
-<span data-ttu-id="aa13b-157">Kliknutím na **Přidat zásady** proveďte import šablony zásad a začněte vytvářet zásady omezení četnosti a zásady kvót.</span><span class="sxs-lookup"><span data-stu-id="aa13b-157">Click **Add Policy** to import the policy template and begin creating the rate limit and quota policies.</span></span>
+<span data-ttu-id="52669-157">Klikněte na tlačítko **přidat zásadu** tooimport hello šablony zásad a začněte vytvářet hello zásadami kvót a omezování rychlost.</span><span class="sxs-lookup"><span data-stu-id="52669-157">Click **Add Policy** tooimport hello policy template and begin creating hello rate limit and quota policies.</span></span>
 
 ![Přidání zásad][api-management-add-policy]
 
-<span data-ttu-id="aa13b-159">Zásady omezení četnosti a zásady kvót jsou příchozími zásadami, proto kurzor umístěte do příchozího prvku.</span><span class="sxs-lookup"><span data-stu-id="aa13b-159">Rate limit and quota policies are inbound policies, so position the cursor in the inbound element.</span></span>
+<span data-ttu-id="52669-159">Míra zásadami kvót a omezování jsou příchozími zásadami, tak kurzor hello pozici v hello příchozího prvku.</span><span class="sxs-lookup"><span data-stu-id="52669-159">Rate limit and quota policies are inbound policies, so position hello cursor in hello inbound element.</span></span>
 
 ![Editor zásad][api-management-policy-editor-inbound]
 
-<span data-ttu-id="aa13b-161">Posouváním seznamem zásad vyhledejte záznam zásady **Omezení četnosti volání podle předplatného**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-161">Scroll through the list of policies and locate the **Limit call rate per subscription** policy entry.</span></span>
+<span data-ttu-id="52669-161">Posuňte hello seznam zásad a najděte hello **omezení četnosti volání podle předplatného** zásadu.</span><span class="sxs-lookup"><span data-stu-id="52669-161">Scroll through hello list of policies and locate hello **Limit call rate per subscription** policy entry.</span></span>
 
 ![Příkazy zásad][api-management-limit-policies]
 
-<span data-ttu-id="aa13b-163">Po umístění kurzoru v prvku **inbound** zásad klikněte na šipku vedle položky **Omezení četnosti volání podle předplatného** a vložte jeho šablonu zásad.</span><span class="sxs-lookup"><span data-stu-id="aa13b-163">After the cursor is positioned in the **inbound** policy element, click the arrow beside **Limit call rate per subscription** to insert its policy template.</span></span>
+<span data-ttu-id="52669-163">Po hello kurzor je nastavený v hello **příchozí** zásad klikněte na šipku hello vedle položky **omezení četnosti volání podle předplatného** tooinsert jeho šablonu zásad.</span><span class="sxs-lookup"><span data-stu-id="52669-163">After hello cursor is positioned in hello **inbound** policy element, click hello arrow beside **Limit call rate per subscription** tooinsert its policy template.</span></span>
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -123,21 +123,21 @@ ms.lasthandoff: 08/29/2017
 </rate-limit>
 ```
 
-<span data-ttu-id="aa13b-164">Jak je vidět ve fragmentu kódu, zásada umožňuje nastavení omezení pro operace a rozhraní API produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-164">As you can see from the snippet, the policy allows setting limits for the product's APIs and operations.</span></span> <span data-ttu-id="aa13b-165">V tomto kurzu tuto schopnost využívat nebudeme, takže z elementu **rate-limit** odstraňte elementy **api** a **operation**, aby zůstal jenom vnější element **rate-limit**, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-165">In this tutorial we will not use that capability, so delete the **api** and **operation** elements from the **rate-limit** element, such that only the outer **rate-limit** element remains, as shown in the following example.</span></span>
+<span data-ttu-id="52669-164">Jak je vidět z hello fragment hello zásada umožňuje nastavení omezení pro rozhraní API a operace hello produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-164">As you can see from hello snippet, hello policy allows setting limits for hello product's APIs and operations.</span></span> <span data-ttu-id="52669-165">V tomto kurzu jsme nebude používat tuto funkci, proto můžete odstranit hello **rozhraní api** a **operace** elementy z hello **limit rychlosti** elementu, tak, aby se pouze hello vnější **limit rychlosti** element zůstává, jak ukazuje následující příklad hello.</span><span class="sxs-lookup"><span data-stu-id="52669-165">In this tutorial we will not use that capability, so delete hello **api** and **operation** elements from hello **rate-limit** element, such that only hello outer **rate-limit** element remains, as shown in hello following example.</span></span>
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
 </rate-limit>
 ```
 
-<span data-ttu-id="aa13b-166">V případě bezplatné zkušební verze produktu je maximální povolená četnost volání 10 volání za minutu, proto do atributu **call** zadejte hodnotu**10** a do atributu **renewal-period** zadejte hodnotu **60**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-166">In the Free Trial product, the maximum allowable call rate is 10 calls per minute, so type **10** as the value for the **calls** attribute, and **60** for the **renewal-period** attribute.</span></span>
+<span data-ttu-id="52669-166">V hello bezplatnou zkušební verzi produktu, hello maximální povolená Četnost volání 10 volání za minutu, proto **10** hello hodnotu hello **volání** atribut a **60** pro hello **doby obnovení** atribut.</span><span class="sxs-lookup"><span data-stu-id="52669-166">In hello Free Trial product, hello maximum allowable call rate is 10 calls per minute, so type **10** as hello value for hello **calls** attribute, and **60** for hello **renewal-period** attribute.</span></span>
 
 ```xml
 <rate-limit calls="10" renewal-period="60">
 </rate-limit>
 ```
 
-<span data-ttu-id="aa13b-167">Pokud chcete nakonfigurovat zásadu **Nastavení kvóty využití podle předplatného**, umístěte kurzor bezprostředně pod nově přidaný element **rate-limit** v elementu **inbound** a potom vyhledejte a klikněte na šipku nalevo od **Nastavení kvóty využití podle předplatného**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-167">To configure the **Set usage quota per subscription** policy, position your cursor immediately below the newly added **rate-limit** element within the **inbound** element, and then locate and click the arrow to the left of **Set usage quota per subscription**.</span></span>
+<span data-ttu-id="52669-167">tooconfigure hello **nastavení kvóty využití podle předplatného** zásady, pozice kurzor bezprostředně pod hello nově přidaná **limit rychlosti** v rámci hello **příchozí** element a poté vyhledejte a klikněte na tlačítko hello šipku toohello nalevo od **nastavení kvóty využití podle předplatného**.</span><span class="sxs-lookup"><span data-stu-id="52669-167">tooconfigure hello **Set usage quota per subscription** policy, position your cursor immediately below hello newly added **rate-limit** element within hello **inbound** element, and then locate and click hello arrow toohello left of **Set usage quota per subscription**.</span></span>
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -147,32 +147,32 @@ ms.lasthandoff: 08/29/2017
 </quota>
 ```
 
-<span data-ttu-id="aa13b-168">Podobně jako zásada **Nastavení kvóty využití podle předplatného** umožňuje i zásada **Nastavení kvóty využití podle předplatného** nastavení omezení pro operace a rozhraní API produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-168">Similarly to the **Set usage quota per subscription** policy, **Set usage quota per subscription** policy allows setting caps for on the product's APIs and operations.</span></span> <span data-ttu-id="aa13b-169">V tomto kurzu tuto schopnost využívat nebudeme, takže z elementu **quota** odstraňte elementy **api** a **operation**, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-169">In this tutorial we will not use that capability, so delete the **api** and **operation** elements from the **quota** element, as shown in the following example.</span></span>
+<span data-ttu-id="52669-168">Podobně toohello **nastavení kvóty využití podle předplatného** zásady, **nastavení kvóty využití podle předplatného** umožňuje zásady CAP k vzdálené ploše pro nastavení na rozhraní API a operace hello produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-168">Similarly toohello **Set usage quota per subscription** policy, **Set usage quota per subscription** policy allows setting caps for on hello product's APIs and operations.</span></span> <span data-ttu-id="52669-169">V tomto kurzu jsme nebude používat tuto funkci, proto můžete odstranit hello **rozhraní api** a **operace** elementy z hello **kvóty** elementu, jak ukazuje následující příklad hello.</span><span class="sxs-lookup"><span data-stu-id="52669-169">In this tutorial we will not use that capability, so delete hello **api** and **operation** elements from hello **quota** element, as shown in hello following example.</span></span>
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 </quota>
 ```
 
-<span data-ttu-id="aa13b-170">Kvóty můžou být založené na počtu volání za interval, na šířce pásma nebo na obojím.</span><span class="sxs-lookup"><span data-stu-id="aa13b-170">Quotas can be based on the number of calls per interval, bandwidth, or both.</span></span> <span data-ttu-id="aa13b-171">V tomto kurzu neprovádíme omezování na základě šířky pásma, proto můžete odstranit atribut **bandwidth** (šířka pásma).</span><span class="sxs-lookup"><span data-stu-id="aa13b-171">In this tutorial, we are not throttling based on bandwidth, so delete the **bandwidth** attribute.</span></span>
+<span data-ttu-id="52669-170">Kvóty můžou být založené na hello počet volání za interval, šířky pásma nebo obou.</span><span class="sxs-lookup"><span data-stu-id="52669-170">Quotas can be based on hello number of calls per interval, bandwidth, or both.</span></span> <span data-ttu-id="52669-171">V tomto kurzu Neprovádíme omezování na základě šířky pásma, proto můžete odstranit hello **šířky pásma** atribut.</span><span class="sxs-lookup"><span data-stu-id="52669-171">In this tutorial, we are not throttling based on bandwidth, so delete hello **bandwidth** attribute.</span></span>
 
 ```xml
 <quota calls="number" renewal-period="seconds">
 </quota>
 ```
 
-<span data-ttu-id="aa13b-172">V rámci bezplatné zkušební verze produktu má kvóta hodnotu 200 volání za týden.</span><span class="sxs-lookup"><span data-stu-id="aa13b-172">In the Free Trial product, the quota is 200 calls per week.</span></span> <span data-ttu-id="aa13b-173">Do atributu **calls** zadejte hodnotu **200** a potom do atributu **renewal-period** zadejte hodnotu **604800**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-173">Specify **200** as the value for the **calls** attribute, and then specify **604800** as the value for the **renewal-period** attribute.</span></span>
+<span data-ttu-id="52669-172">V hello bezplatnou zkušební verzi produktu hello kvóta hodnotu 200 volání za týden.</span><span class="sxs-lookup"><span data-stu-id="52669-172">In hello Free Trial product, hello quota is 200 calls per week.</span></span> <span data-ttu-id="52669-173">Zadejte **200** hello hodnotu hello **volání** atributů a potom zadejte **604800** hello hodnotu hello **doby obnovení** atribut.</span><span class="sxs-lookup"><span data-stu-id="52669-173">Specify **200** as hello value for hello **calls** attribute, and then specify **604800** as hello value for hello **renewal-period** attribute.</span></span>
 
 ```xml
 <quota calls="200" renewal-period="604800">
 </quota>
 ```
 
-> <span data-ttu-id="aa13b-174">Intervaly zásad se zadávají v sekundách.</span><span class="sxs-lookup"><span data-stu-id="aa13b-174">Policy intervals are specified in seconds.</span></span> <span data-ttu-id="aa13b-175">Pokud chcete vypočítat interval pro týden, můžete počet dní (7) vynásobit počtem hodin za den (24), počtem minut za hodinu (60) a počtem sekund za minutu (60): 7 × 24 × 60 × 60 = 604 800.</span><span class="sxs-lookup"><span data-stu-id="aa13b-175">To calculate the interval for a week, you can multiply the number of days (7) by the number of hours in a day (24) by the number of minutes in an hour (60) by the number of seconds in a minute (60): 7 * 24 * 60 * 60 = 604800.</span></span>
+> <span data-ttu-id="52669-174">Intervaly zásad se zadávají v sekundách.</span><span class="sxs-lookup"><span data-stu-id="52669-174">Policy intervals are specified in seconds.</span></span> <span data-ttu-id="52669-175">toocalculate hello interval pro týden, můžete násobení hello počet dní (7) hello počtem hodin za den (24) hello počtem minut za hodinu (60) a hello počtem sekund za minutu (60): 7 * 24 * 60 * 60 = 604800.</span><span class="sxs-lookup"><span data-stu-id="52669-175">toocalculate hello interval for a week, you can multiply hello number of days (7) by hello number of hours in a day (24) by hello number of minutes in an hour (60) by hello number of seconds in a minute (60): 7 * 24 * 60 * 60 = 604800.</span></span>
 > 
 > 
 
-<span data-ttu-id="aa13b-176">Zásady by po dokončení konfigurace měly odpovídat následujícímu příkladu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-176">When you have finished configuring the policy, it should match the following example.</span></span>
+<span data-ttu-id="52669-176">Po dokončení konfigurace zásad hello shodovat hello následující ukázka.</span><span class="sxs-lookup"><span data-stu-id="52669-176">When you have finished configuring hello policy, it should match hello following example.</span></span>
 
 ```xml
 <policies>
@@ -192,86 +192,86 @@ ms.lasthandoff: 08/29/2017
 </policies>
 ```
 
-<span data-ttu-id="aa13b-177">Po nakonfigurování požadovaných zásad klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-177">After the desired policies are configured, click **Save**.</span></span>
+<span data-ttu-id="52669-177">Po hello potřeby, jsou zásady nakonfigurované, klikněte na tlačítko **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="52669-177">After hello desired policies are configured, click **Save**.</span></span>
 
 ![Uložení zásad][api-management-policy-save]
 
-## <span data-ttu-id="aa13b-179"><a name="publish-product"> </a> Publikování produktu</span><span class="sxs-lookup"><span data-stu-id="aa13b-179"><a name="publish-product"> </a> To publish the product</span></span>
-<span data-ttu-id="aa13b-180">Když jste přidali rozhraní API a nakonfigurovali zásady, je třeba produkt publikovat, aby ho vývojáři mohli začít používat.</span><span class="sxs-lookup"><span data-stu-id="aa13b-180">Now that the the APIs are added and the policies are configured, the product must be published so that it can be used by developers.</span></span> <span data-ttu-id="aa13b-181">V nabídce **API Management** na levé straně klikněte na **Produkty**, potom na **Bezplatná zkušební verze** a nakonfigurujte produkt.</span><span class="sxs-lookup"><span data-stu-id="aa13b-181">Click **Products** from the **API Management** menu on the left, and then click **Free Trial** to configure the product.</span></span>
+## <span data-ttu-id="52669-179"><a name="publish-product"></a> toopublish hello produktu</span><span class="sxs-lookup"><span data-stu-id="52669-179"><a name="publish-product"> </a> toopublish hello product</span></span>
+<span data-ttu-id="52669-180">Teď, když hello hello přidání rozhraní API, a jsou nakonfigurovány hello zásady, třeba hello produkt publikovat, aby se může použít vývojáři.</span><span class="sxs-lookup"><span data-stu-id="52669-180">Now that hello hello APIs are added and hello policies are configured, hello product must be published so that it can be used by developers.</span></span> <span data-ttu-id="52669-181">Klikněte na tlačítko **produkty** z hello **API Management** nabídky na levé hello a pak klikněte na tlačítko **bezplatné zkušební verze** tooconfigure hello produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-181">Click **Products** from hello **API Management** menu on hello left, and then click **Free Trial** tooconfigure hello product.</span></span>
 
 ![Konfigurace produktu][api-management-configure-product]
 
-<span data-ttu-id="aa13b-183">Klikněte na **Publikovat** a potvrďte kliknutím na **Ano, publikovat**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-183">Click **Publish**, and then click **Yes, publish it** to confirm.</span></span>
+<span data-ttu-id="52669-183">Klikněte na tlačítko **publikovat**a potom klikněte na **Ano, publikovat** tooconfirm.</span><span class="sxs-lookup"><span data-stu-id="52669-183">Click **Publish**, and then click **Yes, publish it** tooconfirm.</span></span>
 
 ![Publikování produktu][api-management-publish-product]
 
-## <span data-ttu-id="aa13b-185"><a name="subscribe-account"> </a>Přihlášení vývojářského účtu k odběru produktu</span><span class="sxs-lookup"><span data-stu-id="aa13b-185"><a name="subscribe-account"> </a>To subscribe a developer account to the product</span></span>
-<span data-ttu-id="aa13b-186">Teď, když je produkt publikovaný, se vývojáři můžou přihlásit k jeho odběru a můžou ho začít používat.</span><span class="sxs-lookup"><span data-stu-id="aa13b-186">Now that the product is published, it is available to be subscribed to and used by developers.</span></span>
+## <span data-ttu-id="52669-185"><a name="subscribe-account"></a>toosubscribe produktu toohello účtu vývojáře</span><span class="sxs-lookup"><span data-stu-id="52669-185"><a name="subscribe-account"> </a>toosubscribe a developer account toohello product</span></span>
+<span data-ttu-id="52669-186">Teď je publikována hello produktu, je k dispozici toobe odběru tooand používají vývojáři.</span><span class="sxs-lookup"><span data-stu-id="52669-186">Now that hello product is published, it is available toobe subscribed tooand used by developers.</span></span>
 
-> <span data-ttu-id="aa13b-187">Správci instance API Management se automaticky přihlašují k odběru každého produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-187">Administrators of an API Management instance are automatically subscribed to every product.</span></span> <span data-ttu-id="aa13b-188">V tomto kroku kurzu přihlásíme jeden vývojářský účet bez oprávnění správce k odběru bezplatné zkušební verze produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-188">In this tutorial step, we will subscribe one of the non-administrator developer accounts to the Free Trial product.</span></span> <span data-ttu-id="aa13b-189">Pokud je vývojářský účet součástí role správců, můžete tímto krokem projít i v případě, že už jste k odběru přihlášeni.</span><span class="sxs-lookup"><span data-stu-id="aa13b-189">If your developer account is part of the Administrators role, then you can follow along with this step, even though you are already subscribed.</span></span>
+> <span data-ttu-id="52669-187">Správci instance API Management jsou automaticky odebírané tooevery produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-187">Administrators of an API Management instance are automatically subscribed tooevery product.</span></span> <span data-ttu-id="52669-188">V tomto kroku kurzu jsme odběru jeden hello vývojáře bez oprávnění správce účtů toohello bezplatné zkušební verze produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-188">In this tutorial step, we will subscribe one of hello non-administrator developer accounts toohello Free Trial product.</span></span> <span data-ttu-id="52669-189">Pokud vývojářský účet součástí role správců hello, potom můžete provést tímto krokem projít i v případě, že jste přihlášeni.</span><span class="sxs-lookup"><span data-stu-id="52669-189">If your developer account is part of hello Administrators role, then you can follow along with this step, even though you are already subscribed.</span></span>
 > 
 > 
 
-<span data-ttu-id="aa13b-190">V nabídce **API Management** na levé straně klikněte na **Uživatelé** a potom klikněte na název vývojářského účtu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-190">Click **Users** on the **API Management** menu on the left, and then click the name of your developer account.</span></span> <span data-ttu-id="aa13b-191">V tomto příkladu používáme vývojářský účet **Clayton Gragg**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-191">In this example, we are using the **Clayton Gragg** developer account.</span></span>
+<span data-ttu-id="52669-190">Klikněte na tlačítko **uživatelé** na hello **API Management** nabídky na hello left a pak klikněte na název vývojářského účtu hello.</span><span class="sxs-lookup"><span data-stu-id="52669-190">Click **Users** on hello **API Management** menu on hello left, and then click hello name of your developer account.</span></span> <span data-ttu-id="52669-191">V tomto příkladu používáme hello **Clayton Gragg** vývojářský účet.</span><span class="sxs-lookup"><span data-stu-id="52669-191">In this example, we are using hello **Clayton Gragg** developer account.</span></span>
 
 ![Konfigurace vývojáře][api-management-configure-developer]
 
-<span data-ttu-id="aa13b-193">Klikněte na **Přidat předplatné**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-193">Click **Add Subscription**.</span></span>
+<span data-ttu-id="52669-193">Klikněte na **Přidat předplatné**.</span><span class="sxs-lookup"><span data-stu-id="52669-193">Click **Add Subscription**.</span></span>
 
 ![Přidat předplatné][api-management-add-subscription-menu]
 
-<span data-ttu-id="aa13b-195">Vyberte **Bezplatná zkušební verze** a potom klikněte na **Přihlásit k odběru**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-195">Select **Free Trial**, and then click **Subscribe**.</span></span>
+<span data-ttu-id="52669-195">Vyberte **Bezplatná zkušební verze** a potom klikněte na **Přihlásit k odběru**.</span><span class="sxs-lookup"><span data-stu-id="52669-195">Select **Free Trial**, and then click **Subscribe**.</span></span>
 
 ![Přidat předplatné][api-management-add-subscription]
 
 > [!NOTE]
-> <span data-ttu-id="aa13b-197">V tomto kurzu není v případě bezplatné zkušební verze produktu povoleno více souběžných předplatných.</span><span class="sxs-lookup"><span data-stu-id="aa13b-197">In this tutorial, multiple simultaneous subscriptions are not enabled for the Free Trial product.</span></span> <span data-ttu-id="aa13b-198">Pokud by bylo, zobrazila by se výzva jako v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-198">If they were, you would be prompted to name the subscription, as shown in the following example.</span></span>
+> <span data-ttu-id="52669-197">V tomto kurzu více souběžných předplatných nejsou povolené pro hello bezplatné zkušební verze produktu.</span><span class="sxs-lookup"><span data-stu-id="52669-197">In this tutorial, multiple simultaneous subscriptions are not enabled for hello Free Trial product.</span></span> <span data-ttu-id="52669-198">Pokud byly, by byl výzvami tooname hello předplatného, jak ukazuje následující příklad hello.</span><span class="sxs-lookup"><span data-stu-id="52669-198">If they were, you would be prompted tooname hello subscription, as shown in hello following example.</span></span>
 > 
 > 
 
 ![Přidat předplatné][api-management-add-subscription-multiple]
 
-<span data-ttu-id="aa13b-200">Po kliknutí na **Přihlásit k odběru** se produkt zobrazí v uživatelském seznamu **Předplatné**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-200">After clicking **Subscribe**, the product appears in the **Subscription** list for the user.</span></span>
+<span data-ttu-id="52669-200">Po kliknutí na **přihlásit k odběru**, hello produkt zobrazí v hello **předplatné** seznamu pro uživatele hello.</span><span class="sxs-lookup"><span data-stu-id="52669-200">After clicking **Subscribe**, hello product appears in hello **Subscription** list for hello user.</span></span>
 
 ![Předplatné přidáno][api-management-subscription-added]
 
-## <span data-ttu-id="aa13b-202"><a name="test-rate-limit"> </a>Volání operace a testování omezení četnosti</span><span class="sxs-lookup"><span data-stu-id="aa13b-202"><a name="test-rate-limit"> </a>To call an operation and test the rate limit</span></span>
-<span data-ttu-id="aa13b-203">Když už máte bezplatnou zkušební verzi produktu nakonfigurovanou a publikovanou, můžete začít volat operace a testovat omezení četnosti.</span><span class="sxs-lookup"><span data-stu-id="aa13b-203">Now that the Free Trial product is configured and published, we can call some operations and test the rate limit policy.</span></span>
-<span data-ttu-id="aa13b-204">Kliknutím na **Portál pro vývojáře** v pravé horní nabídce přejděte na portál pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="aa13b-204">Switch to the developer portal by clicking **Developer portal** in the upper-right menu.</span></span>
+## <span data-ttu-id="52669-202"><a name="test-rate-limit"></a>toocall operace a testování omezení četnosti hello</span><span class="sxs-lookup"><span data-stu-id="52669-202"><a name="test-rate-limit"> </a>toocall an operation and test hello rate limit</span></span>
+<span data-ttu-id="52669-203">Teď, když hello bezplatnou zkušební verzi produktu nakonfigurovanou a publikovanou, jsme volat operace a testování omezení četnosti hello.</span><span class="sxs-lookup"><span data-stu-id="52669-203">Now that hello Free Trial product is configured and published, we can call some operations and test hello rate limit policy.</span></span>
+<span data-ttu-id="52669-204">Portál pro vývojáře toohello přepínač kliknutím **portál pro vývojáře** v pravé horní nabídce hello.</span><span class="sxs-lookup"><span data-stu-id="52669-204">Switch toohello developer portal by clicking **Developer portal** in hello upper-right menu.</span></span>
 
 ![Portál pro vývojáře][api-management-developer-portal-menu]
 
-<span data-ttu-id="aa13b-206">Klikněte v horní nabídce na **Rozhraní API** a potom vyberte **Rozhraní API v programu Echo**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-206">Click **APIs** in the top menu, and then click **Echo API**.</span></span>
+<span data-ttu-id="52669-206">Klikněte na tlačítko **rozhraní API** v hello horní nabídce a potom klikněte na **Echo API**.</span><span class="sxs-lookup"><span data-stu-id="52669-206">Click **APIs** in hello top menu, and then click **Echo API**.</span></span>
 
-![portálu pro vývojáře][api-management-developer-portal-api-menu]
+![Portál pro vývojáře][api-management-developer-portal-api-menu]
 
-<span data-ttu-id="aa13b-208">Klikněte na **GET Resource** a potom klikněte na **Zkouška**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-208">Click **GET Resource**, and then click **Try it**.</span></span>
+<span data-ttu-id="52669-208">Klikněte na **GET Resource** a potom klikněte na **Zkouška**.</span><span class="sxs-lookup"><span data-stu-id="52669-208">Click **GET Resource**, and then click **Try it**.</span></span>
 
 ![Otevření konzoly][api-management-open-console]
 
-<span data-ttu-id="aa13b-210">Ponechte výchozí hodnoty parametrů a potom vyberte svůj klíč předplatného pro bezplatnou zkušební verzi produktu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-210">Keep the default parameter values, and then select your subscription key for the Free Trial product.</span></span>
+<span data-ttu-id="52669-210">Ponechat hello výchozí hodnoty parametrů a pak vyberte svůj klíč předplatného pro bezplatnou zkušební verzi produktu hello.</span><span class="sxs-lookup"><span data-stu-id="52669-210">Keep hello default parameter values, and then select your subscription key for hello Free Trial product.</span></span>
 
 ![Klíč předplatného][api-management-select-key]
 
 > [!NOTE]
-> <span data-ttu-id="aa13b-212">Pokud máte více předplatných, vyberte klíč pro **bezplatnou zkušební verzi**, jinak zásady nakonfigurované v předchozích krocích nebudou platit.</span><span class="sxs-lookup"><span data-stu-id="aa13b-212">If you have multiple subscriptions, be sure to select the key for **Free Trial**, or else the policies that were configured in the previous steps won't be in effect.</span></span>
+> <span data-ttu-id="52669-212">Pokud máte více předplatných, že klíč hello tooselect pro být **bezplatné zkušební verze**, nebo jiný hello zásady, které byly nakonfigurované v předchozích krocích hello nebudou platit.</span><span class="sxs-lookup"><span data-stu-id="52669-212">If you have multiple subscriptions, be sure tooselect hello key for **Free Trial**, or else hello policies that were configured in hello previous steps won't be in effect.</span></span>
 > 
 > 
 
-<span data-ttu-id="aa13b-213">Klikněte na **Odeslat** a potom si zobrazte odezvu.</span><span class="sxs-lookup"><span data-stu-id="aa13b-213">Click **Send**, and then view the response.</span></span> <span data-ttu-id="aa13b-214">Všimněte si, že **stav odezvy** je **200 – OK**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-214">Note the **Response status** of **200 OK**.</span></span>
+<span data-ttu-id="52669-213">Klikněte na tlačítko **odeslat**a potom si prohlédněte hello odpovědi.</span><span class="sxs-lookup"><span data-stu-id="52669-213">Click **Send**, and then view hello response.</span></span> <span data-ttu-id="52669-214">Poznámka: hello **stav odpovědi** z **200 OK**.</span><span class="sxs-lookup"><span data-stu-id="52669-214">Note hello **Response status** of **200 OK**.</span></span>
 
 ![Výsledky operace][api-management-http-get-results]
 
-<span data-ttu-id="aa13b-216">Klikněte na **Odeslat** víckrát, než dovolují zásady omezení četnosti (10 volání za minutu).</span><span class="sxs-lookup"><span data-stu-id="aa13b-216">Click **Send** at a rate greater than the rate limit policy of 10 calls per minute.</span></span> <span data-ttu-id="aa13b-217">Po překročení zásad omezení četnosti se vrátí stav odezvy **429 – Příliš mnoho požadavků**.</span><span class="sxs-lookup"><span data-stu-id="aa13b-217">After the rate limit policy is exceeded, a response status of **429 Too Many Requests** is returned.</span></span>
+<span data-ttu-id="52669-216">Klikněte na tlačítko **odeslat** rychlostí vyšší než hello dovolují zásady omezení 10 volání za minutu.</span><span class="sxs-lookup"><span data-stu-id="52669-216">Click **Send** at a rate greater than hello rate limit policy of 10 calls per minute.</span></span> <span data-ttu-id="52669-217">Po překročení zásad omezení četnosti hello stav odezvy **429 – příliš mnoho požadavků** je vrácen.</span><span class="sxs-lookup"><span data-stu-id="52669-217">After hello rate limit policy is exceeded, a response status of **429 Too Many Requests** is returned.</span></span>
 
 ![Výsledky operace][api-management-http-get-429]
 
-<span data-ttu-id="aa13b-219">**Obsah odezvy** zobrazuje zbývající délku intervalu, po kterém bude opakování úspěšné.</span><span class="sxs-lookup"><span data-stu-id="aa13b-219">The **Response content** indicates the remaining interval before retries will be successful.</span></span>
+<span data-ttu-id="52669-219">Hello **obsah odpovědi** označuje hello zbývající interval předtím, než bude opakování úspěšné.</span><span class="sxs-lookup"><span data-stu-id="52669-219">hello **Response content** indicates hello remaining interval before retries will be successful.</span></span>
 
-<span data-ttu-id="aa13b-220">Pokud platí zásady omezení četnosti v počtu 10 volání za minutu, následná volání nebudou úspěšná, dokud neuplyne 60 sekund od prvních 10 úspěšných volání produktu před překročením omezení četnosti volání.</span><span class="sxs-lookup"><span data-stu-id="aa13b-220">When the rate limit policy of 10 calls per minute is in effect, subsequent calls will fail until 60 seconds have elapsed from the first of the 10 successful calls to the product before the rate limit was exceeded.</span></span> <span data-ttu-id="aa13b-221">V tomto příkladu je zbývající délka intervalu 54 sekund.</span><span class="sxs-lookup"><span data-stu-id="aa13b-221">In this example, the remaining interval is 54 seconds.</span></span>
+<span data-ttu-id="52669-220">Pokud platí zásady omezení četnosti hello 10 volání za minutu, následná volání nebudou úspěšná, dokud neuplyne 60 sekund od hello první hello 10 úspěšných volání toohello produktu před překročením omezení četnosti hello.</span><span class="sxs-lookup"><span data-stu-id="52669-220">When hello rate limit policy of 10 calls per minute is in effect, subsequent calls will fail until 60 seconds have elapsed from hello first of hello 10 successful calls toohello product before hello rate limit was exceeded.</span></span> <span data-ttu-id="52669-221">V tomto příkladu je hello zbývající intervalu 54 sekund.</span><span class="sxs-lookup"><span data-stu-id="52669-221">In this example, hello remaining interval is 54 seconds.</span></span>
 
-## <span data-ttu-id="aa13b-222"><a name="next-steps"> </a>Další kroky</span><span class="sxs-lookup"><span data-stu-id="aa13b-222"><a name="next-steps"> </a>Next steps</span></span>
-* <span data-ttu-id="aa13b-223">V následujícím videu si pusťte ukázku nastavení kvót a omezení četnosti.</span><span class="sxs-lookup"><span data-stu-id="aa13b-223">Watch a demo of setting rate limits and quotas in the following video.</span></span>
+## <span data-ttu-id="52669-222"><a name="next-steps"></a>Další kroky</span><span class="sxs-lookup"><span data-stu-id="52669-222"><a name="next-steps"> </a>Next steps</span></span>
+* <span data-ttu-id="52669-223">Podívejte se na ukázku nastavení kvót a omezení četnosti v hello následující videa.</span><span class="sxs-lookup"><span data-stu-id="52669-223">Watch a demo of setting rate limits and quotas in hello following video.</span></span>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 > 
@@ -304,24 +304,24 @@ ms.lasthandoff: 08/29/2017
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: ../api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Manage your first API in Azure API Management]: api-management-get-started.md
-[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
-[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
+[How toocreate and use groups in Azure API Management]: api-management-howto-create-groups.md
+[View subscribers tooa product]: api-management-howto-add-products.md#view-subscribers
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Next steps]: #next-steps
 
 [Create a product]: #create-product
 [Configure call rate limit and quota policies]: #policies
-[Add an API to the product]: #add-api
-[Publish the product]: #publish-product
-[Subscribe a developer account to the product]: #subscribe-account
-[Call an operation and test the rate limit]: #test-rate-limit
+[Add an API toohello product]: #add-api
+[Publish hello product]: #publish-product
+[Subscribe a developer account toohello product]: #subscribe-account
+[Call an operation and test hello rate limit]: #test-rate-limit
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
